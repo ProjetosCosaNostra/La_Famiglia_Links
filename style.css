@@ -1,0 +1,83 @@
+/* ===============================
+🎩 Cosa Nostra — Estilo Oficial
+Tema: Preto & Dourado (Autoridade e Elegância)
+=============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: radial-gradient(circle at center, #0a0a0a 60%, #000);
+  color: #f5d06b;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 480px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid #b7950b;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  animation: fadeIn 1.5s ease;
+}
+
+.brand .logo {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: #f8e473;
+}
+
+.manifesto {
+  font-style: italic;
+  color: #c0a945;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link-btn {
+  background: linear-gradient(90deg, #b7950b, #f0c75e);
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
+}
+
+.link-btn:hover {
+  background: linear-gradient(90deg, #f0c75e, #b7950b);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 0.8rem;
+  color: #a18f4a;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel da Família 🎩</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="painel">
+    <h1>🎩 Painel Administrativo — Cosa Nostra</h1>
+
+    <div class="formulario">
+      <input type="text" id="nome" placeholder="Nome do Link">
+      <input type="text" id="url" placeholder="URL (https://)">
+      <input type="text" id="emoji" placeholder="Emoji (opcional)">
+      <button id="add">Adicionar Link</button>
+    </div>
+
+    <h2>Links Atuais</h2>
+    <ul id="lista"></ul>
+
+    <button id="exportar">💾 Exportar Backup</button>
+    <input type="file" id="importar" accept=".json">
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

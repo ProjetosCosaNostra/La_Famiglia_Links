@@ -1,0 +1,57 @@
+body {
+  background: #000;
+  color: #f1c40f;
+  font-family: "Cinzel", serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.painel {
+  border: 2px solid #f1c40f;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  background: #111;
+}
+
+input {
+  margin: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #f1c40f;
+  background: #000;
+  color: #f1c40f;
+}
+
+button {
+  background: #f1c40f;
+  color: #000;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 6px 0;
+}
+
+li span {
+  margin-right: 8px;
+}
+
+.remover {
+  background: red;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}

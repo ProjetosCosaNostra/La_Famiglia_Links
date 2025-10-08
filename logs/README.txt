@@ -1,0 +1,1 @@
+Logs do sistema e registros de execução.
