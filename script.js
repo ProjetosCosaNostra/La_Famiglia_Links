@@ -17,3 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Erro ao carregar links:", err));
 });
+// 🎵 Controle de música ambiente Cosa Nostra
+document.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bg-music");
+  const control = document.getElementById("music-control");
+  let tocando = false;
+
+  control.addEventListener("click", () => {
+    if (tocando) {
+      music.pause();
+      control.textContent = "🔇";
+    } else {
+      music.play().catch(() => {
+        console.warn("Usuário precisa interagir para iniciar o áudio.");
+      });
+      control.textContent = "🎶";
+    }
+    tocando = !tocando;
+  });
+});
