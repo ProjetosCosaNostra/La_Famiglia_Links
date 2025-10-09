@@ -1,47 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎩 Cosa Nostra — A Família das Ideias</title>
-  <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosa Nostra — A Família das Ideias</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
-
 <body>
-  <!-- Fundo escuro elegante -->
-  <div class="fundo"></div>
+    <audio id="bg-audio" autoplay loop>
+        <source src="assets/audio/tema_cosa_nostra.mp3" type="audio/mpeg">
+    </audio>
 
-  <header>
-    <img src="assets/logo.png" alt="Cosa Nostra Logo" class="logo">
-    <h1>Cosa Nostra</h1>
-    <p class="subtitulo">“Família, honra, respeito e palavra. No fim, é só isso que fica.”</p>
-  </header>
+    <div class="container">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Cosa Nostra Logo">
+        </div>
 
-  <main id="links-container">
-    <!-- Os cards de produtos serão carregados dinamicamente pelo script.js -->
-  </main>
+        <h1>Cosa Nostra</h1>
+        <p class="frase">"Família, honra, respeito e palavra. No fim, é só isso que fica."</p>
 
-  <footer>
-    <p>🎩 Cosa Nostra © 2025 — A Família das Ideias</p>
+        <div class="links">
+            <a href="https://github.com/ProjetosCosaNostra" target="_blank">📘 GitHub</a>
+            <a href="https://instagram.com" target="_blank">📸 Instagram</a>
+            <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
+            <a href="https://tiktok.com" target="_blank">🎥 TikTok</a>
+            <a href="https://youtube.com" target="_blank">▶️ YouTube</a>
+            <a href="https://kwai.com" target="_blank">🎬 Kwai</a>
+            <a href="https://mercadolivre.com.br" target="_blank">🛒 Mercado Livre</a>
+        </div>
 
-    <div class="redes">
-      <a href="https://github.com/ProjetosCosaNostra" target="_blank">💻</a>
-      <a href="https://www.instagram.com/cosanostra.ai/" target="_blank">📸</a>
-      <a href="https://www.linkedin.com/in/felipe-projetoscosanostra/" target="_blank">💼</a>
-      <a href="https://www.tiktok.com/@cosanostra.ia" target="_blank">🎬</a>
-      <a href="https://www.youtube.com/@CosaNostraAI" target="_blank">▶️</a>
-      <a href="https://kwai-video.com/u/@Cosa_Nostra_AI/CNr8xPva" target="_blank">🎥</a>
-      <a href="https://www.mercadolivre.com.br/social/felipecosanostra" target="_blank">🛒</a>
+        <footer>
+            <p>🎩 Cosa Nostra © 2025 — A Família das Ideias</p>
+        </footer>
     </div>
-  </footer>
-
-  <!-- 🎶 Música de fundo -->
-  <audio id="bg-music" loop>
-    <source src="assets/audio/tema_cosa_nostra.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- 🎛️ Botão de controle da música -->
-  <div id="music-control">🔇</div>
 </body>
 </html>
