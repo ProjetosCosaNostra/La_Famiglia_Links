@@ -1,16 +1,34 @@
 {
   "links": [
     {
-      "nome": "Fone Gamer Redragon Zeus X",
-      "descricao": "Som envolvente e microfone retrátil. Recomendado pelo Capo 🎩",
+      "nome": "💡 Luminária RGB Touch Desk Lamp",
+      "descricao": "Ilumine suas ideias com elegância. A luz da Família — recomendada pelo Capo 🎩",
+      "imagem": "https://http2.mlstatic.com/D_NQ_NP_933773-MLB74494748969_022024-O.webp",
+      "link": "https://mercadolivre.com/sec/2vuCVxx"
+    },
+    {
+      "nome": "🎧 Fone Gamer Redragon Zeus X RGB",
+      "descricao": "Som digno de um estrategista. Mergulhe na experiência com o selo da Cosa Nostra ♟️",
       "imagem": "https://m.media-amazon.com/images/I/61W+7mURBKL._AC_SL1500_.jpg",
       "link": "https://amzn.to/exemplo"
     },
     {
-      "nome": "Cadeira Gamer ThunderX3",
-      "descricao": "Conforto e poder para longas sessões criativas ♟️",
+      "nome": "🪑 Cadeira Gamer ThunderX3",
+      "descricao": "Conforto de Don. Para quem comanda horas de criação e estratégia — Aprovado pelo Capo 🎩",
       "imagem": "https://m.media-amazon.com/images/I/71+PXYnMDhL._AC_SL1500_.jpg",
       "link": "https://mercadolivre.com/exemplo"
+    },
+    {
+      "nome": "⌚ Smartwatch Dourado Série Lux",
+      "descricao": "Estilo e poder no pulso. Um verdadeiro símbolo da Família — Elegância sem excessos 💎",
+      "imagem": "https://m.media-amazon.com/images/I/71cVGhBKMwL._AC_SL1500_.jpg",
+      "link": "https://amzn.to/exemplo2"
+    },
+    {
+      "nome": "📱 Suporte Magnético Premium",
+      "descricao": "Para manter tudo sob controle — inclusive seu smartphone. Recomendado pelo Capo 🕶️",
+      "imagem": "https://m.media-amazon.com/images/I/61XHIk4VDNL._AC_SL1500_.jpg",
+      "link": "https://mercadolivre.com/exemplo2"
     }
   ]
 }

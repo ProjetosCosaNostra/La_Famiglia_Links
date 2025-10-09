@@ -109,3 +109,22 @@ footer {
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
+.redes {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.redes a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--dourado);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.redes a:hover {
+  transform: scale(1.2);
+  color: #fff2b2;
+}
