@@ -1,0 +1,81 @@
+# ============================================
+# 🎩 COSA NOSTRA — PUBLICADOR OFICIAL
+# Projeto: La Famiglia Links
+# Autor: O Capo da Criação (Felipe)
+# ============================================
+
+# 1️⃣ Garantir que o script pare em caso de erro
+$ErrorActionPreference = "Stop"
+
+# 2️⃣ Configurar usuário do Git
+git config --global user.name "O Capo da Criação"
+git config --global user.email "projetoscosanostra@gmail.com"
+
+# 3️⃣ Inicializar repositório (caso ainda não exista)
+if (!(Test-Path ".git")) {
+    git init
+}
+
+# 4️⃣ Criar/atualizar README.md com estilo da marca
+@"
+# 🎩 La Famiglia Links — Cosa Nostra
+
+**O painel central da Família das Ideias.**
+
+Reúne os projetos, produtos e conexões que mantêm a *Família Cosa Nostra* unida pela:
+> **Família, Honra, Respeito e Palavra.**
+
+---
+
+### 🔗 Acesse o painel online:
+[https://projetoscosanostra.github.io/La_Famiglia_Links/](https://projetoscosanostra.github.io/La_Famiglia_Links/)
+
+---
+
+### 🧱 Estrutura
+- **/data** → Configurações e informações da Família  
+- **/assets** → Logos, imagens e ícones oficiais  
+- **/docs** → Roteiros e documentos internos  
+- **/logs** → Registros de publicação  
+
+---
+
+### ♟️ Sobre a Cosa Nostra
+> “Família, honra, respeito e palavra. No fim, é só isso que fica.”
+
+🎩 *Cosa Nostra — A Família das Ideias*  
+🧠 Criado por **Felipe**, *O Capo da Criação*
+
+---
+"@ | Out-File -Encoding utf8 "README.md"
+
+# 5️⃣ Adicionar todos os arquivos e criar o commit
+$mensagemCommit = "Publicação oficial - $(Get-Date -Format 'dd/MM/yyyy HH:mm')"
+git add .
+git commit -m "$mensagemCommit"
+
+# 6️⃣ Conectar ao repositório remoto
+git remote remove origin 2>$null
+git remote add origin https://github.com/ProjetosCosaNostra/La_Famiglia_Links.git
+
+# 7️⃣ Definir o branch principal e enviar
+git branch -M main
+git push -u origin main
+
+# 8️⃣ Publicar no GitHub Pages (caso use GitHub CLI)
+gh repo edit --description "O painel central da Família — links, projetos e conexões criativas 🎩♟️"
+gh repo edit --homepage "https://projetoscosanostra.github.io/La_Famiglia_Links/"
+gh pages publish main --src .
+
+# 9️⃣ Criar registro no log interno
+if (!(Test-Path "logs")) { New-Item -ItemType Directory -Path "logs" | Out-Null }
+$logPath = "logs/publicacao.txt"
+$linhaLog = "[{0}] - {1}" -f (Get-Date -Format "dd/MM/yyyy HH:mm:ss"), $mensagemCommit
+Add-Content -Path $logPath -Value $linhaLog
+
+# ✅ Mensagem final
+Write-Host "============================================"
+Write-Host "🎩 Publicação concluída com sucesso, Capo!"
+Write-Host "Site online em: https://projetoscosanostra.github.io/La_Famiglia_Links/"
+Write-Host "📜 Registro salvo em: logs/publicacao.txt"
+Write-Host "============================================"
