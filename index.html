@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎩 Cosa Nostra — La Famiglia Links</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎩 Cosa Nostra — A Família das Ideias</title>
+  <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
 
 <body>
+  <!-- Fundo escuro elegante -->
   <div class="fundo"></div>
 
   <header>
-    <img src="assets/logo.png" alt="Cosa Nostra Logo" class="logo" />
-    <h1>🎩 La Famiglia Links</h1>
-    <p class="subtitulo">A Família das Ideias — Honra, Respeito e Palavra</p>
+    <img src="assets/logo.png" alt="Logo Cosa Nostra" class="logo">
+    <h1>Cosa Nostra</h1>
+    <p class="subtitulo">“Família, honra, respeito e palavra. No fim, é só isso que fica.”</p>
+  </header>
 
-    <nav class="redes">
+  <main id="links-container">
+    <!-- Os cards de produtos serão carregados dinamicamente pelo script.js -->
+  </main>
+
+  <footer>
+    <p>🎩 Cosa Nostra © 2025 — A Família das Ideias</p>
+
+    <div class="redes">
       <a href="https://github.com/ProjetosCosaNostra" target="_blank">💻</a>
       <a href="https://www.instagram.com/cosanostra.ai/" target="_blank">📸</a>
       <a href="https://www.linkedin.com/in/felipe-projetoscosanostra/" target="_blank">💼</a>
@@ -24,22 +33,15 @@
       <a href="https://www.youtube.com/@CosaNostraAI" target="_blank">▶️</a>
       <a href="https://kwai-video.com/u/@Cosa_Nostra_AI/CNr8xPva" target="_blank">🎥</a>
       <a href="https://www.mercadolivre.com.br/social/felipecosanostra" target="_blank">🛒</a>
-    </nav>
-  </header>
-
-  <main id="links-container">
-    <!-- Os produtos e links serão carregados do data/config.json -->
-  </main>
-
-  <footer>
-    <p>“Família, honra, respeito e palavra. No fim, é só isso que fica.”</p>
-    <span>🎩 Cosa Nostra — A Família das Ideias ♟️</span>
+    </div>
   </footer>
-  <!-- 🎵 Controle de música da Família -->
-  <div id="music-control" title="Alternar música de fundo">🎶</div>
+
+  <!-- 🎶 Música de fundo -->
   <audio id="bg-music" loop>
-    <source src="assets/audio/tema_cosa_nostra.mp3" type="audio/mpeg" />
+    <source src="assets/audio/tema_cosa_nostra.mp3" type="audio/mpeg">
   </audio>
+
+  <!-- 🎛️ Botão de controle da música -->
+  <div id="music-control">🔇</div>
 </body>
 </html>
-
