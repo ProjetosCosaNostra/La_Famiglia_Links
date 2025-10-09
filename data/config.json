@@ -1,4 +1,16 @@
 {
-  "theme": "Cosa Nostra",
-  "version": "1.0.0"
+  "links": [
+    {
+      "nome": "Fone Gamer Redragon Zeus X",
+      "descricao": "Som envolvente e microfone retrátil. Recomendado pelo Capo 🎩",
+      "imagem": "https://m.media-amazon.com/images/I/61W+7mURBKL._AC_SL1500_.jpg",
+      "link": "https://amzn.to/exemplo"
+    },
+    {
+      "nome": "Cadeira Gamer ThunderX3",
+      "descricao": "Conforto e poder para longas sessões criativas ♟️",
+      "imagem": "https://m.media-amazon.com/images/I/71+PXYnMDhL._AC_SL1500_.jpg",
+      "link": "https://mercadolivre.com/exemplo"
+    }
+  ]
 }

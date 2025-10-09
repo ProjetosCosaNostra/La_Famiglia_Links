@@ -1,11 +1,19 @@
-// 🎩 La Famiglia Links — Script base
-// Pequenas interações e easter eggs da marca
-
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("🎩 Bem-vindo à Família das Ideias — Cosa Nostra.");
-
-  const manifesto = document.querySelector(".manifesto");
-  manifesto.addEventListener("click", () => {
-    alert("Família, honra, respeito e palavra. No fim, é só isso que fica.");
-  });
+  fetch("data/config.json")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("links-container");
+      data.links.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.imagem}" alt="${item.nome}" />
+          <h3>${item.nome}</h3>
+          <p>${item.descricao}</p>
+          <a href="${item.link}" target="_blank">🎩 Comprar com a Família</a>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Erro ao carregar links:", err));
 });

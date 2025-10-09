@@ -1,0 +1,92 @@
+# ============================================
+# 🎩 COSA NOSTRA — PUBLICADOR OFICIAL (Versão Estendida)
+# Projeto: La Famiglia Links
+# Autor: O Capo da Criação (Felipe)
+# ============================================
+
+# 1️⃣ Garantir que o script pare em caso de erro
+$ErrorActionPreference = "Stop"
+
+# 2️⃣ Configurar usuário do Git
+git config --global user.name "O Capo da Criação"
+git config --global user.email "projetoscosanostra@gmail.com"
+
+# 3️⃣ Inicializar repositório (caso ainda não exista)
+if (!(Test-Path ".git")) {
+    git init
+}
+
+# 4️⃣ Criar/atualizar README.md com o estilo da Família
+@"
+# 🎩 La Famiglia Links — Cosa Nostra
+
+**O painel central da Família das Ideias.**
+
+Reúne os projetos, produtos e conexões que mantêm a *Família Cosa Nostra* unida pela:
+> **Família, Honra, Respeito e Palavra.**
+
+---
+
+### 🔗 Acesse o painel online:
+[https://projetoscosanostra.github.io/La_Famiglia_Links/](https://projetoscosanostra.github.io/La_Famiglia_Links/)
+
+---
+
+### 🧱 Estrutura
+- **/data** → Configurações e informações da Família  
+- **/assets** → Logos, imagens e ícones oficiais  
+- **/docs** → Roteiros e documentos internos  
+- **/logs** → Registros de publicação  
+
+---
+
+### ♟️ Sobre a Cosa Nostra
+> “Família, honra, respeito e palavra. No fim, é só isso que fica.”
+
+🎩 *Cosa Nostra — A Família das Ideias*  
+🧠 Criado por **Felipe**, *O Capo da Criação*
+
+---
+"@ | Out-File -Encoding utf8 "README.md"
+
+# 5️⃣ Criar mensagem do commit
+$mensagemCommit = "Publicacao automatica - $(Get-Date -Format 'dd/MM/yyyy HH:mm')"
+
+# 6️⃣ Adicionar e comitar alterações
+git add .
+git commit -m "$mensagemCommit"
+
+# 7️⃣ Conectar ao repositório remoto
+git remote remove origin 2>$null
+git remote add origin https://github.com/ProjetosCosaNostra/La_Famiglia_Links.git
+
+# 8️⃣ Definir o branch principal e enviar
+git branch -M main
+git push -u origin main
+
+# 9️⃣ Atualizar descrição e homepage do repositório
+gh repo edit --description "O painel central da Família — links, projetos e conexões criativas 🎩♟️"
+gh repo edit --homepage "https://projetoscosanostra.github.io/La_Famiglia_Links/"
+
+# 🔟 Publicar automaticamente no GitHub Pages
+# (usando a branch main e o diretório raiz do projeto)
+Write-Host "🕒 Publicando site no GitHub Pages..."
+git subtree split --prefix . -b gh-pages 2>$null
+git push -f origin gh-pages:gh-pages
+git branch -D gh-pages 2>$null
+Write-Host "✅ Deploy no GitHub Pages concluído!"
+
+# 11️⃣ Criar registro no log interno
+if (!(Test-Path "logs")) {
+    New-Item -ItemType Directory -Path "logs" | Out-Null
+}
+$logPath = "logs/publicacao.txt"
+$linhaLog = "[{0}] - {1}" -f (Get-Date -Format "dd/MM/yyyy HH:mm:ss"), $mensagemCommit
+Add-Content -Path $logPath -Value $linhaLog
+
+# ✅ Mensagem final de sucesso
+Write-Host "============================================"
+Write-Host "🎩 Publicacao concluida com sucesso, Capo!"
+Write-Host "Site online em: https://projetoscosanostra.github.io/La_Famiglia_Links/"
+Write-Host "Registro salvo em: logs/publicacao.txt"
+Write-Host "============================================"
