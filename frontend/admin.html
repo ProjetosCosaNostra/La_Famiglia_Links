@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎩 Painel Administrativo — Cosa Nostra</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="admin-container fade-in">
+    <header class="admin-header">
+      <h1>🎩 Painel Administrativo</h1>
+      <p class="subtitle">Gerencie seus links, produtos e automações.</p>
+    </header>
+
+    <section class="admin-section">
+      <h2>➕ Adicionar Novo Link</h2>
+      <form id="linkForm" class="admin-form">
+        <label for="title">Título:</label>
+        <input type="text" id="title" placeholder="Ex: Canal no YouTube" required>
+
+        <label for="url">URL:</label>
+        <input type="url" id="url" placeholder="https://..." required>
+
+        <label for="category">Categoria:</label>
+        <select id="category">
+          <option value="rede">Rede Social</option>
+          <option value="produto">Produto Afiliado</option>
+          <option value="projeto">Projeto</option>
+          <option value="outro">Outro</option>
+        </select>
+
+        <label for="priority">Prioridade:</label>
+        <input type="number" id="priority" min="1" max="10" value="1">
+
+        <button type="submit" class="btn">Salvar Link</button>
+      </form>
+    </section>
+
+    <section class="admin-section">
+      <h2>📋 Links Cadastrados</h2>
+      <div id="linksList" class="links-list">
+        <p>Carregando links...</p>
+      </div>
+    </section>
+
+    <section class="admin-section">
+      <h2>⚙️ Automação de Publicações</h2>
+      <form id="automationForm" class="admin-form">
+        <label for="postsPerDay">Publicações por dia:</label>
+        <input type="number" id="postsPerDay" min="1" max="10" value="3" required>
+
+        <label for="autoStatus">Status:</label>
+        <select id="autoStatus">
+          <option value="on">Ativado</option>
+          <option value="off">Desativado</option>
+        </select>
+
+        <button type="submit" class="btn">Salvar Configuração</button>
+      </form>
+    </section>
+
+    <footer class="admin-footer">
+      <p>🎩 Cosa Nostra — Sistema Administrativo v1.0<br>
+      Desenvolvido por <strong>Felipe — O Capo da Criação</strong></p>
+    </footer>
+  </div>
+
+  <script>
+    // ==============================
+    // Integração com o backend Flask
+    // ==============================
+    const apiBase = "http://127.0.0.1:5000";
+
+    // Carrega os links cadastrados
+    async function loadLinks() {
+      const res = await fetch(`${apiBase}/links`);
+      const data = await res.json();
+      const container = document.getElementById("linksList");
+
+      if (data.length === 0) {
+        container.innerHTML = "<p>Nenhum link cadastrado ainda.</p>";
+        return;
+      }
+
+      container.innerHTML = data
+        .map(link => `
+          <div class="link-item">
+            <strong>${link.title}</strong> — 
+            <a href="${link.url}" target="_blank">${link.url}</a>
+            <span class="tag">${link.category}</span>
+            <span class="priority">⚙️ ${link.priority}</span>
+          </div>
+        `)
+        .join("");
+    }
+
+    // Envia novo link
+    document.getElementById("linkForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const payload = {
+        title: document.getElementById("title").value,
+        url: document.getElementById("url").value,
+        category: document.getElementById("category").value,
+        priority: parseInt(document.getElementById("priority").value)
+      };
+
+      const res = await fetch(`${apiBase}/links`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        alert("✅ Link salvo com sucesso!");
+        e.target.reset();
+        loadLinks();
+      } else {
+        alert("❌ Erro ao salvar o link.");
+      }
+    });
+
+    // Envia configuração de automação
+    document.getElementById("automationForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const payload = {
+        posts_per_day: parseInt(document.getElementById("postsPerDay").value),
+        status: document.getElementById("autoStatus").value
+      };
+
+      const res = await fetch(`${apiBase}/automation`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      alert(res.ok ? "⚙️ Configuração salva com sucesso!" : "❌ Erro ao salvar configuração.");
+    });
+
+    // Inicialização
+    loadLinks();
+  </script>
+</body>
+</html>

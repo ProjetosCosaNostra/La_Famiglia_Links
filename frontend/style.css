@@ -1,0 +1,201 @@
+/* ===========================================================
+ 🎩 COSA NOSTRA - A Família das Ideias
+ Estilo oficial do sistema (index.html + admin.html)
+=========================================================== */
+
+/* RESET E BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at center, #0c0c0c 0%, #000 90%);
+  color: #f1f1f1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* CONTAINER PRINCIPAL */
+.container, .admin-container {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid #d4af37;
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  padding: 40px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* CABEÇALHOS */
+.brand, .admin-header {
+  margin-bottom: 25px;
+}
+
+.brand .logo {
+  font-size: 3rem;
+}
+
+.brand h1, .admin-header h1 {
+  color: #d4af37;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+.manifesto, .subtitle {
+  color: #bbb;
+  font-style: italic;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* LINKS */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.link-btn {
+  display: block;
+  background: linear-gradient(90deg, #d4af37, #a7892d);
+  color: #000;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.link-btn:hover {
+  background: linear-gradient(90deg, #f5d97b, #d4af37);
+  transform: translateY(-3px);
+}
+
+/* ADMIN SECTIONS */
+.admin-section {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.admin-section h2 {
+  color: #d4af37;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* FORMULÁRIOS */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-form label {
+  font-weight: 600;
+  color: #f1f1f1;
+}
+
+.admin-form input,
+.admin-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #111;
+  color: #fff;
+}
+
+.btn {
+  background: linear-gradient(90deg, #d4af37, #b38b2d);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #f5d97b, #d4af37);
+}
+
+/* LISTA DE LINKS */
+.links-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-item {
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 4px solid #d4af37;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.link-item strong {
+  color: #f5d97b;
+}
+
+.link-item a {
+  color: #d4af37;
+  text-decoration: none;
+}
+
+.link-item .tag {
+  background: #d4af37;
+  color: #000;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+.priority {
+  float: right;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+/* RODAPÉ */
+footer, .admin-footer {
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+footer strong, .admin-footer strong {
+  color: #d4af37;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .container, .admin-container {
+    padding: 25px;
+  }
+  .brand h1, .admin-header h1 {
+    font-size: 1.7rem;
+  }
+}

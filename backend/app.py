@@ -5,6 +5,8 @@ from flask_cors import CORS
 from routes.links import links_bp
 from routes.analytics import analytics_bp
 from routes.automacao import automacao_bp
+app.register_blueprint(automacao_bp)
+
 from utils.notifier import notify_event
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
