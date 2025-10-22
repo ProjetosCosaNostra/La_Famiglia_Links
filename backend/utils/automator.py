@@ -1,114 +1,123 @@
+import json
 import os
 import random
-import requests
-import json
 import time
-import schedule
+import threading
 from datetime import datetime
-from notifier import send_telegram_message
+from utils.notifier import enviar_notificacao
+
+# Caminho para logs e dados
+DATA_DIR = os.path.join(os.path.dirname(__file__), "../data")
+LOG_FILE = os.path.join(DATA_DIR, "automacao_log.json")
+
+# Controle interno
+AUTOMACAO_ATIVA = False
+ULTIMA_EXECUCAO = None
+POSTS_GERADOS_HOJE = 0
+POSTS_POR_DIA = 1
+
 
 # =====================================================
-# 🎩 COSA NOSTRA — SISTEMA DE AUTOMAÇÃO COMPLETA
+# 🧩 Função: Gerar um post automático
 # =====================================================
-# Funções:
-#  - Pesquisa tendências
-#  - Escolhe produtos afiliados
-#  - Gera postagens automáticas
-#  - Envia notificação no Telegram
-#  - Executa automaticamente N vezes por dia
-# =====================================================
+def gerar_post_automatico():
+    global POSTS_GERADOS_HOJE, ULTIMA_EXECUCAO
 
-# CONFIGURAÇÕES PRINCIPAIS
-AMAZON_AFFILIATE_URL = "https://amzn.to/4h0gnbW"
-MERCADO_LIVRE_AFFILIATE_URL = "https://www.mercadolivre.com.br/social/felipecosanostra"
-OUTPUT_DIR = "E:/La_Famiglia_Links/backend/generated_posts"
-
-# GARANTE QUE A PASTA EXISTE
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-# =====================================================
-# 1️⃣ GERADOR DE TENDÊNCIAS
-# =====================================================
-def get_trending_topic():
-    topics = [
-        "tecnologia", "games", "filmes e séries", "produtividade",
-        "ferramentas criativas", "acessórios para criadores de conteúdo",
-        "inteligência artificial", "novidades em smartphones",
-        "setup gamer", "microfones e iluminação"
+    ideias = [
+        {
+            "titulo": "Honra e Palavra — os pilares da Família.",
+            "descricao": "Na Cosa Nostra, cada palavra é um contrato. 🎩",
+            "hashtags": ["#Família", "#Honra", "#Respeito", "#CosaNostra"]
+        },
+        {
+            "titulo": "O Capo da Criação fala...",
+            "descricao": "Criação é estratégia, disciplina e alma. ♟️",
+            "hashtags": ["#Criação", "#Estratégia", "#CulturaPop", "#CapoDaCriação"]
+        },
+        {
+            "titulo": "Família unida nunca cai.",
+            "descricao": "Na dúvida, lembre-se do lema: Respeito, lealdade e honra.",
+            "hashtags": ["#LaFamiglia", "#Respeito", "#Lealdade", "#CosaNostra"]
+        }
     ]
-    return random.choice(topics)
+
+    post = random.choice(ideias)
+    ULTIMA_EXECUCAO = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    POSTS_GERADOS_HOJE += 1
+
+    # Registra no log
+    salvar_log({
+        "data": ULTIMA_EXECUCAO,
+        "titulo": post["titulo"],
+        "descricao": post["descricao"],
+        "hashtags": post["hashtags"]
+    })
+
+    enviar_notificacao(f"🧠 Novo post automático criado!\n\n📜 *{post['titulo']}*\n🕒 {ULTIMA_EXECUCAO}")
+    return post
+
 
 # =====================================================
-# 2️⃣ ESCOLHA DE PRODUTO AFILIADO
+# 🗓️ Função: Agendar posts diários
 # =====================================================
-def get_affiliate_product(topic):
-    if random.choice([True, False]):
-        platform = "Amazon"
-        url = AMAZON_AFFILIATE_URL
-    else:
-        platform = "Mercado Livre"
-        url = MERCADO_LIVRE_AFFILIATE_URL
+def agendar_posts(posts_por_dia=1):
+    global AUTOMACAO_ATIVA, POSTS_POR_DIA
+    AUTOMACAO_ATIVA = True
+    POSTS_POR_DIA = posts_por_dia
 
+    enviar_notificacao(f"⏰ Automação iniciada — {posts_por_dia} post(s) por dia.")
+
+    def ciclo_diario():
+        global AUTOMACAO_ATIVA, POSTS_GERADOS_HOJE
+        while AUTOMACAO_ATIVA:
+            POSTS_GERADOS_HOJE = 0
+            for i in range(POSTS_POR_DIA):
+                gerar_post_automatico()
+                time.sleep(60 * 60 * 6)  # Espera 6 horas entre cada post
+
+            enviar_notificacao("🌙 Ciclo de automação finalizado. Novos posts amanhã.")
+            time.sleep(60 * 60 * 24)  # Espera 24h para o próximo dia
+
+    thread = threading.Thread(target=ciclo_diario)
+    thread.daemon = True
+    thread.start()
+
+
+# =====================================================
+# 🧾 Função: Registrar logs
+# =====================================================
+def salvar_log(post_data):
+    os.makedirs(DATA_DIR, exist_ok=True)
+    logs = []
+
+    if os.path.exists(LOG_FILE):
+        try:
+            with open(LOG_FILE, "r", encoding="utf-8") as f:
+                logs = json.load(f)
+        except json.JSONDecodeError:
+            logs = []
+
+    logs.append(post_data)
+    with open(LOG_FILE, "w", encoding="utf-8") as f:
+        json.dump(logs, f, indent=2, ensure_ascii=False)
+
+
+# =====================================================
+# 📊 Função: Retornar status atual da automação
+# =====================================================
+def status_automacao():
     return {
-        "platform": platform,
-        "title": f"Oferta em alta: {topic.title()} 🔥",
-        "description": f"Descubra o melhor em {topic} com descontos exclusivos da Família Cosa Nostra!",
-        "url": url
+        "ativa": AUTOMACAO_ATIVA,
+        "posts_por_dia": POSTS_POR_DIA,
+        "posts_gerados_hoje": POSTS_GERADOS_HOJE,
+        "ultima_execucao": ULTIMA_EXECUCAO
     }
 
-# =====================================================
-# 3️⃣ GERAÇÃO DA POSTAGEM
-# =====================================================
-def create_post():
-    topic = get_trending_topic()
-    product = get_affiliate_product(topic)
-
-    post_data = {
-        "topic": topic,
-        "product": product,
-        "timestamp": datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    }
-
-    file_name = f"{OUTPUT_DIR}/post_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    with open(file_name, "w", encoding="utf-8") as f:
-        json.dump(post_data, f, ensure_ascii=False, indent=2)
-
-    message = (
-        f"🎩 *Nova publicação automática!*\n\n"
-        f"🧠 Tema: *{topic.title()}*\n"
-        f"🛒 Plataforma: *{product['platform']}*\n"
-        f"🔗 [Ver produto]({product['url']})\n\n"
-        f"📅 {post_data['timestamp']}"
-    )
-    send_telegram_message(message)
-    print(f"✅ Postagem criada com sucesso: {file_name}")
 
 # =====================================================
-# 4️⃣ AGENDADOR AUTOMÁTICO
+# 🧨 Função: Parar automação (se necessário)
 # =====================================================
-def schedule_posts(times_per_day=3):
-    """Agenda publicações automáticas conforme número diário"""
-    interval = 24 * 60 / times_per_day  # minutos entre posts
-    schedule.every(interval).minutes.do(create_post)
-    send_telegram_message(f"🕒 Agendador iniciado: {times_per_day} publicações por dia.")
-
-    print(f"🎩 Agendador Cosa Nostra iniciado — {times_per_day} posts por dia.")
-    print("♟️ Aguardando o horário das próximas publicações...\n")
-
-    while True:
-        schedule.run_pending()
-        time.sleep(30)
-
-# =====================================================
-# 5️⃣ EXECUÇÃO DIRETA
-# =====================================================
-if __name__ == "__main__":
-    print("🎩 COSA NOSTRA — AUTOMATIZAÇÃO INTELIGENTE ATIVA")
-    try:
-        posts_por_dia = int(input("📅 Quantos posts por dia deseja gerar automaticamente? "))
-    except:
-        posts_por_dia = 3  # padrão
-        print("Usando valor padrão: 3 posts/dia")
-
-    create_post()  # cria um de teste imediato
-    schedule_posts(posts_por_dia)
+def parar_automacao():
+    global AUTOMACAO_ATIVA
+    AUTOMACAO_ATIVA = False
+    enviar_notificacao("🛑 Automação pausada manualmente pela administração.")
