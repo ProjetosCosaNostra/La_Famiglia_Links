@@ -1,6 +1,18 @@
 # routes/analytics.py
 from flask import Blueprint, request, jsonify
 from utils.helpers import get_db_connection
+from flask import Blueprint, jsonify
+
+analytics_bp = Blueprint('analytics', __name__)
+
+@analytics_bp.route('/', methods=['GET'])
+def obter_analytics():
+    return jsonify({
+        "status": "ok",
+        "rota": "/api/analytics",
+        "mensagem": "Endpoint de analytics ativo — ♟️ Estratégia em movimento."
+    }), 200
+
 
 analytics_bp = Blueprint("analytics", __name__)
 

@@ -1,5 +1,17 @@
 from flask import Blueprint, request, jsonify
 from utils.automator import gerar_post_automatico, agendar_posts
+from flask import Blueprint, jsonify
+
+automacao_bp = Blueprint('automacao', __name__)
+
+@automacao_bp.route('/', methods=['GET'])
+def testar_automacao():
+    return jsonify({
+        "status": "ok",
+        "rota": "/api/automacao",
+        "mensagem": "Endpoint de automação ativo — 🤖 Capo, tudo funcionando."
+    }), 200
+
 from utils.notifier import enviar_notificacao
 import threading
 

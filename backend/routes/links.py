@@ -1,5 +1,17 @@
 # routes/links.py
 from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, jsonify
+
+links_bp = Blueprint('links', __name__)
+
+@links_bp.route('/', methods=['GET'])
+def listar_links():
+    return jsonify({
+        "status": "ok",
+        "rota": "/api/links",
+        "mensagem": "Endpoint de links ativo — 🎩 Cosa Nostra online."
+    }), 200
+
 from utils.helpers import get_db_connection, token_required
 import sqlite3
 
