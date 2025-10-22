@@ -1,16 +1,6 @@
-# Dependências principais do backend Cosa Nostra — La Famiglia Links
-
-Flask==3.1.2
-Flask-Cors==6.0.1
+flask==3.1.2
+flask-cors==6.0.1
 gunicorn==23.0.0
-
-# Autenticação e segurança
-bcrypt==5.0.0
 PyJWT==2.10.1
-
-# Banco de dados
-SQLAlchemy==2.0.35
-
-# Utilitários
+bcrypt==5.0.0
 requests==2.32.3
-python-dotenv==1.0.1
