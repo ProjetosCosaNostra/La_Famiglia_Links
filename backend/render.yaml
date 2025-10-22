@@ -1,10 +1,17 @@
 services:
   - type: web
-    name: la-famiglia-links-api
+    name: La_Famiglia_Links
     env: python
-    plan: free
-    repo: https://github.com/ProjetosCosaNostra/La_Famiglia_Links
-    branch: main
     buildCommand: "pip install -r backend/requirements.txt"
-    startCommand: "gunicorn backend.app:app --bind 0.0.0.0:$PORT --workers 4"
-    instanceType: starter
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT --workers 4"
+    envVars:
+      - key: SECRET_KEY
+        value: "cosa_nostra_familia_2025_secure"
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: DATABASE_URL
+        value: "sqlite:///data/famiglia.db"
+    autoDeploy: true
+    rootDir: backend
