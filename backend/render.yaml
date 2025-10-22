@@ -5,9 +5,9 @@ services:
     buildCommand: "pip install -r backend/requirements.txt"
     startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT --workers 4"
     envVars:
-      - key: SECRET_KEY
+      - key: f401e546e5e26a9f5d3886fddf2df87706a131277711126d496b11d066051e43
         value: "cosa_nostra_familia_2025_secure"
-      - key: TELEGRAM_BOT_TOKEN
+      - key: 8466321537:AAFGLohDQO2FznF0kciwUP-bWtTFjrcmvOw
         sync: false
       - key: TELEGRAM_CHAT_ID
         sync: false
