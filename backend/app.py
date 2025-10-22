@@ -1,76 +1,49 @@
-import os
-import sqlite3
+# backend/app.py
 from flask import Flask, jsonify
 from flask_cors import CORS
+import os
 from routes.links import links_bp
 from routes.analytics import analytics_bp
 from routes.automacao import automacao_bp
-app.register_blueprint(automacao_bp)
+from utils.notifier import notificar_inicio_servidor
 
-from utils.notifier import notify_event
-from apscheduler.schedulers.background import BackgroundScheduler
-from datetime import datetime
+# ===========================================
+# 🎩 CONFIGURAÇÃO PRINCIPAL DO SERVIDOR
+# ===========================================
+app = Flask(__name__)
+CORS(app)
 
-BASE_DIR = os.path.dirname(__file__)
-DB_PATH = os.path.join(BASE_DIR, "familia.db")
+# ===========================================
+# 🔧 CONFIGURAÇÃO DE CHAVE SECRETA E BANCO
+# ===========================================
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "familia_honra_respeito_palavra")
 
-def create_app():
-    app = Flask(__name__, static_folder=None)
-    CORS(app)
-    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "troque_essa_chave")
-    return app
+# ===========================================
+# 📦 REGISTRO DE BLUEPRINTS
+# ===========================================
+app.register_blueprint(links_bp, url_prefix="/api/links")
+app.register_blueprint(analytics_bp, url_prefix="/api/analytics")
+app.register_blueprint(automacao_bp, url_prefix="/api/automacao")
 
-app = create_app()
-
-# --- Database init (idempotent) ---
-def init_db():
-    if not os.path.exists(DB_PATH):
-        print("🔧 Criando banco de dados...")
-        conn = sqlite3.connect(DB_PATH)
-        cursor = conn.cursor()
-        cursor.execute("""
-            CREATE TABLE links (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                titulo TEXT,
-                url TEXT,
-                plataforma TEXT,
-                category TEXT,
-                priority INTEGER DEFAULT 1,
-                created_at TEXT
-            )
-        """)
-        conn.commit()
-        conn.close()
-        print("✅ Banco de dados criado.")
-    else:
-        # possível lugar para migrations futuras
-        pass
-
-init_db()
-
-# --- Registrar blueprints ---
-app.register_blueprint(links_bp, url_prefix="/links")
-app.register_blueprint(analytics_bp, url_prefix="/analytics")
-app.register_blueprint(automacao_bp, url_prefix="/api")
-
+# ===========================================
+# 🚀 ROTA PRINCIPAL (SAUDAÇÃO)
+# ===========================================
 @app.route("/")
-def index():
-    return jsonify({"mensagem": "🎩 Cosa Nostra — API Online!", "time": datetime.utcnow().isoformat()})
+def home():
+    return jsonify({
+        "status": "online",
+        "message": "🎩 Cosa Nostra — La Famiglia Links ativo e pronto.",
+        "version": "1.0.0"
+    }), 200
 
-# --- Scheduler para tarefas long-running (ex.: criar posts, checar tendências) ---
-scheduler = BackgroundScheduler()
-scheduler.start()
-
-# Exemplo: rotina leve para notificar que app está vivo (executa a cada 6 horas)
-def heartbeat():
-    notify_event("ai_task", "Heartbeat — Cosa Nostra rodando (scheduler).")
-
-scheduler.add_job(heartbeat, 'interval', hours=6, id="heartbeat_job", replace_existing=True)
-
-# --- Stop scheduler on shutdown (Gunicorn friendly) ---
-import atexit
-atexit.register(lambda: scheduler.shutdown(wait=False))
-
+# ===========================================
+# 🕵️‍♂️ EXECUÇÃO DO SERVIDOR LOCAL / DEPLOY
+# ===========================================
 if __name__ == "__main__":
-    # uso local de desenvolvimento
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)), debug=False)
+    print("🎩 Iniciando Cosa Nostra — La Famiglia Links")
+    print("🔧 Inicializando banco de dados...")
+    notificar_inicio_servidor()
+    print("✅ Banco de dados pronto!")
+    print("🚀 Servidor rodando em: http://127.0.0.1:5000")
+
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)), debug=True)
