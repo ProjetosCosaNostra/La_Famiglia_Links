@@ -22,6 +22,5 @@ def create_app():
 
     return app
 
-
-# O Render procura este objeto
+# Render procura este objeto
 app = create_app()
