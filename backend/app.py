@@ -1,26 +1,30 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from routes.links import links_bp
-from routes.analytics import analytics_bp
-from routes.automacao import automacao_bp
+from automacao import automacao_bp
+from links import links_bp
+from analytics import analytics_bp
 
-def create_app():
-    app = Flask(__name__)
-    CORS(app)
+# Criação da aplicação Flask
+app = Flask(__name__)
 
-    # Registro dos blueprints (rotas)
-    app.register_blueprint(links_bp, url_prefix="/api/links")
-    app.register_blueprint(analytics_bp, url_prefix="/api/analytics")
-    app.register_blueprint(automacao_bp, url_prefix="/api/automacao")
+# Ativa o CORS para permitir acesso do front-end
+CORS(app)
 
-    @app.route('/')
-    def home():
-        return jsonify({
-            "status": "online",
-            "mensagem": "API La Famiglia Links está no ar — 🎩 Família, honra e estratégia."
-        }), 200
+# 🔹 Rota de verificação de saúde (usada pelo Render)
+@app.route("/health")
+def health_check():
+    return jsonify({"status": "ok"}), 200
 
-    return app
+# 🔹 Rota inicial (raiz)
+@app.route("/")
+def home():
+    return jsonify({"message": "La Famiglia Links API está online 🔥"}), 200
 
-# Render procura este objeto
-app = create_app()
+# 🔹 Registro dos Blueprints
+app.register_blueprint(automacao_bp, url_prefix="/api/automacao")
+app.register_blueprint(links_bp, url_prefix="/api/links")
+app.register_blueprint(analytics_bp, url_prefix="/api/analytics")
+
+# 🔹 Inicialização local (Render usa gunicorn automaticamente)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
