@@ -8,7 +8,7 @@ def create_app():
     app = Flask(__name__)
     CORS(app)
 
-    # Registro das rotas (blueprints)
+    # Registro dos blueprints (rotas)
     app.register_blueprint(links_bp, url_prefix="/api/links")
     app.register_blueprint(analytics_bp, url_prefix="/api/analytics")
     app.register_blueprint(automacao_bp, url_prefix="/api/automacao")
@@ -22,5 +22,6 @@ def create_app():
 
     return app
 
-# Render usa o objeto app
+
+# O Render procura este objeto
 app = create_app()
