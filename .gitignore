@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.pyo
 
 # Virtual Environment
 venv/
@@ -13,51 +12,32 @@ env/
 # Logs e temporários
 *.log
 *.pot
-*.pyc
-*.pyo
-*.pyd
 *.tmp
 *.bak
 *.swp
 *.DS_Store
 
-# Arquivos de build
+# Build
 build/
 dist/
 *.egg-info/
 .eggs/
-*.manifest
-*.spec
 
 # Banco de dados local
 *.sqlite3
 instance/
 
-# Arquivos de configuração sensíveis
+# Configurações sensíveis
 .env
 config.json
-user_config.json
 
-# === IDEs ===
+# IDEs
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
 
-# === Windows ===
-Thumbs.db
-ehthumbs.db
-desktop.ini
-
-# === Word/Office ===
+# Office / Word
 ~$*.docx
-~$*.xlsx
 *.docx~
 *.tmp
-
-# === Projeto ===
-__PROJETO.docx
 🧩 PROJETO.docx
-
-# === Git ===
-.gitignore
+__PROJETO.docx
