@@ -5,9 +5,9 @@ python-dotenv==1.0.1
 requests==2.32.3
 PyJWT==2.10.1
 bcrypt==4.2.0
-torch==2.4.0
-torchvision==0.19.0
-torchaudio==2.4.0
+torch>=2.4.0,<2.6.0
+torchvision>=0.19.0,<0.21.0
+torchaudio>=2.4.0,<2.6.0
 transformers==4.46.2
 diffusers==0.31.0
 accelerate==1.10.1
