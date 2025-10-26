@@ -1,43 +1,7 @@
-# === Python / Flask ===
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual Environment
 venv/
-ENV/
-env/
-.venv/
-
-# Logs e temporários
+__pycache__/
+*.pyc
+*.pyo
+*.db
 *.log
-*.pot
-*.tmp
-*.bak
-*.swp
-*.DS_Store
-
-# Build
-build/
-dist/
-*.egg-info/
-.eggs/
-
-# Banco de dados local
-*.sqlite3
-instance/
-
-# Configurações sensíveis
 .env
-config.json
-
-# IDEs
-.vscode/
-.idea/
-
-# Office / Word
-~$*.docx
-*.docx~
-*.tmp
-🧩 PROJETO.docx
-__PROJETO.docx

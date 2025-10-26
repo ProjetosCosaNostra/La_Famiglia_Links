@@ -1,4 +1,3 @@
-# --- CORE WEB ---
 Flask==3.1.2
 flask-cors==6.0.1
 gunicorn==23.0.0
@@ -6,8 +5,6 @@ python-dotenv==1.0.1
 requests==2.32.3
 PyJWT==2.10.1
 bcrypt==4.2.0
-
-# --- IA e GERAÇÃO DE IMAGENS ---
 torch==2.4.0
 torchvision==0.19.0
 torchaudio==2.4.0
@@ -16,9 +13,6 @@ diffusers==0.31.0
 accelerate==1.10.1
 safetensors==0.6.2
 huggingface-hub==0.35.3
-xformers==0.0.27.post2
-
-# --- SUPORTE ---
 filelock==3.20.0
 tqdm==4.67.1
 numpy==1.26.4
@@ -35,8 +29,3 @@ itsdangerous==2.2.0
 MarkupSafe==3.0.3
 blinker==1.9.0
 click==8.1.7
-
-# --- FASTAPI (caso use no backend paralelo) ---
-fastapi==0.111.0
-uvicorn==0.30.6
-starlette==0.37.2
