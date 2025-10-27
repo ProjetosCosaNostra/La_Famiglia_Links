@@ -1,4 +1,6 @@
-web: gunicorn app:app --bind 0.0.0.0:$PORT --workers 4
+web: gunicorn app:app --workers 4 --bind 0.0.0.0:$PORT
+
+
 
 
 
