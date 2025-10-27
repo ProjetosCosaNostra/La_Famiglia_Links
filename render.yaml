@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: lafam_web
+    env: docker
+    dockerfilePath: ./Dockerfile.web
+    envVars:
+      - key: PORT
+        value: 10000
+    plan: free
+    autoDeploy: true
+
+  - type: web
+    name: lafam_ai
+    env: docker
+    dockerfilePath: ./Dockerfile.ai
+    envVars:
+      - key: PORT
+        value: 8000
+    plan: free
+    autoDeploy: true
