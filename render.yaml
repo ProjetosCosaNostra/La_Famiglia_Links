@@ -2,8 +2,8 @@ services:
   - type: web
     name: la-famiglia-links
     env: docker
+    dockerCommand: docker-compose -f docker-compose.render.yml up --build
     plan: free
-    dockerfilePath: ./Dockerfile
     envVars:
       - key: PORT
         value: 10000

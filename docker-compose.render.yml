@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: ../Dockerfile.web
+    container_name: lafam_web
+    env_file:
+      - .env
+    ports:
+      - "10000:10000"
+    depends_on:
+      - ai
+    networks:
+      - lafam_net
+
+  ai:
+    build:
+      context: ./ai_service
+      dockerfile: ../Dockerfile.ai
+    container_name: lafam_ai
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - lafam_net
+
+networks:
+  lafam_net:
+    driver: bridge
