@@ -1,20 +1,10 @@
 services:
   - type: web
-    name: lafam_web
+    name: la-famiglia-links
     env: docker
-    dockerfilePath: ./Dockerfile.web
+    plan: free
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: PORT
         value: 10000
-    plan: free
-    autoDeploy: true
-
-  - type: web
-    name: lafam_ai
-    env: docker
-    dockerfilePath: ./Dockerfile.ai
-    envVars:
-      - key: PORT
-        value: 8000
-    plan: free
     autoDeploy: true
