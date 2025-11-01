@@ -1,29 +1,29 @@
-version: "3.8"
+version: "3.9"
 
 services:
   web:
     build:
       context: ./web
-      dockerfile: ../Dockerfile.web
+      dockerfile: Dockerfile
     container_name: lafam_web
-    env_file:
-      - .env
     ports:
       - "10000:10000"
     depends_on:
       - ai
+    environment:
+      - ENV=production
     networks:
       - lafam_net
 
   ai:
     build:
       context: ./ai_service
-      dockerfile: ../Dockerfile.ai
+      dockerfile: Dockerfile
     container_name: lafam_ai
-    env_file:
-      - .env
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
+    environment:
+      - ENV=production
     networks:
       - lafam_net
 
