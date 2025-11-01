@@ -1,10 +1,24 @@
+# 🐳 Deploy total via Docker — La Famiglia Links
+
 services:
   - type: web
-    name: la-famiglia-links
+    name: la-famiglia-web
     env: docker
-    dockerCommand: docker-compose -f docker-compose.render.yml up --build
+    dockerfilePath: ./Dockerfile.web
+    dockerContext: .
     plan: free
+    autoDeploy: true
     envVars:
       - key: PORT
         value: 10000
+
+  - type: web
+    name: la-famiglia-ai
+    env: docker
+    dockerfilePath: ./Dockerfile.ai
+    dockerContext: .
+    plan: free
     autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8000
