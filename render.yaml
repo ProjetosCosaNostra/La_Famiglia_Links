@@ -12,6 +12,3 @@ services:
         value: 1
       - key: DOCKER_BUILDKIT
         value: 1
-    buildCommand: ""
-    startCommand: ""
-
