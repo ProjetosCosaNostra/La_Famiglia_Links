@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🕴️ Login — La Famiglia Admin</title>
+  <style>
+    body {
+      background: url("https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      font-family: 'Cinzel', serif;
+      color: gold;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      background: rgba(0,0,0,0.85);
+      padding: 40px;
+      border-radius: 20px;
+      width: 350px;
+      box-shadow: 0 0 30px gold;
+    }
+    .logo {
+      font-size: 40px;
+      color: gold;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 24px;
+      color: gold;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid gold;
+      border-radius: 8px;
+      background: black;
+      color: gold;
+      font-size: 15px;
+      font-family: 'Cinzel', serif;
+    }
+    button {
+      width: 85%;
+      padding: 10px;
+      background: gold;
+      border: none;
+      color: black;
+      border-radius: 10px;
+      font-weight: bold;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ffd700;
+      transform: scale(1.05);
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #aaa;
+    }
+    .phrase {
+      font-style: italic;
+      color: #d4af37;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="logo">🎩</div>
+    <h1>La Famiglia Admin</h1>
+    <form method="POST" action="/auth/login">
+      <input type="text" name="username" placeholder="Usuário" required><br>
+      <input type="password" name="password" placeholder="Senha" required><br>
+      <button type="submit">Entrar</button>
+    </form>
+    <div class="phrase">“Família, honra, respeito e palavra.”</div>
+    <div class="footer">© 2025 — Cosa Nostra Systems</div>
+  </div>
+</body>
+</html>

@@ -1,23 +1,84 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎩 La Famiglia Links</title>
+  <title>🎩 La Famiglia Links — Onde os aliados se conectam.</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <style>
     body {
-      background-color: #000;
-      color: #d4af37;
-      font-family: 'Georgia', serif;
+      background: url("{{ url_for('static', filename='images/fundo.jpg') }}") center/cover no-repeat;
+      color: #fff;
+      font-family: 'Cinzel', serif;
       text-align: center;
-      padding-top: 20vh;
+      margin: 0;
+      padding: 0;
     }
-    h1 { font-size: 2.5rem; }
-    p { font-size: 1.2rem; color: #aaa; }
+    .container {
+      background: rgba(0,0,0,0.7);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 420px;
+      margin: 80px auto;
+      box-shadow: 0 0 25px gold;
+    }
+    .logo {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: gold;
+      margin-bottom: 5px;
+      font-size: 26px;
+    }
+    .slogan {
+      font-style: italic;
+      color: #d4af37;
+      margin-bottom: 30px;
+    }
+    .links a {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid gold;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+    .links a:hover {
+      background-color: gold;
+      color: black;
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #bbb;
+    }
   </style>
 </head>
 <body>
-  <h1>🎩 La Famiglia Links</h1>
-  <p>A Família das Ideias está online, Capo ♟️</p>
+  <div class="container">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Cosa Nostra" class="logo">
+    <h1>La Famiglia Links</h1>
+    <p class="slogan">Onde os aliados se conectam.</p>
+
+    <div class="links">
+      {% if links %}
+        {% for link in links %}
+          <a href="{{ link.url }}" target="_blank">{{ link.nome }}</a>
+        {% endfor %}
+      {% else %}
+        <p style="color: gray;">Nenhum link cadastrado ainda.</p>
+      {% endif %}
+    </div>
+
+    <footer>
+      <p>“Família, honra, respeito e palavra.”</p>
+      <p>© 2025 — Cosa Nostra Systems</p>
+    </footer>
+  </div>
 </body>
 </html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🔗 Gerenciar Links — La Famiglia</title>
+  <style>
+    body {
+      background-color: #000;
+      color: gold;
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.8);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 25px gold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+    th, td {
+      border: 1px solid gold;
+      padding: 10px;
+    }
+    th {
+      background: gold;
+      color: black;
+    }
+    td {
+      color: gold;
+      background: rgba(20,20,20,0.9);
+    }
+    button {
+      background: gold;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 15px;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 5px;
+    }
+    button:hover { background: #ffd700; transform: scale(1.05); }
+    input {
+      margin: 5px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid gold;
+      background: black;
+      color: gold;
+      font-family: 'Cinzel', serif;
+    }
+    hr { border: 1px solid gold; width: 80%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔗 Gerenciar Links da Família</h1>
+    <p><em>“Nada é coincidência. É estratégia.”</em></p>
+    <hr>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Nome</th><th>URL</th><th>Ações</th></tr>
+      </thead>
+      <tbody id="linksTable">
+        <tr><td colspan="4">Carregando...</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+    <h3>➕ Adicionar Novo Link</h3>
+    <input type="text" id="linkNome" placeholder="Nome do link">
+    <input type="text" id="linkUrl" placeholder="URL">
+    <button onclick="criarLink()">Adicionar</button>
+    <br><br>
+    <button onclick="voltar()">⬅ Voltar ao Painel</button>
+  </div>
+
+  <script>
+    async function carregarLinks() {
+      const res = await fetch("/links/api");
+      const data = await res.json();
+      const tbody = document.getElementById("linksTable");
+      tbody.innerHTML = "";
+      if (!data.length) {
+        tbody.innerHTML = "<tr><td colspan='4'>Nenhum link cadastrado.</td></tr>";
+        return;
+      }
+      data.forEach(l => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${l.id}</td>
+            <td>${l.nome}</td>
+            <td><a href="${l.url}" target="_blank">${l.url}</a></td>
+            <td>
+              <button onclick="editarLink(${l.id}, '${l.nome}', '${l.url}')">✏️</button>
+              <button onclick="excluirLink(${l.id})">🗑️</button>
+            </td>
+          </tr>`;
+      });
+    }
+
+    async function criarLink() {
+      const nome = document.getElementById("linkNome").value;
+      const url = document.getElementById("linkUrl").value;
+      if (!nome || !url) return alert("Preencha nome e URL!");
+      const res = await fetch("/links/api", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({nome, url})
+      });
+      if (res.ok) {
+        alert("Link adicionado com sucesso!");
+        document.getElementById("linkNome").value = "";
+        document.getElementById("linkUrl").value = "";
+        carregarLinks();
+      } else alert("Erro ao adicionar link.");
+    }
+
+    async function editarLink(id, nome, url) {
+      const novoNome = prompt("Novo nome:", nome);
+      const novoUrl = prompt("Nova URL:", url);
+      if (!novoNome || !novoUrl) return;
+      const res = await fetch(`/links/api/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({nome: novoNome, url: novoUrl})
+      });
+      if (res.ok) {
+        alert("Link atualizado!");
+        carregarLinks();
+      }
+    }
+
+    async function excluirLink(id) {
+      if (!confirm("Deseja remover este link?")) return;
+      const res = await fetch(`/links/api/${id}`, {method: "DELETE"});
+      if (res.ok) {
+        alert("Link removido!");
+        carregarLinks();
+      }
+    }
+
+    function voltar() {
+      window.location.href = "/auth/admin";
+    }
+
+    carregarLinks();
+  </script>
+</body>
+</html>

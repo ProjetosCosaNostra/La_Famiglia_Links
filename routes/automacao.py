@@ -1,14 +1,13 @@
 # ============================================
-# ♟️ ROTA DE AUTOMAÇÃO - GERAÇÃO E SINCRONIZAÇÃO
+# ♟️ AUTOMAÇÃO DE CONTEÚDO E PRODUTOS
 # ============================================
-
 from flask import Blueprint, jsonify, request
 import random
 import datetime
 
-automacao_bp = Blueprint('automacao', __name__, url_prefix='/api')
+automacao_bp = Blueprint('automacao_bp', __name__, url_prefix='/api/automacao')
 
-# Lista simulada de produtos
+# Lista simulada de produtos (mock)
 PRODUTOS_FAKE = [
     {"titulo": "Luminária RGB Inteligente", "plataforma": "Mercado Livre"},
     {"titulo": "Teclado Mecânico Gamer RGB", "plataforma": "Amazon"},
@@ -21,8 +20,10 @@ PRODUTOS_FAKE = [
 # ============================================
 @automacao_bp.route('/gerar_posts', methods=['POST'])
 def gerar_posts():
-    data = request.get_json()
+    data = request.get_json() or {}
     quantidade = int(data.get('quantidade', 1))
+    if quantidade <= 0:
+        return jsonify({"erro": "Quantidade inválida."}), 400
     
     escolhidos = random.sample(PRODUTOS_FAKE, k=min(quantidade, len(PRODUTOS_FAKE)))
     mensagens = []
@@ -33,7 +34,8 @@ def gerar_posts():
     return jsonify({
         "sucesso": True,
         "mensagem": f"{quantidade} post(s) gerado(s) com sucesso.",
-        "posts": mensagens
+        "posts": mensagens,
+        "gerado_em": datetime.datetime.now().isoformat()
     })
 
 # ============================================

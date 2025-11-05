@@ -1,0 +1,42 @@
+{
+  "project_root": "E:\\La_Famiglia_Links",
+  "created_at": "2025-11-04T19:02:24.930083",
+  "generator_version": "2.0",
+  "total_files": 22814,
+  "total_dirs": 3242,
+  "git_branch": "main",
+  "git_commit": "36423ee681bd7a1bf0fea4ad99dc28ffba23c2ca",
+  "important_files": [
+    "requirements.txt",
+    "README.md"
+  ],
+  "parts_txt": [
+    "estrutura_parte1.txt",
+    "estrutura_parte2.txt",
+    "estrutura_parte3.txt",
+    "estrutura_parte4.txt",
+    "estrutura_parte5.txt",
+    "estrutura_parte6.txt",
+    "estrutura_parte7.txt",
+    "estrutura_parte8.txt",
+    "estrutura_parte9.txt",
+    "estrutura_parte10.txt",
+    "estrutura_parte11.txt",
+    "estrutura_parte12.txt"
+  ],
+  "parts_md": [
+    "estrutura_parte1.md",
+    "estrutura_parte2.md",
+    "estrutura_parte3.md",
+    "estrutura_parte4.md",
+    "estrutura_parte5.md",
+    "estrutura_parte6.md",
+    "estrutura_parte7.md",
+    "estrutura_parte8.md",
+    "estrutura_parte9.md",
+    "estrutura_parte10.md",
+    "estrutura_parte11.md",
+    "estrutura_parte12.md"
+  ],
+  "notes": ""
+}

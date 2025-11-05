@@ -1,28 +1,51 @@
+version: "3.9"
+
 services:
   web:
     build:
-      context: ./web
-    container_name: lafam_web
-    env_file:
-      - .env
+      context: .
+      dockerfile: Dockerfile
+    container_name: lafamiglia_web
     ports:
       - "10000:10000"
+    environment:
+      - FLASK_ENV=production
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+    volumes:
+      - .:/app
     depends_on:
-      - ai
+      - ai-service
+      - ai-image
+    restart: unless-stopped
     networks:
-      - lafam_net
+      - lafamiglia_network
 
-  ai:
+  ai-service:
     build:
       context: ./ai_service
-    container_name: lafam_ai
-    env_file:
-      - .env
+      dockerfile: Dockerfile
+    container_name: lafamiglia_ai_service
+    command: uvicorn ai_app:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
+    restart: unless-stopped
     networks:
-      - lafam_net
+      - lafamiglia_network
+
+  ai-image:
+    build:
+      context: ./ai_service
+      dockerfile: Dockerfile
+    container_name: lafamiglia_ai_image
+    command: uvicorn app:app --host 0.0.0.0 --port 8500
+    ports:
+      - "8500:8500"
+    environment:
+      - HF_MODEL=stabilityai/stable-diffusion-2
+    restart: unless-stopped
+    networks:
+      - lafamiglia_network
 
 networks:
-  lafam_net:
+  lafamiglia_network:
     driver: bridge

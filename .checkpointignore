@@ -1,0 +1,24 @@
+# Ignorar ambientes virtuais
+.venv/
+env/
+venv/
+
+# Ignorar caches e temporários
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+
+# Ignorar arquivos grandes/desnecessários
+*.mp4
+*.avi
+*.wav
+
+# Ignorar credenciais
+.env
+*.pem
+secrets.json
+
+# Ignorar checkpoints antigos
+checkpoints/

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>💼 La Famiglia Business — Painel de Automação</title>
+  <style>
+    body {
+      background-color: #000;
+      color: gold;
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.8);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px gold;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+    .status {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    .actions button {
+      display: inline-block;
+      background: gold;
+      color: black;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 25px;
+      margin: 8px;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .actions button:hover {
+      background: #ffd700;
+      transform: scale(1.05);
+    }
+    .output {
+      margin-top: 30px;
+      background: rgba(20,20,20,0.8);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px gold;
+    }
+    img {
+      margin-top: 15px;
+      max-width: 90%;
+      border-radius: 10px;
+      border: 1px solid gold;
+    }
+    input, select {
+      margin: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid gold;
+      background: black;
+      color: gold;
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💼 La Famiglia Business</h1>
+    <p><em>“Nada é coincidência. É estratégia.”</em></p>
+    <hr style="border: 1px solid gold; width: 80%; margin: 20px auto;">
+    <div class="status">
+      <p>🧠 IA Textual: <span id="status_text">verificando...</span></p>
+      <p>🖼️ IA Visual: <span id="status_image">verificando...</span></p>
+    </div>
+
+    <div class="actions">
+      <h3>🎯 Gerar conteúdo</h3>
+      <input type="text" id="produto" placeholder="Nome do produto">
+      <select id="plataforma">
+        <option value="Amazon">Amazon</option>
+        <option value="Mercado Livre">Mercado Livre</option>
+        <option value="Shopee">Shopee</option>
+      </select>
+      <br>
+      <button onclick="gerarTexto()">🧠 Gerar Texto</button>
+      <button onclick="gerarImagem()">🖼️ Gerar Imagem</button>
+      <button onclick="gerarPost()">🎩 Gerar Post Automático</button>
+    </div>
+
+    <div class="output" id="output">
+      <h3>Resultado</h3>
+      <p id="texto"></p>
+      <img id="imagem" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    // Atualiza status das IAs
+    async function verificarStatus() {
+      try {
+        const res = await fetch("/business/api/status");
+        const data = await res.json();
+        document.getElementById("status_text").innerText = data.text_service;
+        document.getElementById("status_image").innerText = data.image_service;
+      } catch (err) {
+        document.getElementById("status_text").innerText = "erro";
+        document.getElementById("status_image").innerText = "erro";
+      }
+    }
+    verificarStatus();
+
+    // =============================
+    // 🧠 Gerar texto
+    // =============================
+    async function gerarTexto() {
+      const produto = document.getElementById("produto").value;
+      if (!produto) return alert("Informe o nome do produto!");
+      const prompt = `Crie uma descrição de venda impactante e elegante para o produto ${produto}.`;
+      const res = await fetch("/business/api/gerar_texto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      document.getElementById("texto").innerText = data.input || data.erro || "Erro ao gerar texto.";
+    }
+
+    // =============================
+    // 🖼️ Gerar imagem
+    // =============================
+    async function gerarImagem() {
+      const produto = document.getElementById("produto").value;
+      if (!produto) return alert("Informe o nome do produto!");
+      const prompt = `Produto ${produto} em um cenário cinematográfico dourado e preto, estilo Cosa Nostra.`;
+      const res = await fetch("/business/api/gerar_imagem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      if (data.image_base64) {
+        document.getElementById("imagem").src = `data:image/png;base64,${data.image_base64}`;
+      } else {
+        document.getElementById("texto").innerText = data.erro || "Erro ao gerar imagem.";
+      }
+    }
+
+    // =============================
+    // 🎩 Gerar post completo
+    // =============================
+    async function gerarPost() {
+      const produto = document.getElementById("produto").value;
+      const plataforma = document.getElementById("plataforma").value;
+      if (!produto) return alert("Informe o nome do produto!");
+      const res = await fetch("/business/api/gerar_post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ produto, plataforma })
+      });
+      const data = await res.json();
+      document.getElementById("texto").innerText = data.descricao || "Erro ao gerar descrição.";
+      if (data.imagem_base64) {
+        document.getElementById("imagem").src = `data:image/png;base64,${data.imagem_base64}`;
+      } else {
+        document.getElementById("imagem").src = "";
+      }
+    }
+  </script>
+</body>
+</html>

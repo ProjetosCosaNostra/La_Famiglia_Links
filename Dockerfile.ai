@@ -1,23 +1,18 @@
-# 🧠 Base oficial do PyTorch (CPU-only)
+# ============================================
+# 🤖 LA FAMIGLIA AI SERVICE (CPU Version)
+# ============================================
 FROM python:3.10-slim
 
 WORKDIR /app
 
-# Instala dependências básicas
 RUN apt-get update && apt-get install -y \
     git ffmpeg libsm6 libxext6 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copia e instala dependências do AI Service
-COPY ai_service/requirements-ai.txt .
-RUN pip install --no-cache-dir -r requirements-ai.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia código da IA
-COPY ai_service/ .
+COPY . .
 
-# Define variáveis de ambiente padrão
-ENV PORT=8000
-ENV PYTHONUNBUFFERED=1
-
-# Comando de execução com Uvicorn
+EXPOSE 8000
 CMD ["uvicorn", "ai_app:app", "--host", "0.0.0.0", "--port", "8000"]

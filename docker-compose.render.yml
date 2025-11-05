@@ -1,32 +1,23 @@
-version: "3.9"
-
 services:
   web:
     build:
-      context: ./web
-      dockerfile: Dockerfile
-    container_name: lafam_web
-    ports:
-      - "10000:10000"
-    depends_on:
-      - ai
-    environment:
-      - ENV=production
-    networks:
-      - lafam_net
+      dockerfile: Dockerfile.web
+      context: .
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: HUGGINGFACE_API_KEY
+        sync: false
+    plan: starter
+    healthCheckPath: "/"
+    autoDeploy: true
 
-  ai:
+  ai-service:
     build:
-      context: ./ai_service
-      dockerfile: Dockerfile
-    container_name: lafam_ai
-    expose:
-      - "8000"
-    environment:
-      - ENV=production
-    networks:
-      - lafam_net
-
-networks:
-  lafam_net:
-    driver: bridge
+      dockerfile: Dockerfile.ai
+      context: .
+    envVars:
+      - key: HF_MODEL
+        value: stabilityai/stable-diffusion-2
+    plan: starter
+    autoDeploy: true

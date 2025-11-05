@@ -25,6 +25,9 @@
       color: gold;
       margin-bottom: 10px;
     }
+    p {
+      color: #d4af37;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -53,7 +56,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 8px;
+      margin-top: 20px;
     }
     button:hover {
       background: #ffd700;
@@ -82,22 +85,24 @@
     <hr>
 
     <h2>👥 Usuários</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Usuário</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="userTable">
-        <tr><td colspan="3">Carregando...</td></tr>
-      </tbody>
-    </table>
-    <div>
-      <input type="text" id="newUser" placeholder="Novo usuário">
-      <input type="password" id="newPass" placeholder="Senha">
-      <button onclick="criarUsuario()">➕ Adicionar Usuário</button>
+    <div id="users">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="userTable">
+          <tr><td colspan="3">Carregando...</td></tr>
+        </tbody>
+      </table>
+      <div>
+        <input type="text" id="newUser" placeholder="Novo usuário">
+        <input type="password" id="newPass" placeholder="Senha">
+        <button onclick="criarUsuario()">➕ Adicionar Usuário</button>
+      </div>
     </div>
 
     <hr>
@@ -114,28 +119,21 @@
       <button onclick="abrirBusiness()">⚙️ Painel Business</button>
     </div>
 
-    <hr>
-
-    <h2>🚪 Sessão</h2>
-    <div>
-      <button onclick="logout()">Encerrar Sessão</button>
-    </div>
-
     <p style="margin-top: 40px; font-size: 12px; color: #aaa;">
       Painel La Famiglia Links © 2025 — Cosa Nostra Systems
     </p>
   </div>
 
   <script>
-    // =============================
-    // 👥 Gerenciamento de usuários
-    // =============================
+    // =======================================
+    // 👥 Listagem e criação de usuários
+    // =======================================
     async function carregarUsuarios() {
-      const res = await fetch("/auth/api/users");
+      const res = await fetch("/api/users");
       const data = await res.json();
       const tbody = document.getElementById("userTable");
       tbody.innerHTML = "";
-      if (!data.length) {
+      if (data.length === 0) {
         tbody.innerHTML = "<tr><td colspan='3'>Nenhum usuário cadastrado.</td></tr>";
         return;
       }
@@ -153,7 +151,7 @@
       const username = document.getElementById("newUser").value;
       const password = document.getElementById("newPass").value;
       if (!username || !password) return alert("Preencha usuário e senha.");
-      const res = await fetch("/auth/api/users", {
+      const res = await fetch("/api/users", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({username, password})
@@ -167,33 +165,28 @@
     }
 
     async function excluirUsuario(id) {
-      const res = await fetch(`/auth/api/users/${id}`, {method: "DELETE"});
+      const res = await fetch(`/api/users/${id}`, {method: "DELETE"});
       if (res.ok) {
         alert("Usuário removido.");
         carregarUsuarios();
       } else {
-        alert("Erro ao excluir usuário.");
+        alert("Erro ao excluir.");
       }
     }
 
-    // =============================
-    // 🔗 Navegação
-    // =============================
-    function abrirLinks() { window.location.href = "/"; }
-    function abrirBusiness() { window.location.href = "/business"; }
-
-    // =============================
-    // 🚪 Logout
-    // =============================
-    function logout() {
-      if (confirm("Deseja encerrar sua sessão, Capo?")) {
-        window.location.href = "/auth/logout";
-      }
+    // =======================================
+    // 🔗 Redirecionamentos
+    // =======================================
+    function abrirLinks() {
+      window.location.href = "/";
+    }
+    function abrirBusiness() {
+      window.location.href = "/business";
     }
 
-    // =============================
+    // =======================================
     // Inicialização
-    // =============================
+    // =======================================
     carregarUsuarios();
   </script>
 </body>
