@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>💎 La Famiglia - Planos Premium</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body { background-color: #000; color: gold; font-family: 'Cinzel', serif; text-align: center; }
+    .container { max-width: 800px; margin: 60px auto; padding: 30px; background: rgba(0,0,0,0.8); border: 1px solid gold; border-radius: 20px; }
+    .plano { border: 1px solid gold; border-radius: 15px; padding: 20px; margin: 15px; }
+    button { background: gold; color: black; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💎 Planos Premium da Família</h1>
+    <p><em>“Quem faz parte da Família, tem privilégios.”</em></p>
+
+    <div class="plano">
+      <h2>Soldato (Free)</h2>
+      <p>Funções básicas e acesso limitado à IA.</p>
+      <button onclick="assinar('Soldato')">Entrar</button>
+    </div>
+
+    <div class="plano">
+      <h2>Capo (R$49/mês)</h2>
+      <p>Acesso total à IA + automação de posts e vídeos.</p>
+      <button onclick="assinar('Capo')">Assinar</button>
+    </div>
+
+    <div class="plano">
+      <h2>Don (R$199/mês)</h2>
+      <p>Recursos ilimitados + acesso ao painel de estratégias da Família.</p>
+      <button onclick="assinar('Don')">Assinar</button>
+    </div>
+
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    async function assinar(plano) {
+      const nome = prompt("Digite seu nome completo:");
+      const email = prompt("Digite seu e-mail:");
+      if (!nome || !email) return;
+      const res = await fetch("/business/payments/registrar", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({nome, email, plano})
+      });
+      const json = await res.json();
+      document.getElementById("msg").innerText = json.mensagem;
+    }
+  </script>
+</body>
+</html>

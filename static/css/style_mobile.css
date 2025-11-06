@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url("../images/fundo.jpg") center/cover no-repeat;
+  font-family: 'Cinzel', serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-container {
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  border-left: 2px solid gold;
+  border-right: 2px solid gold;
+  box-shadow: 0 0 20px gold;
+  text-align: center;
+  padding: 30px 15px;
+  overflow-y: auto;
+}
+
+.logo {
+  width: 120px;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+h1 {
+  color: gold;
+  margin: 10px 0;
+  font-size: 1.8em;
+}
+
+.slogan {
+  font-style: italic;
+  color: #ddd;
+  margin-bottom: 25px;
+}
+
+.links a {
+  display: block;
+  color: gold;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid gold;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  background: gold;
+  color: black;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 0.9em;
+  color: #aaa;
+}
+.qrcode-container {
+  margin-top: 15px;
+}
+
+.qrcode {
+  width: 120px;
+  border: 2px solid gold;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gold;
+}
+
+.qrcode-text {
+  color: gold;
+  font-size: 0.8em;
+  margin-top: 5px;
+  font-style: italic;
+}

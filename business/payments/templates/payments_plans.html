@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>💳 Planos — La Famiglia Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{background:#000;color:#eee;font-family:'Cinzel',serif;margin:0}
+    .wrap{max-width:1100px;margin:40px auto;padding:0 16px}
+    h1{color:#d4af37;text-align:center;margin:0 0 8px}
+    p.slogan{text-align:center;color:#bbb;margin:0 0 28px;font-style:italic}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:rgba(15,15,15,.96);border:1px solid #a5852a;border-radius:16px;padding:18px;position:relative}
+    .card.destaque{box-shadow:0 0 18px rgba(212,175,55,.20)}
+    .titulo{color:#d4af37;font-size:1.3rem;margin:0 0 6px}
+    .preco{font-size:1.2rem;margin:6px 0 12px}
+    ul{margin:0 0 14px;padding-left:16px}
+    li{margin:6px 0}
+    .btn{display:inline-block;padding:9px 14px;border-radius:10px;border:1px solid #d4af37;color:#d4af37;background:transparent;text-decoration:none;cursor:pointer}
+    .btn:hover{background:#d4af37;color:#000}
+    .warn{margin:16px 0;padding:10px;border:1px dashed #a5852a;border-radius:10px;color:#d4af37;background:#0f0a00}
+    .top-ribbon{position:absolute;top:12px;right:-10px;background:#d4af37;color:#000;padding:6px 10px;border-radius:8px;font-size:.8rem}
+    .row-actions{display:flex;gap:8px;flex-wrap:wrap}
+    input[type=email]{width:100%;background:#111;border:1px solid #333;color:#eee;border-radius:8px;padding:8px;margin:8px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>💳 Planos da Família</h1>
+    <p class="slogan">“Família, honra e respeito. O resto é assinatura.”</p>
+
+    {% if not stripe_ok %}
+      <div class="warn">
+        ⚠️ Stripe não configurado. Defina STRIPE_API_KEY e os PRICE_IDs no Render.
+      </div>
+    {% endif %}
+
+    <div class="grid">
+      {% for p in planos %}
+        <div class="card {% if p.destaque %}destaque{% endif %}">
+          {% if p.destaque %}<div class="top-ribbon">Mais Popular</div>{% endif %}
+          <div class="titulo">{{ p.titulo }}</div>
+          <div class="preco">{{ p.preco }}</div>
+          <ul>
+            {% for f in p.features %}<li>✔ {{ f }}</li>{% endfor %}
+          </ul>
+
+          <form class="checkout" onsubmit="return criarCheckout(event)">
+            <input type="hidden" name="price_id" value="{{ p.id }}">
+            <label>Email (opcional)</label>
+            <input type="email" name="email" placeholder="voce@famiglia.com">
+            <div class="row-actions">
+              <button class="btn" type="submit">Assinar</button>
+              <a class="btn" href="/business/payments/portal">Portal do Cliente</a>
+            </div>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    async function criarCheckout(e){
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const payload = Object.fromEntries(fd.entries());
+      if(!payload.price_id){
+        alert("Plano indisponível no momento."); return false;
+      }
+      const res = await fetch("/business/payments/create_checkout_session", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify(payload)
+      });
+      const j = await res.json();
+      if(j.ok && j.url){ window.location = j.url; }
+      else{ alert("❌ Erro: " + (j.error || "Falha no checkout")); }
+      return false;
+    }
+  </script>
+</body>
+</html>

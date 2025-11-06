@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎩 La Famiglia Links — Mobile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_mobile.css') }}">
+</head>
+<body>
+  <div class="mobile-container">
+    <!-- Logo da Família -->
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo da Família" class="logo">
+
+    <h1>🎩 La Famiglia Links</h1>
+    <p class="slogan">Onde os aliados se conectam.</p>
+
+    <!-- Links dinâmicos -->
+    <div class="links">
+      {% for link in links %}
+        <a href="{{ link.url }}" target="_blank">{{ link.nome }}</a>
+      {% endfor %}
+    </div>
+
+    <!-- Rodapé com QR Code -->
+    <div class="footer">
+      <p>⚜️ Família, honra e respeito ⚜️</p>
+      <small>&copy; 2025 — Cosa Nostra Systems</small>
+      <div class="qrcode-container">
+        <img src="{{ url_for('static', filename='images/qrcode_famiglia.png') }}" 
+             alt="QR Code La Famiglia" class="qrcode">
+        <p class="qrcode-text">Aponte a câmera e entre para a Família</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

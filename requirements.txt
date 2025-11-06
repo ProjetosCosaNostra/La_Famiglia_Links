@@ -35,3 +35,4 @@ huggingface-hub==0.35.3
 
 # --- Compatibilidade e desempenho ---
 numpy==1.26.4
+APScheduler==3.10.4

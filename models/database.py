@@ -68,3 +68,21 @@ def add_user(username: str, password: str):
         print(f"⚠️ Usuário '{username}' já existe.")
     finally:
         conn.close()
+# ============================================
+# 🎩 Inicialização das tabelas da Família
+# ============================================
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
+
+Base = declarative_base()
+_engine = create_engine("sqlite:///lafamiglia.db", connect_args={"check_same_thread": False})
+_Session = sessionmaker(bind=_engine)
+
+def get_db():
+    return _Session()
+
+def init_db():
+    """Cria as tabelas se ainda não existirem."""
+    from models.admin_logs_model import AdminLog
+    Base.metadata.create_all(_engine)
+    print("✅ Banco de dados da Família inicializado.")

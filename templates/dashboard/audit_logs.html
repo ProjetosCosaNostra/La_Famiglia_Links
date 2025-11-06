@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>👁️ Monitoramento de Acesso — La Famiglia</title>
+  <style>
+    body {
+      background: black;
+      color: gold;
+      font-family: 'Cinzel', serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid gold;
+      background: rgba(0,0,0,.9);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    h1 { margin: 0; font-size: 26px; }
+    main { padding: 20px; }
+    form.filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    input, select {
+      background: #111;
+      border: 1px solid gold;
+      color: gold;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-family: 'Cinzel', serif;
+    }
+    button, .btn {
+      background: gold;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+      text-decoration: none;
+    }
+    button:hover, .btn:hover { background: #c9a122; color: black; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: rgba(255,255,255,.02);
+    }
+    th, td {
+      border: 1px solid rgba(212,175,55,.4);
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background: rgba(212,175,55,.15);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    tr:hover { background: rgba(212,175,55,.05); }
+    .acao-LOGIN { color: #9cff9c; font-weight: bold; }
+    .acao-LOGOUT { color: #ffd280; font-weight: bold; }
+    .acao-LOGIN_FALHOU, .acao-RENOVACAO_FALHOU { color: #ff7777; font-weight: bold; }
+    .acao-RENOVACAO_TOKEN { color: #ffe96b; font-weight: bold; }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      opacity: .7;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>👁️ Monitoramento de Acesso — La Famiglia</h1>
+    <p>“Cada movimento deixa rastros... até entre aliados.”</p>
+  </header>
+  <main>
+    <!-- FILTROS -->
+    <form method="GET" class="filter-bar">
+      <input type="text" name="usuario" placeholder="Usuário" value="{{ request.args.get('usuario', '') }}">
+      <select name="acao">
+        <option value="">Todas as ações</option>
+        <option value="LOGIN">LOGIN</option>
+        <option value="LOGOUT">LOGOUT</option>
+        <option value="LOGIN_FALHOU">LOGIN_FALHOU</option>
+        <option value="RENOVACAO_TOKEN">RENOVACAO_TOKEN</option>
+        <option value="RENOVACAO_FALHOU">RENOVACAO_FALHOU</option>
+      </select>
+      <input type="date" name="data_ini" value="{{ request.args.get('data_ini', '') }}">
+      <input type="date" name="data_fim" value="{{ request.args.get('data_fim', '') }}">
+      <button type="submit">🔍 Filtrar</button>
+      <a href="/business/audit_logs/export" class="btn">📤 Exportar CSV</a>
+      <a href="/business/admin" class="btn">⬅ Voltar</a>
+    </form>
+
+    <!-- TABELA -->
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Usuário</th>
+          <th>Ação</th>
+          <th>IP</th>
+          <th>Navegador</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for log in logs %}
+        <tr>
+          <td>{{ log.data.strftime("%d/%m/%Y %H:%M") }}</td>
+          <td>{{ log.usuario }}</td>
+          <td class="acao-{{ log.acao }}">{{ log.acao }}</td>
+          <td>{{ log.ip }}</td>
+          <td>{{ log.navegador }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;opacity:.7;">Nenhum registro encontrado.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="footer">
+      ⚜️ “Nada é coincidência, é estratégia.” — Cosa Nostra Systems
+    </div>
+  </main>
+</body>
+</html>

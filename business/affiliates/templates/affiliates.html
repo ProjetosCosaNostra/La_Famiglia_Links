@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🛍️ Produtos Afiliados — La Famiglia Links</title>
+  <style>
+    body {
+      background-color: #000;
+      color: gold;
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .produto {
+      border: 1px solid gold;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 10px auto;
+      width: 280px;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 0 10px gold;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    a {
+      color: gold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 8px;
+      border: 1px solid gold;
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+    a:hover {
+      background: gold;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛍️ Produtos Afiliados da Família</h1>
+  <p>Automação de tendências e produtos em alta</p>
+
+  {% for p in produtos %}
+  <div class="produto">
+    <img src="{{ p.imagem }}" alt="{{ p.nome }}">
+    <h3>{{ p.nome }}</h3>
+    <p>💰 R$ {{ "%.2f"|format(p.preco) }}</p>
+    <a href="{{ p.link }}" target="_blank">Ver Produto</a>
+  </div>
+  {% endfor %}
+</body>
+</html>

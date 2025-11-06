@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎩 Affiliates Intel — Painel Pro-Max</title>
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold2: #b08d2f;
+      --dark: #0a0a0a;
+      --smoke: rgba(255,255,255,.06);
+      --shadow: 0 0 24px rgba(212,175,55,.15);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--dark);
+      color: var(--gold);
+      font-family: "Cinzel", Georgia, serif;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      border-bottom: 1px solid var(--gold2);
+      padding: 16px 10px;
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,.95);
+      backdrop-filter: blur(6px);
+      z-index: 10;
+    }
+    h1 { margin: 0; font-size: 24px; letter-spacing: .5px; }
+    .subtitle { margin: 4px 0 0; opacity: .8; font-style: italic; }
+    main { max-width: 1300px; margin: 0 auto; padding: 24px 16px; }
+    .controls {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      margin-bottom: 24px;
+    }
+    button, .btn {
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      border-radius: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: .2s;
+      font-weight: 600;
+      font-family: inherit;
+    }
+    button:hover, .btn:hover { background: var(--gold); color: #000; }
+    .search {
+      display: flex; gap: 8px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 10px;
+    }
+    input[type="text"] {
+      width: 280px; padding: 10px;
+      border-radius: 10px; border: 1px solid var(--gold2);
+      background: #111; color: var(--gold);
+      font-family: inherit;
+    }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+    .card {
+      background: var(--smoke); border: 1px solid var(--gold2);
+      border-radius: 12px; box-shadow: var(--shadow);
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: .3s;
+    }
+    .card:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(212,175,55,.35); }
+    .thumb { width: 100%; height: 180px; object-fit: cover; }
+    .info { padding: 12px 14px; flex: 1; display: flex; flex-direction: column; }
+    .title { margin: 0; font-size: 16px; min-height: 38px; }
+    .meta { font-size: 13px; opacity: .85; margin-top: 4px; }
+    .price { font-weight: 700; }
+    .actions {
+      display: flex; gap: 6px; justify-content: center;
+      padding: 12px; border-top: 1px solid var(--gold2);
+    }
+    .pagination {
+      margin-top: 20px; display: flex; gap: 8px; justify-content: center;
+    }
+    .footer { text-align: center; margin: 30px 0 10px; opacity: .8; font-size: 13px; }
+    .badge {
+      border: 1px solid var(--gold2); border-radius: 999px;
+      font-size: 12px; padding: 3px 8px; margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎩 Affiliates Intel <span class="badge">Pro-Max</span></h1>
+    <p class="subtitle">“O poder está nos que sabem esperar com estilo.”</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <button onclick="scan('todos')">📡 Varredura Geral</button>
+      <button onclick="scan('amazon')">🛒 Amazon</button>
+      <button onclick="scan('mercadolivre')">🟡 Mercado Livre</button>
+      <button onclick="syncAll()">💾 Sincronizar Todos</button>
+      <button onclick="loadSaved()">📜 Carregar Banco</button>
+    </div>
+
+    <div class="search">
+      <input id="searchInput" type="text" placeholder="🔍 Buscar produto..." oninput="filterList()" />
+      <button onclick="clearSearch()">Limpar</button>
+    </div>
+
+    <div id="list" class="grid"></div>
+    <div class="pagination" id="pagination"></div>
+
+    <div class="footer">
+      ⚜️ Família, honra, respeito e palavra.  
+      <br><small>La Famiglia Links © 2025 — Cosa Nostra Systems</small>
+    </div>
+  </main>
+
+  <script>
+    let produtos = [];
+    let paginaAtual = 1;
+    const porPagina = 9;
+
+    async function scan(origem='todos'){
+      const r = await fetch(`/business/affiliates_intel/scan?origem=${origem}`);
+      const js = await r.json();
+      produtos = js.produtos || [];
+      paginaAtual = 1;
+      renderPage();
+    }
+
+    async function loadSaved(){
+      const r = await fetch('/business/affiliates_intel/list');
+      produtos = await r.json();
+      paginaAtual = 1;
+      renderPage();
+    }
+
+    async function syncAll(){
+      if(!produtos.length) return alert('Nenhum produto encontrado.');
+      const r = await fetch('/business/affiliates_intel/sync', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(produtos)
+      });
+      const js = await r.json();
+      alert(`✅ ${js.count} produtos sincronizados com sucesso.`);
+    }
+
+    function filterList(){
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const filtrados = produtos.filter(p => (p.titulo || '').toLowerCase().includes(q));
+      renderPage(filtrados);
+    }
+
+    function clearSearch(){
+      document.getElementById('searchInput').value = '';
+      renderPage(produtos);
+    }
+
+    function renderPage(lista=produtos){
+      const list = document.getElementById('list');
+      const pag = document.getElementById('pagination');
+      list.innerHTML = pag.innerHTML = '';
+
+      const total = lista.length;
+      const totalPaginas = Math.ceil(total / porPagina);
+      const inicio = (paginaAtual - 1) * porPagina;
+      const fim = inicio + porPagina;
+      const pagina = lista.slice(inicio, fim);
+
+      pagina.forEach(p => {
+        const el = document.createElement('div');
+        el.className = 'card';
+        el.innerHTML = `
+          <img src="${p.imagem || ''}" class="thumb" alt="">
+          <div class="info">
+            <h3 class="title">${p.titulo || 'Produto'}</h3>
+            <div class="meta">
+              <span class="price">R$ ${(p.preco || 0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</span> •
+              <span>${p.origem || ''}</span>
+            </div>
+          </div>
+          <div class="actions">
+            <button onclick="gerarMidia('${p.titulo}','${p.preco}','${p.imagem}','${p.link}','${p.origem}')">🎬 Gerar Mídia</button>
+            <a class="btn" href="${p.link}" target="_blank">🛍️ Ver</a>
+          </div>`;
+        list.appendChild(el);
+      });
+
+      // Paginação
+      for(let i=1; i<=totalPaginas; i++){
+        const b = document.createElement('button');
+        b.textContent = i;
+        if(i === paginaAtual){ b.style.background='var(--gold)'; b.style.color='#000'; }
+        b.onclick = ()=>{ paginaAtual = i; renderPage(lista); };
+        pag.appendChild(b);
+      }
+    }
+
+    async function gerarMidia(titulo, preco, imagem, link, origem){
+      const body = {titulo, preco, imagem, link, origem};
+      const r = await fetch('/business/affiliates_intel/generate', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(body)
+      });
+      const js = await r.json();
+      if(js.status === 'ok'){
+        alert(`🎩 Mídia gerada para ${titulo}\nBanner: ${js.banner}\nVídeo: ${js.video}`);
+      }else{
+        alert('Falha ao gerar mídia: ' + (js.erro || 'erro'));
+      }
+    }
+
+    // Auto-load inicial
+    (async ()=>{ await scan('todos'); })();
+  </script>
+</body>
+</html>

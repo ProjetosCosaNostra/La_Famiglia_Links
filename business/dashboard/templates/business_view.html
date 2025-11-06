@@ -1,0 +1,75 @@
+<!-- business/dashboard/templates/business_view.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>La Famiglia — Painel Business</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root { --gold:#d4af37; --bg:#0b0b0b; --card:#121212; --text:#f4f4f4; }
+    body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;}
+    .wrap{max-width:1100px;margin:40px auto;padding:0 16px;}
+    h1{color:var(--gold);margin:0 0 8px;}
+    p.slogan{opacity:.85;margin:0 0 24px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+    .card{background:var(--card);border:1px solid #282828;border-radius:14px;padding:16px}
+    .card h3{margin:0 0 8px;color:var(--gold)}
+    a.btn{display:inline-block;margin-top:8px;padding:10px 14px;border:1px solid var(--gold);border-radius:10px;color:var(--text);text-decoration:none}
+    a.btn:hover{background:var(--gold);color:#000}
+    footer{opacity:.7;margin-top:28px;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🎩 La Famiglia — Painel Business</h1>
+    <p class="slogan">“Onde os aliados se conectam.”</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Status</h3>
+        <p>Última atualização: {{ info.timestamp }}</p>
+        <a class="btn" href="/business/status" target="_blank">/business/status</a>
+        <a class="btn" href="/business/health" target="_blank">/business/health</a>
+      </div>
+
+      <div class="card">
+        <h3>Afiliados</h3>
+        <p>Coleta e IA de produtos Amazon/ML.</p>
+        <a class="btn" href="/business/affiliates_intel" target="_blank">/business/affiliates_intel</a>
+      </div>
+
+      <div class="card">
+        <h3>Media AI</h3>
+        <p>Geração de banners e vídeos automáticos.</p>
+        <a class="btn" href="/business/media/listar_videos" target="_blank">/business/media/listar_videos</a>
+      </div>
+
+      <div class="card">
+        <h3>AutoPost</h3>
+        <p>Distribuição para redes (cron/scheduler).</p>
+        <a class="btn" href="/business/autopost/status" target="_blank">/business/autopost/status</a>
+      </div>
+
+      <div class="card">
+        <h3>Tendências</h3>
+        <p>Crawler + IA (termos e produtos em alta).</p>
+        <a class="btn" href="/business/trends/status" target="_blank">/business/trends/status</a>
+      </div>
+
+      <div class="card">
+        <h3>Pagamentos</h3>
+        <p>Planos SaaS (Stripe / Mercado Pago).</p>
+        <a class="btn" href="/business/payments/planos" target="_blank">/business/payments/planos</a>
+      </div>
+
+      <div class="card">
+        <h3>Auditoria</h3>
+        <p>Logs administrativos.</p>
+        <a class="btn" href="/business/audit_logs" target="_blank">/business/audit_logs</a>
+      </div>
+    </div>
+
+    <footer>⚜️ Família, honra, respeito e palavra.</footer>
+  </div>
+</body>
+</html>

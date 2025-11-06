@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 La Famiglia - Gerar Vídeos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      background: #000 url("/static/images/fundo.jpg") center/cover no-repeat;
+      font-family: 'Cinzel', serif;
+      color: gold;
+      text-align: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.8);
+      margin: 50px auto;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 0 20px gold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid gold;
+      border-radius: 8px;
+      background-color: #111;
+      color: white;
+      font-family: 'Cinzel', serif;
+    }
+    button {
+      background: gold;
+      color: black;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: white;
+      color: black;
+    }
+    .videos-list {
+      margin-top: 30px;
+    }
+    .video-item {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid gold;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    video {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Gerar Vídeos da Família</h1>
+    <p><em>“A imagem é poder. E poder... é o que define a Família.”</em></p>
+
+    <form id="formGerarVideo">
+      <input type="text" id="titulo" placeholder="Título do vídeo" required>
+      <textarea id="descricao" rows="3" placeholder="Descrição / Legenda" required></textarea>
+      <input type="text" id="imagem" placeholder="Caminho da imagem (ex: static/generated/produto.png)" required>
+      <button type="submit">Gerar Vídeo 🎥</button>
+    </form>
+
+    <div id="mensagem"></div>
+
+    <div class="videos-list" id="videosList">
+      <h2>🎞️ Últimos vídeos gerados</h2>
+      <div id="lista"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('formGerarVideo');
+    const msg = document.getElementById('mensagem');
+    const lista = document.getElementById('lista');
+
+    async function carregarVideos() {
+      const res = await fetch('/business/media/listar_videos');
+      const videos = await res.json();
+      lista.innerHTML = '';
+      videos.forEach(v => {
+        lista.innerHTML += `
+          <div class="video-item">
+            <h3>${v.titulo}</h3>
+            <p>${v.descricao || ''}</p>
+            <video controls src="/${v.video_url}" poster="/${v.imagem_url}"></video>
+            <small>Gerado em: ${v.criado_em}</small>
+          </div>
+        `;
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.innerHTML = "⏳ Gerando vídeo...";
+      const dados = {
+        titulo: document.getElementById('titulo').value,
+        descricao: document.getElementById('descricao').value,
+        imagem: document.getElementById('imagem').value
+      };
+      const res = await fetch('/business/media/gerar_video', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(dados)
+      });
+      const json = await res.json();
+      if (json.status === "ok") {
+        msg.innerHTML = `✅ Vídeo gerado: <a href="/${json.video_url}" target="_blank">${json.video_url}</a>`;
+        carregarVideos();
+      } else {
+        msg.innerHTML = `❌ Erro: ${json.erro || 'Falha desconhecida'}`;
+      }
+    });
+
+    carregarVideos();
+  </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>🧠 Afiliados — La Famiglia Intel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}" />
+  <style>
+    body {
+      background: #000;
+      color: #eee;
+      font-family: 'Cinzel', serif;
+      margin: 0;
+    }
+    .wrap { max-width: 1100px; margin: 28px auto; padding: 0 16px; }
+    h1 { color: #d4af37; text-align: center; margin: 0 0 6px; }
+    .slogan { text-align: center; color: #bbb; font-style: italic; margin: 0 0 18px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .card {
+      background: rgba(15,15,15,.96);
+      border: 1px solid #a5852a;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 0 12px rgba(212,175,55,.08);
+    }
+    .card h2 { color: #d4af37; margin: 0 0 8px; }
+    label { color: #d4af37; font-size: .9em; margin: 8px 0 4px; display: block; }
+    input, select {
+      width: 100%; background: #111; border: 1px solid #333;
+      color: #eee; border-radius: 8px; padding: 8px;
+    }
+    .btn {
+      display: inline-block; padding: 8px 12px; border-radius: 10px;
+      border: 1px solid #d4af37; color: #d4af37; background: transparent;
+      text-decoration: none; cursor: pointer; transition: .2s;
+    }
+    .btn:hover { background: #d4af37; color: #000; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 14px; }
+    .p {
+      background: #0f0f0f; border: 1px solid #292929;
+      border-radius: 12px; padding: 10px;
+    }
+    .p:hover { border-color: #d4af37; }
+    .p img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; }
+    .p h3 { font-size: 1em; color: #d4af37; margin: 8px 0 4px; }
+    .p small { opacity: .85; }
+    .actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    pre { background: #111; color: #ddd; padding: 8px; border-radius: 8px; font-size: .9em; white-space: pre-wrap; }
+    #scanResult {
+      margin-top: 10px; background: #111; padding: 10px;
+      border-radius: 10px; color: #bbb; font-size: .9em; white-space: pre-wrap;
+    }
+    ul.posts { padding-left: 18px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🧠 Inteligência de Afiliados</h1>
+    <p class="slogan">“Nada é coincidência… é estratégia.”</p>
+
+    <div class="row">
+      <!-- 🔎 Coleta -->
+      <div class="card">
+        <h2>🔎 Coletar Produtos</h2>
+        <form id="scanForm">
+          <label>Palavra-chave</label>
+          <input name="query" placeholder="ex.: relógio dourado" required />
+
+          <label>Fontes</label>
+          <select name="sources" multiple size="2">
+            <option value="mercado_livre" selected>Mercado Livre</option>
+            <option value="amazon" selected>Amazon (mock)</option>
+          </select>
+
+          <label>Limite</label>
+          <input type="number" name="limit" value="10" min="1" max="50" />
+
+          <div style="margin-top:10px">
+            <button class="btn" type="submit">Coletar</button>
+          </div>
+        </form>
+        <div id="scanResult"></div>
+      </div>
+
+      <!-- 📝 Posts -->
+      <div class="card">
+        <h2>📝 Últimos Posts Gerados</h2>
+        <ul class="posts">
+          {% for pid, title, platform, caption, image_path, video_path, created_at in posts %}
+            <li style="margin-bottom:10px">
+              <strong style="color:#d4af37">{{ platform|capitalize }}</strong> — {{ title }}
+              <br /><small>{{ created_at }}</small>
+              <details><summary>Ver legenda</summary><pre>{{ caption }}</pre></details>
+            </li>
+          {% else %}
+            <li>Nenhum post gerado ainda.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- 📦 Produtos -->
+    <div class="card" style="margin-top:18px">
+      <h2>📦 Produtos Coletados</h2>
+      <div class="products" id="produtos">
+        {% for id, source, external_id, title, price, currency, url, image, affiliate_url, created_at in products %}
+          <div class="p">
+            {% if image %}<img src="{{ image }}" alt="{{ title }}"/>{% endif %}
+            <h3>{{ title }}</h3>
+            <small>{{ source }} — {{ external_id }} — {{ created_at }}</small>
+            <p style="margin:6px 0">💰 {{ currency }} {{ "%.2f"|format(price or 0) }}</p>
+
+            <div class="actions">
+              {% if affiliate_url %}
+                <a class="btn" href="{{ affiliate_url }}" target="_blank">Link Afiliado</a>
+              {% else %}
+                <a class="btn" href="{{ url }}" target="_blank">Abrir</a>
+              {% endif %}
+
+              {% set payload = {'product_id': id, 'title': title, 'price': (price or 0), 'source': source, 'image': image} | tojson %}
+              <button class="btn btn-generate" data-payload='{{ payload|safe }}'>🧠 Legenda IA</button>
+              <button class="btn btn-media" data-payload='{{ payload|safe }}'>🎬 Banner/Vídeo</button>
+            </div>
+          </div>
+        {% else %}
+          <p>Nenhum produto encontrado ainda. Faça uma coleta.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------------
+    // 🔎 Coletar produtos
+    // -------------------------------
+    const scanForm = document.getElementById('scanForm');
+    const scanResult = document.getElementById('scanResult');
+
+    scanForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(scanForm);
+      const sources = Array.from(fd.getAll('sources'));
+      const payload = { query: fd.get('query'), sources, limit: fd.get('limit') };
+
+      scanResult.textContent = "⏳ Coletando produtos...";
+      const res = await fetch('/business/affiliates_intel/scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const j = await res.json();
+      if (j.ok) {
+        scanResult.textContent = `✅ ${j.saved} produtos salvos (${j.found} encontrados). Atualizando...`;
+        setTimeout(() => location.reload(), 1200);
+      } else {
+        scanResult.textContent = `❌ Falha: ${j.error || 'Erro desconhecido'}`;
+      }
+    });
+
+    // -------------------------------
+    // 🧠 Gerar legenda
+    // -------------------------------
+    document.getElementById('produtos').addEventListener('click', async (e) => {
+      const btn = e.target.closest('.btn-generate');
+      if (!btn) return;
+      const data = JSON.parse(btn.dataset.payload);
+      const res = await fetch('/business/affiliates_intel/generate_caption', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, platform: 'instagram' })
+      });
+      const j = await res.json();
+      alert(j.ok ? "✅ Legenda gerada com sucesso!" : "❌ Erro: " + (j.error || 'Falha desconhecida'));
+      if (j.ok) setTimeout(() => location.reload(), 1000);
+    });
+
+    // -------------------------------
+    // 🎬 Gerar Banner/Vídeo
+    // -------------------------------
+    document.getElementById('produtos').addEventListener('click', async (e) => {
+      const btn = e.target.closest('.btn-media');
+      if (!btn) return;
+      const data = JSON.parse(btn.dataset.payload);
+      const res = await fetch('/business/media/generate_ad', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const j = await res.json();
+      alert(j.ok ? "🎬 Banner/Vídeo gerado com sucesso!" : "❌ Falha: " + (j.error || 'Erro desconhecido'));
+    });
+  </script>
+</body>
+</html>

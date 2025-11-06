@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 Relatórios — La Famiglia Links</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      <h1>📊 Relatórios Financeiros da Família</h1>
+      <p>“Nada é coincidência... é estratégia.”</p>
+      <a href="/business/view" class="btn-voltar">⬅ Voltar</a>
+    </header>
+
+    <section class="resumo">
+      <div class="card">
+        <h2>💰 Total Recebido</h2>
+        <p>R$ {{ "%.2f"|format(total_valor) }}</p>
+      </div>
+      <div class="card">
+        <h2>👥 Clientes</h2>
+        <p>{{ total_clientes }}</p>
+      </div>
+      <div class="card">
+        <h2>🧾 Transações</h2>
+        <p>{{ total_transacoes }}</p>
+      </div>
+    </section>
+
+    <section class="graficos">
+      <canvas id="graficoReceita" height="120"></canvas>
+    </section>
+
+    <section class="historico">
+      <h2>📜 Últimos Pagamentos</h2>
+      <table>
+        <tr><th>Email</th><th>Plano</th><th>Valor</th><th>Moeda</th><th>Data</th></tr>
+        {% for email, plan, amount, currency, created_at in ultimos %}
+        <tr>
+          <td>{{ email or "-" }}</td>
+          <td>{{ plan or "-" }}</td>
+          <td>R$ {{ "%.2f"|format((amount or 0) / 100) }}</td>
+          <td>{{ currency.upper() }}</td>
+          <td>{{ created_at }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+
+    <section class="afiliados">
+      <h2>🏆 Top Afiliados</h2>
+      <ul>
+        {% for email, qtd, valor in afiliados_top %}
+        <li>{{ email }} — {{ qtd }} vendas — R$ {{ "%.2f"|format((valor or 0)/100) }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <footer>
+      <p>© 2025 — Cosa Nostra Systems</p>
+    </footer>
+  </div>
+
+  <script>
+    // Gera gráfico com dados da API
+    fetch('/business/reports/api')
+      .then(r => r.json())
+      .then(dados => {
+        const ctx = document.getElementById('graficoReceita');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: dados.map(e => e.data),
+            datasets: [{
+              label: 'Receita Diária (R$)',
+              data: dados.map(e => e.total),
+              borderColor: '#d4af37',
+              backgroundColor: 'rgba(212,175,55,0.2)',
+              tension: 0.4
+            }]
+          },
+          options: {
+            scales: {
+              y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } },
+              x: { grid: { color: 'rgba(255,255,255,0.1)' } }
+            },
+            plugins: { legend: { labels: { color: '#d4af37' } } }
+          }
+        });
+      });
+  </script>
+</body>
+</html>

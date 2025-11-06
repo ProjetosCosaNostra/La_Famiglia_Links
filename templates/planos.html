@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💰 Planos — La Famiglia Links Premium</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/planos.css') }}">
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo da Família" class="logo">
+    <h1>💎 La Famiglia Links Premium</h1>
+    <p class="slogan">“Nada é coincidência... é estratégia.”</p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        Escolha seu plano e entre para o círculo interno da Família.  
+        Ganhe acesso a automações exclusivas, relatórios de IA e campanhas de afiliados otimizadas.
+      </p>
+    </section>
+
+    <section class="planos-grid">
+      <!-- PLANO GRATUITO -->
+      <div class="plano-card free">
+        <h2>🕶️ Iniciante</h2>
+        <p class="preco">R$ 0 / mês</p>
+        <ul>
+          <li>🎯 Acesso básico ao hub de links</li>
+          <li>🧩 Visual cinematográfico</li>
+          <li>💬 Canal da Família (Telegram)</li>
+        </ul>
+        <a href="/auth/login" class="btn">Acessar Grátis</a>
+      </div>
+
+      <!-- PLANO PREMIUM -->
+      <div class="plano-card premium">
+        <h2>👑 Capo</h2>
+        <p class="preco">R$ 49 / mês</p>
+        <ul>
+          <li>⚙️ Automação de postagens IA</li>
+          <li>🎬 Geração de banners e vídeos</li>
+          <li>📈 Dashboard de ganhos de afiliado</li>
+          <li>💼 Acesso prioritário às campanhas</li>
+        </ul>
+        <form action="/business/payments/checkout" method="POST">
+          <input type="hidden" name="plano" value="premium">
+          <button type="submit" class="btn btn-premium">Assinar Agora</button>
+        </form>
+      </div>
+
+      <!-- PLANO VITALÍCIO -->
+      <div class="plano-card vip">
+        <h2>💎 Don Vitalício</h2>
+        <p class="preco">R$ 399 / vitalício</p>
+        <ul>
+          <li>♟️ Acesso vitalício a todos os módulos</li>
+          <li>🧠 IA completa (texto, imagem, vídeo)</li>
+          <li>💰 50% de comissão sobre afiliados</li>
+          <li>🔒 Suporte direto do Don</li>
+        </ul>
+        <form action="/business/payments/checkout" method="POST">
+          <input type="hidden" name="plano" value="vitalicio">
+          <button type="submit" class="btn btn-vip">Entrar para o Círculo Interno</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>“Família, honra, respeito e palavra. No fim, é só isso que fica.”</p>
+    <a href="/" class="btn-voltar">⬅ Voltar ao Hub</a>
+    <small>© 2025 — Cosa Nostra Systems</small>
+  </footer>
+</body>
+</html>

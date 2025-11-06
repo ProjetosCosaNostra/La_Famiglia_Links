@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>⚜️ Sessão Expirada — La Famiglia</title>
+  <style>
+    body {
+      background: radial-gradient(circle at center, #000 40%, #111 100%);
+      color: gold;
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease;
+    }
+    h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      animation: glow 2s infinite alternate;
+    }
+    p {
+      font-size: 16px;
+      opacity: .85;
+      margin-bottom: 30px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      background: gold;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: .3s;
+    }
+    a:hover {
+      background: #c9a122;
+      transform: scale(1.05);
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px gold; }
+      to { text-shadow: 0 0 25px #ffdc73; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>⚠️ Sessão Expirada</h1>
+  <p>Sua conexão com o painel foi encerrada por segurança.<br>
+     Faça login novamente para continuar a operação.</p>
+  <a href="/auth/login">🔑 Retornar ao Login</a>
+</body>
+</html>

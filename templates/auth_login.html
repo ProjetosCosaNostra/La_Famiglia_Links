@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🔐 Acesso Restrito — La Famiglia</title>
+  <style>
+    body {
+      background: black;
+      color: gold;
+      font-family: 'Cinzel', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px gold;
+      text-align: center;
+      width: 320px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid gold;
+      background: transparent;
+      color: gold;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      background: gold;
+      color: black;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover { background: #c9a122; }
+    .erro { color: #ff5555; margin-bottom: 10px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <form method="POST">
+    <h2>🎩 Acesso Restrito</h2>
+    {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+    <input type="text" name="usuario" placeholder="Usuário" required>
+    <input type="password" name="senha" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+  </form>
+</body>
+</html>
