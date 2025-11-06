@@ -1,38 +1,53 @@
-# ============================================
-# 🎩 LA FAMIGLIA LINKS — Dependências Principais
-# Flask + IA + Banco + Utilidades
-# ============================================
-
-# --- Core do Flask ---
-flask==3.0.3
-flask-cors==4.0.0
+# === CORE FLASK ===
+Flask==3.0.3
+Flask-Cors==4.0.0
 gunicorn==23.0.0
 
-# --- Banco de Dados (SQLite) ---
-sqlalchemy==2.0.36
+# === BANCO DE DADOS / ORM ===
+SQLAlchemy==2.0.29
+alembic==1.13.2
 
-# --- Segurança e JWT ---
-pyjwt==2.9.0
+# === IA / HUGGING FACE ===
+transformers==4.45.2
+torch==2.4.1
+diffusers==0.30.2
+accelerate==1.1.0
+safetensors==0.4.5
+sentencepiece==0.2.0
 
-# --- Requests e integração com APIs ---
+# === VISÃO / VÍDEO / MÍDIA ===
+opencv-python==4.10.0.84
+Pillow==11.0.0
+moviepy==1.0.3
+imageio==2.35.1
+imageio-ffmpeg==0.5.1
+pydub==0.25.1
+qrcode==8.2
+
+# === AGENDADORES ===
+APScheduler==3.10.4
+
+# === WEB SCRAPING / TENDÊNCIAS ===
+beautifulsoup4==4.12.3
 requests==2.32.3
+lxml==5.3.0
 
-# --- Suporte a imagens e arquivos estáticos ---
-pillow==11.0.0
-
-# --- Utilidades gerais ---
+# === API / JSON ===
+httpx==0.27.2
 python-dotenv==1.0.1
 
-# --- Módulos opcionais de IA (caso use integração local) ---
-torch==2.4.0
-torchvision==0.19.0
-torchaudio==2.4.0
-transformers==4.46.2
-diffusers==0.31.0
-accelerate==1.10.1
-safetensors==0.6.2
-huggingface-hub==0.35.3
+# === AUTENTICAÇÃO / SEGURANÇA ===
+PyJWT==2.9.0
+Werkzeug==3.0.3
 
-# --- Compatibilidade e desempenho ---
-numpy==1.26.4
-APScheduler==3.10.4
+# === STRIPE / PAGAMENTOS ===
+stripe==10.11.0
+
+# === UTILITÁRIOS ===
+tqdm==4.66.5
+numpy==2.1.1
+pandas==2.2.3
+
+# === DEV / LOGGING ===
+rich==13.9.2
+colorama==0.4.6
