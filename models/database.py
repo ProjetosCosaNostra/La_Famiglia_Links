@@ -1,88 +1,96 @@
-import sqlite3
+# ============================================
+# 🎩 LA FAMIGLIA LINKS — Módulo de Banco de Dados
+# Configuração central do SQLite (Render + Local)
+# ============================================
+
 import os
-import hashlib
+import sqlite3
 
-# Caminho absoluto para o banco de dados
-DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'database.db')
+# Caminho absoluto do banco de dados
+# Em Render, o /app é o diretório de trabalho do container
+DB_PATH = os.path.join(os.getcwd(), "data", "database.db")
 
-# ============================================================
-# 🔧 Função: abrir conexão reutilizável
-# ============================================================
-def get_connection():
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    conn = sqlite3.connect(DB_PATH, check_same_thread=False)
-    return conn
 
 # ============================================================
-# 🔐 Função: gerar hash de senha (SHA256)
-# ============================================================
-def hash_password(password: str) -> str:
-    return hashlib.sha256(password.encode('utf-8')).hexdigest()
-
-# ============================================================
-# 🧱 Função: inicializar banco e tabela users
+# 🧱 Função principal — Inicializa o banco e as tabelas básicas
 # ============================================================
 def init_db():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('''
+    """Cria o banco e as tabelas essenciais se não existirem."""
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
+
+    # ---------------------------
+    # 🧑‍💼 Tabela de usuários
+    # ---------------------------
+    cur.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
+            username TEXT UNIQUE,
+            password_hash TEXT,
+            role TEXT DEFAULT 'admin',
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
         )
-    ''')
+    """)
+
+    # ---------------------------
+    # 🔗 Tabela de links
+    # ---------------------------
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS links (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            url TEXT NOT NULL,
+            ativo INTEGER DEFAULT 1
+        )
+    """)
+
+    # ---------------------------
+    # 📊 Logs administrativos
+    # ---------------------------
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS admin_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            usuario TEXT,
+            acao TEXT,
+            ip TEXT,
+            navegador TEXT,
+            data DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    # ---------------------------
+    # 💼 Registros de afiliados
+    # ---------------------------
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS afiliados (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            produto TEXT,
+            preco REAL,
+            origem TEXT,
+            url TEXT,
+            data DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
     conn.commit()
     conn.close()
+    print("✅ Banco de dados da Família inicializado com sucesso.")
+
 
 # ============================================================
-# 👑 Criar admin padrão (se não existir)
+# ⚙️ Função utilitária — Conexão direta (para queries rápidas)
 # ============================================================
-def create_default_admin():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users WHERE username = ?", ('admin',))
-    if not cursor.fetchone():
-        cursor.execute(
-            "INSERT INTO users (username, password) VALUES (?, ?)",
-            ('admin', hash_password('admin123'))
-        )
-        print("👑 Usuário admin criado com senha padrão 'admin123'")
-    conn.commit()
-    conn.close()
+def get_connection():
+    """Retorna uma conexão ativa com o banco."""
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    return sqlite3.connect(DB_PATH)
+
 
 # ============================================================
-# ➕ Função auxiliar: adicionar novos usuários
+# 🧪 Execução direta (modo debug)
 # ============================================================
-def add_user(username: str, password: str):
-    conn = get_connection()
-    cursor = conn.cursor()
-    try:
-        cursor.execute(
-            "INSERT INTO users (username, password) VALUES (?, ?)",
-            (username, hash_password(password))
-        )
-        conn.commit()
-        print(f"✅ Usuário '{username}' criado com sucesso.")
-    except sqlite3.IntegrityError:
-        print(f"⚠️ Usuário '{username}' já existe.")
-    finally:
-        conn.close()
-# ============================================
-# 🎩 Inicialização das tabelas da Família
-# ============================================
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-
-Base = declarative_base()
-_engine = create_engine("sqlite:///lafamiglia.db", connect_args={"check_same_thread": False})
-_Session = sessionmaker(bind=_engine)
-
-def get_db():
-    return _Session()
-
-def init_db():
-    """Cria as tabelas se ainda não existirem."""
-    from models.admin_logs_model import AdminLog
-    Base.metadata.create_all(_engine)
-    print("✅ Banco de dados da Família inicializado.")
+if __name__ == "__main__":
+    print("🔧 Inicializando banco manualmente...")
+    init_db()
+    print(f"📁 Banco criado em: {DB_PATH}")
