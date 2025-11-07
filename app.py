@@ -1,149 +1,160 @@
 # ============================================
-# 🎩 LA FAMIGLIA LINKS — Flask Principal
-# Hub dinâmico + IA + Painéis + Admin
+# 🎩 LA FAMIGLIA LINKS — WSGI / Bootstrap Seguro
 # ============================================
 
 import os
 from flask import Flask, render_template, jsonify
-from flask_cors import CORS
 
-# ============================================================
-# 🧱 Inicialização do banco de dados na primeira execução
-# ============================================================
-try:
-    from models.database import init_db
-    init_db()
-    print("✅ Banco de dados inicializado com sucesso.")
-except Exception as e:
-    print(f"⚠️ Banco não inicializado automaticamente: {e}")
+# -----------------------------------------------------------------------------
+# Flags por ambiente (evita cair no boot):
+# -----------------------------------------------------------------------------
+ENABLE_SCHEDULERS = os.getenv("ENABLE_SCHEDULERS", "false").lower() in ("1", "true", "yes")
+ENABLE_HEAVY_MODULES = os.getenv("ENABLE_HEAVY_MODULES", "true").lower() in ("1", "true", "yes")
 
-# ============================================================
-# 🔹 Importações principais
-# ============================================================
-from routes.ia_routes import ia_bp
-from routes.links_routes import links_bp
-from models.links_model import listar_links
-from auth import auth_bp
+def create_app() -> Flask:
+    app = Flask(__name__)
 
-# ============================================================
-# 🔹 Módulos de Negócio
-# ============================================================
-from business.trends.routes import trends_bp
-from business.payments.routes import payments_bp
-from business.affiliates.routes import affiliates_bp
-from business.media_ai.routes import media_bp
-from business.autopost.routes import autopost_bp
-from business.reports.routes import reports_bp
+    # ---- CORS opcional
+    try:
+        from flask_cors import CORS
+        CORS(app)
+    except Exception as e:
+        print(f"⚠️ CORS indisponível: {e}")
 
-# Inteligência de Afiliados (IA + coleta automática)
-try:
-    from business.affiliates_intel.routes import affiliates_intel_bp
-except ModuleNotFoundError:
-    affiliates_intel_bp = None
+    # ---- Healthcheck mínimo
+    @app.route("/healthz")
+    def healthz():
+        return jsonify({"status": "ok"}), 200
 
-# Painel Business (opcional)
-try:
-    from business.dashboard.routes import business_bp
-except ModuleNotFoundError:
-    business_bp = None
+    # ---- Banco (não falhar o boot)
+    try:
+        from models.database import init_db
+        init_db()
+        print("✅ Banco inicializado/validado.")
+    except Exception as e:
+        print(f"⚠️ Banco não inicializado (seguindo sem travar): {e}")
 
-# ============================================================
-# 🧱 Inicialização da aplicação Flask
-# ============================================================
-app = Flask(__name__)
-CORS(app)
+    # ---- Registrar rotas essenciais primeiro (para garantir boot)
+    try:
+        from routes.links_routes import links_bp
+        from models.links_model import listar_links
 
-# ============================================================
-# 🔗 Registro de Blueprints
-# ============================================================
-app.register_blueprint(auth_bp, url_prefix="/auth")
-app.register_blueprint(ia_bp, url_prefix="/api")
-app.register_blueprint(links_bp, url_prefix="/links")
-app.register_blueprint(trends_bp, url_prefix="/business/trends")
-app.register_blueprint(payments_bp, url_prefix="/business/payments")
-app.register_blueprint(affiliates_bp, url_prefix="/business/affiliates")
-app.register_blueprint(media_bp, url_prefix="/business/media")
-app.register_blueprint(autopost_bp, url_prefix="/business/autopost")
-app.register_blueprint(reports_bp, url_prefix="/business/reports")
+        app.register_blueprint(links_bp, url_prefix="/links")
 
-# 🔹 Inteligência de Afiliados (IA + Coleta automática)
-if affiliates_intel_bp:
-    app.register_blueprint(affiliates_intel_bp, url_prefix="/business/affiliates_intel")
+        @app.route("/")
+        def home():
+            try:
+                links = listar_links()
+            except Exception as e:
+                print(f"⚠️ Falha ao listar links: {e}")
+                links = []
+            return render_template("index.html", links=links)
 
-# 🔹 Painel Administrativo (Dashboard)
-if business_bp:
-    app.register_blueprint(business_bp, url_prefix="/business")
+        @app.route("/mobile")
+        def mobile():
+            try:
+                links = listar_links()
+            except Exception as e:
+                print(f"⚠️ Falha ao listar links (mobile): {e}")
+                links = []
+            return render_template("mobile/index_mobile.html", links=links)
 
-# ============================================================
-# 🏛️ Rotas principais — Hub & Mobile
-# ============================================================
-@app.route("/")
-def home():
-    """Página principal com os links dinâmicos da Família."""
-    links = listar_links()
-    return render_template("index.html", links=links)
+    except Exception as e:
+        print(f"❗ Erro ao registrar rotas essenciais: {e}")
 
-@app.route("/mobile")
-def mobile():
-    """Versão mobile (9:16) — ideal para QR, reels e stories."""
-    links = listar_links()
-    return render_template("mobile/index_mobile.html", links=links)
+    # ---- Módulos pesados/IA: só tentamos se habilitado
+    if ENABLE_HEAVY_MODULES:
+        _register_optional_blueprints(app)
+        _start_optional_schedulers()
+        _generate_qrcode_safe()
+    else:
+        print("⏭️ ENABLE_HEAVY_MODULES desativado — subindo somente núcleo.")
 
-@app.route("/healthz")
-def healthz():
-    """Health-check para Render e monitoramento."""
-    return jsonify({"status": "ok"}), 200
+    return app
 
-# ============================================================
-# 🕰️ Inicialização de Schedulers (IA, AutoPost, Afiliados, Mídia)
-# ============================================================
-try:
-    from backend.scheduler_job import iniciar_scheduler
-    iniciar_scheduler()
-    print("⚙️ Scheduler principal ativo.")
-except Exception as e:
-    print(f"⚠️ Falha ao iniciar scheduler principal: {e}")
 
-try:
-    from business.autopost.scheduler import iniciar_autopost_scheduler
-    iniciar_autopost_scheduler()
-    print("📢 Scheduler AutoPost ativo.")
-except Exception as e:
-    print(f"⚠️ Falha ao iniciar AutoPost Scheduler: {e}")
+def _register_optional_blueprints(app: Flask):
+    def _try(bp_path: str, attr: str, url_prefix: str):
+        try:
+            mod = __import__(bp_path, fromlist=[attr])
+            bp = getattr(mod, attr)
+            app.register_blueprint(bp, url_prefix=url_prefix)
+            print(f"✅ Blueprint registrado: {bp_path} -> {url_prefix}")
+        except Exception as e:
+            print(f"⚠️ Falha ao registrar {bp_path}: {e}")
 
-try:
-    from business.affiliates_intel.scheduler import iniciar_affiliates_scheduler
-    iniciar_affiliates_scheduler()
-    print("🤖 Scheduler de Afiliados Inteligentes ativo.")
-except Exception as e:
-    print(f"⚠️ Falha ao iniciar Scheduler de Afiliados: {e}")
+    # IA básica
+    _try("routes.ia_routes", "ia_bp", "/api")
 
-try:
-    from business.media_ai.scheduler_media import iniciar_scheduler_midia
-    iniciar_scheduler_midia()
-    print("🎬 Scheduler de Mídia IA ativo (banners + vídeos automáticos).")
-except Exception as e:
-    print(f"⚠️ Falha ao iniciar Scheduler de Mídia IA: {e}")
+    # Business modules
+    _try("business.trends.routes", "trends_bp", "/business/trends")
+    _try("business.payments.routes", "payments_bp", "/business/payments")
+    _try("business.affiliates.routes", "affiliates_bp", "/business/affiliates")
+    _try("business.media_ai.routes", "media_bp", "/business/media")
+    _try("business.autopost.routes", "autopost_bp", "/business/autopost")
 
-# ============================================================
-# 📱 Geração Automática do QR Code (startup)
-# ============================================================
-try:
-    from utils.qrcode_generator import gerar_qrcode_famiglia
-    base_url = (
-        os.getenv("FAMIGLIA_URL")
-        or os.getenv("RENDER_EXTERNAL_URL")
-        or "http://127.0.0.1:10000"
-    )
-    gerar_qrcode_famiglia(base_url)
-    print("📱 QR Code da Família atualizado com sucesso.")
-except Exception as e:
-    print(f"⚠️ Falha ao gerar QR Code: {e}")
+    # Inteligência de afiliados (opcional)
+    try:
+        from business.affiliates_intel.routes import affiliates_intel_bp
+        app.register_blueprint(affiliates_intel_bp, url_prefix="/business/affiliates_intel")
+        print("✅ affiliates_intel habilitado.")
+    except Exception as e:
+        print(f"ℹ️ affiliates_intel indisponível: {e}")
 
-# ============================================================
-# 🚀 Execução Local
-# ============================================================
+    # Dashboard admin (opcional)
+    try:
+        from business.dashboard.routes import business_bp
+        app.register_blueprint(business_bp, url_prefix="/business")
+        print("✅ Dashboard business habilitado.")
+    except Exception as e:
+        print(f"ℹ️ Dashboard business indisponível: {e}")
+
+    # Auth (opcional — não trava boot)
+    try:
+        from auth import auth_bp
+        app.register_blueprint(auth_bp, url_prefix="/auth")
+        print("✅ Auth habilitado.")
+    except Exception as e:
+        print(f"ℹ️ Auth indisponível: {e}")
+
+
+def _start_optional_schedulers():
+    if not ENABLE_SCHEDULERS:
+        print("⏸️ Schedulers desativados por ENABLE_SCHEDULERS.")
+        return
+    # cada scheduler protegido individualmente
+    for label, path, func in [
+        ("principal", "backend.scheduler_job", "iniciar_scheduler"),
+        ("autopost", "business.autopost.scheduler", "iniciar_autopost_scheduler"),
+        ("afiliados", "business.affiliates_intel.scheduler", "iniciar_affiliates_scheduler"),
+        ("media_ai", "business.media_ai.scheduler_media", "iniciar_scheduler_media"),
+    ]:
+        try:
+            mod = __import__(path, fromlist=[func])
+            getattr(mod, func)()
+            print(f"🕰️ Scheduler {label} iniciado.")
+        except Exception as e:
+            print(f"⚠️ Scheduler {label} não iniciado: {e}")
+
+
+def _generate_qrcode_safe():
+    try:
+        from utils.qrcode_generator import gerar_qrcode_famiglia
+        base_url = (
+            os.getenv("FAMIGLIA_URL")
+            or os.getenv("RENDER_EXTERNAL_URL")
+            or "http://127.0.0.1:10000"
+        )
+        gerar_qrcode_famiglia(base_url)
+        print("📱 QRCode gerado/atualizado.")
+    except Exception as e:
+        print(f"⚠️ Falha ao gerar QRCode (seguindo): {e}")
+
+
+# WSGI entry
+app = create_app()
+
 if __name__ == "__main__":
+    # Execução local (Render usa gunicorn)
     port = int(os.getenv("PORT", "10000"))
-    print(f"🚀 Servidor La Famiglia Links rodando em http://127.0.0.1:{port}")
     app.run(host="0.0.0.0", port=port, debug=False)
