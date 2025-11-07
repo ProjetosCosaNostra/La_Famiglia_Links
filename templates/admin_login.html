@@ -1,49 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎩 La Famiglia Links — Acesso Restrito</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar na Família</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #ffd700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        form {
+            background-color: rgba(20, 20, 20, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            background: #111;
+            border: 1px solid #ffd700;
+            border-radius: 6px;
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        button {
+            background: #ffd700;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #ffcc33;
+            transform: scale(1.05);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="overlay"></div>
-
-  <div class="login-container">
-    <div class="logo-section">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo da Família" class="logo">
-      <h1>La Famiglia Links</h1>
-      <p class="slogan">“Onde os aliados se conectam.”</p>
-      <hr>
-    </div>
-
-    <form action="/auth/login" method="POST" class="login-form">
-      <div class="input-group">
-        <label for="username">Usuário</label>
-        <input type="text" id="username" name="username" placeholder="Digite seu nome de acesso" required>
-      </div>
-
-      <div class="input-group">
-        <label for="password">Senha</label>
-        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
-      </div>
-
-      <button type="submit" class="btn-login">Entrar</button>
-
-      <p class="note">⚜️ Acesso exclusivo aos membros da Família.</p>
+    <div class="icon">🎩</div>
+    <h1>La Famiglia Links</h1>
+    <form method="POST" action="/auth/login">
+        <input type="text" name="username" placeholder="Usuário" required />
+        <input type="password" name="password" placeholder="Senha" required />
+        <button type="submit">Entrar na Família</button>
     </form>
-
-    <footer>
-      <p>“Família, honra, respeito e palavra. No fim, é só isso que fica.”</p>
-      <small>© 2025 — Cosa Nostra Systems</small>
-    </footer>
-  </div>
-
-  <script>
-    // Efeito de entrada cinematográfico
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("show");
-    });
-  </script>
+    <footer>© La Famiglia Systems — 2025</footer>
 </body>
 </html>
