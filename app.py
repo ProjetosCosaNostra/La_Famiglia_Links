@@ -52,6 +52,7 @@ media_bp = safe_import_bp("business.media_ai.routes", "media_bp")
 autopost_bp = safe_import_bp("business.autopost.routes", "autopost_bp")
 affiliates_intel_bp = safe_import_bp("business.affiliates_intel.routes", "affiliates_intel_bp")
 reports_bp = safe_import_bp("business.reports.routes", "reports_bp")
+dashboard_bp = safe_import_bp("business.dashboard.routes", "dashboard_bp")  # ✅ Painel administrativo
 
 # ============================================
 # 🔗 Registro dos Blueprints
@@ -73,6 +74,7 @@ register_blueprint_if_exists(media_bp, "/business/media")
 register_blueprint_if_exists(autopost_bp, "/business/autopost")
 register_blueprint_if_exists(affiliates_intel_bp, "/business/affiliates_intel")
 register_blueprint_if_exists(reports_bp, "/business/reports")
+register_blueprint_if_exists(dashboard_bp, "/business")  # ✅ Rota do painel administrativo
 
 print("✅ Todos os blueprints foram processados com segurança.")
 
@@ -83,7 +85,7 @@ print("✅ Todos os blueprints foram processados com segurança.")
 def home():
     """Página principal com fallback garantido."""
     try:
-        from models.links_model import listar_links
+        from models.database import listar_links
         links = listar_links()
     except Exception as e:
         print(f"⚠️ Falha ao listar links: {e}")
@@ -108,7 +110,7 @@ def home():
 def mobile():
     """Versão 9:16 para QR, reels e stories."""
     try:
-        from models.links_model import listar_links
+        from models.database import listar_links
         links = listar_links()
         return render_template("mobile/index_mobile.html", links=links)
     except Exception as e:
