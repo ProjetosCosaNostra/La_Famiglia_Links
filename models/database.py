@@ -1,96 +1,64 @@
 # ============================================
-# 🎩 LA FAMIGLIA LINKS — Módulo de Banco de Dados
-# Configuração central do SQLite (Render + Local)
+# 📦 LA FAMIGLIA DATABASE — Inicialização Segura
 # ============================================
-
 import os
 import sqlite3
+from werkzeug.security import generate_password_hash
 
-# Caminho absoluto do banco de dados
-# Em Render, o /app é o diretório de trabalho do container
-DB_PATH = os.path.join(os.getcwd(), "data", "database.db")
+DB_PATH = "data/database.db"
 
-
-# ============================================================
-# 🧱 Função principal — Inicializa o banco e as tabelas básicas
-# ============================================================
-def init_db():
-    """Cria o banco e as tabelas essenciais se não existirem."""
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
-    cur = conn.cursor()
+    conn.row_factory = sqlite3.Row
+    return conn
 
-    # ---------------------------
-    # 🧑‍💼 Tabela de usuários
-    # ---------------------------
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE,
-            password_hash TEXT,
-            role TEXT DEFAULT 'admin',
-            created_at TEXT DEFAULT CURRENT_TIMESTAMP
-        )
+def init_db():
+    """Cria as tabelas principais da aplicação."""
+    os.makedirs("data", exist_ok=True)
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        password_hash TEXT NOT NULL,
+        role TEXT DEFAULT 'admin',
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )
     """)
 
-    # ---------------------------
-    # 🔗 Tabela de links
-    # ---------------------------
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS links (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL,
-            url TEXT NOT NULL,
-            ativo INTEGER DEFAULT 1
-        )
-    """)
-
-    # ---------------------------
-    # 📊 Logs administrativos
-    # ---------------------------
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS admin_logs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            usuario TEXT,
-            acao TEXT,
-            ip TEXT,
-            navegador TEXT,
-            data DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
-    """)
-
-    # ---------------------------
-    # 💼 Registros de afiliados
-    # ---------------------------
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS afiliados (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            produto TEXT,
-            preco REAL,
-            origem TEXT,
-            url TEXT,
-            data DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS links (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT,
+        url TEXT,
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )
     """)
 
     conn.commit()
     conn.close()
-    print("✅ Banco de dados da Família inicializado com sucesso.")
+    print("✅ Banco de dados da Família inicializado.")
 
-
-# ============================================================
-# ⚙️ Função utilitária — Conexão direta (para queries rápidas)
-# ============================================================
-def get_connection():
-    """Retorna uma conexão ativa com o banco."""
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    return sqlite3.connect(DB_PATH)
-
-
-# ============================================================
-# 🧪 Execução direta (modo debug)
-# ============================================================
-if __name__ == "__main__":
-    print("🔧 Inicializando banco manualmente...")
-    init_db()
-    print(f"📁 Banco criado em: {DB_PATH}")
+# ============================================
+# 👑 Criar usuário padrão (Don)
+# ============================================
+def create_default_admin():
+    """Garante que o Don (admin principal) exista."""
+    os.makedirs("data", exist_ok=True)
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id FROM users WHERE username = 'don'")
+    exists = cursor.fetchone()
+    if not exists:
+        pwd_hash = generate_password_hash("famiglia123")
+        cursor.execute(
+            "INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)",
+            ("don", pwd_hash, "admin")
+        )
+        conn.commit()
+        print("👑 Don criado com sucesso (usuário: don / senha: famiglia123)")
+    else:
+        print("✅ Don já existe no banco.")
+    conn.close()
