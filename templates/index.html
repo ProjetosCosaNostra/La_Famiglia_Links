@@ -1,43 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎩 La Famiglia Links — Onde os aliados se conectam.</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎩 La Famiglia Links</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <div class="overlay"></div>
-
   <div class="container">
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo La Famiglia" class="logo" />
-    <h1>🎩 La Famiglia Links</h1>
-    <p class="slogan">“Onde os aliados se conectam.”</p>
+    <header>
+      <img src="{{ url_for('static', filename='images/qrcode_famiglia.png') }}" class="logo" alt="QR La Famiglia">
+      <h1>🎩 La Famiglia Links</h1>
+      <p class="slogan">Onde os aliados se conectam com respeito.</p>
+    </header>
 
-    <!-- 🔗 Lista dinâmica de links -->
-    <div class="links">
-      {% for link in links %}
-        <a href="{{ link.url }}" target="_blank" class="link-item">{{ link.nome }}</a>
+    <section class="links">
+      {% if links %}
+        {% for link in links %}
+          <a href="{{ link.url }}" target="_blank" class="btn">{{ link.nome }}</a>
+        {% endfor %}
       {% else %}
-        <p class="empty">⚜️ Nenhum link disponível no momento.</p>
-      {% endfor %}
-    </div>
-
-    <!-- CTA principal -->
-    <div class="cta">
-      <a href="https://t.me/cosanostrafam" target="_blank" class="join-btn">💬 Entre para a Família</a>
-      <a href="/auth/login" class="admin-btn">👑 Acesso Restrito</a>
-    </div>
-
-    <!-- QR Code -->
-    <div class="qrcode">
-      <img src="{{ url_for('static', filename='images/qrcode_famiglia.png') }}" alt="QR Code La Famiglia" />
-      <p class="qrcode-text">Aponte a câmera e entre para a Família</p>
-    </div>
+        <p class="empty">Nenhum link cadastrado ainda. Aguarde o Don autorizar o acesso.</p>
+      {% endif %}
+    </section>
 
     <footer>
-      <p>“Família, honra, respeito e palavra. No fim, é só isso que fica.”</p>
-      <small>© 2025 — Cosa Nostra Systems</small>
+      <p>⚜️ La Famiglia Systems © 2025</p>
     </footer>
   </div>
 </body>

@@ -1,160 +1,131 @@
 # ============================================
-# 🎩 LA FAMIGLIA LINKS — WSGI / Bootstrap Seguro
+# 🎩 LA FAMIGLIA LINKS — Flask Principal
+# Hub dinâmico + IA + Painéis + Admin
 # ============================================
 
 import os
 from flask import Flask, render_template, jsonify
+from flask_cors import CORS
 
-# -----------------------------------------------------------------------------
-# Flags por ambiente (evita cair no boot):
-# -----------------------------------------------------------------------------
-ENABLE_SCHEDULERS = os.getenv("ENABLE_SCHEDULERS", "false").lower() in ("1", "true", "yes")
-ENABLE_HEAVY_MODULES = os.getenv("ENABLE_HEAVY_MODULES", "true").lower() in ("1", "true", "yes")
+# Inicializa app Flask
+app = Flask(__name__)
+CORS(app)
 
-def create_app() -> Flask:
-    app = Flask(__name__)
+# ============================================
+# 🧱 Banco de dados inicial
+# ============================================
+try:
+    from models.database import init_db
+    init_db()
+    print("✅ Banco de dados inicializado com sucesso.")
+except Exception as e:
+    print(f"⚠️ Banco não inicializado automaticamente: {e}")
 
-    # ---- CORS opcional
+# ============================================
+# 🔹 Importações principais
+# ============================================
+try:
+    from routes.ia_routes import ia_bp
+    from routes.links_routes import links_bp
+    from models.links_model import listar_links
+    from auth import auth_bp
+except Exception as e:
+    print(f"⚠️ Falha ao importar módulos principais: {e}")
+
+# ============================================
+# 🔹 Módulos de negócio
+# ============================================
+def safe_import(module_name, bp_name):
     try:
-        from flask_cors import CORS
-        CORS(app)
+        module = __import__(module_name, fromlist=[bp_name])
+        return getattr(module, bp_name)
     except Exception as e:
-        print(f"⚠️ CORS indisponível: {e}")
+        print(f"⚠️ Falha ao registrar {module_name}: {e}")
+        return None
 
-    # ---- Healthcheck mínimo
-    @app.route("/healthz")
-    def healthz():
-        return jsonify({"status": "ok"}), 200
+trends_bp = safe_import("business.trends.routes", "trends_bp")
+payments_bp = safe_import("business.payments.routes", "payments_bp")
+affiliates_bp = safe_import("business.affiliates.routes", "affiliates_bp")
+media_bp = safe_import("business.media_ai.routes", "media_bp")
+autopost_bp = safe_import("business.autopost.routes", "autopost_bp")
+affiliates_intel_bp = safe_import("business.affiliates_intel.routes", "affiliates_intel_bp")
+reports_bp = safe_import("business.reports.routes", "reports_bp")
 
-    # ---- Banco (não falhar o boot)
+# ============================================
+# 🔗 Registro de Blueprints
+# ============================================
+app.register_blueprint(auth_bp, url_prefix="/auth")
+
+if ia_bp: app.register_blueprint(ia_bp, url_prefix="/api")
+if links_bp: app.register_blueprint(links_bp, url_prefix="/links")
+if trends_bp: app.register_blueprint(trends_bp, url_prefix="/business/trends")
+if payments_bp: app.register_blueprint(payments_bp, url_prefix="/business/payments")
+if affiliates_bp: app.register_blueprint(affiliates_bp, url_prefix="/business/affiliates")
+if media_bp: app.register_blueprint(media_bp, url_prefix="/business/media")
+if autopost_bp: app.register_blueprint(autopost_bp, url_prefix="/business/autopost")
+if affiliates_intel_bp: app.register_blueprint(affiliates_intel_bp, url_prefix="/business/affiliates_intel")
+if reports_bp: app.register_blueprint(reports_bp, url_prefix="/business/reports")
+
+print("✅ Blueprints registrados com sucesso.")
+
+# ============================================
+# 🏛️ Rotas principais — Hub & Mobile
+# ============================================
+@app.route("/")
+def home():
+    """Página principal com fallback garantido."""
     try:
-        from models.database import init_db
-        init_db()
-        print("✅ Banco inicializado/validado.")
-    except Exception as e:
-        print(f"⚠️ Banco não inicializado (seguindo sem travar): {e}")
-
-    # ---- Registrar rotas essenciais primeiro (para garantir boot)
-    try:
-        from routes.links_routes import links_bp
         from models.links_model import listar_links
-
-        app.register_blueprint(links_bp, url_prefix="/links")
-
-        @app.route("/")
-        def home():
-            try:
-                links = listar_links()
-            except Exception as e:
-                print(f"⚠️ Falha ao listar links: {e}")
-                links = []
-            return render_template("index.html", links=links)
-
-        @app.route("/mobile")
-        def mobile():
-            try:
-                links = listar_links()
-            except Exception as e:
-                print(f"⚠️ Falha ao listar links (mobile): {e}")
-                links = []
-            return render_template("mobile/index_mobile.html", links=links)
-
+        links = listar_links()
     except Exception as e:
-        print(f"❗ Erro ao registrar rotas essenciais: {e}")
+        print(f"⚠️ Falha ao listar links: {e}")
+        links = []
 
-    # ---- Módulos pesados/IA: só tentamos se habilitado
-    if ENABLE_HEAVY_MODULES:
-        _register_optional_blueprints(app)
-        _start_optional_schedulers()
-        _generate_qrcode_safe()
-    else:
-        print("⏭️ ENABLE_HEAVY_MODULES desativado — subindo somente núcleo.")
-
-    return app
-
-
-def _register_optional_blueprints(app: Flask):
-    def _try(bp_path: str, attr: str, url_prefix: str):
-        try:
-            mod = __import__(bp_path, fromlist=[attr])
-            bp = getattr(mod, attr)
-            app.register_blueprint(bp, url_prefix=url_prefix)
-            print(f"✅ Blueprint registrado: {bp_path} -> {url_prefix}")
-        except Exception as e:
-            print(f"⚠️ Falha ao registrar {bp_path}: {e}")
-
-    # IA básica
-    _try("routes.ia_routes", "ia_bp", "/api")
-
-    # Business modules
-    _try("business.trends.routes", "trends_bp", "/business/trends")
-    _try("business.payments.routes", "payments_bp", "/business/payments")
-    _try("business.affiliates.routes", "affiliates_bp", "/business/affiliates")
-    _try("business.media_ai.routes", "media_bp", "/business/media")
-    _try("business.autopost.routes", "autopost_bp", "/business/autopost")
-
-    # Inteligência de afiliados (opcional)
     try:
-        from business.affiliates_intel.routes import affiliates_intel_bp
-        app.register_blueprint(affiliates_intel_bp, url_prefix="/business/affiliates_intel")
-        print("✅ affiliates_intel habilitado.")
+        return render_template("index.html", links=links)
     except Exception as e:
-        print(f"ℹ️ affiliates_intel indisponível: {e}")
+        print(f"⚠️ Falha ao renderizar index.html: {e}")
+        return """
+        <html>
+            <head><title>La Famiglia Links</title></head>
+            <body style='background:black;color:gold;text-align:center;font-family:Arial'>
+                <h1>🎩 La Famiglia Links</h1>
+                <p>O hub está online, Don. Mas o <b>template principal</b> ainda não foi carregado.</p>
+            </body>
+        </html>
+        """, 200
 
-    # Dashboard admin (opcional)
+@app.route("/mobile")
+def mobile():
     try:
-        from business.dashboard.routes import business_bp
-        app.register_blueprint(business_bp, url_prefix="/business")
-        print("✅ Dashboard business habilitado.")
+        from models.links_model import listar_links
+        links = listar_links()
+        return render_template("mobile/index_mobile.html", links=links)
     except Exception as e:
-        print(f"ℹ️ Dashboard business indisponível: {e}")
+        print(f"⚠️ Falha na rota /mobile: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-    # Auth (opcional — não trava boot)
-    try:
-        from auth import auth_bp
-        app.register_blueprint(auth_bp, url_prefix="/auth")
-        print("✅ Auth habilitado.")
-    except Exception as e:
-        print(f"ℹ️ Auth indisponível: {e}")
+@app.route("/healthz")
+def healthz():
+    return jsonify({"status": "ok"}), 200
 
+# ============================================
+# 📱 Geração Automática do QR Code (startup)
+# ============================================
+try:
+    from utils.qrcode_generator import gerar_qrcode_famiglia
+    base_url = (
+        os.getenv("FAMIGLIA_URL")
+        or os.getenv("RENDER_EXTERNAL_URL")
+        or "http://127.0.0.1:10000"
+    )
+    gerar_qrcode_famiglia(base_url)
+except Exception as e:
+    print(f"⚠️ Falha ao gerar QR Code: {e}")
 
-def _start_optional_schedulers():
-    if not ENABLE_SCHEDULERS:
-        print("⏸️ Schedulers desativados por ENABLE_SCHEDULERS.")
-        return
-    # cada scheduler protegido individualmente
-    for label, path, func in [
-        ("principal", "backend.scheduler_job", "iniciar_scheduler"),
-        ("autopost", "business.autopost.scheduler", "iniciar_autopost_scheduler"),
-        ("afiliados", "business.affiliates_intel.scheduler", "iniciar_affiliates_scheduler"),
-        ("media_ai", "business.media_ai.scheduler_media", "iniciar_scheduler_media"),
-    ]:
-        try:
-            mod = __import__(path, fromlist=[func])
-            getattr(mod, func)()
-            print(f"🕰️ Scheduler {label} iniciado.")
-        except Exception as e:
-            print(f"⚠️ Scheduler {label} não iniciado: {e}")
-
-
-def _generate_qrcode_safe():
-    try:
-        from utils.qrcode_generator import gerar_qrcode_famiglia
-        base_url = (
-            os.getenv("FAMIGLIA_URL")
-            or os.getenv("RENDER_EXTERNAL_URL")
-            or "http://127.0.0.1:10000"
-        )
-        gerar_qrcode_famiglia(base_url)
-        print("📱 QRCode gerado/atualizado.")
-    except Exception as e:
-        print(f"⚠️ Falha ao gerar QRCode (seguindo): {e}")
-
-
-# WSGI entry
-app = create_app()
-
+# ============================================
+# 🚀 Execução Local
+# ============================================
 if __name__ == "__main__":
-    # Execução local (Render usa gunicorn)
     port = int(os.getenv("PORT", "10000"))
     app.run(host="0.0.0.0", port=port, debug=False)
