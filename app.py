@@ -7,33 +7,41 @@ import os
 from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 
-# Inicializa app Flask
+# ============================================
+# 🏛️ Inicialização da Aplicação
+# ============================================
 app = Flask(__name__)
 CORS(app)
 
 # ============================================
-# 🧱 Banco de dados inicial
+# 🧱 Banco de Dados — Inicialização Segura
 # ============================================
 try:
-    from models.database import init_db
+    from models.database import init_db, create_default_admin
     init_db()
-    print("✅ Banco de dados inicializado com sucesso.")
+    create_default_admin()
+    print("✅ Banco e admin da Família prontos.")
 except Exception as e:
     print(f"⚠️ Banco não inicializado automaticamente: {e}")
 
 # ============================================
-# 🔹 Importações principais
+# 🔹 Importações Principais
 # ============================================
+auth_bp = None
+try:
+    from auth import auth_bp
+except Exception as e:
+    print(f"⚠️ Módulo de autenticação indisponível: {e}")
+
 try:
     from routes.ia_routes import ia_bp
     from routes.links_routes import links_bp
     from models.links_model import listar_links
-    from auth import auth_bp
 except Exception as e:
-    print(f"⚠️ Falha ao importar módulos principais: {e}")
+    print(f"⚠️ Falha ao importar rotas principais: {e}")
 
 # ============================================
-# 🔹 Módulos de negócio
+# 🔹 Importação Segura dos Módulos de Negócio
 # ============================================
 def safe_import(module_name, bp_name):
     try:
@@ -52,9 +60,12 @@ affiliates_intel_bp = safe_import("business.affiliates_intel.routes", "affiliate
 reports_bp = safe_import("business.reports.routes", "reports_bp")
 
 # ============================================
-# 🔗 Registro de Blueprints
+# 🔗 Registro dos Blueprints
 # ============================================
-app.register_blueprint(auth_bp, url_prefix="/auth")
+if auth_bp:
+    app.register_blueprint(auth_bp, url_prefix="/auth")
+else:
+    print("⚠️ Blueprint /auth não foi registrado (módulo ausente).")
 
 if ia_bp: app.register_blueprint(ia_bp, url_prefix="/api")
 if links_bp: app.register_blueprint(links_bp, url_prefix="/links")
@@ -69,7 +80,7 @@ if reports_bp: app.register_blueprint(reports_bp, url_prefix="/business/reports"
 print("✅ Blueprints registrados com sucesso.")
 
 # ============================================
-# 🏛️ Rotas principais — Hub & Mobile
+# 🏠 Rotas Principais — Hub & Mobile
 # ============================================
 @app.route("/")
 def home():
@@ -95,8 +106,10 @@ def home():
         </html>
         """, 200
 
+
 @app.route("/mobile")
 def mobile():
+    """Versão 9:16 para QR, reels e stories."""
     try:
         from models.links_model import listar_links
         links = listar_links()
@@ -105,12 +118,25 @@ def mobile():
         print(f"⚠️ Falha na rota /mobile: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
 
+
 @app.route("/healthz")
 def healthz():
+    """Endpoint para verificação de saúde."""
     return jsonify({"status": "ok"}), 200
 
 # ============================================
-# 📱 Geração Automática do QR Code (startup)
+# 📅 Schedulers — Ativação Condicional
+# ============================================
+if os.getenv("ENABLE_SCHEDULERS", "false").lower() == "true":
+    try:
+        from backend.scheduler_job import iniciar_scheduler
+        iniciar_scheduler()
+        print("⚙️ Scheduler principal ativo.")
+    except Exception as e:
+        print(f"⚠️ Falha ao iniciar scheduler principal: {e}")
+
+# ============================================
+# 📱 QR Code Automático (Startup)
 # ============================================
 try:
     from utils.qrcode_generator import gerar_qrcode_famiglia
@@ -120,6 +146,7 @@ try:
         or "http://127.0.0.1:10000"
     )
     gerar_qrcode_famiglia(base_url)
+    print("✅ QR Code atualizado com sucesso.")
 except Exception as e:
     print(f"⚠️ Falha ao gerar QR Code: {e}")
 
@@ -128,4 +155,5 @@ except Exception as e:
 # ============================================
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "10000"))
+    print(f"🚀 Iniciando servidor na porta {port} ...")
     app.run(host="0.0.0.0", port=port, debug=False)
