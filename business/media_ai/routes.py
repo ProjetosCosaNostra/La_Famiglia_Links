@@ -1,152 +1,86 @@
 # ============================================
-# 🎬 LA FAMIGLIA LINKS — Módulo de Mídia IA
-# Gera banners e vídeos automáticos para reels e stories
+# 🎬 LA FAMIGLIA MEDIA AI — Geração de Banners e Vídeos
 # ============================================
 
 from flask import Blueprint, jsonify, request
 import os
-from datetime import datetime
-
 from .video_generator import gerar_video_publicitario
-from .text_overlay import gerar_banner_com_texto
-from .models import inserir_video, inserir_banner
+from .post_generator import gerar_banner_publicitario
+from .models import inserir_video, listar_videos
 
 media_bp = Blueprint("media_bp", __name__, url_prefix="/business/media")
 
 # ============================================================
-# 🎨 1️⃣ GERAR BANNER AUTOMÁTICO
-# ============================================================
-@media_bp.route("/generate_banner", methods=["POST"])
-def generate_banner():
-    """
-    JSON esperado:
-    {
-        "titulo": "Relógio Dourado",
-        "descricao": "Poder, elegância e respeito. A escolha dos aliados.",
-        "imagem": "static/generated/relogio.png"
-    }
-    """
-    data = request.get_json() or {}
-    titulo = data.get("titulo")
-    descricao = data.get("descricao")
-    imagem = data.get("imagem")
-
-    if not all([titulo, descricao, imagem]):
-        return jsonify({"ok": False, "error": "Campos obrigatórios: titulo, descricao, imagem"}), 400
-
-    try:
-        out_path = gerar_banner_com_texto(imagem, titulo, descricao)
-        inserir_banner(titulo, descricao, imagem, out_path)
-        return jsonify({"ok": True, "banner_url": out_path})
-    except Exception as e:
-        return jsonify({"ok": False, "error": str(e)}), 500
-
-
-# ============================================================
-# 🎬 2️⃣ GERAR VÍDEO AUTOMÁTICO
-# ============================================================
-@media_bp.route("/generate_video", methods=["POST"])
-def generate_video():
-    """
-    JSON esperado:
-    {
-        "titulo": "Canivete Elite",
-        "descricao": "Precisão em cada lâmina. Feito para quem comanda.",
-        "imagem": "static/generated/canivete.png"
-    }
-    """
-    data = request.get_json() or {}
-    titulo = data.get("titulo")
-    descricao = data.get("descricao")
-    imagem = data.get("imagem")
-
-    if not all([titulo, descricao, imagem]):
-        return jsonify({"ok": False, "error": "Campos obrigatórios: titulo, descricao, imagem"}), 400
-
-    try:
-        out_path = gerar_video_publicitario(titulo, descricao, imagem)
-        inserir_video(titulo, descricao, imagem, out_path)
-        return jsonify({"ok": True, "video_url": out_path})
-    except Exception as e:
-        return jsonify({"ok": False, "error": str(e)}), 500
-
-
-# ============================================================
-# ⚙️ 3️⃣ ENDPOINT UNIFICADO — GERA BANNER + VÍDEO
+# 🎞️ 1️⃣ Gerar um vídeo publicitário único
 # ============================================================
 @media_bp.route("/generate_ad", methods=["POST"])
 def generate_ad():
     """
-    Gera automaticamente um pacote de mídia completo (banner + vídeo)
-    com base em um produto de afiliado.
-    
     JSON esperado:
     {
-        "title": "Relógio Dourado",
-        "price": 349.90,
-        "source": "mercado_livre",
-        "image": "static/generated/relogio_dourado.png"
+      "titulo": "Relógio Dourado",
+      "descricao": "Uma peça de poder e elegância.",
+      "imagem": "static/generated/relogio.png"
     }
     """
     data = request.get_json() or {}
-    titulo = data.get("title") or "Produto Misterioso"
-    preco = data.get("price") or 0
-    imagem = data.get("image")
-    source = data.get("source") or "desconhecido"
+    titulo = data.get("titulo")
+    descricao = data.get("descricao")
+    imagem = data.get("imagem")
 
-    if not imagem:
-        return jsonify({"ok": False, "error": "Campo 'image' é obrigatório"}), 400
+    if not all([titulo, descricao, imagem]):
+        return jsonify({"erro": "Campos obrigatórios: titulo, descricao, imagem"}), 400
 
-    descricao = f"Direto de {source.title()} — {titulo}. Exclusividade e poder por apenas R$ {preco:.2f}."
+    if not os.path.exists(imagem):
+        return jsonify({"erro": f"Imagem não encontrada em {imagem}"}), 404
 
     try:
-        # 🖼️ Gera o banner
-        banner_path = gerar_banner_com_texto(imagem, titulo, descricao)
-        inserir_banner(titulo, descricao, imagem, banner_path)
-
-        # 🎬 Gera o vídeo curto
-        video_path = gerar_video_publicitario(titulo, descricao, banner_path)
-        inserir_video(titulo, descricao, banner_path, video_path)
-
-        return jsonify({
-            "ok": True,
-            "banner_url": banner_path,
-            "video_url": video_path,
-            "mensagem": f"Mídia completa gerada para {titulo}"
-        })
+        out_path = gerar_video_publicitario(titulo, descricao, imagem)
+        inserir_video(titulo, descricao, imagem, out_path)
+        return jsonify({"status": "ok", "video_url": out_path}), 200
     except Exception as e:
-        return jsonify({"ok": False, "error": f"Falha ao gerar anúncio: {e}"}), 500
+        return jsonify({"erro": f"Falha ao gerar vídeo: {e}"}), 500
 
 
 # ============================================================
-# 🎞️ 4️⃣ LISTAR MÍDIAS GERADAS
+# 🖼️ 2️⃣ Gerar um banner publicitário instantâneo
 # ============================================================
-@media_bp.route("/listar", methods=["GET"])
-def listar_midias():
+@media_bp.route("/generate_banner", methods=["POST"])
+def generate_banner():
     """
-    Retorna todos os banners e vídeos gerados no histórico.
+    Gera um banner cinematográfico La Famiglia com IA.
+    JSON esperado:
+    {
+      "titulo": "Canivete Tático Elite",
+      "descricao": "Precisão. Força. Lealdade.",
+      "cor": "gold"
+    }
     """
+    data = request.get_json() or {}
+    titulo = data.get("titulo", "Produto Exclusivo")
+    descricao = data.get("descricao", "Elegância e poder definem esta peça.")
+    cor = data.get("cor", "gold")
+
     try:
-        from .models import listar_banners, listar_videos
-        return jsonify({
-            "ok": True,
-            "banners": listar_banners(),
-            "videos": listar_videos()
-        })
+        out_path = gerar_banner_publicitario(titulo, descricao, cor)
+        return jsonify({"status": "ok", "banner_url": out_path}), 200
     except Exception as e:
-        return jsonify({"ok": False, "error": str(e)}), 500
+        return jsonify({"erro": f"Falha ao gerar banner: {e}"}), 500
 
 
 # ============================================================
-# 🤖 5️⃣ TESTE RÁPIDO DE STATUS
+# 📜 3️⃣ Listar todos os vídeos gerados
 # ============================================================
-@media_bp.route("/status", methods=["GET"])
-def status():
-    """
-    Teste rápido do microserviço de mídia IA.
-    """
-    return jsonify({
-        "ok": True,
-        "status": "online",
-        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    })
+@media_bp.route("/listar_videos", methods=["GET"])
+def listar_videos_gerados():
+    """Retorna todos os vídeos armazenados no banco."""
+    try:
+        return jsonify(listar_videos())
+    except Exception as e:
+        return jsonify({"erro": f"Falha ao listar vídeos: {e}"}), 500
+from flask import render_template
+
+@media_bp.route("/banner_dashboard")
+def banner_dashboard():
+    """Painel web para gerar banners via IA."""
+    return render_template("banner_dashboard.html")
