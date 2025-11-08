@@ -1,5 +1,5 @@
 # ============================================
-# 🎩 LA FAMIGLIA LINKS — Dependências Principais
+# 🎩 LA FAMIGLIA LINKS — Dependências Principais (Build de Produção)
 # ============================================
 
 # --- Núcleo Flask ---
@@ -11,6 +11,7 @@ Jinja2==3.1.4
 
 # --- Banco de Dados ---
 SQLAlchemy==2.0.35
+pandas==2.2.3
 
 # --- Segurança / Autenticação ---
 PyJWT==2.9.0
@@ -48,5 +49,5 @@ colorama==0.4.6
 qrcode==8.2
 pytz==2024.1
 
-# --- Testes / Deploy ---
+# --- Deploy / Servidor ---
 gunicorn==23.0.0
