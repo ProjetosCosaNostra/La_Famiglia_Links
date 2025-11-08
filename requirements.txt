@@ -1,53 +1,52 @@
-# === CORE FLASK ===
+# ============================================
+# 🎩 LA FAMIGLIA LINKS — Dependências Principais
+# ============================================
+
+# --- Núcleo Flask ---
 Flask==3.0.3
 Flask-Cors==4.0.0
-gunicorn==23.0.0
+Werkzeug==3.0.3
+itsdangerous==2.2.0
+Jinja2==3.1.4
 
-# === BANCO DE DADOS / ORM ===
-SQLAlchemy==2.0.29
-alembic==1.13.2
+# --- Banco de Dados ---
+SQLAlchemy==2.0.35
 
-# === IA / HUGGING FACE ===
-transformers==4.45.2
+# --- Segurança / Autenticação ---
+PyJWT==2.9.0
+bcrypt==4.1.3
+passlib==1.7.4
+
+# --- APIs e Requisições ---
+requests==2.32.3
+aiohttp==3.9.5
+httpx==0.27.0
+
+# --- IA / Hugging Face / Mídia ---
+transformers==4.44.2
 torch==2.4.1
 diffusers==0.30.2
-accelerate==1.1.0
-safetensors==0.4.5
-sentencepiece==0.2.0
-
-# === VISÃO / VÍDEO / MÍDIA ===
-opencv-python==4.10.0.84
+accelerate==0.34.2
 Pillow==11.0.0
+opencv-python==4.10.0.84
 moviepy==1.0.3
-imageio==2.35.1
-imageio-ffmpeg==0.5.1
-pydub==0.25.1
-qrcode==8.2
+soundfile==0.12.1
+numpy==1.26.4
 
-# === AGENDADORES ===
-APScheduler==3.10.4
+# --- Agendamento / Automação ---
+apscheduler==3.10.4
 
-# === WEB SCRAPING / TENDÊNCIAS ===
-beautifulsoup4==4.12.3
-requests==2.32.3
-lxml==5.3.0
+# --- Pagamentos / Stripe ---
+stripe==10.8.0
 
-# === API / JSON ===
-httpx==0.27.2
+# --- Utilitários ---
 python-dotenv==1.0.1
-
-# === AUTENTICAÇÃO / SEGURANÇA ===
-PyJWT==2.9.0
-Werkzeug==3.0.3
-
-# === STRIPE / PAGAMENTOS ===
-stripe==10.11.0
-
-# === UTILITÁRIOS ===
 tqdm==4.66.5
-numpy==2.1.1
-pandas==2.2.3
-
-# === DEV / LOGGING ===
-rich==13.9.2
 colorama==0.4.6
+
+# --- QR Code / Imagens ---
+qrcode==8.2
+pytz==2024.1
+
+# --- Testes / Deploy ---
+gunicorn==23.0.0

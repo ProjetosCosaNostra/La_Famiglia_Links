@@ -1,113 +1,103 @@
 # ============================================
-# 📊 LA FAMIGLIA LINKS — Módulo de Relatórios
-# Gera estatísticas e métricas em tempo real
+# 🎩 La Famiglia Links — Painel de Relatórios Premium
 # ============================================
 
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, send_file
+import pandas as pd
+import io
 from datetime import datetime
-import os
-
 from models.database import get_db_connection
 
 reports_bp = Blueprint("reports_bp", __name__, template_folder="templates")
 
-# ============================================================
-# 📈 1️⃣ RELATÓRIOS HTML — Painel visual
-# ============================================================
+# ============================================
+# 🧭 PAINEL PRINCIPAL DE RELATÓRIOS
+# ============================================
 @reports_bp.route("/")
-def reports_dashboard():
-    """
-    Exibe as métricas principais no painel da Família.
-    """
+def dashboard():
+    """Exibe o painel de relatórios premium."""
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # Contagens principais
-    cur.execute("SELECT COUNT(*) FROM links")
-    total_links = cur.fetchone()[0] if cur else 0
-
-    cur.execute("SELECT COUNT(*) FROM users")
-    total_users = cur.fetchone()[0] if cur else 0
-
-    try:
-        cur.execute("SELECT COUNT(*) FROM banners")
-        total_banners = cur.fetchone()[0]
-    except:
-        total_banners = 0
-
-    try:
-        cur.execute("SELECT COUNT(*) FROM videos")
-        total_videos = cur.fetchone()[0]
-    except:
-        total_videos = 0
-
+    cur.execute("""
+        SELECT date(created_at) as dia, COUNT(*) as total
+        FROM links
+        GROUP BY date(created_at)
+        ORDER BY dia DESC
+        LIMIT 7
+    """)
+    data = cur.fetchall()
     conn.close()
 
-    return render_template(
-        "reports_dashboard.html",
-        total_links=total_links,
-        total_users=total_users,
-        total_banners=total_banners,
-        total_videos=total_videos,
-        timestamp=datetime.now().strftime("%d/%m/%Y %H:%M"),
-    )
+    dias = [r["dia"] for r in data]
+    valores = [r["total"] for r in data]
 
-# ============================================================
-# 🧠 2️⃣ RELATÓRIOS JSON — API de dados
-# ============================================================
-@reports_bp.route("/api")
-def reports_api():
-    """
-    Retorna as métricas principais em formato JSON.
-    """
+    return render_template("reports_dashboard.html", dias=dias[::-1], valores=valores[::-1])
+
+
+# ============================================
+# 📈 API — Dados para o gráfico AJAX
+# ============================================
+@reports_bp.route("/api/data", methods=["GET"])
+def api_data():
     conn = get_db_connection()
     cur = conn.cursor()
-    try:
-        cur.execute("SELECT COUNT(*) FROM links")
-        total_links = cur.fetchone()[0]
-    except:
-        total_links = 0
+    cur.execute("""
+        SELECT date(created_at) as dia, COUNT(*) as total
+        FROM links
+        GROUP BY date(created_at)
+        ORDER BY dia DESC
+        LIMIT 7
+    """)
+    data = cur.fetchall()
+    conn.close()
+    return jsonify(data)
 
-    try:
-        cur.execute("SELECT COUNT(*) FROM users")
-        total_users = cur.fetchone()[0]
-    except:
-        total_users = 0
 
-    try:
-        cur.execute("SELECT COUNT(*) FROM banners")
-        total_banners = cur.fetchone()[0]
-    except:
-        total_banners = 0
-
-    try:
-        cur.execute("SELECT COUNT(*) FROM videos")
-        total_videos = cur.fetchone()[0]
-    except:
-        total_videos = 0
-
+# ============================================
+# 🧾 EXPORTAR RELATÓRIO — PDF
+# ============================================
+@reports_bp.route("/export/pdf", methods=["GET"])
+def export_pdf():
+    conn = get_db_connection()
+    df = pd.read_sql_query("SELECT * FROM links", conn)
     conn.close()
 
-    return jsonify({
-        "ok": True,
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "links": total_links,
-        "users": total_users,
-        "banners": total_banners,
-        "videos": total_videos
-    })
+    from reportlab.lib.pagesizes import letter
+    from reportlab.pdfgen import canvas
 
-# ============================================================
-# 💬 3️⃣ STATUS RÁPIDO
-# ============================================================
-@reports_bp.route("/status")
-def status():
-    """
-    Status rápido do módulo de relatórios.
-    """
-    return jsonify({
-        "ok": True,
-        "status": "online",
-        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "env": os.getenv("FLASK_ENV", "production")
-    })
+    buffer = io.BytesIO()
+    pdf = canvas.Canvas(buffer, pagesize=letter)
+    pdf.setTitle("Relatório da Família")
+
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(200, 750, "Relatório da Família — La Famiglia Links")
+
+    pdf.setFont("Helvetica", 10)
+    y = 720
+    for _, row in df.iterrows():
+        pdf.drawString(50, y, f"Nome: {row['nome']} | URL: {row['url']} | Criado em: {row['created_at']}")
+        y -= 15
+        if y < 50:
+            pdf.showPage()
+            y = 750
+
+    pdf.save()
+    buffer.seek(0)
+    return send_file(buffer, as_attachment=True, download_name="relatorio_famiglia.pdf", mimetype="application/pdf")
+
+
+# ============================================
+# 💼 EXPORTAR RELATÓRIO — EXCEL
+# ============================================
+@reports_bp.route("/export/excel", methods=["GET"])
+def export_excel():
+    conn = get_db_connection()
+    df = pd.read_sql_query("SELECT * FROM links", conn)
+    conn.close()
+
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
+        df.to_excel(writer, index=False, sheet_name="Relatório")
+    output.seek(0)
+    return send_file(output, as_attachment=True, download_name="relatorio_famiglia.xlsx", mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")

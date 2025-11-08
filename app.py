@@ -25,9 +25,8 @@ except Exception as e:
     print(f"⚠️ Banco não inicializado automaticamente: {e}")
 
 # ============================================
-# 🔹 Importações Seguras
+# 🔹 Importações Seguras (helper)
 # ============================================
-
 def safe_import_bp(module_name, bp_name):
     """Importa Blueprints de forma segura, sem travar o app."""
     try:
@@ -39,24 +38,6 @@ def safe_import_bp(module_name, bp_name):
         print(f"⚠️ Falha ao importar {module_name}: {e}")
         return None
 
-# Blueprints principais
-auth_bp = safe_import_bp("auth", "auth_bp")
-ia_bp = safe_import_bp("routes.ia_routes", "ia_bp")
-links_bp = safe_import_bp("routes.links_routes", "links_bp")
-
-# Blueprints de negócio
-trends_bp = safe_import_bp("business.trends.routes", "trends_bp")
-payments_bp = safe_import_bp("business.payments.routes", "payments_bp")
-affiliates_bp = safe_import_bp("business.affiliates.routes", "affiliates_bp")
-media_bp = safe_import_bp("business.media_ai.routes", "media_bp")
-autopost_bp = safe_import_bp("business.autopost.routes", "autopost_bp")
-affiliates_intel_bp = safe_import_bp("business.affiliates_intel.routes", "affiliates_intel_bp")
-reports_bp = safe_import_bp("business.reports.routes", "reports_bp")
-dashboard_bp = safe_import_bp("business.dashboard.routes", "dashboard_bp")  # ✅ Painel administrativo
-
-# ============================================
-# 🔗 Registro dos Blueprints
-# ============================================
 def register_blueprint_if_exists(bp, prefix):
     if bp:
         app.register_blueprint(bp, url_prefix=prefix)
@@ -64,17 +45,41 @@ def register_blueprint_if_exists(bp, prefix):
     else:
         print(f"⚠️ Blueprint ausente: {prefix}")
 
-register_blueprint_if_exists(auth_bp, "/auth")
-register_blueprint_if_exists(ia_bp, "/api")
+# ============================================
+# 🔗 Blueprints principais
+# ============================================
+auth_bp  = safe_import_bp("auth", "auth_bp")
+ia_bp    = safe_import_bp("routes.ia_routes", "ia_bp")
+links_bp = safe_import_bp("routes.links_routes", "links_bp")
+
+register_blueprint_if_exists(auth_bp,  "/auth")
+register_blueprint_if_exists(ia_bp,    "/api")
 register_blueprint_if_exists(links_bp, "/links")
-register_blueprint_if_exists(trends_bp, "/business/trends")
-register_blueprint_if_exists(payments_bp, "/business/payments")
-register_blueprint_if_exists(affiliates_bp, "/business/affiliates")
-register_blueprint_if_exists(media_bp, "/business/media")
-register_blueprint_if_exists(autopost_bp, "/business/autopost")
+
+# ============================================
+# 🔗 Blueprints de negócio
+# ============================================
+trends_bp          = safe_import_bp("business.trends.routes", "trends_bp")
+payments_bp        = safe_import_bp("business.payments.routes", "payments_bp")
+affiliates_bp      = safe_import_bp("business.affiliates.routes", "affiliates_bp")
+media_bp           = safe_import_bp("business.media_ai.routes", "media_bp")
+autopost_bp        = safe_import_bp("business.autopost.routes", "autopost_bp")
+affiliates_intel_bp= safe_import_bp("business.affiliates_intel.routes", "affiliates_intel_bp")
+reports_bp         = safe_import_bp("business.reports.routes", "reports_bp")
+
+# ✅ Novo: verificação Stripe (webhook + status)
+payments_verify_bp = safe_import_bp("business.payments.verify", "payments_verify_bp")
+
+register_blueprint_if_exists(trends_bp,           "/business/trends")
+register_blueprint_if_exists(payments_bp,         "/business/payments")
+register_blueprint_if_exists(affiliates_bp,       "/business/affiliates")
+register_blueprint_if_exists(media_bp,            "/business/media")
+register_blueprint_if_exists(autopost_bp,         "/business/autopost")
 register_blueprint_if_exists(affiliates_intel_bp, "/business/affiliates_intel")
-register_blueprint_if_exists(reports_bp, "/business/reports")
-register_blueprint_if_exists(dashboard_bp, "/business")  # ✅ Rota do painel administrativo
+register_blueprint_if_exists(reports_bp,          "/business/reports")
+
+# O verify.py compartilha o mesmo prefixo de payments:
+register_blueprint_if_exists(payments_verify_bp,  "/business/payments")
 
 print("✅ Todos os blueprints foram processados com segurança.")
 
@@ -85,12 +90,11 @@ print("✅ Todos os blueprints foram processados com segurança.")
 def home():
     """Página principal com fallback garantido."""
     try:
-        from models.database import listar_links
+        from models.links_model import listar_links
         links = listar_links()
     except Exception as e:
         print(f"⚠️ Falha ao listar links: {e}")
         links = []
-
     try:
         return render_template("index.html", links=links)
     except Exception as e:
@@ -105,18 +109,16 @@ def home():
         </html>
         """, 200
 
-
 @app.route("/mobile")
 def mobile():
     """Versão 9:16 para QR, reels e stories."""
     try:
-        from models.database import listar_links
+        from models.links_model import listar_links
         links = listar_links()
         return render_template("mobile/index_mobile.html", links=links)
     except Exception as e:
         print(f"⚠️ Falha na rota /mobile: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
-
 
 @app.route("/healthz")
 def healthz():
@@ -124,15 +126,25 @@ def healthz():
     return jsonify({"status": "ok"}), 200
 
 # ============================================
-# 📅 Schedulers — Ativação Condicional
+# ⏰ Schedulers — Ativação Condicional
 # ============================================
-if os.getenv("ENABLE_SCHEDULERS", "false").lower() == "true":
+ENABLE_SCHEDULERS = os.getenv("ENABLE_SCHEDULERS", "true").lower() == "true"
+
+if ENABLE_SCHEDULERS:
+    # Scheduler de mídia automática (BANNERS)
+    try:
+        from business.media_ai.scheduler_ads import start_scheduler_if_enabled
+        start_scheduler_if_enabled()
+    except Exception as e:
+        print(f"⚠️ Falha ao iniciar Banner Scheduler: {e}")
+
+    # Se você tiver outro scheduler central, pode manter aqui:
     try:
         from backend.scheduler_job import iniciar_scheduler
         iniciar_scheduler()
         print("⚙️ Scheduler principal ativo.")
     except Exception as e:
-        print(f"⚠️ Falha ao iniciar scheduler: {e}")
+        print(f"⚠️ Falha ao iniciar scheduler principal: {e}")
 
 # ============================================
 # 📱 QR Code Automático (Startup)
