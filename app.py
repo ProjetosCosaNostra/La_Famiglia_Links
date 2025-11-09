@@ -39,7 +39,6 @@ def safe_import_bp(module_name, bp_name):
         print(f"⚠️ Falha ao importar {module_name}: {e}")
         return None
 
-
 # --- Blueprints principais ---
 auth_bp = safe_import_bp("auth", "auth_bp")
 ia_bp = safe_import_bp("routes.ia_routes", "ia_bp")
@@ -53,6 +52,7 @@ media_bp = safe_import_bp("business.media_ai.routes", "media_bp")
 autopost_bp = safe_import_bp("business.autopost.routes", "autopost_bp")
 affiliates_intel_bp = safe_import_bp("business.affiliates_intel.routes", "affiliates_intel_bp")
 reports_bp = safe_import_bp("business.reports.routes", "reports_bp")
+social_bp = safe_import_bp("routes.social_routes", "social_bp")  # Novo
 
 # ============================================
 # 🔗 Registro dos Blueprints
@@ -74,6 +74,7 @@ register_blueprint_if_exists(media_bp, "/business/media")
 register_blueprint_if_exists(autopost_bp, "/business/autopost")
 register_blueprint_if_exists(affiliates_intel_bp, "/business/affiliates_intel")
 register_blueprint_if_exists(reports_bp, "/business/reports")
+register_blueprint_if_exists(social_bp, "/social")  # Registrado aqui, no momento certo
 
 print("✅ Todos os blueprints foram processados com segurança.")
 
@@ -129,7 +130,6 @@ def mobile():
 def healthz():
     """Endpoint para verificação de saúde."""
     return jsonify({"status": "ok"}), 200
-
 
 # ============================================
 # 📅 Schedulers — Ativação Condicional
