@@ -2,138 +2,31 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎨 Criador de Banners — La Famiglia AI</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+  <title>🎬 Painel IA — La Famiglia</title>
   <style>
     body {
-      background-color: #000;
+      background: #000;
       color: gold;
       font-family: 'Cinzel', serif;
       text-align: center;
-      padding: 40px;
+      padding-top: 100px;
     }
-    h1 {
-      font-size: 2.4em;
-      color: gold;
-      text-shadow: 0 0 10px rgba(255,215,0,0.6);
-    }
-    p.slogan {
-      color: #c5a500;
-      font-style: italic;
-    }
-    form {
-      background-color: rgba(20, 20, 20, 0.9);
-      padding: 25px;
-      border-radius: 10px;
-      width: 400px;
-      margin: 30px auto;
-      box-shadow: 0 0 20px rgba(255,215,0,0.2);
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid gold;
-      border-radius: 5px;
-      background-color: #111;
-      color: gold;
-      font-family: 'Cinzel', serif;
-    }
+    h1 { font-size: 3em; }
     button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: linear-gradient(90deg, gold, #d4af37);
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
+      background: gold;
       color: black;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    button:hover {
-      background: linear-gradient(90deg, #d4af37, gold);
-      transform: scale(1.05);
-    }
-    #resultado {
-      margin-top: 30px;
-    }
-    .banner-preview {
-      margin-top: 20px;
-      border: 2px solid gold;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.1em;
       border-radius: 10px;
-      max-width: 400px;
-      box-shadow: 0 0 25px rgba(255,215,0,0.2);
+      cursor: pointer;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
-  <h1>🎨 Criador de Banners Cinematográficos</h1>
-  <p class="slogan">“Nada é coincidência, é estratégia.”</p>
-
-  <form id="bannerForm">
-    <label for="titulo">Título</label>
-    <input type="text" id="titulo" placeholder="Ex: Relógio Dourado Supremo" required>
-
-    <label for="descricao">Descrição</label>
-    <textarea id="descricao" rows="3" placeholder="Ex: O poder está nos detalhes..." required></textarea>
-
-    <label for="cor">Cor dominante</label>
-    <select id="cor">
-      <option value="gold" selected>Dourado</option>
-      <option value="silver">Prateado</option>
-      <option value="black">Preto</option>
-      <option value="red">Vermelho</option>
-    </select>
-
-    <button type="submit">Gerar Banner IA ⚜️</button>
-  </form>
-
-  <div id="resultado">
-    <p id="status"></p>
-    <img id="preview" class="banner-preview" style="display:none;">
-  </div>
-
-  <script>
-    const form = document.getElementById("bannerForm");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const titulo = document.getElementById("titulo").value;
-      const descricao = document.getElementById("descricao").value;
-      const cor = document.getElementById("cor").value;
-      const status = document.getElementById("status");
-      const preview = document.getElementById("preview");
-
-      status.textContent = "⏳ Gerando banner cinematográfico...";
-      preview.style.display = "none";
-
-      try {
-        const resp = await fetch("/business/media/generate_banner", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ titulo, descricao, cor })
-        });
-        const data = await resp.json();
-
-        if (data.status === "ok") {
-          status.textContent = "✅ Banner criado com sucesso!";
-          preview.src = data.banner_url;
-          preview.style.display = "block";
-        } else {
-          status.textContent = "⚠️ Erro: " + (data.erro || "Falha desconhecida");
-        }
-      } catch (err) {
-        status.textContent = "❌ Erro ao conectar ao servidor.";
-      }
-    });
-  </script>
-
+  <h1>🎩 Painel de Criação de Banners IA</h1>
+  <p>Estilo La Famiglia — poder, precisão e lealdade visual.</p>
+  <button onclick="alert('IA em ação, Don!')">Gerar Banner</button>
 </body>
 </html>

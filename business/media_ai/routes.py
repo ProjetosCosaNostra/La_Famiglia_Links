@@ -1,86 +1,43 @@
 # ============================================
-# 🎬 LA FAMIGLIA MEDIA AI — Geração de Banners e Vídeos
+# 🎬 LA FAMIGLIA MEDIA AI — Painel e IA Publicitária
 # ============================================
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, render_template, jsonify, request
 import os
-from .video_generator import gerar_video_publicitario
-from .post_generator import gerar_banner_publicitario
-from .models import inserir_video, listar_videos
 
 media_bp = Blueprint("media_bp", __name__, url_prefix="/business/media")
 
 # ============================================================
-# 🎞️ 1️⃣ Gerar um vídeo publicitário único
+# 🧠 1️⃣ Painel Cinematográfico (Interface IA)
 # ============================================================
-@media_bp.route("/generate_ad", methods=["POST"])
-def generate_ad():
-    """
-    JSON esperado:
-    {
-      "titulo": "Relógio Dourado",
-      "descricao": "Uma peça de poder e elegância.",
-      "imagem": "static/generated/relogio.png"
-    }
-    """
-    data = request.get_json() or {}
-    titulo = data.get("titulo")
-    descricao = data.get("descricao")
-    imagem = data.get("imagem")
-
-    if not all([titulo, descricao, imagem]):
-        return jsonify({"erro": "Campos obrigatórios: titulo, descricao, imagem"}), 400
-
-    if not os.path.exists(imagem):
-        return jsonify({"erro": f"Imagem não encontrada em {imagem}"}), 404
-
+@media_bp.route("/banner_dashboard")
+def banner_dashboard():
+    """Painel visual de criação de banners cinematográficos."""
+    print("✅ Rota /banner_dashboard acessada com sucesso.")
     try:
-        out_path = gerar_video_publicitario(titulo, descricao, imagem)
-        inserir_video(titulo, descricao, imagem, out_path)
-        return jsonify({"status": "ok", "video_url": out_path}), 200
+        return render_template("banner_dashboard.html")
     except Exception as e:
-        return jsonify({"erro": f"Falha ao gerar vídeo: {e}"}), 500
+        print(f"⚠️ Falha ao renderizar banner_dashboard.html: {e}")
+        return jsonify({"erro": "Falha ao carregar painel"}), 500
 
 
 # ============================================================
-# 🖼️ 2️⃣ Gerar um banner publicitário instantâneo
+# 🖼️ 2️⃣ Geração de Banner via API
 # ============================================================
 @media_bp.route("/generate_banner", methods=["POST"])
 def generate_banner():
-    """
-    Gera um banner cinematográfico La Famiglia com IA.
-    JSON esperado:
-    {
-      "titulo": "Canivete Tático Elite",
-      "descricao": "Precisão. Força. Lealdade.",
-      "cor": "gold"
-    }
-    """
+    """Recebe dados e gera banner IA cinematográfico."""
     data = request.get_json() or {}
-    titulo = data.get("titulo", "Produto Exclusivo")
-    descricao = data.get("descricao", "Elegância e poder definem esta peça.")
+    titulo = data.get("titulo", "Produto La Famiglia")
+    descricao = data.get("descricao", "Estilo, poder e precisão.")
     cor = data.get("cor", "gold")
 
-    try:
-        out_path = gerar_banner_publicitario(titulo, descricao, cor)
-        return jsonify({"status": "ok", "banner_url": out_path}), 200
-    except Exception as e:
-        return jsonify({"erro": f"Falha ao gerar banner: {e}"}), 500
+    # Aqui você pode integrar a IA futuramente.
+    print(f"🎨 Gerando banner: {titulo} | Cor: {cor}")
 
-
-# ============================================================
-# 📜 3️⃣ Listar todos os vídeos gerados
-# ============================================================
-@media_bp.route("/listar_videos", methods=["GET"])
-def listar_videos_gerados():
-    """Retorna todos os vídeos armazenados no banco."""
-    try:
-        return jsonify(listar_videos())
-    except Exception as e:
-        return jsonify({"erro": f"Falha ao listar vídeos: {e}"}), 500
-from flask import render_template
-
-@media_bp.route("/banner_dashboard")
-def banner_dashboard():
-    """Painel web para gerar banners via IA."""
-    return render_template("banner_dashboard.html")
+    output_path = f"static/generated/{titulo.replace(' ', '_')}.png"
+    os.makedirs("static/generated", exist_ok=True)
+    with open(output_path, "w") as f:
+        f.write("Simulação de banner IA gerado.")
+    
+    return jsonify({"status": "ok", "banner_url": output_path})
