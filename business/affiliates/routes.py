@@ -1,9 +1,21 @@
 from flask import Blueprint, jsonify, render_template
-from models.database import get_db
+import sqlite3
+from models.database import get_db_path
 from .models import ProdutoAfiliado
 from .services import buscar_produtos_amazon, buscar_produtos_mercadolivre
 
 affiliates_bp = Blueprint("affiliates_bp", __name__, url_prefix="/business/affiliates")
+
+# ============================================================
+# 🔧 Conexão de fallback
+# ============================================================
+def get_db():
+    """Conexão compatível com SQLite e PostgreSQL"""
+    db_path = get_db_path()
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    return conn
+
 
 # ============================================================
 # 🧠 GERAÇÃO AUTOMÁTICA DE PRODUTOS
@@ -11,20 +23,27 @@ affiliates_bp = Blueprint("affiliates_bp", __name__, url_prefix="/business/affil
 @affiliates_bp.route("/atualizar", methods=["GET"])
 def atualizar_produtos():
     db = get_db()
+    cursor = db.cursor()
     produtos = buscar_produtos_amazon() + buscar_produtos_mercadolivre()
 
     novos = []
     for p in produtos:
-        prod = ProdutoAfiliado(
-            nome=p["nome"],
-            preco=p["preco"],
-            link=p["link"],
-            imagem=p["imagem"],
-            origem="Amazon" if "amazon" in p["link"] else "Mercado Livre",
+        cursor.execute(
+            """
+            INSERT INTO produtos_afiliados (nome, preco, link, imagem, origem, criado_em)
+            VALUES (?, ?, ?, ?, ?, datetime('now'))
+            """,
+            (
+                p["nome"],
+                p["preco"],
+                p["link"],
+                p["imagem"],
+                "Amazon" if "amazon" in p["link"] else "Mercado Livre",
+            ),
         )
-        db.add(prod)
-        novos.append(prod.to_dict())
+        novos.append(p)
     db.commit()
+    db.close()
     return jsonify({"status": "ok", "produtos": novos})
 
 
@@ -34,8 +53,12 @@ def atualizar_produtos():
 @affiliates_bp.route("/listar", methods=["GET"])
 def listar_produtos():
     db = get_db()
-    produtos = db.query(ProdutoAfiliado).all()
-    return jsonify([p.to_dict() for p in produtos])
+    cursor = db.cursor()
+    cursor.execute("SELECT nome, preco, link, imagem, origem, criado_em FROM produtos_afiliados ORDER BY id DESC")
+    data = cursor.fetchall()
+    db.close()
+    produtos = [dict(d) for d in data]
+    return jsonify(produtos)
 
 
 # ============================================================
@@ -44,5 +67,9 @@ def listar_produtos():
 @affiliates_bp.route("/", methods=["GET"])
 def painel_affiliates():
     db = get_db()
-    produtos = db.query(ProdutoAfiliado).all()
+    cursor = db.cursor()
+    cursor.execute("SELECT nome, preco, link, imagem, origem, criado_em FROM produtos_afiliados ORDER BY id DESC")
+    data = cursor.fetchall()
+    db.close()
+    produtos = [dict(d) for d in data]
     return render_template("affiliates/affiliates.html", produtos=produtos)
