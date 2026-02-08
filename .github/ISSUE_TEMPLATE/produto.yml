@@ -1,0 +1,77 @@
+name: "Adicionar/Atualizar produto (Vitrine)"
+description: "Cole o link /sec do Mercado Livre e marque se é destaque. A Action atualiza o produtos.json."
+title: "Produto: "
+labels: ["produto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Cosa Nostra — Vitrine (Automação)
+        Preencha principalmente o **link /sec**. O resto é opcional (a Action tenta puxar título/imagem automaticamente).
+        
+        **Dica**: se você marcar como **Destaque**, ele vira o Produto do Dia.
+
+  - type: input
+    id: sec_url
+    attributes:
+      label: "Link /sec do Mercado Livre (obrigatório)"
+      description: "Ex: https://mercadolivre.com/sec/2T9cpsU"
+      placeholder: "https://mercadolivre.com/sec/..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: featured
+    attributes:
+      label: "Destaque? (Produto do Dia)"
+      description: "Se SIM, este vira o produto em destaque."
+      options:
+        - "não"
+        - "sim"
+    validations:
+      required: true
+
+  - type: input
+    id: title_override
+    attributes:
+      label: "Título (opcional — se quiser forçar)"
+      description: "Se deixar vazio, a Action tenta usar o título do Mercado Livre."
+      placeholder: "Ex: Xiaomi Redmi Buds 6 Play - Fone Bluetooth 5.4"
+
+  - type: input
+    id: price_override
+    attributes:
+      label: "Preço (opcional — se quiser forçar)"
+      description: "Ex: R$ 100,55 (se deixar vazio, a Action tenta achar automaticamente)"
+      placeholder: "R$ 0,00"
+
+  - type: input
+    id: image_override
+    attributes:
+      label: "Imagem (opcional — URL direta)"
+      description: "Se deixar vazio, a Action tenta usar og:image do Mercado Livre."
+      placeholder: "https://.../imagem.jpg"
+
+  - type: input
+    id: slug_override
+    attributes:
+      label: "ID/slug (opcional)"
+      description: "Se vazio, a Action cria um id tipo pYYYYMMDD-<issue>."
+      placeholder: "ex: redmi-buds-6-play"
+
+  - type: textarea
+    id: tags
+    attributes:
+      label: "Tags (opcional)"
+      description: "Uma por linha (ex: bluetooth, tws, promoção)."
+      placeholder: |
+        bluetooth
+        tws
+        promoção
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Observações (opcional)"
+      description: "Qualquer observação interna."
+      placeholder: "Ex: Se bater X preço, postar novamente."
