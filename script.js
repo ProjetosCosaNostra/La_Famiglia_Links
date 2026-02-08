@@ -44,7 +44,7 @@
       nome: "Mochila impermeável • Notebook 15.6”",
       desc: "Trava com senha • bolso oculto • saída USB • conforto com malha respirável • alça de bagagem (carry-on).",
       idML: "5J5PKG-JBQE",
-      link: "https://mercadolivre.com/sec/1waKGha",
+      link: "https://mercadolivre.com/sec/14jFsrH",
       imagem: "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
       tags: ["mochila", "notebook", "viagem"]
     }
@@ -56,6 +56,31 @@
     if (Array.isArray(data.products)) return data.products;
     if (Array.isArray(data.items)) return data.items;
     return [];
+  }
+
+  function adaptProduct(p) {
+    if (!p) return null;
+
+    const ativo =
+      (p.ativo !== undefined) ? p.ativo :
+      (p.active !== undefined) ? p.active :
+      true;
+
+    let desc = p.desc || p.description || "";
+    if (!desc && Array.isArray(p.badges) && p.badges.length) {
+      desc = p.badges.join(" • ");
+    }
+
+    return {
+      destaque: (p.destaque === true) || (p.featured === true) || (p.is_featured === true),
+      ativo: (ativo !== false),
+      nome: p.nome || p.title || p.name || "",
+      desc: desc,
+      idML: p.idML || p.id_busca || p.id || "",
+      link: p.link || p.open_url || p.url || "",
+      imagem: p.imagem || p.image || "",
+      tags: p.tags || p.badges || []
+    };
   }
 
   function escapeHTML(s) {
@@ -137,8 +162,11 @@
       const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
       if (!res.ok) throw new Error("produtos.json não encontrado");
       const data = await res.json();
-      const list = normalizeProducts(data)
-        .filter(p => p && (p.ativo !== false)); // só mostra os ativos
+
+      const raw = normalizeProducts(data);
+      const mapped = raw.map(adaptProduct).filter(Boolean);
+      const list = mapped.filter(p => p && (p.ativo !== false));
+
       return list.length ? list : FALLBACK_PRODUCTS;
     } catch (e) {
       return FALLBACK_PRODUCTS;
