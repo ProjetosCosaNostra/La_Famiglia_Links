@@ -1,33 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎩 Cosa Nostra — A Família das Ideias</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosa Nostra — Central Premium</title>
+
+  <meta name="description" content="Central premium de links + vitrine de achados do dia. Clique e compre." />
+  <meta name="theme-color" content="#050505" />
+
+  <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
+
 <body>
-  <main class="container fade-in">
-    <header class="brand">
-      <div class="logo">🎩♟️</div>
-      <h1>Cosa Nostra</h1>
-      <p class="manifesto">“Família, honra, respeito e palavra. No fim, é só isso que fica.”</p>
+  <div class="bg">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+    <div class="grain"></div>
+  </div>
+
+  <main class="page">
+    <header class="hero">
+      <div class="hero__brand">
+        <div class="brandMark" aria-hidden="true">
+          <img
+            class="brandLogo"
+            src="assets/assets/produtos/logo.png"
+            alt="Cosa Nostra"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
+          />
+          <span class="brandFallback">🎩♟️</span>
+        </div>
+
+        <div class="hero__text">
+          <p class="kicker">Cosa Nostra • A Família das Ideias</p>
+          <h1 class="title">Central Premium</h1>
+          <p class="sub">
+            Links oficiais + vitrine de produtos (Achados do Dia).<br/>
+            Funil rápido: <b>Story com Link Sticker</b> + <b>Loja na Bio</b>.
+          </p>
+
+          <div class="chips" aria-label="Dicas rápidas">
+            <span class="chip">⚡ clique 1-toque</span>
+            <span class="chip">🛒 vitrine sempre limpa</span>
+            <span class="chip">🔒 estética Black & Gold</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja</a>
+        <button class="btn btn--glass" id="copyLoja" type="button" data-copy="loja">📌 Copiar link da vitrine</button>
+        <div class="miniNote">
+          <span class="dot"></span>
+          <span>
+            Status: <b>online</b> • Atualizado <span id="lastUpdate">agora</span>
+          </span>
+        </div>
+      </div>
     </header>
 
-    <section class="links">
-      <a href="https://github.com/ProjetosCosaNostra" target="_blank" class="link-btn">💻 GitHub</a>
-      <a href="https://www.instagram.com/cosanostra.ai/" target="_blank" class="link-btn">📸 Instagram</a>
-      <a href="https://www.linkedin.com/in/felipe-projetoscosanostra/" target="_blank" class="link-btn">💼 LinkedIn</a>
-      <a href="https://www.tiktok.com/@cosanostra.ia" target="_blank" class="link-btn">🎬 TikTok</a>
-      <a href="https://www.youtube.com/@CosaNostraAI" target="_blank" class="link-btn">▶️ YouTube</a>
-      <a href="https://kwai-video.com/u/@Cosa_Nostra_AI/CNr8xPva" target="_blank" class="link-btn">🎥 Kwai</a>
-      <a href="https://www.mercadolivre.com.br/social/felipecosanostra" target="_blank" class="link-btn">🛒 Mercado Livre</a>
+    <section class="panel">
+      <div class="panel__head">
+        <div>
+          <h2>Produto do dia</h2>
+          <p>Vitrine com destaque + botões rápidos (comprar / copiar ID / copiar link).</p>
+        </div>
+        <div class="panel__right">
+          <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
+        </div>
+      </div>
+
+      <div class="featured" id="featured">
+        <!-- preenchido pelo script.js -->
+      </div>
     </section>
 
-    <footer>
-      <p>🎩 Cosa Nostra © 2025 — A Família das Ideias</p>
+    <section class="panel">
+      <div class="panel__head">
+        <div>
+          <h2>Links oficiais</h2>
+          <p>Hub premium (pra bio). A loja está no topo como CTA principal.</p>
+        </div>
+      </div>
+
+      <div class="linksGrid">
+        <a class="linkCard linkCard--gold" href="./loja.html">
+          <div class="linkCard__icon">🛒</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">Vitrine / Loja</div>
+            <div class="linkCard__sub">Produtos do dia (clique e compre)</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+
+        <a class="linkCard" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">
+          <div class="linkCard__icon">📸</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">Instagram</div>
+            <div class="linkCard__sub">Stories + reposts</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+
+        <a class="linkCard" href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener">
+          <div class="linkCard__icon">💻</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">GitHub</div>
+            <div class="linkCard__sub">Projetos e repositórios</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+
+        <a class="linkCard" href="https://www.youtube.com/@CosaNostraAI" target="_blank" rel="noopener">
+          <div class="linkCard__icon">▶️</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">YouTube</div>
+            <div class="linkCard__sub">Conteúdo longo</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+
+        <a class="linkCard" href="https://www.tiktok.com/@cosanostra.ia" target="_blank" rel="noopener">
+          <div class="linkCard__icon">🎬</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">TikTok</div>
+            <div class="linkCard__sub">Shorts / trends</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+
+        <a class="linkCard" href="https://kwai-video.com/u/@Cosa_Nostra_AI/CNr8xPva" target="_blank" rel="noopener">
+          <div class="linkCard__icon">🎥</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">Kwai</div>
+            <div class="linkCard__sub">Distribuição extra</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+
+        <a class="linkCard" href="https://www.mercadolivre.com.br/social/felipecosanostra" target="_blank" rel="noopener">
+          <div class="linkCard__icon">🛒</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">Mercado Livre</div>
+            <div class="linkCard__sub">Perfil / vitrine oficial</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__left">
+        <span class="sig">🎩 Cosa Nostra</span>
+        <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
+      </div>
+
+      <div class="footer__right">
+        <button class="btn btn--tiny btn--glass" type="button" data-copy="bio">Copiar link da home</button>
+      </div>
     </footer>
   </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
