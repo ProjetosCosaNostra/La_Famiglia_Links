@@ -158,6 +158,25 @@
       gap:10px;
     }
 
+    .adminBar{
+      margin-top:12px;
+      border:1px dashed rgba(224,195,107,.45);
+      background: rgba(224,195,107,.06);
+      border-radius: 14px;
+      padding:10px 12px;
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .adminBar b{color:rgba(224,195,107,.95)}
+    .adminBar .mini{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
     .section{
       margin-top:18px;
       border:1px solid var(--border);
@@ -335,11 +354,35 @@
       flex:1 1 auto;
       text-align:center;
       text-decoration:none;
+      user-select:none;
     }
     .smallBtnGold{
       border:1px solid var(--border);
       background: rgba(199,162,75,.16);
       color:var(--gold2);
+    }
+
+    .adminRow{
+      margin-top:6px;
+      display:none;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .adminBtn{
+      border:1px dashed rgba(224,195,107,.5);
+      background: rgba(224,195,107,.06);
+      color: rgba(224,195,107,.95);
+      padding:8px 10px;
+      border-radius:999px;
+      font-weight:900;
+      cursor:pointer;
+      font-size:12px;
+      user-select:none;
+    }
+    .adminBtn.danger{
+      border-color: rgba(255,120,120,.55);
+      color: rgba(255,170,170,.95);
+      background: rgba(255,120,120,.06);
     }
 
     .footer{
@@ -415,6 +458,19 @@
         <a class="btn2" id="btnHome" href="./" rel="noopener">🏠 Home</a>
         <a class="btn2" id="btnInsta" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
       </div>
+
+      <div class="adminBar" id="adminBar">
+        <div>
+          <b>Modo Admin</b>
+          <div class="mini">
+            Use pra definir Produto do Dia e exportar o <b>produtos.json</b> pronto.
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn2" id="btnReload" type="button">↻ Recarregar produtos.json</button>
+          <button class="btn" id="btnExport" type="button">⬇️ Exportar produtos.json</button>
+        </div>
+      </div>
     </div>
 
     <div class="section">
@@ -422,7 +478,6 @@
         <h2>Produto do dia</h2>
         <div class="hint">Mais rápido: use o Story com sticker de LINK.</div>
       </div>
-
       <div class="featured" id="featured"></div>
     </div>
 
@@ -431,7 +486,6 @@
         <h2>Vitrine</h2>
         <div class="hint">Clique em “Comprar” ou copie o ID.</div>
       </div>
-
       <div class="grid" id="grid"></div>
     </div>
 
@@ -448,31 +502,12 @@
   </div>
 
   <div class="toast" id="toast">Copiado ✅</div>
-
   <script>
-    // ===========================
-    // 1) EDITAR AQUI: seus produtos
-    // ===========================
-    const PRODUCTS = [
-      {
-        slug: "mochila-impermeavel-156",
-        destaque: true,
-        ativo: true, // se quiser tirar do ar: coloque false
-        nome: "Mochila impermeável • Notebook 15.6”",
-        desc: "Trava com senha • bolso oculto • saída USB • conforto com malha respirável • alça de bagagem (carry-on).",
-        idML: "5J5PKG-JBQE",
-        link: "https://mercadolivre.com/sec/14jFsrH",
-        // ✅ sua arte do post (arquivo do repo)
-        imagem: "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
-        tags: ["mochila","notebook","viagem"]
-      }
-    ];
+    const ADMIN = new URLSearchParams(location.search).get("admin") === "1";
 
-    // ===========================
-    // 2) LÓGICA DA PÁGINA
-    // ===========================
+    const toast = document.getElementById("toast");
     const $ = (s)=>document.querySelector(s);
-    const toast = $("#toast");
+
     function showToast(msg="Copiado ✅"){
       toast.textContent = msg;
       toast.classList.add("show");
@@ -494,6 +529,37 @@
       }
     }
 
+    function normalizeProducts(data) {
+      if (!data) return [];
+      if (Array.isArray(data)) return data;
+      if (Array.isArray(data.products)) return data.products;
+      if (Array.isArray(data.items)) return data.items;
+      return [];
+    }
+
+    function safeArray(x){ return Array.isArray(x) ? x : []; }
+
+    function adaptForUI(p){
+      const sku = p.sku || p.slug || "";
+      const title = p.title || p.nome || p.name || "";
+      const badges = safeArray(p.badges || p.tags);
+      const id_busca = p.id_busca || p.idML || p.id || "";
+      const open_url = p.open_url || p.link || p.url || "";
+      const check_url = p.check_url || open_url;
+      const image = p.image || p.imagem || "";
+      const active = (p.active !== undefined) ? !!p.active : (p.ativo !== undefined) ? !!p.ativo : true;
+      const featured = (p.featured === true) || (p.destaque === true) || (p.is_featured === true);
+
+      return {
+        sku, title, badges, id_busca, open_url, check_url, image,
+        price_text: p.price_text || "",
+        active,
+        featured,
+        last_checked: p.last_checked || "",
+        last_ok: p.last_ok || ""
+      };
+    }
+
     function escapeHTML(s){
       return String(s ?? "")
         .replaceAll("&","&amp;")
@@ -503,43 +569,24 @@
         .replaceAll("'","&#039;");
     }
 
-    function productCardHTML(p){
-      const imgHTML = p.imagem
-        ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
-        : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:18px;">
-             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">cole a URL no arquivo</span>
-           </div>`;
-
-      const tags = (p.tags||[]).slice(0,3).map(t=>`#${t}`).join(" ");
-      return `
-        <div class="pCard">
-          <div class="pImg">${imgHTML}</div>
-          <div class="pBody">
-            <p class="pName">${escapeHTML(p.nome)}</p>
-            <p class="pSmall">${escapeHTML(p.desc || "")}</p>
-            <p class="pSmall" style="color:var(--gold2); font-weight:900; letter-spacing:.03em;">${escapeHTML(tags)}</p>
-            <div class="pActions">
-              <a class="smallBtn smallBtnGold" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">Comprar</a>
-              <button class="smallBtn" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
-              <button class="smallBtn" type="button" data-copy="${escapeHTML(p.link)}">Copiar Link</button>
-            </div>
-          </div>
-        </div>
-      `;
+    function tagsText(badges){
+      const b = safeArray(badges).slice(0,4).map(x => `#${String(x).trim().replaceAll(" ","_")}`).join(" ");
+      return b;
     }
 
     function featuredHTML(p){
-      const imgHTML = p.imagem
-        ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
+      const imgHTML = p.image
+        ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
         : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:24px;">
-             Cole a imagem do produto<br/>
-             <span style="color:rgba(199,162,75,.9)">campo: "imagem"</span>
+             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">adicione no produto</span>
            </div>`;
 
-      const disabled = (p.ativo === false);
+      const disabled = (p.active === false);
       const buyBtn = disabled
         ? `<button class="btn buy" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-        : `<a class="btn buy" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
+        : `<a class="btn buy" href="${escapeHTML(p.open_url)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
+
+      const desc = safeArray(p.badges).join(" • ");
 
       return `
         <div class="card">
@@ -549,16 +596,28 @@
           </div>
           <div class="cardBody">
             <div class="tag">⭐ produto do dia</div>
-            <h3 class="name">${escapeHTML(p.nome)}</h3>
-            <p class="meta">${escapeHTML(p.desc || "")}</p>
+            <h3 class="name">${escapeHTML(p.title)}</h3>
+            <p class="meta">${escapeHTML(desc)}</p>
             <div class="line">
-              <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.idML || "")}</b></div>
+              <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.id_busca || "")}</b></div>
             </div>
             <div class="actions">
               ${buyBtn}
-              <button class="btn2" type="button" data-copy="${escapeHTML(p.link)}">Copiar link</button>
-              <button class="btn2" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
+              <button class="btn2" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+              <button class="btn2" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
             </div>
+
+            ${ADMIN ? `
+              <div class="adminRow" style="display:flex;">
+                <button class="adminBtn" data-action="setFeatured" data-sku="${escapeHTML(p.sku)}">⭐ Definir como Produto do Dia</button>
+                <button class="adminBtn ${p.active ? "danger" : ""}" data-action="toggleActive" data-sku="${escapeHTML(p.sku)}">
+                  ${p.active ? "⛔ Desativar" : "✅ Ativar"}
+                </button>
+                <button class="adminBtn" data-action="editLink" data-sku="${escapeHTML(p.sku)}">✏️ Editar link</button>
+                <button class="adminBtn" data-action="editId" data-sku="${escapeHTML(p.sku)}">✏️ Editar ID</button>
+                <button class="adminBtn" data-action="editBadges" data-sku="${escapeHTML(p.sku)}">✏️ Editar badges</button>
+              </div>
+            ` : ``}
           </div>
         </div>
 
@@ -567,13 +626,13 @@
             <div class="tag">✅ como comprar (rápido)</div>
             <p class="meta" style="margin-top:2px;">
               1) Abra o app/site do <b>Mercado Livre</b><br/>
-              2) Cole o <b>ID</b> na busca: <b>${escapeHTML(p.idML || "")}</b><br/>
+              2) Cole o <b>ID</b> na busca: <b>${escapeHTML(p.id_busca || "")}</b><br/>
               3) Ou clique em <b>COMPRAR AGORA</b> (abre direto)
             </p>
 
             <div class="actions" style="margin-top:10px;">
-              <button class="btn2" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
-              <button class="btn2" type="button" data-copy="${escapeHTML(p.link)}">Copiar Link</button>
+              <button class="btn2" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+              <button class="btn2" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
             </div>
 
             <p class="meta" style="margin-top:10px; color:var(--muted);">
@@ -584,36 +643,260 @@
       `;
     }
 
-    function render(query=""){
-      const q = query.trim().toLowerCase();
+    function productCardHTML(p){
+      const imgHTML = p.image
+        ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
+        : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:18px;">
+             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">adicione no produto</span>
+           </div>`;
 
-      const visible = PRODUCTS.filter(p => p && (p.ativo !== false));
-      const destaque = visible.find(p=>p.destaque) || visible[0];
+      const disabled = (p.active === false);
+      const buy = disabled
+        ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
+        : `<a class="smallBtn smallBtnGold" href="${escapeHTML(p.open_url)}" target="_blank" rel="noopener">Comprar</a>`;
+
+      const desc = safeArray(p.badges).join(" • ");
+      const tags = tagsText(p.badges);
+
+      return `
+        <div class="pCard" data-sku="${escapeHTML(p.sku)}">
+          <div class="pImg">${imgHTML}</div>
+          <div class="pBody">
+            <p class="pName">${escapeHTML(p.title)}</p>
+            <p class="pSmall">${escapeHTML(desc)}</p>
+            <p class="pSmall" style="color:var(--gold2); font-weight:900; letter-spacing:.03em;">${escapeHTML(tags)}</p>
+
+            <div class="pActions">
+              ${buy}
+              <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+              <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            </div>
+
+            ${ADMIN ? `
+              <div class="adminRow" style="display:flex;">
+                <button class="adminBtn" data-action="setFeatured" data-sku="${escapeHTML(p.sku)}">⭐ Produto do Dia</button>
+                <button class="adminBtn ${p.active ? "danger" : ""}" data-action="toggleActive" data-sku="${escapeHTML(p.sku)}">
+                  ${p.active ? "⛔ Desativar" : "✅ Ativar"}
+                </button>
+                <button class="adminBtn" data-action="editLink" data-sku="${escapeHTML(p.sku)}">✏️ Link</button>
+                <button class="adminBtn" data-action="editId" data-sku="${escapeHTML(p.sku)}">✏️ ID</button>
+                <button class="adminBtn" data-action="editBadges" data-sku="${escapeHTML(p.sku)}">✏️ Badges</button>
+              </div>
+            ` : ``}
+          </div>
+        </div>
+      `;
+    }
+
+    let STATE = {
+      products: [],
+      rawLoadedAt: "",
+      query: ""
+    };
+
+    async function fetchProducts(){
+      const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
+      if(!res.ok) throw new Error("produtos.json não encontrado");
+      const data = await res.json();
+      const list = normalizeProducts(data).map(adaptForUI);
+      return list;
+    }
+
+    function getFeatured(list){
+      const actives = list.filter(p => p.active !== false);
+      return actives.find(p => p.featured) || actives[0] || null;
+    }
+
+    function render(){
+      const q = (STATE.query || "").trim().toLowerCase();
+
+      const active = STATE.products.filter(p => p.active !== false);
+
+      const destaque = getFeatured(STATE.products);
       $("#featured").innerHTML = destaque ? featuredHTML(destaque) : "";
 
-      let list = visible.slice();
+      let gridList = active.slice();
+
       if(q){
-        list = list.filter(p=>{
-          const hay = (p.nome+" "+(p.desc||"")+" "+(p.idML||"")+" "+(p.tags||[]).join(" ")).toLowerCase();
+        gridList = gridList.filter(p => {
+          const hay = (
+            (p.title||"") + " " +
+            (p.sku||"") + " " +
+            (p.id_busca||"") + " " +
+            safeArray(p.badges).join(" ")
+          ).toLowerCase();
           return hay.includes(q);
         });
       }
 
-      const gridList = destaque ? list.filter(p=>p.slug !== destaque.slug) : list;
-      $("#grid").innerHTML = gridList.map(productCardHTML).join("");
+      if(destaque){
+        gridList = gridList.filter(p => p.sku !== destaque.sku);
+      }
 
-      document.querySelectorAll("[data-copy]").forEach(el=>{
-        el.addEventListener("click", ()=> copyText(el.getAttribute("data-copy")));
-      });
+      $("#grid").innerHTML = gridList.map(productCardHTML).join("");
     }
+
+    function findBySku(sku){
+      return STATE.products.find(p => p.sku === sku) || null;
+    }
+
+    function setFeatured(sku){
+      STATE.products.forEach(p => p.featured = false);
+      const target = findBySku(sku);
+      if(target) target.featured = true;
+      showToast("Produto do Dia definido ⭐");
+      render();
+    }
+
+    function toggleActive(sku){
+      const target = findBySku(sku);
+      if(!target) return;
+      target.active = !target.active;
+
+      if(target.active === false && target.featured){
+        target.featured = false;
+        const next = STATE.products.find(p => p.active !== false);
+        if(next) next.featured = true;
+      }
+
+      showToast(target.active ? "Ativado ✅" : "Desativado ⛔");
+      render();
+    }
+
+    function editLink(sku){
+      const p = findBySku(sku);
+      if(!p) return;
+      const v = prompt("Cole o LINK do Mercado Livre (https://mercadolivre.com/sec/...)", p.open_url || "");
+      if(v === null) return;
+      const nv = String(v).trim();
+      if(!nv.startsWith("http")) return alert("Link inválido. Precisa começar com http/https.");
+      p.open_url = nv;
+      p.check_url = nv;
+      showToast("Link atualizado ✅");
+      render();
+    }
+
+    function editId(sku){
+      const p = findBySku(sku);
+      if(!p) return;
+      const v = prompt("Cole o ID de busca (ex: 5J5PKG-JBQE)", p.id_busca || "");
+      if(v === null) return;
+      p.id_busca = String(v).trim();
+      showToast("ID atualizado ✅");
+      render();
+    }
+
+    function editBadges(sku){
+      const p = findBySku(sku);
+      if(!p) return;
+      const current = safeArray(p.badges).join(", ");
+      const v = prompt("Badges (separe por vírgula)", current);
+      if(v === null) return;
+      p.badges = String(v).split(",").map(s => s.trim()).filter(Boolean);
+      showToast("Badges atualizadas ✅");
+      render();
+    }
+
+    function exportProdutosJson(){
+      const out = {
+        updated_at: new Date().toISOString(),
+        products: STATE.products.map(p => ({
+          sku: p.sku,
+          title: p.title,
+          badges: safeArray(p.badges),
+          id_busca: p.id_busca,
+          open_url: p.open_url,
+          check_url: p.check_url || p.open_url,
+          image: p.image,
+          price_text: p.price_text || "",
+          active: (p.active !== false),
+          featured: (p.featured === true),
+          last_checked: p.last_checked || "",
+          last_ok: p.last_ok || ""
+        }))
+      };
+
+      const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "produtos.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast("Exportado ⬇️");
+    }
+
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-action]");
+      if(!el) return;
+
+      const action = el.getAttribute("data-action");
+      const sku = el.getAttribute("data-sku") || "";
+      const p = sku ? findBySku(sku) : null;
+
+      if(action === "copyLink" && p) return copyText(p.open_url || "");
+      if(action === "copyId" && p) return copyText(p.id_busca || "");
+
+      if(!ADMIN) return;
+
+      if(action === "setFeatured") return setFeatured(sku);
+      if(action === "toggleActive") return toggleActive(sku);
+      if(action === "editLink") return editLink(sku);
+      if(action === "editId") return editId(sku);
+      if(action === "editBadges") return editBadges(sku);
+    });
 
     $("#btnClear").addEventListener("click", ()=>{
       $("#q").value = "";
-      render("");
+      STATE.query = "";
+      render();
     });
-    $("#q").addEventListener("input", (e)=>render(e.target.value));
 
-    render("");
+    $("#q").addEventListener("input", (e)=>{
+      STATE.query = e.target.value || "";
+      render();
+    });
+
+    async function boot(){
+      if(ADMIN){
+        $("#adminBar").style.display = "flex";
+        $("#btnExport").addEventListener("click", exportProdutosJson);
+        $("#btnReload").addEventListener("click", async ()=>{
+          showToast("Recarregando…");
+          try{
+            STATE.products = await fetchProducts();
+            showToast("Carregado ✅");
+            render();
+          }catch(err){
+            alert("Erro ao carregar produtos.json");
+          }
+        });
+      }
+
+      try{
+        STATE.products = await fetchProducts();
+      }catch(err){
+        // fallback mínimo
+        STATE.products = [{
+          sku: "fallback-mochila",
+          title: "Mochila impermeável — Notebook 15.6”",
+          badges: ["Achados do Dia", "Carry-on", "USB"],
+          id_busca: "5J5PKG-JBQE",
+          open_url: "https://mercadolivre.com/sec/14jFsrH",
+          check_url: "https://mercadolivre.com/sec/14jFsrH",
+          image: "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
+          price_text: "",
+          active: true,
+          featured: true,
+          last_checked: "",
+          last_ok: ""
+        }];
+      }
+
+      render();
+    }
+
+    boot();
   </script>
 </body>
 </html>
