@@ -8,9 +8,10 @@
       "id_busca": "5J5PKG-JBQE",
       "open_url": "https://mercadolivre.com/sec/1waKGha",
       "check_url": "https://mercadolivre.com/sec/1waKGha",
-      "image": "assets/produtos/mochila.jpg",
+      "image": "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
       "price_text": "",
       "active": true,
+      "featured": true,
       "last_checked": "",
       "last_ok": ""
     }
