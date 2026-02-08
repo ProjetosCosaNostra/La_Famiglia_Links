@@ -408,7 +408,7 @@
 
     <div class="footer">
       Preço e disponibilidade podem mudar no Mercado Livre. <br/>
-      Dica: use **Story com Link Sticker** + mantenha esta vitrine como **link da bio**.
+      Dica: use <b>Story com Link Sticker</b> + mantenha esta vitrine como <b>link da bio</b>.
       <div class="socialRow">
         <a href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener">GitHub</a>
         <a href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">Instagram</a>
@@ -432,11 +432,11 @@
         desc: "Trava com senha • bolso oculto • saída USB • conforto com malha respirável • alça de bagagem (carry-on).",
         idML: "5J5PKG-JBQE",
         link: "https://mercadolivre.com/sec/1waKGha",
-        imagem: "", // opcional: cole URL de imagem (ou deixe vazio)
+        imagem: "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
         tags: ["mochila","notebook","viagem"]
       },
 
-      // EXEMPLO 2 (edite ou apague)
+      // EXEMPLO (edite ou apague)
       {
         slug: "whey-2kg-exemplo",
         destaque: false,
@@ -465,7 +465,6 @@
         await navigator.clipboard.writeText(txt);
         showToast("Copiado ✅");
       }catch(e){
-        // fallback
         const t = document.createElement("textarea");
         t.value = txt;
         document.body.appendChild(t);
@@ -480,7 +479,7 @@
       const imgHTML = p.imagem
         ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
         : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:18px;">
-             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">cole a URL no arquivo</span>
+             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">suba a arte em assets/produtos</span>
            </div>`;
 
       const tags = (p.tags||[]).slice(0,3).map(t=>`#${t}`).join(" ");
@@ -505,8 +504,8 @@
       const imgHTML = p.imagem
         ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
         : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:24px;">
-             Cole a URL da imagem no arquivo<br/>
-             <span style="color:rgba(199,162,75,.9)">campo: "imagem"</span>
+             Suba a arte do post<br/>
+             <span style="color:rgba(199,162,75,.9)">assets/produtos/...</span>
            </div>`;
 
       return `
@@ -572,11 +571,9 @@
         });
       }
 
-      // tira o destaque da grade se quiser:
       const gridList = list.filter(p=>p.slug !== destaque.slug);
       $("#grid").innerHTML = gridList.map(productCardHTML).join("");
 
-      // bind copy buttons
       document.querySelectorAll("[data-copy]").forEach(el=>{
         el.addEventListener("click", ()=> copyText(el.getAttribute("data-copy")));
       });
