@@ -4,6 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cosa Nostra — Vitrine</title>
+
+  <meta name="description" content="Vitrine premium de achados do dia. Clique e compre." />
+  <meta name="theme-color" content="#050505" />
+
   <style>
     :root{
       --bg:#050505;
@@ -130,6 +134,11 @@
       transition:transform .08s ease, filter .15s ease;
       user-select:none;
       white-space:nowrap;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
     }
     .btn:hover{filter:brightness(1.06)}
     .btn:active{transform:translateY(1px)}
@@ -142,6 +151,11 @@
       font-weight:800;
       cursor:pointer;
       white-space:nowrap;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
     }
 
     .section{
@@ -200,6 +214,20 @@
       align-items:center;
       justify-content:center;
       padding:10px;
+      position:relative;
+    }
+    .badge{
+      position:absolute;
+      top:12px;
+      left:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.45);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      color:rgba(255,255,255,.90);
+      backdrop-filter: blur(8px);
     }
     .cardImg img{
       max-width:100%;
@@ -383,8 +411,9 @@
           <span style="color:var(--gold2); font-weight:900;">🔎</span>
           <input id="q" placeholder="Buscar produto (ex: mochila, whey, mouse...)" />
         </div>
-        <button class="btn" id="btnClear">Limpar</button>
-        <a class="btn2" id="btnInsta" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">Instagram</a>
+        <button class="btn" id="btnClear" type="button">Limpar</button>
+        <a class="btn2" id="btnHome" href="./" rel="noopener">🏠 Home</a>
+        <a class="btn2" id="btnInsta" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
       </div>
     </div>
 
@@ -407,13 +436,13 @@
     </div>
 
     <div class="footer">
-      Preço e disponibilidade podem mudar no Mercado Livre. <br/>
+      Preço e disponibilidade podem mudar no Mercado Livre.<br/>
       Dica: use <b>Story com Link Sticker</b> + mantenha esta vitrine como <b>link da bio</b>.
       <div class="socialRow">
         <a href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener">GitHub</a>
         <a href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.youtube.com/@CosaNostraAI" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.tiktok.com/@cosanostra.ia" target="_blank" rel="noopener">TikTok</a>
       </div>
     </div>
   </div>
@@ -428,24 +457,14 @@
       {
         slug: "mochila-impermeavel-156",
         destaque: true,
+        ativo: true, // se quiser tirar do ar: coloque false
         nome: "Mochila impermeável • Notebook 15.6”",
         desc: "Trava com senha • bolso oculto • saída USB • conforto com malha respirável • alça de bagagem (carry-on).",
         idML: "5J5PKG-JBQE",
         link: "https://mercadolivre.com/sec/1waKGha",
+        // ✅ sua arte do post (arquivo do repo)
         imagem: "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
         tags: ["mochila","notebook","viagem"]
-      },
-
-      // EXEMPLO (edite ou apague)
-      {
-        slug: "whey-2kg-exemplo",
-        destaque: false,
-        nome: "Whey Protein 2kg (exemplo)",
-        desc: "Exemplo de produto. Troque nome/ID/link/descrição.",
-        idML: "SEU-ID-AQUI",
-        link: "https://mercadolivre.com/",
-        imagem: "",
-        tags: ["whey","academia"]
       }
     ];
 
@@ -475,11 +494,20 @@
       }
     }
 
+    function escapeHTML(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
     function productCardHTML(p){
       const imgHTML = p.imagem
         ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
         : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:18px;">
-             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">suba a arte em assets/produtos</span>
+             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">cole a URL no arquivo</span>
            </div>`;
 
       const tags = (p.tags||[]).slice(0,3).map(t=>`#${t}`).join(" ");
@@ -492,8 +520,8 @@
             <p class="pSmall" style="color:var(--gold2); font-weight:900; letter-spacing:.03em;">${escapeHTML(tags)}</p>
             <div class="pActions">
               <a class="smallBtn smallBtnGold" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">Comprar</a>
-              <button class="smallBtn" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
-              <button class="smallBtn" data-copy="${escapeHTML(p.link)}">Copiar Link</button>
+              <button class="smallBtn" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
+              <button class="smallBtn" type="button" data-copy="${escapeHTML(p.link)}">Copiar Link</button>
             </div>
           </div>
         </div>
@@ -504,13 +532,21 @@
       const imgHTML = p.imagem
         ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
         : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:24px;">
-             Suba a arte do post<br/>
-             <span style="color:rgba(199,162,75,.9)">assets/produtos/...</span>
+             Cole a imagem do produto<br/>
+             <span style="color:rgba(199,162,75,.9)">campo: "imagem"</span>
            </div>`;
+
+      const disabled = (p.ativo === false);
+      const buyBtn = disabled
+        ? `<button class="btn buy" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
+        : `<a class="btn buy" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
 
       return `
         <div class="card">
-          <div class="cardImg">${imgHTML}</div>
+          <div class="cardImg">
+            <div class="badge">⭐ Produto do dia</div>
+            ${imgHTML}
+          </div>
           <div class="cardBody">
             <div class="tag">⭐ produto do dia</div>
             <h3 class="name">${escapeHTML(p.nome)}</h3>
@@ -519,9 +555,9 @@
               <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.idML || "")}</b></div>
             </div>
             <div class="actions">
-              <a class="btn buy" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">COMPRAR AGORA</a>
-              <button class="btn2" data-copy="${escapeHTML(p.link)}">Copiar link</button>
-              <button class="btn2" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
+              ${buyBtn}
+              <button class="btn2" type="button" data-copy="${escapeHTML(p.link)}">Copiar link</button>
+              <button class="btn2" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
             </div>
           </div>
         </div>
@@ -536,8 +572,8 @@
             </p>
 
             <div class="actions" style="margin-top:10px;">
-              <button class="btn2" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
-              <button class="btn2" data-copy="${escapeHTML(p.link)}">Copiar Link</button>
+              <button class="btn2" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
+              <button class="btn2" type="button" data-copy="${escapeHTML(p.link)}">Copiar Link</button>
             </div>
 
             <p class="meta" style="margin-top:10px; color:var(--muted);">
@@ -548,22 +584,14 @@
       `;
     }
 
-    function escapeHTML(s){
-      return String(s ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-
     function render(query=""){
       const q = query.trim().toLowerCase();
 
-      const destaque = PRODUCTS.find(p=>p.destaque) || PRODUCTS[0];
-      $("#featured").innerHTML = featuredHTML(destaque);
+      const visible = PRODUCTS.filter(p => p && (p.ativo !== false));
+      const destaque = visible.find(p=>p.destaque) || visible[0];
+      $("#featured").innerHTML = destaque ? featuredHTML(destaque) : "";
 
-      let list = PRODUCTS.slice();
+      let list = visible.slice();
       if(q){
         list = list.filter(p=>{
           const hay = (p.nome+" "+(p.desc||"")+" "+(p.idML||"")+" "+(p.tags||[]).join(" ")).toLowerCase();
@@ -571,7 +599,7 @@
         });
       }
 
-      const gridList = list.filter(p=>p.slug !== destaque.slug);
+      const gridList = destaque ? list.filter(p=>p.slug !== destaque.slug) : list;
       $("#grid").innerHTML = gridList.map(productCardHTML).join("");
 
       document.querySelectorAll("[data-copy]").forEach(el=>{
