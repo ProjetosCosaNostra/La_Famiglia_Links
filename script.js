@@ -91,7 +91,7 @@
       .replaceAll("'", "&#039;");
   }
 
-  function featuredHTML(p) {
+  function featuredHTML(p, isProdutoDoDia) {
     const img = p.imagem
       ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
@@ -105,10 +105,22 @@
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
       : `<a class="btn btn--gold" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
 
+    const badge = isProdutoDoDia
+      ? `<div class="badge">⭐ Produto do dia</div>`
+      : `<div class="badge" style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.88);">🛒 Vitrine</div>`;
+
+    const titleTop = isProdutoDoDia
+      ? "⭐ Produto do Dia"
+      : "🛒 Destaque da Vitrine";
+
+    const subtitleNote = isProdutoDoDia
+      ? "Esse é o produto escolhido por você como Produto do Dia."
+      : "Nenhum Produto do Dia foi definido — esse é só um destaque da vitrine.";
+
     return `
       <div class="card">
         <div class="card__img">
-          <div class="badge">⭐ Produto do dia</div>
+          ${badge}
           ${img}
         </div>
         <div class="card__body">
@@ -132,10 +144,15 @@
       <div class="card">
         <div class="card__body">
           <h3 class="name" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:rgba(224,195,107,.95);">
-            ✅ Como comprar (rápido)
+            ${escapeHTML(titleTop)}
           </h3>
 
+          <p class="meta" style="margin-top:6px;">
+            ${escapeHTML(subtitleNote)}
+          </p>
+
           <p class="meta">
+            ✅ Como comprar (rápido)<br/>
             1) Abra o app/site do <b>Mercado Livre</b><br/>
             2) Cole o <b>ID</b> na busca: <b>${escapeHTML(p.idML || "")}</b><br/>
             3) Ou clique em <b>COMPRAR AGORA</b> (abre direto)
@@ -184,10 +201,16 @@
     }
 
     const products = await loadProducts();
-    const destaque = products.find(p => p.destaque) || products[0];
+
+    // ✅ Escolha manual:
+    // - Se existir algum com destaque/featured: usa esse como Produto do Dia.
+    // - Se NÃO existir: mostra o primeiro, mas sem selo de Produto do Dia (é só destaque de vitrine).
+    const escolhido = products.find(p => p.destaque);
+    const isProdutoDoDia = !!escolhido;
+    const destaque = escolhido || products[0];
 
     const featured = $("#featured");
-    if (featured) featured.innerHTML = featuredHTML(destaque);
+    if (featured) featured.innerHTML = featuredHTML(destaque, isProdutoDoDia);
 
     document.querySelectorAll("[data-copy]").forEach((el) => {
       el.addEventListener("click", () => {
