@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cosa Nostra — Admin da Vitrine</title>
+  <meta name="theme-color" content="#050505" />
+  <style>
+    :root{
+      --bg:#050505;
+      --card:#0b0b0b;
+      --txt:#f2f2f2;
+      --muted:#b6b6b6;
+      --gold:#d6b25e;
+      --line:#1f1f1f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1000px 500px at 20% 0%, rgba(214,178,94,.14), transparent 60%),
+                  radial-gradient(900px 600px at 80% 20%, rgba(214,178,94,.10), transparent 60%),
+                  var(--bg);
+      color:var(--txt);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .wrap{width:min(920px, 100%);}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+    h1{margin:0 0 8px 0; font-size:22px; letter-spacing:.2px;}
+    p{margin:0 0 14px 0; color:var(--muted); line-height:1.45;}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .full{grid-column:1 / -1}
+    label{display:block; font-size:12px; color:var(--muted); margin:4px 0 6px}
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#070707;
+      color:var(--txt);
+      outline:none;
+    }
+    textarea{min-height:92px; resize:vertical}
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(214,178,94,.35);
+      background: rgba(214,178,94,.12);
+      color: var(--txt);
+      padding:12px 14px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .btn:hover{background: rgba(214,178,94,.18)}
+    .btn2{
+      appearance:none;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--txt);
+      padding:12px 14px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn2:hover{background: rgba(255,255,255,.08)}
+    .note{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    code{
+      background: rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:2px 6px;
+      border-radius:8px;
+      color:#ffd88a;
+    }
+    @media (max-width: 820px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Admin da Vitrine — Atualização sem editar arquivo</h1>
+      <p>
+        Preencha o link <code>/sec</code> do <b>Mercado Livre</b> e clique em <b>Criar Issue</b>.
+        A Action atualiza o <code>produtos.json</code> automaticamente (título/imagem tentam vir do próprio ML).
+      </p>
+
+      <div class="grid">
+        <div class="full">
+          <label for="secUrl">Link /sec do Mercado Livre (obrigatório)</label>
+          <input id="secUrl" placeholder="https://mercadolivre.com/sec/..." />
+        </div>
+
+        <div>
+          <label for="featured">Destaque (Produto do Dia)</label>
+          <select id="featured">
+            <option value="não" selected>não</option>
+            <option value="sim">sim</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="slug">ID/slug (opcional)</label>
+          <input id="slug" placeholder="ex: redmi-buds-6-play" />
+        </div>
+
+        <div class="full">
+          <label for="title">Título (opcional — se quiser forçar)</label>
+          <input id="title" placeholder="Se vazio, a Action tenta puxar do ML" />
+        </div>
+
+        <div>
+          <label for="price">Preço (opcional)</label>
+          <input id="price" placeholder="R$ 0,00" />
+        </div>
+
+        <div>
+          <label for="image">Imagem (opcional — URL direta)</label>
+          <input id="image" placeholder="https://.../imagem.jpg" />
+        </div>
+
+        <div class="full">
+          <label for="tags">Tags (opcional — uma por linha)</label>
+          <textarea id="tags" placeholder="bluetooth&#10;tws&#10;promoção"></textarea>
+        </div>
+
+        <div class="full">
+          <label for="notes">Observações (opcional)</label>
+          <textarea id="notes" placeholder="Notas internas..."></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="btn" id="btnCreate">🧾 Criar Issue (Atualizar Vitrine)</button>
+        <button class="btn2" id="btnTemplate">Abrir template direto no GitHub</button>
+      </div>
+
+      <div class="note">
+        Se o GitHub Pages estiver em <b>projetoscosanostra.github.io/La_Familia_Links</b>, este painel fica em:
+        <code>/admin</code> (ex: <code>.../La_Familia_Links/admin</code>)
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const repoOwner = "ProjetosCosaNostra";
+      const repoName  = "La_Familia_Links";
+
+      const $ = (id) => document.getElementById(id);
+
+      function buildIssueUrl(){
+        const secUrl = ($("secUrl").value || "").trim();
+        if(!secUrl){
+          alert("Cole o link /sec do Mercado Livre.");
+          return null;
+        }
+        const featured = ($("featured").value || "não").trim();
+        const slug = ($("slug").value || "").trim();
+        const title = ($("title").value || "").trim();
+        const price = ($("price").value || "").trim();
+        const image = ($("image").value || "").trim();
+        const tags  = ($("tags").value || "").trim();
+        const notes = ($("notes").value || "").trim();
+
+        const issueTitle = `Produto: ${title ? title.substring(0, 80) : secUrl.replace(/^https?:\/\//,'')}`;
+
+        const bodyLines = [
+          `SEC_URL: ${secUrl}`,
+          `FEATURED: ${featured}`,
+          slug ? `SLUG: ${slug}` : "",
+          title ? `TITLE: ${title}` : "",
+          price ? `PRICE: ${price}` : "",
+          image ? `IMAGE: ${image}` : "",
+          tags ? `TAGS: ${tags.replace(/\r\n/g,"\n")}` : "",
+          notes ? `NOTES: ${notes.replace(/\r\n/g,"\n")}` : ""
+        ].filter(Boolean);
+
+        const body = bodyLines.join("\n");
+
+        const base = `https://github.com/${repoOwner}/${repoName}/issues/new`;
+        const url  = `${base}?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(body)}`;
+        return url;
+      }
+
+      $("btnCreate").addEventListener("click", () => {
+        const url = buildIssueUrl();
+        if(url) window.open(url, "_blank", "noopener");
+      });
+
+      $("btnTemplate").addEventListener("click", () => {
+        const url = `https://github.com/${repoOwner}/${repoName}/issues/new?template=produto.yml`;
+        window.open(url, "_blank", "noopener");
+      });
+    })();
+  </script>
+</body>
+</html>
