@@ -25,7 +25,6 @@
   }
 
   function baseUrl() {
-    // garante /La_Familia_Links/ certinho
     return new URL("./", window.location.href).href;
   }
 
@@ -157,7 +156,6 @@
   }
 
   async function loadProducts() {
-    // tenta usar produtos.json se existir; se não, usa fallback
     try {
       const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
       if (!res.ok) throw new Error("produtos.json não encontrado");
