@@ -1,0 +1,20 @@
+name: "⭐ Definir Produto do Dia"
+description: "Escolher manualmente qual SKU vira Produto do Dia (sem mexer nos arquivos)."
+title: "[CMS] Produto do Dia: "
+labels: ["cms:produto-do-dia"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## CMS — Definir Produto do Dia
+        ✅ Você escolhe o SKU existente que vira destaque na Home.
+        ✅ O CMS vai marcar esse SKU como `featured:true` e colocar todos os outros como `featured:false`.
+
+  - type: input
+    id: sku
+    attributes:
+      label: "SKU existente"
+      description: "Tem que ser um SKU que já existe no produtos.json"
+      placeholder: "ex: mochila-impermeavel-notebook-15-6"
+    validations:
+      required: true
