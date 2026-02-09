@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-08T00:00:00Z",
+  "updated_at": "2026-02-09T00:00:00Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -12,6 +12,20 @@
       "price_text": "",
       "active": true,
       "featured": true,
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "xiaomi-redmi-buds-6-play",
+      "title": "Xiaomi Redmi Buds 6 Play",
+      "badges": ["Achados do Dia", "Bluetooth 5.4", "TWS", "PRETO"],
+      "id_busca": "5J5PKG-E681",
+      "open_url": "https://mercadolivre.com/sec/2T9cpsU",
+      "check_url": "https://mercadolivre.com/sec/2T9cpsU",
+      "image": "https://github.com/user-attachments/assets/e810b782-1948-4bce-8237-ac28d4676ab6",
+      "price_text": "",
+      "active": true,
+      "featured": false,
       "last_checked": "",
       "last_ok": ""
     }
