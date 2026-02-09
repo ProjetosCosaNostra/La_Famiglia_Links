@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout (gh-pages)
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           fetch-depth: 0
@@ -28,7 +28,11 @@ jobs:
       - name: Run CMS
         env:
           GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
+          python --version
+          ls -la
+          ls -la tools || true
           python tools/cms_produtos.py
 
       - name: Commit & push (if changed)
@@ -36,29 +40,9 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add produtos.json
-            git commit -m "chore(cms): update produtos.json from issue #${{ github.event.issue.number }}"
-            git push
+            git add -A
+            git commit -m "chore: update produtos.json via issue #${{ github.event.issue.number }}"
+            git push origin gh-pages
           else
             echo "No changes to commit."
           fi
-
-      - name: Comment on issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const n = context.payload.issue.number;
-            const msg = [
-              "✅ CMS executado.",
-              "",
-              "Se foi **novo/atualização**, `produtos.json` já foi atualizado e commitado.",
-              "Agora aguarde 1–2 min e recarregue a vitrine.",
-              "",
-              "Se não refletiu, abra **Actions** e me mande o log do run."
-            ].join("\n");
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: n,
-              body: msg
-            });
