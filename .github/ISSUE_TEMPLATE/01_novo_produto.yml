@@ -1,0 +1,92 @@
+name: "➕ Novo / Atualizar Produto (CMS)"
+description: "Adiciona ou atualiza um produto em produtos.json (com opção de Produto do Dia e imagem via upload no issue)."
+title: "[CMS] Produto: "
+labels: ["cms-produtos", "cms-novo-produto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ✅ **Como usar (do jeito certo):**
+        - Preencha os campos abaixo.
+        - **Pra imagem bonita (com QR):** arraste a imagem para dentro do texto do issue (ou cole a URL da imagem).
+        - Ao enviar, a Action atualiza o `produtos.json` sozinha.
+
+  - type: input
+    id: sku
+    attributes:
+      label: "SKU (único)"
+      description: "Ex: xiaomi-redmi-buds-6-play"
+      placeholder: "xiaomi-redmi-buds-6-play"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: "Título"
+      placeholder: "Xiaomi Redmi Buds 6 Play"
+    validations:
+      required: true
+
+  - type: textarea
+    id: badges
+    attributes:
+      label: "Badges/Tags (separe por vírgula)"
+      description: "Ex: Achados do Dia, Bluetooth 5.4, TWS, PRETO"
+      placeholder: "Achados do Dia, Bluetooth 5.4, TWS, PRETO"
+    validations:
+      required: false
+
+  - type: input
+    id: id_busca
+    attributes:
+      label: "ID Mercado Livre (pra colar na busca)"
+      placeholder: "5J5PKG-E681"
+    validations:
+      required: false
+
+  - type: input
+    id: open_url
+    attributes:
+      label: "Link Mercado Livre (/sec/...)"
+      placeholder: "https://mercadolivre.com/sec/2T9cpsU"
+    validations:
+      required: true
+
+  - type: input
+    id: image_url
+    attributes:
+      label: "Imagem (URL opcional)"
+      description: "Se você não preencher, o sistema pega automaticamente a primeira imagem colada/arrastada no corpo do issue."
+      placeholder: "https://... (opcional)"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: flags
+    attributes:
+      label: "Opções"
+      description: "Você escolhe (não é automático)."
+      options:
+        - label: "Ativo (aparece na vitrine)"
+          required: false
+        - label: "Definir como Produto do Dia (featured)"
+          required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 📎 Upload da imagem bonita (com QR)
+        **Depois de preencher os campos**, você pode arrastar a imagem aqui embaixo no corpo do issue:
+        - Arraste e solte (ou cole) a imagem.
+        - O GitHub vai gerar um link público.
+        - O CMS vai pegar automaticamente.
+
+  - type: textarea
+    id: uploads
+    attributes:
+      label: "Cole/arraste a imagem aqui (opcional)"
+      description: "Pode deixar vazio se já colocou a imagem em outro lugar no issue."
+      placeholder: "Arraste a imagem aqui…"
+    validations:
+      required: false
