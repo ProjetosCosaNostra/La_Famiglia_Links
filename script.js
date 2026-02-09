@@ -36,6 +36,19 @@
     return baseUrl();
   }
 
+  function resolveUrl(u) {
+    const raw = String(u ?? "").trim();
+    if (!raw) return "";
+    if (/^(https?:\/\/|data:)/i.test(raw)) return raw;
+
+    // normaliza duplicação clássica
+    let p = raw.replace(/^[.\/]+/, "");
+    p = p.replace(/^assets\/assets\//i, "assets/");
+
+    // resolve relativo -> absoluto (mais robusto em qualquer página)
+    return new URL(p, baseUrl()).href;
+  }
+
   const FALLBACK_PRODUCTS = [
     {
       destaque: true,
@@ -44,7 +57,7 @@
       desc: "Trava com senha • bolso oculto • saída USB • conforto com malha respirável • alça de bagagem (carry-on).",
       idML: "5J5PKG-JBQE",
       link: "https://mercadolivre.com/sec/14jFsrH",
-      imagem: "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
+      imagem: "assets/produtos/Mochila_Masculina_Notebook_15.6.png",
       tags: ["mochila", "notebook", "viagem"]
     }
   ];
@@ -92,8 +105,9 @@
   }
 
   function featuredHTML(p, isProdutoDoDia) {
-    const img = p.imagem
-      ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" />`
+    const imgSrc = resolveUrl(p.imagem);
+    const img = imgSrc
+      ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.nome)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
            Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
          </div>`;
@@ -101,7 +115,8 @@
     const tags = (p.tags || []).slice(0, 4).map(t => `#${t}`).join(" ");
 
     const disabled = (p.ativo === false);
-    const buyBtn = disabled
+    const hasLink = String(p.link || "").trim().startsWith("http");
+    const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
       : `<a class="btn btn--gold" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
 
@@ -202,9 +217,6 @@
 
     const products = await loadProducts();
 
-    // ✅ Escolha manual:
-    // - Se existir algum com destaque/featured: usa esse como Produto do Dia.
-    // - Se NÃO existir: mostra o primeiro, mas sem selo de Produto do Dia (é só destaque de vitrine).
     const escolhido = products.find(p => p.destaque);
     const isProdutoDoDia = !!escolhido;
     const destaque = escolhido || products[0];
