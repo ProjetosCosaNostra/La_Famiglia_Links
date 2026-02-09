@@ -9,13 +9,13 @@
         "Carry-on",
         "USB"
       ],
-      "id_busca": "5J5PKG-JBQE",
-      "open_url": "https://mercadolivre.com/sec/14jFsrh",
-      "check_url": "https://mercadolivre.com/sec/14jFsrh",
-      "image": "assets/assets/products/Mochila_Masculina_Notebook_15.6.png",
+      "id_busca": "5J5PKG-EN33",
+      "open_url": "https://mercadolivre.com/sec/14jFsrH",
+      "check_url": "https://mercadolivre.com/sec/14jFsrH",
+      "image": "https://github.com/user-attachments/assets/8cd88e3e-28a8-439b-b647-5ae981763ff8",
       "price_text": "",
       "active": true,
-      "featured": false,
+      "featured": true,
       "last_checked": "",
       "last_ok": ""
     },
@@ -35,19 +35,6 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
-      "last_checked": "",
-      "last_ok": ""
-    },
-    {
-      "sku": "cms-produto-mochila-impermeável-notebook-156",
-      "title": "[CMS] Produto: Mochila impermeável — Notebook 15.6”",
-      "badges": [],
-      "open_url": "",
-      "check_url": "",
-      "image": "https://github.com/user-attachments/assets/8cd88e3e-28a8-439b-b647-5ae981763ff8",
-      "price_text": "",
-      "active": true,
-      "featured": true,
       "last_checked": "",
       "last_ok": ""
     }
