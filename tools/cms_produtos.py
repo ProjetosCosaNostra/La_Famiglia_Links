@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v2 (Upsert + Badges/Tags + Normalização + OpenURL fallback)
+# Versão : v3 (Preserva /sec case + Imagem user-attachments robusta + URL clean)
 # ==========================================================
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 from urllib.parse import quote_plus
 
 
@@ -37,12 +37,19 @@ def _write_json(path: Path, data: Dict[str, Any]) -> None:
         f.write("\n")
 
 
-def _first_non_empty_line(s: str) -> str:
-    for line in s.splitlines():
-        t = line.strip()
-        if t:
-            return t
-    return ""
+def _clean_url(u: str) -> str:
+    """
+    Limpa URL capturada por regex:
+    - remove wrappers comuns (<...>, "...", '...')
+    - remove pontuação final grudada: ) ] , .
+    """
+    s = (u or "").strip()
+    if not s:
+        return ""
+    s = s.strip().strip("<>").strip().strip('"').strip("'").strip()
+    while s and s[-1] in ").],":
+        s = s[:-1].rstrip()
+    return s
 
 
 def _extract_field(body: str, label_regex: str) -> str:
@@ -61,7 +68,6 @@ def _extract_field(body: str, label_regex: str) -> str:
         return ""
 
     value = (m.group(1) or "").strip()
-    # evita placeholders comuns
     if value.lower() in {"_", "-", "n/a", "na", "none", "null"}:
         return ""
     return value
@@ -71,11 +77,10 @@ def _extract_first_url_under_label(body: str, label_regex: str) -> str:
     """
     Pega a primeira URL na linha abaixo do label (ou na mesma linha em casos raros).
     """
-    v = _extract_field(body, label_regex)
+    v = _extract_field(body, label_regex).strip()
     if v.startswith("http://") or v.startswith("https://"):
-        return v
+        return _clean_url(v)
 
-    # fallback: tenta achar URL perto do label
     pattern = rf"(?ims)^\s*{label_regex}\s*$\n+([^\n]+)"
     m = re.search(pattern, body)
     if not m:
@@ -83,25 +88,48 @@ def _extract_first_url_under_label(body: str, label_regex: str) -> str:
 
     chunk = (m.group(1) or "").strip()
     um = re.search(r"(https?://\S+)", chunk)
-    return um.group(1).strip() if um else ""
+    return _clean_url(um.group(1)) if um else ""
 
 
 def _extract_markdown_image_url(body: str) -> str:
     """
-    Se o usuário arrastar imagem pro issue, aparece como Markdown:
+    Markdown típico do GitHub:
       ![alt](https://github.com/user-attachments/assets/....)
     """
     if not body:
         return ""
     urls = re.findall(r"!\[[^\]]*\]\((https?://[^)\s]+)\)", body, flags=re.IGNORECASE)
-    return urls[0].strip() if urls else ""
+    return _clean_url(urls[0]) if urls else ""
+
+
+def _extract_user_attachments_url(body: str) -> str:
+    """
+    Captura URL de anexos do GitHub mesmo se não estiver em Markdown de imagem.
+    Ex:
+      https://github.com/user-attachments/assets/xxxx-xxxx-...
+      https://github.com/user-attachments/files/xxxx/...
+    """
+    if not body:
+        return ""
+
+    # 1) assets
+    urls = re.findall(
+        r"(https?://github\.com/user-attachments/(?:assets|files)/[^\s)]+)",
+        body,
+        flags=re.IGNORECASE,
+    )
+    if urls:
+        return _clean_url(urls[0])
+
+    # 2) qualquer URL que pareça imagem comum
+    urls2 = re.findall(r"(https?://\S+\.(?:png|jpg|jpeg|webp|gif))(?:\s|$)", body, flags=re.IGNORECASE)
+    return _clean_url(urls2[0]) if urls2 else ""
 
 
 def _split_badges(raw: str) -> List[str]:
     if not raw:
         return []
     parts = [p.strip() for p in raw.split(",")]
-    # remove vazios e repetições mantendo ordem
     seen = set()
     out: List[str] = []
     for p in parts:
@@ -127,20 +155,21 @@ def _checkbox_is_checked(body: str, text_regex: str) -> bool:
 
 
 def _normalize_asset_path(p: str) -> str:
+    """
+    Normaliza caminho relativo; URL externa fica intacta.
+    Corrige duplicação assets/assets.
+    """
     if not p:
         return ""
 
-    # URL externa fica como está
-    if p.startswith("http://") or p.startswith("https://"):
-        return p
+    s = p.strip()
 
-    # normaliza separadores
-    p2 = p.strip().replace("\\", "/").lstrip("./").lstrip("/")
+    if s.startswith("http://") or s.startswith("https://"):
+        return _clean_url(s)
 
-    # corrige bug clássico: assets/assets/...
-    p2 = p2.replace("assets/assets/", "assets/")
-
-    return p2
+    s = s.replace("\\", "/").lstrip("./").lstrip("/")
+    s = s.replace("assets/assets/", "assets/")
+    return s
 
 
 def _ml_search_url(query: str) -> str:
@@ -151,7 +180,6 @@ def _ml_search_url(query: str) -> str:
     q = (query or "").strip()
     if not q:
         return ""
-    # quote_plus e troca + por - (fica com cara de URL do ML)
     slug = quote_plus(q).replace("+", "-")
     return f"https://lista.mercadolivre.com.br/{slug}"
 
@@ -165,11 +193,19 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     title = _extract_field(body, r"T[ií]tulo\b.*")
     badges_raw = _extract_field(body, r"Badges/Tags\b.*|Badges\b.*|Tags\b.*")
     id_busca = _extract_field(body, r"ID\s+Mercado\s+Livre\b.*")
-    link_ml = _extract_first_url_under_label(body, r"Link\s+Mercado\s+Livre\b.*")
-    image_url = _extract_first_url_under_label(body, r"Imagem\b\s*\(URL\s+opcional\)\s*.*")
 
+    # ⚠️ IMPORTANTE: NÃO NORMALIZAR /sec/... (case-sensitive)
+    link_ml = _extract_first_url_under_label(body, r"Link\s+Mercado\s+Livre\b.*")
+    link_ml = _clean_url(link_ml)
+
+    # imagem: tenta campo dedicado, depois markdown, depois user-attachments solto
+    image_url = _extract_first_url_under_label(body, r"Imagem\b\s*\(URL\s+opcional\)\s*.*")
+    if not image_url:
+        image_url = _extract_first_url_under_label(body, r"Imagem\b.*")
     if not image_url:
         image_url = _extract_markdown_image_url(body)
+    if not image_url:
+        image_url = _extract_user_attachments_url(body)
 
     badges = _split_badges(badges_raw)
 
@@ -180,24 +216,19 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if "ativo" not in body.lower():
         active = True
 
-    # normalizações
-    link_ml = (link_ml or "").strip()
     image = _normalize_asset_path(image_url)
 
-    # Open URL: se for /sec e tiver id_busca, usa busca (mais confiável)
-    open_url = link_ml
-    if ("/sec/" in (open_url or "").lower()) and id_busca:
-        open_url = _ml_search_url(id_busca)
-    if not open_url and id_busca:
-        open_url = _ml_search_url(id_busca)
+    # ✅ open_url: sempre respeita o link colado no Issue.
+    #    fallback: se não veio link, usa busca pelo ID.
+    open_url = link_ml or _ml_search_url(id_busca)
 
-    check_url = link_ml or open_url
+    # ✅ check_url: preferir link estável de busca se tiver ID (melhor pra monitorar)
+    check_url = _ml_search_url(id_busca) or open_url
 
     # fallback mínimo de title/sku se vier vazio
     if not title:
         title = (issue.get("title") or "").strip()
     if not sku:
-        # tenta derivar do title
         base = title or "produto"
         base = re.sub(r"[^\w\s-]", "", base, flags=re.UNICODE).strip().lower()
         base = re.sub(r"\s+", "-", base)
@@ -222,6 +253,8 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "_special_set_featured_only": bool(special_set_featured_only),
     }
     return product
+
+
 def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str, Any]:
     products: List[Dict[str, Any]] = data.get("products") or []
     if not isinstance(products, list):
@@ -231,7 +264,6 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     if not sku:
         return data
 
-    # encontra existente
     idx = next((i for i, p in enumerate(products) if isinstance(p, dict) and (p.get("sku") == sku)), None)
 
     if idx is None:
@@ -242,20 +274,16 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         existing = products[idx] if isinstance(products[idx], dict) else {}
         products[idx] = existing
 
-    # preserva campos de monitoramento se já existirem
     preserve_keys = {"last_checked", "last_ok"}
     for k in preserve_keys:
         if k in existing and (not incoming.get(k)):
             incoming[k] = existing.get(k, "")
 
-    # normaliza image novamente (garante sem assets/assets)
     incoming["image"] = _normalize_asset_path(incoming.get("image", ""))
 
-    # remove flag interna
     special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
 
     if special_set_featured_only:
-        # Só seta featured para o SKU e desliga nos outros
         for p in products:
             if not isinstance(p, dict):
                 continue
@@ -263,9 +291,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         data["products"] = products
         return data
 
-    # aplica update no produto
     for k, v in incoming.items():
-        # não grava chaves vazias que apagariam coisas úteis, exceto campos essenciais
         if k in {"sku", "title", "open_url", "check_url", "image"}:
             existing[k] = v
             continue
@@ -277,12 +303,10 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
 
         existing[k] = v
 
-    # garante defaults
     existing.setdefault("price_text", "")
     existing.setdefault("last_checked", "")
     existing.setdefault("last_ok", "")
 
-    # se incoming marcou featured, desmarca os outros
     if existing.get("featured") is True:
         for p in products:
             if not isinstance(p, dict):
@@ -321,6 +345,7 @@ def main() -> int:
     print(f"Featured: {incoming.get('featured')}")
     print(f"Active: {incoming.get('active')}")
     print(f"Open URL: {incoming.get('open_url')}")
+    print(f"Check URL: {incoming.get('check_url')}")
     print(f"Image: {incoming.get('image')}")
     return 0
 
