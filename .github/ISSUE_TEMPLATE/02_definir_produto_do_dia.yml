@@ -1,0 +1,26 @@
+name: "⭐ Definir Produto do Dia (featured)"
+description: "Escolha manualmente qual SKU vira o Produto do Dia."
+title: "[CMS] Produto do Dia: "
+labels: ["cms-produtos", "cms-produto-do-dia"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ✅ Você escolhe manualmente qual SKU vira **Produto do Dia**.
+        - Isso **desmarca os outros** (fica só 1 featured).
+
+  - type: input
+    id: sku
+    attributes:
+      label: "SKU para virar Produto do Dia"
+      placeholder: "mochila-impermeavel-notebook-15-6"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: opts
+    attributes:
+      label: "Opções"
+      options:
+        - label: "Se o SKU não existir, criar mesmo assim (com título vazio) — NÃO recomendado"
+          required: false
