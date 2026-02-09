@@ -1,24 +1,33 @@
 {
-  "updated_at": "2026-02-09T00:00:00Z",
+  "updated_at": "2026-02-09T22:28:10Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
       "title": "Mochila impermeável — Notebook 15.6”",
-      "badges": ["Achados do Dia", "Carry-on", "USB"],
+      "badges": [
+        "Achados do Dia",
+        "Carry-on",
+        "USB"
+      ],
       "id_busca": "5J5PKG-JBQE",
       "open_url": "https://mercadolivre.com/sec/14jFsrh",
       "check_url": "https://mercadolivre.com/sec/14jFsrh",
       "image": "assets/assets/products/Mochila_Masculina_Notebook_15.6.png",
       "price_text": "",
       "active": true,
-      "featured": true,
+      "featured": false,
       "last_checked": "",
       "last_ok": ""
     },
     {
       "sku": "xiaomi-redmi-buds-6-play",
       "title": "Xiaomi Redmi Buds 6 Play",
-      "badges": ["Achado do Dia", "Bluetooth 5.4", "TWS", "PRETO"],
+      "badges": [
+        "Achado do Dia",
+        "Bluetooth 5.4",
+        "TWS",
+        "PRETO"
+      ],
       "id_busca": "5J5PKG-E681",
       "open_url": "https://mercadolivre.com/sec/2T9cpsU",
       "check_url": "https://mercadolivre.com/sec/2T9cpsU",
@@ -26,6 +35,19 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "cms-produto-mochila-impermeável-notebook-156",
+      "title": "[CMS] Produto: Mochila impermeável — Notebook 15.6”",
+      "badges": [],
+      "open_url": "",
+      "check_url": "",
+      "image": "https://github.com/user-attachments/assets/8cd88e3e-28a8-439b-b647-5ae981763ff8",
+      "price_text": "",
+      "active": true,
+      "featured": true,
       "last_checked": "",
       "last_ok": ""
     }
