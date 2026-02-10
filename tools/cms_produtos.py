@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v3 (Issue Forms ### + Checkbox robusto + Preserva /sec case + Imagem HTML)
+# Versão : v4 (Parser por seção ### + Anti-DOTALL + Sanitização + Auto-clean produtos corrompidos)
 # ==========================================================
 
 from __future__ import annotations
@@ -18,6 +18,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PRODUTOS_JSON = REPO_ROOT / "produtos.json"
 
 
+# =========================
+# TIME / JSON
+# =========================
 def _utc_now_iso_z() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
@@ -36,74 +39,93 @@ def _write_json(path: Path, data: Dict[str, Any]) -> None:
         f.write("\n")
 
 
-def _extract_field(body: str, label_regex: str) -> str:
-    """
-    Pega o valor na linha imediatamente abaixo de um "título" do Issue Forms.
-
-    IMPORTANTE:
-    - Issue Forms renderiza labels como headings: "### SKU (único)"
-    - então aceitamos prefixo opcional de heading.
-
-    Exemplo:
-      ### Título
-      Mochila impermeável — Notebook 15.6"
-    """
-    if not body:
+# =========================
+# EXTRAÇÃO ROBUSTA (Issue Forms)
+# =========================
+def _first_http_url(text: str) -> str:
+    if not text:
         return ""
-
-    # aceita prefixo "### " e variações
-    pattern = rf"(?ims)^\s*(?:#+\s*)?{label_regex}\s*$\n+([^\n]+)"
-    m = re.search(pattern, body)
-    if not m:
-        return ""
-
-    value = (m.group(1) or "").strip()
-
-    # evita placeholders comuns
-    if value.lower() in {"_", "-", "n/a", "na", "none", "null"}:
-        return ""
-    return value
+    m = re.search(r"(https?://[^\s<>\"]+)", text.strip(), flags=re.IGNORECASE)
+    return m.group(1).strip() if m else ""
 
 
-def _extract_first_url_under_label(body: str, label_regex: str) -> str:
-    """
-    Pega a primeira URL na linha abaixo do label (ou na mesma linha em casos raros).
-    """
-    v = _extract_field(body, label_regex)
-    if v.startswith("http://") or v.startswith("https://"):
-        return v.strip()
-
-    # fallback: tenta achar URL perto do label (na linha capturada)
-    pattern = rf"(?ims)^\s*(?:#+\s*)?{label_regex}\s*$\n+([^\n]+)"
-    m = re.search(pattern, body)
-    if not m:
-        return ""
-
-    chunk = (m.group(1) or "").strip()
-    um = re.search(r"(https?://\S+)", chunk)
-    return um.group(1).strip() if um else ""
-
-
-def _extract_markdown_image_url(body: str) -> str:
+def _extract_markdown_image_url(text: str) -> str:
     """
     Markdown clássico:
       ![alt](https://github.com/user-attachments/assets/....)
     """
-    if not body:
+    if not text:
         return ""
-    urls = re.findall(r"!\[[^\]]*\]\((https?://[^)\s]+)\)", body, flags=re.IGNORECASE)
+    urls = re.findall(r"!\[[^\]]*\]\((https?://[^)\s]+)\)", text, flags=re.IGNORECASE)
     return urls[0].strip() if urls else ""
 
 
-def _extract_html_image_url(body: str) -> str:
+def _extract_html_image_url(text: str) -> str:
     """
     Issue pode guardar imagem como HTML:
       <img ... src="https://github.com/user-attachments/assets/...." />
     """
+    if not text:
+        return ""
+    m = re.search(r'(?is)<img[^>]+src="(https?://[^"]+)"', text)
+    return m.group(1).strip() if m else ""
+
+
+def _extract_section(body: str, heading_regex: str) -> str:
+    """
+    Extrai o bloco de conteúdo logo após um heading do Issue Forms.
+
+    Padrão do GitHub Issue Forms:
+      ### Campo
+      valor (pode ser multi-linha)
+
+    Este parser:
+    - acha a heading (linha inteira)
+    - captura tudo até a próxima heading (### ...) ou fim do texto
+    """
     if not body:
         return ""
-    m = re.search(r'(?is)<img[^>]+src="(https?://[^"]+)"', body)
-    return m.group(1).strip() if m else ""
+
+    # NOTE: heading_regex NÃO pode usar ".*" (porque com DOTALL atravessa linhas).
+    # Use sempre algo como r"SKU\\b[^\\n]*" etc.
+    pattern = rf"(?ims)^\s*(?:#+\s*)?{heading_regex}\s*$\n(.*?)(?=^\s*(?:#+\s*)|\Z)"
+    m = re.search(pattern, body)
+    if not m:
+        return ""
+
+    return (m.group(1) or "").strip()
+
+
+def _extract_field(body: str, heading_regex: str) -> str:
+    """
+    Pega o primeiro conteúdo "útil" (primeira linha não vazia) da seção.
+    """
+    section = _extract_section(body, heading_regex)
+    if not section:
+        return ""
+
+    # pega primeira linha não vazia e ignora formatação comum
+    for line in section.splitlines():
+        v = (line or "").strip()
+        if not v:
+            continue
+        if v in {"```", "```md", "```markdown", "```text"}:
+            continue
+        if v.lower() in {"_", "-", "n/a", "na", "none", "null"}:
+            return ""
+        return v
+
+    return ""
+
+
+def _extract_first_url_under_heading(body: str, heading_regex: str) -> str:
+    """
+    Pega a primeira URL dentro da seção (linha abaixo do heading, ou em qualquer linha do bloco).
+    """
+    section = _extract_section(body, heading_regex)
+    if not section:
+        return ""
+    return _first_http_url(section)
 
 
 def _split_badges_optional(raw: str) -> Optional[List[str]]:
@@ -136,27 +158,50 @@ def _checkbox_state(body: str, text_regex: str) -> Optional[bool]:
     if not body:
         return None
 
-    # checked
     if re.search(rf"(?im)^\s*[-*]\s*\[x\]\s*{text_regex}\b", body):
         return True
 
-    # unchecked
     if re.search(rf"(?im)^\s*[-*]\s*\[\s\]\s*{text_regex}\b", body):
         return False
 
     return None
 
 
+# =========================
+# NORMALIZAÇÃO / VALIDAÇÃO
+# =========================
 def _normalize_asset_path(p: str) -> str:
+    """
+    Aceita:
+    - URL direta
+    - tag <img ... src="URL">
+    - markdown image ![](...)
+    - caminho relativo
+
+    Retorna URL (se for URL) ou path relativo normalizado.
+    """
     if not p:
         return ""
 
-    # URL externa fica como está
-    if p.startswith("http://") or p.startswith("https://"):
-        return p.strip()
+    raw = p.strip()
 
-    # normaliza separadores
-    p2 = p.strip().replace("\\", "/").lstrip("./").lstrip("/")
+    # Se veio um <img ...>, extrai src
+    if "<img" in raw.lower():
+        u = _extract_html_image_url(raw)
+        return u.strip() if u else ""
+
+    # Se veio markdown image
+    if "![" in raw and "](" in raw:
+        u = _extract_markdown_image_url(raw)
+        return u.strip() if u else ""
+
+    # Se veio algum texto com URL, pega a primeira
+    u = _first_http_url(raw)
+    if u:
+        return u.strip()
+
+    # caso contrário, é path relativo
+    p2 = raw.replace("\\", "/").lstrip("./").lstrip("/")
 
     # corrige bug clássico: assets/assets/...
     p2 = p2.replace("assets/assets/", "assets/")
@@ -170,7 +215,7 @@ def _normalize_asset_path(p: str) -> str:
 def _ml_search_url(query: str) -> str:
     """
     Link estável de busca no Mercado Livre.
-    Ex: https://lista.mercadolivre.com.br/5J5PKG-EN33
+    Ex: https://lista.mercadolivre.com.br/5J5PKG-H0JA
     """
     q = (query or "").strip()
     if not q:
@@ -179,20 +224,55 @@ def _ml_search_url(query: str) -> str:
     return f"https://lista.mercadolivre.com.br/{slug}"
 
 
+def _looks_like_ml_url(url: str) -> bool:
+    if not url:
+        return False
+    u = url.strip().lower()
+    return ("mercadolivre.com" in u) or ("mercadolivre.com.br" in u) or ("ml.com" in u)
+
+
+def _looks_corrupt_value(v: str) -> bool:
+    if not v:
+        return False
+    s = v.strip().lower()
+    if s.startswith("<") or "<img" in s or "</" in s:
+        return True
+    if "github.com/user-attachments" in s and not s.startswith("http"):
+        return True
+    return False
+
+
+def _looks_corrupt_product(p: Dict[str, Any]) -> bool:
+    sku = (p.get("sku") or "").strip()
+    if not sku:
+        return True
+    if _looks_corrupt_value(sku):
+        return True
+    if "http://" in sku.lower() or "https://" in sku.lower():
+        return True
+    if len(sku) > 160:
+        return True
+
+    open_url = (p.get("open_url") or "").strip().lower()
+    if open_url and "github.com/user-attachments" in open_url:
+        return True
+
+    return False
 def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     body = (issue.get("body") or "").strip()
     labels = [l.get("name", "") for l in (issue.get("labels") or []) if isinstance(l, dict)]
     labels_lc = {x.lower() for x in labels if x}
 
-    # Issue Forms: labels vêm como "### SKU (único)" etc.
-    sku = _extract_field(body, r"SKU\b.*")
-    title = _extract_field(body, r"T[ií]tulo\b.*")
-    badges_raw = _extract_field(body, r"Badges/Tags\b.*|Badges\b.*|Tags\b.*")
-    id_busca = _extract_field(body, r"ID\s+Mercado\s+Livre\b.*")
-    link_ml = _extract_first_url_under_label(body, r"Link\s+Mercado\s+Livre\b.*")
-    image_url = _extract_first_url_under_label(body, r"Imagem\b\s*\(URL\s+opcional\)\s*.*")
+    # Campos (Issue Forms)
+    # IMPORTANTE: heading_regex NÃO usa ".*" pra não atravessar linhas
+    sku = _extract_field(body, r"SKU\b[^\n]*")
+    title = _extract_field(body, r"T[ií]tulo\b[^\n]*")
+    badges_raw = _extract_field(body, r"Badges/Tags\b[^\n]*|Badges\b[^\n]*|Tags\b[^\n]*")
+    id_busca = _extract_field(body, r"ID\s+Mercado\s+Livre\b[^\n]*")
+    link_ml = _extract_first_url_under_heading(body, r"Link\s+Mercado\s+Livre\b[^\n]*")
+    image_url = _extract_first_url_under_heading(body, r"Imagem\b\s*\(URL\s+opcional\)\s*[^\n]*")
 
-    # imagem fallback
+    # imagem fallback: busca em qualquer lugar do body
     if not image_url:
         image_url = _extract_markdown_image_url(body)
     if not image_url:
@@ -205,37 +285,49 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
 
     # Sem a seção de opções (templates antigos): default ativo
-    if active_state is None:
-        active = True
-    else:
-        active = bool(active_state)
-
+    active = True if active_state is None else bool(active_state)
     featured = bool(featured_state) if featured_state is not None else False
 
-    # normalizações (SEM mexer em case de URL)
+    # sanitizações
+    sku = (sku or "").strip()
+    title = (title or "").strip()
+    id_busca = (id_busca or "").strip()
     link_ml = (link_ml or "").strip()
+
+    # se link não parece ML, zera e usa busca por ID
+    if link_ml and (not _looks_like_ml_url(link_ml)):
+        link_ml = ""
+
     image = _normalize_asset_path(image_url)
+
+    # fallback mínimo de title/sku se vier vazio
+    if not title:
+        title = (issue.get("title") or "").strip()
+
+    # validações duras contra produto corrompido
+    if not sku:
+        raise ValueError("Não consegui ler o campo SKU do Issue (template/heading).")
+
+    if _looks_corrupt_value(sku) or sku.lower().startswith("img "):
+        raise ValueError("SKU corrompido (parece HTML/IMG). Verifique o Issue.")
+
+    if title and _looks_corrupt_value(title):
+        raise ValueError("Título corrompido (parece HTML/IMG). Verifique o Issue.")
+
+    if id_busca and _looks_corrupt_value(id_busca):
+        raise ValueError("ID Mercado Livre corrompido (parece HTML/IMG). Verifique o Issue.")
 
     # Open URL:
     # - Se tiver link do ML, usa exatamente como foi colado (preserva /sec e case)
     # - Se não tiver link, usa busca por ID
     open_url = link_ml or _ml_search_url(id_busca)
 
-    # check_url (monitoramento) — por enquanto, igual ao link original se existir
-    check_url = link_ml or open_url
-
-    # fallback mínimo de title/sku se vier vazio
-    if not title:
-        title = (issue.get("title") or "").strip()
-
-    # Se SKU não foi lido, isso é erro (Issue Forms exige SKU).
-    # Melhor falhar do que gerar produto quebrado sem link/id.
-    if not sku:
-        raise ValueError("Não consegui ler o campo SKU do Issue (provável mismatch de template/regex).")
-
     # validação mínima de link/id
     if not open_url:
         raise ValueError("Produto sem link: preencha 'Link Mercado Livre' ou 'ID Mercado Livre'.")
+
+    # check_url (monitoramento) — por enquanto, igual ao link original se existir
+    check_url = link_ml or open_url
 
     # Caso seja o issue especial do "produto do dia"
     special_set_featured_only = ("cms-produto-do-dia" in labels_lc) and (not badges) and (not link_ml) and (not image)
@@ -248,8 +340,7 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "open_url": open_url,
         "check_url": check_url,
         "image": image,
-        # não sobrescrever price_text se vier vazio (mantém o que já existir)
-        "price_text": None,
+        "price_text": None,  # não sobrescrever com vazio
         "active": bool(active),
         "featured": bool(featured),
         "last_checked": "",
@@ -264,8 +355,25 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     if not isinstance(products, list):
         products = []
 
+    # AUTO-LIMPEZA: remove produtos corrompidos antigos (SKU virado <img ...>)
+    cleaned: List[Dict[str, Any]] = []
+    removed = 0
+    for p in products:
+        if not isinstance(p, dict):
+            removed += 1
+            continue
+        if _looks_corrupt_product(p):
+            removed += 1
+            continue
+        cleaned.append(p)
+    if removed:
+        print(f"AVISO: removi {removed} item(ns) corrompido(s) do produtos.json.")
+
+    products = cleaned
+
     sku = (incoming.get("sku") or "").strip()
     if not sku:
+        data["products"] = products
         return data
 
     # encontra existente por SKU
@@ -285,7 +393,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         if k in existing and (not incoming.get(k)):
             incoming[k] = existing.get(k, "")
 
-    # normaliza image novamente (garante sem assets/assets)
+    # normaliza image novamente (garante sem assets/assets e extrai src se vier <img>)
     if incoming.get("image"):
         incoming["image"] = _normalize_asset_path(incoming.get("image", ""))
 
