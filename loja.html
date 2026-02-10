@@ -1,212 +1,578 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cosa Nostra — Vitrine</title>
 
   <meta name="description" content="Vitrine premium de achados do dia. Clique e compre." />
   <meta name="theme-color" content="#050505" />
 
-  <meta property="og:title" content="Cosa Nostra — Vitrine" />
-  <meta property="og:description" content="Achados do Dia • Clique e compre • Link na bio sempre atualizado." />
-  <meta property="og:type" content="website" />
-
   <link rel="icon" href="assets/logo.png" />
 
-  <!-- Fonts (mesmas do index) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- ✅ Mesmo CSS do index -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Só o que é específico da loja -->
   <style>
-    .adminBar{
-      margin-top: 12px;
-      border: 1px dashed rgba(224,195,107,.45);
-      background: rgba(224,195,107,.06);
-      border-radius: 16px;
-      padding: 12px 12px;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
+    :root{
+      --bg:#050505;
+      --panel:#0b0b0b;
+      --gold:#c7a24b;
+      --gold2:#e0c36b;
+      --text:#f2f2f2;
+      --muted:#b8b8b8;
+      --border:rgba(199,162,75,.35);
+      --shadow: 0 10px 40px rgba(0,0,0,.65);
+      --radius:18px;
+      --radius2:14px;
+      --max: 980px;
     }
-    .adminBar b{color: rgba(224,195,107,.95)}
-    .adminBar .mini{
-      color: rgba(255,255,255,.70);
-      font-size: 12px;
-      line-height: 1.35;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background:
+        radial-gradient(900px 420px at 75% 10%, rgba(199,162,75,.20), transparent 55%),
+        radial-gradient(700px 380px at 20% 20%, rgba(199,162,75,.12), transparent 60%),
+        linear-gradient(180deg, #050505, #0a0a0a 40%, #050505);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:26px 14px 48px;
+    }
+    .wrap{width:100%; max-width:var(--max)}
+    .top{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding:18px 18px 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .brandline{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
     }
 
-    .tagLine{
+    /* Logo block (mesmo padrão do index.html) */
+    .brandLeft{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 260px;
+      flex: 1 1 auto;
+    }
+    .brandMark{
+      width:62px;
+      height:62px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.55);
+      position:relative;
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .brandMark--fallback .brandFallback{display:block}
+    .brandLogo{
+      width:44px;
+      height:44px;
+      object-fit:contain;
+    }
+    .brandFallback{
+      display:none;
+      font-size:24px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .brand .kicker{
+      color:var(--gold2);
+      letter-spacing:.12em;
+      font-weight:700;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .brand .title{
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:.02em;
+      margin:0;
+      line-height:1.05;
+    }
+    .brand .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pillrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--border);
+      color:var(--gold2);
+      background:rgba(199,162,75,.08);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.03em;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .input{
+      flex:1 1 320px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.35);
+      border-radius: 999px;
+      padding:10px 12px;
+    }
+    .input input{
+      border:none;
+      outline:none;
+      background:transparent;
+      color:var(--text);
+      width:100%;
+      font-size:14px;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(199,162,75,.22), rgba(199,162,75,.08));
+      color:var(--gold2);
+      padding:10px 14px;
+      border-radius: 999px;
+      font-weight:900;
+      cursor:pointer;
+      letter-spacing:.02em;
+      transition:transform .08s ease, filter .15s ease;
+      user-select:none;
+      white-space:nowrap;
+      text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap:8px;
+      justify-content:center;
+      gap:10px;
+    }
+    .btn:hover{filter:brightness(1.06)}
+    .btn:active{transform:translateY(1px)}
+    .btn2{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius: 999px;
+      font-weight:800;
+      cursor:pointer;
+      white-space:nowrap;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .adminBar{
+      margin-top:12px;
+      border:1px dashed rgba(224,195,107,.45);
+      background: rgba(224,195,107,.06);
+      border-radius: 14px;
+      padding:10px 12px;
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .adminBar b{color:rgba(224,195,107,.95)}
+    .adminBar .mini{
+      color:var(--muted);
       font-size:12px;
-      color: rgba(224,195,107,.92);
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      line-height:1.35;
+    }
+
+    .section{
+      margin-top:18px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(0,0,0,.32);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .secHead{
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(199,162,75,.10), rgba(0,0,0,.0));
+    }
+    .secHead h2{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .secHead .hint{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .featured{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      padding:16px;
+    }
+    @media (max-width: 860px){
+      .featured{grid-template-columns:1fr; }
+      .pillrow{justify-content:flex-start}
+      .brandline{flex-direction:column; align-items:flex-start;}
+      .pillrow{width:100%;}
+      .brandLeft{width:100%;}
+    }
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 260px;
+    }
+    .cardImg{
+      background: radial-gradient(400px 220px at 70% 20%, rgba(199,162,75,.20), transparent 55%), rgba(0,0,0,.35);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      min-height:170px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px;
+      position:relative;
+    }
+    .badge{
+      position:absolute;
+      top:12px;
+      left:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.45);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      color:rgba(255,255,255,.90);
+      backdrop-filter: blur(8px);
+    }
+    .cardImg img{
+      max-width:100%;
+      max-height:220px;
+      object-fit:contain;
+      border-radius: 10px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.55);
+    }
+    .cardBody{padding:14px 14px 12px; display:flex; flex-direction:column; gap:10px;}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-size:12px;
+      color:var(--gold2);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .name{
+      margin:0;
+      font-size:20px;
+      font-weight:950;
+      line-height:1.1;
+      letter-spacing:.01em;
+    }
+    .meta{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+      margin:0;
+    }
+    .line{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .idbox{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12px;
+      color:#fff;
+      padding:8px 10px;
+      border-radius: 10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.40);
+      max-width: 100%;
+      overflow:auto;
+    }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 2px;
+    }
+    .buy{
+      flex:1 1 170px;
+      text-align:center;
+      text-decoration:none;
+      display:inline-block;
+    }
+
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 920px){ .grid{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 560px){ .grid{grid-template-columns: 1fr;} }
+
+    .pCard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 100%;
+    }
+    .pImg{
+      background: rgba(0,0,0,.35);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      height: 150px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px;
+      position:relative;
+    }
+    .pImg img{max-width:100%; max-height:140px; object-fit:contain; border-radius:10px;}
+    .pBody{padding:12px; display:flex; flex-direction:column; gap:8px; height:100%;}
+    .pName{margin:0; font-size:15px; font-weight:900; line-height:1.2;}
+    .pSmall{margin:0; color:var(--muted); font-size:12px; line-height:1.35;}
+    .pActions{margin-top:auto; display:flex; flex-wrap:wrap; gap:8px;}
+    .smallBtn{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius: 999px;
+      font-weight:800;
+      cursor:pointer;
+      font-size:12px;
+      flex:1 1 auto;
+      text-align:center;
+      text-decoration:none;
+      user-select:none;
+    }
+    .smallBtnGold{
+      border:1px solid var(--border);
+      background: rgba(199,162,75,.16);
+      color:var(--gold2);
+    }
+    .pFeatured{
+      position:absolute;
+      top:10px;
+      left:10px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.14);
+      color: rgba(224,195,107,.95);
+      font-weight:900;
+      font-size:11px;
+      padding:6px 8px;
+      border-radius:999px;
+      backdrop-filter: blur(8px);
     }
 
     .adminRow{
-      margin-top: 6px;
-      display: none;
-      gap: 8px;
-      flex-wrap: wrap;
+      margin-top:6px;
+      display:none;
+      gap:8px;
+      flex-wrap:wrap;
     }
     .adminBtn{
-      border: 1px dashed rgba(224,195,107,.55);
+      border:1px dashed rgba(224,195,107,.5);
       background: rgba(224,195,107,.06);
       color: rgba(224,195,107,.95);
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-weight: 950;
-      cursor: pointer;
-      font-size: 12px;
-      user-select: none;
+      padding:8px 10px;
+      border-radius:999px;
+      font-weight:900;
+      cursor:pointer;
+      font-size:12px;
+      user-select:none;
     }
-    .adminBtn:hover{filter:brightness(1.08)}
-    .adminBtn:active{transform: translateY(1px)}
     .adminBtn.danger{
       border-color: rgba(255,120,120,.55);
       color: rgba(255,170,170,.95);
       background: rgba(255,120,120,.06);
     }
 
-    .disabledNote{
-      opacity: .65;
-      cursor: not-allowed;
-      pointer-events: none;
+    .footer{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      opacity:.92;
+      line-height:1.4;
     }
+    .socialRow{
+      margin-top:12px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .socialRow a{
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:800;
+      font-size:12px;
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:20px;
+      transform:translateX(-50%);
+      background: rgba(0,0,0,.86);
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px 14px;
+      border-radius: 999px;
+      color:var(--text);
+      font-weight:800;
+      font-size:12px;
+      box-shadow: var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease;
+      z-index:99;
+    }
+    .toast.show{opacity:1}
   </style>
 </head>
 
 <body>
-  <div class="bg">
-    <div class="orb orb--1"></div>
-    <div class="orb orb--2"></div>
-    <div class="orb orb--3"></div>
-    <div class="grain"></div>
-  </div>
+  <div class="wrap">
+    <div class="top">
+      <div class="brandline">
+        <div class="brandLeft">
+          <div class="brandMark" aria-hidden="true">
+            <img
+              class="brandLogo"
+              src="assets/logo.png"
+              alt="Cosa Nostra"
+              onerror="this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
+            />
+            <span class="brandFallback">🎩♟️</span>
+          </div>
 
-  <main class="page">
-    <header class="hero">
-      <div class="hero__brand">
-        <div class="brandMark" aria-hidden="true">
-          <img
-            class="brandLogo"
-            src="assets/logo.png"
-            alt="Cosa Nostra"
-            onerror="this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
-          />
-          <span class="brandFallback">🎩♟️</span>
-        </div>
-
-        <div class="hero__text">
-          <p class="kicker">Cosa Nostra • Achados do Dia</p>
-          <h1 class="title">Vitrine</h1>
-          <p class="sub">
-            Link na bio sempre atualizado • clique e compre.<br/>
-            Funil rápido: <b>Story com Link Sticker</b> + <b>Vitrine na Bio</b>.
-          </p>
-
-          <div class="chips" aria-label="Dicas rápidas">
-            <span class="chip">🛒 comprar 1-toque</span>
-            <span class="chip">📌 copiar link/ID</span>
-            <span class="chip">🧼 vitrine limpa</span>
+          <div class="brand">
+            <div class="kicker">CosaNostra • Achados do Dia</div>
+            <h1 class="title">Vitrine</h1>
+            <p class="sub">Link na bio sempre atualizado • clique e compre</p>
           </div>
         </div>
-      </div>
 
-      <div class="hero__actions">
-        <a class="btn btn--gold" href="./" rel="noopener">🏠 Voltar para Home</a>
-        <a class="btn btn--glass" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Abrir Instagram</a>
-        <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
-
-        <div class="miniNote">
-          <span class="dot"></span>
-          <span>
-            Status: <b>online</b> • Produtos: <b id="countP">0</b>
-          </span>
-        </div>
-      </div>
-    </header>
-
-    <section class="panel">
-      <div class="panel__head">
-        <div>
-          <h2>Produto do dia</h2>
-          <p>Destaque com botões rápidos (comprar / copiar ID / copiar link).</p>
-        </div>
-        <div class="panel__right">
-          <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
+        <div class="pillrow">
+          <div class="pill">✅ Story: sticker de LINK</div>
+          <div class="pill">✅ Bio: vitrine (esta página)</div>
+          <div class="pill">✅ Plano B: ID / QR</div>
         </div>
       </div>
 
-      <div class="featured" id="featured">
-        <!-- preenchido pelo script -->
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel__head">
-        <div>
-          <h2>Vitrine</h2>
-          <p>Busque e clique em “Comprar”. Se preferir, copie o ID e cole na busca do Mercado Livre.</p>
-        </div>
-        <div class="panel__right">
-          <span class="chip" id="adminChip" style="display:none;">🛠️ admin</span>
-        </div>
-      </div>
-
-      <div class="quickTools">
-        <div class="quickSearch" role="search">
-          <span class="quickIcon">🔎</span>
+      <div class="cta">
+        <div class="input">
+          <span style="color:var(--gold2); font-weight:900;">🔎</span>
           <input id="q" placeholder="Buscar produto (ex: mochila, whey, mouse...)" />
         </div>
-        <button class="btn btn--tiny btn--glass" id="btnClear" type="button">Limpar</button>
+        <button class="btn" id="btnClear" type="button">Limpar</button>
+        <a class="btn2" id="btnHome" href="./" rel="noopener">🏠 Home</a>
+        <a class="btn2" id="btnInsta" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
       </div>
 
       <div class="adminBar" id="adminBar">
         <div>
           <b>Modo Admin</b>
           <div class="mini">
-            Defina Produto do Dia, ative/desative itens e exporte o <b>produtos.json</b>.
+            Use pra definir Produto do Dia e exportar o <b>produtos.json</b> pronto.
           </div>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn btn--tiny btn--glass" id="btnReload" type="button">↻ Recarregar produtos.json</button>
-          <button class="btn btn--tiny btn--gold" id="btnExport" type="button">⬇️ Exportar produtos.json</button>
+          <button class="btn2" id="btnReload" type="button">↻ Recarregar produtos.json</button>
+          <button class="btn" id="btnExport" type="button">⬇️ Exportar produtos.json</button>
         </div>
       </div>
+    </div>
 
-      <div class="productsGrid" id="grid">
-        <!-- preenchido pelo script -->
+    <div class="section">
+      <div class="secHead">
+        <h2>Produto do dia</h2>
+        <div class="hint">Mais rápido: use o Story com sticker de LINK.</div>
       </div>
-    </section>
+      <div class="featured" id="featured"></div>
+    </div>
 
-    <footer class="footer">
-      <div class="footer__left">
-        <span class="sig">🎩 Cosa Nostra</span>
-        <span class="muted">Preço e disponibilidade podem mudar no Mercado Livre.</span>
+    <div class="section">
+      <div class="secHead">
+        <h2>Vitrine</h2>
+        <div class="hint">Clique em “Comprar” ou copie o ID.</div>
       </div>
+      <div class="grid" id="grid"></div>
+    </div>
 
-      <div class="footer__right">
-        <button class="btn btn--tiny btn--glass" type="button" id="copyHome">Copiar link da home</button>
+    <div class="footer">
+      Preço e disponibilidade podem mudar no Mercado Livre.<br/>
+      Dica: use <b>Story com Link Sticker</b> + mantenha esta vitrine como <b>link da bio</b>.
+      <div class="socialRow">
+        <a href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@CosaNostraAI" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.tiktok.com/@cosanostra.ia" target="_blank" rel="noopener">TikTok</a>
       </div>
-    </footer>
-  </main>
+    </div>
+  </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
+  <div class="toast" id="toast">Copiado ✅</div>
   <script>
     const ADMIN = new URLSearchParams(location.search).get("admin") === "1";
+
+    // ✅ Agora o Produto do Dia também aparece na vitrine (grade)
+    const SHOW_FEATURED_IN_GRID = true;
 
     const toast = document.getElementById("toast");
     const $ = (s)=>document.querySelector(s);
@@ -286,30 +652,28 @@
 
       const disabled = (p.active === false);
       const buyBtn = disabled
-        ? `<a class="btn btn--gold disabledNote" href="javascript:void(0)">INDISPONÍVEL</a>`
-        : `<a class="btn btn--gold" href="${escapeHTML(p.open_url)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
+        ? `<button class="btn buy" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
+        : `<a class="btn buy" href="${escapeHTML(p.open_url)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
 
       const desc = safeArray(p.badges).join(" • ");
 
       return `
         <div class="card">
-          <div class="card__img">
+          <div class="cardImg">
             <div class="badge">⭐ Produto do dia</div>
             ${imgHTML}
           </div>
-          <div class="card__body">
-            <div class="tagLine">⭐ produto do dia</div>
+          <div class="cardBody">
+            <div class="tag">⭐ produto do dia</div>
             <h3 class="name">${escapeHTML(p.title)}</h3>
             <p class="meta">${escapeHTML(desc)}</p>
-
-            <div class="row">
+            <div class="line">
               <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.id_busca || "")}</b></div>
             </div>
-
             <div class="actions">
               ${buyBtn}
-              <button class="btn btn--glass btn--tiny" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
-              <button class="btn btn--glass btn--tiny" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+              <button class="btn2" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+              <button class="btn2" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
             </div>
 
             ${ADMIN ? `
@@ -318,17 +682,17 @@
                 <button class="adminBtn ${p.active ? "danger" : ""}" data-action="toggleActive" data-sku="${escapeHTML(p.sku)}">
                   ${p.active ? "⛔ Desativar" : "✅ Ativar"}
                 </button>
-                <button class="adminBtn" data-action="editLink" data-sku="${escapeHTML(p.sku)}">✏️ Link</button>
-                <button class="adminBtn" data-action="editId" data-sku="${escapeHTML(p.sku)}">✏️ ID</button>
-                <button class="adminBtn" data-action="editBadges" data-sku="${escapeHTML(p.sku)}">✏️ Badges</button>
+                <button class="adminBtn" data-action="editLink" data-sku="${escapeHTML(p.sku)}">✏️ Editar link</button>
+                <button class="adminBtn" data-action="editId" data-sku="${escapeHTML(p.sku)}">✏️ Editar ID</button>
+                <button class="adminBtn" data-action="editBadges" data-sku="${escapeHTML(p.sku)}">✏️ Editar badges</button>
               </div>
             ` : ``}
           </div>
         </div>
 
         <div class="card">
-          <div class="card__body">
-            <div class="tagLine">✅ como comprar (rápido)</div>
+          <div class="cardBody">
+            <div class="tag">✅ como comprar (rápido)</div>
             <p class="meta" style="margin-top:2px;">
               1) Abra o app/site do <b>Mercado Livre</b><br/>
               2) Cole o <b>ID</b> na busca: <b>${escapeHTML(p.id_busca || "")}</b><br/>
@@ -336,11 +700,11 @@
             </p>
 
             <div class="actions" style="margin-top:10px;">
-              <button class="btn btn--glass btn--tiny" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-              <button class="btn btn--glass btn--tiny" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+              <button class="btn2" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+              <button class="btn2" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
             </div>
 
-            <p class="meta" style="margin-top:10px; color:rgba(255,255,255,.65);">
+            <p class="meta" style="margin-top:10px; color:var(--muted);">
               Melhor funil: Story com <b>sticker de LINK</b> + esta vitrine no link da bio.
             </p>
           </div>
@@ -357,7 +721,7 @@
 
       const disabled = (p.active === false);
       const buy = disabled
-        ? `<a class="smallBtn smallBtnGold disabledNote" href="javascript:void(0)">Indisponível</a>`
+        ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
         : `<a class="smallBtn smallBtnGold" href="${escapeHTML(p.open_url)}" target="_blank" rel="noopener">Comprar</a>`;
 
       const desc = safeArray(p.badges).join(" • ");
@@ -365,11 +729,14 @@
 
       return `
         <div class="pCard" data-sku="${escapeHTML(p.sku)}">
-          <div class="pImg">${imgHTML}</div>
+          <div class="pImg">
+            ${p.featured ? `<div class="pFeatured">⭐ do dia</div>` : ``}
+            ${imgHTML}
+          </div>
           <div class="pBody">
             <p class="pName">${escapeHTML(p.title)}</p>
             <p class="pSmall">${escapeHTML(desc)}</p>
-            <p class="pSmall" style="color: rgba(224,195,107,.92); font-weight:900; letter-spacing:.03em;">${escapeHTML(tags)}</p>
+            <p class="pSmall" style="color:var(--gold2); font-weight:900; letter-spacing:.03em;">${escapeHTML(tags)}</p>
 
             <div class="pActions">
               ${buy}
@@ -395,6 +762,7 @@
 
     let STATE = {
       products: [],
+      rawLoadedAt: "",
       query: ""
     };
 
@@ -402,7 +770,8 @@
       const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
       if(!res.ok) throw new Error("produtos.json não encontrado");
       const data = await res.json();
-      return normalizeProducts(data).map(adaptForUI);
+      const list = normalizeProducts(data).map(adaptForUI);
+      return list;
     }
 
     function getFeatured(list){
@@ -414,7 +783,6 @@
       const q = (STATE.query || "").trim().toLowerCase();
 
       const active = STATE.products.filter(p => p.active !== false);
-      $("#countP").textContent = String(active.length);
 
       const destaque = getFeatured(STATE.products);
       $("#featured").innerHTML = destaque ? featuredHTML(destaque) : "";
@@ -433,13 +801,15 @@
         });
       }
 
-      if(destaque){
+      // ✅ Mantém o Produto do Dia na grade (e coloca ele em primeiro)
+      if(destaque && SHOW_FEATURED_IN_GRID){
+        gridList = [destaque, ...gridList.filter(p => p.sku !== destaque.sku)];
+      }else if(destaque && !SHOW_FEATURED_IN_GRID){
         gridList = gridList.filter(p => p.sku !== destaque.sku);
       }
 
       $("#grid").innerHTML = gridList.map(productCardHTML).join("");
     }
-
     function findBySku(sku){
       return STATE.products.find(p => p.sku === sku) || null;
     }
@@ -561,30 +931,9 @@
       render();
     });
 
-    $("#copyLoja").addEventListener("click", ()=>{
-      copyText(location.href);
-    });
-
-    $("#copyHome").addEventListener("click", ()=>{
-      copyText(new URL("./", location.href).toString());
-    });
-
-    $("#refresh").addEventListener("click", async ()=>{
-      showToast("Atualizando…");
-      try{
-        STATE.products = await fetchProducts();
-        showToast("Atualizado ✅");
-        render();
-      }catch(err){
-        showToast("Erro ao carregar");
-        console.error(err);
-      }
-    });
-
     async function boot(){
       if(ADMIN){
         $("#adminBar").style.display = "flex";
-        $("#adminChip").style.display = "inline-flex";
         $("#btnExport").addEventListener("click", exportProdutosJson);
         $("#btnReload").addEventListener("click", async ()=>{
           showToast("Recarregando…");
@@ -602,13 +951,13 @@
         STATE.products = await fetchProducts();
       }catch(err){
         STATE.products = [{
-          sku: "fallback-mochila",
-          title: "Mochila impermeável — Notebook 15.6”",
-          badges: ["Achados do Dia", "Carry-on", "USB"],
-          id_busca: "5J5PKG-JBQE",
-          open_url: "https://mercadolivre.com/sec/14jFsrH",
-          check_url: "https://mercadolivre.com/sec/14jFsrH",
-          image: "assets/produtos/Mochila_Masculina_Notebook_15.6.png",
+          sku: "fallback-power-bank-20000mah",
+          title: "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)",
+          badges: ["Achados do Dia", "20000mAh", "22.5W Turbo", "USB-C", "Preto"],
+          id_busca: "5J5PKG-H0JA",
+          open_url: "https://mercadolivre.com/sec/1iReZ7Y",
+          check_url: "https://mercadolivre.com/sec/1iReZ7Y",
+          image: "assets/produtos/power_bank_20000mah.png",
           price_text: "",
           active: true,
           featured: true,
