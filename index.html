@@ -9,7 +9,6 @@
   <meta name="theme-color" content="#050505" />
 
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -73,7 +72,32 @@
       </div>
 
       <div class="featured" id="featured">
-        <!-- preenchido pelo script.js -->
+        <!-- preenchido pelo script abaixo -->
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__head">
+        <div>
+          <h2>Vitrine rápida</h2>
+          <p>Mais achados visíveis já na home (sem “sumir” na loja).</p>
+        </div>
+        <div class="panel__right">
+          <a class="btn btn--tiny btn--gold" href="./loja.html">Ver todos</a>
+        </div>
+      </div>
+
+      <div class="quickTools">
+        <div class="quickSearch" role="search">
+          <span class="quickIcon">🔎</span>
+          <input id="qHome" type="text" placeholder="Buscar produto (ex: fone, mochila, whey...)" />
+        </div>
+        <button class="btn btn--tiny btn--glass" id="qClear" type="button">Limpar</button>
+        <a class="btn btn--tiny btn--glass" href="./loja.html">Abrir loja completa</a>
+      </div>
+
+      <div class="productsGrid" id="quickGrid">
+        <!-- preenchido pelo script abaixo -->
       </div>
     </section>
 
@@ -164,5 +188,291 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const toast = document.getElementById("toast");
+
+    function showToast(msg="Copiado ✅"){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 1100);
+    }
+
+    async function copyText(txt){
+      try{
+        await navigator.clipboard.writeText(txt);
+        showToast("Copiado ✅");
+      }catch(e){
+        const t = document.createElement("textarea");
+        t.value = txt;
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand("copy");
+        t.remove();
+        showToast("Copiado ✅");
+      }
+    }
+
+    function normalizeProducts(data) {
+      if (!data) return [];
+      if (Array.isArray(data)) return data;
+      if (Array.isArray(data.products)) return data.products;
+      if (Array.isArray(data.items)) return data.items;
+      return [];
+    }
+
+    function safeArray(x){ return Array.isArray(x) ? x : []; }
+
+    function adaptForUI(p){
+      return {
+        sku: p.sku || p.slug || "",
+        title: p.title || p.nome || p.name || "",
+        badges: safeArray(p.badges || p.tags),
+        id_busca: p.id_busca || p.idML || p.id || "",
+        open_url: p.open_url || p.link || p.url || "",
+        check_url: p.check_url || p.open_url || "",
+        image: p.image || p.imagem || "",
+        price_text: p.price_text || "",
+        active: (p.active !== undefined) ? !!p.active : true,
+        featured: (p.featured === true) || (p.destaque === true) || (p.is_featured === true),
+        last_checked: p.last_checked || "",
+        last_ok: p.last_ok || ""
+      };
+    }
+
+    function escapeHTML(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function formatUpdatedAt(iso){
+      try{
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return "agora";
+        return d.toLocaleString("pt-BR", { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" });
+      }catch(e){
+        return "agora";
+      }
+    }
+
+    async function fetchProducts(){
+      const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
+      if(!res.ok) throw new Error("produtos.json não encontrado");
+      const data = await res.json();
+      const list = normalizeProducts(data).map(adaptForUI);
+      return { list, updated_at: data.updated_at || "" };
+    }
+
+    function getFeatured(list){
+      const actives = list.filter(p => p.active !== false);
+      return actives.find(p => p.featured) || actives[0] || null;
+    }
+
+    function featuredHTML(p){
+      const imgHTML = p.image
+        ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
+        : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:24px;">
+             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">adicione no produto</span>
+           </div>`;
+
+      const disabled = (p.active === false);
+      const buyBtn = disabled
+        ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
+        : `<a class="btn btn--gold" href="${escapeHTML(p.open_url)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
+
+      const desc = safeArray(p.badges).join(" • ");
+
+      return `
+        <div class="card">
+          <div class="card__img">
+            <div class="badge">⭐ Produto do dia</div>
+            ${imgHTML}
+          </div>
+          <div class="card__body">
+            <h3 class="name">${escapeHTML(p.title)}</h3>
+            <p class="meta">${escapeHTML(desc)}</p>
+            <div class="row">
+              <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.id_busca || "")}</b></div>
+            </div>
+            <div class="actions">
+              ${buyBtn}
+              <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+              <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__body">
+            <h3 class="name">✅ Como comprar (rápido)</h3>
+            <p class="meta">
+              1) Abra o app/site do <b>Mercado Livre</b><br/>
+              2) Cole o <b>ID</b> na busca: <b>${escapeHTML(p.id_busca || "")}</b><br/>
+              3) Ou clique em <b>COMPRAR AGORA</b> (abre direto)
+            </p>
+            <div class="actions">
+              <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+              <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+              <a class="btn btn--tiny btn--glass" href="./loja.html">Abrir vitrine</a>
+            </div>
+            <p class="meta" style="margin-top:6px; color:rgba(255,255,255,.65);">
+              Melhor funil: Story com <b>sticker de LINK</b> + vitrine no <b>link da bio</b>.
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
+    function productCardHTML(p){
+      const imgHTML = p.image
+        ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
+        : `<div style="color:rgba(255,255,255,.55); font-weight:900; text-align:center; padding:18px;">
+             Sem imagem<br/><span style="color:rgba(199,162,75,.9)">adicione no produto</span>
+           </div>`;
+
+      const disabled = (p.active === false);
+      const buy = disabled
+        ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
+        : `<a class="smallBtn smallBtnGold" href="${escapeHTML(p.open_url)}" target="_blank" rel="noopener">Comprar</a>`;
+
+      const desc = safeArray(p.badges).join(" • ");
+
+      return `
+        <div class="pCard" data-sku="${escapeHTML(p.sku)}">
+          <div class="pImg">${imgHTML}</div>
+          <div class="pBody">
+            <p class="pName">${escapeHTML(p.title)}</p>
+            <p class="pSmall">${escapeHTML(desc)}</p>
+
+            <div class="pActions">
+              ${buy}
+              <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+              <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    const STATE = {
+      products: [],
+      featured: null,
+      updated_at: "",
+      query: ""
+    };
+
+    function render(){
+      const q = (STATE.query || "").trim().toLowerCase();
+
+      const active = STATE.products.filter(p => p.active !== false);
+      STATE.featured = getFeatured(STATE.products);
+
+      document.getElementById("featured").innerHTML = STATE.featured ? featuredHTML(STATE.featured) : "";
+
+      let list = active.slice();
+      if (STATE.featured) list = list.filter(p => p.sku !== STATE.featured.sku);
+
+      if (q){
+        list = list.filter(p => {
+          const hay = (
+            (p.title||"") + " " +
+            (p.sku||"") + " " +
+            (p.id_busca||"") + " " +
+            safeArray(p.badges).join(" ")
+          ).toLowerCase();
+          return hay.includes(q);
+        });
+      }
+
+      const top = list.slice(0, 9);
+      document.getElementById("quickGrid").innerHTML = top.map(productCardHTML).join("");
+    }
+
+    function findBySku(sku){
+      return STATE.products.find(p => p.sku === sku) || null;
+    }
+
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-action],[data-copy]");
+      if(!el) return;
+
+      const action = el.getAttribute("data-action");
+      const copy = el.getAttribute("data-copy");
+
+      if(copy){
+        if(copy === "loja"){
+          const url = new URL("./loja.html", location.href).toString();
+          return copyText(url);
+        }
+        if(copy === "bio"){
+          const url = new URL("./", location.href).toString();
+          return copyText(url);
+        }
+      }
+
+      if(!action) return;
+
+      const sku = el.getAttribute("data-sku") || "";
+      const p = findBySku(sku);
+      if(!p) return;
+
+      if(action === "copyLink") return copyText(p.open_url || "");
+      if(action === "copyId") return copyText(p.id_busca || "");
+    });
+
+    document.getElementById("qHome").addEventListener("input", (e)=>{
+      STATE.query = e.target.value || "";
+      render();
+    });
+
+    document.getElementById("qClear").addEventListener("click", ()=>{
+      document.getElementById("qHome").value = "";
+      STATE.query = "";
+      render();
+    });
+
+    document.getElementById("refresh").addEventListener("click", async ()=>{
+      showToast("Atualizando…");
+      await boot(true);
+    });
+
+    async function boot(forceToast=false){
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+
+      try{
+        const { list, updated_at } = await fetchProducts();
+        STATE.products = list;
+        STATE.updated_at = updated_at || "";
+        document.getElementById("lastUpdate").textContent = STATE.updated_at ? formatUpdatedAt(STATE.updated_at) : "agora";
+        render();
+        if(forceToast) showToast("Atualizado ✅");
+      }catch(err){
+        // fallback mínimo
+        STATE.products = [{
+          sku: "fallback-mochila",
+          title: "Mochila impermeável — Notebook 15.6”",
+          badges: ["Achados do Dia", "Carry-on", "USB"],
+          id_busca: "5J5PKG-EN33",
+          open_url: "https://mercadolivre.com/sec/14jFsrH",
+          check_url: "https://mercadolivre.com/sec/14jFsrH",
+          image: "assets/assets/produtos/Mochila_Masculina_Notebook_15.6.png",
+          price_text: "",
+          active: true,
+          featured: true,
+          last_checked: "",
+          last_ok: ""
+        }];
+        document.getElementById("lastUpdate").textContent = "agora";
+        render();
+        if(forceToast) showToast("Carregado (fallback) ✅");
+      }
+    }
+
+    boot();
+  </script>
 </body>
 </html>
