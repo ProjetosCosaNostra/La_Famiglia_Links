@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-10T20:17:02Z",
+  "updated_at": "2026-02-10T20:30:05Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -45,6 +45,20 @@
       "open_url": "https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\"",
       "check_url": "https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\"",
       "image": "https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\"",
+      "active": true,
+      "featured": false,
+      "badges": [],
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "<img width=\"1365\" height=\"2048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/461833cb-32ff-4094-8981-7c9b7112e271\" />",
+      "title": "<img width=\"1365\" height=\"2048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/461833cb-32ff-4094-8981-7c9b7112e271\" />",
+      "id_busca": "<img width=\"1365\" height=\"2048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/461833cb-32ff-4094-8981-7c9b7112e271\" />",
+      "open_url": "https://github.com/user-attachments/assets/461833cb-32ff-4094-8981-7c9b7112e271\"",
+      "check_url": "https://github.com/user-attachments/assets/461833cb-32ff-4094-8981-7c9b7112e271\"",
+      "image": "https://github.com/user-attachments/assets/461833cb-32ff-4094-8981-7c9b7112e271\"",
       "active": true,
       "featured": true,
       "badges": [],
