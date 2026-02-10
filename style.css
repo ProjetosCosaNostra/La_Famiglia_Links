@@ -391,6 +391,93 @@ body{
   margin-top: 2px;
 }
 
+/* ======= QUICK TOOLS (HOME) ======= */
+.quickTools{
+  padding: 14px 16px 6px;
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.quickSearch{
+  flex: 1 1 280px;
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.25);
+  border-radius: 999px;
+  padding: 10px 12px;
+}
+.quickIcon{
+  color: rgba(224,195,107,.95);
+  font-weight: 900;
+}
+.quickSearch input{
+  border:none;
+  outline:none;
+  background:transparent;
+  color: var(--text);
+  width: 100%;
+  font-size: 14px;
+}
+
+/* ======= PRODUCTS GRID (HOME) ======= */
+.productsGrid{
+  padding: 10px 16px 16px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 920px){ .productsGrid{grid-template-columns: repeat(2, 1fr);} }
+@media (max-width: 560px){ .productsGrid{grid-template-columns: 1fr;} }
+
+.pCard{
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: var(--radius2);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height: 100%;
+}
+.pImg{
+  background: rgba(0,0,0,.35);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  height: 150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+.pImg img{max-width:100%; max-height:140px; object-fit:contain; border-radius:10px;}
+.pBody{padding:12px; display:flex; flex-direction:column; gap:8px; height:100%;}
+.pName{margin:0; font-size:15px; font-weight:900; line-height:1.2;}
+.pSmall{margin:0; color:var(--muted); font-size:12px; line-height:1.35;}
+.pActions{margin-top:auto; display:flex; flex-wrap:wrap; gap:8px;}
+
+.smallBtn{
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  padding:8px 10px;
+  border-radius: 999px;
+  font-weight:800;
+  cursor:pointer;
+  font-size:12px;
+  flex:1 1 auto;
+  text-align:center;
+  text-decoration:none;
+  user-select:none;
+}
+.smallBtn:hover{filter:brightness(1.06)}
+.smallBtn:active{transform: translateY(1px)}
+.smallBtnGold{
+  border:1px solid var(--border);
+  background: rgba(199,162,75,.16);
+  color:var(--gold2);
+}
+
 /* ======= LINKS GRID ======= */
 .linksGrid{
   padding: 16px;
