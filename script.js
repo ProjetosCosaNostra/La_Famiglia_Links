@@ -45,8 +45,23 @@
     let p = raw.replace(/^[.\/]+/, "");
     p = p.replace(/^assets\/assets\//i, "assets/");
 
-    // resolve relativo -> absoluto (mais robusto em qualquer página)
+    // resolve relativo -> absoluto
     return new URL(p, baseUrl()).href;
+  }
+
+  function formatUpdatedAt(iso) {
+    try {
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return "";
+      return d.toLocaleString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    } catch {
+      return "";
+    }
   }
 
   const FALLBACK_PRODUCTS = [
@@ -54,7 +69,7 @@
       destaque: true,
       ativo: true,
       nome: "Mochila impermeável • Notebook 15.6”",
-      desc: "Trava com senha • bolso oculto • saída USB • conforto com malha respirável • alça de bagagem (carry-on).",
+      desc: "Trava com senha • bolso oculto • saída USB • alça de bagagem (carry-on).",
       idML: "5J5PKG-JBQE",
       link: "https://mercadolivre.com/sec/14jFsrH",
       imagem: "assets/produtos/Mochila_Masculina_Notebook_15.6.png",
@@ -82,16 +97,22 @@
     if (!desc && Array.isArray(p.badges) && p.badges.length) {
       desc = p.badges.join(" • ");
     }
+    if (!desc && Array.isArray(p.tags) && p.tags.length) {
+      desc = p.tags.join(" • ");
+    }
+
+    const nome = (p.nome || p.title || p.name || "").trim();
 
     return {
+      sku: (p.sku || p.slug || "").trim(),
       destaque: (p.destaque === true) || (p.featured === true) || (p.is_featured === true),
       ativo: (ativo !== false),
-      nome: p.nome || p.title || p.name || "",
-      desc: desc,
-      idML: p.idML || p.id_busca || p.id || "",
-      link: p.link || p.open_url || p.url || "",
-      imagem: p.imagem || p.image || "",
-      tags: p.tags || p.badges || []
+      nome,
+      desc: desc || "",
+      idML: (p.idML || p.id_busca || p.id || "").trim(),
+      link: (p.link || p.open_url || p.url || "").trim(),
+      imagem: (p.imagem || p.image || "").trim(),
+      tags: (p.tags || p.badges || [])
     };
   }
 
@@ -104,6 +125,12 @@
       .replaceAll("'", "&#039;");
   }
 
+  function tagsText(tags) {
+    const arr = Array.isArray(tags) ? tags : [];
+    const txt = arr.slice(0, 4).map(t => `#${String(t).trim().replaceAll(" ", "_")}`).join(" ");
+    return txt;
+  }
+
   function featuredHTML(p, isProdutoDoDia) {
     const imgSrc = resolveUrl(p.imagem);
     const img = imgSrc
@@ -111,8 +138,6 @@
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
            Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
          </div>`;
-
-    const tags = (p.tags || []).slice(0, 4).map(t => `#${t}`).join(" ");
 
     const disabled = (p.ativo === false);
     const hasLink = String(p.link || "").trim().startsWith("http");
@@ -122,15 +147,14 @@
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
-      : `<div class="badge" style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.88);">🛒 Vitrine</div>`;
+      : `<div class="badge" style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.88);">🛒 Destaque</div>`;
 
-    const titleTop = isProdutoDoDia
-      ? "⭐ Produto do Dia"
-      : "🛒 Destaque da Vitrine";
-
+    const titleTop = isProdutoDoDia ? "⭐ Produto do Dia" : "🛒 Destaque da Vitrine";
     const subtitleNote = isProdutoDoDia
-      ? "Esse é o produto escolhido por você como Produto do Dia."
-      : "Nenhum Produto do Dia foi definido — esse é só um destaque da vitrine.";
+      ? "Esse é o produto escolhido como Produto do Dia."
+      : "Nenhum Produto do Dia foi definido — esse é só um destaque automático.";
+
+    const tags = tagsText(p.tags);
 
     return `
       <div class="card">
@@ -146,12 +170,12 @@
             <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.idML || "")}</b></div>
           </div>
 
-          <p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>
+          ${tags ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
 
           <div class="actions">
             ${buyBtn}
-            <button class="btn btn--glass" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar link</button>
-            <button class="btn btn--glass" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar link</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
           </div>
         </div>
       </div>
@@ -174,14 +198,49 @@
           </p>
 
           <div class="actions" style="margin-top:6px;">
-            <button class="btn btn--glass" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
-            <button class="btn btn--glass" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar Link</button>
-            <a class="btn btn--gold" href="./loja.html">Abrir Vitrine</a>
+            <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar Link</button>
+            <a class="btn btn--tiny btn--gold" href="./loja.html">Abrir Vitrine</a>
           </div>
 
           <p class="meta" style="margin-top:10px;">
             Melhor funil: <b>Story com sticker de LINK</b> + <b>Loja na Bio</b>.
           </p>
+        </div>
+      </div>
+    `;
+  }
+
+  function productCardHTML(p) {
+    const imgSrc = resolveUrl(p.imagem);
+    const img = imgSrc
+      ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.nome)}" />`
+      : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">
+           Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
+         </div>`;
+
+    const disabled = (p.ativo === false);
+    const hasLink = String(p.link || "").trim().startsWith("http");
+
+    const buy = (disabled || !hasLink)
+      ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
+      : `<a class="smallBtn smallBtnGold" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">Comprar</a>`;
+
+    const tags = tagsText(p.tags);
+
+    return `
+      <div class="pCard">
+        <div class="pImg">${img}</div>
+        <div class="pBody">
+          <p class="pName">${escapeHTML(p.nome)}</p>
+          <p class="pSmall">${escapeHTML(p.desc || "")}</p>
+          ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
+
+          <div class="pActions">
+            ${buy}
+            <button class="smallBtn" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
+            <button class="smallBtn" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar Link</button>
+          </div>
         </div>
       </div>
     `;
@@ -197,40 +256,84 @@
       const mapped = raw.map(adaptProduct).filter(Boolean);
       const list = mapped.filter(p => p && (p.ativo !== false));
 
-      return list.length ? list : FALLBACK_PRODUCTS;
+      return {
+        products: list.length ? list : FALLBACK_PRODUCTS,
+        updated_at: data.updated_at || ""
+      };
     } catch (e) {
-      return FALLBACK_PRODUCTS;
+      return { products: FALLBACK_PRODUCTS, updated_at: "" };
     }
   }
 
-  async function render() {
+  const STATE = {
+    products: [],
+    updated_at: "",
+    query: ""
+  };
+
+  function getFeatured(list) {
+    const escolhido = list.find(p => p.destaque);
+    return escolhido || list[0] || null;
+  }
+
+  function renderHome() {
     const yearEl = $("#year");
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
     const upd = $("#lastUpdate");
     if (upd) {
-      const d = new Date();
-      const hh = String(d.getHours()).padStart(2, "0");
-      const mm = String(d.getMinutes()).padStart(2, "0");
-      upd.textContent = `${hh}:${mm}`;
+      const pretty = STATE.updated_at ? formatUpdatedAt(STATE.updated_at) : "";
+      if (pretty) {
+        upd.textContent = pretty;
+      } else {
+        const d = new Date();
+        const hh = String(d.getHours()).padStart(2, "0");
+        const mm = String(d.getMinutes()).padStart(2, "0");
+        upd.textContent = `${hh}:${mm}`;
+      }
     }
 
-    const products = await loadProducts();
+    const featuredEl = $("#featured");
+    const featured = getFeatured(STATE.products);
+    if (featuredEl && featured) {
+      const isProdutoDoDia = !!STATE.products.find(p => p.destaque);
+      featuredEl.innerHTML = featuredHTML(featured, isProdutoDoDia);
+    }
 
-    const escolhido = products.find(p => p.destaque);
-    const isProdutoDoDia = !!escolhido;
-    const destaque = escolhido || products[0];
+    // ✅ Vitrine rápida (se existir no HTML)
+    const quickGrid = $("#quickGrid");
+    if (quickGrid) {
+      const featuredSku = (featured && featured.sku) ? featured.sku : "";
+      let list = STATE.products.slice();
 
-    const featured = $("#featured");
-    if (featured) featured.innerHTML = featuredHTML(destaque, isProdutoDoDia);
+      if (featuredSku) list = list.filter(p => p.sku !== featuredSku);
+      else list = list.slice(1);
 
-    document.querySelectorAll("[data-copy]").forEach((el) => {
-      el.addEventListener("click", () => {
-        const txt = el.getAttribute("data-copy") || "";
-        if (!txt.trim()) return showToast("Nada para copiar");
-        copyText(txt.trim());
-      });
-    });
+      const q = (STATE.query || "").trim().toLowerCase();
+      if (q) {
+        list = list.filter(p => {
+          const hay = (
+            (p.nome || "") + " " +
+            (p.sku || "") + " " +
+            (p.idML || "") + " " +
+            (Array.isArray(p.tags) ? p.tags.join(" ") : "") + " " +
+            (p.desc || "")
+          ).toLowerCase();
+          return hay.includes(q);
+        });
+      }
+
+      const top = list.slice(0, 9);
+      quickGrid.innerHTML = top.map(productCardHTML).join("");
+
+      if (!top.length) {
+        quickGrid.innerHTML = `
+          <div style="grid-column:1/-1; padding:14px; color:rgba(255,255,255,.72); font-weight:900;">
+            Nada encontrado. Tente outro termo. ✅
+          </div>
+        `;
+      }
+    }
   }
 
   function bindTopButtons() {
@@ -239,22 +342,59 @@
       copyBtn.addEventListener("click", () => copyText(lojaUrl()));
     }
 
-    document.querySelectorAll("[data-copy='bio']").forEach((el) => {
-      el.addEventListener("click", () => copyText(homeUrl()));
-    });
-
     const refresh = $("#refresh");
     if (refresh) {
       refresh.addEventListener("click", async () => {
         showToast("Atualizando…");
-        await render();
+        await boot();
         showToast("Atualizado ✅");
+      });
+    }
+
+    const qHome = $("#qHome");
+    if (qHome) {
+      qHome.addEventListener("input", (e) => {
+        STATE.query = e.target.value || "";
+        renderHome();
+      });
+    }
+
+    const qClear = $("#qClear");
+    if (qClear && qHome) {
+      qClear.addEventListener("click", () => {
+        qHome.value = "";
+        STATE.query = "";
+        renderHome();
       });
     }
   }
 
+  // ✅ Delegação: evita duplicar eventos ao dar refresh/render
+  function bindCopyDelegation() {
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-copy]");
+      if (!el) return;
+
+      const v = (el.getAttribute("data-copy") || "").trim();
+      if (!v) return showToast("Nada para copiar");
+
+      if (v === "bio") return copyText(homeUrl());
+      if (v === "loja") return copyText(lojaUrl());
+
+      return copyText(v);
+    });
+  }
+
+  async function boot() {
+    const { products, updated_at } = await loadProducts();
+    STATE.products = products || [];
+    STATE.updated_at = updated_at || "";
+    renderHome();
+  }
+
   document.addEventListener("DOMContentLoaded", async () => {
+    bindCopyDelegation();
     bindTopButtons();
-    await render();
+    await boot();
   });
 })();
