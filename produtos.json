@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-09T22:28:10Z",
+  "updated_at": "2026-02-10T20:17:02Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -15,7 +15,7 @@
       "image": "https://github.com/user-attachments/assets/8cd88e3e-28a8-439b-b647-5ae981763ff8",
       "price_text": "",
       "active": true,
-      "featured": true,
+      "featured": false,
       "last_checked": "",
       "last_ok": ""
     },
@@ -35,6 +35,20 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "<img width=\"1080\" height=\"1620\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\" />",
+      "title": "<img width=\"1080\" height=\"1620\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\" />",
+      "id_busca": "<img width=\"1080\" height=\"1620\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\" />",
+      "open_url": "https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\"",
+      "check_url": "https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\"",
+      "image": "https://github.com/user-attachments/assets/6a3a628b-66cd-4b80-a4cc-a2c884df2067\"",
+      "active": true,
+      "featured": true,
+      "badges": [],
+      "price_text": "",
       "last_checked": "",
       "last_ok": ""
     }
