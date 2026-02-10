@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-10T20:30:27Z",
+  "updated_at": "2026-02-10T22:38:41Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -15,7 +15,7 @@
       "image": "https://github.com/user-attachments/assets/8cd88e3e-28a8-439b-b647-5ae981763ff8",
       "price_text": "",
       "active": true,
-      "featured": true,
+      "featured": false,
       "last_checked": "",
       "last_ok": ""
     },
@@ -35,6 +35,22 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "powerbank-20000mah-22w-usbc-preto",
+      "title": "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)",
+      "badges": [
+        "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)"
+      ],
+      "id_busca": "5J5PKG-H0JA",
+      "open_url": "https://mercadolivre.com/sec/1iReZ7Y",
+      "check_url": "https://mercadolivre.com/sec/1iReZ7Y",
+      "image": "https://github.com/user-attachments/assets/81a233c0-e9ba-40ae-9a19-9b7bc2ef5871",
+      "active": true,
+      "featured": true,
+      "price_text": "",
       "last_checked": "",
       "last_ok": ""
     }
