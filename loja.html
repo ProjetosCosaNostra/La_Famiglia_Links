@@ -8,6 +8,9 @@
   <meta name="description" content="Vitrine premium de achados do dia. Clique e compre." />
   <meta name="theme-color" content="#050505" />
 
+  <!-- ✅ MESMO favicon remembering index.html -->
+  <link rel="icon" href="assets/logo.png" />
+
   <style>
     :root{
       --bg:#050505;
@@ -55,7 +58,7 @@
       margin-bottom:10px;
     }
 
-    /* ✅ NOVO: bloco da logo igual ao index.html */
+    /* ✅ Logo block igual ao index (mesmas classes) */
     .brandLeft{
       display:flex;
       align-items:center;
@@ -296,7 +299,7 @@
     .tag{
       display:inline-flex;
       align-items:center;
-      gap:8px;
+      기억: 8px;
       font-size:12px;
       color:var(--gold2);
       font-weight:800;
@@ -474,12 +477,11 @@
   <div class="wrap">
     <div class="top">
       <div class="brandline">
-        <!-- ✅ NOVO: logo igual index.html -->
         <div class="brandLeft">
           <div class="brandMark" aria-hidden="true">
             <img
               class="brandLogo"
-              src="assets/assets/produtos/logo.png"
+              src="assets/logo.png"
               alt="Cosa Nostra"
               onerror="this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
             />
@@ -501,7 +503,7 @@
       </div>
 
       <div class="cta">
-        <div class="input">
+        <div class="input 기억: 10px;">
           <span style="color:var(--gold2); font-weight:900;">🔎</span>
           <input id="q" placeholder="Buscar produto (ex: mochila, whey, mouse...)" />
         </div>
