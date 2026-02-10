@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v4 (Parser por seções ### + Sanitização forte + URL sem aspas + Auto-clean inválidos)
+# Versão : v5 (Anti-\" final, URL regex sem backslash, imagem só se for imagem, limpeza forte + enforce featured único)
 # ==========================================================
 
 from __future__ import annotations
@@ -17,7 +17,13 @@ from urllib.parse import quote_plus
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PRODUTOS_JSON = REPO_ROOT / "produtos.json"
 
-_URL_RE = re.compile(r"(https?://[^\s<>\")']+)", re.IGNORECASE)
+# ✅ URL regex agora NÃO captura "\" no fim (evita https://...\" virar URL inválida)
+_URL_RE = re.compile(r"(https?://[^\s<>\")'\\]+)", re.IGNORECASE)
+
+# ✅ pega src= de <img ...>
+_IMG_SRC_RE = re.compile(r"""(?is)<img[^>]+src\s*=\s*["']([^"']+)["']""")
+# ✅ pega markdown ![alt](url)
+_MD_IMG_RE = re.compile(r"""(?is)!\[[^\]]*]\(([^)]+)\)""")
 
 
 def _utc_now_iso_z() -> str:
@@ -41,11 +47,16 @@ def _write_json(path: Path, data: Dict[str, Any]) -> None:
 def _strip_html(s: str) -> str:
     if not s:
         return ""
-    # remove tags HTML
     s2 = re.sub(r"(?is)<[^>]+>", " ", s)
-    # normaliza espaços
     s2 = re.sub(r"\s+", " ", s2).strip()
     return s2
+
+
+def _looks_like_html_blob(s: str) -> bool:
+    if not s:
+        return False
+    x = s.strip().lower()
+    return ("<img" in x) or ("</" in x) or ("<" in x and ">" in x)
 
 
 def _is_placeholder(v: str) -> bool:
@@ -54,12 +65,23 @@ def _is_placeholder(v: str) -> bool:
 
 
 def _clean_url(u: str) -> str:
+    """
+    Remove aspas/parenteses/>/\ no fim (ex: ...\" ou ...") etc.
+    """
     if not u:
         return ""
-    # tira aspas/parenteses e lixo de fim (muito comum em src="...").
-    x = (u or "").strip()
-    x = x.strip().strip('"').strip("'")
-    x = re.sub(r"""[)"'\s]+$""", "", x)
+
+    x = str(u).strip()
+
+    # remove aspas no começo
+    while x and x[0] in {"'", '"', " "}:
+        x = x[1:]
+
+    # remove lixo no final (inclui "\" que aparecia como ...\")
+    junk = {'"', "'", ")", "]", ">", "\\", " ", "\t", "\r", "\n"}
+    while x and x[-1] in junk:
+        x = x[:-1]
+
     return x.strip()
 
 
@@ -68,6 +90,50 @@ def _first_url(text: str) -> str:
         return ""
     m = _URL_RE.search(text)
     return _clean_url(m.group(1)) if m else ""
+
+
+def _is_image_url(u: str) -> bool:
+    if not u:
+        return False
+    x = (u or "").strip().lower()
+
+    if x.startswith("data:image/"):
+        return True
+
+    # GitHub user-attachments (padrão do seu fluxo)
+    if "github.com/user-attachments/assets/" in x:
+        return True
+
+    # extensões comuns (mesmo com querystring)
+    if re.search(r"\.(png|jpg|jpeg|webp|gif)(\?.*)?$", x):
+        return True
+
+    return False
+
+
+def _first_image_url(text: str) -> str:
+    """
+    Só retorna URL se realmente parecer imagem.
+    Aceita:
+      - <img src="...">
+      - ![](url)
+      - URL direta (se for imagem)
+    """
+    if not text:
+        return ""
+
+    m = _IMG_SRC_RE.search(text)
+    if m:
+        u = _clean_url(m.group(1))
+        return u if _is_image_url(u) else ""
+
+    m2 = _MD_IMG_RE.search(text)
+    if m2:
+        u = _clean_url(m2.group(1))
+        return u if _is_image_url(u) else ""
+
+    u3 = _first_url(text)
+    return u3 if _is_image_url(u3) else ""
 
 
 def _first_meaningful_line(block: str) -> str:
@@ -88,7 +154,6 @@ def _parse_sections(body: str) -> Dict[str, str]:
     Parse por headings (Issue Forms):
       ### SKU (único)
       valor
-
     Guarda o conteúdo até o próximo heading.
     """
     if not body:
@@ -116,9 +181,6 @@ def _parse_sections(body: str) -> Dict[str, str]:
 
 
 def _get_section(sections: Dict[str, str], label_regex: str) -> str:
-    """
-    Encontra a PRIMEIRA seção cujo título bate com label_regex.
-    """
     if not sections:
         return ""
     rgx = re.compile(label_regex, re.IGNORECASE)
@@ -146,12 +208,6 @@ def _split_badges_optional(raw: str) -> Optional[List[str]]:
 
 
 def _checkbox_state(body: str, text_regex: str) -> Optional[bool]:
-    """
-    Retorna:
-      True  -> se achar "- [x] Texto"
-      False -> se achar "- [ ] Texto"
-      None  -> se não achar o item
-    """
     if not body:
         return None
 
@@ -168,7 +224,7 @@ def _normalize_asset_path(p: str) -> str:
     x = _clean_url(p)
 
     # URL externa fica como está
-    if x.startswith("http://") or x.startswith("https://"):
+    if x.startswith("http://") or x.startswith("https://") or x.startswith("data:image/"):
         return x.strip()
 
     # normaliza separadores
@@ -195,13 +251,6 @@ def _ml_search_url(query: str) -> str:
     return f"https://lista.mercadolivre.com.br/{slug}"
 
 
-def _looks_like_html_blob(s: str) -> bool:
-    if not s:
-        return False
-    x = s.strip().lower()
-    return ("<img" in x) or ("</" in x) or ("<" in x and ">" in x)
-
-
 def _clean_title(s: str) -> str:
     x = _strip_html(s or "")
     x = re.sub(r"\s+", " ", x).strip()
@@ -210,14 +259,15 @@ def _clean_title(s: str) -> str:
 
 def _clean_sku(s: str) -> str:
     """
-    SKU “slug”: letras/números/hífen. Se vier lixo/HTML, deixa vazio e força erro.
+    SKU “slug”: letras/números/hífen.
+    Se vier lixo/HTML, zera e força erro.
     """
     raw = (s or "").strip()
-    raw2 = _strip_html(raw)
-
-    if not raw2:
-        return ""
     if _looks_like_html_blob(raw):
+        return ""
+
+    raw2 = _strip_html(raw)
+    if not raw2:
         return ""
 
     x = raw2.lower()
@@ -228,7 +278,8 @@ def _clean_sku(s: str) -> str:
 
 def _clean_ml_id(s: str) -> str:
     """
-    Mantém padrão tipo 5J5PKG-EN33 (A-Z0-9-). Se vier HTML, zera.
+    Mantém padrão tipo 5J5PKG-EN33 (A-Z0-9-).
+    Se vier HTML, zera.
     """
     raw = (s or "").strip()
     if _looks_like_html_blob(raw):
@@ -243,10 +294,39 @@ def _is_ml_url(u: str) -> bool:
     return ("mercadolivre" in x) or ("lista.mercadolivre" in x)
 
 
+def _enforce_single_featured(products: List[Dict[str, Any]]) -> None:
+    """
+    Garante no máximo 1 featured=True.
+    Se tiver vários, mantém o primeiro e desmarca o resto.
+    """
+    first_idx: Optional[int] = None
+    for i, p in enumerate(products or []):
+        if not isinstance(p, dict):
+            continue
+        if p.get("featured") is True:
+            first_idx = i
+            break
+
+    if first_idx is None:
+        return
+
+    for i, p in enumerate(products or []):
+        if not isinstance(p, dict):
+            continue
+        if i != first_idx:
+            p["featured"] = False
+
+
 def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
-    Remove itens claramente inválidos (ex.: sku/title com <img ...>, open_url apontando pra github).
-    Também limpa aspas no final de URLs.
+    Remove itens claramente inválidos:
+      - sku/title com HTML (<img ...>)
+      - open_url apontando pra github/qualquer coisa que não seja ML
+      - URLs com \ no fim
+      - image que não é imagem (se for URL)
+    Também:
+      - limpa aspas e \ no final de URLs
+      - corrige assets/assets
     """
     out: List[Dict[str, Any]] = []
     seen = set()
@@ -261,31 +341,50 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         if _looks_like_html_blob(raw_sku):
             continue
 
-        # não altera sku bom; só bloqueia os “lixos”
         sku = raw_sku.strip()
         if sku in seen:
             continue
 
-        title = _clean_title(str(p.get("title") or ""))
-        if not title or _looks_like_html_blob(title):
+        # title
+        raw_title = str(p.get("title") or "")
+        if _looks_like_html_blob(raw_title):
+            continue
+        title = _clean_title(raw_title)
+        if not title:
             continue
 
+        # id
+        id_busca = _clean_ml_id(str(p.get("id_busca") or ""))
+
+        # open_url/check_url
         open_url = _clean_url(str(p.get("open_url") or ""))
-        check_url = _clean_url(str(p.get("check_url") or "")) or open_url
+        check_url_raw = _clean_url(str(p.get("check_url") or ""))
 
         # se open_url não for ML, tenta reconstruir via ID; se não der, remove
         if open_url and not _is_ml_url(open_url):
-            id_busca = _clean_ml_id(str(p.get("id_busca") or ""))
             open_url = _ml_search_url(id_busca) if id_busca else ""
 
         if not open_url:
             continue
 
+        # check_url acompanha open_url (se check_url ruim, substitui)
+        check_url = check_url_raw if (check_url_raw and _is_ml_url(check_url_raw)) else open_url
+
+        # image
+        image_raw = str(p.get("image") or "")
+        image_norm = _normalize_asset_path(image_raw)
+        if image_norm.startswith("http://") or image_norm.startswith("https://") or image_norm.startswith("data:image/"):
+            # se for URL, só aceita se parecer imagem
+            if not _is_image_url(image_norm):
+                image_norm = ""
+
+        # escreve de volta sanitizado
         p["sku"] = sku
         p["title"] = title
+        p["id_busca"] = id_busca
         p["open_url"] = open_url
-        p["check_url"] = check_url or open_url
-        p["image"] = _normalize_asset_path(str(p.get("image") or ""))
+        p["check_url"] = check_url
+        p["image"] = image_norm
 
         # defaults mínimos
         p.setdefault("badges", [])
@@ -298,6 +397,7 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         out.append(p)
         seen.add(sku)
 
+    _enforce_single_featured(out)
     return out
 
 
@@ -312,16 +412,16 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     title_raw = _first_meaningful_line(_get_section(sections, r"^T[ií]tulo\b"))
     badges_raw = _first_meaningful_line(_get_section(sections, r"Badges/Tags|Badges|Tags"))
     id_raw = _first_meaningful_line(_get_section(sections, r"ID\s+Mercado\s+Livre|ID\s+ML|ID\b"))
+
     link_block = _get_section(sections, r"Link\s+Mercado\s+Livre|Link\s+ML|Link\b")
     img_block = _get_section(sections, r"Imagem\b")
 
-    # URLs: aceita colado puro OU dentro de <img ... src="...">
     link_ml = _first_url(link_block) or _first_url(_first_meaningful_line(link_block))
-    image_url = _first_url(img_block) or _first_url(_first_meaningful_line(img_block))
 
-    # fallback imagem: pega do body inteiro (markdown/html)
+    # ✅ imagem agora SÓ se parecer imagem (evita pegar link do ML como "image")
+    image_url = _first_image_url(img_block) or _first_image_url(_first_meaningful_line(img_block))
     if not image_url:
-        image_url = _first_url(body)
+        image_url = _first_image_url(body)
 
     sku = _clean_sku(sku_raw)
     title = _clean_title(title_raw)
@@ -329,19 +429,16 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
 
     badges = _split_badges_optional(_clean_title(badges_raw))
 
-    # checkbox robusto (x / vazio)
     active_state = _checkbox_state(body, r"Ativo")
     featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
 
-    # Sem a seção de opções (templates antigos): default ativo
     active = True if active_state is None else bool(active_state)
     featured = bool(featured_state) if featured_state is not None else False
 
-    # fallback mínimo de title se vier vazio
     if not title:
         title = (issue.get("title") or "").strip()
 
-    # validações fortes (pra não gerar lixo no JSON)
+    # validações fortes
     if not sku:
         raise ValueError("Não consegui ler um SKU válido. (Evite colar imagem/HTML no campo SKU.)")
 
@@ -351,12 +448,11 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if link_ml and not _is_ml_url(link_ml):
         raise ValueError("O 'Link Mercado Livre' precisa ser do Mercado Livre (ex.: https://mercadolivre.com/sec/... ).")
 
-    # Open URL:
-    # - Se tiver link do ML, usa exatamente como foi colado (preserva /sec e case)
-    # - Se não tiver link, usa busca por ID
     open_url = _clean_url(link_ml) if link_ml else _ml_search_url(id_busca)
-    check_url = open_url  # por enquanto igual
+    if not open_url:
+        raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
 
+    check_url = open_url
     image = _normalize_asset_path(image_url)
 
     # Caso seja o issue especial do "produto do dia"
@@ -385,7 +481,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     if not isinstance(products, list):
         products = []
 
-    # ✅ limpa o que já existe (remove itens “<img ...>” e URLs com aspas)
+    # ✅ limpa tudo que já existe (remove itens “<img ...>” e URLs com \ ou aspas)
     products = _sanitize_existing_products(products)
 
     sku = (incoming.get("sku") or "").strip()
@@ -393,7 +489,6 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         data["products"] = products
         return data
 
-    # encontra existente por SKU
     idx = next((i for i, p in enumerate(products) if isinstance(p, dict) and (p.get("sku") == sku)), None)
 
     if idx is None:
@@ -404,17 +499,20 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         existing = products[idx] if isinstance(products[idx], dict) else {}
         products[idx] = existing
 
-    # preserva campos de monitoramento se já existirem
+    # preserva monitoramento se já existirem
     preserve_keys = {"last_checked", "last_ok"}
     for k in preserve_keys:
         if k in existing and (not incoming.get(k)):
             incoming[k] = existing.get(k, "")
 
-    # normaliza image novamente (garante sem assets/assets e sem aspas)
+    # normaliza URLs e image novamente
+    if incoming.get("open_url"):
+        incoming["open_url"] = _clean_url(str(incoming.get("open_url") or ""))
+    if incoming.get("check_url"):
+        incoming["check_url"] = _clean_url(str(incoming.get("check_url") or "")) or incoming.get("open_url", "")
     if incoming.get("image"):
-        incoming["image"] = _normalize_asset_path(incoming.get("image", ""))
+        incoming["image"] = _normalize_asset_path(str(incoming.get("image") or ""))
 
-    # remove flag interna
     special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
 
     if special_set_featured_only:
@@ -422,18 +520,17 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
             if not isinstance(p, dict):
                 continue
             p["featured"] = bool(p.get("sku") == sku)
+        _enforce_single_featured(products)
         data["products"] = products
         return data
 
     for k, v in incoming.items():
-        # ESSENCIAIS: sempre sobrescreve
         if k in {"sku", "title", "open_url", "check_url", "image", "active", "featured", "id_busca"}:
             if v is None and k not in {"id_busca"}:
                 continue
             existing[k] = v
             continue
 
-        # price_text: NÃO sobrescreve com vazio/None
         if k == "price_text":
             if v is None:
                 continue
@@ -442,7 +539,6 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
             existing[k] = v
             continue
 
-        # badges: se vier None, preserva o que já existe
         if k == "badges":
             if v is None:
                 continue
@@ -456,7 +552,6 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
 
         existing[k] = v
 
-    # defaults
     existing.setdefault("badges", [])
     existing.setdefault("price_text", "")
     existing.setdefault("last_checked", "")
@@ -471,6 +566,10 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
                 continue
             if p.get("sku") != sku:
                 p["featured"] = False
+
+    # ✅ limpeza final + featured único
+    products = _sanitize_existing_products(products)
+    _enforce_single_featured(products)
 
     data["products"] = products
     return data
