@@ -10,12 +10,13 @@
   }
 
   async function copyText(txt) {
+    const v = String(txt ?? "");
     try {
-      await navigator.clipboard.writeText(txt);
+      await navigator.clipboard.writeText(v);
       showToast("Copiado ✅");
     } catch (e) {
       const t = document.createElement("textarea");
-      t.value = txt;
+      t.value = v;
       document.body.appendChild(t);
       t.select();
       document.execCommand("copy");
@@ -36,8 +37,34 @@
     return baseUrl();
   }
 
+  function stripTags(s) {
+    return String(s ?? "").replace(/<[^>]*>/g, " ");
+  }
+
+  function cleanText(s) {
+    return stripTags(s).replace(/\s+/g, " ").trim();
+  }
+
+  function extractFirstUrl(s) {
+    const m = String(s ?? "").match(/https?:\/\/[^\s<>"')]+/i);
+    return m ? m[0] : "";
+  }
+
+  function cleanUrl(u) {
+    let raw = String(u ?? "").trim();
+    if (!raw) return "";
+    // se colarem <img ... src="...">, pega o link
+    if (/<\s*img/i.test(raw)) raw = extractFirstUrl(raw);
+
+    raw = raw.trim();
+    raw = raw.replace(/^[\s"'`]+/, "");
+    raw = raw.replace(/[\s"'`]+$/, "");
+    raw = raw.replace(/[)"'`]+$/g, "");
+    return raw.trim();
+  }
+
   function resolveUrl(u) {
-    const raw = String(u ?? "").trim();
+    let raw = cleanUrl(u);
     if (!raw) return "";
     if (/^(https?:\/\/|data:)/i.test(raw)) return raw;
 
@@ -45,7 +72,6 @@
     let p = raw.replace(/^[.\/]+/, "");
     p = p.replace(/^assets\/assets\//i, "assets/");
 
-    // resolve relativo -> absoluto
     return new URL(p, baseUrl()).href;
   }
 
@@ -85,6 +111,13 @@
     return [];
   }
 
+  function isProbablyValidLink(u) {
+    const x = String(u ?? "").toLowerCase();
+    if (!x) return false;
+    if (x.includes("github.com/user-attachments/assets")) return false;
+    return x.includes("mercadolivre") || x.includes("lista.mercadolivre");
+  }
+
   function adaptProduct(p) {
     if (!p) return null;
 
@@ -93,26 +126,36 @@
       (p.active !== undefined) ? p.active :
       true;
 
-    let desc = p.desc || p.description || "";
-    if (!desc && Array.isArray(p.badges) && p.badges.length) {
-      desc = p.badges.join(" • ");
-    }
-    if (!desc && Array.isArray(p.tags) && p.tags.length) {
-      desc = p.tags.join(" • ");
-    }
+    let nome = cleanText(p.nome || p.title || p.name || "");
+    let sku = cleanText(p.sku || p.slug || "");
+    let idML = cleanText(p.idML || p.id_busca || p.id || "");
+    let link = cleanUrl(p.link || p.open_url || p.url || "");
+    let imagem = cleanUrl(p.imagem || p.image || "");
 
-    const nome = (p.nome || p.title || p.name || "").trim();
+    // se veio lixo tipo "<img ...>", some com esse item
+    if (!nome || /<\s*img/i.test(String(p.nome || p.title || ""))) return null;
+    if (!sku || /<\s*img/i.test(String(p.sku || "")) || /</.test(sku) || />/.test(sku)) return null;
+
+    // tenta montar desc a partir de badges/tags
+    let desc = cleanText(p.desc || p.description || "");
+    const tagsRaw = (p.tags || p.badges || []);
+    const tags = Array.isArray(tagsRaw) ? tagsRaw.map(cleanText).filter(Boolean) : [];
+
+    if (!desc && tags.length) desc = tags.join(" • ");
+
+    // link obrigatório: se não for ML, ignora
+    if (!isProbablyValidLink(link)) return null;
 
     return {
-      sku: (p.sku || p.slug || "").trim(),
+      sku,
       destaque: (p.destaque === true) || (p.featured === true) || (p.is_featured === true),
       ativo: (ativo !== false),
       nome,
       desc: desc || "",
-      idML: (p.idML || p.id_busca || p.id || "").trim(),
-      link: (p.link || p.open_url || p.url || "").trim(),
-      imagem: (p.imagem || p.image || "").trim(),
-      tags: (p.tags || p.badges || [])
+      idML: idML || "",
+      link,
+      imagem,
+      tags
     };
   }
 
@@ -300,7 +343,6 @@
       featuredEl.innerHTML = featuredHTML(featured, isProdutoDoDia);
     }
 
-    // ✅ Vitrine rápida (se existir no HTML)
     const quickGrid = $("#quickGrid");
     if (quickGrid) {
       const featuredSku = (featured && featured.sku) ? featured.sku : "";
@@ -369,7 +411,6 @@
     }
   }
 
-  // ✅ Delegação: evita duplicar eventos ao dar refresh/render
   function bindCopyDelegation() {
     document.addEventListener("click", (e) => {
       const el = e.target.closest("[data-copy]");
