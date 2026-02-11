@@ -571,7 +571,7 @@
   <script>
     const ADMIN = new URLSearchParams(location.search).get("admin") === "1";
 
-    // ✅ Agora o Produto do Dia também aparece na vitrine (grade)
+    // ✅ O Produto do Dia só entra na grade se EXISTIR featured=true
     const SHOW_FEATURED_IN_GRID = true;
 
     const toast = document.getElementById("toast");
@@ -641,6 +641,69 @@
     function tagsText(badges){
       const b = safeArray(badges).slice(0,4).map(x => `#${String(x).trim().replaceAll(" ","_")}`).join(" ");
       return b;
+    }
+
+    // ✅ DEDUPE forte (id_busca > open_url > sku)
+    function dedupeProducts(list){
+      const out = [];
+      const seen = new Set();
+
+      for(const p of (list || [])){
+        if(!p) continue;
+        const key =
+          (p.id_busca ? `id:${String(p.id_busca).trim().toUpperCase()}` : "") ||
+          (p.open_url ? `url:${String(p.open_url).trim().toLowerCase()}` : "") ||
+          (p.sku ? `sku:${String(p.sku).trim().toLowerCase()}` : "");
+
+        if(!key) continue;
+
+        if(seen.has(key)){
+          // se já existe e o novo é featured, substitui (prioriza featured)
+          const idx = out.findIndex(x => {
+            const k =
+              (x.id_busca ? `id:${String(x.id_busca).trim().toUpperCase()}` : "") ||
+              (x.open_url ? `url:${String(x.open_url).trim().toLowerCase()}` : "") ||
+              (x.sku ? `sku:${String(x.sku).trim().toLowerCase()}` : "");
+            return k === key;
+          });
+          if(idx >= 0 && p.featured && !out[idx].featured){
+            out[idx] = p;
+          }
+          continue;
+        }
+
+        seen.add(key);
+        out.push(p);
+      }
+
+      return out;
+    }
+
+    function emptyFeaturedHTML(){
+      return `
+        <div class="card">
+          <div class="cardBody">
+            <div class="tag">⚠️ nenhum produto do dia definido</div>
+            <h3 class="name">Defina o Produto do Dia</h3>
+            <p class="meta">
+              Para existir “Produto do Dia”, um item precisa estar com <b>featured=true</b>.
+              <br/><br/>
+              ✅ No CMS: marque <b>“Definir como Produto do Dia (featured)”</b> no issue do produto.
+              <br/>
+              ✅ Ou use o issue <b>[CMS] Produto do Dia</b> (label <b>cms-produto-do-dia</b>) apontando o SKU.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardBody">
+            <div class="tag">✅ dica rápida</div>
+            <p class="meta">
+              Enquanto isso, use o <b>Story com sticker de LINK</b> e mantenha esta vitrine como link da bio.
+            </p>
+          </div>
+        </div>
+      `;
     }
 
     function featuredHTML(p){
@@ -771,21 +834,23 @@
       if(!res.ok) throw new Error("produtos.json não encontrado");
       const data = await res.json();
       const list = normalizeProducts(data).map(adaptForUI);
-      return list;
+      return dedupeProducts(list);
     }
 
+    // ✅ Agora: Produto do Dia = SOMENTE featured=true
     function getFeatured(list){
       const actives = list.filter(p => p.active !== false);
-      return actives.find(p => p.featured) || actives[0] || null;
+      return actives.find(p => p.featured) || null;
     }
 
     function render(){
       const q = (STATE.query || "").trim().toLowerCase();
 
-      const active = STATE.products.filter(p => p.active !== false);
+      // ✅ filtro + dedupe (de novo por segurança)
+      const active = dedupeProducts(STATE.products).filter(p => p.active !== false);
 
-      const destaque = getFeatured(STATE.products);
-      $("#featured").innerHTML = destaque ? featuredHTML(destaque) : "";
+      const destaque = getFeatured(active);
+      $("#featured").innerHTML = destaque ? featuredHTML(destaque) : emptyFeaturedHTML();
 
       let gridList = active.slice();
 
@@ -801,7 +866,7 @@
         });
       }
 
-      // ✅ Mantém o Produto do Dia na grade (e coloca ele em primeiro)
+      // ✅ Só coloca o Produto do Dia em primeiro se EXISTIR featured=true
       if(destaque && SHOW_FEATURED_IN_GRID){
         gridList = [destaque, ...gridList.filter(p => p.sku !== destaque.sku)];
       }else if(destaque && !SHOW_FEATURED_IN_GRID){
@@ -810,6 +875,7 @@
 
       $("#grid").innerHTML = gridList.map(productCardHTML).join("");
     }
+
     function findBySku(sku){
       return STATE.products.find(p => p.sku === sku) || null;
     }
@@ -829,8 +895,6 @@
 
       if(target.active === false && target.featured){
         target.featured = false;
-        const next = STATE.products.find(p => p.active !== false);
-        if(next) next.featured = true;
       }
 
       showToast(target.active ? "Ativado ✅" : "Desativado ⛔");
@@ -874,7 +938,7 @@
     function exportProdutosJson(){
       const out = {
         updated_at: new Date().toISOString(),
-        products: STATE.products.map(p => ({
+        products: dedupeProducts(STATE.products).map(p => ({
           sku: p.sku,
           title: p.title,
           badges: safeArray(p.badges),
