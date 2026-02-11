@@ -159,6 +159,40 @@
     };
   }
 
+  // ✅ DEDUPE forte (idML > link > sku)
+  function dedupeProducts(list) {
+    const out = [];
+    const seen = new Set();
+
+    for (const p of (list || [])) {
+      if (!p) continue;
+      const key =
+        (p.idML ? `id:${String(p.idML).trim().toUpperCase()}` : "") ||
+        (p.link ? `url:${String(p.link).trim().toLowerCase()}` : "") ||
+        (p.sku ? `sku:${String(p.sku).trim().toLowerCase()}` : "");
+
+      if (!key) continue;
+
+      if (seen.has(key)) {
+        // se duplicado e o novo é destaque, substitui
+        const idx = out.findIndex(x => {
+          const k =
+            (x.idML ? `id:${String(x.idML).trim().toUpperCase()}` : "") ||
+            (x.link ? `url:${String(x.link).trim().toLowerCase()}` : "") ||
+            (x.sku ? `sku:${String(x.sku).trim().toLowerCase()}` : "");
+          return k === key;
+        });
+        if (idx >= 0 && p.destaque && !out[idx].destaque) out[idx] = p;
+        continue;
+      }
+
+      seen.add(key);
+      out.push(p);
+    }
+
+    return out;
+  }
+
   function escapeHTML(s) {
     return String(s ?? "")
       .replaceAll("&", "&amp;")
@@ -300,7 +334,7 @@
       const list = mapped.filter(p => p && (p.ativo !== false));
 
       return {
-        products: list.length ? list : FALLBACK_PRODUCTS,
+        products: dedupeProducts(list.length ? list : FALLBACK_PRODUCTS),
         updated_at: data.updated_at || ""
       };
     } catch (e) {
