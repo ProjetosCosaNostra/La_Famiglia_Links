@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-11T14:01:13Z",
+  "updated_at": "2026-02-11T17:43:00Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -71,6 +71,32 @@
       "open_url": "https://mercadolivre.com/sec/28iCzpJ",
       "check_url": "https://mercadolivre.com/sec/28iCzpJ",
       "image": "https://github.com/user-attachments/assets/4f86f439-1a82-4a0f-bf33-ad1d54f7b65d",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "air-fryer-mondial-4l-afn-40-bft",
+      "title": "Air Fryer Mondial 4L 1500W AFN-40-BFT (Preto)",
+      "badges": [
+        "Achados do Dia",
+        "Air Fryer",
+        "Mondial",
+        "4L",
+        "1500W",
+        "Sem óleo",
+        "Cesta removível",
+        "Temperatura ajustável",
+        "Preto",
+        "Mais vendido",
+        "Oferta"
+      ],
+      "id_busca": "5J5PKG-NYSK",
+      "open_url": "https://mercadolivre.com/sec/28iCzpJ",
+      "check_url": "https://mercadolivre.com/sec/28iCzpJ",
+      "image": "https://github.com/user-attachments/assets/7d4d6c59-d751-45aa-bcc2-0afc6ba4c6d6",
       "active": true,
       "featured": true,
       "price_text": "",
