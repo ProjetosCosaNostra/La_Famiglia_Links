@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-11T12:37:26Z",
+  "updated_at": "2026-02-11T14:01:13Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -49,10 +49,33 @@
       "check_url": "https://mercadolivre.com/sec/1iReZ7Y",
       "image": "https://github.com/user-attachments/assets/81a233c0-e9ba-40ae-9a19-9b7bc2ef5871",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-11T12:37:26Z",
       "last_ok": "2026-02-11T12:37:26Z"
+    },
+    {
+      "sku": "air-fryer-mondial-4l-1500w-afn-40-bft-preto",
+      "title": "Fritadeira sem óleo (Air Fryer) Mondial 4L 1500W — AFN-40-BFT (Preto)",
+      "badges": [
+        "Achados do Dia",
+        "Air Fryer",
+        "Mondial",
+        "4L",
+        "1500W",
+        "AFN-40-BFT",
+        "Preto",
+        "Cozinha"
+      ],
+      "id_busca": "5J5PKG-NYSK",
+      "open_url": "https://mercadolivre.com/sec/28iCzpJ",
+      "check_url": "https://mercadolivre.com/sec/28iCzpJ",
+      "image": "https://github.com/user-attachments/assets/4f86f439-1a82-4a0f-bf33-ad1d54f7b65d",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
