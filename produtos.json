@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-11T06:47:28Z",
+  "updated_at": "2026-02-11T12:37:26Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -16,8 +16,8 @@
       "price_text": "",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-11T06:47:28Z",
-      "last_ok": "2026-02-11T06:47:28Z"
+      "last_checked": "2026-02-11T12:37:26Z",
+      "last_ok": "2026-02-11T12:37:26Z"
     },
     {
       "sku": "xiaomi-redmi-buds-6-play",
@@ -35,8 +35,8 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-11T06:47:28Z",
-      "last_ok": "2026-02-11T06:47:28Z"
+      "last_checked": "2026-02-11T12:37:26Z",
+      "last_ok": "2026-02-11T12:37:26Z"
     },
     {
       "sku": "powerbank-20000mah-22w-usbc-preto",
@@ -51,8 +51,8 @@
       "active": true,
       "featured": true,
       "price_text": "",
-      "last_checked": "2026-02-11T06:47:28Z",
-      "last_ok": "2026-02-11T06:47:28Z"
+      "last_checked": "2026-02-11T12:37:26Z",
+      "last_ok": "2026-02-11T12:37:26Z"
     }
   ]
 }
