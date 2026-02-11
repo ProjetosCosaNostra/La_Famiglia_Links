@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v5 (Anti-\" final, URL regex sem backslash, imagem só se for imagem, limpeza forte + enforce featured único)
+# Versão : v6 (dedupe por sku+id_busca+open_url, Produto do Dia NUNCA automático, issue cms-produto-do-dia robusto)
 # ==========================================================
 
 from __future__ import annotations
@@ -317,6 +317,20 @@ def _enforce_single_featured(products: List[Dict[str, Any]]) -> None:
             p["featured"] = False
 
 
+def _dedupe_key(id_busca: str, open_url: str) -> str:
+    """
+    Chave estável pra deduplicar.
+    Prioridade: id_busca > open_url.
+    """
+    ib = (id_busca or "").strip().upper()
+    ou = (open_url or "").strip().lower()
+    if ib:
+        return f"id:{ib}"
+    if ou:
+        return f"url:{ou}"
+    return ""
+
+
 def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Remove itens claramente inválidos:
@@ -327,9 +341,13 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
     Também:
       - limpa aspas e \ no final de URLs
       - corrige assets/assets
+    + DEDUPE:
+      - evita duplicados por sku
+      - evita duplicados por id_busca/open_url (mesmo sku diferente)
     """
     out: List[Dict[str, Any]] = []
-    seen = set()
+    seen_sku = set()
+    seen_key = set()
 
     for p in (products or []):
         if not isinstance(p, dict):
@@ -342,7 +360,7 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
             continue
 
         sku = raw_sku.strip()
-        if sku in seen:
+        if sku in seen_sku:
             continue
 
         # title
@@ -366,6 +384,19 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
 
         if not open_url:
             continue
+
+        # dedupe por id/open_url
+        dk = _dedupe_key(id_busca, open_url)
+        if dk and dk in seen_key:
+            continue
+
+        # marca chaves vistas (id e url)
+        if id_busca:
+            seen_key.add(f"id:{id_busca.upper()}")
+        if open_url:
+            seen_key.add(f"url:{open_url.lower()}")
+        if dk:
+            seen_key.add(dk)
 
         # check_url acompanha open_url (se check_url ruim, substitui)
         check_url = check_url_raw if (check_url_raw and _is_ml_url(check_url_raw)) else open_url
@@ -395,7 +426,7 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         p.setdefault("featured", False)
 
         out.append(p)
-        seen.add(sku)
+        seen_sku.add(sku)
 
     _enforce_single_featured(out)
     return out
@@ -407,6 +438,28 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
 
     labels = [l.get("name", "") for l in (issue.get("labels") or []) if isinstance(l, dict)]
     labels_lc = {x.lower() for x in labels if x}
+
+    # ✅ Issue especial: "CMS Produto do Dia" (só aponta um SKU existente)
+    if "cms-produto-do-dia" in labels_lc:
+        sku_raw = _first_meaningful_line(_get_section(sections, r"^SKU\b")) or _first_meaningful_line(body)
+        sku = _clean_sku(sku_raw)
+        if not sku:
+            raise ValueError("Produto do Dia: SKU inválido no issue cms-produto-do-dia.")
+        return {
+            "sku": sku,
+            "title": "",
+            "badges": None,
+            "id_busca": "",
+            "open_url": "",
+            "check_url": "",
+            "image": "",
+            "price_text": None,
+            "active": True,
+            "featured": True,
+            "last_checked": "",
+            "last_ok": "",
+            "_special_set_featured_only": True,
+        }
 
     sku_raw = _first_meaningful_line(_get_section(sections, r"^SKU\b"))
     title_raw = _first_meaningful_line(_get_section(sections, r"^T[ií]tulo\b"))
@@ -455,9 +508,6 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     check_url = open_url
     image = _normalize_asset_path(image_url)
 
-    # Caso seja o issue especial do "produto do dia"
-    special_set_featured_only = ("cms-produto-do-dia" in labels_lc) and (not badges) and (not link_ml) and (not image)
-
     product: Dict[str, Any] = {
         "sku": sku,
         "title": title,
@@ -471,9 +521,27 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "featured": bool(featured),
         "last_checked": "",
         "last_ok": "",
-        "_special_set_featured_only": bool(special_set_featured_only),
+        "_special_set_featured_only": False,
     }
     return product
+
+
+def _find_existing_by_id_or_url(products: List[Dict[str, Any]], id_busca: str, open_url: str) -> Optional[int]:
+    ib = _clean_ml_id(id_busca or "")
+    ou = _clean_url(open_url or "").lower()
+
+    for i, p in enumerate(products or []):
+        if not isinstance(p, dict):
+            continue
+        pib = _clean_ml_id(str(p.get("id_busca") or ""))
+        pou = _clean_url(str(p.get("open_url") or "")).lower()
+
+        if ib and pib and ib == pib:
+            return i
+        if ou and pou and ou == pou:
+            return i
+
+    return None
 
 
 def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str, Any]:
@@ -481,7 +549,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     if not isinstance(products, list):
         products = []
 
-    # ✅ limpa tudo que já existe (remove itens “<img ...>” e URLs com \ ou aspas)
+    # ✅ limpa tudo que já existe + dedupe por id/url
     products = _sanitize_existing_products(products)
 
     sku = (incoming.get("sku") or "").strip()
@@ -489,7 +557,37 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         data["products"] = products
         return data
 
+    # normaliza URLs e image do incoming
+    if incoming.get("open_url"):
+        incoming["open_url"] = _clean_url(str(incoming.get("open_url") or ""))
+    if incoming.get("check_url"):
+        incoming["check_url"] = _clean_url(str(incoming.get("check_url") or "")) or incoming.get("open_url", "")
+    if incoming.get("image"):
+        incoming["image"] = _normalize_asset_path(str(incoming.get("image") or ""))
+
+    special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
+
+    # ✅ Caso especial: apenas definir featured por SKU existente
+    if special_set_featured_only:
+        target_idx = next((i for i, p in enumerate(products) if isinstance(p, dict) and (p.get("sku") == sku)), None)
+        if target_idx is None:
+            raise ValueError(f"Produto do Dia: SKU '{sku}' não existe em produtos.json ainda.")
+        for p in products:
+            if not isinstance(p, dict):
+                continue
+            p["featured"] = bool(p.get("sku") == sku)
+        _enforce_single_featured(products)
+        data["products"] = products
+        return data
+
+    # 1) tenta pelo SKU
     idx = next((i for i, p in enumerate(products) if isinstance(p, dict) and (p.get("sku") == sku)), None)
+
+    # 2) se não achou, tenta pelo id_busca/open_url (evita duplicar mesmo com SKUs diferentes)
+    if idx is None:
+        idx2 = _find_existing_by_id_or_url(products, str(incoming.get("id_busca") or ""), str(incoming.get("open_url") or ""))
+        if idx2 is not None:
+            idx = idx2
 
     if idx is None:
         existing: Dict[str, Any] = {}
@@ -504,25 +602,6 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     for k in preserve_keys:
         if k in existing and (not incoming.get(k)):
             incoming[k] = existing.get(k, "")
-
-    # normaliza URLs e image novamente
-    if incoming.get("open_url"):
-        incoming["open_url"] = _clean_url(str(incoming.get("open_url") or ""))
-    if incoming.get("check_url"):
-        incoming["check_url"] = _clean_url(str(incoming.get("check_url") or "")) or incoming.get("open_url", "")
-    if incoming.get("image"):
-        incoming["image"] = _normalize_asset_path(str(incoming.get("image") or ""))
-
-    special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
-
-    if special_set_featured_only:
-        for p in products:
-            if not isinstance(p, dict):
-                continue
-            p["featured"] = bool(p.get("sku") == sku)
-        _enforce_single_featured(products)
-        data["products"] = products
-        return data
 
     for k, v in incoming.items():
         if k in {"sku", "title", "open_url", "check_url", "image", "active", "featured", "id_busca"}:
@@ -564,10 +643,10 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         for p in products:
             if not isinstance(p, dict):
                 continue
-            if p.get("sku") != sku:
+            if p.get("sku") != existing.get("sku"):
                 p["featured"] = False
 
-    # ✅ limpeza final + featured único
+    # ✅ limpeza final + featured único + dedupe por id/url
     products = _sanitize_existing_products(products)
     _enforce_single_featured(products)
 
