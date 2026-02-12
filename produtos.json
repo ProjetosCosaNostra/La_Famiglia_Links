@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-12T15:01:32Z",
+  "updated_at": "2026-02-12T18:43:00Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -16,8 +16,8 @@
       "price_text": "",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-12T12:34:26Z",
-      "last_ok": "2026-02-12T12:34:26Z"
+      "last_checked": "2026-02-12T18:43:00Z",
+      "last_ok": "2026-02-12T18:43:00Z"
     },
     {
       "sku": "xiaomi-redmi-buds-6-play",
@@ -35,8 +35,8 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-12T12:34:26Z",
-      "last_ok": "2026-02-12T12:34:26Z"
+      "last_checked": "2026-02-12T18:43:00Z",
+      "last_ok": "2026-02-12T18:43:00Z"
     },
     {
       "sku": "powerbank-20000mah-22w-usbc-preto",
@@ -51,8 +51,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T12:34:26Z",
-      "last_ok": "2026-02-12T12:34:26Z"
+      "last_checked": "2026-02-12T18:43:00Z",
+      "last_ok": "2026-02-12T18:43:00Z"
     },
     {
       "sku": "air-fryer-mondial-4l-1500w-afn-40-bft-preto",
@@ -74,8 +74,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T12:34:26Z",
-      "last_ok": "2026-02-12T12:34:26Z"
+      "last_checked": "2026-02-12T18:43:00Z",
+      "last_ok": "2026-02-12T18:43:00Z"
     },
     {
       "sku": "bolsa-tiracolo-antifurto-usb-impermeavel-0nqd",
@@ -96,8 +96,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T12:34:26Z",
-      "last_ok": "2026-02-12T12:34:26Z"
+      "last_checked": "2026-02-12T18:43:00Z",
+      "last_ok": "2026-02-12T18:43:00Z"
     },
     {
       "sku": "tomada-inteligente-20a-medidor-5j5pkg-fpxm",
@@ -119,8 +119,8 @@
       "active": true,
       "featured": true,
       "price_text": "",
-      "last_checked": "",
-      "last_ok": ""
+      "last_checked": "2026-02-12T18:43:00Z",
+      "last_ok": "2026-02-12T18:43:00Z"
     }
   ]
 }
