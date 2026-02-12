@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-12T18:43:00Z",
+  "updated_at": "2026-02-12T19:10:43Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -117,10 +117,35 @@
       "check_url": "https://mercadolivre.com/sec/1aGeMPL",
       "image": "https://github.com/user-attachments/assets/e57053a1-c455-442f-9a81-cad84683ca27",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-12T18:43:00Z",
       "last_ok": "2026-02-12T18:43:00Z"
+    },
+    {
+      "sku": "camera-wifi-360-fullhd-tapo",
+      "title": "Câmera Wi-Fi 360° Full HD (Tapo)",
+      "badges": [
+        "Achados do Dia",
+        "Câmera",
+        "Segurança",
+        "Wi-Fi",
+        "360",
+        "Full HD",
+        "Tapo",
+        "Casa Inteligente",
+        "Monitoramento",
+        "Custo-benefício"
+      ],
+      "id_busca": "5J5PKG-5X9V",
+      "open_url": "https://mercadolivre.com/sec/14j4Duz",
+      "check_url": "https://mercadolivre.com/sec/14j4Duz",
+      "image": "https://github.com/user-attachments/assets/a72d31a1-23be-4f3b-9dce-949f6340f340",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
