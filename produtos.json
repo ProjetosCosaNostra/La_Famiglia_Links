@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-12T12:34:26Z",
+  "updated_at": "2026-02-12T15:01:32Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -78,32 +78,6 @@
       "last_ok": "2026-02-12T12:34:26Z"
     },
     {
-      "sku": "air-fryer-mondial-4l-afn-40-bft",
-      "title": "Air Fryer Mondial 4L 1500W AFN-40-BFT (Preto)",
-      "badges": [
-        "Achados do Dia",
-        "Air Fryer",
-        "Mondial",
-        "4L",
-        "1500W",
-        "Sem óleo",
-        "Cesta removível",
-        "Temperatura ajustável",
-        "Preto",
-        "Mais vendido",
-        "Oferta"
-      ],
-      "id_busca": "5J5PKG-NYSK",
-      "open_url": "https://mercadolivre.com/sec/28iCzpJ",
-      "check_url": "https://mercadolivre.com/sec/28iCzpJ",
-      "image": "https://github.com/user-attachments/assets/7d4d6c59-d751-45aa-bcc2-0afc6ba4c6d6",
-      "active": true,
-      "featured": false,
-      "price_text": "",
-      "last_checked": "2026-02-12T12:34:26Z",
-      "last_ok": "2026-02-12T12:34:26Z"
-    },
-    {
       "sku": "bolsa-tiracolo-antifurto-usb-impermeavel-0nqd",
       "title": "Bolsa Tiracolo Antifurto Unissex com USB (Impermeável)",
       "badges": [
@@ -120,10 +94,33 @@
       "check_url": "https://mercadolivre.com/sec/1PHGxD8",
       "image": "https://github.com/user-attachments/assets/8c2fc483-dade-438f-8b84-715db12a00c9",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-12T12:34:26Z",
       "last_ok": "2026-02-12T12:34:26Z"
+    },
+    {
+      "sku": "tomada-inteligente-20a-medidor-5j5pkg-fpxm",
+      "title": "Tomada Inteligente WiFi 20A + Medidor de Consumo (Tuya)",
+      "badges": [
+        "Achados do Dia",
+        "Produto do Dia",
+        "Casa Inteligente",
+        "Economia de Energia",
+        "Tuya",
+        "20A",
+        "Medidor de Consumo",
+        "Pino Grosso"
+      ],
+      "id_busca": "5J5PKG-FPXM",
+      "open_url": "https://mercadolivre.com/sec/1aGeMPL",
+      "check_url": "https://mercadolivre.com/sec/1aGeMPL",
+      "image": "https://github.com/user-attachments/assets/e57053a1-c455-442f-9a81-cad84683ca27",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
