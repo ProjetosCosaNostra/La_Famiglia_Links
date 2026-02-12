@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-12T22:07:31Z",
+  "updated_at": "2026-02-12T22:17:59Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -168,7 +168,7 @@
       "open_url": "https://mercadolivre.com/sec/2ZKyLhs",
       "check_url": "https://mercadolivre.com/sec/2ZKyLhs",
       "image": "https://github.com/user-attachments/assets/6a2543b0-cc7c-4436-baf7-31039270420f",
-      "active": false,
+      "active": true,
       "featured": true,
       "price_text": "",
       "last_checked": "",
