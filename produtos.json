@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-12T01:01:35Z",
+  "updated_at": "2026-02-12T06:46:34Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -16,8 +16,8 @@
       "price_text": "",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-12T01:01:35Z",
-      "last_ok": "2026-02-12T01:01:35Z"
+      "last_checked": "2026-02-12T06:46:34Z",
+      "last_ok": "2026-02-12T06:46:34Z"
     },
     {
       "sku": "xiaomi-redmi-buds-6-play",
@@ -35,8 +35,8 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-12T01:01:35Z",
-      "last_ok": "2026-02-12T01:01:35Z"
+      "last_checked": "2026-02-12T06:46:34Z",
+      "last_ok": "2026-02-12T06:46:34Z"
     },
     {
       "sku": "powerbank-20000mah-22w-usbc-preto",
@@ -51,8 +51,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T01:01:35Z",
-      "last_ok": "2026-02-12T01:01:35Z"
+      "last_checked": "2026-02-12T06:46:34Z",
+      "last_ok": "2026-02-12T06:46:34Z"
     },
     {
       "sku": "air-fryer-mondial-4l-1500w-afn-40-bft-preto",
@@ -74,8 +74,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T01:01:35Z",
-      "last_ok": "2026-02-12T01:01:35Z"
+      "last_checked": "2026-02-12T06:46:34Z",
+      "last_ok": "2026-02-12T06:46:34Z"
     },
     {
       "sku": "air-fryer-mondial-4l-afn-40-bft",
@@ -100,8 +100,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T01:01:35Z",
-      "last_ok": "2026-02-12T01:01:35Z"
+      "last_checked": "2026-02-12T06:46:34Z",
+      "last_ok": "2026-02-12T06:46:34Z"
     },
     {
       "sku": "bolsa-tiracolo-antifurto-usb-impermeavel-0nqd",
@@ -122,8 +122,8 @@
       "active": true,
       "featured": true,
       "price_text": "",
-      "last_checked": "2026-02-12T01:01:35Z",
-      "last_ok": "2026-02-12T01:01:35Z"
+      "last_checked": "2026-02-12T06:46:34Z",
+      "last_ok": "2026-02-12T06:46:34Z"
     }
   ]
 }
