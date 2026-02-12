@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-12T19:10:43Z",
+  "updated_at": "2026-02-12T22:07:31Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -142,6 +142,33 @@
       "check_url": "https://mercadolivre.com/sec/14j4Duz",
       "image": "https://github.com/user-attachments/assets/a72d31a1-23be-4f3b-9dce-949f6340f340",
       "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "porteiro-eletronico-wifi-camera-visao-noturna-audio",
+      "title": "Porteiro Eletrônico Wi-Fi com Câmera | Visão Noturna + Áudio",
+      "badges": [
+        "Achados do Dia",
+        "Segurança Residencial",
+        "Porteiro Eletrônico",
+        "Campainha Wi-Fi",
+        "Vídeo Porteiro",
+        "Câmera",
+        "Visão Noturna",
+        "Áudio Bidirecional",
+        "Alertas",
+        "Monitoramento",
+        "Casa",
+        "Portão"
+      ],
+      "id_busca": "5J5PKG-YLW9",
+      "open_url": "https://mercadolivre.com/sec/2ZKyLhs",
+      "check_url": "https://mercadolivre.com/sec/2ZKyLhs",
+      "image": "https://github.com/user-attachments/assets/6a2543b0-cc7c-4436-baf7-31039270420f",
+      "active": false,
       "featured": true,
       "price_text": "",
       "last_checked": "",
