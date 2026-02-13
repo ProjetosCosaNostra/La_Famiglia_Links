@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-13T13:13:37Z",
+  "updated_at": "2026-02-13T17:26:45Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -196,6 +196,29 @@
       "open_url": "https://mercadolivre.com/sec/2BuQ5JD",
       "check_url": "https://mercadolivre.com/sec/2BuQ5JD",
       "image": "https://github.com/user-attachments/assets/ff5931ac-f153-4378-9c19-ae6efffbbf56",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "wap-robot-w90-3em1-preto",
+      "title": "Robô Aspirador WAP Robot W90 3 em 1 (Varre, Aspira e Passa Pano)",
+      "badges": [
+        "Achados do Dia",
+        "Casa & Pets",
+        "Robô Aspirador",
+        "WAP",
+        "3 em 1",
+        "Passa pano",
+        "Sensores",
+        "Oferta"
+      ],
+      "id_busca": "5J5PKG-TCW4",
+      "open_url": "https://mercadolivre.com/sec/2J1MBX9",
+      "check_url": "https://mercadolivre.com/sec/2J1MBX9",
+      "image": "https://github.com/user-attachments/assets/cb6d6be6-4e25-40e8-bd4e-5766461389b7",
       "active": true,
       "featured": true,
       "price_text": "",
