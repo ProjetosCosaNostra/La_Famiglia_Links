@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-13T12:29:43Z",
+  "updated_at": "2026-02-13T13:13:37Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -169,10 +169,38 @@
       "check_url": "https://mercadolivre.com/sec/2ZKyLhs",
       "image": "https://github.com/user-attachments/assets/015273fe-2063-46a1-ae84-98c32ea8f9ab",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-13T12:29:43Z",
       "last_ok": "2026-02-13T12:29:43Z"
+    },
+    {
+      "sku": "ring-light-rgb-10-tripe-210m",
+      "title": "Ring Light RGB 10” + Tripé 2,10m (Controle no cabo)",
+      "badges": [
+        "Achados do Dia",
+        "Ring Light",
+        "Iluminação",
+        "RGB",
+        "Tripé 2",
+        "10m",
+        "Vídeos e Fotos",
+        "Criadores",
+        "Reels",
+        "TikTok",
+        "YouTube",
+        "Setup",
+        "Home Studio"
+      ],
+      "id_busca": "5J5PKG-BHRR",
+      "open_url": "https://mercadolivre.com/sec/2BuQ5JD",
+      "check_url": "https://mercadolivre.com/sec/2BuQ5JD",
+      "image": "https://github.com/user-attachments/assets/ff5931ac-f153-4378-9c19-ae6efffbbf56",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
