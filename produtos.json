@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-12T22:20:24Z",
+  "updated_at": "2026-02-13T01:05:28Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -16,8 +16,8 @@
       "price_text": "",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-12T18:43:00Z",
-      "last_ok": "2026-02-12T18:43:00Z"
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     },
     {
       "sku": "xiaomi-redmi-buds-6-play",
@@ -35,8 +35,8 @@
       "price_text": "R$ 100,55",
       "active": true,
       "featured": false,
-      "last_checked": "2026-02-12T18:43:00Z",
-      "last_ok": "2026-02-12T18:43:00Z"
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     },
     {
       "sku": "powerbank-20000mah-22w-usbc-preto",
@@ -51,8 +51,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T18:43:00Z",
-      "last_ok": "2026-02-12T18:43:00Z"
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     },
     {
       "sku": "air-fryer-mondial-4l-1500w-afn-40-bft-preto",
@@ -74,8 +74,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T18:43:00Z",
-      "last_ok": "2026-02-12T18:43:00Z"
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     },
     {
       "sku": "bolsa-tiracolo-antifurto-usb-impermeavel-0nqd",
@@ -96,8 +96,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T18:43:00Z",
-      "last_ok": "2026-02-12T18:43:00Z"
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     },
     {
       "sku": "tomada-inteligente-20a-medidor-5j5pkg-fpxm",
@@ -119,8 +119,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "2026-02-12T18:43:00Z",
-      "last_ok": "2026-02-12T18:43:00Z"
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     },
     {
       "sku": "camera-wifi-360-fullhd-tapo",
@@ -144,8 +144,8 @@
       "active": true,
       "featured": false,
       "price_text": "",
-      "last_checked": "",
-      "last_ok": ""
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     },
     {
       "sku": "porteiro-eletronico-wifi-camera-visao-noturna-audio",
@@ -171,8 +171,8 @@
       "active": true,
       "featured": true,
       "price_text": "",
-      "last_checked": "",
-      "last_ok": ""
+      "last_checked": "2026-02-13T01:05:28Z",
+      "last_ok": "2026-02-13T01:05:28Z"
     }
   ]
 }
