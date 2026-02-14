@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-14T12:20:12Z",
+  "updated_at": "2026-02-14T13:57:57Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -243,10 +243,35 @@
       "check_url": "https://mercadolivre.com/sec/2wZB7u8",
       "image": "https://github.com/user-attachments/assets/1b61db6f-1a82-4954-b912-3bb88b3f0dfd",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-14T12:20:12Z",
       "last_ok": "2026-02-14T12:20:12Z"
+    },
+    {
+      "sku": "escova-pet-vapor-3em1-elaf-5j5pkg-atvc",
+      "title": "Escova 3 em 1 para Cães e Gatos — Remove Pelos + Vapor",
+      "badges": [
+        "Achado do Dia",
+        "Pets",
+        "Cães",
+        "Gatos",
+        "Higiene",
+        "Remove Pelos",
+        "Vapor",
+        "Escova Pet",
+        "Cuidados",
+        "Oferta"
+      ],
+      "id_busca": "5J5PKG-ATVC",
+      "open_url": "https://mercadolivre.com/sec/2ShroHC",
+      "check_url": "https://mercadolivre.com/sec/2ShroHC",
+      "image": "https://github.com/user-attachments/assets/a56d2937-6fdb-4deb-82a6-7ac154d5f119",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
