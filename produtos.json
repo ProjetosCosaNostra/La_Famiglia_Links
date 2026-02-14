@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-13T18:28:37Z",
+  "updated_at": "2026-02-14T00:41:09Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -220,10 +220,33 @@
       "check_url": "https://mercadolivre.com/sec/2J1MBX9",
       "image": "https://github.com/user-attachments/assets/cb6d6be6-4e25-40e8-bd4e-5766461389b7",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-13T18:28:37Z",
       "last_ok": "2026-02-13T18:28:37Z"
+    },
+    {
+      "sku": "jogo-lencol-400-fios-queen-box-4-pecas",
+      "title": "Jogo de Lençol 400 Fios — Queen Box (4 peças)",
+      "badges": [
+        "Achados do Dia",
+        "Cama Mesa e Banho",
+        "Jogo de Lençol",
+        "400 Fios",
+        "Queen",
+        "Toque Hotel",
+        "Conforto",
+        "Casa"
+      ],
+      "id_busca": "5J5PKG-MY6V",
+      "open_url": "https://mercadolivre.com/sec/2wZB7u8",
+      "check_url": "https://mercadolivre.com/sec/2wZB7u8",
+      "image": "https://github.com/user-attachments/assets/1b61db6f-1a82-4954-b912-3bb88b3f0dfd",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
