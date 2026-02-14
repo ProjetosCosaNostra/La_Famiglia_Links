@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-14T13:57:57Z",
+  "updated_at": "2026-02-14T15:36:43Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -267,6 +267,31 @@
       "open_url": "https://mercadolivre.com/sec/2ShroHC",
       "check_url": "https://mercadolivre.com/sec/2ShroHC",
       "image": "https://github.com/user-attachments/assets/a56d2937-6fdb-4deb-82a6-7ac154d5f119",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "carmed-fini-beijos-cor-10g-5j5pkg-er7l",
+      "title": "Carmed Fini Beijos com cor (10g) — Hidratante Labial Efeito Gloss",
+      "badges": [
+        "Achado do Dia",
+        "Beleza",
+        "Skincare",
+        "Hidratante Labial",
+        "Carmed",
+        "Fini",
+        "Efeito Gloss",
+        "Com Cor",
+        "Oferta",
+        "Mercado Livre"
+      ],
+      "id_busca": "5J5PKG-ER7L",
+      "open_url": "https://mercadolivre.com/sec/29UHzhL",
+      "check_url": "https://mercadolivre.com/sec/29UHzhL",
+      "image": "https://github.com/user-attachments/assets/1f81c7d2-8d73-4d5a-b973-543037a9b166",
       "active": true,
       "featured": true,
       "price_text": "",
