@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-14T18:16:47Z",
+  "updated_at": "2026-02-14T21:30:38Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -293,10 +293,35 @@
       "check_url": "https://mercadolivre.com/sec/29UHzhL",
       "image": "https://github.com/user-attachments/assets/1f81c7d2-8d73-4d5a-b973-543037a9b166",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-14T18:16:47Z",
       "last_ok": "2026-02-14T18:16:47Z"
+    },
+    {
+      "sku": "ventilador-mondial-30cm-super-power-60w-vsp-30-w",
+      "title": "Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)",
+      "badges": [
+        "Achado do Dia",
+        "Ventilador",
+        "Mondial",
+        "30cm",
+        "60W",
+        "Super Power",
+        "VSP-30-W",
+        "Casa",
+        "Verão",
+        "Ar e Ventilação"
+      ],
+      "id_busca": "5J5PKG-YXAM",
+      "open_url": "https://mercadolivre.com/sec/1PnEZeq",
+      "check_url": "https://mercadolivre.com/sec/1PnEZeq",
+      "image": "https://github.com/user-attachments/assets/0b28a616-9acb-4804-a5d0-ddaa912a0621",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
