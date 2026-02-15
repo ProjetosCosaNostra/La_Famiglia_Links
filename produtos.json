@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-15T18:18:07Z",
+  "updated_at": "2026-02-15T21:30:24Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -368,10 +368,32 @@
       "check_url": "https://mercadolivre.com/sec/19Abme6",
       "image": "https://github.com/user-attachments/assets/bd423503-616d-4cc5-97ed-5cb20cd24eae",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-15T18:18:07Z",
       "last_ok": "2026-02-15T18:18:07Z"
+    },
+    {
+      "sku": "amazon-fire-tv-stick-4k-wifi6",
+      "title": "Fire TV Stick 4K (Alexa) — Wi-Fi 6 (Amazon)",
+      "badges": [
+        "Achados do Dia",
+        "Streaming",
+        "4K",
+        "Alexa",
+        "Wi-Fi 6",
+        "Smart TV",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-J4Z5",
+      "open_url": "https://mercadolivre.com/sec/1nMqFbz",
+      "check_url": "https://mercadolivre.com/sec/1nMqFbz",
+      "image": "https://github.com/user-attachments/assets/7e54184d-78d3-4b9d-bdd1-4a7be18e57b4",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
