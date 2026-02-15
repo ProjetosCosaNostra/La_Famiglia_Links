@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-14T21:30:38Z",
+  "updated_at": "2026-02-15T00:43:02Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -317,6 +317,33 @@
       "open_url": "https://mercadolivre.com/sec/1PnEZeq",
       "check_url": "https://mercadolivre.com/sec/1PnEZeq",
       "image": "https://github.com/user-attachments/assets/0b28a616-9acb-4804-a5d0-ddaa912a0621",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "bolsa-termica-lancheira-14l-preta-porta-marmita",
+      "title": "Bolsa Térmica Lancheira 14L Preta (2 Compartimentos) — Porta Marmita com Alça Transversal",
+      "badges": [
+        "Achados do Dia",
+        "Bolsa térmica",
+        "Lancheira 14L",
+        "Porta marmita",
+        "Preta",
+        "2 compartimentos",
+        "Alça transversal",
+        "Trabalho",
+        "Academia",
+        "Passeio",
+        "Frete grátis",
+        "FULL"
+      ],
+      "id_busca": "5J5PKG-B6J6",
+      "open_url": "https://mercadolivre.com/sec/2jqTYSD",
+      "check_url": "https://mercadolivre.com/sec/2jqTYSD",
+      "image": "https://github.com/user-attachments/assets/d2c4900c-dffc-4b16-8c62-0f8dd3eb5098",
       "active": true,
       "featured": true,
       "price_text": "",
