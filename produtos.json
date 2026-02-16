@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-15T21:30:24Z",
+  "updated_at": "2026-02-16T00:09:47Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -389,6 +389,30 @@
       "open_url": "https://mercadolivre.com/sec/1nMqFbz",
       "check_url": "https://mercadolivre.com/sec/1nMqFbz",
       "image": "https://github.com/user-attachments/assets/7e54184d-78d3-4b9d-bdd1-4a7be18e57b4",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "xiaomi-mi-band-8-active-sport",
+      "title": "Xiaomi Mi Band 8 Active (Sport)",
+      "badges": [
+        "Achados do Dia",
+        "Xiaomi",
+        "Mi Band 8",
+        "Smartband",
+        "Fitness",
+        "Esportes",
+        "Pulseira inteligente",
+        "Sport",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-WCW0",
+      "open_url": "https://mercadolivre.com/sec/165s6Pa",
+      "check_url": "https://mercadolivre.com/sec/165s6Pa",
+      "image": "https://github.com/user-attachments/assets/f4e7ccaf-1a5d-40a3-ba6b-dca21a3be925",
       "active": true,
       "featured": true,
       "price_text": "",
