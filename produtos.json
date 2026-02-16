@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-16T20:55:17Z",
+  "updated_at": "2026-02-16T23:16:36Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -491,6 +491,33 @@
       "open_url": "https://mercadolivre.com/sec/21NWPnw",
       "check_url": "https://mercadolivre.com/sec/21NWPnw",
       "image": "https://github.com/user-attachments/assets/9aeb1b24-ff81-4687-8f08-04e21c792726",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "sandisk-microsd-128gb-ultra-100mbs",
+      "title": "Cartão de Memória SanDisk 128GB MicroSDXC (Classe 10) — até 100MB/s",
+      "badges": [
+        "Achados do Dia",
+        "SanDisk",
+        "MicroSD",
+        "MicroSDXC",
+        "128GB",
+        "Classe 10",
+        "Até 100MB/s",
+        "Celular",
+        "Câmera",
+        "Drone",
+        "Dashcam",
+        "Armazenamento"
+      ],
+      "id_busca": "5J5PKG-KT52",
+      "open_url": "https://mercadolivre.com/sec/2vehHS4",
+      "check_url": "https://mercadolivre.com/sec/2vehHS4",
+      "image": "https://github.com/user-attachments/assets/8ab7baa1-6ca3-4196-b467-9ece404b68c4",
       "active": true,
       "featured": true,
       "price_text": "",
