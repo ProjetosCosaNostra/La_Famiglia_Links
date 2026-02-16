@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-16T12:39:11Z",
+  "updated_at": "2026-02-16T17:00:26Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -436,6 +436,34 @@
       "open_url": "https://mercadolivre.com/sec/1EsmDjB",
       "check_url": "https://mercadolivre.com/sec/1EsmDjB",
       "image": "https://github.com/user-attachments/assets/929a3ffd-5124-4939-8367-1b649c4fefbf",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "ugreen-robot-nexode-gan-65w-lilas",
+      "title": "Carregador 65W Ugreen Robot Nexode GaN (Lilás) — 3 portas (carga rápida)",
+      "badges": [
+        "Achados do Dia",
+        "Carregador",
+        "65W",
+        "GaN",
+        "Carga rápida",
+        "3 portas",
+        "USB-C",
+        "USB-A",
+        "Ugreen",
+        "Celular",
+        "Notebook",
+        "Viagem",
+        "Lilás"
+      ],
+      "id_busca": "5J5PKG-9SG3",
+      "open_url": "https://mercadolivre.com/sec/1WrAqC3",
+      "check_url": "https://mercadolivre.com/sec/1WrAqC3",
+      "image": "https://github.com/user-attachments/assets/2b9cc12a-95f8-48f0-ad12-f27cbb69f686",
       "active": true,
       "featured": true,
       "price_text": "",
