@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-16T18:26:55Z",
+  "updated_at": "2026-02-16T20:55:17Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -465,10 +465,37 @@
       "check_url": "https://mercadolivre.com/sec/1WrAqC3",
       "image": "https://github.com/user-attachments/assets/2b9cc12a-95f8-48f0-ad12-f27cbb69f686",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-16T18:26:55Z",
       "last_ok": "2026-02-16T18:26:55Z"
+    },
+    {
+      "sku": "hub-usbc-8em1-h71p",
+      "title": "Hub USB-C 8 em 1 (HDMI + RJ45 + USB 3.0 + SD/TF)",
+      "badges": [
+        "Achados do Dia",
+        "Hub USB-C",
+        "8 em 1",
+        "HDMI 4K",
+        "RJ45 Ethernet",
+        "USB 3.0",
+        "SD/TF",
+        "Adaptador",
+        "MacBook",
+        "Notebook",
+        "Produtividade",
+        "Acessórios"
+      ],
+      "id_busca": "5J5PKG-H71P",
+      "open_url": "https://mercadolivre.com/sec/21NWPnw",
+      "check_url": "https://mercadolivre.com/sec/21NWPnw",
+      "image": "https://github.com/user-attachments/assets/9aeb1b24-ff81-4687-8f08-04e21c792726",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
