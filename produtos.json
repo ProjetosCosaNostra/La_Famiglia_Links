@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-16T12:32:36Z",
+  "updated_at": "2026-02-16T12:39:11Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -414,10 +414,33 @@
       "check_url": "https://mercadolivre.com/sec/165s6Pa",
       "image": "https://github.com/user-attachments/assets/f4e7ccaf-1a5d-40a3-ba6b-dca21a3be925",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-16T12:32:36Z",
       "last_ok": "2026-02-16T12:32:36Z"
+    },
+    {
+      "sku": "logitech-g203-rgb-lightsync-8000dpi-preto",
+      "title": "Mouse Gamer Logitech G203 RGB LIGHTSYNC, até 8.000 DPI (Preto)",
+      "badges": [
+        "Achados do Dia",
+        "Mouse Gamer",
+        "Logitech",
+        "RGB",
+        "LIGHTSYNC",
+        "8000 DPI",
+        "PC Gamer",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-3SLZ",
+      "open_url": "https://mercadolivre.com/sec/1EsmDjB",
+      "check_url": "https://mercadolivre.com/sec/1EsmDjB",
+      "image": "https://github.com/user-attachments/assets/929a3ffd-5124-4939-8367-1b649c4fefbf",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
