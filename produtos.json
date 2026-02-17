@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-17T18:39:04Z",
+  "updated_at": "2026-02-17T19:12:03Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -519,10 +519,33 @@
       "check_url": "https://mercadolivre.com/sec/2vehHS4",
       "image": "https://github.com/user-attachments/assets/8ab7baa1-6ca3-4196-b467-9ece404b68c4",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-17T18:39:04Z",
       "last_ok": "2026-02-17T18:39:04Z"
+    },
+    {
+      "sku": "suporte-celular-carro-360-trava-automatica-5j5pkg-78ff",
+      "title": "Suporte Porta Celular para Carro com Trava Automática + Rotação 360° (Ventosa Forte)",
+      "badges": [
+        "Achados do Dia",
+        "Carro",
+        "Suporte Celular",
+        "Rotação 360",
+        "Trava Automática",
+        "Ventosa Forte",
+        "Anti Queda",
+        "Acessórios"
+      ],
+      "id_busca": "5J5PKG-78FF",
+      "open_url": "https://mercadolivre.com/sec/2Mu2vro",
+      "check_url": "https://mercadolivre.com/sec/2Mu2vro",
+      "image": "https://github.com/user-attachments/assets/5ebb72ce-2c51-458a-a2d5-edbaac83ab1c",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
