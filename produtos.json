@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-18T01:03:09Z",
+  "updated_at": "2026-02-18T03:03:26Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -542,10 +542,33 @@
       "check_url": "https://mercadolivre.com/sec/2Mu2vro",
       "image": "https://github.com/user-attachments/assets/5ebb72ce-2c51-458a-a2d5-edbaac83ab1c",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-18T01:03:09Z",
       "last_ok": "2026-02-18T01:03:09Z"
+    },
+    {
+      "sku": "carregador-veicular-60w-hrebos-2x-usbc-pd",
+      "title": "Carregador Veicular 60W — 2x USB-C PD (30W + 30W)",
+      "badges": [
+        "Achados do Dia",
+        "Carregador Veicular",
+        "USB-C PD",
+        "60W",
+        "Carga Rápida",
+        "2 Portas",
+        "Carro",
+        "Uber/99"
+      ],
+      "id_busca": "5J5PKG-01QQ",
+      "open_url": "https://mercadolivre.com/sec/2hEwHwh",
+      "check_url": "https://mercadolivre.com/sec/2hEwHwh",
+      "image": "https://github.com/user-attachments/assets/1fa89d8b-57d5-4599-9646-e604cdee6335",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
