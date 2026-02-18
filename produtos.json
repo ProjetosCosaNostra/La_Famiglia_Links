@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-18T14:03:16Z",
+  "updated_at": "2026-02-18T17:34:31Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -588,6 +588,32 @@
       "open_url": "https://mercadolivre.com/sec/2REbXV7",
       "check_url": "https://mercadolivre.com/sec/2REbXV7",
       "image": "https://github.com/user-attachments/assets/6f07718c-9d58-4a92-a1f2-4dbc8931de26",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "teclado-redragon-kumara-552w2-lunar-white-abnt2-outemu-brown",
+      "title": "Teclado Mecânico Redragon Kumara 552W-2 (Lunar White) ABNT2 — Outemu DIY Brown + Luz Vermelha",
+      "badges": [
+        "Achados do Dia",
+        "Teclado Mecânico",
+        "Gamer",
+        "Redragon",
+        "Kumara",
+        "ABNT2",
+        "Português Brasil",
+        "Lunar White",
+        "Switch Outemu DIY Brown",
+        "Luz Vermelha",
+        "PC"
+      ],
+      "id_busca": "5J5PKG-P2C6",
+      "open_url": "https://mercadolivre.com/sec/1DW4AtR",
+      "check_url": "https://mercadolivre.com/sec/1DW4AtR",
+      "image": "https://github.com/user-attachments/assets/946b86a8-79f4-4fa1-9818-10bc523e6c9b",
       "active": true,
       "featured": true,
       "price_text": "",
