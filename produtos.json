@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-18T12:32:00Z",
+  "updated_at": "2026-02-18T14:03:16Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -565,10 +565,34 @@
       "check_url": "https://mercadolivre.com/sec/2hEwHwh",
       "image": "https://github.com/user-attachments/assets/1fa89d8b-57d5-4599-9646-e604cdee6335",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-18T12:32:00Z",
       "last_ok": "2026-02-18T12:32:00Z"
+    },
+    {
+      "sku": "calibrador-digital-partida-aux-180psi-12v",
+      "title": "Calibrador Compressor Pneu Digital + Partida Auxiliar (12V) — até 180 PSI",
+      "badges": [
+        "Achados do Dia",
+        "Carro",
+        "Compressor de Ar",
+        "Calibrador Digital",
+        "Partida Auxiliar",
+        "180 PSI",
+        "12V",
+        "Display Digital",
+        "Portátil"
+      ],
+      "id_busca": "5J5PKG-U6DA",
+      "open_url": "https://mercadolivre.com/sec/2REbXV7",
+      "check_url": "https://mercadolivre.com/sec/2REbXV7",
+      "image": "https://github.com/user-attachments/assets/6f07718c-9d58-4a92-a1f2-4dbc8931de26",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
