@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-18T18:35:19Z",
+  "updated_at": "2026-02-18T22:47:02Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -615,10 +615,37 @@
       "check_url": "https://mercadolivre.com/sec/1DW4AtR",
       "image": "https://github.com/user-attachments/assets/946b86a8-79f4-4fa1-9818-10bc523e6c9b",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-18T18:35:19Z",
       "last_ok": "2026-02-18T18:35:19Z"
+    },
+    {
+      "sku": "cadeira-escritorio-newconcept-351049-mesh-preta",
+      "title": "Cadeira de Escritório Newconcept 351049 — Mesh, Altura Regulável, Giratória (Preta)",
+      "badges": [
+        "Achados do Dia",
+        "Home Office",
+        "Cadeira de Escritório",
+        "Mesh",
+        "Encosto Respirável",
+        "Altura Regulável",
+        "Giratória 360°",
+        "Preto",
+        "Conforto",
+        "Postura",
+        "Apoio de Braços",
+        "Suporta até 100kg"
+      ],
+      "id_busca": "5J5PKG-LWRG",
+      "open_url": "https://mercadolivre.com/sec/25NyQiY",
+      "check_url": "https://mercadolivre.com/sec/25NyQiY",
+      "image": "https://github.com/user-attachments/assets/cfb67efb-ee53-4e4f-99f6-ca63b3fbbb47",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
