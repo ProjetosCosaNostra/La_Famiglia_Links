@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-19T12:33:23Z",
+  "updated_at": "2026-02-19T13:42:04Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -669,10 +669,36 @@
       "check_url": "https://mercadolivre.com/sec/2q8tzpj",
       "image": "https://github.com/user-attachments/assets/c2dc92ba-b501-4ca2-970a-9f61760f096e",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-19T12:33:23Z",
       "last_ok": "2026-02-19T12:33:23Z"
+    },
+    {
+      "sku": "lampada-inteligente-ekaza-t609",
+      "title": "Lâmpada Inteligente Ekaza T609 RGB Wi-Fi (Alexa/Google Home) – Soquete E27 9W",
+      "badges": [
+        "Achados do Dia",
+        "Casa Inteligente",
+        "Iluminação",
+        "Lâmpada Smart",
+        "RGB",
+        "Wi-Fi",
+        "Alexa",
+        "Google Home",
+        "E27",
+        "Automação Residencial",
+        "Setup"
+      ],
+      "id_busca": "5J5PKG-K5V3",
+      "open_url": "https://mercadolivre.com/sec/19FcPbY",
+      "check_url": "https://mercadolivre.com/sec/19FcPbY",
+      "image": "https://github.com/user-attachments/assets/66cd36d0-79a8-4802-8d7e-5acd9846728d",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
