@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-19T20:02:21Z",
+  "updated_at": "2026-02-19T23:26:43Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -744,6 +744,30 @@
       "open_url": "https://mercadolivre.com/sec/2QAteqd",
       "check_url": "https://mercadolivre.com/sec/2QAteqd",
       "image": "https://github.com/user-attachments/assets/518e1b6a-f3ec-46c2-a834-cb2ba965edbe",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "aiwa-sp-05-lb-30w-bluetooth-ipx5",
+      "title": "Caixa de Som Speaker Aiwa SP-05-LB 30W Bluetooth IPX5 (Portátil)",
+      "badges": [
+        "Achados do Dia",
+        "Caixa de Som",
+        "Aiwa",
+        "30W",
+        "Bluetooth",
+        "IPX5",
+        "Portátil",
+        "Áudio",
+        "Resistente a respingos"
+      ],
+      "id_busca": "5J5PKG-SVGB",
+      "open_url": "https://mercadolivre.com/sec/1r9vTNq",
+      "check_url": "https://mercadolivre.com/sec/1r9vTNq",
+      "image": "https://github.com/user-attachments/assets/1cbb0923-0033-4c0f-818a-93bcc6712b2f",
       "active": true,
       "featured": true,
       "price_text": "",
