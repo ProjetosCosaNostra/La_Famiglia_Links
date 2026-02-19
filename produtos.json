@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-19T01:02:27Z",
+  "updated_at": "2026-02-19T02:04:40Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -642,10 +642,37 @@
       "check_url": "https://mercadolivre.com/sec/25NyQiY",
       "image": "https://github.com/user-attachments/assets/cfb67efb-ee53-4e4f-99f6-ca63b3fbbb47",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-19T01:02:27Z",
       "last_ok": "2026-02-19T01:02:27Z"
+    },
+    {
+      "sku": "s-siqueira-kit-soquetes-46pcs-1-4-wxz9",
+      "title": "Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta",
+      "badges": [
+        "Achados do Dia",
+        "Ferramentas",
+        "Kit de Soquetes",
+        "Catraca 1/4",
+        "Aço CRV",
+        "Maleta",
+        "Oficina",
+        "Carro",
+        "Manutenção",
+        "S Siqueira",
+        "DIY",
+        "Casa"
+      ],
+      "id_busca": "5J5PKG-WXZ9",
+      "open_url": "https://mercadolivre.com/sec/2q8tzpj",
+      "check_url": "https://mercadolivre.com/sec/2q8tzpj",
+      "image": "https://github.com/user-attachments/assets/c2dc92ba-b501-4ca2-970a-9f61760f096e",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
