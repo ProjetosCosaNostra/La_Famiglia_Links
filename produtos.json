@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-19T18:36:15Z",
+  "updated_at": "2026-02-19T20:02:21Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -719,10 +719,36 @@
       "check_url": "https://mercadolivre.com/sec/1RFSrLo",
       "image": "https://github.com/user-attachments/assets/204ddd67-7418-46cc-9f99-278be2be599b",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-19T18:36:15Z",
       "last_ok": "2026-02-19T18:36:15Z"
+    },
+    {
+      "sku": "projetor-smart-hy320-goodvision",
+      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
+      "badges": [
+        "Achados do Dia",
+        "Projetor",
+        "Cinema em Casa",
+        "Wi-Fi",
+        "Android",
+        "Bluetooth",
+        "Full HD",
+        "HDMI",
+        "USB",
+        "Espelhamento",
+        "150 polegadas"
+      ],
+      "id_busca": "5J5PKG-YD9X",
+      "open_url": "https://mercadolivre.com/sec/2QAteqd",
+      "check_url": "https://mercadolivre.com/sec/2QAteqd",
+      "image": "https://github.com/user-attachments/assets/518e1b6a-f3ec-46c2-a834-cb2ba965edbe",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
