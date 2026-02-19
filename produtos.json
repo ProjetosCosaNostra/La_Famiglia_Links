@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-19T13:42:04Z",
+  "updated_at": "2026-02-19T17:21:45Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -694,6 +694,30 @@
       "open_url": "https://mercadolivre.com/sec/19FcPbY",
       "check_url": "https://mercadolivre.com/sec/19FcPbY",
       "image": "https://github.com/user-attachments/assets/66cd36d0-79a8-4802-8d7e-5acd9846728d",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "niimbot-d110-impressora-etiquetas-branca",
+      "title": "Impressora de Etiquetas Niimbot D110 Bluetooth Térmica 203 DPI (Branca)",
+      "badges": [
+        "Achados do Dia",
+        "Organização",
+        "Home Office",
+        "Impressora de Etiquetas",
+        "Impressora Térmica",
+        "Bluetooth",
+        "203 DPI",
+        "Portátil",
+        "Niimbot"
+      ],
+      "id_busca": "5J5PKG-TD4J",
+      "open_url": "https://mercadolivre.com/sec/1RFSrLo",
+      "check_url": "https://mercadolivre.com/sec/1RFSrLo",
+      "image": "https://github.com/user-attachments/assets/204ddd67-7418-46cc-9f99-278be2be599b",
       "active": true,
       "featured": true,
       "price_text": "",
