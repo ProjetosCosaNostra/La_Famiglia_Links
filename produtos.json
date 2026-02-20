@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-20T12:29:27Z",
+  "updated_at": "2026-02-20T17:41:32Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -769,10 +769,33 @@
       "check_url": "https://mercadolivre.com/sec/1r9vTNq",
       "image": "https://github.com/user-attachments/assets/1cbb0923-0033-4c0f-818a-93bcc6712b2f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-20T12:29:27Z",
       "last_ok": "2026-02-20T12:29:27Z"
+    },
+    {
+      "sku": "fechadura-bio-delta-pro-wifi-tuya-preta",
+      "title": "🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya) — Preta",
+      "badges": [
+        "Achados do Dia",
+        "Segurança",
+        "Casa Inteligente",
+        "Fechadura Digital",
+        "Biométrica",
+        "Wi-Fi",
+        "Tuya",
+        "PRETO"
+      ],
+      "id_busca": "5J5PKG-0SJ2",
+      "open_url": "https://mercadolivre.com/sec/1uKVY2p",
+      "check_url": "https://mercadolivre.com/sec/1uKVY2p",
+      "image": "https://github.com/user-attachments/assets/e91b9b0b-49d4-4553-82f7-5f3a7bc417c9",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
