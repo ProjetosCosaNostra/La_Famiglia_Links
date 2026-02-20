@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-20T18:29:37Z",
+  "updated_at": "2026-02-20T20:17:20Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -792,10 +792,35 @@
       "check_url": "https://mercadolivre.com/sec/1uKVY2p",
       "image": "https://github.com/user-attachments/assets/e91b9b0b-49d4-4553-82f7-5f3a7bc417c9",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-20T18:29:37Z",
       "last_ok": "2026-02-20T18:29:37Z"
+    },
+    {
+      "sku": "maquina-cortar-cabelo-dragao-buda-usb",
+      "title": "✂️🐉 Máquina de Cortar Cabelo Dragão Buda — Recarregável USB (Aparar & Acabamento)",
+      "badges": [
+        "Achados do Dia",
+        "Cabelo",
+        "Barba",
+        "Aparador",
+        "Recarregável USB",
+        "Sem fio",
+        "Portátil",
+        "Dourado",
+        "Acabamento",
+        "Presente"
+      ],
+      "id_busca": "5J5PKG-21AW",
+      "open_url": "https://mercadolivre.com/sec/2zfsMib",
+      "check_url": "https://mercadolivre.com/sec/2zfsMib",
+      "image": "https://github.com/user-attachments/assets/cf926025-4736-4f52-a32d-cba165571a37",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
