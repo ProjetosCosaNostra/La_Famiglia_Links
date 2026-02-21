@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-21T06:26:58Z",
+  "updated_at": "2026-02-21T09:33:32Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -866,10 +866,36 @@
       "check_url": "https://mercadolivre.com/sec/2M3LnVg",
       "image": "https://github.com/user-attachments/assets/a1cb6b68-ad29-45b7-be04-ac26d5dfdbea",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-21T06:26:58Z",
       "last_ok": "2026-02-21T06:26:58Z"
+    },
+    {
+      "sku": "camera-solar-wifi-ip66-fullhd",
+      "title": "Câmera Solar Wi-Fi IP66 (Full HD) — Proteção 24/7 sem fiação",
+      "badges": [
+        "Achados do Dia",
+        "Segurança",
+        "Casa",
+        "Câmera",
+        "Câmera Solar",
+        "Wi-Fi",
+        "IP66",
+        "Full HD",
+        "Visão Noturna",
+        "Monitoramento",
+        "Sem Fio"
+      ],
+      "id_busca": "5J5PKG-S1DY",
+      "open_url": "https://mercadolivre.com/sec/2SfcKWe",
+      "check_url": "https://mercadolivre.com/sec/2SfcKWe",
+      "image": "https://github.com/user-attachments/assets/4de42993-c2fc-478b-8b6d-eda574c1306a",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
