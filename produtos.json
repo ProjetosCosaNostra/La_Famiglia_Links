@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-21T00:57:05Z",
+  "updated_at": "2026-02-21T02:35:22Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -840,10 +840,36 @@
       "check_url": "https://mercadolivre.com/sec/1p6PAmi",
       "image": "https://github.com/user-attachments/assets/77e89f1b-80a9-4fe5-89b1-f369a662047b",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-21T00:57:05Z",
       "last_ok": "2026-02-21T00:57:05Z"
+    },
+    {
+      "sku": "dashcam-4k-gps-azdome-m550-64gb",
+      "title": "Câmera Veicular Dashcam 4K + GPS AZDOME M550 (IR) + Traseira + 64GB",
+      "badges": [
+        "Achados do Dia",
+        "Carro",
+        "Segurança",
+        "Dashcam",
+        "4K",
+        "GPS",
+        "Visão Noturna",
+        "Infra-vermelho",
+        "Câmera Traseira",
+        "Uber",
+        "Acessórios"
+      ],
+      "id_busca": "5J5PKG-3UQV",
+      "open_url": "https://mercadolivre.com/sec/2M3LnVg",
+      "check_url": "https://mercadolivre.com/sec/2M3LnVg",
+      "image": "https://github.com/user-attachments/assets/a1cb6b68-ad29-45b7-be04-ac26d5dfdbea",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
