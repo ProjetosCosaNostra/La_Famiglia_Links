@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-21T19:20:01Z",
+  "updated_at": "2026-02-21T21:14:22Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -942,6 +942,32 @@
       "open_url": "https://mercadolivre.com/sec/1h91voZ",
       "check_url": "https://mercadolivre.com/sec/1h91voZ",
       "image": "https://github.com/user-attachments/assets/bc5a0279-cee0-419f-a869-124c26bb8717",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "aromatizador-chama-kaizu-lavanda-200ml",
+      "title": "Umidificador Aromatizador Kaizu Chama (Efeito Fogo) 200ml USB — Lavanda",
+      "badges": [
+        "Achados do Dia",
+        "Casa",
+        "Aromatizador",
+        "Umidificador",
+        "Difusor",
+        "Lavanda",
+        "Relaxante",
+        "Decoração",
+        "Ambiente",
+        "LED",
+        "USB"
+      ],
+      "id_busca": "5J5PKG-0V2K",
+      "open_url": "https://mercadolivre.com/sec/1Qip248",
+      "check_url": "https://mercadolivre.com/sec/1Qip248",
+      "image": "https://github.com/user-attachments/assets/6c3516a8-414a-443f-82fe-c0d45e2b8d5f",
       "active": true,
       "featured": true,
       "price_text": "",
