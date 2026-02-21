@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-21T18:16:43Z",
+  "updated_at": "2026-02-21T19:20:01Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -918,10 +918,35 @@
       "check_url": "https://mercadolivre.com/sec/2vd6ej7",
       "image": "https://github.com/user-attachments/assets/3da2967d-34b3-40de-b80b-d1922b87aa5c",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-21T18:16:43Z",
       "last_ok": "2026-02-21T18:16:43Z"
+    },
+    {
+      "sku": "seladora-a-vacuo-portatil-alimentos",
+      "title": "Máquina Seladora a Vácuo Portátil — Conserva mais e organiza o freezer",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Organização",
+        "Seladora a Vácuo",
+        "Alimentos",
+        "Freezer",
+        "Conservação",
+        "Prático",
+        "Casa",
+        "Economia"
+      ],
+      "id_busca": "5J5PKG-5FBE",
+      "open_url": "https://mercadolivre.com/sec/1h91voZ",
+      "check_url": "https://mercadolivre.com/sec/1h91voZ",
+      "image": "https://github.com/user-attachments/assets/bc5a0279-cee0-419f-a869-124c26bb8717",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
