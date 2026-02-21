@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-21T12:20:07Z",
+  "updated_at": "2026-02-21T14:06:21Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -892,10 +892,36 @@
       "check_url": "https://mercadolivre.com/sec/2SfcKWe",
       "image": "https://github.com/user-attachments/assets/4de42993-c2fc-478b-8b6d-eda574c1306a",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-21T12:20:07Z",
       "last_ok": "2026-02-21T12:20:07Z"
+    },
+    {
+      "sku": "carregador-sem-fio-stand-inducao-preto",
+      "title": "Carregador Sem Fio (Indução) em Stand — Compatível iPhone e Samsung",
+      "badges": [
+        "Achados do Dia",
+        "Tecnologia",
+        "Celular",
+        "Carregador",
+        "Indução",
+        "Sem Fio",
+        "Stand",
+        "iPhone",
+        "Samsung",
+        "Setup",
+        "Praticidade"
+      ],
+      "id_busca": "5J5PKG-EAT0",
+      "open_url": "https://mercadolivre.com/sec/2vd6ej7",
+      "check_url": "https://mercadolivre.com/sec/2vd6ej7",
+      "image": "https://github.com/user-attachments/assets/3da2967d-34b3-40de-b80b-d1922b87aa5c",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
