@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T08:51:42Z",
+  "updated_at": "2026-02-22T11:26:24Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1019,6 +1019,33 @@
       "open_url": "https://mercadolivre.com/sec/13oLgYK",
       "check_url": "https://mercadolivre.com/sec/13oLgYK",
       "image": "https://github.com/user-attachments/assets/1c1464cb-bb75-4223-8a67-a8289ea7a6c2",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "parafusadeira-furadeira-kit-2-baterias-48v-maleta",
+      "title": "Parafusadeira Furadeira sem Fio — Kit com Maleta + 2 Baterias + LED (48V)",
+      "badges": [
+        "Achados do Dia",
+        "Ferramentas",
+        "Parafusadeira",
+        "Furadeira",
+        "Kit Completo",
+        "Maleta",
+        "2 Baterias",
+        "LED",
+        "DIY",
+        "Casa",
+        "Manutenção",
+        "Oficina"
+      ],
+      "id_busca": "5J5PKG-1WFH",
+      "open_url": "https://mercadolivre.com/sec/279S9Us",
+      "check_url": "https://mercadolivre.com/sec/279S9Us",
+      "image": "https://github.com/user-attachments/assets/b8a1a978-2e2f-4f88-827f-1488523fb556",
       "active": true,
       "featured": true,
       "price_text": "",
