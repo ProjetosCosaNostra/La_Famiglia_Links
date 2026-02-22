@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T18:17:35Z",
+  "updated_at": "2026-02-22T19:08:57Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1074,10 +1074,34 @@
       "check_url": "https://mercadolivre.com/sec/2iBLTfN",
       "image": "https://github.com/user-attachments/assets/1410fedd-5366-4eb6-8f2c-db905e46d4ad",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-22T18:17:35Z",
       "last_ok": "2026-02-22T18:17:35Z"
+    },
+    {
+      "sku": "fita-led-5m-smart-wifi-rgb-alexa-google-fonte",
+      "title": "Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte",
+      "badges": [
+        "Achados do Dia",
+        "Fita LED",
+        "RGB",
+        "Wi-Fi",
+        "Alexa",
+        "Google",
+        "Smart Home",
+        "5m",
+        "Fonte"
+      ],
+      "id_busca": "5J5PKG-F3MC",
+      "open_url": "https://mercadolivre.com/sec/12t6XUG",
+      "check_url": "https://mercadolivre.com/sec/12t6XUG",
+      "image": "https://github.com/user-attachments/assets/f4e7694e-bfc0-4509-9f28-1a22ecd46e34",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
