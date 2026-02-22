@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T19:08:57Z",
+  "updated_at": "2026-02-22T22:10:06Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1097,6 +1097,37 @@
       "open_url": "https://mercadolivre.com/sec/12t6XUG",
       "check_url": "https://mercadolivre.com/sec/12t6XUG",
       "image": "https://github.com/user-attachments/assets/f4e7694e-bfc0-4509-9f28-1a22ecd46e34",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "cafeteira-dolce-gusto-genio-s-capsulas-branca",
+      "title": "Cafeteira Dolce Gusto Genio S (Cápsulas) — Branca",
+      "badges": [
+        "Achados do Dia",
+        "Cafeteira",
+        "Dolce Gusto",
+        "Nescafé",
+        "Arno",
+        "Café",
+        "Cápsulas",
+        "Bebidas quentes e frias",
+        "Cozinha",
+        "Casa",
+        "Compacta",
+        "Elegante",
+        "Fácil de usar",
+        "Fácil de limpar",
+        "Presente",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-1KY6",
+      "open_url": "https://mercadolivre.com/sec/2Nj2xGv",
+      "check_url": "https://mercadolivre.com/sec/2Nj2xGv",
+      "image": "https://github.com/user-attachments/assets/3625502d-f92c-4337-a9d4-73c765801c85",
       "active": true,
       "featured": true,
       "price_text": "",
