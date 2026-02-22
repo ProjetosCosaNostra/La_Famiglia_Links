@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T12:21:00Z",
+  "updated_at": "2026-02-22T16:37:09Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1047,10 +1047,37 @@
       "check_url": "https://mercadolivre.com/sec/279S9Us",
       "image": "https://github.com/user-attachments/assets/b8a1a978-2e2f-4f88-827f-1488523fb556",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-22T12:21:00Z",
       "last_ok": "2026-02-22T12:21:00Z"
+    },
+    {
+      "sku": "organizadores-geladeira-kit-6-potes-acrilico-22l",
+      "title": "Kit 6 Organizadores de Geladeira em Acrílico — Tampa + Empilhável (2,2L)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Organização",
+        "Geladeira",
+        "Potes",
+        "Organizadores",
+        "Acrílico",
+        "Tampa",
+        "Empilhável",
+        "Despensa",
+        "Casa",
+        "Praticidade"
+      ],
+      "id_busca": "5J5PKG-YVXF",
+      "open_url": "https://mercadolivre.com/sec/2iBLTfN",
+      "check_url": "https://mercadolivre.com/sec/2iBLTfN",
+      "image": "https://github.com/user-attachments/assets/1410fedd-5366-4eb6-8f2c-db905e46d4ad",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
