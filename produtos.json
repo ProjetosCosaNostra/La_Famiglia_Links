@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T06:32:15Z",
+  "updated_at": "2026-02-22T08:51:42Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -994,10 +994,36 @@
       "check_url": "https://mercadolivre.com/sec/2ynt61J",
       "image": "https://github.com/user-attachments/assets/2c6b854f-1b39-4c86-903e-eb1989abe9ad",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-22T06:32:15Z",
       "last_ok": "2026-02-22T06:32:15Z"
+    },
+    {
+      "sku": "lixeira-inteligente-sensor-automatica-16l-preta",
+      "title": "Lixeira Inteligente com Sensor Automático 16L — Abre sem tocar (Preta)",
+      "badges": [
+        "Achados do Dia",
+        "Casa",
+        "Cozinha",
+        "Banheiro",
+        "Lixeira",
+        "Lixeira Inteligente",
+        "Sensor",
+        "Automática",
+        "Higiene",
+        "Organização",
+        "Design Moderno"
+      ],
+      "id_busca": "5J5PKG-CCY5",
+      "open_url": "https://mercadolivre.com/sec/13oLgYK",
+      "check_url": "https://mercadolivre.com/sec/13oLgYK",
+      "image": "https://github.com/user-attachments/assets/1c1464cb-bb75-4223-8a67-a8289ea7a6c2",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
