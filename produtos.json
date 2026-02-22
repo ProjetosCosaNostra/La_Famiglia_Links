@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T01:00:53Z",
+  "updated_at": "2026-02-22T01:50:10Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -969,10 +969,35 @@
       "check_url": "https://mercadolivre.com/sec/1Qip248",
       "image": "https://github.com/user-attachments/assets/6c3516a8-414a-443f-82fe-c0d45e2b8d5f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-22T01:00:53Z",
       "last_ok": "2026-02-22T01:00:53Z"
+    },
+    {
+      "sku": "torneira-gourmet-flexivel-preta",
+      "title": "Torneira Gourmet Flexível Preta — Bico alto + jato forte (pia e bancada)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Torneira",
+        "Torneira Gourmet",
+        "Casa",
+        "Bancada",
+        "Pia",
+        "Preto",
+        "Design Premium",
+        "Praticidade"
+      ],
+      "id_busca": "5J5PKG-AHR1",
+      "open_url": "https://mercadolivre.com/sec/2ynt61J",
+      "check_url": "https://mercadolivre.com/sec/2ynt61J",
+      "image": "https://github.com/user-attachments/assets/2c6b854f-1b39-4c86-903e-eb1989abe9ad",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
