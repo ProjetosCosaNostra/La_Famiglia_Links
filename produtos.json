@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-23T12:33:40Z",
+  "updated_at": "2026-02-23T12:37:24Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1159,10 +1159,42 @@
       "check_url": "https://mercadolivre.com/sec/1amQzWM",
       "image": "https://github.com/user-attachments/assets/70c8c535-d0d6-4c9a-854c-ce4ce9c7fab0",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-23T12:33:40Z",
       "last_ok": "2026-02-23T12:33:40Z"
+    },
+    {
+      "sku": "desumidificador-antimofo-komeco-kdp-250-bivolt",
+      "title": "Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia",
+      "badges": [
+        "Achados do Dia",
+        "Desumidificador",
+        "Antimofo",
+        "Komeco",
+        "KDP 250",
+        "Bivolt",
+        "Casa",
+        "Quarto",
+        "Armário",
+        "Roupa",
+        "Umidade",
+        "Ar mais seco",
+        "Silencioso",
+        "Desligamento automático",
+        "Tanque 500ml",
+        "Organização",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-BJJ0",
+      "open_url": "https://mercadolivre.com/sec/29Gq2Ww",
+      "check_url": "https://mercadolivre.com/sec/29Gq2Ww",
+      "image": "https://github.com/user-attachments/assets/052ccccc-a9f0-4738-8d42-ba1039cba8c6",
+      "active": true,
+      "featured": true,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
