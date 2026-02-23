@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosa Nostra — Central Premium</title>
 
-  <meta name="description" content="Central premium de links + vitrine de achados do dia. Clique e compre." />
+  <meta name="description" content="Central premium de links + vitrine de Achados do Dia. A Vitrine Rápida é só uma prévia — veja TODOS os produtos na Loja Completa." />
   <meta name="theme-color" content="#050505" />
+  <meta name="robots" content="index,follow" />
 
   <meta property="og:title" content="Cosa Nostra — Central Premium" />
-  <meta property="og:description" content="Links oficiais + vitrine de produtos (Achados do Dia)." />
+  <meta property="og:description" content="Links oficiais + vitrine de produtos (Achados do Dia). Vitrine Rápida = prévia. Loja Completa = TODOS os produtos." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
 
   <link rel="icon" href="assets/logo.png" />
 
@@ -21,6 +23,74 @@
 
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
+
+  <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
+  <style>
+    .imperialNote {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(215, 176, 88, .25);
+      background: rgba(0,0,0,.35);
+      color: rgba(255,255,255,.86);
+      line-height: 1.35;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    .imperialNote b { color: rgba(215, 176, 88, .95); }
+    .imperialNote .mini { opacity: .9; font-size: .95em; }
+
+    .countPill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(215, 176, 88, .25);
+      background: rgba(0,0,0,.30);
+      color: rgba(255,255,255,.88);
+      font-weight: 600;
+      margin-top: 10px;
+      width: fit-content;
+    }
+    .countPill .n {
+      color: rgba(215, 176, 88, .98);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .floatingStoreCTA {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .floatingStoreCTA a {
+      pointer-events: auto;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(215, 176, 88, .35);
+      background: rgba(10,10,12,.72);
+      color: rgba(255,255,255,.92);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .floatingStoreCTA a .gold { color: rgba(215, 176, 88, 1); }
+
+    @media (max-width: 520px) {
+      .floatingStoreCTA { right: 10px; bottom: 10px; }
+      .floatingStoreCTA a { padding: 10px 12px; border-radius: 14px; }
+    }
+  </style>
 </head>
 
 <body>
@@ -29,6 +99,13 @@
     <div class="orb orb--2"></div>
     <div class="orb orb--3"></div>
     <div class="grain"></div>
+  </div>
+
+  <!-- CTA flutuante (alto padrão) -->
+  <div class="floatingStoreCTA" aria-hidden="false">
+    <a href="./loja.html" id="floatingLoja">
+      👑 Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> produtos
+    </a>
   </div>
 
   <main class="page">
@@ -55,13 +132,23 @@
           <div class="chips" aria-label="Dicas rápidas">
             <span class="chip">⚡ clique 1-toque</span>
             <span class="chip">🛒 vitrine sempre limpa</span>
-            <span class="chip">🔒 estética Black & Gold</span>
+            <span class="chip">👑 padrão imperial</span>
+          </div>
+
+          <div class="countPill" aria-label="Contagem de produtos">
+            <span>📦 Total na Loja Completa:</span>
+            <span class="n" data-total-products>—</span>
+          </div>
+
+          <div class="imperialNote" role="note" aria-label="Aviso importante sobre a loja">
+            <div><b>ATENÇÃO:</b> esta página mostra o <b>Produto do Dia</b> + uma <b>Prévia (Vitrine Rápida)</b>.</div>
+            <div class="mini">Para ver <b>todos os produtos</b>, use <b>“Abrir Vitrine / Loja”</b> (Loja Completa). ✅</div>
           </div>
         </div>
       </div>
 
       <div class="hero__actions">
-        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja</a>
+        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
         <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
         <div class="miniNote">
           <span class="dot"></span>
@@ -83,6 +170,10 @@
         </div>
       </div>
 
+      <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
+        <div>🧭 Se você quer <b>ver mais opções</b>: a Loja Completa tem <b><span data-total-products>—</span> produtos</b> prontos pra comprar.</div>
+      </div>
+
       <div class="featured" id="featured">
         <!-- preenchido pelo script.js -->
       </div>
@@ -92,10 +183,13 @@
       <div class="panel__head">
         <div>
           <h2>Vitrine rápida</h2>
-          <p>Os outros produtos ficam visíveis aqui também (sem precisar “sumir” na loja).</p>
+          <p>
+            Prévia de produtos (pra bater o olho). A lista completa fica na <b>Loja Completa</b>.
+            <span style="opacity:.85">Mostrando <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b>.</span>
+          </p>
         </div>
         <div class="panel__right">
-          <a class="btn btn--tiny btn--gold" href="./loja.html">Ver todos</a>
+          <a class="btn btn--tiny btn--gold" href="./loja.html" id="btnVerTodosTop">Ver todos (<span data-total-products>—</span>)</a>
         </div>
       </div>
 
@@ -105,14 +199,17 @@
           <input id="qHome" placeholder="Buscar produto (ex: fone, mochila, mouse...)" />
         </div>
         <button class="btn btn--tiny btn--glass" id="qClear" type="button">Limpar</button>
-        <a class="btn btn--tiny btn--glass" href="./loja.html">Abrir loja completa</a>
+        <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Abrir loja completa (<span data-total-products>—</span>)</a>
       </div>
 
       <div class="productsGrid" id="quickGrid">
         <!-- preenchido pelo script.js -->
       </div>
-    </section>
 
+      <div class="imperialNote" role="note" aria-label="Mensagem para leigos">
+        <div>💡 <b>Não se perca:</b> se você não achou o que queria aqui, a <b>Loja Completa</b> tem <b><span data-total-products>—</span> itens</b> — clique em <b>“Ver todos”</b>.</div>
+      </div>
+    </section>
     <section class="panel">
       <div class="panel__head">
         <div>
@@ -126,7 +223,7 @@
           <div class="linkCard__icon">🛒</div>
           <div class="linkCard__txt">
             <div class="linkCard__title">Vitrine / Loja</div>
-            <div class="linkCard__sub">Produtos do dia (clique e compre)</div>
+            <div class="linkCard__sub">Todos os produtos (clique e compre)</div>
           </div>
           <div class="linkCard__go">›</div>
         </a>
@@ -150,7 +247,7 @@
         </a>
 
         <a class="linkCard" href="https://www.youtube.com/@CosaNostraAI" target="_blank" rel="noopener">
-          <div class="linkCard__icon">▶️</div>
+          <div class="linkCard__icon">▶</div>
           <div class="linkCard__txt">
             <div class="linkCard__title">YouTube</div>
             <div class="linkCard__sub">Conteúdo longo</div>
@@ -200,5 +297,39 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Contagem automática (não depende do script.js) -->
+  <script>
+    (async function () {
+      try {
+        const r = await fetch("./produtos.json", { cache: "no-store" });
+        if (!r.ok) throw new Error("fetch produtos.json failed");
+        const j = await r.json();
+        const total = Array.isArray(j.products) ? j.products.length : 0;
+
+        document.querySelectorAll("[data-total-products]").forEach((el) => {
+          el.textContent = total ? String(total) : "—";
+        });
+
+        // conta itens renderizados na vitrine rápida (depois do script.js preencher)
+        const tick = () => {
+          const grid = document.getElementById("quickGrid");
+          if (!grid) return;
+          const n = grid.children ? grid.children.length : 0;
+          document.querySelectorAll("[data-quick-products]").forEach((el) => {
+            el.textContent = n ? String(n) : "—";
+          });
+        };
+
+        // tenta algumas vezes (render pode demorar)
+        tick();
+        setTimeout(tick, 300);
+        setTimeout(tick, 900);
+        setTimeout(tick, 1800);
+      } catch (e) {
+        // se falhar, mantém os "—" sem quebrar a página
+      }
+    })();
+  </script>
 </body>
 </html>
