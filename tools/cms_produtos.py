@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v6 (dedupe por sku+id_busca+open_url, Produto do Dia NUNCA automático, issue cms-produto-do-dia robusto)
+# Versão : v7 (aceita meli.la, resolve shortlink -> /sec/ quando possível, mais robusto)
 # ==========================================================
 
 from __future__ import annotations
@@ -9,10 +9,12 @@ from __future__ import annotations
 import json
 import os
 import re
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urljoin, urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PRODUTOS_JSON = REPO_ROOT / "produtos.json"
@@ -24,6 +26,17 @@ _URL_RE = re.compile(r"(https?://[^\s<>\")'\\]+)", re.IGNORECASE)
 _IMG_SRC_RE = re.compile(r"""(?is)<img[^>]+src\s*=\s*["']([^"']+)["']""")
 # ✅ pega markdown ![alt](url)
 _MD_IMG_RE = re.compile(r"""(?is)!\[[^\]]*]\(([^)]+)\)""")
+
+# ===========================
+# Mercado Livre: domínios aceitos
+# ===========================
+_ML_HOST_MARKERS = ("mercadolivre", "mercadolibre")
+# short domains conhecidos do ML (o seu caso: meli.la)
+_ML_SHORT_HOSTS = {"meli.la", "meli.co"}
+
+# toggle (caso queira desligar resolução de shortlink sem quebrar o resto)
+# CN_CMS_RESOLVE_SHORT=0 desliga
+_RESOLVE_SHORT = os.getenv("CN_CMS_RESOLVE_SHORT", "1").strip().lower() not in {"0", "false", "no", "off"}
 
 
 def _utc_now_iso_z() -> str:
@@ -289,11 +302,136 @@ def _clean_ml_id(s: str) -> str:
     return x
 
 
+def _host_of(u: str) -> str:
+    """
+    Extrai host normalizado (sem porta, sem credenciais, sem www).
+    """
+    try:
+        pu = urlparse(u or "")
+        host = (pu.netloc or "").strip().lower()
+        if "@" in host:
+            host = host.split("@", 1)[-1]
+        if ":" in host:
+            host = host.split(":", 1)[0]
+        host = host.lstrip("www.")
+        return host
+    except Exception:
+        return ""
+
+
 def _is_ml_url(u: str) -> bool:
-    x = (u or "").lower()
-    return ("mercadolivre" in x) or ("lista.mercadolivre" in x)
+    """
+    Aceita:
+      - mercadolivre / mercadolibre (qualquer TLD)
+      - lista.mercadolivre...
+      - mercadolivre.com/sec/...
+      - shortlinks: meli.la (e variações meli.xx)
+    """
+    if not u:
+        return False
+    x = _clean_url(u).lower()
+    host = _host_of(x)
+    if not host:
+        return False
+
+    if host in _ML_SHORT_HOSTS:
+        return True
+
+    # alguns países usam meli.<tld> — mantém robusto sem abrir demais
+    if re.fullmatch(r"meli\.[a-z]{2,6}", host or ""):
+        return True
+
+    for marker in _ML_HOST_MARKERS:
+        if marker in host:
+            return True
+
+    return False
 
 
+def _is_ml_short(u: str) -> bool:
+    host = _host_of(_clean_url(u).lower())
+    if not host:
+        return False
+    if host in _ML_SHORT_HOSTS:
+        return True
+    if re.fullmatch(r"meli\.[a-z]{2,6}", host or ""):
+        return True
+    return False
+
+
+def _resolve_final_url(u: str, timeout: float = 8.0) -> str:
+    """
+    Resolve redirects (GET com Range) e retorna a URL final.
+    - Não falha o job se der erro.
+    """
+    x = _clean_url(u)
+    if not x:
+        return ""
+    try:
+        req = urllib.request.Request(
+            x,
+            method="GET",
+            headers={
+                "User-Agent": "Mozilla/5.0 (CN-CMS; GitHubActions)",
+                "Accept": "*/*",
+                "Range": "bytes=0-0",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            final = resp.geturl() or x
+            return _clean_url(final)
+    except Exception:
+        return ""
+
+
+def _normalize_ml_links(open_url: str, id_busca: str) -> Dict[str, str]:
+    """
+    Normaliza link do ML e deixa mais resiliente:
+      - aceita meli.la
+      - se for shortlink e _RESOLVE_SHORT habilitado:
+          - tenta resolver e, se virar /sec/, usa /sec/ como open_url (mais estável)
+          - guarda short_url e resolved_url
+      - define check_url:
+          - por padrão, check_url = open_url
+          - se resolveu para um ML válido (mesmo sem /sec/), check_url vira a resolved_url (melhor pra checagem)
+    """
+    ou = _clean_url(open_url or "")
+    ib = _clean_ml_id(id_busca or "")
+
+    short_url = ""
+    resolved_url = ""
+    check_url = ou
+
+    if ou and _is_ml_short(ou) and _RESOLVE_SHORT:
+        final = _resolve_final_url(ou)
+        if final and final != ou and _is_ml_url(final):
+            resolved_url = final
+            short_url = ou
+
+            # se o final tiver /sec/, é perfeito: mantém tracking e fica mais estável
+            if "/sec/" in final:
+                ou = final
+                check_url = final
+            else:
+                # mantém o short como open_url (pra não correr risco de perder tracking),
+                # mas usa a resolved_url como check_url para a checagem ficar mais fiel
+                check_url = final
+
+    # fallback mínimo: se check_url ficou vazio mas tem open_url
+    if not check_url and ou:
+        check_url = ou
+
+    # se não há URL, tenta ao menos gerar busca pelo ID
+    if not ou and ib:
+        ou = _ml_search_url(ib)
+        check_url = ou
+
+    return {
+        "open_url": ou,
+        "check_url": check_url,
+        "short_url": short_url,
+        "resolved_url": resolved_url,
+    }
 def _enforce_single_featured(products: List[Dict[str, Any]]) -> None:
     """
     Garante no máximo 1 featured=True.
@@ -498,14 +636,21 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if not link_ml and not id_busca:
         raise ValueError("Produto sem link: preencha 'Link Mercado Livre' ou 'ID Mercado Livre'.")
 
+    # ✅ agora aceita meli.la também
     if link_ml and not _is_ml_url(link_ml):
-        raise ValueError("O 'Link Mercado Livre' precisa ser do Mercado Livre (ex.: https://mercadolivre.com/sec/... ).")
+        raise ValueError("O 'Link Mercado Livre' precisa ser do Mercado Livre (ex.: https://mercadolivre.com/sec/... ou https://meli.la/... ).")
 
     open_url = _clean_url(link_ml) if link_ml else _ml_search_url(id_busca)
     if not open_url:
         raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
 
-    check_url = open_url
+    # ✅ normaliza shortlink -> /sec/ quando possível + define check_url melhor
+    norm = _normalize_ml_links(open_url, id_busca)
+    open_url = norm.get("open_url") or open_url
+    check_url = norm.get("check_url") or open_url
+    short_url = norm.get("short_url") or ""
+    resolved_url = norm.get("resolved_url") or ""
+
     image = _normalize_asset_path(image_url)
 
     product: Dict[str, Any] = {
@@ -523,6 +668,13 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "last_ok": "",
         "_special_set_featured_only": False,
     }
+
+    # ✅ campos extras (não quebram o site, mas ajudam a depurar/robustez)
+    if short_url:
+        product["short_url"] = short_url
+    if resolved_url:
+        product["resolved_url"] = resolved_url
+
     return product
 
 
@@ -542,8 +694,6 @@ def _find_existing_by_id_or_url(products: List[Dict[str, Any]], id_busca: str, o
             return i
 
     return None
-
-
 def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str, Any]:
     products: List[Dict[str, Any]] = data.get("products") or []
     if not isinstance(products, list):
@@ -685,8 +835,13 @@ def main() -> int:
     print(f"Featured: {incoming.get('featured')}")
     print(f"Active: {incoming.get('active')}")
     print(f"Open URL: {incoming.get('open_url')}")
+    print(f"Check URL: {incoming.get('check_url')}")
     print(f"ID Busca: {incoming.get('id_busca')}")
     print(f"Image: {incoming.get('image')}")
+    if incoming.get("short_url"):
+        print(f"Short URL: {incoming.get('short_url')}")
+    if incoming.get("resolved_url"):
+        print(f"Resolved URL: {incoming.get('resolved_url')}")
     return 0
 
 
