@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-23T15:33:06Z",
+  "updated_at": "2026-02-23T17:57:57Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1221,6 +1221,36 @@
       "open_url": "https://mercadolivre.com/sec/1JTgtXs",
       "check_url": "https://mercadolivre.com/sec/1JTgtXs",
       "image": "https://github.com/user-attachments/assets/c8fb2fb7-c1db-49b9-a897-d22b9527feb9",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "robo-de-limpeza-wap-robot-w500-policleaner",
+      "title": "Robô de Limpeza WAP Robot W500 Policleaner — Mais Vendido",
+      "badges": [
+        "Achados do Dia",
+        "Robô de Limpeza",
+        "WAP",
+        "W500",
+        "Policleaner",
+        "Mais vendido",
+        "Casa",
+        "Limpeza",
+        "Praticidade",
+        "Controle remoto",
+        "Sensores antiqueda",
+        "Superfícies lisas",
+        "Premium",
+        "Automação",
+        "Tecnologia"
+      ],
+      "id_busca": "5J5PKG-KN35",
+      "open_url": "https://mercadolivre.com/sec/2y45bZm",
+      "check_url": "https://mercadolivre.com/sec/2y45bZm",
+      "image": "https://github.com/user-attachments/assets/bedec692-2a10-4c00-8e95-45e45e1e6a93",
       "active": true,
       "featured": true,
       "price_text": "",
