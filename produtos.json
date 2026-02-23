@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-23T12:37:24Z",
+  "updated_at": "2026-02-23T15:33:06Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1190,6 +1190,37 @@
       "open_url": "https://mercadolivre.com/sec/29Gq2Ww",
       "check_url": "https://mercadolivre.com/sec/29Gq2Ww",
       "image": "https://github.com/user-attachments/assets/052ccccc-a9f0-4738-8d42-ba1039cba8c6",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "maquina-de-gelo-turbo-ice-premium-mondial-mg-12-gi",
+      "title": "Máquina de Gelo Turbo Ice Premium Mondial — até 12kg/dia (MG-12-GI)",
+      "badges": [
+        "Achados do Dia",
+        "Máquina de Gelo",
+        "Turbo Ice",
+        "Mondial",
+        "Gelo em minutos",
+        "Até 12kg/dia",
+        "Drinks",
+        "Festa",
+        "Churrasco",
+        "Cozinha",
+        "Bar",
+        "Premium",
+        "Compacta",
+        "Verão",
+        "Casa",
+        "Praticidade"
+      ],
+      "id_busca": "5J5PKG-T2HL",
+      "open_url": "https://mercadolivre.com/sec/1JTgtXs",
+      "check_url": "https://mercadolivre.com/sec/1JTgtXs",
+      "image": "https://github.com/user-attachments/assets/c8fb2fb7-c1db-49b9-a897-d22b9527feb9",
       "active": true,
       "featured": true,
       "price_text": "",
