@@ -90,16 +90,70 @@
     }
   }
 
+  function hostOf(url) {
+    try {
+      const u = new URL(String(url || ""));
+      let h = (u.hostname || "").toLowerCase().trim();
+      if (h.startsWith("www.")) h = h.slice(4);
+      return h;
+    } catch {
+      return "";
+    }
+  }
+
+  function isMLHost(host) {
+    const h = String(host || "").toLowerCase().trim();
+    if (!h) return false;
+
+    // hosts do Mercado Livre / Mercado Libre
+    if (h.includes("mercadolivre") || h.includes("mercadolibre")) return true;
+
+    // short domains: meli.la / meli.co + variações meli.xx
+    if (h === "meli.la" || h === "meli.co") return true;
+    if (/^meli\.[a-z]{2,6}$/.test(h)) return true;
+
+    return false;
+  }
+
+  function isProbablyValidLink(u) {
+    const x = String(u ?? "").toLowerCase().trim();
+    if (!x) return false;
+    // nunca aceitar user-attachments como link de compra
+    if (x.includes("github.com/user-attachments/assets")) return false;
+
+    const h = hostOf(x);
+    return isMLHost(h);
+  }
+
+  function pickBestLink(p) {
+    // prioridade: open_url (tracking) -> check_url -> canonical_url -> resolved_url -> short_url -> link legado
+    const open = cleanUrl(p.open_url || p.link || p.url || "");
+    const check = cleanUrl(p.check_url || "");
+    const canonical = cleanUrl(p.canonical_url || "");
+    const resolved = cleanUrl(p.resolved_url || "");
+    const shorty = cleanUrl(p.short_url || "");
+
+    const candidates = [open, check, canonical, resolved, shorty].filter(Boolean);
+    const primary = candidates.find(isProbablyValidLink) || "";
+
+    // link alternativo: primeiro válido diferente do primary
+    const alt = candidates.find((c) => c && c !== primary && isProbablyValidLink(c)) || "";
+
+    return { primary, alt, open, check, canonical, resolved, shorty };
+  }
+
   const FALLBACK_PRODUCTS = [
     {
-      destaque: true,
-      ativo: true,
-      nome: "Mochila impermeável • Notebook 15.6”",
-      desc: "Trava com senha • bolso oculto • saída USB • alça de bagagem (carry-on).",
-      idML: "5J5PKG-JBQE",
-      link: "https://mercadolivre.com/sec/14jFsrH",
-      imagem: "assets/produtos/Mochila_Masculina_Notebook_15.6.png",
-      tags: ["mochila", "notebook", "viagem"]
+      sku: "mochila-impermeavel-notebook-156",
+      featured: true,
+      active: true,
+      title: "Mochila impermeável • Notebook 15.6”",
+      badges: ["Achados do Dia", "Viagem", "USB", "Carry-on"],
+      id_busca: "5J5PKG-JBQE",
+      open_url: "https://mercadolivre.com/sec/14jFsrH",
+      check_url: "https://mercadolivre.com/sec/14jFsrH",
+      canonical_url: "https://lista.mercadolivre.com.br/5J5PKG-JBQE",
+      image: "assets/produtos/Mochila_Masculina_Notebook_15.6.png"
     }
   ];
 
@@ -109,13 +163,6 @@
     if (Array.isArray(data.products)) return data.products;
     if (Array.isArray(data.items)) return data.items;
     return [];
-  }
-
-  function isProbablyValidLink(u) {
-    const x = String(u ?? "").toLowerCase();
-    if (!x) return false;
-    if (x.includes("github.com/user-attachments/assets")) return false;
-    return x.includes("mercadolivre") || x.includes("lista.mercadolivre");
   }
 
   function adaptProduct(p) {
@@ -129,8 +176,6 @@
     let nome = cleanText(p.nome || p.title || p.name || "");
     let sku = cleanText(p.sku || p.slug || "");
     let idML = cleanText(p.idML || p.id_busca || p.id || "");
-    let link = cleanUrl(p.link || p.open_url || p.url || "");
-    let imagem = cleanUrl(p.imagem || p.image || "");
 
     // se veio lixo tipo "<img ...>", some com esse item
     if (!nome || /<\s*img/i.test(String(p.nome || p.title || ""))) return null;
@@ -143,8 +188,13 @@
 
     if (!desc && tags.length) desc = tags.join(" • ");
 
-    // link obrigatório: se não for ML, ignora
+    const links = pickBestLink(p);
+    const link = links.primary;
+
+    // link obrigatório: tem que ser ML (mercadolivre/mercadolibre/meli.la/meli.xx)
     if (!isProbablyValidLink(link)) return null;
+
+    let imagem = cleanUrl(p.imagem || p.image || "");
 
     return {
       sku,
@@ -154,33 +204,42 @@
       desc: desc || "",
       idML: idML || "",
       link,
+      linkAlt: links.alt || "",
+      open_url: links.open || "",
+      check_url: links.check || "",
+      canonical_url: links.canonical || "",
+      short_url: links.shorty || "",
+      resolved_url: links.resolved || "",
       imagem,
       tags
     };
   }
 
-  // ✅ DEDUPE forte (idML > link > sku)
+  // ✅ DEDUPE forte (idML > canonical_url > link > sku)
   function dedupeProducts(list) {
     const out = [];
     const seen = new Set();
 
     for (const p of (list || [])) {
       if (!p) continue;
-      const key =
-        (p.idML ? `id:${String(p.idML).trim().toUpperCase()}` : "") ||
-        (p.link ? `url:${String(p.link).trim().toLowerCase()}` : "") ||
-        (p.sku ? `sku:${String(p.sku).trim().toLowerCase()}` : "");
 
+      const kId = (p.idML ? `id:${String(p.idML).trim().toUpperCase()}` : "");
+      const kCan = (p.canonical_url ? `c:${String(p.canonical_url).trim().toLowerCase()}` : "");
+      const kUrl = (p.link ? `url:${String(p.link).trim().toLowerCase()}` : "");
+      const kSku = (p.sku ? `sku:${String(p.sku).trim().toLowerCase()}` : "");
+
+      const key = kId || kCan || kUrl || kSku;
       if (!key) continue;
 
       if (seen.has(key)) {
         // se duplicado e o novo é destaque, substitui
         const idx = out.findIndex(x => {
-          const k =
+          const kk =
             (x.idML ? `id:${String(x.idML).trim().toUpperCase()}` : "") ||
+            (x.canonical_url ? `c:${String(x.canonical_url).trim().toLowerCase()}` : "") ||
             (x.link ? `url:${String(x.link).trim().toLowerCase()}` : "") ||
             (x.sku ? `sku:${String(x.sku).trim().toLowerCase()}` : "");
-          return k === key;
+          return kk === key;
         });
         if (idx >= 0 && p.destaque && !out[idx].destaque) out[idx] = p;
         continue;
@@ -204,10 +263,12 @@
 
   function tagsText(tags) {
     const arr = Array.isArray(tags) ? tags : [];
-    const txt = arr.slice(0, 4).map(t => `#${String(t).trim().replaceAll(" ", "_")}`).join(" ");
+    const txt = arr
+      .slice(0, 4)
+      .map(t => `#${String(t).trim().replaceAll(" ", "_")}`)
+      .join(" ");
     return txt;
   }
-
   function featuredHTML(p, isProdutoDoDia) {
     const imgSrc = resolveUrl(p.imagem);
     const img = imgSrc
@@ -233,6 +294,17 @@
 
     const tags = tagsText(p.tags);
 
+    const altLine = p.linkAlt
+      ? `<p class="meta" style="margin-top:6px;">
+           Link alternativo (se o principal falhar):<br/>
+           <span style="color:rgba(224,195,107,.92); font-weight:950;">copie e cole no navegador</span>
+         </p>`
+      : "";
+
+    const altBtn = p.linkAlt
+      ? `<button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.linkAlt)}">Copiar link alternativo</button>`
+      : "";
+
     return `
       <div class="card">
         <div class="card__img">
@@ -252,6 +324,7 @@
           <div class="actions">
             ${buyBtn}
             <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar link</button>
+            ${altBtn}
             <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
           </div>
         </div>
@@ -274,9 +347,12 @@
             3) Ou clique em <b>COMPRAR AGORA</b> (abre direto)
           </p>
 
+          ${altLine}
+
           <div class="actions" style="margin-top:6px;">
             <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
             <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar Link</button>
+            ${p.linkAlt ? `<button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.linkAlt)}">Copiar Link Alternativo</button>` : ``}
             <a class="btn btn--tiny btn--gold" href="./loja.html">Abrir Vitrine</a>
           </div>
 
@@ -331,14 +407,17 @@
 
       const raw = normalizeProducts(data);
       const mapped = raw.map(adaptProduct).filter(Boolean);
+
+      // mantém apenas ativos
       const list = mapped.filter(p => p && (p.ativo !== false));
 
       return {
-        products: dedupeProducts(list.length ? list : FALLBACK_PRODUCTS),
+        products: dedupeProducts(list.length ? list : FALLBACK_PRODUCTS.map(adaptProduct).filter(Boolean)),
         updated_at: data.updated_at || ""
       };
     } catch (e) {
-      return { products: FALLBACK_PRODUCTS, updated_at: "" };
+      const fb = FALLBACK_PRODUCTS.map(adaptProduct).filter(Boolean);
+      return { products: dedupeProducts(fb), updated_at: "" };
     }
   }
 
