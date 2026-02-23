@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T22:10:06Z",
+  "updated_at": "2026-02-23T00:56:12Z",
   "products": [
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -1128,6 +1128,36 @@
       "open_url": "https://mercadolivre.com/sec/2Nj2xGv",
       "check_url": "https://mercadolivre.com/sec/2Nj2xGv",
       "image": "https://github.com/user-attachments/assets/3625502d-f92c-4337-a9d4-73c765801c85",
+      "active": true,
+      "featured": false,
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "panela-pressao-eletrica-6l-electrolux-rita-lobo-pcc20",
+      "title": "Panela de Pressão Elétrica Electrolux 6L (Rita Lobo) — Experience Digital PCC20",
+      "badges": [
+        "Achados do Dia",
+        "Panela de Pressão Elétrica",
+        "Electrolux",
+        "Rita Lobo",
+        "6L",
+        "Cozinha",
+        "Casa",
+        "Jantar rápido",
+        "Programas automáticos",
+        "Praticidade",
+        "Segurança",
+        "Fácil de limpar",
+        "Panelas elétricas",
+        "Família",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-K2GE",
+      "open_url": "https://mercadolivre.com/sec/1amQzWM",
+      "check_url": "https://mercadolivre.com/sec/1amQzWM",
+      "image": "https://github.com/user-attachments/assets/70c8c535-d0d6-4c9a-854c-ce4ce9c7fab0",
       "active": true,
       "featured": true,
       "price_text": "",
