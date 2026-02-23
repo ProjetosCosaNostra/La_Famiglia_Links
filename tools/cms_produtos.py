@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v7 (aceita meli.la, resolve shortlink -> /sec/ quando possível, mais robusto)
+# Versão : v8 (meli.la OK + canonical_url estável + check_url inteligente + dedupe robusto)
 # ==========================================================
 
 from __future__ import annotations
@@ -9,12 +9,12 @@ from __future__ import annotations
 import json
 import os
 import re
-import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-from urllib.parse import quote_plus, urljoin, urlparse
+from urllib.parse import quote_plus, urlparse
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PRODUTOS_JSON = REPO_ROOT / "produtos.json"
@@ -27,16 +27,21 @@ _IMG_SRC_RE = re.compile(r"""(?is)<img[^>]+src\s*=\s*["']([^"']+)["']""")
 # ✅ pega markdown ![alt](url)
 _MD_IMG_RE = re.compile(r"""(?is)!\[[^\]]*]\(([^)]+)\)""")
 
+
 # ===========================
 # Mercado Livre: domínios aceitos
 # ===========================
 _ML_HOST_MARKERS = ("mercadolivre", "mercadolibre")
-# short domains conhecidos do ML (o seu caso: meli.la)
+
+# short domains conhecidos do ML (ex.: meli.la)
 _ML_SHORT_HOSTS = {"meli.la", "meli.co"}
 
 # toggle (caso queira desligar resolução de shortlink sem quebrar o resto)
 # CN_CMS_RESOLVE_SHORT=0 desliga
 _RESOLVE_SHORT = os.getenv("CN_CMS_RESOLVE_SHORT", "1").strip().lower() not in {"0", "false", "no", "off"}
+
+# timeout (segundos) para resolver shortlinks (quando habilitado)
+_SHORT_TIMEOUT = float(os.getenv("CN_CMS_SHORT_TIMEOUT", "8.0") or "8.0")
 
 
 def _utc_now_iso_z() -> str:
@@ -250,8 +255,6 @@ def _normalize_asset_path(p: str) -> str:
     x2 = re.sub(r"(?i)^assets/products/", "assets/produtos/", x2)
 
     return x2
-
-
 def _ml_search_url(query: str) -> str:
     """
     Link estável de busca no Mercado Livre.
@@ -337,7 +340,7 @@ def _is_ml_url(u: str) -> bool:
     if host in _ML_SHORT_HOSTS:
         return True
 
-    # alguns países usam meli.<tld> — mantém robusto sem abrir demais
+    # alguns países usam meli.<tld> — mantém robusto
     if re.fullmatch(r"meli\.[a-z]{2,6}", host or ""):
         return True
 
@@ -361,8 +364,8 @@ def _is_ml_short(u: str) -> bool:
 
 def _resolve_final_url(u: str, timeout: float = 8.0) -> str:
     """
-    Resolve redirects (GET com Range) e retorna a URL final.
-    - Não falha o job se der erro.
+    Resolve redirects e retorna a URL final.
+    - NÃO falha o job se der erro.
     """
     x = _clean_url(u)
     if not x:
@@ -386,52 +389,76 @@ def _resolve_final_url(u: str, timeout: float = 8.0) -> str:
 
 def _normalize_ml_links(open_url: str, id_busca: str) -> Dict[str, str]:
     """
-    Normaliza link do ML e deixa mais resiliente:
+    Normaliza e blinda contra mudança do Mercado Livre:
       - aceita meli.la
-      - se for shortlink e _RESOLVE_SHORT habilitado:
-          - tenta resolver e, se virar /sec/, usa /sec/ como open_url (mais estável)
-          - guarda short_url e resolved_url
-      - define check_url:
-          - por padrão, check_url = open_url
-          - se resolveu para um ML válido (mesmo sem /sec/), check_url vira a resolved_url (melhor pra checagem)
+      - tenta resolver shortlink -> /sec/ quando possível
+      - sempre gera canonical_url estável se tiver id_busca (lista.mercadolivre...)
+      - check_url inteligente:
+          * se /sec/ resolvido -> check=open=/sec/
+          * se resolve para ML mas sem /sec/ -> check=resolved (mais fiel)
+          * se não resolve -> check=canonical (se existir) senão open
     """
     ou = _clean_url(open_url or "")
     ib = _clean_ml_id(id_busca or "")
+
+    canonical_url = _ml_search_url(ib) if ib else ""
 
     short_url = ""
     resolved_url = ""
     check_url = ou
 
+    # Se não tem open_url, mas tem ID, usa canonical
+    if not ou and canonical_url:
+        ou = canonical_url
+        check_url = canonical_url
+        return {
+            "open_url": ou,
+            "check_url": check_url,
+            "canonical_url": canonical_url,
+            "short_url": short_url,
+            "resolved_url": resolved_url,
+        }
+
+    # Shortlink: tenta resolver
     if ou and _is_ml_short(ou) and _RESOLVE_SHORT:
-        final = _resolve_final_url(ou)
+        final = _resolve_final_url(ou, timeout=_SHORT_TIMEOUT)
         if final and final != ou and _is_ml_url(final):
             resolved_url = final
             short_url = ou
 
-            # se o final tiver /sec/, é perfeito: mantém tracking e fica mais estável
+            # /sec/ é o melhor cenário
             if "/sec/" in final:
                 ou = final
                 check_url = final
             else:
-                # mantém o short como open_url (pra não correr risco de perder tracking),
-                # mas usa a resolved_url como check_url para a checagem ficar mais fiel
+                # mantém tracking do short no open_url, mas check_url fica mais fiel
                 check_url = final
 
-    # fallback mínimo: se check_url ficou vazio mas tem open_url
-    if not check_url and ou:
-        check_url = ou
+    # Se check_url vazio, tenta canonical; senão, usa open
+    if not check_url:
+        check_url = canonical_url or ou
 
-    # se não há URL, tenta ao menos gerar busca pelo ID
-    if not ou and ib:
-        ou = _ml_search_url(ib)
+    # Se open_url não é ML (caso extremo), cai pro canonical
+    if ou and not _is_ml_url(ou):
+        ou = canonical_url or ""
+    if check_url and not _is_ml_url(check_url):
+        check_url = canonical_url or ou
+
+    # Se ainda não tem open_url, tenta canonical
+    if not ou and canonical_url:
+        ou = canonical_url
+    if not check_url and ou:
         check_url = ou
 
     return {
         "open_url": ou,
         "check_url": check_url,
+        "canonical_url": canonical_url,
         "short_url": short_url,
         "resolved_url": resolved_url,
     }
+
+
 def _enforce_single_featured(products: List[Dict[str, Any]]) -> None:
     """
     Garante no máximo 1 featured=True.
@@ -455,33 +482,33 @@ def _enforce_single_featured(products: List[Dict[str, Any]]) -> None:
             p["featured"] = False
 
 
-def _dedupe_key(id_busca: str, open_url: str) -> str:
+def _dedupe_key(id_busca: str, open_url: str, canonical_url: str) -> str:
     """
     Chave estável pra deduplicar.
-    Prioridade: id_busca > open_url.
+    Prioridade: id_busca > canonical_url > open_url.
     """
     ib = (id_busca or "").strip().upper()
+    cu = (canonical_url or "").strip().lower()
     ou = (open_url or "").strip().lower()
     if ib:
         return f"id:{ib}"
+    if cu:
+        return f"c:{cu}"
     if ou:
         return f"url:{ou}"
     return ""
-
-
 def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
-    Remove itens claramente inválidos:
-      - sku/title com HTML (<img ...>)
-      - open_url apontando pra github/qualquer coisa que não seja ML
-      - URLs com \ no fim
-      - image que não é imagem (se for URL)
+    Remove itens claramente inválidos + normaliza links do ML:
+      - sku/title com HTML
+      - open_url não-ML => cai pro canonical (se tiver id_busca)
+      - URLs com lixo no fim
+      - image URL que não é imagem => limpa
     Também:
-      - limpa aspas e \ no final de URLs
       - corrige assets/assets
     + DEDUPE:
       - evita duplicados por sku
-      - evita duplicados por id_busca/open_url (mesmo sku diferente)
+      - evita duplicados por id_busca/canonical/open_url
     """
     out: List[Dict[str, Any]] = []
     seen_sku = set()
@@ -501,7 +528,6 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         if sku in seen_sku:
             continue
 
-        # title
         raw_title = str(p.get("title") or "")
         if _looks_like_html_blob(raw_title):
             continue
@@ -509,53 +535,49 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         if not title:
             continue
 
-        # id
         id_busca = _clean_ml_id(str(p.get("id_busca") or ""))
 
-        # open_url/check_url
-        open_url = _clean_url(str(p.get("open_url") or ""))
+        open_url_raw = _clean_url(str(p.get("open_url") or ""))
         check_url_raw = _clean_url(str(p.get("check_url") or ""))
+        canonical_raw = _clean_url(str(p.get("canonical_url") or ""))
 
-        # se open_url não for ML, tenta reconstruir via ID; se não der, remove
-        if open_url and not _is_ml_url(open_url):
-            open_url = _ml_search_url(id_busca) if id_busca else ""
+        # normaliza ML (gera canonical se tiver id)
+        norm = _normalize_ml_links(open_url_raw, id_busca)
+        open_url = norm.get("open_url") or ""
+        check_url = norm.get("check_url") or ""
+        canonical_url = norm.get("canonical_url") or canonical_raw or ""
 
-        if not open_url:
-            continue
-
-        # dedupe por id/open_url
-        dk = _dedupe_key(id_busca, open_url)
+        # dedupe por id/canonical/open
+        dk = _dedupe_key(id_busca, open_url, canonical_url)
         if dk and dk in seen_key:
             continue
 
-        # marca chaves vistas (id e url)
+        # marca chaves vistas
         if id_busca:
             seen_key.add(f"id:{id_busca.upper()}")
+        if canonical_url:
+            seen_key.add(f"c:{canonical_url.lower()}")
         if open_url:
             seen_key.add(f"url:{open_url.lower()}")
         if dk:
             seen_key.add(dk)
 
-        # check_url acompanha open_url (se check_url ruim, substitui)
-        check_url = check_url_raw if (check_url_raw and _is_ml_url(check_url_raw)) else open_url
-
         # image
         image_raw = str(p.get("image") or "")
         image_norm = _normalize_asset_path(image_raw)
-        if image_norm.startswith("http://") or image_norm.startswith("https://") or image_norm.startswith("data:image/"):
-            # se for URL, só aceita se parecer imagem
+        if image_norm.startswith(("http://", "https://", "data:image/")):
             if not _is_image_url(image_norm):
                 image_norm = ""
 
-        # escreve de volta sanitizado
+        # aplica sanitizado
         p["sku"] = sku
         p["title"] = title
         p["id_busca"] = id_busca
         p["open_url"] = open_url
-        p["check_url"] = check_url
+        p["check_url"] = check_url or (check_url_raw if _is_ml_url(check_url_raw) else open_url)
+        p["canonical_url"] = canonical_url
         p["image"] = image_norm
 
-        # defaults mínimos
         p.setdefault("badges", [])
         p.setdefault("price_text", "")
         p.setdefault("last_checked", "")
@@ -590,6 +612,7 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
             "id_busca": "",
             "open_url": "",
             "check_url": "",
+            "canonical_url": "",
             "image": "",
             "price_text": None,
             "active": True,
@@ -617,7 +640,6 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     sku = _clean_sku(sku_raw)
     title = _clean_title(title_raw)
     id_busca = _clean_ml_id(id_raw)
-
     badges = _split_badges_optional(_clean_title(badges_raw))
 
     active_state = _checkbox_state(body, r"Ativo")
@@ -636,20 +658,20 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if not link_ml and not id_busca:
         raise ValueError("Produto sem link: preencha 'Link Mercado Livre' ou 'ID Mercado Livre'.")
 
-    # ✅ agora aceita meli.la também
     if link_ml and not _is_ml_url(link_ml):
         raise ValueError("O 'Link Mercado Livre' precisa ser do Mercado Livre (ex.: https://mercadolivre.com/sec/... ou https://meli.la/... ).")
 
-    open_url = _clean_url(link_ml) if link_ml else _ml_search_url(id_busca)
-    if not open_url:
-        raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
-
-    # ✅ normaliza shortlink -> /sec/ quando possível + define check_url melhor
+    open_url = _clean_url(link_ml) if link_ml else ""
     norm = _normalize_ml_links(open_url, id_busca)
-    open_url = norm.get("open_url") or open_url
+
+    open_url = norm.get("open_url") or open_url or _ml_search_url(id_busca)
     check_url = norm.get("check_url") or open_url
+    canonical_url = norm.get("canonical_url") or (_ml_search_url(id_busca) if id_busca else "")
     short_url = norm.get("short_url") or ""
     resolved_url = norm.get("resolved_url") or ""
+
+    if not open_url:
+        raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
 
     image = _normalize_asset_path(image_url)
 
@@ -660,6 +682,7 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "id_busca": id_busca,
         "open_url": open_url,
         "check_url": check_url,
+        "canonical_url": canonical_url,
         "image": image,
         "price_text": None,  # não sobrescreve com vazio
         "active": bool(active),
@@ -669,7 +692,7 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "_special_set_featured_only": False,
     }
 
-    # ✅ campos extras (não quebram o site, mas ajudam a depurar/robustez)
+    # extras úteis pra debug/robustez (não quebram front)
     if short_url:
         product["short_url"] = short_url
     if resolved_url:
@@ -678,42 +701,47 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     return product
 
 
-def _find_existing_by_id_or_url(products: List[Dict[str, Any]], id_busca: str, open_url: str) -> Optional[int]:
+def _urlish_fields(p: Dict[str, Any]) -> List[str]:
+    return [
+        str(p.get("open_url") or ""),
+        str(p.get("check_url") or ""),
+        str(p.get("canonical_url") or ""),
+        str(p.get("short_url") or ""),
+        str(p.get("resolved_url") or ""),
+    ]
+
+
+def _find_existing_by_id_or_any_url(products: List[Dict[str, Any]], id_busca: str, incoming_urls: List[str]) -> Optional[int]:
     ib = _clean_ml_id(id_busca or "")
-    ou = _clean_url(open_url or "").lower()
+    incoming_norm = set(_clean_url(u).lower() for u in incoming_urls if u)
 
     for i, p in enumerate(products or []):
         if not isinstance(p, dict):
             continue
-        pib = _clean_ml_id(str(p.get("id_busca") or ""))
-        pou = _clean_url(str(p.get("open_url") or "")).lower()
 
+        pib = _clean_ml_id(str(p.get("id_busca") or ""))
         if ib and pib and ib == pib:
             return i
-        if ou and pou and ou == pou:
+
+        existing_urls = set(_clean_url(u).lower() for u in _urlish_fields(p) if u)
+        if incoming_norm and existing_urls and (incoming_norm & existing_urls):
             return i
 
     return None
+
+
 def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str, Any]:
     products: List[Dict[str, Any]] = data.get("products") or []
     if not isinstance(products, list):
         products = []
 
-    # ✅ limpa tudo que já existe + dedupe por id/url
+    # ✅ limpa tudo que já existe + dedupe robusto
     products = _sanitize_existing_products(products)
 
     sku = (incoming.get("sku") or "").strip()
     if not sku:
         data["products"] = products
         return data
-
-    # normaliza URLs e image do incoming
-    if incoming.get("open_url"):
-        incoming["open_url"] = _clean_url(str(incoming.get("open_url") or ""))
-    if incoming.get("check_url"):
-        incoming["check_url"] = _clean_url(str(incoming.get("check_url") or "")) or incoming.get("open_url", "")
-    if incoming.get("image"):
-        incoming["image"] = _normalize_asset_path(str(incoming.get("image") or ""))
 
     special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
 
@@ -730,12 +758,32 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         data["products"] = products
         return data
 
+    # normaliza incoming (links + canonical)
+    id_busca = _clean_ml_id(str(incoming.get("id_busca") or ""))
+    open_url_in = _clean_url(str(incoming.get("open_url") or ""))
+    norm = _normalize_ml_links(open_url_in, id_busca)
+
+    incoming["open_url"] = norm.get("open_url") or open_url_in
+    incoming["check_url"] = norm.get("check_url") or incoming["open_url"]
+    incoming["canonical_url"] = norm.get("canonical_url") or (_ml_search_url(id_busca) if id_busca else "")
+    if norm.get("short_url"):
+        incoming["short_url"] = norm.get("short_url")
+    if norm.get("resolved_url"):
+        incoming["resolved_url"] = norm.get("resolved_url")
+
+    if incoming.get("image"):
+        incoming["image"] = _normalize_asset_path(str(incoming.get("image") or ""))
+
     # 1) tenta pelo SKU
     idx = next((i for i, p in enumerate(products) if isinstance(p, dict) and (p.get("sku") == sku)), None)
 
-    # 2) se não achou, tenta pelo id_busca/open_url (evita duplicar mesmo com SKUs diferentes)
+    # 2) se não achou, tenta pelo id_busca ou qualquer URL (open/check/canonical/short/resolved)
     if idx is None:
-        idx2 = _find_existing_by_id_or_url(products, str(incoming.get("id_busca") or ""), str(incoming.get("open_url") or ""))
+        idx2 = _find_existing_by_id_or_any_url(
+            products,
+            id_busca,
+            [incoming.get("open_url"), incoming.get("check_url"), incoming.get("canonical_url"), incoming.get("short_url"), incoming.get("resolved_url")],
+        )
         if idx2 is not None:
             idx = idx2
 
@@ -753,8 +801,9 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         if k in existing and (not incoming.get(k)):
             incoming[k] = existing.get(k, "")
 
+    # aplica campos
     for k, v in incoming.items():
-        if k in {"sku", "title", "open_url", "check_url", "image", "active", "featured", "id_busca"}:
+        if k in {"sku", "title", "open_url", "check_url", "canonical_url", "image", "active", "featured", "id_busca", "short_url", "resolved_url"}:
             if v is None and k not in {"id_busca"}:
                 continue
             existing[k] = v
@@ -787,6 +836,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     existing.setdefault("last_ok", "")
     existing.setdefault("active", True)
     existing.setdefault("featured", False)
+    existing.setdefault("canonical_url", existing.get("canonical_url") or (_ml_search_url(existing.get("id_busca")) if existing.get("id_busca") else ""))
 
     # se marcou featured, desmarca os outros
     if existing.get("featured") is True:
@@ -796,7 +846,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
             if p.get("sku") != existing.get("sku"):
                 p["featured"] = False
 
-    # ✅ limpeza final + featured único + dedupe por id/url
+    # ✅ limpeza final + featured único
     products = _sanitize_existing_products(products)
     _enforce_single_featured(products)
 
@@ -836,6 +886,7 @@ def main() -> int:
     print(f"Active: {incoming.get('active')}")
     print(f"Open URL: {incoming.get('open_url')}")
     print(f"Check URL: {incoming.get('check_url')}")
+    print(f"Canonical URL: {incoming.get('canonical_url')}")
     print(f"ID Busca: {incoming.get('id_busca')}")
     print(f"Image: {incoming.get('image')}")
     if incoming.get("short_url"):
