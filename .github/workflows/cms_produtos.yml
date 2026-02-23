@@ -8,6 +8,11 @@ permissions:
   contents: write
   issues: write
 
+# evita 2 runs se atropelarem (principal causa de "criei e não atualizou")
+concurrency:
+  group: cms-produtos
+  cancel-in-progress: true
+
 jobs:
   run-cms:
     if: contains(join(github.event.issue.labels.*.name, ','), 'cms-produtos')
@@ -19,27 +24,61 @@ jobs:
         with:
           ref: gh-pages
           fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps (optional)
+        run: |
+          set -euo pipefail
+          python -m pip install -U pip
+          if [ -f tools/requirements.txt ]; then
+            pip install -r tools/requirements.txt
+          fi
+
+      - name: Debug (versions + context)
+        run: |
+          set -euo pipefail
+          python --version
+          git --version
+          echo "EVENT: ${{ github.event_name }} / issue #${{ github.event.issue.number }}"
+          echo "LABELS: ${{ join(github.event.issue.labels.*.name, ',') }}"
+          ls -la
+          ls -la tools || true
 
       - name: Run CMS
         env:
           GITHUB_EVENT_PATH: ${{ github.event_path }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           python tools/cms_produtos.py
+
+      - name: Validate produtos.json
+        run: |
+          set -euo pipefail
+          test -f produtos.json
+          python -m json.tool produtos.json >/dev/null
 
       - name: Commit & push (if changed)
         run: |
+          set -euo pipefail
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            # garante branch local consistente (evita push falhar em detached HEAD)
+            git checkout -B gh-pages
+
             git add -A
             git commit -m "cms: update produtos.json via issue #${{ github.event.issue.number }}"
-            git push origin gh-pages
+
+            # push robusto: empurra o HEAD atual para gh-pages
+            git push origin HEAD:gh-pages
           else
             echo "No changes to commit."
           fi
