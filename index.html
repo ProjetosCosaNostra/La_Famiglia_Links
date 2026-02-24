@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosa Nostra — Central Premium</title>
 
+  <!-- ✅ FIX MOBILE: garante que caminhos relativos funcionem mesmo se abrir sem barra no final -->
+  <base href="/La_Famiglia_Links/">
+
   <meta name="description" content="Central premium de links + vitrine de Achados do Dia. A Vitrine Rápida é só uma prévia — veja TODOS os produtos na Loja Completa." />
   <meta name="theme-color" content="#050505" />
   <meta name="robots" content="index,follow" />
@@ -86,6 +89,106 @@
     }
     .floatingStoreCTA a .gold { color: rgba(215, 176, 88, 1); }
 
+    /* ✅ FIX MOBILE: Featured/Quick render garantido e bonito mesmo sem CSS externo */
+    .cnFeaturedWrap {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 860px){
+      .cnFeaturedWrap { grid-template-columns: 1fr; }
+    }
+    .cnCard {
+      border: 1px solid rgba(215,176,88,.18);
+      background: rgba(0,0,0,.28);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0,0,0,.50);
+      backdrop-filter: blur(10px);
+    }
+    .cnCardPad { padding: 14px; }
+    .cnImg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: rgba(0,0,0,.35);
+    }
+    .cnTitle {
+      margin: 0;
+      font-family: Cinzel, serif;
+      letter-spacing: .3px;
+    }
+    .cnSub {
+      margin: 8px 0 0 0;
+      opacity: .9;
+    }
+    .cnSteps {
+      margin: 10px 0 0 0;
+      padding-left: 18px;
+      opacity: .92;
+    }
+    .cnSteps li { margin: 4px 0; }
+    .cnRow {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .cnMeta {
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: .9;
+    }
+    .cnMini {
+      font-size: 12px;
+      opacity: .82;
+      margin-top: 10px;
+    }
+
+    .cnGrid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px){
+      .cnGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px){
+      .cnGrid { grid-template-columns: 1fr; }
+    }
+    .cnProd {
+      border: 1px solid rgba(215,176,88,.16);
+      background: rgba(0,0,0,.24);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 50px rgba(0,0,0,.45);
+    }
+    .cnProd .cnProdPad { padding: 12px; }
+    .cnProd h3 {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.2;
+      font-family: Cinzel, serif;
+      letter-spacing: .2px;
+    }
+    .cnBadges {
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: .85;
+    }
+    .cnBadges span {
+      display: inline-block;
+      margin: 4px 6px 0 0;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(215,176,88,.18);
+      background: rgba(0,0,0,.25);
+    }
+    .cnProd .cnMeta { margin-top: 8px; }
+    .cnProd .cnRow { margin-top: 10px; }
+
     @media (max-width: 520px) {
       .floatingStoreCTA { right: 10px; bottom: 10px; }
       .floatingStoreCTA a { padding: 10px 12px; border-radius: 14px; }
@@ -116,7 +219,7 @@
             class="brandLogo"
             src="assets/logo.png"
             alt="Cosa Nostra"
-            onerror="this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
           />
           <span class="brandFallback">🎩♟️</span>
         </div>
@@ -159,7 +262,7 @@
       </div>
     </header>
 
-    <!-- ✅ MENU “IMPERIAL” (substitui o trecho feio azul) -->
+    <!-- ✅ MENU “IMPERIAL” -->
     <nav class="sectionNav" aria-label="Atalhos da Central Premium">
       <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
       <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
@@ -210,7 +313,7 @@
         <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Abrir loja completa (<span data-total-products>—</span>)</a>
       </div>
 
-      <div class="productsGrid" id="quickGrid">
+      <div class="productsGrid cnGrid" id="quickGrid">
         <!-- preenchido pelo script.js -->
       </div>
 
@@ -306,38 +409,5 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <!-- Contagem automática (não depende do script.js) -->
-  <script>
-    (async function () {
-      try {
-        const r = await fetch("./produtos.json", { cache: "no-store" });
-        if (!r.ok) throw new Error("fetch produtos.json failed");
-        const j = await r.json();
-        const total = Array.isArray(j.products) ? j.products.length : 0;
-
-        document.querySelectorAll("[data-total-products]").forEach((el) => {
-          el.textContent = total ? String(total) : "—";
-        });
-
-        // conta itens renderizados na vitrine rápida (depois do script.js preencher)
-        const tick = () => {
-          const grid = document.getElementById("quickGrid");
-          if (!grid) return;
-          const n = grid.children ? grid.children.length : 0;
-          document.querySelectorAll("[data-quick-products]").forEach((el) => {
-            el.textContent = n ? String(n) : "—";
-          });
-        };
-
-        tick();
-        setTimeout(tick, 300);
-        setTimeout(tick, 900);
-        setTimeout(tick, 1800);
-      } catch (e) {
-        // se falhar, mantém os "—" sem quebrar a página
-      }
-    })();
-  </script>
 </body>
 </html>
