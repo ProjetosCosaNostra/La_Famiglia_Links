@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-24T18:42:55Z",
+  "updated_at": "2026-02-24T19:59:56Z",
   "products": [
     {
       "sku": "cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa",
@@ -14,7 +14,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-JHSA",
       "image": "https://github.com/user-attachments/assets/9f24e633-5b74-44d4-9181-6f8b49563e07",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1CpXH3G",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJo%2FylCRGP1VjLtwDwqcZ1ghrN%2BYdpQOSVlh40WymBxQcKv%2FSAZEjlJd9fej04YiNGNHENQgcoAzHN02cn5w9fpU%2BbnM9U44clEKwrzxm5rIh7jPFUK2Xyu0q0Ub50Ag8GtWbVkC65xvcnjIMX7urSx%2Bgxzeq9qbskJr2z%2FVE6j5YNb%2FapFkRg54YOMPH0zwhT1oKsM%3D",
       "price_text": "",
@@ -1581,6 +1581,32 @@
       "guardian_last_reason": "social_ok",
       "guardian_fail_count": 0,
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-T2HL"
+    },
+    {
+      "sku": "balanca-inteligente-mi-body-composition-scale-2",
+      "title": "Balança Inteligente Mi — Bioimpedância + App Bluetooth",
+      "badges": [
+        "Achados do Dia",
+        "Bioimpedância",
+        "Saúde",
+        "Fitness",
+        "Xiaomi",
+        "Bluetooth",
+        "Balança",
+        "Branco"
+      ],
+      "id_busca": "5J5PKG-HPQN",
+      "open_url": "https://meli.la/2WgFjjo",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAzl6%2FTQAniuLdaxa3S70MgGJ2ukdIJimGf0EQ3ROcvDFWzWIgeCFpnskbJ4%2FUqNUnLst42Gbd4wD8s%2B3oXQkklUaNTmJunmsOsGaF%2B2Zwno6eTSlBSbn%2BBfh2JvSouKTqiy7RRQ42m%2FXItyyGEgPQWySXO%2B3bzCIsoaDRkSyKqeVOKSSy%2FjN4b8Mbh3RHCWfTBkqw%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-HPQN",
+      "image": "https://github.com/user-attachments/assets/d32505dd-f557-4340-8d57-95fb766ceb2f",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2WgFjjo",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAzl6%2FTQAniuLdaxa3S70MgGJ2ukdIJimGf0EQ3ROcvDFWzWIgeCFpnskbJ4%2FUqNUnLst42Gbd4wD8s%2B3oXQkklUaNTmJunmsOsGaF%2B2Zwno6eTSlBSbn%2BBfh2JvSouKTqiy7RRQ42m%2FXItyyGEgPQWySXO%2B3bzCIsoaDRkSyKqeVOKSSy%2FjN4b8Mbh3RHCWfTBkqw%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
