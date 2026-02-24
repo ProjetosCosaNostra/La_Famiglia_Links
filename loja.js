@@ -11,10 +11,11 @@
      - Se a contagem de ativos cair demais (ex: por falso-positivo / bloqueio do ML),
        a UI entra em FAILSAFE e resgata produtos com last_ok recente para não zerar a vitrine.
 
-   PATCH 2026-02-24 (IMAGENS):
-     - Corrige hotlink/referrer com referrerpolicy=no-referrer
-     - Fallback premium quando imagem falhar (para não ficar ícone quebrado)
-     - loading=lazy + decoding=async + object-fit cover
+   PATCH 2026-02-24 (IMAGENS PREMIUM DINÂMICAS):
+     - referrerpolicy=no-referrer (hotlink GitHub user-attachments)
+     - fallback premium quando falhar
+     - MODO PROFISSIONAL: imagem inteira (contain) + fundo blur automático
+     - smart-fit: evita crop em poster vertical
    ========================================================== */
 
 (() => {
@@ -34,8 +35,13 @@
   const FRONT_FAILSAFE_OK_DAYS = 7;         // resgata quem teve last_ok nos últimos N dias
 
   // =========================
-  // IMAGENS: PLACEHOLDER PREMIUM + FIXES
+  // IMAGENS: PREMIUM DINÂMICO
   // =========================
+  const CN_IMAGE_MODE = "smart";            // "smart" | "contain" | "cover"
+  const CN_SMART_THRESHOLD = 0.12;          // tolerância pra decidir contain vs cover
+  const CN_BG_BLUR_PX = 18;                 // blur do fundo
+  const CN_BG_OPACITY = 0.35;               // opacidade do fundo
+
   const CN_PLACEHOLDER_IMG =
     "data:image/svg+xml;charset=UTF-8," +
     encodeURIComponent(
@@ -78,21 +84,97 @@
     imgs.forEach((img) => {
       try { img.loading = "lazy"; } catch {}
       try { img.decoding = "async"; } catch {}
-
-      // Hotlink/referrer (principal motivo do github user-attachments quebrar no Pages)
       img.setAttribute("referrerpolicy", "no-referrer");
 
-      // Garante preenchimento do card
+      const parent = img.parentElement;
+
+      // Estilos base do IMG (sem crop forçado)
       img.style.width = "100%";
       img.style.height = "100%";
       img.style.display = "block";
-      if (!img.style.objectFit) img.style.objectFit = "cover";
+      img.style.position = "relative";
+      img.style.zIndex = "2";
 
-      // Fallback quando falhar (remove o ícone quebrado)
+      // Prepara o container pra suportar fundo blur
+      if (parent && !parent.dataset.cnImgReady) {
+        parent.dataset.cnImgReady = "1";
+        parent.style.position = "relative";
+        parent.style.overflow = "hidden";
+        parent.style.display = "flex";
+        parent.style.alignItems = "center";
+        parent.style.justifyContent = "center";
+        parent.style.background = "rgba(0,0,0,0.25)";
+
+        const bg = document.createElement("div");
+        bg.className = "cnImgBg";
+        bg.style.position = "absolute";
+        bg.style.inset = "0";
+        bg.style.backgroundPosition = "center";
+        bg.style.backgroundRepeat = "no-repeat";
+        bg.style.backgroundSize = "cover";
+        bg.style.filter = `blur(${CN_BG_BLUR_PX}px) saturate(1.12) brightness(0.80)`;
+        bg.style.transform = "scale(1.15)";
+        bg.style.opacity = String(CN_BG_OPACITY);
+        bg.style.pointerEvents = "none";
+        bg.style.zIndex = "1";
+        parent.insertBefore(bg, parent.firstChild);
+
+        const vignette = document.createElement("div");
+        vignette.className = "cnImgVignette";
+        vignette.style.position = "absolute";
+        vignette.style.inset = "0";
+        vignette.style.background =
+          "radial-gradient(circle at 50% 30%, rgba(0,0,0,0.05), rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.78) 100%)";
+        vignette.style.pointerEvents = "none";
+        vignette.style.zIndex = "1";
+        parent.insertBefore(vignette, parent.firstChild);
+      }
+
+      function setBg(url) {
+        if (!parent) return;
+        const bg = parent.querySelector(":scope > .cnImgBg");
+        if (bg) bg.style.backgroundImage = url ? `url("${url}")` : "none";
+      }
+
+      function decideFit() {
+        if (!parent) return "contain";
+        if (CN_IMAGE_MODE === "contain") return "contain";
+        if (CN_IMAGE_MODE === "cover") return "cover";
+
+        // smart:
+        const iw = img.naturalWidth || 0;
+        const ih = img.naturalHeight || 0;
+        const cw = parent.clientWidth || 1;
+        const ch = parent.clientHeight || 1;
+
+        const imgR = iw && ih ? (iw / ih) : 1;
+        const boxR = cw / ch;
+
+        // Se imagem é “mais vertical” que o box (poster), usar contain (evita cortar)
+        // Se for parecido, cover fica ok.
+        if (imgR < (boxR - CN_SMART_THRESHOLD)) return "contain";
+        return "cover";
+      }
+
+      img.addEventListener("load", () => {
+        const fit = decideFit();
+        img.style.objectFit = fit;
+
+        // Se for contain, fundo blur deixa premium e sem buraco feio
+        setBg(img.currentSrc || img.src || "");
+        if (parent) {
+          const bg = parent.querySelector(":scope > .cnImgBg");
+          const v = parent.querySelector(":scope > .cnImgVignette");
+          if (bg) bg.style.display = (fit === "contain") ? "block" : "none";
+          if (v) v.style.display = (fit === "contain") ? "block" : "none";
+        }
+      }, { once: true });
+
       img.addEventListener("error", () => {
         img.src = CN_PLACEHOLDER_IMG;
         img.style.objectFit = "contain";
-        img.style.opacity = "0.92";
+        img.style.opacity = "0.94";
+        setBg("");
       }, { once: true });
     });
   }
@@ -286,7 +368,6 @@
     const image = cleanUrl(raw.image || raw.imagem || "");
     const price_text = cleanText(raw.price_text || "");
 
-    // validações mínimas (evita lixo)
     if (!sku || !title) return null;
 
     return {
@@ -314,7 +395,6 @@
       last_checked: cleanText(raw.last_checked || ""),
       last_ok: cleanText(raw.last_ok || ""),
 
-      // diagnóstico (não derruba UI sozinho, mas ajuda failsafe)
       guardian_last_reason: cleanText(raw.guardian_last_reason || ""),
       guardian_disabled_at: cleanText(raw.guardian_disabled_at || ""),
       guardian_dead_reason: cleanText(raw.guardian_dead_reason || ""),
@@ -324,7 +404,6 @@
     };
   }
 
-  // DEDUPE forte (id_busca > canonical_url > buy_url > sku)
   function dedupeProducts(list) {
     const out = [];
     const seen = new Set();
@@ -341,7 +420,6 @@
       if (!key) continue;
 
       if (seen.has(key)) {
-        // se duplicado e o novo é featured, substitui
         const idx = out.findIndex((x) => {
           const kk =
             (x.id_busca ? `id:${String(x.id_busca).trim().toUpperCase()}` : "") ||
@@ -531,7 +609,6 @@
         counts.set(k, { label: key, n: (counts.get(k)?.n || 0) + 1 });
       }
     }
-    // ordena por frequência
     return Array.from(counts.values()).sort((a, b) => b.n - a.n);
   }
 
@@ -552,7 +629,6 @@
     if (STATE.sort && STATE.sort !== "relev") sp.set("sort", STATE.sort);
     else sp.delete("sort");
 
-    // preserva admin
     if (ADMIN) sp.set("admin", "1");
 
     const next = `${location.pathname}?${sp.toString()}`;
@@ -579,7 +655,6 @@
       return arr;
     }
 
-    // "relev": featured primeiro, depois title
     arr.sort((a, b) => {
       const fa = a.featured ? 0 : 1;
       const fb = b.featured ? 0 : 1;
@@ -619,7 +694,6 @@
     const counts = buildTagCounts(activeList);
     setText(totalTagsEl, counts.length);
 
-    // top 18 tags
     const top = counts.slice(0, 18);
 
     const allActive = !STATE.tag;
@@ -671,10 +745,8 @@
 
     const allProducts = dedupeProducts(STATE.products).filter((p) => p);
 
-    // ativos (vendáveis) — regra base
     let activeAll = allProducts.filter((p) => p && p.active !== false);
 
-    // FAILSAFE UI (ANTI-WIPE)
     if (allProducts.length > 0) {
       const minAllowed = Math.max(
         FRONT_FAILSAFE_MIN_ACTIVE,
@@ -694,30 +766,24 @@
       }
     }
 
-    // chips/categorias sempre baseadas no “ativo total”
     renderTagChips(activeAll);
 
-    // aplica filtros
     let filtered = activeAll.filter(matchesFilter);
     filtered = applySort(filtered);
 
     const destaque = getFeatured(activeAll);
 
-    // featured só “entra” se passar no filtro (se tiver filtro)
     let featuredPass = null;
     if (destaque) {
       featuredPass = matchesFilter(destaque) ? destaque : null;
     }
 
-    // render featured bloco
     featuredEl.innerHTML = featuredPass
       ? featuredHTML(featuredPass, true)
       : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
 
-    // aplica patch de imagens no bloco featured
     applyImageFixes(featuredEl);
 
-    // monta lista da grade
     let list = filtered.slice();
 
     if (featuredPass && SHOW_FEATURED_IN_GRID) {
@@ -726,14 +792,10 @@
       list = list.filter((p) => p.sku !== featuredPass.sku);
     }
 
-    // paginação
     const shown = list.slice(0, STATE.limit);
     grid.innerHTML = shown.map(productCardHTML).join("");
-
-    // aplica patch de imagens na grade
     applyImageFixes(grid);
 
-    // load more
     const wrap = $("#loadMoreWrap");
     if (wrap) {
       if (shown.length < list.length) wrap.classList.remove("hidden");
@@ -762,14 +824,11 @@
       .filter(Boolean);
 
     const deduped = dedupeProducts(list);
-
-    // Se por algum motivo vier vazio, dispara fallback (melhor 1 do que 0)
     if (!deduped.length) throw new Error("Nenhum produto válido em produtos.json");
 
     return deduped;
   }
 
-  // ===== ADMIN ACTIONS (em memória) =====
   function findBySku(sku) {
     return STATE.products.find((p) => p && p.sku === sku) || null;
   }
@@ -895,7 +954,6 @@
         r.last_checked = p.last_checked || r.last_checked || "";
         r.last_ok = p.last_ok || r.last_ok || "";
 
-        // remove lixo de UI
         delete r._raw;
         return r;
       }),
@@ -912,7 +970,6 @@
     showToast("Exportado ⬇️");
   }
 
-  // ===== EVENTS =====
   function bind() {
     const q = $("#qLoja");
     const clear = $("#btnClear");
@@ -937,8 +994,6 @@
         STATE.query = "";
         STATE.tag = "";
         STATE.limit = PAGE_SIZE;
-
-        // reset chips active
         render();
         showToast("Filtro limpo ✅");
       });
@@ -952,9 +1007,7 @@
     }
 
     if (homeBtn) {
-      homeBtn.addEventListener("click", () => {
-        // navega normal
-      });
+      homeBtn.addEventListener("click", () => {});
     }
 
     if (sortSel) {
@@ -973,12 +1026,11 @@
       });
     }
 
-    // delegação de clicks (copy + tags + admin)
     document.addEventListener("click", (e) => {
       const chip = e.target.closest("[data-tag]");
       if (chip && chip.classList.contains("tagChip")) {
         const t = String(chip.getAttribute("data-tag") || "").trim();
-        STATE.tag = t; // já vem lower
+        STATE.tag = t;
         STATE.limit = PAGE_SIZE;
         render();
         return;
@@ -1005,7 +1057,6 @@
       if (action === "editPrice") return editPriceSku(sku);
     });
 
-    // admin bar
     if (ADMIN) {
       const adminBar = $("#adminBar");
       if (adminBar) adminBar.style.display = "flex";
@@ -1030,7 +1081,6 @@
     }
   }
 
-  // ===== STATE =====
   const STATE = {
     products: [],
     updated_at: "",
@@ -1043,14 +1093,11 @@
 
   async function boot() {
     readUrlState();
-
-    // status no topo
     setText($("#year"), new Date().getFullYear());
 
     try {
       STATE.products = await fetchProducts();
     } catch {
-      // fallback mínimo (não quebra)
       STATE.products = [{
         sku: "fallback-power-bank-20000mah",
         title: "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)",
@@ -1070,14 +1117,12 @@
       }].map(adaptForUI).filter(Boolean);
     }
 
-    // aplica estado do URL (q/tag/sort)
     const q = $("#qLoja");
     if (q) q.value = STATE.query || "";
 
     const sortSel = $("#sortSel");
     if (sortSel) sortSel.value = STATE.sort || "relev";
 
-    // se tag veio do URL, mantém
     STATE.tag = (STATE.tag || "").toLowerCase().trim();
 
     bind();
