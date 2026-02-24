@@ -1,0 +1,121 @@
+/* ==========================================================
+   Arquivo: loja.css
+   Página : Loja Completa (loja.html)
+   Objetivo:
+     - Complementar o style.css (global)
+     - Itens específicos da Loja: barra de filtros/tags, adminBar, load-more
+   ========================================================== */
+
+:root{
+  /* mantém compatível com seu tema imperial */
+  --loja-chip-bg: rgba(0,0,0,.28);
+  --loja-chip-bd: rgba(255,255,255,.12);
+  --loja-chip-bd-active: rgba(224,195,107,.36);
+  --loja-chip-tx: rgba(255,255,255,.86);
+  --loja-chip-tx-active: rgba(255,236,180,.95);
+}
+
+/* ======= Loja: barra de filtros ======= */
+.lojaTools{
+  padding: 14px 16px 10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.lojaTools .toolRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  width:100%;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.tagChips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+
+.tagChip{
+  border:1px solid var(--loja-chip-bd);
+  background: var(--loja-chip-bg);
+  color: var(--loja-chip-tx);
+  padding:8px 10px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.02em;
+  cursor:pointer;
+  user-select:none;
+  backdrop-filter: blur(10px);
+  transition: transform .10s ease, filter .16s ease, border-color .16s ease;
+}
+.tagChip:hover{
+  filter:brightness(1.06);
+}
+.tagChip:active{
+  transform: translateY(1px);
+}
+.tagChip--active{
+  border-color: var(--loja-chip-bd-active);
+  color: var(--loja-chip-tx-active);
+  background: rgba(199,162,75,.12);
+}
+
+.sortRow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.select{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.90);
+  border-radius:999px;
+  padding:10px 12px;
+  font-weight:900;
+  font-size:12px;
+  outline:none;
+  backdrop-filter: blur(10px);
+}
+
+/* ======= adminBar (somente admin=1) ======= */
+.adminBar{
+  margin-top:12px;
+  border:1px dashed rgba(224,195,107,.45);
+  background: rgba(224,195,107,.06);
+  border-radius: 16px;
+  padding:12px 12px;
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.adminBar b{color:rgba(224,195,107,.95)}
+.adminBar .mini{
+  color:rgba(255,255,255,.72);
+  font-size:12px;
+  line-height:1.35;
+}
+
+/* ======= Load more ======= */
+.loadMoreWrap{
+  padding: 0 16px 16px;
+  display:flex;
+  justify-content:center;
+}
+.loadMoreWrap.hidden{display:none}
+
+/* ======= Ajustes mobile ======= */
+@media (max-width: 560px){
+  .select{width:100%;}
+  .sortRow{width:100%; justify-content:stretch;}
+}
