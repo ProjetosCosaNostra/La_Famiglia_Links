@@ -153,7 +153,8 @@
       open_url: "https://mercadolivre.com/sec/14jFsrH",
       check_url: "https://mercadolivre.com/sec/14jFsrH",
       canonical_url: "https://lista.mercadolivre.com.br/5J5PKG-JBQE",
-      image: "assets/produtos/Mochila_Masculina_Notebook_15.6.png"
+      image: "assets/produtos/Mochila_Masculina_Notebook_15.6.png",
+      price_text: ""
     }
   ];
 
@@ -181,12 +182,17 @@
     if (!nome || /<\s*img/i.test(String(p.nome || p.title || ""))) return null;
     if (!sku || /<\s*img/i.test(String(p.sku || "")) || /</.test(sku) || />/.test(sku)) return null;
 
-    // tenta montar desc a partir de badges/tags
-    let desc = cleanText(p.desc || p.description || "");
     const tagsRaw = (p.tags || p.badges || []);
     const tags = Array.isArray(tagsRaw) ? tagsRaw.map(cleanText).filter(Boolean) : [];
 
-    if (!desc && tags.length) desc = tags.join(" • ");
+    // desc: se não veio, cria curta e limpa
+    let desc = cleanText(p.desc || p.description || "");
+    if (!desc && tags.length) {
+      const short = tags
+        .filter(t => t && t.length <= 26)
+        .slice(0, 6);
+      desc = short.join(" • ");
+    }
 
     const links = pickBestLink(p);
     const link = links.primary;
@@ -195,10 +201,16 @@
     if (!isProbablyValidLink(link)) return null;
 
     let imagem = cleanUrl(p.imagem || p.image || "");
+    const price_text = cleanText(p.price_text || p.preco || p.price || "");
+
+    const featured =
+      (p.destaque === true) ||
+      (p.featured === true) ||
+      (p.is_featured === true);
 
     return {
       sku,
-      destaque: (p.destaque === true) || (p.featured === true) || (p.is_featured === true),
+      destaque: featured,
       ativo: (ativo !== false),
       nome,
       desc: desc || "",
@@ -211,7 +223,8 @@
       short_url: links.shorty || "",
       resolved_url: links.resolved || "",
       imagem,
-      tags
+      tags,
+      price_text
     };
   }
 
@@ -269,10 +282,19 @@
       .join(" ");
     return txt;
   }
-  function featuredHTML(p, isProdutoDoDia) {
+
+  function hasProdutoDoDiaTag(tags) {
+    const arr = Array.isArray(tags) ? tags : [];
+    return arr.some(t => {
+      const x = String(t || "").toLowerCase().trim().replaceAll("_", " ");
+      return x === "produto do dia";
+    });
+  }
+
+  function featuredHTML(p, isProdutoDoDiaReal) {
     const imgSrc = resolveUrl(p.imagem);
     const img = imgSrc
-      ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.nome)}" />`
+      ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.nome)}" loading="lazy" decoding="async" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
            Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
          </div>`;
@@ -283,23 +305,16 @@
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
       : `<a class="btn btn--gold" href="${escapeHTML(p.link)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
 
-    const badge = isProdutoDoDia
+    const badge = isProdutoDoDiaReal
       ? `<div class="badge">⭐ Produto do dia</div>`
-      : `<div class="badge" style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.88);">🛒 Destaque</div>`;
+      : `<div class="badge" style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.88);">👑 Destaque</div>`;
 
-    const titleTop = isProdutoDoDia ? "⭐ Produto do Dia" : "🛒 Destaque da Vitrine";
-    const subtitleNote = isProdutoDoDia
-      ? "Esse é o produto escolhido como Produto do Dia."
-      : "Nenhum Produto do Dia foi definido — esse é só um destaque automático.";
+    const titleTop = isProdutoDoDiaReal ? "⭐ Produto do Dia" : "👑 Destaque do Palácio";
+    const subtitleNote = isProdutoDoDiaReal
+      ? "Este é o Produto do Dia (destaque oficial)."
+      : "Este é um destaque da vitrine. Para ver tudo, use a Loja Completa.";
 
     const tags = tagsText(p.tags);
-
-    const altLine = p.linkAlt
-      ? `<p class="meta" style="margin-top:6px;">
-           Link alternativo (se o principal falhar):<br/>
-           <span style="color:rgba(224,195,107,.92); font-weight:950;">copie e cole no navegador</span>
-         </p>`
-      : "";
 
     const altBtn = p.linkAlt
       ? `<button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.linkAlt)}">Copiar link alternativo</button>`
@@ -313,6 +328,7 @@
         </div>
         <div class="card__body">
           <h3 class="name">${escapeHTML(p.nome)}</h3>
+          ${p.price_text ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
           <p class="meta">${escapeHTML(p.desc || "")}</p>
 
           <div class="row">
@@ -347,13 +363,11 @@
             3) Ou clique em <b>COMPRAR AGORA</b> (abre direto)
           </p>
 
-          ${altLine}
-
           <div class="actions" style="margin-top:6px;">
             <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.idML || "")}">Copiar ID</button>
             <button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.link || "")}">Copiar Link</button>
             ${p.linkAlt ? `<button class="btn btn--tiny btn--glass" type="button" data-copy="${escapeHTML(p.linkAlt)}">Copiar Link Alternativo</button>` : ``}
-            <a class="btn btn--tiny btn--gold" href="./loja.html">Abrir Vitrine</a>
+            <a class="btn btn--tiny btn--gold" href="./loja.html">Abrir Loja Completa</a>
           </div>
 
           <p class="meta" style="margin-top:10px;">
@@ -367,7 +381,7 @@
   function productCardHTML(p) {
     const imgSrc = resolveUrl(p.imagem);
     const img = imgSrc
-      ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.nome)}" />`
+      ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.nome)}" loading="lazy" decoding="async" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">
            Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
          </div>`;
@@ -386,6 +400,7 @@
         <div class="pImg">${img}</div>
         <div class="pBody">
           <p class="pName">${escapeHTML(p.nome)}</p>
+          ${p.price_text ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
           <p class="pSmall">${escapeHTML(p.desc || "")}</p>
           ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
 
@@ -411,8 +426,10 @@
       // mantém apenas ativos
       const list = mapped.filter(p => p && (p.ativo !== false));
 
+      const finalList = dedupeProducts(list.length ? list : FALLBACK_PRODUCTS.map(adaptProduct).filter(Boolean));
+
       return {
-        products: dedupeProducts(list.length ? list : FALLBACK_PRODUCTS.map(adaptProduct).filter(Boolean)),
+        products: finalList,
         updated_at: data.updated_at || ""
       };
     } catch (e) {
@@ -427,9 +444,30 @@
     query: ""
   };
 
-  function getFeatured(list) {
-    const escolhido = list.find(p => p.destaque);
-    return escolhido || list[0] || null;
+  function getFeaturedInfo(list) {
+    const real = list.find(p => p && p.destaque === true);
+    if (real) return { item: real, isReal: true };
+
+    // fallback “não confunde cliente”: se tiver tag “Produto do Dia”, vira destaque (sem dizer que é oficial)
+    const tagged = list.find(p => p && hasProdutoDoDiaTag(p.tags));
+    if (tagged) return { item: tagged, isReal: false };
+
+    return { item: (list[0] || null), isReal: false };
+  }
+
+  function setCounts() {
+    const total = Array.isArray(STATE.products) ? STATE.products.length : 0;
+
+    document.querySelectorAll("[data-total-products]").forEach((el) => {
+      el.textContent = total ? String(total) : "—";
+    });
+
+    const grid = document.getElementById("quickGrid");
+    const quickN = grid && grid.children ? grid.children.length : 0;
+
+    document.querySelectorAll("[data-quick-products]").forEach((el) => {
+      el.textContent = quickN ? String(quickN) : "—";
+    });
   }
 
   function renderHome() {
@@ -450,15 +488,14 @@
     }
 
     const featuredEl = $("#featured");
-    const featured = getFeatured(STATE.products);
-    if (featuredEl && featured) {
-      const isProdutoDoDia = !!STATE.products.find(p => p.destaque);
-      featuredEl.innerHTML = featuredHTML(featured, isProdutoDoDia);
+    const info = getFeaturedInfo(STATE.products);
+    if (featuredEl && info.item) {
+      featuredEl.innerHTML = featuredHTML(info.item, info.isReal);
     }
 
     const quickGrid = $("#quickGrid");
     if (quickGrid) {
-      const featuredSku = (featured && featured.sku) ? featured.sku : "";
+      const featuredSku = (info.item && info.item.sku) ? info.item.sku : "";
       let list = STATE.products.slice();
 
       if (featuredSku) list = list.filter(p => p.sku !== featuredSku);
@@ -472,7 +509,8 @@
             (p.sku || "") + " " +
             (p.idML || "") + " " +
             (Array.isArray(p.tags) ? p.tags.join(" ") : "") + " " +
-            (p.desc || "")
+            (p.desc || "") + " " +
+            (p.price_text || "")
           ).toLowerCase();
           return hay.includes(q);
         });
@@ -489,6 +527,8 @@
         `;
       }
     }
+
+    setCounts();
   }
 
   function bindTopButtons() {
