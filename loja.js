@@ -6,6 +6,10 @@
      - Produto do Dia (featured) sem “inventar featured”
      - Filtro por texto + filtro por tag + ordenação + paginação
      - Admin mode (?admin=1): editar em memória + exportar produtos.json
+
+   HOTFIX 2026-02-24 (ANTI-WIPE FRONT):
+     - Se a contagem de ativos cair demais (ex: por falso-positivo / bloqueio do ML),
+       a UI entra em FAILSAFE e resgata produtos com last_ok recente para não zerar a vitrine.
    ========================================================== */
 
 (() => {
@@ -16,6 +20,13 @@
   const SHOW_FEATURED_IN_GRID = true;
 
   const PAGE_SIZE = 60;
+
+  // =========================
+  // FRONT FAILSAFE (ANTI-WIPE)
+  // =========================
+  const FRONT_FAILSAFE_MIN_ACTIVE = 10;     // mínimo absoluto de ativos que a UI “aceita”
+  const FRONT_FAILSAFE_MIN_RATIO = 0.35;    // ou 35% do total
+  const FRONT_FAILSAFE_OK_DAYS = 7;         // resgata quem teve last_ok nos últimos N dias
 
   const toast = $("#toast");
   function showToast(msg = "Copiado ✅") {
@@ -164,6 +175,24 @@
     }
   }
 
+  function parseISO(iso) {
+    try {
+      const d = new Date(String(iso || ""));
+      if (Number.isNaN(d.getTime())) return null;
+      return d;
+    } catch {
+      return null;
+    }
+  }
+
+  function isRecentOk(iso, days = FRONT_FAILSAFE_OK_DAYS) {
+    const d = parseISO(iso);
+    if (!d) return false;
+    const ms = Date.now() - d.getTime();
+    const max = days * 24 * 60 * 60 * 1000;
+    return ms >= 0 && ms <= max;
+  }
+
   function adaptForUI(rawProduct) {
     const raw = cloneObj(rawProduct || {});
 
@@ -215,6 +244,12 @@
 
       last_checked: cleanText(raw.last_checked || ""),
       last_ok: cleanText(raw.last_ok || ""),
+
+      // diagnóstico (não derruba UI sozinho, mas ajuda failsafe)
+      guardian_last_reason: cleanText(raw.guardian_last_reason || ""),
+      guardian_disabled_at: cleanText(raw.guardian_disabled_at || ""),
+      guardian_dead_reason: cleanText(raw.guardian_dead_reason || ""),
+      guardian_fail_count: Number(raw.guardian_fail_count || 0),
 
       _raw: raw,
     };
@@ -416,7 +451,8 @@
       </div>
     `;
   }
-    function buildTagCounts(list) {
+
+  function buildTagCounts(list) {
     const counts = new Map();
     for (const p of (list || [])) {
       for (const b of safeArray(p.badges)) {
@@ -564,8 +600,30 @@
     const featuredEl = $("#featured");
     if (!grid || !featuredEl) return;
 
-    // ativos (vendáveis)
-    const activeAll = dedupeProducts(STATE.products).filter((p) => p && p.active !== false);
+    const allProducts = dedupeProducts(STATE.products).filter((p) => p);
+
+    // ativos (vendáveis) — regra base
+    let activeAll = allProducts.filter((p) => p && p.active !== false);
+
+    // FAILSAFE UI (ANTI-WIPE)
+    if (allProducts.length > 0) {
+      const minAllowed = Math.max(
+        FRONT_FAILSAFE_MIN_ACTIVE,
+        Math.floor(allProducts.length * FRONT_FAILSAFE_MIN_RATIO)
+      );
+
+      if (activeAll.length < minAllowed) {
+        const rescued = allProducts.filter((p) => (p.active !== false) || isRecentOk(p.last_ok));
+        if (rescued.length > activeAll.length) {
+          activeAll = rescued;
+
+          if (!STATE._failsafeNotified) {
+            STATE._failsafeNotified = true;
+            showToast("FAILSAFE: vitrine preservada ✅");
+          }
+        }
+      }
+    }
 
     // chips/categorias sempre baseadas no “ativo total”
     renderTagChips(activeAll);
@@ -628,7 +686,12 @@
       .map(adaptForUI)
       .filter(Boolean);
 
-    return dedupeProducts(list);
+    const deduped = dedupeProducts(list);
+
+    // Se por algum motivo vier vazio, dispara fallback (melhor 1 do que 0)
+    if (!deduped.length) throw new Error("Nenhum produto válido em produtos.json");
+
+    return deduped;
   }
 
   // ===== ADMIN ACTIONS (em memória) =====
@@ -900,6 +963,7 @@
     tag: "",
     sort: "relev",
     limit: PAGE_SIZE,
+    _failsafeNotified: false,
   };
 
   async function boot() {
@@ -946,4 +1010,4 @@
   }
 
   document.addEventListener("DOMContentLoaded", boot);
-})(); 
+})();
