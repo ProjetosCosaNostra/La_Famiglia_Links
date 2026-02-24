@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cosa Nostra — Palácio Imperial</title>
+  <title>Cosa Nostra — Central Premium</title>
 
-  <meta name="description" content="Palácio Imperial: Central premium + Produto do Dia + Vitrine Rápida. Para ver TODOS os produtos, abra a Loja Completa." />
+  <meta name="description" content="Central premium de links + vitrine de Achados do Dia. A Vitrine Rápida é só uma prévia — veja TODOS os produtos na Loja Completa." />
   <meta name="theme-color" content="#050505" />
   <meta name="robots" content="index,follow" />
 
-  <meta property="og:title" content="Cosa Nostra — Palácio Imperial" />
-  <meta property="og:description" content="Produto do Dia + Vitrine Rápida (prévia). Loja Completa = TODOS os produtos." />
+  <meta property="og:title" content="Cosa Nostra — Central Premium" />
+  <meta property="og:description" content="Links oficiais + vitrine de produtos (Achados do Dia). Vitrine Rápida = prévia. Loja Completa = TODOS os produtos." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/logo.png" />
 
@@ -122,17 +122,17 @@
         </div>
 
         <div class="hero__text">
-          <p class="kicker">Palácio Imperial • Cosa Nostra</p>
+          <p class="kicker">Cosa Nostra • A Família das Ideias</p>
           <h1 class="title">Central Premium</h1>
           <p class="sub">
-            Página simples (para leigos): aqui você vê <b>Produto do Dia</b> + <b>Vitrine Rápida</b>.<br/>
-            Para ver <b>TODOS os produtos</b>, use a <b>Loja Completa</b>.
+            Links oficiais + vitrine de produtos (Achados do Dia).<br/>
+            Funil rápido: <b>Story com Link Sticker</b> + <b>Loja na Bio</b>.
           </p>
 
           <div class="chips" aria-label="Dicas rápidas">
-            <span class="chip">⭐ Produto do dia</span>
-            <span class="chip">🛍️ vitrine rápida</span>
-            <span class="chip">👑 loja completa</span>
+            <span class="chip">⚡ clique 1-toque</span>
+            <span class="chip">🛒 vitrine sempre limpa</span>
+            <span class="chip">👑 padrão imperial</span>
           </div>
 
           <div class="countPill" aria-label="Contagem de produtos">
@@ -141,18 +141,14 @@
           </div>
 
           <div class="imperialNote" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>COMO FUNCIONA:</b></div>
-            <div class="mini">
-              1) Veja o destaque acima (Produto do Dia / Destaque).<br/>
-              2) A Vitrine Rápida é só uma prévia.<br/>
-              3) Clique em <b>“Abrir Vitrine / Loja”</b> para ver tudo. ✅
-            </div>
+            <div><b>ATENÇÃO:</b> esta página mostra o <b>Produto do Dia</b> + uma <b>Prévia (Vitrine Rápida)</b>.</div>
+            <div class="mini">Para ver <b>todos os produtos</b>, use <b>“Abrir Vitrine / Loja”</b> (Loja Completa). ✅</div>
           </div>
         </div>
       </div>
 
       <div class="hero__actions">
-        <a class="btn btn--gold" href="./loja.html" id="goLoja">👑 Abrir Loja Completa (<span data-total-products>—</span>)</a>
+        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
         <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
         <div class="miniNote">
           <span class="dot"></span>
@@ -163,19 +159,19 @@
       </div>
     </header>
 
-    <!-- NAV IMPERIAL (guia leigo) -->
-    <nav class="imperialNav" aria-label="Atalhos do Palácio">
-      <a class="imperialNav__item" href="#produto-do-dia">⭐ Produto do Dia</a>
-      <a class="imperialNav__item" href="#vitrine-rapida">🛍️ Vitrine Rápida</a>
-      <a class="imperialNav__item imperialNav__item--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
-      <a class="imperialNav__item" href="#links-oficiais">🔗 Links Oficiais</a>
+    <!-- ✅ MENU “IMPERIAL” (substitui o trecho feio azul) -->
+    <nav class="sectionNav" aria-label="Atalhos da Central Premium">
+      <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
+      <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
+      <a class="sectionNav__pill sectionNav__pill--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
+      <a class="sectionNav__pill" href="#sec-links">🔗 Links Oficiais</a>
     </nav>
 
-    <section class="panel" id="produto-do-dia">
+    <section class="panel" id="sec-produto-do-dia">
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
-          <p>Destaque com botões rápidos (comprar / copiar ID / copiar link).</p>
+          <p>Vitrine com destaque + botões rápidos (comprar / copiar ID / copiar link).</p>
         </div>
         <div class="panel__right">
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
@@ -183,7 +179,7 @@
       </div>
 
       <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
-        <div>🧭 Quer ver mais opções? A <b>Loja Completa</b> tem <b><span data-total-products>—</span> produtos</b> prontos pra comprar.</div>
+        <div>🧭 Se você quer <b>ver mais opções</b>: a Loja Completa tem <b><span data-total-products>—</span> produtos</b> prontos pra comprar.</div>
       </div>
 
       <div class="featured" id="featured">
@@ -191,7 +187,7 @@
       </div>
     </section>
 
-    <section class="panel" id="vitrine-rapida">
+    <section class="panel" id="sec-vitrine-rapida">
       <div class="panel__head">
         <div>
           <h2>Vitrine rápida</h2>
@@ -219,15 +215,15 @@
       </div>
 
       <div class="imperialNote" role="note" aria-label="Mensagem para leigos">
-        <div>💡 <b>Dica:</b> se você não achou o que queria aqui, clique em <b>Loja Completa</b> — lá ficam <b>todos os itens</b> organizados. ✅</div>
+        <div>💡 <b>Não se perca:</b> se você não achou o que queria aqui, a <b>Loja Completa</b> tem <b><span data-total-products>—</span> itens</b> — clique em <b>“Ver todos”</b>.</div>
       </div>
     </section>
 
-    <section class="panel" id="links-oficiais">
+    <section class="panel" id="sec-links">
       <div class="panel__head">
         <div>
           <h2>Links oficiais</h2>
-          <p>Hub premium (pra bio). A Loja Completa é o CTA principal.</p>
+          <p>Hub premium (pra bio). A loja está no topo como CTA principal.</p>
         </div>
       </div>
 
@@ -235,7 +231,7 @@
         <a class="linkCard linkCard--gold" href="./loja.html">
           <div class="linkCard__icon">🛒</div>
           <div class="linkCard__txt">
-            <div class="linkCard__title">Loja Completa</div>
+            <div class="linkCard__title">Vitrine / Loja</div>
             <div class="linkCard__sub">Todos os produtos (clique e compre)</div>
           </div>
           <div class="linkCard__go">›</div>
