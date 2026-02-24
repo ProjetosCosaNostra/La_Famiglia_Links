@@ -178,6 +178,67 @@ input:focus-visible{
   gap: 16px;
 }
 
+/* ======= MENU IMPERIAL (fix do “link azul feio”) ======= */
+.sectionNav{
+  position: sticky;
+  top: 10px;
+  z-index: 60;
+
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  align-items:center;
+  justify-content:center;
+
+  padding: 10px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(224,195,107,.18);
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.55);
+
+  margin-top: -6px;
+}
+.sectionNav__pill{
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius: 999px;
+  padding: 9px 11px;
+
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: .02em;
+
+  color: rgba(255,255,255,.90);
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+
+  transition: transform .10s ease, filter .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.sectionNav__pill:hover{
+  filter: brightness(1.08);
+  border-color: rgba(224,195,107,.22);
+  box-shadow: 0 10px 22px rgba(0,0,0,.35);
+}
+.sectionNav__pill:active{ transform: translateY(1px); }
+.sectionNav__pill--gold{
+  border-color: rgba(224,195,107,.28);
+  background:
+    radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.16), transparent 60%),
+    rgba(199,162,75,.10);
+  color: rgba(255,236,180,.95);
+}
+
+/* âncora não “come” o topo */
+#sec-produto-do-dia,
+#sec-vitrine-rapida,
+#sec-links{
+  scroll-margin-top: 84px;
+}
+
 /* ======= “Imperial helpers” (novo do index.html) ======= */
 .imperialNote{
   margin-top: 12px;
@@ -242,6 +303,7 @@ input:focus-visible{
 @media (max-width: 520px){
   .floatingStoreCTA{ right: 10px; bottom: 10px; }
   .floatingStoreCTA a{ padding: 10px 12px; border-radius: 14px; }
+  .sectionNav{ top: 8px; }
 }
 
 /* ======= HERO ======= */
@@ -479,7 +541,6 @@ input:focus-visible{
   background: rgba(0,255,170,.82);
   box-shadow: 0 0 18px rgba(0,255,170,.38);
 }
-
 /* ======= PANELS ======= */
 .panel{
   border:1px solid rgba(224,195,107,.22);
@@ -552,6 +613,8 @@ input:focus-visible{
   .featured{grid-template-columns:1fr}
   .title{font-size: 30px;}
 }
+
+/* ======= CARD (featured) ======= */
 .card{
   border: 1px solid rgba(255,255,255,.10);
   background:
@@ -580,31 +643,25 @@ input:focus-visible{
   box-shadow: 0 14px 30px rgba(0,0,0,.55);
 }
 
-/* ===== IMAGEM (FEATURED) — AJUSTE PRO (sem cortar) ===== */
+/* ✅ IMAGEM “DINÂMICA” (sem corte) — usa aspect ratio */
 .card__img{
   background:
     radial-gradient(520px 240px at 70% 20%, rgba(199,162,75,.22), transparent 55%),
     rgba(0,0,0,.38);
   border-bottom: 1px solid rgba(255,255,255,.08);
-
-  /* PRO: altura responsiva e imagem sempre “inteira” */
-  min-height: clamp(220px, 28vw, 330px);
-
   display:flex;
   align-items:center;
   justify-content:center;
   padding: 12px;
   position:relative;
-  overflow:hidden;
+
+  /* deixa o poster respirar e não corta QR */
+  height: clamp(280px, 42vw, 540px);
 }
 .card__img img{
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 100%;
   object-fit: contain;
-  object-position: center;
-  display:block;
   border-radius: 12px;
   box-shadow: 0 16px 42px rgba(0,0,0,.62);
   transition: transform .16s ease, filter .16s ease;
@@ -730,6 +787,7 @@ input:focus-visible{
 }
 @media (max-width: 920px){ .productsGrid{grid-template-columns: repeat(2, 1fr);} }
 @media (max-width: 560px){ .productsGrid{grid-template-columns: 1fr;} }
+
 .pCard{
   border:1px solid rgba(255,255,255,.10);
   background:
@@ -758,30 +816,25 @@ input:focus-visible{
   box-shadow: 0 14px 28px rgba(0,0,0,.55);
 }
 
-/* ===== IMAGEM (GRID) — AJUSTE PRO (sem cortar) ===== */
+/* ✅ IMAGEM “DINÂMICA” no grid (poster 4:5, sem corte) */
 .pImg{
   background:
     radial-gradient(520px 220px at 70% 20%, rgba(199,162,75,.16), transparent 55%),
     rgba(0,0,0,.40);
   border-bottom:1px solid rgba(255,255,255,.08);
 
-  /* PRO: altura responsiva e espaço real pra arte */
-  height: clamp(160px, 18vw, 240px);
+  aspect-ratio: 4 / 5;
+  height:auto;
 
   display:flex;
   align-items:center;
   justify-content:center;
   padding:12px;
-  overflow:hidden;
 }
 .pImg img{
-  width: 100%;
-  height: 100%;
-  max-width:100%;
-  max-height:100%;
+  width:100%;
+  height:100%;
   object-fit:contain;
-  object-position:center;
-  display:block;
   border-radius:10px;
   box-shadow: 0 14px 34px rgba(0,0,0,.60);
   transition: transform .16s ease, filter .16s ease;
@@ -850,7 +903,6 @@ input:focus-visible{
     rgba(199,162,75,.12);
   color:rgba(255,236,180,.95);
 }
-
 /* ======= LINKS GRID ======= */
 .linksGrid{
   padding: 16px;
@@ -930,6 +982,7 @@ input:focus-visible{
     radial-gradient(900px 240px at 15% 0%, rgba(224,195,107,.12), transparent 62%),
     linear-gradient(180deg, rgba(199,162,75,.16), rgba(255,255,255,.02));
 }
+
 /* ======= FOOTER ======= */
 .footer{
   display:flex;
@@ -980,5 +1033,3 @@ input:focus-visible{
   .brandMark::after{animation:none !important;}
   *{scroll-behavior:auto !important;}
 }
-/* (sem conteúdo adicional — esta parte existe só para manter a numeração fixa do arquivo em 4 partes) */
-
