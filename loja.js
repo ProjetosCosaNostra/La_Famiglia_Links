@@ -20,6 +20,11 @@
    PATCH 2026-02-24 (EXPORT LISTA SEM PRINT):
      - Botões: Copiar lista / Baixar TXT / Baixar TXT (tudo) / CSV (tudo)
      - Snapshot em STATE._export (ativos / visível / tudo)
+
+   FIX 2026-02-24 (COMPRAR NÃO REDIRECIONA):
+     - Normaliza links sem https:// (mercadolivre.com/sec/... vira https://mercadolivre.com/sec/...)
+     - buy_url sempre cai em fallback (open_url/check_url/canonical/short/resolved)
+     - Em browsers in-app (IG/FB) força window.open e fallback para location.href
    ========================================================== */
 
 (() => {
@@ -155,7 +160,6 @@
         const boxR = cw / ch;
 
         // Se imagem é “mais vertical” que o box (poster), usar contain (evita cortar)
-        // Se for parecido, cover fica ok.
         if (imgR < (boxR - CN_SMART_THRESHOLD)) return "contain";
         return "cover";
       }
@@ -164,7 +168,6 @@
         const fit = decideFit();
         img.style.objectFit = fit;
 
-        // Se for contain, fundo blur deixa premium e sem buraco feio
         setBg(img.currentSrc || img.src || "");
         if (parent) {
           const bg = parent.querySelector(":scope > .cnImgBg");
@@ -232,9 +235,32 @@
     return raw.trim();
   }
 
+  // =========================
+  // FIX: garante https:// quando vier sem protocolo
+  // =========================
+  function ensureHttpUrl(u) {
+    let s = cleanUrl(u);
+    if (!s) return "";
+
+    // já tem protocolo
+    if (/^https?:\/\//i.test(s)) return s;
+
+    // //dominio/...
+    if (s.startsWith("//")) return "https:" + s;
+
+    // mercadolivre / mercadolibre / meli.* sem protocolo
+    if (/^(mercadolivre|mercadolibre)\./i.test(s)) return "https://" + s;
+    if (/^meli\./i.test(s)) return "https://" + s;
+    if (s.startsWith("meli.la/")) return "https://" + s;
+    if (s.startsWith("meli.co/")) return "https://" + s;
+
+    return s;
+  }
+
   function hostOf(url) {
     try {
-      const u = new URL(String(url || ""));
+      const fixed = ensureHttpUrl(url);
+      const u = new URL(String(fixed || ""));
       let h = (u.hostname || "").toLowerCase().trim();
       if (h.startsWith("www.")) h = h.slice(4);
       return h;
@@ -255,7 +281,8 @@
   }
 
   function isProbablyValidLink(u) {
-    const x = String(u ?? "").toLowerCase().trim();
+    const fixed = ensureHttpUrl(u);
+    const x = String(fixed ?? "").toLowerCase().trim();
     if (!x) return false;
 
     if (x.includes("github.com/user-attachments/assets")) return false;
@@ -265,17 +292,42 @@
   }
 
   function pickBestLink(raw) {
-    const open = cleanUrl(raw.open_url || raw.link || raw.url || "");
-    const check = cleanUrl(raw.check_url || "");
-    const canonical = cleanUrl(raw.canonical_url || "");
-    const resolved = cleanUrl(raw.resolved_url || "");
-    const shorty = cleanUrl(raw.short_url || "");
+    const open = ensureHttpUrl(raw.open_url || raw.link || raw.url || "");
+    const check = ensureHttpUrl(raw.check_url || "");
+    const canonical = ensureHttpUrl(raw.canonical_url || "");
+    const resolved = ensureHttpUrl(raw.resolved_url || "");
+    const shorty = ensureHttpUrl(raw.short_url || "");
 
     const candidates = [open, check, canonical, resolved, shorty].filter(Boolean);
     const primary = candidates.find(isProbablyValidLink) || "";
     const alt = candidates.find((c) => c && c !== primary && isProbablyValidLink(c)) || "";
 
     return { primary, alt, open, check, canonical, resolved, shorty };
+  }
+
+  // FIX: sempre pega o melhor link possível p/ comprar
+  function bestBuyUrl(p) {
+    return ensureHttpUrl(
+      p.buy_url ||
+      p.open_url ||
+      p.check_url ||
+      p.canonical_url ||
+      p.short_url ||
+      p.resolved_url ||
+      ""
+    );
+  }
+
+  // FIX: abre em in-app browsers (IG/FB). Se bloquear popup, cai pro mesmo tab.
+  function openBuy(url) {
+    const u = ensureHttpUrl(url);
+    if (!u) return;
+    try {
+      const w = window.open(u, "_blank", "noopener,noreferrer");
+      if (!w) window.location.href = u;
+    } catch {
+      window.location.href = u;
+    }
   }
 
   function escapeHTML(s) {
@@ -407,7 +459,6 @@
       _raw: raw,
     };
   }
-
   function dedupeProducts(list) {
     const out = [];
     const seen = new Set();
@@ -447,6 +498,7 @@
     const actives = (list || []).filter((p) => p && p.active !== false);
     return actives.find((p) => p.featured) || null;
   }
+
   function featuredHTML(p, isProdutoDoDia) {
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
@@ -455,11 +507,12 @@
          </div>`;
 
     const disabled = (p.active === false);
-    const hasLink = String(p.buy_url || "").startsWith("http");
+    const buyUrl = bestBuyUrl(p);
+    const hasLink = String(buyUrl || "").startsWith("http");
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold" href="${escapeHTML(p.buy_url)}" target="_blank" rel="noopener">COMPRAR AGORA</a>`;
+      : `<a class="btn btn--gold" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
@@ -540,11 +593,12 @@
          </div>`;
 
     const disabled = (p.active === false);
-    const hasLink = String(p.buy_url || "").startsWith("http");
+    const buyUrl = bestBuyUrl(p);
+    const hasLink = String(buyUrl || "").startsWith("http");
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold" href="${escapeHTML(p.buy_url)}" target="_blank" rel="noopener">Comprar</a>`;
+      : `<a class="smallBtn smallBtnGold" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
@@ -609,7 +663,8 @@
         const key = String(b || "").trim();
         if (!key) continue;
         const k = key.toLowerCase();
-        counts.set(k, { label: key, n: (counts.get(k)?.n || 0) + 1 });
+        const prev = counts.get(k);
+        counts.set(k, { label: key, n: ((prev && prev.n) ? prev.n : 0) + 1 });
       }
     }
     return Array.from(counts.values()).sort((a, b) => b.n - a.n);
@@ -740,6 +795,7 @@
       setText(el, `${hh}:${mm}`);
     }
   }
+
   function render() {
     const grid = $("#grid");
     const featuredEl = $("#featured");
@@ -810,14 +866,11 @@
       shownNow: shown.length,
     });
 
-    // =========================
-    // EXPORT SNAPSHOT (LISTA)
-    // =========================
     STATE._export = {
       updated_at: STATE.updated_at || "",
       all: allProducts.slice(),
       active: activeAll.slice(),
-      visible: list.slice(), // já filtrada/ordenada (e com regra do featured aplicada)
+      visible: list.slice(),
       query: STATE.query || "",
       tag: STATE.tag || "",
       sort: STATE.sort || "relev",
@@ -882,7 +935,7 @@
     const v = prompt("Cole o LINK do Mercado Livre (aceita https://mercadolivre.com/sec/... ou https://meli.la/...)", current);
     if (v === null) return;
 
-    const nv = cleanUrl(String(v).trim());
+    const nv = ensureHttpUrl(String(v).trim());
     if (!nv.startsWith("http")) return alert("Link inválido. Precisa começar com http/https.");
     if (!isProbablyValidLink(nv)) return alert("Link inválido: precisa ser do Mercado Livre (mercadolivre/mercadolibre) ou shortlink (meli.la / meli.xx).");
 
@@ -941,6 +994,7 @@
     showToast("Preço atualizado ✅");
     render();
   }
+
   function exportProdutosJson() {
     const out = {
       updated_at: new Date().toISOString(),
@@ -952,8 +1006,9 @@
         r.badges = safeArray(p.badges);
         r.id_busca = p.id_busca;
 
-        r.open_url = p.open_url || p.buy_url || "";
-        r.check_url = p.check_url || r.open_url || "";
+        const b = bestBuyUrl(p);
+        r.open_url = ensureHttpUrl(p.open_url || b || "");
+        r.check_url = ensureHttpUrl(p.check_url || r.open_url || "");
 
         if (p.canonical_url) r.canonical_url = p.canonical_url;
         if (p.short_url) r.short_url = p.short_url;
@@ -1064,7 +1119,7 @@
       const title = String(p.title || "").replaceAll(";", ",");
       const id = String(p.id_busca || "").replaceAll(";", ",");
       const sku = String(p.sku || "").replaceAll(";", ",");
-      const url = String(p.buy_url || p.open_url || "").replaceAll(";", ",");
+      const url = String(bestBuyUrl(p) || "").replaceAll(";", ",");
       rows.push([n, title, id, sku, url].join(";"));
     }
 
@@ -1091,11 +1146,18 @@
     showToast("Lista copiada ✅");
   }
 
+  // FIX: garante que o fundo não capture clique/toque (se algum CSS estiver acima)
+  function makeBgClickThrough() {
+    const bg = document.querySelector(".bg");
+    if (!bg) return;
+    bg.style.pointerEvents = "none";
+    bg.querySelectorAll("*").forEach((el) => { el.style.pointerEvents = "none"; });
+  }
+
   function bind() {
     const q = $("#qLoja");
     const clear = $("#btnClear");
     const copyBtn = $("#btnCopyLoja");
-    const homeBtn = $("#btnHome");
 
     const sortSel = $("#sortSel");
     const moreBtn = $("#btnMore");
@@ -1125,10 +1187,6 @@
         e.preventDefault();
         copyText(lojaUrl());
       });
-    }
-
-    if (homeBtn) {
-      homeBtn.addEventListener("click", () => {});
     }
 
     if (sortSel) {
@@ -1179,7 +1237,19 @@
     if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
     if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
+
     document.addEventListener("click", (e) => {
+      // FIX: força abrir links ML no in-app browser (Comprar/Comprar Agora)
+      const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
+      if (aBuy) {
+        const href = aBuy.getAttribute("href") || aBuy.href || "";
+        if (isProbablyValidLink(href)) {
+          e.preventDefault();
+          openBuy(href);
+          return;
+        }
+      }
+
       const chip = e.target.closest("[data-tag]");
       if (chip && chip.classList.contains("tagChip")) {
         const t = String(chip.getAttribute("data-tag") || "").trim();
@@ -1196,7 +1266,7 @@
       const sku = el.getAttribute("data-sku") || "";
       const p = sku ? findBySku(sku) : null;
 
-      if (action === "copyLink" && p) return copyText(p.buy_url || p.open_url || "");
+      if (action === "copyLink" && p) return copyText(bestBuyUrl(p) || "");
       if (action === "copyAlt" && p) return copyText(p.alt_url || p.canonical_url || p.check_url || "");
       if (action === "copyId" && p) return copyText(p.id_busca || "");
 
@@ -1246,6 +1316,9 @@
   };
 
   async function boot() {
+    // FIX: garante clique passando em mobile (se bg estiver por cima)
+    makeBgClickThrough();
+
     readUrlState();
     setText($("#year"), new Date().getFullYear());
 
