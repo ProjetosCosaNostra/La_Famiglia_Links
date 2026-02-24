@@ -10,6 +10,11 @@
    HOTFIX 2026-02-24 (ANTI-WIPE FRONT):
      - Se a contagem de ativos cair demais (ex: por falso-positivo / bloqueio do ML),
        a UI entra em FAILSAFE e resgata produtos com last_ok recente para não zerar a vitrine.
+
+   PATCH 2026-02-24 (IMAGENS):
+     - Corrige hotlink/referrer com referrerpolicy=no-referrer
+     - Fallback premium quando imagem falhar (para não ficar ícone quebrado)
+     - loading=lazy + decoding=async + object-fit cover
    ========================================================== */
 
 (() => {
@@ -27,6 +32,70 @@
   const FRONT_FAILSAFE_MIN_ACTIVE = 10;     // mínimo absoluto de ativos que a UI “aceita”
   const FRONT_FAILSAFE_MIN_RATIO = 0.35;    // ou 35% do total
   const FRONT_FAILSAFE_OK_DAYS = 7;         // resgata quem teve last_ok nos últimos N dias
+
+  // =========================
+  // IMAGENS: PLACEHOLDER PREMIUM + FIXES
+  // =========================
+  const CN_PLACEHOLDER_IMG =
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700">
+        <defs>
+          <radialGradient id="g" cx="50%" cy="35%" r="75%">
+            <stop offset="0%" stop-color="#2a2417"/>
+            <stop offset="55%" stop-color="#0f0f12"/>
+            <stop offset="100%" stop-color="#07070a"/>
+          </radialGradient>
+          <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f2d27a"/>
+            <stop offset="50%" stop-color="#d7b058"/>
+            <stop offset="100%" stop-color="#8b6a2a"/>
+          </linearGradient>
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.65"/>
+          </filter>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#g)"/>
+        <rect x="42" y="42" width="816" height="616" rx="28" ry="28"
+              fill="rgba(255,255,255,0.02)" stroke="rgba(215,176,88,0.28)" stroke-width="2"/>
+
+        <g filter="url(#shadow)">
+          <text x="50%" y="44%" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+                font-size="56" fill="url(#gold)" letter-spacing="6">COSA NOSTRA</text>
+          <text x="50%" y="52%" text-anchor="middle" font-family="Arial, sans-serif"
+                font-size="22" fill="rgba(255,255,255,0.78)" letter-spacing="2">IMAGEM INDISPONÍVEL</text>
+          <text x="50%" y="60%" text-anchor="middle" font-family="Arial, sans-serif"
+                font-size="18" fill="rgba(215,176,88,0.88)" letter-spacing="1.2">Atualize o campo "image" no produtos.json</text>
+        </g>
+      </svg>`
+    );
+
+  function applyImageFixes(root) {
+    const scope = root || document;
+    const imgs = scope.querySelectorAll('img[data-cnimg="1"]');
+
+    imgs.forEach((img) => {
+      try { img.loading = "lazy"; } catch {}
+      try { img.decoding = "async"; } catch {}
+
+      // Hotlink/referrer (principal motivo do github user-attachments quebrar no Pages)
+      img.setAttribute("referrerpolicy", "no-referrer");
+
+      // Garante preenchimento do card
+      img.style.width = "100%";
+      img.style.height = "100%";
+      img.style.display = "block";
+      if (!img.style.objectFit) img.style.objectFit = "cover";
+
+      // Fallback quando falhar (remove o ícone quebrado)
+      img.addEventListener("error", () => {
+        img.src = CN_PLACEHOLDER_IMG;
+        img.style.objectFit = "contain";
+        img.style.opacity = "0.92";
+      }, { once: true });
+    });
+  }
 
   const toast = $("#toast");
   function showToast(msg = "Copiado ✅") {
@@ -299,7 +368,7 @@
 
   function featuredHTML(p, isProdutoDoDia) {
     const img = p.image
-      ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
+      ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
            Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
          </div>`;
@@ -384,7 +453,7 @@
 
   function productCardHTML(p) {
     const img = p.image
-      ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
+      ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">
            Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
          </div>`;
@@ -645,6 +714,9 @@
       ? featuredHTML(featuredPass, true)
       : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
 
+    // aplica patch de imagens no bloco featured
+    applyImageFixes(featuredEl);
+
     // monta lista da grade
     let list = filtered.slice();
 
@@ -657,6 +729,9 @@
     // paginação
     const shown = list.slice(0, STATE.limit);
     grid.innerHTML = shown.map(productCardHTML).join("");
+
+    // aplica patch de imagens na grade
+    applyImageFixes(grid);
 
     // load more
     const wrap = $("#loadMoreWrap");
