@@ -1,13 +1,15 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine só com produto vendável
-# Versão : v3 (ANTI-WIPE + detecta redirect /social/ + anti-bot 200 + fail-threshold)
+# Versão : v4 (ANTI-WIPE + RECOVERY + BOOTSTRAP + detecta redirect /social/ + anti-bot 200 + fail-threshold)
 #
 # Regras:
 #   - Vitrine só com produto vendável: se link realmente morrer => active=false (ou remove, se LG_REMOVE_ON_DEAD=1)
 #   - Evitar falso-positivo: 403/429/5xx/timeouts/redirect SOCIAL => TEMP (não derruba)
 #   - Só desativa depois de N falhas REAIS seguidas (LG_FAIL_THRESHOLD)
 #   - FAILSAFE: se “quase tudo” cair num run, reverte (anti-wipe)
+#   - RECOVERY: se cair em TEMP mas estava derrubado por wipe antigo, reativa via last_ok (LG_RECOVER_ON_TEMP=1)
+#   - BOOTSTRAP: se a loja estiver zerada, reativa via last_ok recente antes de checar (LG_BOOTSTRAP_IF_ZERO=1)
 #   - Produto do Dia (featured) NUNCA automático
 # ==========================================================
 
@@ -21,7 +23,7 @@ import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 from urllib.parse import urlparse
@@ -49,6 +51,14 @@ TREAT_5XX_TEMP = os.environ.get("LG_TREAT_5XX_TEMP", "1").strip() == "1"
 # FAILSAFE anti-wipe (não deixa a loja zerar)
 FAILSAFE_MIN_ACTIVE = int(os.environ.get("LG_FAILSAFE_MIN_ACTIVE", "10"))
 FAILSAFE_MIN_RATIO = float(os.environ.get("LG_FAILSAFE_MIN_RATIO", "0.35"))
+
+# RECOVERY: se estava derrubado e cair em TEMP (social/captcha), reativa usando last_ok recente
+RECOVER_ON_TEMP = os.environ.get("LG_RECOVER_ON_TEMP", "1").strip() == "1"
+RECOVER_MAX_DAYS = int(os.environ.get("LG_RECOVER_MAX_DAYS", "30"))
+
+# BOOTSTRAP: se loja estiver zerada, reativa via last_ok recente antes de checar (corrige wipe antigo)
+BOOTSTRAP_IF_ZERO = os.environ.get("LG_BOOTSTRAP_IF_ZERO", "1").strip() == "1"
+BOOTSTRAP_MAX_DAYS = int(os.environ.get("LG_BOOTSTRAP_MAX_DAYS", "30"))
 
 
 # =========================
@@ -119,6 +129,28 @@ def _utc_now_iso_z() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def _iso_to_dt(s: str) -> datetime | None:
+    if not s:
+        return None
+    x = str(s).strip()
+    try:
+        if x.endswith("Z"):
+            x = x[:-1] + "+00:00"
+        return datetime.fromisoformat(x)
+    except Exception:
+        return None
+
+
+def _recent_enough(last_ok: str, max_days: int) -> bool:
+    dt = _iso_to_dt(last_ok or "")
+    if not dt:
+        return False
+    now = datetime.now(timezone.utc)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt >= (now - timedelta(days=max_days))
+
+
 def _read_json(path: Path) -> Dict[str, Any]:
     if not path.exists():
         return {"updated_at": _utc_now_iso_z(), "products": []}
@@ -167,6 +199,13 @@ def _path_of(u: str) -> str:
         return ""
 
 
+def _is_social_path(u: str) -> bool:
+    pth = _path_of(u)
+    if not pth:
+        return False
+    return ("/social/" in pth) or pth.endswith("/lists")
+
+
 def _is_ml_url(u: str) -> bool:
     if not u:
         return False
@@ -185,17 +224,6 @@ def _is_ml_url(u: str) -> bool:
         if marker in host:
             return True
 
-    return False
-
-
-def _is_ml_short(u: str) -> bool:
-    host = _host_of(_clean_url(u).lower())
-    if not host:
-        return False
-    if host in _ML_SHORT_HOSTS:
-        return True
-    if re.fullmatch(r"meli\.[a-z]{2,6}", host or ""):
-        return True
     return False
 
 
@@ -288,9 +316,8 @@ def _is_block_or_social_redirect(status: int, final_url: str, body_sample: str) 
     if status in _BLOCK_STATUS:
         return True
 
-    # Se o final_url cai em /social/ (como no seu print), isso é redirect/bloqueio do ML (não é produto morto).
-    pth = _path_of(final_url)
-    if "/social/" in pth or pth.endswith("/lists"):
+    # /social/ ou /lists => NÃO é produto morto, é redirect/landing/anti-bot => TEMP
+    if _is_social_path(final_url):
         return True
 
     # Se o HTML tiver sinais de captcha/anti-bot:
@@ -301,7 +328,8 @@ def _is_block_or_social_redirect(status: int, final_url: str, body_sample: str) 
     return False
 
 
-def _is_definitely_dead(status: int, body_sample: str) -> bool:
+def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
+    # Hard dead real
     if status in _HARD_DEAD_STATUS:
         return True
 
@@ -309,6 +337,15 @@ def _is_definitely_dead(status: int, body_sample: str) -> bool:
     if not text:
         return False
 
+    # Se for página de bloqueio/captcha, NUNCA tratar como dead
+    if _BLOCK_PAGE_RE.search(text):
+        return False
+
+    # Se o destino cair em /social/, NUNCA tratar como dead (mesmo que tenha textos parecidos)
+    if _is_social_path(final_url):
+        return False
+
+    # Indisponível real por padrões conhecidos
     if _UNAVAILABLE_RE.search(text):
         return True
 
@@ -335,31 +372,25 @@ def _check_url(url: str) -> CheckResult:
     if TREAT_5XX_TEMP and status in _TEMP_STATUS:
         return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason=f"temp_{status}")
 
-    dead = _is_definitely_dead(status, sample)
+    dead = _is_definitely_dead(status, final_url, sample)
     if dead:
         return CheckResult(ok=False, temporary=False, status=status, final_url=final_url or u, reason="dead")
 
+    # Se não é dead e não é temp, consideramos OK conservador (não derruba por ruído).
     return CheckResult(ok=True, temporary=False, status=status, final_url=final_url or u, reason="ok")
 
 
 def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
     return (0 if bool(p.get("active")) else 1, 0 if bool(p.get("featured")) else 1)
+
+
 def main() -> int:
     data = _read_json(PRODUTOS_JSON)
     products: List[Dict[str, Any]] = data.get("products") or []
     if not isinstance(products, list):
         products = []
 
-    # snapshot pra FAILSAFE
-    orig: Dict[str, Tuple[bool, bool, int]] = {}
-    for p in products:
-        if isinstance(p, dict):
-            sku = (p.get("sku") or "").strip()
-            if sku:
-                orig[sku] = (bool(p.get("active")), bool(p.get("featured")), int(p.get("guardian_fail_count") or 0))
-
-    active_before = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
-
+    # remove corruptos
     cleaned: List[Dict[str, Any]] = []
     removed_corrupt = 0
     for p in products:
@@ -375,6 +406,37 @@ def main() -> int:
         print(f"AVISO: removi {removed_corrupt} item(ns) corrompido(s) do produtos.json.")
 
     products = cleaned
+
+    # BOOTSTRAP: se a loja estiver zerada, reativa via last_ok recente (corrige wipe antigo)
+    active_before_raw = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
+    if BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= max(1, FAILSAFE_MIN_ACTIVE):
+        boosted = 0
+        for p in products:
+            if not isinstance(p, dict):
+                continue
+            last_ok = (p.get("last_ok") or "").strip()
+            if last_ok and _recent_enough(last_ok, BOOTSTRAP_MAX_DAYS):
+                if not bool(p.get("active")):
+                    p["active"] = True
+                    # não mexe em featured
+                    # zera fail_count pra recomeçar limpo
+                    p["guardian_fail_count"] = 0
+                    boosted += 1
+        print("========================================")
+        print("BOOTSTRAP ATIVADO (loja estava zerada):")
+        print(f"Reativados via last_ok (<= {BOOTSTRAP_MAX_DAYS}d): {boosted}/{len(products)}")
+        print("========================================")
+
+    # snapshot pra FAILSAFE (APÓS bootstrap)
+    orig: Dict[str, Tuple[bool, bool, int]] = {}
+    for p in products:
+        if isinstance(p, dict):
+            sku = (p.get("sku") or "").strip()
+            if sku:
+                orig[sku] = (bool(p.get("active")), bool(p.get("featured")), int(p.get("guardian_fail_count") or 0))
+
+    active_before = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
+
     now = _utc_now_iso_z()
 
     checked = 0
@@ -415,7 +477,20 @@ def main() -> int:
         # TEMP => não derruba e NÃO incrementa fail_count
         if res.temporary:
             temp_count += 1
-            print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url','')}")
+
+            # RECOVERY: se estava inativo (wipe antigo) e temos last_ok recente, reativa
+            if RECOVER_ON_TEMP and (not was_active):
+                last_ok = (p.get("last_ok") or "").strip()
+                if last_ok and _recent_enough(last_ok, RECOVER_MAX_DAYS):
+                    p["active"] = True
+                    p["guardian_fail_count"] = 0
+                    changed += 1
+                    print(f"[RECOVER/TEMP] {sku} -> REATIVADO via last_ok (status={res.status}, final={p.get('guardian_last_final_url','')})")
+                else:
+                    print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url','')}")
+            else:
+                print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url','')}")
+
             out.append(p)
             time.sleep(SLEEP_BETWEEN)
             continue
@@ -441,7 +516,7 @@ def main() -> int:
             time.sleep(SLEEP_BETWEEN)
             continue
 
-        # FAIL real
+        # FAIL real (não-temp)
         dead_count += 1
         fail_count = int(p.get("guardian_fail_count") or 0) + 1
         p["guardian_fail_count"] = fail_count
@@ -508,6 +583,8 @@ def main() -> int:
     print(f"Removed corrupt: {removed_corrupt} | Removed dead: {removed_dead}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
+    print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
+    print(f"BOOTSTRAP_IF_ZERO: {int(BOOTSTRAP_IF_ZERO)} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
     print(f"FAILSAFE_MIN_ACTIVE: {FAILSAFE_MIN_ACTIVE} | FAILSAFE_MIN_RATIO: {FAILSAFE_MIN_RATIO}")
     return 0
 
