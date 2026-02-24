@@ -1,17 +1,22 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
-# Módulo : Link Guardian — Checa links e mantém vitrine só com produto vendável
-# Versão : v5 (ANTI-WIPE + RECOVERY+ + BOOTSTRAP+ + limpa dead antigo + respeita desativação manual)
+# Módulo : Link Guardian — Checa links e mantém vitrine operacional
+# Versão : v5 (ANTI-WIPE REAL + FORCE-RESTORE + SOCIAL=OK + NO-200-DEAD por padrão)
+#
+# Objetivo (prioridade de negócio):
+#   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
+#   2) Evitar desativar produto por bloqueio/anti-bot/ruído.
+#   3) Social redirect (/social/ e /lists) é comum no tracking ML:
+#      por padrão conta como OK (atualiza last_ok) e NÃO derruba.
+#   4) Desativação por padrão só em hard-dead real (404/410).
+#   5) Produto do Dia (featured) NUNCA automático.
 #
 # Regras:
-#   - Vitrine só com produto vendável: se link realmente morrer => active=false (ou remove, se LG_REMOVE_ON_DEAD=1)
-#   - Evitar falso-positivo: 403/429/5xx/timeouts/redirect SOCIAL/CAPTCHA => TEMP (não derruba)
-#   - Só desativa depois de N falhas REAIS seguidas (LG_FAIL_THRESHOLD)
-#   - FAILSAFE: se “quase tudo” cair num run, reverte (anti-wipe)
-#   - RECOVERY: se cair em TEMP mas estava derrubado por wipe antigo, reativa via last_ok (LG_RECOVER_ON_TEMP=1)
-#   - BOOTSTRAP+: se ativo estiver muito baixo (ou zero), reativa via last_ok recente ANTES de checar
-#   - LIMPA DEAD ANTIGO: se TEMP/OK, remove guardian_dead_* e (se reativar) remove guardian_disabled_at
-#   - Produto do Dia (featured) NUNCA automático
+#   - Se active_before == 0: restaura (bootstrap) e, se necessário, FORCE-RESTORE.
+#   - 403/429/captcha/anti-bot => TEMP (não conta falha).
+#   - 5xx/timeout => TEMP (não conta falha).
+#   - 404/410 => HARD DEAD (pode desativar após FAIL_THRESHOLD).
+#   - “dead por conteúdo” (status 200) só se LG_DEAD_ON_BODY=1.
 # ==========================================================
 
 from __future__ import annotations
@@ -42,34 +47,43 @@ SLEEP_BETWEEN = float(os.environ.get("LG_SLEEP_SEC", "0.35"))
 
 MAX_CHECK = int(os.environ.get("LG_MAX_CHECK", "60"))
 
-# Reativação automática: por padrão, SOMENTE se estiver desativado pelo Guardian (não mexe em desativação manual)
-AUTO_REACTIVATE = os.environ.get("LG_AUTO_REACTIVATE", "0").strip() == "1"
-AUTO_REACTIVATE_GUARDIAN_DISABLED = os.environ.get("LG_AUTO_REACTIVATE_GUARDIAN_DISABLED", "1").strip() == "1"
+# Reativar automaticamente quando voltar OK (default: 1 pra recuperar loja rápido)
+AUTO_REACTIVATE = os.environ.get("LG_AUTO_REACTIVATE", "1").strip() == "1"
 
+# Conservador com bloqueio/anti-bot
 CONSERVATIVE_ON_BLOCK = os.environ.get("LG_CONSERVATIVE_ON_BLOCK", "1").strip() == "1"
-FAIL_THRESHOLD = int(os.environ.get("LG_FAIL_THRESHOLD", "2"))
+
+# Quantas falhas HARD seguidas pra desativar (default: 3 mais seguro)
+FAIL_THRESHOLD = int(os.environ.get("LG_FAIL_THRESHOLD", "3"))
+
+# Remove item do JSON se dead (default: 0 — NUNCA remover por padrão)
 REMOVE_ON_DEAD = os.environ.get("LG_REMOVE_ON_DEAD", "0").strip() == "1"
+
+# Tratar 5xx como TEMP (default: 1)
 TREAT_5XX_TEMP = os.environ.get("LG_TREAT_5XX_TEMP", "1").strip() == "1"
 
-# FAILSAFE anti-wipe (não deixa a loja zerar)
+# FAILSAFE anti-wipe (não deixa loja cair demais num run)
 FAILSAFE_MIN_ACTIVE = int(os.environ.get("LG_FAILSAFE_MIN_ACTIVE", "10"))
 FAILSAFE_MIN_RATIO = float(os.environ.get("LG_FAILSAFE_MIN_RATIO", "0.35"))
 
-# RECOVERY: se estava derrubado e cair em TEMP (social/captcha), reativa usando last_ok recente
+# RECOVERY: se estava derrubado e cair em TEMP, reativa usando last_ok recente
 RECOVER_ON_TEMP = os.environ.get("LG_RECOVER_ON_TEMP", "1").strip() == "1"
-RECOVER_MAX_DAYS = int(os.environ.get("LG_RECOVER_MAX_DAYS", "30"))
+RECOVER_MAX_DAYS = int(os.environ.get("LG_RECOVER_MAX_DAYS", "90"))
 
-# BOOTSTRAP+: se loja estiver com muito pouco ativo (ou zerada), reativa via last_ok recente antes de checar
-BOOTSTRAP_IF_LOW_ACTIVE = os.environ.get("LG_BOOTSTRAP_IF_LOW_ACTIVE", "1").strip() == "1"
-BOOTSTRAP_MAX_DAYS = int(os.environ.get("LG_BOOTSTRAP_MAX_DAYS", "30"))
-BOOTSTRAP_MIN_ACTIVE = int(os.environ.get("LG_BOOTSTRAP_MIN_ACTIVE", str(FAILSAFE_MIN_ACTIVE)))
+# BOOTSTRAP: se loja estiver zerada, reativa via last_ok recente antes de checar
+BOOTSTRAP_IF_ZERO = os.environ.get("LG_BOOTSTRAP_IF_ZERO", "1").strip() == "1"
+BOOTSTRAP_MAX_DAYS = int(os.environ.get("LG_BOOTSTRAP_MAX_DAYS", "180"))
 
-# Respeita desativação manual: se active=false e NÃO tem marca do Guardian, não reativa automaticamente
-RESPECT_MANUAL_DISABLED = os.environ.get("LG_RESPECT_MANUAL_DISABLED", "1").strip() == "1"
+# FORCE RESTORE: se mesmo assim continuar zerada, reativa TODO MUNDO (emergência)
+FORCE_RESTORE_ALL_IF_ZERO = os.environ.get("LG_FORCE_RESTORE_ALL_IF_ZERO", "1").strip() == "1"
 
-# Limpa marcas antigas de dead em TEMP/OK
-CLEAR_STALE_DEAD_ON_OK = os.environ.get("LG_CLEAR_STALE_DEAD_ON_OK", "1").strip() == "1"
-CLEAR_STALE_DEAD_ON_TEMP = os.environ.get("LG_CLEAR_STALE_DEAD_ON_TEMP", "1").strip() == "1"
+# SOCIAL redirect (/social/ ou /lists) normalmente é tracking/landing:
+# por padrão conta como OK e atualiza last_ok (pra nunca perder base de recuperação)
+SOCIAL_COUNTS_AS_OK = os.environ.get("LG_SOCIAL_COUNTS_AS_OK", "1").strip() == "1"
+
+# Dead por conteúdo (status 200 + texto “indisponível”) é arriscado:
+# default OFF (0). Só liga se você realmente quiser “vitrine ultra-limpa”.
+DEAD_ON_BODY = os.environ.get("LG_DEAD_ON_BODY", "0").strip() == "1"
 
 
 # =========================
@@ -81,6 +95,7 @@ _ML_SHORT_HOSTS = {"meli.la", "meli.co"}
 
 # =========================
 # Heurística de indisponível (ML às vezes responde 200)
+# (SÓ usado se DEAD_ON_BODY=1)
 # =========================
 _UNAVAILABLE_PATTERNS = [
     # PT-BR
@@ -92,7 +107,6 @@ _UNAVAILABLE_PATTERNS = [
     r"esta\s+p[aá]gina\s+n[aã]o\s+existe",
     r"n[aã]o\s+encontramos",
     r"error\s*404",
-
     # ES
     r"no\s+est[aá]\s+disponible",
     r"ya\s+no\s+est[aá]\s+disponible",
@@ -119,8 +133,6 @@ _BLOCK_PAGE_RE = re.compile("|".join(f"(?:{p})" for p in _BLOCK_PAGE_PATTERNS), 
 _HARD_DEAD_STATUS = {404, 410}
 _BLOCK_STATUS = {403, 429}
 _TEMP_STATUS = {408, 425, 500, 502, 503, 504}
-
-
 # =========================
 # Data structures
 # =========================
@@ -131,6 +143,7 @@ class CheckResult:
     status: int
     final_url: str
     reason: str
+    hard_dead: bool
 
 
 # =========================
@@ -186,6 +199,8 @@ def _clean_url(u: str) -> str:
     while x and x[-1] in junk:
         x = x[:-1]
     return x.strip()
+
+
 def _host_of(u: str) -> str:
     try:
         pu = urlparse(u or "")
@@ -320,16 +335,10 @@ def _fetch_status_and_sample(url: str) -> Tuple[int, str, str]:
         return 0, url, ""
 
 
-def _is_block_or_social_redirect(status: int, final_url: str, body_sample: str) -> bool:
-    # 403/429 já é bloqueio.
+def _is_block_page(status: int, final_url: str, body_sample: str) -> bool:
     if status in _BLOCK_STATUS:
         return True
 
-    # /social/ ou /lists => NÃO é produto morto, é redirect/landing/anti-bot => TEMP
-    if _is_social_path(final_url):
-        return True
-
-    # Se o HTML tiver sinais de captcha/anti-bot:
     text = (body_sample or "").lower()
     if text and _BLOCK_PAGE_RE.search(text):
         return True
@@ -342,6 +351,9 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
     if status in _HARD_DEAD_STATUS:
         return True
 
+    if not DEAD_ON_BODY:
+        return False
+
     text = (body_sample or "").lower()
     if not text:
         return False
@@ -350,7 +362,7 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
     if _BLOCK_PAGE_RE.search(text):
         return False
 
-    # Se o destino cair em /social/, NUNCA tratar como dead (mesmo que tenha textos parecidos)
+    # Se o destino cair em /social/, NUNCA tratar como dead
     if _is_social_path(final_url):
         return False
 
@@ -364,71 +376,72 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
 def _check_url(url: str) -> CheckResult:
     u = _clean_url(url)
     if not u:
-        return CheckResult(ok=False, temporary=False, status=0, final_url="", reason="sem_url")
+        return CheckResult(ok=False, temporary=False, status=0, final_url="", reason="sem_url", hard_dead=False)
 
     if not _is_ml_url(u):
-        return CheckResult(ok=False, temporary=False, status=0, final_url=u, reason="nao_ml")
+        return CheckResult(ok=False, temporary=False, status=0, final_url=u, reason="nao_ml", hard_dead=False)
 
     status, final_url, sample = _fetch_status_and_sample(u)
 
     if status == 0:
-        return CheckResult(ok=False, temporary=True, status=0, final_url=final_url or u, reason="sem_resposta")
+        return CheckResult(ok=False, temporary=True, status=0, final_url=final_url or u, reason="sem_resposta", hard_dead=False)
 
-    # bloqueio/redirect social/captcha => TEMP (não derruba, não conta falha)
-    if CONSERVATIVE_ON_BLOCK and _is_block_or_social_redirect(status, final_url, sample):
-        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason="bloqueio_ou_social")
+    # bloqueio/captcha => TEMP
+    if CONSERVATIVE_ON_BLOCK and _is_block_page(status, final_url, sample):
+        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason="bloqueio", hard_dead=False)
 
+    # SOCIAL redirect (tracking ML):
+    if _is_social_path(final_url):
+        if SOCIAL_COUNTS_AS_OK and status == 200:
+            return CheckResult(ok=True, temporary=False, status=status, final_url=final_url or u, reason="social_ok", hard_dead=False)
+        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason="social_temp", hard_dead=False)
+
+    # 5xx => TEMP
     if TREAT_5XX_TEMP and status in _TEMP_STATUS:
-        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason=f"temp_{status}")
+        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason=f"temp_{status}", hard_dead=False)
 
-    dead = _is_definitely_dead(status, final_url, sample)
-    if dead:
-        return CheckResult(ok=False, temporary=False, status=status, final_url=final_url or u, reason="dead")
+    # DEAD
+    if _is_definitely_dead(status, final_url, sample):
+        hard = status in _HARD_DEAD_STATUS
+        return CheckResult(ok=False, temporary=False, status=status, final_url=final_url or u, reason="dead", hard_dead=hard)
 
     # Se não é dead e não é temp, consideramos OK conservador (não derruba por ruído).
-    return CheckResult(ok=True, temporary=False, status=status, final_url=final_url or u, reason="ok")
-
-
+    return CheckResult(ok=True, temporary=False, status=status, final_url=final_url or u, reason="ok", hard_dead=False)
 def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
     return (0 if bool(p.get("active")) else 1, 0 if bool(p.get("featured")) else 1)
 
 
-def _was_disabled_by_guardian(p: Dict[str, Any]) -> bool:
-    if not isinstance(p, dict):
-        return False
-    if (p.get("guardian_disabled_by") or "").strip().lower() == "link_guardian":
-        return True
-    # legado: tem disabled_at + dead_reason (ou fail_count) => provavelmente Guardian
-    if p.get("guardian_disabled_at") and (p.get("guardian_dead_reason") or p.get("guardian_fail_count")):
-        return True
-    return False
-
-
-def _is_manual_disabled(p: Dict[str, Any]) -> bool:
-    # active=false sem marca do Guardian => manual
-    if not isinstance(p, dict):
-        return False
-    if bool(p.get("active")):
-        return False
-    return not _was_disabled_by_guardian(p)
-
-
-def _clear_dead_fields(p: Dict[str, Any], clear_disabled_at: bool = False) -> None:
-    # limpa marcas antigas de dead (evita “contaminação” da vitrine)
-    for k in ("guardian_dead_status", "guardian_dead_reason"):
+def _clear_dead_markers(p: Dict[str, Any]) -> None:
+    # limpa “sujeira” antiga quando volta OK
+    for k in ("guardian_dead_status", "guardian_dead_reason", "guardian_disabled_at"):
         if k in p:
             try:
                 del p[k]
             except Exception:
                 pass
 
-    if clear_disabled_at:
-        for k in ("guardian_disabled_at", "guardian_disabled_by"):
-            if k in p:
-                try:
-                    del p[k]
-                except Exception:
-                    pass
+
+def _force_restore_all(products: List[Dict[str, Any]]) -> int:
+    boosted = 0
+    for p in products:
+        if not isinstance(p, dict):
+            continue
+        sku = (p.get("sku") or "").strip()
+        if not sku:
+            continue
+        # regra: não mexe em featured
+        if not bool(p.get("active")):
+            p["active"] = True
+            p["guardian_fail_count"] = 0
+            _clear_dead_markers(p)
+            boosted += 1
+        else:
+            # mesmo ativo, limpa fail_count se tinha lixo
+            if int(p.get("guardian_fail_count") or 0) != 0:
+                p["guardian_fail_count"] = 0
+    return boosted
+
+
 def main() -> int:
     data = _read_json(PRODUTOS_JSON)
     products: List[Dict[str, Any]] = data.get("products") or []
@@ -452,47 +465,49 @@ def main() -> int:
 
     products = cleaned
 
-    now = _utc_now_iso_z()
-
-    # ===== BOOTSTRAP+ (antes de checar) =====
+    # BOOTSTRAP: se a loja estiver zerada, reativa via last_ok recente (corrige wipe antigo)
     active_before_raw = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
-    total = len(products)
-
-    if BOOTSTRAP_IF_LOW_ACTIVE and total > 0 and active_before_raw < min(total, BOOTSTRAP_MIN_ACTIVE):
+    if BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= 1:
         boosted = 0
         for p in products:
             if not isinstance(p, dict):
                 continue
-
-            if bool(p.get("active")):
-                continue
-
-            if RESPECT_MANUAL_DISABLED and _is_manual_disabled(p):
-                continue
-
             last_ok = (p.get("last_ok") or "").strip()
             if last_ok and _recent_enough(last_ok, BOOTSTRAP_MAX_DAYS):
-                p["active"] = True
-                p["guardian_fail_count"] = 0
-                _clear_dead_fields(p, clear_disabled_at=True)
-                p["guardian_recovered_at"] = now
-                boosted += 1
+                if not bool(p.get("active")):
+                    p["active"] = True
+                    p["guardian_fail_count"] = 0
+                    _clear_dead_markers(p)
+                    boosted += 1
 
         print("========================================")
-        print("BOOTSTRAP+ ATIVADO (ativo muito baixo):")
-        print(f"Active before: {active_before_raw} | Total: {total} | MinActive: {BOOTSTRAP_MIN_ACTIVE}")
-        print(f"Reativados via last_ok (<= {BOOTSTRAP_MAX_DAYS}d): {boosted}/{total}")
+        print("BOOTSTRAP ATIVADO (loja estava zerada):")
+        print(f"Reativados via last_ok (<= {BOOTSTRAP_MAX_DAYS}d): {boosted}/{len(products)}")
         print("========================================")
 
-    # snapshot pra FAILSAFE (APÓS bootstrap)
+    # FORCE RESTORE: se ainda estiver zerada, reativa TODO MUNDO (emergência)
+    active_after_bootstrap = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
+    if FORCE_RESTORE_ALL_IF_ZERO and active_after_bootstrap == 0 and len(products) >= 1:
+        boosted_all = _force_restore_all(products)
+        print("========================================")
+        print("FORCE-RESTORE ATIVADO (ainda zerada):")
+        print(f"Reativados (emergência): {boosted_all}/{len(products)}")
+        print("========================================")
+
+    # snapshot pra FAILSAFE (APÓS bootstrap/force-restore)
     orig: Dict[str, Tuple[bool, bool, int]] = {}
     for p in products:
         if isinstance(p, dict):
             sku = (p.get("sku") or "").strip()
             if sku:
-                orig[sku] = (bool(p.get("active")), bool(p.get("featured")), int(p.get("guardian_fail_count") or 0))
+                orig[sku] = (
+                    bool(p.get("active")),
+                    bool(p.get("featured")),
+                    int(p.get("guardian_fail_count") or 0),
+                )
 
     active_before = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
+    now = _utc_now_iso_z()
 
     checked = 0
     changed = 0
@@ -515,11 +530,8 @@ def main() -> int:
             continue
 
         sku = (p.get("sku") or "").strip()
-
         was_active = bool(p.get("active"))
         was_featured = bool(p.get("featured"))
-        was_guardian_disabled = _was_disabled_by_guardian(p)
-        manual_disabled = _is_manual_disabled(p)
 
         res = _check_url(url)
 
@@ -536,17 +548,13 @@ def main() -> int:
         if res.temporary:
             temp_count += 1
 
-            if CLEAR_STALE_DEAD_ON_TEMP:
-                _clear_dead_fields(p, clear_disabled_at=False)
-
-            # RECOVERY: se estava inativo por Guardian (wipe antigo) e last_ok recente, reativa
-            if RECOVER_ON_TEMP and (not was_active) and (not manual_disabled):
+            # RECOVERY: se estava inativo e temos last_ok recente, reativa
+            if RECOVER_ON_TEMP and (not was_active):
                 last_ok = (p.get("last_ok") or "").strip()
                 if last_ok and _recent_enough(last_ok, RECOVER_MAX_DAYS):
                     p["active"] = True
                     p["guardian_fail_count"] = 0
-                    _clear_dead_fields(p, clear_disabled_at=True)
-                    p["guardian_recovered_at"] = now
+                    _clear_dead_markers(p)
                     changed += 1
                     print(f"[RECOVER/TEMP] {sku} -> REATIVADO via last_ok (status={res.status}, final={p.get('guardian_last_final_url','')})")
                 else:
@@ -562,32 +570,21 @@ def main() -> int:
             ok_count += 1
             p["last_ok"] = now
 
-            # limpa dead legado e zera fail_count
             if int(p.get("guardian_fail_count") or 0) != 0:
                 p["guardian_fail_count"] = 0
                 changed += 1
             else:
                 p["guardian_fail_count"] = 0
 
-            if CLEAR_STALE_DEAD_ON_OK:
-                _clear_dead_fields(p, clear_disabled_at=True)
+            # se voltou OK, limpa marcas de dead antigas
+            _clear_dead_markers(p)
 
-            # reativação:
-            # - se LG_AUTO_REACTIVATE=1 => reativa qualquer inativo (exceto manual, se RESPECT_MANUAL_DISABLED=1)
-            # - se LG_AUTO_REACTIVATE_GUARDIAN_DISABLED=1 => reativa apenas o que Guardian desativou
-            if not was_active and not (RESPECT_MANUAL_DISABLED and manual_disabled):
-                if AUTO_REACTIVATE:
-                    p["active"] = True
-                    changed += 1
-                    print(f"[OK] {sku} -> REATIVADO (AUTO_REACTIVATE=1)")
-                elif AUTO_REACTIVATE_GUARDIAN_DISABLED and was_guardian_disabled:
-                    p["active"] = True
-                    changed += 1
-                    print(f"[OK] {sku} -> REATIVADO (guardian-disabled)")
-                else:
-                    print(f"[OK] {sku} status={res.status} (mantido inativo)")
+            if AUTO_REACTIVATE and (not was_active):
+                p["active"] = True
+                changed += 1
+                print(f"[OK] {sku} -> REATIVADO ({res.reason})")
             else:
-                print(f"[OK] {sku} status={res.status}")
+                print(f"[OK] {sku} status={res.status} ({res.reason})")
 
             out.append(p)
             time.sleep(SLEEP_BETWEEN)
@@ -595,6 +592,17 @@ def main() -> int:
 
         # FAIL real (não-temp)
         dead_count += 1
+
+        # Só deixa “contar falha” e desativar quando for HARD DEAD de verdade (404/410),
+        # ou quando DEAD_ON_BODY=1 (aí pode ser 200 com texto, mas é por sua conta/risco).
+        if not res.hard_dead and not DEAD_ON_BODY:
+            # trata como TEMP “suspeito” pra NÃO derrubar loja por ruído
+            temp_count += 1
+            print(f"[SUSPEITO->TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url','')}")
+            out.append(p)
+            time.sleep(SLEEP_BETWEEN)
+            continue
+
         fail_count = int(p.get("guardian_fail_count") or 0) + 1
         p["guardian_fail_count"] = fail_count
         p["guardian_dead_status"] = int(res.status)
@@ -607,9 +615,7 @@ def main() -> int:
             if was_featured:
                 p["featured"] = False
                 changed += 1
-
             p["guardian_disabled_at"] = now
-            p["guardian_disabled_by"] = "link_guardian"
             changed += 1
 
             print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD})")
@@ -650,6 +656,16 @@ def main() -> int:
         data["guardian_failsafe_note"] = f"Mass deactivation prevented (active_after={active_after})."
         changed += 1
 
+    # Se ainda assim terminar zerado, força restore (último paraquedas)
+    active_final = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
+    if FORCE_RESTORE_ALL_IF_ZERO and active_final == 0 and len(out) >= 1:
+        boosted_all = _force_restore_all(out)
+        print("========================================")
+        print("FORCE-RESTORE FINAL (paraquedas):")
+        print(f"Reativados (final): {boosted_all}/{len(out)}")
+        print("========================================")
+        changed += 1
+
     data["products"] = out
     data["updated_at"] = now
 
@@ -662,10 +678,11 @@ def main() -> int:
     print(f"Removed corrupt: {removed_corrupt} | Removed dead: {removed_dead}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
+    print(f"SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | DEAD_ON_BODY: {int(DEAD_ON_BODY)}")
     print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
-    print(f"BOOTSTRAP_IF_LOW_ACTIVE: {int(BOOTSTRAP_IF_LOW_ACTIVE)} | BOOTSTRAP_MIN_ACTIVE: {BOOTSTRAP_MIN_ACTIVE} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
+    print(f"BOOTSTRAP_IF_ZERO: {int(BOOTSTRAP_IF_ZERO)} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
+    print(f"FORCE_RESTORE_ALL_IF_ZERO: {int(FORCE_RESTORE_ALL_IF_ZERO)}")
     print(f"FAILSAFE_MIN_ACTIVE: {FAILSAFE_MIN_ACTIVE} | FAILSAFE_MIN_RATIO: {FAILSAFE_MIN_RATIO}")
-    print(f"RESPECT_MANUAL_DISABLED: {int(RESPECT_MANUAL_DISABLED)} | AUTO_REACTIVATE: {int(AUTO_REACTIVATE)} | AUTO_REACTIVATE_GUARDIAN_DISABLED: {int(AUTO_REACTIVATE_GUARDIAN_DISABLED)}")
     return 0
 
 
