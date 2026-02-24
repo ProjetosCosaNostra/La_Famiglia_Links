@@ -416,3 +416,534 @@
       </div>
     `;
   }
+    function buildTagCounts(list) {
+    const counts = new Map();
+    for (const p of (list || [])) {
+      for (const b of safeArray(p.badges)) {
+        const key = String(b || "").trim();
+        if (!key) continue;
+        const k = key.toLowerCase();
+        counts.set(k, { label: key, n: (counts.get(k)?.n || 0) + 1 });
+      }
+    }
+    // ordena por frequência
+    return Array.from(counts.values()).sort((a, b) => b.n - a.n);
+  }
+
+  function setText(el, v) {
+    if (!el) return;
+    el.textContent = String(v ?? "");
+  }
+
+  function updateUrlState() {
+    const sp = new URLSearchParams(location.search);
+
+    if (STATE.query) sp.set("q", STATE.query);
+    else sp.delete("q");
+
+    if (STATE.tag) sp.set("tag", STATE.tag);
+    else sp.delete("tag");
+
+    if (STATE.sort && STATE.sort !== "relev") sp.set("sort", STATE.sort);
+    else sp.delete("sort");
+
+    // preserva admin
+    if (ADMIN) sp.set("admin", "1");
+
+    const next = `${location.pathname}?${sp.toString()}`;
+    history.replaceState({}, "", next);
+  }
+
+  function readUrlState() {
+    const sp = new URLSearchParams(location.search);
+    STATE.query = sp.get("q") || "";
+    STATE.tag = sp.get("tag") || "";
+    STATE.sort = sp.get("sort") || "relev";
+  }
+
+  function applySort(list) {
+    const arr = (list || []).slice();
+
+    if (STATE.sort === "az") {
+      arr.sort((a, b) => String(a.title).localeCompare(String(b.title), "pt-BR"));
+      return arr;
+    }
+
+    if (STATE.sort === "recent") {
+      arr.sort((a, b) => String(b.last_ok || "").localeCompare(String(a.last_ok || "")));
+      return arr;
+    }
+
+    // "relev": featured primeiro, depois title
+    arr.sort((a, b) => {
+      const fa = a.featured ? 0 : 1;
+      const fb = b.featured ? 0 : 1;
+      if (fa !== fb) return fa - fb;
+      return String(a.title).localeCompare(String(b.title), "pt-BR");
+    });
+    return arr;
+  }
+
+  function matchesFilter(p) {
+    const q = (STATE.query || "").trim().toLowerCase();
+    const tag = (STATE.tag || "").trim().toLowerCase();
+
+    if (tag) {
+      const has = safeArray(p.badges).some((b) => String(b).toLowerCase() === tag);
+      if (!has) return false;
+    }
+
+    if (!q) return true;
+
+    const hay = (
+      (p.title || "") + " " +
+      (p.sku || "") + " " +
+      (p.id_busca || "") + " " +
+      safeArray(p.badges).join(" ") + " " +
+      (p.price_text || "")
+    ).toLowerCase();
+
+    return hay.includes(q);
+  }
+
+  function renderTagChips(activeList) {
+    const box = $("#tagChips");
+    const totalTagsEl = $("#tagsCount");
+    if (!box) return;
+
+    const counts = buildTagCounts(activeList);
+    setText(totalTagsEl, counts.length);
+
+    // top 18 tags
+    const top = counts.slice(0, 18);
+
+    const allActive = !STATE.tag;
+    const chips = [];
+
+    chips.push(`
+      <button class="tagChip ${allActive ? "tagChip--active" : ""}" type="button" data-tag="">
+        👑 Tudo
+      </button>
+    `);
+
+    for (const t of top) {
+      const isActive = (STATE.tag || "").toLowerCase() === String(t.label).toLowerCase();
+      chips.push(`
+        <button class="tagChip ${isActive ? "tagChip--active" : ""}" type="button" data-tag="${escapeHTML(String(t.label).toLowerCase())}">
+          ${escapeHTML(t.label)} <span style="opacity:.75;">(${t.n})</span>
+        </button>
+      `);
+    }
+
+    box.innerHTML = chips.join("");
+  }
+
+  function setCounters({ totalActive, totalFiltered, shownNow }) {
+    setText($("#countAll"), totalActive);
+    setText($("#countShown"), totalFiltered);
+    setText($("#countRendered"), shownNow);
+
+    const fs = $("#filterStatus");
+    if (fs) fs.style.display = (STATE.query || STATE.tag) ? "inline" : "none";
+  }
+
+  function setUpdatedAt(iso) {
+    const el = $("#lastUpdate");
+    const pretty = iso ? formatUpdatedAt(iso) : "";
+    if (pretty) setText(el, pretty);
+    else {
+      const d = new Date();
+      const hh = String(d.getHours()).padStart(2, "0");
+      const mm = String(d.getMinutes()).padStart(2, "0");
+      setText(el, `${hh}:${mm}`);
+    }
+  }
+
+  function render() {
+    const grid = $("#grid");
+    const featuredEl = $("#featured");
+    if (!grid || !featuredEl) return;
+
+    // ativos (vendáveis)
+    const activeAll = dedupeProducts(STATE.products).filter((p) => p && p.active !== false);
+
+    // chips/categorias sempre baseadas no “ativo total”
+    renderTagChips(activeAll);
+
+    // aplica filtros
+    let filtered = activeAll.filter(matchesFilter);
+    filtered = applySort(filtered);
+
+    const destaque = getFeatured(activeAll);
+
+    // featured só “entra” se passar no filtro (se tiver filtro)
+    let featuredPass = null;
+    if (destaque) {
+      featuredPass = matchesFilter(destaque) ? destaque : null;
+    }
+
+    // render featured bloco
+    featuredEl.innerHTML = featuredPass
+      ? featuredHTML(featuredPass, true)
+      : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
+
+    // monta lista da grade
+    let list = filtered.slice();
+
+    if (featuredPass && SHOW_FEATURED_IN_GRID) {
+      list = [featuredPass, ...list.filter((p) => p.sku !== featuredPass.sku)];
+    } else if (featuredPass && !SHOW_FEATURED_IN_GRID) {
+      list = list.filter((p) => p.sku !== featuredPass.sku);
+    }
+
+    // paginação
+    const shown = list.slice(0, STATE.limit);
+    grid.innerHTML = shown.map(productCardHTML).join("");
+
+    // load more
+    const wrap = $("#loadMoreWrap");
+    if (wrap) {
+      if (shown.length < list.length) wrap.classList.remove("hidden");
+      else wrap.classList.add("hidden");
+    }
+
+    setCounters({
+      totalActive: activeAll.length,
+      totalFiltered: list.length,
+      shownNow: shown.length,
+    });
+
+    updateUrlState();
+  }
+
+  async function fetchProducts() {
+    const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error("produtos.json não encontrado");
+    const data = await res.json();
+
+    STATE.updated_at = cleanText(data.updated_at || "");
+    setUpdatedAt(STATE.updated_at);
+
+    const list = normalizeProducts(data)
+      .map(adaptForUI)
+      .filter(Boolean);
+
+    return dedupeProducts(list);
+  }
+
+  // ===== ADMIN ACTIONS (em memória) =====
+  function findBySku(sku) {
+    return STATE.products.find((p) => p && p.sku === sku) || null;
+  }
+
+  function setFeaturedSku(sku) {
+    for (const p of STATE.products) {
+      if (!p) continue;
+      p.featured = (p.sku === sku);
+      if (p._raw) p._raw.featured = p.featured;
+    }
+    showToast("Produto do Dia definido ⭐");
+    render();
+  }
+
+  function toggleActiveSku(sku) {
+    const p = findBySku(sku);
+    if (!p) return;
+
+    p.active = !p.active;
+    if (p.active === false && p.featured) p.featured = false;
+
+    if (p._raw) {
+      p._raw.active = p.active;
+      p._raw.featured = p.featured;
+    }
+
+    showToast(p.active ? "Ativado ✅" : "Desativado ⛔");
+    render();
+  }
+
+  function editLinkSku(sku) {
+    const p = findBySku(sku);
+    if (!p) return;
+
+    const current = p.open_url || p.buy_url || p.check_url || p.canonical_url || "";
+    const v = prompt("Cole o LINK do Mercado Livre (aceita https://mercadolivre.com/sec/... ou https://meli.la/...)", current);
+    if (v === null) return;
+
+    const nv = cleanUrl(String(v).trim());
+    if (!nv.startsWith("http")) return alert("Link inválido. Precisa começar com http/https.");
+    if (!isProbablyValidLink(nv)) return alert("Link inválido: precisa ser do Mercado Livre (mercadolivre/mercadolibre) ou shortlink (meli.la / meli.xx).");
+
+    p.open_url = nv;
+    p.check_url = nv;
+    p.buy_url = nv;
+
+    if (p._raw) {
+      p._raw.open_url = nv;
+      p._raw.check_url = nv;
+    }
+
+    showToast("Link atualizado ✅");
+    render();
+  }
+
+  function editIdSku(sku) {
+    const p = findBySku(sku);
+    if (!p) return;
+
+    const v = prompt("Cole o ID de busca (ex: 5J5PKG-JBQE)", p.id_busca || "");
+    if (v === null) return;
+
+    p.id_busca = cleanText(v);
+    if (p._raw) p._raw.id_busca = p.id_busca;
+
+    showToast("ID atualizado ✅");
+    render();
+  }
+
+  function editBadgesSku(sku) {
+    const p = findBySku(sku);
+    if (!p) return;
+
+    const current = safeArray(p.badges).join(", ");
+    const v = prompt("Badges (separe por vírgula)", current);
+    if (v === null) return;
+
+    p.badges = String(v).split(",").map((s) => cleanText(s)).filter(Boolean);
+    if (p._raw) p._raw.badges = p.badges.slice();
+
+    showToast("Badges atualizadas ✅");
+    render();
+  }
+
+  function editPriceSku(sku) {
+    const p = findBySku(sku);
+    if (!p) return;
+
+    const v = prompt("Preço/Texto (ex: R$ 199,90 • Frete grátis)", p.price_text || "");
+    if (v === null) return;
+
+    p.price_text = cleanText(v);
+    if (p._raw) p._raw.price_text = p.price_text;
+
+    showToast("Preço atualizado ✅");
+    render();
+  }
+
+  function exportProdutosJson() {
+    const out = {
+      updated_at: new Date().toISOString(),
+      products: dedupeProducts(STATE.products).map((p) => {
+        const r = cloneObj(p._raw || {});
+
+        r.sku = p.sku;
+        r.title = p.title;
+        r.badges = safeArray(p.badges);
+        r.id_busca = p.id_busca;
+
+        r.open_url = p.open_url || p.buy_url || "";
+        r.check_url = p.check_url || r.open_url || "";
+
+        if (p.canonical_url) r.canonical_url = p.canonical_url;
+        if (p.short_url) r.short_url = p.short_url;
+        if (p.resolved_url) r.resolved_url = p.resolved_url;
+
+        r.image = p.image || r.image || "";
+        r.price_text = p.price_text || "";
+
+        r.active = (p.active !== false);
+        r.featured = (p.featured === true);
+
+        r.last_checked = p.last_checked || r.last_checked || "";
+        r.last_ok = p.last_ok || r.last_ok || "";
+
+        // remove lixo de UI
+        delete r._raw;
+        return r;
+      }),
+    };
+
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "produtos.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    showToast("Exportado ⬇️");
+  }
+
+  // ===== EVENTS =====
+  function bind() {
+    const q = $("#qLoja");
+    const clear = $("#btnClear");
+    const copyBtn = $("#btnCopyLoja");
+    const homeBtn = $("#btnHome");
+
+    const sortSel = $("#sortSel");
+    const moreBtn = $("#btnMore");
+
+    if (q) {
+      q.value = STATE.query || "";
+      q.addEventListener("input", (e) => {
+        STATE.query = String(e.target.value || "");
+        STATE.limit = PAGE_SIZE;
+        render();
+      });
+    }
+
+    if (clear) {
+      clear.addEventListener("click", () => {
+        if (q) q.value = "";
+        STATE.query = "";
+        STATE.tag = "";
+        STATE.limit = PAGE_SIZE;
+
+        // reset chips active
+        render();
+        showToast("Filtro limpo ✅");
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        copyText(lojaUrl());
+      });
+    }
+
+    if (homeBtn) {
+      homeBtn.addEventListener("click", () => {
+        // navega normal
+      });
+    }
+
+    if (sortSel) {
+      sortSel.value = STATE.sort || "relev";
+      sortSel.addEventListener("change", (e) => {
+        STATE.sort = String(e.target.value || "relev");
+        STATE.limit = PAGE_SIZE;
+        render();
+      });
+    }
+
+    if (moreBtn) {
+      moreBtn.addEventListener("click", () => {
+        STATE.limit += PAGE_SIZE;
+        render();
+      });
+    }
+
+    // delegação de clicks (copy + tags + admin)
+    document.addEventListener("click", (e) => {
+      const chip = e.target.closest("[data-tag]");
+      if (chip && chip.classList.contains("tagChip")) {
+        const t = String(chip.getAttribute("data-tag") || "").trim();
+        STATE.tag = t; // já vem lower
+        STATE.limit = PAGE_SIZE;
+        render();
+        return;
+      }
+
+      const el = e.target.closest("[data-action]");
+      if (!el) return;
+
+      const action = el.getAttribute("data-action");
+      const sku = el.getAttribute("data-sku") || "";
+      const p = sku ? findBySku(sku) : null;
+
+      if (action === "copyLink" && p) return copyText(p.buy_url || p.open_url || "");
+      if (action === "copyAlt" && p) return copyText(p.alt_url || p.canonical_url || p.check_url || "");
+      if (action === "copyId" && p) return copyText(p.id_busca || "");
+
+      if (!ADMIN) return;
+
+      if (action === "setFeatured") return setFeaturedSku(sku);
+      if (action === "toggleActive") return toggleActiveSku(sku);
+      if (action === "editLink") return editLinkSku(sku);
+      if (action === "editId") return editIdSku(sku);
+      if (action === "editBadges") return editBadgesSku(sku);
+      if (action === "editPrice") return editPriceSku(sku);
+    });
+
+    // admin bar
+    if (ADMIN) {
+      const adminBar = $("#adminBar");
+      if (adminBar) adminBar.style.display = "flex";
+
+      const btnExport = $("#btnExport");
+      const btnReload = $("#btnReload");
+
+      if (btnExport) btnExport.addEventListener("click", exportProdutosJson);
+      if (btnReload) {
+        btnReload.addEventListener("click", async () => {
+          showToast("Recarregando…");
+          try {
+            STATE.products = await fetchProducts();
+            showToast("Carregado ✅");
+            STATE.limit = PAGE_SIZE;
+            render();
+          } catch {
+            alert("Erro ao carregar produtos.json");
+          }
+        });
+      }
+    }
+  }
+
+  // ===== STATE =====
+  const STATE = {
+    products: [],
+    updated_at: "",
+    query: "",
+    tag: "",
+    sort: "relev",
+    limit: PAGE_SIZE,
+  };
+
+  async function boot() {
+    readUrlState();
+
+    // status no topo
+    setText($("#year"), new Date().getFullYear());
+
+    try {
+      STATE.products = await fetchProducts();
+    } catch {
+      // fallback mínimo (não quebra)
+      STATE.products = [{
+        sku: "fallback-power-bank-20000mah",
+        title: "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)",
+        badges: ["Achados do Dia", "20000mAh", "22.5W Turbo", "USB-C", "Preto"],
+        id_busca: "5J5PKG-H0JA",
+        open_url: "https://mercadolivre.com/sec/1iReZ7Y",
+        check_url: "https://mercadolivre.com/sec/1iReZ7Y",
+        canonical_url: "https://lista.mercadolivre.com.br/5J5PKG-H0JA",
+        short_url: "",
+        resolved_url: "",
+        image: "assets/produtos/power_bank_20000mah.png",
+        price_text: "",
+        active: true,
+        featured: true,
+        last_checked: "",
+        last_ok: "",
+      }].map(adaptForUI).filter(Boolean);
+    }
+
+    // aplica estado do URL (q/tag/sort)
+    const q = $("#qLoja");
+    if (q) q.value = STATE.query || "";
+
+    const sortSel = $("#sortSel");
+    if (sortSel) sortSel.value = STATE.sort || "relev";
+
+    // se tag veio do URL, mantém
+    STATE.tag = (STATE.tag || "").toLowerCase().trim();
+
+    bind();
+    render();
+  }
+
+  document.addEventListener("DOMContentLoaded", boot);
+})(); 
