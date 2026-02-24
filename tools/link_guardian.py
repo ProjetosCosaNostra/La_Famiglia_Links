@@ -1,15 +1,16 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine só com produto vendável
-# Versão : v4 (ANTI-WIPE + RECOVERY + BOOTSTRAP + detecta redirect /social/ + anti-bot 200 + fail-threshold)
+# Versão : v5 (ANTI-WIPE + RECOVERY+ + BOOTSTRAP+ + limpa dead antigo + respeita desativação manual)
 #
 # Regras:
 #   - Vitrine só com produto vendável: se link realmente morrer => active=false (ou remove, se LG_REMOVE_ON_DEAD=1)
-#   - Evitar falso-positivo: 403/429/5xx/timeouts/redirect SOCIAL => TEMP (não derruba)
+#   - Evitar falso-positivo: 403/429/5xx/timeouts/redirect SOCIAL/CAPTCHA => TEMP (não derruba)
 #   - Só desativa depois de N falhas REAIS seguidas (LG_FAIL_THRESHOLD)
 #   - FAILSAFE: se “quase tudo” cair num run, reverte (anti-wipe)
 #   - RECOVERY: se cair em TEMP mas estava derrubado por wipe antigo, reativa via last_ok (LG_RECOVER_ON_TEMP=1)
-#   - BOOTSTRAP: se a loja estiver zerada, reativa via last_ok recente antes de checar (LG_BOOTSTRAP_IF_ZERO=1)
+#   - BOOTSTRAP+: se ativo estiver muito baixo (ou zero), reativa via last_ok recente ANTES de checar
+#   - LIMPA DEAD ANTIGO: se TEMP/OK, remove guardian_dead_* e (se reativar) remove guardian_disabled_at
 #   - Produto do Dia (featured) NUNCA automático
 # ==========================================================
 
@@ -41,9 +42,11 @@ SLEEP_BETWEEN = float(os.environ.get("LG_SLEEP_SEC", "0.35"))
 
 MAX_CHECK = int(os.environ.get("LG_MAX_CHECK", "60"))
 
+# Reativação automática: por padrão, SOMENTE se estiver desativado pelo Guardian (não mexe em desativação manual)
 AUTO_REACTIVATE = os.environ.get("LG_AUTO_REACTIVATE", "0").strip() == "1"
-CONSERVATIVE_ON_BLOCK = os.environ.get("LG_CONSERVATIVE_ON_BLOCK", "1").strip() == "1"
+AUTO_REACTIVATE_GUARDIAN_DISABLED = os.environ.get("LG_AUTO_REACTIVATE_GUARDIAN_DISABLED", "1").strip() == "1"
 
+CONSERVATIVE_ON_BLOCK = os.environ.get("LG_CONSERVATIVE_ON_BLOCK", "1").strip() == "1"
 FAIL_THRESHOLD = int(os.environ.get("LG_FAIL_THRESHOLD", "2"))
 REMOVE_ON_DEAD = os.environ.get("LG_REMOVE_ON_DEAD", "0").strip() == "1"
 TREAT_5XX_TEMP = os.environ.get("LG_TREAT_5XX_TEMP", "1").strip() == "1"
@@ -56,9 +59,17 @@ FAILSAFE_MIN_RATIO = float(os.environ.get("LG_FAILSAFE_MIN_RATIO", "0.35"))
 RECOVER_ON_TEMP = os.environ.get("LG_RECOVER_ON_TEMP", "1").strip() == "1"
 RECOVER_MAX_DAYS = int(os.environ.get("LG_RECOVER_MAX_DAYS", "30"))
 
-# BOOTSTRAP: se loja estiver zerada, reativa via last_ok recente antes de checar (corrige wipe antigo)
-BOOTSTRAP_IF_ZERO = os.environ.get("LG_BOOTSTRAP_IF_ZERO", "1").strip() == "1"
+# BOOTSTRAP+: se loja estiver com muito pouco ativo (ou zerada), reativa via last_ok recente antes de checar
+BOOTSTRAP_IF_LOW_ACTIVE = os.environ.get("LG_BOOTSTRAP_IF_LOW_ACTIVE", "1").strip() == "1"
 BOOTSTRAP_MAX_DAYS = int(os.environ.get("LG_BOOTSTRAP_MAX_DAYS", "30"))
+BOOTSTRAP_MIN_ACTIVE = int(os.environ.get("LG_BOOTSTRAP_MIN_ACTIVE", str(FAILSAFE_MIN_ACTIVE)))
+
+# Respeita desativação manual: se active=false e NÃO tem marca do Guardian, não reativa automaticamente
+RESPECT_MANUAL_DISABLED = os.environ.get("LG_RESPECT_MANUAL_DISABLED", "1").strip() == "1"
+
+# Limpa marcas antigas de dead em TEMP/OK
+CLEAR_STALE_DEAD_ON_OK = os.environ.get("LG_CLEAR_STALE_DEAD_ON_OK", "1").strip() == "1"
+CLEAR_STALE_DEAD_ON_TEMP = os.environ.get("LG_CLEAR_STALE_DEAD_ON_TEMP", "1").strip() == "1"
 
 
 # =========================
@@ -175,8 +186,6 @@ def _clean_url(u: str) -> str:
     while x and x[-1] in junk:
         x = x[:-1]
     return x.strip()
-
-
 def _host_of(u: str) -> str:
     try:
         pu = urlparse(u or "")
@@ -384,6 +393,42 @@ def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
     return (0 if bool(p.get("active")) else 1, 0 if bool(p.get("featured")) else 1)
 
 
+def _was_disabled_by_guardian(p: Dict[str, Any]) -> bool:
+    if not isinstance(p, dict):
+        return False
+    if (p.get("guardian_disabled_by") or "").strip().lower() == "link_guardian":
+        return True
+    # legado: tem disabled_at + dead_reason (ou fail_count) => provavelmente Guardian
+    if p.get("guardian_disabled_at") and (p.get("guardian_dead_reason") or p.get("guardian_fail_count")):
+        return True
+    return False
+
+
+def _is_manual_disabled(p: Dict[str, Any]) -> bool:
+    # active=false sem marca do Guardian => manual
+    if not isinstance(p, dict):
+        return False
+    if bool(p.get("active")):
+        return False
+    return not _was_disabled_by_guardian(p)
+
+
+def _clear_dead_fields(p: Dict[str, Any], clear_disabled_at: bool = False) -> None:
+    # limpa marcas antigas de dead (evita “contaminação” da vitrine)
+    for k in ("guardian_dead_status", "guardian_dead_reason"):
+        if k in p:
+            try:
+                del p[k]
+            except Exception:
+                pass
+
+    if clear_disabled_at:
+        for k in ("guardian_disabled_at", "guardian_disabled_by"):
+            if k in p:
+                try:
+                    del p[k]
+                except Exception:
+                    pass
 def main() -> int:
     data = _read_json(PRODUTOS_JSON)
     products: List[Dict[str, Any]] = data.get("products") or []
@@ -407,24 +452,36 @@ def main() -> int:
 
     products = cleaned
 
-    # BOOTSTRAP: se a loja estiver zerada, reativa via last_ok recente (corrige wipe antigo)
+    now = _utc_now_iso_z()
+
+    # ===== BOOTSTRAP+ (antes de checar) =====
     active_before_raw = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
-    if BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= max(1, FAILSAFE_MIN_ACTIVE):
+    total = len(products)
+
+    if BOOTSTRAP_IF_LOW_ACTIVE and total > 0 and active_before_raw < min(total, BOOTSTRAP_MIN_ACTIVE):
         boosted = 0
         for p in products:
             if not isinstance(p, dict):
                 continue
+
+            if bool(p.get("active")):
+                continue
+
+            if RESPECT_MANUAL_DISABLED and _is_manual_disabled(p):
+                continue
+
             last_ok = (p.get("last_ok") or "").strip()
             if last_ok and _recent_enough(last_ok, BOOTSTRAP_MAX_DAYS):
-                if not bool(p.get("active")):
-                    p["active"] = True
-                    # não mexe em featured
-                    # zera fail_count pra recomeçar limpo
-                    p["guardian_fail_count"] = 0
-                    boosted += 1
+                p["active"] = True
+                p["guardian_fail_count"] = 0
+                _clear_dead_fields(p, clear_disabled_at=True)
+                p["guardian_recovered_at"] = now
+                boosted += 1
+
         print("========================================")
-        print("BOOTSTRAP ATIVADO (loja estava zerada):")
-        print(f"Reativados via last_ok (<= {BOOTSTRAP_MAX_DAYS}d): {boosted}/{len(products)}")
+        print("BOOTSTRAP+ ATIVADO (ativo muito baixo):")
+        print(f"Active before: {active_before_raw} | Total: {total} | MinActive: {BOOTSTRAP_MIN_ACTIVE}")
+        print(f"Reativados via last_ok (<= {BOOTSTRAP_MAX_DAYS}d): {boosted}/{total}")
         print("========================================")
 
     # snapshot pra FAILSAFE (APÓS bootstrap)
@@ -436,8 +493,6 @@ def main() -> int:
                 orig[sku] = (bool(p.get("active")), bool(p.get("featured")), int(p.get("guardian_fail_count") or 0))
 
     active_before = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
-
-    now = _utc_now_iso_z()
 
     checked = 0
     changed = 0
@@ -460,8 +515,11 @@ def main() -> int:
             continue
 
         sku = (p.get("sku") or "").strip()
+
         was_active = bool(p.get("active"))
         was_featured = bool(p.get("featured"))
+        was_guardian_disabled = _was_disabled_by_guardian(p)
+        manual_disabled = _is_manual_disabled(p)
 
         res = _check_url(url)
 
@@ -478,12 +536,17 @@ def main() -> int:
         if res.temporary:
             temp_count += 1
 
-            # RECOVERY: se estava inativo (wipe antigo) e temos last_ok recente, reativa
-            if RECOVER_ON_TEMP and (not was_active):
+            if CLEAR_STALE_DEAD_ON_TEMP:
+                _clear_dead_fields(p, clear_disabled_at=False)
+
+            # RECOVERY: se estava inativo por Guardian (wipe antigo) e last_ok recente, reativa
+            if RECOVER_ON_TEMP and (not was_active) and (not manual_disabled):
                 last_ok = (p.get("last_ok") or "").strip()
                 if last_ok and _recent_enough(last_ok, RECOVER_MAX_DAYS):
                     p["active"] = True
                     p["guardian_fail_count"] = 0
+                    _clear_dead_fields(p, clear_disabled_at=True)
+                    p["guardian_recovered_at"] = now
                     changed += 1
                     print(f"[RECOVER/TEMP] {sku} -> REATIVADO via last_ok (status={res.status}, final={p.get('guardian_last_final_url','')})")
                 else:
@@ -499,16 +562,30 @@ def main() -> int:
             ok_count += 1
             p["last_ok"] = now
 
+            # limpa dead legado e zera fail_count
             if int(p.get("guardian_fail_count") or 0) != 0:
                 p["guardian_fail_count"] = 0
                 changed += 1
             else:
                 p["guardian_fail_count"] = 0
 
-            if AUTO_REACTIVATE and (not was_active):
-                p["active"] = True
-                changed += 1
-                print(f"[OK] {sku} -> REATIVADO")
+            if CLEAR_STALE_DEAD_ON_OK:
+                _clear_dead_fields(p, clear_disabled_at=True)
+
+            # reativação:
+            # - se LG_AUTO_REACTIVATE=1 => reativa qualquer inativo (exceto manual, se RESPECT_MANUAL_DISABLED=1)
+            # - se LG_AUTO_REACTIVATE_GUARDIAN_DISABLED=1 => reativa apenas o que Guardian desativou
+            if not was_active and not (RESPECT_MANUAL_DISABLED and manual_disabled):
+                if AUTO_REACTIVATE:
+                    p["active"] = True
+                    changed += 1
+                    print(f"[OK] {sku} -> REATIVADO (AUTO_REACTIVATE=1)")
+                elif AUTO_REACTIVATE_GUARDIAN_DISABLED and was_guardian_disabled:
+                    p["active"] = True
+                    changed += 1
+                    print(f"[OK] {sku} -> REATIVADO (guardian-disabled)")
+                else:
+                    print(f"[OK] {sku} status={res.status} (mantido inativo)")
             else:
                 print(f"[OK] {sku} status={res.status}")
 
@@ -530,7 +607,9 @@ def main() -> int:
             if was_featured:
                 p["featured"] = False
                 changed += 1
+
             p["guardian_disabled_at"] = now
+            p["guardian_disabled_by"] = "link_guardian"
             changed += 1
 
             print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD})")
@@ -584,8 +663,9 @@ def main() -> int:
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
     print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
-    print(f"BOOTSTRAP_IF_ZERO: {int(BOOTSTRAP_IF_ZERO)} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
+    print(f"BOOTSTRAP_IF_LOW_ACTIVE: {int(BOOTSTRAP_IF_LOW_ACTIVE)} | BOOTSTRAP_MIN_ACTIVE: {BOOTSTRAP_MIN_ACTIVE} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
     print(f"FAILSAFE_MIN_ACTIVE: {FAILSAFE_MIN_ACTIVE} | FAILSAFE_MIN_RATIO: {FAILSAFE_MIN_RATIO}")
+    print(f"RESPECT_MANUAL_DISABLED: {int(RESPECT_MANUAL_DISABLED)} | AUTO_REACTIVATE: {int(AUTO_REACTIVATE)} | AUTO_REACTIVATE_GUARDIAN_DISABLED: {int(AUTO_REACTIVATE_GUARDIAN_DISABLED)}")
     return 0
 
 
