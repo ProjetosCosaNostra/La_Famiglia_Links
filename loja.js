@@ -16,6 +16,10 @@
      - fallback premium quando falhar
      - MODO PROFISSIONAL: imagem inteira (contain) + fundo blur automático
      - smart-fit: evita crop em poster vertical
+
+   PATCH 2026-02-24 (EXPORT LISTA SEM PRINT):
+     - Botões: Copiar lista / Baixar TXT / Baixar TXT (tudo) / CSV (tudo)
+     - Snapshot em STATE._export (ativos / visível / tudo)
    ========================================================== */
 
 (() => {
@@ -443,7 +447,6 @@
     const actives = (list || []).filter((p) => p && p.active !== false);
     return actives.find((p) => p.featured) || null;
   }
-
   function featuredHTML(p, isProdutoDoDia) {
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
@@ -737,7 +740,6 @@
       setText(el, `${hh}:${mm}`);
     }
   }
-
   function render() {
     const grid = $("#grid");
     const featuredEl = $("#featured");
@@ -807,6 +809,19 @@
       totalFiltered: list.length,
       shownNow: shown.length,
     });
+
+    // =========================
+    // EXPORT SNAPSHOT (LISTA)
+    // =========================
+    STATE._export = {
+      updated_at: STATE.updated_at || "",
+      all: allProducts.slice(),
+      active: activeAll.slice(),
+      visible: list.slice(), // já filtrada/ordenada (e com regra do featured aplicada)
+      query: STATE.query || "",
+      tag: STATE.tag || "",
+      sort: STATE.sort || "relev",
+    };
 
     updateUrlState();
   }
@@ -926,7 +941,6 @@
     showToast("Preço atualizado ✅");
     render();
   }
-
   function exportProdutosJson() {
     const out = {
       updated_at: new Date().toISOString(),
@@ -968,6 +982,113 @@
     a.remove();
 
     showToast("Exportado ⬇️");
+  }
+
+  // ==========================================================
+  // EXPORT: LISTA DE PRODUTOS (TXT/CSV) — 1 clique (sem print)
+  // ==========================================================
+  function two(n){ return String(n).padStart(2, "0"); }
+
+  function dateStamp() {
+    const d = new Date();
+    return `${d.getFullYear()}-${two(d.getMonth()+1)}-${two(d.getDate())}_${two(d.getHours())}${two(d.getMinutes())}`;
+  }
+
+  function fileSafe(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[^\w\-]+/g, "_")
+      .replace(/_+/g, "_")
+      .replace(/^_+|_+$/g, "");
+  }
+
+  function downloadFile(filename, content, mime) {
+    const blob = new Blob([content], { type: mime || "text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  function exportListGet(kind) {
+    const snap = STATE._export || {};
+    if (kind === "all") return Array.isArray(snap.all) ? snap.all : [];
+    if (kind === "active") return Array.isArray(snap.active) ? snap.active : [];
+    if (kind === "visible") return Array.isArray(snap.visible) ? snap.visible : [];
+    return [];
+  }
+
+  function exportListTxt(kind) {
+    const snap = STATE._export || {};
+    const list = exportListGet(kind);
+
+    const now = new Date().toLocaleString("pt-BR");
+    const title =
+      kind === "all" ? "LISTA (TUDO)" :
+      kind === "visible" ? "LISTA (VISÍVEL / FILTRADA)" :
+      "LISTA (ATIVOS)";
+
+    const header = [
+      "Cosa Nostra — Loja Completa",
+      title,
+      `Gerado em: ${now}`,
+      snap.updated_at ? `updated_at: ${snap.updated_at}` : "",
+      `Total: ${list.length}`,
+      (kind === "visible" && (snap.query || snap.tag))
+        ? `Filtro: q="${snap.query || ""}" tag="${snap.tag || ""}" sort="${snap.sort || "relev"}"`
+        : "",
+      "",
+    ].filter(Boolean).join("\n");
+
+    const lines = list.map((p, i) => {
+      const name = (p && p.title) ? String(p.title) : "";
+      const id = (p && p.id_busca) ? String(p.id_busca) : "";
+      if (id) return `${i + 1}. ${name} (ID: ${id})`;
+      return `${i + 1}. ${name}`;
+    });
+
+    return header + "\n" + lines.join("\n") + "\n";
+  }
+
+  function exportListCsv(kind) {
+    const list = exportListGet(kind);
+
+    const rows = [];
+    rows.push(["n", "title", "id_busca", "sku", "buy_url"].join(";"));
+
+    for (let i = 0; i < list.length; i++) {
+      const p = list[i] || {};
+      const n = i + 1;
+      const title = String(p.title || "").replaceAll(";", ",");
+      const id = String(p.id_busca || "").replaceAll(";", ",");
+      const sku = String(p.sku || "").replaceAll(";", ",");
+      const url = String(p.buy_url || p.open_url || "").replaceAll(";", ",");
+      rows.push([n, title, id, sku, url].join(";"));
+    }
+
+    return rows.join("\n") + "\n";
+  }
+
+  function doExportTxt(kind) {
+    const txt = exportListTxt(kind);
+    const fname = `lista_${fileSafe(kind)}_${dateStamp()}.txt`;
+    downloadFile(fname, txt, "text/plain;charset=utf-8");
+    showToast("Lista baixada ⬇️");
+  }
+
+  function doExportCsv(kind) {
+    const csv = exportListCsv(kind);
+    const fname = `lista_${fileSafe(kind)}_${dateStamp()}.csv`;
+    downloadFile(fname, csv, "text/csv;charset=utf-8");
+    showToast("CSV baixado ⬇️");
+  }
+
+  async function doCopyTxt(kind) {
+    const txt = exportListTxt(kind);
+    await copyText(txt);
+    showToast("Lista copiada ✅");
   }
 
   function bind() {
@@ -1026,6 +1147,38 @@
       });
     }
 
+    // =========================
+    // EXPORT UI: botões (sem print)
+    // =========================
+    (function ensureExportRow(){
+      const tools = document.querySelector(".lojaTools");
+      if (!tools) return;
+      if (document.getElementById("cnExportRow")) return;
+
+      const row = document.createElement("div");
+      row.className = "toolRow";
+      row.id = "cnExportRow";
+      row.style.marginTop = "6px";
+      row.innerHTML = `
+        <div style="display:flex; gap:10px; flex-wrap:wrap; width:100%; justify-content:flex-end;">
+          <button class="btn btn--tiny btn--glass" type="button" id="btnCopyList">📋 Copiar lista (ativos)</button>
+          <button class="btn btn--tiny btn--gold"  type="button" id="btnDlList">⬇️ Baixar lista (.txt)</button>
+          <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ Baixar lista (tudo)</button>
+          <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
+        </div>
+      `;
+      tools.appendChild(row);
+    })();
+
+    const btnCopyList = $("#btnCopyList");
+    const btnDlList = $("#btnDlList");
+    const btnDlListAll = $("#btnDlListAll");
+    const btnDlCsvAll = $("#btnDlCsvAll");
+
+    if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
+    if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
+    if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
+    if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
     document.addEventListener("click", (e) => {
       const chip = e.target.closest("[data-tag]");
       if (chip && chip.classList.contains("tagChip")) {
@@ -1089,6 +1242,7 @@
     sort: "relev",
     limit: PAGE_SIZE,
     _failsafeNotified: false,
+    _export: null,
   };
 
   async function boot() {
