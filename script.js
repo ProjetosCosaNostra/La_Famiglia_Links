@@ -3,6 +3,11 @@
    - Sem dateStyle/timeStyle (quebra em alguns celulares)
    - Sem replaceAll / toSorted / optional chaining
    - Copy com fallback (execCommand)
+
+   ✅ FIX LINK/COMPRAR (2026-02-24):
+   - getLink() agora aceita open_url/check_url/canonical_url/short_url/resolved_url
+   - normaliza links sem https://
+   - abrir em in-app browsers (IG/FB): window.open + fallback location.href
 */
 (function () {
   'use strict';
@@ -54,9 +59,39 @@
     return Promise.resolve(fallbackCopy(text));
   }
 
+  // ✅ garante que links sem protocolo abram (mercadolivre.com/... -> https://mercadolivre.com/...)
+  function ensureHttpUrl(u) {
+    var s = trim(u);
+    if (!s) return '';
+
+    if (/^https?:\/\//i.test(s)) return s;
+    if (s.indexOf('//') === 0) return 'https:' + s;
+
+    if (/^(mercadolivre|mercadolibre)\./i.test(s)) return 'https://' + s;
+    if (/^meli\./i.test(s)) return 'https://' + s;
+    if (s.indexOf('meli.la/') === 0) return 'https://' + s;
+    if (s.indexOf('meli.co/') === 0) return 'https://' + s;
+
+    return s;
+  }
+
+  // ✅ abre em IG/FB in-app: se window.open bloquear, cai no mesmo tab
+  function openBuy(url) {
+    var u = ensureHttpUrl(url);
+    if (!u || u === '#') return;
+    try {
+      var w = window.open(u, '_blank', 'noopener,noreferrer');
+      if (!w) window.location.href = u;
+    } catch (e) {
+      window.location.href = u;
+    }
+  }
+
   function parseBadges(p) {
     var b = p.badges || p.tags || p.badge || p.badges_tags || p.badgesTags;
-    if (Array.isArray(b)) return b;
+    if (Array.isArray(b)) {
+      return b.map(function (x) { return trim(x); }).filter(function (x) { return x; });
+    }
     if (typeof b === 'string') {
       return b.split(',').map(function (x) { return trim(x); }).filter(function (x) { return x; });
     }
@@ -67,12 +102,27 @@
     return p.image_url || p.image || p.img || p.imageUrl || p.imageURL || p.image_path || p.imagePath || p.media || p.cover || '';
   }
 
+  // ✅ FIX: pega link nos campos certos do CMS (open_url/check_url/canonical_url/short_url/resolved_url)
   function getLink(p) {
-    return p.link || p.url || p.href || p.mercadolivre_link || p.mercado_livre_link || p.ml_link || '';
+    var link =
+      p.open_url ||
+      p.check_url ||
+      p.canonical_url ||
+      p.short_url ||
+      p.resolved_url ||
+      p.link ||
+      p.url ||
+      p.href ||
+      p.mercadolivre_link ||
+      p.mercado_livre_link ||
+      p.ml_link ||
+      '';
+
+    return ensureHttpUrl(link);
   }
 
   function getMlId(p) {
-    return p.ml_id || p.id_ml || p.mercadolivre_id || p.mercado_livre_id || p.id || '';
+    return p.id_busca || p.ml_id || p.id_ml || p.mercadolivre_id || p.mercado_livre_id || p.id || '';
   }
 
   function isActive(p) {
@@ -89,7 +139,6 @@
 
   function formatIsoToPt(iso) {
     iso = safeText(iso);
-    // yyyy-mm-ddTHH:MM:SSZ
     var m = iso.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
     if (!m) return iso ? iso : 'agora';
     var dd = m[3], mm = m[2], yyyy = m[1], hh = m[4], mi = m[5];
@@ -119,6 +168,13 @@
     qsa('[data-quick-products]').forEach(function (el) { el.textContent = String(n); });
   }
 
+  // ✅ garante que a camada de fundo não “coma” cliques no celular (se CSS estiver por cima)
+  function makeBgClickThrough() {
+    var bg = qs('.bg');
+    if (!bg) return;
+    bg.style.pointerEvents = 'none';
+    qsa('.bg *').forEach(function (el) { el.style.pointerEvents = 'none'; });
+  }
   function renderFeatured(p) {
     var root = qs('#featured');
     if (!root) return;
@@ -185,12 +241,20 @@
 
     var row1 = document.createElement('div');
     row1.className = 'cnRow';
+
     var aBuy = document.createElement('a');
     aBuy.className = 'btn btn--gold btn--tiny';
     aBuy.textContent = 'COMPRAR AGORA';
-    aBuy.href = getLink(p) || '#';
+    var buyLink = getLink(p);
+    aBuy.href = buyLink || '#';
     aBuy.target = '_blank';
-    aBuy.rel = 'noopener';
+    aBuy.rel = 'noopener noreferrer';
+    aBuy.onclick = function (ev) {
+      if (ev && ev.preventDefault) ev.preventDefault();
+      if (!buyLink) { toast('Link do produto não encontrado'); return false; }
+      openBuy(buyLink);
+      return false;
+    };
     row1.appendChild(aBuy);
 
     var bCopyId = document.createElement('button');
@@ -217,7 +281,6 @@
     bAlt.className = 'btn btn--glass btn--tiny';
     bAlt.textContent = 'Copiar Link Alternativo';
     bAlt.onclick = function () {
-      // alternativa: abrir pela Loja completa (mesma página) — útil se meli.la bloquear
       var alt = (location.origin + location.pathname.replace(/index\.html$/,'') + 'loja.html');
       copyText(alt).then(function (ok) { toast(ok ? 'Link alternativo copiado ✅' : 'Falha ao copiar'); });
     };
@@ -257,7 +320,6 @@
     img.alt = safeText(p.title || p.sku || 'Produto');
     var src = getImage(p);
     if (src) img.src = src;
-
     card.appendChild(img);
 
     var pad = document.createElement('div');
@@ -291,9 +353,16 @@
     var buy = document.createElement('a');
     buy.className = 'btn btn--gold btn--tiny';
     buy.textContent = 'Comprar';
-    buy.href = getLink(p) || '#';
+    var buyLink = getLink(p);
+    buy.href = buyLink || '#';
     buy.target = '_blank';
-    buy.rel = 'noopener';
+    buy.rel = 'noopener noreferrer';
+    buy.onclick = function (ev) {
+      if (ev && ev.preventDefault) ev.preventDefault();
+      if (!buyLink) { toast('Link do produto não encontrado'); return false; }
+      openBuy(buyLink);
+      return false;
+    };
     row.appendChild(buy);
 
     var cId = document.createElement('button');
@@ -326,7 +395,7 @@
     if (!grid) return;
     grid.innerHTML = '';
 
-    var limit = 9; // ✅ igual no PC (prévia)
+    var limit = 9; // prévia
     var n = Math.min(limit, list.length);
     for (var i = 0; i < n; i++) {
       grid.appendChild(makeQuickCard(list[i]));
@@ -368,16 +437,15 @@
     var btnCopyLoja = qs('#copyLoja');
     if (btnCopyLoja) {
       btnCopyLoja.addEventListener('click', function () {
-        var link = location.origin + location.pathname.replace(/index\.html$/,'');
-        copyText(link).then(function (ok) { toast(ok ? 'Link da vitrine copiado ✅' : 'Falha ao copiar'); });
+        var loja = new URL('./loja.html', location.href).toString();
+        copyText(loja).then(function (ok) { toast(ok ? 'Link da vitrine copiado ✅' : 'Falha ao copiar'); });
       });
     }
 
     var btnCopyHome = qs('[data-copy="bio"]');
     if (btnCopyHome) {
       btnCopyHome.addEventListener('click', function () {
-        var link = location.origin + location.pathname;
-        copyText(link).then(function (ok) { toast(ok ? 'Link da home copiado ✅' : 'Falha ao copiar'); });
+        copyText(location.href).then(function (ok) { toast(ok ? 'Link da home copiado ✅' : 'Falha ao copiar'); });
       });
     }
 
@@ -396,9 +464,9 @@
   }
 
   function init() {
+    makeBgClickThrough();
     bindButtons();
 
-    // ano
     var y = new Date().getFullYear();
     var yEl = qs('#year');
     if (yEl) yEl.textContent = String(y);
@@ -417,7 +485,6 @@
         setTotals(state.active.length);
         setLastUpdate(state.updated_at);
 
-        // featured
         var feat = null;
         for (var i = 0; i < state.sorted.length; i++) {
           if (isFeatured(state.sorted[i])) { feat = state.sorted[i]; break; }
@@ -428,10 +495,9 @@
         renderFeatured(state.featured);
         bindSearch(state);
 
-        // também atualiza o CTA flutuante
         qsa('[data-total-products]').forEach(function (el) { el.textContent = String(state.active.length); });
       })
-      .catch(function (e) {
+      .catch(function () {
         var rootF = qs('#featured');
         if (rootF) {
           rootF.innerHTML = '<div class="imperialNote"><b>ERRO:</b> não consegui carregar <b>produtos.json</b> no celular. Tenta abrir o link com barra no final: <b>/La_Famiglia_Links/</b>.</div>';
