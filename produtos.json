@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-25T13:45:52Z",
+  "updated_at": "2026-02-25T16:49:34Z",
   "products": [
     {
       "sku": "gimbal-dji-osmo-mobile-se",
@@ -1700,9 +1700,36 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-BV6Z",
       "image": "https://github.com/user-attachments/assets/8e1283fd-7a84-45f1-8933-794b842c15d6",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/228ZyUW",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPeyMZIsEmPcfQjNYte8CwazHV1a9KC4awtvvKJl%2FAThoovW15UzEQtP0OjRntpzOdWcYJJhoABe4ESclHGsj18y4%2FW3smoFLGrdbPdwz%2BalnNWdXbIs6%2B398ZhNWlqEK%2BUzzOdjD2nTxhlWnONI62F5m2oHXrSROLZECF%2B8xJIgLi68XszATi2bgYDzQKuJDBpqKPI%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
+      "title": "Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Cabelo",
+        "Escova Secadora",
+        "4 em 1",
+        "1300W",
+        "Cabo Giratório 360°",
+        "Rosa",
+        "Britânia"
+      ],
+      "id_busca": "5J5PKG-K8TV",
+      "open_url": "https://meli.la/1Vd3P8y",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-K8TV",
+      "image": "https://github.com/user-attachments/assets/3d1d68fa-92c8-4d09-84c7-979eb0c04b50",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1Vd3P8y",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
