@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-25T06:47:31Z",
+  "updated_at": "2026-02-25T09:28:25Z",
   "products": [
     {
       "sku": "microfone-lapela-boya-by-v10-usb-c",
@@ -22,7 +22,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-0XE6",
       "image": "https://github.com/user-attachments/assets/fa5976c4-3a32-4c5e-9b90-9a571b7e7e5d",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1Fwa1Z6",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8d8g7OW%2F%2FJ%2FC0Qu9PMJg1c3MbnxpYQkbC9vNrqb2Nf8rKUyGeeJMWQ7eFEeoXucAzCOxlLegE75wfgNm%2FbBCHims4sucQYnKnpdy7rIHeyMYH0zo8qiNQHwXrLBGspqgz9Fn8ioIsa2%2Fndz4RdePgIoz1XTABK0dsisgXuvC0dxeo%2FqOkdsIU6zg64V%2F%2BBqBLUL7M%3D",
       "price_text": "",
@@ -1645,6 +1645,33 @@
       "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAzl6%2FTQAniuLdaxa3S70MgGJ2ukdIJimGf0EQ3ROcvDFWzWIgeCFpnskbJ4%2FUqNUnLst42Gbd4wD8s%2B3oXQkklUaNTmJunmsOsGaF%2B2Zwno6eTSlBSbn%2BBfh2JvSouKTqiy7RRQ42m%2FXItyyGEgPQWySXO%2B3bzCIsoaDRkSyKqeVOKSSy%2FjN4b8Mbh3RHCWfTBkqw%3D",
       "guardian_last_reason": "social_ok",
       "guardian_fail_count": 0
+    },
+    {
+      "sku": "gimbal-dji-osmo-mobile-se",
+      "title": "Gimbal DJI Osmo Mobile SE — Estabilizador para Celular (Reels/Filmagem)",
+      "badges": [
+        "Achados do Dia",
+        "Creator",
+        "Gimbal",
+        "Estabilizador",
+        "Filmagem",
+        "Reels",
+        "TikTok",
+        "Vídeo",
+        "Smartphone"
+      ],
+      "id_busca": "5J5PKG-C1TY",
+      "open_url": "https://meli.la/1bsuctK",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-C1TY",
+      "image": "https://github.com/user-attachments/assets/1a86acab-ce29-4cfd-9f5b-c5df6b5edadb",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1bsuctK",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
