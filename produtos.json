@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-25T12:33:51Z",
+  "updated_at": "2026-02-25T13:45:52Z",
   "products": [
     {
       "sku": "gimbal-dji-osmo-mobile-se",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-C1TY",
       "image": "https://github.com/user-attachments/assets/1a86acab-ce29-4cfd-9f5b-c5df6b5edadb",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1bsuctK",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
       "price_text": "",
@@ -1677,6 +1677,35 @@
       "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAzl6%2FTQAniuLdaxa3S70MgGJ2ukdIJimGf0EQ3ROcvDFWzWIgeCFpnskbJ4%2FUqNUnLst42Gbd4wD8s%2B3oXQkklUaNTmJunmsOsGaF%2B2Zwno6eTSlBSbn%2BBfh2JvSouKTqiy7RRQ42m%2FXItyyGEgPQWySXO%2B3bzCIsoaDRkSyKqeVOKSSy%2FjN4b8Mbh3RHCWfTBkqw%3D",
       "guardian_last_reason": "social_ok",
       "guardian_fail_count": 0
+    },
+    {
+      "sku": "smartwatch-amazfit-bip-6-gps",
+      "title": "Smartwatch Amazfit Bip 6 — GPS Multiesporte (Android/iPhone)",
+      "badges": [
+        "Achados do Dia",
+        "Smartwatch",
+        "Amazfit",
+        "Bip 6",
+        "GPS",
+        "Multiesporte",
+        "Fitness",
+        "Corrida",
+        "Saúde",
+        "Android",
+        "iPhone"
+      ],
+      "id_busca": "5J5PKG-BV6Z",
+      "open_url": "https://meli.la/228ZyUW",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPeyMZIsEmPcfQjNYte8CwazHV1a9KC4awtvvKJl%2FAThoovW15UzEQtP0OjRntpzOdWcYJJhoABe4ESclHGsj18y4%2FW3smoFLGrdbPdwz%2BalnNWdXbIs6%2B398ZhNWlqEK%2BUzzOdjD2nTxhlWnONI62F5m2oHXrSROLZECF%2B8xJIgLi68XszATi2bgYDzQKuJDBpqKPI%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-BV6Z",
+      "image": "https://github.com/user-attachments/assets/8e1283fd-7a84-45f1-8933-794b842c15d6",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/228ZyUW",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPeyMZIsEmPcfQjNYte8CwazHV1a9KC4awtvvKJl%2FAThoovW15UzEQtP0OjRntpzOdWcYJJhoABe4ESclHGsj18y4%2FW3smoFLGrdbPdwz%2BalnNWdXbIs6%2B398ZhNWlqEK%2BUzzOdjD2nTxhlWnONI62F5m2oHXrSROLZECF%2B8xJIgLi68XszATi2bgYDzQKuJDBpqKPI%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
