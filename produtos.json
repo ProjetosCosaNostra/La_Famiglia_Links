@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-25T18:46:30Z",
+  "updated_at": "2026-02-25T20:45:06Z",
   "products": [
     {
       "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-K8TV",
       "image": "https://github.com/user-attachments/assets/3d1d68fa-92c8-4d09-84c7-979eb0c04b50",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1Vd3P8y",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
       "price_text": "",
@@ -1743,6 +1743,37 @@
       "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPeyMZIsEmPcfQjNYte8CwazHV1a9KC4awtvvKJl%2FAThoovW15UzEQtP0OjRntpzOdWcYJJhoABe4ESclHGsj18y4%2FW3smoFLGrdbPdwz%2BalnNWdXbIs6%2B398ZhNWlqEK%2BUzzOdjD2nTxhlWnONI62F5m2oHXrSROLZECF%2B8xJIgLi68XszATi2bgYDzQKuJDBpqKPI%3D",
       "guardian_last_reason": "social_ok",
       "guardian_fail_count": 0
+    },
+    {
+      "sku": "aspirador-philco-ciclone-pas1600p-1450w-15l-preto-220v-ou-127v",
+      "title": "Aspirador Philco Ciclone PAS1600P 1,5L 1450W — 2 em 1 (Vertical + Portátil) • Bocal 360° (Preto)",
+      "badges": [
+        "Achados do Dia",
+        "Aspirador",
+        "Philco",
+        "Ciclone",
+        "2 em 1",
+        "Vertical",
+        "Portátil",
+        "Bocal 360°",
+        "1450W",
+        "1",
+        "5L",
+        "Preto",
+        "220V - 127V"
+      ],
+      "id_busca": "5J5PKG-86RG",
+      "open_url": "https://meli.la/25C3pp1",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKXIx5sXfO0EoYh8jmm2UZPWewExt8zWJVQ26CuPr5DxWGjKzo5zL2zuzXc0U7iONImpzwb8gDOp8rszfNwP%2F2yGRHpsmckyCyrFKj6KW0m9MHWqWvidD8O975IkX%2Bq4VME5mgERV0ShNvVreNwQ919ZXlf3kLas92afLlqKUyAcsNYUzZ%2BJmEfwNdaxYM2105%2FJkJQ%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-86RG",
+      "image": "https://github.com/user-attachments/assets/c0e1149f-f8ae-492a-aade-05bf497d5bfc",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/25C3pp1",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKXIx5sXfO0EoYh8jmm2UZPWewExt8zWJVQ26CuPr5DxWGjKzo5zL2zuzXc0U7iONImpzwb8gDOp8rszfNwP%2F2yGRHpsmckyCyrFKj6KW0m9MHWqWvidD8O975IkX%2Bq4VME5mgERV0ShNvVreNwQ919ZXlf3kLas92afLlqKUyAcsNYUzZ%2BJmEfwNdaxYM2105%2FJkJQ%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
