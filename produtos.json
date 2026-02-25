@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-24T19:59:56Z",
+  "updated_at": "2026-02-25T00:23:09Z",
   "products": [
     {
       "sku": "cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa",
@@ -1601,9 +1601,37 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-HPQN",
       "image": "https://github.com/user-attachments/assets/d32505dd-f557-4340-8d57-95fb766ceb2f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2WgFjjo",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAzl6%2FTQAniuLdaxa3S70MgGJ2ukdIJimGf0EQ3ROcvDFWzWIgeCFpnskbJ4%2FUqNUnLst42Gbd4wD8s%2B3oXQkklUaNTmJunmsOsGaF%2B2Zwno6eTSlBSbn%2BBfh2JvSouKTqiy7RRQ42m%2FXItyyGEgPQWySXO%2B3bzCIsoaDRkSyKqeVOKSSy%2FjN4b8Mbh3RHCWfTBkqw%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "microfone-lapela-boya-by-v10-usb-c",
+      "title": "Microfone Sem Fio BOYA BY-V10 Lapela — USB-C (Android)",
+      "badges": [
+        "Achados do Dia",
+        "Áudio",
+        "Microfone",
+        "Lapela",
+        "Sem fio",
+        "USB-C",
+        "Android",
+        "Reels",
+        "Aulas",
+        "Entrevistas"
+      ],
+      "id_busca": "5J5PKG-0XE6",
+      "open_url": "https://meli.la/1Fwa1Z6",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8d8g7OW%2F%2FJ%2FC0Qu9PMJg1c3MbnxpYQkbC9vNrqb2Nf8rKUyGeeJMWQ7eFEeoXucAzCOxlLegE75wfgNm%2FbBCHims4sucQYnKnpdy7rIHeyMYH0zo8qiNQHwXrLBGspqgz9Fn8ioIsa2%2Fndz4RdePgIoz1XTABK0dsisgXuvC0dxeo%2FqOkdsIU6zg64V%2F%2BBqBLUL7M%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-0XE6",
+      "image": "https://github.com/user-attachments/assets/fa5976c4-3a32-4c5e-9b90-9a571b7e7e5d",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1Fwa1Z6",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8d8g7OW%2F%2FJ%2FC0Qu9PMJg1c3MbnxpYQkbC9vNrqb2Nf8rKUyGeeJMWQ7eFEeoXucAzCOxlLegE75wfgNm%2FbBCHims4sucQYnKnpdy7rIHeyMYH0zo8qiNQHwXrLBGspqgz9Fn8ioIsa2%2Fndz4RdePgIoz1XTABK0dsisgXuvC0dxeo%2FqOkdsIU6zg64V%2F%2BBqBLUL7M%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
