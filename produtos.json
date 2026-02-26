@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-26T20:30:30Z",
+  "updated_at": "2026-02-26T23:51:25Z",
   "products": [
     {
       "sku": "hd-externo-2tb-seagate-expansion-usb-30-portatil-preto",
@@ -22,7 +22,7 @@
       ],
       "id_busca": "5J5PKG-DVNF",
       "open_url": "https://meli.la/1GyqzF7",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-DVNF",
       "image": "https://github.com/user-attachments/assets/0ad5c8a6-7de7-4ce7-bdb7-1a6f50e5b56f",
       "active": true,
@@ -1912,9 +1912,38 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-EC0M",
       "image": "https://github.com/user-attachments/assets/43e6c2b2-cb32-4270-92b5-267ffd2b81a2",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2zXgzRL",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "travesseiro-cervical-viscoelastico-ergonomico-conforto-premium",
+      "title": "Travesseiro Cervical Viscoelástico (Ergonômico) – Conforto Premium",
+      "badges": [
+        "Achados do Dia",
+        "Travesseiro",
+        "Cervical",
+        "Ortopédico",
+        "Viscoelástico",
+        "Ergonômico",
+        "Postura",
+        "Sono",
+        "Conforto",
+        "Alinhamento",
+        "Relaxamento",
+        "Casa",
+        "Quarto"
+      ],
+      "id_busca": "NORESPONSE",
+      "open_url": "https://lista.mercadolivre.com.br/NORESPONSE",
+      "check_url": "https://lista.mercadolivre.com.br/NORESPONSE",
+      "canonical_url": "https://lista.mercadolivre.com.br/NORESPONSE",
+      "image": "https://github.com/user-attachments/assets/391965e6-caa3-4cfe-9973-a5e4ba70a5f0",
+      "active": true,
+      "featured": true,
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
