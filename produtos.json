@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-26T18:35:00Z",
+  "updated_at": "2026-02-26T20:30:30Z",
   "products": [
     {
       "sku": "hd-externo-2tb-seagate-expansion-usb-30-portatil-preto",
@@ -22,11 +22,11 @@
       ],
       "id_busca": "5J5PKG-DVNF",
       "open_url": "https://meli.la/1GyqzF7",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-DVNF",
       "image": "https://github.com/user-attachments/assets/0ad5c8a6-7de7-4ce7-bdb7-1a6f50e5b56f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1GyqzF7",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
       "price_text": "",
@@ -1887,6 +1887,37 @@
       "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNKaQ5j5npM6n0QYQZeslxG%2Fwajah%2B5PgBi3n5G1y7VYT3JgR2%2BchcwKJyOUbw0CEDcY9PwHo3Dxw50MBf218z7pkbwthPTdtK5xIxMHYRQSkQwKNQQsJbU2r8Ff30wW6u7qONwq4jk5Fymle8m9CWMsYTaqW0thXXKPIw%2B1jLHe1rNAtoDxtsNd4FeneOp%2BqST5CdU%3D",
       "guardian_last_reason": "social_ok",
       "guardian_fail_count": 0
+    },
+    {
+      "sku": "smart-tag-localizador-apple-find-my-portatil-discreto-preto",
+      "title": "Smart Tag Localizador (Apple Find My) – Portátil e Discreto – Preto",
+      "badges": [
+        "Achados do Dia",
+        "Smart Tag",
+        "Localizador",
+        "Rastreador",
+        "Apple Find My",
+        "Chaves",
+        "Mochila",
+        "Carteira",
+        "Portátil",
+        "Discreto",
+        "Segurança",
+        "Viagem",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-EC0M",
+      "open_url": "https://meli.la/2zXgzRL",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-EC0M",
+      "image": "https://github.com/user-attachments/assets/43e6c2b2-cb32-4270-92b5-267ffd2b81a2",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2zXgzRL",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ]
 }
