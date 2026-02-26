@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-26T15:38:32Z",
+  "updated_at": "2026-02-26T17:41:33Z",
   "products": [
     {
       "sku": "esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas",
@@ -1839,9 +1839,41 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-22S1",
       "image": "https://github.com/user-attachments/assets/31909809-8604-47e8-9867-77e0cf9cd983",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2iV3XdP",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNKaQ5j5npM6n0QYQZeslxG%2Fwajah%2B5PgBi3n5G1y7VYT3JgR2%2BchcwKJyOUbw0CEDcY9PwHo3Dxw50MBf218z7pkbwthPTdtK5xIxMHYRQSkQwKNQQsJbU2r8Ff30wW6u7qONwq4jk5Fymle8m9CWMsYTaqW0thXXKPIw%2B1jLHe1rNAtoDxtsNd4FeneOp%2BqST5CdU%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "hd-externo-2tb-seagate-expansion-usb-30-portatil-preto",
+      "title": "HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto",
+      "badges": [
+        "Achados do Dia",
+        "HD Externo",
+        "Seagate",
+        "2TB",
+        "Armazenamento",
+        "Backup",
+        "USB 3.0",
+        "Portátil",
+        "PC",
+        "Notebook",
+        "Gamer",
+        "Home Office",
+        "Segurança",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-DVNF",
+      "open_url": "https://meli.la/1GyqzF7",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-DVNF",
+      "image": "https://github.com/user-attachments/assets/0ad5c8a6-7de7-4ce7-bdb7-1a6f50e5b56f",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1GyqzF7",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
