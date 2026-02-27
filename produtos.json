@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-27T12:29:32Z",
+  "updated_at": "2026-02-27T13:35:03Z",
   "products": [
     {
       "sku": "kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook",
@@ -25,7 +25,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4T6B",
       "image": "https://github.com/user-attachments/assets/6e03b733-fd92-4171-90a8-8ee8ca604ef1",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1pornJR",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D",
       "price_text": "",
@@ -1987,6 +1987,40 @@
       "featured": false,
       "short_url": "https://meli.la/2zXgzRL",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto",
+      "title": "DPS iClamper Energia (5 Tomadas) – Proteção Contra Surtos – Preto",
+      "badges": [
+        "Achados do Dia",
+        "DPS",
+        "iClamper",
+        "Filtro de Linha",
+        "Proteção Contra Surtos",
+        "Anti Raio",
+        "Energia",
+        "5 Tomadas",
+        "Segurança",
+        "TV",
+        "PC",
+        "Roteador",
+        "Setup",
+        "Home Office",
+        "Eletrônicos",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-0QEF",
+      "open_url": "https://meli.la/2e9LLGJ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-0QEF",
+      "image": "https://github.com/user-attachments/assets/52652a2e-19b6-405c-91f5-f7e9ac9a693d",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2e9LLGJ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
