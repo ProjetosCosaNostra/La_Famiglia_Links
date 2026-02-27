@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-27T18:28:05Z",
+  "updated_at": "2026-02-27T20:32:11Z",
   "products": [
     {
       "sku": "dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto",
@@ -28,7 +28,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-0QEF",
       "image": "https://github.com/user-attachments/assets/52652a2e-19b6-405c-91f5-f7e9ac9a693d",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2e9LLGJ",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
       "price_text": "",
@@ -2026,6 +2026,37 @@
       "featured": false,
       "short_url": "https://meli.la/2zXgzRL",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto",
+      "title": "Suporte Articulado para Monitor (Pistão a Gás) 17”–35” – Ergonômico – Preto",
+      "badges": [
+        "Achados do Dia",
+        "Suporte Monitor",
+        "Braço Articulado",
+        "Pistão a Gás",
+        "17-35",
+        "Ergonômico",
+        "Setup",
+        "Home Office",
+        "Gamer",
+        "Mesa",
+        "Organização de Cabos",
+        "Ajuste de Altura",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-YGV9",
+      "open_url": "https://meli.la/11CcWqi",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-YGV9",
+      "image": "https://github.com/user-attachments/assets/b16b7da9-7f85-47f8-818c-fe12c65b222b",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/11CcWqi",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
