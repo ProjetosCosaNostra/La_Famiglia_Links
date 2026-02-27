@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-27T06:36:41Z",
+  "updated_at": "2026-02-27T10:00:15Z",
   "products": [
     {
       "sku": "travesseiro-cervical-viscoelastico-ergonomico-conforto-premium",
@@ -25,7 +25,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6PJ3",
       "image": "https://github.com/user-attachments/assets/55acf02b-9357-4811-bf9c-0efdb6ac8d96",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-02-27T06:36:41Z",
       "last_ok": "2026-02-27T06:36:41Z",
@@ -1951,6 +1951,37 @@
       "featured": false,
       "short_url": "https://meli.la/2zXgzRL",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook",
+      "title": "Kit Ferramentas 115 Peças (Precisão) – Reparo Eletrônicos, Celular e Notebook",
+      "badges": [
+        "Achados do Dia",
+        "Kit Ferramentas",
+        "115 Peças",
+        "Precisão",
+        "Reparo Eletrônicos",
+        "Celular",
+        "Notebook",
+        "Manutenção",
+        "Assistência Técnica",
+        "DIY",
+        "Estoj o",
+        "Portátil",
+        "Ferramentas"
+      ],
+      "id_busca": "5J5PKG-4T6B",
+      "open_url": "https://meli.la/1pornJR",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4T6B",
+      "image": "https://github.com/user-attachments/assets/6e03b733-fd92-4171-90a8-8ee8ca604ef1",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1pornJR",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
