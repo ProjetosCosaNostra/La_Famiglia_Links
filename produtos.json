@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-28T18:15:16Z",
+  "updated_at": "2026-02-28T19:33:46Z",
   "products": [
     {
       "sku": "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
@@ -25,7 +25,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-UGW4",
       "image": "https://github.com/user-attachments/assets/ab6e98e5-5e63-48c2-bd54-59865d50911f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1ZHKRNy",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
       "price_text": "",
@@ -2136,6 +2136,38 @@
       "featured": false,
       "short_url": "https://meli.la/2zXgzRL",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "purificador-de-ar-silencioso-hepa-h13-luz-ambiente",
+      "title": "Purificador de Ar Silencioso – Filtro HEPA H13 – Luz Ambiente",
+      "badges": [
+        "Achados do Dia",
+        "Purificador de Ar",
+        "HEPA H13",
+        "Silencioso",
+        "Antialérgico",
+        "Quarto",
+        "Home Office",
+        "Poeira",
+        "Mofo",
+        "Fumaça",
+        "Respiração",
+        "Saúde",
+        "Luz Ambiente",
+        "Filtro"
+      ],
+      "id_busca": "5J5PKG-U3PG",
+      "open_url": "https://meli.la/1LaVYwK",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-U3PG",
+      "image": "https://github.com/user-attachments/assets/3c009488-f54e-4657-86dc-5b65091b9f08",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1LaVYwK",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
