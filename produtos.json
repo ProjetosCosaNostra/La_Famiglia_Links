@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-28T19:33:46Z",
+  "updated_at": "2026-02-28T21:21:52Z",
   "products": [
     {
       "sku": "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
@@ -2165,9 +2165,41 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-U3PG",
       "image": "https://github.com/user-attachments/assets/3c009488-f54e-4657-86dc-5b65091b9f08",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1LaVYwK",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "webcam-emeet-smartcam-s600-4k-foco-automatico-usb",
+      "title": "Webcam Emeet SmartCam S600 4K – Foco Automático – USB (Profissional)",
+      "badges": [
+        "Achados do Dia",
+        "Webcam",
+        "4K",
+        "Foco Automático",
+        "USB",
+        "Home Office",
+        "Reuniões",
+        "Aulas Online",
+        "Lives",
+        "Streaming",
+        "Trabalho",
+        "Conteúdo",
+        "Videoconferência",
+        "Profissional"
+      ],
+      "id_busca": "5J5PKG-VYBG",
+      "open_url": "https://meli.la/1m2nJdb",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNT9jMWVzaXv%2BiyZORNZ%2B1gIhQjkbOlgZc3l1A5VE92WtTiZE%2FmDWAuhVWUElHaUzfRwUGYMetgXmF%2BYFz5qP73T08KulurznTHn7mHTI1CgIDkwjJS78QGpbnqCZWvJrDGgjUsGZCUFMMocHmdLImz%2BMAwQ0F8gWsW%2Fer2wBTb0Eq9xcZ0QCTeycvvo3%2BJbJwwpyw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-VYBG",
+      "image": "https://github.com/user-attachments/assets/e865e934-f43f-453f-b935-4554b5825185",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1m2nJdb",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNT9jMWVzaXv%2BiyZORNZ%2B1gIhQjkbOlgZc3l1A5VE92WtTiZE%2FmDWAuhVWUElHaUzfRwUGYMetgXmF%2BYFz5qP73T08KulurznTHn7mHTI1CgIDkwjJS78QGpbnqCZWvJrDGgjUsGZCUFMMocHmdLImz%2BMAwQ0F8gWsW%2Fer2wBTb0Eq9xcZ0QCTeycvvo3%2BJbJwwpyw%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
