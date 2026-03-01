@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-01T12:21:28Z",
+  "updated_at": "2026-03-01T16:40:28Z",
   "products": [
     {
       "sku": "philips-oneblade-qp1424-10",
@@ -26,7 +26,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-FMY4",
       "image": "https://github.com/user-attachments/assets/fb4ff594-b704-47c5-9177-dba0e8ead5c5",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1xUnPGa",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BATde6AQjT3uHTg45LRCz6cltYo%2FXE2aLne%2FUTdAd2mg8OMJPZJz%2Fpmr82ho4RyJ4HMW%2FOMZw%2FLFPoIl68ziWb4ULdyRlN1og4pvC3j%2B8XJJAYZtzST%2FPR5dz9Z2u1z%2B1gSZ%2Bs2R45ut54bASy%2BR3uEj4hy2Aw4nbVDBTIF12yqV6GA%2BRunM%2FtylUX4ixsTfPG7vpw%3D%3D",
       "price_text": "",
@@ -2242,6 +2242,33 @@
       "featured": false,
       "short_url": "https://meli.la/1LaVYwK",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "lamina-philips-oneblade-qp220-51-2-unidades",
+      "title": "Lâminas Philips OneBlade QP220/51 (2 Unidades) – Original",
+      "badges": [
+        "Achados do Dia",
+        "Philips",
+        "OneBlade",
+        "Lâmina de reposição",
+        "Barbeador",
+        "Aparador",
+        "Cuidados pessoais",
+        "Original",
+        "Corte preciso"
+      ],
+      "id_busca": "5J5PKG-5RAU",
+      "open_url": "https://meli.la/2sn3pjB",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-5RAU",
+      "image": "https://github.com/user-attachments/assets/5c4b11f3-e36f-421d-8c1d-a70e72e0a03d",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2sn3pjB",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
