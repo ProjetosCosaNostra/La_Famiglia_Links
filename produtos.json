@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-01T18:56:02Z",
+  "updated_at": "2026-03-01T21:04:31Z",
   "products": [
     {
       "sku": "lamina-philips-oneblade-qp220-51-2-unidades",
@@ -2298,9 +2298,42 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-K4K6",
       "image": "https://github.com/user-attachments/assets/da15b7e9-ace6-401f-9d5f-ed662e3fadca",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "switch-hdmi-2x1-1x2-bidirecional-adem",
+      "title": "Switch HDMI 2x1 / 1x2 Bi-direcional 4K (Plug & Play) — 2 dispositivos em 1 TV",
+      "badges": [
+        "Achados do Dia",
+        "Switch HDMI",
+        "Chaveador HDMI",
+        "Bi-direcional",
+        "2x1",
+        "1x2",
+        "4K",
+        "Plug & Play",
+        "TV",
+        "Console",
+        "TV Box",
+        "Home Theater",
+        "Setup Gamer",
+        "Compacto",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-ADEM",
+      "open_url": "https://meli.la/34goTWr",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH7skTMvwkchpd0FvlLNro8syOLJGsVRBco5Z78J0QRmwH9Q%2BiM8Kdkv9RtKC6dkwizY35S4iOa7fwp3ogv7aJCkb11nUk5bv5VfRP89amDUfmgeexkdOgGgI67bvl1mQJeqS4JYkP3vztSEZLpx%2FWkI3TRs4i%2FqLcAMeBPnVhpezbzDDoxfodPs4tP5xG1RDhasaqc%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ADEM",
+      "image": "https://github.com/user-attachments/assets/00c7250f-fe9d-4ddb-85bd-42c4be49366a",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/34goTWr",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH7skTMvwkchpd0FvlLNro8syOLJGsVRBco5Z78J0QRmwH9Q%2BiM8Kdkv9RtKC6dkwizY35S4iOa7fwp3ogv7aJCkb11nUk5bv5VfRP89amDUfmgeexkdOgGgI67bvl1mQJeqS4JYkP3vztSEZLpx%2FWkI3TRs4i%2FqLcAMeBPnVhpezbzDDoxfodPs4tP5xG1RDhasaqc%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
