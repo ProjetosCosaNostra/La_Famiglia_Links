@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-01T18:16:38Z",
+  "updated_at": "2026-03-01T18:56:02Z",
   "products": [
     {
       "sku": "lamina-philips-oneblade-qp220-51-2-unidades",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-5RAU",
       "image": "https://github.com/user-attachments/assets/5c4b11f3-e36f-421d-8c1d-a70e72e0a03d",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2sn3pjB",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D",
       "price_text": "",
@@ -2274,6 +2274,33 @@
       "featured": false,
       "short_url": "https://meli.la/1LaVYwK",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "fone-bluetooth-53-tws-gancho-k4k6",
+      "title": "Fone Bluetooth 5.3 TWS Esportivo com Gancho Premium (XT80)",
+      "badges": [
+        "Achados do Dia",
+        "Bluetooth 5.3",
+        "TWS",
+        "Gancho",
+        "Esportivo",
+        "Display Digital",
+        "Android iOS",
+        "Preto",
+        "Custo Benefício"
+      ],
+      "id_busca": "5J5PKG-K4K6",
+      "open_url": "https://meli.la/15p3NHj",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-K4K6",
+      "image": "https://github.com/user-attachments/assets/da15b7e9-ace6-401f-9d5f-ed662e3fadca",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/15p3NHj",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
