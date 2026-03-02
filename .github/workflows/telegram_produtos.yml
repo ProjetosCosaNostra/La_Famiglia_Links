@@ -1,6 +1,7 @@
 name: Telegram — Notificar produto novo
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "gh-pages" ]
     paths:
