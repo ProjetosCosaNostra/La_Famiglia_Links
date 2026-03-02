@@ -7,6 +7,13 @@ on:
     paths:
       - "produtos.json"
 
+concurrency:
+  group: telegram-produtos-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -39,7 +46,6 @@ jobs:
             raise SystemExit("Faltam secrets TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID.")
 
           def infer_site_base():
-            # fallback: https://{owner}.github.io/{repo}/
             repo = os.getenv("GITHUB_REPOSITORY", "").strip()
             if "/" in repo:
               owner, name = repo.split("/", 1)
@@ -61,11 +67,10 @@ jobs:
               "chat_id": CHAT,
               "text": html,
               "parse_mode": "HTML",
-              "disable_web_page_preview": "false"
+              "disable_web_page_preview": "0"
             })
 
           def tg_send_photo(photo_url: str, caption_html: str):
-            # Telegram aceita URL direta no campo "photo"
             return tg_call("sendPhoto", {
               "chat_id": CHAT,
               "photo": photo_url,
@@ -119,7 +124,6 @@ jobs:
               return ""
             if img.startswith("http://") or img.startswith("https://"):
               return img
-            # relativo -> vira absoluto na GitHub Pages
             base = SITE_BASE or ""
             if not base:
               return ""
@@ -127,7 +131,6 @@ jobs:
               base += "/"
             img = img.lstrip("./")
             return base + img
-
           NOISE = set([
             "mercado livre","youtube","tiktok","threads","kwai","reels"
           ])
@@ -170,15 +173,16 @@ jobs:
                 break
             return " ".join(out)
 
-          # --- Carregar JSON atual
           with open("produtos.json", "r", encoding="utf-8") as f:
             cur_obj = json.load(f)
           cur_list = load_products_from(cur_obj)
 
-          # --- Carregar JSON anterior (se existir)
           prev_list = []
           try:
-            prev_raw = subprocess.check_output(["git","show","HEAD^:produtos.json"], stderr=subprocess.DEVNULL).decode("utf-8", "replace")
+            prev_raw = subprocess.check_output(
+              ["git","show","HEAD^:produtos.json"],
+              stderr=subprocess.DEVNULL
+            ).decode("utf-8", "replace")
             prev_obj = json.loads(prev_raw)
             prev_list = load_products_from(prev_obj)
           except Exception:
@@ -195,12 +199,12 @@ jobs:
             return True
 
           prev_map = { sku_of(p): p for p in prev_list if sku_of(p) }
+
           new_items = []
           for p in cur_list:
             sku = sku_of(p)
             if not sku:
               continue
-            # dispara se é novo no JSON OU se “virou ativo”
             if sku not in prev_map:
               if is_active(p):
                 new_items.append(p)
@@ -212,10 +216,12 @@ jobs:
             print("Sem novos produtos (ou ativações).")
             raise SystemExit(0)
 
-          # Evita spam se entrar lote gigante
           MAX_POSTS = 8
           to_post = new_items[:MAX_POSTS]
           rest = new_items[MAX_POSTS:]
+
+          loja = (SITE_BASE.rstrip("/") + "/loja.html") if SITE_BASE else ""
+          tagline = "🛒 <b>Link da vitrine na bio</b>"
 
           for p in to_post:
             title = (p.get("title") or p.get("nome") or p.get("name") or "").strip()
@@ -223,14 +229,12 @@ jobs:
             id_busca = (p.get("id_busca") or p.get("idML") or p.get("id") or "").strip()
             link = best_buy(p)
             img = abs_image(p.get("image") or p.get("imagem") or "")
+
             badges = p.get("badges") or p.get("tags") or []
             if isinstance(badges, str):
               badges = [x.strip() for x in re.split(r"[,;|]", badges) if x.strip()]
             elif not isinstance(badges, list):
               badges = []
-
-            tagline = "🛒 <b>Link da vitrine na bio</b>"
-            loja = (SITE_BASE.rstrip("/") + "/loja.html") if SITE_BASE else ""
 
             hts = hashtags(badges)
             hts_line = f"\n\n{safe(hts)}" if hts else ""
@@ -245,7 +249,6 @@ jobs:
               f"{hts_line}"
             )
 
-            # tenta foto primeiro (se tiver)
             if img.startswith("http"):
               try:
                 tg_send_photo(img, text)
@@ -256,5 +259,8 @@ jobs:
             tg_send_message(text)
 
           if rest:
-            tg_send_message(f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n🛒 <b>Link da vitrine na bio</b>")
+            tg_send_message(
+              f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n"
+              f"{tagline}"
+            )
           PY
