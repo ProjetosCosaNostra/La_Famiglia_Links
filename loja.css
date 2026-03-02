@@ -5,6 +5,10 @@
      - Complementar o style.css (global)
      - Itens específicos da Loja: barra de filtros/tags, adminBar, load-more
      - FIX PREMIUM: limitar altura do "Produto do Dia" (sem crop) + badge ⭐ do dia no grid
+     - PATCH PREMIUM/MOBILE (2026-03-02):
+         * Ferramentas (listas/export) via <details> (compacto no mobile)
+         * Modal de categorias (fallback CSS)
+         * Anti-clique-acidental do fundo (.bg)
    ========================================================== */
 
 :root{
@@ -19,6 +23,19 @@
   --cn-featured-h: 420px;
   --cn-featured-h-md: 360px;
   --cn-featured-h-sm: 300px;
+
+  /* tools sizing (premium) */
+  --cn-tools-btn-pad: 10px 12px;
+  --cn-tools-btn-radius: 14px;
+  --cn-tools-btn-font: 12px;
+}
+
+/* =========================================
+   Backup: fundo nunca deve capturar toque
+   (JS já faz, mas CSS garante também)
+   ========================================= */
+.bg, .bg *{
+  pointer-events:none !important;
 }
 
 /* ======= Loja: barra de filtros ======= */
@@ -39,6 +56,7 @@
   justify-content:space-between;
 }
 
+/* ======= Categorias (chips) ======= */
 .tagChips{
   display:flex;
   flex-wrap:wrap;
@@ -58,16 +76,27 @@
   cursor:pointer;
   user-select:none;
   backdrop-filter: blur(10px);
-  transition: transform .10s ease, filter .16s ease, border-color .16s ease;
+  transition: transform .10s ease, filter .16s ease, border-color .16s ease, background .16s ease;
 }
 .tagChip:hover{ filter:brightness(1.06); }
 .tagChip:active{ transform: translateY(1px); }
+
 .tagChip--active{
   border-color: var(--loja-chip-bd-active);
   color: var(--loja-chip-tx-active);
   background: rgba(199,162,75,.12);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
 }
 
+/* compacta chips no mobile */
+@media (max-width: 520px){
+  .tagChip{
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+}
+
+/* ======= Ordenação ======= */
 .sortRow{
   display:flex;
   gap:10px;
@@ -117,19 +146,183 @@
 .loadMoreWrap.hidden{ display:none; }
 
 /* ==========================================================
+   ✅ PREMIUM/MOBILE — Ferramentas (listas/export)
+   (loja.js injeta o bloco <details class="cnTools">)
+   Aqui é o “fallback premium” que evita botão gigante.
+   ========================================================== */
+.cnToolsRow{ width:100%; }
+
+.cnTools{
+  width:100%;
+  border-radius: 16px;
+  border: 1px solid rgba(224,195,107,.16);
+  background: rgba(0,0,0,.18);
+  overflow:hidden;
+  box-shadow: 0 18px 60px rgba(0,0,0,.40);
+}
+
+.cnTools > summary{
+  list-style:none;
+  user-select:none;
+}
+.cnTools > summary::-webkit-details-marker{ display:none; }
+
+/* summary fica com cara de botão premium */
+.cnTools summary.btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding: 12px 14px;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* grid de botões compactos */
+.cnToolsGrid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap:10px;
+  padding: 12px 12px 12px;
+  border-top: 1px solid rgba(224,195,107,.10);
+}
+
+.cnToolsGrid .btn{
+  width:100%;
+  justify-content:center;
+  padding: var(--cn-tools-btn-pad);
+  border-radius: var(--cn-tools-btn-radius);
+  font-size: var(--cn-tools-btn-font);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+/* responsivo: nunca vira “pílula gigante” no mobile */
+@media (max-width: 820px){
+  .cnToolsGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 520px){
+  .cnToolsGrid{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 10px;
+  }
+  .cnToolsGrid .btn{
+    padding: 10px 10px;
+    font-size: 12px;
+    border-radius: 14px;
+  }
+}
+
+/* ==========================================================
+   ✅ PREMIUM — Modal de Categorias (fallback CSS)
+   (loja.js injeta #cnTagModal)
+   ========================================================== */
+.cnModal{
+  position: fixed;
+  inset: 0;
+  display:none;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  z-index: 999999;
+  backdrop-filter: blur(10px);
+}
+.cnModal.show{ display:flex; }
+
+.cnModal__panel{
+  width: min(760px, 96vw);
+  max-height: 82vh;
+  margin: 0 0 14px 0;
+  border-radius: 18px;
+  overflow:hidden;
+  border: 1px solid rgba(215,176,88,.22);
+  background: rgba(8,8,10,.92);
+  box-shadow: 0 20px 80px rgba(0,0,0,.65);
+}
+
+.cnModal__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(215,176,88,.18);
+}
+
+.cnModal__title{
+  font-family: Cinzel, serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(224,195,107,.95);
+  font-size: 12px;
+}
+
+.cnModal__close{
+  border: 1px solid rgba(215,176,88,.22);
+  background: rgba(0,0,0,.25);
+  color: rgba(255,255,255,.92);
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor:pointer;
+}
+
+.cnModal__search{
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(215,176,88,.12);
+}
+.cnModal__search input{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(215,176,88,.18);
+  background: rgba(0,0,0,.35);
+  color: rgba(255,255,255,.92);
+  outline:none;
+  font-weight: 800;
+}
+
+.cnModal__list{
+  padding: 12px 14px;
+  overflow:auto;
+  max-height: calc(82vh - 120px);
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}
+
+.cnModal__list button{
+  border:1px solid rgba(215,176,88,.22);
+  background: rgba(0,0,0,.20);
+  color: rgba(255,255,255,.90);
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  cursor:pointer;
+}
+
+.cnModal__list button.active{
+  border-color: rgba(215,176,88,.60);
+  background: rgba(215,176,88,.12);
+  color: rgba(215,176,88, 1);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+
+/* ==========================================================
    FIX PREMIUM — "Produto do Dia" (featured)
    - Impede banner gigante
    - Mantém imagem inteira (contain) com fundo blur do seu JS
    ========================================================== */
-
-/* o featured é um grid de 2 cards; o 1º tem a imagem */
 .featured .card:first-child .card__img{
   height: var(--cn-featured-h);
   min-height: var(--cn-featured-h);
   padding: 12px;
 }
 
-/* força imagem inteira sem cortar (mesmo se JS tentar cover) */
 .featured .card:first-child .card__img img{
   width: 100%;
   height: 100%;
@@ -138,13 +331,13 @@
   border-radius: 14px;
 }
 
-/* responsivo */
 @media (max-width: 860px){
   .featured .card:first-child .card__img{
     height: var(--cn-featured-h-md);
     min-height: var(--cn-featured-h-md);
   }
 }
+
 @media (max-width: 560px){
   .featured .card:first-child .card__img{
     height: var(--cn-featured-h-sm);
