@@ -29,13 +29,13 @@
   <!-- CSS específico da loja -->
   <link rel="stylesheet" href="./loja.css" />
 
-  <!-- ✅ ÚNICA lógica da Loja fica em loja.js (NÃO duplicar script dentro do HTML) -->
-  <script defer src="./loja.js"></script>
-
   <!-- ✅ MOBILE / GRID / CHIPS: reforço robusto (não depende do CSS externo) -->
   <style>
-    /* garante que o fundo não “roube” clique/toque */
-    .bg, .bg *{ pointer-events:none; }
+    /* ===== Fundo (orbs) — mobile mais discreto (premium) ===== */
+    @media (max-width: 720px){
+      .orb{ opacity: .10 !important; filter: blur(80px) !important; }
+      .orb--2, .orb--3{ display:none !important; }
+    }
 
     @media (max-width: 720px){
       .countPill{ flex-wrap: wrap; row-gap: 8px; }
@@ -43,11 +43,6 @@
       .lojaTools .toolRow{ flex-direction: column; align-items: stretch; }
       .lojaTools .toolRow > *{ width: 100%; }
       .panel__right{ margin-top: 10px; }
-      .btnRow{ flex-direction: column; align-items: stretch; }
-      .btnRow > *{ width: 100%; }
-      .tagHead{ flex-direction: column; align-items: stretch; gap: 8px; }
-      .tagHead .tagHead__right{ justify-content:flex-start; }
-      .cnModal__card{ width: min(92vw, 720px); }
     }
 
     /* grid seguro */
@@ -59,79 +54,68 @@
     @media (max-width: 980px){ .productsGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 520px){ .productsGrid{ grid-template-columns: 1fr; } }
 
-    /* chips / tags */
-    .tagHead{
+    /* ===== Categorias (chips) — responsivo e limpo ===== */
+    .tagsWrap{
       display:flex;
+      flex-wrap:wrap;
+      gap:10px;
       align-items:center;
       justify-content:space-between;
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .tagHead__left{
-      display:flex;
-      flex-direction:column;
-      gap: 2px;
-    }
-    .tagTitle{
-      font-family: Cinzel, serif;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-weight: 900;
-      color: rgba(224,195,107,.95);
-      font-size: 12px;
-    }
-    .tagSub{
-      color: rgba(255,255,255,.70);
-      font-size: 12px;
-      line-height: 1.2;
-    }
-    .tagHead__right{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      align-items:center;
     }
     .tagChips{
       display:flex;
       flex-wrap:wrap;
       gap: 8px;
       align-items:center;
+      flex: 1 1 420px;
     }
-    .tagChips button{
+    .tagChips .tagChip{
       border:1px solid rgba(215,176,88,.22);
       background: rgba(0,0,0,.20);
       color: rgba(255,255,255,.90);
-      padding: 6px 10px;
+      padding: 7px 10px;
       border-radius: 999px;
       font-weight: 900;
       font-size: 12px;
       cursor: pointer;
       margin: 0;
       user-select:none;
-      white-space:nowrap;
+      line-height: 1;
+      white-space: nowrap;
     }
-    .tagChips button:hover{
-      border-color: rgba(215,176,88,.42);
-      background: rgba(0,0,0,.28);
-    }
-    .tagChips button.active{
+    .tagChips .tagChip.tagChip--active{
       border-color: rgba(215,176,88,.60);
       background: rgba(215,176,88,.12);
       color: rgba(215,176,88, 1);
       box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
+    .tagsMoreBtn{
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
 
-    /* downloads row */
+    /* ===== Export row — SEM BOTÃO GIGANTE NO MOBILE ===== */
     .btnRow{
-      display:flex;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
       gap:10px;
-      flex-wrap:wrap;
       margin-top: 10px;
     }
     .btnRow .btn{
-      flex: 1 1 180px;
+      width:100%;
       justify-content:center;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    @media (max-width: 820px){
+      .btnRow{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 420px){
+      .btnRow{ grid-template-columns: 1fr; }
+      .btnRow .btn{ padding: 11px 12px; }
     }
 
     /* load more */
@@ -158,114 +142,119 @@
       max-width: 92vw;
       z-index: 99999;
       display:none;
-      font-weight: 700;
+      font-weight: 800;
     }
     .toast.show{ display:block; }
 
-    /* Modal de Tags (todas) */
+    /* ===== Modal de categorias (premium) ===== */
     .cnModal{
       position: fixed;
       inset: 0;
-      display: flex;
+      z-index: 999999;
+      display:none;
       align-items: center;
       justify-content: center;
-      z-index: 100000;
+      padding: 16px;
+      background: rgba(0,0,0,.68);
+      backdrop-filter: blur(10px);
     }
-    .cnModal.hidden{ display:none; }
-    .cnModal__backdrop{
-      position:absolute;
-      inset:0;
-      background: rgba(0,0,0,.72);
-      backdrop-filter: blur(8px);
-    }
+    .cnModal.show{ display:flex; }
     .cnModal__card{
-      position: relative;
-      width: min(880px, 92vw);
-      max-height: min(78vh, 820px);
-      overflow: hidden;
+      width: min(920px, 96vw);
+      max-height: min(82vh, 720px);
       border-radius: 18px;
       border: 1px solid rgba(215,176,88,.22);
       background: rgba(10,10,12,.88);
-      box-shadow: 0 24px 100px rgba(0,0,0,.75);
+      box-shadow: 0 30px 120px rgba(0,0,0,.75);
+      overflow: hidden;
       display:flex;
       flex-direction: column;
     }
     .cnModal__head{
-      padding: 12px 14px;
       display:flex;
       align-items:center;
       justify-content: space-between;
       gap: 10px;
-      border-bottom: 1px solid rgba(215,176,88,.16);
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(215,176,88,.14);
     }
-    .cnModal__head h3{
-      margin:0;
+    .cnModal__title{
       font-family: Cinzel, serif;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size: 14px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
       color: rgba(224,195,107,.95);
-    }
-    .cnModal__body{
-      padding: 12px 14px 14px;
-      overflow:auto;
+      font-weight: 900;
+      font-size: 13px;
     }
     .cnModal__search{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      margin-bottom: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(215,176,88,.10);
     }
     .cnModal__search input{
       width: 100%;
-      padding: 10px 12px;
       border-radius: 14px;
-      border: 1px solid rgba(215,176,88,.20);
-      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(215,176,88,.22);
+      background: rgba(0,0,0,.25);
       color: rgba(255,255,255,.92);
+      padding: 12px 12px;
       outline: none;
-      font-weight: 700;
+      font-weight: 800;
     }
-    .cnTagList{
+    .cnModal__list{
+      padding: 12px 14px;
+      overflow: auto;
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
+      gap: 10px;
     }
-    @media (max-width: 860px){ .cnTagList{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media (max-width: 520px){ .cnTagList{ grid-template-columns: 1fr; } }
-
-    .cnTagItem{
+    @media (max-width: 860px){
+      .cnModal__list{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px){
+      .cnModal__list{ grid-template-columns: 1fr; }
+    }
+    .cnModal__item{
+      border: 1px solid rgba(215,176,88,.18);
+      background: rgba(0,0,0,.22);
+      border-radius: 14px;
+      padding: 10px 10px;
       display:flex;
       align-items:center;
       justify-content: space-between;
       gap: 10px;
-      padding: 8px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(215,176,88,.18);
-      background: rgba(0,0,0,.22);
       cursor: pointer;
       user-select:none;
-      color: rgba(255,255,255,.90);
-      font-weight: 900;
-      font-size: 12px;
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
     }
-    .cnTagItem:hover{
+    .cnModal__item:hover{
+      transform: translateY(-1px);
       border-color: rgba(215,176,88,.45);
-      background: rgba(0,0,0,.30);
+      background: rgba(215,176,88,.08);
     }
-    .cnTagItem .n{
+    .cnModal__item .lbl{
+      font-weight: 900;
+      color: rgba(255,255,255,.92);
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cnModal__item .cnt{
+      font-weight: 900;
       color: rgba(224,195,107,.95);
       font-variant-numeric: tabular-nums;
-      opacity: .95;
-      font-weight: 950;
     }
-    .cnTagItem.active{
-      border-color: rgba(215,176,88,.60);
-      background: rgba(215,176,88,.10);
-      color: rgba(224,195,107,1);
-      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    .cnModal__foot{
+      padding: 12px 14px;
+      border-top: 1px solid rgba(215,176,88,.10);
+      display:flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
     }
   </style>
+
+  <!-- JS da loja -->
+  <script defer src="./loja.js"></script>
 </head>
 
 <body>
@@ -307,7 +296,7 @@
             <span style="opacity:.55;">•</span>
             <span>🔎 Filtrados:</span> <span class="n" id="countShown">—</span>
             <span style="opacity:.55;">•</span>
-            <span>🏷️ Tags:</span> <span class="n" id="tagsCount">—</span>
+            <span>🏷️ Categorias:</span> <span class="n" id="tagsCount">—</span>
             <span style="opacity:.55;">•</span>
             <span>🧱 Render:</span> <span class="n" id="countRendered">—</span>
           </div>
@@ -335,7 +324,7 @@
       <div class="panel__head">
         <div>
           <h2>Filtro & categorias</h2>
-          <p>Buscar por texto, filtrar por tags e ordenar. Tudo em tempo real.</p>
+          <p>Buscar por texto, filtrar por categorias reais e ordenar. Tudo em tempo real.</p>
         </div>
         <div class="panel__right">
           <select class="select" id="sortSel" aria-label="Ordenação">
@@ -360,24 +349,17 @@
           </div>
         </div>
 
-        <div class="tagHead" aria-label="Categorias principais">
-          <div class="tagHead__left">
-            <div class="tagTitle">Categorias inteligentes</div>
-            <div class="tagSub">Mostra só o que faz sentido (sem “mil” specs). Para ver tudo, use “Ver todas”.</div>
+        <div class="toolRow" style="margin-top:6px;">
+          <div class="tagsWrap">
+            <div class="tagChips" id="tagChips" aria-label="Categorias"></div>
+            <button class="btn btn--tiny btn--glass tagsMoreBtn" id="btnTagsMore" type="button" style="display:none;">🔎 Ver todas</button>
           </div>
-          <div class="tagHead__right">
-            <button class="btn btn--tiny btn--glass" id="btnAllTags" type="button">🔎 Ver todas</button>
-          </div>
-        </div>
-
-        <div class="toolRow" style="margin-top:8px;">
-          <div class="tagChips" id="tagChips" aria-label="Tags"></div>
         </div>
 
         <div class="btnRow" aria-label="Exportações e lista" id="exportRow">
           <button class="btn btn--tiny btn--glass" id="btnCopyActive" type="button">📋 Copiar lista (ativos)</button>
-          <button class="btn btn--tiny btn--gold" id="btnDownloadActiveTxt" type="button">⬇️ Baixar lista (.txt)</button>
-          <button class="btn btn--tiny btn--glass" id="btnDownloadAllTxt" type="button">⬇️ Baixar lista (tudo)</button>
+          <button class="btn btn--tiny btn--gold" id="btnDownloadActiveTxt" type="button">⬇️ Lista (.txt)</button>
+          <button class="btn btn--tiny btn--glass" id="btnDownloadAllTxt" type="button">⬇️ Lista (tudo)</button>
           <button class="btn btn--tiny btn--glass" id="btnDownloadCSV" type="button">⬇️ CSV (tudo)</button>
         </div>
 
@@ -403,7 +385,6 @@
           <p>Featured real (não inventa). Se não tiver featured=true, aparece aviso.</p>
         </div>
       </div>
-
       <div class="featured" id="featured"></div>
     </section>
 
@@ -434,19 +415,21 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <!-- Modal: todas as tags -->
-  <div class="cnModal hidden" id="tagModal" role="dialog" aria-modal="true" aria-label="Todas as tags">
-    <div class="cnModal__backdrop" data-close="1"></div>
-    <div class="cnModal__card" role="document">
+
+  <!-- Modal: categorias -->
+  <div class="cnModal" id="tagModal" role="dialog" aria-modal="true" aria-label="Categorias">
+    <div class="cnModal__card">
       <div class="cnModal__head">
-        <h3>Filtrar por tag</h3>
-        <button class="btn btn--tiny btn--glass" type="button" id="btnCloseTags">Fechar ✕</button>
+        <div class="cnModal__title">Categorias</div>
+        <button class="btn btn--tiny btn--glass" id="btnTagModalClose" type="button">✕</button>
       </div>
-      <div class="cnModal__body">
-        <div class="cnModal__search">
-          <input id="tagModalSearch" placeholder="Buscar tag (ex: Wi-Fi, Casa, Segurança...)" />
-        </div>
-        <div class="cnTagList" id="tagModalList" aria-label="Lista de tags"></div>
+      <div class="cnModal__search">
+        <input id="tagModalQ" placeholder="Buscar categoria (ex: Casa, Wi-Fi, Notebook...)" />
+      </div>
+      <div class="cnModal__list" id="tagModalList"></div>
+      <div class="cnModal__foot">
+        <button class="btn btn--tiny btn--glass" id="btnTagModalClear" type="button">Limpar filtro</button>
+        <button class="btn btn--tiny btn--gold" id="btnTagModalAll" type="button">👑 Tudo</button>
       </div>
     </div>
   </div>
