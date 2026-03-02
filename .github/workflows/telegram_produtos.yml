@@ -2,17 +2,22 @@ name: Telegram — Notificar produto novo
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "teste | novos"
+        required: true
+        default: "teste"
   push:
     branches: [ "gh-pages" ]
     paths:
       - "produtos.json"
 
+permissions:
+  contents: read
+
 concurrency:
   group: telegram-produtos-${{ github.ref }}
   cancel-in-progress: true
-
-permissions:
-  contents: read
 
 jobs:
   notify:
@@ -34,16 +39,26 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SITE_BASE: ${{ secrets.SITE_BASE }}
+          DISPATCH_MODE: ${{ github.event.inputs.mode }}
         run: |
           python - <<'PY'
-          import os, json, subprocess, re, urllib.parse, urllib.request
+          import os, json, subprocess, re, urllib.parse, urllib.request, urllib.error
 
           BOT = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
           CHAT = os.getenv("TELEGRAM_CHAT_ID", "").strip()
           SITE_BASE = os.getenv("SITE_BASE", "").strip()
+          MODE = (os.getenv("DISPATCH_MODE", "") or "").strip().lower() or "novos"
+          EVENT = (os.getenv("GITHUB_EVENT_NAME", "") or "").strip().lower()
+
+          # ========= validações =========
+          if BOT.startswith("TELEGRAM_BOT_TOKEN:"):
+            raise SystemExit(
+              "TELEGRAM_BOT_TOKEN secret está errado: cole SOMENTE o token (ex: 123:AA...), "
+              "sem 'TELEGRAM_BOT_TOKEN:' e sem espaços."
+            )
 
           if not BOT or not CHAT:
-            raise SystemExit("Faltam secrets TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID.")
+            raise SystemExit("Faltam secrets: TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID.")
 
           def infer_site_base():
             repo = os.getenv("GITHUB_REPOSITORY", "").strip()
@@ -55,19 +70,33 @@ jobs:
           if not SITE_BASE:
             SITE_BASE = infer_site_base()
 
+          if SITE_BASE and not SITE_BASE.endswith("/"):
+            SITE_BASE += "/"
+
+          # ========= Telegram helpers =========
           def tg_call(method: str, payload: dict):
             url = f"https://api.telegram.org/bot{BOT}/{method}"
             data = urllib.parse.urlencode(payload).encode("utf-8")
-            req = urllib.request.Request(url, data=data)
-            with urllib.request.urlopen(req, timeout=25) as r:
-              return r.read()
 
-          def tg_send_message(html: str):
+            req = urllib.request.Request(url, data=data)
+            try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                body = r.read().decode("utf-8", "replace")
+                return body
+            except urllib.error.HTTPError as e:
+              err = e.read().decode("utf-8", "replace")
+              print(f"[Telegram ERROR] HTTP {e.code} em {method}: {err}")
+              raise
+            except Exception as e:
+              print(f"[Telegram ERROR] Falha geral em {method}: {e}")
+              raise
+
+          def tg_send_message(html: str, preview: bool = True):
             return tg_call("sendMessage", {
               "chat_id": CHAT,
               "text": html,
               "parse_mode": "HTML",
-              "disable_web_page_preview": "0"
+              "disable_web_page_preview": "false" if preview else "true",
             })
 
           def tg_send_photo(photo_url: str, caption_html: str):
@@ -75,9 +104,23 @@ jobs:
               "chat_id": CHAT,
               "photo": photo_url,
               "caption": caption_html[:1024],
-              "parse_mode": "HTML"
+              "parse_mode": "HTML",
             })
 
+          # ========= sanity check =========
+          _ = tg_call("getMe", {})
+          print("getMe OK ✅")
+
+          if EVENT == "workflow_dispatch" and MODE == "teste":
+            msg = (
+              "🧪 <b>Teste OK</b>\n"
+              "GitHub Actions conseguiu falar com o Telegram.\n\n"
+              "👑 CosaNostra Black & Gold — Society"
+            )
+            tg_send_message(msg, preview=False)
+            print("Mensagem de teste enviada ✅")
+            raise SystemExit(0)
+          # ========= util =========
           def load_products_from(obj):
             if isinstance(obj, list):
               return obj
@@ -124,16 +167,12 @@ jobs:
               return ""
             if img.startswith("http://") or img.startswith("https://"):
               return img
-            base = SITE_BASE or ""
-            if not base:
+            if not SITE_BASE:
               return ""
-            if not base.endswith("/"):
-              base += "/"
             img = img.lstrip("./")
-            return base + img
-          NOISE = set([
-            "mercado livre","youtube","tiktok","threads","kwai","reels"
-          ])
+            return SITE_BASE + img
+
+          NOISE = set(["mercado livre","youtube","tiktok","threads","kwai","reels"])
           BRANDS = set([
             "xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
             "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate"
@@ -155,8 +194,7 @@ jobs:
             return True
 
           def hashtags(badges):
-            out = []
-            seen = set()
+            out, seen = [], set()
             for b in badges or []:
               s = (b or "").strip()
               if not is_good_tag(s):
@@ -173,10 +211,12 @@ jobs:
                 break
             return " ".join(out)
 
+          # ========= carregar JSON atual =========
           with open("produtos.json", "r", encoding="utf-8") as f:
             cur_obj = json.load(f)
           cur_list = load_products_from(cur_obj)
 
+          # ========= carregar JSON anterior (se existir) =========
           prev_list = []
           try:
             prev_raw = subprocess.check_output(
@@ -244,7 +284,7 @@ jobs:
               f"<b>{safe(title) if title else safe(sku)}</b>\n\n"
               f"🔍 ID ML: <code>{safe(id_busca) if id_busca else '—'}</code>\n"
               f"🛒 Link: {safe(link) if link else '—'}\n"
-              f"{('🌐 Loja: ' + safe(loja) + '\n') if loja else ''}"
+              f"{('🌐 Loja: ' + safe(loja) + '\\n') if loja else ''}"
               f"\n{tagline}"
               f"{hts_line}"
             )
@@ -256,11 +296,14 @@ jobs:
               except Exception as e:
                 print("sendPhoto falhou, caindo para sendMessage:", e)
 
-            tg_send_message(text)
+            tg_send_message(text, preview=True)
 
           if rest:
             tg_send_message(
-              f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n"
-              f"{tagline}"
+              f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n{tagline}",
+              preview=False
             )
+
+          print("Postagens concluídas ✅")
           PY
+
