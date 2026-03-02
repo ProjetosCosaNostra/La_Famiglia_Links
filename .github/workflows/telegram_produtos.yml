@@ -1,0 +1,259 @@
+name: Telegram — Notificar produto novo
+
+on:
+  push:
+    branches: [ "gh-pages" ]
+    paths:
+      - "produtos.json"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (com histórico)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Detectar novos produtos e postar no Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SITE_BASE: ${{ secrets.SITE_BASE }}
+        run: |
+          python - <<'PY'
+          import os, json, subprocess, re, urllib.parse, urllib.request
+
+          BOT = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+          CHAT = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+          SITE_BASE = os.getenv("SITE_BASE", "").strip()
+
+          if not BOT or not CHAT:
+            raise SystemExit("Faltam secrets TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID.")
+
+          def infer_site_base():
+            # fallback: https://{owner}.github.io/{repo}/
+            repo = os.getenv("GITHUB_REPOSITORY", "").strip()
+            if "/" in repo:
+              owner, name = repo.split("/", 1)
+              return f"https://{owner.lower()}.github.io/{name}/"
+            return ""
+
+          if not SITE_BASE:
+            SITE_BASE = infer_site_base()
+
+          def tg_call(method: str, payload: dict):
+            url = f"https://api.telegram.org/bot{BOT}/{method}"
+            data = urllib.parse.urlencode(payload).encode("utf-8")
+            req = urllib.request.Request(url, data=data)
+            with urllib.request.urlopen(req, timeout=25) as r:
+              return r.read()
+
+          def tg_send_message(html: str):
+            return tg_call("sendMessage", {
+              "chat_id": CHAT,
+              "text": html,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "false"
+            })
+
+          def tg_send_photo(photo_url: str, caption_html: str):
+            # Telegram aceita URL direta no campo "photo"
+            return tg_call("sendPhoto", {
+              "chat_id": CHAT,
+              "photo": photo_url,
+              "caption": caption_html[:1024],
+              "parse_mode": "HTML"
+            })
+
+          def load_products_from(obj):
+            if isinstance(obj, list):
+              return obj
+            if isinstance(obj, dict):
+              for k in ("products", "items", "produtos", "data"):
+                v = obj.get(k)
+                if isinstance(v, list):
+                  return v
+            return []
+
+          def safe(s):
+            s = "" if s is None else str(s)
+            return (s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
+                     .replace('"',"&quot;").replace("'","&#039;"))
+
+          def ensure_http(u: str) -> str:
+            u = (u or "").strip()
+            if not u:
+              return ""
+            u = re.sub(r'^[\s"\'`]+', "", u)
+            u = re.sub(r'[\s"\'`]+$', "", u)
+            if re.match(r"^https?://", u, re.I):
+              return u
+            if u.startswith("//"):
+              return "https:" + u
+            if u.startswith("meli.la/") or u.startswith("meli.co/"):
+              return "https://" + u
+            if re.match(r"^(mercadolivre|mercadolibre)\.", u, re.I):
+              return "https://" + u
+            if re.match(r"^meli\.", u, re.I):
+              return "https://" + u
+            return u
+
+          def best_buy(p: dict) -> str:
+            for k in ("buy_url","open_url","check_url","canonical_url","short_url","resolved_url","link","url"):
+              v = ensure_http(p.get(k, ""))
+              if v.startswith("http"):
+                return v
+            return ""
+
+          def abs_image(img: str) -> str:
+            img = (img or "").strip()
+            if not img:
+              return ""
+            if img.startswith("http://") or img.startswith("https://"):
+              return img
+            # relativo -> vira absoluto na GitHub Pages
+            base = SITE_BASE or ""
+            if not base:
+              return ""
+            if not base.endswith("/"):
+              base += "/"
+            img = img.lstrip("./")
+            return base + img
+
+          NOISE = set([
+            "mercado livre","youtube","tiktok","threads","kwai","reels"
+          ])
+          BRANDS = set([
+            "xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
+            "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate"
+          ])
+
+          def is_good_tag(t: str) -> bool:
+            t = (t or "").strip()
+            if not t:
+              return False
+            low = t.lower()
+            if low in NOISE or low in BRANDS:
+              return False
+            if len(t) > 22:
+              return False
+            if re.search(r"\d", t):
+              return False
+            if re.search(r"[()\/+]", t):
+              return False
+            return True
+
+          def hashtags(badges):
+            out = []
+            seen = set()
+            for b in badges or []:
+              s = (b or "").strip()
+              if not is_good_tag(s):
+                continue
+              key = s.lower()
+              if key in seen:
+                continue
+              seen.add(key)
+              tag = re.sub(r"\s+", "_", s)
+              tag = re.sub(r"[^A-Za-zÀ-ÖØ-öø-ÿ0-9_]", "", tag)
+              if tag:
+                out.append("#" + tag)
+              if len(out) >= 5:
+                break
+            return " ".join(out)
+
+          # --- Carregar JSON atual
+          with open("produtos.json", "r", encoding="utf-8") as f:
+            cur_obj = json.load(f)
+          cur_list = load_products_from(cur_obj)
+
+          # --- Carregar JSON anterior (se existir)
+          prev_list = []
+          try:
+            prev_raw = subprocess.check_output(["git","show","HEAD^:produtos.json"], stderr=subprocess.DEVNULL).decode("utf-8", "replace")
+            prev_obj = json.loads(prev_raw)
+            prev_list = load_products_from(prev_obj)
+          except Exception:
+            prev_list = []
+
+          def sku_of(p):
+            return (p.get("sku") or p.get("slug") or "").strip()
+
+          def is_active(p):
+            if "active" in p:
+              return bool(p.get("active"))
+            if "ativo" in p:
+              return bool(p.get("ativo"))
+            return True
+
+          prev_map = { sku_of(p): p for p in prev_list if sku_of(p) }
+          new_items = []
+          for p in cur_list:
+            sku = sku_of(p)
+            if not sku:
+              continue
+            # dispara se é novo no JSON OU se “virou ativo”
+            if sku not in prev_map:
+              if is_active(p):
+                new_items.append(p)
+            else:
+              if (not is_active(prev_map[sku])) and is_active(p):
+                new_items.append(p)
+
+          if not new_items:
+            print("Sem novos produtos (ou ativações).")
+            raise SystemExit(0)
+
+          # Evita spam se entrar lote gigante
+          MAX_POSTS = 8
+          to_post = new_items[:MAX_POSTS]
+          rest = new_items[MAX_POSTS:]
+
+          for p in to_post:
+            title = (p.get("title") or p.get("nome") or p.get("name") or "").strip()
+            sku = sku_of(p)
+            id_busca = (p.get("id_busca") or p.get("idML") or p.get("id") or "").strip()
+            link = best_buy(p)
+            img = abs_image(p.get("image") or p.get("imagem") or "")
+            badges = p.get("badges") or p.get("tags") or []
+            if isinstance(badges, str):
+              badges = [x.strip() for x in re.split(r"[,;|]", badges) if x.strip()]
+            elif not isinstance(badges, list):
+              badges = []
+
+            tagline = "🛒 <b>Link da vitrine na bio</b>"
+            loja = (SITE_BASE.rstrip("/") + "/loja.html") if SITE_BASE else ""
+
+            hts = hashtags(badges)
+            hts_line = f"\n\n{safe(hts)}" if hts else ""
+
+            text = (
+              f"👑 <b>Novo Achado</b>\n"
+              f"<b>{safe(title) if title else safe(sku)}</b>\n\n"
+              f"🔍 ID ML: <code>{safe(id_busca) if id_busca else '—'}</code>\n"
+              f"🛒 Link: {safe(link) if link else '—'}\n"
+              f"{('🌐 Loja: ' + safe(loja) + '\n') if loja else ''}"
+              f"\n{tagline}"
+              f"{hts_line}"
+            )
+
+            # tenta foto primeiro (se tiver)
+            if img.startswith("http"):
+              try:
+                tg_send_photo(img, text)
+                continue
+              except Exception as e:
+                print("sendPhoto falhou, caindo para sendMessage:", e)
+
+            tg_send_message(text)
+
+          if rest:
+            tg_send_message(f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n🛒 <b>Link da vitrine na bio</b>")
+          PY
