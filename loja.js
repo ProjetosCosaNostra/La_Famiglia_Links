@@ -26,10 +26,11 @@
      - buy_url sempre cai em fallback (open_url/check_url/canonical/short/resolved)
      - Em browsers in-app (IG/FB) força window.open e fallback para location.href
 
-   PATCH 2026-03-02 (UI PREMIUM / MOBILE):
-     - Export/LISTAS: vira "Ferramentas" recolhível no mobile (nada gigante).
-     - Categorias: mostra só categorias reais (sem tags técnicas infinitas).
-     - Botão “Ver todas” abre painel com busca e seleção.
+   PATCH 2026-03-02 (UI PREMIUM / CATEGORIAS INTELIGENTES):
+     - Ferramentas (listas/export): recolhível no mobile (nada gigante).
+     - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
+     - “Ver todas” abre modal premium com busca.
+     - Contador “Categorias” vira 14+ (premium), total aparece no “Ver todas (X)”.
    ========================================================== */
 
 (() => {
@@ -44,25 +45,68 @@
   // =========================
   // FRONT FAILSAFE (ANTI-WIPE)
   // =========================
-  const FRONT_FAILSAFE_MIN_ACTIVE = 10;     // mínimo absoluto de ativos que a UI “aceita”
-  const FRONT_FAILSAFE_MIN_RATIO = 0.35;    // ou 35% do total
-  const FRONT_FAILSAFE_OK_DAYS = 7;         // resgata quem teve last_ok nos últimos N dias
+  const FRONT_FAILSAFE_MIN_ACTIVE = 10;
+  const FRONT_FAILSAFE_MIN_RATIO = 0.35;
+  const FRONT_FAILSAFE_OK_DAYS = 7;
 
   // =========================
   // IMAGENS: PREMIUM DINÂMICO
   // =========================
   const CN_IMAGE_MODE = "smart";            // "smart" | "contain" | "cover"
-  const CN_SMART_THRESHOLD = 0.12;          // tolerância pra decidir contain vs cover
-  const CN_BG_BLUR_PX = 18;                 // blur do fundo
-  const CN_BG_OPACITY = 0.35;               // opacidade do fundo
+  const CN_SMART_THRESHOLD = 0.12;
+  const CN_BG_BLUR_PX = 18;
+  const CN_BG_OPACITY = 0.35;
 
   // =========================
-  // CATEGORIAS (TAGS) — “INTELIGENTE”
+  // CATEGORIAS (INTELIGENTE + PREMIUM)
   // =========================
-  // Só mostra como categoria: tags úteis e repetidas (evita 1 milhão de tags técnicas)
-  const CN_CAT_MIN_COUNT = 2;               // aparece como categoria só se repetir (>=2)
-  const CN_CAT_MAX_CHIPS_DESKTOP = 18;      // chips visíveis (desktop)
-  const CN_CAT_MAX_CHIPS_MOBILE = 10;       // chips visíveis (mobile)
+  // Pinned: sempre aparecem no topo (principalmente no mobile)
+  const CN_CAT_PINNED = [
+    "Achados do Dia",
+    "Casa",
+    "Cozinha",
+    "Home Office",
+    "Carro",
+    "Segurança",
+    "Setup",
+    "Wi-Fi",
+    "Notebook",
+    "PC",
+    "Celular",
+    "Bluetooth",
+    "USB",
+    "Sem Fio",
+    "Portátil",
+    "Organização",
+    "Casa Inteligente",
+    "Premium",
+    "Praticidade",
+  ];
+
+  // regra base: categoria só se repetir e não for “ruído”
+  const CN_CAT_MIN_COUNT = 3;               // mais agressivo: reduz poluição
+  const CN_CAT_MAX_CHIPS_DESKTOP = 20;
+  const CN_CAT_MAX_CHIPS_MOBILE = 14;       // mobile “completo” sem virar mural
+
+  // allowlist para tags com dígito que ainda são úteis (se quiser manter)
+  const CN_CAT_ALLOW_DIGITS = new Set([
+    "4k",
+    "wi-fi 6",
+    "wifi 6",
+    "usb-c",
+  ]);
+
+  // stoplist de marcas comuns (não vira categoria)
+  const CN_CAT_BRANDS = new Set([
+    "xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
+    "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate",
+    "sandisk","kingston","lenovo","acer","hp","dell","microsoft","apple"
+  ]);
+
+  // stoplist de tags “plataforma”
+  const CN_CAT_NOISE = new Set([
+    "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
+  ]);
 
   const CN_PLACEHOLDER_IMG =
     "data:image/svg+xml;charset=UTF-8," +
@@ -228,7 +272,6 @@
     st.textContent = css;
     document.head.appendChild(st);
   }
-
   function applyImageFixes(root) {
     const scope = root || document;
     const imgs = scope.querySelectorAll('img[data-cnimg="1"]');
@@ -240,14 +283,12 @@
 
       const parent = img.parentElement;
 
-      // Estilos base do IMG (sem crop forçado)
       img.style.width = "100%";
       img.style.height = "100%";
       img.style.display = "block";
       img.style.position = "relative";
       img.style.zIndex = "2";
 
-      // Prepara o container pra suportar fundo blur
       if (parent && !parent.dataset.cnImgReady) {
         parent.dataset.cnImgReady = "1";
         parent.style.position = "relative";
@@ -293,7 +334,6 @@
         if (CN_IMAGE_MODE === "contain") return "contain";
         if (CN_IMAGE_MODE === "cover") return "cover";
 
-        // smart:
         const iw = img.naturalWidth || 0;
         const ih = img.naturalHeight || 0;
         const cw = parent.clientWidth || 1;
@@ -302,7 +342,6 @@
         const imgR = iw && ih ? (iw / ih) : 1;
         const boxR = cw / ch;
 
-        // Se imagem é “mais vertical” que o box (poster), usar contain (evita cortar)
         if (imgR < (boxR - CN_SMART_THRESHOLD)) return "contain";
         return "cover";
       }
@@ -374,25 +413,15 @@
     return raw.trim();
   }
 
-  // =========================
-  // FIX: garante https:// quando vier sem protocolo
-  // =========================
   function ensureHttpUrl(u) {
     let s = cleanUrl(u);
     if (!s) return "";
-
-    // já tem protocolo
     if (/^https?:\/\//i.test(s)) return s;
-
-    // //dominio/...
     if (s.startsWith("//")) return "https:" + s;
-
-    // mercadolivre / mercadolibre / meli.* sem protocolo
     if (/^(mercadolivre|mercadolibre)\./i.test(s)) return "https://" + s;
     if (/^meli\./i.test(s)) return "https://" + s;
     if (s.startsWith("meli.la/")) return "https://" + s;
     if (s.startsWith("meli.co/")) return "https://" + s;
-
     return s;
   }
 
@@ -411,11 +440,9 @@
   function isMLHost(host) {
     const h = String(host || "").toLowerCase().trim();
     if (!h) return false;
-
     if (h.includes("mercadolivre") || h.includes("mercadolibre")) return true;
     if (h === "meli.la" || h === "meli.co") return true;
     if (/^meli\.[a-z]{2,6}$/.test(h)) return true;
-
     return false;
   }
 
@@ -423,9 +450,7 @@
     const fixed = ensureHttpUrl(u);
     const x = String(fixed ?? "").toLowerCase().trim();
     if (!x) return false;
-
     if (x.includes("github.com/user-attachments/assets")) return false;
-
     const h = hostOf(x);
     return isMLHost(h);
   }
@@ -444,7 +469,6 @@
     return { primary, alt, open, check, canonical, resolved, shorty };
   }
 
-  // FIX: sempre pega o melhor link possível p/ comprar
   function bestBuyUrl(p) {
     return ensureHttpUrl(
       p.buy_url ||
@@ -457,7 +481,6 @@
     );
   }
 
-  // FIX: abre em in-app browsers (IG/FB). Se bloquear popup, cai pro mesmo tab.
   function openBuy(url) {
     const u = ensureHttpUrl(url);
     if (!u) return;
@@ -598,7 +621,6 @@
       _raw: raw,
     };
   }
-
   function dedupeProducts(list) {
     const out = [];
     const seen = new Set();
@@ -638,6 +660,7 @@
     const actives = (list || []).filter((p) => p && p.active !== false);
     return actives.find((p) => p.featured) || null;
   }
+
   function featuredHTML(p, isProdutoDoDia) {
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
@@ -799,47 +822,71 @@
     const counts = new Map();
     for (const p of (list || [])) {
       for (const b of safeArray(p.badges)) {
-        const key = String(b || "").trim();
-        if (!key) continue;
-        const k = key.toLowerCase();
+        const raw = String(b || "").trim();
+        if (!raw) continue;
+        const k = raw.toLowerCase();
         const prev = counts.get(k);
-        counts.set(k, { label: key, n: ((prev && prev.n) ? prev.n : 0) + 1 });
+        counts.set(k, { label: raw, n: ((prev && prev.n) ? prev.n : 0) + 1 });
       }
     }
     return Array.from(counts.values()).sort((a, b) => b.n - a.n);
   }
 
-  // ===== filtro inteligente de categorias =====
   function normalizeTagKey(s) {
     return String(s || "").trim().toLowerCase();
   }
 
   function isNoisyTag(label) {
     const s = String(label || "").trim();
-    if (!s) return true;
+    if (!s) return True;
 
-    // tags puramente numéricas / medidas / unidades (evita “1450W”, “1TB”, etc)
     const t = s.toLowerCase();
-    if (/^[0-9]+([.,][0-9]+)?\s*(w|wh|mah|ah|v|a|hz|gb|tb|mbps|mb\/s|m\/s|psi|cm|mm|kg|l|ml|m|s|°c|c|btu|k|kwh)?$/i.test(t)) return true;
+
+    if (CN_CAT_NOISE.has(t)) return true;
+    if (CN_CAT_BRANDS.has(t)) return true;
+
+    if (t.length > 26) return true;
+
+    // dígitos: só deixa se estiver na allowlist (ex: 4k, wi-fi 6, usb-c)
+    if (/\d/.test(t) && !CN_CAT_ALLOW_DIGITS.has(t)) return true;
+
+    // medidas/unidades/formatos
+    if (/^[0-9]+([.,][0-9]+)?\s*(w|wh|mah|ah|v|a|hz|gb|tb|mbps|psi|cm|mm|kg|l|ml|m|s)?$/i.test(t)) return true;
     if (/^(abnt|ip\d{2}|ipx\d)$/i.test(t)) return true;
     if (/^\d+\s*(tomadas|portas|peças|unidades|baterias)$/i.test(t)) return true;
-    if (/^\d+\s*(x|×)\s*\d+$/i.test(t)) return true;
 
-    // tags técnicas muito específicas que viram poluição
-    if (t.includes("mercado livre")) return true;
-    if (t === "tiktok" || t === "youtube") return true;
-    if (t.includes("mb/s") || t.includes("mbps")) return true;
-
-    // tags muito longas (geralmente “frase”, não categoria)
-    if (s.length > 28) return true;
+    // símbolos que viram “tag técnica”
+    if (/[()\/+]/.test(t)) return true;
 
     return false;
   }
 
   function isCategoryTag(label, n) {
-    if ((n || 0) < CN_CAT_MIN_COUNT) return false;
+    if ((n || 0) < CN_CAT_MIN_COUNT) {
+      // pinned entra mesmo se tiver pouco
+      const key = normalizeTagKey(label);
+      const pinned = CN_CAT_PINNED.some((x) => normalizeTagKey(x) === key);
+      if (!pinned) return false;
+    }
     if (isNoisyTag(label)) return false;
     return true;
+  }
+
+  function orderCategories(list) {
+    const map = new Map(list.map((x) => [normalizeTagKey(x.label), x]));
+    const out = [];
+
+    for (const pin of CN_CAT_PINNED) {
+      const k = normalizeTagKey(pin);
+      if (map.has(k)) {
+        const it = map.get(k);
+        out.push({ label: pin, n: it.n });
+        map.delete(k);
+      }
+    }
+
+    const rest = Array.from(map.values()).sort((a, b) => b.n - a.n);
+    return out.concat(rest);
   }
 
   function setText(el, v) {
@@ -849,18 +896,10 @@
 
   function updateUrlState() {
     const sp = new URLSearchParams(location.search);
-
-    if (STATE.query) sp.set("q", STATE.query);
-    else sp.delete("q");
-
-    if (STATE.tag) sp.set("tag", STATE.tag);
-    else sp.delete("tag");
-
-    if (STATE.sort && STATE.sort !== "relev") sp.set("sort", STATE.sort);
-    else sp.delete("sort");
-
+    if (STATE.query) sp.set("q", STATE.query); else sp.delete("q");
+    if (STATE.tag) sp.set("tag", STATE.tag); else sp.delete("tag");
+    if (STATE.sort && STATE.sort !== "relev") sp.set("sort", STATE.sort); else sp.delete("sort");
     if (ADMIN) sp.set("admin", "1");
-
     const next = `${location.pathname}?${sp.toString()}`;
     history.replaceState({}, "", next);
   }
@@ -913,7 +952,6 @@
       (p.price_text || "")
     ).toLowerCase();
 
-    // multi-termos AND
     const parts = q.split(/\s+/g).filter(Boolean);
     for (const part of parts) {
       if (!hay.includes(part)) return false;
@@ -921,7 +959,6 @@
     return true;
   }
 
-  // ===== Modal Categorias =====
   function ensureTagModal() {
     if (document.getElementById("cnTagModal")) return;
 
@@ -951,6 +988,10 @@
 
     const inp = document.getElementById("cnTagSearch");
     if (inp) inp.addEventListener("input", () => renderTagModalList());
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeTagModal();
+    });
   }
 
   function openTagModal() {
@@ -964,9 +1005,7 @@
     renderTagModalList();
     modal.classList.add("show");
 
-    try {
-      if (inp) inp.focus();
-    } catch {}
+    try { if (inp) inp.focus(); } catch {}
   }
 
   function closeTagModal() {
@@ -989,7 +1028,6 @@
     const activeKey = normalizeTagKey(STATE.tag || "");
 
     const items = [];
-    // “Tudo”
     items.push(`
       <button type="button" class="${!activeKey ? "active" : ""}" data-tag="">
         👑 Tudo <span style="opacity:.75;">(${STATE._activeCount || 0})</span>
@@ -1013,38 +1051,39 @@
       if (!btn) return;
 
       const tag = String(btn.getAttribute("data-tag") || "").trim();
-      STATE.tag = tag; // já vem lower
+      STATE.tag = tag;
       STATE.limit = PAGE_SIZE;
       closeTagModal();
       render();
     };
   }
+
   function renderTagChips(activeList) {
     const box = $("#tagChips");
     const totalTagsEl = $("#tagsCount");
     if (!box) return;
 
     const countsAll = buildTagCounts(activeList);
-    const categories = countsAll.filter((t) => isCategoryTag(t.label, t.n));
+    const categoriesRaw = countsAll.filter((t) => isCategoryTag(t.label, t.n));
+    const categories = orderCategories(categoriesRaw);
 
-    STATE._categoryCounts = categories.slice();  // usado no modal
+    STATE._categoryCounts = categories.slice();
     STATE._activeCount = (activeList || []).length;
-
-    // contador agora é “Categorias reais”
-    setText(totalTagsEl, categories.length);
 
     const isMobile = window.matchMedia("(max-width: 720px)").matches;
     const maxChips = isMobile ? CN_CAT_MAX_CHIPS_MOBILE : CN_CAT_MAX_CHIPS_DESKTOP;
 
-    // garante que a categoria selecionada apareça no topo
     let top = categories.slice(0, maxChips);
+
+    // se categoria selecionada não está em top, injeta no começo
     const activeKey = normalizeTagKey(STATE.tag || "");
     if (activeKey && !top.some((t) => normalizeTagKey(t.label) === activeKey)) {
       const sel = categories.find((t) => normalizeTagKey(t.label) === activeKey);
-      if (sel) {
-        top = [sel, ...top].slice(0, maxChips);
-      }
+      if (sel) top = [sel, ...top].slice(0, maxChips);
     }
+
+    // contador premium: "14+" quando tem mais
+    setText(totalTagsEl, categories.length > top.length ? `${top.length}+` : `${top.length}`);
 
     const allActive = !STATE.tag;
     const chips = [];
@@ -1115,7 +1154,6 @@
         const rescued = allProducts.filter((p) => (p.active !== false) || isRecentOk(p.last_ok));
         if (rescued.length > activeAll.length) {
           activeAll = rescued;
-
           if (!STATE._failsafeNotified) {
             STATE._failsafeNotified = true;
             showToast("FAILSAFE: vitrine preservada ✅");
@@ -1132,9 +1170,7 @@
     const destaque = getFeatured(activeAll);
 
     let featuredPass = null;
-    if (destaque) {
-      featuredPass = matchesFilter(destaque) ? destaque : null;
-    }
+    if (destaque) featuredPass = matchesFilter(destaque) ? destaque : null;
 
     featuredEl.innerHTML = featuredPass
       ? featuredHTML(featuredPass, true)
@@ -1206,7 +1242,6 @@
       updated_at: new Date().toISOString(),
       products: dedupeProducts(STATE.products).map((p) => {
         const r = cloneObj(p._raw || {});
-
         r.sku = p.sku;
         r.title = p.title;
         r.badges = safeArray(p.badges);
@@ -1245,9 +1280,6 @@
     showToast("Exportado ⬇️");
   }
 
-  // ==========================================================
-  // EXPORT: LISTA DE PRODUTOS (TXT/CSV) — 1 clique (sem print)
-  // ==========================================================
   function two(n){ return String(n).padStart(2, "0"); }
 
   function dateStamp() {
@@ -1352,7 +1384,6 @@
     showToast("Lista copiada ✅");
   }
 
-  // FIX: garante que o fundo não capture clique/toque
   function makeBgClickThrough() {
     const bg = document.querySelector(".bg");
     if (!bg) return;
@@ -1364,6 +1395,7 @@
     const q = $("#qLoja");
     const clear = $("#btnClear");
     const copyBtn = $("#btnCopyLoja");
+    const copyPageBtn = $("#btnCopyPage");
 
     const sortSel = $("#sortSel");
     const moreBtn = $("#btnMore");
@@ -1395,6 +1427,12 @@
       });
     }
 
+    if (copyPageBtn) {
+      copyPageBtn.addEventListener("click", () => {
+        copyText(location.href);
+      });
+    }
+
     if (sortSel) {
       sortSel.value = STATE.sort || "relev";
       sortSel.addEventListener("change", (e) => {
@@ -1411,9 +1449,7 @@
       });
     }
 
-    // =========================
-    // EXPORT UI: vira “Ferramentas” recolhível no mobile
-    // =========================
+    // Ferramentas (recolhível no mobile)
     (function ensureExportRow(){
       const tools = document.querySelector(".lojaTools");
       if (!tools) return;
@@ -1457,7 +1493,6 @@
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
 
     document.addEventListener("click", (e) => {
-      // abrir modal de categorias
       const openCats = e.target.closest('[data-action="openTags"]');
       if (openCats) {
         e.preventDefault();
@@ -1465,7 +1500,6 @@
         return;
       }
 
-      // FIX: força abrir links ML no in-app browser (Comprar/Comprar Agora)
       const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
@@ -1476,7 +1510,6 @@
         }
       }
 
-      // filtro por chip
       const chip = e.target.closest("[data-tag]");
       if (chip && chip.classList.contains("tagChip")) {
         const t = String(chip.getAttribute("data-tag") || "").trim();
@@ -1498,8 +1531,6 @@
       if (action === "copyId" && p) return copyText(p.id_busca || "");
 
       if (!ADMIN) return;
-
-      // admin não mexido aqui (mantido no seu fluxo atual)
     });
 
     if (ADMIN) {
@@ -1553,7 +1584,7 @@
       STATE.products = [{
         sku: "fallback-power-bank-20000mah",
         title: "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)",
-        badges: ["Achados do Dia", "20000mAh", "22.5W Turbo", "USB-C", "Preto"],
+        badges: ["Achados do Dia", "USB-C", "Preto"],
         id_busca: "5J5PKG-H0JA",
         open_url: "https://mercadolivre.com/sec/1iReZ7Y",
         check_url: "https://mercadolivre.com/sec/1iReZ7Y",
