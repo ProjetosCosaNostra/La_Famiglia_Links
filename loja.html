@@ -228,6 +228,7 @@
         </div>
       </div>
     </section>
+
     <section class="panel">
       <div class="panel__head">
         <div>
@@ -273,6 +274,33 @@
       if(el) el.textContent = String(y);
       var el2 = document.getElementById("year");
       if(el2) el2.textContent = String(y);
+    })();
+  </script>
+
+  <!-- ✅ Handler local apenas pro botão do rodapé (não conflita com loja.js) -->
+  <script>
+    (function(){
+      "use strict";
+      var btn = document.getElementById("btnCopyPage");
+      if(!btn) return;
+
+      function toast(msg){
+        var t = document.getElementById("toast");
+        if(!t) return;
+        t.textContent = msg || "Copiado ✅";
+        t.classList.add("show");
+        clearTimeout(window.__cn_toast_tm);
+        window.__cn_toast_tm = setTimeout(function(){ t.classList.remove("show"); }, 1200);
+      }
+
+      btn.addEventListener("click", function(){
+        var txt = String(location.href || "");
+        try{
+          navigator.clipboard.writeText(txt).then(function(){ toast("Copiado ✅"); }).catch(function(){ toast("Copiado ✅"); });
+        }catch(e){
+          toast("Copiado ✅");
+        }
+      });
     })();
   </script>
 </body>
