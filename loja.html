@@ -29,7 +29,7 @@
   <!-- CSS específico da loja -->
   <link rel="stylesheet" href="./loja.css" />
 
-  <!-- ✅ FIX MOBILE: ajustes mínimos responsivos (sem depender do loja.css atual) -->
+  <!-- ✅ MOBILE / GRID / CHIPS: reforço robusto (não depende do CSS externo) -->
   <style>
     @media (max-width: 720px){
       .countPill{ flex-wrap: wrap; row-gap: 8px; }
@@ -37,7 +37,10 @@
       .lojaTools .toolRow{ flex-direction: column; align-items: stretch; }
       .lojaTools .toolRow > *{ width: 100%; }
       .panel__right{ margin-top: 10px; }
+      .btnRow{ flex-direction: column; align-items: stretch; }
+      .btnRow > *{ width: 100%; }
     }
+
     /* grid seguro */
     .productsGrid{
       display:grid;
@@ -47,6 +50,7 @@
     @media (max-width: 980px){ .productsGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 520px){ .productsGrid{ grid-template-columns: 1fr; } }
 
+    /* cards (fallback profissional) */
     .cnProd{
       border: 1px solid rgba(215,176,88,.16);
       background: rgba(0,0,0,.24);
@@ -56,8 +60,8 @@
     }
     .cnImg{ width:100%; height:auto; display:block; background: rgba(0,0,0,.35); }
     .cnProdPad{ padding: 12px; }
-    .cnProd h3{ margin:0; font-size:15px; line-height:1.2; font-family:Cinzel,serif; letter-spacing:.2px; }
-    .cnBadges{ margin-top:8px; font-size:12px; opacity:.85; }
+    .cnProd h3{ margin:0; font-size:15px; line-height:1.25; font-family:Cinzel,serif; letter-spacing:.2px; }
+    .cnBadges{ margin-top:8px; font-size:12px; opacity:.88; }
     .cnBadges span{
       display:inline-block;
       margin:4px 6px 0 0;
@@ -68,26 +72,73 @@
     }
     .cnMeta{ margin-top:8px; font-size:12px; opacity:.9; }
     .cnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+
+    /* chips / tags */
+    .tagChips{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      align-items:center;
+    }
     .tagChips button{
       border:1px solid rgba(215,176,88,.22);
       background: rgba(0,0,0,.20);
       color: rgba(255,255,255,.90);
       padding: 6px 10px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 12px;
       cursor: pointer;
-      margin: 6px 8px 0 0;
+      margin: 0;
+      user-select:none;
     }
     .tagChips button.active{
-      border-color: rgba(215,176,88,.55);
+      border-color: rgba(215,176,88,.60);
       background: rgba(215,176,88,.12);
       color: rgba(215,176,88, 1);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
-  </style>
 
-  <!-- JS da loja -->
-  <script defer src="./loja.js"></script>
+    /* downloads row */
+    .btnRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .btnRow .btn{
+      flex: 1 1 180px;
+      justify-content:center;
+    }
+
+    /* load more */
+    .loadMoreWrap{
+      display:flex;
+      justify-content:center;
+      margin-top: 14px;
+    }
+    .hidden{ display:none !important; }
+
+    /* toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.75);
+      border: 1px solid rgba(215,176,88,.28);
+      color: rgba(255,255,255,.92);
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      max-width: 92vw;
+      z-index: 99999;
+      display:none;
+      font-weight: 700;
+    }
+    .toast.show{ display:block; }
+  </style>
 </head>
 
 <body>
@@ -186,6 +237,13 @@
           <div class="tagChips" id="tagChips" aria-label="Tags"></div>
         </div>
 
+        <div class="btnRow" aria-label="Exportações e lista" id="exportRow">
+          <button class="btn btn--tiny btn--glass" id="btnCopyActive" type="button">📋 Copiar lista (ativos)</button>
+          <button class="btn btn--tiny btn--gold" id="btnDownloadActiveTxt" type="button">⬇️ Baixar lista (.txt)</button>
+          <button class="btn btn--tiny btn--glass" id="btnDownloadAllTxt" type="button">⬇️ Baixar lista (tudo)</button>
+          <button class="btn btn--tiny btn--glass" id="btnDownloadCSV" type="button">⬇️ CSV (tudo)</button>
+        </div>
+
         <div class="adminBar" id="adminBar" style="display:none;">
           <div>
             <b>Modo Admin</b>
@@ -200,7 +258,6 @@
         </div>
       </div>
     </section>
-
     <section class="panel">
       <div class="panel__head">
         <div>
@@ -233,7 +290,7 @@
         <span class="muted">© <span id="year2"></span> — A Família das Ideias</span>
       </div>
       <div class="footer__right">
-        <button class="btn btn--tiny btn--glass" type="button" onclick="try{navigator.clipboard.writeText(location.href)}catch(e){}">Copiar link desta página</button>
+        <button class="btn btn--tiny btn--glass" type="button" id="btnCopyPage">Copiar link desta página</button>
       </div>
     </footer>
   </main>
@@ -247,6 +304,760 @@
       if(el) el.textContent = String(y);
       var el2 = document.getElementById("year");
       if(el2) el2.textContent = String(y);
+    })();
+  </script>
+
+  <script>
+    (function(){
+      "use strict";
+
+      // ----------------------------
+      // Helpers
+      // ----------------------------
+      function $(id){ return document.getElementById(id); }
+
+      function toast(msg){
+        var t = $("toast");
+        if(!t) return;
+        t.textContent = msg;
+        t.classList.add("show");
+        clearTimeout(toast._tm);
+        toast._tm = setTimeout(function(){ t.classList.remove("show"); }, 2200);
+      }
+
+      function safeText(x){
+        if(x === null || x === undefined) return "";
+        return String(x).trim();
+      }
+
+      function isTrue(v){
+        if(v === true) return true;
+        if(v === false) return false;
+        var s = safeText(v).toLowerCase();
+        if(s === "true" || s === "1" || s === "yes" || s === "sim") return true;
+        if(s === "false" || s === "0" || s === "no" || s === "nao" || s === "não") return false;
+        return Boolean(v);
+      }
+
+      function ensureArray(v){
+        if(Array.isArray(v)) return v;
+        var s = safeText(v);
+        if(!s) return [];
+        // separadores comuns
+        return s.split(/[,;|]/g).map(function(x){ return x.trim(); }).filter(Boolean);
+      }
+
+      function slugify(str){
+        return safeText(str)
+          .toLowerCase()
+          .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+          .replace(/[^a-z0-9]+/g,"-")
+          .replace(/^-+|-+$/g,"")
+          .slice(0, 72);
+      }
+
+      function pickIdML(obj){
+        // tenta achar um campo que pareça "5J5PKG-XXXX"
+        var candidates = [
+          obj.id_ml, obj.ml_id, obj.mlId, obj.idMercadoLivre, obj.mercado_livre_id,
+          obj.id_mercado_livre, obj.idML, obj.id, obj.ml, obj.ml_code, obj.code
+        ];
+        for(var i=0;i<candidates.length;i++){
+          var s = safeText(candidates[i]);
+          if(/^5J5PKG-[A-Z0-9]{3,6}$/i.test(s)) return s.toUpperCase();
+        }
+        // fallback: tenta achar dentro do título
+        var t = safeText(obj.title || obj.nome || obj.name || obj.titulo);
+        var m = t.match(/5J5PKG-[A-Z0-9]{3,6}/i);
+        if(m) return m[0].toUpperCase();
+        return "";
+      }
+
+      function pickLink(obj){
+        var candidates = [
+          obj.meli, obj.meli_la, obj.meli_url,
+          obj.link, obj.url, obj.href, obj.buy_url, obj.afiliado, obj.sec
+        ];
+        for(var i=0;i<candidates.length;i++){
+          var s = safeText(candidates[i]);
+          if(!s) continue;
+          if(/^https?:\/\//i.test(s)) return s;
+        }
+        return "";
+      }
+
+      function pickImage(obj){
+        var candidates = [
+          obj.image, obj.img, obj.imagem, obj.image_url, obj.thumb, obj.thumbnail,
+          obj.media, obj.banner
+        ];
+        for(var i=0;i<candidates.length;i++){
+          var s = safeText(candidates[i]);
+          if(!s) continue;
+          // aceita relativo também
+          return s;
+        }
+        return "";
+      }
+
+      function pickTitle(obj){
+        return safeText(obj.title || obj.nome || obj.name || obj.titulo || obj.produto || obj.label);
+      }
+
+      function pickSKU(obj, title){
+        return safeText(obj.sku || obj.slug || obj.key || obj.id_sku) || slugify(title);
+      }
+
+      function pickTags(obj){
+        var tags = ensureArray(obj.tags || obj.badges || obj.categorias || obj.categoria || obj.tag || obj.badge);
+        // normaliza espaços
+        tags = tags.map(function(t){ return safeText(t); }).filter(Boolean);
+        return tags;
+      }
+
+      function parseDate(x){
+        var s = safeText(x);
+        if(!s) return 0;
+        // iso
+        var d = Date.parse(s);
+        if(!isNaN(d)) return d;
+        return 0;
+      }
+
+      function escapeHTML(str){
+        return safeText(str)
+          .replace(/&/g,"&amp;")
+          .replace(/</g,"&lt;")
+          .replace(/>/g,"&gt;")
+          .replace(/"/g,"&quot;")
+          .replace(/'/g,"&#039;");
+      }
+
+      function copyText(txt){
+        try{
+          return navigator.clipboard.writeText(txt).then(function(){ toast("Copiado ✅"); });
+        }catch(e){
+          // fallback
+          try{
+            var ta = document.createElement("textarea");
+            ta.value = txt;
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            toast("Copiado ✅");
+            return Promise.resolve();
+          }catch(err){
+            toast("Falha ao copiar");
+            return Promise.resolve();
+          }
+        }
+      }
+
+      function downloadFile(filename, content, mime){
+        var blob = new Blob([content], {type: mime || "text/plain;charset=utf-8"});
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function(){
+          URL.revokeObjectURL(url);
+          document.body.removeChild(a);
+        }, 250);
+      }
+
+      // ----------------------------
+      // State
+      // ----------------------------
+      var PAGE_SIZE = 24;
+      var state = {
+        raw: [],
+        all: [],
+        activeOnly: true,
+        q: "",
+        tags: [],
+        sort: "relev",
+        shown: [],
+        rendered: 0,
+        page: 1,
+        updatedAt: ""
+      };
+
+      // ----------------------------
+      // Fetch
+      // ----------------------------
+      function fetchJSON(url){
+        return fetch(url, {cache: "no-store"}).then(function(r){
+          if(!r.ok) throw new Error("HTTP " + r.status);
+          return r.json();
+        });
+      }
+
+      function loadProducts(){
+        // tenta caminhos comuns
+        var paths = [
+          "./produtos.json",
+          "./data/produtos.json",
+          "/La_Famiglia_Links/produtos.json",
+          "/La_Famiglia_Links/data/produtos.json"
+        ];
+        var idx = 0;
+
+        function tryNext(){
+          if(idx >= paths.length) return Promise.reject(new Error("Não achei produtos.json"));
+          var p = paths[idx++];
+          return fetchJSON(p).then(function(data){
+            return {path: p, data: data};
+          }).catch(function(){
+            return tryNext();
+          });
+        }
+
+        return tryNext().then(function(res){
+          var data = res.data;
+
+          // aceita { updated_at, total, items } etc
+          var arr = [];
+          if(Array.isArray(data)) arr = data;
+          else if(Array.isArray(data.items)) arr = data.items;
+          else if(Array.isArray(data.products)) arr = data.products;
+          else if(Array.isArray(data.produtos)) arr = data.produtos;
+          else if(Array.isArray(data.data)) arr = data.data;
+
+          state.updatedAt = safeText(data.updated_at || data.updatedAt || data.generated_at || data.generatedAt || "");
+
+          state.raw = arr;
+
+          // normaliza
+          state.all = arr.map(function(p){
+            var title = pickTitle(p);
+            var sku = pickSKU(p, title);
+            var id_ml = pickIdML(p);
+            var link = pickLink(p);
+            var img = pickImage(p);
+            var tags = pickTags(p);
+            var active = (p.active !== undefined) ? isTrue(p.active) :
+                         (p.ativo !== undefined) ? isTrue(p.ativo) :
+                         (p.enabled !== undefined) ? isTrue(p.enabled) :
+                         true;
+
+            var featured = (p.featured !== undefined) ? isTrue(p.featured) :
+                           (p.destacado !== undefined) ? isTrue(p.destacado) :
+                           false;
+
+            var last_ok = parseDate(p.last_ok || p.lastOk || p.last_ok_at || p.lastOkAt || p.updated_at || p.updatedAt || p.last_update);
+
+            return {
+              _raw: p,
+              title: title,
+              sku: sku,
+              id_ml: id_ml,
+              link: link,
+              image: img,
+              tags: tags,
+              active: active,
+              featured: featured,
+              last_ok: last_ok
+            };
+          });
+
+          return true;
+        });
+      }
+      // ----------------------------
+      // URL Sync
+      // ----------------------------
+      function readURL(){
+        var u = new URL(location.href);
+        var q = safeText(u.searchParams.get("q"));
+        var sort = safeText(u.searchParams.get("sort")) || "relev";
+        var tags = safeText(u.searchParams.get("tags"));
+
+        state.q = q;
+        state.sort = (sort === "recent" || sort === "az" || sort === "relev") ? sort : "relev";
+        state.tags = tags ? tags.split(",").map(function(t){ return decodeURIComponent(t).trim(); }).filter(Boolean) : [];
+
+        var qInput = $("qLoja");
+        if(qInput) qInput.value = state.q;
+
+        var sel = $("sortSel");
+        if(sel) sel.value = state.sort;
+      }
+
+      function writeURL(){
+        var u = new URL(location.href);
+        if(state.q) u.searchParams.set("q", state.q); else u.searchParams.delete("q");
+        if(state.sort && state.sort !== "relev") u.searchParams.set("sort", state.sort); else u.searchParams.delete("sort");
+        if(state.tags && state.tags.length) u.searchParams.set("tags", state.tags.map(encodeURIComponent).join(",")); else u.searchParams.delete("tags");
+        history.replaceState({}, "", u.toString());
+      }
+
+      // ----------------------------
+      // Compute
+      // ----------------------------
+      function getActiveBase(){
+        return state.all.filter(function(p){ return state.activeOnly ? p.active : true; });
+      }
+
+      function computeTags(base){
+        var map = new Map();
+        base.forEach(function(p){
+          p.tags.forEach(function(t){
+            var k = safeText(t);
+            if(!k) return;
+            map.set(k, (map.get(k) || 0) + 1);
+          });
+        });
+
+        // ordena por count desc, depois A-Z
+        var list = Array.from(map.entries()).map(function(e){
+          return { tag: e[0], count: e[1] };
+        });
+        list.sort(function(a,b){
+          if(b.count !== a.count) return b.count - a.count;
+          return a.tag.localeCompare(b.tag, "pt-BR");
+        });
+
+        return list;
+      }
+
+      function matchesQuery(p, q){
+        q = safeText(q).toLowerCase();
+        if(!q) return true;
+        var hay = (p.title + " " + p.sku + " " + p.id_ml + " " + p.tags.join(" ")).toLowerCase();
+        // multi-termos AND
+        var parts = q.split(/\s+/g).filter(Boolean);
+        for(var i=0;i<parts.length;i++){
+          if(hay.indexOf(parts[i]) === -1) return false;
+        }
+        return true;
+      }
+
+      function matchesTags(p, tags){
+        if(!tags || !tags.length) return true;
+        // OR: se tiver qualquer tag
+        var set = new Set(p.tags.map(function(x){ return safeText(x).toLowerCase(); }));
+        for(var i=0;i<tags.length;i++){
+          if(set.has(safeText(tags[i]).toLowerCase())) return true;
+        }
+        return false;
+      }
+
+      function sortList(list){
+        var s = state.sort || "relev";
+        if(s === "az"){
+          list.sort(function(a,b){
+            return a.title.localeCompare(b.title, "pt-BR");
+          });
+          return list;
+        }
+        if(s === "recent"){
+          list.sort(function(a,b){
+            if(b.last_ok !== a.last_ok) return b.last_ok - a.last_ok;
+            // fallback
+            if(b.featured !== a.featured) return (b.featured?1:0) - (a.featured?1:0);
+            return a.title.localeCompare(b.title, "pt-BR");
+          });
+          return list;
+        }
+        // relevância
+        list.sort(function(a,b){
+          if(b.featured !== a.featured) return (b.featured?1:0) - (a.featured?1:0);
+          return a.title.localeCompare(b.title, "pt-BR");
+        });
+        return list;
+      }
+
+      function applyFilters(){
+        var base = getActiveBase();
+        var filtered = base.filter(function(p){
+          return matchesQuery(p, state.q) && matchesTags(p, state.tags);
+        });
+        sortList(filtered);
+        state.shown = filtered;
+        state.page = 1;
+        state.rendered = 0;
+        updateUI();
+        writeURL();
+      }
+
+      // ----------------------------
+      // Render
+      // ----------------------------
+      function renderTags(){
+        var base = getActiveBase();
+        var tags = computeTags(base);
+
+        var wrap = $("tagChips");
+        if(!wrap) return;
+
+        // Limpa
+        wrap.innerHTML = "";
+
+        // "Tudo" sempre primeiro
+        var btnAll = document.createElement("button");
+        btnAll.type = "button";
+        btnAll.textContent = "👑 Tudo (" + base.length + ")";
+        btnAll.dataset.tag = "__ALL__";
+        btnAll.className = (!state.tags.length ? "active" : "");
+        btnAll.setAttribute("aria-pressed", (!state.tags.length).toString());
+        wrap.appendChild(btnAll);
+
+        tags.forEach(function(t){
+          var b = document.createElement("button");
+          b.type = "button";
+          b.textContent = t.tag + " (" + t.count + ")";
+          b.dataset.tag = t.tag;
+          var active = state.tags.some(function(x){ return safeText(x).toLowerCase() === safeText(t.tag).toLowerCase(); });
+          if(active) b.classList.add("active");
+          b.setAttribute("aria-pressed", active.toString());
+          wrap.appendChild(b);
+        });
+
+        // Click handler (delegação)
+        wrap.onclick = function(ev){
+          var target = ev.target;
+          if(!target || target.tagName !== "BUTTON") return;
+          var tag = safeText(target.dataset.tag);
+
+          if(tag === "__ALL__"){
+            state.tags = [];
+            applyFilters();
+            return;
+          }
+
+          var idx = -1;
+          for(var i=0;i<state.tags.length;i++){
+            if(safeText(state.tags[i]).toLowerCase() === tag.toLowerCase()){
+              idx = i; break;
+            }
+          }
+          if(idx >= 0) state.tags.splice(idx,1);
+          else state.tags.push(tag);
+
+          applyFilters();
+        };
+      }
+
+      function renderFeatured(){
+        var wrap = $("featured");
+        if(!wrap) return;
+
+        var base = getActiveBase();
+        var featured = base.filter(function(p){ return p.featured; });
+        sortList(featured);
+
+        if(!featured.length){
+          wrap.innerHTML = '<div class="imperialNote" role="note"><b>Sem Produto do Dia:</b> marque um item com <code>featured=true</code> no produtos.json.</div>';
+          return;
+        }
+
+        var p = featured[0];
+        var img = p.image ? escapeHTML(p.image) : "assets/logo.png";
+        var buy = p.link ? escapeHTML(p.link) : "#";
+        var id = escapeHTML(p.id_ml || "—");
+
+        wrap.innerHTML = '' +
+          '<div class="cnProd">' +
+            '<img class="cnImg" src="' + img + '" alt="' + escapeHTML(p.title) + '" loading="lazy" onerror="this.src=\'assets/logo.png\';" />' +
+            '<div class="cnProdPad">' +
+              '<h3>' + escapeHTML(p.title) + '</h3>' +
+              '<div class="cnBadges">' +
+                p.tags.slice(0,6).map(function(t){ return '<span>' + escapeHTML(t) + '</span>'; }).join("") +
+              '</div>' +
+              '<div class="cnMeta">🔍 ID: <b>' + id + '</b></div>' +
+              '<div class="cnRow">' +
+                (p.link ? '<a class="btn btn--gold" target="_blank" rel="noopener" href="' + buy + '">🛒 Comprar</a>' : '') +
+                (p.id_ml ? '<button class="btn btn--glass" type="button" data-copyid="' + id + '">📋 Copiar ID</button>' : '') +
+                (p.link ? '<button class="btn btn--glass" type="button" data-copylink="' + buy + '">🔗 Copiar link</button>' : '') +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        wrap.onclick = function(ev){
+          var t = ev.target;
+          if(!t) return;
+          var idv = t.getAttribute("data-copyid");
+          var lv = t.getAttribute("data-copylink");
+          if(idv) copyText(idv);
+          if(lv) copyText(lv);
+        };
+      }
+
+      function cardHTML(p){
+        var img = p.image ? escapeHTML(p.image) : "assets/logo.png";
+        var buy = p.link ? escapeHTML(p.link) : "#";
+        var id = escapeHTML(p.id_ml || "—");
+        var tags = p.tags.slice(0,8).map(function(t){ return '<span>' + escapeHTML(t) + '</span>'; }).join("");
+
+        var buttons = '';
+        if(p.link) buttons += '<a class="btn btn--gold" target="_blank" rel="noopener" href="' + buy + '">🛒 Comprar</a>';
+        if(p.id_ml) buttons += '<button class="btn btn--glass" type="button" data-copyid="' + id + '">📋 Copiar ID</button>';
+        if(p.link) buttons += '<button class="btn btn--glass" type="button" data-copylink="' + buy + '">🔗 Copiar link</button>';
+
+        return '' +
+          '<div class="cnProd">' +
+            '<img class="cnImg" src="' + img + '" alt="' + escapeHTML(p.title) + '" loading="lazy" onerror="this.src=\'assets/logo.png\';" />' +
+            '<div class="cnProdPad">' +
+              '<h3>' + escapeHTML(p.title) + '</h3>' +
+              '<div class="cnBadges">' + tags + '</div>' +
+              '<div class="cnMeta">🔍 ID: <b>' + id + '</b></div>' +
+              '<div class="cnRow">' + buttons + '</div>' +
+            '</div>' +
+          '</div>';
+      }
+
+      function renderGrid(){
+        var grid = $("grid");
+        if(!grid) return;
+
+        var total = state.shown.length;
+        var maxRender = Math.min(total, state.page * PAGE_SIZE);
+        var slice = state.shown.slice(0, maxRender);
+
+        grid.innerHTML = slice.map(cardHTML).join("");
+        state.rendered = slice.length;
+
+        // load more
+        var wrap = $("loadMoreWrap");
+        if(wrap){
+          if(state.rendered < total) wrap.classList.remove("hidden");
+          else wrap.classList.add("hidden");
+        }
+
+        // click copy
+        grid.onclick = function(ev){
+          var t = ev.target;
+          if(!t) return;
+          var idv = t.getAttribute("data-copyid");
+          var lv = t.getAttribute("data-copylink");
+          if(idv) copyText(idv);
+          if(lv) copyText(lv);
+        };
+      }
+
+      function updateCounters(){
+        var base = getActiveBase();
+        $("countAll").textContent = String(base.length);
+        $("countShown").textContent = String(state.shown.length);
+        $("countRendered").textContent = String(state.rendered);
+
+        // tags count (únicas)
+        var set = new Set();
+        base.forEach(function(p){
+          p.tags.forEach(function(t){
+            var k = safeText(t);
+            if(k) set.add(k);
+          });
+        });
+        $("tagsCount").textContent = String(set.size);
+
+        // filtro ativo
+        var active = (safeText(state.q) !== "") || (state.tags && state.tags.length) || (state.sort && state.sort !== "relev");
+        var fs = $("filterStatus");
+        if(fs) fs.style.display = active ? "block" : "none";
+      }
+
+      function updateLastUpdate(){
+        var el = $("lastUpdate");
+        if(!el) return;
+
+        // prioriza updatedAt do JSON, senão usa o maior last_ok
+        var txt = state.updatedAt;
+        if(!txt){
+          var max = 0;
+          state.all.forEach(function(p){ if(p.last_ok > max) max = p.last_ok; });
+          if(max){
+            var d = new Date(max);
+            txt = d.toLocaleString("pt-BR");
+          }
+        }
+        el.textContent = txt || "—";
+      }
+
+      function updateUI(){
+        renderTags();
+        renderFeatured();
+        renderGrid();
+        updateCounters();
+        updateLastUpdate();
+      }
+
+      // ----------------------------
+      // Exports (listas)
+      // ----------------------------
+      function buildListTxt(items, onlyActive){
+        var now = new Date();
+        var base = items;
+        var header =
+          "Cosa Nostra — Loja Completa\n" +
+          (onlyActive ? "LISTA (ATIVOS)\n" : "LISTA (TUDO)\n") +
+          "Gerado em: " + now.toLocaleString("pt-BR") + "\n";
+
+        var updated = state.updatedAt || "";
+        if(updated) header += "updated_at: " + updated + "\n";
+        header += "Total: " + base.length + "\n";
+
+        var lines = base.map(function(p, i){
+          var t = p.title || "(sem título)";
+          var id = p.id_ml ? (" (ID: " + p.id_ml + ")") : "";
+          return (i+1) + ". " + t + id;
+        });
+
+        return header + lines.join("\n") + "\n";
+      }
+
+      function buildCSV(items){
+        var cols = ["sku","title","id_ml","link","active","featured","tags"];
+        var rows = [cols.join(",")];
+
+        items.forEach(function(p){
+          var vals = [
+            safeText(p.sku),
+            safeText(p.title).replace(/"/g,'""'),
+            safeText(p.id_ml),
+            safeText(p.link),
+            p.active ? "true" : "false",
+            p.featured ? "true" : "false",
+            safeText(p.tags.join("|")).replace(/"/g,'""')
+          ];
+          rows.push(vals.map(function(v){
+            // csv escaping
+            if(/[,"\n]/.test(v)) return '"' + v + '"';
+            return v;
+          }).join(","));
+        });
+
+        return rows.join("\n") + "\n";
+      }
+
+      // ----------------------------
+      // Events
+      // ----------------------------
+      function bindEvents(){
+        $("btnCopyLoja").addEventListener("click", function(ev){
+          ev.preventDefault();
+          copyText(location.href);
+        });
+
+        $("btnCopyPage").addEventListener("click", function(){
+          copyText(location.href);
+        });
+
+        $("btnClear").addEventListener("click", function(){
+          state.q = "";
+          state.tags = [];
+          state.sort = "relev";
+          $("qLoja").value = "";
+          $("sortSel").value = "relev";
+          applyFilters();
+          toast("Filtros limpos ✅");
+        });
+
+        $("qLoja").addEventListener("input", function(){
+          state.q = safeText(this.value);
+          applyFilters();
+        });
+
+        $("sortSel").addEventListener("change", function(){
+          state.sort = safeText(this.value) || "relev";
+          applyFilters();
+        });
+
+        $("btnMore").addEventListener("click", function(){
+          state.page += 1;
+          renderGrid();
+          updateCounters();
+        });
+
+        $("btnCopyActive").addEventListener("click", function(){
+          var base = getActiveBase();
+          var txt = buildListTxt(base, true);
+          copyText(txt);
+        });
+
+        $("btnDownloadActiveTxt").addEventListener("click", function(){
+          var base = getActiveBase();
+          var txt = buildListTxt(base, true);
+          var name = "lista_active_" + new Date().toISOString().slice(0,10) + ".txt";
+          downloadFile(name, txt, "text/plain;charset=utf-8");
+          toast("Download iniciado ⬇️");
+        });
+
+        $("btnDownloadAllTxt").addEventListener("click", function(){
+          var all = state.all.slice();
+          var txt = buildListTxt(all, false);
+          var name = "lista_tudo_" + new Date().toISOString().slice(0,10) + ".txt";
+          downloadFile(name, txt, "text/plain;charset=utf-8");
+          toast("Download iniciado ⬇️");
+        });
+
+        $("btnDownloadCSV").addEventListener("click", function(){
+          var all = state.all.slice();
+          var csv = buildCSV(all);
+          var name = "produtos_" + new Date().toISOString().slice(0,10) + ".csv";
+          downloadFile(name, csv, "text/csv;charset=utf-8");
+          toast("CSV gerado ⬇️");
+        });
+
+        // Admin (opcional): ?admin=1
+        var admin = (new URL(location.href)).searchParams.get("admin") === "1";
+        var bar = $("adminBar");
+        if(bar) bar.style.display = admin ? "flex" : "none";
+
+        var btnReload = $("btnReload");
+        if(btnReload){
+          btnReload.addEventListener("click", function(){
+            toast("Recarregando…");
+            init(true);
+          });
+        }
+
+        var btnExport = $("btnExport");
+        if(btnExport){
+          btnExport.addEventListener("click", function(){
+            // exporta o JSON bruto como está carregado (sem edição)
+            var raw = state.raw || [];
+            var payload = JSON.stringify(raw, null, 2);
+            downloadFile("produtos.json", payload, "application/json;charset=utf-8");
+            toast("produtos.json exportado ⬇️");
+          });
+        }
+      }
+
+      // ----------------------------
+      // Init
+      // ----------------------------
+      function init(forceReload){
+        if(forceReload){
+          state.raw = [];
+          state.all = [];
+          state.shown = [];
+          state.rendered = 0;
+          state.page = 1;
+        }
+
+        readURL();
+
+        loadProducts()
+          .then(function(){
+            bindEvents();
+            applyFilters();
+            toast("Loja carregada ✅");
+          })
+          .catch(function(err){
+            console.error(err);
+            $("featured").innerHTML = '<div class="imperialNote" role="note"><b>Erro:</b> não consegui carregar <code>produtos.json</code>. Verifique se o arquivo existe na raiz do repo (gh-pages).</div>';
+            toast("Falha ao carregar produtos");
+          });
+      }
+
+      init(false);
     })();
   </script>
 </body>
