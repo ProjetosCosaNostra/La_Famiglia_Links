@@ -1,174 +1,68 @@
 /* ==========================================================
    Arquivo: loja.js
    Página : Loja Completa (loja.html)
-   Objetivo (PRO):
-     - Renderizar produtos (produtos.json)
-     - Produto do Dia (featured real)
-     - Filtro por texto + filtro por categoria REAL (sem lixo de specs)
-     - Ordenação + paginação
-     - Export: copiar/baixar listas (TXT/CSV)
-     - Mobile impecável (sem botões gigantes)
-     - Modal “Ver todas” categorias (com busca)
-     - Compatível com IG/FB in-app (abrir link ML com fallback)
+   Objetivo:
+     - Renderizar produtos a partir de produtos.json
+     - Produto do Dia (featured) sem “inventar featured”
+     - Filtro por texto + filtro por categoria (tag) + ordenação + paginação
+     - Admin mode (?admin=1): editar em memória + exportar produtos.json
+
+   HOTFIX 2026-02-24 (ANTI-WIPE FRONT):
+     - Se a contagem de ativos cair demais (ex: por falso-positivo / bloqueio do ML),
+       a UI entra em FAILSAFE e resgata produtos com last_ok recente para não zerar a vitrine.
+
+   PATCH 2026-02-24 (IMAGENS PREMIUM DINÂMICAS):
+     - referrerpolicy=no-referrer (hotlink GitHub user-attachments)
+     - fallback premium quando falhar
+     - MODO PROFISSIONAL: imagem inteira (contain) + fundo blur automático
+     - smart-fit: evita crop em poster vertical
+
+   PATCH 2026-02-24 (EXPORT LISTA SEM PRINT):
+     - Botões: Copiar lista / Baixar TXT / Baixar TXT (tudo) / CSV (tudo)
+     - Snapshot em STATE._export (ativos / visível / tudo)
+
+   FIX 2026-02-24 (COMPRAR NÃO REDIRECIONA):
+     - Normaliza links sem https:// (mercadolivre.com/sec/... vira https://mercadolivre.com/sec/...)
+     - buy_url sempre cai em fallback (open_url/check_url/canonical/short/resolved)
+     - Em browsers in-app (IG/FB) força window.open e fallback para location.href
+
+   PATCH 2026-03-02 (UI PREMIUM / MOBILE):
+     - Export/LISTAS: vira "Ferramentas" recolhível no mobile (nada gigante).
+     - Categorias: mostra só categorias reais (sem tags técnicas infinitas).
+     - Botão “Ver todas” abre painel com busca e seleção.
    ========================================================== */
 
 (() => {
-  "use strict";
-
-  const $ = (s, root = document) => root.querySelector(s);
-  const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
 
   const ADMIN = new URLSearchParams(location.search).get("admin") === "1";
+  const SHOW_FEATURED_IN_GRID = true;
+
   const PAGE_SIZE = 60;
 
-  // ================
-  // Toast / Clipboard
-  // ================
-  const toastEl = $("#toast");
-  function showToast(msg = "Copiado ✅", ms = 1400) {
-    if (!toastEl) return;
-    toastEl.textContent = String(msg || "");
-    toastEl.classList.add("show");
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => toastEl.classList.remove("show"), ms);
-  }
-
-  async function copyText(txt) {
-    const v = String(txt ?? "");
-    try {
-      await navigator.clipboard.writeText(v);
-      showToast("Copiado ✅");
-    } catch {
-      try {
-        const t = document.createElement("textarea");
-        t.value = v;
-        t.style.position = "fixed";
-        t.style.left = "-9999px";
-        document.body.appendChild(t);
-        t.focus();
-        t.select();
-        document.execCommand("copy");
-        t.remove();
-        showToast("Copiado ✅");
-      } catch {
-        showToast("Falha ao copiar", 1800);
-      }
-    }
-  }
-
-  // =================
-  // Text / URL helpers
-  // =================
-  function stripTags(s) {
-    return String(s ?? "").replace(/<[^>]*>/g, " ");
-  }
-  function cleanText(s) {
-    return stripTags(s).replace(/\s+/g, " ").trim();
-  }
-  function cleanUrl(u) {
-    let raw = String(u ?? "").trim();
-    if (!raw) return "";
-    raw = raw.replace(/^[\s"'`]+/, "");
-    raw = raw.replace(/[\s"'`]+$/, "");
-    raw = raw.replace(/[)"'`\\]+$/g, "");
-    return raw.trim();
-  }
-  function ensureHttpUrl(u) {
-    let s = cleanUrl(u);
-    if (!s) return "";
-    if (/^https?:\/\//i.test(s)) return s;
-    if (s.startsWith("//")) return "https:" + s;
-    if (/^(mercadolivre|mercadolibre)\./i.test(s)) return "https://" + s;
-    if (/^meli\./i.test(s)) return "https://" + s;
-    if (s.startsWith("meli.la/")) return "https://" + s;
-    if (s.startsWith("meli.co/")) return "https://" + s;
-    return s;
-  }
-
-  function hostOf(url) {
-    try {
-      const fixed = ensureHttpUrl(url);
-      const u = new URL(String(fixed || ""));
-      let h = (u.hostname || "").toLowerCase().trim();
-      if (h.startsWith("www.")) h = h.slice(4);
-      return h;
-    } catch {
-      return "";
-    }
-  }
-  function isMLHost(host) {
-    const h = String(host || "").toLowerCase().trim();
-    if (!h) return false;
-    if (h.includes("mercadolivre") || h.includes("mercadolibre")) return true;
-    if (h === "meli.la" || h === "meli.co") return true;
-    if (/^meli\.[a-z]{2,6}$/.test(h)) return true;
-    return false;
-  }
-  function isProbablyValidLink(u) {
-    const fixed = ensureHttpUrl(u);
-    const x = String(fixed ?? "").toLowerCase().trim();
-    if (!x) return false;
-    if (x.includes("github.com/user-attachments/assets")) return false;
-    const h = hostOf(x);
-    return isMLHost(h);
-  }
-
-  function pickBestLink(raw) {
-    const open = ensureHttpUrl(raw.open_url || raw.link || raw.url || "");
-    const check = ensureHttpUrl(raw.check_url || "");
-    const canonical = ensureHttpUrl(raw.canonical_url || "");
-    const resolved = ensureHttpUrl(raw.resolved_url || "");
-    const shorty = ensureHttpUrl(raw.short_url || "");
-    const candidates = [open, check, canonical, resolved, shorty].filter(Boolean);
-    const primary = candidates.find(isProbablyValidLink) || "";
-    const alt = candidates.find((c) => c && c !== primary && isProbablyValidLink(c)) || "";
-    return { primary, alt, open, check, canonical, resolved, shorty };
-  }
-
-  function bestBuyUrl(p) {
-    return ensureHttpUrl(
-      p.buy_url ||
-      p.open_url ||
-      p.check_url ||
-      p.canonical_url ||
-      p.short_url ||
-      p.resolved_url ||
-      ""
-    );
-  }
-
-  // IG/FB in-app: tenta nova aba; se bloquear, cai no mesmo tab.
-  function openBuy(url) {
-    const u = ensureHttpUrl(url);
-    if (!u) return;
-    try {
-      const w = window.open(u, "_blank", "noopener,noreferrer");
-      if (!w) window.location.href = u;
-    } catch {
-      window.location.href = u;
-    }
-  }
-
-  function escapeHTML(s) {
-    return String(s ?? "")
-      .split("&").join("&amp;")
-      .split("<").join("&lt;")
-      .split(">").join("&gt;")
-      .split('"').join("&quot;")
-      .split("'").join("&#039;");
-  }
-
-  function safeArray(x) {
-    return Array.isArray(x) ? x : [];
-  }
+  // =========================
+  // FRONT FAILSAFE (ANTI-WIPE)
+  // =========================
+  const FRONT_FAILSAFE_MIN_ACTIVE = 10;     // mínimo absoluto de ativos que a UI “aceita”
+  const FRONT_FAILSAFE_MIN_RATIO = 0.35;    // ou 35% do total
+  const FRONT_FAILSAFE_OK_DAYS = 7;         // resgata quem teve last_ok nos últimos N dias
 
   // =========================
-  // Imagens: premium smart-fit
+  // IMAGENS: PREMIUM DINÂMICO
   // =========================
-  const CN_IMAGE_MODE = "smart";   // smart | contain | cover
-  const CN_SMART_THRESHOLD = 0.12;
-  const CN_BG_BLUR_PX = 18;
-  const CN_BG_OPACITY = 0.35;
+  const CN_IMAGE_MODE = "smart";            // "smart" | "contain" | "cover"
+  const CN_SMART_THRESHOLD = 0.12;          // tolerância pra decidir contain vs cover
+  const CN_BG_BLUR_PX = 18;                 // blur do fundo
+  const CN_BG_OPACITY = 0.35;               // opacidade do fundo
+
+  // =========================
+  // CATEGORIAS (TAGS) — “INTELIGENTE”
+  // =========================
+  // Só mostra como categoria: tags úteis e repetidas (evita 1 milhão de tags técnicas)
+  const CN_CAT_MIN_COUNT = 2;               // aparece como categoria só se repetir (>=2)
+  const CN_CAT_MAX_CHIPS_DESKTOP = 18;      // chips visíveis (desktop)
+  const CN_CAT_MAX_CHIPS_MOBILE = 10;       // chips visíveis (mobile)
 
   const CN_PLACEHOLDER_IMG =
     "data:image/svg+xml;charset=UTF-8," +
@@ -189,9 +83,11 @@
             <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.65"/>
           </filter>
         </defs>
+
         <rect width="100%" height="100%" fill="url(#g)"/>
         <rect x="42" y="42" width="816" height="616" rx="28" ry="28"
               fill="rgba(255,255,255,0.02)" stroke="rgba(215,176,88,0.28)" stroke-width="2"/>
+
         <g filter="url(#shadow)">
           <text x="50%" y="44%" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
                 font-size="56" fill="url(#gold)" letter-spacing="6">COSA NOSTRA</text>
@@ -202,6 +98,136 @@
         </g>
       </svg>`
     );
+
+  // =========================
+  // UI PATCH: CSS INJETADO (premium + mobile)
+  // =========================
+  function injectUiCss() {
+    if (document.getElementById("cnLojaUiCss")) return;
+
+    const css = `
+/* ===== CN Loja UI Patch (premium / mobile) ===== */
+.cnToolsRow{ width:100%; }
+.cnTools{ width:100%; }
+.cnTools > summary{ list-style:none; cursor:pointer; user-select:none; }
+.cnTools > summary::-webkit-details-marker{ display:none; }
+
+.cnToolsSummary{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; width:100%;
+}
+
+.cnToolsGrid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+@media (max-width: 720px){
+  .cnToolsGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+.cnToolsGrid .btn{
+  width:100%;
+  justify-content:center;
+  padding:10px 12px;
+  border-radius:14px;
+}
+@media (max-width: 520px){
+  .cnToolsGrid .btn{
+    padding:9px 10px;
+    font-size:12px;
+    border-radius:14px;
+  }
+}
+
+/* Modal de categorias */
+.cnModal{
+  position:fixed; inset:0;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  background: rgba(0,0,0,.55);
+  z-index: 999999;
+}
+.cnModal.show{ display:flex; }
+
+.cnModal__panel{
+  width: min(760px, 96vw);
+  max-height: 82vh;
+  margin: 0 0 14px 0;
+  border-radius: 18px;
+  overflow:hidden;
+  border: 1px solid rgba(215,176,88,.22);
+  background: rgba(8,8,10,.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 80px rgba(0,0,0,.65);
+}
+.cnModal__head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(215,176,88,.18);
+}
+.cnModal__title{
+  font-family: Cinzel, serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(224,195,107,.95);
+  font-size: 12px;
+}
+.cnModal__close{
+  border: 1px solid rgba(215,176,88,.22);
+  background: rgba(0,0,0,.25);
+  color: rgba(255,255,255,.92);
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor:pointer;
+}
+.cnModal__search{
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(215,176,88,.12);
+}
+.cnModal__search input{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(215,176,88,.18);
+  background: rgba(0,0,0,.35);
+  color: rgba(255,255,255,.92);
+  outline:none;
+}
+.cnModal__list{
+  padding: 12px 14px;
+  overflow:auto;
+  max-height: calc(82vh - 120px);
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}
+.cnModal__list button{
+  border:1px solid rgba(215,176,88,.22);
+  background: rgba(0,0,0,.20);
+  color: rgba(255,255,255,.90);
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  cursor:pointer;
+}
+.cnModal__list button.active{
+  border-color: rgba(215,176,88,.60);
+  background: rgba(215,176,88,.12);
+  color: rgba(215,176,88, 1);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+    `.trim();
+
+    const st = document.createElement("style");
+    st.id = "cnLojaUiCss";
+    st.textContent = css;
+    document.head.appendChild(st);
+  }
 
   function applyImageFixes(root) {
     const scope = root || document;
@@ -214,12 +240,14 @@
 
       const parent = img.parentElement;
 
+      // Estilos base do IMG (sem crop forçado)
       img.style.width = "100%";
       img.style.height = "100%";
       img.style.display = "block";
       img.style.position = "relative";
       img.style.zIndex = "2";
 
+      // Prepara o container pra suportar fundo blur
       if (parent && !parent.dataset.cnImgReady) {
         parent.dataset.cnImgReady = "1";
         parent.style.position = "relative";
@@ -265,6 +293,7 @@
         if (CN_IMAGE_MODE === "contain") return "contain";
         if (CN_IMAGE_MODE === "cover") return "cover";
 
+        // smart:
         const iw = img.naturalWidth || 0;
         const ih = img.naturalHeight || 0;
         const cw = parent.clientWidth || 1;
@@ -273,6 +302,7 @@
         const imgR = iw && ih ? (iw / ih) : 1;
         const boxR = cw / ch;
 
+        // Se imagem é “mais vertical” que o box (poster), usar contain (evita cortar)
         if (imgR < (boxR - CN_SMART_THRESHOLD)) return "contain";
         return "cover";
       }
@@ -280,14 +310,13 @@
       img.addEventListener("load", () => {
         const fit = decideFit();
         img.style.objectFit = fit;
-        setBg(img.currentSrc || img.src || "");
 
+        setBg(img.currentSrc || img.src || "");
         if (parent) {
           const bg = parent.querySelector(":scope > .cnImgBg");
           const v = parent.querySelector(":scope > .cnImgVignette");
-          const show = (fit === "contain");
-          if (bg) bg.style.display = show ? "block" : "none";
-          if (v) v.style.display = show ? "block" : "none";
+          if (bg) bg.style.display = (fit === "contain") ? "block" : "none";
+          if (v) v.style.display = (fit === "contain") ? "block" : "none";
         }
       }, { once: true });
 
@@ -299,29 +328,225 @@
       }, { once: true });
     });
   }
+
+  const toast = $("#toast");
+  function showToast(msg = "Copiado ✅") {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 1150);
+  }
+
+  async function copyText(txt) {
+    const v = String(txt ?? "");
+    try {
+      await navigator.clipboard.writeText(v);
+      showToast("Copiado ✅");
+    } catch {
+      const t = document.createElement("textarea");
+      t.value = v;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      t.remove();
+      showToast("Copiado ✅");
+    }
+  }
+
+  function lojaUrl() {
+    return new URL("./loja.html", window.location.href).href;
+  }
+
+  function stripTags(s) {
+    return String(s ?? "").replace(/<[^>]*>/g, " ");
+  }
+
+  function cleanText(s) {
+    return stripTags(s).replace(/\s+/g, " ").trim();
+  }
+
+  function cleanUrl(u) {
+    let raw = String(u ?? "").trim();
+    if (!raw) return "";
+    raw = raw.replace(/^[\s"'`]+/, "");
+    raw = raw.replace(/[\s"'`]+$/, "");
+    raw = raw.replace(/[)"'`\\]+$/g, "");
+    return raw.trim();
+  }
+
   // =========================
-  // Data normalize / dedupe
+  // FIX: garante https:// quando vier sem protocolo
   // =========================
+  function ensureHttpUrl(u) {
+    let s = cleanUrl(u);
+    if (!s) return "";
+
+    // já tem protocolo
+    if (/^https?:\/\//i.test(s)) return s;
+
+    // //dominio/...
+    if (s.startsWith("//")) return "https:" + s;
+
+    // mercadolivre / mercadolibre / meli.* sem protocolo
+    if (/^(mercadolivre|mercadolibre)\./i.test(s)) return "https://" + s;
+    if (/^meli\./i.test(s)) return "https://" + s;
+    if (s.startsWith("meli.la/")) return "https://" + s;
+    if (s.startsWith("meli.co/")) return "https://" + s;
+
+    return s;
+  }
+
+  function hostOf(url) {
+    try {
+      const fixed = ensureHttpUrl(url);
+      const u = new URL(String(fixed || ""));
+      let h = (u.hostname || "").toLowerCase().trim();
+      if (h.startsWith("www.")) h = h.slice(4);
+      return h;
+    } catch {
+      return "";
+    }
+  }
+
+  function isMLHost(host) {
+    const h = String(host || "").toLowerCase().trim();
+    if (!h) return false;
+
+    if (h.includes("mercadolivre") || h.includes("mercadolibre")) return true;
+    if (h === "meli.la" || h === "meli.co") return true;
+    if (/^meli\.[a-z]{2,6}$/.test(h)) return true;
+
+    return false;
+  }
+
+  function isProbablyValidLink(u) {
+    const fixed = ensureHttpUrl(u);
+    const x = String(fixed ?? "").toLowerCase().trim();
+    if (!x) return false;
+
+    if (x.includes("github.com/user-attachments/assets")) return false;
+
+    const h = hostOf(x);
+    return isMLHost(h);
+  }
+
+  function pickBestLink(raw) {
+    const open = ensureHttpUrl(raw.open_url || raw.link || raw.url || "");
+    const check = ensureHttpUrl(raw.check_url || "");
+    const canonical = ensureHttpUrl(raw.canonical_url || "");
+    const resolved = ensureHttpUrl(raw.resolved_url || "");
+    const shorty = ensureHttpUrl(raw.short_url || "");
+
+    const candidates = [open, check, canonical, resolved, shorty].filter(Boolean);
+    const primary = candidates.find(isProbablyValidLink) || "";
+    const alt = candidates.find((c) => c && c !== primary && isProbablyValidLink(c)) || "";
+
+    return { primary, alt, open, check, canonical, resolved, shorty };
+  }
+
+  // FIX: sempre pega o melhor link possível p/ comprar
+  function bestBuyUrl(p) {
+    return ensureHttpUrl(
+      p.buy_url ||
+      p.open_url ||
+      p.check_url ||
+      p.canonical_url ||
+      p.short_url ||
+      p.resolved_url ||
+      ""
+    );
+  }
+
+  // FIX: abre em in-app browsers (IG/FB). Se bloquear popup, cai pro mesmo tab.
+  function openBuy(url) {
+    const u = ensureHttpUrl(url);
+    if (!u) return;
+    try {
+      const w = window.open(u, "_blank", "noopener,noreferrer");
+      if (!w) window.location.href = u;
+    } catch {
+      window.location.href = u;
+    }
+  }
+
+  function escapeHTML(s) {
+    return String(s ?? "")
+      .split("&").join("&amp;")
+      .split("<").join("&lt;")
+      .split(">").join("&gt;")
+      .split('"').join("&quot;")
+      .split("'").join("&#039;");
+  }
+
+  function safeArray(x) {
+    return Array.isArray(x) ? x : [];
+  }
+
   function normalizeProducts(data) {
     if (!data) return [];
     if (Array.isArray(data)) return data;
     if (Array.isArray(data.products)) return data.products;
     if (Array.isArray(data.items)) return data.items;
-    if (Array.isArray(data.produtos)) return data.produtos;
     return [];
   }
 
+  function formatUpdatedAt(iso) {
+    try {
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return "";
+      return d.toLocaleString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    } catch {
+      return "";
+    }
+  }
+
+  function tagsText(badges) {
+    const arr = safeArray(badges);
+    return arr
+      .slice(0, 4)
+      .map((t) => `#${String(t).trim().replaceAll(" ", "_")}`)
+      .join(" ");
+  }
+
   function cloneObj(o) {
-    try { return structuredClone(o); } catch { return JSON.parse(JSON.stringify(o || {})); }
+    try {
+      return structuredClone(o);
+    } catch {
+      return JSON.parse(JSON.stringify(o || {}));
+    }
+  }
+
+  function parseISO(iso) {
+    try {
+      const d = new Date(String(iso || ""));
+      if (Number.isNaN(d.getTime())) return null;
+      return d;
+    } catch {
+      return null;
+    }
+  }
+
+  function isRecentOk(iso, days = FRONT_FAILSAFE_OK_DAYS) {
+    const d = parseISO(iso);
+    if (!d) return false;
+    const ms = Date.now() - d.getTime();
+    const max = days * 24 * 60 * 60 * 1000;
+    return ms >= 0 && ms <= max;
   }
 
   function adaptForUI(rawProduct) {
     const raw = cloneObj(rawProduct || {});
-    const sku = cleanText(raw.sku || raw.slug || raw.key || "");
-    const title = cleanText(raw.title || raw.nome || raw.name || raw.titulo || "");
-    const id_busca = cleanText(raw.id_busca || raw.idML || raw.id_ml || raw.ml_id || raw.id || "");
 
-    const badges = safeArray(raw.badges || raw.tags || raw.categorias || [])
+    const sku = cleanText(raw.sku || raw.slug || "");
+    const title = cleanText(raw.title || raw.nome || raw.name || "");
+    const id_busca = cleanText(raw.id_busca || raw.idML || raw.id || "");
+
+    const badges = safeArray(raw.badges || raw.tags)
       .map(cleanText)
       .filter(Boolean);
 
@@ -334,8 +559,9 @@
       (raw.featured === true) || (raw.destaque === true) || (raw.is_featured === true);
 
     const links = pickBestLink(raw);
-    const image = cleanUrl(raw.image || raw.imagem || raw.img || "");
-    const price_text = cleanText(raw.price_text || raw.preco || raw.price || "");
+
+    const image = cleanUrl(raw.image || raw.imagem || "");
+    const price_text = cleanText(raw.price_text || "");
 
     if (!sku || !title) return null;
 
@@ -347,6 +573,7 @@
 
       open_url: links.open,
       check_url: links.check || links.open,
+
       canonical_url: links.canonical || "",
       short_url: links.shorty || "",
       resolved_url: links.resolved || "",
@@ -362,6 +589,11 @@
 
       last_checked: cleanText(raw.last_checked || ""),
       last_ok: cleanText(raw.last_ok || ""),
+
+      guardian_last_reason: cleanText(raw.guardian_last_reason || ""),
+      guardian_disabled_at: cleanText(raw.guardian_disabled_at || ""),
+      guardian_dead_reason: cleanText(raw.guardian_dead_reason || ""),
+      guardian_fail_count: Number(raw.guardian_fail_count || 0),
 
       _raw: raw,
     };
@@ -406,113 +638,6 @@
     const actives = (list || []).filter((p) => p && p.active !== false);
     return actives.find((p) => p.featured) || null;
   }
-
-  // =========================
-  // Categorias REAIS (sem lixo)
-  // =========================
-  const PREFERRED_CATS = [
-    "Achados do Dia", "Casa", "Cozinha", "Home Office", "Setup", "Wi-Fi", "Wi-Fi",
-    "Notebook", "Bluetooth", "Carro", "Segurança", "Praticidade", "Premium", "Portátil",
-    "Organização", "Casa Inteligente", "Tecnologia", "PC", "Celular", "USB"
-  ];
-
-  function normKey(s) {
-    return cleanText(s).toLowerCase();
-  }
-
-  function looksLikeSpecTag(tag) {
-    const t = normKey(tag);
-
-    // exceções que podem ter número e ainda são categoria útil
-    if (t.includes("wi-fi") || t.includes("wifi")) return false;
-    if (t === "4k" || t === "3d") return false;
-    if (t.includes("usb")) return false;
-    if (t.includes("bluetooth")) return false;
-    if (t.includes("m.2") || t.includes("nvme")) return false;
-
-    // se for curto e tiver número: quase sempre spec (1tb, 4l, 12v etc)
-    if (/[0-9]/.test(t) && t.length <= 6) return true;
-
-    // unidades / padrões típicos de especificação
-    const unitRe = /(mah|mbps|mb\/s|gb|tb|hz|w\b|kw|v\b|a\b|mm|cm|m\b|l\b|psi|dpi|rpm|db|°|polegada|pol|kg|g\b|litro)/i;
-    if (unitRe.test(tag)) return true;
-
-    // padrões tipo 2x1, 1x2, 3 em 1, 10m, 60w, 220v etc
-    const patRe = /(^\d+\s?x\s?\d+$)|(\d+\s?em\s?\d+)|(^\d+\s?(m|cm|mm|w|v|a|l|kg|gb|tb)$)/i;
-    if (patRe.test(t)) return true;
-
-    // muito número no texto (ruído)
-    const digits = (t.match(/[0-9]/g) || []).length;
-    if (digits >= 3) return true;
-
-    return false;
-  }
-
-  function isGoodCategoryTag(tag, count) {
-    const label = cleanText(tag);
-    if (!label) return false;
-
-    // remove tags gigantes
-    if (label.length > 22) return false;
-
-    const k = normKey(label);
-
-    // nunca deixa entrar "lixo puro"
-    if (looksLikeSpecTag(label)) return false;
-
-    // se é preferida, aceita mesmo com count 1 (mas continua sem spec)
-    if (PREFERRED_CATS.map(normKey).includes(k)) return true;
-
-    // caso normal: categoria precisa aparecer pelo menos 2x (evita “milhão”)
-    if ((count || 0) < 2) return false;
-
-    // evita tags com cara de frase
-    const words = k.split(/\s+/g).filter(Boolean);
-    if (words.length >= 4) return false;
-
-    return true;
-  }
-
-  function buildTagCounts(activeList) {
-    const counts = new Map();
-    for (const p of (activeList || [])) {
-      for (const b of safeArray(p.badges)) {
-        const label = cleanText(b);
-        if (!label) continue;
-        const key = normKey(label);
-        counts.set(key, { label, n: (counts.get(key)?.n || 0) + 1 });
-      }
-    }
-    return counts;
-  }
-
-  function buildCategories(activeList) {
-    const counts = buildTagCounts(activeList);
-    const all = Array.from(counts.values());
-
-    const cats = all
-      .filter((x) => isGoodCategoryTag(x.label, x.n))
-      .sort((a, b) => (b.n - a.n) || a.label.localeCompare(b.label, "pt-BR"));
-
-    // prioriza preferidas (se existirem), depois completa com as maiores
-    const preferredKeys = new Set(PREFERRED_CATS.map(normKey));
-    const preferred = cats.filter((c) => preferredKeys.has(normKey(c.label)));
-    const rest = cats.filter((c) => !preferredKeys.has(normKey(c.label)));
-
-    // preferred também ordenada por count desc
-    preferred.sort((a, b) => (b.n - a.n) || a.label.localeCompare(b.label, "pt-BR"));
-
-    return [...preferred, ...rest];
-  }
-
-  // =========================
-  // UI render (featured + grid)
-  // =========================
-  function tagsText(badges) {
-    const arr = safeArray(badges);
-    return arr.slice(0, 4).map((t) => `#${String(t).trim().replace(/\s+/g, "_")}`).join(" ");
-  }
-
   function featuredHTML(p, isProdutoDoDia) {
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
@@ -535,6 +660,10 @@
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
 
+    const altBtn = p.alt_url
+      ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Link Alt</button>`
+      : ``;
+
     return `
       <div class="card">
         <div class="card__img">
@@ -555,6 +684,7 @@
           <div class="actions">
             ${buyBtn}
             <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            ${altBtn}
             <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
           </div>
         </div>
@@ -582,6 +712,7 @@
           <div class="actions" style="margin-top:6px;">
             <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
             <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
             <a class="btn btn--tiny btn--gold" href="./">Abrir Home</a>
           </div>
 
@@ -609,6 +740,7 @@
       : `<a class="smallBtn smallBtnGold" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
+    const tags = tagsText(p.badges);
 
     return `
       <div class="pCard" data-sku="${escapeHTML(p.sku)}">
@@ -620,11 +752,13 @@
           <p class="pName">${escapeHTML(p.title)}</p>
           ${p.price_text ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
           <p class="pSmall">${escapeHTML(desc)}</p>
+          ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
 
           <div class="pActions">
             ${buy}
             <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
             <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
           </div>
         </div>
       </div>
@@ -642,6 +776,8 @@
             Para existir “Produto do Dia”, um item precisa estar com <b>featured=true</b>.
             <br/><br/>
             ✅ No CMS: marque <b>“Definir como Produto do Dia (featured)”</b> no issue do produto.
+            <br/>
+            ✅ Ou use o issue <b>[CMS] Produto do Dia</b> (label <b>cms-produto-do-dia</b>) apontando o SKU.
           </p>
         </div>
       </div>
@@ -658,18 +794,53 @@
       </div>
     `;
   }
-  // =========================
-  // State / URL
-  // =========================
-  const STATE = {
-    products: [],
-    updated_at: "",
-    query: "",
-    tag: "",
-    sort: "relev",
-    limit: PAGE_SIZE,
-    _catsAll: [],
-  };
+
+  function buildTagCounts(list) {
+    const counts = new Map();
+    for (const p of (list || [])) {
+      for (const b of safeArray(p.badges)) {
+        const key = String(b || "").trim();
+        if (!key) continue;
+        const k = key.toLowerCase();
+        const prev = counts.get(k);
+        counts.set(k, { label: key, n: ((prev && prev.n) ? prev.n : 0) + 1 });
+      }
+    }
+    return Array.from(counts.values()).sort((a, b) => b.n - a.n);
+  }
+
+  // ===== filtro inteligente de categorias =====
+  function normalizeTagKey(s) {
+    return String(s || "").trim().toLowerCase();
+  }
+
+  function isNoisyTag(label) {
+    const s = String(label || "").trim();
+    if (!s) return true;
+
+    // tags puramente numéricas / medidas / unidades (evita “1450W”, “1TB”, etc)
+    const t = s.toLowerCase();
+    if (/^[0-9]+([.,][0-9]+)?\s*(w|wh|mah|ah|v|a|hz|gb|tb|mbps|mb\/s|m\/s|psi|cm|mm|kg|l|ml|m|s|°c|c|btu|k|kwh)?$/i.test(t)) return true;
+    if (/^(abnt|ip\d{2}|ipx\d)$/i.test(t)) return true;
+    if (/^\d+\s*(tomadas|portas|peças|unidades|baterias)$/i.test(t)) return true;
+    if (/^\d+\s*(x|×)\s*\d+$/i.test(t)) return true;
+
+    // tags técnicas muito específicas que viram poluição
+    if (t.includes("mercado livre")) return true;
+    if (t === "tiktok" || t === "youtube") return true;
+    if (t.includes("mb/s") || t.includes("mbps")) return true;
+
+    // tags muito longas (geralmente “frase”, não categoria)
+    if (s.length > 28) return true;
+
+    return false;
+  }
+
+  function isCategoryTag(label, n) {
+    if ((n || 0) < CN_CAT_MIN_COUNT) return false;
+    if (isNoisyTag(label)) return false;
+    return true;
+  }
 
   function setText(el, v) {
     if (!el) return;
@@ -701,19 +872,216 @@
     STATE.sort = sp.get("sort") || "relev";
   }
 
-  function formatUpdatedAt(iso) {
-    try {
-      const d = new Date(iso);
-      if (Number.isNaN(d.getTime())) return "";
-      return d.toLocaleString("pt-BR", {
-        day: "2-digit",
-        month: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    } catch {
-      return "";
+  function applySort(list) {
+    const arr = (list || []).slice();
+
+    if (STATE.sort === "az") {
+      arr.sort((a, b) => String(a.title).localeCompare(String(b.title), "pt-BR"));
+      return arr;
     }
+
+    if (STATE.sort === "recent") {
+      arr.sort((a, b) => String(b.last_ok || "").localeCompare(String(a.last_ok || "")));
+      return arr;
+    }
+
+    arr.sort((a, b) => {
+      const fa = a.featured ? 0 : 1;
+      const fb = b.featured ? 0 : 1;
+      if (fa !== fb) return fa - fb;
+      return String(a.title).localeCompare(String(b.title), "pt-BR");
+    });
+    return arr;
+  }
+
+  function matchesFilter(p) {
+    const q = (STATE.query || "").trim().toLowerCase();
+    const tag = (STATE.tag || "").trim().toLowerCase();
+
+    if (tag) {
+      const has = safeArray(p.badges).some((b) => String(b).toLowerCase() === tag);
+      if (!has) return false;
+    }
+
+    if (!q) return true;
+
+    const hay = (
+      (p.title || "") + " " +
+      (p.sku || "") + " " +
+      (p.id_busca || "") + " " +
+      safeArray(p.badges).join(" ") + " " +
+      (p.price_text || "")
+    ).toLowerCase();
+
+    // multi-termos AND
+    const parts = q.split(/\s+/g).filter(Boolean);
+    for (const part of parts) {
+      if (!hay.includes(part)) return false;
+    }
+    return true;
+  }
+
+  // ===== Modal Categorias =====
+  function ensureTagModal() {
+    if (document.getElementById("cnTagModal")) return;
+
+    const modal = document.createElement("div");
+    modal.id = "cnTagModal";
+    modal.className = "cnModal";
+    modal.innerHTML = `
+      <div class="cnModal__panel" role="dialog" aria-modal="true" aria-label="Categorias">
+        <div class="cnModal__head">
+          <div class="cnModal__title">🏷️ Categorias</div>
+          <button class="cnModal__close" type="button" id="cnTagClose">Fechar ✕</button>
+        </div>
+        <div class="cnModal__search">
+          <input id="cnTagSearch" placeholder="Buscar categoria..." autocomplete="off" />
+        </div>
+        <div class="cnModal__list" id="cnTagList"></div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeTagModal();
+    });
+
+    const btnClose = document.getElementById("cnTagClose");
+    if (btnClose) btnClose.addEventListener("click", closeTagModal);
+
+    const inp = document.getElementById("cnTagSearch");
+    if (inp) inp.addEventListener("input", () => renderTagModalList());
+  }
+
+  function openTagModal() {
+    ensureTagModal();
+    const modal = document.getElementById("cnTagModal");
+    if (!modal) return;
+
+    const inp = document.getElementById("cnTagSearch");
+    if (inp) inp.value = "";
+
+    renderTagModalList();
+    modal.classList.add("show");
+
+    try {
+      if (inp) inp.focus();
+    } catch {}
+  }
+
+  function closeTagModal() {
+    const modal = document.getElementById("cnTagModal");
+    if (!modal) return;
+    modal.classList.remove("show");
+  }
+
+  function renderTagModalList() {
+    const listEl = document.getElementById("cnTagList");
+    if (!listEl) return;
+
+    const all = Array.isArray(STATE._categoryCounts) ? STATE._categoryCounts.slice() : [];
+    const q = normalizeTagKey((document.getElementById("cnTagSearch") || {}).value || "");
+
+    const filtered = q
+      ? all.filter((t) => normalizeTagKey(t.label).includes(q))
+      : all;
+
+    const activeKey = normalizeTagKey(STATE.tag || "");
+
+    const items = [];
+    // “Tudo”
+    items.push(`
+      <button type="button" class="${!activeKey ? "active" : ""}" data-tag="">
+        👑 Tudo <span style="opacity:.75;">(${STATE._activeCount || 0})</span>
+      </button>
+    `);
+
+    for (const t of filtered) {
+      const key = normalizeTagKey(t.label);
+      const isActive = (activeKey === key);
+      items.push(`
+        <button type="button" class="${isActive ? "active" : ""}" data-tag="${escapeHTML(key)}">
+          ${escapeHTML(t.label)} <span style="opacity:.75;">(${t.n})</span>
+        </button>
+      `);
+    }
+
+    listEl.innerHTML = items.join("");
+
+    listEl.onclick = (ev) => {
+      const btn = ev.target.closest("button[data-tag]");
+      if (!btn) return;
+
+      const tag = String(btn.getAttribute("data-tag") || "").trim();
+      STATE.tag = tag; // já vem lower
+      STATE.limit = PAGE_SIZE;
+      closeTagModal();
+      render();
+    };
+  }
+  function renderTagChips(activeList) {
+    const box = $("#tagChips");
+    const totalTagsEl = $("#tagsCount");
+    if (!box) return;
+
+    const countsAll = buildTagCounts(activeList);
+    const categories = countsAll.filter((t) => isCategoryTag(t.label, t.n));
+
+    STATE._categoryCounts = categories.slice();  // usado no modal
+    STATE._activeCount = (activeList || []).length;
+
+    // contador agora é “Categorias reais”
+    setText(totalTagsEl, categories.length);
+
+    const isMobile = window.matchMedia("(max-width: 720px)").matches;
+    const maxChips = isMobile ? CN_CAT_MAX_CHIPS_MOBILE : CN_CAT_MAX_CHIPS_DESKTOP;
+
+    // garante que a categoria selecionada apareça no topo
+    let top = categories.slice(0, maxChips);
+    const activeKey = normalizeTagKey(STATE.tag || "");
+    if (activeKey && !top.some((t) => normalizeTagKey(t.label) === activeKey)) {
+      const sel = categories.find((t) => normalizeTagKey(t.label) === activeKey);
+      if (sel) {
+        top = [sel, ...top].slice(0, maxChips);
+      }
+    }
+
+    const allActive = !STATE.tag;
+    const chips = [];
+
+    chips.push(`
+      <button class="tagChip ${allActive ? "tagChip--active" : ""}" type="button" data-tag="">
+        👑 Tudo
+      </button>
+    `);
+
+    for (const t of top) {
+      const isActive = normalizeTagKey(STATE.tag) === normalizeTagKey(t.label);
+      chips.push(`
+        <button class="tagChip ${isActive ? "tagChip--active" : ""}" type="button" data-tag="${escapeHTML(normalizeTagKey(t.label))}">
+          ${escapeHTML(t.label)} <span style="opacity:.75;">(${t.n})</span>
+        </button>
+      `);
+    }
+
+    if (categories.length > top.length) {
+      chips.push(`
+        <button class="tagChip" type="button" data-action="openTags">
+          🔎 Ver todas (${categories.length})
+        </button>
+      `);
+    }
+
+    box.innerHTML = chips.join("");
+  }
+
+  function setCounters({ totalActive, totalFiltered, shownNow }) {
+    setText($("#countAll"), totalActive);
+    setText($("#countShown"), totalFiltered);
+    setText($("#countRendered"), shownNow);
+
+    const fs = $("#filterStatus");
+    if (fs) fs.style.display = (STATE.query || STATE.tag) ? "inline" : "none";
   }
 
   function setUpdatedAt(iso) {
@@ -728,211 +1096,89 @@
     }
   }
 
-  // =========================
-  // Filters / Sort
-  // =========================
-  function matchesFilter(p) {
-    const q = (STATE.query || "").trim().toLowerCase();
-    const tag = (STATE.tag || "").trim().toLowerCase();
-
-    if (tag) {
-      const has = safeArray(p.badges).some((b) => normKey(b) === tag);
-      if (!has) return false;
-    }
-
-    if (!q) return true;
-
-    const hay = (
-      (p.title || "") + " " +
-      (p.sku || "") + " " +
-      (p.id_busca || "") + " " +
-      safeArray(p.badges).join(" ") + " " +
-      (p.price_text || "")
-    ).toLowerCase();
-
-    // AND por termos
-    const parts = q.split(/\s+/g).filter(Boolean);
-    for (const term of parts) {
-      if (!hay.includes(term)) return false;
-    }
-    return true;
-  }
-
-  function applySort(list) {
-    const arr = (list || []).slice();
-
-    if (STATE.sort === "az") {
-      arr.sort((a, b) => String(a.title).localeCompare(String(b.title), "pt-BR"));
-      return arr;
-    }
-
-    if (STATE.sort === "recent") {
-      arr.sort((a, b) => String(b.last_ok || "").localeCompare(String(a.last_ok || "")));
-      return arr;
-    }
-
-    // relev: featured + A-Z
-    arr.sort((a, b) => {
-      const fa = a.featured ? 0 : 1;
-      const fb = b.featured ? 0 : 1;
-      if (fa !== fb) return fa - fb;
-      return String(a.title).localeCompare(String(b.title), "pt-BR");
-    });
-    return arr;
-  }
-
-  // =========================
-  // Categorias (chips + modal)
-  // =========================
-  function renderCategoryChips(activeAll) {
-    const box = $("#tagChips");
-    const btnMore = $("#btnTagsMore");
-    const tagsCountEl = $("#tagsCount");
-    if (!box) return;
-
-    const categories = buildCategories(activeAll);
-    STATE._catsAll = categories.slice();
-
-    // número de categorias “reais”
-    setText(tagsCountEl, categories.length);
-
-    // mostra só as principais no bloco (premium e limpo)
-    const MAX_CHIPS = (window.innerWidth <= 520) ? 10 : 14;
-    const top = categories.slice(0, MAX_CHIPS);
-
-    const allActive = !STATE.tag;
-    const chips = [];
-
-    chips.push(`
-      <button class="tagChip ${allActive ? "tagChip--active" : ""}" type="button" data-tag="">
-        👑 Tudo
-      </button>
-    `);
-
-    for (const t of top) {
-      const isActive = (STATE.tag || "") === normKey(t.label);
-      chips.push(`
-        <button class="tagChip ${isActive ? "tagChip--active" : ""}" type="button" data-tag="${escapeHTML(normKey(t.label))}">
-          ${escapeHTML(t.label)} <span style="opacity:.75;">(${t.n})</span>
-        </button>
-      `);
-    }
-
-    box.innerHTML = chips.join("");
-
-    if (btnMore) {
-      if (categories.length > top.length) {
-        btnMore.style.display = "inline-flex";
-        btnMore.textContent = `🔎 Ver todas (${categories.length})`;
-      } else {
-        btnMore.style.display = "none";
-      }
-    }
-  }
-
-  function openTagModal() {
-    const modal = $("#tagModal");
-    if (!modal) return;
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-    renderTagModalList("");
-    const q = $("#tagModalQ");
-    if (q) {
-      q.value = "";
-      setTimeout(() => q.focus(), 50);
-    }
-  }
-
-  function closeTagModal() {
-    const modal = $("#tagModal");
-    if (!modal) return;
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
-  }
-
-  function renderTagModalList(query) {
-    const listEl = $("#tagModalList");
-    if (!listEl) return;
-
-    const q = cleanText(query || "").toLowerCase();
-    const cats = STATE._catsAll || [];
-    const filtered = q
-      ? cats.filter((c) => normKey(c.label).includes(q))
-      : cats.slice();
-
-    listEl.innerHTML = filtered.map((c) => {
-      const isActive = (STATE.tag || "") === normKey(c.label);
-      return `
-        <div class="cnModal__item" data-tag="${escapeHTML(normKey(c.label))}" aria-pressed="${isActive ? "true" : "false"}">
-          <div class="lbl">${escapeHTML(c.label)}</div>
-          <div class="cnt">${c.n}</div>
-        </div>
-      `;
-    }).join("");
-
-    if (!filtered.length) {
-      listEl.innerHTML = `<div style="padding:8px; opacity:.85;">Nenhuma categoria encontrada.</div>`;
-    }
-  }
-
-  // =========================
-  // Counters
-  // =========================
-  function setCounters({ totalActive, totalFiltered, shownNow }) {
-    setText($("#countAll"), totalActive);
-    setText($("#countShown"), totalFiltered);
-    setText($("#countRendered"), shownNow);
-
-    const fs = $("#filterStatus");
-    if (fs) fs.style.display = (STATE.query || STATE.tag || (STATE.sort && STATE.sort !== "relev")) ? "inline" : "none";
-  }
-
-  // =========================
-  // Render main
-  // =========================
   function render() {
     const grid = $("#grid");
     const featuredEl = $("#featured");
     if (!grid || !featuredEl) return;
 
     const allProducts = dedupeProducts(STATE.products).filter((p) => p);
-    const activeAll = allProducts.filter((p) => p && p.active !== false);
 
-    renderCategoryChips(activeAll);
+    let activeAll = allProducts.filter((p) => p && p.active !== false);
+
+    if (allProducts.length > 0) {
+      const minAllowed = Math.max(
+        FRONT_FAILSAFE_MIN_ACTIVE,
+        Math.floor(allProducts.length * FRONT_FAILSAFE_MIN_RATIO)
+      );
+
+      if (activeAll.length < minAllowed) {
+        const rescued = allProducts.filter((p) => (p.active !== false) || isRecentOk(p.last_ok));
+        if (rescued.length > activeAll.length) {
+          activeAll = rescued;
+
+          if (!STATE._failsafeNotified) {
+            STATE._failsafeNotified = true;
+            showToast("FAILSAFE: vitrine preservada ✅");
+          }
+        }
+      }
+    }
+
+    renderTagChips(activeAll);
 
     let filtered = activeAll.filter(matchesFilter);
     filtered = applySort(filtered);
 
     const destaque = getFeatured(activeAll);
 
-    featuredEl.innerHTML = destaque
-      ? featuredHTML(destaque, true)
-      : emptyFeaturedHTML();
+    let featuredPass = null;
+    if (destaque) {
+      featuredPass = matchesFilter(destaque) ? destaque : null;
+    }
+
+    featuredEl.innerHTML = featuredPass
+      ? featuredHTML(featuredPass, true)
+      : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
 
     applyImageFixes(featuredEl);
 
-    const shown = filtered.slice(0, STATE.limit);
+    let list = filtered.slice();
+
+    if (featuredPass && SHOW_FEATURED_IN_GRID) {
+      list = [featuredPass, ...list.filter((p) => p.sku !== featuredPass.sku)];
+    } else if (featuredPass && !SHOW_FEATURED_IN_GRID) {
+      list = list.filter((p) => p.sku !== featuredPass.sku);
+    }
+
+    const shown = list.slice(0, STATE.limit);
     grid.innerHTML = shown.map(productCardHTML).join("");
     applyImageFixes(grid);
 
     const wrap = $("#loadMoreWrap");
     if (wrap) {
-      if (shown.length < filtered.length) wrap.classList.remove("hidden");
+      if (shown.length < list.length) wrap.classList.remove("hidden");
       else wrap.classList.add("hidden");
     }
 
     setCounters({
       totalActive: activeAll.length,
-      totalFiltered: filtered.length,
+      totalFiltered: list.length,
       shownNow: shown.length,
     });
+
+    STATE._export = {
+      updated_at: STATE.updated_at || "",
+      all: allProducts.slice(),
+      active: activeAll.slice(),
+      visible: list.slice(),
+      query: STATE.query || "",
+      tag: STATE.tag || "",
+      sort: STATE.sort || "relev",
+    };
 
     updateUrlState();
   }
 
-  // =========================
-  // Fetch produtos.json
-  // =========================
   async function fetchProducts() {
     const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error("produtos.json não encontrado");
@@ -941,20 +1187,74 @@
     STATE.updated_at = cleanText(data.updated_at || "");
     setUpdatedAt(STATE.updated_at);
 
-    const list = normalizeProducts(data).map(adaptForUI).filter(Boolean);
+    const list = normalizeProducts(data)
+      .map(adaptForUI)
+      .filter(Boolean);
+
     const deduped = dedupeProducts(list);
     if (!deduped.length) throw new Error("Nenhum produto válido em produtos.json");
+
     return deduped;
   }
 
-  // =========================
-  // Exports (TXT/CSV)
-  // =========================
+  function findBySku(sku) {
+    return STATE.products.find((p) => p && p.sku === sku) || null;
+  }
+
+  function exportProdutosJson() {
+    const out = {
+      updated_at: new Date().toISOString(),
+      products: dedupeProducts(STATE.products).map((p) => {
+        const r = cloneObj(p._raw || {});
+
+        r.sku = p.sku;
+        r.title = p.title;
+        r.badges = safeArray(p.badges);
+        r.id_busca = p.id_busca;
+
+        const b = bestBuyUrl(p);
+        r.open_url = ensureHttpUrl(p.open_url || b || "");
+        r.check_url = ensureHttpUrl(p.check_url || r.open_url || "");
+
+        if (p.canonical_url) r.canonical_url = p.canonical_url;
+        if (p.short_url) r.short_url = p.short_url;
+        if (p.resolved_url) r.resolved_url = p.resolved_url;
+
+        r.image = p.image || r.image || "";
+        r.price_text = p.price_text || "";
+
+        r.active = (p.active !== false);
+        r.featured = (p.featured === true);
+
+        r.last_checked = p.last_checked || r.last_checked || "";
+        r.last_ok = p.last_ok || r.last_ok || "";
+
+        delete r._raw;
+        return r;
+      }),
+    };
+
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "produtos.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    showToast("Exportado ⬇️");
+  }
+
+  // ==========================================================
+  // EXPORT: LISTA DE PRODUTOS (TXT/CSV) — 1 clique (sem print)
+  // ==========================================================
   function two(n){ return String(n).padStart(2, "0"); }
+
   function dateStamp() {
     const d = new Date();
     return `${d.getFullYear()}-${two(d.getMonth()+1)}-${two(d.getDate())}_${two(d.getHours())}${two(d.getMinutes())}`;
   }
+
   function fileSafe(s) {
     return String(s || "")
       .toLowerCase()
@@ -962,6 +1262,7 @@
       .replace(/_+/g, "_")
       .replace(/^_+|_+$/g, "");
   }
+
   function downloadFile(filename, content, mime) {
     const blob = new Blob([content], { type: mime || "text/plain;charset=utf-8" });
     const a = document.createElement("a");
@@ -972,19 +1273,33 @@
     a.remove();
   }
 
-  function exportListTxt(kind) {
-    const now = new Date().toLocaleString("pt-BR");
-    const allProducts = dedupeProducts(STATE.products).filter(Boolean);
-    const active = allProducts.filter((p) => p.active !== false);
+  function exportListGet(kind) {
+    const snap = STATE._export || {};
+    if (kind === "all") return Array.isArray(snap.all) ? snap.all : [];
+    if (kind === "active") return Array.isArray(snap.active) ? snap.active : [];
+    if (kind === "visible") return Array.isArray(snap.visible) ? snap.visible : [];
+    return [];
+  }
 
-    const list = (kind === "all") ? allProducts : active;
+  function exportListTxt(kind) {
+    const snap = STATE._export || {};
+    const list = exportListGet(kind);
+
+    const now = new Date().toLocaleString("pt-BR");
+    const title =
+      kind === "all" ? "LISTA (TUDO)" :
+      kind === "visible" ? "LISTA (VISÍVEL / FILTRADA)" :
+      "LISTA (ATIVOS)";
 
     const header = [
       "Cosa Nostra — Loja Completa",
-      kind === "all" ? "LISTA (TUDO)" : "LISTA (ATIVOS)",
+      title,
       `Gerado em: ${now}`,
-      STATE.updated_at ? `updated_at: ${STATE.updated_at}` : "",
+      snap.updated_at ? `updated_at: ${snap.updated_at}` : "",
       `Total: ${list.length}`,
+      (kind === "visible" && (snap.query || snap.tag))
+        ? `Filtro: q="${snap.query || ""}" tag="${snap.tag || ""}" sort="${snap.sort || "relev"}"`
+        : "",
       "",
     ].filter(Boolean).join("\n");
 
@@ -998,43 +1313,60 @@
     return header + "\n" + lines.join("\n") + "\n";
   }
 
-  function exportListCsvAll() {
-    const allProducts = dedupeProducts(STATE.products).filter(Boolean);
-    const rows = [];
-    rows.push(["n", "title", "id_busca", "sku", "buy_url", "active", "featured"].join(";"));
+  function exportListCsv(kind) {
+    const list = exportListGet(kind);
 
-    for (let i = 0; i < allProducts.length; i++) {
-      const p = allProducts[i] || {};
+    const rows = [];
+    rows.push(["n", "title", "id_busca", "sku", "buy_url"].join(";"));
+
+    for (let i = 0; i < list.length; i++) {
+      const p = list[i] || {};
       const n = i + 1;
       const title = String(p.title || "").replaceAll(";", ",");
       const id = String(p.id_busca || "").replaceAll(";", ",");
       const sku = String(p.sku || "").replaceAll(";", ",");
       const url = String(bestBuyUrl(p) || "").replaceAll(";", ",");
-      const active = (p.active !== false) ? "true" : "false";
-      const featured = (p.featured === true) ? "true" : "false";
-      rows.push([n, title, id, sku, url, active, featured].join(";"));
+      rows.push([n, title, id, sku, url].join(";"));
     }
 
     return rows.join("\n") + "\n";
   }
 
-  // =========================
-  // Bind UI
-  // =========================
+  function doExportTxt(kind) {
+    const txt = exportListTxt(kind);
+    const fname = `lista_${fileSafe(kind)}_${dateStamp()}.txt`;
+    downloadFile(fname, txt, "text/plain;charset=utf-8");
+    showToast("Lista baixada ⬇️");
+  }
+
+  function doExportCsv(kind) {
+    const csv = exportListCsv(kind);
+    const fname = `lista_${fileSafe(kind)}_${dateStamp()}.csv`;
+    downloadFile(fname, csv, "text/csv;charset=utf-8");
+    showToast("CSV baixado ⬇️");
+  }
+
+  async function doCopyTxt(kind) {
+    const txt = exportListTxt(kind);
+    await copyText(txt);
+    showToast("Lista copiada ✅");
+  }
+
+  // FIX: garante que o fundo não capture clique/toque
+  function makeBgClickThrough() {
+    const bg = document.querySelector(".bg");
+    if (!bg) return;
+    bg.style.pointerEvents = "none";
+    bg.querySelectorAll("*").forEach((el) => { el.style.pointerEvents = "none"; });
+  }
+
   function bind() {
     const q = $("#qLoja");
     const clear = $("#btnClear");
     const copyBtn = $("#btnCopyLoja");
-    const copyPage = $("#btnCopyPage");
+
     const sortSel = $("#sortSel");
     const moreBtn = $("#btnMore");
-    const btnTagsMore = $("#btnTagsMore");
-
-    // export buttons
-    const btnCopyActive = $("#btnCopyActive");
-    const btnDownloadActiveTxt = $("#btnDownloadActiveTxt");
-    const btnDownloadAllTxt = $("#btnDownloadAllTxt");
-    const btnDownloadCSV = $("#btnDownloadCSV");
 
     if (q) {
       q.value = STATE.query || "";
@@ -1050,22 +1382,17 @@
         if (q) q.value = "";
         STATE.query = "";
         STATE.tag = "";
-        STATE.sort = "relev";
-        if (sortSel) sortSel.value = "relev";
         STATE.limit = PAGE_SIZE;
         render();
-        showToast("Filtros limpos ✅");
+        showToast("Filtro limpo ✅");
       });
     }
 
     if (copyBtn) {
       copyBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        copyText(location.href);
+        copyText(lojaUrl());
       });
-    }
-    if (copyPage) {
-      copyPage.addEventListener("click", () => copyText(location.href));
     }
 
     if (sortSel) {
@@ -1084,9 +1411,61 @@
       });
     }
 
-    // chips click
+    // =========================
+    // EXPORT UI: vira “Ferramentas” recolhível no mobile
+    // =========================
+    (function ensureExportRow(){
+      const tools = document.querySelector(".lojaTools");
+      if (!tools) return;
+      if (document.getElementById("cnExportRow")) return;
+
+      const row = document.createElement("div");
+      row.className = "toolRow cnToolsRow";
+      row.id = "cnExportRow";
+
+      const isMobile = window.matchMedia("(max-width: 720px)").matches;
+      const openAttr = isMobile ? "" : "open";
+
+      row.innerHTML = `
+        <details class="cnTools" ${openAttr}>
+          <summary class="btn btn--tiny btn--glass">
+            <span class="cnToolsSummary">
+              <span>🧾 Ferramentas (listas/export)</span>
+              <span style="opacity:.75;">${isMobile ? "abrir" : "ok"}</span>
+            </span>
+          </summary>
+
+          <div class="cnToolsGrid">
+            <button class="btn btn--tiny btn--glass" type="button" id="btnCopyList">📋 Copiar (ativos)</button>
+            <button class="btn btn--tiny btn--gold"  type="button" id="btnDlList">⬇️ TXT (ativos)</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
+          </div>
+        </details>
+      `;
+      tools.appendChild(row);
+    })();
+
+    const btnCopyList = $("#btnCopyList");
+    const btnDlList = $("#btnDlList");
+    const btnDlListAll = $("#btnDlListAll");
+    const btnDlCsvAll = $("#btnDlCsvAll");
+
+    if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
+    if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
+    if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
+    if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
+
     document.addEventListener("click", (e) => {
-      // Comprar (in-app safe)
+      // abrir modal de categorias
+      const openCats = e.target.closest('[data-action="openTags"]');
+      if (openCats) {
+        e.preventDefault();
+        openTagModal();
+        return;
+      }
+
+      // FIX: força abrir links ML no in-app browser (Comprar/Comprar Agora)
       const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
@@ -1097,10 +1476,11 @@
         }
       }
 
-      const chip = e.target.closest(".tagChip[data-tag]");
-      if (chip) {
+      // filtro por chip
+      const chip = e.target.closest("[data-tag]");
+      if (chip && chip.classList.contains("tagChip")) {
         const t = String(chip.getAttribute("data-tag") || "").trim();
-        STATE.tag = t; // já vem normalizado
+        STATE.tag = t;
         STATE.limit = PAGE_SIZE;
         render();
         return;
@@ -1111,119 +1491,90 @@
 
       const action = el.getAttribute("data-action");
       const sku = el.getAttribute("data-sku") || "";
-      const p = STATE.products.find((x) => x && x.sku === sku) || null;
+      const p = sku ? findBySku(sku) : null;
 
       if (action === "copyLink" && p) return copyText(bestBuyUrl(p) || "");
+      if (action === "copyAlt" && p) return copyText(p.alt_url || p.canonical_url || p.check_url || "");
       if (action === "copyId" && p) return copyText(p.id_busca || "");
+
+      if (!ADMIN) return;
+
+      // admin não mexido aqui (mantido no seu fluxo atual)
     });
 
-    // Ver todas (modal)
-    if (btnTagsMore) btnTagsMore.addEventListener("click", openTagModal);
+    if (ADMIN) {
+      const adminBar = $("#adminBar");
+      if (adminBar) adminBar.style.display = "flex";
 
-    const modal = $("#tagModal");
-    const modalClose = $("#btnTagModalClose");
-    const modalClear = $("#btnTagModalClear");
-    const modalAll = $("#btnTagModalAll");
-    const modalQ = $("#tagModalQ");
-    const modalList = $("#tagModalList");
+      const btnExport = $("#btnExport");
+      const btnReload = $("#btnReload");
 
-    if (modalClose) modalClose.addEventListener("click", closeTagModal);
-    if (modalClear) modalClear.addEventListener("click", () => {
-      if (modalQ) modalQ.value = "";
-      renderTagModalList("");
-    });
-    if (modalAll) modalAll.addEventListener("click", () => {
-      STATE.tag = "";
-      STATE.limit = PAGE_SIZE;
-      render();
-      closeTagModal();
-    });
-    if (modalQ) modalQ.addEventListener("input", (e) => renderTagModalList(e.target.value || ""));
-
-    if (modal) {
-      modal.addEventListener("click", (e) => {
-        // clique fora do card fecha
-        if (e.target === modal) closeTagModal();
-      });
-    }
-    if (modalList) {
-      modalList.addEventListener("click", (e) => {
-        const it = e.target.closest(".cnModal__item[data-tag]");
-        if (!it) return;
-        const t = String(it.getAttribute("data-tag") || "").trim();
-        STATE.tag = t;
-        STATE.limit = PAGE_SIZE;
-        render();
-        closeTagModal();
-      });
-    }
-
-    // export
-    if (btnCopyActive) btnCopyActive.addEventListener("click", () => copyText(exportListTxt("active")));
-    if (btnDownloadActiveTxt) btnDownloadActiveTxt.addEventListener("click", () => {
-      const txt = exportListTxt("active");
-      downloadFile(`lista_active_${dateStamp()}.txt`, txt, "text/plain;charset=utf-8");
-      showToast("Download iniciado ⬇️", 1800);
-    });
-    if (btnDownloadAllTxt) btnDownloadAllTxt.addEventListener("click", () => {
-      const txt = exportListTxt("all");
-      downloadFile(`lista_tudo_${dateStamp()}.txt`, txt, "text/plain;charset=utf-8");
-      showToast("Download iniciado ⬇️", 1800);
-    });
-    if (btnDownloadCSV) btnDownloadCSV.addEventListener("click", () => {
-      const csv = exportListCsvAll();
-      downloadFile(`produtos_${dateStamp()}.csv`, csv, "text/csv;charset=utf-8");
-      showToast("CSV gerado ⬇️", 1800);
-    });
-
-    // admin bar
-    const adminBar = $("#adminBar");
-    if (adminBar) adminBar.style.display = ADMIN ? "flex" : "none";
-
-    const btnReload = $("#btnReload");
-    if (btnReload) {
-      btnReload.addEventListener("click", async () => {
-        showToast("Recarregando…", 1400);
-        try {
-          STATE.products = await fetchProducts();
-          STATE.limit = PAGE_SIZE;
-          render();
-          showToast("Carregado ✅", 1400);
-        } catch {
-          showToast("Erro ao carregar produtos.json", 2000);
-        }
-      });
-    }
-
-    const btnExport = $("#btnExport");
-    if (btnExport) {
-      btnExport.addEventListener("click", () => {
-        // exporta o JSON “cru” atual (sem edição)
-        const out = {
-          updated_at: new Date().toISOString(),
-          products: dedupeProducts(STATE.products).map((p) => p._raw || {}),
-        };
-        downloadFile("produtos.json", JSON.stringify(out, null, 2), "application/json;charset=utf-8");
-        showToast("produtos.json exportado ⬇️", 1800);
-      });
+      if (btnExport) btnExport.addEventListener("click", exportProdutosJson);
+      if (btnReload) {
+        btnReload.addEventListener("click", async () => {
+          showToast("Recarregando…");
+          try {
+            STATE.products = await fetchProducts();
+            showToast("Carregado ✅");
+            STATE.limit = PAGE_SIZE;
+            render();
+          } catch {
+            alert("Erro ao carregar produtos.json");
+          }
+        });
+      }
     }
   }
 
+  const STATE = {
+    products: [],
+    updated_at: "",
+    query: "",
+    tag: "",
+    sort: "relev",
+    limit: PAGE_SIZE,
+    _failsafeNotified: false,
+    _export: null,
+    _categoryCounts: [],
+    _activeCount: 0,
+  };
+
   async function boot() {
+    injectUiCss();
+    makeBgClickThrough();
+    ensureTagModal();
+
     readUrlState();
     setText($("#year"), new Date().getFullYear());
-
-    const sortSel = $("#sortSel");
-    if (sortSel) sortSel.value = STATE.sort || "relev";
 
     try {
       STATE.products = await fetchProducts();
     } catch {
-      STATE.products = [];
-      showToast("Falha ao carregar produtos.json", 2000);
+      STATE.products = [{
+        sku: "fallback-power-bank-20000mah",
+        title: "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)",
+        badges: ["Achados do Dia", "20000mAh", "22.5W Turbo", "USB-C", "Preto"],
+        id_busca: "5J5PKG-H0JA",
+        open_url: "https://mercadolivre.com/sec/1iReZ7Y",
+        check_url: "https://mercadolivre.com/sec/1iReZ7Y",
+        canonical_url: "https://lista.mercadolivre.com.br/5J5PKG-H0JA",
+        short_url: "",
+        resolved_url: "",
+        image: "assets/produtos/power_bank_20000mah.png",
+        price_text: "",
+        active: true,
+        featured: true,
+        last_checked: "",
+        last_ok: "",
+      }].map(adaptForUI).filter(Boolean);
     }
 
-    // normaliza tag vinda na URL
+    const q = $("#qLoja");
+    if (q) q.value = STATE.query || "";
+
+    const sortSel = $("#sortSel");
+    if (sortSel) sortSel.value = STATE.sort || "relev";
+
     STATE.tag = (STATE.tag || "").toLowerCase().trim();
 
     bind();
