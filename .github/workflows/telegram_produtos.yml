@@ -3,21 +3,26 @@ name: Telegram — Notificar produto novo
 on:
   workflow_dispatch:
     inputs:
-      mode:
-        description: "teste | novos"
+      modo:
+        description: "teste = sempre posta 1 mensagem | novos = posta somente novos/ativados do produtos.json"
         required: true
         default: "teste"
+        type: choice
+        options:
+          - teste
+          - novos
+
   push:
     branches: [ "gh-pages" ]
     paths:
       - "produtos.json"
 
-permissions:
-  contents: read
-
 concurrency:
   group: telegram-produtos-${{ github.ref }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   notify:
@@ -39,29 +44,21 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SITE_BASE: ${{ secrets.SITE_BASE }}
-          DISPATCH_MODE: ${{ github.event.inputs.mode }}
+          RUN_MODE: ${{ github.event.inputs.modo }}
         run: |
           python - <<'PY'
-          import os, json, subprocess, re, urllib.parse, urllib.request, urllib.error
+          import os, json, subprocess, re, urllib.parse, urllib.request
 
-          BOT = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
-          CHAT = os.getenv("TELEGRAM_CHAT_ID", "").strip()
-          SITE_BASE = os.getenv("SITE_BASE", "").strip()
-          MODE = (os.getenv("DISPATCH_MODE", "") or "").strip().lower() or "novos"
-          EVENT = (os.getenv("GITHUB_EVENT_NAME", "") or "").strip().lower()
-
-          # ========= validações =========
-          if BOT.startswith("TELEGRAM_BOT_TOKEN:"):
-            raise SystemExit(
-              "TELEGRAM_BOT_TOKEN secret está errado: cole SOMENTE o token (ex: 123:AA...), "
-              "sem 'TELEGRAM_BOT_TOKEN:' e sem espaços."
-            )
+          BOT = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          CHAT = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          SITE_BASE = (os.getenv("SITE_BASE") or "").strip()
+          MODE = (os.getenv("RUN_MODE") or "").strip().lower() or "novos"
 
           if not BOT or not CHAT:
-            raise SystemExit("Faltam secrets: TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID.")
+            raise SystemExit("Faltam secrets TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID.")
 
           def infer_site_base():
-            repo = os.getenv("GITHUB_REPOSITORY", "").strip()
+            repo = (os.getenv("GITHUB_REPOSITORY") or "").strip()  # owner/repo
             if "/" in repo:
               owner, name = repo.split("/", 1)
               return f"https://{owner.lower()}.github.io/{name}/"
@@ -73,30 +70,21 @@ jobs:
           if SITE_BASE and not SITE_BASE.endswith("/"):
             SITE_BASE += "/"
 
-          # ========= Telegram helpers =========
+          LOJA_URL = (SITE_BASE.rstrip("/") + "/loja.html") if SITE_BASE else ""
+
           def tg_call(method: str, payload: dict):
             url = f"https://api.telegram.org/bot{BOT}/{method}"
             data = urllib.parse.urlencode(payload).encode("utf-8")
-
             req = urllib.request.Request(url, data=data)
-            try:
-              with urllib.request.urlopen(req, timeout=30) as r:
-                body = r.read().decode("utf-8", "replace")
-                return body
-            except urllib.error.HTTPError as e:
-              err = e.read().decode("utf-8", "replace")
-              print(f"[Telegram ERROR] HTTP {e.code} em {method}: {err}")
-              raise
-            except Exception as e:
-              print(f"[Telegram ERROR] Falha geral em {method}: {e}")
-              raise
+            with urllib.request.urlopen(req, timeout=25) as r:
+              return r.read()
 
-          def tg_send_message(html: str, preview: bool = True):
+          def tg_send_message(html: str):
             return tg_call("sendMessage", {
               "chat_id": CHAT,
               "text": html,
               "parse_mode": "HTML",
-              "disable_web_page_preview": "false" if preview else "true",
+              "disable_web_page_preview": "false"
             })
 
           def tg_send_photo(photo_url: str, caption_html: str):
@@ -104,23 +92,9 @@ jobs:
               "chat_id": CHAT,
               "photo": photo_url,
               "caption": caption_html[:1024],
-              "parse_mode": "HTML",
+              "parse_mode": "HTML"
             })
 
-          # ========= sanity check =========
-          _ = tg_call("getMe", {})
-          print("getMe OK ✅")
-
-          if EVENT == "workflow_dispatch" and MODE == "teste":
-            msg = (
-              "🧪 <b>Teste OK</b>\n"
-              "GitHub Actions conseguiu falar com o Telegram.\n\n"
-              "👑 CosaNostra Black & Gold — Society"
-            )
-            tg_send_message(msg, preview=False)
-            print("Mensagem de teste enviada ✅")
-            raise SystemExit(0)
-          # ========= util =========
           def load_products_from(obj):
             if isinstance(obj, list):
               return obj
@@ -142,6 +116,7 @@ jobs:
               return ""
             u = re.sub(r'^[\s"\'`]+', "", u)
             u = re.sub(r'[\s"\'`]+$', "", u)
+            u = re.sub(r'[)"\'`\\]+$', "", u)
             if re.match(r"^https?://", u, re.I):
               return u
             if u.startswith("//"):
@@ -167,10 +142,11 @@ jobs:
               return ""
             if img.startswith("http://") or img.startswith("https://"):
               return img
-            if not SITE_BASE:
+            base = SITE_BASE or ""
+            if not base:
               return ""
             img = img.lstrip("./")
-            return SITE_BASE + img
+            return base + img
 
           NOISE = set(["mercado livre","youtube","tiktok","threads","kwai","reels"])
           BRANDS = set([
@@ -194,7 +170,8 @@ jobs:
             return True
 
           def hashtags(badges):
-            out, seen = [], set()
+            out = []
+            seen = set()
             for b in badges or []:
               s = (b or "").strip()
               if not is_good_tag(s):
@@ -211,23 +188,6 @@ jobs:
                 break
             return " ".join(out)
 
-          # ========= carregar JSON atual =========
-          with open("produtos.json", "r", encoding="utf-8") as f:
-            cur_obj = json.load(f)
-          cur_list = load_products_from(cur_obj)
-
-          # ========= carregar JSON anterior (se existir) =========
-          prev_list = []
-          try:
-            prev_raw = subprocess.check_output(
-              ["git","show","HEAD^:produtos.json"],
-              stderr=subprocess.DEVNULL
-            ).decode("utf-8", "replace")
-            prev_obj = json.loads(prev_raw)
-            prev_list = load_products_from(prev_obj)
-          except Exception:
-            prev_list = []
-
           def sku_of(p):
             return (p.get("sku") or p.get("slug") or "").strip()
 
@@ -237,6 +197,74 @@ jobs:
             if "ativo" in p:
               return bool(p.get("ativo"))
             return True
+
+          # --- Carregar JSON atual
+          with open("produtos.json", "r", encoding="utf-8") as f:
+            cur_obj = json.load(f)
+          cur_list = load_products_from(cur_obj)
+
+          if not cur_list:
+            raise SystemExit("produtos.json não tem lista de produtos (products/items).")
+
+          # --- modo TESTE: sempre posta 1 mensagem (sem depender de diff)
+          if MODE == "teste":
+            pick = None
+            for p in cur_list:
+              if sku_of(p) and is_active(p):
+                pick = p
+                break
+            if not pick:
+              pick = cur_list[0]
+
+            title = (pick.get("title") or pick.get("nome") or pick.get("name") or "").strip()
+            sku = sku_of(pick) or "—"
+            id_busca = (pick.get("id_busca") or pick.get("idML") or pick.get("id") or "").strip()
+            link = best_buy(pick)
+            img = abs_image(pick.get("image") or pick.get("imagem") or "")
+            badges = pick.get("badges") or pick.get("tags") or []
+            if isinstance(badges, str):
+              badges = [x.strip() for x in re.split(r"[,;|]", badges) if x.strip()]
+            elif not isinstance(badges, list):
+              badges = []
+
+            tagline = "🛒 <b>Link da vitrine na bio</b>"
+            hts = hashtags(badges)
+
+            lines = []
+            lines.append("✅ <b>Teste OK — Automação Telegram ativa</b>")
+            lines.append(f"👑 <b>{safe(title) if title else safe(sku)}</b>")
+            lines.append("")
+            lines.append(f"🔍 ID ML: <code>{safe(id_busca) if id_busca else '—'}</code>")
+            lines.append(f"🛒 Link: {safe(link) if link else '—'}")
+            if LOJA_URL:
+              lines.append(f"🌐 Loja: {safe(LOJA_URL)}")
+            lines.append("")
+            lines.append(tagline)
+            if hts:
+              lines.append("")
+              lines.append(safe(hts))
+
+            text = "\n".join(lines)
+
+            if img.startswith("http"):
+              try:
+                tg_send_photo(img, text)
+              except Exception:
+                tg_send_message(text)
+            else:
+              tg_send_message(text)
+
+            print("Teste enviado.")
+            raise SystemExit(0)
+
+          # --- modo NOVOS: compara com commit anterior
+          prev_list = []
+          try:
+            prev_raw = subprocess.check_output(["git","show","HEAD^:produtos.json"], stderr=subprocess.DEVNULL).decode("utf-8", "replace")
+            prev_obj = json.loads(prev_raw)
+            prev_list = load_products_from(prev_obj)
+          except Exception:
+            prev_list = []
 
           prev_map = { sku_of(p): p for p in prev_list if sku_of(p) }
 
@@ -260,34 +288,36 @@ jobs:
           to_post = new_items[:MAX_POSTS]
           rest = new_items[MAX_POSTS:]
 
-          loja = (SITE_BASE.rstrip("/") + "/loja.html") if SITE_BASE else ""
-          tagline = "🛒 <b>Link da vitrine na bio</b>"
-
           for p in to_post:
             title = (p.get("title") or p.get("nome") or p.get("name") or "").strip()
             sku = sku_of(p)
             id_busca = (p.get("id_busca") or p.get("idML") or p.get("id") or "").strip()
             link = best_buy(p)
             img = abs_image(p.get("image") or p.get("imagem") or "")
-
             badges = p.get("badges") or p.get("tags") or []
             if isinstance(badges, str):
               badges = [x.strip() for x in re.split(r"[,;|]", badges) if x.strip()]
             elif not isinstance(badges, list):
               badges = []
 
+            tagline = "🛒 <b>Link da vitrine na bio</b>"
             hts = hashtags(badges)
-            hts_line = f"\n\n{safe(hts)}" if hts else ""
 
-            text = (
-              f"👑 <b>Novo Achado</b>\n"
-              f"<b>{safe(title) if title else safe(sku)}</b>\n\n"
-              f"🔍 ID ML: <code>{safe(id_busca) if id_busca else '—'}</code>\n"
-              f"🛒 Link: {safe(link) if link else '—'}\n"
-              f"{('🌐 Loja: ' + safe(loja) + '\\n') if loja else ''}"
-              f"\n{tagline}"
-              f"{hts_line}"
-            )
+            lines = []
+            lines.append("👑 <b>Novo Achado</b>")
+            lines.append(f"<b>{safe(title) if title else safe(sku)}</b>")
+            lines.append("")
+            lines.append(f"🔍 ID ML: <code>{safe(id_busca) if id_busca else '—'}</code>")
+            lines.append(f"🛒 Link: {safe(link) if link else '—'}")
+            if LOJA_URL:
+              lines.append(f"🌐 Loja: {safe(LOJA_URL)}")
+            lines.append("")
+            lines.append(tagline)
+            if hts:
+              lines.append("")
+              lines.append(safe(hts))
+
+            text = "\n".join(lines)
 
             if img.startswith("http"):
               try:
@@ -296,14 +326,13 @@ jobs:
               except Exception as e:
                 print("sendPhoto falhou, caindo para sendMessage:", e)
 
-            tg_send_message(text, preview=True)
+            tg_send_message(text)
 
           if rest:
             tg_send_message(
-              f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n{tagline}",
-              preview=False
+              f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n"
+              f"🛒 <b>Link da vitrine na bio</b>"
             )
 
-          print("Postagens concluídas ✅")
+          print(f"Postado no Telegram: {len(to_post)} item(s).")
           PY
-
