@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-03T06:34:47Z",
+  "updated_at": "2026-03-03T12:04:33Z",
   "products": [
     {
       "sku": "kit-mesh-wifi6-2un-wduu",
@@ -27,7 +27,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-WDUU",
       "image": "https://github.com/user-attachments/assets/89299f8c-a564-49bf-a756-0ef2161f6933",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2tMMkz2",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE5jjz08nCOr1j0UzSsObjDYD%2FQykoaIptGUImBaHYZnm4SVHD%2F6R3oZ9yUc6AIGDm82KJ6S%2BK7QE9WIKAIFO0oqQx0ses%2BK6CjIUXVuJ%2BDMTiUUVH%2BxSQ8aOJTq8I7ZQ8TogXtsERfyNRZ4QUvWKyB%2F4XIUrDhtsElpjU4%2FBW2xRMDGUuDN4ocITSdzopDN11i9Gf8%3D",
       "price_text": "",
@@ -2415,6 +2415,25 @@
       "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto",
+      "title": "interruptor-touch-wifi-novadigital-lite-s-2-teclas-preto",
+      "badges": [
+        "Interruptor Touch Wi-Fi Novadigital Lite-S (2 teclas) • Tuya • Alexa/Google • Preto"
+      ],
+      "id_busca": "5J5PKG-R5DE",
+      "open_url": "https://meli.la/2jwrx5M",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI6SZrG91AytJzSqt3uakStVqw90Pe8cIxeygvTmBW0N5EAkholtAIYALwVhfN4f2PCA5RU4cjl2pGW%2BH1t6J2zHWOTAVyyAo6wJP86r9YaQXid%2FrKN5BpGtiyKD8Qh1S%2FqimdtwVK2%2FLagLGYLpOz8bT53UXiI6jNBgMmSK8hpVa3%2F53meJPXDRIEJSX%2FR%2FR21Hwfk%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R5DE",
+      "image": "https://github.com/user-attachments/assets/7306ba63-0c8f-463e-ae5c-02858208e552",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2jwrx5M",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI6SZrG91AytJzSqt3uakStVqw90Pe8cIxeygvTmBW0N5EAkholtAIYALwVhfN4f2PCA5RU4cjl2pGW%2BH1t6J2zHWOTAVyyAo6wJP86r9YaQXid%2FrKN5BpGtiyKD8Qh1S%2FqimdtwVK2%2FLagLGYLpOz8bT53UXiI6jNBgMmSK8hpVa3%2F53meJPXDRIEJSX%2FR%2FR21Hwfk%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
