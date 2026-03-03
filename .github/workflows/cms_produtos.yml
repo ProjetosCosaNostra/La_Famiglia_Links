@@ -7,6 +7,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write  # ✅ necessário para disparar outro workflow (workflow_dispatch)
 
 # evita 2 runs se atropelarem (principal causa de "criei e não atualizou")
 concurrency:
@@ -65,8 +66,10 @@ jobs:
           python -m json.tool produtos.json >/dev/null
 
       - name: Commit & push (if changed)
+        id: commit_push
         run: |
           set -euo pipefail
+
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -79,6 +82,41 @@ jobs:
 
             # push robusto: empurra o HEAD atual para gh-pages
             git push origin HEAD:gh-pages
+
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No changes to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Disparar Telegram (workflow_dispatch)
+        if: steps.commit_push.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          # Dispara o workflow do Telegram manualmente via API
+          API="https://api.github.com/repos/${REPO}/actions/workflows/telegram_produtos.yml/dispatches"
+
+          # Se o workflow tiver inputs, pode mandar. Se não tiver, o GitHub ignora inputs ausentes.
+          BODY='{"ref":"gh-pages","inputs":{"modo":"novos"}}'
+
+          echo "Dispatching: ${API}"
+          HTTP_CODE="$(curl -sS -o /tmp/dispatch_resp.txt -w "%{http_code}" \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            "${API}" \
+            -d "${BODY}")"
+
+          if [ "${HTTP_CODE}" = "204" ]; then
+            echo "OK: Telegram workflow disparado."
+            exit 0
+          fi
+
+          echo "ERRO: dispatch retornou HTTP ${HTTP_CODE}"
+          echo "Resposta:"
+          cat /tmp/dispatch_resp.txt || true
+          exit 1
