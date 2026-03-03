@@ -36,11 +36,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout (com histórico)
+      # Checkout correto dependendo do evento:
+      - name: Checkout (workflow_run -> head_sha)
+        if: ${{ github.event_name == 'workflow_run' }}
         uses: actions/checkout@v4
         with:
-          fetch-depth: 5
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Checkout (push/workflow_dispatch)
+        if: ${{ github.event_name != 'workflow_run' }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -133,7 +141,7 @@ jobs:
             return u
 
           def best_buy(p: dict) -> str:
-            for k in ("buy_url","open_url","check_url","canonical_url","short_url","resolved_url","link","url"):
+            for k in ("buy_url","open_url","check_url","canonical_url","short_url","resolved_url","link","url","ml","mercado_livre","mercadolivre"):
               v = ensure_http(p.get(k, ""))
               if v.startswith("http"):
                 return v
@@ -152,7 +160,6 @@ jobs:
               base += "/"
             img = img.lstrip("./")
             return base + img
-
           NOISE = {"mercado livre","youtube","tiktok","threads","kwai","reels"}
           BRANDS = {"xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
                     "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate"}
@@ -171,6 +178,7 @@ jobs:
             if re.search(r"[()\/+]", t):
               return False
             return True
+
           def hashtags(badges):
             out = []
             seen = set()
@@ -191,7 +199,7 @@ jobs:
             return " ".join(out)
 
           def sku_of(p):
-            return (p.get("sku") or p.get("slug") or "").strip()
+            return (p.get("sku") or p.get("SKU") or p.get("slug") or p.get("Slug") or "").strip()
 
           def is_active(p):
             if "active" in p:
@@ -201,18 +209,25 @@ jobs:
             return True
 
           def get_last_ok(p):
-            # tenta achar um campo de recência (string ou timestamp)
             for k in ("last_ok","updated_at","updatedAt","created_at","createdAt"):
               v = p.get(k)
-              if not v:
-                continue
-              return str(v)
+              if v:
+                return str(v)
             return ""
+
+          # --- DEBUG inicial
+          print("=== DEBUG TELEGRAM WORKFLOW ===")
+          print("MODE:", MODE)
+          print("SITE_BASE:", SITE_BASE)
+          print("GITHUB_REPOSITORY:", (os.getenv("GITHUB_REPOSITORY") or "").strip())
+          print("GITHUB_SHA:", (os.getenv("GITHUB_SHA") or "").strip())
+          print("BRANCH/REF:", (os.getenv("GITHUB_REF") or "").strip())
 
           # --- Carregar JSON atual
           with open("produtos.json", "r", encoding="utf-8") as f:
             cur_obj = json.load(f)
           cur_list = load_products_from(cur_obj)
+          print("Produtos atuais:", len(cur_list))
 
           # --- Carregar JSON anterior (se existir)
           prev_list = []
@@ -220,8 +235,11 @@ jobs:
             prev_raw = subprocess.check_output(["git","show","HEAD^:produtos.json"], stderr=subprocess.DEVNULL).decode("utf-8", "replace")
             prev_obj = json.loads(prev_raw)
             prev_list = load_products_from(prev_obj)
-          except Exception:
+          except Exception as e:
+            print("Aviso: não consegui ler HEAD^:produtos.json ->", str(e))
             prev_list = []
+
+          print("Produtos anteriores:", len(prev_list))
 
           prev_map = { sku_of(p): p for p in prev_list if sku_of(p) }
 
@@ -237,12 +255,17 @@ jobs:
               if (not is_active(prev_map[sku])) and is_active(p):
                 new_items.append(p)
 
+          print("Detectados novos/ativados:", len(new_items))
+          if new_items:
+            print("SKUs novos:", [sku_of(x) for x in new_items[:20]])
+
           # MODO TESTE: manda 1 post mesmo sem mudança
           if MODE == "teste" and not new_items:
             actives = [p for p in cur_list if sku_of(p) and is_active(p)]
             actives.sort(key=lambda x: get_last_ok(x), reverse=True)
             if actives:
               new_items = [actives[0]]
+              print("MODO TESTE: forçando 1 post com SKU:", sku_of(actives[0]))
 
           if not new_items:
             print("Sem novos produtos (ou ativações).")
@@ -286,14 +309,18 @@ jobs:
             if img.startswith("http"):
               try:
                 tg_send_photo(img, text)
+                print("Postou com imagem:", sku)
                 continue
               except Exception as e:
                 print("sendPhoto falhou, caindo para sendMessage:", e)
 
             tg_send_message(text)
-
+            print("Postou sem imagem:", sku)
           if rest:
             tg_send_message(
               f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n{tagline}"
             )
+            print("Aviso de lote extra:", len(rest))
+
+          print("=== FIM DEBUG TELEGRAM WORKFLOW ===")
           PY
