@@ -4,23 +4,25 @@ on:
   workflow_dispatch:
     inputs:
       modo:
-        description: "novos = posta só quando detectar produto novo/ativado | teste = força 1 post mesmo sem mudança"
+        description: "novos = posta só SKUs nunca postados | backfill = posta todos os ativos que ainda não foram postados | teste = força 1 post"
         required: true
         default: "novos"
         type: choice
         options:
           - novos
+          - backfill
           - teste
+      max_posts:
+        description: "Limite de posts por execução (evita spam). Ex: 8 (normal) / 50 (backfill)"
+        required: true
+        default: "8"
+        type: number
 
-  # Se VOCÊ (humano) der push direto em produtos.json, funciona também
   push:
     branches: [ "gh-pages" ]
     paths:
       - "produtos.json"
 
-  # ✅ roda quando o workflow do CMS termina (mesmo com commit feito por Actions)
-  # IMPORTANTE: no workflow_run, NÃO usar head_sha do workflow do CMS para checkout,
-  # porque o CMS cria e dá push em um NOVO commit depois que ele começou.
   workflow_run:
     workflows: [ "CMS Produtos (Issue -> produtos.json)" ]
     types: [ completed ]
@@ -30,7 +32,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   notify:
@@ -42,30 +44,32 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
-          fetch-depth: 5
+          fetch-depth: 20
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Detectar novos produtos e postar no Telegram
+      - name: Detectar SKUs não-postados e postar no Telegram (com estado persistente)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SITE_BASE: ${{ secrets.SITE_BASE }}
           MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.modo || 'novos' }}
+          MAX_POSTS: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.max_posts || '8' }}
         run: |
           python - <<'PY'
-          import os, json, subprocess, re, urllib.parse, urllib.request
-
-          def sh(cmd):
-            return subprocess.check_output(cmd, stderr=subprocess.DEVNULL).decode("utf-8", "replace").strip()
+          import os, json, re, urllib.parse, urllib.request
+          from datetime import datetime
+          from pathlib import Path
 
           BOT = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           CHAT = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           SITE_BASE = (os.getenv("SITE_BASE") or "").strip()
           MODE = (os.getenv("MODE") or "novos").strip().lower()
+          MAX_POSTS = int(float(os.getenv("MAX_POSTS") or "8"))
 
           if not BOT or not CHAT:
             raise SystemExit("Faltam secrets TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID.")
@@ -157,6 +161,87 @@ jobs:
             img = img.lstrip("./")
             return base + img
 
+          def sku_of(p):
+            return (p.get("sku") or p.get("slug") or "").strip()
+
+          def is_active(p):
+            if "active" in p:
+              return bool(p.get("active"))
+            if "ativo" in p:
+              return bool(p.get("ativo"))
+            return True
+
+          def get_recency(p):
+            for k in ("last_ok","updated_at","updatedAt","created_at","createdAt"):
+              v = p.get(k)
+              if v:
+                return str(v)
+            return ""
+          # -------------------------
+          # Estado persistente (SKUs já postados)
+          # -------------------------
+          state_path = Path("data") / "telegram_posted.json"
+          state_path.parent.mkdir(parents=True, exist_ok=True)
+
+          posted = set()
+          state_obj = {}
+          if state_path.exists():
+            try:
+              state_obj = json.loads(state_path.read_text("utf-8"))
+              for s in state_obj.get("posted", []):
+                if isinstance(s, str) and s.strip():
+                  posted.add(s.strip())
+            except Exception:
+              state_obj = {}
+              posted = set()
+
+          # -------------------------
+          # Carregar produtos.json
+          # -------------------------
+          with open("produtos.json", "r", encoding="utf-8") as f:
+            cur_obj = json.load(f)
+          cur_list = load_products_from(cur_obj)
+
+          # ativos com sku
+          actives = [p for p in cur_list if sku_of(p) and is_active(p)]
+
+          # candidatos = ativos que ainda NÃO foram postados
+          candidates = [p for p in actives if sku_of(p) not in posted]
+
+          # ordena por recência (quando existir), senão fica estável por título
+          candidates.sort(key=lambda x: (get_recency(x), (x.get("title") or x.get("nome") or x.get("name") or "")), reverse=True)
+
+          # -------------------------
+          # Modo
+          # -------------------------
+          print("=== TELEGRAM POSTER (STATEFUL) ===")
+          print("MODE:", MODE)
+          print("MAX_POSTS:", MAX_POSTS)
+          print("Ativos:", len(actives))
+          print("Já postados:", len(posted))
+          print("Novos (não postados):", len(candidates))
+
+          if MODE == "teste":
+            # manda 1 post SEM gravar estado
+            sample = actives[:]
+            sample.sort(key=lambda x: get_recency(x), reverse=True)
+            if not sample:
+              print("Sem produtos ativos para teste.")
+              raise SystemExit(0)
+            to_post = [sample[0]]
+          elif MODE in ("novos", "backfill"):
+            to_post = candidates[:MAX_POSTS]
+          else:
+            print("MODE inválido:", MODE)
+            raise SystemExit(1)
+
+          if not to_post:
+            print("Nada para postar nesta execução.")
+            raise SystemExit(0)
+
+          # -------------------------
+          # Helpers de tags
+          # -------------------------
           NOISE = {"mercado livre","youtube","tiktok","threads","kwai","reels"}
           BRANDS = {"xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
                     "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate"}
@@ -195,96 +280,17 @@ jobs:
                 break
             return " ".join(out)
 
-          def sku_of(p):
-            return (p.get("sku") or p.get("slug") or "").strip()
-
-          def is_active(p):
-            if "active" in p:
-              return bool(p.get("active"))
-            if "ativo" in p:
-              return bool(p.get("ativo"))
-            return True
-
-          def get_last_ok(p):
-            for k in ("last_ok","updated_at","updatedAt","created_at","createdAt"):
-              v = p.get(k)
-              if not v:
-                continue
-              return str(v)
-            return ""
-
-          print("=== DEBUG TELEGRAM WORKFLOW ===")
-          print("MODE:", MODE)
-          print("SITE_BASE:", "***" if SITE_BASE else "")
-          print("GITHUB_REPOSITORY:", os.getenv("GITHUB_REPOSITORY", ""))
-          print("GITHUB_SHA:", os.getenv("GITHUB_SHA", ""))
-
-          try:
-            head = sh(["git","rev-parse","HEAD"])
-            print("GIT_HEAD:", head)
-          except Exception:
-            print("GIT_HEAD: (nao foi possivel)")
-          try:
-            prev = sh(["git","rev-parse","HEAD^"])
-            print("GIT_PREV:", prev)
-          except Exception:
-            print("GIT_PREV: (nao existe)")
-
-          # --- Carregar JSON atual
-          with open("produtos.json", "r", encoding="utf-8") as f:
-            cur_obj = json.load(f)
-          cur_list = load_products_from(cur_obj)
-
-          # --- Carregar JSON anterior (se existir)
-          prev_list = []
-          try:
-            prev_raw = sh(["git","show","HEAD^:produtos.json"])
-            prev_obj = json.loads(prev_raw)
-            prev_list = load_products_from(prev_obj)
-          except Exception:
-            prev_list = []
-          prev_map = { sku_of(p): p for p in prev_list if sku_of(p) }
-
-          new_items = []
-          for p in cur_list:
-            sku = sku_of(p)
-            if not sku:
-              continue
-            if sku not in prev_map:
-              if is_active(p):
-                new_items.append(p)
-            else:
-              if (not is_active(prev_map[sku])) and is_active(p):
-                new_items.append(p)
-
-          # MODO TESTE: manda 1 post mesmo sem mudança
-          if MODE == "teste" and not new_items:
-            actives = [p for p in cur_list if sku_of(p) and is_active(p)]
-            actives.sort(key=lambda x: get_last_ok(x), reverse=True)
-            if actives:
-              new_items = [actives[0]]
-
-          print("Produtos atuais:", len([p for p in cur_list if sku_of(p)]))
-          print("Produtos anteriores:", len([p for p in prev_list if sku_of(p)]))
-          print("Detectados novos/ativados:", len(new_items))
-
-          if not new_items:
-            print("Sem novos produtos (ou ativações).")
-            raise SystemExit(0)
-
-          MAX_POSTS = 8
-          to_post = new_items[:MAX_POSTS]
-          rest = new_items[MAX_POSTS:]
-
           loja = (SITE_BASE.rstrip("/") + "/loja.html") if SITE_BASE else ""
           tagline = "🛒 <b>Link da vitrine na bio</b>"
 
+          posted_now = []
           for p in to_post:
             title = (p.get("title") or p.get("nome") or p.get("name") or "").strip()
             sku = sku_of(p)
             id_busca = (p.get("id_busca") or p.get("idML") or p.get("id") or "").strip()
             link = best_buy(p)
             img = abs_image(p.get("image") or p.get("imagem") or "")
+
             badges = p.get("badges") or p.get("tags") or []
             if isinstance(badges, str):
               badges = [x.strip() for x in re.split(r"[,;|]", badges) if x.strip()]
@@ -297,8 +303,10 @@ jobs:
             loja_line = f"🌐 Loja: {safe(loja)}\n" if loja else ""
             link_line = f"🛒 Link: {safe(link)}\n" if link else ""
 
+            prefix = "🧪 <b>Teste</b>\n" if MODE == "teste" else "👑 <b>Novo Achado</b>\n"
+
             text = (
-              f"👑 <b>Novo Achado</b>\n"
+              f"{prefix}"
               f"<b>{safe(title) if title else safe(sku)}</b>\n\n"
               f"🔍 ID ML: <code>{safe(id_busca) if id_busca else '—'}</code>\n"
               f"{link_line}"
@@ -310,18 +318,37 @@ jobs:
             if img.startswith("http"):
               try:
                 tg_send_photo(img, text)
-                print("OK: sendPhoto")
-                continue
-              except Exception as e:
-                print("sendPhoto falhou, caindo para sendMessage:", e)
+              except Exception:
+                tg_send_message(text)
+            else:
+              tg_send_message(text)
 
-            tg_send_message(text)
-            print("OK: sendMessage")
+            if MODE != "teste":
+              posted_now.append(sku)
 
-          if rest:
-            tg_send_message(
-              f"📦 <b>Mais {len(rest)} produtos</b> foram adicionados/ativados no lote.\n{tagline}"
-            )
-            print("OK: lote extra")
+          # Atualiza estado (só quando não for teste)
+          if MODE != "teste" and posted_now:
+            posted.update(posted_now)
+            new_state = {
+              "updated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+              "posted_count": len(posted),
+              "posted": sorted(posted)
+            }
+            state_path.write_text(json.dumps(new_state, ensure_ascii=False, indent=2), "utf-8")
+            print("Estado atualizado:", str(state_path))
 
+          print("Postados nesta execução:", len(posted_now))
           PY
+
+      - name: Commit & push do estado (se mudou)
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/telegram_posted.json
+            git commit -m "telegram: update posted sku state"
+            git push origin HEAD:gh-pages
+          else
+            echo "Sem mudanças no estado."
+          fi
