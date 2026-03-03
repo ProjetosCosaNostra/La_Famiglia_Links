@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-03T12:29:14Z",
+  "updated_at": "2026-03-03T18:15:43Z",
   "products": [
     {
       "sku": "cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto",
@@ -9,11 +9,11 @@
       ],
       "id_busca": "5J5PKG-R5DE",
       "open_url": "https://meli.la/2jwrx5M",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI6SZrG91AytJzSqt3uakStVqw90Pe8cIxeygvTmBW0N5EAkholtAIYALwVhfN4f2PCA5RU4cjl2pGW%2BH1t6J2zHWOTAVyyAo6wJP86r9YaQXid%2FrKN5BpGtiyKD8Qh1S%2FqimdtwVK2%2FLagLGYLpOz8bT53UXiI6jNBgMmSK8hpVa3%2F53meJPXDRIEJSX%2FR%2FR21Hwfk%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R5DE",
       "image": "https://github.com/user-attachments/assets/7306ba63-0c8f-463e-ae5c-02858208e552",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2jwrx5M",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI6SZrG91AytJzSqt3uakStVqw90Pe8cIxeygvTmBW0N5EAkholtAIYALwVhfN4f2PCA5RU4cjl2pGW%2BH1t6J2zHWOTAVyyAo6wJP86r9YaQXid%2FrKN5BpGtiyKD8Qh1S%2FqimdtwVK2%2FLagLGYLpOz8bT53UXiI6jNBgMmSK8hpVa3%2F53meJPXDRIEJSX%2FR%2FR21Hwfk%3D",
       "price_text": "",
@@ -2439,6 +2439,32 @@
       "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "whey-protein-1kg-chocolate-5j5pkg-68p2",
+      "title": "Whey Protein 1kg (Chocolate) — Alta proteína no pós-treino",
+      "badges": [
+        "Achados do Dia",
+        "Suplementos",
+        "Whey",
+        "Chocolate",
+        "Alta proteína",
+        "Pós-treino",
+        "Fitness",
+        "Academia"
+      ],
+      "id_busca": "5J5PKG-68P2",
+      "open_url": "https://meli.la/14pqCNv",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHz5OAfOO3ComCMB%2By3UDf8p3i1NEsu4nhOCVc7xZe8SsI7V7PZgvOijFww691lKA93rqbldMOXPDqtn74Lefpdy58LOc%2FxsYJ3%2FZXuRbDDP5mc5a4yV%2FCBAvJQcfgdvhA1kQSvl3lfc1ZKkVx4oBIXgtsE4qkGtRxzAG5wi7KRMJgQ%2BXZH6P4qeT6PaxCJxId%2FzKw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-68P2",
+      "image": "https://github.com/user-attachments/assets/0ecbbe7a-0e6e-41b8-9287-8273f9b7ae54",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/14pqCNv",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHz5OAfOO3ComCMB%2By3UDf8p3i1NEsu4nhOCVc7xZe8SsI7V7PZgvOijFww691lKA93rqbldMOXPDqtn74Lefpdy58LOc%2FxsYJ3%2FZXuRbDDP5mc5a4yV%2FCBAvJQcfgdvhA1kQSvl3lfc1ZKkVx4oBIXgtsE4qkGtRxzAG5wi7KRMJgQ%2BXZH6P4qeT6PaxCJxId%2FzKw%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
