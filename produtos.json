@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-04T12:28:08Z",
+  "updated_at": "2026-03-04T13:05:37Z",
   "products": [
     {
       "sku": "revigoran-az-completo-60caps-5j5pkg-xtku",
@@ -20,7 +20,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XTKU",
       "image": "https://github.com/user-attachments/assets/0c59b00b-6def-46bb-8331-179df9decdf4",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1C3E2zW",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFlUaDVP%2BLwVqkDYBawqe5K3f%2FYjZNN8988Mw%2B5O9VUgOYvgaTWJP5VPM2uDp%2F9FcQQI9Utx0ApzjFIylnzua%2BSSuMOMuBJAUTCEDGwwr1YLz8jdsuLwB8NkOps9e7NXnPIiXtbqoLHPfyKTrPKYHy1R0EaHmTkyUPl4bqFhrZ8k5xKRwar3JLzqWd6qRwgLbvfgTrU%3D",
       "price_text": "",
@@ -2501,6 +2501,33 @@
       "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm",
+      "title": "Conjunto de Panelas Antiaderente — 10 Peças (Teflon) | Cozinha completa",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Panelas",
+        "Jogo de Panelas",
+        "Antiaderente",
+        "Teflon",
+        "10 peças",
+        "Casa e Cozinha",
+        "Dia a dia"
+      ],
+      "id_busca": "5J5PKG-THJM",
+      "open_url": "https://meli.la/2D19CwL",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAcNpzJrjmTmh9RlENjO3ngHW0VfhGWnZD0OrERfbpoKZ%2FGva%2FzeyNcaoqdMN2s3UOG%2Fv3Myv0McK%2BrH9uenZ%2BafbGi4VdnPCrMJSo8CDcaaoRoU74J3sexD%2B0z775R1Ro2y6AMnbai6NdXY6N28lh62rv7KDfyatP1oDhTD5dkXLlZefgZWOfkso3BwNwM779k0eg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-THJM",
+      "image": "https://github.com/user-attachments/assets/19b15a70-0577-4756-b2d8-f7d0a5627207",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2D19CwL",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAcNpzJrjmTmh9RlENjO3ngHW0VfhGWnZD0OrERfbpoKZ%2FGva%2FzeyNcaoqdMN2s3UOG%2Fv3Myv0McK%2BrH9uenZ%2BafbGi4VdnPCrMJSo8CDcaaoRoU74J3sexD%2B0z775R1Ro2y6AMnbai6NdXY6N28lh62rv7KDfyatP1oDhTD5dkXLlZefgZWOfkso3BwNwM779k0eg%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
