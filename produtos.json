@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-05T06:35:07Z",
+  "updated_at": "2026-03-05T10:10:29Z",
   "products": [
     {
       "sku": "microondas-consul-32-litros-branco-5j5pkg-ejtp",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-EJTP",
       "image": "https://github.com/user-attachments/assets/96b7ae3c-6e14-4b38-83a0-d19c04a76755",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2yYsZBx",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BATupuu99QCd%2B5yi%2BQnpiYT4mBKrsYFvh6tDtrKjvTNe5lybruD7aBy4qBa82MsDHOQxPTkj8gNjq6TTd8QAALsi6skNJdZ5ZxemnvmbekQwJuyiFYqZk2PoF39ZryYgkWgRjjc%2BfBcUHgi3zTaRDyfLs64M%2F5MzYNRX4k3zGP8Ip8XfnaNC%2BiJFgz5HXv%2B11FLmLxI%3D",
       "price_text": "",
@@ -2565,6 +2565,33 @@
       "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "tampa-protetora-microondas-alca-anti-respingo-5j5pkg-bxxq",
+      "title": "Tampa Protetora para Micro-ondas com Alça | Aquece uniforme e evita sujeira",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Utensílios",
+        "Micro-ondas",
+        "Anti-respingo",
+        "Tampa protetora",
+        "Praticidade",
+        "Dia a dia",
+        "Casa e Cozinha"
+      ],
+      "id_busca": "5J5PKG-BXXQ",
+      "open_url": "https://meli.la/2qrQinu",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGzNCJSeEJBfZ0RB9N2poieVq3IAcZl2BI9QU7TMtMSqT%2FTqE1tXpAgwAKVTCGNYGe3SjrJgUU06Fxe3lMiJyvj%2BFjb8uuiUw3Yc8pNaJ3K%2BmxE60umK1ByI475hiPelgGA4zEVx%2BBApfVkMB2ZXfQ16oDVzJ9oGmCEzfTuWB9q2gjbIKSiD%2B6Qg0oaj%2BhL8zjIpOg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-BXXQ",
+      "image": "https://github.com/user-attachments/assets/15a7b2c7-d410-4606-9a7e-0bde731dc2a2",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2qrQinu",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGzNCJSeEJBfZ0RB9N2poieVq3IAcZl2BI9QU7TMtMSqT%2FTqE1tXpAgwAKVTCGNYGe3SjrJgUU06Fxe3lMiJyvj%2BFjb8uuiUw3Yc8pNaJ3K%2BmxE60umK1ByI475hiPelgGA4zEVx%2BBApfVkMB2ZXfQ16oDVzJ9oGmCEzfTuWB9q2gjbIKSiD%2B6Qg0oaj%2BhL8zjIpOg%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
