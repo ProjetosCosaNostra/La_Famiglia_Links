@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-05T19:04:17Z",
+  "updated_at": "2026-03-05T20:27:03Z",
   "products": [
     {
       "sku": "kit-10-panos-copa-felpudos-41x64-estampados",
@@ -22,7 +22,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-URBN",
       "image": "https://github.com/user-attachments/assets/6eadfd1d-ab80-4af3-aa1c-0a72c095308b",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2tA4Gqh",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D",
       "price_text": "",
@@ -782,7 +782,7 @@
       ],
       "id_busca": "5J5PKG-K8TV",
       "open_url": "https://meli.la/1Vd3P8y",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-K8TV",
       "image": "https://github.com/user-attachments/assets/3d1d68fa-92c8-4d09-84c7-979eb0c04b50",
       "active": true,
@@ -2564,7 +2564,7 @@
       ],
       "id_busca": "5J5PKG-EC0M",
       "open_url": "https://meli.la/2zXgzRL",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-EC0M",
       "image": "https://github.com/user-attachments/assets/43e6c2b2-cb32-4270-92b5-267ffd2b81a2",
       "active": true,
@@ -2630,6 +2630,33 @@
       "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-2-copos-medidores-500ml",
+      "title": "Kit 2 Copos Medidores 500ml — Transparente • Livre de BPA (Cozinha)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Copo Medidor",
+        "Medição",
+        "500ml",
+        "Transparente",
+        "Livre de BPA",
+        "Receitas",
+        "Confeitaria"
+      ],
+      "id_busca": "5J5PKG-1L8D",
+      "open_url": "https://meli.la/1h2aRhj",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLQPWuU84o2uaX19S34iCA5%2FkJ01KB2nebVKL2qzakUJ5Bmok4eA8Ca0Q5Odi%2Bdz9Z%2B0Ib73V3fricVXhJ2a8f%2FyNbVvZ7v4%2FQ94HyEYmlyRrRoYqAXj4jL2HFFqvqwIaFefRYo2wXGDCgd5xrwjmcJMCeDvwEhX3DVM9LBaySUS5FbiXA2ong%2BEXM%2FTT9zsy1i7PQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-1L8D",
+      "image": "https://github.com/user-attachments/assets/c9e56cb8-7d86-416e-9cca-6cf8a3b823ec",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1h2aRhj",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLQPWuU84o2uaX19S34iCA5%2FkJ01KB2nebVKL2qzakUJ5Bmok4eA8Ca0Q5Odi%2Bdz9Z%2B0Ib73V3fricVXhJ2a8f%2FyNbVvZ7v4%2FQ94HyEYmlyRrRoYqAXj4jL2HFFqvqwIaFefRYo2wXGDCgd5xrwjmcJMCeDvwEhX3DVM9LBaySUS5FbiXA2ong%2BEXM%2FTT9zsy1i7PQ%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
