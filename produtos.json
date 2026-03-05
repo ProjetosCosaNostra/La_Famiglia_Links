@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-05T12:31:20Z",
+  "updated_at": "2026-03-05T17:23:16Z",
   "products": [
     {
       "sku": "tampa-protetora-microondas-alca-anti-respingo-5j5pkg-bxxq",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-BXXQ",
       "image": "https://github.com/user-attachments/assets/15a7b2c7-d410-4606-9a7e-0bde731dc2a2",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2qrQinu",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGzNCJSeEJBfZ0RB9N2poieVq3IAcZl2BI9QU7TMtMSqT%2FTqE1tXpAgwAKVTCGNYGe3SjrJgUU06Fxe3lMiJyvj%2BFjb8uuiUw3Yc8pNaJ3K%2BmxE60umK1ByI475hiPelgGA4zEVx%2BBApfVkMB2ZXfQ16oDVzJ9oGmCEzfTuWB9q2gjbIKSiD%2B6Qg0oaj%2BhL8zjIpOg%3D%3D",
       "price_text": "",
@@ -2597,6 +2597,34 @@
       "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-10-panos-copa-felpudos-41x64-estampados",
+      "title": "Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Pano de Copa",
+        "Pano de Prato",
+        "Têxteis de Cozinha",
+        "Kit 10",
+        "Felpudo",
+        "Estampados",
+        "Casa & Decoração",
+        "Utilidades Domésticas"
+      ],
+      "id_busca": "5J5PKG-URBN",
+      "open_url": "https://meli.la/2tA4Gqh",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-URBN",
+      "image": "https://github.com/user-attachments/assets/6eadfd1d-ab80-4af3-aa1c-0a72c095308b",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2tA4Gqh",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
