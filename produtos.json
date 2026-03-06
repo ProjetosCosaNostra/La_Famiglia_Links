@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-06T18:26:59Z",
+  "updated_at": "2026-03-06T19:09:38Z",
   "products": [
     {
       "sku": "ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-89J4",
       "image": "https://github.com/user-attachments/assets/22bf03dd-9450-402e-b740-2fd3b3361ff0",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1sLJKwg",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
       "price_text": "",
@@ -2724,6 +2724,31 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "jogo-3-peneiras-aco-inox-pmg",
+      "title": "Jogo 3 Peneiras Aço Inox (P/M/G) – Malha Fina",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Inox",
+        "Peneiras",
+        "Malha Fina",
+        "Uso Diário",
+        "Utensílios"
+      ],
+      "id_busca": "5J5PKG-DN77",
+      "open_url": "https://meli.la/1uRAJpA",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJZ8JBKNijlUGeh9QTAdBVg4C1Y7dKTdmG18wJomzIUQ9w%2FfFHQO%2FqW7Yzq%2Btuf%2BPEORFyMxGpYu0VzBgnuGf489WtXXoWSz0IO%2BX1b%2BoIpFbJAIMFlMg6b%2FkksTK6%2FOezjPLYXA8GoRyW3hrC3oXxBNHr9Tofe%2BXDlIC58Knb1kSLWTfAbV%2FXwdRXKlssx6mxKa%2BQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-DN77",
+      "image": "https://github.com/user-attachments/assets/bd7233f7-1a26-4153-85ea-af02cca3ccc4",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1uRAJpA",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJZ8JBKNijlUGeh9QTAdBVg4C1Y7dKTdmG18wJomzIUQ9w%2FfFHQO%2FqW7Yzq%2Btuf%2BPEORFyMxGpYu0VzBgnuGf489WtXXoWSz0IO%2BX1b%2BoIpFbJAIMFlMg6b%2FkksTK6%2FOezjPLYXA8GoRyW3hrC3oXxBNHr9Tofe%2BXDlIC58Knb1kSLWTfAbV%2FXwdRXKlssx6mxKa%2BQ%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
