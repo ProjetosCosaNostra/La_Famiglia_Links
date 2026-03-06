@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-06T12:26:39Z",
+  "updated_at": "2026-03-06T12:32:02Z",
   "products": [
     {
       "sku": "kit-2-copos-medidores-500ml",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-1L8D",
       "image": "https://github.com/user-attachments/assets/c9e56cb8-7d86-416e-9cca-6cf8a3b823ec",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1h2aRhj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLQPWuU84o2uaX19S34iCA5%2FkJ01KB2nebVKL2qzakUJ5Bmok4eA8Ca0Q5Odi%2Bdz9Z%2B0Ib73V3fricVXhJ2a8f%2FyNbVvZ7v4%2FQ94HyEYmlyRrRoYqAXj4jL2HFFqvqwIaFefRYo2wXGDCgd5xrwjmcJMCeDvwEhX3DVM9LBaySUS5FbiXA2ong%2BEXM%2FTT9zsy1i7PQ%3D%3D",
       "price_text": "",
@@ -814,7 +814,7 @@
       ],
       "id_busca": "5J5PKG-K8TV",
       "open_url": "https://meli.la/1Vd3P8y",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-K8TV",
       "image": "https://github.com/user-attachments/assets/3d1d68fa-92c8-4d09-84c7-979eb0c04b50",
       "active": true,
@@ -2662,6 +2662,36 @@
       "featured": false,
       "short_url": "https://meli.la/15p3NHj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "afiador-4em1-torvstore-mzub",
+      "title": "Afiador 4 em 1 TORVSTORE — Afia Facas e Tesouras (Portátil)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Churrasco",
+        "Afiador",
+        "Afiador 4 em 1",
+        "Facas",
+        "Tesouras",
+        "TORVSTORE",
+        "Portátil",
+        "Uso diário",
+        "Sem esforço",
+        "Resultado rápido"
+      ],
+      "id_busca": "5J5PKG-MZUB",
+      "open_url": "https://meli.la/26NUChD",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-MZUB",
+      "image": "https://github.com/user-attachments/assets/6ef8c237-e02f-4b03-abd2-0148d2b6b505",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/26NUChD",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
