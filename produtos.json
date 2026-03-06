@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-06T12:32:02Z",
+  "updated_at": "2026-03-06T16:05:34Z",
   "products": [
     {
       "sku": "kit-2-copos-medidores-500ml",
@@ -452,7 +452,7 @@
       ],
       "id_busca": "5J5PKG-VYBG",
       "open_url": "https://meli.la/1m2nJdb",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNT9jMWVzaXv%2BiyZORNZ%2B1gIhQjkbOlgZc3l1A5VE92WtTiZE%2FmDWAuhVWUElHaUzfRwUGYMetgXmF%2BYFz5qP73T08KulurznTHn7mHTI1CgIDkwjJS78QGpbnqCZWvJrDGgjUsGZCUFMMocHmdLImz%2BMAwQ0F8gWsW%2Fer2wBTb0Eq9xcZ0QCTeycvvo3%2BJbJwwpyw%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-VYBG",
       "image": "https://github.com/user-attachments/assets/e865e934-f43f-453f-b935-4554b5825185",
       "active": true,
@@ -2596,7 +2596,7 @@
       ],
       "id_busca": "5J5PKG-EC0M",
       "open_url": "https://meli.la/2zXgzRL",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMEiwFkADWhIx2bpSpV0LMkxOc7dmtX45A4ckxqTKHLCCRpSK1NgPUw3jFNti9xK4YyEhkFCOTJT%2FzgtsC23kgrcDoGDyBAn4dQ8pj4u09AnY0WQAh%2Bdp%2F8T8XTDX7WrelB7%2B7PU4pEMRUR5oLXGyZZotxx%2B2YARdsqN%2BvesAGjZojo5qiuRGxAynBAtq4gWIMjgxOo%3D",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-EC0M",
       "image": "https://github.com/user-attachments/assets/43e6c2b2-cb32-4270-92b5-267ffd2b81a2",
       "active": true,
@@ -2689,9 +2689,36 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-MZUB",
       "image": "https://github.com/user-attachments/assets/6ef8c237-e02f-4b03-abd2-0148d2b6b505",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira",
+      "title": "🍳🖤 Jogo de Utensílios 19 Peças Ponte Lar (Silicone Preto + Cabos de Madeira)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Utensílios",
+        "Silicone",
+        "Cabos de Madeira",
+        "Preto",
+        "Organizador",
+        "Design Premium",
+        "Ponte Lar"
+      ],
+      "id_busca": "5J5PKG-89J4",
+      "open_url": "https://meli.la/1sLJKwg",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-89J4",
+      "image": "https://github.com/user-attachments/assets/22bf03dd-9450-402e-b740-2fd3b3361ff0",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1sLJKwg",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
