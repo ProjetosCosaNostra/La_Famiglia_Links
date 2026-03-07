@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-07T18:16:27Z",
+  "updated_at": "2026-03-07T19:41:59Z",
   "products": [
     {
       "sku": "suporte-porta-xicaras-pires-dourado-fosco-catblack",
@@ -23,7 +23,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4AEX",
       "image": "https://github.com/user-attachments/assets/505859f3-48e0-4ac8-aba2-4d49e229b83e",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2vL6Ywk",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuVJT5BUfGdS5nlirQTCxaYyFB157zY2H9ptBn7X7eBgx8yXKqAc9WzFkb1ESY%2BgTWyl8fCq859h5zHgky8NxKA%2B1ccRGN%2FvfDcvKywjpf5LPseW2KlxS4vXCJSUSSNFogKEyQK8BnEulYJI7mz31lKXna9R1S00qSKMIGJlqGshnV99Tf5yFCLWPo9%2FtzlYrZb1Q%3D%3D",
       "price_text": "",
@@ -2824,6 +2824,37 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco",
+      "title": "Kit 2 Spray de Cozinha Epsilon EPS-412 (200ml) – Borrifador Pulverizador para Óleo/Azeite (Preto + Branco)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Spray de Óleo",
+        "Borrifador",
+        "Pulverizador",
+        "Azeite",
+        "Controle de Porção",
+        "200ml",
+        "Kit 2",
+        "Epsilon",
+        "EPS-412",
+        "Organização",
+        "Fácil de Usar"
+      ],
+      "id_busca": "5J5PKG-MQL7",
+      "open_url": "https://meli.la/2gpLrhX",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-MQL7",
+      "image": "https://github.com/user-attachments/assets/631a93e9-15a0-4a8a-a708-22da7d92fcc7",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2gpLrhX",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
