@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-07T06:22:49Z",
+  "updated_at": "2026-03-07T09:29:01Z",
   "products": [
     {
       "sku": "kit-porta-mantimentos-hermetico-12un-124l",
@@ -25,7 +25,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-7Y0N",
       "image": "https://github.com/user-attachments/assets/f9cc437b-1f4e-4bba-b63f-4b766662c844",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1LXCKN3",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAqF8560chFQwQkocwokszRTtRabhhmF7iAxseuy2oXx9dIaJwfBJfPnYjp%2FyQauuvelA3syoPEsYkKPSg7Q5IQejKTqtRZAjmNS1HQ2vPAu4eisyRnntT59C6RpgV3ODEhPV0bDQtFUteusgtfFE9d3Y0vKooavPV%2B05zNL9Yb8W%2FYvdDAlCptkm2nqp3idxZpwmA%3D%3D",
       "price_text": "",
@@ -2790,6 +2790,35 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "suporte-porta-xicaras-pires-dourado-fosco-catblack",
+      "title": "Suporte Organizador Porta Xícaras e Pires Dourado Fosco Premium (Cat Black Presentes)",
+      "badges": [
+        "Achados do Dia",
+        "Cosa Nostra",
+        "Cozinha",
+        "Cantinho do Café",
+        "Organizador",
+        "Porta Xícaras",
+        "Pires",
+        "Dourado Fosco",
+        "Decoração",
+        "Premium",
+        "Cat Black Presentes"
+      ],
+      "id_busca": "5J5PKG-4AEX",
+      "open_url": "https://meli.la/2vL6Ywk",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuVJT5BUfGdS5nlirQTCxaYyFB157zY2H9ptBn7X7eBgx8yXKqAc9WzFkb1ESY%2BgTWyl8fCq859h5zHgky8NxKA%2B1ccRGN%2FvfDcvKywjpf5LPseW2KlxS4vXCJSUSSNFogKEyQK8BnEulYJI7mz31lKXna9R1S00qSKMIGJlqGshnV99Tf5yFCLWPo9%2FtzlYrZb1Q%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4AEX",
+      "image": "https://github.com/user-attachments/assets/505859f3-48e0-4ac8-aba2-4d49e229b83e",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2vL6Ywk",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuVJT5BUfGdS5nlirQTCxaYyFB157zY2H9ptBn7X7eBgx8yXKqAc9WzFkb1ESY%2BgTWyl8fCq859h5zHgky8NxKA%2B1ccRGN%2FvfDcvKywjpf5LPseW2KlxS4vXCJSUSSNFogKEyQK8BnEulYJI7mz31lKXna9R1S00qSKMIGJlqGshnV99Tf5yFCLWPo9%2FtzlYrZb1Q%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
