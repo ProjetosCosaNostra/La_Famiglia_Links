@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-07T00:56:14Z",
+  "updated_at": "2026-03-07T01:29:39Z",
   "products": [
     {
       "sku": "jogo-3-peneiras-aco-inox-pmg",
@@ -19,7 +19,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-DN77",
       "image": "https://github.com/user-attachments/assets/bd7233f7-1a26-4153-85ea-af02cca3ccc4",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1uRAJpA",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJZ8JBKNijlUGeh9QTAdBVg4C1Y7dKTdmG18wJomzIUQ9w%2FfFHQO%2FqW7Yzq%2Btuf%2BPEORFyMxGpYu0VzBgnuGf489WtXXoWSz0IO%2BX1b%2BoIpFbJAIMFlMg6b%2FkksTK6%2FOezjPLYXA8GoRyW3hrC3oXxBNHr9Tofe%2BXDlIC58Knb1kSLWTfAbV%2FXwdRXKlssx6mxKa%2BQ%3D%3D",
       "price_text": "",
@@ -2754,6 +2754,37 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-porta-mantimentos-hermetico-12un-124l",
+      "title": "Kit Porta Mantimentos Hermético Quadrado 12 Unidades (12,4L)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Organização",
+        "Porta Mantimentos",
+        "Potes Herméticos",
+        "Empilhável",
+        "Quadrado",
+        "12 Unidades",
+        "12",
+        "4L",
+        "Despensa",
+        "Geladeira",
+        "Freezer"
+      ],
+      "id_busca": "5J5PKG-7Y0N",
+      "open_url": "https://meli.la/1LXCKN3",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAqF8560chFQwQkocwokszRTtRabhhmF7iAxseuy2oXx9dIaJwfBJfPnYjp%2FyQauuvelA3syoPEsYkKPSg7Q5IQejKTqtRZAjmNS1HQ2vPAu4eisyRnntT59C6RpgV3ODEhPV0bDQtFUteusgtfFE9d3Y0vKooavPV%2B05zNL9Yb8W%2FYvdDAlCptkm2nqp3idxZpwmA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-7Y0N",
+      "image": "https://github.com/user-attachments/assets/f9cc437b-1f4e-4bba-b63f-4b766662c844",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1LXCKN3",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAqF8560chFQwQkocwokszRTtRabhhmF7iAxseuy2oXx9dIaJwfBJfPnYjp%2FyQauuvelA3syoPEsYkKPSg7Q5IQejKTqtRZAjmNS1HQ2vPAu4eisyRnntT59C6RpgV3ODEhPV0bDQtFUteusgtfFE9d3Y0vKooavPV%2B05zNL9Yb8W%2FYvdDAlCptkm2nqp3idxZpwmA%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
