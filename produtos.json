@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-08T06:27:40Z",
+  "updated_at": "2026-03-08T10:16:14Z",
   "products": [
     {
       "sku": "kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco",
@@ -25,7 +25,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-MQL7",
       "image": "https://github.com/user-attachments/assets/631a93e9-15a0-4a8a-a708-22da7d92fcc7",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2gpLrhX",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D",
       "price_text": "",
@@ -2860,6 +2860,34 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-4-formas-gelo-tampa-silicone",
+      "title": "Kit 4 Formas de Gelo com Tampa — Silicone (Fundo Flexível + Tampa Rígida)",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Formas de Gelo",
+        "Silicone",
+        "Tampa Rígida",
+        "Fundo Flexível",
+        "Empilhável",
+        "Freezer",
+        "Drinks",
+        "Organização"
+      ],
+      "id_busca": "5J5PKG-PZ8V",
+      "open_url": "https://meli.la/19fvuVX",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PZ8V",
+      "image": "https://github.com/user-attachments/assets/a56fdff8-0e6b-4d16-9467-79a1372d5400",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/19fvuVX",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
