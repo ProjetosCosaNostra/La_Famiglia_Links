@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-09T21:00:09Z",
+  "updated_at": "2026-03-09T23:07:18Z",
   "products": [
     {
       "sku": "6-descansos-panela-premium",
@@ -3014,9 +3014,35 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-U4XU",
       "image": "https://github.com/user-attachments/assets/2d43f9e2-9f08-422a-bf66-73c518e79d4b",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2BogqNj",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBR%2FRizaQ4B9PH4DgXvrpMxDzt0fpjIhHV4qIDmPLVGzCqvN%2F5Wo5fInb6Lf3X8Jj7QtQnRvc%2Fm%2BmOvi9ssq36iXODXq9VXsDKNi%2FSU0XQQkRn%2BwHXi2%2BuLn6tHwMzfn3VVDT2UKy61YaAcXG%2FlhgCzsTBJAfcINxXb95oz8%2Bs%2BfkduYtRdkXAfsIDhm5GAKa%2FDxwQ%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "jogo-panelas-tramontina-inox-fundo-triplo-3-pecas",
+      "title": "Jogo de Panelas Tramontina Inox Fundo Triplo 3 Peças",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Tramontina",
+        "Jogo de Panelas",
+        "Inox",
+        "Fundo Triplo",
+        "3 Peças",
+        "Utilidades Domésticas"
+      ],
+      "id_busca": "5J5PKG-T28N",
+      "open_url": "https://meli.la/18N3x6V",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-T28N",
+      "image": "https://github.com/user-attachments/assets/231d4942-7e6b-4ae6-9995-84f7a3655e3e",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/18N3x6V",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
