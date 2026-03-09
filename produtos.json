@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-09T12:31:03Z",
+  "updated_at": "2026-03-09T14:39:06Z",
   "products": [
     {
       "sku": "relogio-parede-30cm-prata-branco-lzbq",
@@ -26,7 +26,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-LZBQ",
       "image": "https://github.com/user-attachments/assets/daf96ceb-2861-4133-abe1-039e12a05138",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/12D2w1B",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
       "price_text": "",
@@ -796,7 +796,7 @@
       ],
       "id_busca": "5J5PKG-UMMJ",
       "open_url": "https://meli.la/2Fapbqm",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFIyylrm9HEhGJx3XpJxuUbNy08ecjFkjmrpI1l3svEKYkiIlUxXP5a3jxYVy%2Bi4bUofUv5NU7SbQF5U8L0j9EPKaOwMypRF2Z7iia%2BgiLrA89usVcpP6qYLUOeQYdNXY0VJNKLOBJUS%2F9z0OIKcp5m1GT4czrEgi%2FkIfgQudeQQUsIiOITF75hRMHvzo5vIrcJrCg%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-UMMJ",
       "image": "https://github.com/user-attachments/assets/8d2d3fb5-1715-47ec-b01b-0e93f82e2df0",
       "active": true,
@@ -1016,7 +1016,7 @@
       ],
       "id_busca": "5J5PKG-W2VM",
       "open_url": "https://meli.la/1WeBSnu",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC8loTZkvq9siKZiocqFlFWrD6hg4TD8DyWMZ%2BB%2BiQ%2FNJnsYlJw0Z6PuBoL2taTO8tntoDZ1aeIDYwkZ7Y0eAgHfIkrnne4gOaIezwBg86G5CbjKG86dnWaKeTgL2%2FPV4efr7Udfcf08fskXYcbBoN5Edxga8TDMXQyiNFUzwLi%2Bn4shPt75KK1%2FawI9S23iRFXdgw%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-W2VM",
       "image": "https://github.com/user-attachments/assets/1023b13d-3384-4cb5-aad4-4d6d08d2766c",
       "active": true,
@@ -2962,6 +2962,30 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "6-descansos-panela-premium",
+      "title": "6 Descansos de Panela Premium Antiderrapantes",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Descanso de Panela",
+        "Antiderrapante",
+        "Madeira",
+        "Proteção Térmica"
+      ],
+      "id_busca": "5J5PKG-STH7",
+      "open_url": "https://meli.la/2CzaiF6",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKg%2BaeS3T8wHunm8HqeXERIjVGfawrwhTrXrrNCcNOAF2cFD3EBJdnwhs32Rn4L19OFjs9B7bwLzSp0sUxryC%2Bip3oMdoX1Nt38NjbQKu2RuKmcQSdO1n31bv4EneVqgOXGVme8WjFJ2KlLN7bRsGSZgfxqej5Gbd0HvEkocsFHpjVs39yHB6WwQzXorGsnJJ7g9QkQ%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-STH7",
+      "image": "https://github.com/user-attachments/assets/6de36b71-75e6-4bff-869a-0590b9350db8",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2CzaiF6",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKg%2BaeS3T8wHunm8HqeXERIjVGfawrwhTrXrrNCcNOAF2cFD3EBJdnwhs32Rn4L19OFjs9B7bwLzSp0sUxryC%2Bip3oMdoX1Nt38NjbQKu2RuKmcQSdO1n31bv4EneVqgOXGVme8WjFJ2KlLN7bRsGSZgfxqej5Gbd0HvEkocsFHpjVs39yHB6WwQzXorGsnJJ7g9QkQ%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
