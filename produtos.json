@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-09T18:34:51Z",
+  "updated_at": "2026-03-09T21:00:09Z",
   "products": [
     {
       "sku": "6-descansos-panela-premium",
@@ -18,7 +18,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-STH7",
       "image": "https://github.com/user-attachments/assets/6de36b71-75e6-4bff-869a-0590b9350db8",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2CzaiF6",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKg%2BaeS3T8wHunm8HqeXERIjVGfawrwhTrXrrNCcNOAF2cFD3EBJdnwhs32Rn4L19OFjs9B7bwLzSp0sUxryC%2Bip3oMdoX1Nt38NjbQKu2RuKmcQSdO1n31bv4EneVqgOXGVme8WjFJ2KlLN7bRsGSZgfxqej5Gbd0HvEkocsFHpjVs39yHB6WwQzXorGsnJJ7g9QkQ%3D",
       "price_text": "",
@@ -2991,6 +2991,32 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "porta-papel-toalha-premium-parede",
+      "title": "Porta Papel Toalha Premium de Parede",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Organizador de Cozinha",
+        "Porta Papel Toalha",
+        "Papel Alumínio",
+        "Filme PVC",
+        "Parede",
+        "Organização"
+      ],
+      "id_busca": "5J5PKG-U4XU",
+      "open_url": "https://meli.la/2BogqNj",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBR%2FRizaQ4B9PH4DgXvrpMxDzt0fpjIhHV4qIDmPLVGzCqvN%2F5Wo5fInb6Lf3X8Jj7QtQnRvc%2Fm%2BmOvi9ssq36iXODXq9VXsDKNi%2FSU0XQQkRn%2BwHXi2%2BuLn6tHwMzfn3VVDT2UKy61YaAcXG%2FlhgCzsTBJAfcINxXb95oz8%2Bs%2BfkduYtRdkXAfsIDhm5GAKa%2FDxwQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-U4XU",
+      "image": "https://github.com/user-attachments/assets/2d43f9e2-9f08-422a-bf66-73c518e79d4b",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2BogqNj",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBR%2FRizaQ4B9PH4DgXvrpMxDzt0fpjIhHV4qIDmPLVGzCqvN%2F5Wo5fInb6Lf3X8Jj7QtQnRvc%2Fm%2BmOvi9ssq36iXODXq9VXsDKNi%2FSU0XQQkRn%2BwHXi2%2BuLn6tHwMzfn3VVDT2UKy61YaAcXG%2FlhgCzsTBJAfcINxXb95oz8%2Bs%2BfkduYtRdkXAfsIDhm5GAKa%2FDxwQ%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
