@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-09T01:00:33Z",
+  "updated_at": "2026-03-09T01:46:50Z",
   "products": [
     {
       "sku": "panela-pressao-panelux-45l-aluminio-polido",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6T20",
       "image": "https://github.com/user-attachments/assets/1d426ea7-b56b-42ec-b3d6-40725c88a0f4",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2drogLW",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D",
       "price_text": "",
@@ -2925,6 +2925,38 @@
       "featured": false,
       "short_url": "https://meli.la/26NUChD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "relogio-parede-30cm-prata-branco-lzbq",
+      "title": "⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler",
+      "badges": [
+        "Achados do Dia",
+        "CosaNostra",
+        "Relógio de Parede",
+        "Decoração",
+        "Sala",
+        "Cozinha",
+        "Escritório",
+        "Hall",
+        "Prata",
+        "Branco",
+        "Silencioso",
+        "Fácil de ler",
+        "30cm",
+        "Minimalista"
+      ],
+      "id_busca": "5J5PKG-LZBQ",
+      "open_url": "https://meli.la/12D2w1B",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-LZBQ",
+      "image": "https://github.com/user-attachments/assets/daf96ceb-2861-4133-abe1-039e12a05138",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/12D2w1B",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
