@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-10T12:52:32Z",
+  "updated_at": "2026-03-10T16:33:23Z",
   "products": [
     {
       "sku": "jogo-panelas-tramontina-inox-fundo-triplo-3-pecas",
@@ -3071,9 +3071,36 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-47WR",
       "image": "https://github.com/user-attachments/assets/ac32164f-a314-452f-ae26-feb9e7b74414",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1twfxRu",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK6wJzFRF%2FQEYE2L7orBywQ8Z%2FC7M8ENuOx9Z0CAOPbwfVRnp8HyZL3kUODKQS8Dru%2FJR1%2BLgJNJ9my022Ofy7UfVcpJe6Ezt8Kx5w1rlvT0Ed1ts6SWt8F%2B2HMHEamr9RxFpd0Gdl%2F6WcT17Sx05t0uON19MdiOraM4Izoy1rfz4Lkv2HbJOkmYrl6f3zFAoKsh1A%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "cuscuzeira-inox-premium-25l",
+      "title": "Cuscuzeira Inox Premium 2,5L",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Cuscuzeira",
+        "Inox",
+        "Cuscuz",
+        "Panela a Vapor",
+        "2",
+        "5L",
+        "Utilidades Domésticas"
+      ],
+      "id_busca": "5J5PKG-PMWY",
+      "open_url": "https://meli.la/23D4SC7",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDLiRcnBoEBVkxvX%2BhH0NMPgfKtmvEvUgzP6HHOX5upPgOM%2FbUfAp6Z0%2BzxvCCnbqdk%2Btvk%2FMn5HxBn1t%2FXG7MOfl3A9nyTQbpJMTB9OEfanmcs%2Bn8Nn7m7zarNoIVkbNpduVc%2FfgYcGTn%2B0XSegNwl0A7Jv8YrdtpHzjMxi8CxyFcWbXo0FTiIx6WHg23hqf6t8mg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PMWY",
+      "image": "https://github.com/user-attachments/assets/b2be3e07-2ece-4157-a057-d78d4a39c588",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/23D4SC7",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDLiRcnBoEBVkxvX%2BhH0NMPgfKtmvEvUgzP6HHOX5upPgOM%2FbUfAp6Z0%2BzxvCCnbqdk%2Btvk%2FMn5HxBn1t%2FXG7MOfl3A9nyTQbpJMTB9OEfanmcs%2Bn8Nn7m7zarNoIVkbNpduVc%2FfgYcGTn%2B0XSegNwl0A7Jv8YrdtpHzjMxi8CxyFcWbXo0FTiIx6WHg23hqf6t8mg%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
