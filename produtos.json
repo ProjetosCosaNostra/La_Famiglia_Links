@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-10T18:32:50Z",
+  "updated_at": "2026-03-10T19:01:56Z",
   "products": [
     {
       "sku": "cuscuzeira-inox-premium-25l",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PMWY",
       "image": "https://github.com/user-attachments/assets/b2be3e07-2ece-4157-a057-d78d4a39c588",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/23D4SC7",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDLiRcnBoEBVkxvX%2BhH0NMPgfKtmvEvUgzP6HHOX5upPgOM%2FbUfAp6Z0%2BzxvCCnbqdk%2Btvk%2FMn5HxBn1t%2FXG7MOfl3A9nyTQbpJMTB9OEfanmcs%2Bn8Nn7m7zarNoIVkbNpduVc%2FfgYcGTn%2B0XSegNwl0A7Jv8YrdtpHzjMxi8CxyFcWbXo0FTiIx6WHg23hqf6t8mg%3D%3D",
       "price_text": "",
@@ -3106,6 +3106,33 @@
       "featured": false,
       "short_url": "https://meli.la/1twfxRu",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK6wJzFRF%2FQEYE2L7orBywQ8Z%2FC7M8ENuOx9Z0CAOPbwfVRnp8HyZL3kUODKQS8Dru%2FJR1%2BLgJNJ9my022Ofy7UfVcpJe6Ezt8Kx5w1rlvT0Ed1ts6SWt8F%2B2HMHEamr9RxFpd0Gdl%2F6WcT17Sx05t0uON19MdiOraM4Izoy1rfz4Lkv2HbJOkmYrl6f3zFAoKsh1A%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-regulador-gas-premium-125m",
+      "title": "Kit Regulador de Gás Cozinha com Mangueira 1,25m",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Regulador de Gás",
+        "Mangueira de Gás",
+        "Kit Gás",
+        "Instalação",
+        "1",
+        "25m",
+        "Utilidades Domésticas"
+      ],
+      "id_busca": "5J5PKG-MX6S",
+      "open_url": "https://meli.la/14d89GJ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-MX6S",
+      "image": "https://github.com/user-attachments/assets/c02b8af2-db0c-4127-9263-91b40bbad44f",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/14d89GJ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
