@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-10T19:01:56Z",
+  "updated_at": "2026-03-11T00:17:24Z",
   "products": [
     {
       "sku": "cuscuzeira-inox-premium-25l",
@@ -3130,9 +3130,34 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-MX6S",
       "image": "https://github.com/user-attachments/assets/c02b8af2-db0c-4127-9263-91b40bbad44f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/14d89GJ",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "kit-2-acendedores-de-fogao-premium",
+      "title": "🔥 Kit 2 Acendedores de Fogão Premium — Praticidade e Segurança na Cozinha",
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Fogão",
+        "Acendedor de Fogão",
+        "Kit 2 Peças",
+        "Utilidades Domésticas",
+        "Casa"
+      ],
+      "id_busca": "5J5PKG-CPYJ",
+      "open_url": "https://meli.la/32MdstW",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG7nzWAGqnjsYmEr04zuwbPZzROah6qsavouz273plWM356XxfZYQfHm3FMbEo3cu9JwyLCybEE5RbqhMvTC8lyhGkPV8E7MmIxa%2BBKj%2FLlV4WvJRD7tiFS4yKYTcROwuDHotI%2FDvOhaRVRgr657kpaTU%2BHc3V0U7rr4GnOkxaHcSsa7zOvpgNJNT7TOJQKWi29rkiU2yLgHoeaKNw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-CPYJ",
+      "image": "https://github.com/user-attachments/assets/0ec3d8ef-ca63-4426-aaf8-6a9915020888",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/32MdstW",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG7nzWAGqnjsYmEr04zuwbPZzROah6qsavouz273plWM356XxfZYQfHm3FMbEo3cu9JwyLCybEE5RbqhMvTC8lyhGkPV8E7MmIxa%2BBKj%2FLlV4WvJRD7tiFS4yKYTcROwuDHotI%2FDvOhaRVRgr657kpaTU%2BHc3V0U7rr4GnOkxaHcSsa7zOvpgNJNT7TOJQKWi29rkiU2yLgHoeaKNw%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
