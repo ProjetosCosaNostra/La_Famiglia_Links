@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-11T18:37:16Z",
+  "updated_at": "2026-03-11T20:04:44Z",
   "products": [
     {
       "sku": "kit-utensilios-cozinha-premium-rosa",
@@ -20,7 +20,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-CDB6",
       "image": "https://github.com/user-attachments/assets/61294e67-d1f7-476d-ba25-142f06b2a46f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1kiePfs",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
       "price_text": "",
@@ -1169,7 +1169,7 @@
       ],
       "id_busca": "5J5PKG-W2VM",
       "open_url": "https://meli.la/1WeBSnu",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC8loTZkvq9siKZiocqFlFWrD6hg4TD8DyWMZ%2BB%2BiQ%2FNJnsYlJw0Z6PuBoL2taTO8tntoDZ1aeIDYwkZ7Y0eAgHfIkrnne4gOaIezwBg86G5CbjKG86dnWaKeTgL2%2FPV4efr7Udfcf08fskXYcbBoN5Edxga8TDMXQyiNFUzwLi%2Bn4shPt75KK1%2FawI9S23iRFXdgw%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-W2VM",
       "image": "https://github.com/user-attachments/assets/1023b13d-3384-4cb5-aad4-4d6d08d2766c",
       "active": true,
@@ -3194,6 +3194,34 @@
       "featured": false,
       "short_url": "https://meli.la/14d89GJ",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "zero-mofo-premium-1l-spray",
+      "title": "🛡️ Zero Mofo Premium 1L + Spray — Proteção Prolongada para Parede, Teto e Piso",
+      "badges": [
+        "Achados do Dia",
+        "Limpeza",
+        "Anti Mofo",
+        "Zero Mofo",
+        "Banheiro",
+        "Parede",
+        "Teto",
+        "Piso",
+        "Casa",
+        "Utilidades Domésticas"
+      ],
+      "id_busca": "5J5PKG-J7T0",
+      "open_url": "https://meli.la/1qHEv74",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA0WT7WH7DsXlKhe3%2BDW1uyzhWs1zsoFpchZYGHjvmn3TtWp%2Bwd%2FeqiLpC7IFlDTOR%2B%2FZKGgfMwrwga1Ic2qmxp%2BZehC9bivRgvRiV7gfJbY%2FZDo0hxAoKnIz7NC64%2FCQO79JP4ozgTZlIb0ewlAapzVl%2FAKiDi3HKMSeGP6xFmxPsw3bN97zQTx1Y05gJogNrh5cQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-J7T0",
+      "image": "https://github.com/user-attachments/assets/2fa4b4ff-0a84-4da7-bbe2-f427076d5c21",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1qHEv74",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA0WT7WH7DsXlKhe3%2BDW1uyzhWs1zsoFpchZYGHjvmn3TtWp%2Bwd%2FeqiLpC7IFlDTOR%2B%2FZKGgfMwrwga1Ic2qmxp%2BZehC9bivRgvRiV7gfJbY%2FZDo0hxAoKnIz7NC64%2FCQO79JP4ozgTZlIb0ewlAapzVl%2FAKiDi3HKMSeGP6xFmxPsw3bN97zQTx1Y05gJogNrh5cQ%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
