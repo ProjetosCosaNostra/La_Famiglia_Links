@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-13T19:51:20Z",
+  "updated_at": "2026-03-13T23:59:45Z",
   "products": [
     {
       "sku": "gamestick-premium-2-controles-wireless",
@@ -307,7 +307,7 @@
       ],
       "id_busca": "5J5PKG-6T20",
       "open_url": "https://meli.la/2drogLW",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6T20",
       "image": "https://github.com/user-attachments/assets/1d426ea7-b56b-42ec-b3d6-40725c88a0f4",
       "active": true,
@@ -3319,9 +3319,39 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-9TK6",
       "image": "https://github.com/user-attachments/assets/2638c52a-3d07-4548-99ff-3ddfe62c5ed5",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2LTPR6d",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "cabo-hdmi-21-premium-8k-144hz-2m",
+      "title": "🔌 Cabo HDMI 2.1 Premium — 8K • 144Hz • Ultra HD • 2 Metros",
+      "badges": [
+        "Achados do Dia",
+        "Cabo HDMI 2.1",
+        "8K",
+        "144Hz",
+        "Ultra HD",
+        "2 Metros",
+        "PS5",
+        "Xbox",
+        "TV",
+        "Gamer",
+        "Eletrônicos",
+        "Acessórios"
+      ],
+      "id_busca": "5J5PKG-L9DK",
+      "open_url": "https://meli.la/1Xr4zBw",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-L9DK",
+      "image": "https://github.com/user-attachments/assets/c4cb88ae-f479-407b-ad5c-f62571d822bc",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1Xr4zBw",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
