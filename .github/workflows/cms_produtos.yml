@@ -7,9 +7,8 @@ on:
 permissions:
   contents: write
   issues: write
-  actions: write  # ✅ necessário para disparar outro workflow (workflow_dispatch)
+  actions: write
 
-# evita 2 runs se atropelarem (principal causa de "criei e não atualizou")
 concurrency:
   group: cms-produtos
   cancel-in-progress: true
@@ -65,29 +64,64 @@ jobs:
           test -f produtos.json
           python -m json.tool produtos.json >/dev/null
 
-      - name: Commit & push (if changed)
+      - name: Commit & push (robusto)
         id: commit_push
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
 
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-
-            # garante branch local consistente (evita push falhar em detached HEAD)
-            git checkout -B gh-pages
-
-            git add -A
-            git commit -m "cms: update produtos.json via issue #${{ github.event.issue.number }}"
-
-            # push robusto: empurra o HEAD atual para gh-pages
-            git push origin HEAD:gh-pages
-
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to commit."
             echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          ATTEMPT=1
+          MAX_ATTEMPTS=3
+
+          while [ "$ATTEMPT" -le "$MAX_ATTEMPTS" ]; do
+            echo "=== Commit/push attempt ${ATTEMPT}/${MAX_ATTEMPTS} ==="
+
+            git checkout -B gh-pages
+            git add -A
+
+            if [ -n "$(git diff --cached --name-only)" ]; then
+              git commit -m "cms: update produtos.json via issue #${{ github.event.issue.number }}"
+            else
+              echo "Nada staged para commit nesta tentativa."
+            fi
+
+            if git push origin HEAD:gh-pages; then
+              echo "Push concluído com sucesso."
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            echo "Push rejeitado. Sincronizando com origin/gh-pages e reaplicando CMS..."
+            git fetch origin gh-pages
+            git reset --hard origin/gh-pages
+
+            python tools/cms_produtos.py
+            test -f produtos.json
+            python -m json.tool produtos.json >/dev/null
+
+            if [ -z "$(git status --porcelain)" ]; then
+              echo "Depois de sincronizar e reaplicar, não restaram mudanças locais."
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            ATTEMPT=$((ATTEMPT + 1))
+            sleep 2
+          done
+
+          echo "ERRO: não foi possível publicar produtos.json após ${MAX_ATTEMPTS} tentativas."
+          exit 1
 
       - name: Disparar Telegram (workflow_dispatch)
         if: steps.commit_push.outputs.changed == 'true'
@@ -97,11 +131,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Dispara o workflow do Telegram manualmente via API
           API="https://api.github.com/repos/${REPO}/actions/workflows/telegram_produtos.yml/dispatches"
-
-          # Se o workflow tiver inputs, pode mandar. Se não tiver, o GitHub ignora inputs ausentes.
-          BODY='{"ref":"gh-pages","inputs":{"modo":"novos"}}'
+          BODY='{"ref":"gh-pages","inputs":{"modo":"novos","max_posts":"8"}}'
 
           echo "Dispatching: ${API}"
           HTTP_CODE="$(curl -sS -o /tmp/dispatch_resp.txt -w "%{http_code}" \
