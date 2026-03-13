@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-13T12:29:25Z",
+  "updated_at": "2026-03-13T15:19:06Z",
   "products": [
     {
       "sku": "tradutor-inteligente-premium-online-offline",
@@ -23,7 +23,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-T25W",
       "image": "https://github.com/user-attachments/assets/d5e1ab4d-ee24-4d0a-8366-d62475f80e41",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/339GC5W",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGiJLbKJI85okxwrn%2BTVIXy8V%2Fhcw98hq9DOnb10506xonC2TQPyb0DOlKZSY7FUBg56Mz2DYkzX0MJFZdXXpLSNc%2FQJyD9P70f03OCARy3YhQS08kPyLgLAU5TvNKw4HyhDKDpERcPZ2e8UzDxWMzzcpfGi8HMX991b37fTZxcVkMAV7rY5nbcosSQgIa%2FXwW0cdHvidyuZ9j1O%2BQ%3D%3D",
       "price_text": "",
@@ -3261,6 +3261,34 @@
       "featured": false,
       "short_url": "https://meli.la/14d89GJ",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "gamestick-premium-2-controles-wireless",
+      "title": "🎮 Gamestick Premium — Jogos Clássicos com 2 Controles Wireless",
+      "badges": [
+        "Achados do Dia",
+        "Gamestick",
+        "Videogame Retrô",
+        "Jogos Clássicos",
+        "2 Controles Wireless",
+        "Gamer",
+        "TV",
+        "Entretenimento",
+        "Console",
+        "Tecnologia"
+      ],
+      "id_busca": "5J5PKG-ND5E",
+      "open_url": "https://meli.la/2Qxy3CD",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJW%2FTovyTMziMjPesv2NeaPeUj%2BkP4OuCOiSeJGmuKXgFjSJTp5c9CC%2Bm23rCiQ54WaYBXOu5E8PCOwaYrQH7Dkk%2BJXdOl0PEMhXUj2mrYWxdHZup5PoRTsKca9w%2BWB2zm1I6ECgbR0I9eoqoCWNIayKW9aQGRp5DHamTFxNcTZPq027WKwwEFDNvHktcEwSvQigZw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ND5E",
+      "image": "https://github.com/user-attachments/assets/7c1b2819-9095-4438-aa9a-e7a71203495f",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2Qxy3CD",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJW%2FTovyTMziMjPesv2NeaPeUj%2BkP4OuCOiSeJGmuKXgFjSJTp5c9CC%2Bm23rCiQ54WaYBXOu5E8PCOwaYrQH7Dkk%2BJXdOl0PEMhXUj2mrYWxdHZup5PoRTsKca9w%2BWB2zm1I6ECgbR0I9eoqoCWNIayKW9aQGRp5DHamTFxNcTZPq027WKwwEFDNvHktcEwSvQigZw%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
