@@ -18,15 +18,6 @@ on:
         default: "8"
         type: number
 
-  push:
-    branches: [ "gh-pages" ]
-    paths:
-      - "produtos.json"
-
-  workflow_run:
-    workflows: [ "CMS Produtos (Issue -> produtos.json)" ]
-    types: [ completed ]
-
 concurrency:
   group: telegram-produtos
   cancel-in-progress: true
@@ -36,7 +27,6 @@ permissions:
 
 jobs:
   notify:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'gh-pages') }}
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
-          fetch-depth: 20
+          fetch-depth: 0
           persist-credentials: true
 
       - name: Setup Python
@@ -57,8 +47,8 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SITE_BASE: ${{ secrets.SITE_BASE }}
-          MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.modo || 'novos' }}
-          MAX_POSTS: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.max_posts || '8' }}
+          MODE: ${{ inputs.modo }}
+          MAX_POSTS: ${{ inputs.max_posts }}
         run: |
           python - <<'PY'
           import os, json, re, urllib.parse, urllib.request
@@ -119,8 +109,8 @@ jobs:
 
           def safe(s):
             s = "" if s is None else str(s)
-            return (s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
-                     .replace('"',"&quot;").replace("'","&#039;"))
+            return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                     .replace('"', "&quot;").replace("'", "&#039;"))
 
           def ensure_http(u: str) -> str:
             u = (u or "").strip()
@@ -141,7 +131,7 @@ jobs:
             return u
 
           def best_buy(p: dict) -> str:
-            for k in ("buy_url","open_url","check_url","canonical_url","short_url","resolved_url","link","url"):
+            for k in ("buy_url", "open_url", "check_url", "canonical_url", "short_url", "resolved_url", "link", "url"):
               v = ensure_http(p.get(k, ""))
               if v.startswith("http"):
                 return v
@@ -172,14 +162,12 @@ jobs:
             return True
 
           def get_recency(p):
-            for k in ("last_ok","updated_at","updatedAt","created_at","createdAt"):
+            for k in ("last_ok", "updated_at", "updatedAt", "created_at", "createdAt"):
               v = p.get(k)
               if v:
                 return str(v)
             return ""
-          # -------------------------
-          # Estado persistente (SKUs já postados)
-          # -------------------------
+
           state_path = Path("data") / "telegram_posted.json"
           state_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -195,25 +183,21 @@ jobs:
               state_obj = {}
               posted = set()
 
-          # -------------------------
-          # Carregar produtos.json
-          # -------------------------
           with open("produtos.json", "r", encoding="utf-8") as f:
             cur_obj = json.load(f)
           cur_list = load_products_from(cur_obj)
 
-          # ativos com sku
           actives = [p for p in cur_list if sku_of(p) and is_active(p)]
-
-          # candidatos = ativos que ainda NÃO foram postados
           candidates = [p for p in actives if sku_of(p) not in posted]
 
-          # ordena por recência (quando existir), senão fica estável por título
-          candidates.sort(key=lambda x: (get_recency(x), (x.get("title") or x.get("nome") or x.get("name") or "")), reverse=True)
+          candidates.sort(
+            key=lambda x: (
+              get_recency(x),
+              (x.get("title") or x.get("nome") or x.get("name") or "")
+            ),
+            reverse=True
+          )
 
-          # -------------------------
-          # Modo
-          # -------------------------
           print("=== TELEGRAM POSTER (STATEFUL) ===")
           print("MODE:", MODE)
           print("MAX_POSTS:", MAX_POSTS)
@@ -222,7 +206,6 @@ jobs:
           print("Novos (não postados):", len(candidates))
 
           if MODE == "teste":
-            # manda 1 post SEM gravar estado
             sample = actives[:]
             sample.sort(key=lambda x: get_recency(x), reverse=True)
             if not sample:
@@ -239,12 +222,11 @@ jobs:
             print("Nada para postar nesta execução.")
             raise SystemExit(0)
 
-          # -------------------------
-          # Helpers de tags
-          # -------------------------
-          NOISE = {"mercado livre","youtube","tiktok","threads","kwai","reels"}
-          BRANDS = {"xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
-                    "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate"}
+          NOISE = {"mercado livre", "youtube", "tiktok", "threads", "kwai", "reels"}
+          BRANDS = {
+            "xiaomi", "samsung", "logitech", "philips", "ugreen", "seagate", "arno", "britânia",
+            "tapo", "tp-link", "redragon", "oneblade", "sony", "awei", "nescafé", "colgate"
+          }
 
           def is_good_tag(t: str) -> bool:
             t = (t or "").strip()
@@ -326,7 +308,6 @@ jobs:
             if MODE != "teste":
               posted_now.append(sku)
 
-          # Atualiza estado (só quando não for teste)
           if MODE != "teste" and posted_now:
             posted.update(posted_now)
             new_state = {
@@ -340,15 +321,45 @@ jobs:
           print("Postados nesta execução:", len(posted_now))
           PY
 
-      - name: Commit & push do estado (se mudou)
+      - name: Commit & push do estado (robusto)
         run: |
           set -euo pipefail
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add data/telegram_posted.json
-            git commit -m "telegram: update posted sku state"
-            git push origin HEAD:gh-pages
-          else
+
+          if [ -z "$(git status --porcelain)" ]; then
             echo "Sem mudanças no estado."
+            exit 0
           fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          ATTEMPT=1
+          MAX_ATTEMPTS=3
+
+          while [ "$ATTEMPT" -le "$MAX_ATTEMPTS" ]; do
+            echo "=== Push do estado ${ATTEMPT}/${MAX_ATTEMPTS} ==="
+
+            git checkout -B gh-pages
+            git add data/telegram_posted.json
+
+            if [ -n "$(git diff --cached --name-only)" ]; then
+              git commit -m "telegram: update posted sku state"
+            else
+              echo "Nada staged para commit nesta tentativa."
+            fi
+
+            if git push origin HEAD:gh-pages; then
+              echo "Estado enviado com sucesso."
+              exit 0
+            fi
+
+            echo "Push rejeitado. Fazendo rebase em origin/gh-pages..."
+            git fetch origin gh-pages
+            git pull --rebase origin gh-pages
+
+            ATTEMPT=$((ATTEMPT + 1))
+            sleep 2
+          done
+
+          echo "ERRO: não foi possível publicar data/telegram_posted.json após ${MAX_ATTEMPTS} tentativas."
+          exit 1
