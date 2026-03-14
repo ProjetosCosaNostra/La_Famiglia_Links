@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-14T12:22:14Z",
+  "updated_at": "2026-03-14T16:28:05Z",
   "products": [
     {
       "sku": "cabo-hdmi-21-premium-8k-144hz-2m",
@@ -24,7 +24,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-L9DK",
       "image": "https://github.com/user-attachments/assets/c4cb88ae-f479-407b-ad5c-f62571d822bc",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1Xr4zBw",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D",
       "price_text": "",
@@ -3357,6 +3357,36 @@
       "featured": false,
       "short_url": "https://meli.la/2LTPR6d",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "smart-tv-philco-roku-32-premium",
+      "title": "📺 Smart TV Philco Roku 32” Premium",
+      "badges": [
+        "Achados do Dia",
+        "Smart TV",
+        "Philco",
+        "Roku TV",
+        "Dolby Audio",
+        "Streaming",
+        "32 Polegadas",
+        "TV",
+        "Entretenimento",
+        "Sala",
+        "Casa",
+        "Tecnologia"
+      ],
+      "id_busca": "5J5PKG-AHDQ",
+      "open_url": "https://meli.la/19Lo34Y",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-AHDQ",
+      "image": "https://github.com/user-attachments/assets/18d74958-6a02-4f59-b704-576c8a75b416",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/19Lo34Y",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
