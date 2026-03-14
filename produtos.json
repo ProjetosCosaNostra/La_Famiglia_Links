@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-14T18:19:44Z",
+  "updated_at": "2026-03-14T19:31:17Z",
   "products": [
     {
       "sku": "smart-tv-philco-roku-32-premium",
@@ -24,7 +24,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-AHDQ",
       "image": "https://github.com/user-attachments/assets/18d74958-6a02-4f59-b704-576c8a75b416",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/19Lo34Y",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
       "price_text": "",
@@ -122,7 +122,7 @@
       ],
       "id_busca": "5J5PKG-T25W",
       "open_url": "https://meli.la/339GC5W",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGiJLbKJI85okxwrn%2BTVIXy8V%2Fhcw98hq9DOnb10506xonC2TQPyb0DOlKZSY7FUBg56Mz2DYkzX0MJFZdXXpLSNc%2FQJyD9P70f03OCARy3YhQS08kPyLgLAU5TvNKw4HyhDKDpERcPZ2e8UzDxWMzzcpfGi8HMX991b37fTZxcVkMAV7rY5nbcosSQgIa%2FXwW0cdHvidyuZ9j1O%2BQ%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-T25W",
       "image": "https://github.com/user-attachments/assets/d5e1ab4d-ee24-4d0a-8366-d62475f80e41",
       "active": true,
@@ -3392,6 +3392,32 @@
       "featured": false,
       "short_url": "https://meli.la/2LTPR6d",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "microsoft-xbox-series-x-1tb",
+      "title": "Xbox Series X 1TB Premium",
+      "badges": [
+        "Achados do Dia",
+        "Xbox Series X",
+        "Console Gamer",
+        "1TB",
+        "Alta Performance",
+        "Microsoft",
+        "Gamer",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-VKGY",
+      "open_url": "https://meli.la/1dLH6zP",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHWyh6OIpry4dpOwmdgHOs0%2BBUBj2dTLFSDitp5ofgUao99YYj%2FLEQ0efDttFEiENrQVYLbUMDch4mAAdECrlG3FOa9bWnsZYG75IhOUPOZSDVXJfyUpo2UhmC0k1vOPXQOoC26FRdCarELfROHmSUVNS5Tgxb8z7%2BMJq7Vlpz57OAJNLlhhDNwRifzCNmSXZA5jcyk%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-VKGY",
+      "image": "https://github.com/user-attachments/assets/82acb5c8-a001-41c9-94c0-d73a4f833c2a",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1dLH6zP",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHWyh6OIpry4dpOwmdgHOs0%2BBUBj2dTLFSDitp5ofgUao99YYj%2FLEQ0efDttFEiENrQVYLbUMDch4mAAdECrlG3FOa9bWnsZYG75IhOUPOZSDVXJfyUpo2UhmC0k1vOPXQOoC26FRdCarELfROHmSUVNS5Tgxb8z7%2BMJq7Vlpz57OAJNLlhhDNwRifzCNmSXZA5jcyk%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
