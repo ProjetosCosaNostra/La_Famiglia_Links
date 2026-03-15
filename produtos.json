@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-15T18:21:24Z",
+  "updated_at": "2026-03-15T19:00:35Z",
   "products": [
     {
       "sku": "amazon-echo-pop-kids-premium-marvel-azul",
@@ -21,7 +21,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PK7B",
       "image": "https://github.com/user-attachments/assets/5fd64baa-1105-4409-abf1-07e75d0a6300",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1cSyrZ2",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D",
       "price_text": "",
@@ -439,7 +439,7 @@
       ],
       "id_busca": "5J5PKG-6T20",
       "open_url": "https://meli.la/2drogLW",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6T20",
       "image": "https://github.com/user-attachments/assets/1d426ea7-b56b-42ec-b3d6-40725c88a0f4",
       "active": true,
@@ -3366,7 +3366,7 @@
       ],
       "id_busca": "5J5PKG-U4XU",
       "open_url": "https://meli.la/2BogqNj",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBR%2FRizaQ4B9PH4DgXvrpMxDzt0fpjIhHV4qIDmPLVGzCqvN%2F5Wo5fInb6Lf3X8Jj7QtQnRvc%2Fm%2BmOvi9ssq36iXODXq9VXsDKNi%2FSU0XQQkRn%2BwHXi2%2BuLn6tHwMzfn3VVDT2UKy61YaAcXG%2FlhgCzsTBJAfcINxXb95oz8%2Bs%2BfkduYtRdkXAfsIDhm5GAKa%2FDxwQ%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-U4XU",
       "image": "https://github.com/user-attachments/assets/2d43f9e2-9f08-422a-bf66-73c518e79d4b",
       "active": true,
@@ -3480,6 +3480,33 @@
       "featured": false,
       "short_url": "https://meli.la/1dLH6zP",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHWyh6OIpry4dpOwmdgHOs0%2BBUBj2dTLFSDitp5ofgUao99YYj%2FLEQ0efDttFEiENrQVYLbUMDch4mAAdECrlG3FOa9bWnsZYG75IhOUPOZSDVXJfyUpo2UhmC0k1vOPXQOoC26FRdCarELfROHmSUVNS5Tgxb8z7%2BMJq7Vlpz57OAJNLlhhDNwRifzCNmSXZA5jcyk%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "headset-gamer-jbl-quantum-100-preto",
+      "title": "Headset Gamer JBL Quantum 100 com Microfone - Preto",
+      "badges": [
+        "Achados do Dia",
+        "Headset Gamer",
+        "JBL",
+        "Quantum 100",
+        "Com fio",
+        "Microfone",
+        "Preto",
+        "Gamer",
+        "Áudio"
+      ],
+      "id_busca": "5J5PKG-YRGV",
+      "open_url": "https://meli.la/2KwjYue",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO8e9CFWfU3uhfHhrjqG5T9%2BKPB2%2FNkFpwN6mt9skVJ2AFyVJKA3YIZq4ABQtuN5RIbYCdnSzRbZlexuFXSsjiqLYRdQxyghnIyA4ZfUTzRQcWlkQOzMeBdRiu9AIsgYUA%2FuVi1LhC5HqLfu8jUYjVIwa%2F3MTUlZxrthcXAcGLJ0eMHKgkw0A%2F22Iq%2BTTpI03sId9yc%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-YRGV",
+      "image": "https://github.com/user-attachments/assets/e60d4dfc-bf94-465f-89d2-e88c2f95e989",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2KwjYue",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO8e9CFWfU3uhfHhrjqG5T9%2BKPB2%2FNkFpwN6mt9skVJ2AFyVJKA3YIZq4ABQtuN5RIbYCdnSzRbZlexuFXSsjiqLYRdQxyghnIyA4ZfUTzRQcWlkQOzMeBdRiu9AIsgYUA%2FuVi1LhC5HqLfu8jUYjVIwa%2F3MTUlZxrthcXAcGLJ0eMHKgkw0A%2F22Iq%2BTTpI03sId9yc%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
