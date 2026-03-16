@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-16T18:43:30Z",
+  "updated_at": "2026-03-16T21:27:06Z",
   "products": [
     {
       "sku": "rog-xbox-ally-7-120hz-512gb-branco",
@@ -24,7 +24,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ZPYQ",
       "image": "https://github.com/user-attachments/assets/6835f724-d47a-4c49-ab92-765f01d0f678",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1FmZq7Y",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNUK0SCdb%2Bhc8A%2FNxSL4CFZZEm5o%2F5%2FPgiWN%2B88NgIi2ZVX1PQ2dQr%2FyzS5OAFbI0%2BtYfG8lZsWsivxLdqiLUx4MGG%2Fi9YWHR6SjugtEBZjKjQaZA0BO%2FD6g6xxm1HkGbuTGFqkdVnr2LktBH0gMUMbhDqJyNnAT5cXzDqPfn4q3rKHV0tTSteMCNPxZfQHcYBdBjOM%3D",
       "price_text": "",
@@ -3542,6 +3542,36 @@
       "featured": false,
       "short_url": "https://meli.la/2KwjYue",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO8e9CFWfU3uhfHhrjqG5T9%2BKPB2%2FNkFpwN6mt9skVJ2AFyVJKA3YIZq4ABQtuN5RIbYCdnSzRbZlexuFXSsjiqLYRdQxyghnIyA4ZfUTzRQcWlkQOzMeBdRiu9AIsgYUA%2FuVi1LhC5HqLfu8jUYjVIwa%2F3MTUlZxrthcXAcGLJ0eMHKgkw0A%2F22Iq%2BTTpI03sId9yc%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "suporte-tv-fixo-universal-10-a-100-preto",
+      "title": "Suporte TV Fixo Universal 10\" a 100\" para Todas as Marcas - Preto",
+      "badges": [
+        "Achados do Dia",
+        "Suporte TV",
+        "Suporte Fixo Universal",
+        "TV 10 a 100",
+        "Instalação Clean",
+        "Fixação Firme",
+        "Preto",
+        "Parosflux",
+        "Acessórios para TV",
+        "Sala",
+        "Quarto",
+        "Escritório"
+      ],
+      "id_busca": "5J5PKG-WG21",
+      "open_url": "https://meli.la/27PiWWY",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE%2BlXiKUHKlrS%2BANQvkyiaSItkoyDWSVH77D0xLMLZ94hdP2f%2BGx5Fv1TaWvpajt2Ni8mwpB%2FUCiFaGkNnxD471NDRZX90ZF2I0oYZvfv90bABfN9HMW%2B4kAHPX0QUDNlzvD6F0MEb%2F2DKihWlRp%2FoLsY3Ao8KO1DknM%2BFr3OBBe1OOUTnenAzsi3b8ik3lb%2F6iWvJE%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-WG21",
+      "image": "https://github.com/user-attachments/assets/7916e575-b770-4cb3-ab1d-5929663842c4",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/27PiWWY",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE%2BlXiKUHKlrS%2BANQvkyiaSItkoyDWSVH77D0xLMLZ94hdP2f%2BGx5Fv1TaWvpajt2Ni8mwpB%2FUCiFaGkNnxD471NDRZX90ZF2I0oYZvfv90bABfN9HMW%2B4kAHPX0QUDNlzvD6F0MEb%2F2DKihWlRp%2FoLsY3Ao8KO1DknM%2BFr3OBBe1OOUTnenAzsi3b8ik3lb%2F6iWvJE%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
