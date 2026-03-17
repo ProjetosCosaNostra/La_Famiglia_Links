@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-17T18:42:57Z",
+  "updated_at": "2026-03-17T20:09:26Z",
   "products": [
     {
       "sku": "intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto",
@@ -26,7 +26,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-5111",
       "image": "https://github.com/user-attachments/assets/42b5f79d-4cdb-4a4f-a27d-6a48e9f8a31d",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2Lo3w8F",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOi1SQLiYXmmsFhcAywNdVGCM1uD%2FA12aAYc7ZBUyRn6a5hwGD5RdLxUAY0XSWErjc%2FqO4yn7iznzvBQe3mnwoMdmzXXMA1TfW6Lr0QKAkJJdIc25NMX4tRC3bxy%2FsESsoymOtrcrs9pSMuZPRpLooOQHVhTKN1p6LapC5Vdaa1f0JbDRsPwWZf2laJtVYje%2Brt3pv8%3D",
       "price_text": "",
@@ -3645,6 +3645,34 @@
       "featured": false,
       "short_url": "https://meli.la/27PiWWY",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE%2BlXiKUHKlrS%2BANQvkyiaSItkoyDWSVH77D0xLMLZ94hdP2f%2BGx5Fv1TaWvpajt2Ni8mwpB%2FUCiFaGkNnxD471NDRZX90ZF2I0oYZvfv90bABfN9HMW%2B4kAHPX0QUDNlzvD6F0MEb%2F2DKihWlRp%2FoLsY3Ao8KO1DknM%2BFr3OBBe1OOUTnenAzsi3b8ik3lb%2F6iWvJE%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "capacete-asx-city-preto-fosco-viseira",
+      "title": "Capacete ASX City Preto Fosco com Viseira",
+      "badges": [
+        "Achados do Dia",
+        "Capacete",
+        "ASX",
+        "Preto fosco",
+        "Viseira",
+        "Motociclismo",
+        "Uso urbano",
+        "Estrada",
+        "Design sólido",
+        "Proteção"
+      ],
+      "id_busca": "5J5PKG-CPHF",
+      "open_url": "https://meli.la/1U6HogY",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEQPlKd5LL4cubKjfJDyDzL3nHNvQlar9op7ZRFjJFkCw%2BoYaKmKZOz5nKOlZsqOPku3HbUOYv9dy41JFUE1%2FpYmUXono0wwJugXv9Fswmzr0NB7fFHUra2ZKmhG8yf%2BbXztIin4V9UVX0M8RF1p%2Boy%2BEjN9u4he6xsaMT5uMi1%2F72tAuFxmwga27TOcNVnIQiZEAg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-CPHF",
+      "image": "https://github.com/user-attachments/assets/add246ee-4325-470b-bbae-158ad6c44bb0",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/1U6HogY",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEQPlKd5LL4cubKjfJDyDzL3nHNvQlar9op7ZRFjJFkCw%2BoYaKmKZOz5nKOlZsqOPku3HbUOYv9dy41JFUE1%2FpYmUXono0wwJugXv9Fswmzr0NB7fFHUra2ZKmhG8yf%2BbXztIin4V9UVX0M8RF1p%2Boy%2BEjN9u4he6xsaMT5uMi1%2F72tAuFxmwga27TOcNVnIQiZEAg%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
