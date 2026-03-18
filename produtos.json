@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-18T18:40:27Z",
+  "updated_at": "2026-03-18T21:32:15Z",
   "products": [
     {
       "sku": "lavadora-jato-portatil-2-baterias-kit-completo",
@@ -25,7 +25,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-RD0F",
       "image": "https://github.com/user-attachments/assets/f529de85-d74e-4985-8817-37c4e3ee3252",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1n1MSaD",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGAF2JY39gAYeSrZGH5UQzDRhmrolne3igPwVOpegNRb3iKfRzoesumsoTC1o05bjhF0%2F6uRtiWnoLY8JlsOFQ1rAhXqEYn6S03792kTL75x7la2m0G8v6KNvZgeI%2FzWu1LoX%2FXIzKyuULXBv7%2BBG3D%2BxYySrm0laU6sbcZCIfG6jMUaIGLyqze2R6OQxWQ7193yQA%3D%3D",
       "price_text": "",
@@ -228,7 +228,7 @@
       ],
       "id_busca": "5J5PKG-PK7B",
       "open_url": "https://meli.la/1cSyrZ2",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PK7B",
       "image": "https://github.com/user-attachments/assets/5fd64baa-1105-4409-abf1-07e75d0a6300",
       "active": true,
@@ -3748,6 +3748,37 @@
       "featured": false,
       "short_url": "https://meli.la/27PiWWY",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE%2BlXiKUHKlrS%2BANQvkyiaSItkoyDWSVH77D0xLMLZ94hdP2f%2BGx5Fv1TaWvpajt2Ni8mwpB%2FUCiFaGkNnxD471NDRZX90ZF2I0oYZvfv90bABfN9HMW%2B4kAHPX0QUDNlzvD6F0MEb%2F2DKihWlRp%2FoLsY3Ao8KO1DknM%2BFr3OBBe1OOUTnenAzsi3b8ik3lb%2F6iWvJE%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "shampoo-automotivo-v-floc-3l-concentrado",
+      "title": "Shampoo Automotivo V-FLOC 3L Concentrado com pH Neutro",
+      "badges": [
+        "Achados do Dia",
+        "Shampoo automotivo",
+        "V-FLOC",
+        "V-FLOC 3L",
+        "Vonixx",
+        "pH neutro",
+        "Lava autos",
+        "Lavagem premium",
+        "Detailing",
+        "Carro",
+        "Limpeza automotiva",
+        "Brilho",
+        "Shampoo concentrado"
+      ],
+      "id_busca": "5J5PKG-VCHY",
+      "open_url": "https://meli.la/2GkuFys",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMwMWl%2FUzl6UhDJ5mMJngMZ5e%2F%2BMJhn7uHwnAoR6TYjZ9uDc68J9JhCENalke%2FXLBFvOCwh%2BzsnhxOoAedcBY3JUinn8bxsdqAWZkZP%2BZANwW0h58%2B4CDcD0nNmpl8ajQTddAMrHnVtENPu7lCfUqWVQfy3eWbBUIU3h5MkyfKykzV%2BTilMo5bdB8XSfd4UGfHCLOZI%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-VCHY",
+      "image": "https://github.com/user-attachments/assets/5fc03891-fd77-4d36-9325-4960340ad8f5",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2GkuFys",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMwMWl%2FUzl6UhDJ5mMJngMZ5e%2F%2BMJhn7uHwnAoR6TYjZ9uDc68J9JhCENalke%2FXLBFvOCwh%2BzsnhxOoAedcBY3JUinn8bxsdqAWZkZP%2BZANwW0h58%2B4CDcD0nNmpl8ajQTddAMrHnVtENPu7lCfUqWVQfy3eWbBUIU3h5MkyfKykzV%2BTilMo5bdB8XSfd4UGfHCLOZI%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
