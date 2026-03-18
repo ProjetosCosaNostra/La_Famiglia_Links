@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-18T01:04:44Z",
+  "updated_at": "2026-03-18T01:19:31Z",
   "products": [
     {
       "sku": "capacete-asx-city-preto-fosco-viseira",
@@ -22,7 +22,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-CPHF",
       "image": "https://github.com/user-attachments/assets/add246ee-4325-470b-bbae-158ad6c44bb0",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1U6HogY",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEQPlKd5LL4cubKjfJDyDzL3nHNvQlar9op7ZRFjJFkCw%2BoYaKmKZOz5nKOlZsqOPku3HbUOYv9dy41JFUE1%2FpYmUXono0wwJugXv9Fswmzr0NB7fFHUra2ZKmhG8yf%2BbXztIin4V9UVX0M8RF1p%2Boy%2BEjN9u4he6xsaMT5uMi1%2F72tAuFxmwga27TOcNVnIQiZEAg%3D%3D",
       "price_text": "",
@@ -188,7 +188,7 @@
       ],
       "id_busca": "5J5PKG-N3EA",
       "open_url": "https://meli.la/15ypbuc",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD6kOEP9tWDUZXG1QkYEYTabQCbfAHhXTeNZwnhN%2Fvlk6idGERnKWpeULgFJCe6bfETalvlkmJekFBVhBz%2BUfxwA%2Fl2WX4oDP3IxC0COXuo9Ahi2UjjwC5E8q9lZBpgvzTtZDA%2BBNVeHgn0tGgixmL5lBVALZeVs8ILinHnQgxwVgimj4E4QByz4uyjzowrH1%2BZz4kaAQ9LRc6sQLQ%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-N3EA",
       "image": "https://github.com/user-attachments/assets/9725e314-a2c2-4986-a9f3-93fca08cf39b",
       "active": true,
@@ -3678,6 +3678,35 @@
       "featured": false,
       "short_url": "https://meli.la/27PiWWY",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE%2BlXiKUHKlrS%2BANQvkyiaSItkoyDWSVH77D0xLMLZ94hdP2f%2BGx5Fv1TaWvpajt2Ni8mwpB%2FUCiFaGkNnxD471NDRZX90ZF2I0oYZvfv90bABfN9HMW%2B4kAHPX0QUDNlzvD6F0MEb%2F2DKihWlRp%2FoLsY3Ao8KO1DknM%2BFr3OBBe1OOUTnenAzsi3b8ik3lb%2F6iWvJE%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "suporte-magnetico-adesivo-para-moto-6-imas",
+      "title": "Suporte Magnético Adesivo para Moto com 6 Ímãs e Adesivo 3M",
+      "badges": [
+        "Achados do Dia",
+        "Suporte magnético",
+        "Suporte para moto",
+        "Celular na moto",
+        "6 ímãs",
+        "Adesivo 3M",
+        "Navegação",
+        "Mesa de direção",
+        "Manicoto",
+        "Modelo aleatório",
+        "Acessórios para moto"
+      ],
+      "id_busca": "5J5PKG-09X4",
+      "open_url": "https://meli.la/2vuwLye",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAHvUIOPIQlbTMvxLNWgS0yi0R8uq0yJs%2BuljkkL5thJLt8mK4ggPTwWNZZ2FMIw0teJqJTctElyolNkRegbY%2FPot3LK%2FPOogrIKgl59nq7V1LBsqG%2FT84faCbG%2BWAIxJLY4IXmKAY9otp4lMfON8DVwgW3ZAHtCrGs%2F86AyeTMaqi7mcdw9IQAofSLYGXUhr%2BV5Kw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-09X4",
+      "image": "https://github.com/user-attachments/assets/12fec025-cb34-4e3f-af06-614dcc8b426c",
+      "active": true,
+      "featured": true,
+      "short_url": "https://meli.la/2vuwLye",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAHvUIOPIQlbTMvxLNWgS0yi0R8uq0yJs%2BuljkkL5thJLt8mK4ggPTwWNZZ2FMIw0teJqJTctElyolNkRegbY%2FPot3LK%2FPOogrIKgl59nq7V1LBsqG%2FT84faCbG%2BWAIxJLY4IXmKAY9otp4lMfON8DVwgW3ZAHtCrGs%2F86AyeTMaqi7mcdw9IQAofSLYGXUhr%2BV5Kw%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
