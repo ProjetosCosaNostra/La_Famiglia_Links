@@ -1,536 +1,478 @@
-  async function fetchProducts() {
-    const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) throw new Error("produtos.json não encontrado");
-    const data = await res.json();
+/* ==========================================================
+   Arquivo: loja.js
+   Página : Loja Completa (loja.html)
+   Objetivo:
+     - Renderizar produtos a partir de produtos.json
+     - Produto do Dia (featured) sem “inventar featured”
+     - Filtro por texto + filtro por categoria (tag) + ordenação + paginação
+     - Admin mode (?admin=1): editar em memória + exportar produtos.json
 
-    STATE.updated_at = cleanText(data.updated_at || "");
-    setUpdatedAt(STATE.updated_at);
+   HOTFIX 2026-02-24 (ANTI-WIPE FRONT):
+     - Se a contagem de ativos cair demais (ex: por falso-positivo / bloqueio do ML),
+       a UI entra em FAILSAFE e resgata produtos com last_ok recente para não zerar a vitrine.
 
-    const list = normalizeProducts(data)
-      .map(adaptForUI)
-      .filter(Boolean);
+   PATCH 2026-02-24 (IMAGENS PREMIUM DINÂMICAS):
+     - referrerpolicy=no-referrer (hotlink GitHub user-attachments)
+     - fallback premium quando falhar
+     - MODO PROFISSIONAL: imagem inteira (contain) + fundo blur automático
+     - smart-fit: evita crop em poster vertical
 
-    const deduped = dedupeProducts(list);
-    if (!deduped.length) throw new Error("Nenhum produto válido em produtos.json");
+   PATCH 2026-02-24 (EXPORT LISTA SEM PRINT):
+     - Botões: Copiar lista / Baixar TXT / Baixar TXT (tudo) / CSV (tudo)
+     - Snapshot em STATE._export (ativos / visível / tudo)
 
-    return deduped;
+   FIX 2026-02-24 (COMPRAR NÃO REDIRECIONA):
+     - Normaliza links sem https:// (mercadolivre.com/sec/... vira https://mercadolivre.com/sec/...)
+     - buy_url sempre cai em fallback (open_url/check_url/canonical/short/resolved)
+     - Em browsers in-app (IG/FB) força window.open e fallback para location.href
+
+   PATCH 2026-03-02 (UI PREMIUM / CATEGORIAS INTELIGENTES):
+     - Ferramentas (listas/export): recolhível no mobile (nada gigante).
+     - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
+     - “Ver todas” abre modal premium com busca.
+     - Contador “Categorias” vira 14+ (premium), total aparece no “Ver todas (X)”.
+
+   PATCH 2026-03-20 (EXPORT CATÁLOGO EM TXT):
+     - Botão público para baixar o snapshot do produtos.json em TXT
+     - Útil para auditoria e para colar no chat sem sobrecarregar a conversa
+
+   PATCH 2026-03-20 (TRACKING LOJA):
+     - page_view_loja
+     - view_featured_loja
+     - view_product_card
+     - click_buy
+     - click_copy_id
+     - click_copy_link
+     - click_copy_alt
+     - search_loja
+     - filter_tag
+     - sort_change
+     - click_load_more
+   ========================================================== */
+
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+  const ADMIN = new URLSearchParams(location.search).get("admin") === "1";
+  const SHOW_FEATURED_IN_GRID = true;
+
+  const PAGE_SIZE = 60;
+
+  // =========================
+  // FRONT FAILSAFE (ANTI-WIPE)
+  // =========================
+  const FRONT_FAILSAFE_MIN_ACTIVE = 10;
+  const FRONT_FAILSAFE_MIN_RATIO = 0.35;
+  const FRONT_FAILSAFE_OK_DAYS = 7;
+
+  // =========================
+  // IMAGENS: PREMIUM DINÂMICO
+  // =========================
+  const CN_IMAGE_MODE = "smart";            // "smart" | "contain" | "cover"
+  const CN_SMART_THRESHOLD = 0.12;
+  const CN_BG_BLUR_PX = 18;
+  const CN_BG_OPACITY = 0.35;
+
+  // =========================
+  // CATEGORIAS (INTELIGENTE + PREMIUM)
+  // =========================
+  // Pinned: sempre aparecem no topo (principalmente no mobile)
+  const CN_CAT_PINNED = [
+    "Achados do Dia",
+    "Casa",
+    "Cozinha",
+    "Home Office",
+    "Carro",
+    "Segurança",
+    "Setup",
+    "Wi-Fi",
+    "Notebook",
+    "PC",
+    "Celular",
+    "Bluetooth",
+    "USB",
+    "Sem Fio",
+    "Portátil",
+    "Organização",
+    "Casa Inteligente",
+    "Premium",
+    "Praticidade",
+  ];
+
+  // regra base: categoria só se repetir e não for “ruído”
+  const CN_CAT_MIN_COUNT = 3;               // mais agressivo: reduz poluição
+  const CN_CAT_MAX_CHIPS_DESKTOP = 20;
+  const CN_CAT_MAX_CHIPS_MOBILE = 14;       // mobile “completo” sem virar mural
+
+  // allowlist para tags com dígito que ainda são úteis (se quiser manter)
+  const CN_CAT_ALLOW_DIGITS = new Set([
+    "4k",
+    "wi-fi 6",
+    "wifi 6",
+    "usb-c",
+  ]);
+
+  // stoplist de marcas comuns (não vira categoria)
+  const CN_CAT_BRANDS = new Set([
+    "xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
+    "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate",
+    "sandisk","kingston","lenovo","acer","hp","dell","microsoft","apple"
+  ]);
+
+  // stoplist de tags “plataforma”
+  const CN_CAT_NOISE = new Set([
+    "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
+  ]);
+
+  const CN_PLACEHOLDER_IMG =
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700">
+        <defs>
+          <radialGradient id="g" cx="50%" cy="35%" r="75%">
+            <stop offset="0%" stop-color="#2a2417"/>
+            <stop offset="55%" stop-color="#0f0f12"/>
+            <stop offset="100%" stop-color="#07070a"/>
+          </radialGradient>
+          <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f2d27a"/>
+            <stop offset="50%" stop-color="#d7b058"/>
+            <stop offset="100%" stop-color="#8b6a2a"/>
+          </linearGradient>
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.65"/>
+          </filter>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#g)"/>
+        <rect x="42" y="42" width="816" height="616" rx="28" ry="28"
+              fill="rgba(255,255,255,0.02)" stroke="rgba(215,176,88,0.28)" stroke-width="2"/>
+
+        <g filter="url(#shadow)">
+          <text x="50%" y="44%" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+                font-size="56" fill="url(#gold)" letter-spacing="6">COSA NOSTRA</text>
+          <text x="50%" y="52%" text-anchor="middle" font-family="Arial, sans-serif"
+                font-size="22" fill="rgba(255,255,255,0.78)" letter-spacing="2">IMAGEM INDISPONÍVEL</text>
+          <text x="50%" y="60%" text-anchor="middle" font-family="Arial, sans-serif"
+                font-size="18" fill="rgba(215,176,88,0.88)" letter-spacing="1.2">Atualize o campo "image" no produtos.json</text>
+        </g>
+      </svg>`
+    );
+
+  // =========================
+  // UI PATCH: CSS INJETADO (premium + mobile)
+  // =========================
+  function injectUiCss() {
+    if (document.getElementById("cnLojaUiCss")) return;
+
+    const css = `
+/* ===== CN Loja UI Patch (premium / mobile) ===== */
+.cnToolsRow{ width:100%; }
+.cnTools{ width:100%; }
+.cnTools > summary{ list-style:none; cursor:pointer; user-select:none; }
+.cnTools > summary::-webkit-details-marker{ display:none; }
+
+.cnToolsSummary{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; width:100%;
+}
+
+.cnToolsGrid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+@media (max-width: 720px){
+  .cnToolsGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+.cnToolsGrid .btn{
+  width:100%;
+  justify-content:center;
+  padding:10px 12px;
+  border-radius:14px;
+}
+@media (max-width: 520px){
+  .cnToolsGrid .btn{
+    padding:9px 10px;
+    font-size:12px;
+    border-radius:14px;
+  }
+}
+
+/* Modal de categorias */
+.cnModal{
+  position:fixed; inset:0;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  background: rgba(0,0,0,.55);
+  z-index: 999999;
+}
+.cnModal.show{ display:flex; }
+
+.cnModal__panel{
+  width: min(760px, 96vw);
+  max-height: 82vh;
+  margin: 0 0 14px 0;
+  border-radius: 18px;
+  overflow:hidden;
+  border: 1px solid rgba(215,176,88,.22);
+  background: rgba(8,8,10,.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 80px rgba(0,0,0,.65);
+}
+.cnModal__head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(215,176,88,.18);
+}
+.cnModal__title{
+  font-family: Cinzel, serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(224,195,107,.95);
+  font-size: 12px;
+}
+.cnModal__close{
+  border: 1px solid rgba(215,176,88,.22);
+  background: rgba(0,0,0,.25);
+  color: rgba(255,255,255,.92);
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor:pointer;
+}
+.cnModal__search{
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(215,176,88,.12);
+}
+.cnModal__search input{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(215,176,88,.18);
+  background: rgba(0,0,0,.35);
+  color: rgba(255,255,255,.92);
+  outline:none;
+}
+.cnModal__list{
+  padding: 12px 14px;
+  overflow:auto;
+  max-height: calc(82vh - 120px);
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}
+.cnModal__list button{
+  border:1px solid rgba(215,176,88,.22);
+  background: rgba(0,0,0,.20);
+  color: rgba(255,255,255,.90);
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  cursor:pointer;
+}
+.cnModal__list button.active{
+  border-color: rgba(215,176,88,.60);
+  background: rgba(215,176,88,.12);
+  color: rgba(215,176,88, 1);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+    `.trim();
+
+    const st = document.createElement("style");
+    st.id = "cnLojaUiCss";
+    st.textContent = css;
+    document.head.appendChild(st);
   }
 
-  function findBySku(sku) {
-    return STATE.products.find((p) => p && p.sku === sku) || null;
-  }
+  function applyImageFixes(root) {
+    const scope = root || document;
+    const imgs = scope.querySelectorAll('img[data-cnimg="1"]');
 
-  function buildProdutosJsonSnapshot() {
-    return {
-      updated_at: new Date().toISOString(),
-      products: dedupeProducts(STATE.products).map((p) => {
-        const r = cloneObj(p._raw || {});
-        r.sku = p.sku;
-        r.title = p.title;
-        r.badges = safeArray(p.badges);
-        r.id_busca = p.id_busca;
+    imgs.forEach((img) => {
+      try { img.loading = "lazy"; } catch {}
+      try { img.decoding = "async"; } catch {}
+      img.setAttribute("referrerpolicy", "no-referrer");
 
-        const b = bestBuyUrl(p);
-        r.open_url = ensureHttpUrl(p.open_url || b || "");
-        r.check_url = ensureHttpUrl(p.check_url || r.open_url || "");
+      const parent = img.parentElement;
 
-        if (p.canonical_url) r.canonical_url = p.canonical_url;
-        if (p.short_url) r.short_url = p.short_url;
-        if (p.resolved_url) r.resolved_url = p.resolved_url;
+      img.style.width = "100%";
+      img.style.height = "100%";
+      img.style.display = "block";
+      img.style.position = "relative";
+      img.style.zIndex = "2";
 
-        r.image = p.image || r.image || "";
-        r.price_text = p.price_text || "";
+      if (parent && !parent.dataset.cnImgReady) {
+        parent.dataset.cnImgReady = "1";
+        parent.style.position = "relative";
+        parent.style.overflow = "hidden";
+        parent.style.display = "flex";
+        parent.style.alignItems = "center";
+        parent.style.justifyContent = "center";
+        parent.style.background = "rgba(0,0,0,0.25)";
 
-        r.active = (p.active !== false);
-        r.featured = (p.featured === true);
+        const bg = document.createElement("div");
+        bg.className = "cnImgBg";
+        bg.style.position = "absolute";
+        bg.style.inset = "0";
+        bg.style.backgroundPosition = "center";
+        bg.style.backgroundRepeat = "no-repeat";
+        bg.style.backgroundSize = "cover";
+        bg.style.filter = `blur(${CN_BG_BLUR_PX}px) saturate(1.12) brightness(0.80)`;
+        bg.style.transform = "scale(1.15)";
+        bg.style.opacity = String(CN_BG_OPACITY);
+        bg.style.pointerEvents = "none";
+        bg.style.zIndex = "1";
+        parent.insertBefore(bg, parent.firstChild);
 
-        r.last_checked = p.last_checked || r.last_checked || "";
-        r.last_ok = p.last_ok || r.last_ok || "";
+        const vignette = document.createElement("div");
+        vignette.className = "cnImgVignette";
+        vignette.style.position = "absolute";
+        vignette.style.inset = "0";
+        vignette.style.background =
+          "radial-gradient(circle at 50% 30%, rgba(0,0,0,0.05), rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.78) 100%)";
+        vignette.style.pointerEvents = "none";
+        vignette.style.zIndex = "1";
+        parent.insertBefore(vignette, parent.firstChild);
+      }
 
-        delete r._raw;
-        return r;
-      }),
-    };
-  }
+      function setBg(url) {
+        if (!parent) return;
+        const bg = parent.querySelector(":scope > .cnImgBg");
+        if (bg) bg.style.backgroundImage = url ? `url("${url}")` : "none";
+      }
 
-  function exportProdutosJson() {
-    const out = buildProdutosJsonSnapshot();
-    const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "produtos.json";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+      function decideFit() {
+        if (!parent) return "contain";
+        if (CN_IMAGE_MODE === "contain") return "contain";
+        if (CN_IMAGE_MODE === "cover") return "cover";
 
-    showToast("Exportado ⬇️");
-  }
+        const iw = img.naturalWidth || 0;
+        const ih = img.naturalHeight || 0;
+        const cw = parent.clientWidth || 1;
+        const ch = parent.clientHeight || 1;
 
-  function exportProdutosJsonTxt() {
-    const out = buildProdutosJsonSnapshot();
-    const txt = JSON.stringify(out, null, 2);
-    downloadFile("produtos.json.txt", txt, "text/plain;charset=utf-8");
-    showToast("produtos.json em TXT ⬇️");
-  }
+        const imgR = iw && ih ? (iw / ih) : 1;
+        const boxR = cw / ch;
 
-  function two(n){ return String(n).padStart(2, "0"); }
+        if (imgR < (boxR - CN_SMART_THRESHOLD)) return "contain";
+        return "cover";
+      }
 
-  function dateStamp() {
-    const d = new Date();
-    return `${d.getFullYear()}-${two(d.getMonth()+1)}-${two(d.getDate())}_${two(d.getHours())}${two(d.getMinutes())}`;
-  }
+      img.addEventListener("load", () => {
+        const fit = decideFit();
+        img.style.objectFit = fit;
 
-  function fileSafe(s) {
-    return String(s || "")
-      .toLowerCase()
-      .replace(/[^\w\-]+/g, "_")
-      .replace(/_+/g, "_")
-      .replace(/^_+|_+$/g, "");
-  }
+        setBg(img.currentSrc || img.src || "");
+        if (parent) {
+          const bg = parent.querySelector(":scope > .cnImgBg");
+          const v = parent.querySelector(":scope > .cnImgVignette");
+          if (bg) bg.style.display = (fit === "contain") ? "block" : "none";
+          if (v) v.style.display = (fit === "contain") ? "block" : "none";
+        }
+      }, { once: true });
 
-  function downloadFile(filename, content, mime) {
-    const blob = new Blob([content], { type: mime || "text/plain;charset=utf-8" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  }
-
-  function exportListGet(kind) {
-    const snap = STATE._export || {};
-    if (kind === "all") return Array.isArray(snap.all) ? snap.all : [];
-    if (kind === "active") return Array.isArray(snap.active) ? snap.active : [];
-    if (kind === "visible") return Array.isArray(snap.visible) ? snap.visible : [];
-    return [];
-  }
-
-  function exportListTxt(kind) {
-    const snap = STATE._export || {};
-    const list = exportListGet(kind);
-
-    const now = new Date().toLocaleString("pt-BR");
-    const title =
-      kind === "all" ? "LISTA (TUDO)" :
-      kind === "visible" ? "LISTA (VISÍVEL / FILTRADA)" :
-      "LISTA (ATIVOS)";
-
-    const header = [
-      "Cosa Nostra — Loja Completa",
-      title,
-      `Gerado em: ${now}`,
-      snap.updated_at ? `updated_at: ${snap.updated_at}` : "",
-      `Total: ${list.length}`,
-      (kind === "visible" && (snap.query || snap.tag))
-        ? `Filtro: q="${snap.query || ""}" tag="${snap.tag || ""}" sort="${snap.sort || "relev"}"`
-        : "",
-      "",
-    ].filter(Boolean).join("\n");
-
-    const lines = list.map((p, i) => {
-      const name = (p && p.title) ? String(p.title) : "";
-      const id = (p && p.id_busca) ? String(p.id_busca) : "";
-      if (id) return `${i + 1}. ${name} (ID: ${id})`;
-      return `${i + 1}. ${name}`;
+      img.addEventListener("error", () => {
+        img.src = CN_PLACEHOLDER_IMG;
+        img.style.objectFit = "contain";
+        img.style.opacity = "0.94";
+        setBg("");
+      }, { once: true });
     });
-
-    return header + "\n" + lines.join("\n") + "\n";
   }
 
-  function exportListCsv(kind) {
-    const list = exportListGet(kind);
-
-    const rows = [];
-    rows.push(["n", "title", "id_busca", "sku", "buy_url"].join(";"));
-
-    for (let i = 0; i < list.length; i++) {
-      const p = list[i] || {};
-      const n = i + 1;
-      const title = String(p.title || "").replaceAll(";", ",");
-      const id = String(p.id_busca || "").replaceAll(";", ",");
-      const sku = String(p.sku || "").replaceAll(";", ",");
-      const url = String(bestBuyUrl(p) || "").replaceAll(";", ",");
-      rows.push([n, title, id, sku, url].join(";"));
-    }
-
-    return rows.join("\n") + "\n";
+  const toast = $("#toast");
+  function showToast(msg = "Copiado ✅") {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 1150);
   }
 
-  function doExportTxt(kind) {
-    const txt = exportListTxt(kind);
-    const fname = `lista_${fileSafe(kind)}_${dateStamp()}.txt`;
-    downloadFile(fname, txt, "text/plain;charset=utf-8");
-    showToast("Lista baixada ⬇️");
-  }
-
-  function doExportCsv(kind) {
-    const csv = exportListCsv(kind);
-    const fname = `lista_${fileSafe(kind)}_${dateStamp()}.csv`;
-    downloadFile(fname, csv, "text/csv;charset=utf-8");
-    showToast("CSV baixado ⬇️");
-  }
-
-  async function doCopyTxt(kind) {
-    const txt = exportListTxt(kind);
-    await copyText(txt);
-    showToast("Lista copiada ✅");
-  }
-
-  function makeBgClickThrough() {
-    const bg = document.querySelector(".bg");
-    if (!bg) return;
-    bg.style.pointerEvents = "none";
-    bg.querySelectorAll("*").forEach((el) => { el.style.pointerEvents = "none"; });
-  }
-
-  function bind() {
-    const q = $("#qLoja");
-    const clear = $("#btnClear");
-    const copyBtn = $("#btnCopyLoja");
-    const copyPageBtn = $("#btnCopyPage");
-    const btnExportCatalogTxt = $("#btnExportCatalogTxt");
-    const sortSel = $("#sortSel");
-    const moreBtn = $("#btnMore");
-
-    if (q) {
-      q.value = STATE.query || "";
-      q.addEventListener("input", (e) => {
-        STATE.query = String(e.target.value || "");
-        STATE.limit = PAGE_SIZE;
-        render();
-
-        clearTimeout(STATE._searchTimer);
-        STATE._searchTimer = setTimeout(() => {
-          const query = String(q.value || "").trim();
-          if (!query) return;
-          trackEvent("search_loja", {
-            page_type: "loja",
-            query,
-            placement: "search_box",
-            active_filter_tag: String(STATE.tag || ""),
-            active_sort: String(STATE.sort || "relev")
-          });
-        }, 700);
-      });
-    }
-
-    if (clear) {
-      clear.addEventListener("click", () => {
-        if (q) q.value = "";
-        STATE.query = "";
-        STATE.tag = "";
-        STATE.limit = PAGE_SIZE;
-        render();
-        showToast("Filtro limpo ✅");
-      });
-    }
-
-    if (copyBtn) {
-      copyBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        trackEvent("click_copy_store_link", {
-          page_type: "loja",
-          placement: "hero_copy_store_link"
-        });
-
-        copyText(lojaUrl());
-      });
-    }
-
-    if (copyPageBtn) {
-      copyPageBtn.addEventListener("click", () => {
-        trackEvent("click_copy_page_link_loja", {
-          page_type: "loja",
-          placement: "footer_copy_page_link"
-        });
-
-        copyText(location.href);
-      });
-    }
-
-    if (btnExportCatalogTxt) {
-      btnExportCatalogTxt.addEventListener("click", () => {
-        exportProdutosJsonTxt();
-      });
-    }
-
-    if (sortSel) {
-      sortSel.value = STATE.sort || "relev";
-      sortSel.addEventListener("change", (e) => {
-        STATE.sort = String(e.target.value || "relev");
-        STATE.limit = PAGE_SIZE;
-
-        trackEvent("sort_change", {
-          page_type: "loja",
-          sort: STATE.sort,
-          placement: "sort_select",
-          query: String(STATE.query || ""),
-          active_filter_tag: String(STATE.tag || "")
-        });
-
-        render();
-      });
-    }
-
-    if (moreBtn) {
-      moreBtn.addEventListener("click", () => {
-        STATE.limit += PAGE_SIZE;
-
-        trackEvent("click_load_more", {
-          page_type: "loja",
-          placement: "load_more_button",
-          query: String(STATE.query || ""),
-          active_filter_tag: String(STATE.tag || ""),
-          active_sort: String(STATE.sort || "relev")
-        });
-
-        render();
-      });
-    }
-
-    (function ensureExportRow(){
-      const tools = document.querySelector(".lojaTools");
-      if (!tools) return;
-      if (document.getElementById("cnExportRow")) return;
-
-      const row = document.createElement("div");
-      row.className = "toolRow cnToolsRow";
-      row.id = "cnExportRow";
-
-      const isMobile = window.matchMedia("(max-width: 720px)").matches;
-      const openAttr = isMobile ? "" : "open";
-
-      row.innerHTML = `
-        <details class="cnTools" ${openAttr}>
-          <summary class="btn btn--tiny btn--glass">
-            <span class="cnToolsSummary">
-              <span>🧾 Ferramentas (listas/export)</span>
-              <span style="opacity:.75;">${isMobile ? "abrir" : "ok"}</span>
-            </span>
-          </summary>
-
-          <div class="cnToolsGrid">
-            <button class="btn btn--tiny btn--glass" type="button" id="btnCopyList">📋 Copiar (ativos)</button>
-            <button class="btn btn--tiny btn--gold"  type="button" id="btnDlList">⬇️ TXT (ativos)</button>
-            <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
-            <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
-          </div>
-        </details>
-      `;
-      tools.appendChild(row);
-    })();
-
-    const btnCopyList = $("#btnCopyList");
-    const btnDlList = $("#btnDlList");
-    const btnDlListAll = $("#btnDlListAll");
-    const btnDlCsvAll = $("#btnDlCsvAll");
-
-    if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
-    if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
-    if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
-    if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
-
-    document.addEventListener("click", (e) => {
-      const openCats = e.target.closest('[data-action="openTags"]');
-      if (openCats) {
-        e.preventDefault();
-        openTagModal();
-        return;
-      }
-
-      const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
-      if (aBuy) {
-        const href = aBuy.getAttribute("href") || aBuy.href || "";
-        const card = aBuy.closest(".pCard");
-        const sku = card ? (card.getAttribute("data-sku") || "") : "";
-        const p = sku ? findBySku(sku) : (STATE._lastFeaturedShown || null);
-
-        if (p) {
-          trackEvent("click_buy", getTrackProduct(p, {
-            placement: card ? "grid_buy" : "featured_buy",
-            source_block: card ? "loja_grid" : "featured_loja",
-            position_on_page: card ? null : 1
-          }));
-        }
-
-        e.preventDefault();
-
-        if (!isBuyableProductLink(href)) {
-          showToast("Produto sem link direto válido. Revisar no Guardian.");
-          return;
-        }
-
-        openBuy(href);
-        return;
-      }
-
-      const chip = e.target.closest("[data-tag]");
-      if (chip && chip.classList.contains("tagChip")) {
-        const t = String(chip.getAttribute("data-tag") || "").trim();
-
-        trackEvent("filter_tag", {
-          page_type: "loja",
-          tag: t,
-          placement: "tag_chip",
-          query: String(STATE.query || ""),
-          active_sort: String(STATE.sort || "relev")
-        });
-
-        STATE.tag = t;
-        STATE.limit = PAGE_SIZE;
-        render();
-        return;
-      }
-
-      const el = e.target.closest("[data-action]");
-      if (!el) return;
-
-      const action = el.getAttribute("data-action");
-      const sku = el.getAttribute("data-sku") || "";
-      const p = sku ? findBySku(sku) : null;
-
-      if (action === "copyLink" && p) {
-        const link = bestBuyUrl(p) || "";
-        if (!link) {
-          showToast("Produto sem link direto válido.");
-          return;
-        }
-
-        trackEvent("click_copy_link", getTrackProduct(p, {
-          placement: getActionPlacement(el, action),
-          source_block: getActionSourceBlock(el)
-        }));
-        return copyText(link);
-      }
-
-      if (action === "copyAlt" && p) {
-        const alt = ensureHttpUrl(p.alt_url || "");
-        if (!alt) {
-          showToast("Produto sem link alternativo válido.");
-          return;
-        }
-
-        trackEvent("click_copy_alt", getTrackProduct(p, {
-          placement: getActionPlacement(el, action),
-          source_block: getActionSourceBlock(el)
-        }));
-        return copyText(alt);
-      }
-
-      if (action === "copyId" && p) {
-        trackEvent("click_copy_id", getTrackProduct(p, {
-          placement: getActionPlacement(el, action),
-          source_block: getActionSourceBlock(el)
-        }));
-        return copyText(p.id_busca || "");
-      }
-
-      if (!ADMIN) return;
-    });
-
-    if (ADMIN) {
-      const adminBar = $("#adminBar");
-      if (adminBar) adminBar.style.display = "flex";
-
-      const btnExport = $("#btnExport");
-      const btnReload = $("#btnReload");
-
-      if (btnExport) btnExport.addEventListener("click", exportProdutosJson);
-      if (btnReload) {
-        btnReload.addEventListener("click", async () => {
-          showToast("Recarregando…");
-          try {
-            STATE.products = await fetchProducts();
-            showToast("Carregado ✅");
-            STATE.limit = PAGE_SIZE;
-            render();
-          } catch {
-            alert("Erro ao carregar produtos.json");
-          }
-        });
-      }
-    }
-  }
-
-  const STATE = {
-    products: [],
-    updated_at: "",
-    query: "",
-    tag: "",
-    sort: "relev",
-    limit: PAGE_SIZE,
-    _failsafeNotified: false,
-    _export: null,
-    _categoryCounts: [],
-    _activeCount: 0,
-    _trackedViews: {
-      featured: {},
-      grid: {}
-    },
-    _lastFeaturedShown: null,
-    _searchTimer: null,
-  };
-
-  async function boot() {
-    injectUiCss();
-    makeBgClickThrough();
-    ensureTagModal();
-
-    readUrlState();
-    setText($("#year"), new Date().getFullYear());
-
+  async function copyText(txt) {
+    const v = String(txt ?? "");
     try {
-      if (window.CNTracking && typeof window.CNTracking.init === "function") {
-        window.CNTracking.init({
-          pageType: "loja",
-          autoPageView: false,
-          debug: false
-        });
-
-        trackEvent("page_view_loja", {
-          page_type: "loja"
-        });
-      }
-    } catch {}
-
-    try {
-      STATE.products = await fetchProducts();
+      await navigator.clipboard.writeText(v);
+      showToast("Copiado ✅");
     } catch {
-      STATE.products = [{
-        sku: "fallback-power-bank-20000mah",
-        title: "Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)",
-        badges: ["Achados do Dia", "USB-C", "Preto"],
-        id_busca: "5J5PKG-H0JA",
-        open_url: "https://mercadolivre.com/sec/1iReZ7Y",
-        check_url: "https://mercadolivre.com/sec/1iReZ7Y",
-        canonical_url: "https://lista.mercadolivre.com.br/5J5PKG-H0JA",
-        short_url: "",
-        resolved_url: "",
-        image: "assets/produtos/power_bank_20000mah.png",
-        price_text: "",
-        active: true,
-        featured: true,
-        last_checked: "",
-        last_ok: "",
-      }].map(adaptForUI).filter(Boolean);
+      const t = document.createElement("textarea");
+      t.value = v;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      t.remove();
+      showToast("Copiado ✅");
     }
-
-    const q = $("#qLoja");
-    if (q) q.value = STATE.query || "";
-
-    const sortSel = $("#sortSel");
-    if (sortSel) sortSel.value = STATE.sort || "relev";
-
-    STATE.tag = (STATE.tag || "").toLowerCase().trim();
-
-    bind();
-    render();
   }
 
-  document.addEventListener("DOMContentLoaded", boot);
-})();
+  function lojaUrl() {
+    return new URL("./loja.html", window.location.href).href;
+  }
+
+  function stripTags(s) {
+    return String(s ?? "").replace(/<[^>]*>/g, " ");
+  }
+
+  function cleanText(s) {
+    return stripTags(s).replace(/\s+/g, " ").trim();
+  }
+
+  function cleanUrl(u) {
+    let raw = String(u ?? "").trim();
+    if (!raw) return "";
+    raw = raw.replace(/^[\s"'`]+/, "");
+    raw = raw.replace(/[\s"'`]+$/, "");
+    raw = raw.replace(/[)"'`\\]+$/g, "");
+    return raw.trim();
+  }
+
+  function ensureHttpUrl(u) {
+    let s = cleanUrl(u);
+    if (!s) return "";
+    if (/^https?:\/\//i.test(s)) return s;
+    if (s.startsWith("//")) return "https:" + s;
+    if (/^(mercadolivre|mercadolibre)\./i.test(s)) return "https://" + s;
+    if (/^meli\./i.test(s)) return "https://" + s;
+    if (s.startsWith("meli.la/")) return "https://" + s;
+    if (s.startsWith("meli.co/")) return "https://" + s;
+    return s;
+  }
+
+  function hostOf(url) {
+    try {
+      const fixed = ensureHttpUrl(url);
+      const u = new URL(String(fixed || ""));
+      let h = (u.hostname || "").toLowerCase().trim();
+      if (h.startsWith("www.")) h = h.slice(4);
+      return h;
+    } catch {
+      return "";
+    }
+  }
+
+  function isMLHost(host) {
+    const h = String(host || "").toLowerCase().trim();
+    if (!h) return false;
+    if (h.includes("mercadolivre") || h.includes("mercadolibre")) return true;
+    if (h === "meli.la" || h === "meli.co") return true;
+    if (/^meli\.[a-z]{2,6}$/.test(h)) return true;
+    return false;
+  }
+
+  function isProbablyValidLink(u) {
+    const fixed = ensureHttpUrl(u);
+    const x = String(fixed ?? "").toLowerCase().trim();
+    if (!x) return false;
+    if (x.includes("github.com/user-attachments/assets")) return false;
+    const h = hostOf(x);
+    return isMLHost(h);
+  }
+
   function pickBestLink(raw) {
     const open = ensureHttpUrl(raw.open_url || raw.link || raw.url || "");
     const check = ensureHttpUrl(raw.check_url || "");
@@ -538,76 +480,34 @@
     const resolved = ensureHttpUrl(raw.resolved_url || "");
     const shorty = ensureHttpUrl(raw.short_url || "");
 
-    const candidates = Array.from(
-      new Set([open, check, canonical, resolved, shorty].filter(Boolean))
-    );
+    const candidates = [open, check, canonical, resolved, shorty].filter(Boolean);
+    const primary = candidates.find(isProbablyValidLink) || "";
+    const alt = candidates.find((c) => c && c !== primary && isProbablyValidLink(c)) || "";
 
-    const primary = candidates.find(isBuyableProductLink) || "";
-    const alt = candidates.find((c) => c && c !== primary && isBuyableProductLink(c)) || "";
-    const diagnostic = candidates.find((c) => c && c !== primary && !isBuyableProductLink(c) && isProbablyValidLink(c)) || "";
-
-    return { primary, alt, diagnostic, open, check, canonical, resolved, shorty };
+    return { primary, alt, open, check, canonical, resolved, shorty };
   }
 
   function bestBuyUrl(p) {
-    const candidates = [
-      p.buy_url,
-      p.open_url,
-      p.check_url,
-      p.canonical_url,
-      p.short_url,
-      p.resolved_url
-    ]
-      .map(ensureHttpUrl)
-      .filter(Boolean);
-
-    return candidates.find(isBuyableProductLink) || "";
+    return ensureHttpUrl(
+      p.buy_url ||
+      p.open_url ||
+      p.check_url ||
+      p.canonical_url ||
+      p.short_url ||
+      p.resolved_url ||
+      ""
+    );
   }
 
   function openBuy(url) {
     const u = ensureHttpUrl(url);
-    if (!u) {
-      showToast("Produto sem link válido.");
-      return false;
-    }
-
-    if (!isBuyableProductLink(u)) {
-      showToast("Link de compra inválido. Produto precisa de revisão.");
-      return false;
-    }
-
-    if (isMobileLike()) {
-      try {
-        window.location.href = u;
-        return true;
-      } catch {
-        showToast("Não consegui abrir o produto.");
-        return false;
-      }
-    }
-
+    if (!u) return;
     try {
       const w = window.open(u, "_blank", "noopener,noreferrer");
-      if (w) {
-        try { w.opener = null; } catch {}
-        return true;
-      }
-    } catch {}
-
-    try {
-      const a = document.createElement("a");
-      a.href = u;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.style.display = "none";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      return true;
-    } catch {}
-
-    showToast("O navegador bloqueou a nova guia. Permita pop-ups para abrir o produto.");
-    return false;
+      if (!w) window.location.href = u;
+    } catch {
+      window.location.href = u;
+    }
   }
 
   function escapeHTML(s) {
@@ -721,7 +621,6 @@
 
       buy_url: links.primary,
       alt_url: links.alt,
-      diagnostic_url: links.diagnostic || "",
 
       image,
       price_text,
@@ -780,6 +679,7 @@
     const actives = (list || []).filter((p) => p && p.active !== false);
     return actives.find((p) => p.featured) || null;
   }
+
   function trackEvent(eventName, payload = {}) {
     try {
       if (!window.CNTracking || typeof window.CNTracking.track !== "function") return;
@@ -790,11 +690,11 @@
   function getTrackProduct(p, extra = {}) {
     return {
       page_type: "loja",
-      sku: String((p && p.sku) || ""),
-      product_title: String((p && p.title) || ""),
-      id_busca: String((p && p.id_busca) || ""),
-      badges: safeArray((p && p.badges) || []),
-      featured: !!(p && p.featured === true),
+      sku: String(p?.sku || ""),
+      product_title: String(p?.title || ""),
+      id_busca: String(p?.id_busca || ""),
+      badges: safeArray(p?.badges || []),
+      featured: p?.featured === true,
       position_on_page: Number.isFinite(Number(extra.position_on_page)) ? Number(extra.position_on_page) : null,
       placement: String(extra.placement || ""),
       source_block: String(extra.source_block || ""),
@@ -998,6 +898,7 @@
   function normalizeTagKey(s) {
     return String(s || "").trim().toLowerCase();
   }
+
   function isNoisyTag(label) {
     const s = String(label || "").trim();
     if (!s) return true;
@@ -1009,12 +910,15 @@
 
     if (t.length > 26) return true;
 
+    // dígitos: só deixa se estiver na allowlist (ex: 4k, wi-fi 6, usb-c)
     if (/\d/.test(t) && !CN_CAT_ALLOW_DIGITS.has(t)) return true;
 
+    // medidas/unidades/formatos
     if (/^[0-9]+([.,][0-9]+)?\s*(w|wh|mah|ah|v|a|hz|gb|tb|mbps|psi|cm|mm|kg|l|ml|m|s)?$/i.test(t)) return true;
     if (/^(abnt|ip\d{2}|ipx\d)$/i.test(t)) return true;
     if (/^\d+\s*(tomadas|portas|peças|unidades|baterias)$/i.test(t)) return true;
 
+    // símbolos que viram “tag técnica”
     if (/[()\/+]/.test(t)) return true;
 
     return false;
@@ -1337,8 +1241,6 @@
     let featuredPass = null;
     if (destaque) featuredPass = matchesFilter(destaque) ? destaque : null;
 
-    STATE._lastFeaturedShown = featuredPass || destaque || null;
-
     featuredEl.innerHTML = featuredPass
       ? featuredHTML(featuredPass, true)
       : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
@@ -1410,6 +1312,7 @@
 
     updateUrlState();
   }
+
   async function fetchProducts() {
     const res = await fetch(`./produtos.json?ts=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error("produtos.json não encontrado");
@@ -1602,6 +1505,7 @@
     const copyBtn = $("#btnCopyLoja");
     const copyPageBtn = $("#btnCopyPage");
     const btnExportCatalogTxt = $("#btnExportCatalogTxt");
+
     const sortSel = $("#sortSel");
     const moreBtn = $("#btnMore");
 
@@ -1702,6 +1606,7 @@
       });
     }
 
+    // Ferramentas (recolhível no mobile)
     (function ensureExportRow(){
       const tools = document.querySelector(".lojaTools");
       if (!tools) return;
@@ -1755,27 +1660,23 @@
       const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
-        const card = aBuy.closest(".pCard");
-        const sku = card ? (card.getAttribute("data-sku") || "") : "";
-        const p = sku ? findBySku(sku) : (STATE._lastFeaturedShown || null);
+        if (isProbablyValidLink(href)) {
+          const card = aBuy.closest(".pCard");
+          const sku = card ? (card.getAttribute("data-sku") || "") : "";
+          const p = sku ? findBySku(sku) : (STATE._lastFeaturedShown || null);
 
-        if (p) {
-          trackEvent("click_buy", getTrackProduct(p, {
-            placement: card ? "grid_buy" : "featured_buy",
-            source_block: card ? "loja_grid" : "featured_loja",
-            position_on_page: card ? null : 1
-          }));
-        }
+          if (p) {
+            trackEvent("click_buy", getTrackProduct(p, {
+              placement: card ? "grid_buy" : "featured_buy",
+              source_block: card ? "loja_grid" : "featured_loja",
+              position_on_page: card ? null : 1
+            }));
+          }
 
-        e.preventDefault();
-
-        if (!isBuyableProductLink(href)) {
-          showToast("Produto sem link direto válido. Revisar no Guardian.");
+          e.preventDefault();
+          openBuy(href);
           return;
         }
-
-        openBuy(href);
-        return;
       }
 
       const chip = e.target.closest("[data-tag]");
@@ -1804,31 +1705,19 @@
       const p = sku ? findBySku(sku) : null;
 
       if (action === "copyLink" && p) {
-        const link = bestBuyUrl(p) || "";
-        if (!link) {
-          showToast("Produto sem link direto válido.");
-          return;
-        }
-
         trackEvent("click_copy_link", getTrackProduct(p, {
           placement: getActionPlacement(el, action),
           source_block: getActionSourceBlock(el)
         }));
-        return copyText(link);
+        return copyText(bestBuyUrl(p) || "");
       }
 
       if (action === "copyAlt" && p) {
-        const alt = ensureHttpUrl(p.alt_url || "");
-        if (!alt) {
-          showToast("Produto sem link alternativo válido.");
-          return;
-        }
-
         trackEvent("click_copy_alt", getTrackProduct(p, {
           placement: getActionPlacement(el, action),
           source_block: getActionSourceBlock(el)
         }));
-        return copyText(alt);
+        return copyText(p.alt_url || p.canonical_url || p.check_url || "");
       }
 
       if (action === "copyId" && p) {
