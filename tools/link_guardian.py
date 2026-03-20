@@ -1,14 +1,15 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v6 (ANTI-WIPE + RELATÓRIO JSON/TXT DE REMOVIDOS)
+# Versão : v7 (STOREFRONT INVALID + RELATÓRIO JSON/TXT + FINALIZAÇÃO SEGURA)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
 #   2) Evitar desativar produto por bloqueio/anti-bot/ruído.
-#   3) Social redirect (/social/ e /lists) é comum no tracking ML:
-#      por padrão conta como OK (atualiza last_ok) e NÃO derruba.
-#   4) Desativação por padrão só em hard-dead real (404/410).
+#   3) Link que termina em /social/ ou /lists NÃO é destino válido de vitrine.
+#      Só mantém o produto se existir URL alternativa real e válida.
+#   4) Desativação por padrão só em hard-dead real (404/410)
+#      OU storefront invalid confirmado.
 #   5) Produto do Dia (featured) NUNCA automático.
 #   6) Registrar histórico de produtos desativados/removidos:
 #      - data/link_guardian_removed.json
@@ -19,6 +20,8 @@
 #   - 403/429/captcha/anti-bot => TEMP (não conta falha).
 #   - 5xx/timeout => TEMP (não conta falha).
 #   - 404/410 => HARD DEAD (pode desativar após FAIL_THRESHOLD).
+#   - /social/ e /lists => STORE FRONT INVALID (pode desativar após FAIL_THRESHOLD),
+#     MAS o Guardian tenta antes canonical/resolved/short/check/open.
 #   - “dead por conteúdo” (status 200) só se LG_DEAD_ON_BODY=1.
 # ==========================================================
 
@@ -56,6 +59,7 @@ DEFAULT_TIMEOUT = float(os.environ.get("LG_TIMEOUT_SEC", "12"))
 SLEEP_BETWEEN = float(os.environ.get("LG_SLEEP_SEC", "0.35"))
 
 MAX_CHECK = int(os.environ.get("LG_MAX_CHECK", "60"))
+MAX_CANDIDATE_URLS = int(os.environ.get("LG_MAX_CANDIDATE_URLS", "5"))
 
 # Reativar automaticamente quando voltar OK (default: 1 pra recuperar loja rápido)
 AUTO_REACTIVATE = os.environ.get("LG_AUTO_REACTIVATE", "1").strip() == "1"
@@ -63,10 +67,10 @@ AUTO_REACTIVATE = os.environ.get("LG_AUTO_REACTIVATE", "1").strip() == "1"
 # Conservador com bloqueio/anti-bot
 CONSERVATIVE_ON_BLOCK = os.environ.get("LG_CONSERVATIVE_ON_BLOCK", "1").strip() == "1"
 
-# Quantas falhas HARD seguidas pra desativar (default: 3 mais seguro)
+# Quantas falhas HARD/STOREFRONT INVALID seguidas pra desativar
 FAIL_THRESHOLD = int(os.environ.get("LG_FAIL_THRESHOLD", "3"))
 
-# Remove item do JSON se dead (default: 0 — NUNCA remover por padrão)
+# Remove item do JSON se dead/storefront invalid (default: 0 — mais seguro)
 REMOVE_ON_DEAD = os.environ.get("LG_REMOVE_ON_DEAD", "0").strip() == "1"
 
 # Tratar 5xx como TEMP (default: 1)
@@ -87,9 +91,11 @@ BOOTSTRAP_MAX_DAYS = int(os.environ.get("LG_BOOTSTRAP_MAX_DAYS", "180"))
 # FORCE RESTORE: se mesmo assim continuar zerada, reativa TODO MUNDO (emergência)
 FORCE_RESTORE_ALL_IF_ZERO = os.environ.get("LG_FORCE_RESTORE_ALL_IF_ZERO", "1").strip() == "1"
 
-# SOCIAL redirect (/social/ ou /lists) normalmente é tracking/landing:
-# por padrão conta como OK e atualiza last_ok (pra nunca perder base de recuperação)
+# Compat antigo: se SOCIAL_INVALID_FOR_STOREFRONT=0, mantém comportamento velho
 SOCIAL_COUNTS_AS_OK = os.environ.get("LG_SOCIAL_COUNTS_AS_OK", "1").strip() == "1"
+
+# NOVO: /social/ e /lists são inválidos pra vitrine
+SOCIAL_INVALID_FOR_STOREFRONT = os.environ.get("LG_SOCIAL_INVALID_FOR_STOREFRONT", "1").strip() == "1"
 
 # Dead por conteúdo (status 200 + texto “indisponível”) é arriscado:
 # default OFF (0). Só liga se você realmente quiser “vitrine ultra-limpa”.
@@ -156,6 +162,8 @@ class CheckResult:
     final_url: str
     reason: str
     hard_dead: bool
+    checked_url: str
+    storefront_invalid: bool
 
 
 # =========================
@@ -227,7 +235,8 @@ def _host_of(u: str) -> str:
             host = host.split("@", 1)[-1]
         if ":" in host:
             host = host.split(":", 1)[0]
-        host = host.lstrip("www.")
+        if host.startswith("www."):
+            host = host[4:]
         return host
     except Exception:
         return ""
@@ -273,6 +282,7 @@ def _looks_corrupt_product(p: Dict[str, Any]) -> bool:
     sku = (p.get("sku") or "").strip()
     if not sku:
         return True
+
     s = sku.lower()
     if s.startswith("<") or "<img" in s or "</" in s:
         return True
@@ -288,8 +298,29 @@ def _looks_corrupt_product(p: Dict[str, Any]) -> bool:
     return False
 
 
-def _pick_url(p: Dict[str, Any]) -> str:
-    return _clean_url((p.get("check_url") or p.get("open_url") or "").strip())
+def _candidate_urls(p: Dict[str, Any]) -> List[str]:
+    raw_candidates = [
+        _clean_url(p.get("canonical_url") or ""),
+        _clean_url(p.get("resolved_url") or ""),
+        _clean_url(p.get("short_url") or ""),
+        _clean_url(p.get("check_url") or ""),
+        _clean_url(p.get("open_url") or ""),
+    ]
+
+    out: List[str] = []
+    seen = set()
+
+    for url in raw_candidates:
+        if not url:
+            continue
+        if url in seen:
+            continue
+        seen.add(url)
+        out.append(url)
+        if MAX_CANDIDATE_URLS > 0 and len(out) >= MAX_CANDIDATE_URLS:
+            break
+
+    return out
 
 
 def _make_request(url: str) -> urllib.request.Request:
@@ -365,7 +396,6 @@ def _is_block_page(status: int, final_url: str, body_sample: str) -> bool:
 
 
 def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
-    # Hard dead real
     if status in _HARD_DEAD_STATUS:
         return True
 
@@ -376,15 +406,12 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
     if not text:
         return False
 
-    # Se for página de bloqueio/captcha, NUNCA tratar como dead
     if _BLOCK_PAGE_RE.search(text):
         return False
 
-    # Se o destino cair em /social/, NUNCA tratar como dead
     if _is_social_path(final_url):
         return False
 
-    # Indisponível real por padrões conhecidos
     if _UNAVAILABLE_RE.search(text):
         return True
 
@@ -393,38 +420,201 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
 
 def _check_url(url: str) -> CheckResult:
     u = _clean_url(url)
+
     if not u:
-        return CheckResult(ok=False, temporary=False, status=0, final_url="", reason="sem_url", hard_dead=False)
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=0,
+            final_url="",
+            reason="sem_url",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+        )
 
     if not _is_ml_url(u):
-        return CheckResult(ok=False, temporary=False, status=0, final_url=u, reason="nao_ml", hard_dead=False)
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=0,
+            final_url=u,
+            reason="nao_ml",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+        )
 
     status, final_url, sample = _fetch_status_and_sample(u)
 
     if status == 0:
-        return CheckResult(ok=False, temporary=True, status=0, final_url=final_url or u, reason="sem_resposta", hard_dead=False)
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=0,
+            final_url=final_url or u,
+            reason="sem_resposta",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+        )
 
-    # bloqueio/captcha => TEMP
     if CONSERVATIVE_ON_BLOCK and _is_block_page(status, final_url, sample):
-        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason="bloqueio", hard_dead=False)
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=status,
+            final_url=final_url or u,
+            reason="bloqueio",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+        )
 
-    # SOCIAL redirect (tracking ML):
     if _is_social_path(final_url):
+        if SOCIAL_INVALID_FOR_STOREFRONT:
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=status,
+                final_url=final_url or u,
+                reason="storefront_social_invalid",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=True,
+            )
+
         if SOCIAL_COUNTS_AS_OK and status == 200:
-            return CheckResult(ok=True, temporary=False, status=status, final_url=final_url or u, reason="social_ok", hard_dead=False)
-        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason="social_temp", hard_dead=False)
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=status,
+                final_url=final_url or u,
+                reason="social_ok",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=False,
+            )
 
-    # 5xx => TEMP
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=status,
+            final_url=final_url or u,
+            reason="social_temp",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+        )
+
     if TREAT_5XX_TEMP and status in _TEMP_STATUS:
-        return CheckResult(ok=False, temporary=True, status=status, final_url=final_url or u, reason=f"temp_{status}", hard_dead=False)
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=status,
+            final_url=final_url or u,
+            reason=f"temp_{status}",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+        )
 
-    # DEAD
     if _is_definitely_dead(status, final_url, sample):
         hard = status in _HARD_DEAD_STATUS
-        return CheckResult(ok=False, temporary=False, status=status, final_url=final_url or u, reason="dead", hard_dead=hard)
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=status,
+            final_url=final_url or u,
+            reason="dead",
+            hard_dead=hard,
+            checked_url=u,
+            storefront_invalid=False,
+        )
 
-    # Se não é dead e não é temp, consideramos OK conservador (não derruba por ruído).
-    return CheckResult(ok=True, temporary=False, status=status, final_url=final_url or u, reason="ok", hard_dead=False)
+    return CheckResult(
+        ok=True,
+        temporary=False,
+        status=status,
+        final_url=final_url or u,
+        reason="ok",
+        hard_dead=False,
+        checked_url=u,
+        storefront_invalid=False,
+    )
+
+
+def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
+    candidates = _candidate_urls(p)
+
+    if not candidates:
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=0,
+            final_url="",
+            reason="sem_url",
+            hard_dead=False,
+            checked_url="",
+            storefront_invalid=False,
+        )
+
+    first_result: CheckResult | None = None
+    social_invalid_result: CheckResult | None = None
+    dead_result: CheckResult | None = None
+    temp_result: CheckResult | None = None
+    generic_result: CheckResult | None = None
+
+    for url in candidates:
+        res = _check_url(url)
+
+        if first_result is None:
+            first_result = res
+
+        if res.ok and not res.storefront_invalid:
+            return res
+
+        if res.storefront_invalid and social_invalid_result is None:
+            social_invalid_result = res
+            continue
+
+        if res.hard_dead and dead_result is None:
+            dead_result = res
+            continue
+
+        if res.reason == "dead" and dead_result is None:
+            dead_result = res
+            continue
+
+        if res.temporary and temp_result is None:
+            temp_result = res
+            continue
+
+        if generic_result is None:
+            generic_result = res
+
+    if social_invalid_result is not None:
+        return social_invalid_result
+
+    if dead_result is not None:
+        return dead_result
+
+    if temp_result is not None:
+        return temp_result
+
+    if generic_result is not None:
+        return generic_result
+
+    return first_result or CheckResult(
+        ok=False,
+        temporary=False,
+        status=0,
+        final_url="",
+        reason="sem_url",
+        hard_dead=False,
+        checked_url="",
+        storefront_invalid=False,
+    )
 
 
 def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
@@ -432,8 +622,12 @@ def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
 
 
 def _clear_dead_markers(p: Dict[str, Any]) -> None:
-    # limpa “sujeira” antiga quando volta OK
-    for k in ("guardian_dead_status", "guardian_dead_reason", "guardian_disabled_at"):
+    for k in (
+        "guardian_dead_status",
+        "guardian_dead_reason",
+        "guardian_disabled_at",
+        "guardian_storefront_invalid",
+    ):
         if k in p:
             try:
                 del p[k]
@@ -446,19 +640,20 @@ def _force_restore_all(products: List[Dict[str, Any]]) -> int:
     for p in products:
         if not isinstance(p, dict):
             continue
+
         sku = (p.get("sku") or "").strip()
         if not sku:
             continue
-        # regra: não mexe em featured
+
         if not bool(p.get("active")):
             p["active"] = True
             p["guardian_fail_count"] = 0
             _clear_dead_markers(p)
             boosted += 1
         else:
-            # mesmo ativo, limpa fail_count se tinha lixo
             if int(p.get("guardian_fail_count") or 0) != 0:
                 p["guardian_fail_count"] = 0
+
     return boosted
 
 
@@ -477,16 +672,22 @@ def _load_removed_history(path: Path) -> Dict[str, Any]:
     try:
         with path.open("r", encoding="utf-8") as f:
             data = json.load(f)
+
         if not isinstance(data, dict):
             raise ValueError("json inválido")
+
         if not isinstance(data.get("events"), list):
             data["events"] = []
+
         if not isinstance(data.get("weekly_summary"), list):
             data["weekly_summary"] = []
+
         if "updated_at" not in data:
             data["updated_at"] = ""
+
         if "total_events" not in data:
             data["total_events"] = len(data["events"])
+
         return data
     except Exception:
         return {
@@ -525,10 +726,12 @@ def _build_removed_event(
         "status": int(res.status),
         "reason": res.reason,
         "hard_dead": bool(res.hard_dead),
+        "storefront_invalid": bool(res.storefront_invalid),
         "fail_count": int(fail_count),
         "fail_threshold": int(fail_threshold),
         "was_active": bool(was_active),
         "was_featured": bool(was_featured),
+        "checked_url": _clean_url(res.checked_url or ""),
         "open_url": _clean_url(p.get("open_url") or ""),
         "check_url": _clean_url(p.get("check_url") or ""),
         "canonical_url": _clean_url(p.get("canonical_url") or ""),
@@ -547,6 +750,7 @@ def _event_fingerprint(ev: Dict[str, Any]) -> str:
         str(ev.get("sku") or ""),
         str(ev.get("status") or ""),
         str(ev.get("reason") or ""),
+        str(ev.get("checked_url") or ""),
         str(ev.get("final_url") or ""),
     ])
 
@@ -561,6 +765,7 @@ def _refresh_removed_history_meta(history: Dict[str, Any]) -> None:
     for ev in events:
         if not isinstance(ev, dict):
             continue
+
         wk = str(ev.get("week_key") or "").strip() or _week_key_from_iso(ev.get("happened_at") or "")
         if wk not in buckets:
             buckets[wk] = {
@@ -568,6 +773,7 @@ def _refresh_removed_history_meta(history: Dict[str, Any]) -> None:
                 "events": 0,
                 "unique_skus": set(),
             }
+
         buckets[wk]["events"] += 1
         sku = str(ev.get("sku") or "").strip()
         if sku:
@@ -600,7 +806,6 @@ def _append_removed_event(history: Dict[str, Any], event: Dict[str, Any]) -> boo
             return False
 
     events.append(event)
-
     events = [e for e in events if isinstance(e, dict)]
     events.sort(key=lambda x: str(x.get("happened_at") or ""), reverse=True)
 
@@ -655,6 +860,7 @@ def _build_removed_txt(history: Dict[str, Any]) -> str:
         lines.append("")
         lines.append(f"### {wk}")
         lines.append("")
+
         bucket = sorted(grouped[wk], key=lambda x: str(x.get("happened_at") or ""), reverse=True)
 
         for ev in bucket:
@@ -665,6 +871,7 @@ def _build_removed_txt(history: Dict[str, Any]) -> str:
             reason = str(ev.get("reason") or "").strip()
             event_type = str(ev.get("event_type") or "").strip()
             id_busca = str(ev.get("id_busca") or "").strip()
+            checked_url = str(ev.get("checked_url") or "").strip()
             final_url = str(ev.get("final_url") or "").strip()
             open_url = str(ev.get("open_url") or "").strip()
             check_url = str(ev.get("check_url") or "").strip()
@@ -676,6 +883,8 @@ def _build_removed_txt(history: Dict[str, Any]) -> str:
             lines.append(f"  status={status} | reason={reason} | fail={fail_count}/{fail_threshold}")
             if id_busca:
                 lines.append(f"  id_busca={id_busca}")
+            if checked_url:
+                lines.append(f"  checked_url={checked_url}")
             if final_url:
                 lines.append(f"  final_url={final_url}")
             if open_url:
@@ -698,15 +907,18 @@ def _save_removed_reports(history: Dict[str, Any]) -> None:
 def main() -> int:
     data = _read_json(PRODUTOS_JSON)
     products: List[Dict[str, Any]] = data.get("products") or []
+
     if not isinstance(products, list):
         products = []
 
     removed_history = _load_removed_history(REMOVED_JSON)
     removed_events_added = 0
+    pending_actions: Dict[str, Dict[str, Any]] = {}
 
     # remove corruptos
     cleaned: List[Dict[str, Any]] = []
     removed_corrupt = 0
+
     for p in products:
         if not isinstance(p, dict):
             removed_corrupt += 1
@@ -721,8 +933,9 @@ def main() -> int:
 
     products = cleaned
 
-    # BOOTSTRAP: se a loja estiver zerada, reativa via last_ok recente (corrige wipe antigo)
+    # BOOTSTRAP: se a loja estiver zerada, reativa via last_ok recente
     active_before_raw = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
+
     if BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= 1:
         boosted = 0
         for p in products:
@@ -741,8 +954,9 @@ def main() -> int:
         print(f"Reativados via last_ok (<= {BOOTSTRAP_MAX_DAYS}d): {boosted}/{len(products)}")
         print("========================================")
 
-    # FORCE RESTORE: se ainda estiver zerada, reativa TODO MUNDO (emergência)
+    # FORCE RESTORE: se ainda estiver zerada, reativa TODO MUNDO
     active_after_bootstrap = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
+
     if FORCE_RESTORE_ALL_IF_ZERO and active_after_bootstrap == 0 and len(products) >= 1:
         boosted_all = _force_restore_all(products)
         print("========================================")
@@ -750,7 +964,7 @@ def main() -> int:
         print(f"Reativados (emergência): {boosted_all}/{len(products)}")
         print("========================================")
 
-    # snapshot pra FAILSAFE (APÓS bootstrap/force-restore)
+    # snapshot pra FAILSAFE
     orig: Dict[str, Tuple[bool, bool, int]] = {}
     for p in products:
         if isinstance(p, dict):
@@ -780,8 +994,8 @@ def main() -> int:
             out.append(p)
             continue
 
-        url = _pick_url(p)
-        if not url:
+        candidates = _candidate_urls(p)
+        if not candidates:
             out.append(p)
             continue
 
@@ -789,22 +1003,21 @@ def main() -> int:
         was_active = bool(p.get("active"))
         was_featured = bool(p.get("featured"))
 
-        res = _check_url(url)
+        res = _check_product_urls(p)
 
         # auditoria
         p["guardian_last_checked"] = now
         p["guardian_last_status"] = int(res.status)
         p["guardian_last_final_url"] = _clean_url(res.final_url)
         p["guardian_last_reason"] = res.reason
+        p["guardian_last_checked_url"] = _clean_url(res.checked_url)
 
         p["last_checked"] = now
         checked += 1
 
-        # TEMP => não derruba e NÃO incrementa fail_count
         if res.temporary:
             temp_count += 1
 
-            # RECOVERY: se estava inativo e temos last_ok recente, reativa
             if RECOVER_ON_TEMP and (not was_active):
                 last_ok = (p.get("last_ok") or "").strip()
                 if last_ok and _recent_enough(last_ok, RECOVER_MAX_DAYS):
@@ -812,11 +1025,11 @@ def main() -> int:
                     p["guardian_fail_count"] = 0
                     _clear_dead_markers(p)
                     changed += 1
-                    print(f"[RECOVER/TEMP] {sku} -> REATIVADO via last_ok (status={res.status}, final={p.get('guardian_last_final_url','')})")
+                    print(f"[RECOVER/TEMP] {sku} -> REATIVADO via last_ok (status={res.status}, final={p.get('guardian_last_final_url', '')})")
                 else:
-                    print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url','')}")
+                    print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url', '')}")
             else:
-                print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url','')}")
+                print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url', '')}")
 
             out.append(p)
             time.sleep(SLEEP_BETWEEN)
@@ -832,29 +1045,26 @@ def main() -> int:
             else:
                 p["guardian_fail_count"] = 0
 
-            # se voltou OK, limpa marcas de dead antigas
             _clear_dead_markers(p)
 
             if AUTO_REACTIVATE and (not was_active):
                 p["active"] = True
                 changed += 1
-                print(f"[OK] {sku} -> REATIVADO ({res.reason})")
+                print(f"[OK] {sku} -> REATIVADO ({res.reason}) via {_clean_url(res.checked_url)}")
             else:
-                print(f"[OK] {sku} status={res.status} ({res.reason})")
+                print(f"[OK] {sku} status={res.status} ({res.reason}) via {_clean_url(res.checked_url)}")
 
             out.append(p)
             time.sleep(SLEEP_BETWEEN)
             continue
 
-        # FAIL real (não-temp)
         dead_count += 1
 
-        # Só deixa “contar falha” e desativar quando for HARD DEAD de verdade (404/410),
-        # ou quando DEAD_ON_BODY=1 (aí pode ser 200 com texto, mas é por sua conta/risco).
-        if not res.hard_dead and not DEAD_ON_BODY:
-            # trata como TEMP “suspeito” pra NÃO derrubar loja por ruído
+        should_count_as_fail = bool(res.hard_dead or DEAD_ON_BODY or res.storefront_invalid)
+
+        if not should_count_as_fail:
             temp_count += 1
-            print(f"[SUSPEITO->TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url','')}")
+            print(f"[SUSPEITO->TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url', '')}")
             out.append(p)
             time.sleep(SLEEP_BETWEEN)
             continue
@@ -863,6 +1073,9 @@ def main() -> int:
         p["guardian_fail_count"] = fail_count
         p["guardian_dead_status"] = int(res.status)
         p["guardian_dead_reason"] = res.reason
+
+        if res.storefront_invalid:
+            p["guardian_storefront_invalid"] = True
 
         if fail_count >= FAIL_THRESHOLD:
             disabled_now = False
@@ -879,24 +1092,23 @@ def main() -> int:
             p["guardian_disabled_at"] = now
             changed += 1
 
-            print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD})")
+            if res.storefront_invalid:
+                print(f"[STOREFRONT-INVALID] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD}) final={p.get('guardian_last_final_url', '')}")
+            else:
+                print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD})")
 
-            if disabled_now:
-                ev = _build_removed_event(
+            pending_actions[sku] = {
+                "disabled_event": _build_removed_event(
                     p=p,
                     res=res,
                     happened_at=now,
-                    event_type="disabled",
+                    event_type="disabled_from_storefront" if res.storefront_invalid else "disabled",
                     fail_count=fail_count,
                     fail_threshold=FAIL_THRESHOLD,
                     was_active=was_active,
                     was_featured=was_featured,
-                )
-                if _append_removed_event(removed_history, ev):
-                    removed_events_added += 1
-
-            if REMOVE_ON_DEAD:
-                ev = _build_removed_event(
+                ) if disabled_now else None,
+                "remove_event": _build_removed_event(
                     p=p,
                     res=res,
                     happened_at=now,
@@ -905,16 +1117,14 @@ def main() -> int:
                     fail_threshold=FAIL_THRESHOLD,
                     was_active=was_active,
                     was_featured=was_featured,
-                )
-                if _append_removed_event(removed_history, ev):
-                    removed_events_added += 1
-
-                removed_dead += 1
-                changed += 1
-                time.sleep(SLEEP_BETWEEN)
-                continue
+                ) if REMOVE_ON_DEAD else None,
+                "remove_from_catalog": bool(REMOVE_ON_DEAD),
+            }
         else:
-            print(f"[FAIL] {sku} status={res.status} (fail={fail_count}/{FAIL_THRESHOLD})")
+            if res.storefront_invalid:
+                print(f"[STOREFRONT-INVALID] {sku} status={res.status} (fail={fail_count}/{FAIL_THRESHOLD}) final={p.get('guardian_last_final_url', '')}")
+            else:
+                print(f"[FAIL] {sku} status={res.status} (fail={fail_count}/{FAIL_THRESHOLD})")
 
         out.append(p)
         time.sleep(SLEEP_BETWEEN)
@@ -944,9 +1154,10 @@ def main() -> int:
         data["guardian_failsafe_note"] = f"Mass deactivation prevented (active_after={active_after})."
         changed += 1
 
-    # Se ainda assim terminar zerado, força restore (último paraquedas)
-    active_final = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
-    if FORCE_RESTORE_ALL_IF_ZERO and active_final == 0 and len(out) >= 1:
+    # Se ainda assim terminar zerado, força restore
+    active_final_before_removal = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
+
+    if FORCE_RESTORE_ALL_IF_ZERO and active_final_before_removal == 0 and len(out) >= 1:
         boosted_all = _force_restore_all(out)
         print("========================================")
         print("FORCE-RESTORE FINAL (paraquedas):")
@@ -954,7 +1165,38 @@ def main() -> int:
         print("========================================")
         changed += 1
 
-    data["products"] = out
+    final_out: List[Dict[str, Any]] = []
+
+    for p in out:
+        if not isinstance(p, dict):
+            continue
+
+        sku = (p.get("sku") or "").strip()
+        action = pending_actions.get(sku)
+        approved_remove = False
+
+        if action:
+            disabled_event = action.get("disabled_event")
+            remove_event = action.get("remove_event")
+            remove_from_catalog = bool(action.get("remove_from_catalog"))
+
+            if disabled_event and not bool(p.get("active")):
+                if _append_removed_event(removed_history, disabled_event):
+                    removed_events_added += 1
+
+            if remove_from_catalog and not bool(p.get("active")):
+                if remove_event and _append_removed_event(removed_history, remove_event):
+                    removed_events_added += 1
+                approved_remove = True
+                removed_dead += 1
+                changed += 1
+
+        if approved_remove:
+            continue
+
+        final_out.append(p)
+
+    data["products"] = final_out
     data["updated_at"] = now
 
     _write_json(PRODUTOS_JSON, data)
@@ -970,7 +1212,8 @@ def main() -> int:
     print(f"Removed TXT: {REMOVED_TXT}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
-    print(f"SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | DEAD_ON_BODY: {int(DEAD_ON_BODY)}")
+    print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)}")
+    print(f"DEAD_ON_BODY: {int(DEAD_ON_BODY)} | MAX_CANDIDATE_URLS: {MAX_CANDIDATE_URLS}")
     print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
     print(f"BOOTSTRAP_IF_ZERO: {int(BOOTSTRAP_IF_ZERO)} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
     print(f"FORCE_RESTORE_ALL_IF_ZERO: {int(FORCE_RESTORE_ALL_IF_ZERO)}")
