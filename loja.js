@@ -31,6 +31,10 @@
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
      - “Ver todas” abre modal premium com busca.
      - Contador “Categorias” vira 14+ (premium), total aparece no “Ver todas (X)”.
+
+   PATCH 2026-03-20 (EXPORT CATÁLOGO EM TXT):
+     - Botão público para baixar o snapshot do produtos.json em TXT
+     - Útil para auditoria e para colar no chat sem sobrecarregar a conversa
    ========================================================== */
 
 (() => {
@@ -272,6 +276,7 @@
     st.textContent = css;
     document.head.appendChild(st);
   }
+
   function applyImageFixes(root) {
     const scope = root || document;
     const imgs = scope.querySelectorAll('img[data-cnimg="1"]');
@@ -621,6 +626,7 @@
       _raw: raw,
     };
   }
+
   function dedupeProducts(list) {
     const out = [];
     const seen = new Set();
@@ -838,7 +844,7 @@
 
   function isNoisyTag(label) {
     const s = String(label || "").trim();
-    if (!s) return True;
+    if (!s) return true;
 
     const t = s.toLowerCase();
 
@@ -1237,8 +1243,8 @@
     return STATE.products.find((p) => p && p.sku === sku) || null;
   }
 
-  function exportProdutosJson() {
-    const out = {
+  function buildProdutosJsonSnapshot() {
+    return {
       updated_at: new Date().toISOString(),
       products: dedupeProducts(STATE.products).map((p) => {
         const r = cloneObj(p._raw || {});
@@ -1268,7 +1274,10 @@
         return r;
       }),
     };
+  }
 
+  function exportProdutosJson() {
+    const out = buildProdutosJsonSnapshot();
     const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -1278,6 +1287,13 @@
     a.remove();
 
     showToast("Exportado ⬇️");
+  }
+
+  function exportProdutosJsonTxt() {
+    const out = buildProdutosJsonSnapshot();
+    const txt = JSON.stringify(out, null, 2);
+    downloadFile("produtos.json.txt", txt, "text/plain;charset=utf-8");
+    showToast("produtos.json em TXT ⬇️");
   }
 
   function two(n){ return String(n).padStart(2, "0"); }
@@ -1396,6 +1412,7 @@
     const clear = $("#btnClear");
     const copyBtn = $("#btnCopyLoja");
     const copyPageBtn = $("#btnCopyPage");
+    const btnExportCatalogTxt = $("#btnExportCatalogTxt");
 
     const sortSel = $("#sortSel");
     const moreBtn = $("#btnMore");
@@ -1430,6 +1447,12 @@
     if (copyPageBtn) {
       copyPageBtn.addEventListener("click", () => {
         copyText(location.href);
+      });
+    }
+
+    if (btnExportCatalogTxt) {
+      btnExportCatalogTxt.addEventListener("click", () => {
+        exportProdutosJsonTxt();
       });
     }
 
