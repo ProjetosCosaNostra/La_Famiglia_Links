@@ -111,7 +111,8 @@
     .toast.show{ display:block; }
   </style>
 
-  <!-- JS da loja (responsável por categorias inteligentes + ferramentas recolhíveis no mobile) -->
+  <!-- JS da loja -->
+  <script defer src="./tracking.js"></script>
   <script defer src="./loja.js"></script>
 </head>
 
@@ -216,14 +217,9 @@
           <div class="tagChips" id="tagChips" aria-label="Categorias"></div>
         </div>
 
-        <div class="toolRow" style="margin-top:10px;">
-          <div
-            class="toolsExportBox"
-            aria-label="Ferramentas rápidas de exportação"
-            style="display:flex; gap:10px; flex-wrap:wrap; width:100%;"
-          >
-            <button class="btn btn--tiny btn--glass" id="btnExportCatalogTxt" type="button">⬇️ TXT (produtos.json)</button>
-          </div>
+        <!-- ✅ Botão público para exportar produtos.json em TXT -->
+        <div class="toolRow" style="margin-top:6px;">
+          <button class="btn btn--tiny btn--glass" id="btnExportCatalogTxt" type="button">⬇️ TXT (produtos.json)</button>
         </div>
 
         <!-- ✅ Ferramentas (listas/export) serão injetadas pelo loja.js (recolhível no mobile) -->
@@ -268,6 +264,7 @@
         <button class="btn btn--gold" id="btnMore" type="button">Carregar mais</button>
       </div>
     </section>
+
     <footer class="footer">
       <div class="footer__left">
         <span class="sig">🎩 Cosa Nostra</span>
