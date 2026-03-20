@@ -2,21 +2,26 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v8 (DIRECT PRODUCT ONLY + PROMOÇÃO DE URL VENCEDORA + RELATÓRIO JSON/TXT)
+# Versão : v8 (LISTA INVALID + UNWRAP ACCOUNT VERIFICATION + PROMOÇÃO DE URL VÁLIDA)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
 #   2) Evitar desativar produto por bloqueio/anti-bot/ruído.
-#   3) Link que termina em /social/, /lists ou host lista.* NÃO é destino válido de vitrine.
-#      Só mantém o produto se existir URL alternativa real e válida.
-#   4) Se o Guardian encontrar uma URL vencedora válida, ele PROMOVE essa URL para
-#      check_url / open_url / resolved_url quando necessário.
-#   5) Desativação por padrão só em hard-dead real (404/410)
-#      OU storefront invalid confirmado.
-#   6) Produto do Dia (featured) NUNCA automático.
-#   7) Registrar histórico de produtos desativados/removidos:
+#   3) Produto de vitrine precisa apontar para destino real de produto.
+#      /social/, /lists, lista.* e account-verification com go inválido NÃO servem.
+#   4) Se existir URL alternativa real/boa, o Guardian promove essa URL para o produto.
+#   5) Produto do Dia (featured) NUNCA automático.
+#   6) Registrar histórico de produtos desativados/removidos:
 #      - data/link_guardian_removed.json
 #      - logs/link_guardian_removed.txt
+#
+# Regras:
+#   - Se active_before == 0: restaura (bootstrap) e, se necessário, FORCE-RESTORE.
+#   - 403/429/captcha/anti-bot => TEMP (não conta falha).
+#   - 5xx/timeout => TEMP (não conta falha).
+#   - 404/410 => HARD DEAD (pode desativar após FAIL_THRESHOLD).
+#   - storefront invalid => DESATIVA com threshold próprio (default 1).
+#   - “dead por conteúdo” (status 200) só se LG_DEAD_ON_BODY=1.
 # ==========================================================
 
 from __future__ import annotations
@@ -32,7 +37,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, unquote, urlparse
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PRODUTOS_JSON = REPO_ROOT / "produtos.json"
@@ -43,6 +49,7 @@ LOGS_DIR = REPO_ROOT / "logs"
 REMOVED_JSON = Path(os.environ.get("LG_REMOVED_JSON_PATH", str(DATA_DIR / "link_guardian_removed.json")))
 REMOVED_TXT = Path(os.environ.get("LG_REMOVED_TXT_PATH", str(LOGS_DIR / "link_guardian_removed.txt")))
 REMOVED_MAX_EVENTS = int(os.environ.get("LG_REMOVED_MAX_EVENTS", "5000"))
+
 
 # =========================
 # CONFIG (env)
@@ -57,8 +64,9 @@ AUTO_REACTIVATE = os.environ.get("LG_AUTO_REACTIVATE", "1").strip() == "1"
 CONSERVATIVE_ON_BLOCK = os.environ.get("LG_CONSERVATIVE_ON_BLOCK", "1").strip() == "1"
 
 FAIL_THRESHOLD = int(os.environ.get("LG_FAIL_THRESHOLD", "3"))
-REMOVE_ON_DEAD = os.environ.get("LG_REMOVE_ON_DEAD", "0").strip() == "1"
+STOREFRONT_INVALID_THRESHOLD = int(os.environ.get("LG_STOREFRONT_INVALID_THRESHOLD", "1"))
 
+REMOVE_ON_DEAD = os.environ.get("LG_REMOVE_ON_DEAD", "0").strip() == "1"
 TREAT_5XX_TEMP = os.environ.get("LG_TREAT_5XX_TEMP", "1").strip() == "1"
 
 FAILSAFE_MIN_ACTIVE = int(os.environ.get("LG_FAILSAFE_MIN_ACTIVE", "10"))
@@ -78,14 +86,20 @@ LISTA_INVALID_FOR_STOREFRONT = os.environ.get("LG_LISTA_INVALID_FOR_STOREFRONT",
 
 DEAD_ON_BODY = os.environ.get("LG_DEAD_ON_BODY", "0").strip() == "1"
 
+
 # =========================
 # Mercado Livre host rules
 # =========================
 _ML_HOST_MARKERS = ("mercadolivre", "mercadolibre")
 _ML_SHORT_HOSTS = {"meli.la", "meli.co"}
 
+_LISTA_HOST_RE = re.compile(r"(^|\.)lista\.(mercadolivre|mercadolibre)\.[a-z.]+$", re.IGNORECASE)
+_PRODUTO_HOST_RE = re.compile(r"(^|\.)produto\.(mercadolivre|mercadolibre)\.[a-z.]+$", re.IGNORECASE)
+
+
 # =========================
-# Heurística de indisponível
+# Heurística de indisponível (ML às vezes responde 200)
+# (SÓ usado se DEAD_ON_BODY=1)
 # =========================
 _UNAVAILABLE_PATTERNS = [
     r"produto\s+indispon[ií]vel",
@@ -122,6 +136,9 @@ _BLOCK_STATUS = {403, 429}
 _TEMP_STATUS = {408, 425, 500, 502, 503, 504}
 
 
+# =========================
+# Data structures
+# =========================
 @dataclass
 class CheckResult:
     ok: bool
@@ -132,8 +149,12 @@ class CheckResult:
     hard_dead: bool
     checked_url: str
     storefront_invalid: bool
+    promoted_url: str = ""
 
 
+# =========================
+# UTILS
+# =========================
 def _utc_now_iso_z() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
@@ -215,6 +236,13 @@ def _path_of(u: str) -> str:
         return ""
 
 
+def _query_of(u: str) -> Dict[str, List[str]]:
+    try:
+        return parse_qs(urlparse(u or "").query or "", keep_blank_values=True)
+    except Exception:
+        return {}
+
+
 def _is_social_path(u: str) -> bool:
     pth = _path_of(u)
     if not pth:
@@ -222,19 +250,11 @@ def _is_social_path(u: str) -> bool:
     return ("/social/" in pth) or pth.endswith("/lists")
 
 
-def _is_lista_host(u: str) -> bool:
+def _is_lista_url(u: str) -> bool:
     host = _host_of(u)
-    return bool(host) and host.startswith("lista.")
-
-
-def _is_storefront_invalid_url(u: str) -> bool:
-    if not u:
+    if not host:
         return False
-    if SOCIAL_INVALID_FOR_STOREFRONT and _is_social_path(u):
-        return True
-    if LISTA_INVALID_FOR_STOREFRONT and _is_lista_host(u):
-        return True
-    return False
+    return bool(_LISTA_HOST_RE.search(host))
 
 
 def _is_ml_url(u: str) -> bool:
@@ -256,6 +276,52 @@ def _is_ml_url(u: str) -> bool:
             return True
 
     return False
+
+
+def _looks_like_product_destination(u: str) -> bool:
+    if not _is_ml_url(u):
+        return False
+
+    host = _host_of(u)
+    path = _path_of(u)
+    full = (u or "").lower()
+
+    if _PRODUTO_HOST_RE.search(host):
+        return True
+
+    if re.search(r"/mlb[-_/]", full, re.IGNORECASE):
+        return True
+
+    if re.search(r"/p/mlb", full, re.IGNORECASE):
+        return True
+
+    if re.search(r"/p/[a-z]{2,4}\d+", full, re.IGNORECASE):
+        return True
+
+    if "/item" in path and "mlb" in full:
+        return True
+
+    return False
+
+
+def _unwrap_account_verification(u: str) -> str:
+    try:
+        pu = urlparse(u or "")
+        host = _host_of(u)
+        path = (pu.path or "").strip().lower()
+
+        if "mercadolivre" not in host and "mercadolibre" not in host:
+            return ""
+
+        if path != "/gz/account-verification":
+            return ""
+
+        qs = parse_qs(pu.query or "", keep_blank_values=True)
+        go = (qs.get("go") or [""])[0]
+        go = unquote(go or "")
+        return _clean_url(go)
+    except Exception:
+        return ""
 
 
 def _looks_corrupt_product(p: Dict[str, Any]) -> bool:
@@ -389,21 +455,16 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
     if _BLOCK_PAGE_RE.search(text):
         return False
 
-    if _is_storefront_invalid_url(final_url):
+    if _is_social_path(final_url):
+        return False
+
+    if _is_lista_url(final_url):
         return False
 
     if _UNAVAILABLE_RE.search(text):
         return True
 
     return False
-
-
-def _storefront_invalid_reason(final_url: str) -> str:
-    if SOCIAL_INVALID_FOR_STOREFRONT and _is_social_path(final_url):
-        return "storefront_social_invalid"
-    if LISTA_INVALID_FOR_STOREFRONT and _is_lista_host(final_url):
-        return "storefront_listing_invalid"
-    return "storefront_invalid"
 
 
 def _check_url(url: str) -> CheckResult:
@@ -419,6 +480,7 @@ def _check_url(url: str) -> CheckResult:
             hard_dead=False,
             checked_url=u,
             storefront_invalid=False,
+            promoted_url="",
         )
 
     if not _is_ml_url(u):
@@ -431,9 +493,11 @@ def _check_url(url: str) -> CheckResult:
             hard_dead=False,
             checked_url=u,
             storefront_invalid=False,
+            promoted_url="",
         )
 
     status, final_url, sample = _fetch_status_and_sample(u)
+    final_url = _clean_url(final_url or u)
 
     if status == 0:
         return CheckResult(
@@ -445,6 +509,7 @@ def _check_url(url: str) -> CheckResult:
             hard_dead=False,
             checked_url=u,
             storefront_invalid=False,
+            promoted_url="",
         )
 
     if CONSERVATIVE_ON_BLOCK and _is_block_page(status, final_url, sample):
@@ -457,18 +522,100 @@ def _check_url(url: str) -> CheckResult:
             hard_dead=False,
             checked_url=u,
             storefront_invalid=False,
+            promoted_url="",
         )
 
-    if _is_storefront_invalid_url(final_url):
+    unwrapped = _unwrap_account_verification(final_url)
+    if unwrapped:
+        if _is_social_path(unwrapped):
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=status,
+                final_url=unwrapped,
+                reason="storefront_social_invalid",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=True,
+                promoted_url="",
+            )
+
+        if LISTA_INVALID_FOR_STOREFRONT and _is_lista_url(unwrapped):
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=status,
+                final_url=unwrapped,
+                reason="storefront_listing_invalid",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=True,
+                promoted_url="",
+            )
+
+        if _looks_like_product_destination(unwrapped):
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=status,
+                final_url=unwrapped,
+                reason="ok_unwrapped",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=False,
+                promoted_url=unwrapped,
+            )
+
+    if _is_social_path(final_url):
+        if SOCIAL_INVALID_FOR_STOREFRONT:
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=status,
+                final_url=final_url or u,
+                reason="storefront_social_invalid",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=True,
+                promoted_url="",
+            )
+
+        if SOCIAL_COUNTS_AS_OK and status == 200:
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=status,
+                final_url=final_url or u,
+                reason="social_ok",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=False,
+                promoted_url="",
+            )
+
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=status,
+            final_url=final_url or u,
+            reason="social_temp",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    if LISTA_INVALID_FOR_STOREFRONT and _is_lista_url(final_url):
         return CheckResult(
             ok=False,
             temporary=False,
             status=status,
             final_url=final_url or u,
-            reason=_storefront_invalid_reason(final_url or u),
+            reason="storefront_listing_invalid",
             hard_dead=False,
             checked_url=u,
             storefront_invalid=True,
+            promoted_url="",
         )
 
     if TREAT_5XX_TEMP and status in _TEMP_STATUS:
@@ -481,6 +628,7 @@ def _check_url(url: str) -> CheckResult:
             hard_dead=False,
             checked_url=u,
             storefront_invalid=False,
+            promoted_url="",
         )
 
     if _is_definitely_dead(status, final_url, sample):
@@ -494,6 +642,7 @@ def _check_url(url: str) -> CheckResult:
             hard_dead=hard,
             checked_url=u,
             storefront_invalid=False,
+            promoted_url="",
         )
 
     return CheckResult(
@@ -505,6 +654,7 @@ def _check_url(url: str) -> CheckResult:
         hard_dead=False,
         checked_url=u,
         storefront_invalid=False,
+        promoted_url="",
     )
 
 
@@ -521,10 +671,12 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
             hard_dead=False,
             checked_url="",
             storefront_invalid=False,
+            promoted_url="",
         )
 
     first_result: CheckResult | None = None
-    store_invalid_result: CheckResult | None = None
+    social_invalid_result: CheckResult | None = None
+    listing_invalid_result: CheckResult | None = None
     dead_result: CheckResult | None = None
     temp_result: CheckResult | None = None
     generic_result: CheckResult | None = None
@@ -538,8 +690,12 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
         if res.ok and not res.storefront_invalid:
             return res
 
-        if res.storefront_invalid and store_invalid_result is None:
-            store_invalid_result = res
+        if res.reason == "storefront_social_invalid" and social_invalid_result is None:
+            social_invalid_result = res
+            continue
+
+        if res.reason == "storefront_listing_invalid" and listing_invalid_result is None:
+            listing_invalid_result = res
             continue
 
         if res.hard_dead and dead_result is None:
@@ -557,8 +713,11 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
         if generic_result is None:
             generic_result = res
 
-    if store_invalid_result is not None:
-        return store_invalid_result
+    if social_invalid_result is not None:
+        return social_invalid_result
+
+    if listing_invalid_result is not None:
+        return listing_invalid_result
 
     if dead_result is not None:
         return dead_result
@@ -578,6 +737,7 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
         hard_dead=False,
         checked_url="",
         storefront_invalid=False,
+        promoted_url="",
     )
 
 
@@ -597,6 +757,36 @@ def _clear_dead_markers(p: Dict[str, Any]) -> None:
                 del p[k]
             except Exception:
                 pass
+
+
+def _promote_valid_url(p: Dict[str, Any], good_url: str) -> int:
+    good = _clean_url(good_url)
+    if not good:
+        return 0
+
+    changed = 0
+
+    if _clean_url(p.get("check_url") or "") != good:
+        p["check_url"] = good
+        changed += 1
+
+    open_url = _clean_url(p.get("open_url") or "")
+    if not open_url or _is_social_path(open_url) or _is_lista_url(open_url) or _unwrap_account_verification(open_url):
+        if open_url != good:
+            p["open_url"] = good
+            changed += 1
+
+    if _clean_url(p.get("resolved_url") or "") != good:
+        p["resolved_url"] = good
+        changed += 1
+
+    canonical = _clean_url(p.get("canonical_url") or "")
+    if not canonical or _is_social_path(canonical) or _is_lista_url(canonical):
+        if canonical != good:
+            p["canonical_url"] = good
+            changed += 1
+
+    return changed
 
 
 def _force_restore_all(products: List[Dict[str, Any]]) -> int:
@@ -619,42 +809,6 @@ def _force_restore_all(products: List[Dict[str, Any]]) -> int:
                 p["guardian_fail_count"] = 0
 
     return boosted
-
-
-def _promote_valid_url(p: Dict[str, Any], winner: str) -> int:
-    changed = 0
-    w = _clean_url(winner)
-    if not w:
-        return 0
-    if not _is_ml_url(w):
-        return 0
-    if _is_storefront_invalid_url(w):
-        return 0
-
-    current_check = _clean_url(p.get("check_url") or "")
-    if current_check != w:
-        p["check_url"] = w
-        changed += 1
-
-    current_resolved = _clean_url(p.get("resolved_url") or "")
-    if (not current_resolved) or _is_storefront_invalid_url(current_resolved):
-        if current_resolved != w:
-            p["resolved_url"] = w
-            changed += 1
-
-    current_open = _clean_url(p.get("open_url") or "")
-    if (not current_open) or _is_storefront_invalid_url(current_open):
-        if current_open != w:
-            p["open_url"] = w
-            changed += 1
-
-    current_canonical = _clean_url(p.get("canonical_url") or "")
-    if (not current_canonical) or _is_storefront_invalid_url(current_canonical):
-        if current_canonical != w:
-            p["canonical_url"] = w
-            changed += 1
-
-    return changed
 
 
 # =========================
@@ -976,12 +1130,12 @@ def main() -> int:
     now = _utc_now_iso_z()
 
     checked = 0
-    changed = 0
     ok_count = 0
     dead_count = 0
     temp_count = 0
     store_invalid_count = 0
     removed_dead = 0
+    changed = 0
 
     products_sorted = sorted([p for p in products if isinstance(p, dict)], key=_sort_key)
     out: List[Dict[str, Any]] = []
@@ -1008,7 +1162,6 @@ def main() -> int:
         p["guardian_last_reason"] = res.reason
         p["guardian_last_checked_url"] = _clean_url(res.checked_url)
         p["last_checked"] = now
-
         checked += 1
 
         if res.temporary:
@@ -1035,10 +1188,6 @@ def main() -> int:
             ok_count += 1
             p["last_ok"] = now
 
-            promote_changed = _promote_valid_url(p, _clean_url(res.final_url or res.checked_url))
-            if promote_changed:
-                changed += promote_changed
-
             if int(p.get("guardian_fail_count") or 0) != 0:
                 p["guardian_fail_count"] = 0
                 changed += 1
@@ -1047,12 +1196,16 @@ def main() -> int:
 
             _clear_dead_markers(p)
 
+            promoted = _promote_valid_url(p, res.promoted_url or res.final_url or res.checked_url)
+            if promoted:
+                changed += promoted
+
             if AUTO_REACTIVATE and (not was_active):
                 p["active"] = True
                 changed += 1
-                print(f"[OK] {sku} -> REATIVADO ({res.reason}) via {_clean_url(res.final_url or res.checked_url)}")
+                print(f"[OK] {sku} -> REATIVADO ({res.reason}) via {_clean_url(res.promoted_url or res.final_url or res.checked_url)}")
             else:
-                print(f"[OK] {sku} status={res.status} ({res.reason}) via {_clean_url(res.final_url or res.checked_url)}")
+                print(f"[OK] {sku} status={res.status} ({res.reason}) via {_clean_url(res.promoted_url or res.final_url or res.checked_url)}")
 
             out.append(p)
             time.sleep(SLEEP_BETWEEN)
@@ -1080,7 +1233,9 @@ def main() -> int:
         if res.storefront_invalid:
             p["guardian_storefront_invalid"] = True
 
-        if fail_count >= FAIL_THRESHOLD:
+        effective_threshold = STOREFRONT_INVALID_THRESHOLD if res.storefront_invalid else FAIL_THRESHOLD
+
+        if fail_count >= effective_threshold:
             disabled_now = False
 
             if was_active:
@@ -1096,9 +1251,9 @@ def main() -> int:
             changed += 1
 
             if res.storefront_invalid:
-                print(f"[STORE_INVALID] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD}) via {_clean_url(res.final_url or res.checked_url)}")
+                print(f"[STORE_INVALID] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{effective_threshold}) final={p.get('guardian_last_final_url', '')}")
             else:
-                print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD})")
+                print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{effective_threshold})")
 
             pending_actions[sku] = {
                 "disabled_event": _build_removed_event(
@@ -1107,7 +1262,7 @@ def main() -> int:
                     happened_at=now,
                     event_type="disabled_from_storefront" if res.storefront_invalid else "disabled",
                     fail_count=fail_count,
-                    fail_threshold=FAIL_THRESHOLD,
+                    fail_threshold=effective_threshold,
                     was_active=was_active,
                     was_featured=was_featured,
                 ) if disabled_now else None,
@@ -1117,7 +1272,7 @@ def main() -> int:
                     happened_at=now,
                     event_type="removed_from_catalog",
                     fail_count=fail_count,
-                    fail_threshold=FAIL_THRESHOLD,
+                    fail_threshold=effective_threshold,
                     was_active=was_active,
                     was_featured=was_featured,
                 ) if REMOVE_ON_DEAD else None,
@@ -1125,9 +1280,9 @@ def main() -> int:
             }
         else:
             if res.storefront_invalid:
-                print(f"[STORE_INVALID] {sku} status={res.status} (fail={fail_count}/{FAIL_THRESHOLD}) via {_clean_url(res.final_url or res.checked_url)}")
+                print(f"[STORE_INVALID] {sku} status={res.status} (fail={fail_count}/{effective_threshold}) final={p.get('guardian_last_final_url', '')}")
             else:
-                print(f"[FAIL] {sku} status={res.status} (fail={fail_count}/{FAIL_THRESHOLD})")
+                print(f"[FAIL] {sku} status={res.status} (fail={fail_count}/{effective_threshold})")
 
         out.append(p)
         time.sleep(SLEEP_BETWEEN)
@@ -1213,7 +1368,7 @@ def main() -> int:
     print(f"Removed JSON: {REMOVED_JSON}")
     print(f"Removed TXT: {REMOVED_TXT}")
     print(f"Changed: {changed}")
-    print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
+    print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | STOREFRONT_INVALID_THRESHOLD: {STOREFRONT_INVALID_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
     print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | LISTA_INVALID_FOR_STOREFRONT: {int(LISTA_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)}")
     print(f"DEAD_ON_BODY: {int(DEAD_ON_BODY)} | MAX_CANDIDATE_URLS: {MAX_CANDIDATE_URLS}")
     print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
