@@ -8,6 +8,16 @@
    - getLink() agora aceita open_url/check_url/canonical_url/short_url/resolved_url
    - normaliza links sem https://
    - abrir em in-app browsers (IG/FB): window.open + fallback location.href
+
+   ✅ PATCH TRACKING HOME (2026-03-20):
+   - view_featured
+   - view_quick_product
+   - click_buy_home_featured
+   - click_buy_home_quick
+   - click_copy_id_home
+   - click_copy_link_home
+   - click_copy_alt_home
+   - click_open_store
 */
 (function () {
   'use strict';
@@ -175,7 +185,52 @@
     bg.style.pointerEvents = 'none';
     qsa('.bg *').forEach(function (el) { el.style.pointerEvents = 'none'; });
   }
-  function renderFeatured(p) {
+
+  function getTrackProduct(p, extra) {
+    var meta = extra || {};
+    return {
+      sku: safeText(p && (p.sku || '')),
+      product_title: safeText(p && (p.title || p.name || p.sku || '')),
+      id_busca: safeText(getMlId(p)),
+      badges: parseBadges(p),
+      featured: !!isFeatured(p),
+      page_type: 'home',
+      position_on_page: (meta.position_on_page === 0 || meta.position_on_page) ? meta.position_on_page : null,
+      placement: safeText(meta.placement || ''),
+      source_block: safeText(meta.source_block || '')
+    };
+  }
+
+  function trackEvent(eventName, payload) {
+    try {
+      if (!window.CNTracking || typeof window.CNTracking.track !== 'function') return;
+      window.CNTracking.track(eventName, payload || {});
+    } catch (e) {}
+  }
+
+  function trackProductViewOnce(state, kind, p, extra) {
+    if (!state || !p) return;
+
+    var sku = safeText(p.sku || p.title || '');
+    if (!sku) return;
+
+    if (!state._trackedViews) state._trackedViews = { featured: {}, quick: {} };
+    if (!state._trackedViews[kind]) state._trackedViews[kind] = {};
+
+    if (state._trackedViews[kind][sku]) return;
+    state._trackedViews[kind][sku] = true;
+
+    if (kind === 'featured') {
+      trackEvent('view_featured', getTrackProduct(p, extra));
+      return;
+    }
+
+    if (kind === 'quick') {
+      trackEvent('view_quick_product', getTrackProduct(p, extra));
+    }
+  }
+
+  function renderFeatured(p, state) {
     var root = qs('#featured');
     if (!root) return;
     root.innerHTML = '';
@@ -187,6 +242,12 @@
       root.appendChild(note);
       return;
     }
+
+    trackProductViewOnce(state, 'featured', p, {
+      placement: 'featured_main',
+      source_block: 'produto_do_dia',
+      position_on_page: 1
+    });
 
     var wrap = document.createElement('div');
     wrap.className = 'cnFeaturedWrap';
@@ -252,6 +313,13 @@
     aBuy.onclick = function (ev) {
       if (ev && ev.preventDefault) ev.preventDefault();
       if (!buyLink) { toast('Link do produto não encontrado'); return false; }
+
+      trackEvent('click_buy_home_featured', getTrackProduct(p, {
+        placement: 'featured_buy',
+        source_block: 'produto_do_dia',
+        position_on_page: 1
+      }));
+
       openBuy(buyLink);
       return false;
     };
@@ -262,6 +330,12 @@
     bCopyId.className = 'btn btn--glass btn--tiny';
     bCopyId.textContent = 'Copiar ID';
     bCopyId.onclick = function () {
+      trackEvent('click_copy_id_home', getTrackProduct(p, {
+        placement: 'featured_copy_id',
+        source_block: 'produto_do_dia',
+        position_on_page: 1
+      }));
+
       copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
     };
     row1.appendChild(bCopyId);
@@ -272,6 +346,13 @@
     bCopyLink.textContent = 'Copiar Link';
     bCopyLink.onclick = function () {
       var link = getLink(p);
+
+      trackEvent('click_copy_link_home', getTrackProduct(p, {
+        placement: 'featured_copy_link',
+        source_block: 'produto_do_dia',
+        position_on_page: 1
+      }));
+
       copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
     };
     row1.appendChild(bCopyLink);
@@ -282,6 +363,13 @@
     bAlt.textContent = 'Copiar Link Alternativo';
     bAlt.onclick = function () {
       var alt = (location.origin + location.pathname.replace(/index\.html$/,'') + 'loja.html');
+
+      trackEvent('click_copy_alt_home', getTrackProduct(p, {
+        placement: 'featured_copy_alt',
+        source_block: 'produto_do_dia',
+        position_on_page: 1
+      }));
+
       copyText(alt).then(function (ok) { toast(ok ? 'Link alternativo copiado ✅' : 'Falha ao copiar'); });
     };
     row1.appendChild(bAlt);
@@ -290,6 +378,13 @@
     aStore.className = 'btn btn--glass btn--tiny';
     aStore.textContent = 'Abrir Loja Completa';
     aStore.href = './loja.html';
+    aStore.onclick = function () {
+      trackEvent('click_open_store', {
+        page_type: 'home',
+        placement: 'featured_open_store',
+        source_block: 'produto_do_dia'
+      });
+    };
     row1.appendChild(aStore);
 
     pad.appendChild(row1);
@@ -310,9 +405,15 @@
     root.appendChild(wrap);
   }
 
-  function makeQuickCard(p) {
+  function makeQuickCard(p, idx, state) {
     var card = document.createElement('article');
     card.className = 'cnProd';
+
+    trackProductViewOnce(state, 'quick', p, {
+      placement: 'quick_grid',
+      source_block: 'vitrine_rapida',
+      position_on_page: idx + 1
+    });
 
     var img = document.createElement('img');
     img.className = 'cnImg';
@@ -360,6 +461,13 @@
     buy.onclick = function (ev) {
       if (ev && ev.preventDefault) ev.preventDefault();
       if (!buyLink) { toast('Link do produto não encontrado'); return false; }
+
+      trackEvent('click_buy_home_quick', getTrackProduct(p, {
+        placement: 'quick_buy',
+        source_block: 'vitrine_rapida',
+        position_on_page: idx + 1
+      }));
+
       openBuy(buyLink);
       return false;
     };
@@ -370,6 +478,12 @@
     cId.type = 'button';
     cId.textContent = 'Copiar ID';
     cId.onclick = function () {
+      trackEvent('click_copy_id_home', getTrackProduct(p, {
+        placement: 'quick_copy_id',
+        source_block: 'vitrine_rapida',
+        position_on_page: idx + 1
+      }));
+
       copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
     };
     row.appendChild(cId);
@@ -380,6 +494,13 @@
     cLink.textContent = 'Copiar Link';
     cLink.onclick = function () {
       var link = getLink(p);
+
+      trackEvent('click_copy_link_home', getTrackProduct(p, {
+        placement: 'quick_copy_link',
+        source_block: 'vitrine_rapida',
+        position_on_page: idx + 1
+      }));
+
       copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
     };
     row.appendChild(cLink);
@@ -390,7 +511,7 @@
     return card;
   }
 
-  function renderQuick(list) {
+  function renderQuick(list, state) {
     var grid = qs('#quickGrid');
     if (!grid) return;
     grid.innerHTML = '';
@@ -398,7 +519,7 @@
     var limit = 9; // prévia
     var n = Math.min(limit, list.length);
     for (var i = 0; i < n; i++) {
-      grid.appendChild(makeQuickCard(list[i]));
+      grid.appendChild(makeQuickCard(list[i], i, state));
     }
     setQuickCount(n);
   }
@@ -420,7 +541,7 @@
           if (blob.indexOf(q) >= 0) out.push(p);
         }
       }
-      renderQuick(out);
+      renderQuick(out, state);
     }
 
     input.addEventListener('input', apply);
@@ -471,7 +592,17 @@
     var yEl = qs('#year');
     if (yEl) yEl.textContent = String(y);
 
-    var state = { products: [], active: [], sorted: [], featured: null, updated_at: '' };
+    var state = {
+      products: [],
+      active: [],
+      sorted: [],
+      featured: null,
+      updated_at: '',
+      _trackedViews: {
+        featured: {},
+        quick: {}
+      }
+    };
 
     fetch('./produtos.json', { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('fetch produtos.json'); return r.json(); })
@@ -492,7 +623,7 @@
         if (!feat) feat = state.sorted.length ? state.sorted[0] : null;
         state.featured = feat;
 
-        renderFeatured(state.featured);
+        renderFeatured(state.featured, state);
         bindSearch(state);
 
         qsa('[data-total-products]').forEach(function (el) { el.textContent = String(state.active.length); });
