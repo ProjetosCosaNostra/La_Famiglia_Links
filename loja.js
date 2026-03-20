@@ -35,19 +35,6 @@
    PATCH 2026-03-20 (EXPORT CATÁLOGO EM TXT):
      - Botão público para baixar o snapshot do produtos.json em TXT
      - Útil para auditoria e para colar no chat sem sobrecarregar a conversa
-
-   PATCH 2026-03-20 (TRACKING LOJA):
-     - page_view_loja
-     - view_featured_loja
-     - view_product_card
-     - click_buy
-     - click_copy_id
-     - click_copy_link
-     - click_copy_alt
-     - search_loja
-     - filter_tag
-     - sort_change
-     - click_load_more
    ========================================================== */
 
 (() => {
@@ -680,50 +667,6 @@
     return actives.find((p) => p.featured) || null;
   }
 
-  function trackEvent(eventName, payload = {}) {
-    try {
-      if (!window.CNTracking || typeof window.CNTracking.track !== "function") return;
-      window.CNTracking.track(eventName, payload);
-    } catch {}
-  }
-
-  function getTrackProduct(p, extra = {}) {
-    return {
-      page_type: "loja",
-      sku: String(p?.sku || ""),
-      product_title: String(p?.title || ""),
-      id_busca: String(p?.id_busca || ""),
-      badges: safeArray(p?.badges || []),
-      featured: p?.featured === true,
-      position_on_page: Number.isFinite(Number(extra.position_on_page)) ? Number(extra.position_on_page) : null,
-      placement: String(extra.placement || ""),
-      source_block: String(extra.source_block || ""),
-      query: String(STATE.query || ""),
-      active_filter_tag: String(STATE.tag || ""),
-      active_sort: String(STATE.sort || "relev"),
-    };
-  }
-
-  function trackViewOnce(kind, sku, payloadBuilder) {
-    if (!sku) return;
-    if (!STATE._trackedViews[kind]) STATE._trackedViews[kind] = {};
-    if (STATE._trackedViews[kind][sku]) return;
-    STATE._trackedViews[kind][sku] = true;
-    payloadBuilder();
-  }
-
-  function getActionPlacement(el, action) {
-    const inGrid = !!el.closest(".pCard");
-    if (action === "copyId") return inGrid ? "grid_copy_id" : "featured_copy_id";
-    if (action === "copyLink") return inGrid ? "grid_copy_link" : "featured_copy_link";
-    if (action === "copyAlt") return inGrid ? "grid_copy_alt" : "featured_copy_alt";
-    return inGrid ? "grid_action" : "featured_action";
-  }
-
-  function getActionSourceBlock(el) {
-    return el.closest(".pCard") ? "loja_grid" : "featured_loja";
-  }
-
   function featuredHTML(p, isProdutoDoDia) {
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
@@ -926,6 +869,7 @@
 
   function isCategoryTag(label, n) {
     if ((n || 0) < CN_CAT_MIN_COUNT) {
+      // pinned entra mesmo se tiver pouco
       const key = normalizeTagKey(label);
       const pinned = CN_CAT_PINNED.some((x) => normalizeTagKey(x) === key);
       if (!pinned) return false;
@@ -1113,15 +1057,6 @@
       if (!btn) return;
 
       const tag = String(btn.getAttribute("data-tag") || "").trim();
-
-      trackEvent("filter_tag", {
-        page_type: "loja",
-        tag: tag,
-        placement: "tag_modal",
-        query: String(STATE.query || ""),
-        active_sort: String(STATE.sort || "relev")
-      });
-
       STATE.tag = tag;
       STATE.limit = PAGE_SIZE;
       closeTagModal();
@@ -1146,12 +1081,14 @@
 
     let top = categories.slice(0, maxChips);
 
+    // se categoria selecionada não está em top, injeta no começo
     const activeKey = normalizeTagKey(STATE.tag || "");
     if (activeKey && !top.some((t) => normalizeTagKey(t.label) === activeKey)) {
       const sel = categories.find((t) => normalizeTagKey(t.label) === activeKey);
       if (sel) top = [sel, ...top].slice(0, maxChips);
     }
 
+    // contador premium: "14+" quando tem mais
     setText(totalTagsEl, categories.length > top.length ? `${top.length}+` : `${top.length}`);
 
     const allActive = !STATE.tag;
@@ -1245,24 +1182,6 @@
       ? featuredHTML(featuredPass, true)
       : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
 
-    if (featuredPass) {
-      trackViewOnce("featured", featuredPass.sku, () => {
-        trackEvent("view_featured_loja", getTrackProduct(featuredPass, {
-          placement: "featured_top",
-          source_block: "featured_loja",
-          position_on_page: 1
-        }));
-      });
-    } else if (destaque) {
-      trackViewOnce("featured", destaque.sku, () => {
-        trackEvent("view_featured_loja", getTrackProduct(destaque, {
-          placement: "featured_auto",
-          source_block: "featured_loja",
-          position_on_page: 1
-        }));
-      });
-    }
-
     applyImageFixes(featuredEl);
 
     let list = filtered.slice();
@@ -1275,17 +1194,6 @@
 
     const shown = list.slice(0, STATE.limit);
     grid.innerHTML = shown.map(productCardHTML).join("");
-
-    shown.forEach((p, idx) => {
-      trackViewOnce("grid", p.sku, () => {
-        trackEvent("view_product_card", getTrackProduct(p, {
-          placement: "grid_card",
-          source_block: "loja_grid",
-          position_on_page: idx + 1
-        }));
-      });
-    });
-
     applyImageFixes(grid);
 
     const wrap = $("#loadMoreWrap");
@@ -1515,19 +1423,6 @@
         STATE.query = String(e.target.value || "");
         STATE.limit = PAGE_SIZE;
         render();
-
-        clearTimeout(STATE._searchTimer);
-        STATE._searchTimer = setTimeout(() => {
-          const query = String(q.value || "").trim();
-          if (!query) return;
-          trackEvent("search_loja", {
-            page_type: "loja",
-            query,
-            placement: "search_box",
-            active_filter_tag: String(STATE.tag || ""),
-            active_sort: String(STATE.sort || "relev")
-          });
-        }, 700);
       });
     }
 
@@ -1545,23 +1440,12 @@
     if (copyBtn) {
       copyBtn.addEventListener("click", (e) => {
         e.preventDefault();
-
-        trackEvent("click_copy_store_link", {
-          page_type: "loja",
-          placement: "hero_copy_store_link"
-        });
-
         copyText(lojaUrl());
       });
     }
 
     if (copyPageBtn) {
       copyPageBtn.addEventListener("click", () => {
-        trackEvent("click_copy_page_link_loja", {
-          page_type: "loja",
-          placement: "footer_copy_page_link"
-        });
-
         copyText(location.href);
       });
     }
@@ -1577,15 +1461,6 @@
       sortSel.addEventListener("change", (e) => {
         STATE.sort = String(e.target.value || "relev");
         STATE.limit = PAGE_SIZE;
-
-        trackEvent("sort_change", {
-          page_type: "loja",
-          sort: STATE.sort,
-          placement: "sort_select",
-          query: String(STATE.query || ""),
-          active_filter_tag: String(STATE.tag || "")
-        });
-
         render();
       });
     }
@@ -1593,15 +1468,6 @@
     if (moreBtn) {
       moreBtn.addEventListener("click", () => {
         STATE.limit += PAGE_SIZE;
-
-        trackEvent("click_load_more", {
-          page_type: "loja",
-          placement: "load_more_button",
-          query: String(STATE.query || ""),
-          active_filter_tag: String(STATE.tag || ""),
-          active_sort: String(STATE.sort || "relev")
-        });
-
         render();
       });
     }
@@ -1661,18 +1527,6 @@
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
         if (isProbablyValidLink(href)) {
-          const card = aBuy.closest(".pCard");
-          const sku = card ? (card.getAttribute("data-sku") || "") : "";
-          const p = sku ? findBySku(sku) : (STATE._lastFeaturedShown || null);
-
-          if (p) {
-            trackEvent("click_buy", getTrackProduct(p, {
-              placement: card ? "grid_buy" : "featured_buy",
-              source_block: card ? "loja_grid" : "featured_loja",
-              position_on_page: card ? null : 1
-            }));
-          }
-
           e.preventDefault();
           openBuy(href);
           return;
@@ -1682,15 +1536,6 @@
       const chip = e.target.closest("[data-tag]");
       if (chip && chip.classList.contains("tagChip")) {
         const t = String(chip.getAttribute("data-tag") || "").trim();
-
-        trackEvent("filter_tag", {
-          page_type: "loja",
-          tag: t,
-          placement: "tag_chip",
-          query: String(STATE.query || ""),
-          active_sort: String(STATE.sort || "relev")
-        });
-
         STATE.tag = t;
         STATE.limit = PAGE_SIZE;
         render();
@@ -1704,29 +1549,9 @@
       const sku = el.getAttribute("data-sku") || "";
       const p = sku ? findBySku(sku) : null;
 
-      if (action === "copyLink" && p) {
-        trackEvent("click_copy_link", getTrackProduct(p, {
-          placement: getActionPlacement(el, action),
-          source_block: getActionSourceBlock(el)
-        }));
-        return copyText(bestBuyUrl(p) || "");
-      }
-
-      if (action === "copyAlt" && p) {
-        trackEvent("click_copy_alt", getTrackProduct(p, {
-          placement: getActionPlacement(el, action),
-          source_block: getActionSourceBlock(el)
-        }));
-        return copyText(p.alt_url || p.canonical_url || p.check_url || "");
-      }
-
-      if (action === "copyId" && p) {
-        trackEvent("click_copy_id", getTrackProduct(p, {
-          placement: getActionPlacement(el, action),
-          source_block: getActionSourceBlock(el)
-        }));
-        return copyText(p.id_busca || "");
-      }
+      if (action === "copyLink" && p) return copyText(bestBuyUrl(p) || "");
+      if (action === "copyAlt" && p) return copyText(p.alt_url || p.canonical_url || p.check_url || "");
+      if (action === "copyId" && p) return copyText(p.id_busca || "");
 
       if (!ADMIN) return;
     });
@@ -1766,12 +1591,6 @@
     _export: null,
     _categoryCounts: [],
     _activeCount: 0,
-    _trackedViews: {
-      featured: {},
-      grid: {}
-    },
-    _lastFeaturedShown: null,
-    _searchTimer: null,
   };
 
   async function boot() {
@@ -1781,20 +1600,6 @@
 
     readUrlState();
     setText($("#year"), new Date().getFullYear());
-
-    try {
-      if (window.CNTracking && typeof window.CNTracking.init === "function") {
-        window.CNTracking.init({
-          pageType: "loja",
-          autoPageView: false,
-          debug: false
-        });
-
-        trackEvent("page_view_loja", {
-          page_type: "loja"
-        });
-      }
-    } catch {}
 
     try {
       STATE.products = await fetchProducts();
