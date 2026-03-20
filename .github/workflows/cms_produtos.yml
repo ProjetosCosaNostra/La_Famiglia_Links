@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   run-cms:
-    if: contains(join(github.event.issue.labels.*.name, ','), 'cms-produtos')
+    if: ${{ contains(github.event.issue.labels.*.name, 'cms-produtos') || contains(github.event.issue.labels.*.name, 'cms-produto-do-dia') }}
     runs-on: ubuntu-latest
 
     steps:
@@ -38,6 +38,8 @@ jobs:
           python -m pip install -U pip
           if [ -f tools/requirements.txt ]; then
             pip install -r tools/requirements.txt
+          elif [ -f requirements.txt ]; then
+            pip install -r requirements.txt
           fi
 
       - name: Debug (versions + context)
