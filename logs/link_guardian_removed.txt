@@ -1,17 +1,197 @@
 ========================================
 LINK GUARDIAN — PRODUTOS DESATIVADOS/REMOVIDOS
 ========================================
-Atualizado em: 2026-03-20T23:48:47Z
-Total de eventos: 60
+Atualizado em: 2026-03-20T23:54:59Z
+Total de eventos: 80
 
 RESUMO SEMANAL
 ----------------------------------------
-- 2026-W12: 60 evento(s) | 60 SKU(s)
+- 2026-W12: 80 evento(s) | 80 SKU(s)
 
 DETALHES POR SEMANA
 ----------------------------------------
 
 ### 2026-W12
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | powerbank-20000mah-22w-usbc-preto | Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-H0JA
+  checked_url=https://mercadolivre.com/sec/1iReZ7Y
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD1ElCXCtPJ6EbtdFxNoEpdfwmmGZOGnb4KH3X96HyIbWaPjlJdjUDPVPx8I0xZ%2F%2FhNY0HbQIl50Yvv%2FIvO%2B1ks9Xegk4Es894jBvVvc8c0EGnK1wY9OMo2SfDrKBRfJKx9fO%2FxGQ3nx452%2BprK3KxPQ6oAC4yezjFP%2Brc5BZ2LtVQen2nYxLIJxLhazkROF4qmk5A%3D%3D
+  open_url=https://mercadolivre.com/sec/1iReZ7Y
+  check_url=https://mercadolivre.com/sec/1iReZ7Y
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-H0JA
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | air-fryer-mondial-4l-1500w-afn-40-bft-preto | Fritadeira sem óleo (Air Fryer) Mondial 4L 1500W — AFN-40-BFT (Preto)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-NYSK
+  checked_url=https://mercadolivre.com/sec/28iCzpJ
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAmbF9slm233KxI6PGKOKjl4F%2BXDdghoiz5hYxXvOXivC7a5zEQjoG%2BePQxHlIebSPOeHUFMnf%2BwgHpMjYurR6zu0lYQBGrl9i9Qr4W38CXhVZFfWjEV5dafGv%2BoRfvY5VG8NpVT2TOBZedVnb%2By6fP3mrB3AARj8l%2Bg8QxOVepTMXwBfLWAYJ2L8BiHbEVnCIDz%2Fho%3D
+  open_url=https://mercadolivre.com/sec/28iCzpJ
+  check_url=https://mercadolivre.com/sec/28iCzpJ
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-NYSK
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | bolsa-tiracolo-antifurto-usb-impermeavel-0nqd | Bolsa Tiracolo Antifurto Unissex com USB (Impermeável)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-0NQD
+  checked_url=https://mercadolivre.com/sec/1PHGxD8
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BALKWfrk3bRTFNnLeJM4cwuZ%2B3EMNSY1wtLmROzIEQbNVdb%2BdSrctCEjH0ElG44k%2BzK7LLH1ZNDj5SkPdIKdCiJgbxt%2Bu3arNRuMPm4bQkD2xgaqusbr0BF%2Bio%2BPtQc3O2vV%2BT8l44AUUe%2F3RdnZ5wE5JuEjXXprwkbAjNx2b9SU7pm88bwc9WY1%2BMSKCi8BohN77g%3D%3D
+  open_url=https://mercadolivre.com/sec/1PHGxD8
+  check_url=https://mercadolivre.com/sec/1PHGxD8
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-0NQD
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | tomada-inteligente-20a-medidor-5j5pkg-fpxm | Tomada Inteligente WiFi 20A + Medidor de Consumo (Tuya)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-FPXM
+  checked_url=https://mercadolivre.com/sec/1aGeMPL
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCBQXJmDGNi0Eoj0OGA3TrY6wvl%2Fae764%2BYfi3LfQ%2F75v2MEiXzJReDtEqXiJL1bUJbwX4mMlFGE6QAkIGu%2Bm%2Fa2TMWqWfp%2F5r7G13TpzyQcRFPqjWX%2FaYsSsE%2FXcf2Nv9YaWgUjsqG%2B8HP7MsUK%2FVH9i51MKwkxcm4sohEFQyNvifU7a5LWszwHl7%2B64blSGfwm5ac%3D
+  open_url=https://mercadolivre.com/sec/1aGeMPL
+  check_url=https://mercadolivre.com/sec/1aGeMPL
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-FPXM
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | camera-wifi-360-fullhd-tapo | Câmera Wi-Fi 360° Full HD (Tapo)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-5X9V
+  checked_url=https://mercadolivre.com/sec/14j4Duz
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAPa4w5u94RK64qXftXzgbuki65nm3YXz6vIqM1gkUZSA2F%2FH90ghSxSwEBQwBc9VMrXGVV5NEOiJHOogIDLmLmz6ySZJ2sTkh6j4p6oXwQCx%2FtqyYkKbws6jdwTU%2FFPNe8s0wWY%2BNEGOY1Ja5dH6vvyjLd%2BgSJw%2BDMcFQposz4nuF3HoiPtDrPY4Zd1kOg%2B1%2Bx9WBc%3D
+  open_url=https://mercadolivre.com/sec/14j4Duz
+  check_url=https://mercadolivre.com/sec/14j4Duz
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-5X9V
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | porteiro-eletronico-wifi-camera-visao-noturna-audio | Porteiro Eletrônico Wi-Fi com Câmera | Visão Noturna + Áudio
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-YLW9
+  checked_url=https://mercadolivre.com/sec/2ZKyLhs
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BADl0LcDX5uoDUowUwTHXKMcuGbupOZQ%2F4uWlWzhFmUUKGT79m1jRQDr5bDuua7v9uxLM8EU9VZfjhoFWhQHeuVLSpTh%2Fd06T1MfcPCcvCTLO0QK%2F4d8Yy%2BlBzvRo%2BZERKlLj8UkUbiZ7QfjN4Si7M5%2BRugChGS25eF%2BUx2bMIqBolDrhLjMh7GKCXfybcfx429T4cM%3D
+  open_url=https://mercadolivre.com/sec/2ZKyLhs
+  check_url=https://mercadolivre.com/sec/2ZKyLhs
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-YLW9
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | ring-light-rgb-10-tripe-210m | Ring Light RGB 10” + Tripé 2,10m (Controle no cabo)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-BHRR
+  checked_url=https://mercadolivre.com/sec/2BuQ5JD
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMmf%2BjbJaViMUSZa0i3wJchel0Kbfe9P2cOrzMnEb2Ht2%2FTQPoIcWVXfZ3WzDZtQgQ3x20MxYkQVINVu%2Bkcjq6SrsESfLWXZZcr2%2FmZ9bX8cs6mcErb0zUSONfpt%2B%2BObc0EpZeh07mjPbL%2BkiXrcC57PKbxscBgW3uZ3rM%2Fdt6I9DRFcBtOXcpgaLiHeH8BLbSLoXA%3D%3D
+  open_url=https://mercadolivre.com/sec/2BuQ5JD
+  check_url=https://mercadolivre.com/sec/2BuQ5JD
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-BHRR
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | wap-robot-w90-3em1-preto | Robô Aspirador WAP Robot W90 3 em 1 (Varre, Aspira e Passa Pano)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-TCW4
+  checked_url=https://mercadolivre.com/sec/2J1MBX9
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGL72D3oimRRHUEchzZL%2BPjQxzGqIEpA3PIxCsTOoB1bOyNrcmAFSYR6jKDGw6OwpnBB1WaeCh3hIZFWmWU8aPh3IVQH%2FW2%2FxMRc6WQ7cU7uixBz7hc%2ByatN%2BuLB0mq4pP1DAaGA8BHhDZDGiTwG25ZAXoRi72IDrJ7040P2q2QeSTc%2F%2FP36K46ms35H4B9n2TW0Ko4%3D
+  open_url=https://mercadolivre.com/sec/2J1MBX9
+  check_url=https://mercadolivre.com/sec/2J1MBX9
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-TCW4
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | jogo-lencol-400-fios-queen-box-4-pecas | Jogo de Lençol 400 Fios — Queen Box (4 peças)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-MY6V
+  checked_url=https://mercadolivre.com/sec/2wZB7u8
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFb3TSBnASCc%2BgvpnZlD1yA2UQfc6H9dzOyQQout%2F%2BFpavO%2FevBXHC%2B6l18D0jMGhL%2BYragvsyfYgegw4ZbKYqwWyUfmUnUoci2t3mWNss3myOSj%2BGbQtCPnYuvf199kBjX%2F6jzNvtBxQ8AYwW98skMkjzbwV2031Ay%2F%2FKfqx%2FGDB7hjhxzUFQIbQBV1tpcK204WKQ%3D%3D
+  open_url=https://mercadolivre.com/sec/2wZB7u8
+  check_url=https://mercadolivre.com/sec/2wZB7u8
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-MY6V
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | escova-pet-vapor-3em1-elaf-5j5pkg-atvc | Escova 3 em 1 para Cães e Gatos — Remove Pelos + Vapor
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-ATVC
+  checked_url=https://mercadolivre.com/sec/2ShroHC
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://mercadolivre.com/sec/2ShroHC
+  check_url=https://mercadolivre.com/sec/2ShroHC
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-ATVC
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | carmed-fini-beijos-cor-10g-5j5pkg-er7l | Carmed Fini Beijos com cor (10g) — Hidratante Labial Efeito Gloss
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-ER7L
+  checked_url=https://mercadolivre.com/sec/29UHzhL
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNwxVRg6pVRHG7LxZ76ae0E%2F98IqPE6ZUSi%2Bn1wjkVf0MByQRS6riMBTo8fkH2LHb6yuiCnNMfgYB416i%2FjqHSsM9iISvGdViGH10E%2Bf1wKjcePbVeu8Wc3kyIopbC7u4yWLW5ZClczOniXz8faNrh%2FwLZRB77WF%2FHDboD37Z1dFLsdlfsgQgdDmKzd9S88ErreiK4E%3D
+  open_url=https://mercadolivre.com/sec/29UHzhL
+  check_url=https://mercadolivre.com/sec/29UHzhL
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-ER7L
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | ventilador-mondial-30cm-super-power-60w-vsp-30-w | Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-YXAM
+  checked_url=https://mercadolivre.com/sec/1PnEZeq
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIbru4V1fEqrC75cFAJSbknlc4UnWO%2F7xhpwKeK7YErVXEP0UhloJ7lTiQwCxIdg%2BlcDdmajpZtr3xhGr1twVvKrIfUmn6uVx4h0Gd%2BPuIayJzRGojnsKJ1yTssG7gx%2BWIchJ33JxN6Ahd9nTTDgTVe48ctuGbsZ8BvZ13L006n%2FNrm%2FtCL5AVBXlVgZX0xPOAF3xmk%3D
+  open_url=https://mercadolivre.com/sec/1PnEZeq
+  check_url=https://mercadolivre.com/sec/1PnEZeq
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-YXAM
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | bolsa-termica-lancheira-14l-preta-porta-marmita | Bolsa Térmica Lancheira 14L Preta (2 Compartimentos) — Porta Marmita com Alça Transversal
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-B6J6
+  checked_url=https://mercadolivre.com/sec/2jqTYSD
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3kMg3%2BY4jnqZejiU%2BJ9z%2Fgm7mqjq3kbYqKtp%2BL7eTewNqKeSgl2l2PC1oJrDfCydAgM1rAJMeRJV2ovWPaqCi7fL%2FJ68Hp0ZIzWGc5WtX8%2BqQN%2FbrGJ5xOavXm4j6Ev6bHdBcu5uCcv0CCzJ5%2FdIVh4xUDejNLityqnlEoT7QxRBS79n4j%2BEhanc1txRPrKtxXVwY%3D
+  open_url=https://mercadolivre.com/sec/2jqTYSD
+  check_url=https://mercadolivre.com/sec/2jqTYSD
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-B6J6
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | se-j-existir-usa-amazon-echo-pop-c2h4r9-2 | Echo Pop Smart Speaker (Alexa) — Preto (Amazon)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-ZMR8
+  checked_url=https://mercadolivre.com/sec/19Abme6
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDBPbjjd0uQspWk8ev%2B4FufZSnwsxBp4aQ2sr0EeEVyk3jbak8FVnftTGdNuPKBKcMk%2BZSgRTspeUn25weNHGPlzSxuGAUj9JkT1cRrQazjy5P7hkKRAkry8MvJPpz67euifCETHeJUQjy%2B%2BLsr%2B%2B9Ak%2FGLBf%2BNRD1bvkt0F%2BzHFpZQMygfJI2a4mz6RY%2BNvMF%2Bord4%3D
+  open_url=https://mercadolivre.com/sec/19Abme6
+  check_url=https://mercadolivre.com/sec/19Abme6
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-ZMR8
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | amazon-fire-tv-stick-4k-wifi6 | Fire TV Stick 4K (Alexa) — Wi-Fi 6 (Amazon)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-J4Z5
+  checked_url=https://mercadolivre.com/sec/1nMqFbz
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGhlqJ4Is5KWGu6kd71u3zASTFi8Y6PtCg%2Fv3wKHcLPD7GzC29TcX%2FA1fJ9bcLgLGxH2dF8aYemCsOUqTjyaFWk8JnK7E0sBduv5Az9rb6F6XszLxRehc%2BynapplO7NDXYtq6Xn2tSj6%2Fl4uLVlPcRWo%2FF8nFO%2Fn9r4Fp4dnhKANFYKJ3pUnSM%2Bdy%2FXV67mUtL2faV8%3D
+  open_url=https://mercadolivre.com/sec/1nMqFbz
+  check_url=https://mercadolivre.com/sec/1nMqFbz
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-J4Z5
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | xiaomi-mi-band-8-active-sport | Xiaomi Mi Band 8 Active (Sport)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-WCW0
+  checked_url=https://mercadolivre.com/sec/165s6Pa
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://mercadolivre.com/sec/165s6Pa
+  check_url=https://mercadolivre.com/sec/165s6Pa
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-WCW0
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | logitech-g203-rgb-lightsync-8000dpi-preto | Mouse Gamer Logitech G203 RGB LIGHTSYNC, até 8.000 DPI (Preto)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-3SLZ
+  checked_url=https://mercadolivre.com/sec/1EsmDjB
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGBm%2FwGJxnZw4EUqwvphg2JkD4ZG0GStKfaTBJiMY14lZTT%2FBggEx74x7OmEd6Q2QOv223JrnD72rKOsDuPeHCN3rPkTr3NcGH1YBy63B8XMkhnQp%2Ftg0K4VGbhqJaHSBEVT7rvBGtJKv5k0XfvL6RNaNkzMeKDnlwRKau8zevLd6ymqzuk5mnjYzWK1rcsbwcJuAgM%3D
+  open_url=https://mercadolivre.com/sec/1EsmDjB
+  check_url=https://mercadolivre.com/sec/1EsmDjB
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-3SLZ
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | ugreen-robot-nexode-gan-65w-lilas | Carregador 65W Ugreen Robot Nexode GaN (Lilás) — 3 portas (carga rápida)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-9SG3
+  checked_url=https://mercadolivre.com/sec/1WrAqC3
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://mercadolivre.com/sec/1WrAqC3
+  check_url=https://mercadolivre.com/sec/1WrAqC3
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-9SG3
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | hub-usbc-8em1-h71p | Hub USB-C 8 em 1 (HDMI + RJ45 + USB 3.0 + SD/TF)
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-H71P
+  checked_url=https://mercadolivre.com/sec/21NWPnw
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG6gj0z2en%2F8YFiB5BBiQuKgOUpxAYkiYiKNTXaDzLb9CaEZths%2FEh7HKL0wNqEAxmdOlp3sAlZ9M9pffyY9yZo3np3D3Fky7OSySw2J21oESkUsNW%2Bb6DiyVyY70Q3AAgOBEGjA2qoMEM%2Bije7FY6tOAftmKHyNYPL%2BKGXpHUfkNVY6gq0UGNF0PVjIlW%2FunUNmNg%3D%3D
+  open_url=https://mercadolivre.com/sec/21NWPnw
+  check_url=https://mercadolivre.com/sec/21NWPnw
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-H71P
+
+* 2026-03-20T23:54:31Z | disabled_from_storefront | sandisk-microsd-128gb-ultra-100mbs | Cartão de Memória SanDisk 128GB MicroSDXC (Classe 10) — até 100MB/s
+  status=200 | reason=storefront_social_invalid | fail=2/2
+  id_busca=5J5PKG-KT52
+  checked_url=https://mercadolivre.com/sec/2vehHS4
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPG9elSl%2FBbJRSiBVwTCWGonHZqIapg25rOw5k3XZgCQAt6R9KE10UWXsQdiJpYlQSH3nSfiTRrAE0hqNoyVWfhnleb6WqnWvAoB%2FwdElZkxheD%2F%2FZrrHQV%2FFS0ErJ0zkCx4rF3%2Bq9FqUqNZ92RWlscB0HG0TYtwLOv1twuA0dZlGBycGbEyFUsNrxrsRYa6LvLF4Z0%3D
+  open_url=https://mercadolivre.com/sec/2vehHS4
+  check_url=https://mercadolivre.com/sec/2vehHS4
+  canonical_url=https://lista.mercadolivre.com.br/5J5PKG-KT52
 
 * 2026-03-20T21:54:24Z | disabled_from_storefront | relogio-skmei-1146-masculino-aco-inox-prata-fundo-preto-anadigi | ⌚👑 Relógio Skmei 1146 — Presença, Estilo e Autoridade no Pulso
   status=200 | reason=storefront_social_invalid | fail=1/1
