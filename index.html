@@ -25,6 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
+  <script defer src="tracking.js"></script>
   <script defer src="script.js"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
@@ -337,7 +338,7 @@
       </div>
 
       <div class="linksGrid">
-        <a class="linkCard linkCard--gold" href="./loja.html">
+        <a class="linkCard linkCard--gold" href="./loja.html" id="linkCardLoja">
           <div class="linkCard__icon">🛒</div>
           <div class="linkCard__txt">
             <div class="linkCard__title">Vitrine / Loja</div>
@@ -419,11 +420,94 @@
       </div>
 
       <div class="footer__right">
-        <button class="btn btn--tiny btn--glass" type="button" data-copy="bio">Copiar link da home</button>
+        <button class="btn btn--tiny btn--glass" type="button" data-copy="bio" id="btnCopyHomeLink">Copiar link da home</button>
       </div>
     </footer>
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      function initHomeTracking() {
+        if (!window.CNTracking || typeof window.CNTracking.init !== "function") return;
+
+        window.CNTracking.init({
+          pageType: "home",
+          autoPageView: false,
+          debug: false
+        });
+
+        window.CNTracking.track("page_view_home", {
+          page_type: "home"
+        });
+
+        function bindOpenStore(selector, placement) {
+          var el = document.querySelector(selector);
+          if (!el) return;
+
+          el.addEventListener("click", function () {
+            window.CNTracking.trackOpenStore({
+              page_type: "home",
+              placement: placement
+            });
+          });
+        }
+
+        bindOpenStore("#floatingLoja", "floating_cta");
+        bindOpenStore("#goLoja", "hero_cta");
+        bindOpenStore("#btnVerTodosTop", "quick_top_cta");
+        bindOpenStore("#btnAbrirLojaCompleta", "quick_tools_cta");
+        bindOpenStore("#linkCardLoja", "links_grid_cta");
+
+        var btnCopyLoja = document.getElementById("copyLoja");
+        if (btnCopyLoja) {
+          btnCopyLoja.addEventListener("click", function () {
+            window.CNTracking.trackCopyStoreLink({
+              page_type: "home",
+              placement: "hero_copy_store_link"
+            });
+          });
+        }
+
+        var btnCopyHomeLink = document.getElementById("btnCopyHomeLink");
+        if (btnCopyHomeLink) {
+          btnCopyHomeLink.addEventListener("click", function () {
+            window.CNTracking.track("click_copy_home_link", {
+              page_type: "home",
+              placement: "footer_copy_home_link"
+            });
+          });
+        }
+
+        var qHome = document.getElementById("qHome");
+        if (qHome) {
+          var tm = null;
+
+          qHome.addEventListener("input", function () {
+            clearTimeout(tm);
+            tm = setTimeout(function () {
+              var q = String(qHome.value || "").trim();
+              if (!q) return;
+
+              window.CNTracking.track("search_home", {
+                page_type: "home",
+                query: q,
+                placement: "quick_search"
+              });
+            }, 700);
+          });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initHomeTracking);
+      } else {
+        initHomeTracking();
+      }
+    })();
+  </script>
 </body>
-</html>
+</html> +#+#+#+#+#+analysis
