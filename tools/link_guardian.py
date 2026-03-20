@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v5 (ANTI-WIPE REAL + FORCE-RESTORE + SOCIAL=OK + NO-200-DEAD por padrão)
+# Versão : v6 (ANTI-WIPE + RELATÓRIO JSON/TXT DE REMOVIDOS)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
@@ -10,6 +10,9 @@
 #      por padrão conta como OK (atualiza last_ok) e NÃO derruba.
 #   4) Desativação por padrão só em hard-dead real (404/410).
 #   5) Produto do Dia (featured) NUNCA automático.
+#   6) Registrar histórico de produtos desativados/removidos:
+#      - data/link_guardian_removed.json
+#      - logs/link_guardian_removed.txt
 #
 # Regras:
 #   - Se active_before == 0: restaura (bootstrap) e, se necessário, FORCE-RESTORE.
@@ -37,6 +40,13 @@ from urllib.parse import urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PRODUTOS_JSON = REPO_ROOT / "produtos.json"
+
+DATA_DIR = REPO_ROOT / "data"
+LOGS_DIR = REPO_ROOT / "logs"
+
+REMOVED_JSON = Path(os.environ.get("LG_REMOVED_JSON_PATH", str(DATA_DIR / "link_guardian_removed.json")))
+REMOVED_TXT = Path(os.environ.get("LG_REMOVED_TXT_PATH", str(LOGS_DIR / "link_guardian_removed.txt")))
+REMOVED_MAX_EVENTS = int(os.environ.get("LG_REMOVED_MAX_EVENTS", "5000"))
 
 
 # =========================
@@ -133,6 +143,8 @@ _BLOCK_PAGE_RE = re.compile("|".join(f"(?:{p})" for p in _BLOCK_PAGE_PATTERNS), 
 _HARD_DEAD_STATUS = {404, 410}
 _BLOCK_STATUS = {403, 429}
 _TEMP_STATUS = {408, 425, 500, 502, 503, 504}
+
+
 # =========================
 # Data structures
 # =========================
@@ -187,6 +199,12 @@ def _write_json(path: Path, data: Dict[str, Any]) -> None:
     with path.open("w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
+
+
+def _write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        f.write(text)
 
 
 def _clean_url(u: str) -> str:
@@ -407,6 +425,8 @@ def _check_url(url: str) -> CheckResult:
 
     # Se não é dead e não é temp, consideramos OK conservador (não derruba por ruído).
     return CheckResult(ok=True, temporary=False, status=status, final_url=final_url or u, reason="ok", hard_dead=False)
+
+
 def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
     return (0 if bool(p.get("active")) else 1, 0 if bool(p.get("featured")) else 1)
 
@@ -442,11 +462,247 @@ def _force_restore_all(products: List[Dict[str, Any]]) -> int:
     return boosted
 
 
+# =========================
+# RELATÓRIO DE REMOVIDOS
+# =========================
+def _load_removed_history(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        return {
+            "updated_at": "",
+            "total_events": 0,
+            "weekly_summary": [],
+            "events": [],
+        }
+
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, dict):
+            raise ValueError("json inválido")
+        if not isinstance(data.get("events"), list):
+            data["events"] = []
+        if not isinstance(data.get("weekly_summary"), list):
+            data["weekly_summary"] = []
+        if "updated_at" not in data:
+            data["updated_at"] = ""
+        if "total_events" not in data:
+            data["total_events"] = len(data["events"])
+        return data
+    except Exception:
+        return {
+            "updated_at": "",
+            "total_events": 0,
+            "weekly_summary": [],
+            "events": [],
+        }
+
+
+def _week_key_from_iso(iso_value: str) -> str:
+    dt = _iso_to_dt(iso_value or "") or datetime.now(timezone.utc)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    iso = dt.isocalendar()
+    return f"{iso.year}-W{iso.week:02d}"
+
+
+def _build_removed_event(
+    p: Dict[str, Any],
+    res: CheckResult,
+    happened_at: str,
+    event_type: str,
+    fail_count: int,
+    fail_threshold: int,
+    was_active: bool,
+    was_featured: bool,
+) -> Dict[str, Any]:
+    return {
+        "event_type": event_type,
+        "week_key": _week_key_from_iso(happened_at),
+        "happened_at": happened_at,
+        "sku": (p.get("sku") or "").strip(),
+        "title": (p.get("title") or "").strip(),
+        "id_busca": (p.get("id_busca") or "").strip(),
+        "status": int(res.status),
+        "reason": res.reason,
+        "hard_dead": bool(res.hard_dead),
+        "fail_count": int(fail_count),
+        "fail_threshold": int(fail_threshold),
+        "was_active": bool(was_active),
+        "was_featured": bool(was_featured),
+        "open_url": _clean_url(p.get("open_url") or ""),
+        "check_url": _clean_url(p.get("check_url") or ""),
+        "canonical_url": _clean_url(p.get("canonical_url") or ""),
+        "short_url": _clean_url(p.get("short_url") or ""),
+        "resolved_url": _clean_url(p.get("resolved_url") or ""),
+        "final_url": _clean_url(res.final_url or ""),
+        "guardian_last_reason": (p.get("guardian_last_reason") or "").strip(),
+        "guardian_last_status": int(p.get("guardian_last_status") or 0),
+    }
+
+
+def _event_fingerprint(ev: Dict[str, Any]) -> str:
+    return "|".join([
+        str(ev.get("event_type") or ""),
+        str(ev.get("week_key") or ""),
+        str(ev.get("sku") or ""),
+        str(ev.get("status") or ""),
+        str(ev.get("reason") or ""),
+        str(ev.get("final_url") or ""),
+    ])
+
+
+def _refresh_removed_history_meta(history: Dict[str, Any]) -> None:
+    events = history.get("events") or []
+    if not isinstance(events, list):
+        events = []
+
+    buckets: Dict[str, Dict[str, Any]] = {}
+
+    for ev in events:
+        if not isinstance(ev, dict):
+            continue
+        wk = str(ev.get("week_key") or "").strip() or _week_key_from_iso(ev.get("happened_at") or "")
+        if wk not in buckets:
+            buckets[wk] = {
+                "week_key": wk,
+                "events": 0,
+                "unique_skus": set(),
+            }
+        buckets[wk]["events"] += 1
+        sku = str(ev.get("sku") or "").strip()
+        if sku:
+            buckets[wk]["unique_skus"].add(sku)
+
+    weekly_summary = []
+    for wk in sorted(buckets.keys(), reverse=True):
+        row = buckets[wk]
+        weekly_summary.append({
+            "week_key": wk,
+            "events": int(row["events"]),
+            "unique_skus": len(row["unique_skus"]),
+        })
+
+    history["weekly_summary"] = weekly_summary
+    history["total_events"] = len(events)
+    history["updated_at"] = _utc_now_iso_z()
+
+
+def _append_removed_event(history: Dict[str, Any], event: Dict[str, Any]) -> bool:
+    events = history.get("events") or []
+    if not isinstance(events, list):
+        events = []
+
+    fp = _event_fingerprint(event)
+    for old in events:
+        if isinstance(old, dict) and _event_fingerprint(old) == fp:
+            history["events"] = events
+            _refresh_removed_history_meta(history)
+            return False
+
+    events.append(event)
+
+    events = [e for e in events if isinstance(e, dict)]
+    events.sort(key=lambda x: str(x.get("happened_at") or ""), reverse=True)
+
+    if REMOVED_MAX_EVENTS > 0 and len(events) > REMOVED_MAX_EVENTS:
+        events = events[:REMOVED_MAX_EVENTS]
+
+    history["events"] = events
+    _refresh_removed_history_meta(history)
+    return True
+
+
+def _build_removed_txt(history: Dict[str, Any]) -> str:
+    events = history.get("events") or []
+    weekly_summary = history.get("weekly_summary") or []
+    updated_at = str(history.get("updated_at") or "").strip()
+    total_events = int(history.get("total_events") or 0)
+
+    lines: List[str] = []
+    lines.append("========================================")
+    lines.append("LINK GUARDIAN — PRODUTOS DESATIVADOS/REMOVIDOS")
+    lines.append("========================================")
+    lines.append(f"Atualizado em: {updated_at or _utc_now_iso_z()}")
+    lines.append(f"Total de eventos: {total_events}")
+    lines.append("")
+
+    if weekly_summary:
+        lines.append("RESUMO SEMANAL")
+        lines.append("----------------------------------------")
+        for row in weekly_summary:
+            wk = str(row.get("week_key") or "").strip()
+            evc = int(row.get("events") or 0)
+            sku_count = int(row.get("unique_skus") or 0)
+            lines.append(f"- {wk}: {evc} evento(s) | {sku_count} SKU(s)")
+        lines.append("")
+
+    if not events:
+        lines.append("Nenhum produto desativado/removido registrado até agora.")
+        lines.append("")
+        return "\n".join(lines)
+
+    grouped: Dict[str, List[Dict[str, Any]]] = {}
+    for ev in events:
+        if not isinstance(ev, dict):
+            continue
+        wk = str(ev.get("week_key") or "").strip() or _week_key_from_iso(ev.get("happened_at") or "")
+        grouped.setdefault(wk, []).append(ev)
+
+    lines.append("DETALHES POR SEMANA")
+    lines.append("----------------------------------------")
+
+    for wk in sorted(grouped.keys(), reverse=True):
+        lines.append("")
+        lines.append(f"### {wk}")
+        lines.append("")
+        bucket = sorted(grouped[wk], key=lambda x: str(x.get("happened_at") or ""), reverse=True)
+
+        for ev in bucket:
+            happened_at = str(ev.get("happened_at") or "").strip()
+            sku = str(ev.get("sku") or "").strip()
+            title = str(ev.get("title") or "").strip()
+            status = str(ev.get("status") or "").strip()
+            reason = str(ev.get("reason") or "").strip()
+            event_type = str(ev.get("event_type") or "").strip()
+            id_busca = str(ev.get("id_busca") or "").strip()
+            final_url = str(ev.get("final_url") or "").strip()
+            open_url = str(ev.get("open_url") or "").strip()
+            check_url = str(ev.get("check_url") or "").strip()
+            canonical_url = str(ev.get("canonical_url") or "").strip()
+            fail_count = str(ev.get("fail_count") or "").strip()
+            fail_threshold = str(ev.get("fail_threshold") or "").strip()
+
+            lines.append(f"* {happened_at} | {event_type} | {sku} | {title}")
+            lines.append(f"  status={status} | reason={reason} | fail={fail_count}/{fail_threshold}")
+            if id_busca:
+                lines.append(f"  id_busca={id_busca}")
+            if final_url:
+                lines.append(f"  final_url={final_url}")
+            if open_url:
+                lines.append(f"  open_url={open_url}")
+            if check_url:
+                lines.append(f"  check_url={check_url}")
+            if canonical_url:
+                lines.append(f"  canonical_url={canonical_url}")
+            lines.append("")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def _save_removed_reports(history: Dict[str, Any]) -> None:
+    _refresh_removed_history_meta(history)
+    _write_json(REMOVED_JSON, history)
+    _write_text(REMOVED_TXT, _build_removed_txt(history))
+
+
 def main() -> int:
     data = _read_json(PRODUTOS_JSON)
     products: List[Dict[str, Any]] = data.get("products") or []
     if not isinstance(products, list):
         products = []
+
+    removed_history = _load_removed_history(REMOVED_JSON)
+    removed_events_added = 0
 
     # remove corruptos
     cleaned: List[Dict[str, Any]] = []
@@ -609,18 +865,50 @@ def main() -> int:
         p["guardian_dead_reason"] = res.reason
 
         if fail_count >= FAIL_THRESHOLD:
+            disabled_now = False
+
             if was_active:
                 p["active"] = False
                 changed += 1
+                disabled_now = True
+
             if was_featured:
                 p["featured"] = False
                 changed += 1
+
             p["guardian_disabled_at"] = now
             changed += 1
 
             print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{FAIL_THRESHOLD})")
 
+            if disabled_now:
+                ev = _build_removed_event(
+                    p=p,
+                    res=res,
+                    happened_at=now,
+                    event_type="disabled",
+                    fail_count=fail_count,
+                    fail_threshold=FAIL_THRESHOLD,
+                    was_active=was_active,
+                    was_featured=was_featured,
+                )
+                if _append_removed_event(removed_history, ev):
+                    removed_events_added += 1
+
             if REMOVE_ON_DEAD:
+                ev = _build_removed_event(
+                    p=p,
+                    res=res,
+                    happened_at=now,
+                    event_type="removed_from_catalog",
+                    fail_count=fail_count,
+                    fail_threshold=FAIL_THRESHOLD,
+                    was_active=was_active,
+                    was_featured=was_featured,
+                )
+                if _append_removed_event(removed_history, ev):
+                    removed_events_added += 1
+
                 removed_dead += 1
                 changed += 1
                 time.sleep(SLEEP_BETWEEN)
@@ -670,12 +958,16 @@ def main() -> int:
     data["updated_at"] = now
 
     _write_json(PRODUTOS_JSON, data)
+    _save_removed_reports(removed_history)
 
     print("========================================")
     print("Link Guardian finalizado.")
     print(f"Checked: {checked} | Max: {MAX_CHECK}")
     print(f"OK: {ok_count} | FAIL/DEAD: {dead_count} | TEMP: {temp_count}")
     print(f"Removed corrupt: {removed_corrupt} | Removed dead: {removed_dead}")
+    print(f"Removed events added: {removed_events_added}")
+    print(f"Removed JSON: {REMOVED_JSON}")
+    print(f"Removed TXT: {REMOVED_TXT}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
     print(f"SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | DEAD_ON_BODY: {int(DEAD_ON_BODY)}")
