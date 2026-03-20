@@ -1,7 +1,554 @@
 ========================================
 LINK GUARDIAN — PRODUTOS DESATIVADOS/REMOVIDOS
 ========================================
-Atualizado em: 2026-03-20T21:21:44Z
-Total de eventos: 0
+Atualizado em: 2026-03-20T21:55:50Z
+Total de eventos: 60
 
-Nenhum produto desativado/removido registrado até agora.
+RESUMO SEMANAL
+----------------------------------------
+- 2026-W12: 60 evento(s) | 60 SKU(s)
+
+DETALHES POR SEMANA
+----------------------------------------
+
+### 2026-W12
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | relogio-skmei-1146-masculino-aco-inox-prata-fundo-preto-anadigi | ⌚👑 Relógio Skmei 1146 — Presença, Estilo e Autoridade no Pulso
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-ZC70
+  checked_url=https://meli.la/17nEea3
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLxKR7VlgAZzW%2Ff%2FO1DmhCPlOu1SWAlXcDixSjUlsSj6YXyKj117DNXAVpT2L%2B33RLqtYenJcm77sCihZEwNLIokoEo7tmRMLC%2FBMpziUmeV2EAkjXnE%2Fe3gAUIbVfb%2FXOA4TguiqFzpRYmtw9xptDNAGSVelCAPcgNEeQPejtixwHWf98qUAMe%2Bz17fwjzaMF%2Bjaw%3D%3D
+  open_url=https://meli.la/17nEea3
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZC70&tid=4e99a3e5-3c56-4a40-8cdc-272215d385a9
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZC70&tid=4e99a3e5-3c56-4a40-8cdc-272215d385a9
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-6-cuecas-lupo-boxer-box-sem-costura-basic-microfibra | 🩲🔥 Kit 6 Cuecas Boxer Lupo — Conforto Premium para Todos os Dias
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-07RW
+  checked_url=https://meli.la/18yqur1
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BML52daBKAFVybTUXUxxtwKaEq%2FtEWhJYuPu6JidqnmwwmaxcussE25ENISUa07ex3LGkM8ac%2Fsmq39kQc8LIh%2FPveEohYaqH5insa8gGTe1RiTBsZ1%2FFhCRyfmZsgunzE0BYqpUtJvy5JCqIO4WkweoVfgyg%2Feqitd%2BNv4omF2edheHe%2FuR6%2BDtakcer4hwrR1Hqw%3D%3D
+  open_url=https://meli.la/18yqur1
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-07RW&tid=a1f69ed5-9773-4b7b-b54a-e94cc9e06284
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-07RW&tid=a1f69ed5-9773-4b7b-b54a-e94cc9e06284
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | bermuda-tectel-masculino-leve-fresca-bolsos-frontais | 🩳🔥 Bermuda Tectel Masculina — Leveza, Conforto e Estilo no Dia a Dia
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-G9YH
+  checked_url=https://meli.la/1YZYzdi
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOPnxhtKCoe2fPT9sf5N%2BuK0Q5YNe%2ByXcFhdCwcZ48LBrqMQ1pGkOrK0QWiv1QGhdPX%2BywoOQ3LBtj%2BuEsYnskpKgDfguLPVNf%2F6cRt8IhFhs2twWzXBxFHG759T9ollL8ghH2JxMZnS2%2Fk3bM%2B9atXFe1Q1jjPXjEyxRXrjcNYzCOBfCQqYUbR4GAWl2Vxqk8iaJA%3D%3D
+  open_url=https://meli.la/1YZYzdi
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-G9YH&tid=8048a7a5-7fe6-4dfe-99f6-1b241a1a3270
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-G9YH&tid=8048a7a5-7fe6-4dfe-99f6-1b241a1a3270
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | shampoo-automotivo-v-floc-3l-concentrado | Shampoo Automotivo V-FLOC 3L Concentrado com pH Neutro
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-VCHY
+  checked_url=https://meli.la/2GkuFys
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMwMWl%2FUzl6UhDJ5mMJngMZ5e%2F%2BMJhn7uHwnAoR6TYjZ9uDc68J9JhCENalke%2FXLBFvOCwh%2BzsnhxOoAedcBY3JUinn8bxsdqAWZkZP%2BZANwW0h58%2B4CDcD0nNmpl8ajQTddAMrHnVtENPu7lCfUqWVQfy3eWbBUIU3h5MkyfKykzV%2BTilMo5bdB8XSfd4UGfHCLOZI%3D
+  open_url=https://meli.la/2GkuFys
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VCHY&tid=fdd7f775-3004-45b0-af5e-713569c85531
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VCHY&tid=fdd7f775-3004-45b0-af5e-713569c85531
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | lavadora-jato-portatil-2-baterias-kit-completo | Lavadora de Jato Portátil com 2 Baterias e Kit Completo
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-RD0F
+  checked_url=https://meli.la/1n1MSaD
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGAF2JY39gAYeSrZGH5UQzDRhmrolne3igPwVOpegNRb3iKfRzoesumsoTC1o05bjhF0%2F6uRtiWnoLY8JlsOFQ1rAhXqEYn6S03792kTL75x7la2m0G8v6KNvZgeI%2FzWu1LoX%2FXIzKyuULXBv7%2BBG3D%2BxYySrm0laU6sbcZCIfG6jMUaIGLyqze2R6OQxWQ7193yQA%3D%3D
+  open_url=https://meli.la/1n1MSaD
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-RD0F&tid=2334804f-a4a9-4c3b-bf23-98b1454bc1f7
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-RD0F&tid=2334804f-a4a9-4c3b-bf23-98b1454bc1f7
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | suporte-magnetico-adesivo-para-moto-6-imas | Suporte Magnético Adesivo para Moto com 6 Ímãs e Adesivo 3M
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-09X4
+  checked_url=https://meli.la/2vuwLye
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAHvUIOPIQlbTMvxLNWgS0yi0R8uq0yJs%2BuljkkL5thJLt8mK4ggPTwWNZZ2FMIw0teJqJTctElyolNkRegbY%2FPot3LK%2FPOogrIKgl59nq7V1LBsqG%2FT84faCbG%2BWAIxJLY4IXmKAY9otp4lMfON8DVwgW3ZAHtCrGs%2F86AyeTMaqi7mcdw9IQAofSLYGXUhr%2BV5Kw%3D%3D
+  open_url=https://meli.la/2vuwLye
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-09X4&tid=c91ef744-0ca7-4246-a017-6e1b4853e855
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-09X4&tid=c91ef744-0ca7-4246-a017-6e1b4853e855
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | capacete-asx-city-preto-fosco-viseira | Capacete ASX City Preto Fosco com Viseira
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-CPHF
+  checked_url=https://meli.la/1U6HogY
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/1U6HogY
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPHF&tid=8f376930-23c9-4685-b943-10d499633454
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPHF&tid=8f376930-23c9-4685-b943-10d499633454
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto | Intercomunicador Bluetooth para Capacete V10 com Redução de Ruído USB-C 16H - Preto
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-5111
+  checked_url=https://meli.la/2Lo3w8F
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOi1SQLiYXmmsFhcAywNdVGCM1uD%2FA12aAYc7ZBUyRn6a5hwGD5RdLxUAY0XSWErjc%2FqO4yn7iznzvBQe3mnwoMdmzXXMA1TfW6Lr0QKAkJJdIc25NMX4tRC3bxy%2FsESsoymOtrcrs9pSMuZPRpLooOQHVhTKN1p6LapC5Vdaa1f0JbDRsPwWZf2laJtVYje%2Brt3pv8%3D
+  open_url=https://meli.la/2Lo3w8F
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5111&tid=db80848c-7907-419b-9ca3-370afe4570d6
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5111&tid=db80848c-7907-419b-9ca3-370afe4570d6
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | smart-box-proeletronic-smartpro-16gb-4k-hd-preto | Smart Box Proeletronic Smartpro 16GB 4K HD com Controle Remoto - Preto
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-XJE6
+  checked_url=https://meli.la/28cnKAr
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL88f9oJPB5pGVzFXYaFrp9B%2FyILUcOcggZLYT6Bu99KRVL4MYAxq%2BMJaLqTBJVlx9TInlGfCkFd5vvuu4UrE%2BYpGFp5aNcyue%2FZ6WTd50p1zCkKtszzgXvTLE%2B36sgqkJDGya57NzJ8eIq13rKo5kZt2qxrxOOatsvHAFdKl59ZIULS4Evh2lqz%2BYkWVVH8NCuDtxg%3D
+  open_url=https://meli.la/28cnKAr
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=d452f19d-5f0c-417c-ae70-63d6cb3e6f5f
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=d452f19d-5f0c-417c-ae70-63d6cb3e6f5f
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | rog-xbox-ally-7-120hz-512gb-branco | ROG Xbox Ally Console Portátil 7" Touchscreen 120Hz 16GB RAM 512GB SSD Branco
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-ZPYQ
+  checked_url=https://meli.la/1FmZq7Y
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNUK0SCdb%2Bhc8A%2FNxSL4CFZZEm5o%2F5%2FPgiWN%2B88NgIi2ZVX1PQ2dQr%2FyzS5OAFbI0%2BtYfG8lZsWsivxLdqiLUx4MGG%2Fi9YWHR6SjugtEBZjKjQaZA0BO%2FD6g6xxm1HkGbuTGFqkdVnr2LktBH0gMUMbhDqJyNnAT5cXzDqPfn4q3rKHV0tTSteMCNPxZfQHcYBdBjOM%3D
+  open_url=https://meli.la/1FmZq7Y
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZPYQ&tid=29a5a0a1-92a6-4bba-a0cc-895b2225cffa
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZPYQ&tid=29a5a0a1-92a6-4bba-a0cc-895b2225cffa
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | amazon-echo-pop-kids-premium-marvel-azul | Echo Pop Kids Premium
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-PK7B
+  checked_url=https://meli.la/1cSyrZ2
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/1cSyrZ2
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=76c36d5a-b334-4e35-8eb9-a6f501445f5f
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=76c36d5a-b334-4e35-8eb9-a6f501445f5f
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | nintendo-super-mini-premium | Nintendo Super Mini Premium
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-N3EA
+  checked_url=https://meli.la/15ypbuc
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD6kOEP9tWDUZXG1QkYEYTabQCbfAHhXTeNZwnhN%2Fvlk6idGERnKWpeULgFJCe6bfETalvlkmJekFBVhBz%2BUfxwA%2Fl2WX4oDP3IxC0COXuo9Ahi2UjjwC5E8q9lZBpgvzTtZDA%2BBNVeHgn0tGgixmL5lBVALZeVs8ILinHnQgxwVgimj4E4QByz4uyjzowrH1%2BZz4kaAQ9LRc6sQLQ%3D%3D
+  open_url=https://meli.la/15ypbuc
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=f12729f3-fa26-4aeb-b89e-88a0820a736d
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=f12729f3-fa26-4aeb-b89e-88a0820a736d
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | smart-tv-philco-roku-32-premium | 📺 Smart TV Philco Roku 32” Premium
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-AHDQ
+  checked_url=https://meli.la/19Lo34Y
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D
+  open_url=https://meli.la/19Lo34Y
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHDQ&tid=d1ad99b7-1813-4e4b-910f-b62a60f81603
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHDQ&tid=d1ad99b7-1813-4e4b-910f-b62a60f81603
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | cabo-hdmi-21-premium-8k-144hz-2m | 🔌 Cabo HDMI 2.1 Premium — 8K • 144Hz • Ultra HD • 2 Metros
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-L9DK
+  checked_url=https://meli.la/1Xr4zBw
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D
+  open_url=https://meli.la/1Xr4zBw
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-L9DK&tid=52430788-9741-4efb-9cf4-22fc490e652e
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-L9DK&tid=52430788-9741-4efb-9cf4-22fc490e652e
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | gamestick-premium-2-controles-wireless | 🎮 Gamestick Premium — Jogos Clássicos com 2 Controles Wireless
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-ND5E
+  checked_url=https://meli.la/2Qxy3CD
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/2Qxy3CD
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=9c88709d-2822-49e0-b231-8f26c949f220
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=9c88709d-2822-49e0-b231-8f26c949f220
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | tradutor-inteligente-premium-online-offline | 🌍 Tradutor Inteligente Premium — Tradução por Texto, Imagem e Voz
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-T25W
+  checked_url=https://meli.la/339GC5W
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/339GC5W
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=ccb08bbc-cc01-4415-90d1-0ba3008a7daf
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=ccb08bbc-cc01-4415-90d1-0ba3008a7daf
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | zero-mofo-premium-1l-spray | 🛡️ Zero Mofo Premium 1L + Spray — Proteção Prolongada para Parede, Teto e Piso
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-J7T0
+  checked_url=https://meli.la/1qHEv74
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA0WT7WH7DsXlKhe3%2BDW1uyzhWs1zsoFpchZYGHjvmn3TtWp%2Bwd%2FeqiLpC7IFlDTOR%2B%2FZKGgfMwrwga1Ic2qmxp%2BZehC9bivRgvRiV7gfJbY%2FZDo0hxAoKnIz7NC64%2FCQO79JP4ozgTZlIb0ewlAapzVl%2FAKiDi3HKMSeGP6xFmxPsw3bN97zQTx1Y05gJogNrh5cQ%3D%3D
+  open_url=https://meli.la/1qHEv74
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J7T0&tid=6107c412-6d93-4ac4-a7d1-166fd6ad80f5
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J7T0&tid=6107c412-6d93-4ac4-a7d1-166fd6ad80f5
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-utensilios-cozinha-premium-rosa | 🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-CDB6
+  checked_url=https://meli.la/1kiePfs
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D
+  open_url=https://meli.la/1kiePfs
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=f8386d95-e00e-4753-93c7-256563818cdc
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=f8386d95-e00e-4753-93c7-256563818cdc
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-2-acendedores-de-fogao-premium | 🔥 Kit 2 Acendedores de Fogão Premium — Praticidade e Segurança na Cozinha
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-CPYJ
+  checked_url=https://meli.la/32MdstW
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/32MdstW
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPYJ&tid=5e901d45-2ae5-4bac-86b0-550d11ddf074
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPYJ&tid=5e901d45-2ae5-4bac-86b0-550d11ddf074
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | cuscuzeira-inox-premium-25l | Cuscuzeira Inox Premium 2,5L
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-PMWY
+  checked_url=https://meli.la/23D4SC7
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDLiRcnBoEBVkxvX%2BhH0NMPgfKtmvEvUgzP6HHOX5upPgOM%2FbUfAp6Z0%2BzxvCCnbqdk%2Btvk%2FMn5HxBn1t%2FXG7MOfl3A9nyTQbpJMTB9OEfanmcs%2Bn8Nn7m7zarNoIVkbNpduVc%2FfgYcGTn%2B0XSegNwl0A7Jv8YrdtpHzjMxi8CxyFcWbXo0FTiIx6WHg23hqf6t8mg%3D%3D
+  open_url=https://meli.la/23D4SC7
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=ffa4fadf-dbda-4078-b960-8b1e1e47a83d
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=ffa4fadf-dbda-4078-b960-8b1e1e47a83d
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | jogo-panelas-tramontina-inox-fundo-triplo-3-pecas | Jogo de Panelas Tramontina Inox Fundo Triplo 3 Peças
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-T28N
+  checked_url=https://meli.la/18N3x6V
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D
+  open_url=https://meli.la/18N3x6V
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=87cd3a8f-2b7c-422a-b19a-21b5a16330f5
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=87cd3a8f-2b7c-422a-b19a-21b5a16330f5
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | 6-descansos-panela-premium | 6 Descansos de Panela Premium Antiderrapantes
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-STH7
+  checked_url=https://meli.la/2CzaiF6
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKg%2BaeS3T8wHunm8HqeXERIjVGfawrwhTrXrrNCcNOAF2cFD3EBJdnwhs32Rn4L19OFjs9B7bwLzSp0sUxryC%2Bip3oMdoX1Nt38NjbQKu2RuKmcQSdO1n31bv4EneVqgOXGVme8WjFJ2KlLN7bRsGSZgfxqej5Gbd0HvEkocsFHpjVs39yHB6WwQzXorGsnJJ7g9QkQ%3D
+  open_url=https://meli.la/2CzaiF6
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-STH7&tid=ef363267-9f02-4384-9d46-b946b20a4ab0
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-STH7&tid=ef363267-9f02-4384-9d46-b946b20a4ab0
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | relogio-parede-30cm-prata-branco-lzbq | ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-LZBQ
+  checked_url=https://meli.la/12D2w1B
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D
+  open_url=https://meli.la/12D2w1B
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=bc32128e-0bc5-4b13-a355-66c0f17c0fdf
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=bc32128e-0bc5-4b13-a355-66c0f17c0fdf
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | panela-pressao-panelux-45l-aluminio-polido | 🥘 Panela de Pressão Panelux 4,5L — Alumínio Polido
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-6T20
+  checked_url=https://meli.la/2drogLW
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D
+  open_url=https://meli.la/2drogLW
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6T20&tid=03989102-142b-4c5f-a8a5-f522876a6127
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6T20&tid=03989102-142b-4c5f-a8a5-f522876a6127
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-4-formas-gelo-tampa-silicone | Kit 4 Formas de Gelo com Tampa — Silicone (Fundo Flexível + Tampa Rígida)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-PZ8V
+  checked_url=https://meli.la/19fvuVX
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D
+  open_url=https://meli.la/19fvuVX
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PZ8V&tid=1f49223d-2303-4a05-b8f0-e6e80849b6e4
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PZ8V&tid=1f49223d-2303-4a05-b8f0-e6e80849b6e4
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco | Kit 2 Spray de Cozinha Epsilon EPS-412 (200ml) – Borrifador Pulverizador para Óleo/Azeite (Preto + Branco)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-MQL7
+  checked_url=https://meli.la/2gpLrhX
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D
+  open_url=https://meli.la/2gpLrhX
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MQL7&tid=190bb3d1-dd2e-41fa-8533-6806fdfc4632
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MQL7&tid=190bb3d1-dd2e-41fa-8533-6806fdfc4632
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | suporte-porta-xicaras-pires-dourado-fosco-catblack | Suporte Organizador Porta Xícaras e Pires Dourado Fosco Premium (Cat Black Presentes)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-4AEX
+  checked_url=https://meli.la/2vL6Ywk
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuVJT5BUfGdS5nlirQTCxaYyFB157zY2H9ptBn7X7eBgx8yXKqAc9WzFkb1ESY%2BgTWyl8fCq859h5zHgky8NxKA%2B1ccRGN%2FvfDcvKywjpf5LPseW2KlxS4vXCJSUSSNFogKEyQK8BnEulYJI7mz31lKXna9R1S00qSKMIGJlqGshnV99Tf5yFCLWPo9%2FtzlYrZb1Q%3D%3D
+  open_url=https://meli.la/2vL6Ywk
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-4AEX&tid=0b149f8e-872f-47d7-97c8-bc2c831085bd
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-4AEX&tid=0b149f8e-872f-47d7-97c8-bc2c831085bd
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-porta-mantimentos-hermetico-12un-124l | Kit Porta Mantimentos Hermético Quadrado 12 Unidades (12,4L)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-7Y0N
+  checked_url=https://meli.la/1LXCKN3
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAqF8560chFQwQkocwokszRTtRabhhmF7iAxseuy2oXx9dIaJwfBJfPnYjp%2FyQauuvelA3syoPEsYkKPSg7Q5IQejKTqtRZAjmNS1HQ2vPAu4eisyRnntT59C6RpgV3ODEhPV0bDQtFUteusgtfFE9d3Y0vKooavPV%2B05zNL9Yb8W%2FYvdDAlCptkm2nqp3idxZpwmA%3D%3D
+  open_url=https://meli.la/1LXCKN3
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-7Y0N&tid=c98c31bb-aec1-4c13-b7a8-5e9fc0bfc20e
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-7Y0N&tid=c98c31bb-aec1-4c13-b7a8-5e9fc0bfc20e
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | jogo-3-peneiras-aco-inox-pmg | Jogo 3 Peneiras Aço Inox (P/M/G) – Malha Fina
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-DN77
+  checked_url=https://meli.la/1uRAJpA
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJZ8JBKNijlUGeh9QTAdBVg4C1Y7dKTdmG18wJomzIUQ9w%2FfFHQO%2FqW7Yzq%2Btuf%2BPEORFyMxGpYu0VzBgnuGf489WtXXoWSz0IO%2BX1b%2BoIpFbJAIMFlMg6b%2FkksTK6%2FOezjPLYXA8GoRyW3hrC3oXxBNHr9Tofe%2BXDlIC58Knb1kSLWTfAbV%2FXwdRXKlssx6mxKa%2BQ%3D%3D
+  open_url=https://meli.la/1uRAJpA
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DN77&tid=7b8b7ab2-ea2f-439a-b7a0-09e84b334899
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DN77&tid=7b8b7ab2-ea2f-439a-b7a0-09e84b334899
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira | 🍳🖤 Jogo de Utensílios 19 Peças Ponte Lar (Silicone Preto + Cabos de Madeira)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-89J4
+  checked_url=https://meli.la/1sLJKwg
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D
+  open_url=https://meli.la/1sLJKwg
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=48653578-37a4-4444-9d71-e221f7f9a9fe
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=48653578-37a4-4444-9d71-e221f7f9a9fe
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-2-copos-medidores-500ml | Kit 2 Copos Medidores 500ml — Transparente • Livre de BPA (Cozinha)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-1L8D
+  checked_url=https://meli.la/1h2aRhj
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLQPWuU84o2uaX19S34iCA5%2FkJ01KB2nebVKL2qzakUJ5Bmok4eA8Ca0Q5Odi%2Bdz9Z%2B0Ib73V3fricVXhJ2a8f%2FyNbVvZ7v4%2FQ94HyEYmlyRrRoYqAXj4jL2HFFqvqwIaFefRYo2wXGDCgd5xrwjmcJMCeDvwEhX3DVM9LBaySUS5FbiXA2ong%2BEXM%2FTT9zsy1i7PQ%3D%3D
+  open_url=https://meli.la/1h2aRhj
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1L8D&tid=a412b9d5-7bef-462b-9f15-52f858df45e6
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1L8D&tid=a412b9d5-7bef-462b-9f15-52f858df45e6
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-10-panos-copa-felpudos-41x64-estampados | Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-URBN
+  checked_url=https://meli.la/2tA4Gqh
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D
+  open_url=https://meli.la/2tA4Gqh
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=2869c605-a86c-45f0-9b6f-6163f63f899f
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=2869c605-a86c-45f0-9b6f-6163f63f899f
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | tampa-protetora-microondas-alca-anti-respingo-5j5pkg-bxxq | Tampa Protetora para Micro-ondas com Alça | Aquece uniforme e evita sujeira
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-BXXQ
+  checked_url=https://meli.la/2qrQinu
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGzNCJSeEJBfZ0RB9N2poieVq3IAcZl2BI9QU7TMtMSqT%2FTqE1tXpAgwAKVTCGNYGe3SjrJgUU06Fxe3lMiJyvj%2BFjb8uuiUw3Yc8pNaJ3K%2BmxE60umK1ByI475hiPelgGA4zEVx%2BBApfVkMB2ZXfQ16oDVzJ9oGmCEzfTuWB9q2gjbIKSiD%2B6Qg0oaj%2BhL8zjIpOg%3D%3D
+  open_url=https://meli.la/2qrQinu
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BXXQ&tid=da51a4b9-befb-45eb-8029-f44d488e6498
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BXXQ&tid=da51a4b9-befb-45eb-8029-f44d488e6498
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | microondas-consul-32-litros-branco-5j5pkg-ejtp | Micro-ondas Consul — 32 Litros (Branco) | Praticidade no dia a dia
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-EJTP
+  checked_url=https://meli.la/2yYsZBx
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BATupuu99QCd%2B5yi%2BQnpiYT4mBKrsYFvh6tDtrKjvTNe5lybruD7aBy4qBa82MsDHOQxPTkj8gNjq6TTd8QAALsi6skNJdZ5ZxemnvmbekQwJuyiFYqZk2PoF39ZryYgkWgRjjc%2BfBcUHgi3zTaRDyfLs64M%2F5MzYNRX4k3zGP8Ip8XfnaNC%2BiJFgz5HXv%2B11FLmLxI%3D
+  open_url=https://meli.la/2yYsZBx
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EJTP&tid=e770da7b-4a13-46e7-bd52-14cad43062b3
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EJTP&tid=e770da7b-4a13-46e7-bd52-14cad43062b3
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm | Conjunto de Panelas Antiaderente — 10 Peças (Teflon) | Cozinha completa
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-THJM
+  checked_url=https://meli.la/2D19CwL
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAcNpzJrjmTmh9RlENjO3ngHW0VfhGWnZD0OrERfbpoKZ%2FGva%2FzeyNcaoqdMN2s3UOG%2Fv3Myv0McK%2BrH9uenZ%2BafbGi4VdnPCrMJSo8CDcaaoRoU74J3sexD%2B0z775R1Ro2y6AMnbai6NdXY6N28lh62rv7KDfyatP1oDhTD5dkXLlZefgZWOfkso3BwNwM779k0eg%3D%3D
+  open_url=https://meli.la/2D19CwL
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=98792a7d-aa49-43c8-826f-7a6a1ce0f828
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=98792a7d-aa49-43c8-826f-7a6a1ce0f828
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | revigoran-az-completo-60caps-5j5pkg-xtku | Revigoran AZ Completo — 60 cápsulas (23 vitaminas & minerais) | 1 por dia
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-XTKU
+  checked_url=https://meli.la/1C3E2zW
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFlUaDVP%2BLwVqkDYBawqe5K3f%2FYjZNN8988Mw%2B5O9VUgOYvgaTWJP5VPM2uDp%2F9FcQQI9Utx0ApzjFIylnzua%2BSSuMOMuBJAUTCEDGwwr1YLz8jdsuLwB8NkOps9e7NXnPIiXtbqoLHPfyKTrPKYHy1R0EaHmTkyUPl4bqFhrZ8k5xKRwar3JLzqWd6qRwgLbvfgTrU%3D
+  open_url=https://meli.la/1C3E2zW
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XTKU&tid=d470efaf-7069-4927-b290-9fc0b53cce9d
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XTKU&tid=d470efaf-7069-4927-b290-9fc0b53cce9d
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | whey-protein-1kg-chocolate-5j5pkg-68p2 | Whey Protein 1kg (Chocolate) — Alta proteína no pós-treino
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-68P2
+  checked_url=https://meli.la/14pqCNv
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHz5OAfOO3ComCMB%2By3UDf8p3i1NEsu4nhOCVc7xZe8SsI7V7PZgvOijFww691lKA93rqbldMOXPDqtn74Lefpdy58LOc%2FxsYJ3%2FZXuRbDDP5mc5a4yV%2FCBAvJQcfgdvhA1kQSvl3lfc1ZKkVx4oBIXgtsE4qkGtRxzAG5wi7KRMJgQ%2BXZH6P4qeT6PaxCJxId%2FzKw%3D%3D
+  open_url=https://meli.la/14pqCNv
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-68P2&tid=f9689a15-6662-40a2-9841-74b293812a6e
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-68P2&tid=f9689a15-6662-40a2-9841-74b293812a6e
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto | interruptor-touch-wifi-novadigital-lite-s-2-teclas-preto
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-R5DE
+  checked_url=https://meli.la/2jwrx5M
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI6SZrG91AytJzSqt3uakStVqw90Pe8cIxeygvTmBW0N5EAkholtAIYALwVhfN4f2PCA5RU4cjl2pGW%2BH1t6J2zHWOTAVyyAo6wJP86r9YaQXid%2FrKN5BpGtiyKD8Qh1S%2FqimdtwVK2%2FLagLGYLpOz8bT53UXiI6jNBgMmSK8hpVa3%2F53meJPXDRIEJSX%2FR%2FR21Hwfk%3D
+  open_url=https://meli.la/2jwrx5M
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-R5DE&tid=553f3eae-515d-4d8c-8572-4528dddcfb16
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-R5DE&tid=553f3eae-515d-4d8c-8572-4528dddcfb16
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-mesh-wifi6-2un-wduu | Kit Roteador Mesh Wi-Fi 6 (2 unidades) — cobertura e conexão estável
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-WDUU
+  checked_url=https://meli.la/2tMMkz2
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/2tMMkz2
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WDUU&tid=4ae47278-a6f8-48d4-8b53-2c6edbecb74d
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WDUU&tid=4ae47278-a6f8-48d4-8b53-2c6edbecb74d
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | ssd-nvme-m2-1tb-pcie4-2280-6tsl | SSD NVMe M.2 1TB (PCIe 4.0 • M.2 2280) — Boot rápido e mais agilidade
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-6TSL
+  checked_url=https://meli.la/2G13vrw
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/2G13vrw
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=11dca410-afeb-451d-9b7a-81f6ea825793
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=11dca410-afeb-451d-9b7a-81f6ea825793
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | switch-hdmi-2x1-1x2-bidirecional-adem | Switch HDMI 2x1 / 1x2 Bi-direcional 4K (Plug & Play) — 2 dispositivos em 1 TV
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-ADEM
+  checked_url=https://meli.la/34goTWr
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH7skTMvwkchpd0FvlLNro8syOLJGsVRBco5Z78J0QRmwH9Q%2BiM8Kdkv9RtKC6dkwizY35S4iOa7fwp3ogv7aJCkb11nUk5bv5VfRP89amDUfmgeexkdOgGgI67bvl1mQJeqS4JYkP3vztSEZLpx%2FWkI3TRs4i%2FqLcAMeBPnVhpezbzDDoxfodPs4tP5xG1RDhasaqc%3D
+  open_url=https://meli.la/34goTWr
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ADEM&tid=4b60ac74-6149-495a-8bbd-527f279061db
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ADEM&tid=4b60ac74-6149-495a-8bbd-527f279061db
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | lamina-philips-oneblade-qp220-51-2-unidades | Lâminas Philips OneBlade QP220/51 (2 Unidades) – Original
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-5RAU
+  checked_url=https://meli.la/2sn3pjB
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D
+  open_url=https://meli.la/2sn3pjB
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5RAU&tid=2f8cf85a-6db3-4628-b1f0-eb3fd225e7a2
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5RAU&tid=2f8cf85a-6db3-4628-b1f0-eb3fd225e7a2
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | philips-oneblade-qp1424-10 | Barbeador Philips OneBlade QP1424/10 – Aparar e Contornar – Recarregável
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-FMY4
+  checked_url=https://meli.la/1xUnPGa
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BATde6AQjT3uHTg45LRCz6cltYo%2FXE2aLne%2FUTdAd2mg8OMJPZJz%2Fpmr82ho4RyJ4HMW%2FOMZw%2FLFPoIl68ziWb4ULdyRlN1og4pvC3j%2B8XJJAYZtzST%2FPR5dz9Z2u1z%2B1gSZ%2Bs2R45ut54bASy%2BR3uEj4hy2Aw4nbVDBTIF12yqV6GA%2BRunM%2FtylUX4ixsTfPG7vpw%3D%3D
+  open_url=https://meli.la/1xUnPGa
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-FMY4&tid=3ec8932e-5276-4634-9d41-de26ee4be1d7
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-FMY4&tid=3ec8932e-5276-4634-9d41-de26ee4be1d7
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | webcam-emeet-smartcam-s600-4k-foco-automatico-usb | Webcam Emeet SmartCam S600 4K – Foco Automático – USB (Profissional)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-VYBG
+  checked_url=https://meli.la/1m2nJdb
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/1m2nJdb
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=03048104-d2ed-45d2-ae99-7254b55119ec
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=03048104-d2ed-45d2-ae99-7254b55119ec
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel | Escova de Dente Elétrica Sônica Philips Colgate SonicPro 10 – Recarregável
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-UGW4
+  checked_url=https://meli.la/1ZHKRNy
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D
+  open_url=https://meli.la/1ZHKRNy
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UGW4&tid=43e40754-1246-4174-9875-33f876d2af48
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UGW4&tid=43e40754-1246-4174-9875-33f876d2af48
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur | Luminária LED Touch – Brilho Ajustável – Recarregável USB (Abajur)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-UMMJ
+  checked_url=https://meli.la/2Fapbqm
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://meli.la/2Fapbqm
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UMMJ&tid=c2039a35-f4e1-4c3b-aec5-a16b31e32eb3
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UMMJ&tid=c2039a35-f4e1-4c3b-aec5-a16b31e32eb3
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto | Suporte Articulado para Monitor (Pistão a Gás) 17”–35” – Ergonômico – Preto
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-YGV9
+  checked_url=https://meli.la/11CcWqi
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D
+  open_url=https://meli.la/11CcWqi
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YGV9&tid=a52def03-ec06-4142-a164-7dd7effdd980
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YGV9&tid=a52def03-ec06-4142-a164-7dd7effdd980
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto | DPS iClamper Energia (5 Tomadas) – Proteção Contra Surtos – Preto
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-0QEF
+  checked_url=https://meli.la/2e9LLGJ
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D
+  open_url=https://meli.la/2e9LLGJ
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0QEF&tid=90147d29-f483-437d-9886-829212bc0661
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0QEF&tid=90147d29-f483-437d-9886-829212bc0661
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook | Kit Ferramentas 115 Peças (Precisão) – Reparo Eletrônicos, Celular e Notebook
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-4T6B
+  checked_url=https://meli.la/1pornJR
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D
+  open_url=https://meli.la/1pornJR
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-4T6B&tid=172c87d3-96f0-466d-9850-895ec232d8e2
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-4T6B&tid=172c87d3-96f0-466d-9850-895ec232d8e2
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | travesseiro-cervical-viscoelastico-ergonomico-conforto-premium | Travesseiro Cervical Viscoelástico (Ergonômico) – Conforto Premium
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-6PJ3
+  checked_url=https://meli.la/1Ktp1MN
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBmuiY4pQNMErBQkWYSYAjRuHQ%2BgmM9iinzd1zzs40HRKY%2FUhmw86QYJScmH3rN2Sn6lfxCFVrjlQj8KWiu946OiX5htEL7oTSgbwQMFgtVSfD3ktaM%2BDTG8DZwOwxcFrz6yAbtb%2FhlcF2ftz2ehWiLnxbD%2BCbYK%2F0A6tnJIfuj%2BCwrqCk9qaSul03X7rLH2PlKmL3Q%3D
+  open_url=https://meli.la/1Ktp1MN
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6PJ3&tid=3d1c2b3c-6411-4700-9c5d-c466d68e1eca
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6PJ3&tid=3d1c2b3c-6411-4700-9c5d-c466d68e1eca
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | hd-externo-2tb-seagate-expansion-usb-30-portatil-preto | HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-DVNF
+  checked_url=https://meli.la/1GyqzF7
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D
+  open_url=https://meli.la/1GyqzF7
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=93ffd0ab-f55c-406b-9893-e27cdaaec2f2
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=93ffd0ab-f55c-406b-9893-e27cdaaec2f2
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas | Esfregão Mop 9 em 1 — Escova de Limpeza Elétrica Rotatória (9 peças) + Extensor
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-W2VM
+  checked_url=https://meli.la/1WeBSnu
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC8loTZkvq9siKZiocqFlFWrD6hg4TD8DyWMZ%2BB%2BiQ%2FNJnsYlJw0Z6PuBoL2taTO8tntoDZ1aeIDYwkZ7Y0eAgHfIkrnne4gOaIezwBg86G5CbjKG86dnWaKeTgL2%2FPV4efr7Udfcf08fskXYcbBoN5Edxga8TDMXQyiNFUzwLi%2Bn4shPt75KK1%2FawI9S23iRFXdgw%3D%3D
+  open_url=https://meli.la/1WeBSnu
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-W2VM&tid=4109a94d-60e9-46de-8b30-eeb088afba24
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-W2VM&tid=4109a94d-60e9-46de-8b30-eeb088afba24
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | aspirador-philco-ciclone-pas1600p-1450w-15l-preto-220v-ou-127v | Aspirador Philco Ciclone PAS1600P 1,5L 1450W — 2 em 1 (Vertical + Portátil) • Bocal 360° (Preto)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-86RG
+  checked_url=https://meli.la/25C3pp1
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKXIx5sXfO0EoYh8jmm2UZPWewExt8zWJVQ26CuPr5DxWGjKzo5zL2zuzXc0U7iONImpzwb8gDOp8rszfNwP%2F2yGRHpsmckyCyrFKj6KW0m9MHWqWvidD8O975IkX%2Bq4VME5mgERV0ShNvVreNwQ919ZXlf3kLas92afLlqKUyAcsNYUzZ%2BJmEfwNdaxYM2105%2FJkJQ%3D
+  open_url=https://meli.la/25C3pp1
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-86RG&tid=b1ea84f9-288f-4ee3-ac84-ece870906ec5
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-86RG&tid=b1ea84f9-288f-4ee3-ac84-ece870906ec5
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | escova-secadora-britania-bec07r-4em1-1300w-rosa | Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-K8TV
+  checked_url=https://meli.la/1Vd3P8y
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D
+  open_url=https://meli.la/1Vd3P8y
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K8TV&tid=e14af22d-ff9f-4b1d-a147-ca56d68ac5ea
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K8TV&tid=e14af22d-ff9f-4b1d-a147-ca56d68ac5ea
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | gimbal-dji-osmo-mobile-se | Gimbal DJI Osmo Mobile SE — Estabilizador para Celular (Reels/Filmagem)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-C1TY
+  checked_url=https://meli.la/1bsuctK
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D
+  open_url=https://meli.la/1bsuctK
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=2a2e95d4-0cf9-480b-bb9e-b127206c7f92
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=2a2e95d4-0cf9-480b-bb9e-b127206c7f92
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | microfone-lapela-boya-by-v10-usb-c | Microfone Sem Fio BOYA BY-V10 Lapela — USB-C (Android)
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-0XE6
+  checked_url=https://meli.la/1Fwa1Z6
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8d8g7OW%2F%2FJ%2FC0Qu9PMJg1c3MbnxpYQkbC9vNrqb2Nf8rKUyGeeJMWQ7eFEeoXucAzCOxlLegE75wfgNm%2FbBCHims4sucQYnKnpdy7rIHeyMYH0zo8qiNQHwXrLBGspqgz9Fn8ioIsa2%2Fndz4RdePgIoz1XTABK0dsisgXuvC0dxeo%2FqOkdsIU6zg64V%2F%2BBqBLUL7M%3D
+  open_url=https://meli.la/1Fwa1Z6
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0XE6&tid=f917141a-d6f7-4e83-a842-3ae164c4398c
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0XE6&tid=f917141a-d6f7-4e83-a842-3ae164c4398c
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa | purificador-electrolux-pe12g-agua-gelada
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-JHSA
+  checked_url=https://meli.la/1CpXH3G
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJo%2FylCRGP1VjLtwDwqcZ1ghrN%2BYdpQOSVlh40WymBxQcKv%2FSAZEjlJd9fej04YiNGNHENQgcoAzHN02cn5w9fpU%2BbnM9U44clEKwrzxm5rIh7jPFUK2Xyu0q0Ub50Ag8GtWbVkC65xvcnjIMX7urSx%2Bgxzeq9qbskJr2z%2FVE6j5YNb%2FapFkRg54YOMPH0zwhT1oKsM%3D
+  open_url=https://meli.la/1CpXH3G
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-JHSA&tid=52fdf68f-d655-40f8-8a05-7d0e16a34ff3
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-JHSA&tid=52fdf68f-d655-40f8-8a05-7d0e16a34ff3
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | robo-de-limpeza-wap-robot-w500-policleaner | Robô de Limpeza WAP Robot W500 Policleaner — Mais Vendido
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-KN35
+  checked_url=https://mercadolivre.com/sec/2y45bZm
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqZEoVPiVplM%2FNnLCPB59yr9TAWG%2BveGT%2FwG8ThbIDTsJmKMAPecvz0gRp8JlFV%2BTv7S79MURn2p02OJTwAcgpkrLfmD80p0%2B9eIU0tgP8c225NT3fan380RDjQCDR2UPHf6zLCNmfiActun2pHxSktX7YawAlk3OcrklVzJyqyAWQnSTAP669OkZ2vv3Emtdv8wks%3D
+  open_url=https://mercadolivre.com/sec/2y45bZm
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-KN35&tid=34d96b91-61d6-40cd-8d48-c6c0f4f0f02c
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-KN35&tid=34d96b91-61d6-40cd-8d48-c6c0f4f0f02c
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | mochila-impermeavel-notebook-15-6 | Mochila impermeável — Notebook 15.6”
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-EN33
+  checked_url=https://mercadolivre.com/sec/14jFsrH
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra/lists
+  open_url=https://mercadolivre.com/sec/14jFsrH
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EN33&tid=c99332e7-cbcc-4418-a2ef-dc52acd0a604
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EN33&tid=c99332e7-cbcc-4418-a2ef-dc52acd0a604
+
+* 2026-03-20T21:54:24Z | disabled_from_storefront | xiaomi-redmi-buds-6-play | Xiaomi Redmi Buds 6 Play
+  status=200 | reason=storefront_social_invalid | fail=1/1
+  id_busca=5J5PKG-E681
+  checked_url=https://mercadolivre.com/sec/2T9cpsU
+  final_url=https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNYrTx7j507h7%2BLigZXuowL6C%2BgMCjt1l6yEJ9l1oH200noVSiiifxUgryof7kFmRZ1zai6i2V97fePdoe8z1vowz4SP9Shuo4yWTLne9xDPdUUNwoMF6yL9Hmd101KAz7QT0YTAZmTotjFdSkJz3MUmL8NFA1NRFJnqCOyJhJare%2Fi3vIEBKsnBxRlXy%2FwqTiBW1RT8EDGITECz%2BA%3D%3D
+  open_url=https://mercadolivre.com/sec/2T9cpsU
+  check_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-E681&tid=1a9fb322-a168-4c41-ba27-3c85d8b67f72
+  canonical_url=https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-E681&tid=1a9fb322-a168-4c41-ba27-3c85d8b67f72
