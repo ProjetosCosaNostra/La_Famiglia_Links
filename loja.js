@@ -31,19 +31,6 @@
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
      - “Ver todas” abre modal premium com busca.
      - Contador “Categorias” vira 14+ (premium), total aparece no “Ver todas (X)”.
-
-   PATCH 2026-03-20 (EXPORT CATÁLOGO EM TXT):
-     - Botão público para baixar o snapshot do produtos.json em TXT
-     - Útil para auditoria e para colar no chat sem sobrecarregar a conversa
-
-   PATCH 2026-03-20 (RELATÓRIO REMOVIDOS + BUY SAFETY):
-     - Botões para baixar:
-       - logs/link_guardian_removed.txt
-       - data/link_guardian_removed.json
-     - No PC: “Comprar” usa comportamento nativo do link com target="_blank"
-       para manter a loja aberta e abrir o produto em nova guia.
-     - No mobile / navegador in-app: mantém fallback controlado.
-     - Links que terminam em /social/ ou /lists são inválidos para storefront.
    ========================================================== */
 
 (() => {
@@ -73,6 +60,7 @@
   // =========================
   // CATEGORIAS (INTELIGENTE + PREMIUM)
   // =========================
+  // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
     "Casa",
@@ -95,10 +83,12 @@
     "Praticidade",
   ];
 
-  const CN_CAT_MIN_COUNT = 3;
+  // regra base: categoria só se repetir e não for “ruído”
+  const CN_CAT_MIN_COUNT = 3;               // mais agressivo: reduz poluição
   const CN_CAT_MAX_CHIPS_DESKTOP = 20;
-  const CN_CAT_MAX_CHIPS_MOBILE = 14;
+  const CN_CAT_MAX_CHIPS_MOBILE = 14;       // mobile “completo” sem virar mural
 
+  // allowlist para tags com dígito que ainda são úteis (se quiser manter)
   const CN_CAT_ALLOW_DIGITS = new Set([
     "4k",
     "wi-fi 6",
@@ -106,12 +96,14 @@
     "usb-c",
   ]);
 
+  // stoplist de marcas comuns (não vira categoria)
   const CN_CAT_BRANDS = new Set([
     "xiaomi","samsung","logitech","philips","ugreen","seagate","arno","britânia",
     "tapo","tp-link","redragon","oneblade","sony","awei","nescafé","colgate",
     "sandisk","kingston","lenovo","acer","hp","dell","microsoft","apple"
   ]);
 
+  // stoplist de tags “plataforma”
   const CN_CAT_NOISE = new Set([
     "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
@@ -151,6 +143,9 @@
       </svg>`
     );
 
+  // =========================
+  // UI PATCH: CSS INJETADO (premium + mobile)
+  // =========================
   function injectUiCss() {
     if (document.getElementById("cnLojaUiCss")) return;
 
@@ -187,22 +182,6 @@
     font-size:12px;
     border-radius:14px;
   }
-}
-
-.cnReportRow{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap:10px;
-  margin-top:10px;
-}
-@media (max-width: 720px){
-  .cnReportRow{ grid-template-columns: repeat(1, minmax(0,1fr)); }
-}
-.cnReportRow .btn{
-  width:100%;
-  justify-content:center;
-  padding:10px 12px;
-  border-radius:14px;
 }
 
 /* Modal de categorias */
@@ -293,7 +272,6 @@
     st.textContent = css;
     document.head.appendChild(st);
   }
-
   function applyImageFixes(root) {
     const scope = root || document;
     const imgs = scope.querySelectorAll('img[data-cnimg="1"]');
@@ -391,7 +369,6 @@
   }
 
   const toast = $("#toast");
-
   function showToast(msg = "Copiado ✅") {
     if (!toast) return;
     toast.textContent = msg;
@@ -417,14 +394,6 @@
 
   function lojaUrl() {
     return new URL("./loja.html", window.location.href).href;
-  }
-
-  function removedReportTxtUrl() {
-    return new URL("./logs/link_guardian_removed.txt", window.location.href).href;
-  }
-
-  function removedReportJsonUrl() {
-    return new URL("./data/link_guardian_removed.json", window.location.href).href;
   }
 
   function stripTags(s) {
@@ -468,24 +437,6 @@
     }
   }
 
-  function pathOf(url) {
-    try {
-      const fixed = ensureHttpUrl(url);
-      const u = new URL(String(fixed || ""));
-      return String(u.pathname || "").toLowerCase().trim();
-    } catch {
-      return "";
-    }
-  }
-
-  function isStorefrontInvalidUrl(url) {
-    const p = pathOf(url);
-    if (!p) return false;
-    if (p.indexOf("/social/") >= 0) return true;
-    if (/\/lists\/?$/.test(p)) return true;
-    return false;
-  }
-
   function isMLHost(host) {
     const h = String(host || "").toLowerCase().trim();
     if (!h) return false;
@@ -500,7 +451,6 @@
     const x = String(fixed ?? "").toLowerCase().trim();
     if (!x) return false;
     if (x.includes("github.com/user-attachments/assets")) return false;
-    if (isStorefrontInvalidUrl(x)) return false;
     const h = hostOf(x);
     return isMLHost(h);
   }
@@ -529,22 +479,6 @@
       p.resolved_url ||
       ""
     );
-  }
-
-  function isMobileDevice() {
-    const ua = String(navigator.userAgent || "").toLowerCase();
-    const touch = !!(("ontouchstart" in window) || (navigator.maxTouchPoints > 0));
-    const smallScreen = window.matchMedia("(max-width: 1024px)").matches;
-    return /android|iphone|ipad|ipod|iemobile|opera mini|mobile/i.test(ua) || (touch && smallScreen);
-  }
-
-  function isInAppBrowser() {
-    const ua = String(navigator.userAgent || "").toLowerCase();
-    return /instagram|fbav|fban|line|micromessenger|wv|webview/i.test(ua);
-  }
-
-  function shouldUseNativeDesktopBuyBehavior() {
-    return !isMobileDevice() && !isInAppBrowser();
   }
 
   function openBuy(url) {
@@ -687,7 +621,6 @@
       _raw: raw,
     };
   }
-
   function dedupeProducts(list) {
     const out = [];
     const seen = new Set();
@@ -727,6 +660,7 @@
     const actives = (list || []).filter((p) => p && p.active !== false);
     return actives.find((p) => p.featured) || null;
   }
+
   function featuredHTML(p, isProdutoDoDia) {
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
@@ -736,8 +670,7 @@
 
     const disabled = (p.active === false);
     const buyUrl = bestBuyUrl(p);
-    const storefrontInvalid = isStorefrontInvalidUrl(buyUrl);
-    const hasLink = String(buyUrl || "").startsWith("http") && !storefrontInvalid;
+    const hasLink = String(buyUrl || "").startsWith("http");
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
@@ -823,8 +756,7 @@
 
     const disabled = (p.active === false);
     const buyUrl = bestBuyUrl(p);
-    const storefrontInvalid = isStorefrontInvalidUrl(buyUrl);
-    const hasLink = String(buyUrl || "").startsWith("http") && !storefrontInvalid;
+    const hasLink = String(buyUrl || "").startsWith("http");
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
@@ -906,7 +838,7 @@
 
   function isNoisyTag(label) {
     const s = String(label || "").trim();
-    if (!s) return true;
+    if (!s) return True;
 
     const t = s.toLowerCase();
 
@@ -915,12 +847,15 @@
 
     if (t.length > 26) return true;
 
+    // dígitos: só deixa se estiver na allowlist (ex: 4k, wi-fi 6, usb-c)
     if (/\d/.test(t) && !CN_CAT_ALLOW_DIGITS.has(t)) return true;
 
+    // medidas/unidades/formatos
     if (/^[0-9]+([.,][0-9]+)?\s*(w|wh|mah|ah|v|a|hz|gb|tb|mbps|psi|cm|mm|kg|l|ml|m|s)?$/i.test(t)) return true;
     if (/^(abnt|ip\d{2}|ipx\d)$/i.test(t)) return true;
     if (/^\d+\s*(tomadas|portas|peças|unidades|baterias)$/i.test(t)) return true;
 
+    // símbolos que viram “tag técnica”
     if (/[()\/+]/.test(t)) return true;
 
     return false;
@@ -928,6 +863,7 @@
 
   function isCategoryTag(label, n) {
     if ((n || 0) < CN_CAT_MIN_COUNT) {
+      // pinned entra mesmo se tiver pouco
       const key = normalizeTagKey(label);
       const pinned = CN_CAT_PINNED.some((x) => normalizeTagKey(x) === key);
       if (!pinned) return false;
@@ -1139,12 +1075,14 @@
 
     let top = categories.slice(0, maxChips);
 
+    // se categoria selecionada não está em top, injeta no começo
     const activeKey = normalizeTagKey(STATE.tag || "");
     if (activeKey && !top.some((t) => normalizeTagKey(t.label) === activeKey)) {
       const sel = categories.find((t) => normalizeTagKey(t.label) === activeKey);
       if (sel) top = [sel, ...top].slice(0, maxChips);
     }
 
+    // contador premium: "14+" quando tem mais
     setText(totalTagsEl, categories.length > top.length ? `${top.length}+` : `${top.length}`);
 
     const allActive = !STATE.tag;
@@ -1299,8 +1237,8 @@
     return STATE.products.find((p) => p && p.sku === sku) || null;
   }
 
-  function buildProdutosJsonSnapshot() {
-    return {
+  function exportProdutosJson() {
+    const out = {
       updated_at: new Date().toISOString(),
       products: dedupeProducts(STATE.products).map((p) => {
         const r = cloneObj(p._raw || {});
@@ -1330,10 +1268,7 @@
         return r;
       }),
     };
-  }
 
-  function exportProdutosJson() {
-    const out = buildProdutosJsonSnapshot();
     const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -1345,16 +1280,7 @@
     showToast("Exportado ⬇️");
   }
 
-  function exportProdutosJsonTxt() {
-    const out = buildProdutosJsonSnapshot();
-    const txt = JSON.stringify(out, null, 2);
-    downloadFile("produtos.json.txt", txt, "text/plain;charset=utf-8");
-    showToast("produtos.json em TXT ⬇️");
-  }
-
-  function two(n) {
-    return String(n).padStart(2, "0");
-  }
+  function two(n){ return String(n).padStart(2, "0"); }
 
   function dateStamp() {
     const d = new Date();
@@ -1377,38 +1303,6 @@
     document.body.appendChild(a);
     a.click();
     a.remove();
-  }
-
-  async function downloadRemoteFile(url, filename) {
-    const glue = url.indexOf("?") >= 0 ? "&" : "?";
-    const res = await fetch(`${url}${glue}ts=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`download_failed_${res.status}`);
-    const blob = await res.blob();
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-  }
-
-  async function downloadRemovedReportTxt() {
-    try {
-      await downloadRemoteFile(removedReportTxtUrl(), "link_guardian_removed.txt");
-      showToast("Relatório removidos TXT ⬇️");
-    } catch {
-      showToast("Relatório TXT indisponível");
-    }
-  }
-
-  async function downloadRemovedReportJson() {
-    try {
-      await downloadRemoteFile(removedReportJsonUrl(), "link_guardian_removed.json");
-      showToast("Relatório removidos JSON ⬇️");
-    } catch {
-      showToast("Relatório JSON indisponível");
-    }
   }
 
   function exportListGet(kind) {
@@ -1496,12 +1390,12 @@
     bg.style.pointerEvents = "none";
     bg.querySelectorAll("*").forEach((el) => { el.style.pointerEvents = "none"; });
   }
+
   function bind() {
     const q = $("#qLoja");
     const clear = $("#btnClear");
     const copyBtn = $("#btnCopyLoja");
     const copyPageBtn = $("#btnCopyPage");
-    const btnExportCatalogTxt = $("#btnExportCatalogTxt");
 
     const sortSel = $("#sortSel");
     const moreBtn = $("#btnMore");
@@ -1539,12 +1433,6 @@
       });
     }
 
-    if (btnExportCatalogTxt) {
-      btnExportCatalogTxt.addEventListener("click", () => {
-        exportProdutosJsonTxt();
-      });
-    }
-
     if (sortSel) {
       sortSel.value = STATE.sort || "relev";
       sortSel.addEventListener("change", (e) => {
@@ -1561,7 +1449,8 @@
       });
     }
 
-    (function ensureExportRow() {
+    // Ferramentas (recolhível no mobile)
+    (function ensureExportRow(){
       const tools = document.querySelector(".lojaTools");
       if (!tools) return;
       if (document.getElementById("cnExportRow")) return;
@@ -1584,14 +1473,9 @@
 
           <div class="cnToolsGrid">
             <button class="btn btn--tiny btn--glass" type="button" id="btnCopyList">📋 Copiar (ativos)</button>
-            <button class="btn btn--tiny btn--gold" type="button" id="btnDlList">⬇️ TXT (ativos)</button>
+            <button class="btn btn--tiny btn--gold"  type="button" id="btnDlList">⬇️ TXT (ativos)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
-          </div>
-
-          <div class="cnReportRow">
-            <button class="btn btn--tiny btn--glass" type="button" id="btnDlRemovedTxt">⬇️ Removidos TXT</button>
-            <button class="btn btn--tiny btn--glass" type="button" id="btnDlRemovedJson">⬇️ Removidos JSON</button>
           </div>
         </details>
       `;
@@ -1602,15 +1486,11 @@
     const btnDlList = $("#btnDlList");
     const btnDlListAll = $("#btnDlListAll");
     const btnDlCsvAll = $("#btnDlCsvAll");
-    const btnDlRemovedTxt = $("#btnDlRemovedTxt");
-    const btnDlRemovedJson = $("#btnDlRemovedJson");
 
     if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
     if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
     if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
-    if (btnDlRemovedTxt) btnDlRemovedTxt.addEventListener("click", downloadRemovedReportTxt);
-    if (btnDlRemovedJson) btnDlRemovedJson.addEventListener("click", downloadRemovedReportJson);
 
     document.addEventListener("click", (e) => {
       const openCats = e.target.closest('[data-action="openTags"]');
@@ -1623,20 +1503,11 @@
       const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
-
         if (isProbablyValidLink(href)) {
-          if (shouldUseNativeDesktopBuyBehavior()) {
-            return;
-          }
-
           e.preventDefault();
           openBuy(href);
           return;
         }
-
-        e.preventDefault();
-        showToast("Link do produto indisponível");
-        return;
       }
 
       const chip = e.target.closest("[data-tag]");
