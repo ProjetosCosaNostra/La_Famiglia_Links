@@ -81,6 +81,23 @@ body:
       required: false
 
   - type: checkboxes
+    id: quick_home
+    attributes:
+      label: "Vitrine Rápida (opcional)"
+      description: "Marque se quiser colocar este produto na vitrine rápida da home."
+      options:
+        - label: "Colocar este produto na Vitrine Rápida"
+
+  - type: input
+    id: quick_home_order
+    attributes:
+      label: "Posição na Vitrine Rápida (opcional)"
+      description: "Ex.: 1, 2, 3... Deixe vazio para manter a posição atual ou usar ordem automática."
+      placeholder: "1"
+    validations:
+      required: false
+
+  - type: checkboxes
     id: options
     attributes:
       label: "Opções (opcional)"
@@ -113,3 +130,4 @@ body:
         - este issue atualiza o produto no `produtos.json`
         - usando só os campos principais
         - sem aquele monte de campo de manutenção que atrapalha
+        - e agora também pode definir se o produto entra na **Vitrine Rápida** da home
