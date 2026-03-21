@@ -30,12 +30,24 @@
     'admin_notes'
   ];
 
+  var TRACKING_STORAGE_EVENTS_KEY = 'cn_tracking_events_v1';
+  var TRACKING_MAX_PREVIEW = 8;
+
   function qs(sel, root) { return (root || document).querySelector(sel); }
   function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function safe(v) { return (v === null || v === undefined) ? '' : String(v); }
   function trim(v) { return safe(v).replace(/^\s+|\s+$/g, ''); }
   function lower(v) { return safe(v).toLowerCase(); }
   function clone(obj) { return JSON.parse(JSON.stringify(obj)); }
+
+  function safeGetLocalStorage(key, fallback) {
+    try {
+      var raw = localStorage.getItem(key);
+      return raw === null || raw === undefined ? fallback : raw;
+    } catch (err) {
+      return fallback;
+    }
+  }
 
   function toast(msg) {
     var el = qs('#toast');
@@ -591,6 +603,613 @@
     }).join('\n');
   }
 
+
+  function getTrackingEvents() {
+    var raw = safeGetLocalStorage(TRACKING_STORAGE_EVENTS_KEY, '[]');
+    var parsed;
+
+    try {
+      parsed = JSON.parse(raw);
+    } catch (err) {
+      parsed = [];
+    }
+
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed.map(function (item) {
+      return {
+        id: trim(item && item.id),
+        event_name: trim(item && item.event_name),
+        timestamp: trim(item && item.timestamp),
+        page_type: trim(item && item.page_type),
+        session_id: trim(item && item.session_id),
+        visitor_id: trim(item && item.visitor_id),
+        url: trim(item && item.url),
+        path: trim(item && item.path),
+        referrer: trim(item && item.referrer),
+        device_type: trim(item && item.device_type),
+        utm_source: trim(item && item.utm_source),
+        utm_medium: trim(item && item.utm_medium),
+        utm_campaign: trim(item && item.utm_campaign),
+        utm_content: trim(item && item.utm_content),
+        utm_term: trim(item && item.utm_term),
+        network: trim(item && item.network),
+        format: trim(item && item.format),
+        placement: trim(item && item.placement),
+        creative_id: trim(item && item.creative_id),
+        title_id: trim(item && item.title_id),
+        sku: trim(item && item.sku),
+        product_title: trim(item && item.product_title),
+        id_busca: trim(item && item.id_busca),
+        badges: Array.isArray(item && item.badges) ? item.badges.slice() : [],
+        featured: !!(item && item.featured),
+        category: trim(item && item.category),
+        position_on_page: (item && item.position_on_page !== undefined && item.position_on_page !== null) ? item.position_on_page : '',
+        extra: item && typeof item.extra === 'object' && !Array.isArray(item.extra) ? clone(item.extra) : {}
+      };
+    });
+  }
+
+  function createStatsBucket(key, label) {
+    return {
+      key: trim(key),
+      label: trim(label || key),
+      total_events: 0,
+      page_views: 0,
+      card_views: 0,
+      featured_views: 0,
+      quick_views: 0,
+      buy_clicks: 0,
+      copy_link_clicks: 0,
+      copy_id_clicks: 0,
+      open_store_clicks: 0,
+      copy_store_link_clicks: 0,
+      searches: 0,
+      filters: 0,
+      sort_changes: 0,
+      load_more_clicks: 0,
+      sessions: {},
+      visitors: {},
+      intention_score: 0
+    };
+  }
+
+  function applyEventToBucket(bucket, event) {
+    if (!bucket || !event) return;
+
+    bucket.total_events += 1;
+    if (event.session_id) bucket.sessions[event.session_id] = true;
+    if (event.visitor_id) bucket.visitors[event.visitor_id] = true;
+
+    switch (event.event_name) {
+      case 'page_view':
+        bucket.page_views += 1;
+        bucket.intention_score += 1;
+        break;
+      case 'view_product_card':
+        bucket.card_views += 1;
+        bucket.intention_score += 2;
+        break;
+      case 'view_featured':
+        bucket.featured_views += 1;
+        bucket.intention_score += 3;
+        break;
+      case 'view_quick_product':
+        bucket.quick_views += 1;
+        bucket.intention_score += 3;
+        break;
+      case 'click_buy':
+        bucket.buy_clicks += 1;
+        bucket.intention_score += 8;
+        break;
+      case 'click_copy_link':
+        bucket.copy_link_clicks += 1;
+        bucket.intention_score += 5;
+        break;
+      case 'click_copy_id':
+        bucket.copy_id_clicks += 1;
+        bucket.intention_score += 4;
+        break;
+      case 'click_open_store':
+        bucket.open_store_clicks += 1;
+        bucket.intention_score += 3;
+        break;
+      case 'click_copy_store_link':
+        bucket.copy_store_link_clicks += 1;
+        bucket.intention_score += 3;
+        break;
+      case 'search':
+        bucket.searches += 1;
+        bucket.intention_score += 2;
+        break;
+      case 'filter_tag':
+        bucket.filters += 1;
+        bucket.intention_score += 2;
+        break;
+      case 'sort_change':
+        bucket.sort_changes += 1;
+        bucket.intention_score += 1;
+        break;
+      case 'click_load_more':
+        bucket.load_more_clicks += 1;
+        bucket.intention_score += 1;
+        break;
+      default:
+        bucket.intention_score += 0;
+        break;
+    }
+  }
+
+  function finalizeBucket(bucket) {
+    var sessions = Object.keys(bucket.sessions || {}).length;
+    var visitors = Object.keys(bucket.visitors || {}).length;
+    var denominator = bucket.card_views || 0;
+    var buyRate = denominator ? (bucket.buy_clicks / denominator) : 0;
+    var interactionBase = denominator + bucket.featured_views + bucket.quick_views;
+    var interestRate = interactionBase ? ((bucket.buy_clicks + bucket.copy_link_clicks + bucket.copy_id_clicks) / interactionBase) : 0;
+
+    delete bucket.sessions;
+    delete bucket.visitors;
+
+    bucket.unique_sessions = sessions;
+    bucket.unique_visitors = visitors;
+    bucket.buy_rate = buyRate;
+    bucket.interest_rate = interestRate;
+
+    return bucket;
+  }
+
+  function sortBucketsDesc(items) {
+    return items.sort(function (a, b) {
+      if (b.intention_score !== a.intention_score) return b.intention_score - a.intention_score;
+      if (b.buy_clicks !== a.buy_clicks) return b.buy_clicks - a.buy_clicks;
+      if (b.card_views !== a.card_views) return b.card_views - a.card_views;
+      return a.key.localeCompare(b.key, 'pt-BR');
+    });
+  }
+
+  function buildTrackingSummary(events) {
+    var summary = {
+      generated_at: new Date().toISOString(),
+      storage_key: TRACKING_STORAGE_EVENTS_KEY,
+      total_events: 0,
+      unique_sessions: 0,
+      unique_visitors: 0,
+      page_views: 0,
+      card_views: 0,
+      featured_views: 0,
+      quick_views: 0,
+      buy_clicks: 0,
+      copy_link_clicks: 0,
+      copy_id_clicks: 0,
+      open_store_clicks: 0,
+      copy_store_link_clicks: 0,
+      searches: 0,
+      filters: 0,
+      sort_changes: 0,
+      load_more_clicks: 0,
+      intention_score: 0,
+      buy_rate: 0,
+      interest_rate: 0,
+      by_network: [],
+      by_format: [],
+      by_placement: [],
+      by_creative: [],
+      by_title: [],
+      by_product: [],
+      by_category: [],
+      latest_events_preview: []
+    };
+
+    var globalBucket = createStatsBucket('global', 'global');
+    var maps = {
+      by_network: {},
+      by_format: {},
+      by_placement: {},
+      by_creative: {},
+      by_title: {},
+      by_product: {},
+      by_category: {}
+    };
+
+    function ensureDimensionBucket(map, value, fallbackLabel) {
+      var key = trim(value) || '(vazio)';
+      if (!map[key]) map[key] = createStatsBucket(key, fallbackLabel || key);
+      return map[key];
+    }
+
+    events.forEach(function (event) {
+      applyEventToBucket(globalBucket, event);
+
+      applyEventToBucket(
+        ensureDimensionBucket(maps.by_network, event.network || event.utm_source || '(direto)', event.network || event.utm_source || '(direto)'),
+        event
+      );
+      applyEventToBucket(
+        ensureDimensionBucket(maps.by_format, event.format || event.utm_medium || '(vazio)', event.format || event.utm_medium || '(vazio)'),
+        event
+      );
+      applyEventToBucket(
+        ensureDimensionBucket(maps.by_placement, event.placement || '(vazio)', event.placement || '(vazio)'),
+        event
+      );
+      applyEventToBucket(
+        ensureDimensionBucket(maps.by_creative, event.creative_id || '(vazio)', event.creative_id || '(vazio)'),
+        event
+      );
+      applyEventToBucket(
+        ensureDimensionBucket(maps.by_title, event.title_id || '(vazio)', event.title_id || '(vazio)'),
+        event
+      );
+
+      var productKey = trim(event.sku || event.id_busca || event.product_title || '(sem produto)');
+      var productLabel = trim([
+        event.sku || '',
+        event.product_title || '',
+        event.id_busca ? ('ID:' + event.id_busca) : ''
+      ].filter(Boolean).join(' • ')) || productKey;
+      applyEventToBucket(ensureDimensionBucket(maps.by_product, productKey, productLabel), event);
+
+      applyEventToBucket(
+        ensureDimensionBucket(maps.by_category, event.category || '(sem categoria)', event.category || '(sem categoria)'),
+        event
+      );
+    });
+
+    globalBucket = finalizeBucket(globalBucket);
+    summary.total_events = globalBucket.total_events;
+    summary.unique_sessions = globalBucket.unique_sessions;
+    summary.unique_visitors = globalBucket.unique_visitors;
+    summary.page_views = globalBucket.page_views;
+    summary.card_views = globalBucket.card_views;
+    summary.featured_views = globalBucket.featured_views;
+    summary.quick_views = globalBucket.quick_views;
+    summary.buy_clicks = globalBucket.buy_clicks;
+    summary.copy_link_clicks = globalBucket.copy_link_clicks;
+    summary.copy_id_clicks = globalBucket.copy_id_clicks;
+    summary.open_store_clicks = globalBucket.open_store_clicks;
+    summary.copy_store_link_clicks = globalBucket.copy_store_link_clicks;
+    summary.searches = globalBucket.searches;
+    summary.filters = globalBucket.filters;
+    summary.sort_changes = globalBucket.sort_changes;
+    summary.load_more_clicks = globalBucket.load_more_clicks;
+    summary.intention_score = globalBucket.intention_score;
+    summary.buy_rate = globalBucket.buy_rate;
+    summary.interest_rate = globalBucket.interest_rate;
+
+    Object.keys(maps).forEach(function (groupKey) {
+      summary[groupKey] = sortBucketsDesc(
+        Object.keys(maps[groupKey]).map(function (key) {
+          return finalizeBucket(maps[groupKey][key]);
+        })
+      );
+    });
+
+    summary.latest_events_preview = events
+      .slice(-TRACKING_MAX_PREVIEW)
+      .reverse()
+      .map(function (event) {
+        return {
+          timestamp: event.timestamp,
+          event_name: event.event_name,
+          network: event.network || event.utm_source || '',
+          format: event.format || event.utm_medium || '',
+          creative_id: event.creative_id || '',
+          title_id: event.title_id || '',
+          sku: event.sku || '',
+          product_title: event.product_title || '',
+          id_busca: event.id_busca || '',
+          category: event.category || ''
+        };
+      });
+
+    return summary;
+  }
+
+  function formatPercent(value) {
+    if (!isFinite(Number(value))) return '0,00%';
+    return (Number(value) * 100).toFixed(2).replace('.', ',') + '%';
+  }
+
+  function flattenTrackingSummary(summary) {
+    var rows = [];
+
+    function pushRows(groupName, items) {
+      (items || []).forEach(function (item) {
+        rows.push({
+          dimension: groupName,
+          key: item.key,
+          label: item.label,
+          total_events: item.total_events,
+          unique_sessions: item.unique_sessions,
+          unique_visitors: item.unique_visitors,
+          page_views: item.page_views,
+          card_views: item.card_views,
+          featured_views: item.featured_views,
+          quick_views: item.quick_views,
+          buy_clicks: item.buy_clicks,
+          copy_link_clicks: item.copy_link_clicks,
+          copy_id_clicks: item.copy_id_clicks,
+          open_store_clicks: item.open_store_clicks,
+          copy_store_link_clicks: item.copy_store_link_clicks,
+          searches: item.searches,
+          filters: item.filters,
+          sort_changes: item.sort_changes,
+          load_more_clicks: item.load_more_clicks,
+          intention_score: item.intention_score,
+          buy_rate_pct: formatPercent(item.buy_rate),
+          interest_rate_pct: formatPercent(item.interest_rate)
+        });
+      });
+    }
+
+    pushRows('network', summary.by_network);
+    pushRows('format', summary.by_format);
+    pushRows('placement', summary.by_placement);
+    pushRows('creative', summary.by_creative);
+    pushRows('title', summary.by_title);
+    pushRows('product', summary.by_product);
+    pushRows('category', summary.by_category);
+
+    return rows;
+  }
+
+  function trackingRowsToCsv(rows) {
+    var headers = [
+      'dimension','key','label','total_events','unique_sessions','unique_visitors','page_views',
+      'card_views','featured_views','quick_views','buy_clicks','copy_link_clicks','copy_id_clicks',
+      'open_store_clicks','copy_store_link_clicks','searches','filters','sort_changes','load_more_clicks',
+      'intention_score','buy_rate_pct','interest_rate_pct'
+    ];
+
+    function esc(v) {
+      var s = safe(v).replace(/"/g, '""');
+      return '"' + s + '"';
+    }
+
+    var lines = [headers.join(',')];
+    rows.forEach(function (row) {
+      lines.push(headers.map(function (header) { return esc(row[header]); }).join(','));
+    });
+    return lines.join('\n');
+  }
+
+  function summarizeTopList(items, label) {
+    var list = (items || []).slice(0, 5);
+    if (!list.length) return label + ': sem dados';
+    return label + ': ' + list.map(function (item, idx) {
+      return (idx + 1) + '. ' + safe(item.label || item.key) +
+        ' [intenção=' + safe(item.intention_score) +
+        ', buy=' + safe(item.buy_clicks) +
+        ', views=' + safe(item.card_views) + ']';
+    }).join(' | ');
+  }
+
+  function trackingSummaryToTxt(summary) {
+    var lines = [
+      'RELATÓRIO LOCAL-FIRST — TRACKING LA_FAMIGLIA_LINKS',
+      'Gerado em: ' + safe(summary.generated_at),
+      'Storage key: ' + safe(summary.storage_key),
+      '',
+      'VISÃO GERAL',
+      'Total de eventos: ' + safe(summary.total_events),
+      'Sessões únicas: ' + safe(summary.unique_sessions),
+      'Visitantes únicos: ' + safe(summary.unique_visitors),
+      'Page views: ' + safe(summary.page_views),
+      'Views de card: ' + safe(summary.card_views),
+      'Views featured: ' + safe(summary.featured_views),
+      'Views quick: ' + safe(summary.quick_views),
+      'Cliques Comprar: ' + safe(summary.buy_clicks),
+      'Cliques Copiar Link: ' + safe(summary.copy_link_clicks),
+      'Cliques Copiar ID: ' + safe(summary.copy_id_clicks),
+      'Abrir loja: ' + safe(summary.open_store_clicks),
+      'Copiar link da loja: ' + safe(summary.copy_store_link_clicks),
+      'Buscas: ' + safe(summary.searches),
+      'Filtros: ' + safe(summary.filters),
+      'Ordenações: ' + safe(summary.sort_changes),
+      'Load more: ' + safe(summary.load_more_clicks),
+      'Índice de intenção: ' + safe(summary.intention_score),
+      'Taxa buy/card: ' + formatPercent(summary.buy_rate),
+      'Taxa interesse/interações: ' + formatPercent(summary.interest_rate),
+      '',
+      summarizeTopList(summary.by_network, 'TOP REDES'),
+      summarizeTopList(summary.by_creative, 'TOP CRIATIVOS'),
+      summarizeTopList(summary.by_title, 'TOP TÍTULOS'),
+      summarizeTopList(summary.by_product, 'TOP PRODUTOS'),
+      summarizeTopList(summary.by_category, 'TOP CATEGORIAS'),
+      '',
+      'ÚLTIMOS EVENTOS'
+    ];
+
+    (summary.latest_events_preview || []).forEach(function (event, idx) {
+      lines.push(
+        (idx + 1) + '. ' +
+        safe(event.timestamp) + ' | ' +
+        safe(event.event_name) + ' | ' +
+        (safe(event.network) || 'sem rede') + ' | ' +
+        (safe(event.sku) || safe(event.id_busca) || safe(event.product_title) || 'sem produto')
+      );
+    });
+
+    if (!summary.latest_events_preview || !summary.latest_events_preview.length) {
+      lines.push('Nenhum evento salvo no localStorage ainda.');
+    }
+
+    return lines.join('\n') + '\n';
+  }
+
+  function renderTrackingTools() {
+    var box = qs('#trackingToolsBox');
+    if (!box) return;
+
+    var events = getTrackingEvents();
+    var summary = buildTrackingSummary(events);
+
+    var metrics = qs('#trackingMetrics', box);
+    if (metrics) {
+      metrics.innerHTML =
+        '<span class="pill gold">Eventos: ' + escapeHtml(summary.total_events) + '</span>' +
+        '<span class="pill ok">Buy: ' + escapeHtml(summary.buy_clicks) + '</span>' +
+        '<span class="pill ok">Buy/Card: ' + escapeHtml(formatPercent(summary.buy_rate)) + '</span>' +
+        '<span class="pill warn">Intenção: ' + escapeHtml(summary.intention_score) + '</span>';
+    }
+
+    var preview = qs('#trackingPreview', box);
+    if (preview) {
+      preview.innerHTML =
+        '<div class="small muted">' + escapeHtml(summarizeTopList(summary.by_network, 'Top redes')) + '</div>' +
+        '<div class="small muted">' + escapeHtml(summarizeTopList(summary.by_creative, 'Top criativos')) + '</div>' +
+        '<div class="small muted">' + escapeHtml(summarizeTopList(summary.by_title, 'Top títulos')) + '</div>' +
+        '<div class="small muted">' + escapeHtml(summarizeTopList(summary.by_product, 'Top produtos')) + '</div>';
+    }
+  }
+
+  function exportTrackingEventsJson() {
+    downloadText('tracking_eventos_local.json', JSON.stringify(getTrackingEvents(), null, 2), 'application/json;charset=utf-8');
+  }
+
+  function exportTrackingEventsCsv() {
+    var events = getTrackingEvents();
+    var headers = [
+      'id','event_name','timestamp','page_type','session_id','visitor_id','url','path','referrer','device_type',
+      'utm_source','utm_medium','utm_campaign','utm_content','utm_term','network','format','placement',
+      'creative_id','title_id','sku','product_title','id_busca','badges','featured','category','position_on_page','extra_json'
+    ];
+
+    function esc(v) {
+      var s = safe(v).replace(/"/g, '""');
+      return '"' + s + '"';
+    }
+
+    var lines = [headers.join(',')];
+    events.forEach(function (event) {
+      lines.push(headers.map(function (header) {
+        if (header === 'badges') return esc(Array.isArray(event.badges) ? event.badges.join(' | ') : '');
+        if (header === 'featured') return esc(event.featured ? 'true' : 'false');
+        if (header === 'extra_json') return esc(JSON.stringify(event.extra || {}));
+        return esc(event[header]);
+      }).join(','));
+    });
+
+    downloadText('tracking_eventos_local.csv', lines.join('\n'), 'text/csv;charset=utf-8');
+  }
+
+  function exportTrackingSummaryJson() {
+    var summary = buildTrackingSummary(getTrackingEvents());
+    downloadText('tracking_resumo_local.json', JSON.stringify(summary, null, 2), 'application/json;charset=utf-8');
+  }
+
+  function exportTrackingSummaryCsv() {
+    var summary = buildTrackingSummary(getTrackingEvents());
+    var rows = flattenTrackingSummary(summary);
+    downloadText('tracking_resumo_local.csv', trackingRowsToCsv(rows), 'text/csv;charset=utf-8');
+  }
+
+  function exportTrackingSummaryTxt() {
+    var summary = buildTrackingSummary(getTrackingEvents());
+    downloadText('tracking_resumo_local.txt', trackingSummaryToTxt(summary), 'text/plain;charset=utf-8');
+  }
+
+  function ensureTrackingToolsBox() {
+    if (qs('#trackingToolsBox')) return;
+
+    var anchor = qs('#downloadProducts');
+    var parent = anchor && anchor.parentNode ? anchor.parentNode : null;
+    var host = parent && parent.parentNode ? parent.parentNode : null;
+    if (!host) host = qs('main') || qs('.container') || document.body;
+
+    var box = document.createElement('section');
+    box.id = 'trackingToolsBox';
+    box.className = 'card';
+    box.style.marginTop = '16px';
+    box.style.padding = '16px';
+    box.style.border = '1px solid rgba(212,175,55,.18)';
+    box.style.borderRadius = '16px';
+    box.style.background = 'rgba(255,255,255,.02)';
+    box.innerHTML =
+      '<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">' +
+        '<div>' +
+          '<h3 style="margin:0 0 6px 0;">Tracking local-first</h3>' +
+          '<div class="small muted">Lê o localStorage da loja e exporta eventos + resumo acionável por rede / criativo / título / produto / categoria.</div>' +
+        '</div>' +
+        '<div id="trackingMetrics" class="pill-row"></div>' +
+      '</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">' +
+        '<button type="button" id="trackingRefreshSummary">Atualizar resumo</button>' +
+        '<button type="button" id="downloadTrackingJson">Eventos JSON</button>' +
+        '<button type="button" id="downloadTrackingCsv">Eventos CSV</button>' +
+        '<button type="button" id="downloadTrackingSummaryJson">Resumo JSON</button>' +
+        '<button type="button" id="downloadTrackingSummaryCsv">Resumo CSV</button>' +
+        '<button type="button" id="downloadTrackingSummaryTxt">Resumo TXT</button>' +
+      '</div>' +
+      '<div id="trackingPreview" style="display:grid;gap:6px;margin-top:12px;"></div>';
+
+    if (host === document.body) {
+      document.body.appendChild(box);
+    } else if (parent && parent.nextSibling) {
+      host.insertBefore(box, parent.nextSibling);
+    } else {
+      host.appendChild(box);
+    }
+  }
+
+  function bindTrackingEvents() {
+    var btnRefresh = qs('#trackingRefreshSummary');
+    var btnJson = qs('#downloadTrackingJson');
+    var btnCsv = qs('#downloadTrackingCsv');
+    var btnSummaryJson = qs('#downloadTrackingSummaryJson');
+    var btnSummaryCsv = qs('#downloadTrackingSummaryCsv');
+    var btnSummaryTxt = qs('#downloadTrackingSummaryTxt');
+
+    if (btnRefresh && !btnRefresh.dataset.bound) {
+      btnRefresh.dataset.bound = '1';
+      btnRefresh.addEventListener('click', function () {
+        renderTrackingTools();
+        toast('Resumo de tracking atualizado ✅');
+      });
+    }
+
+    if (btnJson && !btnJson.dataset.bound) {
+      btnJson.dataset.bound = '1';
+      btnJson.addEventListener('click', function () {
+        exportTrackingEventsJson();
+        toast('Eventos do tracking exportados em JSON ✅');
+      });
+    }
+
+    if (btnCsv && !btnCsv.dataset.bound) {
+      btnCsv.dataset.bound = '1';
+      btnCsv.addEventListener('click', function () {
+        exportTrackingEventsCsv();
+        toast('Eventos do tracking exportados em CSV ✅');
+      });
+    }
+
+    if (btnSummaryJson && !btnSummaryJson.dataset.bound) {
+      btnSummaryJson.dataset.bound = '1';
+      btnSummaryJson.addEventListener('click', function () {
+        exportTrackingSummaryJson();
+        toast('Resumo do tracking exportado em JSON ✅');
+      });
+    }
+
+    if (btnSummaryCsv && !btnSummaryCsv.dataset.bound) {
+      btnSummaryCsv.dataset.bound = '1';
+      btnSummaryCsv.addEventListener('click', function () {
+        exportTrackingSummaryCsv();
+        toast('Resumo do tracking exportado em CSV ✅');
+      });
+    }
+
+    if (btnSummaryTxt && !btnSummaryTxt.dataset.bound) {
+      btnSummaryTxt.dataset.bound = '1';
+      btnSummaryTxt.addEventListener('click', function () {
+        exportTrackingSummaryTxt();
+        toast('Resumo do tracking exportado em TXT ✅');
+      });
+    }
+  }
+
   function loadPayload(raw) {
     var parsed = parseProductsPayload(raw);
     state.rootType = parsed.rootType;
@@ -606,6 +1225,7 @@
     updateMetrics();
     renderList();
     renderSelection();
+    renderTrackingTools();
   }
 
   function fetchJson(url) {
@@ -616,6 +1236,10 @@
   }
 
   function bindEvents() {
+    ensureTrackingToolsBox();
+    bindTrackingEvents();
+    renderTrackingTools();
+
     refs.searchInput.addEventListener('input', function () {
       state.search = trim(refs.searchInput.value);
       renderList();
@@ -776,6 +1400,7 @@
       updateMetrics();
       renderList();
       renderSelection();
+      renderTrackingTools();
 
       if (state.removedRows.length) {
         toast('Guardian carregado: ' + state.removedRows.length + ' evento(s) encontrado(s).');
