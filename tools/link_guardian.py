@@ -2,25 +2,25 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v8 (LISTA INVALID + UNWRAP ACCOUNT VERIFICATION + PROMOÇÃO DE URL VÁLIDA)
+# Versão : v9 (SOCIAL OK COM PRODUTO + REVIEW REPORT + MANUTENÇÃO SEGURA)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
 #   2) Evitar desativar produto por bloqueio/anti-bot/ruído.
-#   3) Produto de vitrine precisa apontar para destino real de produto.
-#      /social/, /lists, lista.* e account-verification com go inválido NÃO servem.
-#   4) Se existir URL alternativa real/boa, o Guardian promove essa URL para o produto.
-#   5) Produto do Dia (featured) NUNCA automático.
-#   6) Registrar histórico de produtos desativados/removidos:
-#      - data/link_guardian_removed.json
-#      - logs/link_guardian_removed.txt
+#   3) Link social/perfil SÓ é inválido se cair em lista/perfil genérico sem produto comprável.
+#   4) Link social com produto comprável continua válido.
+#   5) Em caso de dúvida, mandar para revisão/manual maintenance — NÃO derrubar automático.
+#   6) Registrar:
+#      - histórico de produtos desativados/removidos
+#      - relatório de revisão/manutenção
 #
 # Regras:
 #   - Se active_before == 0: restaura (bootstrap) e, se necessário, FORCE-RESTORE.
 #   - 403/429/captcha/anti-bot => TEMP (não conta falha).
 #   - 5xx/timeout => TEMP (não conta falha).
 #   - 404/410 => HARD DEAD (pode desativar após FAIL_THRESHOLD).
-#   - storefront invalid => DESATIVA com threshold próprio (default 1).
+#   - /social/ com produto => OK.
+#   - /lists, lista.* ou social genérico => REVIEW/MANUTENÇÃO por padrão.
 #   - “dead por conteúdo” (status 200) só se LG_DEAD_ON_BODY=1.
 # ==========================================================
 
@@ -49,6 +49,10 @@ LOGS_DIR = REPO_ROOT / "logs"
 REMOVED_JSON = Path(os.environ.get("LG_REMOVED_JSON_PATH", str(DATA_DIR / "link_guardian_removed.json")))
 REMOVED_TXT = Path(os.environ.get("LG_REMOVED_TXT_PATH", str(LOGS_DIR / "link_guardian_removed.txt")))
 REMOVED_MAX_EVENTS = int(os.environ.get("LG_REMOVED_MAX_EVENTS", "5000"))
+
+REVIEW_JSON = Path(os.environ.get("LG_REVIEW_JSON_PATH", str(DATA_DIR / "link_guardian_review.json")))
+REVIEW_TXT = Path(os.environ.get("LG_REVIEW_TXT_PATH", str(LOGS_DIR / "link_guardian_review.txt")))
+REVIEW_MAX_ITEMS = int(os.environ.get("LG_REVIEW_MAX_ITEMS", "5000"))
 
 
 # =========================
@@ -85,6 +89,7 @@ SOCIAL_INVALID_FOR_STOREFRONT = os.environ.get("LG_SOCIAL_INVALID_FOR_STOREFRONT
 LISTA_INVALID_FOR_STOREFRONT = os.environ.get("LG_LISTA_INVALID_FOR_STOREFRONT", "1").strip() == "1"
 
 DEAD_ON_BODY = os.environ.get("LG_DEAD_ON_BODY", "0").strip() == "1"
+STOREFRONT_REVIEW_ONLY = os.environ.get("LG_STOREFRONT_REVIEW_ONLY", "1").strip() == "1"
 
 
 # =========================
@@ -131,6 +136,28 @@ _BLOCK_PAGE_PATTERNS = [
 ]
 _BLOCK_PAGE_RE = re.compile("|".join(f"(?:{p})" for p in _BLOCK_PAGE_PATTERNS), re.IGNORECASE)
 
+_SOCIAL_PRODUCT_PATTERNS = [
+    r"ir\s+para\s+produto",
+    r"comprar\s+agora",
+    r"frete\s+gr[aá]tis",
+    r"r\$\s?\d",
+    r"chegar[aá]",
+    r"parcelas?",
+    r"produto",
+]
+_SOCIAL_PRODUCT_RE = re.compile("|".join(f"(?:{p})" for p in _SOCIAL_PRODUCT_PATTERNS), re.IGNORECASE)
+
+_SOCIAL_GENERIC_PATTERNS = [
+    r"minhas\s+listas",
+    r"minhas\s+recomenda[cç][oõ]es",
+    r"para\s+voc[eê]",
+    r"mais\s+vendidos",
+    r"ofertas",
+    r"seguir",
+    r"seguidor",
+]
+_SOCIAL_GENERIC_RE = re.compile("|".join(f"(?:{p})" for p in _SOCIAL_GENERIC_PATTERNS), re.IGNORECASE)
+
 _HARD_DEAD_STATUS = {404, 410}
 _BLOCK_STATUS = {403, 429}
 _TEMP_STATUS = {408, 425, 500, 502, 503, 504}
@@ -150,6 +177,9 @@ class CheckResult:
     checked_url: str
     storefront_invalid: bool
     promoted_url: str = ""
+    review_only: bool = False
+    review_bucket: str = ""
+    review_note: str = ""
 
 
 # =========================
@@ -247,7 +277,18 @@ def _is_social_path(u: str) -> bool:
     pth = _path_of(u)
     if not pth:
         return False
-    return ("/social/" in pth) or pth.endswith("/lists")
+    return "/social/" in pth
+
+
+def _is_lists_path(u: str) -> bool:
+    pth = _path_of(u)
+    if not pth:
+        return False
+    return bool(re.search(r"(^|/)lists(/|$)", pth))
+
+
+def _is_storefront_like_path(u: str) -> bool:
+    return _is_social_path(u) or _is_lists_path(u)
 
 
 def _is_lista_url(u: str) -> bool:
@@ -302,6 +343,66 @@ def _looks_like_product_destination(u: str) -> bool:
         return True
 
     return False
+
+
+def _has_matt_word(u: str) -> bool:
+    try:
+        qs = _query_of(u)
+        if (qs.get("matt_word") or [""])[0]:
+            return True
+        if (qs.get("matt_tool") or [""])[0]:
+            return True
+        return False
+    except Exception:
+        return False
+
+
+def _social_body_has_product(body_sample: str) -> bool:
+    text = (body_sample or "").lower()
+    if not text:
+        return False
+
+    if _SOCIAL_PRODUCT_RE.search(text):
+        return True
+
+    return False
+
+
+def _social_body_looks_generic(body_sample: str) -> bool:
+    text = (body_sample or "").lower()
+    if not text:
+        return False
+
+    if _SOCIAL_GENERIC_RE.search(text):
+        return True
+
+    return False
+
+
+def _review_result(
+    *,
+    status: int,
+    final_url: str,
+    checked_url: str,
+    reason: str,
+    bucket: str,
+    note: str,
+    storefront_invalid: bool = True,
+) -> CheckResult:
+    return CheckResult(
+        ok=False,
+        temporary=False,
+        status=status,
+        final_url=final_url,
+        reason=reason,
+        hard_dead=False,
+        checked_url=checked_url,
+        storefront_invalid=storefront_invalid,
+        promoted_url="",
+        review_only=True,
+        review_bucket=bucket,
+        review_note=note,
+    )
 
 
 def _unwrap_account_verification(u: str) -> str:
@@ -455,7 +556,7 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
     if _BLOCK_PAGE_RE.search(text):
         return False
 
-    if _is_social_path(final_url):
+    if _is_storefront_like_path(final_url):
         return False
 
     if _is_lista_url(final_url):
@@ -526,13 +627,29 @@ def _check_url(url: str) -> CheckResult:
         )
 
     unwrapped = _unwrap_account_verification(final_url)
-    if unwrapped:
-        if _is_social_path(unwrapped):
+    if unwrapped and _clean_url(unwrapped) not in {u, final_url}:
+        child = _check_url(unwrapped)
+        child.checked_url = u
+        if child.ok and not child.promoted_url and _looks_like_product_destination(unwrapped):
+            child.promoted_url = unwrapped
+        return child
+
+    if _is_social_path(final_url):
+        if _is_lists_path(final_url):
+            if STOREFRONT_REVIEW_ONLY:
+                return _review_result(
+                    status=status,
+                    final_url=final_url or u,
+                    checked_url=u,
+                    reason="review_social_lists",
+                    bucket="invalido_confirmado",
+                    note="Caiu em /social/.../lists sem produto comprável específico.",
+                )
             return CheckResult(
                 ok=False,
                 temporary=False,
                 status=status,
-                final_url=unwrapped,
+                final_url=final_url or u,
                 reason="storefront_social_invalid",
                 hard_dead=False,
                 checked_url=u,
@@ -540,33 +657,40 @@ def _check_url(url: str) -> CheckResult:
                 promoted_url="",
             )
 
-        if LISTA_INVALID_FOR_STOREFRONT and _is_lista_url(unwrapped):
-            return CheckResult(
-                ok=False,
-                temporary=False,
-                status=status,
-                final_url=unwrapped,
-                reason="storefront_listing_invalid",
-                hard_dead=False,
-                checked_url=u,
-                storefront_invalid=True,
-                promoted_url="",
-            )
+        if _social_body_looks_generic(sample) and not _has_matt_word(final_url):
+            if STOREFRONT_REVIEW_ONLY:
+                return _review_result(
+                    status=status,
+                    final_url=final_url or u,
+                    checked_url=u,
+                    reason="review_social_generico",
+                    bucket="suspeito_para_manutencao",
+                    note="Página social genérica/perfil sem sinal forte de produto comprável.",
+                )
 
-        if _looks_like_product_destination(unwrapped):
+        if _has_matt_word(final_url) or _social_body_has_product(sample):
             return CheckResult(
                 ok=True,
                 temporary=False,
                 status=status,
-                final_url=unwrapped,
-                reason="ok_unwrapped",
+                final_url=final_url or u,
+                reason="ok_social_com_produto",
                 hard_dead=False,
                 checked_url=u,
                 storefront_invalid=False,
-                promoted_url=unwrapped,
+                promoted_url="",
             )
 
-    if _is_social_path(final_url):
+        if STOREFRONT_REVIEW_ONLY:
+            return _review_result(
+                status=status,
+                final_url=final_url or u,
+                checked_url=u,
+                reason="review_social_sem_sinais_produto",
+                bucket="suspeito_para_manutencao",
+                note="Link social sem /lists, porém sem sinal confiável de produto final comprável.",
+            )
+
         if SOCIAL_INVALID_FOR_STOREFRONT:
             return CheckResult(
                 ok=False,
@@ -606,6 +730,16 @@ def _check_url(url: str) -> CheckResult:
         )
 
     if LISTA_INVALID_FOR_STOREFRONT and _is_lista_url(final_url):
+        if STOREFRONT_REVIEW_ONLY:
+            return _review_result(
+                status=status,
+                final_url=final_url or u,
+                checked_url=u,
+                reason="review_lista_host",
+                bucket="invalido_confirmado",
+                note="Destino caiu em host lista.* sem produto comprável específico.",
+            )
+
         return CheckResult(
             ok=False,
             temporary=False,
@@ -675,6 +809,7 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
         )
 
     first_result: CheckResult | None = None
+    review_result: CheckResult | None = None
     social_invalid_result: CheckResult | None = None
     listing_invalid_result: CheckResult | None = None
     dead_result: CheckResult | None = None
@@ -689,6 +824,10 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
 
         if res.ok and not res.storefront_invalid:
             return res
+
+        if res.review_only and review_result is None:
+            review_result = res
+            continue
 
         if res.reason == "storefront_social_invalid" and social_invalid_result is None:
             social_invalid_result = res
@@ -712,6 +851,9 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
 
         if generic_result is None:
             generic_result = res
+
+    if review_result is not None:
+        return review_result
 
     if social_invalid_result is not None:
         return social_invalid_result
@@ -751,6 +893,22 @@ def _clear_dead_markers(p: Dict[str, Any]) -> None:
         "guardian_dead_reason",
         "guardian_disabled_at",
         "guardian_storefront_invalid",
+    ):
+        if k in p:
+            try:
+                del p[k]
+            except Exception:
+                pass
+
+
+def _clear_review_markers(p: Dict[str, Any]) -> None:
+    for k in (
+        "guardian_review_flag",
+        "guardian_review_bucket",
+        "guardian_review_note",
+        "guardian_review_url",
+        "guardian_review_checked_url",
+        "guardian_review_at",
     ):
         if k in p:
             try:
@@ -803,6 +961,7 @@ def _force_restore_all(products: List[Dict[str, Any]]) -> int:
             p["active"] = True
             p["guardian_fail_count"] = 0
             _clear_dead_markers(p)
+            _clear_review_markers(p)
             boosted += 1
         else:
             if int(p.get("guardian_fail_count") or 0) != 0:
@@ -1058,6 +1217,111 @@ def _save_removed_reports(history: Dict[str, Any]) -> None:
     _write_text(REMOVED_TXT, _build_removed_txt(history))
 
 
+def _build_review_item(p: Dict[str, Any], res: CheckResult, happened_at: str) -> Dict[str, Any]:
+    return {
+        "week_key": _week_key_from_iso(happened_at),
+        "happened_at": happened_at,
+        "sku": (p.get("sku") or "").strip(),
+        "title": (p.get("title") or "").strip(),
+        "id_busca": (p.get("id_busca") or "").strip(),
+        "status": int(res.status),
+        "reason": res.reason,
+        "review_bucket": res.review_bucket or "suspeito_para_manutencao",
+        "review_note": res.review_note or "",
+        "suggested_action": (
+            "trocar_link" if (res.review_bucket or "") == "invalido_confirmado"
+            else "revisar_social_com_produto"
+        ),
+        "checked_url": _clean_url(res.checked_url or ""),
+        "open_url": _clean_url(p.get("open_url") or ""),
+        "check_url": _clean_url(p.get("check_url") or ""),
+        "canonical_url": _clean_url(p.get("canonical_url") or ""),
+        "short_url": _clean_url(p.get("short_url") or ""),
+        "resolved_url": _clean_url(p.get("resolved_url") or ""),
+        "final_url": _clean_url(res.final_url or ""),
+    }
+
+
+def _build_review_report(items: List[Dict[str, Any]]) -> Dict[str, Any]:
+    clean_items = [x for x in items if isinstance(x, dict)]
+    clean_items.sort(
+        key=lambda x: (
+            0 if str(x.get("review_bucket") or "") == "invalido_confirmado" else 1,
+            str(x.get("title") or ""),
+        )
+    )
+
+    if REVIEW_MAX_ITEMS > 0 and len(clean_items) > REVIEW_MAX_ITEMS:
+        clean_items = clean_items[:REVIEW_MAX_ITEMS]
+
+    buckets: Dict[str, int] = {}
+    for item in clean_items:
+        bucket = str(item.get("review_bucket") or "suspeito_para_manutencao").strip()
+        buckets[bucket] = int(buckets.get(bucket, 0) or 0) + 1
+
+    return {
+        "updated_at": _utc_now_iso_z(),
+        "total_items": len(clean_items),
+        "summary": buckets,
+        "items": clean_items,
+    }
+
+
+def _build_review_txt(report: Dict[str, Any]) -> str:
+    items = report.get("items") or []
+    summary = report.get("summary") or {}
+    updated_at = str(report.get("updated_at") or "").strip()
+
+    lines: List[str] = []
+    lines.append("========================================")
+    lines.append("LINK GUARDIAN — REVISÃO / MANUTENÇÃO")
+    lines.append("========================================")
+    lines.append(f"Atualizado em: {updated_at or _utc_now_iso_z()}")
+    lines.append(f"Total de itens: {len(items)}")
+    lines.append("")
+
+    if summary:
+        lines.append("RESUMO")
+        lines.append("----------------------------------------")
+        for k in sorted(summary.keys()):
+            lines.append(f"- {k}: {int(summary.get(k) or 0)}")
+        lines.append("")
+
+    if not items:
+        lines.append("Nenhum item em revisão/manutenção no momento.")
+        lines.append("")
+        return "\n".join(lines)
+
+    lines.append("DETALHES")
+    lines.append("----------------------------------------")
+    lines.append("")
+
+    for item in items:
+        lines.append("[MANUTENÇÃO] Produto suspeito")
+        lines.append(f"SKU: {item.get('sku') or ''}")
+        lines.append(f"Título: {item.get('title') or ''}")
+        if item.get("id_busca"):
+            lines.append(f"ID ML: {item.get('id_busca') or ''}")
+        if item.get("open_url"):
+            lines.append(f"Link atual: {item.get('open_url') or ''}")
+        if item.get("final_url"):
+            lines.append(f"Destino detectado: {item.get('final_url') or ''}")
+        lines.append(f"Classificação: {item.get('review_bucket') or ''}")
+        lines.append(f"Motivo: {item.get('reason') or ''}")
+        if item.get("review_note"):
+            lines.append(f"Nota: {item.get('review_note') or ''}")
+        lines.append(f"Ação sugerida: {item.get('suggested_action') or ''}")
+        lines.append(f"Data/hora: {item.get('happened_at') or ''}")
+        lines.append("")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def _save_review_reports(report: Dict[str, Any]) -> None:
+    _write_json(REVIEW_JSON, report)
+    _write_text(REVIEW_TXT, _build_review_txt(report))
+
+
 def main() -> int:
     data = _read_json(PRODUTOS_JSON)
     products: List[Dict[str, Any]] = data.get("products") or []
@@ -1067,6 +1331,7 @@ def main() -> int:
 
     removed_history = _load_removed_history(REMOVED_JSON)
     removed_events_added = 0
+    review_items: List[Dict[str, Any]] = []
     pending_actions: Dict[str, Dict[str, Any]] = {}
 
     cleaned: List[Dict[str, Any]] = []
@@ -1099,6 +1364,7 @@ def main() -> int:
                     p["active"] = True
                     p["guardian_fail_count"] = 0
                     _clear_dead_markers(p)
+                    _clear_review_markers(p)
                     boosted += 1
 
         print("========================================")
@@ -1164,6 +1430,8 @@ def main() -> int:
         p["last_checked"] = now
         checked += 1
 
+        _clear_review_markers(p)
+
         if res.temporary:
             temp_count += 1
 
@@ -1173,6 +1441,7 @@ def main() -> int:
                     p["active"] = True
                     p["guardian_fail_count"] = 0
                     _clear_dead_markers(p)
+                    _clear_review_markers(p)
                     changed += 1
                     print(f"[RECOVER/TEMP] {sku} -> REATIVADO via last_ok (status={res.status}, final={p.get('guardian_last_final_url', '')})")
                 else:
@@ -1195,8 +1464,12 @@ def main() -> int:
                 p["guardian_fail_count"] = 0
 
             _clear_dead_markers(p)
+            _clear_review_markers(p)
 
-            promoted = _promote_valid_url(p, res.promoted_url or res.final_url or res.checked_url)
+            promote_target = res.promoted_url or ""
+            if (not promote_target) and not _is_storefront_like_path(res.final_url or ""):
+                promote_target = res.final_url or res.checked_url or ""
+            promoted = _promote_valid_url(p, promote_target)
             if promoted:
                 changed += promoted
 
@@ -1207,6 +1480,19 @@ def main() -> int:
             else:
                 print(f"[OK] {sku} status={res.status} ({res.reason}) via {_clean_url(res.promoted_url or res.final_url or res.checked_url)}")
 
+            out.append(p)
+            time.sleep(SLEEP_BETWEEN)
+            continue
+
+        if res.review_only:
+            p["guardian_review_flag"] = True
+            p["guardian_review_bucket"] = res.review_bucket or "suspeito_para_manutencao"
+            p["guardian_review_note"] = res.review_note or ""
+            p["guardian_review_url"] = _clean_url(res.final_url or "")
+            p["guardian_review_checked_url"] = _clean_url(res.checked_url or "")
+            p["guardian_review_at"] = now
+            review_items.append(_build_review_item(p, res, now))
+            print(f"[REVIEW] {sku} status={res.status} bucket={p.get('guardian_review_bucket', '')} final={p.get('guardian_review_url', '')}")
             out.append(p)
             time.sleep(SLEEP_BETWEEN)
             continue
@@ -1355,8 +1641,11 @@ def main() -> int:
     data["products"] = final_out
     data["updated_at"] = now
 
+    review_report = _build_review_report(review_items)
+
     _write_json(PRODUTOS_JSON, data)
     _save_removed_reports(removed_history)
+    _save_review_reports(review_report)
 
     print("========================================")
     print("Link Guardian finalizado.")
@@ -1367,9 +1656,12 @@ def main() -> int:
     print(f"Removed events added: {removed_events_added}")
     print(f"Removed JSON: {REMOVED_JSON}")
     print(f"Removed TXT: {REMOVED_TXT}")
+    print(f"Review JSON: {REVIEW_JSON}")
+    print(f"Review TXT: {REVIEW_TXT}")
+    print(f"Review items: {int(review_report.get('total_items') or 0)}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | STOREFRONT_INVALID_THRESHOLD: {STOREFRONT_INVALID_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
-    print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | LISTA_INVALID_FOR_STOREFRONT: {int(LISTA_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)}")
+    print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | LISTA_INVALID_FOR_STOREFRONT: {int(LISTA_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | STOREFRONT_REVIEW_ONLY: {int(STOREFRONT_REVIEW_ONLY)}")
     print(f"DEAD_ON_BODY: {int(DEAD_ON_BODY)} | MAX_CANDIDATE_URLS: {MAX_CANDIDATE_URLS}")
     print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
     print(f"BOOTSTRAP_IF_ZERO: {int(BOOTSTRAP_IF_ZERO)} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
