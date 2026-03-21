@@ -28,7 +28,7 @@ jobs:
         env:
           LG_TIMEOUT_SEC: "12"
           LG_SLEEP_SEC: "0.35"
-          LG_MAX_CHECK: "150"
+          LG_MAX_CHECK: "20"
           LG_MAX_CANDIDATE_URLS: "5"
 
           LG_CONSERVATIVE_ON_BLOCK: "1"
@@ -43,6 +43,7 @@ jobs:
           LG_SOCIAL_INVALID_FOR_STOREFRONT: "1"
           LG_LISTA_INVALID_FOR_STOREFRONT: "1"
           LG_SOCIAL_COUNTS_AS_OK: "0"
+          LG_STOREFRONT_REVIEW_ONLY: "1"
 
           LG_RECOVER_ON_TEMP: "1"
           LG_RECOVER_MAX_DAYS: "90"
@@ -55,6 +56,7 @@ jobs:
           LG_FAILSAFE_MIN_RATIO: "0.35"
 
           LG_REMOVED_MAX_EVENTS: "5000"
+          LG_REVIEW_MAX_ITEMS: "5000"
         run: |
           python tools/link_guardian.py
 
@@ -72,6 +74,14 @@ jobs:
 
             if [ -f logs/link_guardian_removed.txt ]; then
               git add logs/link_guardian_removed.txt
+            fi
+
+            if [ -f data/link_guardian_review.json ]; then
+              git add data/link_guardian_review.json
+            fi
+
+            if [ -f logs/link_guardian_review.txt ]; then
+              git add logs/link_guardian_review.txt
             fi
 
             git commit -m "chore: Link Guardian update produtos.json"
