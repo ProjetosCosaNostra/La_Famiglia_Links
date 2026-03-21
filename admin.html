@@ -1,29 +1,348 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel da Família 🎩</title>
-  <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Produtos — Cosa Nostra</title>
+  <style>
+    :root{
+      --bg:#080808;
+      --panel:#121212;
+      --panel-2:#171717;
+      --line:rgba(212,175,55,.28);
+      --line-2:rgba(255,255,255,.08);
+      --gold:#d4af37;
+      --gold-2:#f1d78a;
+      --text:#f5f1e6;
+      --muted:#c8c0a8;
+      --danger:#d95d5d;
+      --ok:#2fbf8f;
+      --warn:#ffb347;
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:
+      radial-gradient(circle at top left, rgba(212,175,55,.12), transparent 22%),
+      radial-gradient(circle at top right, rgba(212,175,55,.08), transparent 22%),
+      linear-gradient(180deg,#050505 0%,#0b0b0b 100%);
+      color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100%}
+    body{padding:20px}
+    .shell{max-width:1680px;margin:0 auto;display:grid;gap:16px}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    .topbar{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;padding:18px 20px}
+    .topbar h1{margin:0 0 8px;font-size:32px;letter-spacing:.4px}
+    .topbar p{margin:0;color:var(--muted);line-height:1.45}
+    .top-actions{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;justify-content:flex-end}
+    .summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .metric{padding:16px 18px}
+    .metric small{display:block;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.12em}
+    .metric strong{font-size:30px}
+    .metric span{display:block;margin-top:8px;color:var(--gold-2)}
+    .toolbar{padding:16px 18px;display:grid;gap:14px}
+    .toolbar-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .toolbar .hint{color:var(--muted);font-size:14px}
+    .main{display:grid;grid-template-columns:430px 1fr;gap:16px;align-items:start}
+    .sidebar,.editor{padding:16px}
+    .section-title{margin:0 0 12px;font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-2)}
+    .search-grid{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-bottom:12px}
+    .list{display:grid;gap:10px;max-height:calc(100vh - 300px);overflow:auto;padding-right:4px}
+    .product-item{
+      padding:12px;border-radius:14px;border:1px solid var(--line-2);background:rgba(255,255,255,.025);
+      cursor:pointer;transition:.18s transform ease,.18s border-color ease,.18s background ease
+    }
+    .product-item:hover{transform:translateY(-1px);border-color:var(--line);background:rgba(212,175,55,.06)}
+    .product-item.active{border-color:var(--gold);background:rgba(212,175,55,.1)}
+    .product-item h4{margin:0 0 8px;font-size:15px;line-height:1.3}
+    .product-item p{margin:0;color:var(--muted);font-size:13px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .pill{
+      display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line-2);font-size:12px;background:rgba(255,255,255,.04)
+    }
+    .pill.gold{border-color:rgba(212,175,55,.35);color:var(--gold-2)}
+    .pill.ok{border-color:rgba(47,191,143,.35);color:#9ef1d2}
+    .pill.warn{border-color:rgba(255,179,71,.35);color:#ffd6a0}
+    .pill.danger{border-color:rgba(217,93,93,.35);color:#ffc0c0}
+    .editor-header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px}
+    .editor-title h2{margin:0 0 8px;font-size:26px}
+    .editor-title p{margin:0;color:var(--muted)}
+    .editor-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:16px}
+    .panel-block{padding:16px;border:1px solid var(--line-2);border-radius:16px;background:rgba(255,255,255,.02)}
+    .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .field{display:grid;gap:8px}
+    .field.full{grid-column:1 / -1}
+    label{font-size:13px;color:var(--gold-2);letter-spacing:.04em;text-transform:uppercase}
+    input[type="text"],input[type="url"],textarea,select{
+      width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line-2);
+      background:#0f0f0f;color:var(--text);outline:none
+    }
+    textarea{min-height:104px;resize:vertical}
+    input:focus,textarea:focus,select:focus{border-color:rgba(212,175,55,.6);box-shadow:0 0 0 3px rgba(212,175,55,.08)}
+    .check-row{display:flex;flex-wrap:wrap;gap:16px;padding-top:8px}
+    .check{display:flex;align-items:center;gap:8px;color:var(--text);font-size:14px}
+    .check input{accent-color:var(--gold)}
+    .btn{
+      appearance:none;border:1px solid rgba(212,175,55,.32);background:linear-gradient(180deg,rgba(212,175,55,.22),rgba(212,175,55,.12));
+      color:#fff7dd;padding:11px 16px;border-radius:12px;cursor:pointer;font-weight:700;letter-spacing:.02em;
+      transition:.18s transform ease,.18s opacity ease,.18s border-color ease;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(212,175,55,.56)}
+    .btn.secondary{
+      background:rgba(255,255,255,.04);border-color:var(--line-2);color:var(--text)
+    }
+    .btn.danger{
+      background:rgba(217,93,93,.12);border-color:rgba(217,93,93,.38);color:#ffdede
+    }
+    .btn.ghost{
+      background:transparent;border-color:var(--line-2);color:var(--muted)
+    }
+    .btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+    .action-row{display:flex;flex-wrap:wrap;gap:10px}
+    .preview-image{
+      width:100%;aspect-ratio:4/4;object-fit:contain;background:#0c0c0c;border-radius:14px;border:1px solid var(--line-2)
+    }
+    .mini-grid{display:grid;gap:12px}
+    .muted{color:var(--muted)}
+    .divider{height:1px;background:var(--line-2);margin:12px 0}
+    .kv{display:grid;gap:8px}
+    .kv div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line-2);font-size:14px}
+    .guardian-list{display:grid;gap:10px;max-height:260px;overflow:auto}
+    .guardian-item{padding:12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line-2)}
+    .guardian-item strong{display:block;margin-bottom:6px}
+    .empty{padding:18px;border-radius:14px;border:1px dashed var(--line-2);color:var(--muted);text-align:center}
+    .footer-note{padding:14px 16px;font-size:13px;color:var(--muted)}
+    .hidden-input{display:none}
+    .link-actions{display:flex;flex-wrap:wrap;gap:8px}
+    .small{font-size:12px}
+    #toast{
+      position:fixed;right:18px;bottom:18px;z-index:9999;opacity:0;transform:translateY(10px);
+      padding:13px 16px;border-radius:14px;background:#121212;border:1px solid var(--line);color:#fff;pointer-events:none;
+      transition:.18s opacity ease,.18s transform ease;box-shadow:var(--shadow);max-width:380px
+    }
+    #toast.show{opacity:1;transform:translateY(0)}
+    @media (max-width:1180px){
+      .main{grid-template-columns:1fr}
+      .editor-grid{grid-template-columns:1fr}
+      .list{max-height:none}
+      .topbar{grid-template-columns:1fr}
+      .top-actions{justify-content:flex-start}
+    }
+    @media (max-width:780px){
+      .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .fields,.search-grid{grid-template-columns:1fr}
+      .editor-header{flex-direction:column}
+    }
+  </style>
 </head>
 <body>
-  <div class="painel">
-    <h1>🎩 Painel Administrativo — Cosa Nostra</h1>
+  <div class="shell">
+    <section class="card topbar">
+      <div>
+        <h1>🎩 Painel de Produtos — Cosa Nostra</h1>
+        <p>
+          Modo seguro: este painel <b>não publica nem desativa nada sozinho</b>.
+          Ele carrega <b>produtos.json</b>, permite editar em memória, cruzar com o relatório do Guardian
+          e baixar um novo arquivo revisado para você validar antes de substituir no repositório.
+        </p>
+      </div>
+      <div class="top-actions">
+        <button class="btn secondary" id="reloadData">↻ Recarregar arquivos</button>
+        <label class="btn secondary" for="importProducts">📥 Importar produtos.json</label>
+        <input class="hidden-input" type="file" id="importProducts" accept=".json,application/json" />
+        <button class="btn" id="downloadProducts">💾 Baixar produtos.json</button>
+        <button class="btn secondary" id="downloadSelected">📦 Baixar produto selecionado</button>
+      </div>
+    </section>
 
-    <div class="formulario">
-      <input type="text" id="nome" placeholder="Nome do Link">
-      <input type="text" id="url" placeholder="URL (https://)">
-      <input type="text" id="emoji" placeholder="Emoji (opcional)">
-      <button id="add">Adicionar Link</button>
+    <section class="summary">
+      <div class="card metric">
+        <small>Total</small>
+        <strong id="metricTotal">0</strong>
+        <span>produtos carregados</span>
+      </div>
+      <div class="card metric">
+        <small>Ativos</small>
+        <strong id="metricActive">0</strong>
+        <span>aparecem na vitrine</span>
+      </div>
+      <div class="card metric">
+        <small>Featured</small>
+        <strong id="metricFeatured">0</strong>
+        <span>produto do dia</span>
+      </div>
+      <div class="card metric">
+        <small>Suspeitos</small>
+        <strong id="metricSuspect">0</strong>
+        <span>Guardian / relink</span>
+      </div>
+    </section>
+
+    <section class="card toolbar">
+      <div class="toolbar-row">
+        <button class="btn secondary" id="downloadSuspectsJson">📄 Baixar relatório JSON</button>
+        <button class="btn secondary" id="downloadSuspectsCsv">🧾 Baixar relatório CSV</button>
+        <button class="btn secondary" id="downloadSuspectsTxt">📝 Baixar relatório TXT</button>
+      </div>
+      <div class="hint">
+        O painel tenta carregar automaticamente <b>./data/link_guardian_removed.json</b>. Se houver itens
+        marcados pelo Guardian, eles aparecem como <b>Suspeito</b> na lista e no bloco lateral do produto.
+      </div>
+    </section>
+
+    <section class="main">
+      <aside class="card sidebar">
+        <h2 class="section-title">Produtos</h2>
+        <div class="search-grid">
+          <input type="text" id="searchInput" placeholder="Buscar por título, SKU, tag, ID ML..." />
+          <select id="filterMode">
+            <option value="all">Todos</option>
+            <option value="active">Só ativos</option>
+            <option value="inactive">Só inativos</option>
+            <option value="featured">Só featured</option>
+            <option value="suspect">Só suspeitos</option>
+          </select>
+        </div>
+        <div class="action-row" style="margin-bottom:12px">
+          <button class="btn secondary" id="newProduct">＋ Novo produto local</button>
+          <button class="btn ghost" id="clearSearch">Limpar busca</button>
+        </div>
+        <div id="productList" class="list"></div>
+      </aside>
+
+      <section class="card editor">
+        <div class="editor-header">
+          <div class="editor-title">
+            <h2 id="editorTitle">Selecione um produto</h2>
+            <p id="editorSubtitle">Sem alterações automáticas no repositório.</p>
+          </div>
+          <div class="action-row">
+            <button class="btn" id="saveProduct" disabled>Salvar em memória</button>
+            <button class="btn secondary" id="resetProduct" disabled>Recarregar campos</button>
+          </div>
+        </div>
+
+        <div class="editor-grid">
+          <div class="panel-block">
+            <h3 class="section-title" style="margin-top:0">Edição completa</h3>
+            <div class="fields">
+              <div class="field">
+                <label for="fieldSku">SKU</label>
+                <input type="text" id="fieldSku" />
+              </div>
+              <div class="field">
+                <label for="fieldTitle">Título</label>
+                <input type="text" id="fieldTitle" />
+              </div>
+
+              <div class="field full">
+                <label for="fieldTags">Tags / badges (separe por vírgula)</label>
+                <input type="text" id="fieldTags" placeholder="Achados do Dia, Cozinha, Premium..." />
+              </div>
+
+              <div class="field">
+                <label for="fieldMlId">ID Mercado Livre / busca</label>
+                <input type="text" id="fieldMlId" />
+              </div>
+              <div class="field">
+                <label for="fieldImage">Imagem (URL)</label>
+                <input type="url" id="fieldImage" />
+              </div>
+
+              <div class="field full">
+                <label for="fieldOpenUrl">open_url / link principal</label>
+                <input type="url" id="fieldOpenUrl" />
+              </div>
+
+              <div class="field">
+                <label for="fieldCanonicalUrl">canonical_url</label>
+                <input type="url" id="fieldCanonicalUrl" />
+              </div>
+              <div class="field">
+                <label for="fieldCheckUrl">check_url</label>
+                <input type="url" id="fieldCheckUrl" />
+              </div>
+
+              <div class="field">
+                <label for="fieldShortUrl">short_url</label>
+                <input type="url" id="fieldShortUrl" />
+              </div>
+              <div class="field">
+                <label for="fieldResolvedUrl">resolved_url</label>
+                <input type="url" id="fieldResolvedUrl" />
+              </div>
+
+              <div class="field full">
+                <label for="fieldNotes">Observações locais (não são do Guardian)</label>
+                <textarea id="fieldNotes" placeholder="Ex.: trocar por outro vendedor / revisar imagem / featured provisório..."></textarea>
+              </div>
+
+              <div class="field full">
+                <label for="fieldExtraJson">Campos extras (JSON opcional)</label>
+                <textarea id="fieldExtraJson" spellcheck="false"></textarea>
+              </div>
+            </div>
+
+            <div class="check-row">
+              <label class="check"><input type="checkbox" id="fieldActive" /> Ativo</label>
+              <label class="check"><input type="checkbox" id="fieldFeatured" /> Featured</label>
+            </div>
+
+            <div class="divider"></div>
+            <div class="action-row">
+              <button class="btn secondary" id="copyOpenUrl">Copiar open_url</button>
+              <button class="btn secondary" id="copyMlId">Copiar ID ML</button>
+              <button class="btn danger" id="markNeedsRelink">Marcar observação: precisa relink</button>
+            </div>
+          </div>
+
+          <div class="mini-grid">
+            <div class="panel-block">
+              <h3 class="section-title" style="margin-top:0">Preview e links</h3>
+              <img id="previewImage" class="preview-image" alt="Preview do produto" />
+              <div class="divider"></div>
+              <div class="link-actions">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn secondary small" id="openOpenUrl">Abrir open_url</a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn secondary small" id="openCanonicalUrl">Abrir canonical</a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn secondary small" id="openCheckUrl">Abrir check</a>
+              </div>
+            </div>
+
+            <div class="panel-block">
+              <h3 class="section-title" style="margin-top:0">Resumo do produto</h3>
+              <div class="kv">
+                <div><b>SKU:</b> <span id="summarySku" class="muted">—</span></div>
+                <div><b>ID ML:</b> <span id="summaryMlId" class="muted">—</span></div>
+                <div><b>Última checagem:</b> <span id="summaryLastChecked" class="muted">—</span></div>
+                <div><b>Último OK:</b> <span id="summaryLastOk" class="muted">—</span></div>
+              </div>
+            </div>
+
+            <div class="panel-block">
+              <h3 class="section-title" style="margin-top:0">Guardian / suspeitas</h3>
+              <div id="guardianBox" class="guardian-list">
+                <div class="empty">Sem produto selecionado.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div class="footer-note">
+      Fluxo recomendado: carregar <b>produtos.json</b> → revisar suspeitos → editar links / tags / status →
+      baixar novo arquivo → substituir manualmente no repositório só depois da revisão.
     </div>
-
-    <h2>Links Atuais</h2>
-    <ul id="lista"></ul>
-
-    <button id="exportar">💾 Exportar Backup</button>
-    <input type="file" id="importar" accept=".json">
   </div>
 
+  <div id="toast"></div>
   <script src="admin.js"></script>
 </body>
 </html>
