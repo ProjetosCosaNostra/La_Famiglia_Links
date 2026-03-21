@@ -18,6 +18,11 @@
    - click_copy_link_home
    - click_copy_alt_home
    - click_open_store
+
+   ✅ HOTFIX BUY HOME (2026-03-20):
+   - desktop/browser normal usa o target="_blank" nativo do <a>
+   - in-app browsers (Instagram/Facebook/Messenger) continuam com open manual + fallback
+   - evita a aba atual ir junto para o produto
 */
 (function () {
   'use strict';
@@ -85,16 +90,40 @@
     return s;
   }
 
-  // ✅ abre em IG/FB in-app: se window.open bloquear, cai no mesmo tab
-  function openBuy(url) {
+  function isInAppBrowser() {
+    var ua = lower(navigator.userAgent || '');
+    return (
+      ua.indexOf('instagram') >= 0 ||
+      ua.indexOf('fbav') >= 0 ||
+      ua.indexOf('fban') >= 0 ||
+      ua.indexOf('messenger') >= 0
+    );
+  }
+
+  // ✅ desktop/browser normal: deixa o target="_blank" nativo trabalhar.
+  // ✅ IG/FB/Messenger in-app: tenta abrir nova aba; se bloquear, cai no mesmo tab.
+  function openBuy(url, ev) {
     var u = ensureHttpUrl(url);
-    if (!u || u === '#') return;
+    if (!u || u === '#') return false;
+
+    if (!isInAppBrowser()) {
+      return true;
+    }
+
+    if (ev && ev.preventDefault) ev.preventDefault();
+
     try {
       var w = window.open(u, '_blank', 'noopener,noreferrer');
-      if (!w) window.location.href = u;
+      if (w && typeof w.focus === 'function') {
+        try { w.focus(); } catch (_e) {}
+      } else {
+        window.location.href = u;
+      }
     } catch (e) {
       window.location.href = u;
     }
+
+    return false;
   }
 
   function parseBadges(p) {
@@ -311,8 +340,11 @@
     aBuy.target = '_blank';
     aBuy.rel = 'noopener noreferrer';
     aBuy.onclick = function (ev) {
-      if (ev && ev.preventDefault) ev.preventDefault();
-      if (!buyLink) { toast('Link do produto não encontrado'); return false; }
+      if (!buyLink) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        toast('Link do produto não encontrado');
+        return false;
+      }
 
       trackEvent('click_buy_home_featured', getTrackProduct(p, {
         placement: 'featured_buy',
@@ -320,8 +352,7 @@
         position_on_page: 1
       }));
 
-      openBuy(buyLink);
-      return false;
+      return openBuy(buyLink, ev);
     };
     row1.appendChild(aBuy);
 
@@ -459,8 +490,11 @@
     buy.target = '_blank';
     buy.rel = 'noopener noreferrer';
     buy.onclick = function (ev) {
-      if (ev && ev.preventDefault) ev.preventDefault();
-      if (!buyLink) { toast('Link do produto não encontrado'); return false; }
+      if (!buyLink) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        toast('Link do produto não encontrado');
+        return false;
+      }
 
       trackEvent('click_buy_home_quick', getTrackProduct(p, {
         placement: 'quick_buy',
@@ -468,8 +502,7 @@
         position_on_page: idx + 1
       }));
 
-      openBuy(buyLink);
-      return false;
+      return openBuy(buyLink, ev);
     };
     row.appendChild(buy);
 
