@@ -19,10 +19,10 @@
    - click_copy_alt_home
    - click_open_store
 
-   ✅ HOTFIX BUY HOME (2026-03-20):
-   - desktop/browser normal usa o target="_blank" nativo do <a>
-   - in-app browsers (Instagram/Facebook/Messenger) continuam com open manual + fallback
-   - evita a aba atual ir junto para o produto
+   ✅ FIX HOME BUY DESKTOP (2026-03-20):
+   - no desktop, NÃO intercepta o link
+   - deixa o <a target="_blank"> nativo abrir a nova guia
+   - em in-app browser, intercepta e tenta abrir manualmente
 */
 (function () {
   'use strict';
@@ -74,7 +74,6 @@
     return Promise.resolve(fallbackCopy(text));
   }
 
-  // ✅ garante que links sem protocolo abram (mercadolivre.com/... -> https://mercadolivre.com/...)
   function ensureHttpUrl(u) {
     var s = trim(u);
     if (!s) return '';
@@ -92,68 +91,35 @@
 
   function isInAppBrowser() {
     var ua = lower(navigator.userAgent || '');
-    return (
-      ua.indexOf('instagram') >= 0 ||
-      ua.indexOf('fbav') >= 0 ||
-      ua.indexOf('fban') >= 0 ||
-      ua.indexOf('messenger') >= 0
-    );
+    return /instagram|fbav|fban|line|micromessenger|wv|webview|messenger/i.test(ua);
   }
 
-  // ✅ HOTFIX FORTE HOME:
-  // - sempre cancela a navegação padrão do <a>
-  // - desktop/browser normal abre MANUALMENTE em nova aba e nunca leva a home junto
-  // - in-app browsers (IG/FB/Messenger) continuam com fallback para mesma aba, porque às vezes bloqueiam nova guia
   function openBuy(url, ev) {
     var u = ensureHttpUrl(url);
-    if (!u || u === '#') return false;
-
-    if (ev && ev.preventDefault) ev.preventDefault();
-    if (ev && ev.stopPropagation) ev.stopPropagation();
-
-    // Desktop / navegador normal: não permitir fallback para a aba atual.
-    if (!isInAppBrowser()) {
-      try {
-        var wDesktop = window.open('', '_blank', 'noopener,noreferrer');
-        if (wDesktop) {
-          try { wDesktop.opener = null; } catch (_e0) {}
-          try { wDesktop.location = u; } catch (_e1) { try { wDesktop.location.href = u; } catch (_e2) {} }
-          if (typeof wDesktop.focus === 'function') {
-            try { wDesktop.focus(); } catch (_e3) {}
-          }
-          return false;
-        }
-      } catch (_e4) {}
-
-      // Fallback ainda em nova aba, sem mandar a home embora.
-      try {
-        var a = document.createElement('a');
-        a.href = u;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        return false;
-      } catch (_e5) {}
-
-      toast('Não foi possível abrir em nova aba. Tente com Ctrl+Clique.');
+    if (!u || u === '#') {
+      if (ev && ev.preventDefault) ev.preventDefault();
       return false;
     }
 
-    // In-app: tenta nova aba; se bloquear, usa mesma aba.
-    try {
-      var w = window.open(u, '_blank', 'noopener,noreferrer');
-      if (w && typeof w.focus === 'function') {
-        try { w.focus(); } catch (_e6) {}
-      } else {
-        window.location.href = u;
-      }
-    } catch (e) {
-      window.location.href = u;
+    // Desktop / navegador normal:
+    // deixa o <a target="_blank"> trabalhar sozinho.
+    if (!isInAppBrowser()) {
+      return true;
     }
 
+    // In-app browser:
+    // intercepta e tenta abrir manualmente.
+    if (ev && ev.preventDefault) ev.preventDefault();
+
+    try {
+      var w = window.open(u, '_blank');
+      if (w && typeof w.focus === 'function') {
+        w.focus();
+        return false;
+      }
+    } catch (e) {}
+
+    window.location.assign(u);
     return false;
   }
 
@@ -172,7 +138,6 @@
     return p.image_url || p.image || p.img || p.imageUrl || p.imageURL || p.image_path || p.imagePath || p.media || p.cover || '';
   }
 
-  // ✅ FIX: pega link nos campos certos do CMS (open_url/check_url/canonical_url/short_url/resolved_url)
   function getLink(p) {
     var link =
       p.open_url ||
@@ -238,7 +203,6 @@
     qsa('[data-quick-products]').forEach(function (el) { el.textContent = String(n); });
   }
 
-  // ✅ garante que a camada de fundo não “coma” cliques no celular (se CSS estiver por cima)
   function makeBgClickThrough() {
     var bg = qs('.bg');
     if (!bg) return;
@@ -312,7 +276,6 @@
     var wrap = document.createElement('div');
     wrap.className = 'cnFeaturedWrap';
 
-    // Card imagem
     var cardImg = document.createElement('div');
     cardImg.className = 'cnCard';
     var img = document.createElement('img');
@@ -328,7 +291,6 @@
     cardImg.appendChild(img);
     wrap.appendChild(cardImg);
 
-    // Card info
     var cardInfo = document.createElement('div');
     cardInfo.className = 'cnCard';
     var pad = document.createElement('div');
@@ -580,7 +542,7 @@
     if (!grid) return;
     grid.innerHTML = '';
 
-    var limit = 9; // prévia
+    var limit = 9;
     var n = Math.min(limit, list.length);
     for (var i = 0; i < n; i++) {
       grid.appendChild(makeQuickCard(list[i], i, state));
