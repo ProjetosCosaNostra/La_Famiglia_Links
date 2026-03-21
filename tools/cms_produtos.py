@@ -928,6 +928,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     return data
 
 
+
 def main() -> int:
     event_path = os.environ.get("GITHUB_EVENT_PATH") or ""
     if not event_path or not Path(event_path).exists():
@@ -953,6 +954,13 @@ def main() -> int:
     data["updated_at"] = _utc_now_iso_z()
 
     _write_json(PRODUTOS_JSON, data)
+
+    products = data.get("products") or []
+    product = next((p for p in products if isinstance(p, dict) and p.get("sku") == incoming.get("sku")), None)
+
+    target_issue_number = int(incoming.get("_target_issue_number") or incoming.get("_source_issue_number") or issue.get("number") or 0)
+    if product and target_issue_number:
+        _sync_issue_body(event, target_issue_number, product)
 
     print("OK: produtos.json atualizado.")
     print(f"SKU: {incoming.get('sku')}")
