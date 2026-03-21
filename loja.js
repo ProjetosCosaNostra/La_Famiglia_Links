@@ -694,6 +694,7 @@
     clearTimeout(STATE._trackingUiTimer);
     STATE._trackingUiTimer = setTimeout(() => {
       updateTrackingReportButton();
+      updateTrackingSessionButtons();
     }, 80);
   }
 
@@ -1772,6 +1773,16 @@
     }
   }
 
+  function getTrackingSessionSummarySafe() {
+    const api = getTrackingApi();
+    if (!api || typeof api.getSessionSummary !== "function") return null;
+    try {
+      return api.getSessionSummary({ max_items: 10 });
+    } catch {
+      return null;
+    }
+  }
+
   function updateTrackingReportButton() {
     const btn = $("#btnDlTrackingReport");
     if (!btn) return;
@@ -1782,6 +1793,37 @@
     btn.textContent = total > 0
       ? `📊 TXT relatório (${total})`
       : "📊 TXT relatório";
+  }
+
+  function updateTrackingSessionButtons() {
+    const btnReport = $("#btnDlTrackingSessionReport");
+    const btnClear = $("#btnClearTrackingSession");
+    const btnReset = $("#btnResetTrackingSession");
+    const summary = getTrackingSessionSummarySafe();
+    const total = Number(summary?.totals?.filtered_events || 0);
+    const sessionId = cleanText(summary?.filters?.session_id || trackCall("getSessionId") || "");
+    const sessionShort = sessionId ? sessionId.slice(-6) : "";
+
+    if (btnReport) {
+      btnReport.textContent = total > 0
+        ? `🧪 TXT sessão (${total})`
+        : "🧪 TXT sessão";
+    }
+
+    if (btnClear) {
+      btnClear.textContent = total > 0
+        ? `🧹 Limpar sessão (${total})`
+        : "🧹 Limpar sessão";
+      btnClear.disabled = total <= 0;
+      btnClear.style.opacity = total <= 0 ? ".55" : "";
+      btnClear.style.cursor = total <= 0 ? "not-allowed" : "";
+    }
+
+    if (btnReset) {
+      btnReset.textContent = sessionShort
+        ? `🆕 Nova sessão (${sessionShort})`
+        : "🆕 Nova sessão";
+    }
   }
 
   function buildTrackingRankingLines(title, items, formatter) {
@@ -1808,8 +1850,8 @@
     return lines;
   }
 
-  function buildTrackingSummaryTxt() {
-    const summary = getTrackingSummarySafe();
+  function buildTrackingSummaryTxt(summaryOverride) {
+    const summary = summaryOverride || getTrackingSummarySafe();
     if (!summary) return "";
 
     const totals = summary?.totals || {};
@@ -1902,6 +1944,67 @@
     const fname = `relatorio_tracking_${dateStamp()}.txt`;
     downloadFile(fname, txt, "text/plain;charset=utf-8");
     showToast("Relatório tracking ⬇️");
+  }
+
+  function doExportTrackingSessionSummaryTxt() {
+    const api = getTrackingApi();
+    if (!api) {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    const summary = getTrackingSessionSummarySafe();
+    const txt = buildTrackingSummaryTxt(summary);
+    if (!String(txt || "").trim()) {
+      showToast("Sem dados da sessão ainda ⚠️");
+      return;
+    }
+
+    const fname = `relatorio_tracking_sessao_${dateStamp()}.txt`;
+    downloadFile(fname, txt, "text/plain;charset=utf-8");
+    showToast("Relatório da sessão ⬇️");
+  }
+
+  function doClearTrackingSession() {
+    const api = getTrackingApi();
+    if (!api || typeof api.clearSessionEvents !== "function") {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    const summary = getTrackingSessionSummarySafe();
+    const total = Number(summary?.totals?.filtered_events || 0);
+    if (total <= 0) {
+      showToast("Sessão já está limpa ✅");
+      updateTrackingSessionButtons();
+      return;
+    }
+
+    try {
+      api.clearSessionEvents();
+      updateTrackingReportButton();
+      updateTrackingSessionButtons();
+      showToast("Sessão limpa ✅");
+    } catch {
+      showToast("Falha ao limpar sessão ⚠️");
+    }
+  }
+
+  function doResetTrackingSession() {
+    const api = getTrackingApi();
+    if (!api || typeof api.resetSession !== "function") {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    try {
+      api.resetSession({ clear_context: false, clear_session_events: false });
+      updateTrackingReportButton();
+      updateTrackingSessionButtons();
+      showToast("Nova sessão criada ✅");
+    } catch {
+      showToast("Falha ao criar nova sessão ⚠️");
+    }
   }
 
   async function doExportReviewTxt() {
@@ -2207,6 +2310,9 @@
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlReview">🛠️ TXT manutenção</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlTrackingReport">📊 TXT relatório</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlTrackingSessionReport">🧪 TXT sessão</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnClearTrackingSession">🧹 Limpar sessão</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnResetTrackingSession">🆕 Nova sessão</button>
           </div>
         </details>
       `;
@@ -2220,6 +2326,9 @@
     const btnDlCsvAll = $("#btnDlCsvAll");
     const btnDlReview = $("#btnDlReview");
     const btnDlTrackingReport = $("#btnDlTrackingReport");
+    const btnDlTrackingSessionReport = $("#btnDlTrackingSessionReport");
+    const btnClearTrackingSession = $("#btnClearTrackingSession");
+    const btnResetTrackingSession = $("#btnResetTrackingSession");
 
     if (btnExportCatalogTxt) btnExportCatalogTxt.addEventListener("click", () => doExportTxt("all"));
     if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
@@ -2228,8 +2337,12 @@
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
     if (btnDlReview) btnDlReview.addEventListener("click", () => doExportReviewTxt());
     if (btnDlTrackingReport) btnDlTrackingReport.addEventListener("click", () => doExportTrackingSummaryTxt());
+    if (btnDlTrackingSessionReport) btnDlTrackingSessionReport.addEventListener("click", () => doExportTrackingSessionSummaryTxt());
+    if (btnClearTrackingSession) btnClearTrackingSession.addEventListener("click", () => doClearTrackingSession());
+    if (btnResetTrackingSession) btnResetTrackingSession.addEventListener("click", () => doResetTrackingSession());
     updateMaintenanceButton();
     updateTrackingReportButton();
+    updateTrackingSessionButtons();
 
     document.addEventListener("click", (e) => {
       const openCats = e.target.closest('[data-action="openTags"]');
@@ -2403,6 +2516,7 @@
     STATE.reviewReport = await fetchReviewReport();
     updateMaintenanceButton();
     updateTrackingReportButton();
+    updateTrackingSessionButtons();
 
     const q = $("#qLoja");
     if (q) q.value = STATE.query || "";
