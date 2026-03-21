@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-21T19:32:00Z",
+  "updated_at": "2026-03-21T22:38:13Z",
   "products": [
     {
       "sku": "capacete-asx-city-preto-fosco-viseira",
@@ -19,7 +19,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D",
       "image": "https://github.com/user-attachments/assets/0e01ae5d-4022-444f-9123-f9f045c63f45",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/17S1VsX",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D",
       "price_text": "",
@@ -686,29 +686,26 @@
     },
     {
       "sku": "tradutor-inteligente-premium-online-offline",
-      "title": "🌍 Tradutor Inteligente Premium — Tradução por Texto, Imagem e Voz",
+      "title": "Tradutor Inteligente Premium",
       "badges": [
         "Achados do Dia",
         "Tecnologia",
+        "Premium",
         "Tradutor Inteligente",
         "Tradução",
         "Voz",
         "Texto",
-        "Imagem",
-        "Online",
-        "Offline",
-        "Viagem",
-        "Estudo"
+        "Imagem"
       ],
-      "id_busca": "5J5PKG-T25W",
-      "open_url": "https://meli.la/339GC5W",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=04e15a7b-f612-4b26-b3a4-d9dcb871159c",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=5ead0047-4500-45d4-aa59-d7d4d7164463",
-      "image": "https://github.com/user-attachments/assets/d5e1ab4d-ee24-4d0a-8366-d62475f80e41",
+      "id_busca": "5J5PKG-PBU0",
+      "open_url": "https://meli.la/33ubZYj",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PBU0",
+      "image": "https://github.com/user-attachments/assets/14cbb28d-77d7-47a6-9d51-4813dcc4042b",
       "active": true,
-      "featured": false,
-      "short_url": "https://meli.la/339GC5W",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=04e15a7b-f612-4b26-b3a4-d9dcb871159c",
+      "featured": true,
+      "short_url": "https://meli.la/33ubZYj",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D",
       "price_text": "",
       "last_checked": "2026-03-21T19:32:00Z",
       "last_ok": "2026-03-21T17:12:55Z",
@@ -725,12 +722,14 @@
       "review_status": "ativo",
       "review_reason": "",
       "replacement_vendor": "",
-      "relink_open_url": "",
+      "relink_open_url": "https://meli.la/33ubZYj",
       "notes": "",
       "alt_url": "",
       "issue_number": 112,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112",
-      "issue_title": "[CMS] Produto: Tradutor Inteligente Premium Online/Offline"
+      "issue_title": "Tradutor Inteligente Premium",
+      "_source_issue_number": 135,
+      "_target_issue_number": 112
     },
     {
       "sku": "zero-mofo-premium-1l-spray",
@@ -5233,7 +5232,7 @@
       "alt_url": "",
       "issue_number": 114,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/114",
-      "issue_title": "[CMS] Produto: PS5 Slim Premium com Astro Bot e Gran Turismo 7  SKU (único)."
+      "issue_title": "[CMS] Produto: PS5 Slim Premium com Astro Bot e Gran Turismo 7 SKU (único)."
     },
     {
       "sku": "microsoft-xbox-series-x-1tb",
