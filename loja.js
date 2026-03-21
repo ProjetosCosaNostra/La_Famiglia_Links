@@ -26,6 +26,12 @@
      - buy_url sempre cai em fallback (open_url/check_url/canonical/short/resolved)
      - Em browsers in-app (IG/FB) força window.open e fallback para location.href
 
+   FIX 2026-03-20 (BUY DESKTOP + LINKS SOCIAL/LISTS):
+     - Desktop: mantém a loja na aba atual e usa o target=_blank nativo
+     - In-app (IG/FB/Messenger): mantém window.open com fallback controlado
+     - Links /social/ e /lists deixam de ser tratados como compra válida
+     - Corrige bug JS em isNoisyTag (True -> true)
+
    PATCH 2026-03-02 (UI PREMIUM / CATEGORIAS INTELIGENTES):
      - Ferramentas (listas/export): recolhível no mobile (nada gigante).
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
@@ -455,6 +461,44 @@
     return isMLHost(h);
   }
 
+  function parseUrlSafe(url) {
+    try {
+      return new URL(String(ensureHttpUrl(url) || ""));
+    } catch {
+      return null;
+    }
+  }
+
+  function pathOf(url) {
+    const u = parseUrlSafe(url);
+    return u ? String(u.pathname || "").toLowerCase().trim() : "";
+  }
+
+  function isBlockedStorefrontPath(u) {
+    const path = pathOf(u);
+    if (!path) return false;
+    if (path.includes("/social/")) return true;
+    if (/(^|\/)lists?(\/|$)/.test(path)) return true;
+    return false;
+  }
+
+  function isUsableBuyLink(u) {
+    return isProbablyValidLink(u) && !isBlockedStorefrontPath(u);
+  }
+
+  function isInAppBrowser() {
+    const ua = String(navigator.userAgent || "").toLowerCase();
+    return (
+      ua.includes("instagram") ||
+      ua.includes("fbav") ||
+      ua.includes("fban") ||
+      ua.includes("messenger") ||
+      ua.includes("line/") ||
+      ua.includes("; wv") ||
+      ua.includes(" webview")
+    );
+  }
+
   function pickBestLink(raw) {
     const open = ensureHttpUrl(raw.open_url || raw.link || raw.url || "");
     const check = ensureHttpUrl(raw.check_url || "");
@@ -463,33 +507,46 @@
     const shorty = ensureHttpUrl(raw.short_url || "");
 
     const candidates = [open, check, canonical, resolved, shorty].filter(Boolean);
-    const primary = candidates.find(isProbablyValidLink) || "";
-    const alt = candidates.find((c) => c && c !== primary && isProbablyValidLink(c)) || "";
+    const primary = candidates.find(isUsableBuyLink) || candidates.find(isProbablyValidLink) || "";
+    const alt =
+      candidates.find((c) => c && c !== primary && isUsableBuyLink(c)) ||
+      candidates.find((c) => c && c !== primary && isProbablyValidLink(c)) ||
+      "";
 
     return { primary, alt, open, check, canonical, resolved, shorty };
   }
 
   function bestBuyUrl(p) {
-    return ensureHttpUrl(
-      p.buy_url ||
-      p.open_url ||
-      p.check_url ||
-      p.canonical_url ||
-      p.short_url ||
-      p.resolved_url ||
-      ""
-    );
+    const candidates = [
+      p.buy_url,
+      p.open_url,
+      p.check_url,
+      p.canonical_url,
+      p.short_url,
+      p.resolved_url,
+    ].map(ensureHttpUrl).filter(Boolean);
+
+    return candidates.find(isUsableBuyLink) || candidates.find(isProbablyValidLink) || "";
   }
 
   function openBuy(url) {
     const u = ensureHttpUrl(url);
-    if (!u) return;
+    if (!u) return false;
+
     try {
       const w = window.open(u, "_blank", "noopener,noreferrer");
-      if (!w) window.location.href = u;
-    } catch {
-      window.location.href = u;
+      if (w) {
+        try { if (typeof w.focus === "function") w.focus(); } catch {}
+        return true;
+      }
+    } catch {}
+
+    if (isInAppBrowser()) {
+      window.location.assign(u);
+      return true;
     }
+
+    return false;
   }
 
   function escapeHTML(s) {
@@ -670,7 +727,7 @@
 
     const disabled = (p.active === false);
     const buyUrl = bestBuyUrl(p);
-    const hasLink = String(buyUrl || "").startsWith("http");
+    const hasLink = isUsableBuyLink(buyUrl);
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
@@ -756,7 +813,7 @@
 
     const disabled = (p.active === false);
     const buyUrl = bestBuyUrl(p);
-    const hasLink = String(buyUrl || "").startsWith("http");
+    const hasLink = isUsableBuyLink(buyUrl);
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
@@ -1503,11 +1560,26 @@
       const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
-        if (isProbablyValidLink(href)) {
+
+        if (!isProbablyValidLink(href)) {
+          e.preventDefault();
+          showToast("Link inválido ⚠️");
+          return;
+        }
+
+        if (isBlockedStorefrontPath(href)) {
+          e.preventDefault();
+          showToast("Link do produto precisa ser atualizado ⚠️");
+          return;
+        }
+
+        if (isInAppBrowser()) {
           e.preventDefault();
           openBuy(href);
           return;
         }
+
+        return;
       }
 
       const chip = e.target.closest("[data-tag]");
