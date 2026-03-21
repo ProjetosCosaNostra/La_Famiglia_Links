@@ -42,6 +42,13 @@
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
      - “Ver todas” abre modal premium com busca.
      - Contador “Categorias” vira 14+ (premium), total aparece no “Ver todas (X)”.
+
+   PATCH 2026-03-21 (TRACKING VITRINE / LOCAL-FIRST):
+     - Inicializa CNTracking sem depender de backend
+     - Mede page_view / view_featured / view_product_card
+     - Mede click_buy / copy id / copy link / copy alt
+     - Mede busca / filtro / ordenação / load more / cópia de link da loja
+     - Falha em silêncio se tracking.js não estiver carregado
    ========================================================== */
 
 (() => {
@@ -52,6 +59,14 @@
   const SHOW_FEATURED_IN_GRID = true;
 
   const PAGE_SIZE = 60;
+
+  // =========================
+  // TRACKING (LOCAL-FIRST / VITRINE)
+  // =========================
+  const TRACKING_PAGE_TYPE = "loja";
+  const TRACKING_CARD_VIEW_THRESHOLD = 0.6;
+  const TRACKING_MAX_OBSERVED = 240;
+  const TRACKING_SEARCH_DEBOUNCE_MS = 450;
 
   // =========================
   // FRONT FAILSAFE (ANTI-WIPE)
@@ -74,6 +89,7 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
+    "Feminino",
     "Casa",
     "Cozinha",
     "Home Office",
@@ -120,6 +136,7 @@
     "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
   const CN_CATEGORY_RULES = [
+    { label: "Feminino", keywords: ["feminino", "maquiagem", "beleza", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "serum", "sérum", "cabelo", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "base", "corretivo", "paleta", "esmalte", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino"] },
     { label: "Moto", keywords: ["capacete", "viseira", "moto", "motocic", "motocross", "pilot", "piloto", "jaqueta moto", "luva moto", "intercomunicador moto"] },
     { label: "Carro", keywords: ["carro", "automotivo", "automotiva", "veicular", "veiculo", "pelicula", "película", "shampoo automotivo", "retrovisor", "multimidia", "multimídia", "som automotivo", "camera veicular", "câmera veicular"] },
     { label: "Casa", keywords: ["casa", "sala", "quarto", "banheiro", "lavanderia", "decoracao", "decoração", "tapete", "cortina", "cabide", "almofada"] },
@@ -649,6 +666,269 @@
     return false;
   }
 
+  function getTrackingApi() {
+    try {
+      if (window.CNTracking && typeof window.CNTracking.track === "function") return window.CNTracking;
+    } catch {}
+    return null;
+  }
+
+  function initTracking() {
+    if (STATE._trackingInit) return;
+    const api = getTrackingApi();
+    if (!api) return;
+
+    try {
+      api.init({
+        pageType: TRACKING_PAGE_TYPE,
+        autoPageView: false,
+        debug: false,
+      });
+      STATE._trackingInit = true;
+    } catch {}
+  }
+
+  function trackCall(methodName, ...args) {
+    const api = getTrackingApi();
+    if (!api) return null;
+
+    try {
+      const fn = api[methodName];
+      if (typeof fn !== "function") return null;
+      return fn.apply(api, args);
+    } catch {
+      return null;
+    }
+  }
+
+  function getPrimaryCategory(p) {
+    const smart = getSmartCategories(p);
+    if (smart.length) {
+      const feminino = smart.find((x) => normalizeTagKey(x) === "feminino");
+      return feminino || smart[0];
+    }
+
+    const raw = safeArray(p?.badges).map(cleanText).filter(Boolean);
+    const femininoRaw = raw.find((x) => normalizeTagKey(x) === "feminino");
+    return femininoRaw || raw[0] || "";
+  }
+
+  function buildProductTrackingMeta(p, extra) {
+    const position = Number(extra?.position_on_page);
+
+    return {
+      page_type: TRACKING_PAGE_TYPE,
+      sku: cleanText(p?.sku || ""),
+      product_title: cleanText(p?.title || ""),
+      id_busca: cleanText(p?.id_busca || ""),
+      badges: safeArray(p?.badges).map(cleanText).filter(Boolean),
+      featured: p?.featured === true,
+      category: getPrimaryCategory(p),
+      position_on_page: Number.isFinite(position) ? position : null,
+    };
+  }
+
+  function buildRenderTrackingExtra(extra) {
+    return {
+      section: cleanText(extra?.section || ""),
+      query: cleanText(STATE.query || ""),
+      tag: cleanText(STATE.tag || ""),
+      sort: cleanText(STATE.sort || "relev"),
+      total_active: Number(STATE._lastRenderStats?.totalActive || 0),
+      total_filtered: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      total_rendered: Number(STATE._lastRenderStats?.shownNow || 0),
+      ...(extra || {}),
+    };
+  }
+
+  function makeViewTrackKey(kind, p, position) {
+    return [
+      cleanText(kind || "view"),
+      cleanText(p?.sku || ""),
+      String(Number(position || 0) || 0),
+      cleanText(STATE.query || ""),
+      cleanText(STATE.tag || ""),
+      cleanText(STATE.sort || "relev"),
+    ].join("|");
+  }
+
+  function trackViewOnce(kind, p, extra) {
+    if (!p) return;
+
+    const position = Number(extra?.position_on_page || 0) || 0;
+    const key = makeViewTrackKey(kind, p, position);
+
+    if (STATE._trackedViewKeys.has(key)) return;
+    STATE._trackedViewKeys.add(key);
+
+    const meta = buildProductTrackingMeta(p, extra);
+    const more = buildRenderTrackingExtra(extra);
+
+    if (kind === "featured") {
+      trackCall("trackFeaturedView", meta, more);
+      return;
+    }
+
+    trackCall("trackProductView", meta, more);
+  }
+
+  function observeRenderedTracking(featuredPass, shown) {
+    initTracking();
+
+    if (STATE._trackingObserver && typeof STATE._trackingObserver.disconnect === "function") {
+      try { STATE._trackingObserver.disconnect(); } catch {}
+    }
+
+    if (typeof window.IntersectionObserver !== "function") {
+      if (featuredPass) {
+        trackViewOnce("featured", featuredPass, {
+          section: "featured",
+          position_on_page: 1,
+        });
+      }
+
+      shown.slice(0, TRACKING_MAX_OBSERVED).forEach((p, idx) => {
+        trackViewOnce("grid", p, {
+          section: "grid",
+          position_on_page: idx + 1,
+        });
+      });
+      return;
+    }
+
+    STATE._trackingObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        if (entry.intersectionRatio < TRACKING_CARD_VIEW_THRESHOLD) return;
+
+        const el = entry.target;
+        const sku = cleanText(el.getAttribute("data-sku") || "");
+        const kind = cleanText(el.getAttribute("data-track-kind") || "grid");
+        const position = Number(el.getAttribute("data-position") || 0) || null;
+        const p = sku ? findBySku(sku) : null;
+
+        if (p) {
+          trackViewOnce(kind === "featured" ? "featured" : "grid", p, {
+            section: kind === "featured" ? "featured" : "grid",
+            position_on_page: position,
+          });
+        }
+
+        try { STATE._trackingObserver.unobserve(el); } catch {}
+      });
+    }, { threshold: [TRACKING_CARD_VIEW_THRESHOLD] });
+
+    const nodes = Array.from(document.querySelectorAll("[data-track-kind][data-sku]"));
+    nodes.slice(0, TRACKING_MAX_OBSERVED).forEach((el) => {
+      try { STATE._trackingObserver.observe(el); } catch {}
+    });
+  }
+
+  function trackPageViewSnapshot() {
+    initTracking();
+    if (STATE._pageViewTracked) return;
+
+    STATE._pageViewTracked = true;
+
+    trackCall("trackPageView", {
+      page_type: TRACKING_PAGE_TYPE,
+      total_products: Number(STATE.products.length || 0),
+      active_count: Number(STATE._lastRenderStats?.totalActive || 0),
+      filtered_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      rendered_count: Number(STATE._lastRenderStats?.shownNow || 0),
+      featured_sku: cleanText(STATE._lastRenderStats?.featuredSku || ""),
+      featured_title: cleanText(STATE._lastRenderStats?.featuredTitle || ""),
+    });
+  }
+
+  function scheduleSearchTracking(query) {
+    initTracking();
+
+    if (STATE._searchTrackTimer) {
+      clearTimeout(STATE._searchTrackTimer);
+    }
+
+    const rawQuery = cleanText(query || "");
+
+    STATE._searchTrackTimer = setTimeout(() => {
+      const key = [
+        normalizeSearchText(rawQuery),
+        normalizeTagKey(STATE.tag || ""),
+        cleanText(STATE.sort || "relev"),
+      ].join("|");
+
+      if (key === STATE._lastSearchTrackKey) return;
+      STATE._lastSearchTrackKey = key;
+
+      trackCall("trackSearch", rawQuery, buildRenderTrackingExtra({
+        result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+        shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+      }));
+    }, TRACKING_SEARCH_DEBOUNCE_MS);
+  }
+
+  function trackFilterSelection(tagLabel) {
+    initTracking();
+
+    const label = cleanText(tagLabel || STATE.tag || "") || "all";
+    const key = [
+      normalizeTagKey(label),
+      cleanText(STATE.query || ""),
+      cleanText(STATE.sort || "relev"),
+    ].join("|");
+
+    if (key === STATE._lastFilterTrackKey) return;
+    STATE._lastFilterTrackKey = key;
+
+    trackCall("trackFilter", label, buildRenderTrackingExtra({
+      result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+    }));
+  }
+
+  function trackSortSelection(sortValue) {
+    initTracking();
+
+    trackCall("trackSortChange", cleanText(sortValue || STATE.sort || "relev"), buildRenderTrackingExtra({
+      result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+    }));
+  }
+
+  function trackLoadMoreAction(previousLimit) {
+    initTracking();
+
+    trackCall("trackLoadMore", buildRenderTrackingExtra({
+      previous_limit: Number(previousLimit || 0),
+      new_limit: Number(STATE.limit || 0),
+      result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+    }));
+  }
+
+  function trackProductAction(action, p, extra) {
+    if (!p) return;
+
+    initTracking();
+
+    const meta = buildProductTrackingMeta(p, extra);
+    const more = buildRenderTrackingExtra(extra);
+
+    if (action === "buy") {
+      trackCall("trackBuyClick", meta, more);
+      return;
+    }
+
+    if (action === "copyId") {
+      trackCall("trackCopyId", meta, more);
+      return;
+    }
+
+    if (action === "copyLink") {
+      trackCall("trackCopyLink", meta, more);
+    }
+  }
+
   function escapeHTML(s) {
     return String(s ?? "")
       .split("&").join("&amp;")
@@ -828,6 +1108,7 @@
   }
 
   function featuredHTML(p, isProdutoDoDia) {
+    const primaryCategory = getPrimaryCategory(p);
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
@@ -840,7 +1121,7 @@
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
+      : `<a class="btn btn--gold" data-role="buy-link" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
@@ -850,11 +1131,11 @@
     const tags = tagsText(p.badges);
 
     const altBtn = p.alt_url
-      ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Link Alt</button>`
+      ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1">Copiar Link Alt</button>`
       : ``;
 
     return `
-      <div class="card">
+      <div class="card" data-track-kind="featured" data-sku="${escapeHTML(p.sku)}" data-position="1" data-category="${escapeHTML(primaryCategory)}">
         <div class="card__img">
           ${badge}
           ${img}
@@ -872,9 +1153,9 @@
 
           <div class="actions">
             ${buyBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1">Copiar link</button>
             ${altBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1">Copiar ID</button>
           </div>
         </div>
       </div>
@@ -899,9 +1180,9 @@
           </p>
 
           <div class="actions" style="margin-top:6px;">
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}" data-section="featured-help" data-position="1">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}" data-section="featured-help" data-position="1">Copiar Link</button>
+            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}" data-section="featured-help" data-position="1">Copiar Alt</button>` : ``}
             <a class="btn btn--tiny btn--gold" href="./">Abrir Home</a>
           </div>
 
@@ -913,7 +1194,8 @@
     `;
   }
 
-  function productCardHTML(p) {
+  function productCardHTML(p, position) {
+    const primaryCategory = getPrimaryCategory(p);
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">
@@ -926,13 +1208,13 @@
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      : `<a class="smallBtn smallBtnGold" data-role="buy-link" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
 
     return `
-      <div class="pCard" data-sku="${escapeHTML(p.sku)}">
+      <div class="pCard" data-track-kind="grid" data-sku="${escapeHTML(p.sku)}" data-position="${escapeHTML(position)}" data-category="${escapeHTML(primaryCategory)}">
         <div class="pImg">
           ${p.featured ? `<div class="pFeatured">⭐ do dia</div>` : ``}
           ${img}
@@ -945,9 +1227,9 @@
 
           <div class="pActions">
             ${buy}
-            <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
+            <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}">Copiar ID</button>
+            <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}">Link Alt</button>` : ``}
           </div>
         </div>
       </div>
@@ -1223,6 +1505,7 @@
       STATE.limit = PAGE_SIZE;
       closeTagModal();
       render();
+      trackFilterSelection(tag || "all");
     };
   }
 
@@ -1355,7 +1638,7 @@
     }
 
     const shown = list.slice(0, STATE.limit);
-    grid.innerHTML = shown.map(productCardHTML).join("");
+    grid.innerHTML = shown.map((p, idx) => productCardHTML(p, idx + 1)).join("");
     applyImageFixes(grid);
 
     const wrap = $("#loadMoreWrap");
@@ -1370,6 +1653,14 @@
       shownNow: shown.length,
     });
 
+    STATE._lastRenderStats = {
+      totalActive: activeAll.length,
+      totalFiltered: list.length,
+      shownNow: shown.length,
+      featuredSku: featuredPass ? featuredPass.sku : (destaque ? destaque.sku : ""),
+      featuredTitle: featuredPass ? featuredPass.title : (destaque ? destaque.title : ""),
+    };
+
     STATE._export = {
       updated_at: STATE.updated_at || "",
       all: allProducts.slice(),
@@ -1381,6 +1672,7 @@
     };
 
     updateUrlState();
+    observeRenderedTracking(featuredPass, shown);
   }
 
   async function fetchProducts() {
@@ -1645,6 +1937,7 @@
         STATE.query = String(e.target.value || "");
         STATE.limit = PAGE_SIZE;
         render();
+        scheduleSearchTracking(STATE.query);
       });
     }
 
@@ -1655,6 +1948,8 @@
         STATE.tag = "";
         STATE.limit = PAGE_SIZE;
         render();
+        scheduleSearchTracking(STATE.query);
+        trackFilterSelection("all");
         showToast("Filtro limpo ✅");
       });
     }
@@ -1662,12 +1957,14 @@
     if (copyBtn) {
       copyBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        trackCall("trackCopyStoreLink", buildRenderTrackingExtra({ section: "toolbar", source: "btnCopyLoja", href: lojaUrl() }));
         copyText(lojaUrl());
       });
     }
 
     if (copyPageBtn) {
       copyPageBtn.addEventListener("click", () => {
+        trackCall("trackCopyStoreLink", buildRenderTrackingExtra({ section: "toolbar", source: "btnCopyPage", href: location.href }));
         copyText(location.href);
       });
     }
@@ -1678,13 +1975,16 @@
         STATE.sort = String(e.target.value || "relev");
         STATE.limit = PAGE_SIZE;
         render();
+        trackSortSelection(STATE.sort);
       });
     }
 
     if (moreBtn) {
       moreBtn.addEventListener("click", () => {
+        const previousLimit = STATE.limit;
         STATE.limit += PAGE_SIZE;
         render();
+        trackLoadMoreAction(previousLimit);
       });
     }
 
@@ -1749,6 +2049,10 @@
       const aBuy = e.target.closest('a[data-role="buy-link"][href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
+        const sku = cleanText(aBuy.getAttribute("data-sku") || "");
+        const position = Number(aBuy.getAttribute("data-position") || 0) || null;
+        const section = cleanText(aBuy.getAttribute("data-section") || "grid");
+        const p = sku ? findBySku(sku) : null;
 
         if (!isProbablyValidLink(href)) {
           e.preventDefault();
@@ -1760,6 +2064,14 @@
           e.preventDefault();
           showToast("Link do produto precisa ser atualizado ⚠️");
           return;
+        }
+
+        if (p) {
+          trackProductAction("buy", p, {
+            section,
+            position_on_page: position,
+            href,
+          });
         }
 
         if (isInAppBrowser()) {
@@ -1777,6 +2089,7 @@
         STATE.tag = t;
         STATE.limit = PAGE_SIZE;
         render();
+        trackFilterSelection(t || "all");
         return;
       }
 
@@ -1786,10 +2099,32 @@
       const action = el.getAttribute("data-action");
       const sku = el.getAttribute("data-sku") || "";
       const p = sku ? findBySku(sku) : null;
+      const position = Number(el.getAttribute("data-position") || 0) || null;
+      const section = cleanText(el.getAttribute("data-section") || "");
 
-      if (action === "copyLink" && p) return copyText(bestBuyUrl(p) || "");
-      if (action === "copyAlt" && p) return copyText(p.alt_url || p.canonical_url || p.check_url || "");
-      if (action === "copyId" && p) return copyText(p.id_busca || "");
+      if (action === "copyLink" && p) {
+        trackProductAction("copyLink", p, {
+          section,
+          position_on_page: position,
+          link_variant: "primary",
+        });
+        return copyText(bestBuyUrl(p) || "");
+      }
+      if (action === "copyAlt" && p) {
+        trackProductAction("copyLink", p, {
+          section,
+          position_on_page: position,
+          link_variant: "alt",
+        });
+        return copyText(p.alt_url || p.canonical_url || p.check_url || "");
+      }
+      if (action === "copyId" && p) {
+        trackProductAction("copyId", p, {
+          section,
+          position_on_page: position,
+        });
+        return copyText(p.id_busca || "");
+      }
 
       if (!ADMIN) return;
     });
@@ -1829,6 +2164,14 @@
     _export: null,
     _categoryCounts: [],
     _activeCount: 0,
+    _lastRenderStats: { totalActive: 0, totalFiltered: 0, shownNow: 0, featuredSku: "", featuredTitle: "" },
+    _trackingInit: false,
+    _pageViewTracked: false,
+    _trackingObserver: null,
+    _trackedViewKeys: new Set(),
+    _searchTrackTimer: null,
+    _lastSearchTrackKey: "",
+    _lastFilterTrackKey: "",
     reviewReport: { updated_at: "", total_items: 0, summary: {}, items: [] },
   };
 
@@ -1836,6 +2179,7 @@
     injectUiCss();
     makeBgClickThrough();
     ensureTagModal();
+    initTracking();
 
     readUrlState();
     setText($("#year"), new Date().getFullYear());
@@ -1875,6 +2219,7 @@
 
     bind();
     render();
+    trackPageViewSnapshot();
   }
 
   document.addEventListener("DOMContentLoaded", boot);
