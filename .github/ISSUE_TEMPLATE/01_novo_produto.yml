@@ -1,22 +1,20 @@
 name: "➕ Novo / Atualizar Produto (CMS)"
-description: "Adiciona ou atualiza um produto em produtos.json com suporte a revisão manual, relink e manutenção."
+description: "Adiciona ou atualiza um produto em produtos.json."
 title: "[CMS] Produto: "
 labels: ["cms-produtos", "cms-novo-produto"]
 body:
   - type: markdown
     attributes:
       value: |
-        ✅ **Como usar (do jeito certo):**
+        ✅ **Como usar (cadastro normal):**
         - Preencha os campos principais do produto.
-        - Use **Ação manual** quando o item precisar entrar em revisão, relink ou desativação manual.
+        - Esse formulário é para **cadastro / atualização normal**.
         - **Pra imagem bonita (com QR):** arraste a imagem para dentro do texto do issue (ou cole a URL da imagem).
         - Ao enviar, a Action atualiza o `produtos.json` sozinha.
 
-        ✅ **Fluxo recomendado para produto com link morto**
-        1. Marque **Ação manual = Produto precisa de relink**
-        2. Explique o motivo em **Motivo / problema encontrado**
-        3. Preencha **Novo vendedor / observação** e **Novo Link Mercado Livre**
-        4. Quando o novo link estiver bom, troque para **Reativar produto com este issue**
+        ⚠️ **Importante:**
+        - **Não use este formulário para relink, revisão manual ou manutenção de link morto.**
+        - O fluxo de **relink / revisão** vai ficar em template separado.
 
   - type: input
     id: sku
@@ -55,7 +53,7 @@ body:
   - type: input
     id: open_url
     attributes:
-      label: "Link Mercado Livre (principal /sec/... ou meli.la)"
+      label: "Link Mercado Livre (/sec/...)"
       placeholder: "https://mercadolivre.com/sec/2T9cpsU"
     validations:
       required: true
@@ -66,95 +64,6 @@ body:
       label: "Imagem (URL opcional)"
       description: "Se você não preencher, o sistema pega automaticamente a primeira imagem colada/arrastada no corpo do issue."
       placeholder: "https://... (opcional)"
-    validations:
-      required: false
-
-  - type: dropdown
-    id: review_action
-    attributes:
-      label: "Ação manual"
-      description: "Escolha o que este issue deve fazer com o produto."
-      options:
-        - "Manter / atualizar normalmente"
-        - "Produto precisa de relink"
-        - "Reativar produto com este issue"
-        - "Desativar manualmente"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: review_status
-    attributes:
-      label: "Status de revisão / manutenção"
-      description: "Campo operacional para acompanhar o estado do produto."
-      options:
-        - "Ativo / normal"
-        - "Em revisão"
-        - "Precisa relink"
-        - "Desativado manual"
-    validations:
-      required: false
-
-  - type: textarea
-    id: review_reason
-    attributes:
-      label: "Motivo / problema encontrado"
-      description: "Ex: link caiu em /social/, vendedor sem estoque, anúncio removido, preço ficou ruim."
-      placeholder: "Explique aqui por que este produto precisa revisão, relink ou desativação."
-    validations:
-      required: false
-
-  - type: input
-    id: replacement_vendor
-    attributes:
-      label: "Novo vendedor / observação"
-      description: "Ex: loja oficial X, vendedor com 10mil vendas, melhor reputação."
-      placeholder: "Novo vendedor / observação"
-    validations:
-      required: false
-
-  - type: input
-    id: relink_open_url
-    attributes:
-      label: "Novo Link Mercado Livre (relink opcional)"
-      description: "Se você já achou outro vendedor/anúncio, cole aqui. Quando preenchido, ele passa a ser o link principal."
-      placeholder: "https://mercadolivre.com/sec/... ou https://meli.la/..."
-    validations:
-      required: false
-
-  - type: input
-    id: manual_check_url
-    attributes:
-      label: "check_url manual (opcional)"
-      description: "Use só se quiser forçar um check_url específico."
-      placeholder: "https://mercadolivre.com/... (opcional)"
-    validations:
-      required: false
-
-  - type: input
-    id: manual_canonical_url
-    attributes:
-      label: "canonical_url manual (opcional)"
-      description: "Use só se quiser forçar uma canonical_url específica."
-      placeholder: "https://lista.mercadolivre.com.br/... (opcional)"
-    validations:
-      required: false
-
-  - type: input
-    id: alt_url
-    attributes:
-      label: "Link alternativo / fallback (opcional)"
-      description: "Ex: link da bio, landing auxiliar, outra página estável."
-      placeholder: "https://... (opcional)"
-    validations:
-      required: false
-
-  - type: textarea
-    id: notes
-    attributes:
-      label: "Observações internas / notas de relink"
-      description: "Campo livre para anotações de manutenção."
-      placeholder: "Anotações internas, histórico do relink, motivo da troca, observações operacionais..."
     validations:
       required: false
 
