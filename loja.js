@@ -89,7 +89,8 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
-    "Feminino",
+    "Cuidado Pessoal",
+    "Moda & Acessórios",
     "Casa",
     "Cozinha",
     "Home Office",
@@ -136,7 +137,8 @@
     "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
   const CN_CATEGORY_RULES = [
-    { label: "Feminino", keywords: ["feminino", "maquiagem", "beleza", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "serum", "sérum", "cabelo", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "base", "corretivo", "paleta", "esmalte", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino"] },
+    { label: "Cuidado Pessoal", keywords: ["feminino", "maquiagem", "beleza", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "serum", "sérum", "cabelo", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "lip oil", "lip tint", "lip balm", "body care", "cuidados com a pele", "cuidados com o cabelo", "tratamentos de beleza", "higiene pessoal", "barbearia", "barbeador", "depilação", "manicure", "pedicure", "esmalte", "paleta", "base", "corretivo"] },
+    { label: "Moda & Acessórios", keywords: ["brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino", "moda", "joia", "jóia", "bijuteria", "carteira", "mochila feminina", "óculos", "oculos"] },
     { label: "Moto", keywords: ["capacete", "viseira", "moto", "motocic", "motocross", "pilot", "piloto", "jaqueta moto", "luva moto", "intercomunicador moto"] },
     { label: "Carro", keywords: ["carro", "automotivo", "automotiva", "veicular", "veiculo", "pelicula", "película", "shampoo automotivo", "retrovisor", "multimidia", "multimídia", "som automotivo", "camera veicular", "câmera veicular"] },
     { label: "Casa", keywords: ["casa", "sala", "quarto", "banheiro", "lavanderia", "decoracao", "decoração", "tapete", "cortina", "cabide", "almofada"] },
@@ -688,6 +690,13 @@
     } catch {}
   }
 
+  function refreshTrackingUiSoon() {
+    clearTimeout(STATE._trackingUiTimer);
+    STATE._trackingUiTimer = setTimeout(() => {
+      updateTrackingReportButton();
+    }, 80);
+  }
+
   function trackCall(methodName, ...args) {
     const api = getTrackingApi();
     if (!api) return null;
@@ -695,7 +704,9 @@
     try {
       const fn = api[methodName];
       if (typeof fn !== "function") return null;
-      return fn.apply(api, args);
+      const result = fn.apply(api, args);
+      refreshTrackingUiSoon();
+      return result;
     } catch {
       return null;
     }
@@ -704,13 +715,23 @@
   function getPrimaryCategory(p) {
     const smart = getSmartCategories(p);
     if (smart.length) {
-      const feminino = smart.find((x) => normalizeTagKey(x) === "feminino");
-      return feminino || smart[0];
+      const cuidado = smart.find((x) => normalizeTagKey(x) === normalizeTagKey("Cuidado Pessoal"));
+      if (cuidado) return cuidado;
+
+      const moda = smart.find((x) => normalizeTagKey(x) === normalizeTagKey("Moda & Acessórios"));
+      if (moda) return moda;
+
+      return smart[0];
     }
 
     const raw = safeArray(p?.badges).map(cleanText).filter(Boolean);
-    const femininoRaw = raw.find((x) => normalizeTagKey(x) === "feminino");
-    return femininoRaw || raw[0] || "";
+    const cuidadoRaw = raw.find((x) => normalizeTagKey(x) === normalizeTagKey("Cuidado Pessoal"));
+    if (cuidadoRaw) return cuidadoRaw;
+
+    const modaRaw = raw.find((x) => normalizeTagKey(x) === normalizeTagKey("Moda & Acessórios"));
+    if (modaRaw) return modaRaw;
+
+    return raw[0] || "";
   }
 
   function buildProductTrackingMeta(p, extra) {
@@ -728,16 +749,42 @@
     };
   }
 
+  function getTrackingContextSafe() {
+    const api = getTrackingApi();
+    if (!api || typeof api.getContext !== "function") return {};
+
+    try {
+      const ctx = api.getContext() || {};
+      return {
+        network: cleanText(ctx.network || ctx.utm_source || ""),
+        format: cleanText(ctx.format || ctx.utm_medium || ""),
+        placement: cleanText(ctx.placement || ""),
+        creative_id: cleanText(ctx.creative_id || ""),
+        title_id: cleanText(ctx.title_id || ""),
+      };
+    } catch {
+      return {};
+    }
+  }
+
   function buildRenderTrackingExtra(extra) {
+    const context = getTrackingContextSafe();
+    const merged = { ...(extra || {}) };
+
     return {
-      section: cleanText(extra?.section || ""),
+      section: cleanText(merged.section || ""),
       query: cleanText(STATE.query || ""),
       tag: cleanText(STATE.tag || ""),
       sort: cleanText(STATE.sort || "relev"),
+      network: cleanText(merged.network || context.network || ""),
+      format: cleanText(merged.format || context.format || ""),
+      placement: cleanText(merged.placement || context.placement || ""),
+      creative_id: cleanText(merged.creative_id || context.creative_id || ""),
+      title_id: cleanText(merged.title_id || context.title_id || ""),
       total_active: Number(STATE._lastRenderStats?.totalActive || 0),
       total_filtered: Number(STATE._lastRenderStats?.totalFiltered || 0),
       total_rendered: Number(STATE._lastRenderStats?.shownNow || 0),
-      ...(extra || {}),
+      ...merged,
     };
   }
 
@@ -1715,15 +1762,9 @@
     btn.textContent = total > 0 ? `🛠️ TXT manutenção (${total})` : "🛠️ TXT manutenção";
   }
 
-  function getTrackingApi() {
-    const api = window.CNTracking;
-    if (!api || typeof api.getSummary !== "function") return null;
-    return api;
-  }
-
   function getTrackingSummarySafe() {
     const api = getTrackingApi();
-    if (!api) return null;
+    if (!api || typeof api.getSummary !== "function") return null;
     try {
       return api.getSummary({ max_items: 10 });
     } catch {
@@ -2324,6 +2365,7 @@
     _searchTrackTimer: null,
     _lastSearchTrackKey: "",
     _lastFilterTrackKey: "",
+    _trackingUiTimer: null,
     reviewReport: { updated_at: "", total_items: 0, summary: {}, items: [] },
   };
 
