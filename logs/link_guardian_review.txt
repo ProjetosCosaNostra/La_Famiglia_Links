@@ -1,20 +1,190 @@
 ========================================
 LINK GUARDIAN — REVISÃO / MANUTENÇÃO
 ========================================
-Atualizado em: 2026-03-21T19:02:49Z
-Total de itens: 13
+Atualizado em: 2026-03-21T19:38:16Z
+Total de itens: 26
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-21T17:32:57Z
-SKU: capacete-asx-city-preto-fosco-viseira
-Título: Capacete ASX City Preto Fosco com Viseira
-ID ML: 5J5PKG-CPHF
-Link atual: https://meli.la/1U6HogY
+Happened at: 2026-03-21T19:32:00Z
+Issue: #113
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
+SKU: gamestick-premium-2-controles-wireless
+Título: 🎮 Gamestick Premium — Jogos Clássicos com 2 Controles Wireless
+ID ML: 5J5PKG-ND5E
+Link atual: https://meli.la/2Qxy3CD
 Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 Classificação: storefront_social_lists_invalid
 Ação sugerida: trocar_link
-checked_url: https://meli.la/1U6HogY
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPHF&tid=a11100a5-d0a9-4edd-b762-4415cfc620a1
+checked_url: https://meli.la/2Qxy3CD
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=5598e370-b28a-4f49-a180-10ecb4dff260
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #112
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
+SKU: tradutor-inteligente-premium-online-offline
+Título: 🌍 Tradutor Inteligente Premium — Tradução por Texto, Imagem e Voz
+ID ML: 5J5PKG-T25W
+Link atual: https://meli.la/339GC5W
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://meli.la/339GC5W
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=5ead0047-4500-45d4-aa59-d7d4d7164463
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #109
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109
+SKU: kit-2-acendedores-de-fogao-premium
+Título: 🔥 Kit 2 Acendedores de Fogão Premium — Praticidade e Segurança na Cozinha
+ID ML: 5J5PKG-CPYJ
+Link atual: https://meli.la/32MdstW
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://meli.la/32MdstW
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPYJ&tid=fabf8519-8094-4b23-a46a-4b745af7b4c6
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #84
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
+SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
+Título: SSD NVMe M.2 1TB (PCIe 4.0 • M.2 2280) — Boot rápido e mais agilidade
+ID ML: 5J5PKG-6TSL
+Link atual: https://meli.la/2G13vrw
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://meli.la/2G13vrw
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=3b2382ab-0e6e-46a3-9737-fcd981b2f39b
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #79
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79
+SKU: webcam-emeet-smartcam-s600-4k-foco-automatico-usb
+Título: Webcam Emeet SmartCam S600 4K – Foco Automático – USB (Profissional)
+ID ML: 5J5PKG-VYBG
+Link atual: https://meli.la/1m2nJdb
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://meli.la/1m2nJdb
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=681ce241-484e-41c4-9ce5-cc483fc80b50
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #76
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
+SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
+Título: Luminária LED Touch – Brilho Ajustável – Recarregável USB (Abajur)
+ID ML: 5J5PKG-UMMJ
+Link atual: https://meli.la/2Fapbqm
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://meli.la/2Fapbqm
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UMMJ&tid=6591381e-dd1f-4cd8-aad0-7f9e0d7230bd
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #65
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/65
+SKU: escova-secadora-britania-bec07r-4em1-1300w-rosa
+Título: Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)
+ID ML: 5J5PKG-K8TV
+Link atual: https://meli.la/1Vd3P8y
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K8TV&tid=3ad1cedb-5ea8-459c-a50f-0353eb988b65
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #4
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
+SKU: mochila-impermeavel-notebook-15-6
+Título: Mochila impermeável — Notebook 15.6”
+ID ML: 5J5PKG-EN33
+Link atual: https://mercadolivre.com/sec/14jFsrH
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/14jFsrH
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EN33&tid=edeb6238-249a-4f9f-b66c-e308039707e7
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #7
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/7
+SKU: powerbank-20000mah-22w-usbc-preto
+Título: Power Bank 20000mAh — Carga Rápida 22.5W Turbo USB-C (Preto)
+ID ML: 5J5PKG-H0JA
+Link atual: https://mercadolivre.com/sec/1iReZ7Y
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/1iReZ7Y
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H0JA&tid=bfc408b6-c74d-4c36-9bd3-852695f7cef6
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #18
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/18
+SKU: escova-pet-vapor-3em1-elaf-5j5pkg-atvc
+Título: Escova 3 em 1 para Cães e Gatos — Remove Pelos + Vapor
+ID ML: 5J5PKG-ATVC
+Link atual: https://mercadolivre.com/sec/2ShroHC
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/2ShroHC
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ATVC&tid=ce4be6d4-9f1e-4a20-a5ea-145846437d7b
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #24
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/24
+SKU: xiaomi-mi-band-8-active-sport
+Título: Xiaomi Mi Band 8 Active (Sport)
+ID ML: 5J5PKG-WCW0
+Link atual: https://mercadolivre.com/sec/165s6Pa
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/165s6Pa
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WCW0&tid=75e07631-108d-43fa-be9b-f476f90de5fa
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #26
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/26
+SKU: ugreen-robot-nexode-gan-65w-lilas
+Título: Carregador 65W Ugreen Robot Nexode GaN (Lilás) — 3 portas (carga rápida)
+ID ML: 5J5PKG-9SG3
+Link atual: https://mercadolivre.com/sec/1WrAqC3
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/1WrAqC3
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9SG3&tid=6c4294eb-a648-4f82-9d49-48b9bd0b15f9
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T19:32:00Z
+Issue: #44
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/44
+SKU: carregador-sem-fio-stand-inducao-preto
+Título: Carregador Sem Fio (Indução) em Stand — Compatível iPhone e Samsung
+ID ML: 5J5PKG-EAT0
+Link atual: https://mercadolivre.com/sec/2vd6ej7
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/2vd6ej7
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EAT0&tid=11c92471-1315-4370-bec5-af0712ad5194
 
 [MANUTENÇÃO] Produto suspeito
 Happened at: 2026-03-21T18:58:36Z
@@ -159,3 +329,15 @@ Classificação: storefront_social_lists_invalid
 Ação sugerida: trocar_link
 checked_url: https://mercadolivre.com/sec/2vd6ej7
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EAT0&tid=11c92471-1315-4370-bec5-af0712ad5194
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-21T17:32:57Z
+SKU: capacete-asx-city-preto-fosco-viseira
+Título: Capacete ASX City Preto Fosco com Viseira
+ID ML: 5J5PKG-CPHF
+Link atual: https://meli.la/1U6HogY
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://meli.la/1U6HogY
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPHF&tid=a11100a5-d0a9-4edd-b762-4415cfc620a1
