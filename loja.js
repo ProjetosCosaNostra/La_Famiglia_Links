@@ -49,6 +49,12 @@
      - Mede click_buy / copy id / copy link / copy alt
      - Mede busca / filtro / ordenação / load more / cópia de link da loja
      - Falha em silêncio se tracking.js não estiver carregado
+
+   PATCH 2026-03-21 (CATEGORIA INTELIGENTE / CUIDADO PESSOAL):
+     - Remove o rótulo genérico “Feminino” da taxonomia visual da loja
+     - Beleza / skincare / cabelo / maquiagem / gloss viram “Cuidado Pessoal”
+     - Moda / bolsa / joias / lingerie / acessórios viram “Moda & Acessórios”
+     - getPrimaryCategory prioriza “Cuidado Pessoal” quando o produto for desse grupo
    ========================================================== */
 
 (() => {
@@ -89,7 +95,8 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
-    "Feminino",
+    "Cuidado Pessoal",
+    "Moda & Acessórios",
     "Casa",
     "Cozinha",
     "Home Office",
@@ -136,7 +143,8 @@
     "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
   const CN_CATEGORY_RULES = [
-    { label: "Feminino", keywords: ["feminino", "maquiagem", "beleza", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "serum", "sérum", "cabelo", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "base", "corretivo", "paleta", "esmalte", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino"] },
+    { label: "Cuidado Pessoal", keywords: ["beleza", "cuidado pessoal", "higiene pessoal", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "creme", "serum", "sérum", "cabelo", "capilar", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "lip", "lip balm", "lip honey", "base", "corretivo", "paleta", "esmalte", "maquiagem", "barbearia", "barbeador", "depilacao", "depilação", "manicure", "pedicure", "cuidados com a pele", "tratamentos de beleza"] },
+    { label: "Moda & Acessórios", keywords: ["feminino", "brinco", "colar", "pulseira", "anel", "bolsa", "mochila feminina", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino", "moda feminina", "carteira feminina", "bijuteria", "joia", "joias", "jóia", "jóias"] },
     { label: "Moto", keywords: ["capacete", "viseira", "moto", "motocic", "motocross", "pilot", "piloto", "jaqueta moto", "luva moto", "intercomunicador moto"] },
     { label: "Carro", keywords: ["carro", "automotivo", "automotiva", "veicular", "veiculo", "pelicula", "película", "shampoo automotivo", "retrovisor", "multimidia", "multimídia", "som automotivo", "camera veicular", "câmera veicular"] },
     { label: "Casa", keywords: ["casa", "sala", "quarto", "banheiro", "lavanderia", "decoracao", "decoração", "tapete", "cortina", "cabide", "almofada"] },
@@ -704,13 +712,21 @@
   function getPrimaryCategory(p) {
     const smart = getSmartCategories(p);
     if (smart.length) {
-      const feminino = smart.find((x) => normalizeTagKey(x) === "feminino");
-      return feminino || smart[0];
+      const preferred =
+        smart.find((x) => normalizeTagKey(x) === "cuidado pessoal") ||
+        smart.find((x) => normalizeTagKey(x) === "moda & acessórios") ||
+        smart.find((x) => normalizeTagKey(x) === "moda & acessorios");
+
+      return preferred || smart[0];
     }
 
     const raw = safeArray(p?.badges).map(cleanText).filter(Boolean);
-    const femininoRaw = raw.find((x) => normalizeTagKey(x) === "feminino");
-    return femininoRaw || raw[0] || "";
+    const preferredRaw =
+      raw.find((x) => normalizeTagKey(x) === "cuidado pessoal") ||
+      raw.find((x) => normalizeTagKey(x) === "moda & acessórios") ||
+      raw.find((x) => normalizeTagKey(x) === "moda & acessorios");
+
+    return preferredRaw || raw[0] || "";
   }
 
   function buildProductTrackingMeta(p, extra) {
