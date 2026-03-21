@@ -100,22 +100,53 @@
     );
   }
 
-  // ✅ desktop/browser normal: deixa o target="_blank" nativo trabalhar.
-  // ✅ IG/FB/Messenger in-app: tenta abrir nova aba; se bloquear, cai no mesmo tab.
+  // ✅ HOTFIX FORTE HOME:
+  // - sempre cancela a navegação padrão do <a>
+  // - desktop/browser normal abre MANUALMENTE em nova aba e nunca leva a home junto
+  // - in-app browsers (IG/FB/Messenger) continuam com fallback para mesma aba, porque às vezes bloqueiam nova guia
   function openBuy(url, ev) {
     var u = ensureHttpUrl(url);
     if (!u || u === '#') return false;
 
+    if (ev && ev.preventDefault) ev.preventDefault();
+    if (ev && ev.stopPropagation) ev.stopPropagation();
+
+    // Desktop / navegador normal: não permitir fallback para a aba atual.
     if (!isInAppBrowser()) {
-      return true;
+      try {
+        var wDesktop = window.open('', '_blank', 'noopener,noreferrer');
+        if (wDesktop) {
+          try { wDesktop.opener = null; } catch (_e0) {}
+          try { wDesktop.location = u; } catch (_e1) { try { wDesktop.location.href = u; } catch (_e2) {} }
+          if (typeof wDesktop.focus === 'function') {
+            try { wDesktop.focus(); } catch (_e3) {}
+          }
+          return false;
+        }
+      } catch (_e4) {}
+
+      // Fallback ainda em nova aba, sem mandar a home embora.
+      try {
+        var a = document.createElement('a');
+        a.href = u;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        return false;
+      } catch (_e5) {}
+
+      toast('Não foi possível abrir em nova aba. Tente com Ctrl+Clique.');
+      return false;
     }
 
-    if (ev && ev.preventDefault) ev.preventDefault();
-
+    // In-app: tenta nova aba; se bloquear, usa mesma aba.
     try {
       var w = window.open(u, '_blank', 'noopener,noreferrer');
       if (w && typeof w.focus === 'function') {
-        try { w.focus(); } catch (_e) {}
+        try { w.focus(); } catch (_e6) {}
       } else {
         window.location.href = u;
       }
