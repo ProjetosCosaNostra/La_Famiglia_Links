@@ -28,7 +28,7 @@ jobs:
         env:
           LG_TIMEOUT_SEC: "12"
           LG_SLEEP_SEC: "0.35"
-          LG_MAX_CHECK: "20"
+          LG_MAX_CHECK: "150"
           LG_MAX_CANDIDATE_URLS: "5"
 
           LG_CONSERVATIVE_ON_BLOCK: "1"
