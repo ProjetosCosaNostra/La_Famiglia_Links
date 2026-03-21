@@ -82,6 +82,24 @@
     }
   }
 
+  function safeRemoveLocalStorage(key) {
+    try {
+      localStorage.removeItem(key);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function safeRemoveSessionStorage(key) {
+    try {
+      sessionStorage.removeItem(key);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   function uid(prefix) {
     const p = String(prefix || "cn");
     const rnd = Math.random().toString(36).slice(2, 10);
@@ -138,6 +156,21 @@
     }
 
     return id;
+  }
+
+  function createNewSessionId() {
+    const id = uid("session");
+    safeSetSessionStorage(SESSION_ID_KEY, id);
+    return id;
+  }
+
+  function getStoredContext() {
+    return safeJsonParse(safeGetLocalStorage(STORAGE_CONTEXT_KEY, "{}"), {});
+  }
+
+  function clearStoredContext() {
+    safeRemoveLocalStorage(STORAGE_CONTEXT_KEY);
+    return true;
   }
 
   function getReferrer() {
@@ -360,11 +393,17 @@
   function jsonDownload(filename, data) {
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json;charset=utf-8" });
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
+    const objectUrl = URL.createObjectURL(blob);
+    a.href = objectUrl;
     a.download = filename || "tracking_events.json";
     document.body.appendChild(a);
     a.click();
     a.remove();
+    setTimeout(() => {
+      try {
+        URL.revokeObjectURL(objectUrl);
+      } catch {}
+    }, 1500);
   }
 
   function csvEscape(v) {
@@ -553,11 +592,20 @@
       if (ts != null) endTs = ts;
     }
 
+    const activeSessionId = normalizeText(
+      opts.session_id || (opts.session_only ? getSessionId() : "")
+    );
+    const activeVisitorId = normalizeText(
+      opts.visitor_id || (opts.visitor_only ? getVisitorId() : "")
+    );
+
     return list.filter((event) => {
       const ts = toDateValue(event?.timestamp);
       if (ts == null) return false;
       if (startTs != null && ts < startTs) return false;
       if (endTs != null && ts > endTs) return false;
+      if (activeSessionId && normalizeText(event?.session_id) !== activeSessionId) return false;
+      if (activeVisitorId && normalizeText(event?.visitor_id) !== activeVisitorId) return false;
       return true;
     });
   }
@@ -745,6 +793,12 @@
       generated_at: nowIso(),
       source: "La_Famiglia_Links",
       mode: "local_first",
+      filters: {
+        session_only: opts.session_only === true,
+        session_id: normalizeText(opts.session_id || (opts.session_only ? getSessionId() : "")),
+        visitor_only: opts.visitor_only === true,
+        visitor_id: normalizeText(opts.visitor_id || (opts.visitor_only ? getVisitorId() : "")),
+      },
       period: {
         days: Number.isFinite(Number(opts.days)) && Number(opts.days) > 0 ? Number(opts.days) : null,
         start_at: normalizeText(opts.start_at || ""),
@@ -876,6 +930,12 @@
 
     lines.push("RELATORIO LOCAL-FIRST - TRACKING LA_FAMIGLIA_LINKS");
     lines.push(`gerado_em: ${normalizeText(s.generated_at || nowIso())}`);
+    if (normalizeText(s?.filters?.session_id || "")) {
+      lines.push(`session_id: ${normalizeText(s.filters.session_id)}`);
+    }
+    if (normalizeText(s?.filters?.visitor_id || "")) {
+      lines.push(`visitor_id: ${normalizeText(s.filters.visitor_id)}`);
+    }
     lines.push(`eventos_filtrados: ${safeNumber(s?.totals?.filtered_events, 0)}`);
     lines.push(`eventos_armazenados: ${safeNumber(s?.totals?.all_events_stored, 0)}`);
     lines.push("");
@@ -954,9 +1014,49 @@
       return getEvents();
     },
 
+    getSessionEvents(options) {
+      return filterEventsByOptions(getEvents(), {
+        ...(options || {}),
+        session_only: true,
+      });
+    },
+
     clearEvents() {
       saveEvents([]);
       return true;
+    },
+
+    clearSessionEvents(options) {
+      const opts = options || {};
+      const sessionId = normalizeText(opts.session_id || getSessionId());
+      if (!sessionId) return false;
+      const remaining = getEvents().filter((event) => normalizeText(event?.session_id) !== sessionId);
+      saveEvents(remaining);
+      return true;
+    },
+
+    clearContext() {
+      clearStoredContext();
+      return true;
+    },
+
+    resetSession(options) {
+      const opts = options || {};
+      const previous_session_id = getSessionId();
+      if (opts.clear_session_events === true) {
+        API.clearSessionEvents({ session_id: previous_session_id });
+      }
+      if (opts.clear_context === true) {
+        clearStoredContext();
+      }
+      const session_id = createNewSessionId();
+      const context = buildContext();
+      return {
+        previous_session_id,
+        session_id,
+        visitor_id: getVisitorId(),
+        context,
+      };
     },
 
     exportEventsJson(filename) {
@@ -1035,8 +1135,92 @@
       return true;
     },
 
+    exportSessionEventsJson(filename, options) {
+      const events = API.getSessionEvents(options || {});
+      jsonDownload(filename || "cn_tracking_events_session.json", events);
+      return events;
+    },
+
+    exportSessionEventsCsv(filename, options) {
+      const events = API.getSessionEvents(options || {});
+
+      const rows = [[
+        "id",
+        "event_name",
+        "timestamp",
+        "page_type",
+        "session_id",
+        "visitor_id",
+        "url",
+        "path",
+        "referrer",
+        "device_type",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term",
+        "network",
+        "format",
+        "placement",
+        "creative_id",
+        "title_id",
+        "sku",
+        "product_title",
+        "id_busca",
+        "badges",
+        "featured",
+        "category",
+        "position_on_page",
+        "extra_json",
+      ]];
+
+      for (const e of events) {
+        rows.push([
+          e.id,
+          e.event_name,
+          e.timestamp,
+          e.page_type,
+          e.session_id,
+          e.visitor_id,
+          e.url,
+          e.path,
+          e.referrer,
+          e.device_type,
+          e.utm_source,
+          e.utm_medium,
+          e.utm_campaign,
+          e.utm_content,
+          e.utm_term,
+          e.network,
+          e.format,
+          e.placement,
+          e.creative_id,
+          e.title_id,
+          e.sku,
+          e.product_title,
+          e.id_busca,
+          Array.isArray(e.badges) ? e.badges.join(" | ") : "",
+          e.featured ? "true" : "false",
+          e.category,
+          e.position_on_page == null ? "" : String(e.position_on_page),
+          JSON.stringify(e.extra || {}),
+        ]);
+      }
+
+      csvDownload(filename || "cn_tracking_events_session.csv", rows);
+      return events;
+    },
+
     getSummary(options) {
       return buildSummary(options || {});
+    },
+
+    getSessionSummary(options) {
+      return buildSummary({
+        ...(options || {}),
+        session_only: true,
+      });
     },
 
     exportSummaryJson(filename, options) {
@@ -1054,6 +1238,24 @@
     exportSummaryTxt(filename, options) {
       const summary = buildSummary(options || {});
       textDownload(filename || "cn_tracking_summary.txt", summaryToText(summary));
+      return summary;
+    },
+
+    exportSessionSummaryJson(filename, options) {
+      const summary = API.getSessionSummary(options || {});
+      jsonDownload(filename || "cn_tracking_summary_session.json", summary);
+      return summary;
+    },
+
+    exportSessionSummaryCsv(filename, options) {
+      const summary = API.getSessionSummary(options || {});
+      csvDownload(filename || "cn_tracking_summary_session.csv", summaryToRows(summary));
+      return summary;
+    },
+
+    exportSessionSummaryTxt(filename, options) {
+      const summary = API.getSessionSummary(options || {});
+      textDownload(filename || "cn_tracking_summary_session.txt", summaryToText(summary));
       return summary;
     },
 
