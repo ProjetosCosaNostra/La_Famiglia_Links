@@ -290,6 +290,22 @@ def _clean_optional_text(s: str) -> str:
     x = re.sub(r"\s+", " ", x).strip()
     return "" if _is_placeholder(x) else x
 
+def _clean_issue_number(v: Any) -> int:
+    if v is None:
+        return 0
+    x = _strip_html(str(v)).strip()
+    m = re.search(r"(\d+)", x)
+    return int(m.group(1)) if m else 0
+
+
+def _issue_url_from_repo(repo_html_url: str, issue_number: int) -> str:
+    if not issue_number:
+        return ""
+    base = (repo_html_url or "").strip().rstrip("/")
+    if not base:
+        return ""
+    return f"{base}/issues/{int(issue_number)}"
+
 
 def _normalize_review_action(s: str) -> str:
     x = _clean_optional_text(s).lower()
@@ -554,6 +570,9 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         p["relink_open_url"] = _clean_url(str(p.get("relink_open_url") or ""))
         p["notes"] = _clean_optional_text(str(p.get("notes") or ""))
         p["alt_url"] = _clean_url(str(p.get("alt_url") or ""))
+        p["issue_number"] = _clean_issue_number(p.get("issue_number") or p.get("source_issue_number") or p.get("target_issue_number"))
+        p["issue_url"] = _clean_url(str(p.get("issue_url") or ""))
+        p["issue_title"] = _clean_optional_text(str(p.get("issue_title") or ""))
 
         p.setdefault("badges", [])
         p.setdefault("price_text", "")
@@ -601,9 +620,17 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
             "last_checked": "",
             "last_ok": "",
             "featured_note": featured_note,
+            "issue_number": int(issue.get("number") or 0),
+            "issue_url": _clean_url(str(issue.get("html_url") or "")),
+            "issue_title": _clean_optional_text(str(issue.get("title") or "")),
+            "_source_issue_number": int(issue.get("number") or 0),
+            "_target_issue_number": 0,
             "_reactivate_featured_target": bool(reactivate_target),
             "_special_set_featured_only": True,
         }
+
+    target_issue_raw = _first_meaningful_line(_get_section(sections, r"N[uú]mero\s+da\s+issue\s+original|Issue\s+original|Issue\s+do\s+produto"))
+    target_issue_number = _clean_issue_number(target_issue_raw)
 
     sku_raw = _first_meaningful_line(_get_section(sections, r"^SKU\b"))
     title_raw = _first_meaningful_line(_get_section(sections, r"^T[ií]tulo\b"))
@@ -700,6 +727,10 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
 
     image = _normalize_asset_path(image_url)
 
+    source_issue_number = int(issue.get("number") or 0)
+    source_issue_url = _clean_url(str(issue.get("html_url") or ""))
+    source_issue_title = _clean_optional_text(str(issue.get("title") or ""))
+
     product: Dict[str, Any] = {
         "sku": sku,
         "title": title,
@@ -721,6 +752,11 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "relink_open_url": _clean_url(open_url if _first_url(new_link_block) else ""),
         "notes": notes,
         "alt_url": _clean_url(alt_url),
+        "issue_number": int(target_issue_number or source_issue_number or 0),
+        "issue_url": source_issue_url,
+        "issue_title": source_issue_title,
+        "_source_issue_number": source_issue_number,
+        "_target_issue_number": int(target_issue_number or 0),
         "_special_set_featured_only": False,
     }
 
@@ -869,6 +905,9 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         "review_reason",
         "replacement_vendor",
         "notes",
+        "issue_number",
+        "issue_url",
+        "issue_title",
     }
 
     for k, v in incoming.items():
@@ -913,6 +952,9 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     existing["notes"] = _clean_optional_text(str(existing.get("notes") or ""))
     existing["alt_url"] = _clean_url(str(existing.get("alt_url") or ""))
     existing["relink_open_url"] = _clean_url(str(existing.get("relink_open_url") or ""))
+    existing["issue_number"] = _clean_issue_number(existing.get("issue_number") or incoming.get("issue_number") or incoming.get("_target_issue_number") or incoming.get("_source_issue_number"))
+    existing["issue_url"] = _clean_url(str(existing.get("issue_url") or incoming.get("issue_url") or ""))
+    existing["issue_title"] = _clean_optional_text(str(existing.get("issue_title") or incoming.get("issue_title") or ""))
 
     if existing.get("featured") is True:
         for p in products:
@@ -926,7 +968,6 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
 
     data["products"] = products
     return data
-
 
 
 def main() -> int:
@@ -953,14 +994,20 @@ def main() -> int:
     data = _upsert_product(data, incoming)
     data["updated_at"] = _utc_now_iso_z()
 
-    _write_json(PRODUTOS_JSON, data)
-
+    repo_html_url = str((event.get("repository") or {}).get("html_url") or "").strip()
     products = data.get("products") or []
-    product = next((p for p in products if isinstance(p, dict) and p.get("sku") == incoming.get("sku")), None)
-
     target_issue_number = int(incoming.get("_target_issue_number") or incoming.get("_source_issue_number") or issue.get("number") or 0)
-    if product and target_issue_number:
-        _sync_issue_body(event, target_issue_number, product)
+    for p in products:
+        if not isinstance(p, dict):
+            continue
+        if (p.get("sku") or "") != (incoming.get("sku") or ""):
+            continue
+        p["issue_number"] = int(target_issue_number or 0)
+        p["issue_url"] = _issue_url_from_repo(repo_html_url, target_issue_number) or _clean_url(str(issue.get("html_url") or ""))
+        p["issue_title"] = _clean_optional_text(str(p.get("issue_title") or incoming.get("issue_title") or issue.get("title") or ""))
+        break
+
+    _write_json(PRODUTOS_JSON, data)
 
     print("OK: produtos.json atualizado.")
     print(f"SKU: {incoming.get('sku')}")
