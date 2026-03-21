@@ -1,16 +1,16 @@
 name: "✏️ Editar Produto Existente (CMS)"
-description: "Escolha o produto já existente pela issue original + SKU e edite os campos que precisar."
+description: "Escolha o produto já existente pela issue original + SKU e edite só os campos principais."
 title: "[CMS] Editar Produto: "
 labels: ["cms-produtos", "cms-editar-produto"]
 body:
   - type: markdown
     attributes:
       value: |
-        ✅ **Como usar (edição real de produto já existente):**
+        ✅ **Como usar (edição simplificada):**
         - Este formulário é para **editar um produto que já existe**.
         - Você informa a **issue original** e o **SKU** do produto.
-        - Preencha **só os campos que quer mudar**. O resto fica como está.
-        - Depois de processar, o CMS atualiza o `produtos.json` e também **reescreve o corpo da issue original**, para o botão **Edit** abrir um corpo forte dali em diante.
+        - Aqui ficam só os **campos principais**, no mesmo estilo do formulário de cadastro.
+        - Preencha **apenas o que quer mudar**. O resto permanece como está.
 
         ⚠️ **Importante:**
         - O GitHub **não consegue puxar uma lista viva de produtos/issues** dentro do formulário.
@@ -21,7 +21,7 @@ body:
     id: target_issue_number
     attributes:
       label: "Número da issue original do produto"
-      description: "Ex: 112"
+      description: "Ex.: 112"
       placeholder: "112"
     validations:
       required: true
@@ -80,118 +80,29 @@ body:
     validations:
       required: false
 
-  - type: dropdown
-    id: active_mode
+  - type: checkboxes
+    id: options
     attributes:
-      label: "Estado ativo / vitrine"
-      description: "Escolha só se quiser mudar este estado."
+      label: "Opções (opcional)"
+      description: "Marque só se quiser forçar mudança nessas opções."
       options:
-        - "Manter atual"
-        - "Ativar / aparecer na vitrine"
-        - "Desativar / sair da vitrine"
-    validations:
-      required: true
+        - label: "Ativo (aparece na vitrine)"
+        - label: "Definir como Produto do Dia (featured)"
 
-  - type: dropdown
-    id: featured_mode
+  - type: markdown
     attributes:
-      label: "Estado Produto do Dia / featured"
-      description: "Escolha só se quiser mudar o featured."
-      options:
-        - "Manter atual"
-        - "Definir como Produto do Dia (featured)"
-        - "Remover Produto do Dia (featured)"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: review_action
-    attributes:
-      label: "Ação manual"
-      description: "Escolha a ação operacional deste edit."
-      options:
-        - "Manter atual"
-        - "Manter"
-        - "Produto precisa de relink"
-        - "Reativar"
-        - "Desativar manualmente"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: review_status
-    attributes:
-      label: "Status de revisão / manutenção"
-      description: "Escolha só se quiser mudar o status."
-      options:
-        - "Manter atual"
-        - "Ativo"
-        - "Em revisão"
-        - "Precisa relink"
-        - "Desativado manualmente"
-    validations:
-      required: true
+      value: |
+        🖼️ **Upload da imagem bonita (com QR)**
+        - Se não quiser colar URL no campo de imagem, você pode arrastar a imagem no corpo da issue.
+        - O GitHub vai gerar um link público.
+        - O CMS pode usar essa imagem no produto.
 
   - type: textarea
-    id: review_reason
+    id: image_dropzone
     attributes:
-      label: "Motivo / problema encontrado (opcional)"
-      description: "Deixe vazio para manter o texto atual."
-      placeholder: "Ex.: link caiu em /social/, vendedor sem estoque, anúncio removido..."
-    validations:
-      required: false
-
-  - type: input
-    id: replacement_vendor
-    attributes:
-      label: "Novo vendedor / observação (opcional)"
-      description: "Ex.: vendedor X com 10mil vendas, melhor reputação."
-      placeholder: "Novo vendedor / observação"
-    validations:
-      required: false
-
-  - type: input
-    id: relink_open_url
-    attributes:
-      label: "Novo Link Mercado Livre (relink opcional)"
-      description: "Cole aqui o link do novo vendedor/anúncio."
-      placeholder: "https://mercadolivre.com/sec/... ou https://meli.la/..."
-    validations:
-      required: false
-
-  - type: input
-    id: manual_check_url
-    attributes:
-      label: "check_url manual (opcional)"
-      description: "Use só se quiser forçar um check_url específico."
-      placeholder: "https://mercadolivre.com/... (opcional)"
-    validations:
-      required: false
-
-  - type: input
-    id: manual_canonical_url
-    attributes:
-      label: "canonical_url manual (opcional)"
-      description: "Use só se quiser forçar uma canonical_url específica."
-      placeholder: "https://lista.mercadolivre.com.br/... (opcional)"
-    validations:
-      required: false
-
-  - type: input
-    id: alt_url
-    attributes:
-      label: "Link alternativo / fallback (opcional)"
-      description: "Ex.: link da bio, landing auxiliar, outra página estável."
-      placeholder: "https://... (opcional)"
-    validations:
-      required: false
-
-  - type: textarea
-    id: notes
-    attributes:
-      label: "Observações internas / notas de relink (opcional)"
-      description: "Campo livre para histórico de revisão e manutenção."
-      placeholder: "Anotações internas, histórico do relink, motivo da troca, observações operacionais..."
+      label: "Cole/arraste a imagem aqui (opcional)"
+      description: "Pode deixar vazio se já preencheu a URL da imagem acima."
+      placeholder: "Arraste a imagem aqui..."
     validations:
       required: false
 
@@ -200,5 +111,5 @@ body:
       value: |
         📌 **Resultado esperado:**
         - este issue atualiza o produto no `produtos.json`
-        - e sincroniza a **issue original** para um corpo mais forte de edição
-        - então, dali em diante, clicar em **Edit** na issue original fica muito mais útil
+        - usando só os campos principais
+        - sem aquele monte de campo de manutenção que atrapalha
