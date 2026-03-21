@@ -49,12 +49,6 @@
      - Mede click_buy / copy id / copy link / copy alt
      - Mede busca / filtro / ordenação / load more / cópia de link da loja
      - Falha em silêncio se tracking.js não estiver carregado
-
-   PATCH 2026-03-21 (CATEGORIA INTELIGENTE / CUIDADO PESSOAL):
-     - Remove o rótulo genérico “Feminino” da taxonomia visual da loja
-     - Beleza / skincare / cabelo / maquiagem / gloss viram “Cuidado Pessoal”
-     - Moda / bolsa / joias / lingerie / acessórios viram “Moda & Acessórios”
-     - getPrimaryCategory prioriza “Cuidado Pessoal” quando o produto for desse grupo
    ========================================================== */
 
 (() => {
@@ -95,8 +89,7 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
-    "Cuidado Pessoal",
-    "Moda & Acessórios",
+    "Feminino",
     "Casa",
     "Cozinha",
     "Home Office",
@@ -143,8 +136,7 @@
     "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
   const CN_CATEGORY_RULES = [
-    { label: "Cuidado Pessoal", keywords: ["beleza", "cuidado pessoal", "higiene pessoal", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "creme", "serum", "sérum", "cabelo", "capilar", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "lip", "lip balm", "lip honey", "base", "corretivo", "paleta", "esmalte", "maquiagem", "barbearia", "barbeador", "depilacao", "depilação", "manicure", "pedicure", "cuidados com a pele", "tratamentos de beleza"] },
-    { label: "Moda & Acessórios", keywords: ["feminino", "brinco", "colar", "pulseira", "anel", "bolsa", "mochila feminina", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino", "moda feminina", "carteira feminina", "bijuteria", "joia", "joias", "jóia", "jóias"] },
+    { label: "Feminino", keywords: ["feminino", "maquiagem", "beleza", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "serum", "sérum", "cabelo", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "base", "corretivo", "paleta", "esmalte", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino"] },
     { label: "Moto", keywords: ["capacete", "viseira", "moto", "motocic", "motocross", "pilot", "piloto", "jaqueta moto", "luva moto", "intercomunicador moto"] },
     { label: "Carro", keywords: ["carro", "automotivo", "automotiva", "veicular", "veiculo", "pelicula", "película", "shampoo automotivo", "retrovisor", "multimidia", "multimídia", "som automotivo", "camera veicular", "câmera veicular"] },
     { label: "Casa", keywords: ["casa", "sala", "quarto", "banheiro", "lavanderia", "decoracao", "decoração", "tapete", "cortina", "cabide", "almofada"] },
@@ -712,21 +704,13 @@
   function getPrimaryCategory(p) {
     const smart = getSmartCategories(p);
     if (smart.length) {
-      const preferred =
-        smart.find((x) => normalizeTagKey(x) === "cuidado pessoal") ||
-        smart.find((x) => normalizeTagKey(x) === "moda & acessórios") ||
-        smart.find((x) => normalizeTagKey(x) === "moda & acessorios");
-
-      return preferred || smart[0];
+      const feminino = smart.find((x) => normalizeTagKey(x) === "feminino");
+      return feminino || smart[0];
     }
 
     const raw = safeArray(p?.badges).map(cleanText).filter(Boolean);
-    const preferredRaw =
-      raw.find((x) => normalizeTagKey(x) === "cuidado pessoal") ||
-      raw.find((x) => normalizeTagKey(x) === "moda & acessórios") ||
-      raw.find((x) => normalizeTagKey(x) === "moda & acessorios");
-
-    return preferredRaw || raw[0] || "";
+    const femininoRaw = raw.find((x) => normalizeTagKey(x) === "feminino");
+    return femininoRaw || raw[0] || "";
   }
 
   function buildProductTrackingMeta(p, extra) {
@@ -1731,6 +1715,154 @@
     btn.textContent = total > 0 ? `🛠️ TXT manutenção (${total})` : "🛠️ TXT manutenção";
   }
 
+  function getTrackingApi() {
+    const api = window.CNTracking;
+    if (!api || typeof api.getSummary !== "function") return null;
+    return api;
+  }
+
+  function getTrackingSummarySafe() {
+    const api = getTrackingApi();
+    if (!api) return null;
+    try {
+      return api.getSummary({ max_items: 10 });
+    } catch {
+      return null;
+    }
+  }
+
+  function updateTrackingReportButton() {
+    const btn = $("#btnDlTrackingReport");
+    if (!btn) return;
+
+    const summary = getTrackingSummarySafe();
+    const total = Number(summary?.totals?.filtered_events || 0);
+
+    btn.textContent = total > 0
+      ? `📊 TXT relatório (${total})`
+      : "📊 TXT relatório";
+  }
+
+  function buildTrackingRankingLines(title, items, formatter) {
+    const list = Array.isArray(items) ? items : [];
+    const lines = [];
+    lines.push(title);
+
+    if (!list.length) {
+      lines.push("- sem dados");
+      lines.push("");
+      return lines;
+    }
+
+    list.forEach((item, idx) => {
+      let line = `${idx + 1}. ${item?.label || item?.sku || "unknown"} — ${Number(item?.count || 0)} evento(s)`;
+      if (typeof formatter === "function") {
+        const extra = formatter(item || {});
+        if (extra) line += ` | ${extra}`;
+      }
+      lines.push(line);
+    });
+
+    lines.push("");
+    return lines;
+  }
+
+  function buildTrackingSummaryTxt() {
+    const summary = getTrackingSummarySafe();
+    if (!summary) return "";
+
+    const totals = summary?.totals || {};
+    const byEvent = totals?.by_event_name || {};
+    const answers = summary?.answers_before_first_sale || {};
+    const rates = summary?.rates || {};
+
+    const lines = [];
+    lines.push("LA FAMIGLIA LINKS — RELATÓRIO DE TRACKING");
+    lines.push(`Gerado em: ${summary?.generated_at || new Date().toISOString()}`);
+    lines.push(`Modo: ${summary?.mode || "local_first"}`);
+    lines.push(`Fonte: ${summary?.source || "La_Famiglia_Links"}`);
+    lines.push("");
+
+    lines.push("TOTAIS");
+    lines.push(`- Eventos armazenados: ${Number(totals?.all_events_stored || 0)}`);
+    lines.push(`- Eventos filtrados: ${Number(totals?.filtered_events || 0)}`);
+    lines.push(`- page_view: ${Number(byEvent?.page_view || 0)}`);
+    lines.push(`- view_featured: ${Number(byEvent?.view_featured || 0)}`);
+    lines.push(`- view_product_card: ${Number(byEvent?.view_product_card || 0)}`);
+    lines.push(`- click_buy: ${Number(byEvent?.click_buy || 0)}`);
+    lines.push(`- click_copy_id: ${Number(byEvent?.click_copy_id || 0)}`);
+    lines.push(`- click_copy_link: ${Number(byEvent?.click_copy_link || 0)}`);
+    lines.push(`- click_open_store: ${Number(byEvent?.click_open_store || 0)}`);
+    lines.push(`- search: ${Number(byEvent?.search || 0)}`);
+    lines.push(`- filter_tag: ${Number(byEvent?.filter_tag || 0)}`);
+    lines.push(`- sort_change: ${Number(byEvent?.sort_change || 0)}`);
+    lines.push(`- click_load_more: ${Number(byEvent?.click_load_more || 0)}`);
+    lines.push("");
+
+    lines.push("TAXAS");
+    lines.push(`- click_buy / view_product_card: ${Number(rates?.click_buy_per_view_product_card || 0)}`);
+    lines.push(`- click_copy_id / view_product_card: ${Number(rates?.click_copy_id_per_view_product_card || 0)}`);
+    lines.push(`- click_copy_link / view_product_card: ${Number(rates?.click_copy_link_per_view_product_card || 0)}`);
+    lines.push(`- click_open_store / view_product_card: ${Number(rates?.click_open_store_per_view_product_card || 0)}`);
+    lines.push("");
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP REDES POR CLICK_BUY",
+      answers?.top_networks_by_click_buy,
+      (item) => `label=${item?.label || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP REDES POR INTENÇÃO",
+      answers?.top_networks_by_intention,
+      (item) => `buy=${Number(item?.buy_count || 0)} | copy_id=${Number(item?.copy_id_count || 0)} | copy_link=${Number(item?.copy_link_count || 0)} | score=${Number(item?.intention_score || 0)}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP CRIATIVOS POR CLICK_BUY",
+      answers?.top_creatives_by_click_buy,
+      (item) => `network=${item?.network || "unknown"} | format=${item?.format || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP TÍTULOS POR CLICK_BUY",
+      answers?.top_titles_by_click_buy,
+      (item) => `creative_id=${item?.creative_id || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP PRODUTOS POR CLICK_BUY",
+      answers?.top_products_by_click_buy,
+      (item) => `sku=${item?.sku || "unknown"} | category=${item?.category || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP CATEGORIAS POR CLICK_BUY",
+      answers?.top_categories_by_click_buy,
+      () => ""
+    ));
+
+    return lines.join("\n").trim() + "\n";
+  }
+
+  function doExportTrackingSummaryTxt() {
+    const api = getTrackingApi();
+    if (!api) {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    const txt = buildTrackingSummaryTxt();
+    if (!String(txt || "").trim()) {
+      showToast("Sem dados de tracking ainda ⚠️");
+      return;
+    }
+
+    const fname = `relatorio_tracking_${dateStamp()}.txt`;
+    downloadFile(fname, txt, "text/plain;charset=utf-8");
+    showToast("Relatório tracking ⬇️");
+  }
+
   async function doExportReviewTxt() {
     try {
       const res = await fetch(`./logs/link_guardian_review.txt?ts=${Date.now()}`, { cache: "no-store" });
@@ -2033,6 +2165,7 @@
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlReview">🛠️ TXT manutenção</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlTrackingReport">📊 TXT relatório</button>
           </div>
         </details>
       `;
@@ -2045,6 +2178,7 @@
     const btnDlListAll = $("#btnDlListAll");
     const btnDlCsvAll = $("#btnDlCsvAll");
     const btnDlReview = $("#btnDlReview");
+    const btnDlTrackingReport = $("#btnDlTrackingReport");
 
     if (btnExportCatalogTxt) btnExportCatalogTxt.addEventListener("click", () => doExportTxt("all"));
     if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
@@ -2052,7 +2186,9 @@
     if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
     if (btnDlReview) btnDlReview.addEventListener("click", () => doExportReviewTxt());
+    if (btnDlTrackingReport) btnDlTrackingReport.addEventListener("click", () => doExportTrackingSummaryTxt());
     updateMaintenanceButton();
+    updateTrackingReportButton();
 
     document.addEventListener("click", (e) => {
       const openCats = e.target.closest('[data-action="openTags"]');
@@ -2224,6 +2360,7 @@
 
     STATE.reviewReport = await fetchReviewReport();
     updateMaintenanceButton();
+    updateTrackingReportButton();
 
     const q = $("#qLoja");
     if (q) q.value = STATE.query || "";
