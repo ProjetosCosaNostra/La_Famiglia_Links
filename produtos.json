@@ -1,17 +1,23 @@
 {
-  "updated_at": "2026-03-21T18:49:15Z",
+  "updated_at": "2026-03-21T18:55:05Z",
   "products": [
     {
       "sku": "capacete-asx-city-preto-fosco-viseira",
       "title": "[CMS] Editar Produto: Capacete ASX City Preto Fosco com Viseira",
       "badges": [
-        "_No response_"
+        "Achados do Dia",
+        "Moto",
+        "Capacete",
+        "ASX",
+        "Preto Fosco",
+        "Viseira",
+        "Segurança"
       ],
       "id_busca": "5J5PKG-4BMP",
       "open_url": "https://meli.la/17S1VsX",
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D",
-      "image": "",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4BMP",
+      "image": "https://github.com/user-attachments/assets/0e01ae5d-4022-444f-9123-f9f045c63f45",
       "active": true,
       "featured": true,
       "short_url": "https://meli.la/17S1VsX",
@@ -25,17 +31,17 @@
       "guardian_last_reason": "social_profile_ok",
       "guardian_fail_count": 0,
       "guardian_last_checked_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D",
-      "review_action": "reativar",
+      "review_action": "manter",
       "review_status": "ativo",
-      "review_reason": "Link antigo caía em /social/felipecosanostra/lists. Substituído por novo link válido de produto comprável.",
-      "replacement_vendor": "Loja oficial Moto X Wear, +5 mil vendas. Nesta etapa estou corrigindo apenas o link/ID. Criativo, QR e eventual ajuste de título ficam para uma publicação futura.",
+      "review_reason": "",
+      "replacement_vendor": "",
       "relink_open_url": "https://meli.la/17S1VsX",
-      "notes": "Troca operacional de link concluída. ID antigo: 5J5PKG-CPHF. ID novo: 5J5PKG-4BMP. Não alterar imagem criativa nesta etapa.",
+      "notes": "",
       "alt_url": "",
       "issue_number": 125,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125",
       "issue_title": "[CMS] Editar Produto: Capacete ASX City Preto Fosco com Viseira",
-      "_source_issue_number": 133,
+      "_source_issue_number": 134,
       "_target_issue_number": 125
     },
     {
