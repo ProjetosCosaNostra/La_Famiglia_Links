@@ -1132,6 +1132,9 @@ def _build_review_item(
 ) -> Dict[str, Any]:
     return {
         "happened_at": happened_at,
+        "issue_number": int(p.get("issue_number") or 0),
+        "issue_url": _clean_url(p.get("issue_url") or ""),
+        "issue_title": (p.get("issue_title") or "").strip(),
         "sku": (p.get("sku") or "").strip(),
         "title": (p.get("title") or "").strip(),
         "id_busca": (p.get("id_busca") or "").strip(),
@@ -1150,6 +1153,7 @@ def _build_review_item(
 
 def _review_fingerprint(item: Dict[str, Any]) -> str:
     return "|".join([
+        str(item.get("issue_number") or ""),
         str(item.get("sku") or ""),
         str(item.get("reason") or ""),
         str(item.get("final_url") or ""),
@@ -1207,6 +1211,12 @@ def _build_review_txt(history: Dict[str, Any]) -> str:
             continue
         lines.append("[MANUTENÇÃO] Produto suspeito")
         lines.append(f"Happened at: {str(item.get('happened_at') or '').strip()}")
+        issue_number = int(item.get('issue_number') or 0)
+        issue_url = str(item.get('issue_url') or '').strip()
+        if issue_number:
+            lines.append(f"Issue: #{issue_number}")
+        if issue_url:
+            lines.append(f"Issue URL: {issue_url}")
         lines.append(f"SKU: {str(item.get('sku') or '').strip()}")
         lines.append(f"Título: {str(item.get('title') or '').strip()}")
         if str(item.get("id_busca") or "").strip():
