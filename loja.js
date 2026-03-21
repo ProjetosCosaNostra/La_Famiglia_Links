@@ -78,6 +78,7 @@
     "Cozinha",
     "Home Office",
     "Carro",
+    "Moto",
     "Segurança",
     "Setup",
     "Wi-Fi",
@@ -118,6 +119,27 @@
   const CN_CAT_NOISE = new Set([
     "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
+  const CN_CATEGORY_RULES = [
+    { label: "Moto", keywords: ["capacete", "viseira", "moto", "motocic", "motocross", "pilot", "piloto", "jaqueta moto", "luva moto", "intercomunicador moto"] },
+    { label: "Carro", keywords: ["carro", "automotivo", "automotiva", "veicular", "veiculo", "pelicula", "película", "shampoo automotivo", "retrovisor", "multimidia", "multimídia", "som automotivo", "camera veicular", "câmera veicular"] },
+    { label: "Casa", keywords: ["casa", "sala", "quarto", "banheiro", "lavanderia", "decoracao", "decoração", "tapete", "cortina", "cabide", "almofada"] },
+    { label: "Cozinha", keywords: ["cozinha", "panela", "air fryer", "airfryer", "cafeteira", "garrafa termica", "garrafa térmica", "talher", "copo", "xicara", "xícara", "escorredor", "descanso de panela"] },
+    { label: "Home Office", keywords: ["home office", "mesa", "cadeira", "escritorio", "escritório", "suporte notebook", "suporte monitor", "ergonomico", "ergonômico"] },
+    { label: "Setup", keywords: ["setup", "gamer", "rgb", "mousepad", "teclado", "mouse", "headset", "monitor", "webcam"] },
+    { label: "Notebook", keywords: ["notebook", "laptop"] },
+    { label: "PC", keywords: ["pc", "computador", "desktop", "gabinete", "placa de video", "placa de vídeo", "fonte atx", "cooler"] },
+    { label: "Celular", keywords: ["celular", "smartphone", "iphone", "android", "mag safe", "magsafe"] },
+    { label: "Bluetooth", keywords: ["bluetooth", "tws"] },
+    { label: "USB", keywords: ["usb", "usb-c", "usbc", "tipo c", "type-c"] },
+    { label: "Wi-Fi", keywords: ["wi-fi", "wifi", "roteador", "router", "mesh", "repetidor"] },
+    { label: "Sem Fio", keywords: ["sem fio", "wireless", "sem-fio"] },
+    { label: "Portátil", keywords: ["portatil", "portátil", "dobravel", "dobrável", "compacto", "leve"] },
+    { label: "Organização", keywords: ["organizacao", "organização", "organizador", "caixa organizadora", "gaveta", "prateleira"] },
+    { label: "Casa Inteligente", keywords: ["casa inteligente", "smart home", "tomada inteligente", "lampada inteligente", "lâmpada inteligente", "sensor inteligente"] },
+    { label: "Segurança", keywords: ["camera", "câmera", "seguranca", "segurança", "alarme", "fechadura", "video porteiro", "vídeo porteiro"] },
+    { label: "Premium", keywords: ["premium", "luxo", "imperial"] },
+    { label: "Praticidade", keywords: ["pratico", "prática", "pratico", "util", "útil", "dia a dia", "cotidiano"] },
+  ];
 
   const CN_PLACEHOLDER_IMG =
     "data:image/svg+xml;charset=UTF-8," +
@@ -415,6 +437,79 @@
     return stripTags(s).replace(/\s+/g, " ").trim();
   }
 
+  function normalizeSearchText(s) {
+    return String(s || "")
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function canonicalPinnedLabel(label) {
+    const key = normalizeTagKey(label);
+    const found = CN_CAT_PINNED.find((x) => normalizeTagKey(x) === key);
+    return found || cleanText(label);
+  }
+
+  function mapSmartCategory(label) {
+    const raw = cleanText(label);
+    const key = normalizeSearchText(raw);
+    if (!key) return "";
+
+    const pinned = canonicalPinnedLabel(raw);
+    if (CN_CAT_PINNED.some((x) => normalizeTagKey(x) === normalizeTagKey(pinned))) {
+      return pinned;
+    }
+
+    for (const rule of CN_CATEGORY_RULES) {
+      for (const kw of rule.keywords) {
+        const needle = normalizeSearchText(kw);
+        if (needle && key.includes(needle)) return rule.label;
+      }
+    }
+
+    if (!isNoisyTag(raw)) return raw;
+    return "";
+  }
+
+  function getSmartCategories(p) {
+    if (Array.isArray(p?._smart_categories) && p._smart_categories.length) return p._smart_categories.slice();
+
+    const out = [];
+    const seen = new Set();
+    const add = (label) => {
+      const finalLabel = cleanText(label);
+      if (!finalLabel) return;
+      const key = normalizeTagKey(finalLabel);
+      if (seen.has(key)) return;
+      seen.add(key);
+      out.push(finalLabel);
+    };
+
+    const rawBadges = safeArray(p?.badges).map(cleanText).filter(Boolean);
+    rawBadges.forEach((b) => {
+      const mapped = mapSmartCategory(b);
+      if (mapped) add(mapped);
+    });
+
+    const hay = normalizeSearchText([
+      p?.title || "",
+      p?.sku || "",
+      p?.id_busca || "",
+      rawBadges.join(" "),
+    ].join(" "));
+
+    for (const rule of CN_CATEGORY_RULES) {
+      if (rule.keywords.some((kw) => hay.includes(normalizeSearchText(kw)))) {
+        add(rule.label);
+      }
+    }
+
+    p._smart_categories = out.slice();
+    return out;
+  }
+
   function cleanUrl(u) {
     let raw = String(u ?? "").trim();
     if (!raw) return "";
@@ -630,6 +725,14 @@
     const sku = cleanText(raw.sku || raw.slug || "");
     const title = cleanText(raw.title || raw.nome || raw.name || "");
     const id_busca = cleanText(raw.id_busca || raw.idML || raw.id || "");
+    const issue_number = Number(
+      raw.issue_number ||
+      raw.issue_id ||
+      raw.issue ||
+      raw.github_issue_number ||
+      raw.source_issue_number ||
+      0
+    ) || 0;
 
     const badges = safeArray(raw.badges || raw.tags)
       .map(cleanText)
@@ -655,6 +758,7 @@
       title,
       badges,
       id_busca,
+      issue_number,
 
       open_url: links.open,
       check_url: links.check || links.open,
@@ -883,12 +987,12 @@
   function buildTagCounts(list) {
     const counts = new Map();
     for (const p of (list || [])) {
-      for (const b of safeArray(p.badges)) {
-        const raw = String(b || "").trim();
+      for (const cat of getSmartCategories(p)) {
+        const raw = String(cat || "").trim();
         if (!raw) continue;
-        const k = raw.toLowerCase();
+        const k = normalizeTagKey(raw);
         const prev = counts.get(k);
-        counts.set(k, { label: raw, n: ((prev && prev.n) ? prev.n : 0) + 1 });
+        counts.set(k, { label: canonicalPinnedLabel(raw), n: ((prev && prev.n) ? prev.n : 0) + 1 });
       }
     }
     return Array.from(counts.values()).sort((a, b) => b.n - a.n);
@@ -1000,21 +1104,23 @@
     const tag = (STATE.tag || "").trim().toLowerCase();
 
     if (tag) {
-      const has = safeArray(p.badges).some((b) => String(b).toLowerCase() === tag);
-      if (!has) return false;
+      const hasSmart = getSmartCategories(p).some((b) => normalizeTagKey(b) === tag);
+      const hasRaw = safeArray(p.badges).some((b) => normalizeTagKey(b) === tag);
+      if (!hasSmart && !hasRaw) return false;
     }
 
     if (!q) return true;
 
-    const hay = (
+    const hay = normalizeSearchText(
       (p.title || "") + " " +
       (p.sku || "") + " " +
       (p.id_busca || "") + " " +
       safeArray(p.badges).join(" ") + " " +
+      getSmartCategories(p).join(" ") + " " +
       (p.price_text || "")
-    ).toLowerCase();
+    );
 
-    const parts = q.split(/\s+/g).filter(Boolean);
+    const parts = normalizeSearchText(q).split(/\s+/g).filter(Boolean);
     for (const part of parts) {
       if (!hay.includes(part)) return false;
     }
@@ -1468,7 +1574,9 @@
     const lines = list.map((p, i) => {
       const name = (p && p.title) ? String(p.title) : "";
       const id = (p && p.id_busca) ? String(p.id_busca) : "";
-      if (id) return `${i + 1}. ${name} (ID: ${id})`;
+      const issue = (p && Number(p.issue_number || 0)) ? `Issue: #${Number(p.issue_number)}` : "";
+      const meta = [issue, id ? `ID: ${id}` : ""].filter(Boolean).join(" | ");
+      if (meta) return `${i + 1}. ${name} (${meta})`;
       return `${i + 1}. ${name}`;
     });
 
@@ -1479,16 +1587,17 @@
     const list = exportListGet(kind);
 
     const rows = [];
-    rows.push(["n", "title", "id_busca", "sku", "buy_url"].join(";"));
+    rows.push(["n", "issue_number", "title", "id_busca", "sku", "buy_url"].join(";"));
 
     for (let i = 0; i < list.length; i++) {
       const p = list[i] || {};
       const n = i + 1;
+      const issue = String(Number(p.issue_number || 0) || "").replaceAll(";", ",");
       const title = String(p.title || "").replaceAll(";", ",");
       const id = String(p.id_busca || "").replaceAll(";", ",");
       const sku = String(p.sku || "").replaceAll(";", ",");
       const url = String(bestBuyUrl(p) || "").replaceAll(";", ",");
-      rows.push([n, title, id, sku, url].join(";"));
+      rows.push([n, issue, title, id, sku, url].join(";"));
     }
 
     return rows.join("\n") + "\n";
@@ -1602,6 +1711,7 @@
           </summary>
 
           <div class="cnToolsGrid">
+            <button class="btn btn--tiny btn--glass" type="button" id="btnExportCatalogTxt">⬇️ TXT (produtos.json)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnCopyList">📋 Copiar (ativos)</button>
             <button class="btn btn--tiny btn--gold"  type="button" id="btnDlList">⬇️ TXT (ativos)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
@@ -1613,12 +1723,14 @@
       tools.appendChild(row);
     })();
 
+    const btnExportCatalogTxt = $("#btnExportCatalogTxt");
     const btnCopyList = $("#btnCopyList");
     const btnDlList = $("#btnDlList");
     const btnDlListAll = $("#btnDlListAll");
     const btnDlCsvAll = $("#btnDlCsvAll");
     const btnDlReview = $("#btnDlReview");
 
+    if (btnExportCatalogTxt) btnExportCatalogTxt.addEventListener("click", () => doExportTxt("all"));
     if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
     if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
     if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
