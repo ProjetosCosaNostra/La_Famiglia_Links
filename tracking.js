@@ -372,7 +372,156 @@
     return `"${s.replace(/"/g, '""')}"`;
   }
 
+  function textDownload(filename, content) {
+    const blob = new Blob([String(content ?? "")], { type: "text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    const objectUrl = URL.createObjectURL(blob);
+    a.href = objectUrl;
+    a.download = filename || "tracking_summary.txt";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => {
+      try {
+        URL.revokeObjectURL(objectUrl);
+      } catch {}
+    }, 1500);
+  }
 
+  function safeNumber(value, fallback) {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : Number.isFinite(Number(fallback)) ? Number(fallback) : 0;
+  }
+
+  function buildTrackedUrl(rawUrl, overrides) {
+    const base = normalizeText(rawUrl || "");
+    if (!base) return "";
+
+    try {
+      const url = new URL(base, location.href);
+      const context = buildContext();
+      const extra = overrides && typeof overrides === "object" ? overrides : {};
+
+      [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term",
+        "network",
+        "format",
+        "placement",
+        "creative_id",
+        "title_id",
+      ].forEach((key) => {
+        const value = normalizeText(extra[key] || context[key] || "");
+        if (value) {
+          url.searchParams.set(key, value);
+        }
+      });
+
+      return url.toString();
+    } catch {
+      return base;
+    }
+  }
+
+  function isIntentEventName(name) {
+    return [
+      "page_view",
+      "view_featured",
+      "view_product_card",
+      "view_quick_product",
+      "click_buy",
+      "click_copy_id",
+      "click_copy_link",
+      "click_copy_store_link",
+      "click_open_store",
+      "click_social",
+      "click_outbound",
+    ].includes(normalizeText(name || ""));
+  }
+
+  function buildIntentionRanking(events, keyBuilder, valueBuilder, maxItems) {
+    const map = new Map();
+
+    for (const event of Array.isArray(events) ? events : []) {
+      const rawKey = keyBuilder(event);
+      const key = normalizeText(rawKey || "");
+      if (!key) continue;
+
+      const current = map.get(key) || {
+        key,
+        label: key,
+        count: 0,
+        view_count: 0,
+        buy_count: 0,
+        copy_id_count: 0,
+        copy_link_count: 0,
+        open_store_count: 0,
+        social_click_count: 0,
+        outbound_click_count: 0,
+        intention_score: 0,
+      };
+
+      current.count += 1;
+
+      const name = normalizeText(event?.event_name || "");
+      if (["page_view", "view_featured", "view_product_card", "view_quick_product"].includes(name)) {
+        current.view_count += 1;
+      }
+      if (name === "click_buy") current.buy_count += 1;
+      if (name === "click_copy_id") current.copy_id_count += 1;
+      if (["click_copy_link", "click_copy_store_link"].includes(name)) current.copy_link_count += 1;
+      if (name === "click_open_store") current.open_store_count += 1;
+      if (name === "click_social") current.social_click_count += 1;
+      if (name === "click_outbound") current.outbound_click_count += 1;
+
+      current.intention_score =
+        (current.buy_count * 4) +
+        (current.copy_link_count * 2) +
+        (current.copy_id_count * 1) +
+        (current.open_store_count * 2) +
+        (current.social_click_count * 1) +
+        (current.outbound_click_count * 1);
+
+      const extra = valueBuilder ? valueBuilder(event, current) : null;
+      if (extra && typeof extra === "object") {
+        Object.assign(current, extra);
+      }
+
+      map.set(key, current);
+    }
+
+    return Array.from(map.values())
+      .sort((a, b) => {
+        if ((b.intention_score || 0) !== (a.intention_score || 0)) {
+          return (b.intention_score || 0) - (a.intention_score || 0);
+        }
+        if ((b.count || 0) !== (a.count || 0)) {
+          return (b.count || 0) - (a.count || 0);
+        }
+        return String(a.label || a.key || "").localeCompare(String(b.label || b.key || ""));
+      })
+      .slice(0, Number.isFinite(Number(maxItems)) && Number(maxItems) > 0 ? Number(maxItems) : 10);
+  }
+
+  function buildFunnel(events) {
+    const counts = countByEventName(events);
+    return {
+      page_view: safeNumber(counts.page_view, 0),
+      view_featured: safeNumber(counts.view_featured, 0),
+      view_product_card: safeNumber(counts.view_product_card, 0),
+      view_quick_product: safeNumber(counts.view_quick_product, 0),
+      click_buy: safeNumber(counts.click_buy, 0),
+      click_copy_id: safeNumber(counts.click_copy_id, 0),
+      click_copy_link: safeNumber(counts.click_copy_link, 0),
+      click_copy_store_link: safeNumber(counts.click_copy_store_link, 0),
+      click_open_store: safeNumber(counts.click_open_store, 0),
+      click_social: safeNumber(counts.click_social, 0),
+      click_outbound: safeNumber(counts.click_outbound, 0),
+    };
+  }
 
   function toDateValue(value) {
     const t = Date.parse(String(value || ""));
@@ -467,18 +616,51 @@
     const allEvents = getEvents();
     const events = filterEventsByOptions(allEvents, opts);
     const counts = countByEventName(events);
+    const funnel = buildFunnel(events);
 
-    const views = Number(counts.view_product_card || 0);
-    const buyClicks = Number(counts.click_buy || 0);
-    const copyIdClicks = Number(counts.click_copy_id || 0);
-    const copyLinkClicks = Number(counts.click_copy_link || 0);
-    const storeClicks = Number(counts.click_open_store || 0);
+    const views = safeNumber(funnel.view_product_card, 0);
+    const buyClicks = safeNumber(funnel.click_buy, 0);
+    const copyIdClicks = safeNumber(funnel.click_copy_id, 0);
+    const copyLinkClicks = safeNumber(funnel.click_copy_link, 0) + safeNumber(funnel.click_copy_store_link, 0);
+    const storeClicks = safeNumber(funnel.click_open_store, 0);
+
+    const intentEvents = events.filter((e) => isIntentEventName(e?.event_name));
 
     const topNetworksByBuy = buildGroupedRanking(
       events.filter((e) => e?.event_name === "click_buy"),
       (e) => safeMetricValue(e?.network || e?.utm_source, "unknown"),
       (e) => ({
         label: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topNetworksByIntention = buildIntentionRanking(
+      intentEvents,
+      (e) => safeMetricValue(e?.network || e?.utm_source, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topFormatsByIntention = buildIntentionRanking(
+      intentEvents,
+      (e) => safeMetricValue(e?.format || e?.utm_medium, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.format || e?.utm_medium, "unknown"),
+        network: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topPlacementsByIntention = buildIntentionRanking(
+      intentEvents,
+      (e) => safeMetricValue(e?.placement, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.placement, "unknown"),
+        network: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+        format: safeMetricValue(e?.format || e?.utm_medium, "unknown"),
       }),
       opts.max_items
     );
@@ -512,6 +694,22 @@
         sku: safeMetricValue(e?.sku, "unknown"),
         product_title: safeMetricValue(e?.product_title || e?.sku, "unknown"),
         category: safeMetricValue(e?.category, "unknown"),
+        placement: safeMetricValue(e?.placement, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topProductsByIntention = buildIntentionRanking(
+      intentEvents.filter((e) => safeMetricValue(e?.sku, "") || safeMetricValue(e?.product_title, "")),
+      (e) => safeMetricValue(e?.sku || e?.product_title, "unknown"),
+      (e, current) => ({
+        label: safeMetricValue(e?.product_title || e?.sku, current?.key || "unknown"),
+        sku: safeMetricValue(e?.sku, "unknown"),
+        product_title: safeMetricValue(e?.product_title || e?.sku, "unknown"),
+        category: safeMetricValue(e?.category, "unknown"),
+        network: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+        format: safeMetricValue(e?.format || e?.utm_medium, "unknown"),
+        placement: safeMetricValue(e?.placement, "unknown"),
       }),
       opts.max_items
     );
@@ -525,32 +723,23 @@
       opts.max_items
     );
 
-    const topNetworksByIntention = buildGroupedRanking(
-      events.filter((e) => ["click_buy", "click_copy_id", "click_copy_link"].includes(e?.event_name)),
-      (e) => safeMetricValue(e?.network || e?.utm_source, "unknown"),
-      (e, current) => {
-        const buy = Number(current?.buy_count || 0) + (e?.event_name === "click_buy" ? 1 : 0);
-        const copyId = Number(current?.copy_id_count || 0) + (e?.event_name === "click_copy_id" ? 1 : 0);
-        const copyLink = Number(current?.copy_link_count || 0) + (e?.event_name === "click_copy_link" ? 1 : 0);
-
-        return {
-          label: safeMetricValue(e?.network || e?.utm_source, "unknown"),
-          buy_count: buy,
-          copy_id_count: copyId,
-          copy_link_count: copyLink,
-          intention_score: (buy * 3) + (copyLink * 2) + copyId,
-        };
-      },
+    const topCategoriesByIntention = buildIntentionRanking(
+      intentEvents,
+      (e) => safeMetricValue(e?.category, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.category, "unknown"),
+      }),
       opts.max_items
-    ).sort((a, b) => {
-      if ((b.intention_score || 0) !== (a.intention_score || 0)) {
-        return (b.intention_score || 0) - (a.intention_score || 0);
-      }
-      if ((b.count || 0) !== (a.count || 0)) {
-        return (b.count || 0) - (a.count || 0);
-      }
-      return String(a.label || "").localeCompare(String(b.label || ""));
-    });
+    );
+
+    const topPagesByEventVolume = buildGroupedRanking(
+      events,
+      (e) => safeMetricValue(e?.page_type, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.page_type, "unknown"),
+      }),
+      opts.max_items
+    );
 
     return {
       generated_at: nowIso(),
@@ -566,13 +755,19 @@
         filtered_events: events.length,
         by_event_name: counts,
       },
+      funnel,
       answers_before_first_sale: {
+        top_pages_by_event_volume: topPagesByEventVolume,
         top_networks_by_click_buy: topNetworksByBuy,
         top_networks_by_intention: topNetworksByIntention,
+        top_formats_by_intention: topFormatsByIntention,
+        top_placements_by_intention: topPlacementsByIntention,
         top_creatives_by_click_buy: topCreativesByBuy,
         top_titles_by_click_buy: topTitlesByBuy,
         top_products_by_click_buy: topProductsByBuy,
+        top_products_by_intention: topProductsByIntention,
         top_categories_by_click_buy: topCategoriesByBuy,
+        top_categories_by_intention: topCategoriesByIntention,
       },
       rates: {
         click_buy_per_view_product_card: views > 0 ? Number((buyClicks / views).toFixed(4)) : 0,
@@ -590,15 +785,20 @@
       "key",
       "label",
       "count",
+      "view_count",
       "buy_count",
       "copy_id_count",
       "copy_link_count",
+      "open_store_count",
+      "social_click_count",
+      "outbound_click_count",
       "intention_score",
       "sku",
       "product_title",
       "category",
       "network",
       "format",
+      "placement",
       "creative_id",
       "title_id",
     ]];
@@ -614,15 +814,20 @@
           item?.key || "",
           item?.label || "",
           String(item?.count || 0),
+          String(item?.view_count || 0),
           String(item?.buy_count || 0),
           String(item?.copy_id_count || 0),
           String(item?.copy_link_count || 0),
+          String(item?.open_store_count || 0),
+          String(item?.social_click_count || 0),
+          String(item?.outbound_click_count || 0),
           String(item?.intention_score || 0),
           item?.sku || "",
           item?.product_title || "",
           item?.category || "",
           item?.network || "",
           item?.format || "",
+          item?.placement || "",
           item?.creative_id || "",
           item?.title_id || "",
         ]);
@@ -630,6 +835,72 @@
     });
 
     return rows;
+  }
+
+  function summaryToText(summary) {
+    const s = summary || {};
+    const answers = s.answers_before_first_sale || {};
+    const funnel = s.funnel || {};
+    const lines = [];
+
+    function pushRanking(title, items) {
+      lines.push(title);
+      if (!Array.isArray(items) || !items.length) {
+        lines.push("- sem dados");
+        lines.push("");
+        return;
+      }
+
+      items.forEach((item, index) => {
+        const parts = [
+          `${index + 1}. ${item?.label || item?.key || "unknown"}`,
+          `count=${safeNumber(item?.count, 0)}`,
+        ];
+
+        if (safeNumber(item?.intention_score, 0) > 0) parts.push(`intention=${safeNumber(item?.intention_score, 0)}`);
+        if (safeNumber(item?.buy_count, 0) > 0) parts.push(`buy=${safeNumber(item?.buy_count, 0)}`);
+        if (safeNumber(item?.copy_link_count, 0) > 0) parts.push(`copy_link=${safeNumber(item?.copy_link_count, 0)}`);
+        if (safeNumber(item?.copy_id_count, 0) > 0) parts.push(`copy_id=${safeNumber(item?.copy_id_count, 0)}`);
+        if (safeNumber(item?.open_store_count, 0) > 0) parts.push(`open_store=${safeNumber(item?.open_store_count, 0)}`);
+        if (item?.sku) parts.push(`sku=${item.sku}`);
+        if (item?.category) parts.push(`category=${item.category}`);
+        if (item?.network) parts.push(`network=${item.network}`);
+        if (item?.format) parts.push(`format=${item.format}`);
+        if (item?.placement) parts.push(`placement=${item.placement}`);
+
+        lines.push(`- ${parts.join(" | ")}`);
+      });
+
+      lines.push("");
+    }
+
+    lines.push("RELATORIO LOCAL-FIRST - TRACKING LA_FAMIGLIA_LINKS");
+    lines.push(`gerado_em: ${normalizeText(s.generated_at || nowIso())}`);
+    lines.push(`eventos_filtrados: ${safeNumber(s?.totals?.filtered_events, 0)}`);
+    lines.push(`eventos_armazenados: ${safeNumber(s?.totals?.all_events_stored, 0)}`);
+    lines.push("");
+
+    lines.push("FUNIL:");
+    Object.entries(funnel).forEach(([key, value]) => {
+      lines.push(`- ${key}: ${safeNumber(value, 0)}`);
+    });
+    lines.push("");
+
+    lines.push("TAXAS:");
+    Object.entries(s?.rates || {}).forEach(([key, value]) => {
+      lines.push(`- ${key}: ${safeNumber(value, 0)}`);
+    });
+    lines.push("");
+
+    pushRanking("TOP REDES POR INTENCAO", answers.top_networks_by_intention);
+    pushRanking("TOP FORMATOS POR INTENCAO", answers.top_formats_by_intention);
+    pushRanking("TOP PLACEMENTS POR INTENCAO", answers.top_placements_by_intention);
+    pushRanking("TOP PRODUTOS POR INTENCAO", answers.top_products_by_intention);
+    pushRanking("TOP CATEGORIAS POR INTENCAO", answers.top_categories_by_intention);
+    pushRanking("TOP CRIATIVOS POR CLICK_BUY", answers.top_creatives_by_click_buy);
+    pushRanking("TOP TITULOS POR CLICK_BUY", answers.top_titles_by_click_buy);
+
+    return lines.join("\n").trim() + "\n";
   }
 
   function csvDownload(filename, rows) {
@@ -780,6 +1051,16 @@
       return summary;
     },
 
+    exportSummaryTxt(filename, options) {
+      const summary = buildSummary(options || {});
+      textDownload(filename || "cn_tracking_summary.txt", summaryToText(summary));
+      return summary;
+    },
+
+    getTrackedUrl(rawUrl, overrides) {
+      return buildTrackedUrl(rawUrl, overrides || {});
+    },
+
     track(eventName, meta) {
       return pushEvent(eventName, meta || {});
     },
@@ -836,6 +1117,20 @@
 
     trackOpenStore(extra) {
       return pushEvent("click_open_store", {
+        ...(extra || {}),
+      });
+    },
+
+    trackSocialClick(network, extra) {
+      return pushEvent("click_social", {
+        network: normalizeText(network || extra?.network || ""),
+        ...(extra || {}),
+      });
+    },
+
+    trackOutboundClick(label, extra) {
+      return pushEvent("click_outbound", {
+        label: normalizeText(label || extra?.label || ""),
         ...(extra || {}),
       });
     },
