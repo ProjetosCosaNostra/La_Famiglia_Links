@@ -731,7 +731,7 @@
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
+      : `<a class="btn btn--gold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
@@ -817,7 +817,7 @@
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      : `<a class="smallBtn smallBtnGold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
@@ -1557,7 +1557,7 @@
         return;
       }
 
-      const aBuy = e.target.closest('a.btn--gold[href], a.smallBtnGold[href]');
+      const aBuy = e.target.closest('a[data-role="buy-link"][href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
 
