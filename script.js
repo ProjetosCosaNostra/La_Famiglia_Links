@@ -23,6 +23,13 @@
    - no desktop, NÃO intercepta o link
    - deixa o <a target="_blank"> nativo abrir a nova guia
    - em in-app browser, intercepta e tenta abrir manualmente
+
+   ✅ PATCH TRACKING HOME + ENTRY FLOW (2026-03-21):
+   - page_view da home
+   - busca da home com contagem de resultados
+   - copy da home / vitrine com tracking
+   - rastreio de links sociais / saída
+   - preserva UTM/contexto ao abrir loja.html
 */
 (function () {
   'use strict';
@@ -87,6 +94,67 @@
     if (s.indexOf('meli.co/') === 0) return 'https://' + s;
 
     return s;
+  }
+
+  function getAppBasePath() {
+    var p = safeText(location.pathname || '/');
+    if (!p) return '/';
+    if (/\/index\.html$/i.test(p)) return p.replace(/index\.html$/i, '');
+    if (/\/[^\/]+\.html$/i.test(p)) return p.replace(/[^\/]+\.html$/i, '');
+    if (p.charAt(p.length - 1) !== '/') return p + '/';
+    return p;
+  }
+
+  function buildAbsoluteUrl(pathname) {
+    var clean = safeText(pathname || '');
+    var origin = (location.protocol || 'https:') + '//' + (location.host || '');
+    if (!clean) return origin + getAppBasePath();
+    if (/^https?:\/\//i.test(clean)) return clean;
+    if (clean.charAt(0) !== '/') clean = getAppBasePath() + clean;
+    return origin + clean;
+  }
+
+  function getTrackingContextParams() {
+    var keep = {
+      utm_source: true,
+      utm_medium: true,
+      utm_campaign: true,
+      utm_content: true,
+      utm_term: true,
+      network: true,
+      format: true,
+      placement: true,
+      creative_id: true,
+      title_id: true,
+      product_hint: true
+    };
+    var out = [];
+    var query = safeText(location.search || '').replace(/^\?/, '');
+    if (!query) return out;
+
+    var parts = query.split('&');
+    for (var i = 0; i < parts.length; i++) {
+      var piece = trim(parts[i]);
+      if (!piece) continue;
+      var eq = piece.indexOf('=');
+      var rawKey = eq >= 0 ? piece.slice(0, eq) : piece;
+      var rawVal = eq >= 0 ? piece.slice(eq + 1) : '';
+      var key = lower(rawKey);
+      if (!keep[key]) continue;
+      out.push(encodeURIComponent(rawKey) + '=' + encodeURIComponent(rawVal));
+    }
+    return out;
+  }
+
+  function getStoreUrl(extraParams) {
+    var params = getTrackingContextParams();
+    var extra = extraParams || [];
+    for (var i = 0; i < extra.length; i++) {
+      if (extra[i]) params.push(extra[i]);
+    }
+    var url = buildAbsoluteUrl('loja.html');
+    if (!params.length) return url;
+    return url + '?' + params.join('&');
   }
 
   function isInAppBrowser() {
@@ -232,6 +300,38 @@
     } catch (e) {}
   }
 
+  function getPageTrackBase(extra) {
+    var meta = extra || {};
+    return {
+      page_type: 'home',
+      placement: safeText(meta.placement || ''),
+      source_block: safeText(meta.source_block || ''),
+      section: safeText(meta.section || '')
+    };
+  }
+
+  function detectSocialPlatform(url) {
+    var u = lower(ensureHttpUrl(url));
+    if (!u) return '';
+    if (u.indexOf('instagram.com') >= 0) return 'instagram';
+    if (u.indexOf('threads.net') >= 0) return 'threads';
+    if (u.indexOf('facebook.com') >= 0 || u.indexOf('fb.com') >= 0) return 'facebook';
+    if (u.indexOf('tiktok.com') >= 0) return 'tiktok';
+    if (u.indexOf('kwai.com') >= 0 || u.indexOf('k.kwai.com') >= 0) return 'kwai';
+    if (u.indexOf('t.me') >= 0 || u.indexOf('telegram.me') >= 0) return 'telegram';
+    if (u.indexOf('youtube.com') >= 0 || u.indexOf('youtu.be') >= 0) return 'youtube';
+    if (u.indexOf('mercadolivre.com') >= 0 || u.indexOf('mercadolibre.com') >= 0 || u.indexOf('meli.la') >= 0) return 'mercado_livre';
+    return '';
+  }
+
+  function findAnchor(node) {
+    while (node && node !== document && node.nodeType === 1) {
+      if (node.tagName && node.tagName.toLowerCase() === 'a') return node;
+      node = node.parentNode;
+    }
+    return null;
+  }
+
   function trackProductViewOnce(state, kind, p, extra) {
     if (!state || !p) return;
 
@@ -332,6 +432,7 @@
     aBuy.href = buyLink || '#';
     aBuy.target = '_blank';
     aBuy.rel = 'noopener noreferrer';
+    aBuy.setAttribute('data-cn-track-owned', '1');
     aBuy.onclick = function (ev) {
       if (!buyLink) {
         if (ev && ev.preventDefault) ev.preventDefault();
@@ -400,8 +501,9 @@
 
     var aStore = document.createElement('a');
     aStore.className = 'btn btn--glass btn--tiny';
+    aStore.setAttribute('data-cn-track-owned', '1');
     aStore.textContent = 'Abrir Loja Completa';
-    aStore.href = './loja.html';
+    aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
     aStore.onclick = function () {
       trackEvent('click_open_store', {
         page_type: 'home',
@@ -482,6 +584,7 @@
     buy.href = buyLink || '#';
     buy.target = '_blank';
     buy.rel = 'noopener noreferrer';
+    buy.setAttribute('data-cn-track-owned', '1');
     buy.onclick = function (ev) {
       if (!buyLink) {
         if (ev && ev.preventDefault) ev.preventDefault();
@@ -555,7 +658,9 @@
     var clear = qs('#qClear');
     if (!input) return;
 
-    function apply() {
+    var debounce = 0;
+
+    function apply(shouldTrack) {
       var q = lower(input.value);
       var out = [];
       if (!q) {
@@ -568,23 +673,49 @@
         }
       }
       renderQuick(out, state);
+
+      if (shouldTrack) {
+        var normalized = trim(q);
+        if (state._lastTrackedSearch !== normalized) {
+          state._lastTrackedSearch = normalized;
+          trackEvent('search', {
+            page_type: 'home',
+            placement: 'home_search',
+            source_block: 'vitrine_rapida',
+            query: normalized,
+            results_count: out.length
+          });
+        }
+      }
     }
 
-    input.addEventListener('input', apply);
+    input.addEventListener('input', function () {
+      clearTimeout(debounce);
+      debounce = setTimeout(function () {
+        apply(true);
+      }, 350);
+    });
+
     if (clear) {
       clear.addEventListener('click', function () {
         input.value = '';
-        apply();
+        state._lastTrackedSearch = '__force__';
+        apply(true);
       });
     }
-    apply();
+    apply(false);
   }
 
   function bindButtons() {
     var btnCopyLoja = qs('#copyLoja');
     if (btnCopyLoja) {
       btnCopyLoja.addEventListener('click', function () {
-        var loja = new URL('./loja.html', location.href).toString();
+        var loja = getStoreUrl(['cn_source_page=home', 'cn_source_block=copy_loja']);
+        trackEvent('click_copy_store_link', getPageTrackBase({
+          placement: 'copy_store_link',
+          source_block: 'header_actions',
+          section: 'home_top'
+        }));
         copyText(loja).then(function (ok) { toast(ok ? 'Link da vitrine copiado ✅' : 'Falha ao copiar'); });
       });
     }
@@ -592,6 +723,11 @@
     var btnCopyHome = qs('[data-copy="bio"]');
     if (btnCopyHome) {
       btnCopyHome.addEventListener('click', function () {
+        trackEvent('click_copy_home_link', getPageTrackBase({
+          placement: 'copy_home_link',
+          source_block: 'header_actions',
+          section: 'home_top'
+        }));
         copyText(location.href).then(function (ok) { toast(ok ? 'Link da home copiado ✅' : 'Falha ao copiar'); });
       });
     }
@@ -599,9 +735,37 @@
     var btnRefresh = qs('#refresh');
     if (btnRefresh) {
       btnRefresh.addEventListener('click', function () {
+        trackEvent('click_refresh_home', getPageTrackBase({
+          placement: 'refresh',
+          source_block: 'header_actions',
+          section: 'home_top'
+        }));
         location.reload();
       });
     }
+  }
+
+  function bindOutboundLinks() {
+    document.addEventListener('click', function (ev) {
+      var a = findAnchor(ev.target);
+      if (!a) return;
+      if (a.getAttribute('data-cn-track-owned') === '1') return;
+
+      var href = ensureHttpUrl(a.getAttribute('href') || a.href || '');
+      if (!href || href === '#') return;
+
+      var platform = detectSocialPlatform(href);
+      if (!platform) return;
+
+      trackEvent('click_outbound_link', {
+        page_type: 'home',
+        placement: safeText(a.getAttribute('data-placement') || 'outbound_link'),
+        source_block: safeText(a.getAttribute('data-source-block') || 'home_links'),
+        section: safeText(a.getAttribute('data-section') || 'home'),
+        social_platform: platform,
+        target_url: href
+      });
+    }, false);
   }
 
   function setLastUpdate(iso) {
@@ -613,6 +777,14 @@
   function init() {
     makeBgClickThrough();
     bindButtons();
+    bindOutboundLinks();
+
+    trackEvent('page_view', {
+      page_type: 'home',
+      placement: 'landing_entry',
+      source_block: 'home',
+      section: 'entry'
+    });
 
     var y = new Date().getFullYear();
     var yEl = qs('#year');
