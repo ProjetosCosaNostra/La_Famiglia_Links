@@ -838,7 +838,7 @@
 
   function isNoisyTag(label) {
     const s = String(label || "").trim();
-    if (!s) return True;
+    if (!s) return true;
 
     const t = s.toLowerCase();
 
