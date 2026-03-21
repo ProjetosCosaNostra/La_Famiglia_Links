@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v9 (issue fortalecido + relink manual + revisão compatível)
+# Versão : v10 (quick_home + quick_home_order para Vitrine Rápida)
 # ==========================================================
 
 from __future__ import annotations
@@ -290,6 +290,63 @@ def _clean_optional_text(s: str) -> str:
     x = re.sub(r"\s+", " ", x).strip()
     return "" if _is_placeholder(x) else x
 
+def _parse_optional_bool_text(s: str) -> Optional[bool]:
+    x = _clean_optional_text(s).lower()
+    if not x:
+        return None
+
+    yes_values = {
+        "sim",
+        "true",
+        "1",
+        "yes",
+        "y",
+        "marcado",
+        "ativado",
+        "ativa",
+        "ativo",
+    }
+    no_values = {
+        "nao",
+        "não",
+        "false",
+        "0",
+        "no",
+        "n",
+        "desmarcado",
+        "desativado",
+        "desativada",
+        "inativo",
+        "inativa",
+    }
+
+    if x in yes_values:
+        return True
+    if x in no_values:
+        return False
+    return None
+
+
+def _clean_order_int(v: Any, default: int = 0) -> int:
+    if v is None:
+        return int(default)
+
+    x = _strip_html(str(v)).strip()
+    if not x:
+        return int(default)
+
+    m = re.search(r"-?\d+", x)
+    if not m:
+        return int(default)
+
+    try:
+        n = int(m.group(0))
+    except Exception:
+        return int(default)
+
+    return n if n > 0 else int(default)
+
+
 def _clean_issue_number(v: Any) -> int:
     if v is None:
         return 0
@@ -570,6 +627,25 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         p["relink_open_url"] = _clean_url(str(p.get("relink_open_url") or ""))
         p["notes"] = _clean_optional_text(str(p.get("notes") or ""))
         p["alt_url"] = _clean_url(str(p.get("alt_url") or ""))
+        if "quick_home" in p:
+            parsed_quick_home = p.get("quick_home")
+            if isinstance(parsed_quick_home, str):
+                parsed_quick_home = _parse_optional_bool_text(parsed_quick_home)
+            elif isinstance(parsed_quick_home, bool):
+                parsed_quick_home = parsed_quick_home
+            else:
+                parsed_quick_home = bool(parsed_quick_home) if parsed_quick_home in {0, 1} else None
+
+            if parsed_quick_home is None:
+                p.pop("quick_home", None)
+            else:
+                p["quick_home"] = bool(parsed_quick_home)
+
+        if "quick_home_order" in p:
+            p["quick_home_order"] = _clean_order_int(p.get("quick_home_order"), default=0)
+            if p["quick_home_order"] <= 0:
+                p.pop("quick_home_order", None)
+
         p["issue_number"] = _clean_issue_number(p.get("issue_number") or p.get("source_issue_number") or p.get("target_issue_number"))
         p["issue_url"] = _clean_url(str(p.get("issue_url") or ""))
         p["issue_title"] = _clean_optional_text(str(p.get("issue_title") or ""))
@@ -648,6 +724,14 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     review_reason_block = _get_section(sections, r"Motivo|Problema|Raz[aã]o")
     replacement_vendor_block = _get_section(sections, r"Novo\s+vendedor|Vendedor")
     notes_block = _get_section(sections, r"Observa[cç][oõ]es|Notas|Anota[cç][oõ]es")
+    quick_home_block = _get_section(
+        sections,
+        r"Entrar\s+na\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida|Quick\s*Home",
+    )
+    quick_home_order_block = _get_section(
+        sections,
+        r"Posi[cç][aã]o\s+na\s+Vitrine\s+R[aá]pida|Ordem\s+da\s+Vitrine\s+R[aá]pida|Quick\s*Home\s*Order",
+    )
 
     link_ml = _first_url(new_link_block) or _first_url(link_block) or _first_url(_first_meaningful_line(link_block))
     check_url_manual = _first_url(check_block) or _first_url(_first_meaningful_line(check_block))
@@ -671,6 +755,18 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
 
     active_state = _checkbox_state(body, r"Ativo")
     featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
+    quick_home_state = _checkbox_state(
+        body,
+        r"Entrar\s+na\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida|Quick\s*Home",
+    )
+
+    if quick_home_state is None:
+        quick_home_state = _parse_optional_bool_text(_first_meaningful_line(quick_home_block))
+
+    quick_home_order = _clean_order_int(_first_meaningful_line(quick_home_order_block), default=0)
+
+    if quick_home_state is False and quick_home_order <= 0:
+        quick_home_order = 0
 
     active = True if active_state is None else bool(active_state)
     featured = bool(featured_state) if featured_state is not None else False
@@ -755,6 +851,8 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "issue_number": int(target_issue_number or source_issue_number or 0),
         "issue_url": source_issue_url,
         "issue_title": source_issue_title,
+        "quick_home": (bool(quick_home_state) if quick_home_state is not None else None),
+        "quick_home_order": (int(quick_home_order) if quick_home_order > 0 else (0 if quick_home_state is False else None)),
         "_source_issue_number": source_issue_number,
         "_target_issue_number": int(target_issue_number or 0),
         "_special_set_featured_only": False,
@@ -908,6 +1006,8 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         "issue_number",
         "issue_url",
         "issue_title",
+        "quick_home",
+        "quick_home_order",
     }
 
     for k, v in incoming.items():
@@ -955,6 +1055,28 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     existing["issue_number"] = _clean_issue_number(existing.get("issue_number") or incoming.get("issue_number") or incoming.get("_target_issue_number") or incoming.get("_source_issue_number"))
     existing["issue_url"] = _clean_url(str(existing.get("issue_url") or incoming.get("issue_url") or ""))
     existing["issue_title"] = _clean_optional_text(str(existing.get("issue_title") or incoming.get("issue_title") or ""))
+
+    if "quick_home" in existing:
+        parsed_quick_home = existing.get("quick_home")
+        if isinstance(parsed_quick_home, str):
+            parsed_quick_home = _parse_optional_bool_text(parsed_quick_home)
+        elif isinstance(parsed_quick_home, bool):
+            parsed_quick_home = parsed_quick_home
+        else:
+            parsed_quick_home = bool(parsed_quick_home) if parsed_quick_home in {0, 1} else None
+
+        if parsed_quick_home is None:
+            existing.pop("quick_home", None)
+        else:
+            existing["quick_home"] = bool(parsed_quick_home)
+
+    if "quick_home_order" in existing:
+        existing["quick_home_order"] = _clean_order_int(existing.get("quick_home_order"), default=0)
+        if existing["quick_home_order"] <= 0:
+            existing.pop("quick_home_order", None)
+
+    if existing.get("quick_home") is False:
+        existing["quick_home_order"] = 0
 
     if existing.get("featured") is True:
         for p in products:
@@ -1020,6 +1142,10 @@ def main() -> int:
     print(f"Canonical URL: {incoming.get('canonical_url')}")
     print(f"ID Busca: {incoming.get('id_busca')}")
     print(f"Image: {incoming.get('image')}")
+    if incoming.get("quick_home") is not None:
+        print(f"Quick Home: {incoming.get('quick_home')}")
+    if incoming.get("quick_home_order") is not None:
+        print(f"Quick Home Order: {incoming.get('quick_home_order')}")
     if incoming.get("alt_url"):
         print(f"Alt URL: {incoming.get('alt_url')}")
     if incoming.get("relink_open_url"):
