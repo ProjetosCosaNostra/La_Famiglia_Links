@@ -372,6 +372,266 @@
     return `"${s.replace(/"/g, '""')}"`;
   }
 
+
+
+  function toDateValue(value) {
+    const t = Date.parse(String(value || ""));
+    return Number.isFinite(t) ? t : null;
+  }
+
+  function filterEventsByOptions(events, options) {
+    const list = Array.isArray(events) ? events.slice() : [];
+    const opts = options || {};
+
+    const now = Date.now();
+    const days = Number(opts.days);
+
+    let startTs = null;
+    let endTs = null;
+
+    if (Number.isFinite(days) && days > 0) {
+      startTs = now - (days * 24 * 60 * 60 * 1000);
+      endTs = now;
+    }
+
+    if (opts.start_at) {
+      const ts = toDateValue(opts.start_at);
+      if (ts != null) startTs = ts;
+    }
+
+    if (opts.end_at) {
+      const ts = toDateValue(opts.end_at);
+      if (ts != null) endTs = ts;
+    }
+
+    return list.filter((event) => {
+      const ts = toDateValue(event?.timestamp);
+      if (ts == null) return false;
+      if (startTs != null && ts < startTs) return false;
+      if (endTs != null && ts > endTs) return false;
+      return true;
+    });
+  }
+
+  function safeMetricValue(value, fallback) {
+    const text = normalizeText(value || "");
+    return text || normalizeText(fallback || "");
+  }
+
+  function buildGroupedRanking(events, keyBuilder, valueBuilder, maxItems) {
+    const map = new Map();
+
+    for (const event of Array.isArray(events) ? events : []) {
+      const rawKey = keyBuilder(event);
+      const key = normalizeText(rawKey || "");
+      if (!key) continue;
+
+      const current = map.get(key) || {
+        key,
+        label: key,
+        count: 0,
+      };
+
+      current.count += 1;
+
+      const extra = valueBuilder ? valueBuilder(event, current) : null;
+      if (extra && typeof extra === "object") {
+        Object.assign(current, extra);
+      }
+
+      map.set(key, current);
+    }
+
+    return Array.from(map.values())
+      .sort((a, b) => {
+        if (b.count !== a.count) return b.count - a.count;
+        return String(a.label || a.key || "").localeCompare(String(b.label || b.key || ""));
+      })
+      .slice(0, Number.isFinite(Number(maxItems)) && Number(maxItems) > 0 ? Number(maxItems) : 10);
+  }
+
+  function countByEventName(events) {
+    const out = {};
+
+    for (const event of Array.isArray(events) ? events : []) {
+      const name = normalizeText(event?.event_name || "unknown");
+      if (!name) continue;
+      out[name] = (out[name] || 0) + 1;
+    }
+
+    return out;
+  }
+
+  function buildSummary(options) {
+    const opts = options || {};
+    const allEvents = getEvents();
+    const events = filterEventsByOptions(allEvents, opts);
+    const counts = countByEventName(events);
+
+    const views = Number(counts.view_product_card || 0);
+    const buyClicks = Number(counts.click_buy || 0);
+    const copyIdClicks = Number(counts.click_copy_id || 0);
+    const copyLinkClicks = Number(counts.click_copy_link || 0);
+    const storeClicks = Number(counts.click_open_store || 0);
+
+    const topNetworksByBuy = buildGroupedRanking(
+      events.filter((e) => e?.event_name === "click_buy"),
+      (e) => safeMetricValue(e?.network || e?.utm_source, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topCreativesByBuy = buildGroupedRanking(
+      events.filter((e) => e?.event_name === "click_buy"),
+      (e) => safeMetricValue(e?.creative_id, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.creative_id, "unknown"),
+        network: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+        format: safeMetricValue(e?.format || e?.utm_medium, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topTitlesByBuy = buildGroupedRanking(
+      events.filter((e) => e?.event_name === "click_buy"),
+      (e) => safeMetricValue(e?.title_id, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.title_id, "unknown"),
+        creative_id: safeMetricValue(e?.creative_id, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topProductsByBuy = buildGroupedRanking(
+      events.filter((e) => e?.event_name === "click_buy"),
+      (e) => safeMetricValue(e?.sku, "unknown"),
+      (e, current) => ({
+        label: safeMetricValue(e?.product_title || e?.sku, current?.key || "unknown"),
+        sku: safeMetricValue(e?.sku, "unknown"),
+        product_title: safeMetricValue(e?.product_title || e?.sku, "unknown"),
+        category: safeMetricValue(e?.category, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topCategoriesByBuy = buildGroupedRanking(
+      events.filter((e) => e?.event_name === "click_buy"),
+      (e) => safeMetricValue(e?.category, "unknown"),
+      (e) => ({
+        label: safeMetricValue(e?.category, "unknown"),
+      }),
+      opts.max_items
+    );
+
+    const topNetworksByIntention = buildGroupedRanking(
+      events.filter((e) => ["click_buy", "click_copy_id", "click_copy_link"].includes(e?.event_name)),
+      (e) => safeMetricValue(e?.network || e?.utm_source, "unknown"),
+      (e, current) => {
+        const buy = Number(current?.buy_count || 0) + (e?.event_name === "click_buy" ? 1 : 0);
+        const copyId = Number(current?.copy_id_count || 0) + (e?.event_name === "click_copy_id" ? 1 : 0);
+        const copyLink = Number(current?.copy_link_count || 0) + (e?.event_name === "click_copy_link" ? 1 : 0);
+
+        return {
+          label: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+          buy_count: buy,
+          copy_id_count: copyId,
+          copy_link_count: copyLink,
+          intention_score: (buy * 3) + (copyLink * 2) + copyId,
+        };
+      },
+      opts.max_items
+    ).sort((a, b) => {
+      if ((b.intention_score || 0) !== (a.intention_score || 0)) {
+        return (b.intention_score || 0) - (a.intention_score || 0);
+      }
+      if ((b.count || 0) !== (a.count || 0)) {
+        return (b.count || 0) - (a.count || 0);
+      }
+      return String(a.label || "").localeCompare(String(b.label || ""));
+    });
+
+    return {
+      generated_at: nowIso(),
+      source: "La_Famiglia_Links",
+      mode: "local_first",
+      period: {
+        days: Number.isFinite(Number(opts.days)) && Number(opts.days) > 0 ? Number(opts.days) : null,
+        start_at: normalizeText(opts.start_at || ""),
+        end_at: normalizeText(opts.end_at || ""),
+      },
+      totals: {
+        all_events_stored: allEvents.length,
+        filtered_events: events.length,
+        by_event_name: counts,
+      },
+      answers_before_first_sale: {
+        top_networks_by_click_buy: topNetworksByBuy,
+        top_networks_by_intention: topNetworksByIntention,
+        top_creatives_by_click_buy: topCreativesByBuy,
+        top_titles_by_click_buy: topTitlesByBuy,
+        top_products_by_click_buy: topProductsByBuy,
+        top_categories_by_click_buy: topCategoriesByBuy,
+      },
+      rates: {
+        click_buy_per_view_product_card: views > 0 ? Number((buyClicks / views).toFixed(4)) : 0,
+        click_copy_id_per_view_product_card: views > 0 ? Number((copyIdClicks / views).toFixed(4)) : 0,
+        click_copy_link_per_view_product_card: views > 0 ? Number((copyLinkClicks / views).toFixed(4)) : 0,
+        click_open_store_per_view_product_card: views > 0 ? Number((storeClicks / views).toFixed(4)) : 0,
+      },
+    };
+  }
+
+  function summaryToRows(summary) {
+    const rows = [[
+      "section",
+      "rank",
+      "key",
+      "label",
+      "count",
+      "buy_count",
+      "copy_id_count",
+      "copy_link_count",
+      "intention_score",
+      "sku",
+      "product_title",
+      "category",
+      "network",
+      "format",
+      "creative_id",
+      "title_id",
+    ]];
+
+    const sections = summary?.answers_before_first_sale || {};
+
+    Object.entries(sections).forEach(([sectionName, items]) => {
+      if (!Array.isArray(items)) return;
+      items.forEach((item, index) => {
+        rows.push([
+          sectionName,
+          String(index + 1),
+          item?.key || "",
+          item?.label || "",
+          String(item?.count || 0),
+          String(item?.buy_count || 0),
+          String(item?.copy_id_count || 0),
+          String(item?.copy_link_count || 0),
+          String(item?.intention_score || 0),
+          item?.sku || "",
+          item?.product_title || "",
+          item?.category || "",
+          item?.network || "",
+          item?.format || "",
+          item?.creative_id || "",
+          item?.title_id || "",
+        ]);
+      });
+    });
+
+    return rows;
+  }
+
   function csvDownload(filename, rows) {
     const content = rows.map((row) => row.map(csvEscape).join(";")).join("\n") + "\n";
     const blob = new Blob([content], { type: "text/csv;charset=utf-8" });
@@ -502,6 +762,22 @@
 
       csvDownload(filename || "cn_tracking_events.csv", rows);
       return true;
+    },
+
+    getSummary(options) {
+      return buildSummary(options || {});
+    },
+
+    exportSummaryJson(filename, options) {
+      const summary = buildSummary(options || {});
+      jsonDownload(filename || "cn_tracking_summary.json", summary);
+      return summary;
+    },
+
+    exportSummaryCsv(filename, options) {
+      const summary = buildSummary(options || {});
+      csvDownload(filename || "cn_tracking_summary.csv", summaryToRows(summary));
+      return summary;
     },
 
     track(eventName, meta) {
