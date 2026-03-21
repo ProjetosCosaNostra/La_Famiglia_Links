@@ -32,6 +32,11 @@
      - Links /social/ e /lists deixam de ser tratados como compra válida
      - Corrige bug JS em isNoisyTag (True -> true)
 
+   PATCH 2026-03-21 (MANUTENÇÃO / REVIEW TXT):
+     - Busca data/link_guardian_review.json e logs/link_guardian_review.txt
+     - Botão novo: TXT manutenção
+     - Fluxo seguro: Guardian identifica suspeitos sem derrubar automático
+
    PATCH 2026-03-02 (UI PREMIUM / CATEGORIAS INTELIGENTES):
      - Ferramentas (listas/export): recolhível no mobile (nada gigante).
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
@@ -1290,6 +1295,74 @@
     return deduped;
   }
 
+  async function fetchReviewReport() {
+    try {
+      const res = await fetch(`./data/link_guardian_review.json?ts=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) return { updated_at: "", total_items: 0, summary: {}, items: [] };
+      const data = await res.json();
+      if (!data || typeof data !== "object") return { updated_at: "", total_items: 0, summary: {}, items: [] };
+      if (!Array.isArray(data.items)) data.items = [];
+      if (!data.summary || typeof data.summary !== "object") data.summary = {};
+      data.total_items = Number(data.total_items || data.items.length || 0);
+      return data;
+    } catch {
+      return { updated_at: "", total_items: 0, summary: {}, items: [] };
+    }
+  }
+
+  function updateMaintenanceButton() {
+    const btn = $("#btnDlReview");
+    if (!btn) return;
+    const total = Number((STATE.reviewReport && STATE.reviewReport.total_items) || 0);
+    btn.textContent = total > 0 ? `🛠️ TXT manutenção (${total})` : "🛠️ TXT manutenção";
+  }
+
+  async function doExportReviewTxt() {
+    try {
+      const res = await fetch(`./logs/link_guardian_review.txt?ts=${Date.now()}`, { cache: "no-store" });
+      if (res.ok) {
+        const txt = await res.text();
+        if (String(txt || "").trim()) {
+          const fname = `manutencao_guardian_${dateStamp()}.txt`;
+          downloadFile(fname, txt, "text/plain;charset=utf-8");
+          showToast("TXT manutenção ⬇️");
+          return;
+        }
+      }
+    } catch {}
+
+    const report = STATE.reviewReport || { items: [], total_items: 0 };
+    const items = Array.isArray(report.items) ? report.items : [];
+    if (!items.length) {
+      showToast("Sem manutenção pendente ✅");
+      return;
+    }
+
+    const lines = [];
+    lines.push("LINK GUARDIAN — REVISÃO / MANUTENÇÃO");
+    lines.push(`Atualizado em: ${report.updated_at || new Date().toISOString()}`);
+    lines.push(`Total: ${items.length}`);
+    lines.push("");
+
+    for (const item of items) {
+      lines.push("[MANUTENÇÃO] Produto suspeito");
+      lines.push(`SKU: ${item.sku || ""}`);
+      lines.push(`Título: ${item.title || ""}`);
+      if (item.id_busca) lines.push(`ID ML: ${item.id_busca}`);
+      if (item.open_url) lines.push(`Link atual: ${item.open_url}`);
+      if (item.final_url) lines.push(`Destino detectado: ${item.final_url}`);
+      lines.push(`Classificação: ${item.review_bucket || ""}`);
+      lines.push(`Motivo: ${item.reason || ""}`);
+      if (item.review_note) lines.push(`Nota: ${item.review_note}`);
+      lines.push(`Ação sugerida: ${item.suggested_action || ""}`);
+      lines.push("");
+    }
+
+    const fname = `manutencao_guardian_${dateStamp()}.txt`;
+    downloadFile(fname, lines.join("\n") + "\n", "text/plain;charset=utf-8");
+    showToast("TXT manutenção ⬇️");
+  }
+
   function findBySku(sku) {
     return STATE.products.find((p) => p && p.sku === sku) || null;
   }
@@ -1533,6 +1606,7 @@
             <button class="btn btn--tiny btn--gold"  type="button" id="btnDlList">⬇️ TXT (ativos)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlReview">🛠️ TXT manutenção</button>
           </div>
         </details>
       `;
@@ -1543,11 +1617,14 @@
     const btnDlList = $("#btnDlList");
     const btnDlListAll = $("#btnDlListAll");
     const btnDlCsvAll = $("#btnDlCsvAll");
+    const btnDlReview = $("#btnDlReview");
 
     if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
     if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
     if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
+    if (btnDlReview) btnDlReview.addEventListener("click", () => doExportReviewTxt());
+    updateMaintenanceButton();
 
     document.addEventListener("click", (e) => {
       const openCats = e.target.closest('[data-action="openTags"]');
@@ -1640,6 +1717,7 @@
     _export: null,
     _categoryCounts: [],
     _activeCount: 0,
+    reviewReport: { updated_at: "", total_items: 0, summary: {}, items: [] },
   };
 
   async function boot() {
@@ -1671,6 +1749,9 @@
         last_ok: "",
       }].map(adaptForUI).filter(Boolean);
     }
+
+    STATE.reviewReport = await fetchReviewReport();
+    updateMaintenanceButton();
 
     const q = $("#qLoja");
     if (q) q.value = STATE.query || "";
