@@ -581,6 +581,11 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         sku = _clean_sku(sku_raw)
         if not sku:
             raise ValueError("Produto do Dia: SKU inválido no issue cms-produto-do-dia.")
+
+        reactivate_target = _checkbox_state(body, r"Reativar\s+o\s+produto|Reativar\s+se\s+inativo")
+        featured_note_block = _get_section(sections, r"Observa[cç][aã]o|Motivo|Notas?")
+        featured_note = _clean_optional_text(featured_note_block.replace("- [x]", "").replace("- [ ]", "").replace("- ", "\n"))
+
         return {
             "sku": sku,
             "title": "",
@@ -595,6 +600,8 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
             "featured": True,
             "last_checked": "",
             "last_ok": "",
+            "featured_note": featured_note,
+            "_reactivate_featured_target": bool(reactivate_target),
             "_special_set_featured_only": True,
         }
 
@@ -769,6 +776,8 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         return data
 
     special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
+    reactivate_featured_target = bool(incoming.pop("_reactivate_featured_target", False))
+    featured_note = _clean_optional_text(str(incoming.pop("featured_note", "") or ""))
 
     if special_set_featured_only:
         target_idx = next((i for i, p in enumerate(products) if isinstance(p, dict) and (p.get("sku") == sku)), None)
@@ -777,7 +786,12 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         for p in products:
             if not isinstance(p, dict):
                 continue
-            p["featured"] = bool(p.get("sku") == sku)
+            is_target = bool(p.get("sku") == sku)
+            p["featured"] = is_target
+            if is_target and reactivate_featured_target:
+                p["active"] = True
+            if is_target and featured_note:
+                p["featured_note"] = featured_note
         _enforce_single_featured(products)
         data["products"] = products
         return data
