@@ -1,0 +1,204 @@
+name: "✏️ Editar Produto Existente (CMS)"
+description: "Escolha o produto já existente pela issue original + SKU e edite os campos que precisar."
+title: "[CMS] Editar Produto: "
+labels: ["cms-produtos", "cms-editar-produto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ✅ **Como usar (edição real de produto já existente):**
+        - Este formulário é para **editar um produto que já existe**.
+        - Você informa a **issue original** e o **SKU** do produto.
+        - Preencha **só os campos que quer mudar**. O resto fica como está.
+        - Depois de processar, o CMS atualiza o `produtos.json` e também **reescreve o corpo da issue original**, para o botão **Edit** abrir um corpo forte dali em diante.
+
+        ⚠️ **Importante:**
+        - O GitHub **não consegue puxar uma lista viva de produtos/issues** dentro do formulário.
+        - Então a forma segura é escolher por **Número da issue original** + **SKU**.
+        - Para cadastro novo, continue usando **Novo / Atualizar Produto (CMS)**.
+
+  - type: input
+    id: target_issue_number
+    attributes:
+      label: "Número da issue original do produto"
+      description: "Ex: 112"
+      placeholder: "112"
+    validations:
+      required: true
+
+  - type: input
+    id: sku
+    attributes:
+      label: "SKU do produto que já existe"
+      description: "Precisa ser o SKU já cadastrado em produtos.json"
+      placeholder: "tradutor-inteligente-premium-online-offline"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: "Novo título (opcional)"
+      description: "Deixe vazio para manter o título atual."
+      placeholder: "Novo título do produto"
+    validations:
+      required: false
+
+  - type: textarea
+    id: badges
+    attributes:
+      label: "Novas badges/tags (opcional)"
+      description: "Deixe vazio para manter as badges atuais."
+      placeholder: "Achados do Dia, Tecnologia, Premium"
+    validations:
+      required: false
+
+  - type: input
+    id: id_busca
+    attributes:
+      label: "Novo ID Mercado Livre (opcional)"
+      description: "Deixe vazio para manter o ID atual."
+      placeholder: "5J5PKG-T25W"
+    validations:
+      required: false
+
+  - type: input
+    id: open_url
+    attributes:
+      label: "Novo Link Mercado Livre principal (opcional)"
+      description: "Se preencher, este vira o link principal do produto."
+      placeholder: "https://mercadolivre.com/sec/... ou https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: image_url
+    attributes:
+      label: "Nova imagem (URL opcional)"
+      description: "Deixe vazio para manter a imagem atual."
+      placeholder: "https://... (opcional)"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: active_mode
+    attributes:
+      label: "Estado ativo / vitrine"
+      description: "Escolha só se quiser mudar este estado."
+      options:
+        - "Manter atual"
+        - "Ativar / aparecer na vitrine"
+        - "Desativar / sair da vitrine"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: featured_mode
+    attributes:
+      label: "Estado Produto do Dia / featured"
+      description: "Escolha só se quiser mudar o featured."
+      options:
+        - "Manter atual"
+        - "Definir como Produto do Dia (featured)"
+        - "Remover Produto do Dia (featured)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: review_action
+    attributes:
+      label: "Ação manual"
+      description: "Escolha a ação operacional deste edit."
+      options:
+        - "Manter atual"
+        - "Manter"
+        - "Produto precisa de relink"
+        - "Reativar"
+        - "Desativar manualmente"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: review_status
+    attributes:
+      label: "Status de revisão / manutenção"
+      description: "Escolha só se quiser mudar o status."
+      options:
+        - "Manter atual"
+        - "Ativo"
+        - "Em revisão"
+        - "Precisa relink"
+        - "Desativado manualmente"
+    validations:
+      required: true
+
+  - type: textarea
+    id: review_reason
+    attributes:
+      label: "Motivo / problema encontrado (opcional)"
+      description: "Deixe vazio para manter o texto atual."
+      placeholder: "Ex.: link caiu em /social/, vendedor sem estoque, anúncio removido..."
+    validations:
+      required: false
+
+  - type: input
+    id: replacement_vendor
+    attributes:
+      label: "Novo vendedor / observação (opcional)"
+      description: "Ex.: vendedor X com 10mil vendas, melhor reputação."
+      placeholder: "Novo vendedor / observação"
+    validations:
+      required: false
+
+  - type: input
+    id: relink_open_url
+    attributes:
+      label: "Novo Link Mercado Livre (relink opcional)"
+      description: "Cole aqui o link do novo vendedor/anúncio."
+      placeholder: "https://mercadolivre.com/sec/... ou https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: manual_check_url
+    attributes:
+      label: "check_url manual (opcional)"
+      description: "Use só se quiser forçar um check_url específico."
+      placeholder: "https://mercadolivre.com/... (opcional)"
+    validations:
+      required: false
+
+  - type: input
+    id: manual_canonical_url
+    attributes:
+      label: "canonical_url manual (opcional)"
+      description: "Use só se quiser forçar uma canonical_url específica."
+      placeholder: "https://lista.mercadolivre.com.br/... (opcional)"
+    validations:
+      required: false
+
+  - type: input
+    id: alt_url
+    attributes:
+      label: "Link alternativo / fallback (opcional)"
+      description: "Ex.: link da bio, landing auxiliar, outra página estável."
+      placeholder: "https://... (opcional)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Observações internas / notas de relink (opcional)"
+      description: "Campo livre para histórico de revisão e manutenção."
+      placeholder: "Anotações internas, histórico do relink, motivo da troca, observações operacionais..."
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        📌 **Resultado esperado:**
+        - este issue atualiza o produto no `produtos.json`
+        - e sincroniza a **issue original** para um corpo mais forte de edição
+        - então, dali em diante, clicar em **Edit** na issue original fica muito mais útil
