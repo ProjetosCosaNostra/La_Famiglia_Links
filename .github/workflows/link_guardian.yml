@@ -40,9 +40,11 @@ jobs:
           LG_AUTO_REACTIVATE: "1"
           LG_REMOVE_ON_DEAD: "0"
 
-          LG_SOCIAL_INVALID_FOR_STOREFRONT: "1"
-          LG_LISTA_INVALID_FOR_STOREFRONT: "1"
-          LG_SOCIAL_COUNTS_AS_OK: "0"
+          # Ajuste para o funil real do afiliado:
+          # muitos links passam por /social/ e /lists antes do produto.
+          LG_SOCIAL_INVALID_FOR_STOREFRONT: "0"
+          LG_LISTA_INVALID_FOR_STOREFRONT: "0"
+          LG_SOCIAL_COUNTS_AS_OK: "1"
           LG_STOREFRONT_REVIEW_ONLY: "1"
 
           LG_RECOVER_ON_TEMP: "1"
