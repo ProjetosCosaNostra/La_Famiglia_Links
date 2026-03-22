@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-22T15:34:09Z",
+  "updated_at": "2026-03-22T16:04:07Z",
   "products": [
     {
       "sku": "kit-2-acendedores-de-fogao-premium",
@@ -19,7 +19,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
       "image": "https://github.com/user-attachments/assets/a8607aa7-fc89-4f0b-b8dd-2bce2ef1f17f",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1XNUc7N",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
       "price_text": "",
@@ -1770,10 +1770,11 @@
     },
     {
       "sku": "ssd-nvme-m2-1tb-pcie4-2280-6tsl",
-      "title": "SSD NVMe M.2 1TB (PCIe 4.0 • M.2 2280) — Boot rápido e mais agilidade",
+      "title": "SSD NVMe M.2 1TB Kingston",
       "badges": [
         "Achados do Dia",
         "SSD NVMe",
+        "Kingston",
         "SSD M.2",
         "NVMe",
         "PCIe 4.0",
@@ -1781,20 +1782,16 @@
         "1TB",
         "Upgrade PC",
         "Notebook",
-        "Boot rápido",
-        "Desempenho",
-        "Informática",
         "Armazenamento",
-        "Tecnologia",
-        "Custo Benefício"
+        "Tecnologia"
       ],
       "id_busca": "5J5PKG-6TSL",
       "open_url": "https://meli.la/2G13vrw",
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=3b2382ab-0e6e-46a3-9737-fcd981b2f39b",
-      "image": "https://github.com/user-attachments/assets/d03391a8-30dd-48c6-8d58-6a9f52823634",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6TSL",
+      "image": "https://github.com/user-attachments/assets/18ebcfd2-ef70-4ce6-a5d8-0d650c9310e9",
       "active": true,
-      "featured": false,
+      "featured": true,
       "short_url": "https://meli.la/2G13vrw",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "price_text": "",
@@ -1810,15 +1807,19 @@
       "review_status": "ativo",
       "review_reason": "",
       "replacement_vendor": "",
-      "relink_open_url": "",
+      "relink_open_url": "https://meli.la/2G13vrw",
       "notes": "",
       "alt_url": "",
       "issue_number": 84,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84",
-      "issue_title": "[CMS] Produto: SSD NVMe M.2 1TB (PCIe 4.0 / 2280) — Upgrade de desempenho",
+      "issue_title": "SSD NVMe M.2 1TB Kingston",
       "guardian_review_flag": true,
       "guardian_review_reason": "storefront_social_lists_invalid",
-      "guardian_review_at": "2026-03-22T15:34:09Z"
+      "guardian_review_at": "2026-03-22T15:34:09Z",
+      "quick_home": true,
+      "quick_home_order": 2,
+      "_source_issue_number": 139,
+      "_target_issue_number": 84
     },
     {
       "sku": "switch-hdmi-2x1-1x2-bidirecional-adem",
