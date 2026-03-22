@@ -545,17 +545,30 @@ def _check_url(url: str) -> CheckResult:
     unwrapped = _unwrap_account_verification(final_url)
     if unwrapped:
         if _is_social_lists_path(unwrapped):
-            return CheckResult(
-                ok=False,
-                temporary=False,
-                status=status,
-                final_url=unwrapped,
-                reason="storefront_social_lists_invalid",
-                hard_dead=False,
-                checked_url=u,
-                storefront_invalid=True,
-                promoted_url="",
-            )
+            if status == 200 and SOCIAL_COUNTS_AS_OK:
+                return CheckResult(
+                    ok=True,
+                    temporary=False,
+                    status=status,
+                    final_url=unwrapped,
+                    reason="social_lists_ok",
+                    hard_dead=False,
+                    checked_url=u,
+                    storefront_invalid=False,
+                    promoted_url="",
+                )
+            if SOCIAL_INVALID_FOR_STOREFRONT:
+                return CheckResult(
+                    ok=False,
+                    temporary=False,
+                    status=status,
+                    final_url=unwrapped,
+                    reason="storefront_social_lists_invalid",
+                    hard_dead=False,
+                    checked_url=u,
+                    storefront_invalid=True,
+                    promoted_url="",
+                )
 
         if LISTA_INVALID_FOR_STOREFRONT and _is_lista_url(unwrapped):
             return CheckResult(
@@ -597,17 +610,30 @@ def _check_url(url: str) -> CheckResult:
             )
 
     if _is_social_lists_path(final_url):
-        return CheckResult(
-            ok=False,
-            temporary=False,
-            status=status,
-            final_url=final_url or u,
-            reason="storefront_social_lists_invalid",
-            hard_dead=False,
-            checked_url=u,
-            storefront_invalid=True,
-            promoted_url="",
-        )
+        if status == 200 and SOCIAL_COUNTS_AS_OK:
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=status,
+                final_url=final_url or u,
+                reason="social_lists_ok",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=False,
+                promoted_url="",
+            )
+        if SOCIAL_INVALID_FOR_STOREFRONT:
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=status,
+                final_url=final_url or u,
+                reason="storefront_social_lists_invalid",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=True,
+                promoted_url="",
+            )
 
     if _is_social_profile_path(final_url):
         if status == 200:
@@ -1188,6 +1214,35 @@ def _append_review_item(history: Dict[str, Any], item: Dict[str, Any]) -> bool:
     return True
 
 
+def _remove_review_items_for_sku(history: Dict[str, Any], sku: str) -> int:
+    target = str(sku or "").strip().lower()
+    if not target:
+        return 0
+
+    items = history.get("items") or []
+    if not isinstance(items, list):
+        items = []
+
+    kept = []
+    removed = 0
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        item_sku = str(item.get("sku") or "").strip().lower()
+        if item_sku == target:
+            removed += 1
+            continue
+        kept.append(item)
+
+    if removed:
+        history["items"] = kept
+        history["total_items"] = len(kept)
+        history["updated_at"] = _utc_now_iso_z()
+
+    return removed
+
+
 def _build_review_txt(history: Dict[str, Any]) -> str:
     items = history.get("items") or []
     updated_at = str(history.get("updated_at") or "").strip()
@@ -1383,6 +1438,11 @@ def main() -> int:
             for k in ("guardian_review_flag", "guardian_review_reason", "guardian_review_at"):
                 if k in p:
                     del p[k]
+
+            removed_review = _remove_review_items_for_sku(review_history, sku)
+            if removed_review:
+                changed += 1
+                print(f"[REVIEW-CLEAR] {sku} -> removido da fila de manutenção ({removed_review})")
 
             promoted = _promote_valid_url(p, res.promoted_url or res.final_url or res.checked_url)
             if promoted:
