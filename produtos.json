@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-21T22:55:48Z",
+  "updated_at": "2026-03-22T00:40:32Z",
   "products": [
     {
       "sku": "capacete-asx-city-preto-fosco-viseira",
@@ -654,7 +654,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-501R",
       "image": "https://github.com/user-attachments/assets/7e7f890d-b759-4712-8b93-8c8212a934d3",
       "active": true,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1DeTTFh",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
       "price_text": "",
@@ -5409,6 +5409,47 @@
       "issue_number": 129,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129",
       "issue_title": "[CMS] Produto: Puma Flyer Runner Mesh Bdp"
+    },
+    {
+      "sku": "gloss-fran-liphoney-mel",
+      "title": "Gloss Fran By Franciny Ehlke Liphoney Mel",
+      "badges": [
+        "Achados do Dia",
+        "Cuidado Pessoal",
+        "Beleza",
+        "Gloss",
+        "Franciny Ehlke",
+        "Liphoney Mel",
+        "Brilho Labial",
+        "Maquiagem",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-2V09",
+      "open_url": "https://meli.la/1vQje5p",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAQRdiQfHgMuPb1L%2BGBeLGSo%2FDnpfbJrvSk0FPiYUeu2foL5XSdiw2GRlU7jbVbXD9qseGkRzzoY53yX1mZgrp2gVXdyYDh9p7LrmL6IHD3ae1czZph6pV5QPAfFn6FphnmqbAc2XND0jm729zM%2Fvog9NQOKdljU9zR2T90OMZCo0epb3vHAFVt%2FQ9zkVNoRKXFD8w%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-2V09",
+      "image": "https://github.com/user-attachments/assets/758c61bb-d326-4012-9b61-5b1707c25a33",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 137,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/137",
+      "issue_title": "Gloss Fran Liphoney Mel",
+      "quick_home": true,
+      "quick_home_order": 5,
+      "_source_issue_number": 137,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1vQje5p",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAQRdiQfHgMuPb1L%2BGBeLGSo%2FDnpfbJrvSk0FPiYUeu2foL5XSdiw2GRlU7jbVbXD9qseGkRzzoY53yX1mZgrp2gVXdyYDh9p7LrmL6IHD3ae1czZph6pV5QPAfFn6FphnmqbAc2XND0jm729zM%2Fvog9NQOKdljU9zR2T90OMZCo0epb3vHAFVt%2FQ9zkVNoRKXFD8w%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
