@@ -42,6 +42,13 @@
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
      - “Ver todas” abre modal premium com busca.
      - Contador “Categorias” vira 14+ (premium), total aparece no “Ver todas (X)”.
+
+   PATCH 2026-03-21 (TRACKING VITRINE / LOCAL-FIRST):
+     - Inicializa CNTracking sem depender de backend
+     - Mede page_view / view_featured / view_product_card
+     - Mede click_buy / copy id / copy link / copy alt
+     - Mede busca / filtro / ordenação / load more / cópia de link da loja
+     - Falha em silêncio se tracking.js não estiver carregado
    ========================================================== */
 
 (() => {
@@ -52,6 +59,14 @@
   const SHOW_FEATURED_IN_GRID = true;
 
   const PAGE_SIZE = 60;
+
+  // =========================
+  // TRACKING (LOCAL-FIRST / VITRINE)
+  // =========================
+  const TRACKING_PAGE_TYPE = "loja";
+  const TRACKING_CARD_VIEW_THRESHOLD = 0.6;
+  const TRACKING_MAX_OBSERVED = 240;
+  const TRACKING_SEARCH_DEBOUNCE_MS = 450;
 
   // =========================
   // FRONT FAILSAFE (ANTI-WIPE)
@@ -74,6 +89,8 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
+    "Cuidado Pessoal",
+    "Moda & Acessórios",
     "Casa",
     "Cozinha",
     "Home Office",
@@ -120,6 +137,8 @@
     "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
   const CN_CATEGORY_RULES = [
+    { label: "Cuidado Pessoal", keywords: ["feminino", "maquiagem", "beleza", "cosmetico", "cosmético", "skincare", "perfume", "body splash", "hidratante", "serum", "sérum", "cabelo", "chapinha", "secador", "escova secadora", "modelador", "batom", "gloss", "lip oil", "lip tint", "lip balm", "body care", "cuidados com a pele", "cuidados com o cabelo", "tratamentos de beleza", "higiene pessoal", "barbearia", "barbeador", "depilação", "manicure", "pedicure", "esmalte", "paleta", "base", "corretivo"] },
+    { label: "Moda & Acessórios", keywords: ["brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire", "necessáire", "acessorio feminino", "acessório feminino", "moda", "joia", "jóia", "bijuteria", "carteira", "mochila feminina", "óculos", "oculos"] },
     { label: "Moto", keywords: ["capacete", "viseira", "moto", "motocic", "motocross", "pilot", "piloto", "jaqueta moto", "luva moto", "intercomunicador moto"] },
     { label: "Carro", keywords: ["carro", "automotivo", "automotiva", "veicular", "veiculo", "pelicula", "película", "shampoo automotivo", "retrovisor", "multimidia", "multimídia", "som automotivo", "camera veicular", "câmera veicular"] },
     { label: "Casa", keywords: ["casa", "sala", "quarto", "banheiro", "lavanderia", "decoracao", "decoração", "tapete", "cortina", "cabide", "almofada"] },
@@ -649,6 +668,315 @@
     return false;
   }
 
+  function getTrackingApi() {
+    try {
+      if (window.CNTracking && typeof window.CNTracking.track === "function") return window.CNTracking;
+    } catch {}
+    return null;
+  }
+
+  function initTracking() {
+    if (STATE._trackingInit) return;
+    const api = getTrackingApi();
+    if (!api) return;
+
+    try {
+      api.init({
+        pageType: TRACKING_PAGE_TYPE,
+        autoPageView: false,
+        debug: false,
+      });
+      STATE._trackingInit = true;
+    } catch {}
+  }
+
+  function refreshTrackingUiSoon() {
+    clearTimeout(STATE._trackingUiTimer);
+    STATE._trackingUiTimer = setTimeout(() => {
+      updateTrackingReportButton();
+      updateTrackingSessionButtons();
+    }, 80);
+  }
+
+  function trackCall(methodName, ...args) {
+    const api = getTrackingApi();
+    if (!api) return null;
+
+    try {
+      const fn = api[methodName];
+      if (typeof fn !== "function") return null;
+      const result = fn.apply(api, args);
+      refreshTrackingUiSoon();
+      return result;
+    } catch {
+      return null;
+    }
+  }
+
+  function getPrimaryCategory(p) {
+    const smart = getSmartCategories(p);
+    if (smart.length) {
+      const cuidado = smart.find((x) => normalizeTagKey(x) === normalizeTagKey("Cuidado Pessoal"));
+      if (cuidado) return cuidado;
+
+      const moda = smart.find((x) => normalizeTagKey(x) === normalizeTagKey("Moda & Acessórios"));
+      if (moda) return moda;
+
+      return smart[0];
+    }
+
+    const raw = safeArray(p?.badges).map(cleanText).filter(Boolean);
+    const cuidadoRaw = raw.find((x) => normalizeTagKey(x) === normalizeTagKey("Cuidado Pessoal"));
+    if (cuidadoRaw) return cuidadoRaw;
+
+    const modaRaw = raw.find((x) => normalizeTagKey(x) === normalizeTagKey("Moda & Acessórios"));
+    if (modaRaw) return modaRaw;
+
+    return raw[0] || "";
+  }
+
+  function buildProductTrackingMeta(p, extra) {
+    const position = Number(extra?.position_on_page);
+
+    return {
+      page_type: TRACKING_PAGE_TYPE,
+      sku: cleanText(p?.sku || ""),
+      product_title: cleanText(p?.title || ""),
+      id_busca: cleanText(p?.id_busca || ""),
+      badges: safeArray(p?.badges).map(cleanText).filter(Boolean),
+      featured: p?.featured === true,
+      category: getPrimaryCategory(p),
+      position_on_page: Number.isFinite(position) ? position : null,
+    };
+  }
+
+  function getTrackingContextSafe() {
+    const api = getTrackingApi();
+    if (!api || typeof api.getContext !== "function") return {};
+
+    try {
+      const ctx = api.getContext() || {};
+      return {
+        network: cleanText(ctx.network || ctx.utm_source || ""),
+        format: cleanText(ctx.format || ctx.utm_medium || ""),
+        placement: cleanText(ctx.placement || ""),
+        creative_id: cleanText(ctx.creative_id || ""),
+        title_id: cleanText(ctx.title_id || ""),
+      };
+    } catch {
+      return {};
+    }
+  }
+
+  function buildRenderTrackingExtra(extra) {
+    const context = getTrackingContextSafe();
+    const merged = { ...(extra || {}) };
+
+    return {
+      section: cleanText(merged.section || ""),
+      query: cleanText(STATE.query || ""),
+      tag: cleanText(STATE.tag || ""),
+      sort: cleanText(STATE.sort || "relev"),
+      network: cleanText(merged.network || context.network || ""),
+      format: cleanText(merged.format || context.format || ""),
+      placement: cleanText(merged.placement || context.placement || ""),
+      creative_id: cleanText(merged.creative_id || context.creative_id || ""),
+      title_id: cleanText(merged.title_id || context.title_id || ""),
+      total_active: Number(STATE._lastRenderStats?.totalActive || 0),
+      total_filtered: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      total_rendered: Number(STATE._lastRenderStats?.shownNow || 0),
+      ...merged,
+    };
+  }
+
+  function makeViewTrackKey(kind, p, position) {
+    return [
+      cleanText(kind || "view"),
+      cleanText(p?.sku || ""),
+      String(Number(position || 0) || 0),
+      cleanText(STATE.query || ""),
+      cleanText(STATE.tag || ""),
+      cleanText(STATE.sort || "relev"),
+    ].join("|");
+  }
+
+  function trackViewOnce(kind, p, extra) {
+    if (!p) return;
+
+    const position = Number(extra?.position_on_page || 0) || 0;
+    const key = makeViewTrackKey(kind, p, position);
+
+    if (STATE._trackedViewKeys.has(key)) return;
+    STATE._trackedViewKeys.add(key);
+
+    const meta = buildProductTrackingMeta(p, extra);
+    const more = buildRenderTrackingExtra(extra);
+
+    if (kind === "featured") {
+      trackCall("trackFeaturedView", meta, more);
+      return;
+    }
+
+    trackCall("trackProductView", meta, more);
+  }
+
+  function observeRenderedTracking(featuredPass, shown) {
+    initTracking();
+
+    if (STATE._trackingObserver && typeof STATE._trackingObserver.disconnect === "function") {
+      try { STATE._trackingObserver.disconnect(); } catch {}
+    }
+
+    if (typeof window.IntersectionObserver !== "function") {
+      if (featuredPass) {
+        trackViewOnce("featured", featuredPass, {
+          section: "featured",
+          position_on_page: 1,
+        });
+      }
+
+      shown.slice(0, TRACKING_MAX_OBSERVED).forEach((p, idx) => {
+        trackViewOnce("grid", p, {
+          section: "grid",
+          position_on_page: idx + 1,
+        });
+      });
+      return;
+    }
+
+    STATE._trackingObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        if (entry.intersectionRatio < TRACKING_CARD_VIEW_THRESHOLD) return;
+
+        const el = entry.target;
+        const sku = cleanText(el.getAttribute("data-sku") || "");
+        const kind = cleanText(el.getAttribute("data-track-kind") || "grid");
+        const position = Number(el.getAttribute("data-position") || 0) || null;
+        const p = sku ? findBySku(sku) : null;
+
+        if (p) {
+          trackViewOnce(kind === "featured" ? "featured" : "grid", p, {
+            section: kind === "featured" ? "featured" : "grid",
+            position_on_page: position,
+          });
+        }
+
+        try { STATE._trackingObserver.unobserve(el); } catch {}
+      });
+    }, { threshold: [TRACKING_CARD_VIEW_THRESHOLD] });
+
+    const nodes = Array.from(document.querySelectorAll("[data-track-kind][data-sku]"));
+    nodes.slice(0, TRACKING_MAX_OBSERVED).forEach((el) => {
+      try { STATE._trackingObserver.observe(el); } catch {}
+    });
+  }
+
+  function trackPageViewSnapshot() {
+    initTracking();
+    if (STATE._pageViewTracked) return;
+
+    STATE._pageViewTracked = true;
+
+    trackCall("trackPageView", {
+      page_type: TRACKING_PAGE_TYPE,
+      total_products: Number(STATE.products.length || 0),
+      active_count: Number(STATE._lastRenderStats?.totalActive || 0),
+      filtered_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      rendered_count: Number(STATE._lastRenderStats?.shownNow || 0),
+      featured_sku: cleanText(STATE._lastRenderStats?.featuredSku || ""),
+      featured_title: cleanText(STATE._lastRenderStats?.featuredTitle || ""),
+    });
+  }
+
+  function scheduleSearchTracking(query) {
+    initTracking();
+
+    if (STATE._searchTrackTimer) {
+      clearTimeout(STATE._searchTrackTimer);
+    }
+
+    const rawQuery = cleanText(query || "");
+
+    STATE._searchTrackTimer = setTimeout(() => {
+      const key = [
+        normalizeSearchText(rawQuery),
+        normalizeTagKey(STATE.tag || ""),
+        cleanText(STATE.sort || "relev"),
+      ].join("|");
+
+      if (key === STATE._lastSearchTrackKey) return;
+      STATE._lastSearchTrackKey = key;
+
+      trackCall("trackSearch", rawQuery, buildRenderTrackingExtra({
+        result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+        shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+      }));
+    }, TRACKING_SEARCH_DEBOUNCE_MS);
+  }
+
+  function trackFilterSelection(tagLabel) {
+    initTracking();
+
+    const label = cleanText(tagLabel || STATE.tag || "") || "all";
+    const key = [
+      normalizeTagKey(label),
+      cleanText(STATE.query || ""),
+      cleanText(STATE.sort || "relev"),
+    ].join("|");
+
+    if (key === STATE._lastFilterTrackKey) return;
+    STATE._lastFilterTrackKey = key;
+
+    trackCall("trackFilter", label, buildRenderTrackingExtra({
+      result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+    }));
+  }
+
+  function trackSortSelection(sortValue) {
+    initTracking();
+
+    trackCall("trackSortChange", cleanText(sortValue || STATE.sort || "relev"), buildRenderTrackingExtra({
+      result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+    }));
+  }
+
+  function trackLoadMoreAction(previousLimit) {
+    initTracking();
+
+    trackCall("trackLoadMore", buildRenderTrackingExtra({
+      previous_limit: Number(previousLimit || 0),
+      new_limit: Number(STATE.limit || 0),
+      result_count: Number(STATE._lastRenderStats?.totalFiltered || 0),
+      shown_count: Number(STATE._lastRenderStats?.shownNow || 0),
+    }));
+  }
+
+  function trackProductAction(action, p, extra) {
+    if (!p) return;
+
+    initTracking();
+
+    const meta = buildProductTrackingMeta(p, extra);
+    const more = buildRenderTrackingExtra(extra);
+
+    if (action === "buy") {
+      trackCall("trackBuyClick", meta, more);
+      return;
+    }
+
+    if (action === "copyId") {
+      trackCall("trackCopyId", meta, more);
+      return;
+    }
+
+    if (action === "copyLink") {
+      trackCall("trackCopyLink", meta, more);
+    }
+  }
+
   function escapeHTML(s) {
     return String(s ?? "")
       .split("&").join("&amp;")
@@ -828,6 +1156,7 @@
   }
 
   function featuredHTML(p, isProdutoDoDia) {
+    const primaryCategory = getPrimaryCategory(p);
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
@@ -840,7 +1169,7 @@
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
+      : `<a class="btn btn--gold" data-role="buy-link" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
@@ -850,11 +1179,11 @@
     const tags = tagsText(p.badges);
 
     const altBtn = p.alt_url
-      ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Link Alt</button>`
+      ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1">Copiar Link Alt</button>`
       : ``;
 
     return `
-      <div class="card">
+      <div class="card" data-track-kind="featured" data-sku="${escapeHTML(p.sku)}" data-position="1" data-category="${escapeHTML(primaryCategory)}">
         <div class="card__img">
           ${badge}
           ${img}
@@ -872,9 +1201,9 @@
 
           <div class="actions">
             ${buyBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1">Copiar link</button>
             ${altBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}" data-section="featured" data-position="1">Copiar ID</button>
           </div>
         </div>
       </div>
@@ -899,9 +1228,9 @@
           </p>
 
           <div class="actions" style="margin-top:6px;">
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}" data-section="featured-help" data-position="1">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}" data-section="featured-help" data-position="1">Copiar Link</button>
+            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}" data-section="featured-help" data-position="1">Copiar Alt</button>` : ``}
             <a class="btn btn--tiny btn--gold" href="./">Abrir Home</a>
           </div>
 
@@ -913,7 +1242,8 @@
     `;
   }
 
-  function productCardHTML(p) {
+  function productCardHTML(p, position) {
+    const primaryCategory = getPrimaryCategory(p);
     const img = p.image
       ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">
@@ -926,13 +1256,13 @@
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      : `<a class="smallBtn smallBtnGold" data-role="buy-link" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
 
     return `
-      <div class="pCard" data-sku="${escapeHTML(p.sku)}">
+      <div class="pCard" data-track-kind="grid" data-sku="${escapeHTML(p.sku)}" data-position="${escapeHTML(position)}" data-category="${escapeHTML(primaryCategory)}">
         <div class="pImg">
           ${p.featured ? `<div class="pFeatured">⭐ do dia</div>` : ``}
           ${img}
@@ -945,9 +1275,9 @@
 
           <div class="pActions">
             ${buy}
-            <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
+            <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}">Copiar ID</button>
+            <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}" data-section="grid" data-position="${escapeHTML(position)}">Link Alt</button>` : ``}
           </div>
         </div>
       </div>
@@ -1099,36 +1429,9 @@
     return arr;
   }
 
-  function buildSearchHaystack(p) {
-    return normalizeSearchText(
-      (p.title || "") + " " +
-      (p.sku || "") + " " +
-      (p.id_busca || "") + " " +
-      safeArray(p.badges).join(" ") + " " +
-      getSmartCategories(p).join(" ") + " " +
-      (p.price_text || "")
-    );
-  }
-
-  function matchesQueryOnly(p) {
-    const q = normalizeSearchText(STATE.query || "");
-    if (!q) return true;
-
-    const hay = buildSearchHaystack(p);
-    const parts = q.split(/\s+/g).filter(Boolean);
-
-    for (const part of parts) {
-      if (!hay.includes(part)) return false;
-    }
-    return true;
-  }
-
-  function hasActiveFiltering() {
-    return Boolean((STATE.query || "").trim() || (STATE.tag || "").trim());
-  }
-
   function matchesFilter(p) {
-    const tag = normalizeTagKey(STATE.tag || "");
+    const q = (STATE.query || "").trim().toLowerCase();
+    const tag = (STATE.tag || "").trim().toLowerCase();
 
     if (tag) {
       const hasSmart = getSmartCategories(p).some((b) => normalizeTagKey(b) === tag);
@@ -1136,7 +1439,22 @@
       if (!hasSmart && !hasRaw) return false;
     }
 
-    return matchesQueryOnly(p);
+    if (!q) return true;
+
+    const hay = normalizeSearchText(
+      (p.title || "") + " " +
+      (p.sku || "") + " " +
+      (p.id_busca || "") + " " +
+      safeArray(p.badges).join(" ") + " " +
+      getSmartCategories(p).join(" ") + " " +
+      (p.price_text || "")
+    );
+
+    const parts = normalizeSearchText(q).split(/\s+/g).filter(Boolean);
+    for (const part of parts) {
+      if (!hay.includes(part)) return false;
+    }
+    return true;
   }
 
   function ensureTagModal() {
@@ -1231,15 +1549,20 @@
       if (!btn) return;
 
       const tag = String(btn.getAttribute("data-tag") || "").trim();
-      const qInput = $("#qLoja");
-
-      STATE.query = "";
-      STATE.tag = tag;
-      if (qInput) qInput.value = "";
+      if (tag) {
+        STATE.tag = tag;
+        STATE.query = "";
+        const qEl = $("#qLoja");
+        if (qEl) qEl.value = "";
+      } else {
+        STATE.tag = "";
+        STATE.query = "";
+        const qEl = $("#qLoja");
+        if (qEl) qEl.value = "";
+      }
       STATE.limit = PAGE_SIZE;
       closeTagModal();
       render();
-      scheduleSearchTracking(STATE.query);
       trackFilterSelection(tag || "all");
     };
   }
@@ -1249,17 +1572,12 @@
     const totalTagsEl = $("#tagsCount");
     if (!box) return;
 
-    const activeArray = Array.isArray(activeList) ? activeList : [];
-    const countsSource = (STATE.query || "").trim()
-      ? activeArray.filter(matchesQueryOnly)
-      : activeArray;
-
-    const countsAll = buildTagCounts(countsSource);
+    const countsAll = buildTagCounts(activeList);
     const categoriesRaw = countsAll.filter((t) => isCategoryTag(t.label, t.n));
     const categories = orderCategories(categoriesRaw);
 
     STATE._categoryCounts = categories.slice();
-    STATE._activeCount = activeArray.length;
+    STATE._activeCount = (activeList || []).length;
 
     const isMobile = window.matchMedia("(max-width: 720px)").matches;
     const maxChips = isMobile ? CN_CAT_MAX_CHIPS_MOBILE : CN_CAT_MAX_CHIPS_DESKTOP;
@@ -1276,13 +1594,12 @@
     // contador premium: "14+" quando tem mais
     setText(totalTagsEl, categories.length > top.length ? `${top.length}+` : `${top.length}`);
 
-    const allActive = !hasActiveFiltering();
+    const allActive = !STATE.tag;
     const chips = [];
-    const allLabel = hasActiveFiltering() ? "👑 Limpar tudo" : "👑 Tudo";
 
     chips.push(`
-      <button class="tagChip ${allActive ? "tagChip--active" : ""}" type="button" data-tag="" data-clear-all="1">
-        ${allLabel}
+      <button class="tagChip ${allActive ? "tagChip--active" : ""}" type="button" data-tag="">
+        👑 Tudo
       </button>
     `);
 
@@ -1312,7 +1629,7 @@
     setText($("#countRendered"), shownNow);
 
     const fs = $("#filterStatus");
-    if (fs) fs.style.display = hasActiveFiltering() ? "inline" : "none";
+    if (fs) fs.style.display = (STATE.query || STATE.tag) ? "inline" : "none";
   }
 
   function setUpdatedAt(iso) {
@@ -1360,21 +1677,15 @@
     filtered = applySort(filtered);
 
     const destaque = getFeatured(activeAll);
-    const hasFilter = hasActiveFiltering();
 
     let featuredPass = null;
     if (destaque) featuredPass = matchesFilter(destaque) ? destaque : null;
 
-    if (hasFilter) {
-      featuredEl.innerHTML = "";
-      featuredEl.style.display = "none";
-    } else {
-      featuredEl.style.display = "";
-      featuredEl.innerHTML = featuredPass
-        ? featuredHTML(featuredPass, true)
-        : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
-      applyImageFixes(featuredEl);
-    }
+    featuredEl.innerHTML = featuredPass
+      ? featuredHTML(featuredPass, true)
+      : (destaque ? featuredHTML(destaque, false) : emptyFeaturedHTML());
+
+    applyImageFixes(featuredEl);
 
     let list = filtered.slice();
 
@@ -1385,7 +1696,7 @@
     }
 
     const shown = list.slice(0, STATE.limit);
-    grid.innerHTML = shown.map(productCardHTML).join("");
+    grid.innerHTML = shown.map((p, idx) => productCardHTML(p, idx + 1)).join("");
     applyImageFixes(grid);
 
     const wrap = $("#loadMoreWrap");
@@ -1400,6 +1711,14 @@
       shownNow: shown.length,
     });
 
+    STATE._lastRenderStats = {
+      totalActive: activeAll.length,
+      totalFiltered: list.length,
+      shownNow: shown.length,
+      featuredSku: featuredPass ? featuredPass.sku : (destaque ? destaque.sku : ""),
+      featuredTitle: featuredPass ? featuredPass.title : (destaque ? destaque.title : ""),
+    };
+
     STATE._export = {
       updated_at: STATE.updated_at || "",
       all: allProducts.slice(),
@@ -1411,6 +1730,7 @@
     };
 
     updateUrlState();
+    observeRenderedTracking(featuredPass, shown);
   }
 
   async function fetchProducts() {
@@ -1451,6 +1771,250 @@
     if (!btn) return;
     const total = Number((STATE.reviewReport && STATE.reviewReport.total_items) || 0);
     btn.textContent = total > 0 ? `🛠️ TXT manutenção (${total})` : "🛠️ TXT manutenção";
+  }
+
+  function getTrackingSummarySafe() {
+    const api = getTrackingApi();
+    if (!api || typeof api.getSummary !== "function") return null;
+    try {
+      return api.getSummary({ max_items: 10 });
+    } catch {
+      return null;
+    }
+  }
+
+  function getTrackingSessionSummarySafe() {
+    const api = getTrackingApi();
+    if (!api || typeof api.getSessionSummary !== "function") return null;
+    try {
+      return api.getSessionSummary({ max_items: 10 });
+    } catch {
+      return null;
+    }
+  }
+
+  function updateTrackingReportButton() {
+    const btn = $("#btnDlTrackingReport");
+    if (!btn) return;
+
+    const summary = getTrackingSummarySafe();
+    const total = Number(summary?.totals?.filtered_events || 0);
+
+    btn.textContent = total > 0
+      ? `📊 TXT relatório (${total})`
+      : "📊 TXT relatório";
+  }
+
+  function updateTrackingSessionButtons() {
+    const btnReport = $("#btnDlTrackingSessionReport");
+    const btnClear = $("#btnClearTrackingSession");
+    const btnReset = $("#btnResetTrackingSession");
+    const summary = getTrackingSessionSummarySafe();
+    const total = Number(summary?.totals?.filtered_events || 0);
+    const sessionId = cleanText(summary?.filters?.session_id || trackCall("getSessionId") || "");
+    const sessionShort = sessionId ? sessionId.slice(-6) : "";
+
+    if (btnReport) {
+      btnReport.textContent = total > 0
+        ? `🧪 TXT sessão (${total})`
+        : "🧪 TXT sessão";
+    }
+
+    if (btnClear) {
+      btnClear.textContent = total > 0
+        ? `🧹 Limpar sessão (${total})`
+        : "🧹 Limpar sessão";
+      btnClear.disabled = total <= 0;
+      btnClear.style.opacity = total <= 0 ? ".55" : "";
+      btnClear.style.cursor = total <= 0 ? "not-allowed" : "";
+    }
+
+    if (btnReset) {
+      btnReset.textContent = sessionShort
+        ? `🆕 Nova sessão (${sessionShort})`
+        : "🆕 Nova sessão";
+    }
+  }
+
+  function buildTrackingRankingLines(title, items, formatter) {
+    const list = Array.isArray(items) ? items : [];
+    const lines = [];
+    lines.push(title);
+
+    if (!list.length) {
+      lines.push("- sem dados");
+      lines.push("");
+      return lines;
+    }
+
+    list.forEach((item, idx) => {
+      let line = `${idx + 1}. ${item?.label || item?.sku || "unknown"} — ${Number(item?.count || 0)} evento(s)`;
+      if (typeof formatter === "function") {
+        const extra = formatter(item || {});
+        if (extra) line += ` | ${extra}`;
+      }
+      lines.push(line);
+    });
+
+    lines.push("");
+    return lines;
+  }
+
+  function buildTrackingSummaryTxt(summaryOverride) {
+    const summary = summaryOverride || getTrackingSummarySafe();
+    if (!summary) return "";
+
+    const totals = summary?.totals || {};
+    const byEvent = totals?.by_event_name || {};
+    const answers = summary?.answers_before_first_sale || {};
+    const rates = summary?.rates || {};
+
+    const lines = [];
+    lines.push("LA FAMIGLIA LINKS — RELATÓRIO DE TRACKING");
+    lines.push(`Gerado em: ${summary?.generated_at || new Date().toISOString()}`);
+    lines.push(`Modo: ${summary?.mode || "local_first"}`);
+    lines.push(`Fonte: ${summary?.source || "La_Famiglia_Links"}`);
+    lines.push("");
+
+    lines.push("TOTAIS");
+    lines.push(`- Eventos armazenados: ${Number(totals?.all_events_stored || 0)}`);
+    lines.push(`- Eventos filtrados: ${Number(totals?.filtered_events || 0)}`);
+    lines.push(`- page_view: ${Number(byEvent?.page_view || 0)}`);
+    lines.push(`- view_featured: ${Number(byEvent?.view_featured || 0)}`);
+    lines.push(`- view_product_card: ${Number(byEvent?.view_product_card || 0)}`);
+    lines.push(`- click_buy: ${Number(byEvent?.click_buy || 0)}`);
+    lines.push(`- click_copy_id: ${Number(byEvent?.click_copy_id || 0)}`);
+    lines.push(`- click_copy_link: ${Number(byEvent?.click_copy_link || 0)}`);
+    lines.push(`- click_open_store: ${Number(byEvent?.click_open_store || 0)}`);
+    lines.push(`- search: ${Number(byEvent?.search || 0)}`);
+    lines.push(`- filter_tag: ${Number(byEvent?.filter_tag || 0)}`);
+    lines.push(`- sort_change: ${Number(byEvent?.sort_change || 0)}`);
+    lines.push(`- click_load_more: ${Number(byEvent?.click_load_more || 0)}`);
+    lines.push("");
+
+    lines.push("TAXAS");
+    lines.push(`- click_buy / view_product_card: ${Number(rates?.click_buy_per_view_product_card || 0)}`);
+    lines.push(`- click_copy_id / view_product_card: ${Number(rates?.click_copy_id_per_view_product_card || 0)}`);
+    lines.push(`- click_copy_link / view_product_card: ${Number(rates?.click_copy_link_per_view_product_card || 0)}`);
+    lines.push(`- click_open_store / view_product_card: ${Number(rates?.click_open_store_per_view_product_card || 0)}`);
+    lines.push("");
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP REDES POR CLICK_BUY",
+      answers?.top_networks_by_click_buy,
+      (item) => `label=${item?.label || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP REDES POR INTENÇÃO",
+      answers?.top_networks_by_intention,
+      (item) => `buy=${Number(item?.buy_count || 0)} | copy_id=${Number(item?.copy_id_count || 0)} | copy_link=${Number(item?.copy_link_count || 0)} | score=${Number(item?.intention_score || 0)}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP CRIATIVOS POR CLICK_BUY",
+      answers?.top_creatives_by_click_buy,
+      (item) => `network=${item?.network || "unknown"} | format=${item?.format || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP TÍTULOS POR CLICK_BUY",
+      answers?.top_titles_by_click_buy,
+      (item) => `creative_id=${item?.creative_id || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP PRODUTOS POR CLICK_BUY",
+      answers?.top_products_by_click_buy,
+      (item) => `sku=${item?.sku || "unknown"} | category=${item?.category || "unknown"}`
+    ));
+
+    lines.push(...buildTrackingRankingLines(
+      "TOP CATEGORIAS POR CLICK_BUY",
+      answers?.top_categories_by_click_buy,
+      () => ""
+    ));
+
+    return lines.join("\n").trim() + "\n";
+  }
+
+  function doExportTrackingSummaryTxt() {
+    const api = getTrackingApi();
+    if (!api) {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    const txt = buildTrackingSummaryTxt();
+    if (!String(txt || "").trim()) {
+      showToast("Sem dados de tracking ainda ⚠️");
+      return;
+    }
+
+    const fname = `relatorio_tracking_${dateStamp()}.txt`;
+    downloadFile(fname, txt, "text/plain;charset=utf-8");
+    showToast("Relatório tracking ⬇️");
+  }
+
+  function doExportTrackingSessionSummaryTxt() {
+    const api = getTrackingApi();
+    if (!api) {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    const summary = getTrackingSessionSummarySafe();
+    const txt = buildTrackingSummaryTxt(summary);
+    if (!String(txt || "").trim()) {
+      showToast("Sem dados da sessão ainda ⚠️");
+      return;
+    }
+
+    const fname = `relatorio_tracking_sessao_${dateStamp()}.txt`;
+    downloadFile(fname, txt, "text/plain;charset=utf-8");
+    showToast("Relatório da sessão ⬇️");
+  }
+
+  function doClearTrackingSession() {
+    const api = getTrackingApi();
+    if (!api || typeof api.clearSessionEvents !== "function") {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    const summary = getTrackingSessionSummarySafe();
+    const total = Number(summary?.totals?.filtered_events || 0);
+    if (total <= 0) {
+      showToast("Sessão já está limpa ✅");
+      updateTrackingSessionButtons();
+      return;
+    }
+
+    try {
+      api.clearSessionEvents();
+      updateTrackingReportButton();
+      updateTrackingSessionButtons();
+      showToast("Sessão limpa ✅");
+    } catch {
+      showToast("Falha ao limpar sessão ⚠️");
+    }
+  }
+
+  function doResetTrackingSession() {
+    const api = getTrackingApi();
+    if (!api || typeof api.resetSession !== "function") {
+      showToast("Tracking não carregado ⚠️");
+      return;
+    }
+
+    try {
+      api.resetSession({ clear_context: false, clear_session_events: false });
+      updateTrackingReportButton();
+      updateTrackingSessionButtons();
+      showToast("Nova sessão criada ✅");
+    } catch {
+      showToast("Falha ao criar nova sessão ⚠️");
+    }
   }
 
   async function doExportReviewTxt() {
@@ -1673,8 +2237,10 @@
       q.value = STATE.query || "";
       q.addEventListener("input", (e) => {
         STATE.query = String(e.target.value || "");
+        if (STATE.query.trim()) STATE.tag = "";
         STATE.limit = PAGE_SIZE;
         render();
+        scheduleSearchTracking(STATE.query);
       });
     }
 
@@ -1685,6 +2251,8 @@
         STATE.tag = "";
         STATE.limit = PAGE_SIZE;
         render();
+        scheduleSearchTracking(STATE.query);
+        trackFilterSelection("all");
         showToast("Filtro limpo ✅");
       });
     }
@@ -1692,12 +2260,14 @@
     if (copyBtn) {
       copyBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        trackCall("trackCopyStoreLink", buildRenderTrackingExtra({ section: "toolbar", source: "btnCopyLoja", href: lojaUrl() }));
         copyText(lojaUrl());
       });
     }
 
     if (copyPageBtn) {
       copyPageBtn.addEventListener("click", () => {
+        trackCall("trackCopyStoreLink", buildRenderTrackingExtra({ section: "toolbar", source: "btnCopyPage", href: location.href }));
         copyText(location.href);
       });
     }
@@ -1708,13 +2278,16 @@
         STATE.sort = String(e.target.value || "relev");
         STATE.limit = PAGE_SIZE;
         render();
+        trackSortSelection(STATE.sort);
       });
     }
 
     if (moreBtn) {
       moreBtn.addEventListener("click", () => {
+        const previousLimit = STATE.limit;
         STATE.limit += PAGE_SIZE;
         render();
+        trackLoadMoreAction(previousLimit);
       });
     }
 
@@ -1747,6 +2320,10 @@
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlReview">🛠️ TXT manutenção</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlTrackingReport">📊 TXT relatório</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlTrackingSessionReport">🧪 TXT sessão</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnClearTrackingSession">🧹 Limpar sessão</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnResetTrackingSession">🆕 Nova sessão</button>
           </div>
         </details>
       `;
@@ -1759,6 +2336,10 @@
     const btnDlListAll = $("#btnDlListAll");
     const btnDlCsvAll = $("#btnDlCsvAll");
     const btnDlReview = $("#btnDlReview");
+    const btnDlTrackingReport = $("#btnDlTrackingReport");
+    const btnDlTrackingSessionReport = $("#btnDlTrackingSessionReport");
+    const btnClearTrackingSession = $("#btnClearTrackingSession");
+    const btnResetTrackingSession = $("#btnResetTrackingSession");
 
     if (btnExportCatalogTxt) btnExportCatalogTxt.addEventListener("click", () => doExportTxt("all"));
     if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
@@ -1766,7 +2347,13 @@
     if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
     if (btnDlReview) btnDlReview.addEventListener("click", () => doExportReviewTxt());
+    if (btnDlTrackingReport) btnDlTrackingReport.addEventListener("click", () => doExportTrackingSummaryTxt());
+    if (btnDlTrackingSessionReport) btnDlTrackingSessionReport.addEventListener("click", () => doExportTrackingSessionSummaryTxt());
+    if (btnClearTrackingSession) btnClearTrackingSession.addEventListener("click", () => doClearTrackingSession());
+    if (btnResetTrackingSession) btnResetTrackingSession.addEventListener("click", () => doResetTrackingSession());
     updateMaintenanceButton();
+    updateTrackingReportButton();
+    updateTrackingSessionButtons();
 
     document.addEventListener("click", (e) => {
       const openCats = e.target.closest('[data-action="openTags"]');
@@ -1779,6 +2366,10 @@
       const aBuy = e.target.closest('a[data-role="buy-link"][href]');
       if (aBuy) {
         const href = aBuy.getAttribute("href") || aBuy.href || "";
+        const sku = cleanText(aBuy.getAttribute("data-sku") || "");
+        const position = Number(aBuy.getAttribute("data-position") || 0) || null;
+        const section = cleanText(aBuy.getAttribute("data-section") || "grid");
+        const p = sku ? findBySku(sku) : null;
 
         if (!isProbablyValidLink(href)) {
           e.preventDefault();
@@ -1790,6 +2381,14 @@
           e.preventDefault();
           showToast("Link do produto precisa ser atualizado ⚠️");
           return;
+        }
+
+        if (p) {
+          trackProductAction("buy", p, {
+            section,
+            position_on_page: position,
+            href,
+          });
         }
 
         if (isInAppBrowser()) {
@@ -1804,27 +2403,19 @@
       const chip = e.target.closest("[data-tag]");
       if (chip && chip.classList.contains("tagChip")) {
         const t = String(chip.getAttribute("data-tag") || "").trim();
-        const clearAll = chip.hasAttribute("data-clear-all");
-        const qInput = $("#qLoja");
-
-        if (clearAll || !t) {
+        if (t) {
+          STATE.tag = t;
           STATE.query = "";
+          const qEl = $("#qLoja");
+          if (qEl) qEl.value = "";
+        } else {
           STATE.tag = "";
-          if (qInput) qInput.value = "";
-          STATE.limit = PAGE_SIZE;
-          render();
-          scheduleSearchTracking(STATE.query);
-          trackFilterSelection("all");
-          showToast("Filtros limpos ✅");
-          return;
+          STATE.query = "";
+          const qEl = $("#qLoja");
+          if (qEl) qEl.value = "";
         }
-
-        STATE.query = "";
-        STATE.tag = t;
-        if (qInput) qInput.value = "";
         STATE.limit = PAGE_SIZE;
         render();
-        scheduleSearchTracking(STATE.query);
         trackFilterSelection(t || "all");
         return;
       }
@@ -1835,10 +2426,32 @@
       const action = el.getAttribute("data-action");
       const sku = el.getAttribute("data-sku") || "";
       const p = sku ? findBySku(sku) : null;
+      const position = Number(el.getAttribute("data-position") || 0) || null;
+      const section = cleanText(el.getAttribute("data-section") || "");
 
-      if (action === "copyLink" && p) return copyText(bestBuyUrl(p) || "");
-      if (action === "copyAlt" && p) return copyText(p.alt_url || p.canonical_url || p.check_url || "");
-      if (action === "copyId" && p) return copyText(p.id_busca || "");
+      if (action === "copyLink" && p) {
+        trackProductAction("copyLink", p, {
+          section,
+          position_on_page: position,
+          link_variant: "primary",
+        });
+        return copyText(bestBuyUrl(p) || "");
+      }
+      if (action === "copyAlt" && p) {
+        trackProductAction("copyLink", p, {
+          section,
+          position_on_page: position,
+          link_variant: "alt",
+        });
+        return copyText(p.alt_url || p.canonical_url || p.check_url || "");
+      }
+      if (action === "copyId" && p) {
+        trackProductAction("copyId", p, {
+          section,
+          position_on_page: position,
+        });
+        return copyText(p.id_busca || "");
+      }
 
       if (!ADMIN) return;
     });
@@ -1878,6 +2491,15 @@
     _export: null,
     _categoryCounts: [],
     _activeCount: 0,
+    _lastRenderStats: { totalActive: 0, totalFiltered: 0, shownNow: 0, featuredSku: "", featuredTitle: "" },
+    _trackingInit: false,
+    _pageViewTracked: false,
+    _trackingObserver: null,
+    _trackedViewKeys: new Set(),
+    _searchTrackTimer: null,
+    _lastSearchTrackKey: "",
+    _lastFilterTrackKey: "",
+    _trackingUiTimer: null,
     reviewReport: { updated_at: "", total_items: 0, summary: {}, items: [] },
   };
 
@@ -1885,6 +2507,7 @@
     injectUiCss();
     makeBgClickThrough();
     ensureTagModal();
+    initTracking();
 
     readUrlState();
     setText($("#year"), new Date().getFullYear());
@@ -1913,6 +2536,8 @@
 
     STATE.reviewReport = await fetchReviewReport();
     updateMaintenanceButton();
+    updateTrackingReportButton();
+    updateTrackingSessionButtons();
 
     const q = $("#qLoja");
     if (q) q.value = STATE.query || "";
@@ -1924,6 +2549,7 @@
 
     bind();
     render();
+    trackPageViewSnapshot();
   }
 
   document.addEventListener("DOMContentLoaded", boot);
