@@ -1,48 +1,10 @@
 {
-  "updated_at": "2026-03-22T01:37:28Z",
-  "total_items": 26,
+  "updated_at": "2026-03-22T03:17:04Z",
+  "total_items": 20,
   "summary": {},
   "items": [
     {
-      "happened_at": "2026-03-21T19:32:00Z",
-      "issue_number": 113,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113",
-      "issue_title": "[CMS] Produto: Gamestick Premium com 2 Controles Wireless",
-      "sku": "gamestick-premium-2-controles-wireless",
-      "title": "🎮 Gamestick Premium — Jogos Clássicos com 2 Controles Wireless",
-      "id_busca": "5J5PKG-ND5E",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "checked_url": "https://meli.la/2Qxy3CD",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2Qxy3CD",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=5e1ee2bb-860b-411f-9fc2-cabc4c62436a",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=5598e370-b28a-4f49-a180-10ecb4dff260",
-      "short_url": "https://meli.la/2Qxy3CD",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=5e1ee2bb-860b-411f-9fc2-cabc4c62436a"
-    },
-    {
-      "happened_at": "2026-03-21T19:32:00Z",
-      "issue_number": 112,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112",
-      "issue_title": "[CMS] Produto: Tradutor Inteligente Premium Online/Offline",
-      "sku": "tradutor-inteligente-premium-online-offline",
-      "title": "🌍 Tradutor Inteligente Premium — Tradução por Texto, Imagem e Voz",
-      "id_busca": "5J5PKG-T25W",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "checked_url": "https://meli.la/339GC5W",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/339GC5W",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=04e15a7b-f612-4b26-b3a4-d9dcb871159c",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=5ead0047-4500-45d4-aa59-d7d4d7164463",
-      "short_url": "https://meli.la/339GC5W",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=04e15a7b-f612-4b26-b3a4-d9dcb871159c"
-    },
-    {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 109,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109",
       "issue_title": "[CMS] Produto: Kit 2 Acendedores de Fogão Premium",
@@ -61,7 +23,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPYJ&tid=a00947ea-9a84-4d15-a229-543d0aac9112"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 84,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84",
       "issue_title": "[CMS] Produto: SSD NVMe M.2 1TB (PCIe 4.0 / 2280) — Upgrade de desempenho",
@@ -80,7 +42,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=3b2382ab-0e6e-46a3-9737-fcd981b2f39b"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 79,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79",
       "issue_title": "[CMS] Produto: webcam-emeet-smartcam-s600-4k-foco-automatico-usb",
@@ -99,7 +61,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=681ce241-484e-41c4-9ce5-cc483fc80b50"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 76,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76",
       "issue_title": "[CMS] Produto: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur",
@@ -118,26 +80,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UMMJ&tid=6591381e-dd1f-4cd8-aad0-7f9e0d7230bd"
     },
     {
-      "happened_at": "2026-03-21T19:32:00Z",
-      "issue_number": 65,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/65",
-      "issue_title": "[CMS] Produto: Escova Secadora Britânia 4 em 1 (1300W) — Cabo Giratório (Rosa)",
-      "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
-      "title": "Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)",
-      "id_busca": "5J5PKG-K8TV",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "checked_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1Vd3P8y",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K8TV&tid=3ad1cedb-5ea8-459c-a50f-0353eb988b65",
-      "short_url": "https://meli.la/1Vd3P8y",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D"
-    },
-    {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 4,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4",
       "issue_title": "[CMS] Produto: Mochila impermeável — Notebook 15.6”",
@@ -156,7 +99,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EN33&tid=edeb6238-249a-4f9f-b66c-e308039707e7"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 7,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/7",
       "issue_title": "[CMS] Power Bank 20000mAh 22.5W USB-C (Preto)",
@@ -175,7 +118,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H0JA&tid=bfc408b6-c74d-4c36-9bd3-852695f7cef6"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 18,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/18",
       "issue_title": "[CMS] Produto: Escova 3 em 1 (Remove Pelos + Vapor) - Pets",
@@ -194,7 +137,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ATVC&tid=ce4be6d4-9f1e-4a20-a5ea-145846437d7b"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 24,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/24",
       "issue_title": "[CMS] Produto: Xiaomi Mi Band 8 Active (Sport)",
@@ -213,7 +156,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WCW0&tid=75e07631-108d-43fa-be9b-f476f90de5fa"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 26,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/26",
       "issue_title": "[CMS] Produto: ugreen-robot-nexode-gan-65w-lilas",
@@ -232,7 +175,7 @@
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9SG3&tid=6c4294eb-a648-4f82-9d49-48b9bd0b15f9"
     },
     {
-      "happened_at": "2026-03-22T01:34:25Z",
+      "happened_at": "2026-03-22T03:14:48Z",
       "issue_number": 44,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/44",
       "issue_title": "[CMS] Produto: ⚡ Carregador Sem Fio — Praticidade e setup elegante",
@@ -249,44 +192,6 @@
       "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EAT0&tid=11c92471-1315-4370-bec5-af0712ad5194",
       "short_url": "",
       "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EAT0&tid=11c92471-1315-4370-bec5-af0712ad5194"
-    },
-    {
-      "happened_at": "2026-03-21T18:58:36Z",
-      "sku": "gamestick-premium-2-controles-wireless",
-      "title": "🎮 Gamestick Premium — Jogos Clássicos com 2 Controles Wireless",
-      "id_busca": "5J5PKG-ND5E",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "checked_url": "https://meli.la/2Qxy3CD",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2Qxy3CD",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=5e1ee2bb-860b-411f-9fc2-cabc4c62436a",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=5598e370-b28a-4f49-a180-10ecb4dff260",
-      "short_url": "https://meli.la/2Qxy3CD",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ND5E&tid=5e1ee2bb-860b-411f-9fc2-cabc4c62436a",
-      "issue_number": 0,
-      "issue_url": "",
-      "issue_title": ""
-    },
-    {
-      "happened_at": "2026-03-21T18:58:36Z",
-      "sku": "tradutor-inteligente-premium-online-offline",
-      "title": "🌍 Tradutor Inteligente Premium — Tradução por Texto, Imagem e Voz",
-      "id_busca": "5J5PKG-T25W",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "checked_url": "https://meli.la/339GC5W",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/339GC5W",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=04e15a7b-f612-4b26-b3a4-d9dcb871159c",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=5ead0047-4500-45d4-aa59-d7d4d7164463",
-      "short_url": "https://meli.la/339GC5W",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T25W&tid=04e15a7b-f612-4b26-b3a4-d9dcb871159c",
-      "issue_number": 0,
-      "issue_url": "",
-      "issue_title": ""
     },
     {
       "happened_at": "2026-03-21T18:58:36Z",
@@ -477,22 +382,6 @@
       "issue_number": 0,
       "issue_url": "",
       "issue_title": ""
-    },
-    {
-      "happened_at": "2026-03-21T17:32:57Z",
-      "sku": "capacete-asx-city-preto-fosco-viseira",
-      "title": "Capacete ASX City Preto Fosco com Viseira",
-      "id_busca": "5J5PKG-CPHF",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "checked_url": "https://meli.la/1U6HogY",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1U6HogY",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPHF&tid=b05fc5db-de2f-403c-be63-6daa47b03ba4",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPHF&tid=a11100a5-d0a9-4edd-b762-4415cfc620a1",
-      "short_url": "https://meli.la/1U6HogY",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPHF&tid=b05fc5db-de2f-403c-be63-6daa47b03ba4"
     }
   ]
 }
