@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-22T10:15:37Z",
+  "updated_at": "2026-03-22T11:20:56Z",
   "products": [
     {
       "sku": "gloss-fran-liphoney-mel",
@@ -21,7 +21,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAQRdiQfHgMuPb1L%2BGBeLGSo%2FDnpfbJrvSk0FPiYUeu2foL5XSdiw2GRlU7jbVbXD9qseGkRzzoY53yX1mZgrp2gVXdyYDh9p7LrmL6IHD3ae1czZph6pV5QPAfFn6FphnmqbAc2XND0jm729zM%2Fvog9NQOKdljU9zR2T90OMZCo0epb3vHAFVt%2FQ9zkVNoRKXFD8w%3D%3D",
       "image": "https://github.com/user-attachments/assets/758c61bb-d326-4012-9b61-5b1707c25a33",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -858,7 +858,7 @@
     },
     {
       "sku": "kit-2-acendedores-de-fogao-premium",
-      "title": "🔥 Kit 2 Acendedores de Fogão Premium — Praticidade e Segurança na Cozinha",
+      "title": "Kit 2 Acendedores de Fogão Premium",
       "badges": [
         "Achados do Dia",
         "Cozinha",
@@ -868,15 +868,15 @@
         "Utilidades Domésticas",
         "Casa"
       ],
-      "id_busca": "5J5PKG-CPYJ",
-      "open_url": "https://meli.la/32MdstW",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPYJ&tid=a00947ea-9a84-4d15-a229-543d0aac9112",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPYJ&tid=fabf8519-8094-4b23-a46a-4b745af7b4c6",
-      "image": "https://github.com/user-attachments/assets/0ec3d8ef-ca63-4426-aaf8-6a9915020888",
+      "id_busca": "5J5PKG-ASLN",
+      "open_url": "https://meli.la/1XNUc7N",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ASLN",
+      "image": "https://github.com/user-attachments/assets/a8607aa7-fc89-4f0b-b8dd-2bce2ef1f17f",
       "active": true,
-      "featured": false,
-      "short_url": "https://meli.la/32MdstW",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CPYJ&tid=a00947ea-9a84-4d15-a229-543d0aac9112",
+      "featured": true,
+      "short_url": "https://meli.la/1XNUc7N",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
       "price_text": "",
       "last_checked": "2026-03-22T10:15:37Z",
       "last_ok": "2026-03-21T17:12:55Z",
@@ -893,12 +893,16 @@
       "review_status": "ativo",
       "review_reason": "",
       "replacement_vendor": "",
-      "relink_open_url": "",
+      "relink_open_url": "https://meli.la/1XNUc7N",
       "notes": "",
       "alt_url": "",
       "issue_number": 109,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109",
-      "issue_title": "[CMS] Produto: Kit 2 Acendedores de Fogão Premium"
+      "issue_title": "Kit 2 Acendedores de Fogão Premium",
+      "quick_home": true,
+      "quick_home_order": 4,
+      "_source_issue_number": 138,
+      "_target_issue_number": 109
     },
     {
       "sku": "cuscuzeira-inox-premium-25l",
