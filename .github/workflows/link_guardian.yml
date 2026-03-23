@@ -7,6 +7,11 @@ name: Link Guardian (produtos.json)
 
 permissions:
   contents: write
+  actions: read
+
+concurrency:
+  group: link-guardian-gh-pages
+  cancel-in-progress: true
 
 jobs:
   link-guardian:
@@ -35,16 +40,16 @@ jobs:
           LG_TREAT_5XX_TEMP: "1"
           LG_DEAD_ON_BODY: "0"
 
-          LG_FAIL_THRESHOLD: "2"
-          LG_STOREFRONT_INVALID_THRESHOLD: "2"
+          # Mais conservador para reduzir falso positivo
+          LG_FAIL_THRESHOLD: "3"
+          LG_STOREFRONT_INVALID_THRESHOLD: "3"
           LG_AUTO_REACTIVATE: "1"
           LG_REMOVE_ON_DEAD: "0"
 
-          # Regra correta para o funil real do afiliado:
-          # /social/<perfil>?matt_word=... pode ser válido
-          # /social/<perfil>/lists é zona morta e deve continuar inválido
+          # Deixa o Python inteligente decidir por evidência.
+          # Não condena /social nem /lists automaticamente no workflow.
           LG_SOCIAL_INVALID_FOR_STOREFRONT: "0"
-          LG_LISTA_INVALID_FOR_STOREFRONT: "1"
+          LG_LISTA_INVALID_FOR_STOREFRONT: "0"
           LG_SOCIAL_COUNTS_AS_OK: "1"
           LG_STOREFRONT_REVIEW_ONLY: "1"
 
@@ -62,6 +67,19 @@ jobs:
           LG_REVIEW_MAX_ITEMS: "5000"
         run: |
           python tools/link_guardian.py
+
+      - name: Upload review artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-guardian-review
+          if-no-files-found: ignore
+          retention-days: 7
+          path: |
+            data/link_guardian_review.json
+            logs/link_guardian_review.txt
+            data/link_guardian_removed.json
+            logs/link_guardian_removed.txt
 
       - name: Commit & push (if changed)
         run: |
