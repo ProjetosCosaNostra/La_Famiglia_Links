@@ -785,6 +785,26 @@
     ]);
   }
 
+  function getCanonicalCategories(p) {
+    const out = [];
+    const seen = new Set();
+
+    const add = (label) => {
+      const clean = canonicalPinnedLabel(label);
+      const key = normalizeTagKey(clean);
+      if (!clean || seen.has(key)) return;
+      seen.add(key);
+      out.push(clean);
+    };
+
+    const primary = getCanonicalPrimaryCategory(p);
+    if (primary) add(primary);
+
+    for (const cat of getCanonicalSecondaryCategories(p)) add(cat);
+
+    return out;
+  }
+
   function getDisplayCategories(p) {
     return getSmartCategories(p);
   }
@@ -890,20 +910,10 @@
       out.push(clean);
     };
 
-    const primary = getCanonicalPrimaryCategory(p);
-    if (primary) add(primary);
-
-    for (const cat of getCanonicalSecondaryCategories(p)) add(cat);
+    for (const cat of getCanonicalCategories(p)) add(cat);
 
     for (const badge of idx.badgesArr) {
-      if (CN_CATEGORY_ALIAS_MAP.has(badge)) {
-        add(CN_CATEGORY_ALIAS_MAP.get(badge));
-        continue;
-      }
-      const pinned = canonicalPinnedLabel(badge);
-      if (CN_CAT_PINNED.some((x) => normalizeTagKey(x) === normalizeTagKey(pinned))) {
-        add(pinned);
-      }
+      if (CN_CATEGORY_ALIAS_MAP.has(badge)) add(CN_CATEGORY_ALIAS_MAP.get(badge));
     }
 
     return out;
@@ -963,11 +973,22 @@
       if (source) debug.push({ label: finalLabel, source });
     };
 
-    for (const cat of getExactMappedCategories(p)) add(cat, "canonica");
+    const canonicalCategories = getCanonicalCategories(p);
+    const hasCanonical = canonicalCategories.length > 0;
 
-    for (const rule of CN_CATEGORY_RULES) {
-      const score = scoreCategory(rule, idx);
-      if (score >= (rule.minScore || 6)) add(rule.label, `regra:${score}`);
+    for (const cat of canonicalCategories) add(cat, "canonica");
+
+    for (const badgeCat of getExactMappedCategories(p)) {
+      if (!canonicalCategories.some((x) => normalizeTagKey(x) === normalizeTagKey(badgeCat))) {
+        add(badgeCat, "badge-map");
+      }
+    }
+
+    if (!hasCanonical) {
+      for (const rule of CN_CATEGORY_RULES) {
+        const score = scoreCategory(rule, idx);
+        if (score >= (rule.minScore || 6)) add(rule.label, `regra:${score}`);
+      }
     }
 
     const aliases = getSearchAliases(p);
@@ -997,11 +1018,12 @@
     if (idx.titleNorm && idx.titleNorm === qNorm) score += 240;
 
     if (hasNormalizedPhrase(idx.titlePadded, qNorm)) score += 110;
-    if (hasNormalizedPhrase(idx.aliasesPadded, qNorm)) score += 95;
-    if (hasNormalizedPhrase(idx.canonicalPadded, qNorm)) score += 85;
+    if (hasNormalizedPhrase(idx.aliasesPadded, qNorm)) score += 105;
+    if (hasNormalizedPhrase(idx.canonicalPadded, qNorm)) score += 95;
     if (hasNormalizedPhrase(idx.badgesPadded, qNorm)) score += 70;
     if (hasNormalizedPhrase(idx.rawPadded, qNorm)) score += 25;
 
+    const basePhraseScore = score;
     const qTokens = tokenizeForIndex(qNorm, { dropStopwords: true });
     if (!qTokens.length) return score;
 
@@ -1019,12 +1041,12 @@
         hit = true;
       }
       if (idx.aliasTokens.has(token)) {
-        score += 16;
+        score += 17;
         aliasHits += 1;
         hit = true;
       }
       if (idx.canonicalTokens.has(token)) {
-        score += 15;
+        score += 16;
         categoryHits += 1;
         hit = true;
       }
@@ -1045,17 +1067,17 @@
       else missing += 1;
     }
 
-    if (!anyHits) return -1;
+    if (!anyHits && basePhraseScore <= 0) return -1;
 
     if (missing === 0) score += 24;
-    else score -= (missing * 5);
+    else score -= (missing * 4);
 
     if (titleHits === qTokens.length) score += 26;
     if (titleHits >= Math.max(1, qTokens.length - 1)) score += 12;
-    if (aliasHits && qTokens.length <= 4) score += 8;
-    if (categoryHits && !titleHits) score += 4;
+    if (aliasHits && qTokens.length <= 4) score += 10;
+    if (categoryHits && !titleHits) score += 6;
 
-    return score >= 8 ? score : -1;
+    return score >= 6 ? score : -1;
   }
 
 
