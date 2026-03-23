@@ -719,6 +719,76 @@
     return found || cleanText(label);
   }
 
+  function splitLooseList(value) {
+    if (Array.isArray(value)) {
+      return value.map(cleanText).filter(Boolean);
+    }
+    const raw = cleanText(value || "");
+    if (!raw) return [];
+    return raw
+      .split(/\s*[|;,\n]\s*/g)
+      .map(cleanText)
+      .filter(Boolean);
+  }
+
+  function uniqLabels(list) {
+    const out = [];
+    const seen = new Set();
+    for (const item of (list || [])) {
+      const clean = cleanText(item);
+      const key = normalizeSearchText(clean);
+      if (!clean || !key || seen.has(key)) continue;
+      seen.add(key);
+      out.push(clean);
+    }
+    return out;
+  }
+
+  function getCanonicalPrimaryCategory(p) {
+    const raw = p?._raw || {};
+    return cleanText(
+      p?.categoria_principal ||
+      p?.category_primary ||
+      p?.primary_category ||
+      raw.categoria_principal ||
+      raw.category_primary ||
+      raw.primary_category ||
+      raw.categoria ||
+      raw.category ||
+      ""
+    );
+  }
+
+  function getCanonicalSecondaryCategories(p) {
+    const raw = p?._raw || {};
+    return uniqLabels([
+      ...splitLooseList(p?.categorias_secundarias),
+      ...splitLooseList(p?.categories_secondary),
+      ...splitLooseList(p?.secondary_categories),
+      ...splitLooseList(raw.categorias_secundarias),
+      ...splitLooseList(raw.categories_secondary),
+      ...splitLooseList(raw.secondary_categories),
+      ...splitLooseList(raw.categorias),
+      ...splitLooseList(raw.categories),
+    ]);
+  }
+
+  function getSearchAliases(p) {
+    const raw = p?._raw || {};
+    return uniqLabels([
+      ...splitLooseList(p?.aliases_busca),
+      ...splitLooseList(p?.search_aliases),
+      ...splitLooseList(p?.aliases),
+      ...splitLooseList(raw.aliases_busca),
+      ...splitLooseList(raw.search_aliases),
+      ...splitLooseList(raw.aliases),
+    ]);
+  }
+
+  function getDisplayCategories(p) {
+    return getSmartCategories(p);
+  }
+
   function tokenizeForIndex(s, { dropStopwords = false } = {}) {
     const parts = normalizeSearchText(s).split(/\s+/g).filter(Boolean);
     return parts.filter((part) => {
@@ -735,16 +805,29 @@
     return paddedText.includes(` ${needle} `);
   }
 
+
   function buildProductIndex(p) {
     if (p && p._searchIndex) return p._searchIndex;
+
+    const primaryCategory = getCanonicalPrimaryCategory(p);
+    const secondaryCategories = getCanonicalSecondaryCategories(p);
+    const aliases = getSearchAliases(p);
 
     const titleNorm = normalizeTagKey(p?.title || "");
     const skuNorm = normalizeTagKey(p?.sku || "");
     const idNorm = normalizeTagKey(p?.id_busca || "");
     const priceNorm = normalizeTagKey(p?.price_text || "");
-    const badgesArr = safeArray(p?.badges).map((b) => normalizeTagKey(b)).filter(Boolean);
+    const badgesArr = uniqLabels(safeArray(p?.badges).map(cleanText).filter(Boolean)).map((b) => normalizeTagKey(b)).filter(Boolean);
+    const aliasesArr = aliases.map((a) => normalizeTagKey(a)).filter(Boolean);
+    const canonicalArr = [primaryCategory, ...secondaryCategories]
+      .map((c) => canonicalPinnedLabel(c))
+      .map((c) => normalizeTagKey(c))
+      .filter(Boolean);
+
     const badgesNorm = badgesArr.join(" ");
-    const rawNorm = [titleNorm, badgesNorm, skuNorm, idNorm, priceNorm].filter(Boolean).join(" ");
+    const aliasesNorm = aliasesArr.join(" ");
+    const canonicalNorm = canonicalArr.join(" ");
+    const rawNorm = [titleNorm, badgesNorm, skuNorm, idNorm, priceNorm, aliasesNorm, canonicalNorm].filter(Boolean).join(" ");
 
     const idx = {
       titleNorm,
@@ -752,14 +835,22 @@
       idNorm,
       priceNorm,
       badgesArr,
+      aliasesArr,
+      canonicalArr,
       badgesNorm,
+      aliasesNorm,
+      canonicalNorm,
       rawNorm,
       titlePadded: ` ${titleNorm} `,
       badgesPadded: ` ${badgesNorm} `,
+      aliasesPadded: ` ${aliasesNorm} `,
+      canonicalPadded: ` ${canonicalNorm} `,
       skuPadded: ` ${skuNorm} `,
       rawPadded: ` ${rawNorm} `,
       titleTokens: new Set(tokenizeForIndex(titleNorm)),
       badgeTokens: new Set(tokenizeForIndex(badgesNorm)),
+      aliasTokens: new Set(tokenizeForIndex(aliasesNorm)),
+      canonicalTokens: new Set(tokenizeForIndex(canonicalNorm)),
       skuTokens: new Set(tokenizeForIndex(skuNorm)),
       tokens: new Set(tokenizeForIndex(rawNorm)),
     };
@@ -767,6 +858,7 @@
     if (p) p._searchIndex = idx;
     return idx;
   }
+
 
   function matchPhraseScore(paddedText, phrases, weight) {
     let score = 0;
@@ -785,6 +877,7 @@
     return score;
   }
 
+
   function getExactMappedCategories(p) {
     const idx = buildProductIndex(p);
     const out = [];
@@ -796,6 +889,11 @@
       seen.add(key);
       out.push(clean);
     };
+
+    const primary = getCanonicalPrimaryCategory(p);
+    if (primary) add(primary);
+
+    for (const cat of getCanonicalSecondaryCategories(p)) add(cat);
 
     for (const badge of idx.badgesArr) {
       if (CN_CATEGORY_ALIAS_MAP.has(badge)) {
@@ -811,30 +909,42 @@
     return out;
   }
 
+
+
   function scoreCategory(rule, idx) {
     let score = 0;
 
-    score += matchPhraseScore(idx.titlePadded, rule.strongPhrases, 8);
-    score += matchPhraseScore(idx.badgesPadded, rule.strongPhrases, 10);
+    score += matchPhraseScore(idx.titlePadded, rule.strongPhrases, 10);
+    score += matchPhraseScore(idx.badgesPadded, rule.strongPhrases, 12);
+    score += matchPhraseScore(idx.aliasesPadded, rule.strongPhrases, 10);
+    score += matchPhraseScore(idx.canonicalPadded, rule.strongPhrases, 14);
     score += matchPhraseScore(idx.rawPadded, rule.strongPhrases, 4);
 
-    score += matchPhraseScore(idx.titlePadded, rule.weakPhrases, 4);
-    score += matchPhraseScore(idx.badgesPadded, rule.weakPhrases, 6);
+    score += matchPhraseScore(idx.titlePadded, rule.weakPhrases, 5);
+    score += matchPhraseScore(idx.badgesPadded, rule.weakPhrases, 7);
+    score += matchPhraseScore(idx.aliasesPadded, rule.weakPhrases, 6);
+    score += matchPhraseScore(idx.canonicalPadded, rule.weakPhrases, 10);
     score += matchPhraseScore(idx.rawPadded, rule.weakPhrases, 2);
 
-    score += matchTokenScore(idx.titleTokens, rule.strongTokens, 5);
-    score += matchTokenScore(idx.badgeTokens, rule.strongTokens, 7);
+    score += matchTokenScore(idx.titleTokens, rule.strongTokens, 6);
+    score += matchTokenScore(idx.badgeTokens, rule.strongTokens, 8);
+    score += matchTokenScore(idx.aliasTokens, rule.strongTokens, 7);
+    score += matchTokenScore(idx.canonicalTokens, rule.strongTokens, 10);
     score += matchTokenScore(idx.tokens, rule.strongTokens, 2);
 
     score += matchTokenScore(idx.titleTokens, rule.weakTokens, 2);
     score += matchTokenScore(idx.badgeTokens, rule.weakTokens, 4);
+    score += matchTokenScore(idx.aliasTokens, rule.weakTokens, 3);
+    score += matchTokenScore(idx.canonicalTokens, rule.weakTokens, 5);
     score += matchTokenScore(idx.tokens, rule.weakTokens, 1);
 
-    score -= matchPhraseScore(idx.rawPadded, rule.negativePhrases, 8);
-    score -= matchTokenScore(idx.tokens, rule.negativeTokens, 4);
+    score -= matchPhraseScore(idx.rawPadded, rule.negativePhrases, 10);
+    score -= matchTokenScore(idx.tokens, rule.negativeTokens, 5);
 
     return score;
   }
+
+
 
   function getSmartCategories(p) {
     if (Array.isArray(p?._smart_categories) && p._smart_categories.length) return p._smart_categories.slice();
@@ -842,25 +952,38 @@
     const idx = buildProductIndex(p);
     const out = [];
     const seen = new Set();
-    const add = (label) => {
+    const debug = [];
+    const add = (label, source = "") => {
       const finalLabel = canonicalPinnedLabel(label);
       if (!finalLabel) return;
       const key = normalizeTagKey(finalLabel);
       if (seen.has(key)) return;
       seen.add(key);
       out.push(finalLabel);
+      if (source) debug.push({ label: finalLabel, source });
     };
 
-    for (const cat of getExactMappedCategories(p)) add(cat);
+    for (const cat of getExactMappedCategories(p)) add(cat, "canonica");
 
     for (const rule of CN_CATEGORY_RULES) {
       const score = scoreCategory(rule, idx);
-      if (score >= (rule.minScore || 6)) add(rule.label);
+      if (score >= (rule.minScore || 6)) add(rule.label, `regra:${score}`);
+    }
+
+    const aliases = getSearchAliases(p);
+    if (!out.length && aliases.length) {
+      for (const alias of aliases) {
+        const aliasKey = normalizeTagKey(alias);
+        if (CN_CATEGORY_ALIAS_MAP.has(aliasKey)) add(CN_CATEGORY_ALIAS_MAP.get(aliasKey), "alias");
+      }
     }
 
     p._smart_categories = out.slice();
+    p._smart_categories_debug = debug.slice();
     return out;
   }
+
+
 
   function getSearchScore(p, query) {
     const qNorm = normalizeTagKey(query || "");
@@ -869,44 +992,72 @@
     const idx = buildProductIndex(p);
     let score = 0;
 
-    if (idx.idNorm && idx.idNorm === qNorm) score += 300;
-    if (idx.skuNorm && idx.skuNorm === qNorm) score += 260;
-    if (idx.titleNorm && idx.titleNorm === qNorm) score += 220;
+    if (idx.idNorm && idx.idNorm === qNorm) score += 320;
+    if (idx.skuNorm && idx.skuNorm === qNorm) score += 280;
+    if (idx.titleNorm && idx.titleNorm === qNorm) score += 240;
 
-    if (hasNormalizedPhrase(idx.titlePadded, qNorm)) score += 90;
-    if (hasNormalizedPhrase(idx.rawPadded, qNorm)) score += 35;
+    if (hasNormalizedPhrase(idx.titlePadded, qNorm)) score += 110;
+    if (hasNormalizedPhrase(idx.aliasesPadded, qNorm)) score += 95;
+    if (hasNormalizedPhrase(idx.canonicalPadded, qNorm)) score += 85;
+    if (hasNormalizedPhrase(idx.badgesPadded, qNorm)) score += 70;
+    if (hasNormalizedPhrase(idx.rawPadded, qNorm)) score += 25;
 
     const qTokens = tokenizeForIndex(qNorm, { dropStopwords: true });
     if (!qTokens.length) return score;
 
     let missing = 0;
     let titleHits = 0;
-    let badgeHits = 0;
+    let aliasHits = 0;
+    let categoryHits = 0;
+    let anyHits = 0;
 
     for (const token of qTokens) {
+      let hit = false;
       if (idx.titleTokens.has(token)) {
-        score += 15;
+        score += 18;
         titleHits += 1;
-        continue;
+        hit = true;
+      }
+      if (idx.aliasTokens.has(token)) {
+        score += 16;
+        aliasHits += 1;
+        hit = true;
+      }
+      if (idx.canonicalTokens.has(token)) {
+        score += 15;
+        categoryHits += 1;
+        hit = true;
       }
       if (idx.badgeTokens.has(token)) {
         score += 12;
-        badgeHits += 1;
-        continue;
+        hit = true;
+      }
+      if (idx.skuTokens.has(token)) {
+        score += 18;
+        hit = true;
       }
       if (idx.tokens.has(token)) {
-        score += 8;
-        continue;
+        score += 6;
+        hit = true;
       }
-      missing += 1;
+
+      if (hit) anyHits += 1;
+      else missing += 1;
     }
 
-    if (missing > 0) return -1;
-    if (titleHits === qTokens.length) score += 20;
-    if (titleHits >= Math.max(1, qTokens.length - 1)) score += 10;
-    if (badgeHits && qTokens.length <= 3) score += 4;
-    return score;
+    if (!anyHits) return -1;
+
+    if (missing === 0) score += 24;
+    else score -= (missing * 5);
+
+    if (titleHits === qTokens.length) score += 26;
+    if (titleHits >= Math.max(1, qTokens.length - 1)) score += 12;
+    if (aliasHits && qTokens.length <= 4) score += 8;
+    if (categoryHits && !titleHits) score += 4;
+
+    return score >= 8 ? score : -1;
   }
+
 
   function cleanUrl(u) {
     let raw = String(u ?? "").trim();
@@ -1117,6 +1268,7 @@
     return ms >= 0 && ms <= max;
   }
 
+
   function adaptForUI(rawProduct) {
     const raw = cloneObj(rawProduct || {});
 
@@ -1132,9 +1284,9 @@
       0
     ) || 0;
 
-    const badges = safeArray(raw.badges || raw.tags)
+    const badges = uniqLabels(safeArray(raw.badges || raw.tags)
       .map(cleanText)
-      .filter(Boolean);
+      .filter(Boolean));
 
     const active =
       (raw.active !== undefined) ? !!raw.active :
@@ -1157,6 +1309,20 @@
       badges,
       id_busca,
       issue_number,
+
+      categoria_principal: cleanText(raw.categoria_principal || raw.category_primary || raw.primary_category || raw.categoria || raw.category || ""),
+      categorias_secundarias: uniqLabels([
+        ...splitLooseList(raw.categorias_secundarias),
+        ...splitLooseList(raw.categories_secondary),
+        ...splitLooseList(raw.secondary_categories),
+        ...splitLooseList(raw.categorias),
+        ...splitLooseList(raw.categories),
+      ]),
+      aliases_busca: uniqLabels([
+        ...splitLooseList(raw.aliases_busca),
+        ...splitLooseList(raw.search_aliases),
+        ...splitLooseList(raw.aliases),
+      ]),
 
       open_url: links.open,
       check_url: links.check || links.open,
@@ -1185,6 +1351,7 @@
       _raw: raw,
     };
   }
+
   function dedupeProducts(list) {
     const out = [];
     const seen = new Set();
@@ -1382,10 +1549,11 @@
     `;
   }
 
+
   function buildTagCounts(list) {
     const counts = new Map();
     for (const p of (list || [])) {
-      for (const cat of getSmartCategories(p)) {
+      for (const cat of getDisplayCategories(p)) {
         const raw = String(cat || "").trim();
         if (!raw) continue;
         const k = normalizeTagKey(raw);
@@ -1393,12 +1561,17 @@
         counts.set(k, { label: canonicalPinnedLabel(raw), n: ((prev && prev.n) ? prev.n : 0) + 1 });
       }
     }
-    return Array.from(counts.values()).sort((a, b) => b.n - a.n);
+    return Array.from(counts.values()).sort((a, b) => {
+      if (b.n !== a.n) return b.n - a.n;
+      return String(a.label).localeCompare(String(b.label), "pt-BR");
+    });
   }
+
 
   function normalizeTagKey(s) {
     return normalizeSearchText(s);
   }
+
 
   function isNoisyTag(label) {
     const s = String(label || "").trim();
@@ -1475,6 +1648,7 @@
     STATE.sort = sp.get("sort") || "relev";
   }
 
+
   function applySort(list) {
     const arr = (list || []).slice();
 
@@ -1493,15 +1667,25 @@
         const sa = getSearchScore(a, STATE.query || "");
         const sb = getSearchScore(b, STATE.query || "");
         if (sa !== sb) return sb - sa;
+
+        const pa = getCanonicalPrimaryCategory(a);
+        const pb = getCanonicalPrimaryCategory(b);
+        if (!!pa !== !!pb) return pa ? -1 : 1;
+
         const fa = a.featured ? 0 : 1;
         const fb = b.featured ? 0 : 1;
         if (fa !== fb) return fa - fb;
+
         return String(a.title).localeCompare(String(b.title), "pt-BR");
       });
       return arr;
     }
 
     arr.sort((a, b) => {
+      const pa = getCanonicalPrimaryCategory(a);
+      const pb = getCanonicalPrimaryCategory(b);
+      if (!!pa !== !!pb) return pa ? -1 : 1;
+
       const fa = a.featured ? 0 : 1;
       const fb = b.featured ? 0 : 1;
       if (fa !== fb) return fa - fb;
@@ -1510,18 +1694,26 @@
     return arr;
   }
 
+
+
   function matchesFilter(p) {
-    const q = STATE.query || "";
+    const q = cleanText(STATE.query || "");
     const tag = normalizeTagKey(STATE.tag || "");
 
-    if (tag) {
-      const hasSmart = getSmartCategories(p).some((b) => normalizeTagKey(b) === tag);
-      if (!hasSmart) return false;
-    }
+    const categories = getDisplayCategories(p);
+    const hasSmart = categories.some((b) => normalizeTagKey(b) === tag);
+    const hasRaw = safeArray(p.badges).some((b) => normalizeTagKey(b) === tag);
+    const hasTag = !tag || hasSmart || hasRaw;
 
-    if (!String(q || "").trim()) return true;
-    return getSearchScore(p, q) >= 0;
+    if (!q) return hasTag;
+
+    const score = getSearchScore(p, q);
+    if (score < 0) return false;
+
+    if (tag && !hasTag) return false;
+    return true;
   }
+
 
   function ensureTagModal() {
     if (document.getElementById("cnTagModal")) return;
@@ -1616,6 +1808,11 @@
 
       const tag = String(btn.getAttribute("data-tag") || "").trim();
       STATE.tag = tag;
+      if (tag) {
+        STATE.query = "";
+        const qEl = $("#qLoja");
+        if (qEl) qEl.value = "";
+      }
       STATE.limit = PAGE_SIZE;
       closeTagModal();
       render();
