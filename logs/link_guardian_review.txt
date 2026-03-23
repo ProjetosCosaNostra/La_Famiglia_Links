@@ -1,11 +1,11 @@
 ========================================
 LINK GUARDIAN — REVISÃO / MANUTENÇÃO
 ========================================
-Atualizado em: 2026-03-23T12:26:17Z
+Atualizado em: 2026-03-23T13:49:51Z
 Total de itens: 11
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T12:22:40Z
+Happened at: 2026-03-23T13:41:19Z
 Issue: #119
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
 SKU: amazon-echo-pop-kids-premium-marvel-azul
@@ -19,11 +19,11 @@ checked_url: https://meli.la/1cSyrZ2
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T12:22:40Z
+Happened at: 2026-03-23T13:41:19Z
 Issue: #84
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
 SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
-Título: SSD NVMe M.2 1TB Kingston
+Título: 💾👑 SSD NVMe Kingston 1TB PCIe 4.0
 ID ML: 5J5PKG-6TSL
 Link atual: https://meli.la/2G13vrw
 Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
@@ -33,11 +33,11 @@ checked_url: https://meli.la/2G13vrw
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-6TSL
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T12:22:40Z
+Happened at: 2026-03-23T13:41:19Z
 Issue: #79
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79
 SKU: webcam-emeet-smartcam-s600-4k-foco-automatico-usb
-Título: Webcam EMEET SmartCam S600 4K
+Título: 🎥👑 Webcam EMEET SmartCam S600 4K
 ID ML: 5J5PKG-VYBG
 Link atual: https://meli.la/1m2nJdb
 Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
@@ -103,7 +103,7 @@ checked_url: https://mercadolivre.com/sec/165s6Pa
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WCW0&tid=75e07631-108d-43fa-be9b-f476f90de5fa
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T12:22:40Z
+Happened at: 2026-03-23T13:41:19Z
 Issue: #26
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/26
 SKU: ugreen-robot-nexode-gan-65w-lilas
@@ -117,7 +117,7 @@ checked_url: https://mercadolivre.com/sec/1WrAqC3
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9SG3&tid=6c4294eb-a648-4f82-9d49-48b9bd0b15f9
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T12:22:40Z
+Happened at: 2026-03-23T13:41:19Z
 Issue: #44
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/44
 SKU: carregador-sem-fio-stand-inducao-preto
