@@ -17,6 +17,11 @@ body:
         - Então a forma segura é escolher por **Número da issue original** + **SKU**.
         - Para cadastro novo, continue usando **Novo / Atualizar Produto (CMS)**.
 
+        🧠 **Classificação canônica do produto:**
+        - Se quiser melhorar a inteligência da loja, você pode ajustar a **categoria principal**.
+        - Também pode definir **categorias secundárias** e **aliases de busca**.
+        - Isso reduz retrabalho, melhora a busca e evita a vitrine depender só de inferência no front.
+
   - type: input
     id: target_issue_number
     attributes:
@@ -41,6 +46,33 @@ body:
       label: "Novo título (opcional)"
       description: "Deixe vazio para manter o título atual."
       placeholder: "Novo título do produto"
+    validations:
+      required: false
+
+  - type: input
+    id: categoria_principal
+    attributes:
+      label: "Nova Categoria Principal (opcional)"
+      description: "Deixe vazio para manter a categoria principal atual."
+      placeholder: "Tecnologia"
+    validations:
+      required: false
+
+  - type: textarea
+    id: categorias_secundarias
+    attributes:
+      label: "Novas Categorias Secundárias (opcional)"
+      description: "Separe por vírgula. Deixe vazio para manter as categorias secundárias atuais."
+      placeholder: "Notebook, PC, Armazenamento"
+    validations:
+      required: false
+
+  - type: textarea
+    id: aliases_busca
+    attributes:
+      label: "Novos Aliases de Busca (opcional)"
+      description: "Termos alternativos para a busca encontrar melhor esse produto."
+      placeholder: "ssd kingston, nvme 1tb, kingston nv3"
     validations:
       required: false
 
@@ -130,4 +162,5 @@ body:
         - este issue atualiza o produto no `produtos.json`
         - usando só os campos principais
         - sem aquele monte de campo de manutenção que atrapalha
-        - e agora também pode definir se o produto entra na **Vitrine Rápida** da home
+        - agora também pode definir **categoria principal**, **categorias secundárias** e **aliases de busca**
+        - e também pode definir se o produto entra na **Vitrine Rápida** da home
