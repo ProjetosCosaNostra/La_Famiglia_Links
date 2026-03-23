@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T21:26:40Z",
+  "updated_at": "2026-03-23T21:55:56Z",
   "products": [
     {
       "sku": "carregador-sem-fio-stand-inducao-preto",
@@ -23,7 +23,7 @@
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBOqZHrjYuzJuF9e%2BP6m%2BR7YlMXY2ImRb0tuRB%2FkE9z0yLXO7rG7TJsFa%2F%2Bz41Nlj8SsjTRWtxei101Dlxw4CUZB2w8arYVYgGfLfSDpjNvP%2Bq4ypUG%2FdC70P6Vpvtj4E8T%2BNNAN%2FgP9wx5YJnNr7QeXyBEaw6m8i%2Bx1MBw5jK67EziT9CqRG%2BDO%2ByYwUTRN8iF7TQ%3D%3D",
       "image": "https://github.com/user-attachments/assets/b4627e28-35d7-4e6e-90c3-4fba926162b2",
       "active": true,
-      "featured": true,
+      "featured": false,
       "price_text": "",
       "last_checked": "2026-03-23T21:26:40Z",
       "last_ok": "2026-03-23T21:26:40Z",
@@ -704,27 +704,26 @@
     },
     {
       "sku": "amazon-echo-pop-kids-premium-marvel-azul",
-      "title": "Echo Pop Kids Premium",
+      "title": "Amazon Echo Pop Alexa Kids Marvel Azul",
       "badges": [
         "Achados do Dia",
-        "Alexa Kids",
+        "Tecnologia",
+        "Alexa",
         "Echo Pop",
+        "Kids",
         "Marvel",
-        "Som",
-        "Quarto Infantil",
-        "Azul",
-        "Assistente Virtual",
-        "Presente"
+        "Casa Inteligente",
+        "Premium"
       ],
       "id_busca": "5J5PKG-PK7B",
       "open_url": "https://meli.la/1cSyrZ2",
-      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105",
-      "image": "https://github.com/user-attachments/assets/5fd64baa-1105-4409-abf1-07e75d0a6300",
-      "active": true,
-      "featured": false,
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PK7B",
+      "image": "https://github.com/user-attachments/assets/634dde46-ccb1-4b0d-976b-5b4594db702c",
+      "active": false,
+      "featured": true,
       "short_url": "https://meli.la/1cSyrZ2",
-      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "price_text": "",
       "last_checked": "2026-03-23T21:26:40Z",
       "last_ok": "2026-03-23T19:06:34Z",
@@ -738,15 +737,32 @@
       "review_status": "ativo",
       "review_reason": "",
       "replacement_vendor": "",
-      "relink_open_url": "",
+      "relink_open_url": "https://meli.la/1cSyrZ2",
       "notes": "",
       "alt_url": "",
       "issue_number": 119,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119",
-      "issue_title": "[CMS] Produto: Echo Pop Kids Premium",
+      "issue_title": "Amazon Echo Pop Alexa Kids Marvel Azul",
       "guardian_review_flag": true,
       "guardian_review_reason": "storefront_social_lists_invalid",
-      "guardian_review_at": "2026-03-23T21:26:40Z"
+      "guardian_review_at": "2026-03-23T21:26:40Z",
+      "categoria_principal": "Tecnologia",
+      "categorias_secundarias": [
+        "Casa Inteligente",
+        "Som",
+        "Assistente Pessoal",
+        "Alexa"
+      ],
+      "aliases_busca": [
+        "echo pop kids",
+        "alexa kids marvel",
+        "echo pop marvel azul",
+        "alexa infantil marvel",
+        "amazon echo pop kids"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 150,
+      "_target_issue_number": 119
     },
     {
       "sku": "nintendo-super-mini-premium",
