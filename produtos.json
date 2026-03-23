@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T12:38:07Z",
+  "updated_at": "2026-03-23T12:46:44Z",
   "products": [
     {
       "sku": "escova-pet-vapor-3em1-elaf-5j5pkg-atvc",
@@ -1894,7 +1894,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6TSL",
       "image": "https://github.com/user-attachments/assets/f0e5d466-1edf-4998-a7fb-77608d60d8aa",
       "active": false,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/2G13vrw",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "price_text": "",
@@ -2066,27 +2066,29 @@
     },
     {
       "sku": "webcam-emeet-smartcam-s600-4k-foco-automatico-usb",
-      "title": "Webcam EMEET SmartCam S600 4K",
+      "title": "🎥👑 Webcam EMEET SmartCam S600 4K",
       "badges": [
         "Achados do Dia",
-        "Webcam 4K",
+        "Tecnologia",
+        "Webcam",
         "EMEET",
         "SmartCam S600",
+        "4K",
         "Foco Automático",
         "USB",
         "Profissional",
-        "Reuniões",
-        "Lives",
         "Home Office",
-        "Streaming"
+        "Streaming",
+        "Notebook",
+        "Premium"
       ],
       "id_busca": "5J5PKG-VYBG",
       "open_url": "https://meli.la/1m2nJdb",
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-VYBG",
-      "image": "https://github.com/user-attachments/assets/808ab68c-044b-47d8-9f44-d86b1d663838",
-      "active": true,
-      "featured": false,
+      "image": "https://github.com/user-attachments/assets/a315d788-8f9c-4a38-ba03-e31d467b780f",
+      "active": false,
+      "featured": true,
       "short_url": "https://meli.la/1m2nJdb",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "price_text": "",
@@ -2107,12 +2109,12 @@
       "alt_url": "",
       "issue_number": 79,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79",
-      "issue_title": "Webcam EMEET SmartCam S600 4K",
+      "issue_title": "🎥👑 Webcam EMEET SmartCam S600 4K",
       "guardian_review_flag": true,
       "guardian_review_reason": "storefront_social_lists_invalid",
       "guardian_review_at": "2026-03-23T12:22:40Z",
       "quick_home": true,
-      "_source_issue_number": 140,
+      "_source_issue_number": 146,
       "_target_issue_number": 79
     },
     {
