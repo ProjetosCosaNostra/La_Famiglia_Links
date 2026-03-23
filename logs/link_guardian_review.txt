@@ -1,9 +1,69 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-23T19:08:30Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-03-23T21:29:44Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 3
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 3
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 3
+
+ITENS PENDENTES
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-03-23T21:26:40Z
+Issue: #119
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
+SKU: amazon-echo-pop-kids-premium-marvel-azul
+Título: Echo Pop Kids Premium
+ID ML: 5J5PKG-PK7B
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Status HTTP: 200
+Badges: Achados do Dia, Alexa Kids, Echo Pop, Marvel, Som, Quarto Infantil, Azul, Assistente Virtual
+open_url: https://meli.la/1cSyrZ2
+checked_url: https://meli.la/1cSyrZ2
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105
+
+[ALTA] review_only_storefront
+Quando: 2026-03-23T21:26:40Z
+Issue: #84
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
+SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
+Título: 💾👑 SSD NVMe Kingston 1TB PCIe 4.0
+ID ML: 5J5PKG-6TSL
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Status HTTP: 200
+Badges: Achados do Dia, SSD NVMe, Kingston, PCIe 4.0, M.2 2280, 1TB, Upgrade PC, Notebook
+open_url: https://meli.la/2G13vrw
+checked_url: https://meli.la/2G13vrw
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=8a7af5c4-706d-4441-9e9f-b978cd15f763
+
+[ALTA] review_only_storefront
+Quando: 2026-03-23T21:26:40Z
+Issue: #79
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79
+SKU: webcam-emeet-smartcam-s600-4k-foco-automatico-usb
+Título: 🎥👑 Webcam EMEET SmartCam S600 4K
+ID ML: 5J5PKG-VYBG
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Status HTTP: 200
+Badges: Achados do Dia, Tecnologia, Webcam, EMEET, SmartCam S600, 4K, Foco Automático, USB
+open_url: https://meli.la/1m2nJdb
+checked_url: https://meli.la/1m2nJdb
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=3369cdd4-4bd0-4729-bbcf-37921f6f0c17

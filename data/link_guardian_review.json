@@ -1,12 +1,130 @@
 {
-  "updated_at": "2026-03-23T19:08:30Z",
-  "total_items": 0,
+  "updated_at": "2026-03-23T21:29:44Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 3,
+    "by_state": {
+      "review_only_storefront": 3
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 3
+    },
+    "by_action": {
+      "trocar_link": 3
+    },
+    "high_priority": 3
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-03-23T21:26:40Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 119,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119",
+      "issue_title": "[CMS] Produto: Echo Pop Kids Premium",
+      "sku": "amazon-echo-pop-kids-premium-marvel-azul",
+      "title": "Echo Pop Kids Premium",
+      "id_busca": "5J5PKG-PK7B",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1cSyrZ2",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1cSyrZ2",
+      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105",
+      "short_url": "https://meli.la/1cSyrZ2",
+      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Alexa Kids",
+        "Echo Pop",
+        "Marvel",
+        "Som",
+        "Quarto Infantil",
+        "Azul",
+        "Assistente Virtual"
+      ]
+    },
+    {
+      "happened_at": "2026-03-23T21:26:40Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 84,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84",
+      "issue_title": "💾👑 SSD NVMe Kingston 1TB PCIe 4.0",
+      "sku": "ssd-nvme-m2-1tb-pcie4-2280-6tsl",
+      "title": "💾👑 SSD NVMe Kingston 1TB PCIe 4.0",
+      "id_busca": "5J5PKG-6TSL",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2G13vrw",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2G13vrw",
+      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=8a7af5c4-706d-4441-9e9f-b978cd15f763",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=8a7af5c4-706d-4441-9e9f-b978cd15f763",
+      "short_url": "https://meli.la/2G13vrw",
+      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=8a7af5c4-706d-4441-9e9f-b978cd15f763",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "SSD NVMe",
+        "Kingston",
+        "PCIe 4.0",
+        "M.2 2280",
+        "1TB",
+        "Upgrade PC",
+        "Notebook"
+      ]
+    },
+    {
+      "happened_at": "2026-03-23T21:26:40Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 79,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79",
+      "issue_title": "🎥👑 Webcam EMEET SmartCam S600 4K",
+      "sku": "webcam-emeet-smartcam-s600-4k-foco-automatico-usb",
+      "title": "🎥👑 Webcam EMEET SmartCam S600 4K",
+      "id_busca": "5J5PKG-VYBG",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1m2nJdb",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1m2nJdb",
+      "check_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=3369cdd4-4bd0-4729-bbcf-37921f6f0c17",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=3369cdd4-4bd0-4729-bbcf-37921f6f0c17",
+      "short_url": "https://meli.la/1m2nJdb",
+      "resolved_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VYBG&tid=3369cdd4-4bd0-4729-bbcf-37921f6f0c17",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Tecnologia",
+        "Webcam",
+        "EMEET",
+        "SmartCam S600",
+        "4K",
+        "Foco Automático",
+        "USB"
+      ]
+    }
+  ]
 }
