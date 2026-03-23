@@ -16,6 +16,12 @@ body:
         - **Não use este formulário para relink, revisão manual ou manutenção de link morto.**
         - O fluxo de **relink / revisão** vai ficar em template separado.
 
+        🧠 **Classificação canônica do produto:**
+        - Defina a **categoria principal** do produto.
+        - Se quiser, adicione **categorias secundárias**.
+        - Você também pode informar **aliases de busca** para ajudar a loja a encontrar o produto com mais inteligência.
+        - Isso reduz retrabalho e evita a vitrine depender só de inferência no front.
+
         🏛️ **Vitrine Rápida (home):**
         - Você pode escolher se este produto deve aparecer na Vitrine Rápida da home.
         - Também pode definir a posição dele.
@@ -38,6 +44,33 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: categoria_principal
+    attributes:
+      label: "Categoria Principal"
+      description: "Ex: Tecnologia, Cuidado Pessoal, Moda & Acessórios, Casa & Cozinha"
+      placeholder: "Tecnologia"
+    validations:
+      required: false
+
+  - type: textarea
+    id: categorias_secundarias
+    attributes:
+      label: "Categorias Secundárias (separe por vírgula)"
+      description: "Ex: Notebook, PC, Armazenamento"
+      placeholder: "Notebook, PC, Armazenamento"
+    validations:
+      required: false
+
+  - type: textarea
+    id: aliases_busca
+    attributes:
+      label: "Aliases de Busca (separe por vírgula)"
+      description: "Termos alternativos para a busca encontrar melhor esse produto."
+      placeholder: "ssd kingston, nvme 1tb, kingston nv3"
+    validations:
+      required: false
+
   - type: textarea
     id: badges
     attributes:
@@ -58,7 +91,7 @@ body:
   - type: input
     id: open_url
     attributes:
-      label: "Link Mercado Livre (/sec/...)"
+      label: "Link Mercado Livre (/sec/... ou equivalente)"
       placeholder: "https://mercadolivre.com/sec/2T9cpsU"
     validations:
       required: true
