@@ -1,11 +1,11 @@
 ========================================
 LINK GUARDIAN — REVISÃO / MANUTENÇÃO
 ========================================
-Atualizado em: 2026-03-23T15:52:03Z
+Atualizado em: 2026-03-23T16:56:40Z
 Total de itens: 11
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T15:48:22Z
+Happened at: 2026-03-23T16:52:10Z
 Issue: #119
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
 SKU: amazon-echo-pop-kids-premium-marvel-azul
@@ -19,7 +19,7 @@ checked_url: https://meli.la/1cSyrZ2
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T15:48:22Z
+Happened at: 2026-03-23T16:52:10Z
 Issue: #84
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
 SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
@@ -33,7 +33,7 @@ checked_url: https://meli.la/2G13vrw
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-6TSL
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-23T15:48:22Z
+Happened at: 2026-03-23T16:52:10Z
 Issue: #79
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79
 SKU: webcam-emeet-smartcam-s600-4k-foco-automatico-usb
