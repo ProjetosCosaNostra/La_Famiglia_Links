@@ -31,10 +31,8 @@ import json
 import os
 import re
 import time
-import unicodedata
 import urllib.error
 import urllib.request
-from html import unescape
 from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -92,13 +90,6 @@ LISTA_INVALID_FOR_STOREFRONT = os.environ.get("LG_LISTA_INVALID_FOR_STOREFRONT",
 
 DEAD_ON_BODY = os.environ.get("LG_DEAD_ON_BODY", "0").strip() == "1"
 STOREFRONT_REVIEW_ONLY = os.environ.get("LG_STOREFRONT_REVIEW_ONLY", "1").strip() == "1"
-
-REVIEW_THRESHOLD = int(os.environ.get("LG_REVIEW_THRESHOLD", "2"))
-SEARCH_OK_SCORE = int(os.environ.get("LG_SEARCH_OK_SCORE", "7"))
-SEARCH_REVIEW_SCORE = int(os.environ.get("LG_SEARCH_REVIEW_SCORE", "4"))
-TITLE_TOKEN_MIN_MATCH = int(os.environ.get("LG_TITLE_TOKEN_MIN_MATCH", "2"))
-BODY_SAMPLE_RANGE = os.environ.get("LG_BODY_SAMPLE_RANGE", "bytes=0-131071")
-
 
 
 # =========================
@@ -164,10 +155,6 @@ class CheckResult:
     checked_url: str
     storefront_invalid: bool
     promoted_url: str = ""
-    review_only: bool = False
-    confidence: int = 0
-    evidence: str = ""
-    state: str = ""
 
 
 # =========================
@@ -254,256 +241,11 @@ def _path_of(u: str) -> str:
         return ""
 
 
-def _clean_ml_id(value: str) -> str:
-    x = re.sub(r"[^A-Za-z0-9-]", "", str(value or "").upper())
-    return x.strip()
-
-
-def _ml_search_url(id_busca: str) -> str:
-    ib = _clean_ml_id(id_busca or "")
-    return f"https://lista.mercadolivre.com.br/{ib}" if ib else ""
-
-
-_STOPWORDS = {
-    "a", "o", "os", "as", "de", "da", "do", "das", "dos", "e", "em", "para", "por",
-    "com", "sem", "no", "na", "nos", "nas", "um", "uma", "uns", "umas", "ao", "aos",
-    "ou", "the", "and", "of", "for", "to", "premium", "produto", "original", "versao",
-    "versão", "global", "preto", "preta", "branco", "branca", "azul", "rosa", "cinza",
-    "carregador", "power", "bank", "premium", "smart", "band", "led", "touch", "pet",
-    "spa", "robot", "nexode", "gan", "usb", "tipo", "porta", "porta", "portatil", "portátil",
-    "executiva", "executivo", "mochila", "xiaomi", "ugreen", "kingston", "luminaria", "luminária",
-    "webcam", "escova", "cachorros", "gatos", "casa", "pc", "notebook", "mouse", "gamer",
-}
-
-
-def _normalize_text(value: str) -> str:
-    x = unescape(str(value or ""))
-    x = unicodedata.normalize("NFKD", x)
-    x = "".join(ch for ch in x if not unicodedata.combining(ch))
-    x = x.lower()
-    x = re.sub(r"[^a-z0-9]+", " ", x)
-    return re.sub(r"\s+", " ", x).strip()
-
-
-def _tokenize_text(value: str) -> List[str]:
-    out: List[str] = []
-    seen = set()
-    for tok in _normalize_text(value).split():
-        if len(tok) < 2:
-            continue
-        if tok in _STOPWORDS:
-            continue
-        if tok.isdigit():
-            continue
-        if tok in seen:
-            continue
-        seen.add(tok)
-        out.append(tok)
-    return out
-
-
-def _strip_html_to_text(sample: str) -> str:
-    x = unescape(sample or "")
-    x = re.sub(r"(?is)<script[^>]*>.*?</script>", " ", x)
-    x = re.sub(r"(?is)<style[^>]*>.*?</style>", " ", x)
-    x = re.sub(r"(?s)<[^>]+>", " ", x)
-    return _normalize_text(x)
-
-
-def _is_storefront_like(u: str) -> bool:
-    return _is_social_path(u) or _is_lista_url(u)
-
-
-def _collect_product_tokens(p: Dict[str, Any]) -> List[str]:
-    tokens: List[str] = []
-    seen = set()
-    title = str(p.get("title") or "")
-    sku = str(p.get("sku") or "")
-    id_busca = str(p.get("id_busca") or "")
-    badges = p.get("badges") or []
-    for value in [title, sku, id_busca] + ([" ".join(str(x) for x in badges)] if isinstance(badges, list) else []):
-        for tok in _tokenize_text(value):
-            if tok in seen:
-                continue
-            seen.add(tok)
-            tokens.append(tok)
-        if len(tokens) >= 14:
-            break
-    return tokens
-
-
-def _join_evidence(parts: List[str]) -> str:
-    clean = [str(x).strip() for x in parts if str(x).strip()]
-    return ", ".join(clean)
-
-
-def _compute_product_evidence(p: Dict[str, Any], checked_url: str, final_url: str, body_sample: str) -> Tuple[int, List[str], int]:
-    score = 0
-    evidence: List[str] = []
-    title_match_count = 0
-
-    id_busca = _clean_ml_id(p.get("id_busca") or "")
-    title_tokens = _collect_product_tokens(p)
-    body_text = _strip_html_to_text(body_sample)
-    checked_lower = (checked_url or "").lower()
-    final_lower = (final_url or "").lower()
-
-    if id_busca:
-        id_lower = id_busca.lower()
-        if id_lower in checked_lower or id_lower in final_lower:
-            score += 4
-            evidence.append("id_url")
-        if id_lower in body_text:
-            score += 6
-            evidence.append("id_body")
-
-    matched_tokens = []
-    for tok in title_tokens:
-        if tok in body_text:
-            matched_tokens.append(tok)
-
-    title_match_count = len(matched_tokens)
-    if title_match_count >= TITLE_TOKEN_MIN_MATCH:
-        score += min(4, title_match_count)
-        evidence.append(f"title_tokens:{title_match_count}")
-
-    if _looks_like_product_destination(final_url):
-        score += 10
-        evidence.append("product_destination")
-
-    if _is_social_profile_path(final_url):
-        score += 2
-        evidence.append("social_profile")
-    elif _is_social_lists_path(final_url):
-        evidence.append("social_lists")
-    elif _is_lista_url(final_url):
-        evidence.append("lista_search")
-
-    if any(marker in body_text for marker in ("comprar agora", "ir para produto", "ver produto", "compre agora", "comprar")):
-        score += 1
-        evidence.append("cta")
-
-    return score, evidence, title_match_count
-
-
-def _result_rank(res: CheckResult) -> int:
-    if res.ok and res.promoted_url and _looks_like_product_destination(res.promoted_url or res.final_url):
-        return 500 + int(res.confidence)
-    if res.ok and res.reason == "storefront_search_confirmed":
-        return 450 + int(res.confidence)
-    if res.ok:
-        return 400 + int(res.confidence)
-    if res.review_only:
-        return 300 + int(res.confidence)
-    if res.hard_dead:
-        return 200 + int(res.status)
-    if res.temporary:
-        return 100 + int(res.status)
-    return int(res.confidence)
-
-
-def _classify_fetched_page(checked_url: str, status: int, final_url: str, body_sample: str, p: Dict[str, Any]) -> CheckResult:
-    final_url = _clean_url(final_url or checked_url)
-
-    if status == 0:
-        return CheckResult(
-            ok=False, temporary=True, status=0, final_url=final_url, reason="sem_resposta",
-            hard_dead=False, checked_url=checked_url, storefront_invalid=False,
-            confidence=0, evidence="sem_resposta", state="temp",
-        )
-
-    if CONSERVATIVE_ON_BLOCK and _is_block_page(status, final_url, body_sample):
-        return CheckResult(
-            ok=False, temporary=True, status=status, final_url=final_url, reason="bloqueio",
-            hard_dead=False, checked_url=checked_url, storefront_invalid=False,
-            confidence=0, evidence="bloqueio", state="temp",
-        )
-
-    if TREAT_5XX_TEMP and status in _TEMP_STATUS:
-        return CheckResult(
-            ok=False, temporary=True, status=status, final_url=final_url, reason=f"temp_{status}",
-            hard_dead=False, checked_url=checked_url, storefront_invalid=False,
-            confidence=0, evidence=f"status:{status}", state="temp",
-        )
-
-    if _is_definitely_dead(status, final_url, body_sample):
-        hard = status in _HARD_DEAD_STATUS
-        return CheckResult(
-            ok=False, temporary=False, status=status, final_url=final_url, reason="dead",
-            hard_dead=hard, checked_url=checked_url, storefront_invalid=False,
-            confidence=0, evidence=f"status:{status}", state="dead",
-        )
-
-    score, evidence_parts, title_match_count = _compute_product_evidence(p, checked_url, final_url, body_sample)
-    evidence = _join_evidence(evidence_parts)
-
-    if _looks_like_product_destination(final_url):
-        return CheckResult(
-            ok=True, temporary=False, status=status, final_url=final_url, reason="ok_product_destination",
-            hard_dead=False, checked_url=checked_url, storefront_invalid=False, promoted_url=final_url,
-            confidence=score, evidence=evidence, state="ok_product",
-        )
-
-    if _is_storefront_like(final_url):
-        strong = ("id_body" in evidence_parts) or (title_match_count >= TITLE_TOKEN_MIN_MATCH)
-        if score >= SEARCH_OK_SCORE and strong:
-            return CheckResult(
-                ok=True, temporary=False, status=status, final_url=final_url, reason="storefront_search_confirmed",
-                hard_dead=False, checked_url=checked_url, storefront_invalid=False, promoted_url="",
-                confidence=score, evidence=evidence, state="ok_storefront_confirmed",
-            )
-
-        if score >= SEARCH_REVIEW_SCORE:
-            return CheckResult(
-                ok=False, temporary=False, status=status, final_url=final_url, reason="storefront_intermediate_review",
-                hard_dead=False, checked_url=checked_url, storefront_invalid=False, promoted_url="",
-                review_only=True, confidence=score, evidence=evidence, state="review_intermediate",
-            )
-
-        return CheckResult(
-            ok=False, temporary=False, status=status, final_url=final_url, reason="storefront_unconfirmed_review",
-            hard_dead=False, checked_url=checked_url, storefront_invalid=False, promoted_url="",
-            review_only=True, confidence=score, evidence=evidence or "storefront_sem_evidencia", state="review_low_conf",
-        )
-
-    return CheckResult(
-        ok=True, temporary=False, status=status, final_url=final_url, reason="ok_ml_generic",
-        hard_dead=False, checked_url=checked_url, storefront_invalid=False, promoted_url="",
-        confidence=score, evidence=evidence or "ml_generic", state="ok_generic",
-    )
-
-
-def _check_url_for_product(url: str, p: Dict[str, Any]) -> CheckResult:
-    u = _clean_url(url)
-
-    if not u:
-        return CheckResult(
-            ok=False, temporary=False, status=0, final_url="", reason="sem_url", hard_dead=False, checked_url=u, storefront_invalid=False,
-            confidence=0, evidence="sem_url", state="invalid",
-        )
-
-    if not _is_ml_url(u):
-        return CheckResult(
-            ok=False, temporary=False, status=0, final_url=u, reason="nao_ml", hard_dead=False, checked_url=u, storefront_invalid=False,
-            confidence=0, evidence="nao_ml", state="invalid",
-        )
-
-    status, final_url, sample = _fetch_status_and_sample(u)
-    final_url = _clean_url(final_url or u)
-
-    unwrapped = _unwrap_account_verification(final_url)
-    if unwrapped and _is_ml_url(unwrapped):
-        status2, final2, sample2 = _fetch_status_and_sample(unwrapped)
-        final2 = _clean_url(final2 or unwrapped)
-        res2 = _classify_fetched_page(u, status2, final2, sample2, p)
-        if res2.ok or res2.review_only or res2.temporary or res2.hard_dead:
-            if not res2.evidence:
-                res2.evidence = _join_evidence([res2.evidence, "unwrapped"])
-            else:
-                res2.evidence = _join_evidence([res2.evidence, "unwrapped"])
-            return res2
-
-    return _classify_fetched_page(u, status, final_url, sample, p)
+def _query_of(u: str) -> Dict[str, List[str]]:
+    try:
+        return parse_qs(urlparse(u or "").query or "", keep_blank_values=True)
+    except Exception:
+        return {}
 
 
 def _is_social_path(u: str) -> bool:
@@ -655,7 +397,7 @@ def _make_request(url: str) -> urllib.request.Request:
         "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.6,es;q=0.5",
         "Accept-Encoding": "gzip",
         "Connection": "close",
-        "Range": BODY_SAMPLE_RANGE,
+        "Range": "bytes=0-65535",
     }
     return urllib.request.Request(url, headers=headers, method="GET")
 
@@ -743,14 +485,211 @@ def _is_definitely_dead(status: int, final_url: str, body_sample: str) -> bool:
 
 
 def _check_url(url: str) -> CheckResult:
-    return _check_url_for_product(url, {})
+    u = _clean_url(url)
+
+    if not u:
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=0,
+            final_url="",
+            reason="sem_url",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    if not _is_ml_url(u):
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=0,
+            final_url=u,
+            reason="nao_ml",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    status, final_url, sample = _fetch_status_and_sample(u)
+    final_url = _clean_url(final_url or u)
+
+    if status == 0:
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=0,
+            final_url=final_url or u,
+            reason="sem_resposta",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    if CONSERVATIVE_ON_BLOCK and _is_block_page(status, final_url, sample):
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=status,
+            final_url=final_url or u,
+            reason="bloqueio",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    unwrapped = _unwrap_account_verification(final_url)
+    if unwrapped:
+        if _is_social_lists_path(unwrapped):
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=status,
+                final_url=unwrapped,
+                reason="storefront_social_lists_invalid",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=True,
+                promoted_url="",
+            )
+
+        if LISTA_INVALID_FOR_STOREFRONT and _is_lista_url(unwrapped):
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=status,
+                final_url=unwrapped,
+                reason="storefront_listing_invalid",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=True,
+                promoted_url="",
+            )
+
+        if _looks_like_product_destination(unwrapped):
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=status,
+                final_url=unwrapped,
+                reason="ok_unwrapped",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=False,
+                promoted_url=unwrapped,
+            )
+
+        if _is_social_profile_path(unwrapped) and status == 200:
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=status,
+                final_url=unwrapped,
+                reason="social_profile_ok",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=False,
+                promoted_url="",
+            )
+
+    if _is_social_lists_path(final_url):
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=status,
+            final_url=final_url or u,
+            reason="storefront_social_lists_invalid",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=True,
+            promoted_url="",
+        )
+
+    if _is_social_profile_path(final_url):
+        if status == 200:
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=status,
+                final_url=final_url or u,
+                reason="social_profile_ok",
+                hard_dead=False,
+                checked_url=u,
+                storefront_invalid=False,
+                promoted_url="",
+            )
+
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=status,
+            final_url=final_url or u,
+            reason="social_temp",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    if LISTA_INVALID_FOR_STOREFRONT and _is_lista_url(final_url):
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=status,
+            final_url=final_url or u,
+            reason="storefront_listing_invalid",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=True,
+            promoted_url="",
+        )
+
+    if TREAT_5XX_TEMP and status in _TEMP_STATUS:
+        return CheckResult(
+            ok=False,
+            temporary=True,
+            status=status,
+            final_url=final_url or u,
+            reason=f"temp_{status}",
+            hard_dead=False,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    if _is_definitely_dead(status, final_url, sample):
+        hard = status in _HARD_DEAD_STATUS
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=status,
+            final_url=final_url or u,
+            reason="dead",
+            hard_dead=hard,
+            checked_url=u,
+            storefront_invalid=False,
+            promoted_url="",
+        )
+
+    return CheckResult(
+        ok=True,
+        temporary=False,
+        status=status,
+        final_url=final_url or u,
+        reason="ok",
+        hard_dead=False,
+        checked_url=u,
+        storefront_invalid=False,
+        promoted_url="",
+    )
+
 
 def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
     candidates = _candidate_urls(p)
-
-    if not candidates:
-        fallback = _ml_search_url(p.get("id_busca") or "")
-        candidates = [fallback] if fallback else []
 
     if not candidates:
         return CheckResult(
@@ -762,23 +701,64 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
             hard_dead=False,
             checked_url="",
             storefront_invalid=False,
-            confidence=0,
-            evidence="sem_url",
-            state="invalid",
+            promoted_url="",
         )
 
-    best: CheckResult | None = None
+    first_result: CheckResult | None = None
+    social_invalid_result: CheckResult | None = None
+    listing_invalid_result: CheckResult | None = None
+    dead_result: CheckResult | None = None
+    temp_result: CheckResult | None = None
+    generic_result: CheckResult | None = None
 
     for url in candidates:
-        res = _check_url_for_product(url, p)
+        res = _check_url(url)
 
-        if best is None or _result_rank(res) > _result_rank(best):
-            best = res
+        if first_result is None:
+            first_result = res
 
-        if res.ok and res.promoted_url and _looks_like_product_destination(res.promoted_url or res.final_url):
+        if res.ok and not res.storefront_invalid:
             return res
 
-    return best or CheckResult(
+        if res.reason == "storefront_social_lists_invalid" and social_invalid_result is None:
+            social_invalid_result = res
+            continue
+
+        if res.reason == "storefront_listing_invalid" and listing_invalid_result is None:
+            listing_invalid_result = res
+            continue
+
+        if res.hard_dead and dead_result is None:
+            dead_result = res
+            continue
+
+        if res.reason == "dead" and dead_result is None:
+            dead_result = res
+            continue
+
+        if res.temporary and temp_result is None:
+            temp_result = res
+            continue
+
+        if generic_result is None:
+            generic_result = res
+
+    if social_invalid_result is not None:
+        return social_invalid_result
+
+    if listing_invalid_result is not None:
+        return listing_invalid_result
+
+    if dead_result is not None:
+        return dead_result
+
+    if temp_result is not None:
+        return temp_result
+
+    if generic_result is not None:
+        return generic_result
+
+    return first_result or CheckResult(
         ok=False,
         temporary=False,
         status=0,
@@ -787,9 +767,7 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
         hard_dead=False,
         checked_url="",
         storefront_invalid=False,
-        confidence=0,
-        evidence="sem_url",
-        state="invalid",
+        promoted_url="",
     )
 
 
@@ -803,23 +781,6 @@ def _clear_dead_markers(p: Dict[str, Any]) -> None:
         "guardian_dead_reason",
         "guardian_disabled_at",
         "guardian_storefront_invalid",
-    ):
-        if k in p:
-            try:
-                del p[k]
-            except Exception:
-                pass
-
-
-def _clear_review_markers(p: Dict[str, Any]) -> None:
-    for k in (
-        "guardian_review_flag",
-        "guardian_review_reason",
-        "guardian_review_at",
-        "guardian_review_count",
-        "guardian_evidence_score",
-        "guardian_last_evidence",
-        "guardian_last_state",
     ):
         if k in p:
             try:
@@ -1131,12 +1092,21 @@ def _save_removed_reports(history: Dict[str, Any]) -> None:
 # RELATÓRIO DE REVISÃO / MANUTENÇÃO
 # =========================
 def _load_review_history(path: Path) -> Dict[str, Any]:
+    base = {
+        "updated_at": "",
+        "total_items": 0,
+        "summary": {
+            "unique_skus": 0,
+            "by_state": {},
+            "by_reason": {},
+            "by_action": {},
+            "high_priority": 0,
+        },
+        "items": [],
+    }
+
     if not path.exists():
-        return {
-            "updated_at": "",
-            "total_items": 0,
-            "items": [],
-        }
+        return base
 
     try:
         with path.open("r", encoding="utf-8") as f:
@@ -1148,6 +1118,9 @@ def _load_review_history(path: Path) -> Dict[str, Any]:
         if not isinstance(data.get("items"), list):
             data["items"] = []
 
+        if not isinstance(data.get("summary"), dict):
+            data["summary"] = base["summary"].copy()
+
         if "updated_at" not in data:
             data["updated_at"] = ""
 
@@ -1156,11 +1129,39 @@ def _load_review_history(path: Path) -> Dict[str, Any]:
 
         return data
     except Exception:
-        return {
-            "updated_at": "",
-            "total_items": 0,
-            "items": [],
-        }
+        return base
+
+
+def _review_priority_from_reason(reason: str, action_suggested: str) -> str:
+    r = (reason or "").strip().lower()
+    a = (action_suggested or "").strip().lower()
+    if "lists" in r or "lista" in r or "storefront" in r:
+        return "alta"
+    if a in {"trocar_link", "relink"}:
+        return "alta"
+    if "search" in r or "busca" in r:
+        return "media"
+    return "media"
+
+
+def _review_state_label(state: str) -> str:
+    s = (state or "").strip().lower()
+    if s == "review_only_storefront":
+        return "review_only_storefront"
+    return s or "review_only"
+
+
+def _trim_text_list(values: Any, limit: int = 8) -> List[str]:
+    out: List[str] = []
+    if not isinstance(values, list):
+        return out
+    for v in values:
+        s = str(v or "").strip()
+        if s and s not in out:
+            out.append(s)
+        if len(out) >= limit:
+            break
+    return out
 
 
 def _build_review_item(
@@ -1169,8 +1170,15 @@ def _build_review_item(
     happened_at: str,
     action_suggested: str,
 ) -> Dict[str, Any]:
+    state = "review_only_storefront" if res.storefront_invalid else "review_only"
+    priority = _review_priority_from_reason(res.reason, action_suggested)
+    smart_categories = _trim_text_list(p.get("smart_categories") or p.get("categories") or [])
+    badges = _trim_text_list(p.get("badges") or [])
     return {
         "happened_at": happened_at,
+        "state": state,
+        "state_label": _review_state_label(state),
+        "priority": priority,
         "issue_number": int(p.get("issue_number") or 0),
         "issue_url": _clean_url(p.get("issue_url") or ""),
         "issue_title": (p.get("issue_title") or "").strip(),
@@ -1180,6 +1188,7 @@ def _build_review_item(
         "status": int(res.status),
         "reason": res.reason,
         "action_suggested": action_suggested,
+        "needs_manual_check": True,
         "checked_url": _clean_url(res.checked_url or ""),
         "final_url": _clean_url(res.final_url or ""),
         "open_url": _clean_url(p.get("open_url") or ""),
@@ -1187,20 +1196,61 @@ def _build_review_item(
         "canonical_url": _clean_url(p.get("canonical_url") or ""),
         "short_url": _clean_url(p.get("short_url") or ""),
         "resolved_url": _clean_url(p.get("resolved_url") or ""),
-        "confidence": int(res.confidence or 0),
-        "evidence": (res.evidence or "").strip(),
-        "state": (res.state or "").strip(),
+        "guardian_last_final_url": _clean_url(p.get("guardian_last_final_url") or res.final_url or ""),
+        "active": bool(p.get("active", True)),
+        "featured": bool(p.get("featured", False)),
+        "smart_categories": smart_categories,
+        "badges": badges,
     }
 
 
 def _review_fingerprint(item: Dict[str, Any]) -> str:
     return "|".join([
+        str(item.get("state") or ""),
         str(item.get("issue_number") or ""),
         str(item.get("sku") or ""),
         str(item.get("reason") or ""),
         str(item.get("final_url") or ""),
         str(item.get("action_suggested") or ""),
     ])
+
+
+def _refresh_review_history_meta(history: Dict[str, Any]) -> None:
+    items = history.get("items") or []
+    if not isinstance(items, list):
+        items = []
+
+    by_state: Dict[str, int] = {}
+    by_reason: Dict[str, int] = {}
+    by_action: Dict[str, int] = {}
+    unique_skus = set()
+    high_priority = 0
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        sku = str(item.get("sku") or "").strip()
+        if sku:
+            unique_skus.add(sku)
+        state = str(item.get("state_label") or item.get("state") or "review_only").strip() or "review_only"
+        reason = str(item.get("reason") or "").strip() or "sem_reason"
+        action = str(item.get("action_suggested") or "").strip() or "revisar"
+        priority = str(item.get("priority") or "").strip().lower()
+        by_state[state] = by_state.get(state, 0) + 1
+        by_reason[reason] = by_reason.get(reason, 0) + 1
+        by_action[action] = by_action.get(action, 0) + 1
+        if priority == "alta":
+            high_priority += 1
+
+    history["summary"] = {
+        "unique_skus": len(unique_skus),
+        "by_state": dict(sorted(by_state.items(), key=lambda kv: (-kv[1], kv[0]))),
+        "by_reason": dict(sorted(by_reason.items(), key=lambda kv: (-kv[1], kv[0]))),
+        "by_action": dict(sorted(by_action.items(), key=lambda kv: (-kv[1], kv[0]))),
+        "high_priority": high_priority,
+    }
+    history["total_items"] = len([x for x in items if isinstance(x, dict)])
+    history["updated_at"] = _utc_now_iso_z()
 
 
 def _append_review_item(history: Dict[str, Any], item: Dict[str, Any]) -> bool:
@@ -1213,26 +1263,32 @@ def _append_review_item(history: Dict[str, Any], item: Dict[str, Any]) -> bool:
         if isinstance(old, dict) and _review_fingerprint(old) == fp:
             old.update(item)
             history["items"] = items
-            history["total_items"] = len(items)
-            history["updated_at"] = _utc_now_iso_z()
+            _refresh_review_history_meta(history)
             return False
 
     items.append(item)
     items = [x for x in items if isinstance(x, dict)]
+    priority_order = {"alta": 0, "media": 1, "baixa": 2}
+    items.sort(
+        key=lambda x: (
+            priority_order.get(str(x.get("priority") or "media").strip().lower(), 9),
+            str(x.get("happened_at") or ""),
+        ),
+        reverse=False,
+    )
     items.sort(key=lambda x: str(x.get("happened_at") or ""), reverse=True)
 
     if REVIEW_MAX_ITEMS > 0 and len(items) > REVIEW_MAX_ITEMS:
         items = items[:REVIEW_MAX_ITEMS]
 
     history["items"] = items
-    history["total_items"] = len(items)
-    history["updated_at"] = _utc_now_iso_z()
+    _refresh_review_history_meta(history)
     return True
 
 
-def _remove_review_items_for_sku(history: Dict[str, Any], sku: str) -> int:
-    key = str(sku or "").strip()
-    if not key:
+def _clear_review_items_for_sku(history: Dict[str, Any], sku: str) -> int:
+    target = str(sku or "").strip()
+    if not target:
         return 0
 
     items = history.get("items") or []
@@ -1242,14 +1298,16 @@ def _remove_review_items_for_sku(history: Dict[str, Any], sku: str) -> int:
     kept = []
     removed = 0
     for item in items:
-        if isinstance(item, dict) and str(item.get("sku") or "").strip() == key:
+        if not isinstance(item, dict):
+            continue
+        if str(item.get("sku") or "").strip() == target:
             removed += 1
             continue
         kept.append(item)
 
-    history["items"] = kept
-    history["total_items"] = len(kept)
-    history["updated_at"] = _utc_now_iso_z()
+    if removed:
+        history["items"] = kept
+        _refresh_review_history_meta(history)
     return removed
 
 
@@ -1257,25 +1315,60 @@ def _build_review_txt(history: Dict[str, Any]) -> str:
     items = history.get("items") or []
     updated_at = str(history.get("updated_at") or "").strip()
     total_items = int(history.get("total_items") or 0)
+    summary = history.get("summary") or {}
+    by_state = summary.get("by_state") or {}
+    by_reason = summary.get("by_reason") or {}
+    by_action = summary.get("by_action") or {}
+    high_priority = int(summary.get("high_priority") or 0)
+    unique_skus = int(summary.get("unique_skus") or 0)
 
     lines: List[str] = []
     lines.append("========================================")
-    lines.append("LINK GUARDIAN — REVISÃO / MANUTENÇÃO")
+    lines.append("LINK GUARDIAN — PAINEL DE REVISÃO")
     lines.append("========================================")
     lines.append(f"Atualizado em: {updated_at or _utc_now_iso_z()}")
-    lines.append(f"Total de itens: {total_items}")
+    lines.append(f"Itens pendentes: {total_items}")
+    lines.append(f"SKUs únicos: {unique_skus}")
+    lines.append(f"Prioridade alta: {high_priority}")
     lines.append("")
 
+    if by_state:
+        lines.append("RESUMO POR ESTADO")
+        lines.append("----------------------------------------")
+        for k, v in by_state.items():
+            lines.append(f"- {k}: {int(v)}")
+        lines.append("")
+
+    if by_action:
+        lines.append("RESUMO POR AÇÃO")
+        lines.append("----------------------------------------")
+        for k, v in by_action.items():
+            lines.append(f"- {k}: {int(v)}")
+        lines.append("")
+
+    if by_reason:
+        lines.append("TOP MOTIVOS")
+        lines.append("----------------------------------------")
+        top_reason_items = list(by_reason.items())[:10]
+        for k, v in top_reason_items:
+            lines.append(f"- {k}: {int(v)}")
+        lines.append("")
+
     if not items:
-        lines.append("Nenhum item em revisão/manutenção no momento.")
+        lines.append("Nenhum item pendente de revisão/manutenção no momento.")
         lines.append("")
         return "\n".join(lines)
+
+    lines.append("ITENS PENDENTES")
+    lines.append("----------------------------------------")
 
     for item in items:
         if not isinstance(item, dict):
             continue
-        lines.append("[MANUTENÇÃO] Produto suspeito")
-        lines.append(f"Happened at: {str(item.get('happened_at') or '').strip()}")
+        pr = str(item.get("priority") or "media").strip().upper()
+        state = str(item.get("state_label") or item.get("state") or "review_only").strip()
+        lines.append(f"[{pr}] {state}")
+        lines.append(f"Quando: {str(item.get('happened_at') or '').strip()}")
         issue_number = int(item.get('issue_number') or 0)
         issue_url = str(item.get('issue_url') or '').strip()
         if issue_number:
@@ -1286,16 +1379,21 @@ def _build_review_txt(history: Dict[str, Any]) -> str:
         lines.append(f"Título: {str(item.get('title') or '').strip()}")
         if str(item.get("id_busca") or "").strip():
             lines.append(f"ID ML: {str(item.get('id_busca') or '').strip()}")
-        lines.append(f"Link atual: {str(item.get('open_url') or '').strip()}")
-        lines.append(f"Destino detectado: {str(item.get('final_url') or '').strip()}")
-        lines.append(f"Classificação: {str(item.get('reason') or '').strip()}")
-        if int(item.get("confidence") or 0):
-            lines.append(f"Confiança: {int(item.get('confidence') or 0)}")
-        if str(item.get("evidence") or "").strip():
-            lines.append(f"Evidência: {str(item.get('evidence') or '').strip()}")
         lines.append(f"Ação sugerida: {str(item.get('action_suggested') or '').strip()}")
+        lines.append(f"Motivo: {str(item.get('reason') or '').strip()}")
+        lines.append(f"Status HTTP: {str(item.get('status') or '').strip()}")
+        cats = item.get("smart_categories") or []
+        if cats:
+            lines.append("Categorias: " + ", ".join(str(x).strip() for x in cats if str(x).strip()))
+        badges = item.get("badges") or []
+        if badges:
+            lines.append("Badges: " + ", ".join(str(x).strip() for x in badges if str(x).strip()))
+        if str(item.get("open_url") or "").strip():
+            lines.append(f"open_url: {str(item.get('open_url') or '').strip()}")
         if str(item.get("checked_url") or "").strip():
             lines.append(f"checked_url: {str(item.get('checked_url') or '').strip()}")
+        if str(item.get("final_url") or "").strip():
+            lines.append(f"final_url: {str(item.get('final_url') or '').strip()}")
         if str(item.get("canonical_url") or "").strip():
             lines.append(f"canonical_url: {str(item.get('canonical_url') or '').strip()}")
         lines.append("")
@@ -1304,8 +1402,7 @@ def _build_review_txt(history: Dict[str, Any]) -> str:
 
 
 def _save_review_reports(history: Dict[str, Any]) -> None:
-    history["updated_at"] = _utc_now_iso_z()
-    history["total_items"] = len(history.get("items") or [])
+    _refresh_review_history_meta(history)
     _write_json(REVIEW_JSON, history)
     _write_text(REVIEW_TXT, _build_review_txt(history))
 
@@ -1321,7 +1418,6 @@ def main() -> int:
     review_history = _load_review_history(REVIEW_JSON)
     removed_events_added = 0
     review_items_added = 0
-    review_items_removed = 0
     pending_actions: Dict[str, Dict[str, Any]] = {}
 
     cleaned: List[Dict[str, Any]] = []
@@ -1400,41 +1496,10 @@ def main() -> int:
             out.append(p)
             continue
 
-        override = str(p.get("guardian_override") or "").strip().lower()
-        if override in {"ok", "ignore", "trusted"}:
-            sku = (p.get("sku") or "").strip()
-            p["guardian_last_checked"] = now
-            p["guardian_last_status"] = 200
-            p["guardian_last_reason"] = "manual_ok"
-            p["guardian_last_state"] = "manual_ok"
-            p["guardian_last_checked_url"] = _clean_url(p.get("open_url") or p.get("check_url") or "")
-            p["guardian_last_final_url"] = _clean_url(p.get("open_url") or p.get("check_url") or "")
-            p["guardian_last_evidence"] = "guardian_override=ok"
-            p["guardian_evidence_score"] = 99
-            p["last_checked"] = now
-            p["last_ok"] = now
-            p["guardian_fail_count"] = 0
-            _clear_dead_markers(p)
-            _clear_review_markers(p)
-            review_items_removed += _remove_review_items_for_sku(review_history, sku)
-            if not bool(p.get("active")):
-                p["active"] = True
-                changed += 1
-            ok_count += 1
-            checked += 1
-            print(f"[MANUAL-OK] {sku}")
-            out.append(p)
-            time.sleep(SLEEP_BETWEEN)
-            continue
-
         candidates = _candidate_urls(p)
         if not candidates:
-            fallback_url = _ml_search_url(p.get("id_busca") or "")
-            if fallback_url:
-                candidates = [fallback_url]
-            else:
-                out.append(p)
-                continue
+            out.append(p)
+            continue
 
         sku = (p.get("sku") or "").strip()
         was_active = bool(p.get("active"))
@@ -1447,9 +1512,6 @@ def main() -> int:
         p["guardian_last_final_url"] = _clean_url(res.final_url)
         p["guardian_last_reason"] = res.reason
         p["guardian_last_checked_url"] = _clean_url(res.checked_url)
-        p["guardian_last_state"] = (res.state or "").strip()
-        p["guardian_last_evidence"] = (res.evidence or "").strip()
-        p["guardian_evidence_score"] = int(res.confidence or 0)
         p["last_checked"] = now
         checked += 1
 
@@ -1484,8 +1546,12 @@ def main() -> int:
                 p["guardian_fail_count"] = 0
 
             _clear_dead_markers(p)
-            _clear_review_markers(p)
-            review_items_removed += _remove_review_items_for_sku(review_history, sku)
+            for k in ("guardian_review_flag", "guardian_review_reason", "guardian_review_at"):
+                if k in p:
+                    del p[k]
+            cleared_review = _clear_review_items_for_sku(review_history, sku)
+            if cleared_review:
+                print(f"[REVIEW-CLEAR] {sku} -> removido do painel de revisão ({cleared_review})")
 
             promoted = _promote_valid_url(p, res.promoted_url or res.final_url or res.checked_url)
             if promoted:
@@ -1502,31 +1568,6 @@ def main() -> int:
             time.sleep(SLEEP_BETWEEN)
             continue
 
-        if res.review_only:
-            review_count = int(p.get("guardian_review_count") or 0) + 1
-            p["guardian_review_count"] = review_count
-            p["guardian_review_flag"] = True
-            p["guardian_review_reason"] = res.reason
-            p["guardian_review_at"] = now
-
-            if review_count >= REVIEW_THRESHOLD:
-                review_item = _build_review_item(
-                    p=p,
-                    res=res,
-                    happened_at=now,
-                    action_suggested="revisar_link_manual" if "unconfirmed" in (res.reason or "") else "observar",
-                )
-                if _append_review_item(review_history, review_item):
-                    review_items_added += 1
-                print(f"[REVIEW] {sku} status={res.status} reason={res.reason} conf={res.confidence} final={p.get('guardian_last_final_url', '')}")
-            else:
-                print(f"[REVIEW-PENDING] {sku} status={res.status} reason={res.reason} conf={res.confidence} ({review_count}/{REVIEW_THRESHOLD})")
-
-            out.append(p)
-            time.sleep(SLEEP_BETWEEN)
-            continue
-
-        review_items_removed += _remove_review_items_for_sku(review_history, sku)
         dead_count += 1
 
         if res.storefront_invalid:
@@ -1705,12 +1746,10 @@ def main() -> int:
     print(f"Review TXT: {REVIEW_TXT}")
     print(f"Review items: {len(review_history.get('items') or [])}")
     print(f"Review items added: {review_items_added}")
-    print(f"Review items removed: {review_items_removed}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | STOREFRONT_INVALID_THRESHOLD: {STOREFRONT_INVALID_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
     print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | LISTA_INVALID_FOR_STOREFRONT: {int(LISTA_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | STOREFRONT_REVIEW_ONLY: {int(STOREFRONT_REVIEW_ONLY)}")
-    print(f"DEAD_ON_BODY: {int(DEAD_ON_BODY)} | MAX_CANDIDATE_URLS: {MAX_CANDIDATE_URLS} | REVIEW_THRESHOLD: {REVIEW_THRESHOLD}")
-    print(f"SEARCH_OK_SCORE: {SEARCH_OK_SCORE} | SEARCH_REVIEW_SCORE: {SEARCH_REVIEW_SCORE} | TITLE_TOKEN_MIN_MATCH: {TITLE_TOKEN_MIN_MATCH}")
+    print(f"DEAD_ON_BODY: {int(DEAD_ON_BODY)} | MAX_CANDIDATE_URLS: {MAX_CANDIDATE_URLS}")
     print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
     print(f"BOOTSTRAP_IF_ZERO: {int(BOOTSTRAP_IF_ZERO)} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
     print(f"FORCE_RESTORE_ALL_IF_ZERO: {int(FORCE_RESTORE_ALL_IF_ZERO)}")
