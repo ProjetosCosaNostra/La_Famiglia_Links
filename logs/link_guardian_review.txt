@@ -1,11 +1,25 @@
 ========================================
 LINK GUARDIAN — REVISÃO / MANUTENÇÃO
 ========================================
-Atualizado em: 2026-03-22T18:54:00Z
-Total de itens: 10
+Atualizado em: 2026-03-23T03:21:14Z
+Total de itens: 11
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-22T18:50:28Z
+Happened at: 2026-03-23T03:16:56Z
+Issue: #119
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
+SKU: amazon-echo-pop-kids-premium-marvel-azul
+Título: Echo Pop Kids Premium
+ID ML: 5J5PKG-PK7B
+Link atual: https://meli.la/1cSyrZ2
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://meli.la/1cSyrZ2
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-23T03:16:56Z
 Issue: #84
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
 SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
@@ -19,7 +33,7 @@ checked_url: https://meli.la/2G13vrw
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-6TSL
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-22T18:50:28Z
+Happened at: 2026-03-23T03:16:56Z
 Issue: #79
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/79
 SKU: webcam-emeet-smartcam-s600-4k-foco-automatico-usb
@@ -47,7 +61,7 @@ checked_url: https://mercadolivre.com/sec/1iReZ7Y
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H0JA&tid=bfc408b6-c74d-4c36-9bd3-852695f7cef6
 
 [MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-22T18:50:28Z
+Happened at: 2026-03-23T03:16:56Z
 Issue: #14
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/14
 SKU: porteiro-eletronico-wifi-camera-visao-noturna-audio
@@ -59,6 +73,62 @@ Classificação: storefront_social_lists_invalid
 Ação sugerida: trocar_link
 checked_url: https://mercadolivre.com/sec/2ZKyLhs
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-22T18:50:28Z
+Issue: #18
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/18
+SKU: escova-pet-vapor-3em1-elaf-5j5pkg-atvc
+Título: Escova 3 em 1 para Cães e Gatos — Remove Pelos + Vapor
+ID ML: 5J5PKG-ATVC
+Link atual: https://mercadolivre.com/sec/2ShroHC
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/2ShroHC
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ATVC&tid=ce4be6d4-9f1e-4a20-a5ea-145846437d7b
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-23T03:16:56Z
+Issue: #24
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/24
+SKU: xiaomi-mi-band-8-active-sport
+Título: Xiaomi Mi Band 8 Active (Sport)
+ID ML: 5J5PKG-WCW0
+Link atual: https://mercadolivre.com/sec/165s6Pa
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/165s6Pa
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WCW0&tid=75e07631-108d-43fa-be9b-f476f90de5fa
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-23T03:16:56Z
+Issue: #26
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/26
+SKU: ugreen-robot-nexode-gan-65w-lilas
+Título: Carregador 65W Ugreen Robot Nexode GaN (Lilás) — 3 portas (carga rápida)
+ID ML: 5J5PKG-9SG3
+Link atual: https://mercadolivre.com/sec/1WrAqC3
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/1WrAqC3
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9SG3&tid=6c4294eb-a648-4f82-9d49-48b9bd0b15f9
+
+[MANUTENÇÃO] Produto suspeito
+Happened at: 2026-03-23T03:16:56Z
+Issue: #44
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/44
+SKU: carregador-sem-fio-stand-inducao-preto
+Título: Carregador Sem Fio (Indução) em Stand — Compatível iPhone e Samsung
+ID ML: 5J5PKG-EAT0
+Link atual: https://mercadolivre.com/sec/2vd6ej7
+Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+Classificação: storefront_social_lists_invalid
+Ação sugerida: trocar_link
+checked_url: https://mercadolivre.com/sec/2vd6ej7
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EAT0&tid=11c92471-1315-4370-bec5-af0712ad5194
 
 [MANUTENÇÃO] Produto suspeito
 Happened at: 2026-03-22T15:34:09Z
@@ -87,59 +157,3 @@ Classificação: storefront_social_lists_invalid
 Ação sugerida: trocar_link
 checked_url: https://mercadolivre.com/sec/14jFsrH
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EN33&tid=edeb6238-249a-4f9f-b66c-e308039707e7
-
-[MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-22T18:50:28Z
-Issue: #18
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/18
-SKU: escova-pet-vapor-3em1-elaf-5j5pkg-atvc
-Título: Escova 3 em 1 para Cães e Gatos — Remove Pelos + Vapor
-ID ML: 5J5PKG-ATVC
-Link atual: https://mercadolivre.com/sec/2ShroHC
-Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-Classificação: storefront_social_lists_invalid
-Ação sugerida: trocar_link
-checked_url: https://mercadolivre.com/sec/2ShroHC
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ATVC&tid=ce4be6d4-9f1e-4a20-a5ea-145846437d7b
-
-[MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-22T18:50:28Z
-Issue: #24
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/24
-SKU: xiaomi-mi-band-8-active-sport
-Título: Xiaomi Mi Band 8 Active (Sport)
-ID ML: 5J5PKG-WCW0
-Link atual: https://mercadolivre.com/sec/165s6Pa
-Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-Classificação: storefront_social_lists_invalid
-Ação sugerida: trocar_link
-checked_url: https://mercadolivre.com/sec/165s6Pa
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WCW0&tid=75e07631-108d-43fa-be9b-f476f90de5fa
-
-[MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-22T18:50:28Z
-Issue: #26
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/26
-SKU: ugreen-robot-nexode-gan-65w-lilas
-Título: Carregador 65W Ugreen Robot Nexode GaN (Lilás) — 3 portas (carga rápida)
-ID ML: 5J5PKG-9SG3
-Link atual: https://mercadolivre.com/sec/1WrAqC3
-Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-Classificação: storefront_social_lists_invalid
-Ação sugerida: trocar_link
-checked_url: https://mercadolivre.com/sec/1WrAqC3
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9SG3&tid=6c4294eb-a648-4f82-9d49-48b9bd0b15f9
-
-[MANUTENÇÃO] Produto suspeito
-Happened at: 2026-03-22T18:50:28Z
-Issue: #44
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/44
-SKU: carregador-sem-fio-stand-inducao-preto
-Título: Carregador Sem Fio (Indução) em Stand — Compatível iPhone e Samsung
-ID ML: 5J5PKG-EAT0
-Link atual: https://mercadolivre.com/sec/2vd6ej7
-Destino detectado: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-Classificação: storefront_social_lists_invalid
-Ação sugerida: trocar_link
-checked_url: https://mercadolivre.com/sec/2vd6ej7
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EAT0&tid=11c92471-1315-4370-bec5-af0712ad5194
