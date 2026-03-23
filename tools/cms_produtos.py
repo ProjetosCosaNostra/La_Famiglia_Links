@@ -219,6 +219,68 @@ def _split_badges_optional(raw: str) -> Optional[List[str]]:
     return out
 
 
+def _split_csv_optional(raw: str) -> Optional[List[str]]:
+    if not raw or not raw.strip():
+        return None
+    raw2 = raw.replace(";", ",").replace("|", ",")
+    parts = [p.strip() for p in raw2.split(",")]
+    seen = set()
+    out: List[str] = []
+    for p in parts:
+        if not p:
+            continue
+        key = p.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(p)
+    return out
+
+
+def _clean_category_name(s: str) -> str:
+    x = _clean_optional_text(s)
+    x = re.sub(r"\s+", " ", x).strip(" ,-")
+    return x
+
+
+def _clean_search_aliases(raw: str) -> Optional[List[str]]:
+    items = _split_csv_optional(raw)
+    if not items:
+        return None
+
+    out: List[str] = []
+    seen = set()
+    for item in items:
+        x = _clean_optional_text(item)
+        if not x:
+            continue
+        key = x.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(x)
+    return out
+
+
+def _clean_secondary_categories(raw: str) -> Optional[List[str]]:
+    items = _split_csv_optional(raw)
+    if not items:
+        return None
+
+    out: List[str] = []
+    seen = set()
+    for item in items:
+        x = _clean_category_name(item)
+        if not x:
+            continue
+        key = x.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(x)
+    return out
+
+
 def _checkbox_state(body: str, text_regex: str) -> Optional[bool]:
     if not body:
         return None
@@ -650,6 +712,39 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         p["issue_url"] = _clean_url(str(p.get("issue_url") or ""))
         p["issue_title"] = _clean_optional_text(str(p.get("issue_title") or ""))
 
+        categoria_principal = _clean_category_name(str(p.get("categoria_principal") or ""))
+        if categoria_principal:
+            p["categoria_principal"] = categoria_principal
+        else:
+            p.pop("categoria_principal", None)
+
+        categorias_secundarias = p.get("categorias_secundarias")
+        if isinstance(categorias_secundarias, list):
+            sec_raw = ",".join(str(x) for x in categorias_secundarias)
+        else:
+            sec_raw = str(categorias_secundarias or "")
+        sec_clean = _clean_secondary_categories(sec_raw)
+        if sec_clean:
+            if categoria_principal:
+                sec_clean = [x for x in sec_clean if x.casefold() != categoria_principal.casefold()]
+            if sec_clean:
+                p["categorias_secundarias"] = sec_clean
+            else:
+                p.pop("categorias_secundarias", None)
+        else:
+            p.pop("categorias_secundarias", None)
+
+        aliases_busca = p.get("aliases_busca")
+        if isinstance(aliases_busca, list):
+            alias_raw = ",".join(str(x) for x in aliases_busca)
+        else:
+            alias_raw = str(aliases_busca or "")
+        alias_clean = _clean_search_aliases(alias_raw)
+        if alias_clean:
+            p["aliases_busca"] = alias_clean
+        else:
+            p.pop("aliases_busca", None)
+
         p.setdefault("badges", [])
         p.setdefault("price_text", "")
         p.setdefault("last_checked", "")
@@ -712,6 +807,15 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     title_raw = _first_meaningful_line(_get_section(sections, r"^T[ií]tulo\b"))
     badges_raw = _first_meaningful_line(_get_section(sections, r"Badges/Tags|Badges|Tags"))
     id_raw = _first_meaningful_line(_get_section(sections, r"ID\s+Mercado\s+Livre|ID\s+ML|ID\b"))
+    categoria_principal_raw = _first_meaningful_line(
+        _get_section(sections, r"Categoria\s+Principal|Categoria\s+Can[oô]nica\s+Principal")
+    )
+    categorias_secundarias_raw = _first_meaningful_line(
+        _get_section(sections, r"Categorias\s+Secund[aá]rias|Categorias\s+Extras|Categorias\s+Complementares")
+    )
+    aliases_busca_raw = _first_meaningful_line(
+        _get_section(sections, r"Aliases\s+de\s+Busca|Termos\s+de\s+Busca|Palavras\s+de\s+Busca")
+    )
 
     link_block = _get_section(sections, r"Link\s+Mercado\s+Livre|Link\s+ML|Link\b")
     new_link_block = _get_section(sections, r"Novo\s+Link\s+Mercado\s+Livre|Relink|Novo\s+Link\b")
@@ -746,6 +850,9 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     title = _clean_title(title_raw)
     id_busca = _clean_ml_id(id_raw)
     badges = _split_badges_optional(_clean_title(badges_raw))
+    categoria_principal = _clean_category_name(categoria_principal_raw)
+    categorias_secundarias = _clean_secondary_categories(categorias_secundarias_raw)
+    aliases_busca = _clean_search_aliases(aliases_busca_raw)
 
     review_action = _normalize_review_action(_first_meaningful_line(review_action_block))
     review_status = _normalize_review_status(_first_meaningful_line(review_status_block))
@@ -786,7 +893,10 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
             review_status = "ativo" if active else "em_revisao"
 
     if not title:
-        title = (issue.get("title") or "").strip()
+        issue_title_fallback = _clean_title(str(issue.get("title") or ""))
+        if re.match(r"(?i)^\[?cms\]?\s*[:\-]", issue_title_fallback) or re.search(r"(?i)editar\s+produto|novo\s*/\s*atualizar\s+produto|produto\s*:", issue_title_fallback):
+            issue_title_fallback = ""
+        title = issue_title_fallback
 
     if not sku:
         raise ValueError("Não consegui ler um SKU válido. (Evite colar imagem/HTML no campo SKU.)")
@@ -851,6 +961,9 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "issue_number": int(target_issue_number or source_issue_number or 0),
         "issue_url": source_issue_url,
         "issue_title": source_issue_title,
+        "categoria_principal": (categoria_principal or None),
+        "categorias_secundarias": (categorias_secundarias or None),
+        "aliases_busca": (aliases_busca or None),
         "quick_home": (bool(quick_home_state) if quick_home_state is not None else None),
         "quick_home_order": (int(quick_home_order) if quick_home_order > 0 else (0 if quick_home_state is False else None)),
         "_source_issue_number": source_issue_number,
@@ -1006,6 +1119,9 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         "issue_number",
         "issue_url",
         "issue_title",
+        "categoria_principal",
+        "categorias_secundarias",
+        "aliases_busca",
         "quick_home",
         "quick_home_order",
     }
@@ -1055,6 +1171,39 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     existing["issue_number"] = _clean_issue_number(existing.get("issue_number") or incoming.get("issue_number") or incoming.get("_target_issue_number") or incoming.get("_source_issue_number"))
     existing["issue_url"] = _clean_url(str(existing.get("issue_url") or incoming.get("issue_url") or ""))
     existing["issue_title"] = _clean_optional_text(str(existing.get("issue_title") or incoming.get("issue_title") or ""))
+
+    categoria_principal_existing = _clean_category_name(str(existing.get("categoria_principal") or ""))
+    if categoria_principal_existing:
+        existing["categoria_principal"] = categoria_principal_existing
+    else:
+        existing.pop("categoria_principal", None)
+
+    categorias_secundarias_existing = existing.get("categorias_secundarias")
+    if isinstance(categorias_secundarias_existing, list):
+        sec_raw_existing = ",".join(str(x) for x in categorias_secundarias_existing)
+    else:
+        sec_raw_existing = str(categorias_secundarias_existing or "")
+    sec_clean_existing = _clean_secondary_categories(sec_raw_existing)
+    if sec_clean_existing:
+        if categoria_principal_existing:
+            sec_clean_existing = [x for x in sec_clean_existing if x.casefold() != categoria_principal_existing.casefold()]
+        if sec_clean_existing:
+            existing["categorias_secundarias"] = sec_clean_existing
+        else:
+            existing.pop("categorias_secundarias", None)
+    else:
+        existing.pop("categorias_secundarias", None)
+
+    aliases_busca_existing = existing.get("aliases_busca")
+    if isinstance(aliases_busca_existing, list):
+        alias_raw_existing = ",".join(str(x) for x in aliases_busca_existing)
+    else:
+        alias_raw_existing = str(aliases_busca_existing or "")
+    alias_clean_existing = _clean_search_aliases(alias_raw_existing)
+    if alias_clean_existing:
+        existing["aliases_busca"] = alias_clean_existing
+    else:
+        existing.pop("aliases_busca", None)
 
     if "quick_home" in existing:
         parsed_quick_home = existing.get("quick_home")
@@ -1142,6 +1291,12 @@ def main() -> int:
     print(f"Canonical URL: {incoming.get('canonical_url')}")
     print(f"ID Busca: {incoming.get('id_busca')}")
     print(f"Image: {incoming.get('image')}")
+    if incoming.get("categoria_principal") is not None:
+        print(f"Categoria Principal: {incoming.get('categoria_principal')}")
+    if incoming.get("categorias_secundarias") is not None:
+        print(f"Categorias Secundárias: {incoming.get('categorias_secundarias')}")
+    if incoming.get("aliases_busca") is not None:
+        print(f"Aliases Busca: {incoming.get('aliases_busca')}")
     if incoming.get("quick_home") is not None:
         print(f"Quick Home: {incoming.get('quick_home')}")
     if incoming.get("quick_home_order") is not None:
