@@ -218,6 +218,133 @@ def _clean_url(u: str) -> str:
     return x.strip()
 
 
+def _normalize_text(s: str) -> str:
+    return re.sub(r"\s+", " ", (s or "").strip().lower())
+
+
+def _tokenize_product_text(s: str) -> List[str]:
+    base = _normalize_text(s)
+    toks = re.findall(r"[a-z0-9]{3,}", base)
+    stop = {
+        "para", "com", "sem", "uma", "das", "dos", "and", "the", "usb", "preto",
+        "premium", "produto", "portatil", "carregador", "power", "bank", "plus",
+        "mini", "pro", "novo", "nova", "mais"
+    }
+    seen = set()
+    out: List[str] = []
+    for tok in sorted(toks, key=len, reverse=True):
+        if tok in stop:
+            continue
+        if tok in seen:
+            continue
+        seen.add(tok)
+        out.append(tok)
+        if len(out) >= 8:
+            break
+    return out
+
+
+def _product_evidence_score(p: Dict[str, Any], body_sample: str, final_url: str) -> Tuple[int, List[str]]:
+    score = 0
+    reasons: List[str] = []
+    hay = _normalize_text(body_sample)
+    final = _normalize_text(final_url)
+
+    id_busca = _normalize_text(str(p.get("id_busca") or ""))
+    if id_busca:
+        if id_busca in hay:
+            score += 8
+            reasons.append("id_busca_body")
+        if id_busca in final:
+            score += 6
+            reasons.append("id_busca_url")
+
+    title = str(p.get("title") or "")
+    for tok in _tokenize_product_text(title):
+        if tok in hay:
+            score += 2
+            reasons.append(f"title:{tok}")
+        elif tok in final:
+            score += 1
+            reasons.append(f"url:{tok}")
+
+    sku = _normalize_text(str(p.get("sku") or ""))
+    if sku:
+        for tok in _tokenize_product_text(sku.replace("-", " ")):
+            if tok in hay:
+                score += 1
+                reasons.append(f"sku:{tok}")
+
+    for badge in (p.get("badges") or [])[:6]:
+        badge_norm = _normalize_text(str(badge or ""))
+        if badge_norm and badge_norm in hay:
+            score += 1
+            reasons.append(f"badge:{badge_norm}")
+
+    if "ir para produto" in hay or "ver produto" in hay or "comprar" in hay:
+        score += 2
+        reasons.append("cta_produto")
+
+    return score, reasons
+
+
+def _evaluate_storefront_open_url(p: Dict[str, Any]) -> CheckResult | None:
+    storefront = _clean_url(p.get("open_url") or "")
+    if not storefront:
+        return None
+
+    res = _check_url(storefront)
+
+    # Open_url real do card manda primeiro.
+    if res.reason in {"storefront_social_lists_invalid", "storefront_listing_invalid"}:
+        return res
+
+    # Produto direto sempre OK.
+    if res.ok and _looks_like_product_destination(res.final_url):
+        return res
+
+    # Perfil social só vale como OK se houver evidência do produto.
+    if _is_social_profile_path(res.final_url):
+        score, evidence = _product_evidence_score(p, _fetch_status_and_sample(storefront)[2] if res.reason == "social_profile_ok" else "", res.final_url)
+        if SOCIAL_COUNTS_AS_OK and score >= 8:
+            return CheckResult(
+                ok=True,
+                temporary=False,
+                status=res.status,
+                final_url=res.final_url,
+                reason="social_profile_product_confirmed",
+                hard_dead=False,
+                checked_url=res.checked_url,
+                storefront_invalid=False,
+                promoted_url="",
+            )
+        if score >= 4:
+            return CheckResult(
+                ok=False,
+                temporary=False,
+                status=res.status,
+                final_url=res.final_url,
+                reason="social_profile_needs_review",
+                hard_dead=False,
+                checked_url=res.checked_url,
+                storefront_invalid=True,
+                promoted_url="",
+            )
+        return CheckResult(
+            ok=False,
+            temporary=False,
+            status=res.status,
+            final_url=res.final_url,
+            reason="storefront_social_profile_unconfirmed",
+            hard_dead=False,
+            checked_url=res.checked_url,
+            storefront_invalid=True,
+            promoted_url="",
+        )
+
+    return res
+
+
 def _host_of(u: str) -> str:
     try:
         pu = urlparse(u or "")
@@ -585,8 +712,8 @@ def _check_url(url: str) -> CheckResult:
 
         if _is_social_profile_path(unwrapped) and status == 200:
             return CheckResult(
-                ok=True,
-                temporary=False,
+                ok=bool(SOCIAL_COUNTS_AS_OK),
+                temporary=not bool(SOCIAL_COUNTS_AS_OK),
                 status=status,
                 final_url=unwrapped,
                 reason="social_profile_ok",
@@ -612,8 +739,8 @@ def _check_url(url: str) -> CheckResult:
     if _is_social_profile_path(final_url):
         if status == 200:
             return CheckResult(
-                ok=True,
-                temporary=False,
+                ok=bool(SOCIAL_COUNTS_AS_OK),
+                temporary=not bool(SOCIAL_COUNTS_AS_OK),
                 status=status,
                 final_url=final_url or u,
                 reason="social_profile_ok",
@@ -704,20 +831,41 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
             promoted_url="",
         )
 
-    first_result: CheckResult | None = None
+    # 1) Primeiro julga o link real do card/storefront.
+    storefront_res = _evaluate_storefront_open_url(p)
+    if storefront_res is not None:
+        if storefront_res.reason in {
+            "storefront_social_lists_invalid",
+            "storefront_listing_invalid",
+            "storefront_social_profile_unconfirmed",
+            "social_profile_needs_review",
+        }:
+            return storefront_res
+        if storefront_res.ok and storefront_res.reason in {
+            "ok", "ok_unwrapped", "social_profile_product_confirmed"
+        }:
+            return storefront_res
+
+    first_result: CheckResult | None = storefront_res
     social_invalid_result: CheckResult | None = None
     listing_invalid_result: CheckResult | None = None
     dead_result: CheckResult | None = None
     temp_result: CheckResult | None = None
     generic_result: CheckResult | None = None
 
+    open_url_clean = _clean_url(p.get("open_url") or "")
+
     for url in candidates:
+        if open_url_clean and _clean_url(url) == open_url_clean:
+            continue
+
         res = _check_url(url)
 
         if first_result is None:
             first_result = res
 
-        if res.ok and not res.storefront_invalid:
+        # Social profile genérico não basta para "OK" fora do open_url.
+        if res.ok and not res.storefront_invalid and res.reason != "social_profile_ok":
             return res
 
         if res.reason == "storefront_social_lists_invalid" and social_invalid_result is None:
@@ -769,7 +917,6 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
         storefront_invalid=False,
         promoted_url="",
     )
-
 
 def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
     return (0 if bool(p.get("active")) else 1, 0 if bool(p.get("featured")) else 1)
@@ -1258,13 +1405,20 @@ def _append_review_item(history: Dict[str, Any], item: Dict[str, Any]) -> bool:
     if not isinstance(items, list):
         items = []
 
-    fp = _review_fingerprint(item)
+    target_sku = str(item.get("sku") or "").strip()
+    target_fp = _review_fingerprint(item)
+
     for old in items:
-        if isinstance(old, dict) and _review_fingerprint(old) == fp:
+        if not isinstance(old, dict):
+            continue
+        old_sku = str(old.get("sku") or "").strip()
+        old_fp = _review_fingerprint(old)
+        if (target_sku and old_sku == target_sku) or (old_fp == target_fp):
+            changed = old != item
             old.update(item)
-            history["items"] = items
+            history["items"] = [x for x in items if isinstance(x, dict)]
             _refresh_review_history_meta(history)
-            return False
+            return changed
 
     items.append(item)
     items = [x for x in items if isinstance(x, dict)]
@@ -1273,8 +1427,7 @@ def _append_review_item(history: Dict[str, Any], item: Dict[str, Any]) -> bool:
         key=lambda x: (
             priority_order.get(str(x.get("priority") or "media").strip().lower(), 9),
             str(x.get("happened_at") or ""),
-        ),
-        reverse=False,
+        )
     )
     items.sort(key=lambda x: str(x.get("happened_at") or ""), reverse=True)
 
@@ -1284,7 +1437,6 @@ def _append_review_item(history: Dict[str, Any], item: Dict[str, Any]) -> bool:
     history["items"] = items
     _refresh_review_history_meta(history)
     return True
-
 
 def _clear_review_items_for_sku(history: Dict[str, Any], sku: str) -> int:
     target = str(sku or "").strip()
