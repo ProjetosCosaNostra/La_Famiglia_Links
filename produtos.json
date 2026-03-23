@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T22:38:28Z",
+  "updated_at": "2026-03-23T23:58:55Z",
   "products": [
     {
       "sku": "carregador-sem-fio-stand-inducao-preto",
@@ -5414,7 +5414,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6G0K",
       "image": "https://github.com/user-attachments/assets/b8e662aa-df95-4c5a-8803-ceb2527be1ce",
       "active": false,
-      "featured": true,
+      "featured": false,
       "short_url": "https://meli.la/1Lxke7G",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHBDu8VELhogJX5CncvYCg9DWolGfl6mDMiMKRhWKrfeSYZ7tU9xjfsOW7pAUGFmVUkV5W%2FjmKsYYscTbpMDGJW2V4R51ozuzJDASxD7U125CiyAENnNKvTq9SQrT73DcfkTuuT1iOb6xo0jRadyS%2FoUpW1WTJT0MdUoUnwnE6MVyre7VCcU4T3Dr4lI4g9BICcAq2M%3D",
       "price_text": "",
@@ -5510,6 +5510,59 @@
       "guardian_review_flag": true,
       "guardian_review_reason": "storefront_social_lists_invalid",
       "guardian_review_at": "2026-03-23T21:26:40Z"
+    },
+    {
+      "sku": "iluminador-liquido-bt-hello-kitty-bruna-tavares-cake-xx05",
+      "title": "Iluminador Líquido BT Hello Kitty Bruna Tavares - Cake",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Hello Kitty",
+        "Bruna Tavares",
+        "Iluminador",
+        "Glow Dourado",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-XX05",
+      "open_url": "https://meli.la/1mCkRoz",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAHQQjTP309kIeygqsHk8QdTWJF48hbK6rCw%2Fh88dT%2FQHlEK9kr0%2Bmh24ExeaDuMf1zuK3YrWXb91of2d35uM1P9bsQBvqv9Ljtuajrvbe50I%2FEh8WeCGiTw3Uf%2FoJ12F4zKnNbnf5oTzuVujQgUF1BUJAgD0JFwHlGjmgJP42yO1cZF9S6pb53knnTE42bP8GniQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XX05",
+      "image": "https://github.com/user-attachments/assets/3804403b-afa2-4c66-9752-994b0786e896",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 152,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/152",
+      "issue_title": "Iluminador Líquido BT Hello Kitty Bruna Tavares - Cake",
+      "categoria_principal": "Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Rosto",
+        "Iluminador"
+      ],
+      "aliases_busca": [
+        "iluminador bt hello kitty",
+        "bruna tavares cake",
+        "iluminador liquido hello kitty",
+        "glow dourado hello kitty",
+        "bt hello kitty cake"
+      ],
+      "quick_home": true,
+      "quick_home_order": 1,
+      "_source_issue_number": 152,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1mCkRoz",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAHQQjTP309kIeygqsHk8QdTWJF48hbK6rCw%2Fh88dT%2FQHlEK9kr0%2Bmh24ExeaDuMf1zuK3YrWXb91of2d35uM1P9bsQBvqv9Ljtuajrvbe50I%2FEh8WeCGiTw3Uf%2FoJ12F4zKnNbnf5oTzuVujQgUF1BUJAgD0JFwHlGjmgJP42yO1cZF9S6pb53knnTE42bP8GniQ%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
