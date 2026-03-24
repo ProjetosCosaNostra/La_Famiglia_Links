@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-24T02:56:04Z
+Atualizado em: 2026-03-24T07:27:17Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -21,7 +21,7 @@ TOP MOTIVOS
 ITENS PENDENTES
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-24T02:50:10Z
+Quando: 2026-03-24T07:15:42Z
 Issue: #14
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/14
 SKU: porteiro-eletronico-wifi-camera-visao-noturna-audio
@@ -37,7 +37,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a
 
 [ALTA] review_only_storefront
-Quando: 2026-03-24T02:50:10Z
+Quando: 2026-03-24T07:15:42Z
 Issue: #119
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
 SKU: amazon-echo-pop-kids-premium-marvel-azul
@@ -48,7 +48,7 @@ Motivo: storefront_social_lists_invalid
 Status HTTP: 200
 Badges: Achados do Dia, Tecnologia, Alexa, Echo Pop, Kids, Marvel, Casa Inteligente, Premium
 open_url: https://meli.la/1cSyrZ2
-checked_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+checked_url: https://meli.la/1cSyrZ2
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PK7B
 
