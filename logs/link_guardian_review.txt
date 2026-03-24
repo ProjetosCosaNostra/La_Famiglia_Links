@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-23T21:29:44Z
+Atualizado em: 2026-03-24T02:56:04Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -21,36 +21,36 @@ TOP MOTIVOS
 ITENS PENDENTES
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-23T21:26:40Z
+Quando: 2026-03-24T02:50:10Z
+Issue: #14
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/14
+SKU: porteiro-eletronico-wifi-camera-visao-noturna-audio
+Título: Porteiro Eletrônico Wi-Fi com Câmera | Visão Noturna + Áudio
+ID ML: 5J5PKG-YLW9
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Status HTTP: 200
+Badges: Achados do Dia, Segurança Residencial, Porteiro Eletrônico, Campainha Wi-Fi, Vídeo Porteiro, Câmera, Visão Noturna, Áudio Bidirecional
+open_url: https://mercadolivre.com/sec/2ZKyLhs
+checked_url: https://mercadolivre.com/sec/2ZKyLhs
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a
+
+[ALTA] review_only_storefront
+Quando: 2026-03-24T02:50:10Z
 Issue: #119
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
 SKU: amazon-echo-pop-kids-premium-marvel-azul
-Título: Echo Pop Kids Premium
+Título: Amazon Echo Pop Alexa Kids Marvel Azul
 ID ML: 5J5PKG-PK7B
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Status HTTP: 200
-Badges: Achados do Dia, Alexa Kids, Echo Pop, Marvel, Som, Quarto Infantil, Azul, Assistente Virtual
+Badges: Achados do Dia, Tecnologia, Alexa, Echo Pop, Kids, Marvel, Casa Inteligente, Premium
 open_url: https://meli.la/1cSyrZ2
-checked_url: https://meli.la/1cSyrZ2
+checked_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PK7B&tid=7ba14d38-96c7-4fd8-9018-3d3ca6e2f105
-
-[ALTA] review_only_storefront
-Quando: 2026-03-23T21:26:40Z
-Issue: #84
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
-SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
-Título: 💾👑 SSD NVMe Kingston 1TB PCIe 4.0
-ID ML: 5J5PKG-6TSL
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, SSD NVMe, Kingston, PCIe 4.0, M.2 2280, 1TB, Upgrade PC, Notebook
-open_url: https://meli.la/2G13vrw
-checked_url: https://meli.la/2G13vrw
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6TSL&tid=8a7af5c4-706d-4441-9e9f-b978cd15f763
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PK7B
 
 [ALTA] review_only_storefront
 Quando: 2026-03-23T21:26:40Z
