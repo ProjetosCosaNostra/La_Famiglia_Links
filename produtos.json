@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-24T19:16:26Z",
+  "updated_at": "2026-03-24T21:04:07Z",
   "products": [
     {
       "sku": "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy",
@@ -20,7 +20,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGssi0F5bljEQd%2FCYQBHrE5QHj0bw2CF55V6Ju6ioXlMZhx8%2FCyAw2MbE%2Bt8Tc1l%2B7r7bG%2F9jXZWr09Xj6fHBaQlvODD07M99Ye1Bv11Ue4cX19o1fOL7IE1%2BIBK%2FTDoRW7tVHh%2BiuoFbOURS0YqJkw7aa74dDIykE%2FRvLJzQys%2FXRLLUqG%2BzopOWTYM44lZ7oP00Q%3D%3D",
       "image": "https://github.com/user-attachments/assets/4b5bbd5f-e255-4e49-9eda-e2d66c43ad4b",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -5571,6 +5571,58 @@
       "quick_home": true,
       "_source_issue_number": 150,
       "_target_issue_number": 119
+    },
+    {
+      "sku": "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores",
+      "title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Belle Angel",
+        "Nude",
+        "Paleta de Sombras"
+      ],
+      "id_busca": "5J5PKG-R20J",
+      "open_url": "https://meli.la/2ZTeVJ2",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHaLwUYzmr8JnuSaqVGP%2FHUJqEzXvY7WX6NY67eOr9jyqU1jPUeBKnneXutOjJZzUBTVjHWvBVEKqUuTY4xJMGBeJTaqiAIJv4r4gZH5wMyQo1VWttn2pA7VgGF9fYZ1Opx6QeZ1ZlZAAS7POfXfLQCJ6FnvKzqbQEAWvPcvIMaiedqwWweRM%2FqUvVd8JfR9JV29Cg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R20J",
+      "image": "https://github.com/user-attachments/assets/d41c35db-3460-4790-b008-d67aa993cc52",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 154,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154",
+      "issue_title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Olhos",
+        "Paleta de Sombras"
+      ],
+      "aliases_busca": [
+        "paleta belle angel",
+        "paleta de maquiagem belle angel",
+        "paleta belle angel 28 sombras",
+        "paleta nude belle angel",
+        "paleta de sombras belle angel",
+        "paleta com pinceis",
+        "sombra 28 cores"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 154,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2ZTeVJ2",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHaLwUYzmr8JnuSaqVGP%2FHUJqEzXvY7WX6NY67eOr9jyqU1jPUeBKnneXutOjJZzUBTVjHWvBVEKqUuTY4xJMGBeJTaqiAIJv4r4gZH5wMyQo1VWttn2pA7VgGF9fYZ1Opx6QeZ1ZlZAAS7POfXfLQCJ6FnvKzqbQEAWvPcvIMaiedqwWweRM%2FqUvVd8JfR9JV29Cg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
