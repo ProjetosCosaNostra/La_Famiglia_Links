@@ -1,22 +1,59 @@
 {
-  "updated_at": "2026-03-24T07:27:17Z",
-  "total_items": 3,
+  "updated_at": "2026-03-24T13:46:35Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 5
     },
-    "high_priority": 3
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-03-24T07:15:42Z",
+      "happened_at": "2026-03-24T13:43:15Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 65,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/65",
+      "issue_title": "[CMS] Produto: Escova Secadora Britânia 4 em 1 (1300W) — Cabo Giratório (Rosa)",
+      "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
+      "title": "Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)",
+      "id_busca": "5J5PKG-K8TV",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1Vd3P8y",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1Vd3P8y",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K8TV&tid=3ad1cedb-5ea8-459c-a50f-0353eb988b65",
+      "short_url": "https://meli.la/1Vd3P8y",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBArdzbLTj8ES0ZJD0N27QCT96hThCOjX1pM7Fae%2FfK3dL4%2Bst3PPteseias2%2BftAdExxl297mqki6dWRUO6R6fyifOQ%2BVy1H9u1jp4GlxzGJ7qCdl5RFoWaWk2S8gG20uvFNObDlKumOtOBKa24SMVVvU2mVZStTyKLX18%2BSutj%2FQEorldHqdB3Y87LvgTcnelA%2Bqw%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Cabelo",
+        "Escova Secadora",
+        "4 em 1",
+        "1300W",
+        "Cabo Giratório 360°",
+        "Rosa"
+      ]
+    },
+    {
+      "happened_at": "2026-03-24T13:43:15Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -53,7 +90,43 @@
       ]
     },
     {
-      "happened_at": "2026-03-24T07:15:42Z",
+      "happened_at": "2026-03-24T13:43:15Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 23,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23",
+      "issue_title": "[CMS] Produto: Fire TV Stick 4K (Alexa) — Wi-Fi 6",
+      "sku": "amazon-fire-tv-stick-4k-wifi6",
+      "title": "Fire TV Stick 4K (Alexa) — Wi-Fi 6 (Amazon)",
+      "id_busca": "5J5PKG-J4Z5",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/1nMqFbz",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/1nMqFbz",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGhlqJ4Is5KWGu6kd71u3zASTFi8Y6PtCg%2Fv3wKHcLPD7GzC29TcX%2FA1fJ9bcLgLGxH2dF8aYemCsOUqTjyaFWk8JnK7E0sBduv5Az9rb6F6XszLxRehc%2BynapplO7NDXYtq6Xn2tSj6%2Fl4uLVlPcRWo%2FF8nFO%2Fn9r4Fp4dnhKANFYKJ3pUnSM%2Bdy%2FXV67mUtL2faV8%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGhlqJ4Is5KWGu6kd71u3zASTFi8Y6PtCg%2Fv3wKHcLPD7GzC29TcX%2FA1fJ9bcLgLGxH2dF8aYemCsOUqTjyaFWk8JnK7E0sBduv5Az9rb6F6XszLxRehc%2BynapplO7NDXYtq6Xn2tSj6%2Fl4uLVlPcRWo%2FF8nFO%2Fn9r4Fp4dnhKANFYKJ3pUnSM%2Bdy%2FXV67mUtL2faV8%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Streaming",
+        "4K",
+        "Alexa",
+        "Wi-Fi 6",
+        "Smart TV",
+        "Preto"
+      ]
+    },
+    {
+      "happened_at": "2026-03-24T13:43:15Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
