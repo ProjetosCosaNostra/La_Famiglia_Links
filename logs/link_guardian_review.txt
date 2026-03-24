@@ -1,43 +1,27 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-24T13:46:35Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-03-24T19:31:47Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 2
 
 ITENS PENDENTES
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-24T13:43:15Z
-Issue: #65
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/65
-SKU: escova-secadora-britania-bec07r-4em1-1300w-rosa
-Título: Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)
-ID ML: 5J5PKG-K8TV
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, Beleza, Cabelo, Escova Secadora, 4 em 1, 1300W, Cabo Giratório 360°, Rosa
-open_url: https://meli.la/1Vd3P8y
-checked_url: https://meli.la/1Vd3P8y
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K8TV&tid=3ad1cedb-5ea8-459c-a50f-0353eb988b65
-
-[ALTA] review_only_storefront
-Quando: 2026-03-24T13:43:15Z
+Quando: 2026-03-24T19:16:26Z
 Issue: #14
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/14
 SKU: porteiro-eletronico-wifi-camera-visao-noturna-audio
@@ -51,38 +35,6 @@ open_url: https://mercadolivre.com/sec/2ZKyLhs
 checked_url: https://mercadolivre.com/sec/2ZKyLhs
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a
-
-[ALTA] review_only_storefront
-Quando: 2026-03-24T13:43:15Z
-Issue: #23
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
-SKU: amazon-fire-tv-stick-4k-wifi6
-Título: Fire TV Stick 4K (Alexa) — Wi-Fi 6 (Amazon)
-ID ML: 5J5PKG-J4Z5
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
-open_url: https://mercadolivre.com/sec/1nMqFbz
-checked_url: https://mercadolivre.com/sec/1nMqFbz
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
-
-[ALTA] review_only_storefront
-Quando: 2026-03-24T13:43:15Z
-Issue: #119
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
-SKU: amazon-echo-pop-kids-premium-marvel-azul
-Título: Amazon Echo Pop Alexa Kids Marvel Azul
-ID ML: 5J5PKG-PK7B
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, Tecnologia, Alexa, Echo Pop, Kids, Marvel, Casa Inteligente, Premium
-open_url: https://meli.la/1cSyrZ2
-checked_url: https://meli.la/1cSyrZ2
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PK7B
 
 [ALTA] review_only_storefront
 Quando: 2026-03-23T21:26:40Z
