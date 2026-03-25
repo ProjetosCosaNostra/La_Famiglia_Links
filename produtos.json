@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-25T19:07:13Z",
+  "updated_at": "2026-03-25T20:10:28Z",
   "products": [
     {
       "sku": "cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto",
@@ -19,7 +19,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHmgJz4cxGJJrrLTY1DgDO4LLCqUxT2W4hYhKvtAn7dBs16INdmH5qYXmPfcffeIP5so1Bs4Aloo91e2Qi7pFx6KXHwZUEfKwwvgaAhWFH5eSqSEJDCCjAWWGjkUNUmb4pJdDPkgJHXSeV9%2Bf5skKU99ZsjeiGT0OITG7r0gjnJoBRIhHIsA5FUQEyu3Rb0UvH4x6Q%3D%3D",
       "image": "https://github.com/user-attachments/assets/790ab100-6bd8-46fc-a9e9-04dfc8af3429",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -5693,6 +5693,60 @@
       "quick_home": true,
       "_source_issue_number": 150,
       "_target_issue_number": 119
+    },
+    {
+      "sku": "po-facial-bruna-tavares-bt-skinpowder",
+      "title": "Pó Facial Bruna Tavares BT Skinpowder",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Bruna Tavares",
+        "BT Skinpowder",
+        "Pó Facial",
+        "Rosto"
+      ],
+      "id_busca": "5J5PKG-DVYL",
+      "open_url": "https://meli.la/2LAp7Da",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPKlfH4sscHQK6t9pthtufjGIhH22fjw3QWpDdgqniiAh4ODFOfoN2Duf%2FM%2FuyzrNjg8j3vRANwRRBFsz%2FlYfHy5CDlIIVdM%2B0L%2FagR%2BfyIedRBFC7t3INbe78lIazz5qMjAoGPW24WjWyNddFroazK7ZhZ%2B0bdzvSciGlk4DF8qoWnmT3aoGDfBA%2FeVNbuu5Lc%2FcA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-DVYL",
+      "image": "https://github.com/user-attachments/assets/c53da94e-505b-4f6c-b757-643357fb6e94",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 156,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/156",
+      "issue_title": "Pó Facial Bruna Tavares BT Skinpowder",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Rosto",
+        "Bases Faciais",
+        "Pó Facial"
+      ],
+      "aliases_busca": [
+        "po facial bruna tavares",
+        "bt skinpowder",
+        "po facial bt skinpowder",
+        "po facial bruna tavares bt",
+        "po facial aveludado",
+        "po facial solto bruna tavares",
+        "skinpowder bruna tavares"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 156,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2LAp7Da",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPKlfH4sscHQK6t9pthtufjGIhH22fjw3QWpDdgqniiAh4ODFOfoN2Duf%2FM%2FuyzrNjg8j3vRANwRRBFsz%2FlYfHy5CDlIIVdM%2B0L%2FagR%2BfyIedRBFC7t3INbe78lIazz5qMjAoGPW24WjWyNddFroazK7ZhZ%2B0bdzvSciGlk4DF8qoWnmT3aoGDfBA%2FeVNbuu5Lc%2FcA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
