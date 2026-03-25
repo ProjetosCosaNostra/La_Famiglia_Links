@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-25T07:14:14Z",
+  "updated_at": "2026-03-25T12:48:37Z",
   "products": [
     {
       "sku": "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores",
@@ -18,7 +18,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHaLwUYzmr8JnuSaqVGP%2FHUJqEzXvY7WX6NY67eOr9jyqU1jPUeBKnneXutOjJZzUBTVjHWvBVEKqUuTY4xJMGBeJTaqiAIJv4r4gZH5wMyQo1VWttn2pA7VgGF9fYZ1Opx6QeZ1ZlZAAS7POfXfLQCJ6FnvKzqbQEAWvPcvIMaiedqwWweRM%2FqUvVd8JfR9JV29Cg%3D%3D",
       "image": "https://github.com/user-attachments/assets/d41c35db-3460-4790-b008-d67aa993cc52",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -5632,6 +5632,61 @@
       "quick_home": true,
       "_source_issue_number": 150,
       "_target_issue_number": 119
+    },
+    {
+      "sku": "cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto",
+      "title": "Cherry Lash One Advance Black Glue 3ml para extensão de cílios cor preto",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Cherry Lash",
+        "Extensão de Cílios",
+        "Cola para Cílios",
+        "Lash Designer",
+        "Preto"
+      ],
+      "id_busca": "5J5PKG-YL2L",
+      "open_url": "https://meli.la/1BpJYQ8",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHmgJz4cxGJJrrLTY1DgDO4LLCqUxT2W4hYhKvtAn7dBs16INdmH5qYXmPfcffeIP5so1Bs4Aloo91e2Qi7pFx6KXHwZUEfKwwvgaAhWFH5eSqSEJDCCjAWWGjkUNUmb4pJdDPkgJHXSeV9%2Bf5skKU99ZsjeiGT0OITG7r0gjnJoBRIhHIsA5FUQEyu3Rb0UvH4x6Q%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-YL2L",
+      "image": "https://github.com/user-attachments/assets/790ab100-6bd8-46fc-a9e9-04dfc8af3429",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 155,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/155",
+      "issue_title": "Cola Cherry Lash One Advance Black Glue 3ml",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Olhos",
+        "Cílios e Sobrancelhas",
+        "Cola Para Cílios Postiços"
+      ],
+      "aliases_busca": [
+        "cherry lash one",
+        "cola cherry lash",
+        "cherry lash one advance black glue",
+        "cola para extensão de cílios",
+        "cola para cílios postiços",
+        "cola lash one 3ml",
+        "cola cherry lash preta",
+        "advance black glue 3ml"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 155,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1BpJYQ8",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHmgJz4cxGJJrrLTY1DgDO4LLCqUxT2W4hYhKvtAn7dBs16INdmH5qYXmPfcffeIP5so1Bs4Aloo91e2Qi7pFx6KXHwZUEfKwwvgaAhWFH5eSqSEJDCCjAWWGjkUNUmb4pJdDPkgJHXSeV9%2Bf5skKU99ZsjeiGT0OITG7r0gjnJoBRIhHIsA5FUQEyu3Rb0UvH4x6Q%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
