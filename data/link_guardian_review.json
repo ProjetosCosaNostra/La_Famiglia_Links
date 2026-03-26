@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-03-26T19:25:20Z",
-  "total_items": 4,
+  "updated_at": "2026-03-26T20:32:20Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 4,
+    "unique_skus": 2,
     "by_state": {
-      "review_only_storefront": 4
+      "review_only_storefront": 2
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 4
+      "storefront_social_lists_invalid": 2
     },
     "by_action": {
-      "trocar_link": 4
+      "trocar_link": 2
     },
-    "high_priority": 4
+    "high_priority": 2
   },
   "items": [
     {
@@ -50,80 +50,6 @@
         "Iluminador",
         "Glow Dourado",
         "Premium"
-      ]
-    },
-    {
-      "happened_at": "2026-03-26T19:20:03Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 116,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/116",
-      "issue_title": "[CMS] Produto: 📺 Smart TV Philco Roku 32” Premium",
-      "sku": "smart-tv-philco-roku-32-premium",
-      "title": "📺 Smart TV Philco Roku 32” Premium",
-      "id_busca": "5J5PKG-AHDQ",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/19Lo34Y",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/19Lo34Y",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHDQ&tid=9ad0d3ed-fbc3-47c1-8b35-05a838b01d66",
-      "short_url": "https://meli.la/19Lo34Y",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Smart TV",
-        "Philco",
-        "Roku TV",
-        "Dolby Audio",
-        "Streaming",
-        "32 Polegadas",
-        "TV"
-      ]
-    },
-    {
-      "happened_at": "2026-03-26T19:20:03Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 0,
-      "issue_url": "",
-      "issue_title": "",
-      "sku": "se-j-existir-usa-amazon-echo-pop-c2h4r9-2",
-      "title": "Echo Pop Smart Speaker (Alexa) — Preto (Amazon)",
-      "id_busca": "5J5PKG-ZMR8",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/19Abme6",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/19Abme6",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDBPbjjd0uQspWk8ev%2B4FufZSnwsxBp4aQ2sr0EeEVyk3jbak8FVnftTGdNuPKBKcMk%2BZSgRTspeUn25weNHGPlzSxuGAUj9JkT1cRrQazjy5P7hkKRAkry8MvJPpz67euifCETHeJUQjy%2B%2BLsr%2B%2B9Ak%2FGLBf%2BNRD1bvkt0F%2BzHFpZQMygfJI2a4mz6RY%2BNvMF%2Bord4%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZMR8&tid=4859dfe6-8a08-4249-ac82-57085079ea12",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDBPbjjd0uQspWk8ev%2B4FufZSnwsxBp4aQ2sr0EeEVyk3jbak8FVnftTGdNuPKBKcMk%2BZSgRTspeUn25weNHGPlzSxuGAUj9JkT1cRrQazjy5P7hkKRAkry8MvJPpz67euifCETHeJUQjy%2B%2BLsr%2B%2B9Ak%2FGLBf%2BNRD1bvkt0F%2BzHFpZQMygfJI2a4mz6RY%2BNvMF%2Bord4%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Alexa",
-        "Echo Pop",
-        "Smart Speaker",
-        "Casa inteligente",
-        "Wi-Fi",
-        "Bluetooth",
-        "Preto"
       ]
     },
     {

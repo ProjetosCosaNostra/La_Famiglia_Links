@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-26T19:25:20Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-03-26T20:32:20Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 2
 
 ITENS PENDENTES
 ----------------------------------------
@@ -35,36 +35,6 @@ open_url: https://meli.la/1mCkRoz
 checked_url: https://meli.la/1mCkRoz
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAHQQjTP309kIeygqsHk8QdTWJF48hbK6rCw%2Fh88dT%2FQHlEK9kr0%2Bmh24ExeaDuMf1zuK3YrWXb91of2d35uM1P9bsQBvqv9Ljtuajrvbe50I%2FEh8WeCGiTw3Uf%2FoJ12F4zKnNbnf5oTzuVujQgUF1BUJAgD0JFwHlGjmgJP42yO1cZF9S6pb53knnTE42bP8GniQ%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-03-26T19:20:03Z
-Issue: #116
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/116
-SKU: smart-tv-philco-roku-32-premium
-Título: 📺 Smart TV Philco Roku 32” Premium
-ID ML: 5J5PKG-AHDQ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, Smart TV, Philco, Roku TV, Dolby Audio, Streaming, 32 Polegadas, TV
-open_url: https://meli.la/19Lo34Y
-checked_url: https://meli.la/19Lo34Y
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHDQ&tid=9ad0d3ed-fbc3-47c1-8b35-05a838b01d66
-
-[ALTA] review_only_storefront
-Quando: 2026-03-26T19:20:03Z
-SKU: se-j-existir-usa-amazon-echo-pop-c2h4r9-2
-Título: Echo Pop Smart Speaker (Alexa) — Preto (Amazon)
-ID ML: 5J5PKG-ZMR8
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, Alexa, Echo Pop, Smart Speaker, Casa inteligente, Wi-Fi, Bluetooth, Preto
-open_url: https://mercadolivre.com/sec/19Abme6
-checked_url: https://mercadolivre.com/sec/19Abme6
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZMR8&tid=4859dfe6-8a08-4249-ac82-57085079ea12
 
 [ALTA] review_only_storefront
 Quando: 2026-03-23T21:26:40Z
