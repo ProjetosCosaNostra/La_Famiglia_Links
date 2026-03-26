@@ -266,9 +266,6 @@
         <span class="sig">🎩 Cosa Nostra</span>
         <span class="muted">© <span id="year2"></span> — A Família das Ideias</span>
       </div>
-      <div class="footer__right">
-        <button class="btn btn--tiny btn--glass" type="button" id="btnCopyPage">Copiar link desta página</button>
-      </div>
     </footer>
   </main>
 
@@ -284,31 +281,5 @@
     })();
   </script>
 
-  <!-- ✅ Handler local apenas pro botão do rodapé (não conflita com loja.js) -->
-  <script>
-    (function(){
-      "use strict";
-      var btn = document.getElementById("btnCopyPage");
-      if(!btn) return;
-
-      function toast(msg){
-        var t = document.getElementById("toast");
-        if(!t) return;
-        t.textContent = msg || "Copiado ✅";
-        t.classList.add("show");
-        clearTimeout(window.__cn_toast_tm);
-        window.__cn_toast_tm = setTimeout(function(){ t.classList.remove("show"); }, 1200);
-      }
-
-      btn.addEventListener("click", function(){
-        var txt = String(location.href || "");
-        try{
-          navigator.clipboard.writeText(txt).then(function(){ toast("Copiado ✅"); }).catch(function(){ toast("Copiado ✅"); });
-        }catch(e){
-          toast("Copiado ✅");
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
