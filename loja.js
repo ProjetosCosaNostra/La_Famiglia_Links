@@ -37,6 +37,12 @@
      - Botão novo: TXT manutenção
      - Fluxo seguro: Guardian identifica suspeitos sem derrubar automático
 
+   PATCH 2026-03-26 (INTELIGÊNCIA / LIMPEZA FERRAMENTAS):
+     - Remove redundância pública na faixa de exportação
+     - Troca TXT (produtos.json) / TXT (tudo) por Relatório inteligente
+     - Mantém CSV bruto / Copiar ativos / TXT manutenção
+     - Oculta botão duplicado do rodapé quando já existe “Copiar link da loja” no topo
+
    PATCH 2026-03-02 (UI PREMIUM / CATEGORIAS INTELIGENTES):
      - Ferramentas (listas/export): recolhível no mobile (nada gigante).
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
@@ -2088,6 +2094,189 @@
     return STATE.products.find((p) => p && p.sku === sku) || null;
   }
 
+  function safeMetricNumber(value) {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function formatDateTimeFullBR(value) {
+    try {
+      const d = value instanceof Date ? value : new Date(value);
+      if (Number.isNaN(d.getTime())) return "";
+      return `${two(d.getDate())}/${two(d.getMonth() + 1)}/${d.getFullYear()} ${two(d.getHours())}:${two(d.getMinutes())}`;
+    } catch {
+      return "";
+    }
+  }
+
+  function reportFileStampBR(value) {
+    const d = value instanceof Date ? value : new Date(value || Date.now());
+    return `${two(d.getDate())}-${two(d.getMonth() + 1)}-${d.getFullYear()}_${two(d.getHours())}${two(d.getMinutes())}`;
+  }
+
+  function buildLocalRangeToday() {
+    const end = new Date();
+    const start = new Date(end);
+    start.setHours(0, 0, 0, 0);
+    return { start, end };
+  }
+
+  function buildLocalRangeLastDays(days) {
+    const total = Math.max(1, Number(days) || 1);
+    const end = new Date();
+    const start = new Date(end);
+    start.setDate(start.getDate() - (total - 1));
+    start.setHours(0, 0, 0, 0);
+    return { start, end };
+  }
+
+  function pickTopMetric() {
+    for (const list of arguments) {
+      if (Array.isArray(list) && list.length) return list[0];
+    }
+    return null;
+  }
+
+  function smartMetricLine(label, item, extras) {
+    if (!item) return `- ${label}: sem dados suficientes`;
+
+    const bits = [];
+    const metricLabel = cleanText(item.label || item.key || "sem dados") || "sem dados";
+    bits.push(metricLabel);
+
+    const buy = safeMetricNumber(item.buy_count);
+    const intention = safeMetricNumber(item.intention_score);
+    const count = safeMetricNumber(item.count);
+    const copyLink = safeMetricNumber(item.copy_link_count);
+    const copyId = safeMetricNumber(item.copy_id_count);
+    const openStore = safeMetricNumber(item.open_store_count);
+
+    if (buy > 0) bits.push(`comprar=${buy}`);
+    if (intention > 0) bits.push(`intenção=${intention}`);
+    if (count > 0) bits.push(`eventos=${count}`);
+    if (copyLink > 0) bits.push(`copiar_link=${copyLink}`);
+    if (copyId > 0) bits.push(`copiar_id=${copyId}`);
+    if (openStore > 0) bits.push(`abrir_loja=${openStore}`);
+
+    const extraArr = Array.isArray(extras) ? extras : [];
+    extraArr.forEach((part) => {
+      const txt = cleanText(part || "");
+      if (txt) bits.push(txt);
+    });
+
+    return `- ${label}: ${bits.join(" | ")}`;
+  }
+
+  function buildExecutiveReportSection(sectionTitle, summary, range) {
+    const s = summary || {};
+    const answers = s.answers_before_first_sale || {};
+    const funnel = s.funnel || {};
+    const totals = s.totals || {};
+    const lines = [];
+
+    const topNetwork = pickTopMetric(
+      answers.top_networks_by_click_buy,
+      answers.top_networks_by_intention
+    );
+    const topCreative = pickTopMetric(answers.top_creatives_by_click_buy);
+    const topTitle = pickTopMetric(answers.top_titles_by_click_buy);
+    const topProduct = pickTopMetric(
+      answers.top_products_by_click_buy,
+      answers.top_products_by_intention
+    );
+    const topCategory = pickTopMetric(
+      answers.top_categories_by_click_buy,
+      answers.top_categories_by_intention
+    );
+    const topFormat = pickTopMetric(answers.top_formats_by_intention);
+    const topPlacement = pickTopMetric(answers.top_placements_by_intention);
+
+    lines.push(sectionTitle);
+    lines.push(`Período: ${formatDateTimeFullBR(range.start)} até ${formatDateTimeFullBR(range.end)}`);
+    lines.push(`Eventos filtrados: ${safeMetricNumber(totals.filtered_events)}`);
+    lines.push(`Views de produto: ${safeMetricNumber(funnel.view_product_card)}`);
+    lines.push(`Cliques comprar: ${safeMetricNumber(funnel.click_buy)}`);
+    lines.push(`Cliques copiar ID: ${safeMetricNumber(funnel.click_copy_id)}`);
+    lines.push(`Cliques copiar link: ${safeMetricNumber(funnel.click_copy_link)}`);
+    lines.push(`Cliques abrir loja: ${safeMetricNumber(funnel.click_open_store)}`);
+    lines.push("");
+
+    lines.push("Leituras executivas:");
+    lines.push(smartMetricLine("Rede que mais gera clique/intenção", topNetwork));
+    lines.push(smartMetricLine("Criativo que mais puxa ação", topCreative, [
+      topCreative?.network ? `rede=${topCreative.network}` : "",
+      topCreative?.format ? `formato=${topCreative.format}` : "",
+    ]));
+    lines.push(smartMetricLine("Título que mais desperta curiosidade", topTitle, [
+      topTitle?.creative_id ? `criativo=${topTitle.creative_id}` : "",
+    ]));
+    lines.push(smartMetricLine("Produto que mais leva à ação", topProduct, [
+      topProduct?.sku ? `sku=${topProduct.sku}` : "",
+      topProduct?.category ? `categoria=${topProduct.category}` : "",
+    ]));
+    lines.push(smartMetricLine("Categoria com mais resposta", topCategory));
+    lines.push(smartMetricLine("Formato com mais intenção", topFormat, [
+      topFormat?.network ? `rede=${topFormat.network}` : "",
+    ]));
+    lines.push(smartMetricLine("Placement com mais intenção", topPlacement, [
+      topPlacement?.network ? `rede=${topPlacement.network}` : "",
+      topPlacement?.format ? `formato=${topPlacement.format}` : "",
+    ]));
+    lines.push("");
+
+    return lines;
+  }
+
+  function doExportSmartReport() {
+    try {
+      const tracking = window.CNTracking;
+      if (!tracking || typeof tracking.getSummary !== "function") {
+        showToast("Tracking indisponível nesta página");
+        return;
+      }
+
+      const now = new Date();
+      const todayRange = buildLocalRangeToday();
+      const weekRange = buildLocalRangeLastDays(7);
+
+      const todaySummary = tracking.getSummary({
+        start_at: todayRange.start.toISOString(),
+        end_at: todayRange.end.toISOString(),
+      });
+
+      const weekSummary = tracking.getSummary({
+        start_at: weekRange.start.toISOString(),
+        end_at: weekRange.end.toISOString(),
+      });
+
+      const lines = [];
+      lines.push("RELATÓRIO INTELIGENTE — CLIQUES ANTES DA VENDA");
+      lines.push("Loja: La_Famiglia_Links / Achados do Dia");
+      lines.push(`Gerado em: ${formatDateTimeFullBR(now)}`);
+      lines.push(`Updated_at da vitrine: ${cleanText(STATE.updated_at || "") || "n/d"}`);
+      lines.push(`Ativos atuais na loja: ${safeMetricNumber(STATE._activeCount)}`);
+      lines.push(`Categorias rastreadas: ${safeArray(STATE._categoryCounts).length}`);
+      lines.push("");
+      lines.push("Objetivo:");
+      lines.push("- medir clique antes de medir venda");
+      lines.push("- descobrir qual rede gera mais clique");
+      lines.push("- descobrir qual criativo gera mais toque");
+      lines.push("- descobrir qual título puxa mais curiosidade");
+      lines.push("- descobrir qual produto leva a pessoa do conteúdo para a loja");
+      lines.push("");
+
+      lines.push(...buildExecutiveReportSection("HOJE", todaySummary, todayRange));
+      lines.push(...buildExecutiveReportSection("ÚLTIMOS 7 DIAS", weekSummary, weekRange));
+
+      const fname = `relatorio_inteligente_${reportFileStampBR(now)}.txt`;
+      downloadFile(fname, lines.join("\n").trim() + "\n", "text/plain;charset=utf-8");
+      showToast("Relatório inteligente ⬇️");
+    } catch (err) {
+      console.error(err);
+      showToast("Erro ao gerar relatório");
+    }
+  }
+
   function exportProdutosJson() {
     const out = {
       updated_at: new Date().toISOString(),
@@ -2281,7 +2470,11 @@
       });
     }
 
-    if (copyPageBtn) {
+    if (copyBtn && copyPageBtn) {
+      copyPageBtn.style.display = "none";
+      copyPageBtn.setAttribute("aria-hidden", "true");
+      copyPageBtn.setAttribute("tabindex", "-1");
+    } else if (copyPageBtn) {
       copyPageBtn.addEventListener("click", () => {
         copyText(location.href);
       });
@@ -2320,17 +2513,15 @@
         <details class="cnTools" ${openAttr}>
           <summary class="btn btn--tiny btn--glass">
             <span class="cnToolsSummary">
-              <span>🧾 Ferramentas (listas/export)</span>
+              <span>🧠 Inteligência & relatórios</span>
               <span style="opacity:.75;">${isMobile ? "abrir" : "ok"}</span>
             </span>
           </summary>
 
           <div class="cnToolsGrid">
-            <button class="btn btn--tiny btn--glass" type="button" id="btnExportCatalogTxt">⬇️ TXT (produtos.json)</button>
+            <button class="btn btn--tiny btn--gold"  type="button" id="btnSmartReport">📄 Relatório inteligente</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnCopyList">📋 Copiar (ativos)</button>
-            <button class="btn btn--tiny btn--gold"  type="button" id="btnDlList">⬇️ TXT (ativos)</button>
-            <button class="btn btn--tiny btn--glass" type="button" id="btnDlListAll">⬇️ TXT (tudo)</button>
-            <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">⬇️ CSV (tudo)</button>
+            <button class="btn btn--tiny btn--glass" type="button" id="btnDlCsvAll">📊 CSV bruto</button>
             <button class="btn btn--tiny btn--glass" type="button" id="btnDlReview">🛠️ TXT manutenção</button>
           </div>
         </details>
@@ -2338,17 +2529,13 @@
       tools.appendChild(row);
     })();
 
-    const btnExportCatalogTxt = $("#btnExportCatalogTxt");
+    const btnSmartReport = $("#btnSmartReport");
     const btnCopyList = $("#btnCopyList");
-    const btnDlList = $("#btnDlList");
-    const btnDlListAll = $("#btnDlListAll");
     const btnDlCsvAll = $("#btnDlCsvAll");
     const btnDlReview = $("#btnDlReview");
 
-    if (btnExportCatalogTxt) btnExportCatalogTxt.addEventListener("click", () => doExportTxt("all"));
+    if (btnSmartReport) btnSmartReport.addEventListener("click", () => doExportSmartReport());
     if (btnCopyList) btnCopyList.addEventListener("click", () => doCopyTxt("active"));
-    if (btnDlList) btnDlList.addEventListener("click", () => doExportTxt("active"));
-    if (btnDlListAll) btnDlListAll.addEventListener("click", () => doExportTxt("all"));
     if (btnDlCsvAll) btnDlCsvAll.addEventListener("click", () => doExportCsv("all"));
     if (btnDlReview) btnDlReview.addEventListener("click", () => doExportReviewTxt());
     updateMaintenanceButton();
