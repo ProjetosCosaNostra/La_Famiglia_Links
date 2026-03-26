@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-03-26T20:32:20Z",
-  "total_items": 2,
+  "updated_at": "2026-03-26T23:38:07Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 4
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 4
     },
-    "high_priority": 2
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-03-26T19:20:03Z",
+      "happened_at": "2026-03-26T23:33:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -50,6 +50,80 @@
         "Iluminador",
         "Glow Dourado",
         "Premium"
+      ]
+    },
+    {
+      "happened_at": "2026-03-26T23:33:44Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 14,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/14",
+      "issue_title": "[CMS] Produto: Porteiro Eletrônico Wi-Fi com Câmera (Visão Noturna + Áudio)",
+      "sku": "porteiro-eletronico-wifi-camera-visao-noturna-audio",
+      "title": "Porteiro Eletrônico Wi-Fi com Câmera | Visão Noturna + Áudio",
+      "id_busca": "5J5PKG-YLW9",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2ZKyLhs",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2ZKyLhs",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BADl0LcDX5uoDUowUwTHXKMcuGbupOZQ%2F4uWlWzhFmUUKGT79m1jRQDr5bDuua7v9uxLM8EU9VZfjhoFWhQHeuVLSpTh%2Fd06T1MfcPCcvCTLO0QK%2F4d8Yy%2BlBzvRo%2BZERKlLj8UkUbiZ7QfjN4Si7M5%2BRugChGS25eF%2BUx2bMIqBolDrhLjMh7GKCXfybcfx429T4cM%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BADl0LcDX5uoDUowUwTHXKMcuGbupOZQ%2F4uWlWzhFmUUKGT79m1jRQDr5bDuua7v9uxLM8EU9VZfjhoFWhQHeuVLSpTh%2Fd06T1MfcPCcvCTLO0QK%2F4d8Yy%2BlBzvRo%2BZERKlLj8UkUbiZ7QfjN4Si7M5%2BRugChGS25eF%2BUx2bMIqBolDrhLjMh7GKCXfybcfx429T4cM%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Segurança Residencial",
+        "Porteiro Eletrônico",
+        "Campainha Wi-Fi",
+        "Vídeo Porteiro",
+        "Câmera",
+        "Visão Noturna",
+        "Áudio Bidirecional"
+      ]
+    },
+    {
+      "happened_at": "2026-03-26T23:33:44Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 129,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129",
+      "issue_title": "[CMS] Produto: Puma Flyer Runner Mesh Bdp",
+      "sku": "puma-flyer-runner-mesh-bdp",
+      "title": "👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium",
+      "id_busca": "5J5PKG-6B4Q",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2cmJ3u1",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2cmJ3u1",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3wsfTyQLkDRg%2FyEG5bemuTAb2xuyarBOk5nioE1QLwpb7rS6t9IkRlsc3pJmRx0xt%2FLFUYIWY71SohJUySYk6P3MQktBjdy%2FJh7dMigskFuJIzjfukm588psrMU80W%2FjIyzSJSXF9fZ7emwh0oh58UnP6qgTnWTasb1zykFehGA0IGspQfg%2B7Nd5olkvwD457WXQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e",
+      "short_url": "https://meli.la/2cmJ3u1",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3wsfTyQLkDRg%2FyEG5bemuTAb2xuyarBOk5nioE1QLwpb7rS6t9IkRlsc3pJmRx0xt%2FLFUYIWY71SohJUySYk6P3MQktBjdy%2FJh7dMigskFuJIzjfukm588psrMU80W%2FjIyzSJSXF9fZ7emwh0oh58UnP6qgTnWTasb1zykFehGA0IGspQfg%2B7Nd5olkvwD457WXQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Puma",
+        "Flyer Runner Mesh Bdp",
+        "Tênis",
+        "Tênis Puma",
+        "Calçado",
+        "Conforto",
+        "Leve"
       ]
     },
     {
