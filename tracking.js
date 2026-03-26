@@ -517,6 +517,231 @@
     };
   }
 
+  const UNKNOWN_LIKE_VALUES = new Set([
+    "", "unknown", "sem dados", "sem_dados", "n/a", "na", "null", "undefined", "none",
+    "not set", "not_set", "sem categoria", "sem_categoria", "sem rede", "sem_rede",
+    "sem formato", "sem_formato", "sem placement", "sem_placement", "sem criativo",
+    "sem_criativo", "sem título", "sem_titulo", "sem_título", "sem produto", "sem_produto"
+  ]);
+
+  const GENERIC_RANKING_VALUES = new Set([
+    "unknown", "sem dados", "sem_dados", "criativo_a", "creative_a", "titulo_a",
+    "título_a", "title_a", "not_set", "not set", "placeholder", "default", "teste", "test"
+  ]);
+
+  const GENERIC_BADGE_VALUES = new Set([
+    "achados do dia", "premium", "beleza", "maquiagem", "tecnologia", "casa", "praticidade",
+    "setup", "organização", "organizacao", "rosto", "corpo"
+  ]);
+
+  const BRAND_LIKE_BADGES = new Set([
+    "bruna tavares", "hello kitty", "coca-cola", "coca cola", "lily", "o boticário",
+    "oboticario", "ruby rose", "belle angel", "cherry lash", "kingston", "xiaomi", "amazon"
+  ]);
+
+  const QUALIFIED_EXECUTIVE_EVENT_WEIGHTS = {
+    click_buy: 6,
+    click_open_store: 3,
+    click_copy_link: 2,
+    click_copy_store_link: 2,
+    click_copy_id: 1,
+    click_social: 1,
+    click_outbound: 1,
+  };
+
+  function normalizeCompareValue(value) {
+    return normalizeText(value || "").toLowerCase();
+  }
+
+  function isUnknownLikeValue(value) {
+    return UNKNOWN_LIKE_VALUES.has(normalizeCompareValue(value));
+  }
+
+  function isGenericRankingValue(value) {
+    return GENERIC_RANKING_VALUES.has(normalizeCompareValue(value));
+  }
+
+  function looksLikeCategoryBadge(value) {
+    const text = normalizeText(value || "");
+    if (!text) return false;
+    if (GENERIC_BADGE_VALUES.has(normalizeCompareValue(text))) return false;
+    if (BRAND_LIKE_BADGES.has(normalizeCompareValue(text))) return false;
+    return /(iluminador|blush|gloss|corretivo|base|pó|po facial|hidratante|creme|perfume|skincare|body care|cilios|cílios|cola|mochila|ssd|webcam|fone|notebook|mouse|teclado|kit|paleta|escova|bluetooth|usb|home office|casa inteligente|segurança|seguranca|celular|carro|moto|portátil|portatil)/i.test(text);
+  }
+
+  function inferCategoryFromBadges(badges) {
+    const list = normalizeArray(badges || []);
+    if (!list.length) return "";
+    const specific = list.filter((badge) => looksLikeCategoryBadge(badge));
+    if (!specific.length) return "";
+    return specific.sort((a, b) => String(b).length - String(a).length)[0] || "";
+  }
+
+  function rememberKnowledgeValue(map, key, value) {
+    const k = normalizeCompareValue(key);
+    const v = normalizeText(value || "");
+    if (!k || !v || isUnknownLikeValue(v)) return;
+    const current = map.get(k) || new Map();
+    current.set(v, (current.get(v) || 0) + 1);
+    map.set(k, current);
+  }
+
+  function pickMostFrequentKnowledgeValue(counterMap) {
+    if (!(counterMap instanceof Map) || !counterMap.size) return "";
+    return Array.from(counterMap.entries())
+      .sort((a, b) => {
+        if ((b[1] || 0) !== (a[1] || 0)) return (b[1] || 0) - (a[1] || 0);
+        if (String(b[0] || "").length !== String(a[0] || "").length) {
+          return String(b[0] || "").length - String(a[0] || "").length;
+        }
+        return String(a[0] || "").localeCompare(String(b[0] || ""));
+      })[0]?.[0] || "";
+  }
+
+  function buildCategoryKnowledgeBase(events) {
+    const bySku = new Map();
+    const byIdBusca = new Map();
+    const byTitle = new Map();
+
+    for (const event of Array.isArray(events) ? events : []) {
+      const directCategory = normalizeText(event?.category || event?.extra?.category || "");
+      const inferredCategory = directCategory && !isUnknownLikeValue(directCategory)
+        ? directCategory
+        : inferCategoryFromBadges(event?.badges || []);
+
+      if (!inferredCategory || isUnknownLikeValue(inferredCategory)) continue;
+
+      rememberKnowledgeValue(bySku, event?.sku, inferredCategory);
+      rememberKnowledgeValue(byIdBusca, event?.id_busca, inferredCategory);
+      rememberKnowledgeValue(byTitle, event?.product_title, inferredCategory);
+    }
+
+    return { bySku, byIdBusca, byTitle };
+  }
+
+  function resolveCategoryValue(event, knowledgeBase) {
+    const direct = normalizeText(event?.category || event?.extra?.category || "");
+    if (direct && !isUnknownLikeValue(direct)) return direct;
+
+    const kb = knowledgeBase || {};
+    const candidates = [
+      pickMostFrequentKnowledgeValue(kb.bySku?.get(normalizeCompareValue(event?.sku))),
+      pickMostFrequentKnowledgeValue(kb.byIdBusca?.get(normalizeCompareValue(event?.id_busca))),
+      pickMostFrequentKnowledgeValue(kb.byTitle?.get(normalizeCompareValue(event?.product_title))),
+      inferCategoryFromBadges(event?.badges || []),
+    ].map((value) => normalizeText(value || "")).filter(Boolean);
+
+    for (const candidate of candidates) {
+      if (!isUnknownLikeValue(candidate)) return candidate;
+    }
+
+    return "sem categoria";
+  }
+
+  function enrichEventForExecutive(event, knowledgeBase) {
+    const base = event && typeof event === "object" ? event : {};
+    return {
+      ...base,
+      sku: normalizeText(base.sku || ""),
+      product_title: normalizeText(base.product_title || base.title || ""),
+      id_busca: normalizeText(base.id_busca || ""),
+      badges: normalizeArray(base.badges || []),
+      network: normalizeText(base.network || base.utm_source || ""),
+      format: normalizeText(base.format || base.utm_medium || ""),
+      placement: normalizeText(base.placement || ""),
+      creative_id: normalizeText(base.creative_id || ""),
+      title_id: normalizeText(base.title_id || ""),
+      category: resolveCategoryValue(base, knowledgeBase),
+    };
+  }
+
+  function isQualifiedExecutiveEventName(name) {
+    const key = normalizeText(name || "");
+    return Object.prototype.hasOwnProperty.call(QUALIFIED_EXECUTIVE_EVENT_WEIGHTS, key);
+  }
+
+  function qualifiedExecutiveEventWeight(name) {
+    const key = normalizeText(name || "");
+    return safeNumber(QUALIFIED_EXECUTIVE_EVENT_WEIGHTS[key], 0);
+  }
+
+  function buildQualifiedExecutiveRanking(events, keyBuilder, valueBuilder, maxItems) {
+    const map = new Map();
+
+    for (const event of Array.isArray(events) ? events : []) {
+      const key = normalizeText(keyBuilder ? keyBuilder(event) : "");
+      if (!key) continue;
+
+      const current = map.get(key) || {
+        key,
+        label: key,
+        count: 0,
+        view_count: 0,
+        buy_count: 0,
+        copy_id_count: 0,
+        copy_link_count: 0,
+        open_store_count: 0,
+        social_click_count: 0,
+        outbound_click_count: 0,
+        intention_score: 0,
+        qualified_score: 0,
+      };
+
+      current.count += 1;
+      const name = normalizeText(event?.event_name || "");
+      if (name === "click_buy") current.buy_count += 1;
+      if (name === "click_copy_id") current.copy_id_count += 1;
+      if (["click_copy_link", "click_copy_store_link"].includes(name)) current.copy_link_count += 1;
+      if (name === "click_open_store") current.open_store_count += 1;
+      if (name === "click_social") current.social_click_count += 1;
+      if (name === "click_outbound") current.outbound_click_count += 1;
+
+      current.intention_score =
+        (current.buy_count * 4) +
+        (current.copy_link_count * 2) +
+        (current.copy_id_count * 1) +
+        (current.open_store_count * 2) +
+        (current.social_click_count * 1) +
+        (current.outbound_click_count * 1);
+
+      current.qualified_score += qualifiedExecutiveEventWeight(name);
+
+      const extra = valueBuilder ? valueBuilder(event, current) : null;
+      if (extra && typeof extra === "object") {
+        Object.assign(current, extra);
+      }
+
+      map.set(key, current);
+    }
+
+    return Array.from(map.values())
+      .filter((item) => {
+        const label = normalizeText(item?.label || item?.key || "");
+        if (!label) return false;
+        if (isUnknownLikeValue(label)) return false;
+        if (isGenericRankingValue(label)) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        if ((b.qualified_score || 0) !== (a.qualified_score || 0)) return (b.qualified_score || 0) - (a.qualified_score || 0);
+        if ((b.intention_score || 0) !== (a.intention_score || 0)) return (b.intention_score || 0) - (a.intention_score || 0);
+        if ((b.count || 0) !== (a.count || 0)) return (b.count || 0) - (a.count || 0);
+        return String(a.label || a.key || "").localeCompare(String(b.label || b.key || ""));
+      })
+      .slice(0, Number.isFinite(Number(maxItems)) && Number(maxItems) > 0 ? Number(maxItems) : 10);
+  }
+
+  function cleanRankingItems(items) {
+    if (!Array.isArray(items)) return [];
+    return items.filter((item) => {
+      const label = normalizeText(item?.label || item?.key || "");
+      if (!label) return false;
+      if (isUnknownLikeValue(label)) return false;
+      if (isGenericRankingValue(label)) return false;
+      return true;
+    });
+  }
+
   function percentString(value) {
     return `${(safeNumber(value, 0) * 100).toFixed(2).replace(".", ",")}%`;
   }
@@ -537,24 +762,24 @@
     const category = normalizeText(item?.category || "");
     const sku = normalizeText(item?.sku || "");
 
-    if (network && network !== "unknown") parts.push(`rede=${network}`);
-    if (fmt && fmt !== "unknown") parts.push(`formato=${fmt}`);
-    if (placement && placement !== "unknown") parts.push(`placement=${placement}`);
-    if (category && category !== "unknown") parts.push(`categoria=${category}`);
-    if (sku && sku !== "unknown") parts.push(`sku=${sku}`);
+    if (network && !isUnknownLikeValue(network)) parts.push(`rede=${network}`);
+    if (fmt && !isUnknownLikeValue(fmt)) parts.push(`formato=${fmt}`);
+    if (placement && !isUnknownLikeValue(placement)) parts.push(`placement=${placement}`);
+    if (category && !isUnknownLikeValue(category)) parts.push(`categoria=${category}`);
+    if (sku && !isUnknownLikeValue(sku)) parts.push(`sku=${sku}`);
 
     return parts.join(" | ");
   }
 
   function buildExecutiveRecommendations(summary) {
-    const answers = summary?.answers_before_first_sale || {};
+    const executive = summary?.executive_rankings || {};
     const funnel = summary?.funnel || {};
     const lines = [];
 
-    const bestNetwork = topItem(answers.top_networks_by_click_buy) || topItem(answers.top_networks_by_intention);
-    const bestCreative = topItem(answers.top_creatives_by_click_buy);
-    const bestTitle = topItem(answers.top_titles_by_click_buy);
-    const bestProduct = topItem(answers.top_products_by_click_buy) || topItem(answers.top_products_by_intention);
+    const bestNetwork = topItem(executive.top_networks);
+    const bestCreative = topItem(executive.top_creatives);
+    const bestTitle = topItem(executive.top_titles);
+    const bestProduct = topItem(executive.top_products);
 
     lines.push("RESPOSTAS EXECUTIVAS");
     lines.push(`- Rede com melhor tração: ${bestNetwork ? itemLabel(bestNetwork, "sem dados") : "sem dados"}.`);
@@ -564,6 +789,7 @@
     lines.push("");
 
     lines.push("LEITURA RÁPIDA DO FUNIL");
+    lines.push(`- Eventos úteis para decisão: ${safeNumber(summary?.totals?.qualified_events, 0)}`);
     lines.push(`- Visualizações de card/produto: ${safeNumber(funnel.view_product_card, 0)}`);
     lines.push(`- Cliques em comprar: ${safeNumber(funnel.click_buy, 0)}`);
     lines.push(`- Cliques em copiar ID: ${safeNumber(funnel.click_copy_id, 0)}`);
@@ -589,22 +815,18 @@
       return lines;
     }
 
-    items.slice(0, Number.isFinite(Number(maxItems)) && Number(maxItems) > 0 ? Number(maxItems) : 5)
-      .forEach((item, index) => {
-        const base = `${index + 1}. ${itemLabel(item, "sem dados")}`;
-        const metrics = [
-          `eventos=${safeNumber(item?.count, 0)}`,
-        ];
-
-        if (safeNumber(item?.intention_score, 0) > 0) metrics.push(`intenção=${safeNumber(item?.intention_score, 0)}`);
-        if (safeNumber(item?.buy_count, 0) > 0) metrics.push(`comprar=${safeNumber(item?.buy_count, 0)}`);
-        if (safeNumber(item?.copy_link_count, 0) > 0) metrics.push(`copiar_link=${safeNumber(item?.copy_link_count, 0)}`);
-        if (safeNumber(item?.copy_id_count, 0) > 0) metrics.push(`copiar_id=${safeNumber(item?.copy_id_count, 0)}`);
-        if (safeNumber(item?.open_store_count, 0) > 0) metrics.push(`abrir_loja=${safeNumber(item?.open_store_count, 0)}`);
-
-        const context = compactItemContext(item);
-        lines.push(`- ${base} | ${metrics.join(" | ")}${context ? " | " + context : ""}`);
-      });
+    items.slice(0, Number.isFinite(Number(maxItems)) && Number(maxItems) > 0 ? Number(maxItems) : 5).forEach((item, index) => {
+      const base = `${index + 1}. ${itemLabel(item, "sem dados")}`;
+      const metrics = [`eventos=${safeNumber(item?.count, 0)}`];
+      if (safeNumber(item?.qualified_score, 0) > 0) metrics.push(`qualificado=${safeNumber(item?.qualified_score, 0)}`);
+      if (safeNumber(item?.intention_score, 0) > 0) metrics.push(`intenção=${safeNumber(item?.intention_score, 0)}`);
+      if (safeNumber(item?.buy_count, 0) > 0) metrics.push(`comprar=${safeNumber(item?.buy_count, 0)}`);
+      if (safeNumber(item?.copy_link_count, 0) > 0) metrics.push(`copiar_link=${safeNumber(item?.copy_link_count, 0)}`);
+      if (safeNumber(item?.copy_id_count, 0) > 0) metrics.push(`copiar_id=${safeNumber(item?.copy_id_count, 0)}`);
+      if (safeNumber(item?.open_store_count, 0) > 0) metrics.push(`abrir_loja=${safeNumber(item?.open_store_count, 0)}`);
+      const context = compactItemContext(item);
+      lines.push(`- ${base} | ${metrics.join(" | ")}${context ? " | " + context : ""}`);
+    });
 
     lines.push("");
     return lines;
@@ -623,21 +845,22 @@
     if (normalizeText(s?.period?.start_at || "")) lines.push(`Início: ${formatDateTimeHuman(s.period.start_at)}`);
     if (normalizeText(s?.period?.end_at || "")) lines.push(`Fim: ${formatDateTimeHuman(s.period.end_at)}`);
     lines.push(`Eventos filtrados: ${safeNumber(s?.totals?.filtered_events, 0)}`);
+    lines.push(`Eventos úteis para decisão: ${safeNumber(s?.totals?.qualified_events, 0)}`);
     lines.push(`Eventos armazenados no total: ${safeNumber(s?.totals?.all_events_stored, 0)}`);
     lines.push("");
     return lines;
   }
 
   function buildExecutiveSection(summary, periodTitle) {
-    const answers = summary?.answers_before_first_sale || {};
+    const executive = summary?.executive_rankings || {};
     let lines = [];
     lines = lines.concat(summaryHeaderLines(summary, periodTitle));
     lines = lines.concat(buildExecutiveRecommendations(summary));
-    lines = lines.concat(rankingBlock("TOP REDES", answers.top_networks_by_click_buy?.length ? answers.top_networks_by_click_buy : answers.top_networks_by_intention, 5));
-    lines = lines.concat(rankingBlock("TOP CRIATIVOS", answers.top_creatives_by_click_buy, 5));
-    lines = lines.concat(rankingBlock("TOP TÍTULOS", answers.top_titles_by_click_buy, 5));
-    lines = lines.concat(rankingBlock("TOP PRODUTOS", answers.top_products_by_click_buy?.length ? answers.top_products_by_click_buy : answers.top_products_by_intention, 5));
-    lines = lines.concat(rankingBlock("TOP CATEGORIAS", answers.top_categories_by_click_buy?.length ? answers.top_categories_by_click_buy : answers.top_categories_by_intention, 5));
+    lines = lines.concat(rankingBlock("TOP REDES", cleanRankingItems(executive.top_networks), 5));
+    lines = lines.concat(rankingBlock("TOP CRIATIVOS", cleanRankingItems(executive.top_creatives), 5));
+    lines = lines.concat(rankingBlock("TOP TÍTULOS", cleanRankingItems(executive.top_titles), 5));
+    lines = lines.concat(rankingBlock("TOP PRODUTOS", cleanRankingItems(executive.top_products), 5));
+    lines = lines.concat(rankingBlock("TOP CATEGORIAS", cleanRankingItems(executive.top_categories), 5));
     return lines;
   }
 
@@ -679,11 +902,11 @@
     lines.push("--------------------------------------------------");
     lines.push("BLOCO 1 — HOJE");
     lines.push("--------------------------------------------------");
-    lines = lines.concat(buildExecutiveSection(todaySummary, todayRange.label));
+    lines.push(buildExecutiveSection(todaySummary, todayRange.label).join("\n"));
     lines.push("--------------------------------------------------");
     lines.push("BLOCO 2 — ÚLTIMOS 7 DIAS");
     lines.push("--------------------------------------------------");
-    lines = lines.concat(buildExecutiveSection(weeklySummary, weeklyRange.label));
+    lines.push(buildExecutiveSection(weeklySummary, weeklyRange.label).join("\n"));
     lines.push("--------------------------------------------------");
     lines.push("LEITURA FINAL");
     lines.push("--------------------------------------------------");
@@ -934,7 +1157,8 @@
   function buildSummary(options) {
     const opts = options || {};
     const allEvents = getEvents();
-    const events = filterEventsByOptions(allEvents, opts);
+    const knowledgeBase = buildCategoryKnowledgeBase(allEvents);
+    const events = filterEventsByOptions(allEvents, opts).map((event) => enrichEventForExecutive(event, knowledgeBase));
     const counts = countByEventName(events);
     const funnel = buildFunnel(events);
 
@@ -945,22 +1169,19 @@
     const storeClicks = safeNumber(funnel.click_open_store, 0);
 
     const intentEvents = events.filter((e) => isIntentEventName(e?.event_name));
+    const qualifiedEvents = events.filter((e) => isQualifiedExecutiveEventName(e?.event_name));
 
     const topNetworksByBuy = buildGroupedRanking(
       events.filter((e) => e?.event_name === "click_buy"),
       (e) => safeMetricValue(e?.network || e?.utm_source, "unknown"),
-      (e) => ({
-        label: safeMetricValue(e?.network || e?.utm_source, "unknown"),
-      }),
+      (e) => ({ label: safeMetricValue(e?.network || e?.utm_source, "unknown") }),
       opts.max_items
     );
 
     const topNetworksByIntention = buildIntentionRanking(
       intentEvents,
       (e) => safeMetricValue(e?.network || e?.utm_source, "unknown"),
-      (e) => ({
-        label: safeMetricValue(e?.network || e?.utm_source, "unknown"),
-      }),
+      (e) => ({ label: safeMetricValue(e?.network || e?.utm_source, "unknown") }),
       opts.max_items
     );
 
@@ -1013,7 +1234,7 @@
         label: safeMetricValue(e?.product_title || e?.sku, current?.key || "unknown"),
         sku: safeMetricValue(e?.sku, "unknown"),
         product_title: safeMetricValue(e?.product_title || e?.sku, "unknown"),
-        category: safeMetricValue(e?.category, "unknown"),
+        category: safeMetricValue(e?.category, "sem categoria"),
         placement: safeMetricValue(e?.placement, "unknown"),
       }),
       opts.max_items
@@ -1026,7 +1247,7 @@
         label: safeMetricValue(e?.product_title || e?.sku, current?.key || "unknown"),
         sku: safeMetricValue(e?.sku, "unknown"),
         product_title: safeMetricValue(e?.product_title || e?.sku, "unknown"),
-        category: safeMetricValue(e?.category, "unknown"),
+        category: safeMetricValue(e?.category, "sem categoria"),
         network: safeMetricValue(e?.network || e?.utm_source, "unknown"),
         format: safeMetricValue(e?.format || e?.utm_medium, "unknown"),
         placement: safeMetricValue(e?.placement, "unknown"),
@@ -1036,30 +1257,72 @@
 
     const topCategoriesByBuy = buildGroupedRanking(
       events.filter((e) => e?.event_name === "click_buy"),
-      (e) => safeMetricValue(e?.category, "unknown"),
-      (e) => ({
-        label: safeMetricValue(e?.category, "unknown"),
-      }),
+      (e) => safeMetricValue(e?.category, "sem categoria"),
+      (e) => ({ label: safeMetricValue(e?.category, "sem categoria") }),
       opts.max_items
     );
 
     const topCategoriesByIntention = buildIntentionRanking(
       intentEvents,
-      (e) => safeMetricValue(e?.category, "unknown"),
-      (e) => ({
-        label: safeMetricValue(e?.category, "unknown"),
-      }),
+      (e) => safeMetricValue(e?.category, "sem categoria"),
+      (e) => ({ label: safeMetricValue(e?.category, "sem categoria") }),
       opts.max_items
     );
 
     const topPagesByEventVolume = buildGroupedRanking(
       events,
       (e) => safeMetricValue(e?.page_type, "unknown"),
-      (e) => ({
-        label: safeMetricValue(e?.page_type, "unknown"),
-      }),
+      (e) => ({ label: safeMetricValue(e?.page_type, "unknown") }),
       opts.max_items
     );
+
+    const executiveRankings = {
+      top_networks: buildQualifiedExecutiveRanking(
+        qualifiedEvents,
+        (e) => safeMetricValue(e?.network || e?.utm_source, "sem rede"),
+        (e) => ({ label: safeMetricValue(e?.network || e?.utm_source, "sem rede") }),
+        opts.max_items
+      ),
+      top_creatives: buildQualifiedExecutiveRanking(
+        qualifiedEvents,
+        (e) => safeMetricValue(e?.creative_id, "sem criativo"),
+        (e) => ({
+          label: safeMetricValue(e?.creative_id, "sem criativo"),
+          network: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+          format: safeMetricValue(e?.format || e?.utm_medium, "unknown"),
+        }),
+        opts.max_items
+      ),
+      top_titles: buildQualifiedExecutiveRanking(
+        qualifiedEvents,
+        (e) => safeMetricValue(e?.title_id, "sem título"),
+        (e) => ({
+          label: safeMetricValue(e?.title_id, "sem título"),
+          creative_id: safeMetricValue(e?.creative_id, "unknown"),
+        }),
+        opts.max_items
+      ),
+      top_products: buildQualifiedExecutiveRanking(
+        qualifiedEvents.filter((e) => safeMetricValue(e?.sku, "") || safeMetricValue(e?.product_title, "")),
+        (e) => safeMetricValue(e?.sku || e?.product_title, "sem produto"),
+        (e, current) => ({
+          label: safeMetricValue(e?.product_title || e?.sku, current?.key || "sem produto"),
+          sku: safeMetricValue(e?.sku, "unknown"),
+          product_title: safeMetricValue(e?.product_title || e?.sku, "sem produto"),
+          category: safeMetricValue(e?.category, "sem categoria"),
+          network: safeMetricValue(e?.network || e?.utm_source, "unknown"),
+          format: safeMetricValue(e?.format || e?.utm_medium, "unknown"),
+          placement: safeMetricValue(e?.placement, "unknown"),
+        }),
+        opts.max_items
+      ),
+      top_categories: buildQualifiedExecutiveRanking(
+        qualifiedEvents,
+        (e) => safeMetricValue(e?.category, "sem categoria"),
+        (e) => ({ label: safeMetricValue(e?.category, "sem categoria") }),
+        opts.max_items
+      ),
+    };
 
     return {
       generated_at: nowIso(),
@@ -1079,9 +1342,11 @@
       totals: {
         all_events_stored: allEvents.length,
         filtered_events: events.length,
+        qualified_events: qualifiedEvents.length,
         by_event_name: counts,
       },
       funnel,
+      executive_rankings: executiveRankings,
       answers_before_first_sale: {
         top_pages_by_event_volume: topPagesByEventVolume,
         top_networks_by_click_buy: topNetworksByBuy,
@@ -1162,7 +1427,6 @@
 
     return rows;
   }
-
 
   function summaryToText(summary) {
     const s = summary || {};
@@ -1482,7 +1746,6 @@
     },
 
     exportDailyExecutiveTxt(filename, options) {
-      const range = resolvePresetRange("today");
       const summary = API.getTodaySummary(options || {});
       textDownload(filename || `relatorio_tracking_${formatDateFile(new Date())}.txt`, summaryToText(summary));
       return summary;
@@ -1504,7 +1767,6 @@
       textDownload(filename || report.filenames.intelligent, report.text);
       return report;
     },
-
 
     exportSessionSummaryJson(filename, options) {
       const summary = API.getSessionSummary(options || {});
