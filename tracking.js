@@ -432,6 +432,278 @@
     return Number.isFinite(n) ? n : Number.isFinite(Number(fallback)) ? Number(fallback) : 0;
   }
 
+
+  function pad2(value) {
+    const n = Math.trunc(safeNumber(value, 0));
+    return String(n).padStart(2, "0");
+  }
+
+  function formatDateHuman(dateInput) {
+    const d = dateInput instanceof Date ? dateInput : new Date(dateInput || Date.now());
+    if (Number.isNaN(d.getTime())) return "";
+    return `${pad2(d.getDate())}-${pad2(d.getMonth() + 1)}-${d.getFullYear()}`;
+  }
+
+  function formatDateTimeHuman(dateInput) {
+    const d = dateInput instanceof Date ? dateInput : new Date(dateInput || Date.now());
+    if (Number.isNaN(d.getTime())) return "";
+    return `${formatDateHuman(d)} ${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`;
+  }
+
+  function formatDateFile(dateInput) {
+    const d = dateInput instanceof Date ? dateInput : new Date(dateInput || Date.now());
+    if (Number.isNaN(d.getTime())) return "";
+    return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+  }
+
+  function startOfLocalDay(dateInput) {
+    const d = dateInput instanceof Date ? new Date(dateInput.getTime()) : new Date(dateInput || Date.now());
+    if (Number.isNaN(d.getTime())) return new Date();
+    d.setHours(0, 0, 0, 0);
+    return d;
+  }
+
+  function addDays(dateInput, days) {
+    const d = dateInput instanceof Date ? new Date(dateInput.getTime()) : new Date(dateInput || Date.now());
+    if (Number.isNaN(d.getTime())) return new Date();
+    d.setDate(d.getDate() + Math.trunc(safeNumber(days, 0)));
+    return d;
+  }
+
+  function getIsoWeekInfo(dateInput) {
+    const d = dateInput instanceof Date ? new Date(dateInput.getTime()) : new Date(dateInput || Date.now());
+    if (Number.isNaN(d.getTime())) {
+      return { year: new Date().getFullYear(), week: 1, label: `${new Date().getFullYear()}-W01` };
+    }
+
+    const utc = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const day = utc.getUTCDay() || 7;
+    utc.setUTCDate(utc.getUTCDate() + 4 - day);
+    const yearStart = new Date(Date.UTC(utc.getUTCFullYear(), 0, 1));
+    const week = Math.ceil((((utc - yearStart) / 86400000) + 1) / 7);
+
+    return {
+      year: utc.getUTCFullYear(),
+      week,
+      label: `${utc.getUTCFullYear()}-W${String(week).padStart(2, "0")}`,
+    };
+  }
+
+  function resolvePresetRange(preset) {
+    const now = new Date();
+    if (preset === "today") {
+      return {
+        start_at: startOfLocalDay(now).toISOString(),
+        end_at: now.toISOString(),
+        label: `Hoje (${formatDateHuman(now)})`,
+      };
+    }
+
+    if (preset === "last7days" || preset === "weekly") {
+      const start = startOfLocalDay(addDays(now, -6));
+      const weekInfo = getIsoWeekInfo(now);
+      return {
+        start_at: start.toISOString(),
+        end_at: now.toISOString(),
+        label: `Últimos 7 dias (${formatDateHuman(start)} até ${formatDateHuman(now)})`,
+        week_label: weekInfo.label,
+      };
+    }
+
+    return {
+      start_at: "",
+      end_at: "",
+      label: "",
+    };
+  }
+
+  function percentString(value) {
+    return `${(safeNumber(value, 0) * 100).toFixed(2).replace(".", ",")}%`;
+  }
+
+  function topItem(items) {
+    return Array.isArray(items) && items.length ? items[0] : null;
+  }
+
+  function itemLabel(item, fallback) {
+    return normalizeText(item?.product_title || item?.label || item?.key || fallback || "") || (fallback || "sem dados");
+  }
+
+  function compactItemContext(item) {
+    const parts = [];
+    const network = normalizeText(item?.network || "");
+    const fmt = normalizeText(item?.format || "");
+    const placement = normalizeText(item?.placement || "");
+    const category = normalizeText(item?.category || "");
+    const sku = normalizeText(item?.sku || "");
+
+    if (network && network !== "unknown") parts.push(`rede=${network}`);
+    if (fmt && fmt !== "unknown") parts.push(`formato=${fmt}`);
+    if (placement && placement !== "unknown") parts.push(`placement=${placement}`);
+    if (category && category !== "unknown") parts.push(`categoria=${category}`);
+    if (sku && sku !== "unknown") parts.push(`sku=${sku}`);
+
+    return parts.join(" | ");
+  }
+
+  function buildExecutiveRecommendations(summary) {
+    const answers = summary?.answers_before_first_sale || {};
+    const funnel = summary?.funnel || {};
+    const lines = [];
+
+    const bestNetwork = topItem(answers.top_networks_by_click_buy) || topItem(answers.top_networks_by_intention);
+    const bestCreative = topItem(answers.top_creatives_by_click_buy);
+    const bestTitle = topItem(answers.top_titles_by_click_buy);
+    const bestProduct = topItem(answers.top_products_by_click_buy) || topItem(answers.top_products_by_intention);
+
+    lines.push("RESPOSTAS EXECUTIVAS");
+    lines.push(`- Rede com melhor tração: ${bestNetwork ? itemLabel(bestNetwork, "sem dados") : "sem dados"}.`);
+    lines.push(`- Criativo com melhor resposta: ${bestCreative ? itemLabel(bestCreative, "sem dados") : "sem dados"}.`);
+    lines.push(`- Título com mais curiosidade/clique: ${bestTitle ? itemLabel(bestTitle, "sem dados") : "sem dados"}.`);
+    lines.push(`- Produto que mais empurra para a loja/compra: ${bestProduct ? itemLabel(bestProduct, "sem dados") : "sem dados"}.`);
+    lines.push("");
+
+    lines.push("LEITURA RÁPIDA DO FUNIL");
+    lines.push(`- Visualizações de card/produto: ${safeNumber(funnel.view_product_card, 0)}`);
+    lines.push(`- Cliques em comprar: ${safeNumber(funnel.click_buy, 0)}`);
+    lines.push(`- Cliques em copiar ID: ${safeNumber(funnel.click_copy_id, 0)}`);
+    lines.push(`- Cliques em copiar link: ${safeNumber(funnel.click_copy_link, 0) + safeNumber(funnel.click_copy_store_link, 0)}`);
+    lines.push(`- Cliques em abrir loja: ${safeNumber(funnel.click_open_store, 0)}`);
+    lines.push("");
+
+    lines.push("TAXAS PRINCIPAIS");
+    lines.push(`- Compra por visualização de card: ${percentString(summary?.rates?.click_buy_per_view_product_card)}`);
+    lines.push(`- Copiar ID por visualização de card: ${percentString(summary?.rates?.click_copy_id_per_view_product_card)}`);
+    lines.push(`- Copiar link por visualização de card: ${percentString(summary?.rates?.click_copy_link_per_view_product_card)}`);
+    lines.push(`- Abrir loja por visualização de card: ${percentString(summary?.rates?.click_open_store_per_view_product_card)}`);
+    lines.push("");
+
+    return lines;
+  }
+
+  function rankingBlock(title, items, maxItems) {
+    const lines = [title];
+    if (!Array.isArray(items) || !items.length) {
+      lines.push("- sem dados");
+      lines.push("");
+      return lines;
+    }
+
+    items.slice(0, Number.isFinite(Number(maxItems)) && Number(maxItems) > 0 ? Number(maxItems) : 5)
+      .forEach((item, index) => {
+        const base = `${index + 1}. ${itemLabel(item, "sem dados")}`;
+        const metrics = [
+          `eventos=${safeNumber(item?.count, 0)}`,
+        ];
+
+        if (safeNumber(item?.intention_score, 0) > 0) metrics.push(`intenção=${safeNumber(item?.intention_score, 0)}`);
+        if (safeNumber(item?.buy_count, 0) > 0) metrics.push(`comprar=${safeNumber(item?.buy_count, 0)}`);
+        if (safeNumber(item?.copy_link_count, 0) > 0) metrics.push(`copiar_link=${safeNumber(item?.copy_link_count, 0)}`);
+        if (safeNumber(item?.copy_id_count, 0) > 0) metrics.push(`copiar_id=${safeNumber(item?.copy_id_count, 0)}`);
+        if (safeNumber(item?.open_store_count, 0) > 0) metrics.push(`abrir_loja=${safeNumber(item?.open_store_count, 0)}`);
+
+        const context = compactItemContext(item);
+        lines.push(`- ${base} | ${metrics.join(" | ")}${context ? " | " + context : ""}`);
+      });
+
+    lines.push("");
+    return lines;
+  }
+
+  function summaryHeaderLines(summary, periodTitle) {
+    const s = summary || {};
+    const generatedAt = normalizeText(s.generated_at || nowIso());
+    const days = safeNumber(s?.period?.days, 0);
+    const lines = [];
+
+    lines.push("RELATÓRIO INTELIGENTE — LA FAMIGLIA LINKS / ACHADOS DO DIA");
+    lines.push(`Gerado em: ${formatDateTimeHuman(generatedAt)}`);
+    lines.push(`Período: ${normalizeText(periodTitle || "customizado")}`);
+    if (days > 0) lines.push(`Janela em dias: ${days}`);
+    if (normalizeText(s?.period?.start_at || "")) lines.push(`Início: ${formatDateTimeHuman(s.period.start_at)}`);
+    if (normalizeText(s?.period?.end_at || "")) lines.push(`Fim: ${formatDateTimeHuman(s.period.end_at)}`);
+    lines.push(`Eventos filtrados: ${safeNumber(s?.totals?.filtered_events, 0)}`);
+    lines.push(`Eventos armazenados no total: ${safeNumber(s?.totals?.all_events_stored, 0)}`);
+    lines.push("");
+    return lines;
+  }
+
+  function buildExecutiveSection(summary, periodTitle) {
+    const answers = summary?.answers_before_first_sale || {};
+    let lines = [];
+    lines = lines.concat(summaryHeaderLines(summary, periodTitle));
+    lines = lines.concat(buildExecutiveRecommendations(summary));
+    lines = lines.concat(rankingBlock("TOP REDES", answers.top_networks_by_click_buy?.length ? answers.top_networks_by_click_buy : answers.top_networks_by_intention, 5));
+    lines = lines.concat(rankingBlock("TOP CRIATIVOS", answers.top_creatives_by_click_buy, 5));
+    lines = lines.concat(rankingBlock("TOP TÍTULOS", answers.top_titles_by_click_buy, 5));
+    lines = lines.concat(rankingBlock("TOP PRODUTOS", answers.top_products_by_click_buy?.length ? answers.top_products_by_click_buy : answers.top_products_by_intention, 5));
+    lines = lines.concat(rankingBlock("TOP CATEGORIAS", answers.top_categories_by_click_buy?.length ? answers.top_categories_by_click_buy : answers.top_categories_by_intention, 5));
+    return lines;
+  }
+
+  function buildIntelligentReport(options) {
+    const opts = options || {};
+    const todayRange = resolvePresetRange("today");
+    const weeklyRange = resolvePresetRange("weekly");
+
+    const todaySummary = buildSummary({
+      ...(opts || {}),
+      start_at: todayRange.start_at,
+      end_at: todayRange.end_at,
+      days: 1,
+    });
+
+    const weeklySummary = buildSummary({
+      ...(opts || {}),
+      start_at: weeklyRange.start_at,
+      end_at: weeklyRange.end_at,
+      days: 7,
+    });
+
+    const generatedAt = nowIso();
+    const lines = [];
+    lines.push("==============================================");
+    lines.push("CENTRAL DE INTELIGÊNCIA — RASTRO MENSURÁVEL");
+    lines.push("Objetivo: medir clique antes de medir venda.");
+    lines.push("==============================================");
+    lines.push(`Gerado em: ${formatDateTimeHuman(generatedAt)}`);
+    lines.push(`Arquivo diário referência: relatorio_tracking_${formatDateFile(generatedAt)}.txt`);
+    lines.push(`Arquivo semanal referência: relatorio_tracking_semana_${weeklyRange.week_label}.txt`);
+    lines.push("");
+    lines.push("ANTES DA PRIMEIRA VENDA, O FOCO É:");
+    lines.push("- qual rede gera mais clique");
+    lines.push("- qual criativo gera mais toque");
+    lines.push("- qual título gera mais curiosidade");
+    lines.push("- qual produto leva a pessoa do conteúdo para a loja");
+    lines.push("");
+    lines.push("--------------------------------------------------");
+    lines.push("BLOCO 1 — HOJE");
+    lines.push("--------------------------------------------------");
+    lines = lines.concat(buildExecutiveSection(todaySummary, todayRange.label));
+    lines.push("--------------------------------------------------");
+    lines.push("BLOCO 2 — ÚLTIMOS 7 DIAS");
+    lines.push("--------------------------------------------------");
+    lines = lines.concat(buildExecutiveSection(weeklySummary, weeklyRange.label));
+    lines.push("--------------------------------------------------");
+    lines.push("LEITURA FINAL");
+    lines.push("--------------------------------------------------");
+    lines.push("Use este relatório para decidir o que repetir, o que parar e o que testar de novo.");
+    lines.push("Sem clique qualificado, não existe venda.");
+    lines.push("");
+
+    return {
+      generated_at: generatedAt,
+      today_summary: todaySummary,
+      weekly_summary: weeklySummary,
+      text: lines.join("\n").trim() + "\n",
+      filenames: {
+        intelligent: `relatorio_inteligente_${formatDateFile(generatedAt)}.txt`,
+        daily: `relatorio_tracking_${formatDateFile(generatedAt)}.txt`,
+        weekly: `relatorio_tracking_semana_${weeklyRange.week_label}.txt`,
+      },
+    };
+  }
+
   function buildTrackedUrl(rawUrl, overrides) {
     const base = normalizeText(rawUrl || "");
     if (!base) return "";
@@ -891,76 +1163,24 @@
     return rows;
   }
 
+
   function summaryToText(summary) {
     const s = summary || {};
-    const answers = s.answers_before_first_sale || {};
-    const funnel = s.funnel || {};
-    const lines = [];
+    const period = s?.period || {};
+    let periodTitle = "Período customizado";
 
-    function pushRanking(title, items) {
-      lines.push(title);
-      if (!Array.isArray(items) || !items.length) {
-        lines.push("- sem dados");
-        lines.push("");
-        return;
-      }
-
-      items.forEach((item, index) => {
-        const parts = [
-          `${index + 1}. ${item?.label || item?.key || "unknown"}`,
-          `count=${safeNumber(item?.count, 0)}`,
-        ];
-
-        if (safeNumber(item?.intention_score, 0) > 0) parts.push(`intention=${safeNumber(item?.intention_score, 0)}`);
-        if (safeNumber(item?.buy_count, 0) > 0) parts.push(`buy=${safeNumber(item?.buy_count, 0)}`);
-        if (safeNumber(item?.copy_link_count, 0) > 0) parts.push(`copy_link=${safeNumber(item?.copy_link_count, 0)}`);
-        if (safeNumber(item?.copy_id_count, 0) > 0) parts.push(`copy_id=${safeNumber(item?.copy_id_count, 0)}`);
-        if (safeNumber(item?.open_store_count, 0) > 0) parts.push(`open_store=${safeNumber(item?.open_store_count, 0)}`);
-        if (item?.sku) parts.push(`sku=${item.sku}`);
-        if (item?.category) parts.push(`category=${item.category}`);
-        if (item?.network) parts.push(`network=${item.network}`);
-        if (item?.format) parts.push(`format=${item.format}`);
-        if (item?.placement) parts.push(`placement=${item.placement}`);
-
-        lines.push(`- ${parts.join(" | ")}`);
-      });
-
-      lines.push("");
+    if (safeNumber(period.days, 0) === 1) {
+      periodTitle = `Hoje (${formatDateHuman(new Date())})`;
+    } else if (safeNumber(period.days, 0) === 7) {
+      const range = resolvePresetRange("weekly");
+      periodTitle = range.label;
+    } else if (normalizeText(period.start_at || "") || normalizeText(period.end_at || "")) {
+      const startText = normalizeText(period.start_at || "") ? formatDateTimeHuman(period.start_at) : "sem início";
+      const endText = normalizeText(period.end_at || "") ? formatDateTimeHuman(period.end_at) : "sem fim";
+      periodTitle = `${startText} até ${endText}`;
     }
 
-    lines.push("RELATORIO LOCAL-FIRST - TRACKING LA_FAMIGLIA_LINKS");
-    lines.push(`gerado_em: ${normalizeText(s.generated_at || nowIso())}`);
-    if (normalizeText(s?.filters?.session_id || "")) {
-      lines.push(`session_id: ${normalizeText(s.filters.session_id)}`);
-    }
-    if (normalizeText(s?.filters?.visitor_id || "")) {
-      lines.push(`visitor_id: ${normalizeText(s.filters.visitor_id)}`);
-    }
-    lines.push(`eventos_filtrados: ${safeNumber(s?.totals?.filtered_events, 0)}`);
-    lines.push(`eventos_armazenados: ${safeNumber(s?.totals?.all_events_stored, 0)}`);
-    lines.push("");
-
-    lines.push("FUNIL:");
-    Object.entries(funnel).forEach(([key, value]) => {
-      lines.push(`- ${key}: ${safeNumber(value, 0)}`);
-    });
-    lines.push("");
-
-    lines.push("TAXAS:");
-    Object.entries(s?.rates || {}).forEach(([key, value]) => {
-      lines.push(`- ${key}: ${safeNumber(value, 0)}`);
-    });
-    lines.push("");
-
-    pushRanking("TOP REDES POR INTENCAO", answers.top_networks_by_intention);
-    pushRanking("TOP FORMATOS POR INTENCAO", answers.top_formats_by_intention);
-    pushRanking("TOP PLACEMENTS POR INTENCAO", answers.top_placements_by_intention);
-    pushRanking("TOP PRODUTOS POR INTENCAO", answers.top_products_by_intention);
-    pushRanking("TOP CATEGORIAS POR INTENCAO", answers.top_categories_by_intention);
-    pushRanking("TOP CRIATIVOS POR CLICK_BUY", answers.top_creatives_by_click_buy);
-    pushRanking("TOP TITULOS POR CLICK_BUY", answers.top_titles_by_click_buy);
-
-    return lines.join("\n").trim() + "\n";
+    return buildExecutiveSection(s, periodTitle).join("\n").trim() + "\n";
   }
 
   function csvDownload(filename, rows) {
@@ -1240,6 +1460,51 @@
       textDownload(filename || "cn_tracking_summary.txt", summaryToText(summary));
       return summary;
     },
+
+    getTodaySummary(options) {
+      const range = resolvePresetRange("today");
+      return buildSummary({
+        ...(options || {}),
+        start_at: range.start_at,
+        end_at: range.end_at,
+        days: 1,
+      });
+    },
+
+    getWeeklySummary(options) {
+      const range = resolvePresetRange("weekly");
+      return buildSummary({
+        ...(options || {}),
+        start_at: range.start_at,
+        end_at: range.end_at,
+        days: 7,
+      });
+    },
+
+    exportDailyExecutiveTxt(filename, options) {
+      const range = resolvePresetRange("today");
+      const summary = API.getTodaySummary(options || {});
+      textDownload(filename || `relatorio_tracking_${formatDateFile(new Date())}.txt`, summaryToText(summary));
+      return summary;
+    },
+
+    exportWeeklyExecutiveTxt(filename, options) {
+      const range = resolvePresetRange("weekly");
+      const summary = API.getWeeklySummary(options || {});
+      textDownload(filename || `relatorio_tracking_semana_${range.week_label}.txt`, summaryToText(summary));
+      return summary;
+    },
+
+    getIntelligentReport(options) {
+      return buildIntelligentReport(options || {});
+    },
+
+    exportIntelligentReportTxt(filename, options) {
+      const report = buildIntelligentReport(options || {});
+      textDownload(filename || report.filenames.intelligent, report.text);
+      return report;
+    },
+
 
     exportSessionSummaryJson(filename, options) {
       const summary = API.getSessionSummary(options || {});
