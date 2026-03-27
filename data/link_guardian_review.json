@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-27T03:26:31Z",
+  "updated_at": "2026-03-27T05:36:17Z",
   "total_items": 4,
   "summary": {
     "unique_skus": 4,
@@ -53,13 +53,13 @@
       ]
     },
     {
-      "happened_at": "2026-03-27T03:23:19Z",
+      "happened_at": "2026-03-27T05:32:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
       "issue_number": 119,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119",
-      "issue_title": "[CMS] Produto: Echo Pop Kids Premium",
+      "issue_title": "Amazon Echo Pop Alexa Kids Marvel Azul",
       "sku": "amazon-echo-pop-kids-premium-marvel-azul",
       "title": "Amazon Echo Pop Alexa Kids Marvel Azul",
       "id_busca": "5J5PKG-PK7B",
@@ -87,10 +87,14 @@
         "Marvel",
         "Casa Inteligente",
         "Premium"
-      ]
+      ],
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido"
     },
     {
-      "happened_at": "2026-03-26T23:33:44Z",
+      "happened_at": "2026-03-27T05:32:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -124,7 +128,11 @@
         "Iluminador",
         "Glow Dourado",
         "Premium"
-      ]
+      ],
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido"
     },
     {
       "happened_at": "2026-03-23T21:26:40Z",
