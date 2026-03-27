@@ -56,6 +56,9 @@ REVIEW_MAX_ITEMS = int(os.environ.get("LG_REVIEW_MAX_ITEMS", "5000"))
 
 MEMORY_JSON = Path(os.environ.get("LG_MEMORY_JSON_PATH", str(DATA_DIR / "link_guardian_memory.json")))
 
+LG_ONLY_SKU = str(os.environ.get("LG_ONLY_SKU", "") or "").strip()
+LG_RUN_MODE = str(os.environ.get("LG_RUN_MODE", "full") or "full").strip().lower()
+
 
 # =========================
 # CONFIG (env)
@@ -1599,6 +1602,17 @@ def _trim_text_list(values: Any, limit: int = 8) -> List[str]:
 
 
 
+def _normalize_sku_filter(value: str) -> str:
+    return str(value or "").strip().lower()
+
+
+def _sku_matches_filter(sku: str, target: str) -> bool:
+    sku_norm = _normalize_sku_filter(sku)
+    target_norm = _normalize_sku_filter(target)
+    return bool(sku_norm and target_norm and sku_norm == target_norm)
+
+
+
 def _build_review_item(
     p: Dict[str, Any],
     res: CheckResult,
@@ -1944,9 +1958,30 @@ def main() -> int:
 
     products = cleaned
 
+    only_sku_mode = bool(_normalize_sku_filter(LG_ONLY_SKU))
+    target_sku = _normalize_sku_filter(LG_ONLY_SKU)
+
+    if only_sku_mode:
+        target_exists = any(
+            isinstance(p, dict) and _sku_matches_filter((p.get("sku") or ""), target_sku)
+            for p in products
+        )
+        if not target_exists:
+            print("========================================")
+            print("LINK GUARDIAN — SKU ALVO NÃO ENCONTRADO")
+            print("========================================")
+            print(f"LG_ONLY_SKU: {LG_ONLY_SKU}")
+            return 2
+
+        print("========================================")
+        print("LINK GUARDIAN — MODO FOCADO POR SKU")
+        print("========================================")
+        print(f"LG_RUN_MODE: {LG_RUN_MODE or 'sku'}")
+        print(f"LG_ONLY_SKU: {LG_ONLY_SKU}")
+
     active_before_raw = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
 
-    if BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= 1:
+    if (not only_sku_mode) and BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= 1:
         boosted = 0
         for p in products:
             if not isinstance(p, dict):
@@ -1966,7 +2001,7 @@ def main() -> int:
 
     active_after_bootstrap = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
 
-    if FORCE_RESTORE_ALL_IF_ZERO and active_after_bootstrap == 0 and len(products) >= 1:
+    if (not only_sku_mode) and FORCE_RESTORE_ALL_IF_ZERO and active_after_bootstrap == 0 and len(products) >= 1:
         boosted_all = _force_restore_all(products)
         print("========================================")
         print("FORCE-RESTORE ATIVADO (ainda zerada):")
@@ -2009,6 +2044,11 @@ def main() -> int:
             continue
 
         sku = (p.get("sku") or "").strip()
+
+        if only_sku_mode and not _sku_matches_filter(sku, target_sku):
+            out.append(p)
+            continue
+
         was_active = bool(p.get("active"))
         was_featured = bool(p.get("featured"))
         memory_item = _get_or_create_memory_item(guardian_memory, sku) if sku else {}
@@ -2180,7 +2220,7 @@ def main() -> int:
     active_after = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
     min_allowed = max(FAILSAFE_MIN_ACTIVE, int(active_before * FAILSAFE_MIN_RATIO) if active_before else 0)
 
-    if active_before > 0 and active_after < min_allowed:
+    if (not only_sku_mode) and active_before > 0 and active_after < min_allowed:
         print("========================================")
         print("FAILSAFE (ANTI-WIPE) ATIVADO:")
         print(f"Active before: {active_before} | Active after: {active_after} | Min allowed: {min_allowed}")
@@ -2203,7 +2243,7 @@ def main() -> int:
 
     active_final_before_removal = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
 
-    if FORCE_RESTORE_ALL_IF_ZERO and active_final_before_removal == 0 and len(out) >= 1:
+    if (not only_sku_mode) and FORCE_RESTORE_ALL_IF_ZERO and active_final_before_removal == 0 and len(out) >= 1:
         boosted_all = _force_restore_all(out)
         print("========================================")
         print("FORCE-RESTORE FINAL (paraquedas):")
@@ -2252,6 +2292,7 @@ def main() -> int:
 
     print("========================================")
     print("Link Guardian finalizado.")
+    print(f"Run mode: {LG_RUN_MODE or 'full'} | Only SKU: {LG_ONLY_SKU or '-'}")
     print(f"Checked: {checked} | Max: {MAX_CHECK}")
     print(f"OK: {ok_count} | FAIL/DEAD: {dead_count} | TEMP: {temp_count}")
     print(f"STORE_INVALID: {store_invalid_count}")
