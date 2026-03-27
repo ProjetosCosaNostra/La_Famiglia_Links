@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v10.1 (edição preserva featured/quick_home por segurança)
+# Versão : v10.2 (edição preserva featured/quick_home + trava anti-/lists e auto precisa_relink)
 # ==========================================================
 
 from __future__ import annotations
@@ -563,6 +563,57 @@ def _is_ml_short(u: str) -> bool:
     return False
 
 
+def _bad_ml_target_reason(u: str) -> str:
+    x = _clean_url(u)
+    if not x or not _is_ml_url(x):
+        return ""
+
+    try:
+        pu = urlparse(x)
+    except Exception:
+        return ""
+
+    host = _host_of(x)
+    path = (pu.path or "").strip().lower()
+    query = (pu.query or "").strip().lower()
+    full = f"{host}{path}?{query}".strip("?")
+
+    if host.startswith("lista."):
+        return ""
+
+    if re.search(r"(^|/)lists(?:/|$)", path):
+        return "destino /lists"
+
+    if "account-verification" in full or "account_verification" in full:
+        return "account-verification"
+
+    if re.search(r"(^|/)social(?:/|$)", path):
+        return "destino /social/"
+
+    return ""
+
+
+def _ensure_manual_ml_target_safe(label: str, u: str) -> None:
+    reason = _bad_ml_target_reason(u)
+    if reason:
+        raise ValueError(
+            f"O '{label}' aponta para um destino estruturalmente ruim do Mercado Livre ({reason}). "
+            "Use um link de produto real."
+        )
+
+
+def _merge_notes(existing: str, extra: str) -> str:
+    base = _clean_optional_text(existing)
+    add = _clean_optional_text(extra)
+    if not base:
+        return add
+    if not add:
+        return base
+    if add.casefold() in base.casefold():
+        return base
+    return f"{base} | {add}"
+
+
 def _resolve_final_url(u: str, timeout: float = 8.0) -> str:
     x = _clean_url(u)
     if not x:
@@ -1027,6 +1078,13 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if alt_url and not (alt_url.startswith("http://") or alt_url.startswith("https://")):
         raise ValueError("O 'Link alternativo / fallback' precisa começar com http:// ou https://.")
 
+    if link_ml:
+        _ensure_manual_ml_target_safe("Link Mercado Livre", link_ml)
+    if check_url_manual:
+        _ensure_manual_ml_target_safe("check_url manual", check_url_manual)
+    if canonical_url_manual:
+        _ensure_manual_ml_target_safe("canonical_url manual", canonical_url_manual)
+
     open_url: Optional[str]
     check_url: Optional[str]
     canonical_url: Optional[str]
@@ -1063,6 +1121,28 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
                 raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
 
     image = _normalize_asset_path(image_url) if image_url else None
+
+    bad_target_reasons: List[str] = []
+    for candidate in [resolved_url, open_url or "", check_url or ""]:
+        reason = _bad_ml_target_reason(candidate)
+        if reason and reason not in bad_target_reasons:
+            bad_target_reasons.append(reason)
+
+    if bad_target_reasons:
+        bad_target_text = ", ".join(bad_target_reasons)
+        review_action = "precisa_relink"
+        review_status = "precisa_relink"
+        active = False
+        review_reason = review_reason or f"Destino estruturalmente ruim: {bad_target_text}"
+        notes = _merge_notes(
+            notes,
+            f"CMS marcou precisa_relink automaticamente porque o destino novo caiu em {bad_target_text}.",
+        )
+
+        if _bad_ml_target_reason(open_url or ""):
+            open_url = canonical_url or ""
+        if _bad_ml_target_reason(check_url or ""):
+            check_url = canonical_url or open_url or ""
 
     if is_edit_mode and review_action:
         if review_action == "precisa_relink":
