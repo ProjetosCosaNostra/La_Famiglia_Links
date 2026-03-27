@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-27T05:36:17Z",
+  "updated_at": "2026-03-27T07:24:05Z",
   "total_items": 4,
   "summary": {
     "unique_skus": 4,
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "happened_at": "2026-03-27T05:32:06Z",
+      "happened_at": "2026-03-27T07:20:55Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -70,10 +70,10 @@
       "checked_url": "https://meli.la/1cSyrZ2",
       "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "open_url": "https://meli.la/1cSyrZ2",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PK7B",
       "short_url": "https://meli.la/1cSyrZ2",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "active": true,
       "featured": false,
@@ -84,9 +84,7 @@
         "Alexa",
         "Echo Pop",
         "Kids",
-        "Marvel",
-        "Casa Inteligente",
-        "Premium"
+        "Marvel"
       ],
       "reason_bucket": "storefront_social_lists_invalid",
       "reason_bucket_label": "storefront social /lists inválido",

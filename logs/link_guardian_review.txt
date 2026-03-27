@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-27T05:36:17Z
+Atualizado em: 2026-03-27T07:24:05Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -37,7 +37,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a
 
 [ALTA] review_only_storefront
-Quando: 2026-03-27T05:32:06Z
+Quando: 2026-03-27T07:20:55Z
 Issue: #119
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
 SKU: amazon-echo-pop-kids-premium-marvel-azul
@@ -46,11 +46,11 @@ ID ML: 5J5PKG-PK7B
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Status HTTP: 200
-Badges: Achados do Dia, Tecnologia, Alexa, Echo Pop, Kids, Marvel, Casa Inteligente, Premium
+Badges: Achados do Dia, Tecnologia, Alexa, Echo Pop, Kids, Marvel
 open_url: https://meli.la/1cSyrZ2
 checked_url: https://meli.la/1cSyrZ2
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PK7B
 
 [ALTA] review_only_storefront
 Quando: 2026-03-27T05:32:06Z
