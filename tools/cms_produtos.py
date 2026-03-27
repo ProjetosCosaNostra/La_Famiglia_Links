@@ -352,6 +352,71 @@ def _clean_optional_text(s: str) -> str:
     x = re.sub(r"\s+", " ", x).strip()
     return "" if _is_placeholder(x) else x
 
+
+_EDIT_FORM_DEFAULTS = {
+    "title": {
+        "novo titulo do produto",
+        "novo título do produto",
+    },
+    "categoria_principal": {
+        "tecnologia",
+    },
+    "categorias_secundarias": {
+        "notebook, pc, armazenamento",
+    },
+    "aliases_busca": {
+        "ssd kingston, nvme 1tb, kingston nv3",
+    },
+    "badges": {
+        "achados do dia, tecnologia, premium",
+    },
+    "quick_home_order": {
+        "1",
+    },
+}
+
+
+def _norm_form_text_key(s: str) -> str:
+    x = _clean_optional_text(s)
+    x = x.casefold()
+    x = re.sub(r"\s+", " ", x).strip()
+    return x
+
+
+def _is_edit_form_default(field: str, value: str) -> bool:
+    if not value:
+        return False
+    key = _norm_form_text_key(value)
+    defaults = _EDIT_FORM_DEFAULTS.get(field) or set()
+    return key in defaults
+
+
+def _clean_edit_optional_text(value: str, field: str = "") -> Optional[str]:
+    x = _clean_optional_text(value)
+    if not x:
+        return None
+    if field and _is_edit_form_default(field, x):
+        return None
+    return x
+
+
+def _clean_edit_optional_url(value: str) -> Optional[str]:
+    x = _clean_url(value)
+    if not x:
+        return None
+
+    xl = x.lower()
+    if "..." in xl:
+        return None
+    if "/sec/..." in xl:
+        return None
+    if "meli.la/..." in xl:
+        return None
+    if xl in {"https://...", "http://..."}:
+        return None
+
+    return x
+
 def _parse_optional_bool_text(s: str) -> Optional[bool]:
     x = _clean_optional_text(s).lower()
     if not x:
@@ -802,6 +867,7 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
 
     target_issue_raw = _first_meaningful_line(_get_section(sections, r"N[uú]mero\s+da\s+issue\s+original|Issue\s+original|Issue\s+do\s+produto"))
     target_issue_number = _clean_issue_number(target_issue_raw)
+    is_edit_mode = bool(target_issue_number)
 
     sku_raw = _first_meaningful_line(_get_section(sections, r"^SKU\b"))
     title_raw = _first_meaningful_line(_get_section(sections, r"^T[ií]tulo\b"))
@@ -837,71 +903,128 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         r"Posi[cç][aã]o\s+na\s+Vitrine\s+R[aá]pida|Ordem\s+da\s+Vitrine\s+R[aá]pida|Quick\s*Home\s*Order",
     )
 
-    link_ml = _first_url(new_link_block) or _first_url(link_block) or _first_url(_first_meaningful_line(link_block))
-    check_url_manual = _first_url(check_block) or _first_url(_first_meaningful_line(check_block))
-    canonical_url_manual = _first_url(canonical_block) or _first_url(_first_meaningful_line(canonical_block))
-    alt_url = _first_url(alt_block) or _first_url(_first_meaningful_line(alt_block))
+    link_ml = _clean_edit_optional_url(
+        _first_url(new_link_block) or _first_url(link_block) or _first_url(_first_meaningful_line(link_block))
+    ) or ""
+    check_url_manual = _clean_edit_optional_url(_first_url(check_block) or _first_url(_first_meaningful_line(check_block))) or ""
+    canonical_url_manual = _clean_edit_optional_url(
+        _first_url(canonical_block) or _first_url(_first_meaningful_line(canonical_block))
+    ) or ""
+    alt_url = _clean_edit_optional_url(_first_url(alt_block) or _first_url(_first_meaningful_line(alt_block))) or ""
 
     image_url = _first_image_url(img_block) or _first_image_url(_first_meaningful_line(img_block))
     if not image_url:
         image_url = _first_image_url(body)
 
     sku = _clean_sku(sku_raw)
-    title = _clean_title(title_raw)
-    id_busca = _clean_ml_id(id_raw)
-    badges = _split_badges_optional(_clean_title(badges_raw))
-    categoria_principal = _clean_category_name(categoria_principal_raw)
-    categorias_secundarias = _clean_secondary_categories(categorias_secundarias_raw)
-    aliases_busca = _clean_search_aliases(aliases_busca_raw)
 
-    review_action = _normalize_review_action(_first_meaningful_line(review_action_block))
-    review_status = _normalize_review_status(_first_meaningful_line(review_status_block))
-    review_reason = _clean_optional_text(_first_meaningful_line(review_reason_block))
-    replacement_vendor = _clean_optional_text(_first_meaningful_line(replacement_vendor_block))
-    notes = _clean_optional_text(notes_block.replace("- [x]", "").replace("- [ ]", "").replace("- ", "\n"))
+    if is_edit_mode:
+        title_clean = _clean_edit_optional_text(title_raw, field="title")
+        title = _clean_title(title_clean) if title_clean else None
 
-    active_state = _checkbox_state(body, r"Ativo")
-    featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
-    quick_home_state = _checkbox_state(
-        body,
-        r"Entrar\s+na\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida|Quick\s*Home",
-    )
+        id_clean = _clean_edit_optional_text(id_raw)
+        id_busca = _clean_ml_id(id_clean) if id_clean else ""
 
-    if quick_home_state is None:
-        quick_home_state = _parse_optional_bool_text(_first_meaningful_line(quick_home_block))
+        badges_clean = _clean_edit_optional_text(badges_raw, field="badges")
+        badges = _split_badges_optional(_clean_title(badges_clean)) if badges_clean else None
 
-    quick_home_order = _clean_order_int(_first_meaningful_line(quick_home_order_block), default=0)
+        categoria_principal_clean = _clean_edit_optional_text(categoria_principal_raw, field="categoria_principal")
+        categoria_principal = _clean_category_name(categoria_principal_clean) if categoria_principal_clean else None
 
-    if quick_home_state is False and quick_home_order <= 0:
-        quick_home_order = 0
+        categorias_secundarias_clean = _clean_edit_optional_text(
+            categorias_secundarias_raw,
+            field="categorias_secundarias",
+        )
+        categorias_secundarias = (
+            _clean_secondary_categories(categorias_secundarias_clean)
+            if categorias_secundarias_clean
+            else None
+        )
 
-    active = True if active_state is None else bool(active_state)
-    featured = bool(featured_state) if featured_state is not None else False
+        aliases_busca_clean = _clean_edit_optional_text(aliases_busca_raw, field="aliases_busca")
+        aliases_busca = _clean_search_aliases(aliases_busca_clean) if aliases_busca_clean else None
 
-    if review_action == "precisa_relink":
-        active = False
-        review_status = "precisa_relink"
-    elif review_action == "reativar":
-        active = True
-        if review_status in {"precisa_relink", "desativado_manual"}:
-            review_status = "ativo"
-    elif review_action == "desativar_manual":
-        active = False
-        review_status = "desativado_manual"
+        review_action_line = _clean_edit_optional_text(_first_meaningful_line(review_action_block))
+        review_status_line = _clean_edit_optional_text(_first_meaningful_line(review_status_block))
+        review_reason = _clean_edit_optional_text(_first_meaningful_line(review_reason_block))
+        replacement_vendor = _clean_edit_optional_text(_first_meaningful_line(replacement_vendor_block))
+        notes = _clean_edit_optional_text(notes_block.replace("- [x]", "").replace("- [ ]", "").replace("- ", "\n"))
+
+        review_action = _normalize_review_action(review_action_line) if review_action_line else None
+        review_status = _normalize_review_status(review_status_line) if review_status_line else None
+
+        active_state = _checkbox_state(body, r"Ativo")
+        featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
+        quick_home_state = _checkbox_state(
+            body,
+            r"Entrar\s+na\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida|Quick\s*Home",
+        )
+
+        active = True if active_state is True else None
+        featured = True if featured_state is True else None
+
+        if quick_home_state is True:
+            quick_home = True
+        else:
+            quick_home = None
+
+        quick_home_order_raw = _clean_edit_optional_text(
+            _first_meaningful_line(quick_home_order_block),
+            field="quick_home_order",
+        )
+        quick_home_order = (
+            _clean_order_int(quick_home_order_raw, default=0)
+            if quick_home is True and quick_home_order_raw
+            else None
+        )
+        if quick_home_order is not None and quick_home_order <= 0:
+            quick_home_order = None
+
     else:
-        if review_status not in _VALID_REVIEW_STATUSES:
-            review_status = "ativo" if active else "em_revisao"
+        title = _clean_title(title_raw)
+        id_busca = _clean_ml_id(id_raw)
+        badges = _split_badges_optional(_clean_title(badges_raw))
+        categoria_principal = _clean_category_name(categoria_principal_raw)
+        categorias_secundarias = _clean_secondary_categories(categorias_secundarias_raw)
+        aliases_busca = _clean_search_aliases(aliases_busca_raw)
 
-    if not title:
+        review_action = _normalize_review_action(_first_meaningful_line(review_action_block))
+        review_status = _normalize_review_status(_first_meaningful_line(review_status_block))
+        review_reason = _clean_optional_text(_first_meaningful_line(review_reason_block))
+        replacement_vendor = _clean_optional_text(_first_meaningful_line(replacement_vendor_block))
+        notes = _clean_optional_text(notes_block.replace("- [x]", "").replace("- [ ]", "").replace("- ", "\n"))
+
+        active_state = _checkbox_state(body, r"Ativo")
+        featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
+        quick_home_state = _checkbox_state(
+            body,
+            r"Entrar\s+na\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida|Quick\s*Home",
+        )
+
+        if quick_home_state is None:
+            quick_home_state = _parse_optional_bool_text(_first_meaningful_line(quick_home_block))
+
+        quick_home_order = _clean_order_int(_first_meaningful_line(quick_home_order_block), default=0)
+
+        if quick_home_state is False and quick_home_order <= 0:
+            quick_home_order = 0
+
+        active = True if active_state is None else bool(active_state)
+        featured = bool(featured_state) if featured_state is not None else False
+        quick_home = bool(quick_home_state) if quick_home_state is not None else None
+
+    if not sku:
+        raise ValueError("Não consegui ler um SKU válido. (Evite colar imagem/HTML no campo SKU.)")
+
+    if is_edit_mode and not title:
+        title = None
+    elif not is_edit_mode and not title:
         issue_title_fallback = _clean_title(str(issue.get("title") or ""))
         if re.match(r"(?i)^\[?cms\]?\s*[:\-]", issue_title_fallback) or re.search(r"(?i)editar\s+produto|novo\s*/\s*atualizar\s+produto|produto\s*:", issue_title_fallback):
             issue_title_fallback = ""
         title = issue_title_fallback
 
-    if not sku:
-        raise ValueError("Não consegui ler um SKU válido. (Evite colar imagem/HTML no campo SKU.)")
-
-    if not link_ml and not id_busca:
+    if not is_edit_mode and not link_ml and not id_busca:
         raise ValueError("Produto sem link: preencha 'Link Mercado Livre' ou 'ID Mercado Livre'.")
 
     if link_ml and not _is_ml_url(link_ml):
@@ -914,24 +1037,71 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if alt_url and not (alt_url.startswith("http://") or alt_url.startswith("https://")):
         raise ValueError("O 'Link alternativo / fallback' precisa começar com http:// ou https://.")
 
-    open_url = _clean_url(link_ml) if link_ml else ""
-    norm = _normalize_ml_links(
-        open_url,
-        id_busca,
-        preferred_check_url=check_url_manual,
-        preferred_canonical_url=canonical_url_manual,
-    )
+    open_url: Optional[str]
+    check_url: Optional[str]
+    canonical_url: Optional[str]
+    short_url = ""
+    resolved_url = ""
 
-    open_url = norm.get("open_url") or open_url or _ml_search_url(id_busca)
-    check_url = norm.get("check_url") or open_url
-    canonical_url = norm.get("canonical_url") or (_ml_search_url(id_busca) if id_busca else "")
-    short_url = norm.get("short_url") or ""
-    resolved_url = norm.get("resolved_url") or ""
+    if link_ml or check_url_manual or canonical_url_manual:
+        open_url = _clean_url(link_ml) if link_ml else ""
+        norm = _normalize_ml_links(
+            open_url,
+            id_busca,
+            preferred_check_url=check_url_manual,
+            preferred_canonical_url=canonical_url_manual,
+        )
 
-    if not open_url:
-        raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
+        open_url = norm.get("open_url") or open_url or (_ml_search_url(id_busca) if id_busca and not is_edit_mode else "")
+        check_url = norm.get("check_url") or open_url
+        canonical_url = norm.get("canonical_url") or (_ml_search_url(id_busca) if id_busca else "")
+        short_url = norm.get("short_url") or ""
+        resolved_url = norm.get("resolved_url") or ""
 
-    image = _normalize_asset_path(image_url)
+        if not is_edit_mode and not open_url:
+            raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
+    else:
+        if is_edit_mode:
+            open_url = None
+            check_url = None
+            canonical_url = None
+        else:
+            open_url = _ml_search_url(id_busca) if id_busca else ""
+            check_url = open_url
+            canonical_url = open_url
+            if not open_url:
+                raise ValueError("Não consegui montar o open_url. Confira Link/ID do Mercado Livre.")
+
+    image = _normalize_asset_path(image_url) if image_url else None
+
+    if is_edit_mode and review_action:
+        if review_action == "precisa_relink":
+            active = False
+            review_status = "precisa_relink"
+        elif review_action == "reativar":
+            active = True
+            if review_status in {"precisa_relink", "desativado_manual"}:
+                review_status = "ativo"
+        elif review_action == "desativar_manual":
+            active = False
+            review_status = "desativado_manual"
+        else:
+            if review_status is not None and review_status not in _VALID_REVIEW_STATUSES:
+                review_status = "ativo" if active else "em_revisao"
+    elif not is_edit_mode:
+        if review_action == "precisa_relink":
+            active = False
+            review_status = "precisa_relink"
+        elif review_action == "reativar":
+            active = True
+            if review_status in {"precisa_relink", "desativado_manual"}:
+                review_status = "ativo"
+        elif review_action == "desativar_manual":
+            active = False
+            review_status = "desativado_manual"
+        else:
+            if review_status not in _VALID_REVIEW_STATUSES:
+                review_status = "ativo" if active else "em_revisao"
 
     source_issue_number = int(issue.get("number") or 0)
     source_issue_url = _clean_url(str(issue.get("html_url") or ""))
@@ -941,34 +1111,35 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "sku": sku,
         "title": title,
         "badges": badges,
-        "id_busca": id_busca,
+        "id_busca": (id_busca or None) if is_edit_mode else id_busca,
         "open_url": open_url,
         "check_url": check_url,
         "canonical_url": canonical_url,
         "image": image,
         "price_text": None,
-        "active": bool(active),
-        "featured": bool(featured),
+        "active": active,
+        "featured": featured,
         "last_checked": "",
         "last_ok": "",
         "review_action": review_action,
         "review_status": review_status,
         "review_reason": review_reason,
         "replacement_vendor": replacement_vendor,
-        "relink_open_url": _clean_url(open_url if _first_url(new_link_block) else ""),
+        "relink_open_url": _clean_url(open_url if (open_url and _first_url(new_link_block)) else "") if open_url else None,
         "notes": notes,
-        "alt_url": _clean_url(alt_url),
+        "alt_url": (_clean_url(alt_url) if alt_url else None),
         "issue_number": int(target_issue_number or source_issue_number or 0),
         "issue_url": source_issue_url,
         "issue_title": source_issue_title,
-        "categoria_principal": (categoria_principal or None),
-        "categorias_secundarias": (categorias_secundarias or None),
-        "aliases_busca": (aliases_busca or None),
-        "quick_home": (bool(quick_home_state) if quick_home_state is not None else None),
-        "quick_home_order": (int(quick_home_order) if quick_home_order > 0 else (0 if quick_home_state is False else None)),
+        "categoria_principal": categoria_principal,
+        "categorias_secundarias": categorias_secundarias,
+        "aliases_busca": aliases_busca,
+        "quick_home": quick_home,
+        "quick_home_order": (int(quick_home_order) if quick_home_order is not None else None),
         "_source_issue_number": source_issue_number,
         "_target_issue_number": int(target_issue_number or 0),
         "_special_set_featured_only": False,
+        "_is_edit_mode": is_edit_mode,
     }
 
     if short_url:
@@ -977,7 +1148,6 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         product["resolved_url"] = resolved_url
 
     return product
-
 
 def _urlish_fields(p: Dict[str, Any]) -> List[str]:
     return [
@@ -1024,6 +1194,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
 
     special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
     reactivate_featured_target = bool(incoming.pop("_reactivate_featured_target", False))
+    is_edit_mode = bool(incoming.pop("_is_edit_mode", False))
     featured_note = _clean_optional_text(str(incoming.pop("featured_note", "") or ""))
 
     if special_set_featured_only:
