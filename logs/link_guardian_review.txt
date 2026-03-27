@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-27T00:48:20Z
+Atualizado em: 2026-03-27T01:21:57Z
 Itens pendentes: 5
 SKUs únicos: 5
 Prioridade alta: 5
@@ -21,7 +21,7 @@ TOP MOTIVOS
 ITENS PENDENTES
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-27T00:44:45Z
+Quando: 2026-03-27T01:17:40Z
 Issue: #14
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/14
 SKU: porteiro-eletronico-wifi-camera-visao-noturna-audio
@@ -37,20 +37,36 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a
 
 [ALTA] review_only_storefront
-Quando: 2026-03-27T00:44:45Z
-Issue: #117
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
-SKU: microsoft-xbox-series-x-1tb
-Título: Xbox Series X 1TB Premium
-ID ML: 5J5PKG-VKGY
+Quando: 2026-03-27T01:17:40Z
+Issue: #129
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
+SKU: puma-flyer-runner-mesh-bdp
+Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
+ID ML: 5J5PKG-6B4Q
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Status HTTP: 200
-Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
-open_url: https://meli.la/1dLH6zP
-checked_url: https://meli.la/1dLH6zP
+Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
+open_url: https://meli.la/2cmJ3u1
+checked_url: https://meli.la/2cmJ3u1
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
+
+[ALTA] review_only_storefront
+Quando: 2026-03-27T01:17:40Z
+Issue: #119
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
+SKU: amazon-echo-pop-kids-premium-marvel-azul
+Título: Amazon Echo Pop Alexa Kids Marvel Azul
+ID ML: 5J5PKG-PK7B
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Status HTTP: 200
+Badges: Achados do Dia, Tecnologia, Alexa, Echo Pop, Kids, Marvel, Casa Inteligente, Premium
+open_url: https://meli.la/1cSyrZ2
+checked_url: https://meli.la/1cSyrZ2
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D
 
 [ALTA] review_only_storefront
 Quando: 2026-03-26T23:33:44Z
@@ -67,22 +83,6 @@ open_url: https://meli.la/1mCkRoz
 checked_url: https://meli.la/1mCkRoz
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNAHQQjTP309kIeygqsHk8QdTWJF48hbK6rCw%2Fh88dT%2FQHlEK9kr0%2Bmh24ExeaDuMf1zuK3YrWXb91of2d35uM1P9bsQBvqv9Ljtuajrvbe50I%2FEh8WeCGiTw3Uf%2FoJ12F4zKnNbnf5oTzuVujQgUF1BUJAgD0JFwHlGjmgJP42yO1cZF9S6pb53knnTE42bP8GniQ%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T00:44:45Z
-Issue: #129
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
-SKU: puma-flyer-runner-mesh-bdp
-Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
-ID ML: 5J5PKG-6B4Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
-open_url: https://meli.la/2cmJ3u1
-checked_url: https://meli.la/2cmJ3u1
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
 
 [ALTA] review_only_storefront
 Quando: 2026-03-23T21:26:40Z
