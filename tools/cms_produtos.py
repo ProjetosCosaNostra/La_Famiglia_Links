@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v10 (quick_home + quick_home_order para Vitrine Rápida)
+# Versão : v10.1 (edição preserva featured/quick_home por segurança)
 # ==========================================================
 
 from __future__ import annotations
@@ -953,32 +953,22 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         review_action = _normalize_review_action(review_action_line) if review_action_line else None
         review_status = _normalize_review_status(review_status_line) if review_status_line else None
 
-        active_state = _checkbox_state(body, r"Ativo")
-        featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
-        quick_home_state = _checkbox_state(
-            body,
-            r"Entrar\s+na\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida|Quick\s*Home",
-        )
-
-        active = True if active_state is True else None
-        featured = True if featured_state is True else None
-
-        if quick_home_state is True:
-            quick_home = True
-        else:
-            quick_home = None
-
-        quick_home_order_raw = _clean_edit_optional_text(
-            _first_meaningful_line(quick_home_order_block),
-            field="quick_home_order",
-        )
-        quick_home_order = (
-            _clean_order_int(quick_home_order_raw, default=0)
-            if quick_home is True and quick_home_order_raw
-            else None
-        )
-        if quick_home_order is not None and quick_home_order <= 0:
-            quick_home_order = None
+        # MODO EDIÇÃO (SEGURANÇA DE PRODUÇÃO):
+        # ------------------------------------------------------------
+        # Não alterar featured / quick_home / quick_home_order / active
+        # apenas por causa dos campos opcionais do formulário de edição.
+        #
+        # Na prática, Editar Produto Existente deve servir para trocar
+        # título, link, ID, imagem, categorias, aliases, badges etc.,
+        # sem bagunçar Produto do Dia nem Vitrine Rápida.
+        #
+        # Mudanças estruturais continuam sendo feitas por fluxos próprios
+        # (ex.: template dedicado de Produto do Dia / ajustes explícitos).
+        # ------------------------------------------------------------
+        active = None
+        featured = None
+        quick_home = None
+        quick_home_order = None
 
     else:
         title = _clean_title(title_raw)
