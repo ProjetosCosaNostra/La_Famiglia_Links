@@ -2,7 +2,7 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v9 (CONFIDENCE SCORE + DIAGNOSTIC BUCKETS + REVIEW TXT MAIS CLARO)
+# Versão : v10 (LAST GOOD LINK + MEMÓRIA OPERACIONAL + REVIEW EXECUTIVO)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
@@ -53,6 +53,9 @@ REMOVED_MAX_EVENTS = int(os.environ.get("LG_REMOVED_MAX_EVENTS", "5000"))
 REVIEW_JSON = Path(os.environ.get("LG_REVIEW_JSON_PATH", str(DATA_DIR / "link_guardian_review.json")))
 REVIEW_TXT = Path(os.environ.get("LG_REVIEW_TXT_PATH", str(LOGS_DIR / "link_guardian_review.txt")))
 REVIEW_MAX_ITEMS = int(os.environ.get("LG_REVIEW_MAX_ITEMS", "5000"))
+
+MEMORY_JSON = Path(os.environ.get("LG_MEMORY_JSON_PATH", str(DATA_DIR / "link_guardian_memory.json")))
+MEMORY_MAX_SKUS = int(os.environ.get("LG_MEMORY_MAX_SKUS", "5000"))
 
 
 # =========================
@@ -1119,11 +1122,181 @@ def _force_restore_all(products: List[Dict[str, Any]]) -> int:
 
 
 # =========================
+# MEMÓRIA OPERACIONAL
+# =========================
+def _load_guardian_memory(path: Path) -> Dict[str, Any]:
+    base = {
+        "updated_at": "",
+        "summary": {
+            "tracked_skus": 0,
+            "confirmed_good_links": 0,
+            "recurrent_storefront_invalid": 0,
+            "relink_priority": 0,
+        },
+        "skus": {},
+    }
+
+    if not path.exists():
+        return base
+
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, dict):
+            return base
+        if not isinstance(data.get("skus"), dict):
+            data["skus"] = {}
+        if not isinstance(data.get("summary"), dict):
+            data["summary"] = base["summary"].copy()
+        if "updated_at" not in data:
+            data["updated_at"] = ""
+        return data
+    except Exception:
+        return base
+
+
+def _refresh_guardian_memory_meta(memory: Dict[str, Any]) -> None:
+    skus = memory.get("skus") or {}
+    if not isinstance(skus, dict):
+        skus = {}
+    tracked_skus = 0
+    confirmed_good_links = 0
+    recurrent_storefront_invalid = 0
+    relink_priority = 0
+    for sku, item in skus.items():
+        if not sku or not isinstance(item, dict):
+            continue
+        tracked_skus += 1
+        if str(item.get("guardian_last_good_confirmed_at") or "").strip():
+            confirmed_good_links += 1
+        reason_counts = item.get("reason_counts") or {}
+        if int(reason_counts.get("storefront_social_lists_invalid") or 0) >= 2:
+            recurrent_storefront_invalid += 1
+        if bool(item.get("relink_priority")):
+            relink_priority += 1
+    memory["summary"] = {
+        "tracked_skus": tracked_skus,
+        "confirmed_good_links": confirmed_good_links,
+        "recurrent_storefront_invalid": recurrent_storefront_invalid,
+        "relink_priority": relink_priority,
+    }
+    memory["updated_at"] = _utc_now_iso_z()
+
+
+def _save_guardian_memory(memory: Dict[str, Any]) -> None:
+    skus = memory.get("skus") or {}
+    if isinstance(skus, dict) and MEMORY_MAX_SKUS > 0 and len(skus) > MEMORY_MAX_SKUS:
+        ordered = sorted(
+            ((k, v) for k, v in skus.items() if isinstance(v, dict)),
+            key=lambda kv: str((kv[1] or {}).get("last_seen_at") or ""),
+            reverse=True,
+        )[:MEMORY_MAX_SKUS]
+        memory["skus"] = {k: v for k, v in ordered}
+    _refresh_guardian_memory_meta(memory)
+    _write_json(MEMORY_JSON, memory)
+
+
+def _memory_entry_for_sku(memory: Dict[str, Any], sku: str) -> Dict[str, Any]:
+    skus = memory.setdefault("skus", {})
+    if not isinstance(skus, dict):
+        skus = {}
+        memory["skus"] = skus
+    key = str(sku or "").strip()
+    if not key:
+        return {}
+    item = skus.get(key)
+    if not isinstance(item, dict):
+        item = {
+            "sku": key,
+            "last_seen_at": "",
+            "last_reason": "",
+            "reason_counts": {},
+            "guardian_last_good_open_url": "",
+            "guardian_last_good_check_url": "",
+            "guardian_last_good_confirmed_at": "",
+            "last_confirmed_final_url": "",
+            "relink_priority": False,
+            "notes": [],
+        }
+        skus[key] = item
+    if not isinstance(item.get("reason_counts"), dict):
+        item["reason_counts"] = {}
+    if not isinstance(item.get("notes"), list):
+        item["notes"] = []
+    return item
+
+
+def _update_guardian_memory(memory: Dict[str, Any], p: Dict[str, Any], res: CheckResult, happened_at: str) -> Dict[str, Any]:
+    sku = str(p.get("sku") or "").strip()
+    if not sku:
+        return {}
+    item = _memory_entry_for_sku(memory, sku)
+    if not item:
+        return {}
+
+    item["last_seen_at"] = happened_at
+    item["last_reason"] = str(res.reason or "").strip()
+    reason_bucket = str(p.get("guardian_reason_bucket") or _guardian_reason_bucket(res)).strip()
+    if reason_bucket:
+        counts = item.setdefault("reason_counts", {})
+        counts[reason_bucket] = int(counts.get(reason_bucket) or 0) + 1
+
+    good_target = _clean_url(res.promoted_url or res.final_url or res.checked_url or "")
+    if res.ok and good_target and _looks_like_product_destination(good_target):
+        current_open = _clean_url(p.get("open_url") or "")
+        current_check = _clean_url(p.get("check_url") or "")
+        item["guardian_last_good_open_url"] = current_open if current_open and _looks_like_product_destination(current_open) else good_target
+        item["guardian_last_good_check_url"] = current_check if current_check and _looks_like_product_destination(current_check) else good_target
+        item["guardian_last_good_confirmed_at"] = happened_at
+        item["last_confirmed_final_url"] = good_target
+        item["relink_priority"] = False
+        note = f"{happened_at} ok:{reason_bucket}"
+        if note not in item["notes"]:
+            item["notes"] = ([note] + [str(x) for x in item.get("notes") or []])[:12]
+    else:
+        counts = item.get("reason_counts") or {}
+        lists_hits = int(counts.get("storefront_social_lists_invalid") or 0)
+        fallback_hits = int(counts.get("listing_search_fallback") or 0)
+        item["relink_priority"] = bool((lists_hits >= 2 or fallback_hits >= 2) and str(item.get("guardian_last_good_confirmed_at") or "").strip())
+        note = f"{happened_at} review:{reason_bucket}"
+        if note not in item["notes"]:
+            item["notes"] = ([note] + [str(x) for x in item.get("notes") or []])[:12]
+
+    return item
+
+
+def _apply_last_good_fields_from_memory(p: Dict[str, Any], memory_item: Dict[str, Any]) -> None:
+    if not isinstance(memory_item, dict):
+        return
+    for src, dst in (
+        ("guardian_last_good_open_url", "guardian_last_good_open_url"),
+        ("guardian_last_good_check_url", "guardian_last_good_check_url"),
+        ("guardian_last_good_confirmed_at", "guardian_last_good_confirmed_at"),
+    ):
+        value = _clean_url(memory_item.get(src) or "") if src.endswith("_url") else str(memory_item.get(src) or "").strip()
+        if value:
+            p[dst] = value
+
+
+def _memory_note_from_item(memory_item: Dict[str, Any]) -> str:
+    if not isinstance(memory_item, dict):
+        return ""
+    last_good = str(memory_item.get("guardian_last_good_confirmed_at") or "").strip()
+    relink_priority = bool(memory_item.get("relink_priority"))
+    if relink_priority and last_good:
+        return f"último link bom confirmado em {last_good}; SKU com padrão recorrente, relink prioritário"
+    if last_good:
+        return f"último link bom confirmado em {last_good}"
+    return ""
+
+
+# =========================
 # RELATÓRIO DE REMOVIDOS
 # =========================
 def _load_removed_history(path: Path) -> Dict[str, Any]:
     if not path.exists():
-        return {
+        memory_note = _memory_note_from_item(memory_item or {})
+    return {
             "updated_at": "",
             "total_events": 0,
             "weekly_summary": [],
@@ -1458,6 +1631,7 @@ def _build_review_item(
     res: CheckResult,
     happened_at: str,
     action_suggested: str,
+    memory_item: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
     state = "review_only_storefront" if res.storefront_invalid else "review_only"
     priority = _review_priority_from_reason(res.reason, action_suggested)
@@ -1483,6 +1657,10 @@ def _build_review_item(
         "reason_bucket_label": _guardian_reason_bucket_label(reason_bucket),
         "confidence_score": confidence_score,
         "confidence_bucket": confidence_bucket,
+        "memory_note": memory_note,
+        "guardian_last_good_open_url": _clean_url(p.get("guardian_last_good_open_url") or ""),
+        "guardian_last_good_check_url": _clean_url(p.get("guardian_last_good_check_url") or ""),
+        "guardian_last_good_confirmed_at": str(p.get("guardian_last_good_confirmed_at") or "").strip(),
         "action_suggested": action_suggested,
         "needs_manual_check": True,
         "checked_url": _clean_url(res.checked_url or ""),
@@ -1612,6 +1790,30 @@ def _clear_review_items_for_sku(history: Dict[str, Any], sku: str) -> int:
     return removed
 
 
+def _review_exec_group(item: Dict[str, Any]) -> str:
+    priority = str(item.get("priority") or "media").strip().lower()
+    action = str(item.get("action_suggested") or "").strip().lower()
+    reason_bucket = str(item.get("reason_bucket") or "").strip().lower()
+    confidence = int(item.get("confidence_score") or 0)
+    if reason_bucket in {"hard_dead", "dead_unconfirmed", "missing_url", "outside_mercado_livre"} or action in {"remover", "remover_catalogo"} or confidence <= 15:
+        return "Pode remover do catálogo"
+    if priority == "alta" or action in {"trocar_link", "relink"} or reason_bucket in {"storefront_social_lists_invalid", "listing_search_fallback", "account_verification_wrapped_invalid"}:
+        return "Corrigir agora"
+    if confidence >= 70 or reason_bucket in {"temporary_block", "temporary_server_or_timeout", "temporary_no_response", "temporary_social_profile", "storefront_profile_confirmed", "storefront_profile_raw"}:
+        return "Provável falso positivo"
+    return "Monitorar sem mexer"
+
+
+def _review_exec_order(title: str) -> int:
+    order = {
+        "Corrigir agora": 0,
+        "Provável falso positivo": 1,
+        "Monitorar sem mexer": 2,
+        "Pode remover do catálogo": 3,
+    }
+    return order.get(title, 9)
+
+
 def _build_review_txt(history: Dict[str, Any]) -> str:
     items = history.get("items") or []
     updated_at = str(history.get("updated_at") or "").strip()
@@ -1717,6 +1919,7 @@ def main() -> int:
 
     removed_history = _load_removed_history(REMOVED_JSON)
     review_history = _load_review_history(REVIEW_JSON)
+    guardian_memory = _load_guardian_memory(MEMORY_JSON)
     removed_events_added = 0
     review_items_added = 0
     pending_actions: Dict[str, Dict[str, Any]] = {}
@@ -1808,6 +2011,8 @@ def main() -> int:
 
         res = _check_product_urls(p)
         _apply_guardian_intelligence_fields(p, res)
+        memory_item = _update_guardian_memory(guardian_memory, p, res, now)
+        _apply_last_good_fields_from_memory(p, memory_item)
 
         p["guardian_last_checked"] = now
         p["guardian_last_status"] = int(res.status)
@@ -1840,6 +2045,8 @@ def main() -> int:
         if res.ok:
             ok_count += 1
             p["last_ok"] = now
+            if memory_item:
+                _apply_last_good_fields_from_memory(p, memory_item)
 
             if int(p.get("guardian_fail_count") or 0) != 0:
                 p["guardian_fail_count"] = 0
@@ -1881,11 +2088,15 @@ def main() -> int:
             p["guardian_review_flag"] = True
             p["guardian_review_reason"] = res.reason
             p["guardian_review_at"] = now
+            action_suggested = "trocar_link" if "lists" in (res.reason or "") or "listing" in (res.reason or "") else "revisar"
+            if memory_item and bool(memory_item.get("relink_priority")):
+                action_suggested = "relink_prioritario"
             review_item = _build_review_item(
                 p=p,
                 res=res,
                 happened_at=now,
-                action_suggested="trocar_link" if "lists" in (res.reason or "") or "listing" in (res.reason or "") else "revisar",
+                action_suggested=action_suggested,
+                memory_item=memory_item,
             )
             if _append_review_item(review_history, review_item):
                 review_items_added += 1
@@ -2034,6 +2245,7 @@ def main() -> int:
     _write_json(PRODUTOS_JSON, data)
     _save_removed_reports(removed_history)
     _save_review_reports(review_history)
+    _save_guardian_memory(guardian_memory)
 
     print("========================================")
     print("Link Guardian finalizado.")
@@ -2047,6 +2259,8 @@ def main() -> int:
     print(f"Review JSON: {REVIEW_JSON}")
     print(f"Review TXT: {REVIEW_TXT}")
     print(f"Review items: {len(review_history.get('items') or [])}")
+    print(f"Memory JSON: {MEMORY_JSON}")
+    print(f"Memory tracked SKUs: {int((guardian_memory.get('summary') or {}).get('tracked_skus') or 0)}")
     print(f"Review items added: {review_items_added}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | STOREFRONT_INVALID_THRESHOLD: {STOREFRONT_INVALID_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
