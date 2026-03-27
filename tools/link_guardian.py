@@ -2,7 +2,7 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v8 (LISTA INVALID + UNWRAP ACCOUNT VERIFICATION + PROMOÇÃO DE URL VÁLIDA)
+# Versão : v9 (CONFIDENCE SCORE + DIAGNOSTIC BUCKETS + REVIEW TXT MAIS CLARO)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
@@ -155,6 +155,136 @@ class CheckResult:
     checked_url: str
     storefront_invalid: bool
     promoted_url: str = ""
+
+
+
+def _guardian_confidence_bucket(score: int) -> str:
+    if score >= 95:
+        return "confirmado"
+    if score >= 70:
+        return "forte_evidencia"
+    if score >= 40:
+        return "revisar_manual"
+    return "invalido"
+
+
+def _guardian_reason_bucket(res: CheckResult) -> str:
+    reason = (res.reason or "").strip().lower()
+    checked = _clean_url(res.checked_url or "")
+    final_url = _clean_url(res.final_url or "")
+    unwrapped_checked = bool(_unwrap_account_verification(checked))
+
+    if reason == "storefront_social_lists_invalid":
+        return "storefront_social_lists_invalid"
+    if reason == "storefront_listing_invalid":
+        return "listing_search_fallback"
+    if reason == "storefront_social_profile_unconfirmed":
+        return "storefront_profile_unconfirmed"
+    if reason == "social_profile_needs_review":
+        return "storefront_profile_needs_review"
+    if reason == "social_profile_product_confirmed":
+        return "storefront_profile_confirmed"
+    if reason == "social_profile_ok":
+        return "storefront_profile_raw"
+    if reason == "ok_unwrapped":
+        return "account_verification_wrapped_valid" if unwrapped_checked else "product_direct_valid"
+    if reason == "ok":
+        if unwrapped_checked:
+            return "account_verification_wrapped_valid"
+        if _looks_like_product_destination(final_url):
+            return "product_direct_valid"
+        return "generic_ok"
+    if reason == "dead":
+        return "hard_dead" if res.hard_dead else "dead_unconfirmed"
+    if reason == "nao_ml":
+        return "outside_mercado_livre"
+    if reason == "sem_url":
+        return "missing_url"
+    if reason == "sem_resposta":
+        return "temporary_no_response"
+    if reason == "bloqueio":
+        return "temporary_block"
+    if reason == "social_temp":
+        return "temporary_social_profile"
+    if reason.startswith("temp_"):
+        return "temporary_server_or_timeout"
+    return "review_misc"
+
+
+def _guardian_confidence_score(p: Dict[str, Any], res: CheckResult) -> int:
+    reason = (res.reason or "").strip().lower()
+    score = 50
+
+    if res.ok:
+        if reason in {"ok", "ok_unwrapped"}:
+            score = 97 if _looks_like_product_destination(res.final_url) else 92
+        elif reason == "social_profile_product_confirmed":
+            score = 82
+        elif reason == "social_profile_ok":
+            score = 68
+        else:
+            score = 85
+    elif res.temporary:
+        if reason == "bloqueio":
+            score = 56
+        elif reason == "sem_resposta":
+            score = 48
+        elif reason == "social_temp":
+            score = 52
+        elif reason.startswith("temp_"):
+            score = 45
+        else:
+            score = 42
+    elif res.storefront_invalid:
+        if reason == "storefront_social_lists_invalid":
+            score = 18
+        elif reason == "storefront_listing_invalid":
+            score = 24
+        elif reason == "storefront_social_profile_unconfirmed":
+            score = 34
+        elif reason == "social_profile_needs_review":
+            score = 55
+        else:
+            score = 30
+    elif reason == "dead":
+        score = 5 if res.hard_dead else 12
+    elif reason == "nao_ml":
+        score = 8
+    elif reason == "sem_url":
+        score = 3
+
+    score += min(4, len([x for x in (p.get("badges") or []) if str(x).strip()]))
+    score += min(3, len([x for x in (p.get("smart_categories") or p.get("categories") or []) if str(x).strip()]))
+    if p.get("issue_number"):
+        score += 1
+    if p.get("featured"):
+        score += 1
+
+    return max(0, min(100, int(score)))
+
+
+def _guardian_reason_bucket_label(bucket: str) -> str:
+    labels = {
+        "storefront_social_lists_invalid": "storefront social /lists inválido",
+        "listing_search_fallback": "fallback para lista/busca",
+        "storefront_profile_unconfirmed": "perfil social sem confirmação",
+        "storefront_profile_needs_review": "perfil social com revisão manual",
+        "storefront_profile_confirmed": "perfil social confirmado por evidência",
+        "storefront_profile_raw": "perfil social bruto",
+        "account_verification_wrapped_valid": "account-verification com destino válido",
+        "product_direct_valid": "produto direto válido",
+        "generic_ok": "OK genérico",
+        "hard_dead": "morto confirmado",
+        "dead_unconfirmed": "morto provável",
+        "outside_mercado_livre": "fora do Mercado Livre",
+        "missing_url": "sem URL",
+        "temporary_no_response": "temporário sem resposta",
+        "temporary_block": "temporário por bloqueio/anti-bot",
+        "temporary_social_profile": "temporário em perfil social",
+        "temporary_server_or_timeout": "temporário servidor/timeout",
+        "review_misc": "revisão manual diversa",
+    }
+    return labels.get((bucket or "").strip(), (bucket or "").strip() or "revisão manual diversa")
 
 
 # =========================
@@ -1279,6 +1409,7 @@ def _load_review_history(path: Path) -> Dict[str, Any]:
         return base
 
 
+
 def _review_priority_from_reason(reason: str, action_suggested: str) -> str:
     r = (reason or "").strip().lower()
     a = (action_suggested or "").strip().lower()
@@ -1289,6 +1420,16 @@ def _review_priority_from_reason(reason: str, action_suggested: str) -> str:
     if "search" in r or "busca" in r:
         return "media"
     return "media"
+
+
+def _apply_guardian_intelligence_fields(p: Dict[str, Any], res: CheckResult) -> Tuple[int, str, str]:
+    score = _guardian_confidence_score(p, res)
+    bucket = _guardian_confidence_bucket(score)
+    reason_bucket = _guardian_reason_bucket(res)
+    p["guardian_confidence_score"] = score
+    p["guardian_confidence_bucket"] = bucket
+    p["guardian_reason_bucket"] = reason_bucket
+    return score, bucket, reason_bucket
 
 
 def _review_state_label(state: str) -> str:
@@ -1311,6 +1452,7 @@ def _trim_text_list(values: Any, limit: int = 8) -> List[str]:
     return out
 
 
+
 def _build_review_item(
     p: Dict[str, Any],
     res: CheckResult,
@@ -1321,6 +1463,9 @@ def _build_review_item(
     priority = _review_priority_from_reason(res.reason, action_suggested)
     smart_categories = _trim_text_list(p.get("smart_categories") or p.get("categories") or [])
     badges = _trim_text_list(p.get("badges") or [])
+    confidence_score = int(p.get("guardian_confidence_score") or _guardian_confidence_score(p, res))
+    confidence_bucket = str(p.get("guardian_confidence_bucket") or _guardian_confidence_bucket(confidence_score)).strip()
+    reason_bucket = str(p.get("guardian_reason_bucket") or _guardian_reason_bucket(res)).strip()
     return {
         "happened_at": happened_at,
         "state": state,
@@ -1334,6 +1479,10 @@ def _build_review_item(
         "id_busca": (p.get("id_busca") or "").strip(),
         "status": int(res.status),
         "reason": res.reason,
+        "reason_bucket": reason_bucket,
+        "reason_bucket_label": _guardian_reason_bucket_label(reason_bucket),
+        "confidence_score": confidence_score,
+        "confidence_bucket": confidence_bucket,
         "action_suggested": action_suggested,
         "needs_manual_check": True,
         "checked_url": _clean_url(res.checked_url or ""),
@@ -1658,6 +1807,7 @@ def main() -> int:
         was_featured = bool(p.get("featured"))
 
         res = _check_product_urls(p)
+        _apply_guardian_intelligence_fields(p, res)
 
         p["guardian_last_checked"] = now
         p["guardian_last_status"] = int(res.status)
