@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-27T03:23:19Z",
+  "updated_at": "2026-03-27T06:12:25Z",
   "products": [
     {
       "sku": "refil-creme-acetinado-hidratante-corporal-lily-250g",
@@ -20,7 +20,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
       "image": "https://github.com/user-attachments/assets/3681c6b2-cb43-4613-bab9-62d0f305fcbe",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -5369,7 +5369,7 @@
       "alt_url": "",
       "issue_number": 114,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/114",
-      "issue_title": "[CMS] Produto: PS5 Slim Premium com Astro Bot e Gran Turismo 7  SKU (único)."
+      "issue_title": "[CMS] Produto: PS5 Slim Premium com Astro Bot e Gran Turismo 7 SKU (único)."
     },
     {
       "sku": "microsoft-xbox-series-x-1tb",
@@ -5723,13 +5723,13 @@
       ],
       "id_busca": "5J5PKG-PK7B",
       "open_url": "https://meli.la/1cSyrZ2",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D",
-      "image": "https://github.com/user-attachments/assets/634dde46-ccb1-4b0d-976b-5b4594db702c",
-      "active": true,
-      "featured": false,
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PK7B",
+      "image": "https://github.com/user-attachments/assets/701663ef-c095-4b8c-a791-83b5b1702e49",
+      "active": false,
+      "featured": true,
       "short_url": "https://meli.la/1cSyrZ2",
-      "resolved_url": "https://www.mercadolivre.com.br/amazon-echo-pop-alexa-kids-para-criancas-color-marvel-cor-marvel-azul/p/MLB29812512#polycard_client=search-desktop&search_layout=grid&position=1&type=product&tracking_id=2d750c92-5642-4d97-923d-4b4722beb534&wid=MLB6293966038&sid=search",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "price_text": "",
       "last_checked": "2026-03-27T03:23:19Z",
       "last_ok": "2026-03-27T00:44:45Z",
@@ -5748,7 +5748,7 @@
       "alt_url": "",
       "issue_number": 119,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119",
-      "issue_title": "[CMS] Produto: Echo Pop Kids Premium",
+      "issue_title": "Amazon Echo Pop Alexa Kids Marvel Azul",
       "categoria_principal": "Tecnologia",
       "categorias_secundarias": [
         "Casa Inteligente",
@@ -5764,7 +5764,7 @@
         "amazon echo pop kids"
       ],
       "quick_home": true,
-      "_source_issue_number": 150,
+      "_source_issue_number": 161,
       "_target_issue_number": 119,
       "guardian_review_flag": true,
       "guardian_review_reason": "storefront_social_lists_invalid",
