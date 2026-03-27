@@ -1,7 +1,21 @@
 name: Link Guardian (produtos.json)
 
 "on":
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      sku:
+        description: "SKU único para rerun focado (opcional)"
+        required: false
+        type: string
+        default: ""
+      modo:
+        description: "Modo de execução"
+        required: false
+        type: choice
+        default: full
+        options:
+          - full
+          - sku
   schedule:
     - cron: "0 */6 * * *"   # a cada 6 horas (UTC)
 
@@ -67,6 +81,11 @@ jobs:
 
           LG_REMOVED_MAX_EVENTS: "5000"
           LG_REVIEW_MAX_ITEMS: "5000"
+
+          # Preparação para rerun focado por SKU.
+          # O consumo efetivo destes envs será fechado no tools/link_guardian.py.
+          LG_ONLY_SKU: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.sku || '' }}
+          LG_RUN_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.modo || 'full' }}
         run: |
           python tools/link_guardian.py
 
@@ -82,6 +101,7 @@ jobs:
             logs/link_guardian_review.txt
             data/link_guardian_removed.json
             logs/link_guardian_removed.txt
+            data/link_guardian_memory.json
 
       - name: Commit & push (if changed)
         run: |
@@ -90,6 +110,10 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
 
             git add produtos.json
+
+            if [ -f data/link_guardian_memory.json ]; then
+              git add data/link_guardian_memory.json
+            fi
 
             if [ -f data/link_guardian_removed.json ]; then
               git add data/link_guardian_removed.json
