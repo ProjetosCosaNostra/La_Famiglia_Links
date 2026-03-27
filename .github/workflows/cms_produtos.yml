@@ -125,6 +125,79 @@ jobs:
           echo "ERRO: não foi possível publicar produtos.json após ${MAX_ATTEMPTS} tentativas."
           exit 1
 
+      - name: Extrair SKU do issue (parser do CMS)
+        if: steps.commit_push.outputs.changed == 'true'
+        id: extract_sku
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          try:
+              from tools.cms_produtos import _build_product_from_issue
+          except Exception as exc:
+              print(f"ERRO: não consegui importar o parser do CMS: {exc}", file=sys.stderr)
+              raise
+
+          issue = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8")).get("issue") or {}
+          product = _build_product_from_issue(issue)
+          sku = str(product.get("sku") or "").strip()
+
+          if not sku:
+              raise RuntimeError("SKU vazio após parse do issue.")
+
+          print(f"SKU extraído do issue: {sku}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"sku={sku}\n")
+          PY
+
+      - name: Disparar Guardian focado no SKU (workflow_dispatch)
+        if: steps.commit_push.outputs.changed == 'true' && steps.extract_sku.outputs.sku != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SKU: ${{ steps.extract_sku.outputs.sku }}
+        run: |
+          set -euo pipefail
+
+          API="https://api.github.com/repos/${REPO}/actions/workflows/link_guardian.yml/dispatches"
+          BODY="$(python - <<'PY'
+          import json
+          import os
+          print(json.dumps({
+              'ref': 'gh-pages',
+              'inputs': {
+                  'modo': 'sku',
+                  'sku': os.environ['SKU'],
+              }
+          }, ensure_ascii=False))
+          PY
+          )"
+
+          echo "Dispatching Guardian: ${API}"
+          echo "SKU alvo: ${SKU}"
+          HTTP_CODE="$(curl -sS -o /tmp/guardian_dispatch_resp.txt -w "%{http_code}" \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            "${API}" \
+            -d "${BODY}")"
+
+          if [ "${HTTP_CODE}" = "204" ]; then
+            echo "OK: Guardian workflow disparado para o SKU ${SKU}."
+            exit 0
+          fi
+
+          echo "ERRO: dispatch do Guardian retornou HTTP ${HTTP_CODE}"
+          echo "Resposta:"
+          cat /tmp/guardian_dispatch_resp.txt || true
+          exit 1
+
       - name: Disparar Telegram (workflow_dispatch)
         if: steps.commit_push.outputs.changed == 'true'
         env:
