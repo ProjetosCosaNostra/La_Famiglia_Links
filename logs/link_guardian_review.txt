@@ -1,27 +1,27 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO
 ========================================
-Atualizado em: 2026-03-27T01:21:57Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-03-27T03:26:31Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 4
 
 ITENS PENDENTES
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-27T01:17:40Z
+Quando: 2026-03-27T03:23:19Z
 Issue: #14
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/14
 SKU: porteiro-eletronico-wifi-camera-visao-noturna-audio
@@ -37,23 +37,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YLW9&tid=a86be799-7d06-41d3-8a5d-20efffc7c33a
 
 [ALTA] review_only_storefront
-Quando: 2026-03-27T01:17:40Z
-Issue: #129
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
-SKU: puma-flyer-runner-mesh-bdp
-Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
-ID ML: 5J5PKG-6B4Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Status HTTP: 200
-Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
-open_url: https://meli.la/2cmJ3u1
-checked_url: https://meli.la/2cmJ3u1
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T01:17:40Z
+Quando: 2026-03-27T03:23:19Z
 Issue: #119
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
 SKU: amazon-echo-pop-kids-premium-marvel-azul
