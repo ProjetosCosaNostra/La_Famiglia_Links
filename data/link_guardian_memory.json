@@ -1,0 +1,24 @@
+{
+  "updated_at": "2026-03-27T20:40:26Z",
+  "summary": {
+    "tracked_skus": 1,
+    "confirmed_good_links": 0,
+    "recurrent_storefront_invalid": 0,
+    "relink_priority": 0
+  },
+  "skus": {
+    "kit-pinceis-maquiagem-13-pecas-estojo-rose": {
+      "reason_counts": {
+        "social_profile_product_confirmed": 1
+      },
+      "first_seen_at": "2026-03-27T20:40:24Z",
+      "last_seen_at": "2026-03-27T20:40:24Z",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "relink_priority": false,
+      "last_reason": "social_profile_product_confirmed",
+      "last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D"
+    }
+  }
+}
