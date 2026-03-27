@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-27T13:50:26Z",
+  "updated_at": "2026-03-27T15:44:30Z",
   "products": [
     {
       "sku": "refil-creme-acetinado-hidratante-corporal-lily-250g",
@@ -20,7 +20,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
       "image": "https://github.com/user-attachments/assets/3681c6b2-cb43-4613-bab9-62d0f305fcbe",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6271,6 +6271,64 @@
       "guardian_confidence_score": 87,
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed"
+    },
+    {
+      "sku": "too-faced-lip-injection-extreme-gel-branco-4g-branco",
+      "title": "Too Faced Lip Injection Extreme Gel Branco 4g Branco",
+      "badges": [
+        "Achados do Dia",
+        "Too Faced",
+        "Lip Injection",
+        "Gloss",
+        "Lábios",
+        "Maquiagem",
+        "Importado",
+        "Branco",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-N96U",
+      "open_url": "https://meli.la/2Mcv58i",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHwLMlIVievHmBJCsvZbhuggeripXDAFICZwQDJuDA9mat3LFENygjhcr6sszO8s2%2B%2FsaTMhJA4SMX%2BNXs%2BcGl%2B9EJUX6S%2BmpXdfyl2C%2BX3A%2FCIhdNH6%2F1OYQSjgJUgVa%2FVjbImyRZ3SDKL2q04HJiohaBzJzOkCv38aLtO9BXDneERqltpCm3BPy5tLDyF6pVaWocQ%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-N96U",
+      "image": "https://github.com/user-attachments/assets/01f00664-6dd9-42d2-853d-30b7ab4dca3b",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 164,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/164",
+      "issue_title": "Too Faced Lip Injection Extreme Gel Branco 4g Branco",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Lábios",
+        "Brilho Labial"
+      ],
+      "aliases_busca": [
+        "too faced",
+        "lip injection",
+        "lip injection extreme",
+        "gloss labial",
+        "brilho labial",
+        "lip plumper",
+        "plumper labial",
+        "gloss branco",
+        "gloss too faced",
+        "maquiagem importada"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 164,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2Mcv58i",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHwLMlIVievHmBJCsvZbhuggeripXDAFICZwQDJuDA9mat3LFENygjhcr6sszO8s2%2B%2FsaTMhJA4SMX%2BNXs%2BcGl%2B9EJUX6S%2BmpXdfyl2C%2BX3A%2FCIhdNH6%2F1OYQSjgJUgVa%2FVjbImyRZ3SDKL2q04HJiohaBzJzOkCv38aLtO9BXDneERqltpCm3BPy5tLDyF6pVaWocQ%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
