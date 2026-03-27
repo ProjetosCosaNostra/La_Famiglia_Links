@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-26T23:57:26Z",
+  "updated_at": "2026-03-27T00:05:40Z",
   "products": [
     {
       "sku": "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake",
@@ -20,7 +20,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA0FYibfezeh7ErNgDKQonpGclZnBVfcN0DH%2FMLJvSuddB3HATxZViIQADl9Rb%2BkeInz9ewmYlkBHjRDeNsYHQJqg66CUiE29UNY%2BYdU%2BBRUuzggK1Lfe%2F9F7afm00uivWb9ID2thznOs4GqDsAb%2FjzwFXR4OPiSilUucw7xI%2FBXoiooDDClh4SzbWL0OPUpP2aYrQ%3D%3D",
       "image": "https://github.com/user-attachments/assets/508264cc-d378-4e23-8a46-f94def9bdcaa",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -5817,6 +5817,61 @@
       "guardian_last_reason": "social_profile_product_confirmed",
       "guardian_last_checked_url": "https://meli.la/2mkbQ6Q",
       "guardian_fail_count": 0
+    },
+    {
+      "sku": "refil-creme-acetinado-hidratante-corporal-lily-250g",
+      "title": "Refil Creme Acetinado Hidratante Corporal Para Pele Lily 250g",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Cuidados com a Pele",
+        "Cuidado do Corpo",
+        "Creme Hidratante",
+        "Lily",
+        "O Boticário",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-SJFH",
+      "open_url": "https://meli.la/2Cz4YTk",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-SJFH",
+      "image": "https://github.com/user-attachments/assets/3681c6b2-cb43-4613-bab9-62d0f305fcbe",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 160,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/160",
+      "issue_title": "Refil Creme Acetinado Hidratante Corporal Lily 250g",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Cuidados com a Pele",
+        "Cuidado do Corpo",
+        "Creme Hidratante"
+      ],
+      "aliases_busca": [
+        "refil lily",
+        "creme acetinado lily",
+        "hidratante corporal lily",
+        "refil creme lily 250g",
+        "lily hidratante corporal",
+        "creme acetinado hidratante corporal lily",
+        "refil hidratante lily",
+        "lily 250g"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 160,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2Cz4YTk",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
