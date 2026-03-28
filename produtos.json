@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-28T13:13:56Z",
+  "updated_at": "2026-03-28T14:16:07Z",
   "products": [
     {
       "sku": "kit-pinceis-maquiagem-13-pecas-estojo-rose",
@@ -22,7 +22,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D",
       "image": "https://github.com/user-attachments/assets/3b3a2825-0e71-42a5-b956-1c06e430e610",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6290,6 +6290,64 @@
       "guardian_confidence_score": 87,
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed"
+    },
+    {
+      "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
+      "title": "Gloss Labial Fantasyland Disney 100 Anos - Bruna Tavares",
+      "badges": [
+        "Achados do Dia",
+        "Bruna Tavares",
+        "Disney 100",
+        "Gloss Labial",
+        "Fantasyland",
+        "Lilás",
+        "Colecionável",
+        "Maquiagem",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-EG46",
+      "open_url": "https://meli.la/2Fomd6F",
+      "check_url": "https://lista.mercadolivre.com.br/5J5PKG-EG46",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-EG46",
+      "image": "https://github.com/user-attachments/assets/191a6aca-103b-410f-a1f6-2635c7ebe2dc",
+      "active": false,
+      "featured": true,
+      "review_action": "precisa_relink",
+      "review_status": "precisa_relink",
+      "review_reason": "Destino estruturalmente ruim: destino /social/",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "CMS marcou precisa_relink automaticamente porque o destino novo caiu em destino /social/.",
+      "alt_url": "",
+      "issue_number": 166,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/166",
+      "issue_title": "Gloss Labial Fantasyland Disney 100 Anos - Bruna Tavares",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Lábios",
+        "Gloss Labial"
+      ],
+      "aliases_busca": [
+        "gloss labial",
+        "fantasyland",
+        "disney 100",
+        "bruna tavares",
+        "gloss bruna tavares",
+        "gloss disney",
+        "gloss lilás",
+        "gloss holográfico",
+        "brilho labial",
+        "edição especial"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 166,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2Fomd6F",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFHH0k4A4bT4%2Bd5fygjhff2RJzItG0vUWnByJH0OSkRCNinQ3z3Mx6eVsqEHekyUL9HhnE3TYGZ%2FkV0kXDHY4V2a1HmpXjwv5CEbt5WFl2kVzXrl3B9%2BGPDYv2Cl5Ni2rva0iQ60V%2BQik57kvqD7Cr9M%2F56ewoliuIktgFgMGVs0qoRZLKAv0LIgoY%2FH1tx3Il8z8w%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
