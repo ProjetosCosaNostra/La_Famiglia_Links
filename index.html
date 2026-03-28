@@ -190,6 +190,130 @@
     .cnProd .cnMeta { margin-top: 8px; }
     .cnProd .cnRow { margin-top: 10px; }
 
+
+    .intelHero {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(215,176,88,.22);
+      background:
+        radial-gradient(circle at top right, rgba(215,176,88,.12), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(108,82,26,.14), transparent 26%),
+        rgba(0,0,0,.28);
+      box-shadow: 0 18px 60px rgba(0,0,0,.50);
+      backdrop-filter: blur(10px);
+    }
+    .intelHero__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .intelHero__kicker {
+      margin: 0 0 4px 0;
+      opacity: .88;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .intelHero__title {
+      margin: 0;
+      font-family: Cinzel, serif;
+      letter-spacing: .3px;
+    }
+    .intelHero__meta {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .intelHero__meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(215,176,88,.18);
+      background: rgba(0,0,0,.22);
+      font-size: 12px;
+      opacity: .92;
+    }
+    .intelHero__cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .intelGrid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 1100px){
+      .intelGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px){
+      .intelGrid { grid-template-columns: 1fr; }
+    }
+    .intelCard {
+      border: 1px solid rgba(215,176,88,.16);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 14px 46px rgba(0,0,0,.42);
+    }
+    .intelCard__label {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .8;
+      margin-bottom: 8px;
+    }
+    .intelCard__value {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: rgba(255,255,255,.96);
+    }
+    .intelCard__sub {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: .86;
+      line-height: 1.35;
+    }
+    .intelActionList {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 980px){
+      .intelActionList { grid-template-columns: 1fr; }
+    }
+    .intelAction {
+      border: 1px solid rgba(215,176,88,.14);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(0,0,0,.20);
+    }
+    .intelAction h3 {
+      margin: 0 0 8px 0;
+      font-family: Cinzel, serif;
+      letter-spacing: .2px;
+      font-size: 18px;
+    }
+    .intelAction p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+      opacity: .9;
+    }
+    .intelStatusGood { color: rgba(215,176,88,.98); }
+    .intelStatusWarn { color: rgba(255,205,120,.94); }
+    .intelStatusSoft { color: rgba(255,255,255,.92); }
+
     @media (max-width: 520px) {
       .floatingStoreCTA { right: 10px; bottom: 10px; }
       .floatingStoreCTA a { padding: 10px 12px; border-radius: 14px; }
@@ -272,11 +396,83 @@
 
     <!-- ✅ MENU “IMPERIAL” -->
     <nav class="sectionNav" aria-label="Atalhos da Central Premium">
+      <a class="sectionNav__pill" href="#sec-inteligencia">🧠 Inteligência</a>
       <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
       <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
       <a class="sectionNav__pill sectionNav__pill--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
       <a class="sectionNav__pill" href="#sec-links">🔗 Links Oficiais</a>
     </nav>
+
+    <section class="panel" id="sec-inteligencia">
+      <div class="panel__head">
+        <div>
+          <h2>Inteligência ao vivo</h2>
+          <p>Leitura rápida do motor: rede, formato, placement e produto com mais tração.</p>
+        </div>
+        <div class="panel__right">
+          <button class="btn btn--tiny btn--glass" type="button" id="btnGerarIntel">🧠 Gerar relatório</button>
+        </div>
+      </div>
+
+      <div class="intelHero" aria-live="polite">
+        <div class="intelHero__top">
+          <div>
+            <p class="intelHero__kicker">Central analítica</p>
+            <h3 class="intelHero__title" id="intelMainHeadline">Lendo o comportamento antes da venda…</h3>
+            <div class="intelHero__meta">
+              <span>🕒 Atualizado <b id="intelUpdatedAt">—</b></span>
+              <span>📦 Ativos <b data-total-products>—</b></span>
+              <span>📊 Eventos úteis <b id="intelQualifiedCount">—</b></span>
+            </div>
+          </div>
+          <div class="intelHero__cta">
+            <button class="btn btn--gold" type="button" id="btnCopiarDiagnostico">📋 Copiar diagnóstico</button>
+            <a class="btn btn--glass" href="./loja.html" id="btnIntelLoja">🛒 Ir para Loja Completa</a>
+          </div>
+        </div>
+
+        <div class="intelGrid">
+          <article class="intelCard">
+            <div class="intelCard__label">Rede mais quente</div>
+            <div class="intelCard__value" id="intelTopNetwork">—</div>
+            <div class="intelCard__sub" id="intelTopNetworkSub">Sem leitura ainda.</div>
+          </article>
+
+          <article class="intelCard">
+            <div class="intelCard__label">Formato dominante</div>
+            <div class="intelCard__value" id="intelTopFormat">—</div>
+            <div class="intelCard__sub" id="intelTopFormatSub">Sem leitura ainda.</div>
+          </article>
+
+          <article class="intelCard">
+            <div class="intelCard__label">Placement mais forte</div>
+            <div class="intelCard__value" id="intelTopPlacement">—</div>
+            <div class="intelCard__sub" id="intelTopPlacementSub">Sem leitura ainda.</div>
+          </article>
+
+          <article class="intelCard">
+            <div class="intelCard__label">Produto mais quente</div>
+            <div class="intelCard__value" id="intelTopProduct">—</div>
+            <div class="intelCard__sub" id="intelTopProductSub">Sem leitura ainda.</div>
+          </article>
+        </div>
+
+        <div class="intelActionList">
+          <article class="intelAction">
+            <h3 class="intelStatusGood">Escalar agora</h3>
+            <p id="intelActionScale">Aguardando leitura do motor.</p>
+          </article>
+          <article class="intelAction">
+            <h3 class="intelStatusWarn">Testar já</h3>
+            <p id="intelActionTest">Aguardando leitura do motor.</p>
+          </article>
+          <article class="intelAction">
+            <h3 class="intelStatusSoft">Ler o funil</h3>
+            <p id="intelActionFunnel">Aguardando leitura do motor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section class="panel" id="sec-produto-do-dia">
       <div class="panel__head">
@@ -461,6 +657,160 @@
         bindOpenStore("#btnVerTodosTop", "quick_top_cta");
         bindOpenStore("#btnAbrirLojaCompleta", "quick_tools_cta");
         bindOpenStore("#linkCardLoja", "links_grid_cta");
+        bindOpenStore("#btnIntelLoja", "intelligence_cta");
+
+        function safeText(value, fallback) {
+          var txt = String(value || "").replace(/\s+/g, " ").trim();
+          return txt || String(fallback || "—");
+        }
+
+        function formatSmallDate(value) {
+          try {
+            var d = new Date(value);
+            if (isNaN(d.getTime())) return "—";
+            var dd = String(d.getDate()).padStart(2, "0");
+            var mm = String(d.getMonth() + 1).padStart(2, "0");
+            var hh = String(d.getHours()).padStart(2, "0");
+            var mi = String(d.getMinutes()).padStart(2, "0");
+            return dd + "/" + mm + ", " + hh + ":" + mi;
+          } catch (e) {
+            return "—";
+          }
+        }
+
+        function setNodeText(id, value) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          el.textContent = safeText(value, "—");
+        }
+
+        function firstItem(list) {
+          return Array.isArray(list) && list.length ? list[0] : null;
+        }
+
+        function renderIntelligencePanel() {
+          if (!window.CNTracking || typeof window.CNTracking.getIntelligentReport !== "function") return;
+
+          var report = window.CNTracking.getIntelligentReport({});
+          var today = report && report.today_summary ? report.today_summary : {};
+          var weekly = report && report.weekly_summary ? report.weekly_summary : {};
+          var execToday = today.executive_rankings || {};
+          var execWeekly = weekly.executive_rankings || {};
+          var funnelToday = today.funnel || {};
+          var funnelWeekly = weekly.funnel || {};
+          var topNetwork = firstItem(execToday.top_networks) || firstItem(execWeekly.top_networks);
+          var topFormat = (today.answers_before_first_sale && firstItem(today.answers_before_first_sale.top_formats_by_intention)) ||
+                          (weekly.answers_before_first_sale && firstItem(weekly.answers_before_first_sale.top_formats_by_intention));
+          var topPlacement = (today.answers_before_first_sale && firstItem(today.answers_before_first_sale.top_placements_by_intention)) ||
+                             (weekly.answers_before_first_sale && firstItem(weekly.answers_before_first_sale.top_placements_by_intention));
+          var topProduct = firstItem(execToday.top_products) || firstItem(execWeekly.top_products);
+
+          setNodeText("intelUpdatedAt", formatSmallDate(report && report.generated_at));
+          setNodeText("intelQualifiedCount", (today.totals && today.totals.qualified_events) || 0);
+
+          setNodeText("intelTopNetwork", topNetwork ? (topNetwork.label || topNetwork.key) : "sem leitura");
+          setNodeText(
+            "intelTopNetworkSub",
+            topNetwork
+              ? "Eventos qualificados: " + (topNetwork.qualified_score || 0) + " • intenção: " + (topNetwork.intention_score || 0)
+              : "Sem dados suficientes ainda."
+          );
+
+          setNodeText("intelTopFormat", topFormat ? (topFormat.label || topFormat.key) : "sem leitura");
+          setNodeText(
+            "intelTopFormatSub",
+            topFormat
+              ? "Rede: " + safeText(topFormat.network, "—") + " • intenção: " + (topFormat.intention_score || 0)
+              : "Sem dados suficientes ainda."
+          );
+
+          setNodeText("intelTopPlacement", topPlacement ? (topPlacement.label || topPlacement.key) : "sem leitura");
+          setNodeText(
+            "intelTopPlacementSub",
+            topPlacement
+              ? "Formato: " + safeText(topPlacement.format, "—") + " • abrir loja: " + (topPlacement.open_store_count || 0)
+              : "Sem dados suficientes ainda."
+          );
+
+          setNodeText("intelTopProduct", topProduct ? safeText(topProduct.product_title || topProduct.label, "sem leitura") : "sem leitura");
+          setNodeText(
+            "intelTopProductSub",
+            topProduct
+              ? "SKU: " + safeText(topProduct.sku, "—") + " • categoria: " + safeText(topProduct.category, "—")
+              : "Sem dados suficientes ainda."
+          );
+
+          var openStoreToday = Number((funnelToday && funnelToday.click_open_store) || 0);
+          var buyToday = Number((funnelToday && funnelToday.click_buy) || 0);
+          var viewToday = Number((funnelToday && funnelToday.view_product_card) || 0);
+          var openStore7d = Number((funnelWeekly && funnelWeekly.click_open_store) || 0);
+          var buy7d = Number((funnelWeekly && funnelWeekly.click_buy) || 0);
+
+          setNodeText(
+            "intelMainHeadline",
+            topNetwork
+              ? "Hoje a tração mais forte está em " + safeText(topNetwork.label || topNetwork.key, "—") + "."
+              : "Aguardando massa crítica para leitura do motor."
+          );
+
+          setNodeText(
+            "intelActionScale",
+            topProduct
+              ? "Escalar " + safeText(topProduct.product_title || topProduct.label, "este produto") + " com o melhor formato e repetir nas redes assistentes."
+              : "Sem produto dominante claro ainda."
+          );
+
+          setNodeText(
+            "intelActionTest",
+            topFormat
+              ? "Testar 2 títulos e 2 criativos dentro de " + safeText(topFormat.label || topFormat.key, "—") + " para comparar resposta real."
+              : "Sem formato dominante claro ainda."
+          );
+
+          var funnelLine = "Hoje: abrir_loja=" + openStoreToday + " • views_produto=" + viewToday + " • comprar=" + buyToday + ". Últimos 7 dias: abrir_loja=" + openStore7d + " • comprar=" + buy7d + ".";
+          setNodeText("intelActionFunnel", funnelLine);
+        }
+
+        var btnGerarIntel = document.getElementById("btnGerarIntel");
+        if (btnGerarIntel) {
+          btnGerarIntel.addEventListener("click", function () {
+            if (window.CNTracking && typeof window.CNTracking.exportIntelligentReportTxt === "function") {
+              window.CNTracking.exportIntelligentReportTxt();
+              window.CNTracking.track("click_export_intelligent_report", {
+                page_type: "home",
+                placement: "intelligence_export"
+              });
+            }
+          });
+        }
+
+        var btnCopiarDiagnostico = document.getElementById("btnCopiarDiagnostico");
+        if (btnCopiarDiagnostico) {
+          btnCopiarDiagnostico.addEventListener("click", function () {
+            var lines = [
+              "Rede mais quente: " + safeText(document.getElementById("intelTopNetwork") && document.getElementById("intelTopNetwork").textContent, "—"),
+              "Formato dominante: " + safeText(document.getElementById("intelTopFormat") && document.getElementById("intelTopFormat").textContent, "—"),
+              "Placement mais forte: " + safeText(document.getElementById("intelTopPlacement") && document.getElementById("intelTopPlacement").textContent, "—"),
+              "Produto mais quente: " + safeText(document.getElementById("intelTopProduct") && document.getElementById("intelTopProduct").textContent, "—"),
+              "Escalar agora: " + safeText(document.getElementById("intelActionScale") && document.getElementById("intelActionScale").textContent, "—"),
+              "Testar já: " + safeText(document.getElementById("intelActionTest") && document.getElementById("intelActionTest").textContent, "—"),
+              "Funil: " + safeText(document.getElementById("intelActionFunnel") && document.getElementById("intelActionFunnel").textContent, "—")
+            ].join("\n");
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(lines).catch(function(){});
+            }
+
+            if (window.CNTracking) {
+              window.CNTracking.track("click_copy_intelligence_diag", {
+                page_type: "home",
+                placement: "intelligence_copy_diag"
+              });
+            }
+          });
+        }
+
+        renderIntelligencePanel();
 
         var btnCopyLoja = document.getElementById("copyLoja");
         if (btnCopyLoja) {
