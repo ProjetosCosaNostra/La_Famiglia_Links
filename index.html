@@ -937,6 +937,113 @@
       }
     }
 
+  
+    /* =========================
+       AJUSTE FINAL DO TOPO
+       - mais alinhado com logo + kicker
+       - sem mexer no resto
+       ========================= */
+    .hero__brand {
+      grid-template-columns: auto 1fr;
+      align-items: flex-start;
+      column-gap: 14px;
+    }
+
+    .brandMark {
+      margin-top: 2px;
+      flex: 0 0 auto;
+    }
+
+    .hero__text {
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      min-width: 0;
+    }
+
+    .kicker {
+      margin: 0 0 4px 0;
+      max-width: 360px;
+      line-height: 1.04;
+      letter-spacing: .85px;
+      font-size: .95rem;
+    }
+
+    .title--imperial {
+      margin: 0;
+      max-width: 440px;
+      line-height: .89;
+      letter-spacing: .12px;
+      font-size: clamp(2.7rem, 4.6vw, 4.15rem);
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.035),
+        0 0 10px rgba(215,176,88,.06),
+        0 8px 18px rgba(0,0,0,.16);
+    }
+
+    .title--imperial::after {
+      left: 1px;
+      right: 48%;
+      bottom: -4px;
+      opacity: .56;
+    }
+
+    .sub {
+      margin-top: 12px;
+      max-width: 520px;
+    }
+
+    @media (max-width: 860px) {
+      .hero__brand {
+        column-gap: 12px;
+      }
+
+      .kicker {
+        max-width: none;
+        margin-bottom: 4px;
+      }
+
+      .title--imperial {
+        max-width: none;
+        font-size: clamp(2.4rem, 8vw, 3.45rem);
+      }
+
+      .sub {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero__brand {
+        column-gap: 10px;
+      }
+
+      .brandMark {
+        margin-top: 1px;
+      }
+
+      .kicker {
+        font-size: .86rem;
+        letter-spacing: .7px;
+        margin-bottom: 3px;
+      }
+
+      .title--imperial {
+        font-size: clamp(2.15rem, 10vw, 3.0rem);
+        line-height: .92;
+      }
+
+      .title--imperial::after {
+        right: 58%;
+      }
+
+      .sub {
+        margin-top: 10px;
+      }
+    }
+
   </style>
 </head>
 
