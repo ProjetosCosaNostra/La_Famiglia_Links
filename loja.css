@@ -365,3 +365,103 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 12px 30px rgba(0,0,0,.45);
 }
+
+
+
+/* ==========================================================
+   REFINO FINAL 2026-03-28
+   - CTA comprar com efeito do botão principal
+   - categorias mais finas e premium
+   - busca mobile corrigida
+   ========================================================== */
+.tagChips{
+  gap:9px;
+}
+
+.tagChip{
+  border-color: rgba(215,176,88,.18);
+  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.18));
+  color: rgba(255,255,255,.88);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+}
+.tagChip:hover{
+  border-color: rgba(215,176,88,.30);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.22));
+}
+.tagChip--active{
+  border-color: rgba(215,176,88,.52);
+  background: rgba(199,162,75,.14);
+  color: rgba(255,236,180,.96);
+}
+
+.quickSearch--store{
+  min-height:54px;
+  padding:0 16px;
+  border-radius:18px;
+}
+.quickSearch--store input{
+  min-width:0;
+  width:100%;
+}
+
+.smallBtnGold.btn--buy-primary,
+.btn--buy-primary{
+  position:relative;
+  overflow:hidden;
+}
+.smallBtnGold.btn--buy-primary::after,
+.btn--buy-primary::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
+  transform: translateX(-60%);
+  animation: shine 3.8s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@media (max-width: 720px){
+  .lojaTools .toolRow{
+    display:grid;
+    grid-template-columns:1fr;
+    align-items:stretch;
+    gap:10px;
+  }
+
+  .lojaTools .toolRow > *{
+    width:100%;
+    min-width:0;
+  }
+
+  .quickSearch--store{
+    min-height:50px;
+    padding:0 14px;
+    border-radius:18px;
+  }
+
+  .select{
+    width:100%;
+    min-height:44px;
+  }
+
+  .tagChips{
+    gap:8px;
+  }
+}
+
+@media (max-width: 520px){
+  .tagChip{
+    padding:7px 10px;
+    font-size:11.5px;
+  }
+
+  .quickSearch--store{
+    min-height:48px;
+    padding:0 13px;
+    border-radius:17px;
+  }
+
+  .quickSearch--store input{
+    font-size:14px;
+  }
+}
