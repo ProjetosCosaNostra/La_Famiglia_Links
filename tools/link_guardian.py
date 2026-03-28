@@ -2,7 +2,7 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v9 (CONFIDENCE SCORE + DIAGNOSTIC BUCKETS + REVIEW TXT MAIS CLARO)
+# Versão : v9.1 (CONFIDENCE SCORE + DIAGNOSTIC BUCKETS + PURGE DE FANTASMAS NO REVIEW)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
@@ -56,9 +56,6 @@ REVIEW_MAX_ITEMS = int(os.environ.get("LG_REVIEW_MAX_ITEMS", "5000"))
 
 MEMORY_JSON = Path(os.environ.get("LG_MEMORY_JSON_PATH", str(DATA_DIR / "link_guardian_memory.json")))
 
-LG_ONLY_SKU = str(os.environ.get("LG_ONLY_SKU", "") or "").strip()
-LG_RUN_MODE = str(os.environ.get("LG_RUN_MODE", "full") or "full").strip().lower()
-
 
 # =========================
 # CONFIG (env)
@@ -95,6 +92,8 @@ LISTA_INVALID_FOR_STOREFRONT = os.environ.get("LG_LISTA_INVALID_FOR_STOREFRONT",
 
 DEAD_ON_BODY = os.environ.get("LG_DEAD_ON_BODY", "0").strip() == "1"
 STOREFRONT_REVIEW_ONLY = os.environ.get("LG_STOREFRONT_REVIEW_ONLY", "1").strip() == "1"
+PURGE_REVIEW_ORPHANS = os.environ.get("LG_PURGE_REVIEW_ORPHANS", "1").strip() == "1"
+PURGE_MEMORY_ORPHANS = os.environ.get("LG_PURGE_MEMORY_ORPHANS", "0").strip() == "1"
 
 
 # =========================
@@ -1602,17 +1601,6 @@ def _trim_text_list(values: Any, limit: int = 8) -> List[str]:
 
 
 
-def _normalize_sku_filter(value: str) -> str:
-    return str(value or "").strip().lower()
-
-
-def _sku_matches_filter(sku: str, target: str) -> bool:
-    sku_norm = _normalize_sku_filter(sku)
-    target_norm = _normalize_sku_filter(target)
-    return bool(sku_norm and target_norm and sku_norm == target_norm)
-
-
-
 def _build_review_item(
     p: Dict[str, Any],
     res: CheckResult,
@@ -1777,6 +1765,60 @@ def _clear_review_items_for_sku(history: Dict[str, Any], sku: str) -> int:
         _refresh_review_history_meta(history)
     return removed
 
+def _catalog_sku_set(products: List[Dict[str, Any]]) -> set[str]:
+    out: set[str] = set()
+    for p in products:
+        if not isinstance(p, dict):
+            continue
+        sku = str(p.get("sku") or "").strip()
+        if sku:
+            out.add(sku)
+    return out
+
+
+def _purge_review_items_not_in_catalog(history: Dict[str, Any], valid_skus: set[str]) -> int:
+    items = history.get("items") or []
+    if not isinstance(items, list):
+        items = []
+
+    kept = []
+    removed = 0
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        sku = str(item.get("sku") or "").strip()
+        if sku and sku not in valid_skus:
+            removed += 1
+            continue
+        kept.append(item)
+
+    if removed:
+        history["items"] = kept
+        _refresh_review_history_meta(history)
+    return removed
+
+
+def _purge_memory_items_not_in_catalog(memory: Dict[str, Any], valid_skus: set[str]) -> int:
+    skus = memory.get("skus") or {}
+    if not isinstance(skus, dict):
+        memory["skus"] = {}
+        _refresh_guardian_memory_meta(memory)
+        return 0
+
+    removed = 0
+    kept: Dict[str, Any] = {}
+    for sku, item in skus.items():
+        sku_clean = str(sku or "").strip()
+        if sku_clean and sku_clean in valid_skus:
+            kept[sku_clean] = item
+        else:
+            removed += 1
+
+    if removed:
+        memory["skus"] = kept
+        _refresh_guardian_memory_meta(memory)
+    return removed
+
 
 def _review_exec_group(item: Dict[str, Any]) -> str:
     action = str(item.get("action_suggested") or "").strip().lower()
@@ -1939,6 +1981,8 @@ def main() -> int:
     guardian_memory = _load_guardian_memory(MEMORY_JSON)
     removed_events_added = 0
     review_items_added = 0
+    purged_review_orphans = 0
+    purged_memory_orphans = 0
     pending_actions: Dict[str, Dict[str, Any]] = {}
 
     cleaned: List[Dict[str, Any]] = []
@@ -1958,30 +2002,9 @@ def main() -> int:
 
     products = cleaned
 
-    only_sku_mode = bool(_normalize_sku_filter(LG_ONLY_SKU))
-    target_sku = _normalize_sku_filter(LG_ONLY_SKU)
-
-    if only_sku_mode:
-        target_exists = any(
-            isinstance(p, dict) and _sku_matches_filter((p.get("sku") or ""), target_sku)
-            for p in products
-        )
-        if not target_exists:
-            print("========================================")
-            print("LINK GUARDIAN — SKU ALVO NÃO ENCONTRADO")
-            print("========================================")
-            print(f"LG_ONLY_SKU: {LG_ONLY_SKU}")
-            return 2
-
-        print("========================================")
-        print("LINK GUARDIAN — MODO FOCADO POR SKU")
-        print("========================================")
-        print(f"LG_RUN_MODE: {LG_RUN_MODE or 'sku'}")
-        print(f"LG_ONLY_SKU: {LG_ONLY_SKU}")
-
     active_before_raw = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
 
-    if (not only_sku_mode) and BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= 1:
+    if BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= 1:
         boosted = 0
         for p in products:
             if not isinstance(p, dict):
@@ -2001,7 +2024,7 @@ def main() -> int:
 
     active_after_bootstrap = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
 
-    if (not only_sku_mode) and FORCE_RESTORE_ALL_IF_ZERO and active_after_bootstrap == 0 and len(products) >= 1:
+    if FORCE_RESTORE_ALL_IF_ZERO and active_after_bootstrap == 0 and len(products) >= 1:
         boosted_all = _force_restore_all(products)
         print("========================================")
         print("FORCE-RESTORE ATIVADO (ainda zerada):")
@@ -2044,11 +2067,6 @@ def main() -> int:
             continue
 
         sku = (p.get("sku") or "").strip()
-
-        if only_sku_mode and not _sku_matches_filter(sku, target_sku):
-            out.append(p)
-            continue
-
         was_active = bool(p.get("active"))
         was_featured = bool(p.get("featured"))
         memory_item = _get_or_create_memory_item(guardian_memory, sku) if sku else {}
@@ -2220,7 +2238,7 @@ def main() -> int:
     active_after = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
     min_allowed = max(FAILSAFE_MIN_ACTIVE, int(active_before * FAILSAFE_MIN_RATIO) if active_before else 0)
 
-    if (not only_sku_mode) and active_before > 0 and active_after < min_allowed:
+    if active_before > 0 and active_after < min_allowed:
         print("========================================")
         print("FAILSAFE (ANTI-WIPE) ATIVADO:")
         print(f"Active before: {active_before} | Active after: {active_after} | Min allowed: {min_allowed}")
@@ -2243,7 +2261,7 @@ def main() -> int:
 
     active_final_before_removal = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
 
-    if (not only_sku_mode) and FORCE_RESTORE_ALL_IF_ZERO and active_final_before_removal == 0 and len(out) >= 1:
+    if FORCE_RESTORE_ALL_IF_ZERO and active_final_before_removal == 0 and len(out) >= 1:
         boosted_all = _force_restore_all(out)
         print("========================================")
         print("FORCE-RESTORE FINAL (paraquedas):")
@@ -2285,6 +2303,20 @@ def main() -> int:
     data["products"] = final_out
     data["updated_at"] = now
 
+    current_catalog_skus = _catalog_sku_set(final_out)
+
+    if PURGE_REVIEW_ORPHANS:
+        purged_review_orphans = _purge_review_items_not_in_catalog(review_history, current_catalog_skus)
+        if purged_review_orphans:
+            changed += 1
+            print(f"[REVIEW-PURGE] removidos {purged_review_orphans} item(ns) fantasma(s) do painel")
+
+    if PURGE_MEMORY_ORPHANS:
+        purged_memory_orphans = _purge_memory_items_not_in_catalog(guardian_memory, current_catalog_skus)
+        if purged_memory_orphans:
+            changed += 1
+            print(f"[MEMORY-PURGE] removidos {purged_memory_orphans} SKU(s) órfãos da memória")
+
     _write_json(PRODUTOS_JSON, data)
     _save_removed_reports(removed_history)
     _save_review_reports(review_history)
@@ -2292,7 +2324,6 @@ def main() -> int:
 
     print("========================================")
     print("Link Guardian finalizado.")
-    print(f"Run mode: {LG_RUN_MODE or 'full'} | Only SKU: {LG_ONLY_SKU or '-'}")
     print(f"Checked: {checked} | Max: {MAX_CHECK}")
     print(f"OK: {ok_count} | FAIL/DEAD: {dead_count} | TEMP: {temp_count}")
     print(f"STORE_INVALID: {store_invalid_count}")
@@ -2305,9 +2336,12 @@ def main() -> int:
     print(f"Memory JSON: {MEMORY_JSON}")
     print(f"Review items: {len(review_history.get('items') or [])}")
     print(f"Review items added: {review_items_added}")
+    print(f"Review orphans purged: {purged_review_orphans}")
+    print(f"Memory orphans purged: {purged_memory_orphans}")
     print(f"Changed: {changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | STOREFRONT_INVALID_THRESHOLD: {STOREFRONT_INVALID_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
     print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | LISTA_INVALID_FOR_STOREFRONT: {int(LISTA_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | STOREFRONT_REVIEW_ONLY: {int(STOREFRONT_REVIEW_ONLY)}")
+    print(f"PURGE_REVIEW_ORPHANS: {int(PURGE_REVIEW_ORPHANS)} | PURGE_MEMORY_ORPHANS: {int(PURGE_MEMORY_ORPHANS)}")
     print(f"DEAD_ON_BODY: {int(DEAD_ON_BODY)} | MAX_CANDIDATE_URLS: {MAX_CANDIDATE_URLS}")
     print(f"RECOVER_ON_TEMP: {int(RECOVER_ON_TEMP)} | RECOVER_MAX_DAYS: {RECOVER_MAX_DAYS}")
     print(f"BOOTSTRAP_IF_ZERO: {int(BOOTSTRAP_IF_ZERO)} | BOOTSTRAP_MAX_DAYS: {BOOTSTRAP_MAX_DAYS}")
