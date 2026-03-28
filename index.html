@@ -190,9 +190,227 @@
     .cnProd .cnMeta { margin-top: 8px; }
     .cnProd .cnRow { margin-top: 10px; }
 
+    
+    html { scroll-behavior: smooth; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(215,176,88,.16), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(255,255,255,.05), transparent 20%),
+        linear-gradient(135deg, rgba(215,176,88,.05), rgba(255,255,255,0) 42%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero__text {
+      max-width: 760px;
+    }
+    .hero .title {
+      text-wrap: balance;
+    }
+    .hero .sub {
+      max-width: 62ch;
+    }
+    .hero__actions {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .heroHighlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .heroHighlight {
+      text-decoration: none;
+      display: block;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(215,176,88,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.18));
+      box-shadow: 0 12px 36px rgba(0,0,0,.28);
+      color: rgba(255,255,255,.92);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .heroHighlight:hover {
+      transform: translateY(-2px);
+      border-color: rgba(215,176,88,.34);
+      box-shadow: 0 18px 48px rgba(0,0,0,.36);
+      background: linear-gradient(180deg, rgba(215,176,88,.08), rgba(0,0,0,.2));
+    }
+    .heroHighlight__top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(215,176,88,.95);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .heroHighlight__title {
+      display: block;
+      font-family: Cinzel, serif;
+      font-size: 18px;
+      line-height: 1.12;
+      letter-spacing: .2px;
+      margin-bottom: 6px;
+    }
+    .heroHighlight__sub {
+      display: block;
+      font-size: 13px;
+      line-height: 1.35;
+      opacity: .86;
+    }
+
+    .heroCtaHint {
+      margin-top: 2px;
+      font-size: 12px;
+      line-height: 1.35;
+      opacity: .8;
+      text-align: center;
+    }
+    .heroCtaHint b {
+      color: rgba(215,176,88,.96);
+    }
+
+    .sectionNav {
+      position: sticky;
+      top: 12px;
+      z-index: 60;
+      backdrop-filter: blur(10px);
+    }
+    .sectionNav__pill {
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .sectionNav__pill:hover {
+      transform: translateY(-1px);
+      border-color: rgba(215,176,88,.34);
+      box-shadow: 0 14px 36px rgba(0,0,0,.28);
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(215,176,88,.035), transparent 24%),
+        radial-gradient(circle at top right, rgba(215,176,88,.08), transparent 22%);
+      pointer-events: none;
+      opacity: .9;
+    }
+    .panel:hover {
+      transform: translateY(-1px);
+    }
+
+    .panel__head h2 {
+      position: relative;
+      display: inline-block;
+      padding-right: 18px;
+    }
+    .panel__head h2::after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      width: 72px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(215,176,88,.65), rgba(215,176,88,0));
+      transform: translateY(-50%);
+    }
+
+    .quickTools {
+      position: relative;
+      z-index: 1;
+      gap: 10px;
+      align-items: center;
+    }
+    .quickSearch {
+      flex: 1 1 320px;
+      min-width: 0;
+    }
+    .quickSearch input {
+      width: 100%;
+    }
+
+    .linksGrid .linkCard,
+    .featured .cnCard,
+    .productsGrid .cnProd {
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .linksGrid .linkCard:hover,
+    .featured .cnCard:hover,
+    .productsGrid .cnProd:hover {
+      transform: translateY(-2px);
+      border-color: rgba(215,176,88,.32);
+      box-shadow: 0 20px 54px rgba(0,0,0,.42);
+    }
+
+    .featured .cnImg,
+    .productsGrid .cnImg {
+      transition: transform .28s ease, filter .28s ease;
+    }
+    .featured .cnCard:hover .cnImg,
+    .productsGrid .cnProd:hover .cnImg {
+      transform: scale(1.018);
+      filter: saturate(1.04);
+    }
+
+    .footer {
+      position: relative;
+      overflow: hidden;
+    }
+    .footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(215,176,88,.07), transparent 22%, transparent 78%, rgba(215,176,88,.05));
+      pointer-events: none;
+    }
+
+    .fadeLift {
+      animation: fadeLift .55s ease both;
+    }
+    .fadeLift--2 { animation-delay: .06s; }
+    .fadeLift--3 { animation-delay: .12s; }
+
+    @keyframes fadeLift {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .heroHighlights {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
     @media (max-width: 520px) {
       .floatingStoreCTA { right: 10px; bottom: 10px; }
       .floatingStoreCTA a { padding: 10px 12px; border-radius: 14px; }
+      .heroCtaHint { text-align: left; }
     }
   </style>
 </head>
@@ -208,12 +426,12 @@
   <!-- CTA flutuante (alto padrão) -->
   <div class="floatingStoreCTA" aria-hidden="false">
     <a href="./loja.html" id="floatingLoja">
-      👑 Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> produtos
+👑 Ver Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> itens
     </a>
   </div>
 
   <main class="page">
-    <header class="hero">
+    <header class="hero fadeLift">
       <div class="hero__brand">
         <div class="brandMark" aria-hidden="true">
           <img
@@ -248,6 +466,25 @@
             <div><b>ATENÇÃO:</b> esta página mostra o <b>Produto do Dia</b> + uma <b>Prévia (Vitrine Rápida)</b>.</div>
             <div class="mini">Para ver <b>todos os produtos</b>, use <b>“Abrir Vitrine / Loja”</b> (Loja Completa). ✅</div>
           </div>
+
+          <div class="heroHighlights" aria-label="Atalhos principais">
+            <a class="heroHighlight" href="#sec-produto-do-dia">
+              <span class="heroHighlight__top">⭐ Destaque</span>
+              <span class="heroHighlight__title">Produto do Dia</span>
+              <span class="heroHighlight__sub">Entre pelo destaque principal e veja o item mais trabalhado do momento.</span>
+            </a>
+            <a class="heroHighlight" href="#sec-vitrine-rapida">
+              <span class="heroHighlight__top">🧊 Prévia rápida</span>
+              <span class="heroHighlight__title">Vitrine Rápida</span>
+              <span class="heroHighlight__sub">Bata o olho em vários produtos sem perder tempo nem sair da home.</span>
+            </a>
+            <a class="heroHighlight" href="./loja.html">
+              <span class="heroHighlight__top">👑 Acesso total</span>
+              <span class="heroHighlight__title">Loja Completa</span>
+              <span class="heroHighlight__sub">Abra todos os produtos da vitrine em uma página feita para navegar e comprar.</span>
+            </a>
+          </div>
+
         </div>
       </div>
 
@@ -267,18 +504,19 @@
             Status: <b>online</b> • Atualizado <span id="lastUpdate">agora</span>
           </span>
         </div>
+        <div class="heroCtaHint">💡 Para ver a seleção inteira, toque em <b>“Abrir Vitrine / Loja”</b>.</div>
       </div>
     </header>
 
     <!-- ✅ MENU “IMPERIAL” -->
-    <nav class="sectionNav" aria-label="Atalhos da Central Premium">
+    <nav class="sectionNav fadeLift fadeLift--2" aria-label="Atalhos da Central Premium">
       <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
       <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
       <a class="sectionNav__pill sectionNav__pill--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
       <a class="sectionNav__pill" href="#sec-links">🔗 Links Oficiais</a>
     </nav>
 
-    <section class="panel" id="sec-produto-do-dia">
+    <section class="panel fadeLift fadeLift--2" id="sec-produto-do-dia">
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
@@ -298,7 +536,7 @@
       </div>
     </section>
 
-    <section class="panel" id="sec-vitrine-rapida">
+    <section class="panel fadeLift fadeLift--3" id="sec-vitrine-rapida">
       <div class="panel__head">
         <div>
           <h2>Vitrine rápida</h2>
@@ -329,7 +567,7 @@
         <div>💡 <b>Não se perca:</b> se você não achou o que queria aqui, a <b>Loja Completa</b> tem <b><span data-total-products>—</span> itens</b> — clique em <b>“Ver todos”</b>.</div>
       </div>
     </section>
-    <section class="panel" id="sec-links">
+    <section class="panel fadeLift fadeLift--3" id="sec-links">
       <div class="panel__head">
         <div>
           <h2>Links oficiais</h2>
