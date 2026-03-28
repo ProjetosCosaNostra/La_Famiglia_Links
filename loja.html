@@ -446,6 +446,272 @@
       }
     }
 
+    /* =========================
+       REFINO FINAL APROVADO
+       - topo mais próximo do index
+       - busca mobile corrigida
+       - comprar com mesmo peso do CTA principal
+       - categorias mais limpas
+       ========================= */
+    .hero{
+      padding:18px 18px 16px;
+    }
+
+    .hero__brand{
+      display:grid;
+      grid-template-columns:58px minmax(0,1fr);
+      align-items:start;
+      column-gap:14px;
+    }
+
+    .brandMark{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      margin-top:2px;
+    }
+
+    .brandLogo{
+      width:38px;
+      height:38px;
+    }
+
+    .hero__text--store{
+      gap:0;
+      justify-content:flex-start;
+    }
+
+    .title--store{
+      font-size:clamp(2.6rem,4.8vw,4.2rem);
+      max-width:420px;
+      margin:0 0 8px 0;
+      line-height:.90;
+      letter-spacing:.02em;
+    }
+
+    .kicker--store{
+      max-width:360px;
+      margin:0 0 12px 1px;
+      line-height:1.06;
+      letter-spacing:.10em;
+      font-size:.92rem;
+      color:rgba(232,202,124,.94);
+    }
+
+    .sub--store{
+      max-width:520px;
+      margin:0;
+    }
+
+    .chip{
+      min-height:30px;
+      padding:4px 10px;
+      font-size:.88rem;
+    }
+
+    .imperialNote--store{
+      margin-top:10px;
+      max-width:540px;
+    }
+
+    .hero__actions .btn--social-store{
+      min-height:40px;
+      font-size:.92rem;
+    }
+
+    .btn--buy-primary,
+    .smallBtnGold.btn--buy-primary{
+      position:relative;
+      overflow:hidden;
+      border-color:rgba(224,195,107,.38) !important;
+      background:
+        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.22), transparent 60%),
+        linear-gradient(180deg, rgba(199,162,75,.34), rgba(199,162,75,.10)) !important;
+      color:rgba(255,236,180,.96) !important;
+      box-shadow:0 12px 32px rgba(199,162,75,.14), inset 0 1px 0 rgba(255,255,255,.08) !important;
+      text-shadow:0 1px 0 rgba(0,0,0,.20);
+    }
+
+    .btn--buy-primary::after,
+    .smallBtnGold.btn--buy-primary::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
+      transform:translateX(-60%);
+      animation:shine 3.8s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    .btn--buy-primary:hover,
+    .btn--buy-primary:focus-visible,
+    .smallBtnGold.btn--buy-primary:hover,
+    .smallBtnGold.btn--buy-primary:focus-visible{
+      transform:translateY(-1px);
+      border-color:rgba(230,195,108,.54) !important;
+      filter:brightness(1.04);
+      box-shadow:0 16px 38px rgba(199,162,75,.20), inset 0 1px 0 rgba(255,255,255,.10) !important;
+    }
+
+    .quickSearch--store{
+      flex:1 1 360px !important;
+      min-height:54px;
+      width:100%;
+      padding:0 16px;
+      border-radius:18px;
+      align-items:center;
+      gap:12px;
+    }
+
+    .quickSearch--store input{
+      min-width:0;
+      width:100%;
+      font-size:15px;
+    }
+
+    .quickSearch--store .quickIcon{
+      flex:0 0 auto;
+      font-size:1rem;
+    }
+
+    .tagChips{
+      gap:9px;
+    }
+
+    .tagChip{
+      padding:8px 11px;
+      font-size:12px;
+      letter-spacing:.01em;
+    }
+
+    @media (max-width: 860px){
+      .hero{
+        padding:16px;
+      }
+
+      .hero__brand{
+        grid-template-columns:54px minmax(0,1fr);
+        column-gap:12px;
+      }
+
+      .brandMark{
+        width:54px;
+        height:54px;
+        border-radius:16px;
+      }
+
+      .brandLogo{
+        width:34px;
+        height:34px;
+      }
+
+      .title--store{
+        font-size:clamp(2.3rem,7vw,3.4rem);
+        max-width:none;
+      }
+
+      .kicker--store{
+        max-width:none;
+      }
+    }
+
+    @media (max-width: 720px){
+      .lojaTools .toolRow{
+        display:grid;
+        grid-template-columns:1fr;
+        align-items:stretch;
+        gap:10px;
+      }
+
+      .lojaTools .toolRow > *{
+        width:100%;
+        min-width:0;
+      }
+
+      .quickSearch--store{
+        min-height:50px;
+        padding:0 14px;
+        border-radius:18px;
+      }
+
+      .select{
+        width:100%;
+        min-height:44px;
+      }
+
+      #btnClear{
+        min-height:42px;
+      }
+    }
+
+    @media (max-width: 520px){
+      .hero{
+        padding:14px;
+      }
+
+      .hero__brand{
+        grid-template-columns:48px minmax(0,1fr);
+        column-gap:10px;
+      }
+
+      .brandMark{
+        width:48px;
+        height:48px;
+        border-radius:15px;
+      }
+
+      .brandLogo{
+        width:30px;
+        height:30px;
+      }
+
+      .title--store{
+        font-size:clamp(2.05rem,9vw,3rem);
+        margin-bottom:6px;
+      }
+
+      .kicker--store{
+        font-size:.82rem;
+        margin-bottom:10px;
+      }
+
+      .sub--store{
+        font-size:.96rem;
+        line-height:1.38;
+      }
+
+      .chip{
+        min-height:28px;
+        padding:4px 9px;
+        font-size:.83rem;
+      }
+
+      .countPill{
+        gap:7px;
+        padding:8px 10px;
+      }
+
+      .quickSearch--store{
+        min-height:48px;
+        padding:0 13px;
+        border-radius:17px;
+      }
+
+      .quickSearch--store input{
+        font-size:14px;
+      }
+
+      .tagChip{
+        padding:7px 10px;
+        font-size:11.5px;
+      }
+
+      .hero__actions .btn--social-store{
+        min-height:38px;
+        font-size:.85rem;
+      }
+    }
+
   </style>
 
   <!-- JS da loja -->
@@ -525,7 +791,7 @@
       <div class="panel__head">
         <div>
           <h2>Filtro & categorias</h2>
-          <p>Buscar por texto, filtrar por categorias reais e ordenar. Tudo em tempo real.</p>
+          <p>Busca rápida, categorias lapidadas e ordem inteligente para chegar no produto mais rápido.</p>
         </div>
         <div class="panel__right">
           <select class="select" id="sortSel" aria-label="Ordenação">
@@ -538,9 +804,9 @@
 
       <div class="lojaTools">
         <div class="toolRow">
-          <div class="quickSearch" role="search" style="flex:1 1 320px;">
+          <div class="quickSearch quickSearch--store" role="search">
             <span class="quickIcon">🔎</span>
-            <input id="qLoja" placeholder="Buscar produto (ex: mochila, whey, mouse...)" />
+            <input id="qLoja" placeholder="Buscar produto, marca ou categoria..." />
           </div>
 
           <button class="btn btn--tiny btn--glass" id="btnClear" type="button">Limpar filtros</button>
