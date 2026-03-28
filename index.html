@@ -662,6 +662,281 @@
       }
     }
 
+  
+    /* =========================
+       REFINO APROVADO — TOPO/MOBILE
+       ========================= */
+    .hero {
+      border-color: rgba(215,176,88,.24);
+      background:
+        radial-gradient(circle at top right, rgba(215,176,88,.10), transparent 36%),
+        linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0)),
+        rgba(7,7,9,.46);
+      box-shadow: 0 18px 56px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.03);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero__brand {
+      gap: 18px;
+      align-items: start;
+    }
+
+    .hero__text {
+      padding-top: 2px;
+    }
+
+    .kicker {
+      margin-bottom: 8px;
+      letter-spacing: 1.15px;
+      color: rgba(233, 202, 122, .95);
+    }
+
+    .title--imperial {
+      display: inline-block;
+      margin: 0 0 10px 0;
+      line-height: .92;
+      letter-spacing: .35px;
+      color: rgba(248,244,236,.98);
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.04),
+        0 0 14px rgba(215,176,88,.08),
+        0 10px 22px rgba(0,0,0,.18);
+      position: relative;
+    }
+
+    .title--imperial::after {
+      content: "";
+      position: absolute;
+      left: 2px;
+      right: 42%;
+      bottom: -6px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(215,176,88,.42), rgba(215,176,88,0));
+      opacity: .68;
+    }
+
+    .sub {
+      max-width: 580px;
+      line-height: 1.4;
+      color: rgba(255,255,255,.74);
+      margin-top: 8px;
+    }
+
+    .chips {
+      margin-top: 12px;
+      gap: 8px;
+    }
+
+    .chip {
+      min-height: 32px;
+      padding: 5px 11px;
+      font-size: .92rem;
+      border-color: rgba(215,176,88,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.032), rgba(0,0,0,.14));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+    }
+
+    .countPill {
+      margin-top: 12px;
+      min-height: 36px;
+      padding: 6px 11px;
+      font-size: .98rem;
+      border-color: rgba(215,176,88,.18);
+      background: rgba(0,0,0,.24);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+    }
+
+    .imperialNote--top {
+      margin-top: 12px;
+      padding: 9px 12px;
+      border-radius: 15px;
+      border-color: rgba(215,176,88,.16);
+      background: linear-gradient(180deg, rgba(255,255,255,.016), rgba(0,0,0,.14));
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      color: rgba(255,255,255,.80);
+      max-width: 560px;
+    }
+
+    .imperialNote--top .mini {
+      font-size: .92em;
+      color: rgba(255,255,255,.70);
+    }
+
+    .hero__actions {
+      gap: 10px;
+      align-content: start;
+    }
+
+    .hero__actions .btn {
+      min-height: 50px;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.20);
+    }
+
+    .hero__actions .btn--gold {
+      min-height: 52px;
+      box-shadow: 0 14px 30px rgba(145,111,34,.22);
+    }
+
+    .hero__actions .btn--social {
+      min-height: 42px;
+      font-size: .95rem;
+      opacity: .94;
+    }
+
+    .miniNote {
+      margin-top: 2px;
+      padding: 8px 11px;
+      border-radius: 14px;
+      font-size: .92rem;
+      line-height: 1.28;
+      color: rgba(255,255,255,.72);
+      border-color: rgba(215,176,88,.10);
+      background: rgba(0,0,0,.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+    }
+
+    .sectionNav {
+      border-color: rgba(215,176,88,.14);
+      background: rgba(7,7,9,.52);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+
+    .sectionNav__pill {
+      min-height: 34px;
+      padding: 6px 12px;
+      font-size: .92rem;
+      border-color: rgba(215,176,88,.12);
+      background: rgba(255,255,255,.018);
+    }
+
+    .floatingStoreCTA a {
+      box-shadow: 0 12px 28px rgba(0,0,0,.26);
+    }
+
+    @media (max-width: 860px) {
+      .hero__brand {
+        gap: 14px;
+      }
+
+      .title--imperial {
+        letter-spacing: .22px;
+      }
+
+      .sub {
+        max-width: none;
+      }
+
+      .hero__actions .btn {
+        min-height: 46px;
+      }
+
+      .hero__actions .btn--gold {
+        min-height: 48px;
+      }
+
+      .hero__actions .btn--social {
+        min-height: 40px;
+        font-size: .90rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .kicker {
+        margin-bottom: 6px;
+        font-size: .92rem;
+      }
+
+      .title--imperial {
+        line-height: .94;
+        margin-bottom: 8px;
+      }
+
+      .title--imperial::after {
+        right: 55%;
+        bottom: -4px;
+      }
+
+      .sub {
+        font-size: .97rem;
+      }
+
+      .chip {
+        min-height: 29px;
+        padding: 4px 10px;
+        font-size: .84rem;
+      }
+
+      .countPill {
+        min-height: 34px;
+        font-size: .90rem;
+      }
+
+      .imperialNote--top {
+        padding: 8px 10px;
+        font-size: .95rem;
+      }
+
+      .sectionNav {
+        padding: 8px 10px;
+      }
+
+      .sectionNav__pill {
+        min-height: 30px;
+        padding: 5px 10px;
+        font-size: .84rem;
+      }
+
+      .hero__actions .btn {
+        min-height: 42px;
+        font-size: .92rem;
+      }
+
+      .hero__actions .btn--gold {
+        min-height: 44px;
+      }
+
+      .hero__actions .btn--social {
+        min-height: 38px;
+        font-size: .86rem;
+      }
+
+      .miniNote {
+        font-size: .84rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero,
+      .panel {
+        border-radius: 18px;
+      }
+
+      .floatingStoreCTA {
+        right: 8px;
+        bottom: 8px;
+      }
+
+      .floatingStoreCTA a {
+        min-height: 34px;
+        padding: 6px 10px;
+        border-radius: 12px;
+        font-size: .78rem;
+        letter-spacing: 0;
+        gap: 6px;
+      }
+
+      .sectionNav {
+        gap: 8px;
+      }
+
+      .sectionNav__pill {
+        min-height: 28px;
+        padding: 4px 9px;
+        font-size: .79rem;
+      }
+    }
+
   </style>
 </head>
 
@@ -695,10 +970,9 @@
 
         <div class="hero__text">
           <p class="kicker">Cosa Nostra • A Família das Ideias</p>
-          <h1 class="title">Central Premium</h1>
+          <h1 class="title title--imperial">Central Premium</h1>
           <p class="sub">
-            Links oficiais + vitrine de produtos (Achados do Dia).<br/>
-            Funil rápido: <b>Story com Link Sticker</b> + <b>Loja na Bio</b>.
+            Links oficiais + vitrine de produtos (Achados do Dia).
           </p>
 
           <div class="chips" aria-label="Dicas rápidas">
@@ -712,9 +986,9 @@
             <span class="n" data-total-products>—</span>
           </div>
 
-          <div class="imperialNote" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>ATENÇÃO:</b> esta página mostra o <b>Produto do Dia</b> + uma <b>Prévia (Vitrine Rápida)</b>.</div>
-            <div class="mini">Para ver <b>todos os produtos</b>, use <b>“Abrir Vitrine / Loja”</b> (Loja Completa). ✅</div>
+          <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
+            <div><b>Prévia da vitrine:</b> Produto do Dia + Vitrine Rápida.</div>
+            <div class="mini">Para ver tudo, use <b>“Abrir Vitrine / Loja”</b>.</div>
           </div>
         </div>
       </div>
@@ -724,10 +998,10 @@
         <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
 
         <!-- ✅ Instagram (mais importante) — voltou -->
-        <a class="btn btn--glass" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
 
         <!-- ✅ Telegram (Achados) — mantido -->
-        <a class="btn btn--glass" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+        <a class="btn btn--glass btn--social" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
 
         <div class="miniNote">
           <span class="dot"></span>
