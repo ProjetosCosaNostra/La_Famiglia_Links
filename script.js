@@ -503,7 +503,7 @@
     row1.className = 'cnRow';
 
     var aBuy = document.createElement('a');
-    aBuy.className = 'btn btn--gold btn--tiny';
+    aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary';
     aBuy.textContent = 'COMPRAR AGORA';
     var buyLink = getLink(p);
     aBuy.href = buyLink || '#';
@@ -661,7 +661,7 @@
     row.className = 'cnRow';
 
     var buy = document.createElement('a');
-    buy.className = 'btn btn--gold btn--tiny';
+    buy.className = 'btn btn--gold btn--tiny btn--buy-primary';
     buy.textContent = 'Comprar';
     var buyLink = getLink(p);
     buy.href = buyLink || '#';
