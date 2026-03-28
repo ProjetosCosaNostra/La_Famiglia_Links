@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-03-28T13:18:50Z",
+  "updated_at": "2026-03-28T14:16:19Z",
   "summary": {
-    "tracked_skus": 131,
+    "tracked_skus": 132,
     "confirmed_good_links": 0,
     "recurrent_storefront_invalid": 1,
     "relink_priority": 0
@@ -1717,6 +1717,19 @@
       "relink_priority": false,
       "last_reason": "social_profile_product_confirmed",
       "last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF4tvItHmK1MZd7Kgk6dWZjGmPKuA6lo6pY0Mze3N1IjEUIoV3bVcG5xYmFw5rHWAuFhPsQFxedWGpQrhZCVbTN3HVFWSEM22HsLp9jDN%2BQPF0oFBmqKhl%2Bg81yBh7LW3nn5UWu39z%2BPqgOcrvhlLaDowW2HaE9CDPEm7gSkOpV%2F%2BkI8HMHPoSDDUcB3pjCYVidSNpY%3D"
+    },
+    "gloss-labial-fantasyland-disney-100-bruna-tavares": {
+      "reason_counts": {
+        "social_profile_product_confirmed": 1
+      },
+      "first_seen_at": "2026-03-28T14:16:18Z",
+      "last_seen_at": "2026-03-28T14:16:18Z",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "relink_priority": false,
+      "last_reason": "social_profile_product_confirmed",
+      "last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFHH0k4A4bT4%2Bd5fygjhff2RJzItG0vUWnByJH0OSkRCNinQ3z3Mx6eVsqEHekyUL9HhnE3TYGZ%2FkV0kXDHY4V2a1HmpXjwv5CEbt5WFl2kVzXrl3B9%2BGPDYv2Cl5Ni2rva0iQ60V%2BQik57kvqD7Cr9M%2F56ewoliuIktgFgMGVs0qoRZLKAv0LIgoY%2FH1tx3Il8z8w%3D%3D"
     }
   }
 }
