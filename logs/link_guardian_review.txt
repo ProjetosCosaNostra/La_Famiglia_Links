@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-28T18:58:44Z
+Atualizado em: 2026-03-28T20:54:17Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-28T18:55:02Z
+Quando: 2026-03-28T20:49:53Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://mercadolivre.com/sec/12t6XUG
 checked_url: https://mercadolivre.com/sec/12t6XUG
