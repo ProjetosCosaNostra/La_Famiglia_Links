@@ -80,24 +80,30 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
+    "Beleza",
+    "Maquiagem",
+    "Skincare",
+    "Cabelo",
+    "Perfumes",
+    "Corpo & Banho",
+    "Unhas",
+    "Acessórios",
+    "Premium",
     "Casa",
     "Cozinha",
+    "Organização",
     "Home Office",
-    "Carro",
-    "Moto",
-    "Segurança",
-    "Setup",
-    "Wi-Fi",
-    "Notebook",
-    "PC",
+    "Tech & Setup",
     "Celular",
     "Bluetooth",
     "USB",
     "Sem Fio",
-    "Portátil",
-    "Organização",
-    "Casa Inteligente",
-    "Premium",
+    "Smart Home",
+    "Notebook",
+    "PC",
+    "Carro",
+    "Moto",
+    "Segurança",
     "Praticidade",
   ];
 
@@ -136,64 +142,107 @@
 
   // stoplist de tags “plataforma”
   const CN_CAT_NOISE = new Set([
-    "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
+    "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook","outros","outro","geral"
   ]);
 
   const CN_CATEGORY_ALIAS_PAIRS = [
     ["achados do dia", "Achados do Dia"],
-    ["feminino", "Feminino"],
-    ["beleza", "Feminino"],
-    ["maquiagem", "Feminino"],
+
+    ["beleza", "Beleza"],
+    ["beleza e cuidado pessoal", "Beleza"],
+    ["cuidado pessoal", "Beleza"],
+    ["feminino", "Beleza"],
+
+    ["maquiagem", "Maquiagem"],
+    ["make", "Maquiagem"],
+
+    ["cuidados com o cabelo", "Cabelo"],
+    ["artefatos para cabelo", "Cabelo"],
+    ["cabelo", "Cabelo"],
+    ["hair care", "Cabelo"],
+
+    ["cuidados com a pele", "Skincare"],
+    ["tratamentos de beleza", "Skincare"],
+    ["skincare", "Skincare"],
+    ["serum", "Skincare"],
+    ["sérum", "Skincare"],
+
+    ["perfumes", "Perfumes"],
+    ["perfume", "Perfumes"],
+    ["perfumaria", "Perfumes"],
+
+    ["higiene pessoal", "Corpo & Banho"],
+    ["corpo e banho", "Corpo & Banho"],
+    ["body care", "Corpo & Banho"],
+    ["hidratante", "Corpo & Banho"],
+    ["creme", "Corpo & Banho"],
+
+    ["manicure e pedicure", "Unhas"],
+    ["unhas", "Unhas"],
+
+    ["acessorios", "Acessórios"],
+    ["acessorios", "Acessórios"],
+    ["acessorio feminino", "Acessórios"],
+    ["acessorios femininos", "Acessórios"],
+
     ["casa", "Casa"],
     ["cozinha", "Cozinha"],
+    ["organizacao", "Organização"],
+    ["organizador", "Organização"],
+
     ["home office", "Home Office"],
     ["escritorio", "Home Office"],
-    ["carro", "Carro"],
-    ["automotivo", "Carro"],
-    ["moto", "Moto"],
-    ["motocicleta", "Moto"],
-    ["seguranca", "Segurança"],
-    ["seguranca residencial", "Segurança"],
-    ["setup", "Setup"],
-    ["gamer", "Setup"],
-    ["perifericos", "Setup"],
-    ["wi fi", "Wi-Fi"],
-    ["wifi", "Wi-Fi"],
+
+    ["setup", "Tech & Setup"],
+    ["gamer", "Tech & Setup"],
+    ["perifericos", "Tech & Setup"],
+    ["periféricos", "Tech & Setup"],
+
     ["notebook", "Notebook"],
     ["laptop", "Notebook"],
+
     ["pc", "PC"],
     ["desktop", "PC"],
     ["computador", "PC"],
+
     ["celular", "Celular"],
     ["smartphone", "Celular"],
     ["iphone", "Celular"],
     ["android", "Celular"],
+
     ["bluetooth", "Bluetooth"],
     ["tws", "Bluetooth"],
+
     ["usb", "USB"],
     ["usb c", "USB"],
     ["type c", "USB"],
     ["tipo c", "USB"],
     ["lightning", "USB"],
+
     ["sem fio", "Sem Fio"],
     ["wireless", "Sem Fio"],
     ["inducao", "Sem Fio"],
     ["magnetico", "Sem Fio"],
-    ["portatil", "Portátil"],
-    ["compacto", "Portátil"],
-    ["dobravel", "Portátil"],
-    ["leve", "Portátil"],
-    ["viagem", "Portátil"],
-    ["organizacao", "Organização"],
-    ["organizador", "Organização"],
-    ["casa inteligente", "Casa Inteligente"],
-    ["smart home", "Casa Inteligente"],
+
+    ["casa inteligente", "Smart Home"],
+    ["smart home", "Smart Home"],
+
+    ["seguranca", "Segurança"],
+    ["segurança", "Segurança"],
+
     ["premium", "Premium"],
     ["luxo", "Premium"],
     ["imperial", "Premium"],
+
     ["praticidade", "Praticidade"],
     ["util", "Praticidade"],
     ["dia a dia", "Praticidade"],
+
+    ["carro", "Carro"],
+    ["automotivo", "Carro"],
+
+    ["moto", "Moto"],
+    ["motocicleta", "Moto"],
   ];
 
   const CN_CATEGORY_RULES = [
@@ -208,7 +257,7 @@
       negativePhrases: [],
     },
     {
-      label: "Feminino",
+      label: "Beleza",
       minScore: 7,
       strongPhrases: ["body splash", "escova secadora", "acessorio feminino", "gloss labial", "necessaire feminina"],
       weakPhrases: ["maquiagem", "beleza", "skincare", "perfume", "hidratante", "chapinha", "secador", "gloss", "batom", "base", "corretivo", "paleta", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire"],
@@ -268,7 +317,7 @@
       negativePhrases: [],
     },
     {
-      label: "Setup",
+      label: "Tech & Setup",
       minScore: 7,
       strongPhrases: ["mouse gamer", "teclado mecanico", "rgb lightsync", "headset gamer", "webcam gamer"],
       weakPhrases: ["mouse", "teclado", "headset", "webcam", "monitor", "mousepad", "gamer", "rgb"],
@@ -368,7 +417,7 @@
       negativePhrases: [],
     },
     {
-      label: "Casa Inteligente",
+      label: "Smart Home",
       minScore: 7,
       strongPhrases: ["casa inteligente", "smart home", "tomada inteligente", "lampada inteligente", "sensor inteligente", "camera wifi"],
       weakPhrases: ["inteligente"],
@@ -720,9 +769,12 @@
   }
 
   function canonicalPinnedLabel(label) {
-    const key = normalizeTagKey(label);
+    const clean = cleanText(label);
+    const key = normalizeTagKey(clean);
+    if (!key) return clean;
+    if (CN_CATEGORY_ALIAS_MAP.has(key)) return CN_CATEGORY_ALIAS_MAP.get(key);
     const found = CN_CAT_PINNED.find((x) => normalizeTagKey(x) === key);
-    return found || cleanText(label);
+    return found || clean;
   }
 
   function splitLooseList(value) {
@@ -1499,7 +1551,7 @@
           </div>
 
           <p class="meta" style="margin-top:10px;">
-            Melhor funil: <b>Story com sticker de LINK</b> + <b>Loja na Bio</b>.
+            Compra rápida e direta: use o botão dourado ou copie o ID do produto.
           </p>
         </div>
       </div>
