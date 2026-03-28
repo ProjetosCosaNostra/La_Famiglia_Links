@@ -2,7 +2,7 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v9.1 (CONFIDENCE SCORE + DIAGNOSTIC BUCKETS + PURGE DE FANTASMAS NO REVIEW)
+# Versão : v9.2 (CONFIDENCE SCORE + DIAGNOSTIC BUCKETS + PURGE DE FANTASMAS POR SKU/ISSUE)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
@@ -1776,20 +1776,50 @@ def _catalog_sku_set(products: List[Dict[str, Any]]) -> set[str]:
     return out
 
 
-def _purge_review_items_not_in_catalog(history: Dict[str, Any], valid_skus: set[str]) -> int:
+def _catalog_issue_set(products: List[Dict[str, Any]]) -> set[int]:
+    out: set[int] = set()
+    for p in products:
+        if not isinstance(p, dict):
+            continue
+        try:
+            issue_number = int(p.get("issue_number") or 0)
+        except Exception:
+            issue_number = 0
+        if issue_number > 0:
+            out.add(issue_number)
+    return out
+
+
+def _purge_review_items_not_in_catalog(
+    history: Dict[str, Any],
+    valid_skus: set[str],
+    valid_issue_numbers: set[int] | None = None,
+) -> int:
     items = history.get("items") or []
     if not isinstance(items, list):
         items = []
+
+    valid_issue_numbers = valid_issue_numbers or set()
 
     kept = []
     removed = 0
     for item in items:
         if not isinstance(item, dict):
             continue
+
         sku = str(item.get("sku") or "").strip()
-        if sku and sku not in valid_skus:
+        try:
+            issue_number = int(item.get("issue_number") or 0)
+        except Exception:
+            issue_number = 0
+
+        sku_missing = bool(sku) and sku not in valid_skus
+        issue_missing = issue_number > 0 and issue_number not in valid_issue_numbers
+
+        if sku_missing or issue_missing:
             removed += 1
             continue
+
         kept.append(item)
 
     if removed:
@@ -2304,12 +2334,20 @@ def main() -> int:
     data["updated_at"] = now
 
     current_catalog_skus = _catalog_sku_set(final_out)
+    current_catalog_issue_numbers = _catalog_issue_set(final_out)
 
     if PURGE_REVIEW_ORPHANS:
-        purged_review_orphans = _purge_review_items_not_in_catalog(review_history, current_catalog_skus)
+        purged_review_orphans = _purge_review_items_not_in_catalog(
+            review_history,
+            current_catalog_skus,
+            current_catalog_issue_numbers,
+        )
         if purged_review_orphans:
             changed += 1
-            print(f"[REVIEW-PURGE] removidos {purged_review_orphans} item(ns) fantasma(s) do painel")
+            print(
+                f"[REVIEW-PURGE] removidos {purged_review_orphans} item(ns) fantasma(s) "
+                f"do painel (sku/issue fora do catálogo atual)"
+            )
 
     if PURGE_MEMORY_ORPHANS:
         purged_memory_orphans = _purge_memory_items_not_in_catalog(guardian_memory, current_catalog_skus)
