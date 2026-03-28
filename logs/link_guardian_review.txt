@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-28T11:14:02Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-03-28T13:18:50Z
+Itens pendentes: 6
+SKUs únicos: 6
+Prioridade alta: 6
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 6
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 6
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 6
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-28T11:09:10Z
+Quando: 2026-03-28T13:13:56Z
+Issue: #154
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
+SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
+Título: Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores
+ID ML: 5J5PKG-R20J
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
+open_url: https://meli.la/2ZTeVJ2
+checked_url: https://meli.la/2ZTeVJ2
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHaLwUYzmr8JnuSaqVGP%2FHUJqEzXvY7WX6NY67eOr9jyqU1jPUeBKnneXutOjJZzUBTVjHWvBVEKqUuTY4xJMGBeJTaqiAIJv4r4gZH5wMyQo1VWttn2pA7VgGF9fYZ1Opx6QeZ1ZlZAAS7POfXfLQCJ6FnvKzqbQEAWvPcvIMaiedqwWweRM%2FqUvVd8JfR9JV29Cg%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-03-28T13:13:56Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://mercadolivre.com/sec/12t6XUG
 checked_url: https://mercadolivre.com/sec/12t6XUG
