@@ -1,31 +1,47 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-27T22:51:11Z
-Itens pendentes: 10
-SKUs únicos: 10
-Prioridade alta: 10
+Atualizado em: 2026-03-28T02:58:05Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 10
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 7
-- revisar: 3
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 5
-- storefront_social_profile_unconfirmed: 3
-- storefront_listing_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
 
 CORRIGIR AGORA
 ----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-03-28T02:53:31Z
+Issue: #51
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
+SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
+Título: Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte
+ID ML: 5J5PKG-F3MC
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
+open_url: https://mercadolivre.com/sec/12t6XUG
+checked_url: https://mercadolivre.com/sec/12t6XUG
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
+
 [ALTA] review_only_storefront
 Quando: 2026-03-27T22:41:46Z
 Issue: #14
@@ -47,99 +63,6 @@ canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%
 
 [ALTA] review_only_storefront
 Quando: 2026-03-27T22:41:46Z
-Issue: #55
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/55
-SKU: maquina-de-gelo-turbo-ice-premium-mondial-mg-12-gi
-Título: Máquina de Gelo Turbo Ice Premium Mondial — até 12kg/dia (MG-12-GI)
-ID ML: 5J5PKG-T2HL
-Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
-Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Máquina de Gelo, Turbo Ice, Mondial, Gelo em minutos, Até 12kg/dia, Drinks, Festa
-open_url: https://mercadolivre.com/sec/1JTgtXs
-checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T2HL&tid=8204a231-d50d-49c3-9341-5d6d6cd708f1
-final_url: https://lista.mercadolivre.com.br/5J5PKG-T2HL
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T2HL&tid=8204a231-d50d-49c3-9341-5d6d6cd708f1
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T22:41:46Z
-Issue: #94
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/94
-SKU: afiador-4em1-torvstore-mzub
-Título: Afiador 4 em 1 TORVSTORE — Afia Facas e Tesouras (Portátil)
-ID ML: 5J5PKG-MZUB
-Ação sugerida: revisar
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Cozinha, Churrasco, Afiador, Afiador 4 em 1, Facas, Tesouras, TORVSTORE
-open_url: https://meli.la/26NUChD
-checked_url: https://meli.la/26NUChD
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI2XXiW99f87QustsvSDqlwQVm4FvgNOy%2FU94piio%2F%2BUjdCD7V8sHDAfQHB7Is6B7uBo6%2FVvpx1Jx%2B%2FEZH5sH4QTXY9wojHiXa925cjRZZ%2FFYpjtJqpJi9%2F9PtxIrcdxESGSC2ip6dc6FO0qFUjiZWCH2AU3JOw3wRfQreOqKODH2%2FtzmPVGfFaEzUIwQX%2FTJYPieA%3D%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MZUB&tid=dc7fdfa9-cb4c-4386-8941-21c79f22f427
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T22:41:46Z
-Issue: #106
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/106
-SKU: jogo-panelas-ceramica-marmore-10-pecas
-Título: Jogo de Panelas Antiaderente Cerâmica Mármore 10 Peças
-ID ML: 5J5PKG-47WR
-Ação sugerida: revisar
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Cozinha, Jogo de Panelas, Cerâmica, Mármore, Antiaderente, 10 Peças, Utensílios de Cozinha
-open_url: https://meli.la/1twfxRu
-checked_url: https://meli.la/1twfxRu
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK6wJzFRF%2FQEYE2L7orBywQ8Z%2FC7M8ENuOx9Z0CAOPbwfVRnp8HyZL3kUODKQS8Dru%2FJR1%2BLgJNJ9my022Ofy7UfVcpJe6Ezt8Kx5w1rlvT0Ed1ts6SWt8F%2B2HMHEamr9RxFpd0Gdl%2F6WcT17Sx05t0uON19MdiOraM4Izoy1rfz4Lkv2HbJOkmYrl6f3zFAoKsh1A%3D%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-47WR&tid=d4a83032-1d1d-4047-ad9a-b741b0e068ea
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T22:41:46Z
-Issue: #117
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
-SKU: microsoft-xbox-series-x-1tb
-Título: Xbox Series X 1TB Premium
-ID ML: 5J5PKG-VKGY
-Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
-Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
-open_url: https://meli.la/1dLH6zP
-checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
-final_url: https://lista.mercadolivre.com.br/5J5PKG-VKGY
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T22:41:46Z
-Issue: #129
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
-SKU: puma-flyer-runner-mesh-bdp
-Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
-ID ML: 5J5PKG-6B4Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
-open_url: https://meli.la/2cmJ3u1
-checked_url: https://meli.la/2cmJ3u1
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T22:41:46Z
 Issue: #119
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/119
 SKU: amazon-echo-pop-kids-premium-marvel-azul
@@ -156,24 +79,6 @@ open_url: https://meli.la/1cSyrZ2
 checked_url: https://meli.la/1cSyrZ2
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCqPgep3ctJY24pIsiSS5wQzuqk1dmt4%2FGimXnDk%2FvyqmcnhUE4pWcViC2bajJc80%2BUk872SJ0Og2rHGTE8mJgIBHKtaipAeqDtPNWSrgYGnJy8HplRdQ2qqy%2BZ7Px%2BqB53pG3sct7T4CFKbcnLL01RuAJQXO%2BR0xN6GV0b5edmrAS3%2BPoSgtLNOVRUlnO%2BylUfhsQ%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-03-27T22:41:46Z
-Issue: #157
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/157
-SKU: bt-coca-cola-blush-stick-bruna-tavares-intense-cherry
-Título: BT Coca-Cola Blush Stick - Bruna Tavares - Multifuncional Intense Cherry
-ID ML: 5J5PKG-CRHZ
-Ação sugerida: revisar
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Beleza, Maquiagem, Bruna Tavares, Coca-Cola, Blush Stick, Intense Cherry, Rosto
-open_url: https://meli.la/2mkbQ6Q
-checked_url: https://meli.la/2mkbQ6Q
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF4tvItHmK1MZd7Kgk6dWZjGmPKuA6lo6pY0Mze3N1IjEUIoV3bVcG5xYmFw5rHWAuFhPsQFxedWGpQrhZCVbTN3HVFWSEM22HsLp9jDN%2BQPF0oFBmqKhl%2Bg81yBh7LW3nn5UWu39z%2BPqgOcrvhlLaDowW2HaE9CDPEm7gSkOpV%2F%2BkI8HMHPoSDDUcB3pjCYVidSNpY%3D
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF4tvItHmK1MZd7Kgk6dWZjGmPKuA6lo6pY0Mze3N1IjEUIoV3bVcG5xYmFw5rHWAuFhPsQFxedWGpQrhZCVbTN3HVFWSEM22HsLp9jDN%2BQPF0oFBmqKhl%2Bg81yBh7LW3nn5UWu39z%2BPqgOcrvhlLaDowW2HaE9CDPEm7gSkOpV%2F%2BkI8HMHPoSDDUcB3pjCYVidSNpY%3D
 
 [ALTA] review_only_storefront
 Quando: 2026-03-27T05:32:06Z
