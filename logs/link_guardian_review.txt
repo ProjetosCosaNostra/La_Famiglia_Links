@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-28T17:52:53Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-03-28T18:14:33Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-28T17:49:17Z
+Quando: 2026-03-28T18:09:56Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -35,28 +35,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://mercadolivre.com/sec/12t6XUG
 checked_url: https://mercadolivre.com/sec/12t6XUG
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
-
-[ALTA] review_only_storefront
-Quando: 2026-03-28T17:49:17Z
-Issue: #129
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
-SKU: puma-flyer-runner-mesh-bdp
-Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
-ID ML: 5J5PKG-6B4Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
-open_url: https://meli.la/2cmJ3u1
-checked_url: https://meli.la/2cmJ3u1
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e

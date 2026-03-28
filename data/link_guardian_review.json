@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-03-28T17:52:53Z",
-  "total_items": 2,
+  "updated_at": "2026-03-28T18:14:33Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 1,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 1
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 1
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 1
     },
-    "high_priority": 2
+    "high_priority": 1
   },
   "items": [
     {
-      "happened_at": "2026-03-28T17:49:17Z",
+      "happened_at": "2026-03-28T18:09:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -58,51 +58,6 @@
         "Google",
         "Smart Home",
         "5m"
-      ]
-    },
-    {
-      "happened_at": "2026-03-28T17:49:17Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 129,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129",
-      "issue_title": "[CMS] Produto: Puma Flyer Runner Mesh Bdp",
-      "sku": "puma-flyer-runner-mesh-bdp",
-      "title": "👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium",
-      "id_busca": "5J5PKG-6B4Q",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2cmJ3u1",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2cmJ3u1",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3wsfTyQLkDRg%2FyEG5bemuTAb2xuyarBOk5nioE1QLwpb7rS6t9IkRlsc3pJmRx0xt%2FLFUYIWY71SohJUySYk6P3MQktBjdy%2FJh7dMigskFuJIzjfukm588psrMU80W%2FjIyzSJSXF9fZ7emwh0oh58UnP6qgTnWTasb1zykFehGA0IGspQfg%2B7Nd5olkvwD457WXQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e",
-      "short_url": "https://meli.la/2cmJ3u1",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3wsfTyQLkDRg%2FyEG5bemuTAb2xuyarBOk5nioE1QLwpb7rS6t9IkRlsc3pJmRx0xt%2FLFUYIWY71SohJUySYk6P3MQktBjdy%2FJh7dMigskFuJIzjfukm588psrMU80W%2FjIyzSJSXF9fZ7emwh0oh58UnP6qgTnWTasb1zykFehGA0IGspQfg%2B7Nd5olkvwD457WXQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Puma",
-        "Flyer Runner Mesh Bdp",
-        "Tênis",
-        "Tênis Puma",
-        "Calçado",
-        "Conforto",
-        "Leve"
       ]
     }
   ]
