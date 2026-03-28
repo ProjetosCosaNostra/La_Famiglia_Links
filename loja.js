@@ -1432,8 +1432,8 @@
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buyBtn = (disabled || !hasLink)
-      ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
+      ? `<button class="btn btn--gold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
+      : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
@@ -1454,20 +1454,20 @@
         </div>
         <div class="card__body">
           <h3 class="name">${escapeHTML(p.title)}</h3>
-          ${p.price_text ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
-          <p class="meta">${escapeHTML(desc)}</p>
+          ${p.price_text ? `<p class="meta meta--price">${escapeHTML(p.price_text)}</p>` : ``}
+          ${desc ? `<p class="meta meta--soft">${escapeHTML(desc)}</p>` : ``}
 
           <div class="row">
             <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.id_busca || "")}</b></div>
           </div>
 
-          ${tags ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
+          ${tags ? `<p class="meta meta--tags">${escapeHTML(tags)}</p>` : ``}
 
           <div class="actions">
             ${buyBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
-            ${altBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            ${altBtn ? altBtn.replace('btn btn--tiny btn--glass', 'btn btn--tiny btn--glass btn--secondary-soft') : ``}
           </div>
         </div>
       </div>
@@ -1492,9 +1492,9 @@
           </p>
 
           <div class="actions" style="margin-top:6px;">
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            ${p.alt_url ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link alt</button>` : ``}
             <a class="btn btn--tiny btn--gold" href="./">Abrir Home</a>
           </div>
 
@@ -1518,8 +1518,8 @@
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buy = (disabled || !hasLink)
-      ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      ? `<button class="smallBtn smallBtnGold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
+      : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
@@ -1532,15 +1532,15 @@
         </div>
         <div class="pBody">
           <p class="pName">${escapeHTML(p.title)}</p>
-          ${p.price_text ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
-          <p class="pSmall">${escapeHTML(desc)}</p>
-          ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
+          ${p.price_text ? `<p class="pSmall pSmall--price">${escapeHTML(p.price_text)}</p>` : ``}
+          ${desc ? `<p class="pSmall pSmall--soft">${escapeHTML(desc)}</p>` : ``}
+          ${tags ? `<p class="pSmall pSmall--tags">${escapeHTML(tags)}</p>` : ``}
 
           <div class="pActions">
             ${buy}
-            <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
+            <button class="smallBtn btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="smallBtn btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            ${p.alt_url ? `<button class="smallBtn btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link alt</button>` : ``}
           </div>
         </div>
       </div>
