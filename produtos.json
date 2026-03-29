@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-29T12:31:18Z",
+  "updated_at": "2026-03-29T20:22:14Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6370,7 +6370,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-AJPM",
       "image": "https://github.com/user-attachments/assets/ca721563-6a73-4d37-81de-b8dd039886ff",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6416,6 +6416,60 @@
       "guardian_last_reason": "social_profile_product_confirmed",
       "guardian_last_checked_url": "https://meli.la/1CDrde5",
       "guardian_fail_count": 0
+    },
+    {
+      "sku": "paleta-sombras-new-york-catharine-hill-10-cores",
+      "title": "Paleta de Sombras New York Catharine Hill 10 Cores",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Paleta de Sombras",
+        "Olhos",
+        "Catharine Hill",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-XXZH",
+      "open_url": "https://meli.la/1yfq6U7",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BED%2BIpXlhncvTu43M3BCIQKggq50SSmH8Zu%2FUB9XnqM5jsLuR%2FOc5Il4VizpLqYpvBCy4UR4pF6cHHP%2FmPSpUeqgISf3fZ30R2UQv1B%2FkgHkq6BuVEBpSqtmVizgvtRX%2BEaOrjH9Aoigk7fap%2Bv1zPLZrBAFH6TWl8EPr5M7hEwoewzlabU1jKPc6nCORe6RMt8Gs33YyWvj%2Fwu2BA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XXZH",
+      "image": "https://github.com/user-attachments/assets/010e3b1f-19eb-40c3-9778-2a7f8b970996",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 171,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171",
+      "issue_title": "Paleta de Sombras New York Catharine Hill 10 Cores",
+      "categoria_principal": "Paleta de Sombras New York Catharine Hill 10 Cores",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Paleta de Sombras",
+        "Olhos",
+        "Sombras",
+        "Catharine Hill"
+      ],
+      "aliases_busca": [
+        "paleta de sombras new york",
+        "paleta catharine hill",
+        "paleta pri lessa",
+        "paleta 10 cores",
+        "sombras para olhos",
+        "paleta de maquiagem new york"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 171,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1yfq6U7",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BED%2BIpXlhncvTu43M3BCIQKggq50SSmH8Zu%2FUB9XnqM5jsLuR%2FOc5Il4VizpLqYpvBCy4UR4pF6cHHP%2FmPSpUeqgISf3fZ30R2UQv1B%2FkgHkq6BuVEBpSqtmVizgvtRX%2BEaOrjH9Aoigk7fap%2Bv1zPLZrBAFH6TWl8EPr5M7hEwoewzlabU1jKPc6nCORe6RMt8Gs33YyWvj%2Fwu2BA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
