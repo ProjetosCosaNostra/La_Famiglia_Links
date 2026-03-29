@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v10.2 (edição preserva featured/quick_home + trava anti-/lists e auto precisa_relink)
+# Versão : v10.3 (edição preserva featured/quick_home + CMS não auto-desativa por destino social/lists)
 # ==========================================================
 
 from __future__ import annotations
@@ -42,6 +42,10 @@ _RESOLVE_SHORT = os.getenv("CN_CMS_RESOLVE_SHORT", "1").strip().lower() not in {
 
 # timeout (segundos) para resolver shortlinks (quando habilitado)
 _SHORT_TIMEOUT = float(os.getenv("CN_CMS_SHORT_TIMEOUT", "8.0") or "8.0")
+
+# validação estrutural agressiva desligada por padrão no CMS
+# (o Guardian continua responsável por revisar/promover/desativar links)
+_STRICT_ML_TARGET_VALIDATION = os.getenv("CN_CMS_STRICT_ML_TARGET_VALIDATION", "0").strip().lower() in {"1", "true", "yes", "on"}
 
 _VALID_REVIEW_ACTIONS = {
     "manter",
@@ -625,6 +629,11 @@ def _bad_ml_target_reason(u: str) -> str:
 
 
 def _ensure_manual_ml_target_safe(label: str, u: str) -> None:
+    # Produção: o CMS não deve derrubar cadastro por heurística estrutural.
+    # Quem decide revisão/desativação é o Link Guardian.
+    if not _STRICT_ML_TARGET_VALIDATION:
+        return
+
     reason = _bad_ml_target_reason(u)
     if reason:
         raise ValueError(
@@ -1155,27 +1164,10 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
 
     image = _normalize_asset_path(image_url) if image_url else None
 
-    bad_target_reasons: List[str] = []
-    for candidate in [resolved_url, open_url or "", check_url or ""]:
-        reason = _bad_ml_target_reason(candidate)
-        if reason and reason not in bad_target_reasons:
-            bad_target_reasons.append(reason)
-
-    if bad_target_reasons:
-        bad_target_text = ", ".join(bad_target_reasons)
-        review_action = "precisa_relink"
-        review_status = "precisa_relink"
-        active = False
-        review_reason = review_reason or f"Destino estruturalmente ruim: {bad_target_text}"
-        notes = _merge_notes(
-            notes,
-            f"CMS marcou precisa_relink automaticamente porque o destino novo caiu em {bad_target_text}.",
-        )
-
-        if _bad_ml_target_reason(open_url or ""):
-            open_url = canonical_url or ""
-        if _bad_ml_target_reason(check_url or ""):
-            check_url = canonical_url or open_url or ""
+    # Importante:
+    # O CMS não pode desativar/cancelar featured/quick_home automaticamente
+    # só porque o shortlink resolveu para /social/, /lists ou wrapper intermediário.
+    # A verificação operacional fica no Link Guardian.
 
     if is_edit_mode and review_action:
         if review_action == "precisa_relink":
