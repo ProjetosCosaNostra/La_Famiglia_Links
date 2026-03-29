@@ -448,244 +448,101 @@
 
 
     /* =========================
-       AJUSTES FINAIS — LOJA
+       FLUTUANTE DA LOJA — PADRÃO DA INDEX
        ========================= */
-
-    /* topo mais alinhado com a index */
-    .hero__brand{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      align-items:flex-start;
-      gap:14px;
-    }
-    .brandMark{
-      margin-top:2px;
-      width:62px;
-      height:62px;
-      border-radius:18px;
-    }
-    .brandLogo{
-      width:42px;
-      height:42px;
-    }
-    .title--store{
-      margin:0 0 6px 0;
-      line-height:.90;
-      letter-spacing:.04px;
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.03),
-        0 0 10px rgba(215,176,88,.05),
-        0 8px 18px rgba(0,0,0,.16);
-    }
-    .kicker--store{
-      margin:0 0 10px 1px;
-      max-width:420px;
-      line-height:1.05;
-      letter-spacing:.72px;
-      font-size:.90rem;
-      color:rgba(232,202,124,.92);
-      opacity:.96;
-    }
-    .sub--store{
-      max-width:540px;
-      margin-top:0;
-    }
-
-    /* busca mobile corrigida */
-    .lojaTools .toolRow{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .quickSearch{
-      min-width:0 !important;
-      width:100%;
-      flex:1 1 320px;
-      min-height:52px;
-      max-height:52px;
-      border-radius:999px;
-      padding:10px 14px;
-      overflow:hidden;
-    }
-    .quickSearch input{
-      min-width:0;
-      width:100%;
-    }
-
-    /* categorias mais refinadas */
-    .tagChips{
-      gap:8px;
-    }
-    .tagChips .tagChip{
-      padding:7px 10px;
-      font-size:12px;
-      border-color:rgba(215,176,88,.18);
-      background:rgba(0,0,0,.20);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
-    }
-    .tagChips .tagChip.tagChip--active{
-      border-color:rgba(215,176,88,.48);
-      color:rgba(255,230,168,.98);
-      background:
-        linear-gradient(180deg, rgba(215,176,88,.13), rgba(0,0,0,.14));
-    }
-
-    /* comprar dos cards com o mesmo padrão do CTA principal */
-    .smallBtnGold.btn--buy-primary{
-      border:1px solid rgba(224,195,107,.40) !important;
-      background:
-        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.22), transparent 60%),
-        linear-gradient(180deg, rgba(199,162,75,.34), rgba(199,162,75,.10)) !important;
-      color:rgba(255,236,180,.95) !important;
-      box-shadow:0 12px 32px rgba(199,162,75,.12) !important;
-      position:relative;
-      overflow:hidden;
-      border-radius:999px;
-      font-weight:900;
-      letter-spacing:.02em;
-    }
-    .smallBtnGold.btn--buy-primary::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
-      transform: translateX(-60%);
-      animation: shine 3.8s ease-in-out infinite;
-      pointer-events:none;
-    }
-    .smallBtnGold.btn--buy-primary:hover{
-      filter:brightness(1.08);
-      border-color:rgba(224,195,107,.22);
-      box-shadow:0 12px 26px rgba(0,0,0,.42), 0 12px 32px rgba(199,162,75,.12) !important;
-    }
-
-    @media (max-width:720px){
-      .hero__brand{
-        grid-template-columns:auto 1fr;
-        gap:12px;
-      }
-      .brandMark{
-        width:58px;
-        height:58px;
-        border-radius:17px;
-      }
-      .brandLogo{
-        width:38px;
-        height:38px;
-      }
-      .title--store{
-        font-size:clamp(2.25rem, 10vw, 3.05rem);
-        line-height:.91;
-      }
-      .kicker--store{
-        font-size:.84rem;
-        letter-spacing:.62px;
-        margin-bottom:8px;
-      }
-      .sub--store{
-        font-size:.96rem;
-      }
-      .quickSearch{
-        flex:none;
-        min-height:50px;
-        max-height:50px;
-        border-radius:22px;
-        padding:10px 14px;
-      }
-      .panel__head{
-        gap:10px;
-      }
-    }
-
-    @media (max-width:520px){
-      .lojaTools .toolRow{
-        flex-direction:column;
-        align-items:stretch;
-      }
-      .quickSearch{
-        width:100% !important;
-        min-height:48px;
-        max-height:48px;
-        border-radius:20px;
-      }
-      .quickSearch input{
-        font-size:16px;
-      }
-      .tagChips .tagChip{
-        padding:7px 9px;
-        font-size:11.5px;
-      }
-    }
-
-
-    /* =========================
-       FLUTUANTES DA LOJA — MESMO PADRÃO DA INDEX
-       ========================= */
-    .floatingLojaNav{
+    .lojaQuickDock{
       position:fixed;
-      right:16px;
-      bottom:16px;
-      z-index:9999;
+      left:50%;
+      top:78px;
+      transform:translateX(-50%);
+      z-index:9998;
+      width:min(calc(100vw - 18px), 360px);
       display:none;
-      flex-direction:column;
-      gap:8px;
       pointer-events:none;
     }
-    .floatingLojaNav.is-visible{
-      display:flex;
+
+    .lojaQuickDock.is-visible{
+      display:block;
     }
-    .floatingLojaNav__row{
-      display:flex;
-      gap:8px;
-      justify-content:flex-end;
-    }
-    .floatingLojaNav a,
-    .floatingLojaNav button{
+
+    .lojaQuickDock__shell{
       pointer-events:auto;
-      text-decoration:none;
+      border-radius:28px;
+      padding:10px;
+      border:1px solid rgba(215,176,88,.20);
+      background:
+        radial-gradient(circle at top right, rgba(215,176,88,.12), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.12)),
+        rgba(14,14,18,.78);
+      backdrop-filter:blur(16px);
+      box-shadow:
+        0 22px 60px rgba(0,0,0,.46),
+        inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .lojaQuickDock__grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .lojaQuickDock__btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:11px 13px;
-      border-radius:16px;
-      border:1px solid rgba(215,176,88,.35);
-      background:rgba(10,10,12,.72);
-      color:rgba(255,255,255,.92);
-      box-shadow:0 18px 60px rgba(0,0,0,.55);
-      backdrop-filter:blur(10px);
-      font-weight:800;
-      letter-spacing:.2px;
-      font-size:13px;
+      text-align:center;
+      min-height:42px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(215,176,88,.18);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.14));
+      color:rgba(255,255,255,.94);
+      font:800 13px/1 Inter, system-ui, sans-serif;
+      letter-spacing:.01em;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
       cursor:pointer;
-      min-height:44px;
+      text-decoration:none;
       white-space:nowrap;
     }
-    .floatingLojaNav a:hover,
-    .floatingLojaNav button:hover,
-    .floatingLojaNav a:focus-visible,
-    .floatingLojaNav button:focus-visible{
-      border-color:rgba(215,176,88,.50);
-      filter:brightness(1.04);
+
+    .lojaQuickDock__btn:hover,
+    .lojaQuickDock__btn:focus-visible{
+      border-color:rgba(215,176,88,.34);
+      filter:brightness(1.03);
       outline:none;
     }
-    .floatingLojaNav .gold{ color:rgba(215,176,88,1); }
+
+    .lojaQuickDock__btn--gold{
+      color:rgba(255,230,168,.98);
+      border-color:rgba(215,176,88,.42);
+      background:
+        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.16), transparent 60%),
+        linear-gradient(180deg, rgba(199,162,75,.28), rgba(199,162,75,.08));
+      box-shadow:
+        0 12px 30px rgba(145,111,34,.16),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    }
 
     @media (min-width: 721px){
-      .floatingLojaNav{ display:none !important; }
+      .lojaQuickDock{ display:none !important; }
     }
+
     @media (max-width: 720px){
-      .floatingLojaNav{
-        right:10px;
-        bottom:10px;
+      .lojaQuickDock{
+        top:74px;
+        width:min(calc(100vw - 14px), 368px);
       }
-      .floatingLojaNav a,
-      .floatingLojaNav button{
-        padding:10px 12px;
-        border-radius:14px;
-        font-size:12.5px;
-        min-height:40px;
+      .lojaQuickDock__shell{
+        padding:8px;
+        border-radius:26px;
+      }
+      .lojaQuickDock__grid{
+        gap:7px;
+      }
+      .lojaQuickDock__btn{
+        min-height:39px;
+        padding:9px 10px;
+        font-size:12px;
       }
     }
 
@@ -705,15 +562,14 @@
   </div>
 
 
-  <!-- Navegação flutuante da loja (mobile) -->
-  <div class="floatingLojaNav" id="floatingLojaNav" aria-hidden="false">
-    <div class="floatingLojaNav__row">
-      <button type="button" id="floatingBuscar">🔎 Buscar</button>
-      <button type="button" id="floatingCategorias">🏷️ Categorias</button>
-    </div>
-    <div class="floatingLojaNav__row">
-      <button type="button" id="floatingProdutoDia">⭐ Produto do Dia</button>
-      <button type="button" id="floatingTopo">⬆️ Topo</button>
+  <div class="lojaQuickDock" id="lojaQuickDock" aria-label="Navegação rápida da loja">
+    <div class="lojaQuickDock__shell">
+      <div class="lojaQuickDock__grid">
+        <button class="lojaQuickDock__btn" type="button" id="dockProdutoDia">⭐ Produto do Dia</button>
+        <button class="lojaQuickDock__btn" type="button" id="dockVitrineBusca">🔎 Buscar</button>
+        <button class="lojaQuickDock__btn lojaQuickDock__btn--gold" type="button" id="dockCategorias">🏷️ Categorias</button>
+        <button class="lojaQuickDock__btn" type="button" id="dockTopo">⬆️ Topo</button>
+      </div>
     </div>
   </div>
 
@@ -877,33 +733,35 @@
 
   <script>
     (function(){
-      var dock = document.getElementById("floatingLojaNav");
+      var dock = document.getElementById("lojaQuickDock");
       if (!dock) return;
 
-      var btnBuscar = document.getElementById("floatingBuscar");
-      var btnCategorias = document.getElementById("floatingCategorias");
-      var btnProdutoDia = document.getElementById("floatingProdutoDia");
-      var btnTopo = document.getElementById("floatingTopo");
+      var btnProdutoDia = document.getElementById("dockProdutoDia");
+      var btnBusca = document.getElementById("dockVitrineBusca");
+      var btnCategorias = document.getElementById("dockCategorias");
+      var btnTopo = document.getElementById("dockTopo");
 
       function isMobile(){
         return window.matchMedia("(max-width: 720px)").matches;
       }
 
-      function updateFloatingVisibility(){
+      function updateDock(){
         if (!isMobile()){
           dock.classList.remove("is-visible");
           return;
         }
-        if (window.scrollY > 320){
+        if (window.scrollY > 280){
           dock.classList.add("is-visible");
         } else {
           dock.classList.remove("is-visible");
         }
       }
 
-      function goToEl(id){
+      function scrollToId(id){
         var el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior:"smooth", block:"start" });
+        if (el){
+          el.scrollIntoView({ behavior:"smooth", block:"start" });
+        }
       }
 
       if (btnTopo){
@@ -914,19 +772,19 @@
 
       if (btnProdutoDia){
         btnProdutoDia.addEventListener("click", function(){
-          goToEl("sec-produto-do-dia");
+          scrollToId("sec-produto-do-dia");
         });
       }
 
       if (btnCategorias){
         btnCategorias.addEventListener("click", function(){
-          goToEl("sec-filtro-categorias");
+          scrollToId("sec-filtro-categorias");
         });
       }
 
-      if (btnBuscar){
-        btnBuscar.addEventListener("click", function(){
-          goToEl("sec-filtro-categorias");
+      if (btnBusca){
+        btnBusca.addEventListener("click", function(){
+          scrollToId("sec-filtro-categorias");
           setTimeout(function(){
             var q = document.getElementById("qLoja");
             if (q){
@@ -937,9 +795,9 @@
         });
       }
 
-      window.addEventListener("scroll", updateFloatingVisibility, { passive:true });
-      window.addEventListener("resize", updateFloatingVisibility);
-      updateFloatingVisibility();
+      window.addEventListener("scroll", updateDock, { passive:true });
+      window.addEventListener("resize", updateDock);
+      updateDock();
     })();
   </script>
 
