@@ -517,6 +517,37 @@ def _normalize_review_status(s: str) -> str:
     return "ativo"
 
 
+
+
+def _enforce_active_featured_quick_home_consistency(product: Dict[str, Any]) -> None:
+    if not isinstance(product, dict):
+        return
+
+    active_value = product.get("active", True)
+    active_bool = bool(active_value)
+
+    if not active_bool:
+        product["featured"] = False
+        if "quick_home" in product:
+            product["quick_home"] = False
+        if "quick_home_order" in product:
+            product["quick_home_order"] = 0
+
+        review_action = _normalize_review_action(str(product.get("review_action") or "manter"))
+        review_status = _normalize_review_status(str(product.get("review_status") or "ativo"))
+
+        if review_action == "manter":
+            product["review_action"] = "desativar_manual" if review_status == "desativado_manual" else "precisa_relink"
+        else:
+            product["review_action"] = review_action
+
+        if review_status not in {"precisa_relink", "desativado_manual", "em_revisao"}:
+            product["review_status"] = "precisa_relink"
+        else:
+            product["review_status"] = review_status
+    else:
+        product["active"] = True
+
 def _host_of(u: str) -> str:
     try:
         pu = urlparse(u or "")
@@ -868,6 +899,8 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         p.setdefault("active", True)
         p.setdefault("featured", False)
 
+        _enforce_active_featured_quick_home_consistency(p)
+
         out.append(p)
         seen_sku.add(sku)
 
@@ -1173,6 +1206,13 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
             if review_status not in _VALID_REVIEW_STATUSES:
                 review_status = "ativo" if active else "em_revisao"
 
+    if active is False:
+        featured = False
+        if quick_home is not None:
+            quick_home = False
+        if quick_home_order is not None:
+            quick_home_order = 0
+
     source_issue_number = int(issue.get("number") or 0)
     source_issue_url = _clean_url(str(issue.get("html_url") or ""))
     source_issue_title = _clean_optional_text(str(issue.get("title") or ""))
@@ -1467,6 +1507,8 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
 
     if existing.get("quick_home") is False:
         existing["quick_home_order"] = 0
+
+    _enforce_active_featured_quick_home_consistency(existing)
 
     if existing.get("featured") is True:
         for p in products:
