@@ -446,269 +446,175 @@
       }
     }
 
-    /* =========================
-       REFINO FINAL APROVADO
-       - topo mais próximo do index
-       - busca mobile corrigida
-       - comprar com mesmo peso do CTA principal
-       - categorias mais limpas
-       ========================= */
-    .hero{
-      padding:18px 18px 16px;
-    }
 
+    /* =========================
+       AJUSTES FINAIS — LOJA
+       ========================= */
+
+    /* topo mais alinhado com a index */
     .hero__brand{
       display:grid;
-      grid-template-columns:58px minmax(0,1fr);
-      align-items:start;
-      column-gap:14px;
+      grid-template-columns:auto 1fr;
+      align-items:flex-start;
+      gap:14px;
     }
-
     .brandMark{
-      width:58px;
-      height:58px;
-      border-radius:18px;
       margin-top:2px;
+      width:62px;
+      height:62px;
+      border-radius:18px;
     }
-
     .brandLogo{
-      width:38px;
-      height:38px;
+      width:42px;
+      height:42px;
     }
-
-    .hero__text--store{
-      gap:0;
-      justify-content:flex-start;
-    }
-
     .title--store{
-      font-size:clamp(2.6rem,4.8vw,4.2rem);
-      max-width:420px;
-      margin:0 0 8px 0;
+      margin:0 0 6px 0;
       line-height:.90;
-      letter-spacing:.02em;
+      letter-spacing:.04px;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.03),
+        0 0 10px rgba(215,176,88,.05),
+        0 8px 18px rgba(0,0,0,.16);
     }
-
     .kicker--store{
-      max-width:360px;
-      margin:0 0 12px 1px;
-      line-height:1.06;
-      letter-spacing:.10em;
-      font-size:.92rem;
-      color:rgba(232,202,124,.94);
+      margin:0 0 10px 1px;
+      max-width:420px;
+      line-height:1.05;
+      letter-spacing:.72px;
+      font-size:.90rem;
+      color:rgba(232,202,124,.92);
+      opacity:.96;
     }
-
     .sub--store{
-      max-width:520px;
-      margin:0;
-    }
-
-    .chip{
-      min-height:30px;
-      padding:4px 10px;
-      font-size:.88rem;
-    }
-
-    .imperialNote--store{
-      margin-top:10px;
       max-width:540px;
+      margin-top:0;
     }
 
-    .hero__actions .btn--social-store{
-      min-height:40px;
-      font-size:.92rem;
+    /* busca mobile corrigida */
+    .lojaTools .toolRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
     }
-
-    .btn--buy-primary,
-    .smallBtnGold.btn--buy-primary{
-      position:relative;
+    .quickSearch{
+      min-width:0 !important;
+      width:100%;
+      flex:1 1 320px;
+      min-height:52px;
+      max-height:52px;
+      border-radius:999px;
+      padding:10px 14px;
       overflow:hidden;
-      border-color:rgba(224,195,107,.38) !important;
+    }
+    .quickSearch input{
+      min-width:0;
+      width:100%;
+    }
+
+    /* categorias mais refinadas */
+    .tagChips{
+      gap:8px;
+    }
+    .tagChips .tagChip{
+      padding:7px 10px;
+      font-size:12px;
+      border-color:rgba(215,176,88,.18);
+      background:rgba(0,0,0,.20);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.02);
+    }
+    .tagChips .tagChip.tagChip--active{
+      border-color:rgba(215,176,88,.48);
+      color:rgba(255,230,168,.98);
+      background:
+        linear-gradient(180deg, rgba(215,176,88,.13), rgba(0,0,0,.14));
+    }
+
+    /* comprar dos cards com o mesmo padrão do CTA principal */
+    .smallBtnGold.btn--buy-primary{
+      border:1px solid rgba(224,195,107,.40) !important;
       background:
         radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.22), transparent 60%),
         linear-gradient(180deg, rgba(199,162,75,.34), rgba(199,162,75,.10)) !important;
-      color:rgba(255,236,180,.96) !important;
-      box-shadow:0 12px 32px rgba(199,162,75,.14), inset 0 1px 0 rgba(255,255,255,.08) !important;
-      text-shadow:0 1px 0 rgba(0,0,0,.20);
+      color:rgba(255,236,180,.95) !important;
+      box-shadow:0 12px 32px rgba(199,162,75,.12) !important;
+      position:relative;
+      overflow:hidden;
+      border-radius:999px;
+      font-weight:900;
+      letter-spacing:.02em;
     }
-
-    .btn--buy-primary::after,
     .smallBtnGold.btn--buy-primary::after{
       content:"";
       position:absolute;
       inset:-2px;
-      background:linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
-      transform:translateX(-60%);
-      animation:shine 3.8s ease-in-out infinite;
+      background: linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
+      transform: translateX(-60%);
+      animation: shine 3.8s ease-in-out infinite;
       pointer-events:none;
     }
-
-    .btn--buy-primary:hover,
-    .btn--buy-primary:focus-visible,
-    .smallBtnGold.btn--buy-primary:hover,
-    .smallBtnGold.btn--buy-primary:focus-visible{
-      transform:translateY(-1px);
-      border-color:rgba(230,195,108,.54) !important;
-      filter:brightness(1.04);
-      box-shadow:0 16px 38px rgba(199,162,75,.20), inset 0 1px 0 rgba(255,255,255,.10) !important;
+    .smallBtnGold.btn--buy-primary:hover{
+      filter:brightness(1.08);
+      border-color:rgba(224,195,107,.22);
+      box-shadow:0 12px 26px rgba(0,0,0,.42), 0 12px 32px rgba(199,162,75,.12) !important;
     }
 
-    .quickSearch--store{
-      flex:1 1 360px !important;
-      min-height:54px;
-      width:100%;
-      padding:0 16px;
-      border-radius:18px;
-      align-items:center;
-      gap:12px;
-    }
-
-    .quickSearch--store input{
-      min-width:0;
-      width:100%;
-      font-size:15px;
-    }
-
-    .quickSearch--store .quickIcon{
-      flex:0 0 auto;
-      font-size:1rem;
-    }
-
-    .tagChips{
-      gap:9px;
-    }
-
-    .tagChip{
-      padding:8px 11px;
-      font-size:12px;
-      letter-spacing:.01em;
-    }
-
-    @media (max-width: 860px){
-      .hero{
-        padding:16px;
-      }
-
+    @media (max-width:720px){
       .hero__brand{
-        grid-template-columns:54px minmax(0,1fr);
-        column-gap:12px;
+        grid-template-columns:auto 1fr;
+        gap:12px;
       }
-
       .brandMark{
-        width:54px;
-        height:54px;
-        border-radius:16px;
-      }
-
-      .brandLogo{
-        width:34px;
-        height:34px;
-      }
-
-      .title--store{
-        font-size:clamp(2.3rem,7vw,3.4rem);
-        max-width:none;
-      }
-
-      .kicker--store{
-        max-width:none;
-      }
-    }
-
-    @media (max-width: 720px){
-      .lojaTools .toolRow{
-        display:grid;
-        grid-template-columns:1fr;
-        align-items:stretch;
-        gap:10px;
-      }
-
-      .lojaTools .toolRow > *{
-        width:100%;
-        min-width:0;
-      }
-
-      .quickSearch--store{
-        min-height:50px;
-        padding:0 14px;
-        border-radius:18px;
-      }
-
-      .select{
-        width:100%;
-        min-height:44px;
-      }
-
-      #btnClear{
-        min-height:42px;
-      }
-    }
-
-    @media (max-width: 520px){
-      .hero{
-        padding:14px;
-      }
-
-      .hero__brand{
-        grid-template-columns:48px minmax(0,1fr);
-        column-gap:10px;
-      }
-
-      .brandMark{
-        width:48px;
-        height:48px;
-        border-radius:15px;
-      }
-
-      .brandLogo{
-        width:30px;
-        height:30px;
-      }
-
-      .title--store{
-        font-size:clamp(2.05rem,9vw,3rem);
-        margin-bottom:6px;
-      }
-
-      .kicker--store{
-        font-size:.82rem;
-        margin-bottom:10px;
-      }
-
-      .sub--store{
-        font-size:.96rem;
-        line-height:1.38;
-      }
-
-      .chip{
-        min-height:28px;
-        padding:4px 9px;
-        font-size:.83rem;
-      }
-
-      .countPill{
-        gap:7px;
-        padding:8px 10px;
-      }
-
-      .quickSearch--store{
-        min-height:48px;
-        padding:0 13px;
+        width:58px;
+        height:58px;
         border-radius:17px;
       }
-
-      .quickSearch--store input{
-        font-size:14px;
+      .brandLogo{
+        width:38px;
+        height:38px;
       }
+      .title--store{
+        font-size:clamp(2.25rem, 10vw, 3.05rem);
+        line-height:.91;
+      }
+      .kicker--store{
+        font-size:.84rem;
+        letter-spacing:.62px;
+        margin-bottom:8px;
+      }
+      .sub--store{
+        font-size:.96rem;
+      }
+      .quickSearch{
+        flex:none;
+        min-height:50px;
+        max-height:50px;
+        border-radius:22px;
+        padding:10px 14px;
+      }
+      .panel__head{
+        gap:10px;
+      }
+    }
 
-      .tagChip{
-        padding:7px 10px;
+    @media (max-width:520px){
+      .lojaTools .toolRow{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .quickSearch{
+        width:100% !important;
+        min-height:48px;
+        max-height:48px;
+        border-radius:20px;
+      }
+      .quickSearch input{
+        font-size:16px;
+      }
+      .tagChips .tagChip{
+        padding:7px 9px;
         font-size:11.5px;
-      }
-
-      .hero__actions .btn--social-store{
-        min-height:38px;
-        font-size:.85rem;
       }
     }
 
@@ -791,7 +697,7 @@
       <div class="panel__head">
         <div>
           <h2>Filtro & categorias</h2>
-          <p>Busca rápida, categorias lapidadas e ordem inteligente para chegar no produto mais rápido.</p>
+          <p>Buscar por texto, filtrar por categorias reais e ordenar. Tudo em tempo real.</p>
         </div>
         <div class="panel__right">
           <select class="select" id="sortSel" aria-label="Ordenação">
@@ -804,9 +710,9 @@
 
       <div class="lojaTools">
         <div class="toolRow">
-          <div class="quickSearch quickSearch--store" role="search">
+          <div class="quickSearch" role="search" style="flex:1 1 320px;">
             <span class="quickIcon">🔎</span>
-            <input id="qLoja" placeholder="Buscar produto, marca ou categoria..." />
+            <input id="qLoja" placeholder="Buscar produto (ex: mochila, whey, mouse...)" />
           </div>
 
           <button class="btn btn--tiny btn--glass" id="btnClear" type="button">Limpar filtros</button>
