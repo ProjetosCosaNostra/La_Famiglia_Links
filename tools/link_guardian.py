@@ -2,16 +2,16 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v9.2 (CONFIDENCE SCORE + DIAGNOSTIC BUCKETS + PURGE DE FANTASMAS POR SKU/ISSUE)
+# Versão : v9.3 (MODO OBSERVACIONAL — somente detecta e reporta, sem interferir no catálogo)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
 #   2) Evitar desativar produto por bloqueio/anti-bot/ruído.
 #   3) Produto de vitrine precisa apontar para destino real de produto.
 #      /social/, /lists, lista.* e account-verification com go inválido NÃO servem.
-#   4) Se existir URL alternativa real/boa, o Guardian promove essa URL para o produto.
+#   4) NÃO alterar open_url/check_url/canonical_url automaticamente.
 #   5) Produto do Dia (featured) NUNCA automático.
-#   6) Registrar histórico de produtos desativados/removidos:
+#   6) Registrar relatório de manutenção/revisão sem mexer no catálogo:
 #      - data/link_guardian_removed.json
 #      - logs/link_guardian_removed.txt
 #
@@ -20,8 +20,8 @@
 #   - 403/429/captcha/anti-bot => TEMP (não conta falha).
 #   - 5xx/timeout => TEMP (não conta falha).
 #   - 404/410 => HARD DEAD (pode desativar após FAIL_THRESHOLD).
-#   - storefront invalid => DESATIVA com threshold próprio (default 1).
-#   - “dead por conteúdo” (status 200) só se LG_DEAD_ON_BODY=1.
+#   - storefront invalid => entra no TXT/JSON de manutenção (sem desativar).
+#   - “dead por conteúdo” (status 200) só se LG_DEAD_ON_BODY=1, mas apenas como diagnóstico.
 # ==========================================================
 
 from __future__ import annotations
@@ -2006,377 +2006,143 @@ def main() -> int:
     if not isinstance(products, list):
         products = []
 
-    removed_history = _load_removed_history(REMOVED_JSON)
     review_history = _load_review_history(REVIEW_JSON)
     guardian_memory = _load_guardian_memory(MEMORY_JSON)
-    removed_events_added = 0
     review_items_added = 0
+    review_items_cleared = 0
     purged_review_orphans = 0
     purged_memory_orphans = 0
-    pending_actions: Dict[str, Dict[str, Any]] = {}
 
-    cleaned: List[Dict[str, Any]] = []
-    removed_corrupt = 0
-
-    for p in products:
-        if not isinstance(p, dict):
-            removed_corrupt += 1
-            continue
-        if _looks_corrupt_product(p):
-            removed_corrupt += 1
-            continue
-        cleaned.append(p)
-
-    if removed_corrupt:
-        print(f"AVISO: removi {removed_corrupt} item(ns) corrompido(s) do produtos.json.")
-
-    products = cleaned
-
-    active_before_raw = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
-
-    if BOOTSTRAP_IF_ZERO and active_before_raw == 0 and len(products) >= 1:
-        boosted = 0
-        for p in products:
-            if not isinstance(p, dict):
-                continue
-            last_ok = (p.get("last_ok") or "").strip()
-            if last_ok and _recent_enough(last_ok, BOOTSTRAP_MAX_DAYS):
-                if not bool(p.get("active")):
-                    p["active"] = True
-                    p["guardian_fail_count"] = 0
-                    _clear_dead_markers(p)
-                    boosted += 1
-
-        print("========================================")
-        print("BOOTSTRAP ATIVADO (loja estava zerada):")
-        print(f"Reativados via last_ok (<= {BOOTSTRAP_MAX_DAYS}d): {boosted}/{len(products)}")
-        print("========================================")
-
-    active_after_bootstrap = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
-
-    if FORCE_RESTORE_ALL_IF_ZERO and active_after_bootstrap == 0 and len(products) >= 1:
-        boosted_all = _force_restore_all(products)
-        print("========================================")
-        print("FORCE-RESTORE ATIVADO (ainda zerada):")
-        print(f"Reativados (emergência): {boosted_all}/{len(products)}")
-        print("========================================")
-
-    orig: Dict[str, Tuple[bool, bool, int]] = {}
-    for p in products:
-        if isinstance(p, dict):
-            sku = (p.get("sku") or "").strip()
-            if sku:
-                orig[sku] = (
-                    bool(p.get("active")),
-                    bool(p.get("featured")),
-                    int(p.get("guardian_fail_count") or 0),
-                )
-
-    active_before = sum(1 for p in products if isinstance(p, dict) and bool(p.get("active")))
     now = _utc_now_iso_z()
 
     checked = 0
     ok_count = 0
-    dead_count = 0
+    diag_count = 0
     temp_count = 0
     store_invalid_count = 0
-    removed_dead = 0
-    changed = 0
+    corrupt_skipped = 0
 
-    products_sorted = sorted([p for p in products if isinstance(p, dict)], key=_sort_key)
-    out: List[Dict[str, Any]] = []
+    valid_skus: set[str] = set()
+    valid_issue_numbers: set[int] = set()
 
-    for p in products_sorted:
-        if MAX_CHECK > 0 and checked >= MAX_CHECK:
-            out.append(p)
-            continue
-
-        candidates = _candidate_urls(p)
-        if not candidates:
-            out.append(p)
-            continue
-
-        sku = (p.get("sku") or "").strip()
-        was_active = bool(p.get("active"))
-        was_featured = bool(p.get("featured"))
-        memory_item = _get_or_create_memory_item(guardian_memory, sku) if sku else {}
-
-        res = _check_product_urls(p)
-        _apply_guardian_intelligence_fields(p, res)
-        if sku:
-            _record_memory_observation(memory_item, p, res, now)
-            _apply_last_good_fields_from_memory(p, memory_item)
-
-        p["guardian_last_checked"] = now
-        p["guardian_last_status"] = int(res.status)
-        p["guardian_last_final_url"] = _clean_url(res.final_url)
-        p["guardian_last_reason"] = res.reason
-        p["guardian_last_checked_url"] = _clean_url(res.checked_url)
-        p["last_checked"] = now
-        checked += 1
-
-        if res.temporary:
-            temp_count += 1
-
-            if RECOVER_ON_TEMP and (not was_active):
-                last_ok = (p.get("last_ok") or "").strip()
-                if last_ok and _recent_enough(last_ok, RECOVER_MAX_DAYS):
-                    p["active"] = True
-                    p["guardian_fail_count"] = 0
-                    _clear_dead_markers(p)
-                    changed += 1
-                    print(f"[RECOVER/TEMP] {sku} -> REATIVADO via last_ok (status={res.status}, final={p.get('guardian_last_final_url', '')})")
-                else:
-                    print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url', '')}")
-            else:
-                print(f"[TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url', '')}")
-
-            out.append(p)
-            time.sleep(SLEEP_BETWEEN)
-            continue
-
-        if res.ok:
-            ok_count += 1
-            p["last_ok"] = now
-
-            if int(p.get("guardian_fail_count") or 0) != 0:
-                p["guardian_fail_count"] = 0
-                changed += 1
-            else:
-                p["guardian_fail_count"] = 0
-
-            _clear_dead_markers(p)
-            for k in ("guardian_review_flag", "guardian_review_reason", "guardian_review_at"):
-                if k in p:
-                    del p[k]
-            cleared_review = _clear_review_items_for_sku(review_history, sku)
-            if cleared_review:
-                print(f"[REVIEW-CLEAR] {sku} -> removido do painel de revisão ({cleared_review})")
-
-            promoted = _promote_valid_url(p, res.promoted_url or res.final_url or res.checked_url)
-            if promoted:
-                changed += promoted
-
-            if AUTO_REACTIVATE and (not was_active):
-                p["active"] = True
-                changed += 1
-                print(f"[OK] {sku} -> REATIVADO ({res.reason}) via {_clean_url(res.promoted_url or res.final_url or res.checked_url)}")
-            else:
-                print(f"[OK] {sku} status={res.status} ({res.reason}) via {_clean_url(res.promoted_url or res.final_url or res.checked_url)}")
-
-            out.append(p)
-            time.sleep(SLEEP_BETWEEN)
-            continue
-
-        dead_count += 1
-
-        if res.storefront_invalid:
-            store_invalid_count += 1
-
-        should_count_as_fail = bool(res.hard_dead or DEAD_ON_BODY or res.storefront_invalid)
-
-        if res.storefront_invalid and STOREFRONT_REVIEW_ONLY:
-            p["guardian_review_flag"] = True
-            p["guardian_review_reason"] = res.reason
-            p["guardian_review_at"] = now
-            action_suggested = "trocar_link" if "lists" in (res.reason or "") or "listing" in (res.reason or "") else "revisar"
-            if memory_item and bool(memory_item.get("relink_priority")):
-                action_suggested = "relink_prioritario"
-            review_item = _build_review_item(
-                p=p,
-                res=res,
-                happened_at=now,
-                action_suggested=action_suggested,
-                memory_item=memory_item,
-            )
-            if _append_review_item(review_history, review_item):
-                review_items_added += 1
-            print(f"[REVIEW] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url', '')}")
-            out.append(p)
-            time.sleep(SLEEP_BETWEEN)
-            continue
-
-        if not should_count_as_fail:
-            temp_count += 1
-            print(f"[SUSPEITO->TEMP] {sku} status={res.status} reason={res.reason} final={p.get('guardian_last_final_url', '')}")
-            out.append(p)
-            time.sleep(SLEEP_BETWEEN)
-            continue
-
-        fail_count = int(p.get("guardian_fail_count") or 0) + 1
-        p["guardian_fail_count"] = fail_count
-        p["guardian_dead_status"] = int(res.status)
-        p["guardian_dead_reason"] = res.reason
-
-        if res.storefront_invalid:
-            p["guardian_storefront_invalid"] = True
-
-        effective_threshold = STOREFRONT_INVALID_THRESHOLD if res.storefront_invalid else FAIL_THRESHOLD
-
-        if fail_count >= effective_threshold:
-            disabled_now = False
-
-            if was_active:
-                p["active"] = False
-                changed += 1
-                disabled_now = True
-
-            if was_featured:
-                p["featured"] = False
-                changed += 1
-
-            p["guardian_disabled_at"] = now
-            changed += 1
-
-            if res.storefront_invalid:
-                print(f"[STORE_INVALID] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{effective_threshold}) final={p.get('guardian_last_final_url', '')}")
-            else:
-                print(f"[DEAD] {sku} status={res.status} -> DESATIVADO (fail={fail_count}/{effective_threshold})")
-
-            pending_actions[sku] = {
-                "disabled_event": _build_removed_event(
-                    p=p,
-                    res=res,
-                    happened_at=now,
-                    event_type="disabled_from_storefront" if res.storefront_invalid else "disabled",
-                    fail_count=fail_count,
-                    fail_threshold=effective_threshold,
-                    was_active=was_active,
-                    was_featured=was_featured,
-                ) if disabled_now else None,
-                "remove_event": _build_removed_event(
-                    p=p,
-                    res=res,
-                    happened_at=now,
-                    event_type="removed_from_catalog",
-                    fail_count=fail_count,
-                    fail_threshold=effective_threshold,
-                    was_active=was_active,
-                    was_featured=was_featured,
-                ) if REMOVE_ON_DEAD else None,
-                "remove_from_catalog": bool(REMOVE_ON_DEAD),
-            }
-        else:
-            if res.storefront_invalid:
-                print(f"[STORE_INVALID] {sku} status={res.status} (fail={fail_count}/{effective_threshold}) final={p.get('guardian_last_final_url', '')}")
-            else:
-                print(f"[FAIL] {sku} status={res.status} (fail={fail_count}/{effective_threshold})")
-
-        out.append(p)
-        time.sleep(SLEEP_BETWEEN)
-
-    active_after = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
-    min_allowed = max(FAILSAFE_MIN_ACTIVE, int(active_before * FAILSAFE_MIN_RATIO) if active_before else 0)
-
-    if active_before > 0 and active_after < min_allowed:
-        print("========================================")
-        print("FAILSAFE (ANTI-WIPE) ATIVADO:")
-        print(f"Active before: {active_before} | Active after: {active_after} | Min allowed: {min_allowed}")
-        print("=> Revertendo active/featured/fail_count para evitar loja zerada por falso-positivo.")
-
-        for p in out:
-            if not isinstance(p, dict):
-                continue
-            sku = (p.get("sku") or "").strip()
-            if not sku or sku not in orig:
-                continue
-            a, f, fc = orig[sku]
-            p["active"] = a
-            p["featured"] = f
-            p["guardian_fail_count"] = fc
-
-        data["guardian_failsafe_triggered_at"] = now
-        data["guardian_failsafe_note"] = f"Mass deactivation prevented (active_after={active_after})."
-        changed += 1
-
-    active_final_before_removal = sum(1 for p in out if isinstance(p, dict) and bool(p.get("active")))
-
-    if FORCE_RESTORE_ALL_IF_ZERO and active_final_before_removal == 0 and len(out) >= 1:
-        boosted_all = _force_restore_all(out)
-        print("========================================")
-        print("FORCE-RESTORE FINAL (paraquedas):")
-        print(f"Reativados (final): {boosted_all}/{len(out)}")
-        print("========================================")
-        changed += 1
-
-    final_out: List[Dict[str, Any]] = []
-
-    for p in out:
+    for p in products:
         if not isinstance(p, dict):
             continue
 
         sku = (p.get("sku") or "").strip()
-        action = pending_actions.get(sku)
-        approved_remove = False
+        if sku:
+            valid_skus.add(sku)
+        try:
+            issue_number = int(p.get("issue_number") or 0)
+        except Exception:
+            issue_number = 0
+        if issue_number > 0:
+            valid_issue_numbers.add(issue_number)
 
-        if action:
-            disabled_event = action.get("disabled_event")
-            remove_event = action.get("remove_event")
-            remove_from_catalog = bool(action.get("remove_from_catalog"))
-
-            if disabled_event and not bool(p.get("active")):
-                if _append_removed_event(removed_history, disabled_event):
-                    removed_events_added += 1
-
-            if remove_from_catalog and not bool(p.get("active")):
-                if remove_event and _append_removed_event(removed_history, remove_event):
-                    removed_events_added += 1
-                approved_remove = True
-                removed_dead += 1
-                changed += 1
-
-        if approved_remove:
+        if _looks_corrupt_product(p):
+            corrupt_skipped += 1
+            print(f"[SKIP/CORRUPT] {sku or '<sem-sku>'}")
             continue
 
-        final_out.append(p)
+        candidates = _candidate_urls(p)
+        if not candidates:
+            print(f"[SKIP/NO-URL] {sku or '<sem-sku>'}")
+            continue
 
-    data["products"] = final_out
-    data["updated_at"] = now
+        if MAX_CHECK > 0 and checked >= MAX_CHECK:
+            break
 
-    current_catalog_skus = _catalog_sku_set(final_out)
-    current_catalog_issue_numbers = _catalog_issue_set(final_out)
+        memory_item = _get_or_create_memory_item(guardian_memory, sku) if sku else {}
+        res = _check_product_urls(p)
+        _apply_guardian_intelligence_fields(p, res)
+
+        if sku:
+            _record_memory_observation(memory_item, p, res, now)
+
+        checked += 1
+
+        if res.ok:
+            ok_count += 1
+            cleared = _clear_review_items_for_sku(review_history, sku)
+            if cleared:
+                review_items_cleared += cleared
+                print(f"[OK/CLEAR] {sku} -> removido do painel de manutenção ({cleared})")
+            else:
+                print(f"[OK] {sku} status={res.status} reason={res.reason} final={_clean_url(res.final_url or '')}")
+            time.sleep(SLEEP_BETWEEN)
+            continue
+
+        diag_count += 1
+        if res.temporary:
+            temp_count += 1
+        if res.storefront_invalid:
+            store_invalid_count += 1
+
+        action_suggested = "revisar"
+        if res.storefront_invalid:
+            action_suggested = "trocar_link"
+        elif res.reason == "dead":
+            action_suggested = "validar_manual"
+        elif res.temporary:
+            action_suggested = "monitorar"
+
+        if memory_item and bool(memory_item.get("relink_priority")):
+            action_suggested = "relink_prioritario"
+
+        review_item = _build_review_item(
+            p=p,
+            res=res,
+            happened_at=now,
+            action_suggested=action_suggested,
+            memory_item=memory_item,
+        )
+        if _append_review_item(review_history, review_item):
+            review_items_added += 1
+
+        print(
+            f"[DIAG] {sku} status={res.status} reason={res.reason} "
+            f"storefront_invalid={int(bool(res.storefront_invalid))} temp={int(bool(res.temporary))} "
+            f"final={_clean_url(res.final_url or '')}"
+        )
+        time.sleep(SLEEP_BETWEEN)
 
     if PURGE_REVIEW_ORPHANS:
         purged_review_orphans = _purge_review_items_not_in_catalog(
             review_history,
-            current_catalog_skus,
-            current_catalog_issue_numbers,
+            valid_skus,
+            valid_issue_numbers,
         )
         if purged_review_orphans:
-            changed += 1
             print(
                 f"[REVIEW-PURGE] removidos {purged_review_orphans} item(ns) fantasma(s) "
                 f"do painel (sku/issue fora do catálogo atual)"
             )
 
     if PURGE_MEMORY_ORPHANS:
-        purged_memory_orphans = _purge_memory_items_not_in_catalog(guardian_memory, current_catalog_skus)
+        purged_memory_orphans = _purge_memory_items_not_in_catalog(guardian_memory, valid_skus)
         if purged_memory_orphans:
-            changed += 1
             print(f"[MEMORY-PURGE] removidos {purged_memory_orphans} SKU(s) órfãos da memória")
 
-    _write_json(PRODUTOS_JSON, data)
-    _save_removed_reports(removed_history)
+    # MODO OBSERVACIONAL:
+    # Não gravar produtos.json. O Guardian só atualiza relatórios auxiliares.
     _save_review_reports(review_history)
     _save_guardian_memory(guardian_memory)
 
     print("========================================")
-    print("Link Guardian finalizado.")
+    print("Link Guardian finalizado (modo observacional).")
     print(f"Checked: {checked} | Max: {MAX_CHECK}")
-    print(f"OK: {ok_count} | FAIL/DEAD: {dead_count} | TEMP: {temp_count}")
+    print(f"OK: {ok_count} | DIAG: {diag_count} | TEMP: {temp_count}")
     print(f"STORE_INVALID: {store_invalid_count}")
-    print(f"Removed corrupt: {removed_corrupt} | Removed dead: {removed_dead}")
-    print(f"Removed events added: {removed_events_added}")
-    print(f"Removed JSON: {REMOVED_JSON}")
-    print(f"Removed TXT: {REMOVED_TXT}")
+    print(f"Corrupt skipped: {corrupt_skipped}")
     print(f"Review JSON: {REVIEW_JSON}")
     print(f"Review TXT: {REVIEW_TXT}")
     print(f"Memory JSON: {MEMORY_JSON}")
     print(f"Review items: {len(review_history.get('items') or [])}")
     print(f"Review items added: {review_items_added}")
+    print(f"Review items cleared: {review_items_cleared}")
     print(f"Review orphans purged: {purged_review_orphans}")
     print(f"Memory orphans purged: {purged_memory_orphans}")
-    print(f"Changed: {changed}")
+    print("Produtos.json preservado: 1")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | STOREFRONT_INVALID_THRESHOLD: {STOREFRONT_INVALID_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
     print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | LISTA_INVALID_FOR_STOREFRONT: {int(LISTA_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | STOREFRONT_REVIEW_ONLY: {int(STOREFRONT_REVIEW_ONLY)}")
     print(f"PURGE_REVIEW_ORPHANS: {int(PURGE_REVIEW_ORPHANS)} | PURGE_MEMORY_ORPHANS: {int(PURGE_MEMORY_ORPHANS)}")
