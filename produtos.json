@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-29T01:26:42Z",
+  "updated_at": "2026-03-29T12:20:41Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -21,7 +21,7 @@
       "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFHH0k4A4bT4%2Bd5fygjhff2RJzItG0vUWnByJH0OSkRCNinQ3z3Mx6eVsqEHekyUL9HhnE3TYGZ%2FkV0kXDHY4V2a1HmpXjwv5CEbt5WFl2kVzXrl3B9%2BGPDYv2Cl5Ni2rva0iQ60V%2BQik57kvqD7Cr9M%2F56ewoliuIktgFgMGVs0qoRZLKAv0LIgoY%2FH1tx3Il8z8w%3D%3D",
       "image": "https://github.com/user-attachments/assets/191a6aca-103b-410f-a1f6-2635c7ebe2dc",
       "active": true,
-      "featured": false,
+      "featured": true,
       "review_action": "precisa_relink",
       "review_status": "precisa_relink",
       "review_reason": "Destino estruturalmente ruim: destino /social/",
@@ -29,8 +29,8 @@
       "relink_open_url": "",
       "notes": "CMS marcou precisa_relink automaticamente porque o destino novo caiu em destino /social/.",
       "alt_url": "",
-      "issue_number": 166,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/166",
+      "issue_number": 169,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/169",
       "issue_title": "Gloss Labial Fantasyland Disney 100 Anos - Bruna Tavares",
       "categoria_principal": "Beleza e Cuidado Pessoal",
       "categorias_secundarias": [
@@ -6373,7 +6373,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-AJPM",
       "image": "https://github.com/user-attachments/assets/c8fe0529-a616-408e-82b3-01ace3c1f317",
       "active": false,
-      "featured": true,
+      "featured": false,
       "review_action": "precisa_relink",
       "review_status": "precisa_relink",
       "review_reason": "Destino estruturalmente ruim: destino /social/",
@@ -6402,7 +6402,7 @@
         "organizador transparente",
         "eps-2577"
       ],
-      "quick_home": true,
+      "quick_home": false,
       "_source_issue_number": 167,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1CDrde5",
