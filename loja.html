@@ -618,99 +618,6 @@
       }
     }
 
-
-    /* =========================
-       LOJA — FLUTUANTE NO TOPO (PADRÃO INDEX)
-       ========================= */
-    .lojaFloatTop{
-      position:fixed;
-      left:50%;
-      top:76px;
-      transform:translateX(-50%);
-      z-index:9998;
-      width:min(calc(100vw - 18px), 380px);
-      display:none;
-      pointer-events:none;
-    }
-    .lojaFloatTop.is-visible{
-      display:block;
-    }
-    .lojaFloatTop__shell{
-      pointer-events:auto;
-      border-radius:28px;
-      padding:10px;
-      border:1px solid rgba(215,176,88,.20);
-      background:
-        radial-gradient(circle at top right, rgba(215,176,88,.12), transparent 42%),
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.12)),
-        rgba(14,14,18,.78);
-      backdrop-filter:blur(16px);
-      box-shadow:
-        0 22px 60px rgba(0,0,0,.46),
-        inset 0 1px 0 rgba(255,255,255,.04);
-    }
-    .lojaFloatTop__grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:8px;
-    }
-    .lojaFloatTop__btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      min-height:42px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(215,176,88,.18);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.14));
-      color:rgba(255,255,255,.94);
-      font:800 13px/1 Inter, system-ui, sans-serif;
-      letter-spacing:.01em;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
-      cursor:pointer;
-      text-decoration:none;
-      white-space:nowrap;
-    }
-    .lojaFloatTop__btn:hover,
-    .lojaFloatTop__btn:focus-visible{
-      border-color:rgba(215,176,88,.34);
-      filter:brightness(1.03);
-      outline:none;
-    }
-    .lojaFloatTop__btn--gold{
-      color:rgba(255,230,168,.98);
-      border-color:rgba(215,176,88,.42);
-      background:
-        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.16), transparent 60%),
-        linear-gradient(180deg, rgba(199,162,75,.28), rgba(199,162,75,.08));
-      box-shadow:
-        0 12px 30px rgba(145,111,34,.16),
-        inset 0 1px 0 rgba(255,255,255,.08);
-    }
-
-    @media (min-width: 721px){
-      .lojaFloatTop{ display:none !important; }
-    }
-    @media (max-width: 720px){
-      .lojaFloatTop{
-        top:74px;
-        width:min(calc(100vw - 14px), 372px);
-      }
-      .lojaFloatTop__shell{
-        padding:8px;
-        border-radius:26px;
-      }
-      .lojaFloatTop__grid{
-        gap:7px;
-      }
-      .lojaFloatTop__btn{
-        min-height:39px;
-        padding:9px 10px;
-        font-size:12px;
-      }
-    }
-
   </style>
 
   <!-- JS da loja -->
@@ -726,20 +633,8 @@
     <div class="grain"></div>
   </div>
 
-
-  <div class="lojaFloatTop" id="lojaFloatTop" aria-label="Navegação rápida da loja">
-    <div class="lojaFloatTop__shell">
-      <div class="lojaFloatTop__grid">
-        <button class="lojaFloatTop__btn" type="button" id="dockProdutoDia">⭐ Produto do Dia</button>
-        <button class="lojaFloatTop__btn" type="button" id="dockBuscar">🔎 Buscar</button>
-        <button class="lojaFloatTop__btn lojaFloatTop__btn--gold" type="button" id="dockCategorias">🏷️ Categorias</button>
-        <button class="lojaFloatTop__btn" type="button" id="dockTopo">⬆️ Topo</button>
-      </div>
-    </div>
-  </div>
-
   <main class="page">
-    <header class="hero" id="topo-loja">
+    <header class="hero">
       <div class="hero__brand">
         <div class="brandMark" aria-hidden="true">
           <img
@@ -798,7 +693,7 @@
       </div>
     </header>
 
-    <section class="panel" id="sec-filtro-categorias">
+    <section class="panel">
       <div class="panel__head">
         <div>
           <h2>Filtro & categorias</h2>
@@ -850,7 +745,7 @@
       </div>
     </section>
 
-    <section class="panel" id="sec-produto-do-dia">
+    <section class="panel">
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
@@ -892,77 +787,6 @@
       if(el) el.textContent = String(y);
       var el2 = document.getElementById("year");
       if(el2) el2.textContent = String(y);
-    })();
-  </script>
-
-
-  <script>
-    (function(){
-      var dock = document.getElementById("lojaFloatTop");
-      if (!dock) return;
-
-      var btnProdutoDia = document.getElementById("dockProdutoDia");
-      var btnBuscar = document.getElementById("dockBuscar");
-      var btnCategorias = document.getElementById("dockCategorias");
-      var btnTopo = document.getElementById("dockTopo");
-
-      function isMobile(){
-        return window.matchMedia("(max-width: 720px)").matches;
-      }
-
-      function updateDock(){
-        if (!isMobile()){
-          dock.classList.remove("is-visible");
-          return;
-        }
-        if (window.scrollY > 340){
-          dock.classList.add("is-visible");
-        } else {
-          dock.classList.remove("is-visible");
-        }
-      }
-
-      function goTo(id){
-        var el = document.getElementById(id);
-        if (el){
-          el.scrollIntoView({ behavior:"smooth", block:"start" });
-        }
-      }
-
-      if (btnTopo){
-        btnTopo.addEventListener("click", function(){
-          window.scrollTo({ top:0, behavior:"smooth" });
-        });
-      }
-
-      if (btnProdutoDia){
-        btnProdutoDia.addEventListener("click", function(){
-          goTo("sec-produto-do-dia");
-        });
-      }
-
-      if (btnCategorias){
-        btnCategorias.addEventListener("click", function(){
-          goTo("sec-filtro-categorias");
-        });
-      }
-
-      if (btnBuscar){
-        btnBuscar.addEventListener("click", function(){
-          goTo("sec-filtro-categorias");
-          setTimeout(function(){
-            var q = document.getElementById("qLoja");
-            if (q){
-              try { q.focus({ preventScroll:true }); } catch(e){ q.focus(); }
-              try { q.select(); } catch(e){}
-            }
-          }, 420);
-        });
-      }
-
-      window.addEventListener("scroll", updateDock, { passive:true });
-      window.addEventListener("resize", updateDock);
-      updateDock();
     })();
   </script>
 
