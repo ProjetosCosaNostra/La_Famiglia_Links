@@ -80,31 +80,25 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
-    "Beleza & Cuidados",
-    "Maquiagem",
-    "Lábios",
-    "Olhos",
-    "Cílios & Sobrancelhas",
-    "Pele & Skincare",
-    "Cabelo",
-    "Perfumes",
-    "Unhas",
-    "Cuidados Diários",
     "Casa",
     "Cozinha",
-    "Organização",
-    "Premium",
-    "Praticidade",
     "Home Office",
-    "Setup",
-    "Notebook",
-    "PC",
-    "Celular",
-    "Wi‑Fi",
-    "Casa Inteligente",
     "Carro",
     "Moto",
     "Segurança",
+    "Setup",
+    "Wi-Fi",
+    "Notebook",
+    "PC",
+    "Celular",
+    "Bluetooth",
+    "USB",
+    "Sem Fio",
+    "Portátil",
+    "Organização",
+    "Casa Inteligente",
+    "Premium",
+    "Praticidade",
   ];
 
   // regra base: categoria só se repetir e não for “ruído”
@@ -147,28 +141,9 @@
 
   const CN_CATEGORY_ALIAS_PAIRS = [
     ["achados do dia", "Achados do Dia"],
-    ["feminino", "Beleza & Cuidados"],
-    ["beleza", "Beleza & Cuidados"],
-    ["beleza e cuidado pessoal", "Beleza & Cuidados"],
-    ["cuidados pessoais", "Beleza & Cuidados"],
-    ["maquiagem", "Maquiagem"],
-    ["labios", "Lábios"],
-    ["brilho labial", "Lábios"],
-    ["gloss labial", "Lábios"],
-    ["batom", "Lábios"],
-    ["olhos", "Olhos"],
-    ["cilios e sobrancelhas", "Cílios & Sobrancelhas"],
-    ["cilios", "Cílios & Sobrancelhas"],
-    ["sobrancelhas", "Cílios & Sobrancelhas"],
-    ["pele", "Pele & Skincare"],
-    ["skincare", "Pele & Skincare"],
-    ["tratamentos de beleza", "Pele & Skincare"],
-    ["cabelo", "Cabelo"],
-    ["cuidados com o cabelo", "Cabelo"],
-    ["perfumes", "Perfumes"],
-    ["manicure e pedicure", "Unhas"],
-    ["farmacia", "Cuidados Diários"],
-    ["higiene pessoal", "Cuidados Diários"],
+    ["feminino", "Feminino"],
+    ["beleza", "Feminino"],
+    ["maquiagem", "Feminino"],
     ["casa", "Casa"],
     ["cozinha", "Cozinha"],
     ["home office", "Home Office"],
@@ -233,7 +208,7 @@
       negativePhrases: [],
     },
     {
-      label: "Beleza & Cuidados",
+      label: "Feminino",
       minScore: 7,
       strongPhrases: ["body splash", "escova secadora", "acessorio feminino", "gloss labial", "necessaire feminina"],
       weakPhrases: ["maquiagem", "beleza", "skincare", "perfume", "hidratante", "chapinha", "secador", "gloss", "batom", "base", "corretivo", "paleta", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire"],
@@ -745,11 +720,9 @@
   }
 
   function canonicalPinnedLabel(label) {
-    const clean = cleanText(label);
-    const key = normalizeTagKey(clean);
-    if (CN_CATEGORY_ALIAS_MAP.has(key)) return CN_CATEGORY_ALIAS_MAP.get(key);
+    const key = normalizeTagKey(label);
     const found = CN_CAT_PINNED.find((x) => normalizeTagKey(x) === key);
-    return found || clean;
+    return found || cleanText(label);
   }
 
   function splitLooseList(value) {
