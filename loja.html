@@ -618,127 +618,6 @@
       }
     }
 
-
-    /* =========================
-       ATALHOS FLUTUANTES — LOJA (mobile only)
-       ========================= */
-    .lojaFloatDock{
-      position:fixed;
-      right:10px;
-      bottom:12px;
-      z-index:99990;
-      display:none;
-      align-items:flex-end;
-      flex-direction:column;
-      gap:10px;
-      pointer-events:none;
-    }
-
-    .lojaFloatDock.is-visible{
-      display:flex;
-    }
-
-    .lojaFloatPanel{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      padding:10px;
-      border-radius:20px;
-      border:1px solid rgba(215,176,88,.22);
-      background:
-        radial-gradient(circle at top right, rgba(215,176,88,.14), transparent 42%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.10)),
-        rgba(8,8,10,.86);
-      box-shadow:0 22px 58px rgba(0,0,0,.42);
-      backdrop-filter:blur(14px);
-      pointer-events:auto;
-      opacity:0;
-      transform:translateY(8px) scale(.98);
-      transition:opacity .18s ease, transform .18s ease;
-      min-width:168px;
-    }
-
-    .lojaFloatDock.is-open .lojaFloatPanel{
-      opacity:1;
-      transform:translateY(0) scale(1);
-    }
-
-    .lojaFloatBtn{
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      gap:8px;
-      min-height:40px;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(215,176,88,.18);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.14));
-      color:rgba(255,255,255,.94);
-      font:800 13px/1 Inter, system-ui, sans-serif;
-      letter-spacing:.01em;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
-      cursor:pointer;
-      user-select:none;
-      text-decoration:none;
-    }
-
-    .lojaFloatBtn:hover,
-    .lojaFloatBtn:focus-visible{
-      border-color:rgba(215,176,88,.34);
-      filter:brightness(1.03);
-      transform:translateY(-1px);
-      outline:none;
-    }
-
-    .lojaFloatBtn--gold{
-      border-color:rgba(224,195,107,.38);
-      background:
-        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.18), transparent 60%),
-        linear-gradient(180deg, rgba(199,162,75,.30), rgba(199,162,75,.08));
-      color:rgba(255,236,180,.98);
-      box-shadow:0 12px 30px rgba(145,111,34,.16), inset 0 1px 0 rgba(255,255,255,.10);
-    }
-
-    .lojaFloatToggle{
-      pointer-events:auto;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      min-height:42px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(215,176,88,.24);
-      background:
-        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.14), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.12)),
-        rgba(8,8,10,.88);
-      color:rgba(255,244,214,.96);
-      box-shadow:0 18px 46px rgba(0,0,0,.40);
-      backdrop-filter:blur(14px);
-      cursor:pointer;
-      font:900 13px/1 Inter, system-ui, sans-serif;
-      letter-spacing:.01em;
-    }
-
-    .lojaFloatToggle:hover,
-    .lojaFloatToggle:focus-visible{
-      border-color:rgba(224,195,107,.42);
-      filter:brightness(1.03);
-      outline:none;
-    }
-
-    .lojaFloatLabel{
-      white-space:nowrap;
-    }
-
-    @media (min-width: 721px){
-      .lojaFloatDock{ display:none !important; }
-    }
-
-    @media (max-width: 720px){
-      .lojaFloatDock.is-visible{ display:flex; }
-    }
-
   </style>
 
   <!-- JS da loja -->
@@ -755,7 +634,7 @@
   </div>
 
   <main class="page">
-    <header class="hero" id="topo-loja">
+    <header class="hero">
       <div class="hero__brand">
         <div class="brandMark" aria-hidden="true">
           <img
@@ -814,7 +693,7 @@
       </div>
     </header>
 
-    <section class="panel" id="filtros-loja">
+    <section class="panel">
       <div class="panel__head">
         <div>
           <h2>Filtro & categorias</h2>
@@ -866,7 +745,7 @@
       </div>
     </section>
 
-    <section class="panel" id="produto-dia-loja">
+    <section class="panel">
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
@@ -899,20 +778,6 @@
     </footer>
   </main>
 
-
-  <div class="lojaFloatDock" id="lojaFloatDock" aria-label="Atalhos da loja">
-    <div class="lojaFloatPanel" id="lojaFloatPanel">
-      <button class="lojaFloatBtn lojaFloatBtn--gold" type="button" data-float-action="buscar">🔎 Buscar</button>
-      <button class="lojaFloatBtn" type="button" data-float-action="categorias">🏷️ Categorias</button>
-      <button class="lojaFloatBtn" type="button" data-float-action="produto-dia">⭐ Produto do Dia</button>
-      <button class="lojaFloatBtn" type="button" data-float-action="topo">⬆️ Topo</button>
-    </div>
-    <button class="lojaFloatToggle" id="lojaFloatToggle" type="button" aria-expanded="false" aria-controls="lojaFloatPanel">
-      <span>⚡</span>
-      <span class="lojaFloatLabel">Atalhos</span>
-    </button>
-  </div>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
@@ -922,81 +787,6 @@
       if(el) el.textContent = String(y);
       var el2 = document.getElementById("year");
       if(el2) el2.textContent = String(y);
-    })();
-  </script>
-
-
-  <script>
-    (function(){
-      var dock = document.getElementById('lojaFloatDock');
-      var toggle = document.getElementById('lojaFloatToggle');
-      var panel = document.getElementById('lojaFloatPanel');
-      if(!dock || !toggle || !panel) return;
-
-      function isMobile(){ return window.matchMedia('(max-width: 720px)').matches; }
-
-      function updateVisibility(){
-        if(!isMobile()){
-          dock.classList.remove('is-visible','is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-          return;
-        }
-        if(window.scrollY > 360){
-          dock.classList.add('is-visible');
-        }else{
-          dock.classList.remove('is-visible','is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      }
-
-      function closeDock(){
-        dock.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-
-      function openDock(){
-        dock.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
-      }
-
-      toggle.addEventListener('click', function(){
-        if(dock.classList.contains('is-open')) closeDock();
-        else openDock();
-      });
-
-      panel.addEventListener('click', function(ev){
-        var btn = ev.target.closest('[data-float-action]');
-        if(!btn) return;
-        var action = btn.getAttribute('data-float-action');
-        if(action === 'topo'){
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }else if(action === 'produto-dia'){
-          var el = document.getElementById('produto-dia-loja');
-          if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
-        }else if(action === 'categorias'){
-          var el = document.getElementById('filtros-loja');
-          if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
-        }else if(action === 'buscar'){
-          var section = document.getElementById('filtros-loja');
-          var input = document.getElementById('qLoja');
-          if(section) section.scrollIntoView({ behavior:'smooth', block:'start' });
-          setTimeout(function(){
-            if(input){
-              input.focus({ preventScroll:true });
-              try { input.select(); } catch(e){}
-            }
-          }, 420);
-        }
-        closeDock();
-      });
-
-      document.addEventListener('click', function(ev){
-        if(!dock.contains(ev.target)) closeDock();
-      });
-
-      window.addEventListener('scroll', updateVisibility, { passive:true });
-      window.addEventListener('resize', updateVisibility);
-      updateVisibility();
     })();
   </script>
 
