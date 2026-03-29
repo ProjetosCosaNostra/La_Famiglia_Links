@@ -618,6 +618,77 @@
       }
     }
 
+
+    /* =========================
+       FLUTUANTES DA LOJA — MESMO PADRÃO DA INDEX
+       ========================= */
+    .floatingLojaNav{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      display:none;
+      flex-direction:column;
+      gap:8px;
+      pointer-events:none;
+    }
+    .floatingLojaNav.is-visible{
+      display:flex;
+    }
+    .floatingLojaNav__row{
+      display:flex;
+      gap:8px;
+      justify-content:flex-end;
+    }
+    .floatingLojaNav a,
+    .floatingLojaNav button{
+      pointer-events:auto;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 13px;
+      border-radius:16px;
+      border:1px solid rgba(215,176,88,.35);
+      background:rgba(10,10,12,.72);
+      color:rgba(255,255,255,.92);
+      box-shadow:0 18px 60px rgba(0,0,0,.55);
+      backdrop-filter:blur(10px);
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:13px;
+      cursor:pointer;
+      min-height:44px;
+      white-space:nowrap;
+    }
+    .floatingLojaNav a:hover,
+    .floatingLojaNav button:hover,
+    .floatingLojaNav a:focus-visible,
+    .floatingLojaNav button:focus-visible{
+      border-color:rgba(215,176,88,.50);
+      filter:brightness(1.04);
+      outline:none;
+    }
+    .floatingLojaNav .gold{ color:rgba(215,176,88,1); }
+
+    @media (min-width: 721px){
+      .floatingLojaNav{ display:none !important; }
+    }
+    @media (max-width: 720px){
+      .floatingLojaNav{
+        right:10px;
+        bottom:10px;
+      }
+      .floatingLojaNav a,
+      .floatingLojaNav button{
+        padding:10px 12px;
+        border-radius:14px;
+        font-size:12.5px;
+        min-height:40px;
+      }
+    }
+
   </style>
 
   <!-- JS da loja -->
@@ -633,8 +704,21 @@
     <div class="grain"></div>
   </div>
 
+
+  <!-- Navegação flutuante da loja (mobile) -->
+  <div class="floatingLojaNav" id="floatingLojaNav" aria-hidden="false">
+    <div class="floatingLojaNav__row">
+      <button type="button" id="floatingBuscar">🔎 Buscar</button>
+      <button type="button" id="floatingCategorias">🏷️ Categorias</button>
+    </div>
+    <div class="floatingLojaNav__row">
+      <button type="button" id="floatingProdutoDia">⭐ Produto do Dia</button>
+      <button type="button" id="floatingTopo">⬆️ Topo</button>
+    </div>
+  </div>
+
   <main class="page">
-    <header class="hero">
+    <header class="hero" id="topo-loja">
       <div class="hero__brand">
         <div class="brandMark" aria-hidden="true">
           <img
@@ -693,7 +777,7 @@
       </div>
     </header>
 
-    <section class="panel">
+    <section class="panel" id="sec-filtro-categorias">
       <div class="panel__head">
         <div>
           <h2>Filtro & categorias</h2>
@@ -745,7 +829,7 @@
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="sec-produto-do-dia">
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
@@ -787,6 +871,75 @@
       if(el) el.textContent = String(y);
       var el2 = document.getElementById("year");
       if(el2) el2.textContent = String(y);
+    })();
+  </script>
+
+
+  <script>
+    (function(){
+      var dock = document.getElementById("floatingLojaNav");
+      if (!dock) return;
+
+      var btnBuscar = document.getElementById("floatingBuscar");
+      var btnCategorias = document.getElementById("floatingCategorias");
+      var btnProdutoDia = document.getElementById("floatingProdutoDia");
+      var btnTopo = document.getElementById("floatingTopo");
+
+      function isMobile(){
+        return window.matchMedia("(max-width: 720px)").matches;
+      }
+
+      function updateFloatingVisibility(){
+        if (!isMobile()){
+          dock.classList.remove("is-visible");
+          return;
+        }
+        if (window.scrollY > 320){
+          dock.classList.add("is-visible");
+        } else {
+          dock.classList.remove("is-visible");
+        }
+      }
+
+      function goToEl(id){
+        var el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior:"smooth", block:"start" });
+      }
+
+      if (btnTopo){
+        btnTopo.addEventListener("click", function(){
+          window.scrollTo({ top:0, behavior:"smooth" });
+        });
+      }
+
+      if (btnProdutoDia){
+        btnProdutoDia.addEventListener("click", function(){
+          goToEl("sec-produto-do-dia");
+        });
+      }
+
+      if (btnCategorias){
+        btnCategorias.addEventListener("click", function(){
+          goToEl("sec-filtro-categorias");
+        });
+      }
+
+      if (btnBuscar){
+        btnBuscar.addEventListener("click", function(){
+          goToEl("sec-filtro-categorias");
+          setTimeout(function(){
+            var q = document.getElementById("qLoja");
+            if (q){
+              try { q.focus({ preventScroll:true }); } catch(e){ q.focus(); }
+              try { q.select(); } catch(e){}
+            }
+          }, 420);
+        });
+      }
+
+      window.addEventListener("scroll", updateFloatingVisibility, { passive:true });
+      window.addEventListener("resize", updateFloatingVisibility);
+      updateFloatingVisibility();
     })();
   </script>
 
