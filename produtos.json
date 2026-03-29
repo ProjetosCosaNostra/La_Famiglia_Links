@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-29T07:16:22Z",
+  "updated_at": "2026-03-29T11:15:09Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6351,6 +6351,62 @@
       "guardian_confidence_score": 87,
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed"
+    },
+    {
+      "sku": "organizador-maquiagem-giratorio-360-acrilico-transparente",
+      "title": "Organizador de Maquiagem Giratório 360° em Acrílico Transparente",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Organização",
+        "Acrílico",
+        "Giratório 360",
+        "Premium"
+      ],
+      "id_busca": "5J5PKG-AJPM",
+      "open_url": "https://meli.la/1CDrde5",
+      "check_url": "https://lista.mercadolivre.com.br/5J5PKG-AJPM",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-AJPM",
+      "image": "https://github.com/user-attachments/assets/8324b1c1-b987-48b4-8a55-f4c25d08851a",
+      "active": false,
+      "featured": false,
+      "review_action": "precisa_relink",
+      "review_status": "precisa_relink",
+      "review_reason": "Destino estruturalmente ruim: destino /social/",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "CMS marcou precisa_relink automaticamente porque o destino novo caiu em destino /social/.",
+      "alt_url": "",
+      "issue_number": 168,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/168",
+      "issue_title": "Organizador de Maquiagem Giratório 360° em Acrílico Transparente",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Porta Maquiagem",
+        "Organização",
+        "Acrílico Transparente",
+        "Giratório 360"
+      ],
+      "aliases_busca": [
+        "organizador de maquiagem",
+        "organizador giratorio 360",
+        "porta maquiagem",
+        "porta maquiagem acrilico",
+        "organizador de cosmeticos",
+        "organizador de perfumes",
+        "organizador transparente",
+        "eps-2577"
+      ],
+      "quick_home": false,
+      "_source_issue_number": 168,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1CDrde5",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG98cCnXcpEr%2BT96%2FFoMjPra5rCNLj6eu3v1EDUGskgG5ifj0br%2Fe647CzR3g0GMksfwgGAfHK2cF0KfTcNvqetLnHF9X7eiLaIKjTEnMfzwNPbv%2FZc7meFnRCwNrur0B1Gl%2Bzwksa5DH5oxV%2BO4EYv0%2FqEz6Sgdnapo%2FYXYbMgmCv7doVQ%2BKhP93XSgLxrDoL3V%2FqY%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
