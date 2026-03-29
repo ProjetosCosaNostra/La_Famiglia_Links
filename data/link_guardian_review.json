@@ -1,12 +1,109 @@
 {
-  "updated_at": "2026-03-29T12:25:21Z",
-  "total_items": 0,
+  "updated_at": "2026-03-29T13:21:07Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 2,
+    "by_state": {
+      "review_only_storefront": 2
+    },
+    "by_reason": {
+      "storefront_social_profile_unconfirmed": 2
+    },
+    "by_action": {
+      "trocar_link": 2
+    },
+    "high_priority": 2
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-03-29T13:14:33Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 25,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/25",
+      "issue_title": "[CMS] Produto: Mouse Gamer Logitech G203 RGB LIGHTSYNC — 8.000 DPI (Preto)",
+      "sku": "logitech-g203-rgb-lightsync-8000dpi-preto",
+      "title": "Mouse Gamer Logitech G203 RGB LIGHTSYNC, até 8.000 DPI (Preto)",
+      "id_busca": "5J5PKG-3SLZ",
+      "status": 200,
+      "reason": "storefront_social_profile_unconfirmed",
+      "reason_bucket": "storefront_profile_unconfirmed",
+      "reason_bucket_label": "perfil social sem confirmação",
+      "confidence_score": 39,
+      "confidence_bucket": "invalido",
+      "memory_note": "",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/1EsmDjB",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGBm%2FwGJxnZw4EUqwvphg2JkD4ZG0GStKfaTBJiMY14lZTT%2FBggEx74x7OmEd6Q2QOv223JrnD72rKOsDuPeHCN3rPkTr3NcGH1YBy63B8XMkhnQp%2Ftg0K4VGbhqJaHSBEVT7rvBGtJKv5k0XfvL6RNaNkzMeKDnlwRKau8zevLd6ymqzuk5mnjYzWK1rcsbwcJuAgM%3D",
+      "open_url": "https://mercadolivre.com/sec/1EsmDjB",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGBm%2FwGJxnZw4EUqwvphg2JkD4ZG0GStKfaTBJiMY14lZTT%2FBggEx74x7OmEd6Q2QOv223JrnD72rKOsDuPeHCN3rPkTr3NcGH1YBy63B8XMkhnQp%2Ftg0K4VGbhqJaHSBEVT7rvBGtJKv5k0XfvL6RNaNkzMeKDnlwRKau8zevLd6ymqzuk5mnjYzWK1rcsbwcJuAgM%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3SLZ&tid=1cf5c725-0d40-4766-ba50-d59b5ea3fcc3",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGBm%2FwGJxnZw4EUqwvphg2JkD4ZG0GStKfaTBJiMY14lZTT%2FBggEx74x7OmEd6Q2QOv223JrnD72rKOsDuPeHCN3rPkTr3NcGH1YBy63B8XMkhnQp%2Ftg0K4VGbhqJaHSBEVT7rvBGtJKv5k0XfvL6RNaNkzMeKDnlwRKau8zevLd6ymqzuk5mnjYzWK1rcsbwcJuAgM%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGBm%2FwGJxnZw4EUqwvphg2JkD4ZG0GStKfaTBJiMY14lZTT%2FBggEx74x7OmEd6Q2QOv223JrnD72rKOsDuPeHCN3rPkTr3NcGH1YBy63B8XMkhnQp%2Ftg0K4VGbhqJaHSBEVT7rvBGtJKv5k0XfvL6RNaNkzMeKDnlwRKau8zevLd6ymqzuk5mnjYzWK1rcsbwcJuAgM%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Mouse Gamer",
+        "Logitech",
+        "RGB",
+        "LIGHTSYNC",
+        "8000 DPI",
+        "PC Gamer",
+        "Preto"
+      ]
+    },
+    {
+      "happened_at": "2026-03-29T13:14:33Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 41,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/41",
+      "issue_title": "[CMS] Produto: Mandolin 13 em 1 (Fatiador/Ralador/Julienne)",
+      "sku": "mandolin-13-em-1-fatiador-ralador-julienne",
+      "title": "🥗✨ Mandolin 13 em 1 — Fatiador • Ralador • Julienne (com coletor) 🔪",
+      "id_busca": "5J5PKG-8WBH",
+      "status": 200,
+      "reason": "storefront_social_profile_unconfirmed",
+      "reason_bucket": "storefront_profile_unconfirmed",
+      "reason_bucket_label": "perfil social sem confirmação",
+      "confidence_score": 39,
+      "confidence_bucket": "invalido",
+      "memory_note": "",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/1p6PAmi",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
+      "open_url": "https://mercadolivre.com/sec/1p6PAmi",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-8WBH&tid=83ea4b47-04d0-4f4a-bc68-d1694954901d",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Utensílios",
+        "Mandolin",
+        "Fatiador",
+        "Ralador",
+        "Julienne",
+        "Praticidade"
+      ]
+    }
+  ]
 }
