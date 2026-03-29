@@ -80,31 +80,31 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
-    "Beleza",
+    "Beleza & Cuidados",
     "Maquiagem",
-    "Skincare",
+    "Lábios",
+    "Olhos",
+    "Cílios & Sobrancelhas",
+    "Pele & Skincare",
     "Cabelo",
     "Perfumes",
-    "Corpo & Banho",
     "Unhas",
-    "Acessórios",
-    "Premium",
+    "Cuidados Diários",
     "Casa",
     "Cozinha",
     "Organização",
+    "Premium",
+    "Praticidade",
     "Home Office",
-    "Tech & Setup",
-    "Celular",
-    "Bluetooth",
-    "USB",
-    "Sem Fio",
-    "Smart Home",
+    "Setup",
     "Notebook",
     "PC",
+    "Celular",
+    "Wi‑Fi",
+    "Casa Inteligente",
     "Carro",
     "Moto",
     "Segurança",
-    "Praticidade",
   ];
 
   // regra base: categoria só se repetir e não for “ruído”
@@ -142,107 +142,83 @@
 
   // stoplist de tags “plataforma”
   const CN_CAT_NOISE = new Set([
-    "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook","outros","outro","geral"
+    "mercado livre","youtube","tiktok","threads","kwai","reels","instagram","facebook"
   ]);
 
   const CN_CATEGORY_ALIAS_PAIRS = [
     ["achados do dia", "Achados do Dia"],
-
-    ["beleza", "Beleza"],
-    ["beleza e cuidado pessoal", "Beleza"],
-    ["cuidado pessoal", "Beleza"],
-    ["feminino", "Beleza"],
-
+    ["feminino", "Beleza & Cuidados"],
+    ["beleza", "Beleza & Cuidados"],
+    ["beleza e cuidado pessoal", "Beleza & Cuidados"],
+    ["cuidados pessoais", "Beleza & Cuidados"],
     ["maquiagem", "Maquiagem"],
-    ["make", "Maquiagem"],
-
-    ["cuidados com o cabelo", "Cabelo"],
-    ["artefatos para cabelo", "Cabelo"],
+    ["labios", "Lábios"],
+    ["brilho labial", "Lábios"],
+    ["gloss labial", "Lábios"],
+    ["batom", "Lábios"],
+    ["olhos", "Olhos"],
+    ["cilios e sobrancelhas", "Cílios & Sobrancelhas"],
+    ["cilios", "Cílios & Sobrancelhas"],
+    ["sobrancelhas", "Cílios & Sobrancelhas"],
+    ["pele", "Pele & Skincare"],
+    ["skincare", "Pele & Skincare"],
+    ["tratamentos de beleza", "Pele & Skincare"],
     ["cabelo", "Cabelo"],
-    ["hair care", "Cabelo"],
-
-    ["cuidados com a pele", "Skincare"],
-    ["tratamentos de beleza", "Skincare"],
-    ["skincare", "Skincare"],
-    ["serum", "Skincare"],
-    ["sérum", "Skincare"],
-
+    ["cuidados com o cabelo", "Cabelo"],
     ["perfumes", "Perfumes"],
-    ["perfume", "Perfumes"],
-    ["perfumaria", "Perfumes"],
-
-    ["higiene pessoal", "Corpo & Banho"],
-    ["corpo e banho", "Corpo & Banho"],
-    ["body care", "Corpo & Banho"],
-    ["hidratante", "Corpo & Banho"],
-    ["creme", "Corpo & Banho"],
-
     ["manicure e pedicure", "Unhas"],
-    ["unhas", "Unhas"],
-
-    ["acessorios", "Acessórios"],
-    ["acessorios", "Acessórios"],
-    ["acessorio feminino", "Acessórios"],
-    ["acessorios femininos", "Acessórios"],
-
+    ["farmacia", "Cuidados Diários"],
+    ["higiene pessoal", "Cuidados Diários"],
     ["casa", "Casa"],
     ["cozinha", "Cozinha"],
-    ["organizacao", "Organização"],
-    ["organizador", "Organização"],
-
     ["home office", "Home Office"],
     ["escritorio", "Home Office"],
-
-    ["setup", "Tech & Setup"],
-    ["gamer", "Tech & Setup"],
-    ["perifericos", "Tech & Setup"],
-    ["periféricos", "Tech & Setup"],
-
+    ["carro", "Carro"],
+    ["automotivo", "Carro"],
+    ["moto", "Moto"],
+    ["motocicleta", "Moto"],
+    ["seguranca", "Segurança"],
+    ["seguranca residencial", "Segurança"],
+    ["setup", "Setup"],
+    ["gamer", "Setup"],
+    ["perifericos", "Setup"],
+    ["wi fi", "Wi-Fi"],
+    ["wifi", "Wi-Fi"],
     ["notebook", "Notebook"],
     ["laptop", "Notebook"],
-
     ["pc", "PC"],
     ["desktop", "PC"],
     ["computador", "PC"],
-
     ["celular", "Celular"],
     ["smartphone", "Celular"],
     ["iphone", "Celular"],
     ["android", "Celular"],
-
     ["bluetooth", "Bluetooth"],
     ["tws", "Bluetooth"],
-
     ["usb", "USB"],
     ["usb c", "USB"],
     ["type c", "USB"],
     ["tipo c", "USB"],
     ["lightning", "USB"],
-
     ["sem fio", "Sem Fio"],
     ["wireless", "Sem Fio"],
     ["inducao", "Sem Fio"],
     ["magnetico", "Sem Fio"],
-
-    ["casa inteligente", "Smart Home"],
-    ["smart home", "Smart Home"],
-
-    ["seguranca", "Segurança"],
-    ["segurança", "Segurança"],
-
+    ["portatil", "Portátil"],
+    ["compacto", "Portátil"],
+    ["dobravel", "Portátil"],
+    ["leve", "Portátil"],
+    ["viagem", "Portátil"],
+    ["organizacao", "Organização"],
+    ["organizador", "Organização"],
+    ["casa inteligente", "Casa Inteligente"],
+    ["smart home", "Casa Inteligente"],
     ["premium", "Premium"],
     ["luxo", "Premium"],
     ["imperial", "Premium"],
-
     ["praticidade", "Praticidade"],
     ["util", "Praticidade"],
     ["dia a dia", "Praticidade"],
-
-    ["carro", "Carro"],
-    ["automotivo", "Carro"],
-
-    ["moto", "Moto"],
-    ["motocicleta", "Moto"],
   ];
 
   const CN_CATEGORY_RULES = [
@@ -257,7 +233,7 @@
       negativePhrases: [],
     },
     {
-      label: "Beleza",
+      label: "Beleza & Cuidados",
       minScore: 7,
       strongPhrases: ["body splash", "escova secadora", "acessorio feminino", "gloss labial", "necessaire feminina"],
       weakPhrases: ["maquiagem", "beleza", "skincare", "perfume", "hidratante", "chapinha", "secador", "gloss", "batom", "base", "corretivo", "paleta", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire"],
@@ -317,7 +293,7 @@
       negativePhrases: [],
     },
     {
-      label: "Tech & Setup",
+      label: "Setup",
       minScore: 7,
       strongPhrases: ["mouse gamer", "teclado mecanico", "rgb lightsync", "headset gamer", "webcam gamer"],
       weakPhrases: ["mouse", "teclado", "headset", "webcam", "monitor", "mousepad", "gamer", "rgb"],
@@ -417,7 +393,7 @@
       negativePhrases: [],
     },
     {
-      label: "Smart Home",
+      label: "Casa Inteligente",
       minScore: 7,
       strongPhrases: ["casa inteligente", "smart home", "tomada inteligente", "lampada inteligente", "sensor inteligente", "camera wifi"],
       weakPhrases: ["inteligente"],
@@ -771,7 +747,6 @@
   function canonicalPinnedLabel(label) {
     const clean = cleanText(label);
     const key = normalizeTagKey(clean);
-    if (!key) return clean;
     if (CN_CATEGORY_ALIAS_MAP.has(key)) return CN_CATEGORY_ALIAS_MAP.get(key);
     const found = CN_CAT_PINNED.find((x) => normalizeTagKey(x) === key);
     return found || clean;
@@ -1551,7 +1526,7 @@
           </div>
 
           <p class="meta" style="margin-top:10px;">
-            Compra rápida e direta: use o botão dourado ou copie o ID do produto.
+            Melhor funil: <b>Story com sticker de LINK</b> + <b>Loja na Bio</b>.
           </p>
         </div>
       </div>
