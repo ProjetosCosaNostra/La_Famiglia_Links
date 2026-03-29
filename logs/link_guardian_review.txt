@@ -1,60 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-29T13:21:07Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-03-29T19:00:27Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 2
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 2
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_profile_unconfirmed: 2
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-03-29T13:14:33Z
-Issue: #25
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/25
-SKU: logitech-g203-rgb-lightsync-8000dpi-preto
-Título: Mouse Gamer Logitech G203 RGB LIGHTSYNC, até 8.000 DPI (Preto)
-ID ML: 5J5PKG-3SLZ
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Mouse Gamer, Logitech, RGB, LIGHTSYNC, 8000 DPI, PC Gamer, Preto
-open_url: https://mercadolivre.com/sec/1EsmDjB
-checked_url: https://mercadolivre.com/sec/1EsmDjB
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGBm%2FwGJxnZw4EUqwvphg2JkD4ZG0GStKfaTBJiMY14lZTT%2FBggEx74x7OmEd6Q2QOv223JrnD72rKOsDuPeHCN3rPkTr3NcGH1YBy63B8XMkhnQp%2Ftg0K4VGbhqJaHSBEVT7rvBGtJKv5k0XfvL6RNaNkzMeKDnlwRKau8zevLd6ymqzuk5mnjYzWK1rcsbwcJuAgM%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3SLZ&tid=1cf5c725-0d40-4766-ba50-d59b5ea3fcc3
-
-[ALTA] review_only_storefront
-Quando: 2026-03-29T13:14:33Z
-Issue: #41
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/41
-SKU: mandolin-13-em-1-fatiador-ralador-julienne
-Título: 🥗✨ Mandolin 13 em 1 — Fatiador • Ralador • Julienne (com coletor) 🔪
-ID ML: 5J5PKG-8WBH
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Cozinha, Utensílios, Mandolin, Fatiador, Ralador, Julienne, Praticidade
-open_url: https://mercadolivre.com/sec/1p6PAmi
-checked_url: https://mercadolivre.com/sec/1p6PAmi
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-8WBH&tid=83ea4b47-04d0-4f4a-bc68-d1694954901d
+Nenhum item pendente de revisão/manutenção no momento.
