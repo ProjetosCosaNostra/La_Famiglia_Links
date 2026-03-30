@@ -264,6 +264,29 @@
       margin-bottom: 10px;
     }
 
+    .title--neon {
+      position: relative;
+      display: inline-block;
+      color: rgba(248,244,236,.98);
+      text-shadow:
+        0 0 1px rgba(255,255,255,.48),
+        0 0 10px rgba(255,226,158,.14),
+        0 0 22px rgba(215,176,88,.10),
+        0 10px 22px rgba(0,0,0,.22);
+    }
+
+    .title--neon::after {
+      content: "";
+      position: absolute;
+      left: 2px;
+      right: 44%;
+      bottom: -5px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(215,176,88,.42), rgba(215,176,88,0));
+      opacity: .72;
+      pointer-events: none;
+    }
+
     .hero__text .sub,
     .sub {
       max-width: 640px;
@@ -273,9 +296,9 @@
     }
 
     .kicker {
-      letter-spacing: 1.3px;
+      letter-spacing: 1.1px;
       color: rgba(255, 224, 151, .9);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .chips {
@@ -662,525 +685,49 @@
       }
     }
 
-  
-    /* =========================
-       REFINO APROVADO — TOPO/MOBILE
-       ========================= */
-    .hero {
-      border-color: rgba(215,176,88,.24);
-      background:
-        radial-gradient(circle at top right, rgba(215,176,88,.10), transparent 36%),
-        linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0)),
-        rgba(7,7,9,.46);
-      box-shadow: 0 18px 56px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.03);
-      backdrop-filter: blur(12px);
-    }
-
-    .hero__brand {
-      gap: 18px;
-      align-items: start;
-    }
-
-    .hero__text {
-      padding-top: 2px;
-    }
-
-    .kicker {
-      margin-bottom: 8px;
-      letter-spacing: 1.15px;
-      color: rgba(233, 202, 122, .95);
-    }
-
-    .title--imperial {
-      display: inline-block;
-      margin: 0 0 10px 0;
-      line-height: .92;
-      letter-spacing: .35px;
-      color: rgba(248,244,236,.98);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.04),
-        0 0 14px rgba(215,176,88,.08),
-        0 10px 22px rgba(0,0,0,.18);
-      position: relative;
-    }
-
-    .title--imperial::after {
-      content: "";
-      position: absolute;
-      left: 2px;
-      right: 42%;
-      bottom: -6px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(215,176,88,.42), rgba(215,176,88,0));
-      opacity: .68;
-    }
-
-    .sub {
-      max-width: 580px;
-      line-height: 1.4;
-      color: rgba(255,255,255,.74);
-      margin-top: 8px;
-    }
-
-    .chips {
-      margin-top: 12px;
-      gap: 8px;
-    }
-
-    .chip {
-      min-height: 32px;
-      padding: 5px 11px;
-      font-size: .92rem;
-      border-color: rgba(215,176,88,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.032), rgba(0,0,0,.14));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-    }
-
-    .countPill {
-      margin-top: 12px;
-      min-height: 36px;
-      padding: 6px 11px;
-      font-size: .98rem;
-      border-color: rgba(215,176,88,.18);
-      background: rgba(0,0,0,.24);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
-    }
-
-    .imperialNote--top {
-      margin-top: 12px;
-      padding: 9px 12px;
-      border-radius: 15px;
-      border-color: rgba(215,176,88,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.016), rgba(0,0,0,.14));
-      box-shadow: 0 10px 24px rgba(0,0,0,.18);
-      color: rgba(255,255,255,.80);
-      max-width: 560px;
-    }
-
-    .imperialNote--top .mini {
-      font-size: .92em;
-      color: rgba(255,255,255,.70);
-    }
-
-    .hero__actions {
-      gap: 10px;
-      align-content: start;
-    }
-
-    .hero__actions .btn {
-      min-height: 50px;
-      border-radius: 18px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.20);
-    }
-
-    .hero__actions .btn--gold {
-      min-height: 52px;
-      box-shadow: 0 14px 30px rgba(145,111,34,.22);
-    }
-
-    .hero__actions .btn--social {
-      min-height: 42px;
-      font-size: .95rem;
-      opacity: .94;
-    }
-
-    .miniNote {
-      margin-top: 2px;
-      padding: 8px 11px;
-      border-radius: 14px;
-      font-size: .92rem;
-      line-height: 1.28;
-      color: rgba(255,255,255,.72);
-      border-color: rgba(215,176,88,.10);
-      background: rgba(0,0,0,.16);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
-    }
-
-    .sectionNav {
-      border-color: rgba(215,176,88,.14);
-      background: rgba(7,7,9,.52);
-      box-shadow: 0 10px 24px rgba(0,0,0,.22);
-    }
-
-    .sectionNav__pill {
-      min-height: 34px;
-      padding: 6px 12px;
-      font-size: .92rem;
-      border-color: rgba(215,176,88,.12);
-      background: rgba(255,255,255,.018);
-    }
-
-    .floatingStoreCTA a {
-      box-shadow: 0 12px 28px rgba(0,0,0,.26);
-    }
-
-    @media (max-width: 860px) {
-      .hero__brand {
-        gap: 14px;
-      }
-
-      .title--imperial {
-        letter-spacing: .22px;
-      }
-
-      .sub {
-        max-width: none;
-      }
-
-      .hero__actions .btn {
-        min-height: 46px;
-      }
-
-      .hero__actions .btn--gold {
-        min-height: 48px;
-      }
-
-      .hero__actions .btn--social {
-        min-height: 40px;
-        font-size: .90rem;
-      }
+    #btnVerTodosTop {
+      flex-shrink: 0;
+      white-space: nowrap;
+      min-width: max-content;
     }
 
     @media (max-width: 640px) {
-      .kicker {
-        margin-bottom: 6px;
-        font-size: .92rem;
-      }
-
-      .title--imperial {
+      .title--neon {
+        font-size: clamp(2.05rem, 8.8vw, 2.9rem);
         line-height: .94;
-        margin-bottom: 8px;
+        letter-spacing: .28px;
       }
 
-      .title--imperial::after {
-        right: 55%;
+      .title--neon::after {
+        right: 56%;
         bottom: -4px;
       }
 
-      .sub {
-        font-size: .97rem;
+      #sec-vitrine-rapida .panel__head {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        align-items: stretch;
       }
 
-      .chip {
-        min-height: 29px;
-        padding: 4px 10px;
-        font-size: .84rem;
+      #sec-vitrine-rapida .panel__head p span {
+        display: block;
+        margin-top: 6px;
       }
 
-      .countPill {
-        min-height: 34px;
-        font-size: .90rem;
+      #sec-vitrine-rapida .panel__right {
+        width: 100%;
       }
 
-      .imperialNote--top {
-        padding: 8px 10px;
-        font-size: .95rem;
-      }
-
-      .sectionNav {
-        padding: 8px 10px;
-      }
-
-      .sectionNav__pill {
-        min-height: 30px;
-        padding: 5px 10px;
-        font-size: .84rem;
-      }
-
-      .hero__actions .btn {
-        min-height: 42px;
-        font-size: .92rem;
-      }
-
-      .hero__actions .btn--gold {
-        min-height: 44px;
-      }
-
-      .hero__actions .btn--social {
-        min-height: 38px;
-        font-size: .86rem;
-      }
-
-      .miniNote {
-        font-size: .84rem;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .hero,
-      .panel {
-        border-radius: 18px;
-      }
-
-      .floatingStoreCTA {
-        right: 8px;
-        bottom: 8px;
-      }
-
-      .floatingStoreCTA a {
-        min-height: 34px;
-        padding: 6px 10px;
-        border-radius: 12px;
-        font-size: .78rem;
-        letter-spacing: 0;
-        gap: 6px;
-      }
-
-      .sectionNav {
-        gap: 8px;
-      }
-
-      .sectionNav__pill {
-        min-height: 28px;
-        padding: 4px 9px;
-        font-size: .79rem;
-      }
-    }
-
-  
-    /* =========================
-       AJUSTE FINAL DO TOPO
-       - mais alinhado com logo + kicker
-       - sem mexer no resto
-       ========================= */
-    .hero__brand {
-      grid-template-columns: auto 1fr;
-      align-items: flex-start;
-      column-gap: 14px;
-    }
-
-    .brandMark {
-      margin-top: 2px;
-      flex: 0 0 auto;
-    }
-
-    .hero__text {
-      padding-top: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      min-width: 0;
-    }
-
-    .kicker {
-      margin: 0 0 4px 0;
-      max-width: 360px;
-      line-height: 1.04;
-      letter-spacing: .85px;
-      font-size: .95rem;
-    }
-
-    .title--imperial {
-      margin: 0;
-      max-width: 440px;
-      line-height: .89;
-      letter-spacing: .12px;
-      font-size: clamp(2.7rem, 4.6vw, 4.15rem);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.035),
-        0 0 10px rgba(215,176,88,.06),
-        0 8px 18px rgba(0,0,0,.16);
-    }
-
-    .title--imperial::after {
-      left: 1px;
-      right: 48%;
-      bottom: -4px;
-      opacity: .56;
-    }
-
-    .sub {
-      margin-top: 12px;
-      max-width: 520px;
-    }
-
-    @media (max-width: 860px) {
-      .hero__brand {
-        column-gap: 12px;
-      }
-
-      .kicker {
-        max-width: none;
-        margin-bottom: 4px;
-      }
-
-      .title--imperial {
-        max-width: none;
-        font-size: clamp(2.4rem, 8vw, 3.45rem);
-      }
-
-      .sub {
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .hero__brand {
-        column-gap: 10px;
-      }
-
-      .brandMark {
-        margin-top: 1px;
-      }
-
-      .kicker {
-        font-size: .86rem;
-        letter-spacing: .7px;
-        margin-bottom: 3px;
-      }
-
-      .title--imperial {
-        font-size: clamp(2.15rem, 10vw, 3.0rem);
-        line-height: .92;
-      }
-
-      .title--imperial::after {
-        right: 58%;
-      }
-
-      .sub {
-        margin-top: 10px;
-      }
-    }
-
-    /* =========================
-       AJUSTE APROVADO
-       - Central Premium acima
-       - subtítulo institucional abaixo
-       - comprar com mais presença
-       ========================= */
-    .hero__brand{
-      grid-template-columns:auto 1fr;
-      align-items:flex-start;
-      column-gap:14px;
-    }
-
-    .brandMark{
-      margin-top:4px;
-      align-self:flex-start;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,.20));
-    }
-
-    .hero__text--brandstack{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:flex-start;
-      min-width:0;
-      padding-top:0;
-    }
-
-    .title--imperial{
-      margin:0 0 6px 0;
-      max-width:460px;
-      line-height:.89;
-      letter-spacing:.08px;
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.03),
-        0 0 10px rgba(215,176,88,.05),
-        0 8px 18px rgba(0,0,0,.15);
-    }
-
-    .title--imperial::after{
-      left:1px;
-      right:50%;
-      bottom:-4px;
-      opacity:.46;
-    }
-
-    .kicker--subtitle{
-      margin:0 0 12px 1px;
-      max-width:420px;
-      line-height:1.05;
-      letter-spacing:.78px;
-      font-size:.92rem;
-      color:rgba(232,202,124,.92);
-      opacity:.96;
-    }
-
-    .sub{
-      max-width:520px;
-      margin-top:0;
-    }
-
-    /* botão mais importante = comprar */
-    .btn--buy-primary{
-      position:relative;
-      min-height:44px;
-      padding-inline:16px;
-      border-color:rgba(215,176,88,.42) !important;
-      background:
-        linear-gradient(180deg, rgba(215,176,88,.30), rgba(145,111,34,.20)),
-        rgba(0,0,0,.14) !important;
-      box-shadow:
-        0 14px 32px rgba(145,111,34,.22),
-        inset 0 1px 0 rgba(255,255,255,.10) !important;
-      color:rgba(255,247,225,.98) !important;
-      font-weight:800;
-      letter-spacing:.15px;
-      text-shadow:0 1px 0 rgba(0,0,0,.20);
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
-    }
-
-    .btn--buy-primary:hover,
-    .btn--buy-primary:focus-visible{
-      transform:translateY(-1px);
-      border-color:rgba(230,195,108,.62) !important;
-      box-shadow:
-        0 18px 40px rgba(145,111,34,.30),
-        inset 0 1px 0 rgba(255,255,255,.14) !important;
-      filter:brightness(1.03);
-    }
-
-    .cnRow .btn--buy-primary{
-      border-radius:16px;
-    }
-
-    @media (max-width:860px){
-      .hero__brand{
-        column-gap:12px;
-      }
-
-      .title--imperial{
-        max-width:none;
-      }
-
-      .kicker--subtitle{
-        max-width:none;
-        margin-bottom:10px;
-      }
-    }
-
-    @media (max-width:520px){
-      .hero__brand{
-        column-gap:10px;
-      }
-
-      .brandMark{
-        margin-top:2px;
-      }
-
-      .title--imperial{
-        font-size:clamp(2.18rem, 10vw, 3.05rem);
-        line-height:.92;
-        margin-bottom:5px;
-      }
-
-      .kicker--subtitle{
-        font-size:.84rem;
-        letter-spacing:.62px;
-        margin-bottom:9px;
-      }
-
-      .title--imperial::after{
-        right:58%;
-      }
-
-      .btn--buy-primary{
-        min-height:40px;
-        padding-inline:14px;
-        font-size:.92rem;
+      #sec-vitrine-rapida .panel__right .btn {
+        width: 100%;
+        min-height: 46px;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 1.12;
+        padding: 10px 14px;
+        border-radius: 16px;
       }
     }
 
@@ -1215,11 +762,12 @@
           <span class="brandFallback">🎩♟️</span>
         </div>
 
-        <div class="hero__text hero__text--brandstack">
-          <h1 class="title title--imperial">Central Premium</h1>
-          <p class="kicker kicker--subtitle">Cosa Nostra • A Família das Ideias</p>
+        <div class="hero__text">
+          <p class="kicker">Cosa Nostra • A Família das Ideias</p>
+          <h1 class="title title--neon">Central Premium</h1>
           <p class="sub">
-            Links oficiais + vitrine de produtos (Achados do Dia).
+            Links oficiais + vitrine de produtos (Achados do Dia).<br/>
+            Funil rápido: <b>Story com Link Sticker</b> + <b>Loja na Bio</b>.
           </p>
 
           <div class="chips" aria-label="Dicas rápidas">
@@ -1233,9 +781,9 @@
             <span class="n" data-total-products>—</span>
           </div>
 
-          <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>Prévia da vitrine:</b> Produto do Dia + Vitrine Rápida.</div>
-            <div class="mini">Para ver tudo, use <b>“Abrir Vitrine / Loja”</b>.</div>
+          <div class="imperialNote" role="note" aria-label="Aviso importante sobre a loja">
+            <div><b>ATENÇÃO:</b> esta página mostra o <b>Produto do Dia</b> + uma <b>Prévia (Vitrine Rápida)</b>.</div>
+            <div class="mini">Para ver <b>todos os produtos</b>, use <b>“Abrir Vitrine / Loja”</b> (Loja Completa). ✅</div>
           </div>
         </div>
       </div>
@@ -1245,10 +793,10 @@
         <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
 
         <!-- ✅ Instagram (mais importante) — voltou -->
-        <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn btn--glass" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
 
         <!-- ✅ Telegram (Achados) — mantido -->
-        <a class="btn btn--glass btn--social" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+        <a class="btn btn--glass" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
 
         <div class="miniNote">
           <span class="dot"></span>
