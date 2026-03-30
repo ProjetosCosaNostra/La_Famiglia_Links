@@ -55,6 +55,13 @@
      - Subcategorias passam a responder ao contexto da categoria selecionada
      - Atributos editoriais/técnicos ficam em faixa separada para não poluir a navegação
      - Botões de compra ganham padrão visual mais próximo da home
+
+   PATCH 2026-03-29 (LAPIDAÇÃO FINAL — HIERARQUIA + MOBILE):
+     - Categorias principais passam a trabalhar em famílias comerciais reais
+     - Beleza / Casa / Tecnologia deixam de competir com microcategoria no topo
+     - Subcategorias herdam contexto da família escolhida e ganham ordem mais comercial
+     - Atributos rápidos ficam mais editoriais/táticos, sem duplicar a navegação
+     - Mobile ganha seletor de ordenação e bloco de filtros com leitura mais forte
    ========================================================== */
 
 (() => {
@@ -124,45 +131,81 @@
 
   const CN_PRIMARY_CATEGORY_ORDER = [
     "Beleza",
-    "Maquiagem",
-    "Olhos",
-    "Rosto",
-    "Paleta de Sombras",
-    "Gloss Labial",
-    "Corretivo",
-    "Cílios",
-    "Skincare",
-    "Perfume",
-    "Organização",
     "Casa",
-    "Cozinha",
-    "Home Office",
+    "Tecnologia",
     "Segurança",
     "Carro",
     "Moto",
-    "Notebook",
-    "PC",
-    "Celular",
   ];
 
   const CN_UTILITY_CATEGORY_ORDER = [
     "Achados do Dia",
     "Premium",
     "Praticidade",
-    "Casa Inteligente",
-    "Setup",
-    "Wi-Fi",
-    "Bluetooth",
-    "USB",
-    "Sem Fio",
-    "Portátil",
     "Feminino",
+    "Portátil",
+    "Sem Fio",
   ];
+
+  const CN_SECONDARY_CATEGORY_ORDER = {
+    "Beleza": [
+      "Maquiagem",
+      "Olhos",
+      "Paleta de Sombras",
+      "Rosto",
+      "Lábios",
+      "Gloss Labial",
+      "Corretivo",
+      "Blushes e Iluminadores",
+      "Cílios",
+      "Skincare",
+      "Perfume",
+      "Organização",
+    ],
+    "Casa": [
+      "Cozinha",
+      "Organização",
+      "Casa Inteligente",
+      "Praticidade",
+    ],
+    "Tecnologia": [
+      "Home Office",
+      "Notebook",
+      "PC",
+      "Celular",
+      "Setup",
+      "Wi-Fi",
+      "Bluetooth",
+      "USB",
+      "Sem Fio",
+      "Portátil",
+      "Casa Inteligente",
+    ],
+    "Segurança": [
+      "Segurança",
+      "Casa Inteligente",
+      "Wi-Fi",
+      "Sem Fio",
+    ],
+    "Carro": [
+      "Carro",
+      "Bluetooth",
+      "USB",
+      "Portátil",
+      "Praticidade",
+    ],
+    "Moto": [
+      "Moto",
+      "Segurança",
+      "Portátil",
+      "Praticidade",
+    ],
+  };
 
   const CN_SUBCATEGORY_MAX_DESKTOP = 12;
   const CN_SUBCATEGORY_MAX_MOBILE = 8;
-  const CN_UTILITY_MAX_DESKTOP = 10;
-  const CN_UTILITY_MAX_MOBILE = 6;
+  const CN_UTILITY_MAX_DESKTOP = 8;
+  const CN_UTILITY_MAX_MOBILE = 5;
 
   // allowlist para tags com dígito que ainda são úteis (se quiser manter)
   const CN_CAT_ALLOW_DIGITS = new Set([
@@ -212,6 +255,10 @@
     ["sombras", "Paleta de Sombras"],
     ["gloss labial", "Gloss Labial"],
     ["gloss", "Gloss Labial"],
+    ["labios", "Lábios"],
+    ["labial", "Lábios"],
+    ["blushes e iluminadores", "Blushes e Iluminadores"],
+    ["blush e iluminador", "Blushes e Iluminadores"],
     ["corretivo", "Corretivo"],
     ["cilios", "Cílios"],
     ["extensao de cilios", "Cílios"],
@@ -602,37 +649,90 @@
     "feminino",
     "premium",
     "praticidade",
+    "achados do dia",
+  ]);
+
+  const CN_CATEGORY_FAMILY_MAP = new Map([
+    ["beleza", "Beleza"],
+    ["maquiagem", "Beleza"],
+    ["olhos", "Beleza"],
+    ["paleta de sombras", "Beleza"],
+    ["rosto", "Beleza"],
+    ["labios", "Beleza"],
+    ["lábios", "Beleza"],
+    ["gloss labial", "Beleza"],
+    ["corretivo", "Beleza"],
+    ["blushes e iluminadores", "Beleza"],
+    ["cilios", "Beleza"],
+    ["cílios", "Beleza"],
+    ["skincare", "Beleza"],
+    ["perfume", "Beleza"],
+
+    ["casa", "Casa"],
+    ["cozinha", "Casa"],
+    ["organizacao", "Casa"],
+    ["organização", "Casa"],
+    ["casa inteligente", "Casa"],
+
+    ["tecnologia", "Tecnologia"],
+    ["home office", "Tecnologia"],
+    ["setup", "Tecnologia"],
+    ["notebook", "Tecnologia"],
+    ["pc", "Tecnologia"],
+    ["celular", "Tecnologia"],
+    ["wi fi", "Tecnologia"],
+    ["bluetooth", "Tecnologia"],
+    ["usb", "Tecnologia"],
+    ["sem fio", "Tecnologia"],
+    ["portatil", "Tecnologia"],
+    ["portátil", "Tecnologia"],
+
+    ["seguranca", "Segurança"],
+    ["segurança", "Segurança"],
+
+    ["carro", "Carro"],
+    ["moto", "Moto"],
   ]);
 
   const CN_CATEGORY_PRIORITY_MAP = new Map([
     ["achados do dia", 300],
     ["beleza", 260],
-    ["maquiagem", 250],
-    ["olhos", 240],
-    ["paleta de sombras", 235],
-    ["rosto", 230],
-    ["gloss labial", 225],
-    ["corretivo", 220],
-    ["cilios", 215],
-    ["skincare", 210],
-    ["perfume", 205],
-    ["organizacao", 180],
-    ["casa", 160],
-    ["cozinha", 158],
-    ["home office", 156],
-    ["seguranca", 154],
-    ["carro", 152],
-    ["moto", 150],
-    ["notebook", 148],
-    ["pc", 146],
-    ["celular", 144],
-    ["wi fi", 142],
-    ["bluetooth", 140],
-    ["usb", 138],
-    ["sem fio", 136],
-    ["portatil", 134],
-    ["casa inteligente", 132],
-    ["setup", 120],
+    ["casa", 240],
+    ["tecnologia", 230],
+    ["seguranca", 220],
+    ["carro", 210],
+    ["moto", 205],
+
+    ["maquiagem", 200],
+    ["olhos", 196],
+    ["paleta de sombras", 194],
+    ["rosto", 192],
+    ["labios", 191],
+    ["lábios", 191],
+    ["gloss labial", 190],
+    ["corretivo", 188],
+    ["blushes e iluminadores", 186],
+    ["cilios", 184],
+    ["cílios", 184],
+    ["skincare", 182],
+    ["perfume", 180],
+
+    ["organizacao", 176],
+    ["organização", 176],
+    ["cozinha", 172],
+    ["home office", 168],
+    ["notebook", 164],
+    ["pc", 162],
+    ["celular", 160],
+    ["setup", 158],
+    ["wi fi", 156],
+    ["bluetooth", 154],
+    ["usb", 152],
+    ["sem fio", 150],
+    ["portatil", 148],
+    ["portátil", 148],
+    ["casa inteligente", 146],
+
     ["premium", 40],
     ["praticidade", 30],
     ["feminino", 20],
@@ -960,6 +1060,24 @@
     return Number(CN_CATEGORY_PRIORITY_MAP.get(normalizeTagKey(label)) || 0);
   }
 
+  function getCommercialFamily(label) {
+    const key = normalizeTagKey(label || "");
+    if (!key) return "";
+    return String(CN_CATEGORY_FAMILY_MAP.get(key) || "");
+  }
+
+  function getSecondaryOrderForFamily(label) {
+    const family = String(label || "");
+    return Array.isArray(CN_SECONDARY_CATEGORY_ORDER[family])
+      ? CN_SECONDARY_CATEGORY_ORDER[family]
+      : [];
+  }
+
+  function orderSecondaryCategories(items, familyLabel) {
+    const explicit = getSecondaryOrderForFamily(familyLabel);
+    if (explicit.length) return orderByExplicitList(items, explicit);
+    return orderCategories(items);
+  }
 
   function isPrimaryCommercialCategory(label) {
     const key = normalizeTagKey(label);
@@ -1008,15 +1126,31 @@
   function productMatchesTag(p, tag) {
     const key = normalizeTagKey(tag || "");
     if (!key) return true;
-    const categories = getDisplayCategories(p);
-    const canonical = getCanonicalCategories(p);
-    const rawBadges = safeArray(p.badges);
-    return categories.some((x) => normalizeTagKey(x) === key) ||
-      canonical.some((x) => normalizeTagKey(x) === key) ||
-      rawBadges.some((x) => normalizeTagKey(x) === key);
+
+    const labels = uniqLabels([
+      getStructuredPrimaryCategory(p),
+      ...getStructuredSecondaryCategories(p),
+      ...getStructuredUtilityCategories(p),
+      ...getDisplayCategories(p),
+      ...getCanonicalCategories(p),
+      ...safeArray(p.badges),
+    ]);
+
+    return labels.some((x) => normalizeTagKey(x) === key);
   }
 
   function getStructuredPrimaryCategory(p) {
+    const candidates = uniqLabels([
+      getCanonicalPrimaryCategory(p),
+      ...getCanonicalCategories(p),
+      ...getSmartCategories(p),
+    ]);
+
+    for (const label of candidates) {
+      const family = getCommercialFamily(label);
+      if (family) return family;
+    }
+
     const primary = canonicalPinnedLabel(getCanonicalPrimaryCategory(p));
     if (primary && isPrimaryCommercialCategory(primary)) return primary;
 
@@ -1032,17 +1166,19 @@
   }
 
   function getStructuredSecondaryCategories(p) {
-    const primaryKey = normalizeTagKey(getStructuredPrimaryCategory(p));
-    const canonicalSecondary = getCanonicalSecondaryCategories(p).map(canonicalPinnedLabel);
+    const familyKey = normalizeTagKey(getStructuredPrimaryCategory(p));
+    const canonicalPrimary = canonicalPinnedLabel(getCanonicalPrimaryCategory(p));
 
-    let source = canonicalSecondary.length
-      ? canonicalSecondary
-      : getSmartCategories(p).map(canonicalPinnedLabel);
+    let source = uniqLabels([
+      canonicalPrimary,
+      ...getCanonicalSecondaryCategories(p).map(canonicalPinnedLabel),
+      ...getSmartCategories(p).map(canonicalPinnedLabel),
+    ]);
 
-    source = uniqLabels(source).filter((label) => {
+    source = source.filter((label) => {
       const key = normalizeTagKey(label);
       if (!key) return false;
-      if (key === primaryKey) return false;
+      if (key === familyKey) return false;
       if (isUtilityCategory(label)) return false;
       return true;
     });
@@ -1057,6 +1193,7 @@
       const clean = canonicalPinnedLabel(label);
       const key = normalizeTagKey(clean);
       if (!clean || seen.has(key)) return;
+      if (!isUtilityCategory(clean)) return;
       seen.add(key);
       out.push(clean);
     };
@@ -1067,9 +1204,7 @@
       ...safeArray(p.badges),
     ]);
 
-    for (const label of all) {
-      if (isUtilityCategory(label)) add(label);
-    }
+    for (const label of all) add(label);
 
     return out;
   }
@@ -1089,8 +1224,9 @@
       : baseList;
 
     const secondaryMin = selectedPrimary ? 1 : 2;
-    const secondaryCounts = orderCategories(
-      countLabelMap(secondaryBase, getStructuredSecondaryCategories, { min: secondaryMin }).filter((item) => !isPrimaryCommercialCategory(item.label) && !isUtilityCategory(item.label))
+    const secondaryCounts = orderSecondaryCategories(
+      countLabelMap(secondaryBase, getStructuredSecondaryCategories, { min: secondaryMin }).filter((item) => !isPrimaryCommercialCategory(item.label) && !isUtilityCategory(item.label)),
+      selectedPrimary ? selectedPrimary.label : ""
     );
 
     const utilityCounts = orderByExplicitList(
@@ -2127,10 +2263,15 @@
     const q = cleanText(STATE.query || "");
     const tag = normalizeTagKey(STATE.tag || "");
 
-    const categories = getDisplayCategories(p);
-    const hasSmart = categories.some((b) => normalizeTagKey(b) === tag);
-    const hasRaw = safeArray(p.badges).some((b) => normalizeTagKey(b) === tag);
-    const hasTag = !tag || hasSmart || hasRaw;
+    const labels = uniqLabels([
+      getStructuredPrimaryCategory(p),
+      ...getStructuredSecondaryCategories(p),
+      ...getStructuredUtilityCategories(p),
+      ...getDisplayCategories(p),
+      ...safeArray(p.badges),
+    ]);
+
+    const hasTag = !tag || labels.some((b) => normalizeTagKey(b) === tag);
 
     if (!q) return hasTag;
 
