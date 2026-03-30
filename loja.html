@@ -928,15 +928,25 @@
             <div class="tagChips" id="tagPrimaryChips" aria-label="Categorias principais"></div>
           </div>
 
-          <div class="chipSection" id="chipSectionSecondary">
-            <div class="chipSection__label" id="chipSectionSecondaryLabel">Subcategorias da família</div>
-            <div class="tagChips" id="tagSecondaryChips" aria-label="Subcategorias"></div>
-          </div>
+          <details class="chipFold" id="chipFoldSecondary">
+            <summary class="chipFold__summary">
+              <span class="chipSection__label" id="chipSectionSecondaryLabel">Refinar por subcategoria</span>
+              <span class="chipFold__hint">abrir</span>
+            </summary>
+            <div class="chipSection chipSection--compact" id="chipSectionSecondary">
+              <div class="tagChips" id="tagSecondaryChips" aria-label="Subcategorias"></div>
+            </div>
+          </details>
 
-          <div class="chipSection chipSection--soft" id="chipSectionUtility">
-            <div class="chipSection__label">Atributos rápidos</div>
-            <div class="tagChips" id="tagUtilityChips" aria-label="Atributos rápidos"></div>
-          </div>
+          <details class="chipFold chipFold--soft" id="chipFoldUtility">
+            <summary class="chipFold__summary">
+              <span class="chipSection__label">Atributos rápidos</span>
+              <span class="chipFold__hint">abrir</span>
+            </summary>
+            <div class="chipSection chipSection--compact chipSection--soft" id="chipSectionUtility">
+              <div class="tagChips" id="tagUtilityChips" aria-label="Atributos rápidos"></div>
+            </div>
+          </details>
         </div>
 
         <!-- ✅ Ferramentas (listas/export) serão injetadas pelo loja.js (recolhível no mobile) -->
@@ -994,7 +1004,7 @@
   <nav class="cnStoreDock" aria-label="Atalhos rápidos da loja">
     <button class="cnStoreDock__btn" type="button" id="dockTop" title="Ir para o topo" aria-label="Ir para o topo">↑</button>
     <button class="cnStoreDock__btn" type="button" id="dockSearch" title="Ir para a busca" aria-label="Ir para a busca">🔎</button>
-    <button class="cnStoreDock__btn" type="button" id="dockCategories" title="Ir para categorias" aria-label="Ir para categorias">🏷</button>
+    <button class="cnStoreDock__btn" type="button" id="dockCategories" title="Ir para categorias" aria-label="Ir para categorias">🏷️</button>
     <button class="cnStoreDock__btn" type="button" id="dockFeatured" title="Ir para Produto do Dia" aria-label="Ir para Produto do Dia">⭐</button>
     <a class="cnStoreDock__btn cnStoreDock__btn--home" href="./" id="dockHome" title="Voltar Home" aria-label="Voltar Home">🏠</a>
   </nav>
