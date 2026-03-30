@@ -614,3 +614,106 @@
     min-height: 38px;
   }
 }
+
+
+/* =========================
+   HOTFIX 2026-03-30 — RESTAURAR ARQUITETURA DOS CARDS
+   - devolve o corpo do card para coluna flex
+   - prende os botões no rodapé
+   - estabiliza títulos e meta para não quebrar a linha visual
+   ========================= */
+.productsGrid{
+  align-items:stretch !important;
+}
+
+.productsGrid .pCard{
+  display:flex !important;
+  flex-direction:column !important;
+  min-height:100% !important;
+  height:100% !important;
+  overflow:hidden !important;
+}
+
+.productsGrid .pImg{
+  flex:0 0 auto !important;
+}
+
+.productsGrid .pBody{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  gap:8px !important;
+  flex:1 1 auto !important;
+  min-height:0 !important;
+  height:auto !important;
+}
+
+.productsGrid .pBody > *{
+  flex:0 0 auto;
+}
+
+.productsGrid .pName{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
+  min-height:3.45em;
+  margin-bottom:0 !important;
+}
+
+.productsGrid .pSmall{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  margin:0 !important;
+}
+
+.productsGrid .pBody .pSmall:nth-of-type(1){
+  -webkit-line-clamp:3;
+  min-height:4.1em;
+}
+
+.productsGrid .pBody .pSmall:nth-of-type(2){
+  -webkit-line-clamp:2;
+  min-height:2.8em;
+}
+
+.productsGrid .pActions{
+  margin-top:auto !important;
+  padding-top:10px !important;
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+  gap:8px !important;
+  align-items:stretch !important;
+}
+
+.productsGrid .pActions .smallBtn{
+  width:100% !important;
+  min-width:0 !important;
+  flex:none !important;
+  justify-content:center !important;
+}
+
+.productsGrid .pActions .smallBtn:nth-child(3):last-child{
+  grid-column:1 / -1;
+}
+
+@media (max-width: 520px){
+  .productsGrid .pActions{
+    grid-template-columns:1fr !important;
+  }
+
+  .productsGrid .pActions .smallBtn:nth-child(3):last-child{
+    grid-column:auto;
+  }
+
+  .productsGrid .pName{
+    min-height:auto;
+  }
+
+  .productsGrid .pBody .pSmall:nth-of-type(1),
+  .productsGrid .pBody .pSmall:nth-of-type(2){
+    min-height:auto;
+  }
+}
+
