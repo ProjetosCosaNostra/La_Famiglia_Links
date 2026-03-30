@@ -365,3 +365,122 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 12px 30px rgba(0,0,0,.45);
 }
+
+
+/* =========================
+   PATCH 2026-03-29
+   Estrutura comercial das categorias + refino visual
+   ========================= */
+
+.toolRow--stack{
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.chipSection{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.chipSection__label{
+  font-family: Cinzel, serif;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(224,195,107,.88);
+  opacity: .96;
+  padding-left: 2px;
+}
+
+.chipSection--soft .chipSection__label{
+  color: rgba(255,255,255,.68);
+}
+
+#tagPrimaryChips .tagChip{
+  border-color: rgba(224,195,107,.22);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.18));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+#tagPrimaryChips .tagChip.tagChip--active{
+  border-color: rgba(224,195,107,.52);
+  background: linear-gradient(180deg, rgba(224,195,107,.14), rgba(0,0,0,.18));
+  color: rgba(255,236,180,.98);
+}
+
+#tagSecondaryChips .tagChip{
+  border-color: rgba(215,176,88,.18);
+}
+
+#tagUtilityChips .tagChip{
+  border-color: rgba(255,255,255,.12);
+  background: rgba(0,0,0,.16);
+  color: rgba(255,255,255,.78);
+}
+
+#tagUtilityChips .tagChip.tagChip--active{
+  border-color: rgba(215,176,88,.34);
+  color: rgba(255,236,180,.95);
+  background: rgba(215,176,88,.10);
+}
+
+.cnModal__group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  width:100%;
+}
+
+.cnModal__group + .cnModal__group{
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(215,176,88,.10);
+}
+
+.cnModal__groupTitle{
+  width:100%;
+  font-family: Cinzel, serif;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(224,195,107,.88);
+  opacity: .95;
+}
+
+.pCard{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
+    rgba(7,7,9,.52);
+}
+
+.pBody{
+  gap: 8px;
+}
+
+.pName{
+  text-wrap: balance;
+}
+
+.pActions{
+  gap: 8px;
+}
+
+.smallBtn.btn--secondary-soft{
+  border-color: rgba(215,176,88,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.14));
+}
+
+@media (max-width: 720px){
+  .chipSection{
+    gap: 7px;
+  }
+
+  .chipSection__label{
+    font-size: 10px;
+    letter-spacing: .16em;
+  }
+}
