@@ -618,6 +618,107 @@
       }
     }
 
+  
+    /* =========================
+       LAPIDAÇÃO 2026-03-29 — categorias + mobile
+       ========================= */
+    .panel__right{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      min-width: 220px;
+    }
+
+    .chipSection{
+      padding-top: 2px;
+    }
+
+    .chipSection__label{
+      margin-bottom: 2px;
+    }
+
+    .productsGrid .pCard{
+      min-height: 100%;
+    }
+
+    .productsGrid .pBody{
+      display:flex;
+      flex-direction:column;
+      min-height: 100%;
+    }
+
+    .productsGrid .pActions{
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .panel__head h2{
+      letter-spacing: .14em;
+    }
+
+    @media (max-width: 860px){
+      .panel__head{
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .panel__right{
+        width: 100%;
+        min-width: 0;
+        justify-content: stretch;
+      }
+
+      .panel__right .select{
+        width: 100%;
+        min-width: 0;
+      }
+
+      .toolRow:first-child{
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .toolRow:first-child > *{
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 520px){
+      .hero{
+        padding-bottom: 16px;
+      }
+
+      .panel{
+        border-radius: 22px;
+      }
+
+      .panel__head h2{
+        font-size: 1.02rem;
+        letter-spacing: .13em;
+      }
+
+      .tagChips{
+        gap: 7px;
+      }
+
+      .tagChips .tagChip{
+        max-width: 100%;
+      }
+
+      .productsGrid{
+        gap: 14px;
+      }
+
+      .productsGrid .pName{
+        font-size: 1rem;
+        line-height: 1.18;
+      }
+
+      .productsGrid .smallBtn{
+        min-height: 38px;
+      }
+    }
+
   </style>
 
   <!-- JS da loja -->
@@ -697,7 +798,7 @@
       <div class="panel__head">
         <div>
           <h2>Navegação comercial</h2>
-          <p>Primeiro escolha a família principal. Depois refine por subcategoria e atributo, sem poluir a navegação.</p>
+          <p>Primeiro escolha a família principal. Depois refine por subcategoria e atributo, com leitura mais comercial e sem poluir a loja.</p>
         </div>
         <div class="panel__right">
           <select class="select" id="sortSel" aria-label="Ordenação">
@@ -724,12 +825,12 @@
 
         <div class="toolRow toolRow--stack" style="margin-top:6px;">
           <div class="chipSection" id="chipSectionPrimary">
-            <div class="chipSection__label">Categorias principais</div>
+            <div class="chipSection__label">Famílias principais</div>
             <div class="tagChips" id="tagPrimaryChips" aria-label="Categorias principais"></div>
           </div>
 
           <div class="chipSection" id="chipSectionSecondary">
-            <div class="chipSection__label" id="chipSectionSecondaryLabel">Refinar por subcategoria</div>
+            <div class="chipSection__label" id="chipSectionSecondaryLabel">Subcategorias da família</div>
             <div class="tagChips" id="tagSecondaryChips" aria-label="Subcategorias"></div>
           </div>
 
@@ -772,7 +873,7 @@
       <div class="panel__head">
         <div>
           <h2>Vitrine comercial</h2>
-          <p>Produtos ativos e compráveis, com visual mais limpo e leitura mais forte para decisão rápida.</p>
+          <p>Produtos ativos e compráveis, com hierarquia mais clara, leitura mais forte e decisão mais rápida.</p>
         </div>
       </div>
 
