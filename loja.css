@@ -60,7 +60,7 @@
 .tagChips{
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
+  gap:6px;
   align-items:center;
 }
 
@@ -68,11 +68,11 @@
   border:1px solid var(--loja-chip-bd);
   background: var(--loja-chip-bg);
   color: var(--loja-chip-tx);
-  padding:8px 10px;
+  padding:7px 9px;
   border-radius:999px;
   font-weight:900;
-  font-size:12px;
-  letter-spacing:.02em;
+  font-size:11px;
+  letter-spacing:.01em;
   cursor:pointer;
   user-select:none;
   backdrop-filter: blur(10px);
@@ -91,8 +91,8 @@
 /* compacta chips no mobile */
 @media (max-width: 520px){
   .tagChip{
-    padding: 7px 9px;
-    font-size: 12px;
+    padding: 6px 8px;
+    font-size: 11px;
   }
 }
 
@@ -382,7 +382,7 @@
   width:100%;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:6px;
 }
 
 .chipSection__label{
@@ -719,13 +719,107 @@
 
 
 
+
+
+/* =========================
+   Compactação da navegação comercial
+   ========================= */
+.chipSection{
+  width:100%;
+}
+
+.chipSection__label{
+  display:block;
+  margin:0 0 8px;
+  font-size:11px;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  color:rgba(236,213,152,.92);
+  font-weight:900;
+}
+
+.chipSection--compact{
+  padding-top:6px;
+}
+
+.chipFold{
+  width:100%;
+  margin-top:6px;
+  border:1px solid rgba(224,195,107,.10);
+  border-radius:16px;
+  background:rgba(0,0,0,.12);
+  overflow:hidden;
+}
+
+.chipFold--soft{
+  background:rgba(255,255,255,.03);
+}
+
+.chipFold__summary{
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 12px;
+  cursor:pointer;
+}
+
+.chipFold__summary::-webkit-details-marker{
+  display:none;
+}
+
+.chipFold__summary .chipSection__label{
+  margin:0;
+  font-size:10px;
+}
+
+.chipFold__hint{
+  font-size:11px;
+  font-weight:900;
+  color:rgba(255,255,255,.72);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.chipFold[open] .chipFold__hint{
+  color:rgba(236,213,152,.92);
+}
+
+.chipFold[open] .chipFold__hint::before{
+  content:'− ';
+}
+
+.chipFold:not([open]) .chipFold__hint::before{
+  content:'+ ';
+}
+
+.chipFold .chipSection{
+  padding:0 12px 12px;
+}
+
+@media (max-width: 720px){
+  .chipSection__label{
+    font-size:10px;
+    letter-spacing:.18em;
+  }
+
+  .chipFold__summary{
+    padding:9px 11px;
+  }
+
+  .chipFold .chipSection{
+    padding:0 10px 10px;
+  }
+}
+
 /* =========================
    HOTFIX 2026-03-30 — DOCK FLUTUANTE DA LOJA
    ========================= */
 .cnStoreDock{
   position:fixed;
-  right:12px;
-  bottom:18px;
+  right:10px;
+  bottom:16px;
   z-index:9999;
   display:flex;
   flex-direction:column;
@@ -733,9 +827,9 @@
 }
 
 .cnStoreDock__btn{
-  width:46px;
-  height:46px;
-  border-radius:14px;
+  width:38px;
+  height:38px;
+  border-radius:12px;
   border:1px solid rgba(215,176,88,.20);
   background:rgba(7,7,9,.76);
   color:rgba(255,245,220,.96);
@@ -744,8 +838,8 @@
   justify-content:center;
   text-decoration:none;
   font-weight:900;
-  font-size:18px;
-  box-shadow:0 14px 34px rgba(0,0,0,.40);
+  font-size:15px;
+  box-shadow:0 10px 24px rgba(0,0,0,.36);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   cursor:pointer;
@@ -767,15 +861,15 @@
 
 @media (max-width: 720px){
   .cnStoreDock{
-    right:10px;
-    bottom:12px;
-    gap:7px;
+    right:8px;
+    bottom:10px;
+    gap:6px;
   }
 
   .cnStoreDock__btn{
-    width:42px;
-    height:42px;
-    border-radius:13px;
-    font-size:17px;
+    width:34px;
+    height:34px;
+    border-radius:11px;
+    font-size:14px;
   }
 }
