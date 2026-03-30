@@ -2251,6 +2251,106 @@
     };
   }
 
+  function renderStructuredChipGroup(targetEl, items, options = {}) {
+    if (!targetEl) return;
+    const list = Array.isArray(items) ? items.slice() : [];
+    const activeKey = normalizeTagKey(STATE.tag || "");
+    const withAll = !!options.withAll;
+    const allLabel = cleanText(options.allLabel || "Tudo") || "Tudo";
+    const allCount = Number(options.allCount || STATE._activeCount || 0);
+    const allowOpenModal = !!options.allowOpenModal;
+
+    const html = [];
+    if (withAll) {
+      html.push(`
+        <button class="tagChip ${!activeKey ? "tagChip--active" : ""}" type="button" data-tag="">
+          👑 ${escapeHTML(allLabel)}${allCount ? ` <span style="opacity:.75;">(${allCount})</span>` : ""}
+        </button>
+      `);
+    }
+
+    for (const item of list) {
+      const key = normalizeTagKey(item.label);
+      const isActive = activeKey === key;
+      html.push(`
+        <button class="tagChip ${isActive ? "tagChip--active" : ""}" type="button" data-tag="${escapeHTML(key)}">
+          ${escapeHTML(item.label)}${item.n ? ` <span style="opacity:.75;">(${item.n})</span>` : ""}
+        </button>
+      `);
+    }
+
+    if (allowOpenModal && Number(STATE._structuredTotalCount || 0) > list.length) {
+      html.push(`
+        <button class="tagChip" type="button" data-action="openTags">
+          🔎 Ver todas (${Number(STATE._structuredTotalCount || 0)})
+        </button>
+      `);
+    }
+
+    targetEl.innerHTML = html.join("");
+  }
+
+  function renderTagChips(activeList) {
+    const primaryBox = document.getElementById("tagPrimaryChips");
+    const secondaryBox = document.getElementById("tagSecondaryChips");
+    const utilityBox = document.getElementById("tagUtilityChips");
+    const totalTagsEl = document.getElementById("tagsCount");
+    const primarySection = document.getElementById("chipSectionPrimary");
+    const secondarySection = document.getElementById("chipSectionSecondary");
+    const utilitySection = document.getElementById("chipSectionUtility");
+    const secondaryLabel = document.getElementById("chipSectionSecondaryLabel");
+
+    const queryOnlyList = (activeList || []).filter((p) => {
+      const q = cleanText(STATE.query || "");
+      if (!q) return true;
+      return getSearchScore(p, q) >= 0;
+    });
+
+    const structured = buildStructuredCategoryModel(activeList || [], queryOnlyList);
+    STATE._structuredCategories = structured;
+    STATE._structuredTotalCount = Number(structured.totalCount || 0);
+    STATE._categoryCounts = [
+      ...(structured.primaryCounts || []),
+      ...(structured.secondaryCounts || []),
+      ...(structured.utilityCounts || []),
+    ];
+    STATE._activeCount = (activeList || []).length;
+
+    if (totalTagsEl) {
+      const total = Number(structured.totalCount || 0);
+      totalTagsEl.textContent = total > 0 ? String(total) : "0";
+    }
+
+    const isMobile = window.matchMedia("(max-width: 720px)").matches;
+    const primaryMax = isMobile ? 8 : 12;
+    const secondaryMax = isMobile ? CN_SUBCATEGORY_MAX_MOBILE : CN_SUBCATEGORY_MAX_DESKTOP;
+    const utilityMax = isMobile ? CN_UTILITY_MAX_MOBILE : CN_UTILITY_MAX_DESKTOP;
+
+    const primaryItems = (structured.primaryCounts || []).slice(0, primaryMax);
+    const secondaryItems = (structured.secondaryCounts || []).slice(0, secondaryMax);
+    const utilityItems = (structured.utilityCounts || []).slice(0, utilityMax);
+
+    renderStructuredChipGroup(primaryBox, primaryItems, {
+      withAll: true,
+      allLabel: "Tudo",
+      allCount: STATE._activeCount,
+      allowOpenModal: Number(structured.totalCount || 0) > (primaryItems.length + secondaryItems.length + utilityItems.length),
+    });
+    renderStructuredChipGroup(secondaryBox, secondaryItems, { withAll: false });
+    renderStructuredChipGroup(utilityBox, utilityItems, { withAll: false });
+
+    if (primarySection) primarySection.style.display = (primaryItems.length || !normalizeTagKey(STATE.tag || "")) ? "block" : "none";
+    if (secondarySection) secondarySection.style.display = secondaryItems.length ? "block" : "none";
+    if (utilitySection) utilitySection.style.display = utilityItems.length ? "block" : "none";
+
+    if (secondaryLabel) {
+      secondaryLabel.textContent = structured.selectedPrimary
+        ? `Refinar ${structured.selectedPrimary}`
+        : "Refinar por subcategoria";
+    }
+  }
+
+
   function setCounters({ totalActive, totalFiltered, shownNow }) {
     setText($("#countAll"), totalActive);
     setText($("#countShown"), totalFiltered);
