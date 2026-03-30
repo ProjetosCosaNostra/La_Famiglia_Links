@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-30T13:58:02Z
+Atualizado em: 2026-03-30T19:16:58Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,20 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-03-30T13:54:26Z
-Issue: #16
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/16
-SKU: wap-robot-w90-3em1-preto
-Título: Robô Aspirador WAP Robot W90 3 em 1 (Varre, Aspira e Passa Pano)
-ID ML: 5J5PKG-TCW4
+Quando: 2026-03-30T19:12:23Z
+Issue: #28
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/28
+SKU: sandisk-microsd-128gb-ultra-100mbs
+Título: Cartão de Memória SanDisk 128GB MicroSDXC (Classe 10) — até 100MB/s
+ID ML: 5J5PKG-KT52
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
 Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Casa & Pets, Robô Aspirador, WAP, 3 em 1, Passa pano, Sensores, Oferta
-open_url: https://mercadolivre.com/sec/2J1MBX9
-checked_url: https://mercadolivre.com/sec/2J1MBX9
+Badges: Achados do Dia, SanDisk, MicroSD, MicroSDXC, 128GB, Classe 10, Até 100MB/s, Celular
+open_url: https://mercadolivre.com/sec/2vehHS4
+checked_url: https://mercadolivre.com/sec/2vehHS4
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-TCW4&tid=1669e005-bc86-4f9f-b89c-2f5234957ed9
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-KT52&tid=8108bf52-7565-4cb9-9f71-57d57a8d5cb1
