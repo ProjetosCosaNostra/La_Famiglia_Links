@@ -38,6 +38,12 @@ jobs:
           ref: gh-pages
           fetch-depth: 0
 
+      - name: Sync latest gh-pages before run
+        run: |
+          git fetch origin gh-pages
+          git checkout gh-pages
+          git reset --hard origin/gh-pages
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -103,36 +109,47 @@ jobs:
             logs/link_guardian_removed.txt
             data/link_guardian_memory.json
 
-      - name: Commit & push (if changed)
+      - name: Commit & push review files only (if changed)
+        shell: bash
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-
-            git add produtos.json
-
-            if [ -f data/link_guardian_memory.json ]; then
-              git add data/link_guardian_memory.json
-            fi
-
-            if [ -f data/link_guardian_removed.json ]; then
-              git add data/link_guardian_removed.json
-            fi
-
-            if [ -f logs/link_guardian_removed.txt ]; then
-              git add logs/link_guardian_removed.txt
-            fi
-
-            if [ -f data/link_guardian_review.json ]; then
-              git add data/link_guardian_review.json
-            fi
-
-            if [ -f logs/link_guardian_review.txt ]; then
-              git add logs/link_guardian_review.txt
-            fi
-
-            git commit -m "chore: Link Guardian update produtos.json"
-            git push origin gh-pages
-          else
-            echo "No changes."
+          if [ -z "$(git status --porcelain -- data/link_guardian_review.json logs/link_guardian_review.txt data/link_guardian_removed.json logs/link_guardian_removed.txt data/link_guardian_memory.json)" ]; then
+            echo "No review report changes."
+            exit 0
           fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/link_guardian_review.json
+          git add logs/link_guardian_review.txt
+          git add data/link_guardian_removed.json
+          git add logs/link_guardian_removed.txt
+          git add data/link_guardian_memory.json
+
+          git commit -m "chore: Link Guardian update review reports"
+
+          if git push origin gh-pages; then
+            echo "Push concluído na primeira tentativa."
+            exit 0
+          fi
+
+          echo "Push rejeitado por branch adiantado. Sincronizando com o remoto e recalculando os relatórios..."
+          git fetch origin gh-pages
+          git reset --hard origin/gh-pages
+
+          python tools/link_guardian.py
+
+          if [ -z "$(git status --porcelain -- data/link_guardian_review.json logs/link_guardian_review.txt data/link_guardian_removed.json logs/link_guardian_removed.txt data/link_guardian_memory.json)" ]; then
+            echo "Após sincronizar, não houve mudanças pendentes."
+            exit 0
+          fi
+
+          git add data/link_guardian_review.json
+          git add logs/link_guardian_review.txt
+          git add data/link_guardian_removed.json
+          git add logs/link_guardian_removed.txt
+          git add data/link_guardian_memory.json
+
+          git commit -m "chore: Link Guardian refresh review reports after sync"
+
+          git push origin gh-pages
