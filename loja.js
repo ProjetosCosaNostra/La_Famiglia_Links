@@ -202,12 +202,10 @@
     ],
   };
 
-  const CN_PRIMARY_MAX_DESKTOP = 6;
-  const CN_PRIMARY_MAX_MOBILE = 5;
-  const CN_SUBCATEGORY_MAX_DESKTOP = 6;
-  const CN_SUBCATEGORY_MAX_MOBILE = 4;
-  const CN_UTILITY_MAX_DESKTOP = 4;
-  const CN_UTILITY_MAX_MOBILE = 3;
+  const CN_SUBCATEGORY_MAX_DESKTOP = 12;
+  const CN_SUBCATEGORY_MAX_MOBILE = 8;
+  const CN_UTILITY_MAX_DESKTOP = 8;
+  const CN_UTILITY_MAX_MOBILE = 5;
 
   // allowlist para tags com dígito que ainda são úteis (se quiser manter)
   const CN_CAT_ALLOW_DIGITS = new Set([
@@ -2442,8 +2440,6 @@
     const secondarySection = document.getElementById("chipSectionSecondary");
     const utilitySection = document.getElementById("chipSectionUtility");
     const secondaryLabel = document.getElementById("chipSectionSecondaryLabel");
-    const accordion = document.getElementById("chipAccordionRefine");
-    const accordionMeta = document.getElementById("chipAccordionMeta");
 
     const queryOnlyList = (activeList || []).filter((p) => {
       const q = cleanText(STATE.query || "");
@@ -2467,7 +2463,7 @@
     }
 
     const isMobile = window.matchMedia("(max-width: 720px)").matches;
-    const primaryMax = isMobile ? CN_PRIMARY_MAX_MOBILE : CN_PRIMARY_MAX_DESKTOP;
+    const primaryMax = isMobile ? 8 : 12;
     const secondaryMax = isMobile ? CN_SUBCATEGORY_MAX_MOBILE : CN_SUBCATEGORY_MAX_DESKTOP;
     const utilityMax = isMobile ? CN_UTILITY_MAX_MOBILE : CN_UTILITY_MAX_DESKTOP;
 
@@ -2492,28 +2488,6 @@
       secondaryLabel.textContent = structured.selectedPrimary
         ? `Refinar ${structured.selectedPrimary}`
         : "Refinar por subcategoria";
-    }
-
-    if (accordion) {
-      const hasRefine = !!(secondaryItems.length || utilityItems.length);
-      const activeKey = normalizeTagKey(STATE.tag || "");
-      const hasSecondaryActive = secondaryItems.some((item) => normalizeTagKey(item.label) === activeKey);
-      const hasUtilityActive = utilityItems.some((item) => normalizeTagKey(item.label) === activeKey);
-
-      accordion.hidden = !hasRefine;
-
-      if (accordionMeta) {
-        const metaBits = [];
-        if (secondaryItems.length) metaBits.push(`${secondaryItems.length} sub`);
-        if (utilityItems.length) metaBits.push(`${utilityItems.length} atributos`);
-        accordionMeta.textContent = metaBits.length ? metaBits.join(" • ") : "Subcategorias e atributos";
-      }
-
-      const userTouched = accordion.dataset.userTouched === "1";
-      const userOpen = accordion.dataset.userOpen === "1";
-      const shouldOpen = hasSecondaryActive || hasUtilityActive || (!!STATE.query && hasRefine) || (userTouched && userOpen);
-
-      accordion.open = !!shouldOpen;
     }
   }
 
@@ -3042,6 +3016,23 @@
     showToast("Lista copiada ✅");
   }
 
+
+
+  function scrollToTarget(target, focusEl) {
+    if (!target) return;
+    try {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch {
+      target.scrollIntoView(true);
+    }
+
+    if (focusEl) {
+      setTimeout(() => {
+        try { focusEl.focus({ preventScroll: true }); } catch { try { focusEl.focus(); } catch {} }
+      }, 260);
+    }
+  }
+
   function makeBgClickThrough() {
     const bg = document.querySelector(".bg");
     if (!bg) return;
@@ -3058,12 +3049,46 @@
     const sortSel = $("#sortSel");
     const moreBtn = $("#btnMore");
 
+    const dockTop = $("#dockTop");
+    const dockSearch = $("#dockSearch");
+    const dockCategories = $("#dockCategories");
+    const dockFeatured = $("#dockFeatured");
+
+    const secTop = $("#sec-topo");
+    const secNav = $("#sec-navegacao-comercial");
+    const secFeatured = $("#sec-produto-do-dia");
+    const categoriesAnchor = $("#chipSectionPrimary");
+
     if (q) {
       q.value = STATE.query || "";
       q.addEventListener("input", (e) => {
         STATE.query = String(e.target.value || "");
         STATE.limit = PAGE_SIZE;
         render();
+      });
+    }
+
+    if (dockTop) {
+      dockTop.addEventListener("click", () => {
+        scrollToTarget(secTop || document.body);
+      });
+    }
+
+    if (dockSearch) {
+      dockSearch.addEventListener("click", () => {
+        scrollToTarget(secNav || q || document.body, q || null);
+      });
+    }
+
+    if (dockCategories) {
+      dockCategories.addEventListener("click", () => {
+        scrollToTarget(categoriesAnchor || secNav || document.body);
+      });
+    }
+
+    if (dockFeatured) {
+      dockFeatured.addEventListener("click", () => {
+        scrollToTarget(secFeatured || document.body);
       });
     }
 
@@ -3108,15 +3133,6 @@
       moreBtn.addEventListener("click", () => {
         STATE.limit += PAGE_SIZE;
         render();
-      });
-    }
-
-    const accordion = $("#chipAccordionRefine");
-    if (accordion && !accordion.dataset.boundToggle) {
-      accordion.dataset.boundToggle = "1";
-      accordion.addEventListener("toggle", () => {
-        accordion.dataset.userTouched = "1";
-        accordion.dataset.userOpen = accordion.open ? "1" : "0";
       });
     }
 
@@ -3169,32 +3185,6 @@
       if (openCats) {
         e.preventDefault();
         openTagModal();
-        return;
-      }
-
-      const focusSearch = e.target.closest('[data-action="focusSearch"]');
-      if (focusSearch) {
-        e.preventDefault();
-        const box = document.getElementById("secBuscaLoja");
-        const input = document.getElementById("qLoja");
-        if (box) box.scrollIntoView({ behavior: "smooth", block: "start" });
-        setTimeout(() => {
-          try { if (input) input.focus({ preventScroll: true }); } catch { try { if (input) input.focus(); } catch {} }
-        }, 180);
-        return;
-      }
-
-      const focusCategories = e.target.closest('[data-action="focusCategories"]');
-      if (focusCategories) {
-        e.preventDefault();
-        const box = document.getElementById("secCategoriasLoja");
-        const accordion = document.getElementById("chipAccordionRefine");
-        if (box) box.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (accordion && !accordion.hidden) {
-          accordion.open = true;
-          accordion.dataset.userTouched = "1";
-          accordion.dataset.userOpen = "1";
-        }
         return;
       }
 
