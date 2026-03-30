@@ -696,8 +696,8 @@
     <section class="panel">
       <div class="panel__head">
         <div>
-          <h2>Filtro & categorias</h2>
-          <p>Buscar por texto, filtrar por categorias reais e ordenar. Tudo em tempo real.</p>
+          <h2>Navegação comercial</h2>
+          <p>Primeiro escolha a família principal. Depois refine por subcategoria e atributo, sem poluir a navegação.</p>
         </div>
         <div class="panel__right">
           <select class="select" id="sortSel" aria-label="Ordenação">
@@ -722,8 +722,21 @@
           </div>
         </div>
 
-        <div class="toolRow" style="margin-top:6px;">
-          <div class="tagChips" id="tagChips" aria-label="Categorias"></div>
+        <div class="toolRow toolRow--stack" style="margin-top:6px;">
+          <div class="chipSection" id="chipSectionPrimary">
+            <div class="chipSection__label">Categorias principais</div>
+            <div class="tagChips" id="tagPrimaryChips" aria-label="Categorias principais"></div>
+          </div>
+
+          <div class="chipSection" id="chipSectionSecondary">
+            <div class="chipSection__label" id="chipSectionSecondaryLabel">Refinar por subcategoria</div>
+            <div class="tagChips" id="tagSecondaryChips" aria-label="Subcategorias"></div>
+          </div>
+
+          <div class="chipSection chipSection--soft" id="chipSectionUtility">
+            <div class="chipSection__label">Atributos rápidos</div>
+            <div class="tagChips" id="tagUtilityChips" aria-label="Atributos rápidos"></div>
+          </div>
         </div>
 
         <!-- ✅ Ferramentas (listas/export) serão injetadas pelo loja.js (recolhível no mobile) -->
@@ -758,8 +771,8 @@
     <section class="panel">
       <div class="panel__head">
         <div>
-          <h2>Vitrine</h2>
-          <p>Produtos ativos (vendáveis). Clique em “Comprar” ou copie o ID.</p>
+          <h2>Vitrine comercial</h2>
+          <p>Produtos ativos e compráveis, com visual mais limpo e leitura mais forte para decisão rápida.</p>
         </div>
       </div>
 
