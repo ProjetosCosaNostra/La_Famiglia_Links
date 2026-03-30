@@ -80,22 +80,31 @@
   // Pinned: sempre aparecem no topo (principalmente no mobile)
   const CN_CAT_PINNED = [
     "Achados do Dia",
+    "Beleza",
+    "Maquiagem",
+    "Olhos",
+    "Paleta de Sombras",
+    "Rosto",
+    "Gloss Labial",
+    "Corretivo",
+    "Cílios",
+    "Skincare",
+    "Perfume",
+    "Organização",
     "Casa",
     "Cozinha",
     "Home Office",
     "Carro",
     "Moto",
     "Segurança",
-    "Setup",
-    "Wi-Fi",
     "Notebook",
     "PC",
     "Celular",
+    "Wi-Fi",
     "Bluetooth",
     "USB",
     "Sem Fio",
     "Portátil",
-    "Organização",
     "Casa Inteligente",
     "Premium",
     "Praticidade",
@@ -141,9 +150,34 @@
 
   const CN_CATEGORY_ALIAS_PAIRS = [
     ["achados do dia", "Achados do Dia"],
+
+    ["beleza e cuidado pessoal", "Beleza"],
+    ["cuidado pessoal", "Beleza"],
+    ["beleza", "Beleza"],
+    ["maquiagem", "Maquiagem"],
+    ["make", "Maquiagem"],
+    ["olhos", "Olhos"],
+    ["rosto", "Rosto"],
+    ["paleta de sombras", "Paleta de Sombras"],
+    ["paleta de sombra", "Paleta de Sombras"],
+    ["sombras", "Paleta de Sombras"],
+    ["gloss labial", "Gloss Labial"],
+    ["gloss", "Gloss Labial"],
+    ["corretivo", "Corretivo"],
+    ["cilios", "Cílios"],
+    ["extensao de cilios", "Cílios"],
+    ["cola para cilios", "Cílios"],
+    ["cola para extensao de cilios", "Cílios"],
+    ["skincare", "Skincare"],
+    ["cuidados com a pele", "Skincare"],
+    ["hidratante", "Skincare"],
+    ["serum", "Skincare"],
+    ["perfume", "Perfume"],
+    ["body splash", "Perfume"],
+    ["fragrancia", "Perfume"],
+    ["fragrancias", "Perfume"],
+
     ["feminino", "Feminino"],
-    ["beleza", "Feminino"],
-    ["maquiagem", "Feminino"],
     ["casa", "Casa"],
     ["cozinha", "Cozinha"],
     ["home office", "Home Office"],
@@ -186,6 +220,8 @@
     ["viagem", "Portátil"],
     ["organizacao", "Organização"],
     ["organizador", "Organização"],
+    ["organizador de maquiagem", "Organização"],
+    ["porta maquiagem", "Organização"],
     ["casa inteligente", "Casa Inteligente"],
     ["smart home", "Casa Inteligente"],
     ["premium", "Premium"],
@@ -208,13 +244,113 @@
       negativePhrases: [],
     },
     {
-      label: "Feminino",
+      label: "Beleza",
       minScore: 7,
-      strongPhrases: ["body splash", "escova secadora", "acessorio feminino", "gloss labial", "necessaire feminina"],
-      weakPhrases: ["maquiagem", "beleza", "skincare", "perfume", "hidratante", "chapinha", "secador", "gloss", "batom", "base", "corretivo", "paleta", "brinco", "colar", "pulseira", "anel", "bolsa", "vestido", "saia", "blusa feminina", "lingerie", "necessaire"],
-      strongTokens: ["feminino", "gloss", "batom", "skincare", "lingerie"],
-      weakTokens: ["beleza", "maquiagem", "perfume", "serum", "cabelo", "bolsa"],
+      strongPhrases: ["beleza e cuidado pessoal", "cuidado pessoal", "body splash", "perfume", "skincare", "hidratante"],
+      weakPhrases: ["beleza", "cuidados com a pele", "serum", "hidratante", "fragrancia", "fragrancias"],
+      strongTokens: ["beleza", "skincare", "serum", "hidratante", "perfume"],
+      weakTokens: ["pele", "fragrancia", "fragrancias"],
       negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Maquiagem",
+      minScore: 7,
+      strongPhrases: ["paleta de sombras", "gloss labial", "blush stick", "corretivo liquido", "lapis labial", "batom liquido", "pincel de maquiagem", "kit de pinceis", "iluminador liquido"],
+      weakPhrases: ["maquiagem", "gloss", "batom", "blush", "corretivo", "paleta", "sombras", "pincel", "iluminador", "bronzer", "rimel", "mascara de cilios", "delineador"],
+      strongTokens: ["maquiagem", "gloss", "batom", "blush", "corretivo", "paleta", "sombras", "pincel", "iluminador", "bronzer"],
+      weakTokens: ["rimel", "delineador", "make"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Olhos",
+      minScore: 8,
+      strongPhrases: ["paleta de sombras", "mascara de cilios", "cola para cilios", "extensao de cilios", "delineador", "lapis de olho"],
+      weakPhrases: ["olhos", "sombras", "cilios", "delineador", "rimel"],
+      strongTokens: ["olhos", "cilios", "sombras", "delineador", "rimel"],
+      weakTokens: ["lapis", "mascara"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Paleta de Sombras",
+      minScore: 9,
+      strongPhrases: ["paleta de sombras", "paleta de sombra", "sombra compacta"],
+      weakPhrases: ["sombras", "paleta"],
+      strongTokens: ["paleta", "sombras"],
+      weakTokens: ["olhos"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Rosto",
+      minScore: 8,
+      strongPhrases: ["corretivo liquido", "base liquida", "blush stick", "bronzer", "iluminador liquido"],
+      weakPhrases: ["rosto", "corretivo", "base", "blush", "bronzer", "iluminador"],
+      strongTokens: ["rosto", "corretivo", "base", "blush", "bronzer", "iluminador"],
+      weakTokens: [],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Gloss Labial",
+      minScore: 9,
+      strongPhrases: ["gloss labial", "lip gloss"],
+      weakPhrases: ["gloss"],
+      strongTokens: ["gloss"],
+      weakTokens: ["labial"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Corretivo",
+      minScore: 9,
+      strongPhrases: ["corretivo liquido", "corretivo alta cobertura"],
+      weakPhrases: ["corretivo"],
+      strongTokens: ["corretivo"],
+      weakTokens: ["cobertura"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Cílios",
+      minScore: 9,
+      strongPhrases: ["cola para cilios", "extensao de cilios", "cola para extensao de cilios", "mascara de cilios"],
+      weakPhrases: ["cilios", "extensao"],
+      strongTokens: ["cilios"],
+      weakTokens: ["extensao", "cola"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Skincare",
+      minScore: 8,
+      strongPhrases: ["cuidados com a pele", "skincare", "hidratante facial", "serum facial"],
+      weakPhrases: ["hidratante", "serum", "pele"],
+      strongTokens: ["skincare", "hidratante", "serum"],
+      weakTokens: ["pele"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Perfume",
+      minScore: 8,
+      strongPhrases: ["body splash", "perfume feminino", "perfume importado"],
+      weakPhrases: ["perfume", "fragrancia", "fragrancias"],
+      strongTokens: ["perfume", "fragrancia", "fragrancias"],
+      weakTokens: ["body", "splash"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela"],
+      negativePhrases: [],
+    },
+    {
+      label: "Feminino",
+      minScore: 8,
+      strongPhrases: ["acessorio feminino", "bolsa feminina", "vestido feminino", "lingerie feminina", "necessaire feminina", "brinco feminino", "colar feminino"],
+      weakPhrases: ["feminino", "bolsa", "brinco", "colar", "pulseira", "anel", "vestido", "saia", "blusa feminina", "lingerie", "necessaire"],
+      strongTokens: ["feminino", "lingerie"],
+      weakTokens: ["bolsa", "brinco", "colar", "pulseira", "anel", "vestido", "saia", "necessaire"],
+      negativeTokens: ["ssd", "nvme", "roteador", "capacete", "panela", "maquiagem", "paleta", "gloss", "corretivo", "cilios"],
       negativePhrases: [],
     },
     {
@@ -412,6 +548,46 @@
   const CN_CATEGORY_ALIAS_MAP = new Map(
     CN_CATEGORY_ALIAS_PAIRS.map(([k, v]) => [normalizeSearchText(k), v])
   );
+
+  const CN_EDITORIAL_CATEGORIES = new Set([
+    "feminino",
+    "premium",
+    "praticidade",
+  ]);
+
+  const CN_CATEGORY_PRIORITY_MAP = new Map([
+    ["achados do dia", 300],
+    ["beleza", 260],
+    ["maquiagem", 250],
+    ["olhos", 240],
+    ["paleta de sombras", 235],
+    ["rosto", 230],
+    ["gloss labial", 225],
+    ["corretivo", 220],
+    ["cilios", 215],
+    ["skincare", 210],
+    ["perfume", 205],
+    ["organizacao", 180],
+    ["casa", 160],
+    ["cozinha", 158],
+    ["home office", 156],
+    ["seguranca", 154],
+    ["carro", 152],
+    ["moto", 150],
+    ["notebook", 148],
+    ["pc", 146],
+    ["celular", 144],
+    ["wi fi", 142],
+    ["bluetooth", 140],
+    ["usb", 138],
+    ["sem fio", 136],
+    ["portatil", 134],
+    ["casa inteligente", 132],
+    ["setup", 120],
+    ["premium", 40],
+    ["praticidade", 30],
+    ["feminino", 20],
+  ]);
 
   const CN_PLACEHOLDER_IMG =
     "data:image/svg+xml;charset=UTF-8," +
@@ -721,8 +897,18 @@
 
   function canonicalPinnedLabel(label) {
     const key = normalizeTagKey(label);
+    const mapped = CN_CATEGORY_ALIAS_MAP.get(key);
+    if (mapped) return mapped;
     const found = CN_CAT_PINNED.find((x) => normalizeTagKey(x) === key);
     return found || cleanText(label);
+  }
+
+  function isEditorialCategory(label) {
+    return CN_EDITORIAL_CATEGORIES.has(normalizeTagKey(label));
+  }
+
+  function getCategoryPriorityBoost(label) {
+    return Number(CN_CATEGORY_PRIORITY_MAP.get(normalizeTagKey(label)) || 0);
   }
 
   function splitLooseList(value) {
@@ -1432,8 +1618,8 @@
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buyBtn = (disabled || !hasLink)
-      ? `<button class="btn btn--gold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
+      ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
+      : `<a class="btn btn--gold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
@@ -1454,20 +1640,20 @@
         </div>
         <div class="card__body">
           <h3 class="name">${escapeHTML(p.title)}</h3>
-          ${p.price_text ? `<p class="meta meta--price">${escapeHTML(p.price_text)}</p>` : ``}
-          ${desc ? `<p class="meta meta--soft">${escapeHTML(desc)}</p>` : ``}
+          ${p.price_text ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
+          <p class="meta">${escapeHTML(desc)}</p>
 
           <div class="row">
             <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.id_busca || "")}</b></div>
           </div>
 
-          ${tags ? `<p class="meta meta--tags">${escapeHTML(tags)}</p>` : ``}
+          ${tags ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
 
           <div class="actions">
             ${buyBtn}
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
-            ${altBtn ? altBtn.replace('btn btn--tiny btn--glass', 'btn btn--tiny btn--glass btn--secondary-soft') : ``}
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            ${altBtn}
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
           </div>
         </div>
       </div>
@@ -1492,9 +1678,9 @@
           </p>
 
           <div class="actions" style="margin-top:6px;">
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
-            ${p.alt_url ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link alt</button>` : ``}
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
             <a class="btn btn--tiny btn--gold" href="./">Abrir Home</a>
           </div>
 
@@ -1518,8 +1704,8 @@
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buy = (disabled || !hasLink)
-      ? `<button class="smallBtn smallBtnGold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
+      : `<a class="smallBtn smallBtnGold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
@@ -1532,15 +1718,15 @@
         </div>
         <div class="pBody">
           <p class="pName">${escapeHTML(p.title)}</p>
-          ${p.price_text ? `<p class="pSmall pSmall--price">${escapeHTML(p.price_text)}</p>` : ``}
-          ${desc ? `<p class="pSmall pSmall--soft">${escapeHTML(desc)}</p>` : ``}
-          ${tags ? `<p class="pSmall pSmall--tags">${escapeHTML(tags)}</p>` : ``}
+          ${p.price_text ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
+          <p class="pSmall">${escapeHTML(desc)}</p>
+          ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
 
           <div class="pActions">
             ${buy}
-            <button class="smallBtn btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="smallBtn btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
-            ${p.alt_url ? `<button class="smallBtn btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link alt</button>` : ``}
+            <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
           </div>
         </div>
       </div>
@@ -1645,12 +1831,22 @@
       const k = normalizeTagKey(pin);
       if (map.has(k)) {
         const it = map.get(k);
-        out.push({ label: pin, n: it.n });
+        out.push({ label: canonicalPinnedLabel(pin), n: it.n });
         map.delete(k);
       }
     }
 
-    const rest = Array.from(map.values()).sort((a, b) => b.n - a.n);
+    const rest = Array.from(map.values()).sort((a, b) => {
+      const aEditorial = isEditorialCategory(a.label) ? 1 : 0;
+      const bEditorial = isEditorialCategory(b.label) ? 1 : 0;
+      if (aEditorial !== bEditorial) return aEditorial - bEditorial;
+
+      const boostDiff = getCategoryPriorityBoost(b.label) - getCategoryPriorityBoost(a.label);
+      if (boostDiff !== 0) return boostDiff;
+
+      if (b.n !== a.n) return b.n - a.n;
+      return String(a.label).localeCompare(String(b.label), "pt-BR");
+    });
     return out.concat(rest);
   }
 
