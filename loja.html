@@ -833,8 +833,16 @@
     <div class="grain"></div>
   </div>
 
+
+  <nav class="floatingLojaNav" aria-label="Atalhos rápidos da Loja Completa">
+    <a class="floatingLojaNav__btn" href="#topoLoja">⬆️ <span>Topo</span></a>
+    <button class="floatingLojaNav__btn" type="button" data-action="focusSearch">🔎 <span>Buscar</span></button>
+    <button class="floatingLojaNav__btn" type="button" data-action="focusCategories">🏷️ <span>Categorias</span></button>
+    <a class="floatingLojaNav__btn floatingLojaNav__btn--gold" href="./">🏠 <span>Voltar Home</span></a>
+  </nav>
+
   <main class="page">
-    <header class="hero">
+    <header class="hero" id="topoLoja">
       <div class="hero__brand">
         <div class="brandMark" aria-hidden="true">
           <img
@@ -893,7 +901,7 @@
       </div>
     </header>
 
-    <section class="panel">
+    <section class="panel" id="secProdutoDiaLoja">
       <div class="panel__head">
         <div>
           <h2>Navegação comercial</h2>
@@ -909,7 +917,7 @@
       </div>
 
       <div class="lojaTools">
-        <div class="toolRow">
+        <div class="toolRow" id="secBuscaLoja">
           <div class="quickSearch" role="search" style="flex:1 1 320px;">
             <span class="quickIcon">🔎</span>
             <input id="qLoja" placeholder="Buscar produto (ex: mochila, whey, mouse...)" />
@@ -922,21 +930,30 @@
           </div>
         </div>
 
-        <div class="toolRow toolRow--stack" style="margin-top:6px;">
+        <div class="toolRow toolRow--stack toolRow--stackCompact" id="secCategoriasLoja" style="margin-top:6px;">
           <div class="chipSection" id="chipSectionPrimary">
             <div class="chipSection__label">Famílias principais</div>
             <div class="tagChips" id="tagPrimaryChips" aria-label="Categorias principais"></div>
           </div>
 
-          <div class="chipSection" id="chipSectionSecondary">
-            <div class="chipSection__label" id="chipSectionSecondaryLabel">Subcategorias da família</div>
-            <div class="tagChips" id="tagSecondaryChips" aria-label="Subcategorias"></div>
-          </div>
+          <details class="chipAccordion" id="chipAccordionRefine">
+            <summary class="chipAccordion__summary">
+              <span class="chipAccordion__title">Refinar navegação</span>
+              <span class="chipAccordion__meta" id="chipAccordionMeta">Subcategorias e atributos</span>
+            </summary>
 
-          <div class="chipSection chipSection--soft" id="chipSectionUtility">
-            <div class="chipSection__label">Atributos rápidos</div>
-            <div class="tagChips" id="tagUtilityChips" aria-label="Atributos rápidos"></div>
-          </div>
+            <div class="chipAccordion__body">
+              <div class="chipSection" id="chipSectionSecondary">
+                <div class="chipSection__label" id="chipSectionSecondaryLabel">Subcategorias da família</div>
+                <div class="tagChips" id="tagSecondaryChips" aria-label="Subcategorias"></div>
+              </div>
+
+              <div class="chipSection chipSection--soft" id="chipSectionUtility">
+                <div class="chipSection__label">Atributos rápidos</div>
+                <div class="tagChips" id="tagUtilityChips" aria-label="Atributos rápidos"></div>
+              </div>
+            </div>
+          </details>
         </div>
 
         <!-- ✅ Ferramentas (listas/export) serão injetadas pelo loja.js (recolhível no mobile) -->
@@ -958,7 +975,7 @@
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="secVitrineLoja">
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
