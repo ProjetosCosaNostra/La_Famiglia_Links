@@ -48,6 +48,13 @@
      - Categorias: só “macro-categorias” úteis + pinned (mobile não fica incompleto).
      - “Ver todas” abre modal premium com busca.
      - Contador “Categorias” vira 14+ (premium), total aparece no “Ver todas (X)”.
+
+   PATCH 2026-03-29 (ESTRUTURA COMERCIAL DAS CATEGORIAS):
+     - Loja Completa passa a separar: categorias principais / subcategorias / atributos rápidos
+     - Categoria principal canônica ganha prioridade real sobre macro-inferência
+     - Subcategorias passam a responder ao contexto da categoria selecionada
+     - Atributos editoriais/técnicos ficam em faixa separada para não poluir a navegação
+     - Botões de compra ganham padrão visual mais próximo da home
    ========================================================== */
 
 (() => {
@@ -114,6 +121,48 @@
   const CN_CAT_MIN_COUNT = 3;               // mais agressivo: reduz poluição
   const CN_CAT_MAX_CHIPS_DESKTOP = 20;
   const CN_CAT_MAX_CHIPS_MOBILE = 14;       // mobile “completo” sem virar mural
+
+  const CN_PRIMARY_CATEGORY_ORDER = [
+    "Beleza",
+    "Maquiagem",
+    "Olhos",
+    "Rosto",
+    "Paleta de Sombras",
+    "Gloss Labial",
+    "Corretivo",
+    "Cílios",
+    "Skincare",
+    "Perfume",
+    "Organização",
+    "Casa",
+    "Cozinha",
+    "Home Office",
+    "Segurança",
+    "Carro",
+    "Moto",
+    "Notebook",
+    "PC",
+    "Celular",
+  ];
+
+  const CN_UTILITY_CATEGORY_ORDER = [
+    "Achados do Dia",
+    "Premium",
+    "Praticidade",
+    "Casa Inteligente",
+    "Setup",
+    "Wi-Fi",
+    "Bluetooth",
+    "USB",
+    "Sem Fio",
+    "Portátil",
+    "Feminino",
+  ];
+
+  const CN_SUBCATEGORY_MAX_DESKTOP = 12;
+  const CN_SUBCATEGORY_MAX_MOBILE = 8;
+  const CN_UTILITY_MAX_DESKTOP = 10;
+  const CN_UTILITY_MAX_MOBILE = 6;
 
   // allowlist para tags com dígito que ainda são úteis (se quiser manter)
   const CN_CAT_ALLOW_DIGITS = new Set([
@@ -911,6 +960,160 @@
     return Number(CN_CATEGORY_PRIORITY_MAP.get(normalizeTagKey(label)) || 0);
   }
 
+
+  function isPrimaryCommercialCategory(label) {
+    const key = normalizeTagKey(label);
+    return CN_PRIMARY_CATEGORY_ORDER.some((x) => normalizeTagKey(x) === key);
+  }
+
+  function isUtilityCategory(label) {
+    const key = normalizeTagKey(label);
+    return CN_UTILITY_CATEGORY_ORDER.some((x) => normalizeTagKey(x) === key) || isEditorialCategory(label);
+  }
+
+  function orderByExplicitList(items, explicitOrder) {
+    const orderMap = new Map(explicitOrder.map((label, idx) => [normalizeTagKey(label), idx]));
+    return (items || []).slice().sort((a, b) => {
+      const ai = orderMap.has(normalizeTagKey(a.label)) ? orderMap.get(normalizeTagKey(a.label)) : 9999;
+      const bi = orderMap.has(normalizeTagKey(b.label)) ? orderMap.get(normalizeTagKey(b.label)) : 9999;
+      if (ai !== bi) return ai - bi;
+
+      const boostDiff = getCategoryPriorityBoost(b.label) - getCategoryPriorityBoost(a.label);
+      if (boostDiff !== 0) return boostDiff;
+
+      if (b.n !== a.n) return b.n - a.n;
+      return String(a.label).localeCompare(String(b.label), "pt-BR");
+    });
+  }
+
+  function countLabelMap(list, extractor, options = {}) {
+    const counts = new Map();
+    const min = Number(options.min || 1);
+
+    for (const p of (list || [])) {
+      const rawValues = safeArray(extractor(p));
+      const unique = uniqLabels(rawValues);
+      for (const label of unique) {
+        const clean = canonicalPinnedLabel(label);
+        const key = normalizeTagKey(clean);
+        if (!clean || !key) continue;
+        const prev = counts.get(key);
+        counts.set(key, { label: clean, n: ((prev && prev.n) ? prev.n : 0) + 1 });
+      }
+    }
+
+    return Array.from(counts.values()).filter((item) => item.n >= min);
+  }
+
+  function productMatchesTag(p, tag) {
+    const key = normalizeTagKey(tag || "");
+    if (!key) return true;
+    const categories = getDisplayCategories(p);
+    const canonical = getCanonicalCategories(p);
+    const rawBadges = safeArray(p.badges);
+    return categories.some((x) => normalizeTagKey(x) === key) ||
+      canonical.some((x) => normalizeTagKey(x) === key) ||
+      rawBadges.some((x) => normalizeTagKey(x) === key);
+  }
+
+  function getStructuredPrimaryCategory(p) {
+    const primary = canonicalPinnedLabel(getCanonicalPrimaryCategory(p));
+    if (primary && isPrimaryCommercialCategory(primary)) return primary;
+
+    const canonical = getCanonicalCategories(p);
+    const canonicalPrimaryLike = canonical.find((label) => isPrimaryCommercialCategory(label));
+    if (canonicalPrimaryLike) return canonicalPrimaryLike;
+
+    const smart = getSmartCategories(p);
+    const smartPrimaryLike = smart.find((label) => isPrimaryCommercialCategory(label));
+    if (smartPrimaryLike) return smartPrimaryLike;
+
+    return primary || canonical[0] || smart[0] || "";
+  }
+
+  function getStructuredSecondaryCategories(p) {
+    const primaryKey = normalizeTagKey(getStructuredPrimaryCategory(p));
+    const canonicalSecondary = getCanonicalSecondaryCategories(p).map(canonicalPinnedLabel);
+
+    let source = canonicalSecondary.length
+      ? canonicalSecondary
+      : getSmartCategories(p).map(canonicalPinnedLabel);
+
+    source = uniqLabels(source).filter((label) => {
+      const key = normalizeTagKey(label);
+      if (!key) return false;
+      if (key === primaryKey) return false;
+      if (isUtilityCategory(label)) return false;
+      return true;
+    });
+
+    return source;
+  }
+
+  function getStructuredUtilityCategories(p) {
+    const out = [];
+    const seen = new Set();
+    const add = (label) => {
+      const clean = canonicalPinnedLabel(label);
+      const key = normalizeTagKey(clean);
+      if (!clean || seen.has(key)) return;
+      seen.add(key);
+      out.push(clean);
+    };
+
+    const all = uniqLabels([
+      ...getCanonicalCategories(p),
+      ...getSmartCategories(p),
+      ...safeArray(p.badges),
+    ]);
+
+    for (const label of all) {
+      if (isUtilityCategory(label)) add(label);
+    }
+
+    return out;
+  }
+
+  function buildStructuredCategoryModel(list, queryFilteredList) {
+    const baseList = Array.isArray(queryFilteredList) ? queryFilteredList.slice() : (list || []).slice();
+    const selectedKey = normalizeTagKey(STATE.tag || "");
+
+    const primaryCounts = orderByExplicitList(
+      countLabelMap(baseList, (p) => [getStructuredPrimaryCategory(p)], { min: 1 }).filter((item) => isPrimaryCommercialCategory(item.label)),
+      CN_PRIMARY_CATEGORY_ORDER
+    );
+
+    const selectedPrimary = primaryCounts.find((item) => normalizeTagKey(item.label) === selectedKey);
+    const secondaryBase = selectedPrimary
+      ? baseList.filter((p) => productMatchesTag(p, selectedPrimary.label))
+      : baseList;
+
+    const secondaryMin = selectedPrimary ? 1 : 2;
+    const secondaryCounts = orderCategories(
+      countLabelMap(secondaryBase, getStructuredSecondaryCategories, { min: secondaryMin }).filter((item) => !isPrimaryCommercialCategory(item.label) && !isUtilityCategory(item.label))
+    );
+
+    const utilityCounts = orderByExplicitList(
+      countLabelMap(secondaryBase, getStructuredUtilityCategories, { min: selectedPrimary ? 1 : 2 }).filter((item) => isUtilityCategory(item.label)),
+      CN_UTILITY_CATEGORY_ORDER
+    );
+
+    const uniqueTotal = new Set([
+      ...primaryCounts.map((item) => normalizeTagKey(item.label)),
+      ...secondaryCounts.map((item) => normalizeTagKey(item.label)),
+      ...utilityCounts.map((item) => normalizeTagKey(item.label)),
+    ]);
+
+    return {
+      primaryCounts,
+      secondaryCounts,
+      utilityCounts,
+      selectedPrimary: selectedPrimary ? selectedPrimary.label : "",
+      totalCount: uniqueTotal.size,
+      baseList: secondaryBase,
+    };
+  }
+
   function splitLooseList(value) {
     if (Array.isArray(value)) {
       return value.map(cleanText).filter(Boolean);
@@ -1619,7 +1822,7 @@
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
+      : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
 
     const badge = isProdutoDoDia
       ? `<div class="badge">⭐ Produto do dia</div>`
@@ -1629,7 +1832,7 @@
     const tags = tagsText(p.badges);
 
     const altBtn = p.alt_url
-      ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Link Alt</button>`
+      ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Link Alt</button>`
       : ``;
 
     return `
@@ -1651,9 +1854,9 @@
 
           <div class="actions">
             ${buyBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
             ${altBtn}
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
           </div>
         </div>
       </div>
@@ -1678,9 +1881,9 @@
           </p>
 
           <div class="actions" style="margin-top:6px;">
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="btn btn--tiny btn--glass" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="btn btn--tiny btn--glass" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
             <a class="btn btn--tiny btn--gold" href="./">Abrir Home</a>
           </div>
 
@@ -1704,8 +1907,8 @@
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buy = (disabled || !hasLink)
-      ? `<button class="smallBtn smallBtnGold" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      ? `<button class="smallBtn smallBtnGold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
+      : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
@@ -1724,9 +1927,9 @@
 
           <div class="pActions">
             ${buy}
-            <button class="smallBtn" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-            <button class="smallBtn" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="smallBtn" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
+            <button class="smallBtn btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            <button class="smallBtn btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="smallBtn btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
           </div>
         </div>
       </div>
@@ -1998,105 +2201,54 @@
     const listEl = document.getElementById("cnTagList");
     if (!listEl) return;
 
-    const all = Array.isArray(STATE._categoryCounts) ? STATE._categoryCounts.slice() : [];
+    const data = STATE._structuredCategories || { primaryCounts: [], secondaryCounts: [], utilityCounts: [] };
     const q = normalizeTagKey((document.getElementById("cnTagSearch") || {}).value || "");
-
-    const filtered = q
-      ? all.filter((t) => normalizeTagKey(t.label).includes(q))
-      : all;
-
     const activeKey = normalizeTagKey(STATE.tag || "");
 
-    const items = [];
-    items.push(`
-      <button type="button" class="${!activeKey ? "active" : ""}" data-tag="">
-        👑 Tudo <span style="opacity:.75;">(${STATE._activeCount || 0})</span>
-      </button>
+    const groups = [
+      { title: "Categorias principais", items: data.primaryCounts || [] },
+      { title: "Refinar categoria", items: data.secondaryCounts || [] },
+      { title: "Atributos rápidos", items: data.utilityCounts || [] },
+    ];
+
+    const html = [];
+    html.push(`
+      <div class="cnModal__group">
+        <div class="cnModal__groupTitle">Tudo</div>
+        <button type="button" class="${!activeKey ? "active" : ""}" data-tag="">
+          👑 Tudo <span style="opacity:.75;">(${STATE._activeCount || 0})</span>
+        </button>
+      </div>
     `);
 
-    for (const t of filtered) {
-      const key = normalizeTagKey(t.label);
-      const isActive = (activeKey === key);
-      items.push(`
-        <button type="button" class="${isActive ? "active" : ""}" data-tag="${escapeHTML(key)}">
-          ${escapeHTML(t.label)} <span style="opacity:.75;">(${t.n})</span>
-        </button>
-      `);
+    for (const group of groups) {
+      const items = (group.items || []).filter((item) => !q || normalizeTagKey(item.label).includes(q));
+      if (!items.length) continue;
+      html.push(`<div class="cnModal__group"><div class="cnModal__groupTitle">${escapeHTML(group.title)}</div>`);
+      for (const item of items) {
+        const key = normalizeTagKey(item.label);
+        const isActive = (activeKey === key);
+        html.push(`
+          <button type="button" class="${isActive ? "active" : ""}" data-tag="${escapeHTML(key)}">
+            ${escapeHTML(item.label)} <span style="opacity:.75;">(${item.n})</span>
+          </button>
+        `);
+      }
+      html.push(`</div>`);
     }
 
-    listEl.innerHTML = items.join("");
+    listEl.innerHTML = html.join("");
 
     listEl.onclick = (ev) => {
       const btn = ev.target.closest("button[data-tag]");
       if (!btn) return;
 
       const tag = String(btn.getAttribute("data-tag") || "").trim();
-      STATE.tag = tag;
-      if (tag) {
-        STATE.query = "";
-        const qEl = $("#qLoja");
-        if (qEl) qEl.value = "";
-      }
+      STATE.tag = (normalizeTagKey(STATE.tag || "") === tag) ? "" : tag;
       STATE.limit = PAGE_SIZE;
       closeTagModal();
       render();
     };
-  }
-
-  function renderTagChips(activeList) {
-    const box = $("#tagChips");
-    const totalTagsEl = $("#tagsCount");
-    if (!box) return;
-
-    const countsAll = buildTagCounts(activeList);
-    const categoriesRaw = countsAll.filter((t) => isCategoryTag(t.label, t.n));
-    const categories = orderCategories(categoriesRaw);
-
-    STATE._categoryCounts = categories.slice();
-    STATE._activeCount = (activeList || []).length;
-
-    const isMobile = window.matchMedia("(max-width: 720px)").matches;
-    const maxChips = isMobile ? CN_CAT_MAX_CHIPS_MOBILE : CN_CAT_MAX_CHIPS_DESKTOP;
-
-    let top = categories.slice(0, maxChips);
-
-    // se categoria selecionada não está em top, injeta no começo
-    const activeKey = normalizeTagKey(STATE.tag || "");
-    if (activeKey && !top.some((t) => normalizeTagKey(t.label) === activeKey)) {
-      const sel = categories.find((t) => normalizeTagKey(t.label) === activeKey);
-      if (sel) top = [sel, ...top].slice(0, maxChips);
-    }
-
-    // contador premium: "14+" quando tem mais
-    setText(totalTagsEl, categories.length > top.length ? `${top.length}+` : `${top.length}`);
-
-    const allActive = !STATE.tag;
-    const chips = [];
-
-    chips.push(`
-      <button class="tagChip ${allActive ? "tagChip--active" : ""}" type="button" data-tag="">
-        👑 Tudo
-      </button>
-    `);
-
-    for (const t of top) {
-      const isActive = normalizeTagKey(STATE.tag) === normalizeTagKey(t.label);
-      chips.push(`
-        <button class="tagChip ${isActive ? "tagChip--active" : ""}" type="button" data-tag="${escapeHTML(normalizeTagKey(t.label))}">
-          ${escapeHTML(t.label)} <span style="opacity:.75;">(${t.n})</span>
-        </button>
-      `);
-    }
-
-    if (categories.length > top.length) {
-      chips.push(`
-        <button class="tagChip" type="button" data-action="openTags">
-          🔎 Ver todas (${categories.length})
-        </button>
-      `);
-    }
-
-    box.innerHTML = chips.join("");
   }
 
   function setCounters({ totalActive, totalFiltered, shownNow }) {
@@ -2772,7 +2924,7 @@
       const chip = e.target.closest("[data-tag]");
       if (chip && chip.classList.contains("tagChip")) {
         const t = String(chip.getAttribute("data-tag") || "").trim();
-        STATE.tag = t;
+        STATE.tag = (normalizeTagKey(STATE.tag || "") === t) ? "" : t;
         STATE.limit = PAGE_SIZE;
         render();
         return;
