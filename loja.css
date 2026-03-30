@@ -367,15 +367,250 @@
 }
 
 
-/* ==========================================================
-   HOTFIX 2026-03-29 — Vitrine Comercial
-   - evita espaço morto gigante entre texto e botões
-   - mantém imagem no topo e traz os botões para perto do conteúdo
-   ========================================================== */
-.panel .pBody{
-  height:auto;
+/* =========================
+   PATCH 2026-03-29
+   Estrutura comercial das categorias + refino visual
+   ========================= */
+
+.toolRow--stack{
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
 }
 
-.panel .pActions{
-  margin-top:12px;
+.chipSection{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.chipSection__label{
+  font-family: Cinzel, serif;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(224,195,107,.88);
+  opacity: .96;
+  padding-left: 2px;
+}
+
+.chipSection--soft .chipSection__label{
+  color: rgba(255,255,255,.68);
+}
+
+#tagPrimaryChips .tagChip{
+  border-color: rgba(224,195,107,.22);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.18));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+#tagPrimaryChips .tagChip.tagChip--active{
+  border-color: rgba(224,195,107,.52);
+  background: linear-gradient(180deg, rgba(224,195,107,.14), rgba(0,0,0,.18));
+  color: rgba(255,236,180,.98);
+}
+
+#tagSecondaryChips .tagChip{
+  border-color: rgba(215,176,88,.18);
+}
+
+#tagUtilityChips .tagChip{
+  border-color: rgba(255,255,255,.12);
+  background: rgba(0,0,0,.16);
+  color: rgba(255,255,255,.78);
+}
+
+#tagUtilityChips .tagChip.tagChip--active{
+  border-color: rgba(215,176,88,.34);
+  color: rgba(255,236,180,.95);
+  background: rgba(215,176,88,.10);
+}
+
+.cnModal__group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  width:100%;
+}
+
+.cnModal__group + .cnModal__group{
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(215,176,88,.10);
+}
+
+.cnModal__groupTitle{
+  width:100%;
+  font-family: Cinzel, serif;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(224,195,107,.88);
+  opacity: .95;
+}
+
+.pCard{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
+    rgba(7,7,9,.52);
+}
+
+.pBody{
+  gap: 8px;
+}
+
+.pName{
+  text-wrap: balance;
+}
+
+.pActions{
+  gap: 8px;
+}
+
+.smallBtn.btn--secondary-soft{
+  border-color: rgba(215,176,88,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.14));
+}
+
+@media (max-width: 720px){
+  .chipSection{
+    gap: 7px;
+  }
+
+  .chipSection__label{
+    font-size: 10px;
+    letter-spacing: .16em;
+  }
+}
+
+
+/* =========================
+   PATCH 2026-03-29 — lapidação final
+   ========================= */
+
+.panel__head{
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.panel__right{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  min-width: 220px;
+}
+
+.panel__right .select{
+  min-width: 220px;
+}
+
+.productsGrid .pCard{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+  border-color: rgba(215,176,88,.16);
+  box-shadow: 0 18px 36px rgba(0,0,0,.18);
+}
+
+.productsGrid .pCard:hover{
+  border-color: rgba(215,176,88,.28);
+}
+
+.productsGrid .pBody{
+  display:block !important;
+  gap:8px;
+  min-height:0 !important;
+  height:auto !important;
+}
+
+.productsGrid .pName{
+  line-height:1.12;
+  text-wrap: balance;
+}
+
+.productsGrid .pActions{
+  margin-top:12px !important;
+  padding-top:0 !important;
+}
+
+#tagPrimaryChips .tagChip{
+  font-size: 12.5px;
+}
+
+#tagSecondaryChips .tagChip{
+  font-size: 12px;
+}
+
+#tagUtilityChips .tagChip{
+  font-size: 11.5px;
+}
+
+@media (max-width: 860px){
+  .panel__head{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .panel__right{
+    width:100%;
+    min-width: 0;
+    justify-content: stretch;
+  }
+
+  .panel__right .select{
+    width:100%;
+    min-width: 0;
+  }
+
+  .lojaTools .toolRow:first-child{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lojaTools .toolRow:first-child > *{
+    width:100%;
+  }
+}
+
+/* HOTFIX 2026-03-29 — vitrine comercial estável */
+.productsGrid .pBody > * + *{
+  margin-top:8px;
+}
+
+.productsGrid .pActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.productsGrid .pActions .smallBtn{
+  flex:0 1 auto;
+}
+
+@media (max-width: 520px){
+  .panel{
+    border-radius: 22px;
+  }
+
+  .panel__head h2{
+    font-size: 1.02rem;
+  }
+
+  .productsGrid{
+    gap: 14px;
+  }
+
+  .productsGrid .pCard{
+    border-radius: 20px;
+  }
+
+  .productsGrid .pName{
+    font-size: 1rem;
+  }
+
+  .productsGrid .smallBtn{
+    min-height: 38px;
+  }
 }
