@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-29T20:22:14Z",
+  "updated_at": "2026-03-30T20:31:45Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6435,7 +6435,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XXZH",
       "image": "https://github.com/user-attachments/assets/010e3b1f-19eb-40c3-9778-2a7f8b970996",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6467,6 +6467,61 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1yfq6U7",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BED%2BIpXlhncvTu43M3BCIQKggq50SSmH8Zu%2FUB9XnqM5jsLuR%2FOc5Il4VizpLqYpvBCy4UR4pF6cHHP%2FmPSpUeqgISf3fZ30R2UQv1B%2FkgHkq6BuVEBpSqtmVizgvtRX%2BEaOrjH9Aoigk7fap%2Bv1zPLZrBAFH6TWl8EPr5M7hEwoewzlabU1jKPc6nCORe6RMt8Gs33YyWvj%2Fwu2BA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "batom-brilho-labial-moranguinho-10un-cheiro-morango",
+      "title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
+      "badges": [
+        "Achados do Dia",
+        "Morango",
+        "Brilho Labial",
+        "10 Unidades",
+        "Presenteável",
+        "Revenda"
+      ],
+      "id_busca": "5J5PKG-ZQ3W",
+      "open_url": "https://meli.la/1SwzQEv",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ZQ3W",
+      "image": "https://github.com/user-attachments/assets/0a80e9b4-bb7f-4cff-8c92-a08f67a4ba06",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 172,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172",
+      "issue_title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
+      "categoria_principal": "Beleza & Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Lábios",
+        "Batons",
+        "Brilho Labial",
+        "Lip Balm"
+      ],
+      "aliases_busca": [
+        "batom moranguinho",
+        "brilho labial moranguinho",
+        "lip balm morango",
+        "balm morango",
+        "gloss morango",
+        "batom cheiro de morango",
+        "kit 10 batons moranguinho",
+        "batom labial moranguinho"
+      ],
+      "quick_home": true,
+      "_source_issue_number": 172,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1SwzQEv",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
