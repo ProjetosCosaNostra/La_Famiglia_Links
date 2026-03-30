@@ -2,6 +2,9 @@
   --bg:#050505;
   --bg2:#070707;
 
+  --bg-image-desktop: url("assets/bg-ny-desktop.png");
+  --bg-image-mobile: url("assets/bg-ny-mobile.png");
+
   --panel: rgba(10,10,10,.60);
   --panel2: rgba(255,255,255,.035);
 
@@ -101,9 +104,12 @@ input:focus-visible{
   z-index:-1;
   overflow:hidden;
   background:
-    radial-gradient(900px 420px at 72% 10%, rgba(199,162,75,.20), transparent 55%),
-    radial-gradient(700px 380px at 18% 20%, rgba(199,162,75,.11), transparent 60%),
-    radial-gradient(520px 240px at 50% 92%, rgba(255,255,255,.05), transparent 62%),
+    linear-gradient(180deg, rgba(4,4,5,.18), rgba(4,4,5,.12) 42%, rgba(4,4,5,.20)),
+    linear-gradient(90deg, rgba(5,5,5,.08) 0%, rgba(5,5,5,.03) 32%, rgba(5,5,5,0) 62%, rgba(5,5,5,.06) 100%),
+    var(--bg-image-desktop) right center / cover no-repeat,
+    radial-gradient(900px 420px at 72% 10%, rgba(199,162,75,.16), transparent 55%),
+    radial-gradient(700px 380px at 18% 20%, rgba(199,162,75,.08), transparent 60%),
+    radial-gradient(520px 240px at 50% 92%, rgba(255,255,255,.04), transparent 62%),
     linear-gradient(180deg, #050505, #0a0a0a 40%, #050505);
 }
 
@@ -113,6 +119,7 @@ input:focus-visible{
   position:absolute;
   inset:0;
   background:
+    linear-gradient(90deg, rgba(5,5,5,.00) 0%, rgba(5,5,5,.00) 34%, rgba(5,5,5,.10) 58%, rgba(5,5,5,.22) 82%, rgba(5,5,5,.34) 100%),
     repeating-linear-gradient(
       90deg,
       rgba(224,195,107,.05) 0px,
@@ -120,7 +127,7 @@ input:focus-visible{
       transparent 1px,
       transparent 64px
     );
-  opacity:.07;
+  opacity:.08;
   pointer-events:none;
   mix-blend-mode: overlay;
 }
@@ -131,8 +138,9 @@ input:focus-visible{
   position:absolute;
   inset:-20%;
   background:
-    radial-gradient(900px 420px at 50% 0%, rgba(224,195,107,.08), transparent 60%);
-  opacity:.35;
+    radial-gradient(900px 420px at 50% 0%, rgba(224,195,107,.06), transparent 60%),
+    linear-gradient(90deg, rgba(5,5,5,.14) 0%, rgba(5,5,5,.04) 30%, rgba(5,5,5,0) 62%, rgba(5,5,5,.12) 100%);
+  opacity:.30;
   pointer-events:none;
 }
 
@@ -299,6 +307,27 @@ input:focus-visible{
   letter-spacing: .2px;
 }
 .floatingStoreCTA a .gold{ color: rgba(215, 176, 88, 1); }
+
+@media (max-width: 720px){
+  .bg{
+    background:
+      linear-gradient(180deg, rgba(4,4,5,.16), rgba(4,4,5,.10) 42%, rgba(4,4,5,.18)),
+      linear-gradient(90deg, rgba(5,5,5,.06) 0%, rgba(5,5,5,.02) 30%, rgba(5,5,5,0) 60%, rgba(5,5,5,.08) 100%),
+      var(--bg-image-mobile) right center / cover no-repeat,
+      radial-gradient(780px 360px at 74% 12%, rgba(199,162,75,.14), transparent 56%),
+      radial-gradient(560px 260px at 18% 18%, rgba(199,162,75,.07), transparent 60%),
+      radial-gradient(420px 220px at 50% 92%, rgba(255,255,255,.03), transparent 62%),
+      linear-gradient(180deg, #050505, #0a0a0a 42%, #050505);
+  }
+
+  .bg::before{
+    opacity:.06;
+  }
+
+  .bg::after{
+    opacity:.24;
+  }
+}
 
 @media (max-width: 520px){
   .floatingStoreCTA{ right: 10px; bottom: 10px; }
