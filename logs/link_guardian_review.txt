@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-30T08:00:11Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-03-30T13:58:02Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-03-30T13:54:26Z
+Issue: #16
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/16
+SKU: wap-robot-w90-3em1-preto
+Título: Robô Aspirador WAP Robot W90 3 em 1 (Varre, Aspira e Passa Pano)
+ID ML: 5J5PKG-TCW4
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Casa & Pets, Robô Aspirador, WAP, 3 em 1, Passa pano, Sensores, Oferta
+open_url: https://mercadolivre.com/sec/2J1MBX9
+checked_url: https://mercadolivre.com/sec/2J1MBX9
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-TCW4&tid=1669e005-bc86-4f9f-b89c-2f5234957ed9
