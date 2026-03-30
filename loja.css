@@ -485,117 +485,71 @@
   }
 }
 
-
 /* =========================
-   PATCH 2026-03-29 — lapidação final
+   HOTFIX 2026-03-29-2
+   Corrige colapso da imagem nos cards da Vitrine Comercial
    ========================= */
-
-.panel__head{
-  gap: 14px;
-  align-items: flex-start;
+.pCard{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
 }
 
-.panel__right{
+.pImg{
+  position:relative;
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-  min-width: 220px;
+  justify-content:center;
+  width:100%;
+  aspect-ratio: 4 / 5;
+  min-height: 320px;
+  overflow:hidden;
+  border-bottom:1px solid rgba(215,176,88,.10);
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255,255,255,.03), rgba(0,0,0,.18) 70%),
+    rgba(0,0,0,.16);
 }
 
-.panel__right .select{
-  min-width: 220px;
+.pImg img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
-.productsGrid .pCard{
+.pBody{
   display:flex;
   flex-direction:column;
-  min-height:100%;
-  border-color: rgba(215,176,88,.16);
-  box-shadow: 0 18px 36px rgba(0,0,0,.18);
+  gap:10px;
+  flex:1 1 auto;
 }
 
-.productsGrid .pCard:hover{
-  border-color: rgba(215,176,88,.28);
+.pBody .pName,
+.pBody .pSmall{
+  margin:0;
 }
 
-.productsGrid .pBody{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  min-height:100%;
-}
-
-.productsGrid .pName{
-  line-height:1.12;
-  text-wrap: balance;
-}
-
-.productsGrid .pActions{
+.pActions{
   margin-top:auto;
-  padding-top:4px;
+  padding-top:6px;
 }
 
-#tagPrimaryChips .tagChip{
-  font-size: 12.5px;
+@media (max-width: 980px){
+  .pImg{
+    min-height: 300px;
+  }
 }
 
-#tagSecondaryChips .tagChip{
-  font-size: 12px;
-}
-
-#tagUtilityChips .tagChip{
-  font-size: 11.5px;
-}
-
-@media (max-width: 860px){
-  .panel__head{
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .panel__right{
-    width:100%;
-    min-width: 0;
-    justify-content: stretch;
-  }
-
-  .panel__right .select{
-    width:100%;
-    min-width: 0;
-  }
-
-  .lojaTools .toolRow:first-child{
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .lojaTools .toolRow:first-child > *{
-    width:100%;
+@media (max-width: 720px){
+  .pImg{
+    min-height: 340px;
+    aspect-ratio: 4 / 5;
   }
 }
 
 @media (max-width: 520px){
-  .panel{
-    border-radius: 22px;
-  }
-
-  .panel__head h2{
-    font-size: 1.02rem;
-  }
-
-  .productsGrid{
-    gap: 14px;
-  }
-
-  .productsGrid .pCard{
-    border-radius: 20px;
-  }
-
-  .productsGrid .pName{
-    font-size: 1rem;
-  }
-
-  .productsGrid .smallBtn{
-    min-height: 38px;
+  .pImg{
+    min-height: 360px;
+    aspect-ratio: 4 / 5;
   }
 }
