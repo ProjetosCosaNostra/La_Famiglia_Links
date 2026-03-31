@@ -1,81 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-31T19:18:43Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-03-31T21:11:54Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 3
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 3
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 3
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-03-31T19:14:10Z
-Issue: #123
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
-SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
-Título: Smart Box Proeletronic Smartpro 16GB 4K HD com Controle Remoto - Preto
-ID ML: 5J5PKG-XJE6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
-open_url: https://meli.la/28cnKAr
-checked_url: https://meli.la/28cnKAr
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
-
-[ALTA] review_only_storefront
-Quando: 2026-03-31T19:14:10Z
-Issue: #65
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/65
-SKU: escova-secadora-britania-bec07r-4em1-1300w-rosa
-Título: Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)
-ID ML: 5J5PKG-K8TV
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Cabelo, Escova Secadora, 4 em 1, 1300W, Cabo Giratório 360°, Rosa
-open_url: https://meli.la/1Vd3P8y
-checked_url: https://meli.la/1Vd3P8y
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K8TV&tid=3ad1cedb-5ea8-459c-a50f-0353eb988b65
-
-[ALTA] review_only_storefront
-Quando: 2026-03-31T19:14:10Z
-Issue: #20
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/20
-SKU: ventilador-mondial-30cm-super-power-60w-vsp-30-w
-Título: Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)
-ID ML: 5J5PKG-YXAM
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achado do Dia, Ventilador, Mondial, 30cm, 60W, Super Power, VSP-30-W, Casa
-open_url: https://mercadolivre.com/sec/1PnEZeq
-checked_url: https://mercadolivre.com/sec/1PnEZeq
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YXAM&tid=de6d92c9-f438-4822-8945-f5a3d58a5b9a
+Nenhum item pendente de revisão/manutenção no momento.
