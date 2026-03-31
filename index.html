@@ -1495,6 +1495,51 @@
       }
     }
 
+    /* =========================
+       HOTFIX 2026-03-31
+       botão "Ver todos" da Vitrine Rápida no mobile
+       - correção cirúrgica
+       - sem mexer na estrutura geral
+       ========================= */
+    #btnVerTodosTop{
+      white-space: nowrap;
+      flex-wrap: nowrap;
+      line-height: 1;
+    }
+
+    #btnVerTodosTop span{
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px){
+      #sec-vitrine-rapida .panel__head{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      #sec-vitrine-rapida .panel__right{
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      #btnVerTodosTop{
+        width: fit-content;
+        max-width: 100%;
+        align-self: flex-start;
+        min-height: 40px;
+        padding: 10px 14px;
+        font-size: .92rem;
+      }
+    }
+
+    @media (max-width: 420px){
+      #btnVerTodosTop{
+        font-size: .88rem;
+        padding: 10px 12px;
+      }
+    }
+
   </style>
 </head>
 
