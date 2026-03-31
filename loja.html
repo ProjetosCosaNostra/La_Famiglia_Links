@@ -1330,5 +1330,31 @@
     })();
   </script>
 
+
+  <script>
+    (function(){
+      var box = document.querySelector('.heroActionsMore');
+      if(!box) return;
+
+      var mq = window.matchMedia('(max-width: 640px)');
+
+      function syncHeroActionsMore(){
+        if(mq.matches){
+          box.removeAttribute('open');
+        }else{
+          box.setAttribute('open', 'open');
+        }
+      }
+
+      syncHeroActionsMore();
+
+      if(typeof mq.addEventListener === 'function'){
+        mq.addEventListener('change', syncHeroActionsMore);
+      }else if(typeof mq.addListener === 'function'){
+        mq.addListener(syncHeroActionsMore);
+      }
+    })();
+  </script>
+
 </body>
 </html>
