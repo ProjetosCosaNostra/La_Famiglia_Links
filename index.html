@@ -1184,6 +1184,220 @@
       }
     }
 
+
+    /* =========================
+       LETREIRO INTEGRADO AO HERO
+       ========================= */
+    .hero {
+      align-items: flex-start;
+    }
+
+    .hero__brand {
+      display: block;
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .heroMarqueeWrap {
+      position: relative;
+      width: min(100%, 640px);
+      margin: 0 0 14px 0;
+      line-height: 0;
+    }
+
+    .heroMarquee {
+      display: block;
+      width: 100%;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .heroMarquee img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+    }
+
+    .brandMark--hero {
+      position: absolute;
+      left: clamp(18px, 2.1vw, 22px);
+      top: clamp(18px, 2vw, 24px);
+      width: 66px;
+      height: 66px;
+      margin: 0;
+      z-index: 2;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.28));
+    }
+
+    .heroCopy {
+      max-width: 560px;
+    }
+
+    .heroCopy .sub {
+      margin-top: 0;
+      max-width: none;
+    }
+
+    .heroCopy .chips,
+    .heroCopy .countPill,
+    .heroCopy .imperialNote--top {
+      margin-top: 12px;
+    }
+
+    .heroCopy .imperialNote--top {
+      max-width: 540px;
+    }
+
+    .hero__actions {
+      flex: 0 0 300px;
+    }
+
+    @media (max-width: 980px) {
+      .heroMarqueeWrap {
+        width: min(100%, 600px);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .hero__brand {
+        width: 100%;
+      }
+
+      .heroMarqueeWrap {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 12px;
+      }
+
+      .brandMark--hero {
+        left: clamp(14px, 3vw, 18px);
+        top: clamp(14px, 3vw, 18px);
+        width: 62px;
+        height: 62px;
+      }
+
+      .brandMark--hero .brandLogo {
+        width: 43px;
+        height: 43px;
+      }
+
+      .heroCopy,
+      .heroCopy .imperialNote--top {
+        max-width: none;
+      }
+
+      .hero__actions {
+        width: 100%;
+        flex-basis: auto;
+        gap: 8px;
+      }
+
+      .hero__actions .miniNote {
+        border-radius: 16px;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .heroMarqueeWrap {
+        margin-bottom: 10px;
+      }
+
+      .brandMark--hero {
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+      }
+
+      .brandMark--hero .brandLogo {
+        width: 38px;
+        height: 38px;
+      }
+
+      .heroCopy .sub {
+        font-size: .98rem;
+        line-height: 1.38;
+      }
+
+      .heroCopy .chips {
+        gap: 7px;
+      }
+
+      .heroCopy .chip {
+        min-height: 30px;
+        padding: 4px 10px;
+        font-size: .83rem;
+      }
+
+      .heroCopy .countPill {
+        min-height: 34px;
+        font-size: .9rem;
+      }
+
+      .heroCopy .imperialNote--top {
+        padding: 8px 10px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding: 14px;
+      }
+
+      .heroMarquee img {
+        border-radius: 18px;
+      }
+
+      .brandMark--hero {
+        left: 12px;
+        top: 12px;
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+      }
+
+      .brandMark--hero .brandLogo {
+        width: 34px;
+        height: 34px;
+      }
+
+      .heroCopy .chips {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, max-content));
+        align-items: start;
+        justify-content: start;
+      }
+
+      .heroCopy .chip:last-child {
+        grid-column: 1 / -1;
+        width: fit-content;
+      }
+
+      .heroCopy .imperialNote--top {
+        font-size: .92rem;
+      }
+
+      .hero__actions .btn {
+        min-height: 44px;
+      }
+
+      .hero__actions .btn--social {
+        min-height: 40px;
+      }
+
+      .hero__actions .miniNote {
+        padding: 10px 12px;
+        font-size: .86rem;
+      }
+    }
+
   </style>
 </head>
 
@@ -1205,19 +1419,30 @@
   <main class="page">
     <header class="hero">
       <div class="hero__brand">
-        <div class="brandMark" aria-hidden="true">
-          <img
-            class="brandLogo"
-            src="assets/logo.png"
-            alt="Cosa Nostra"
-            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
-          />
-          <span class="brandFallback">🎩♟️</span>
+        <div class="heroMarqueeWrap" aria-label="Central Premium — Cosa Nostra — A Família das Ideias">
+          <picture class="heroMarquee">
+            <source media="(max-width: 720px)" srcset="assets/topo-central-premium-mobile.png" />
+            <img
+              src="assets/topo-central-premium-desktop.png"
+              alt="Central Premium — Cosa Nostra — A Família das Ideias"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
+
+          <div class="brandMark brandMark--hero" aria-hidden="true">
+            <img
+              class="brandLogo"
+              src="assets/logo.png"
+              alt="Cosa Nostra"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
+            />
+            <span class="brandFallback">🎩♟️</span>
+          </div>
         </div>
 
-        <div class="hero__text hero__text--brandstack">
-          <h1 class="title title--imperial">Central Premium</h1>
-          <p class="kicker kicker--subtitle">Cosa Nostra • A Família das Ideias</p>
+        <div class="heroCopy">
           <p class="sub">
             Links oficiais + vitrine de produtos (Achados do Dia).
           </p>
