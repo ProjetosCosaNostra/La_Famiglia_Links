@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-30T20:31:45Z",
+  "updated_at": "2026-03-31T21:05:49Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6488,7 +6488,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ZQ3W",
       "image": "https://github.com/user-attachments/assets/0a80e9b4-bb7f-4cff-8c92-a08f67a4ba06",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6522,6 +6522,62 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1SwzQEv",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "ice-creamy-lip-balm-mari-maria-vanilla-10ml",
+      "title": "Ice Creamy Lip Balm Mari Maria Makeup Vanilla 10ml",
+      "badges": [
+        "Achados do Dia",
+        "Lip Balm",
+        "Vanilla",
+        "Mari Maria",
+        "Presenteável",
+        "Feminino"
+      ],
+      "id_busca": "5J5PKG-B7HJ",
+      "open_url": "https://meli.la/1tZaBVw",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFCfVoIuWUbZm5R4oxTFPJuQyB0ROX0RYeGwgRTKlo7jJMnqcptoaplPyp%2BSNaNtzXa8nH9yZbRAZmofg7gzZsrLb8E%2B7TMXEs3JxKZjHl3bAewBsm1yRPsJ6nxjDIi7WLgkw2zOl2D%2F6aAHaAtLSHstmVocJT1m3RHk6gfDiJiOQAdH1FwPNd%2FUJX%2B%2FP4LzY5hZAQ8VCtNbdhgAgA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-B7HJ",
+      "image": "https://github.com/user-attachments/assets/a4b8def6-4d36-4089-ade2-4bcbf8431920",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 173,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173",
+      "issue_title": "Ice Creamy Lip Balm Mari Maria Makeup Vanilla 10ml",
+      "categoria_principal": "Beleza",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Lábios",
+        "Lip Balm",
+        "Hidratante Labial"
+      ],
+      "aliases_busca": [
+        "Ice Creamy",
+        "Ice Creamy Lip Balm",
+        "Mari Maria",
+        "Mari Maria Makeup",
+        "Lip Balm Vanilla",
+        "Balm Labial Vanilla",
+        "Hidratante Labial",
+        "Brilho Cremoso",
+        "Vanilla 10ml"
+      ],
+      "quick_home": true,
+      "quick_home_order": 2,
+      "_source_issue_number": 173,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1tZaBVw",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFCfVoIuWUbZm5R4oxTFPJuQyB0ROX0RYeGwgRTKlo7jJMnqcptoaplPyp%2BSNaNtzXa8nH9yZbRAZmofg7gzZsrLb8E%2B7TMXEs3JxKZjHl3bAewBsm1yRPsJ6nxjDIi7WLgkw2zOl2D%2F6aAHaAtLSHstmVocJT1m3RHk6gfDiJiOQAdH1FwPNd%2FUJX%2B%2FP4LzY5hZAQ8VCtNbdhgAgA%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
