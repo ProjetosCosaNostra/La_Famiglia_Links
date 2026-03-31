@@ -1,9 +1,206 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-03-31T07:44:49Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-03-31T14:05:13Z
+Itens pendentes: 10
+SKUs únicos: 10
+Prioridade alta: 10
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 10
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 10
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_listing_invalid: 5
+- storefront_social_profile_unconfirmed: 5
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #4
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
+SKU: mochila-impermeavel-notebook-15-6
+Título: Mochila Executiva Romantic Crown
+ID ML: 5J5PKG-PQ4S
+Ação sugerida: trocar_link
+Motivo: storefront_social_profile_unconfirmed
+Bucket do motivo: perfil social sem confirmação
+Status HTTP: 200
+Confiança: 39 (invalido)
+Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
+open_url: https://meli.la/2v1QEWV
+checked_url: https://meli.la/2v1QEWV
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+SKU: relogio-parede-30cm-prata-branco-lzbq
+Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
+ID ML: 5J5PKG-LZBQ
+Ação sugerida: trocar_link
+Motivo: storefront_social_profile_unconfirmed
+Bucket do motivo: perfil social sem confirmação
+Status HTTP: 200
+Confiança: 38 (invalido)
+Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
+open_url: https://meli.la/12D2w1B
+checked_url: https://meli.la/12D2w1B
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #97
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/97
+SKU: kit-porta-mantimentos-hermetico-12un-124l
+Título: Kit Porta Mantimentos Hermético Quadrado 12 Unidades (12,4L)
+ID ML: 5J5PKG-7Y0N
+Ação sugerida: trocar_link
+Motivo: storefront_social_profile_unconfirmed
+Bucket do motivo: perfil social sem confirmação
+Status HTTP: 200
+Confiança: 39 (invalido)
+Badges: Achados do Dia, Cozinha, Organização, Porta Mantimentos, Potes Herméticos, Empilhável, Quadrado, 12 Unidades
+open_url: https://meli.la/1LXCKN3
+checked_url: https://meli.la/1LXCKN3
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAqF8560chFQwQkocwokszRTtRabhhmF7iAxseuy2oXx9dIaJwfBJfPnYjp%2FyQauuvelA3syoPEsYkKPSg7Q5IQejKTqtRZAjmNS1HQ2vPAu4eisyRnntT59C6RpgV3ODEhPV0bDQtFUteusgtfFE9d3Y0vKooavPV%2B05zNL9Yb8W%2FYvdDAlCptkm2nqp3idxZpwmA%3D%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-7Y0N&tid=fd09048a-053d-4697-847f-0e76f97791b8
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #92
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/92
+SKU: kit-10-panos-copa-felpudos-41x64-estampados
+Título: Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)
+ID ML: 5J5PKG-URBN
+Ação sugerida: trocar_link
+Motivo: storefront_listing_invalid
+Bucket do motivo: fallback para lista/busca
+Status HTTP: 200
+Confiança: 29 (invalido)
+Memória operacional: histórico recorrente (0x /lists, 1x listing)
+Badges: Achados do Dia, Cozinha, Pano de Copa, Pano de Prato, Têxteis de Cozinha, Kit 10, Felpudo, Estampados
+open_url: https://meli.la/2tA4Gqh
+checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982
+final_url: https://lista.mercadolivre.com.br/5J5PKG-URBN
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+SKU: cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto
+Título: interruptor-touch-wifi-novadigital-lite-s-2-teclas-preto
+ID ML: 5J5PKG-R5DE
+Ação sugerida: trocar_link
+Motivo: storefront_social_profile_unconfirmed
+Bucket do motivo: perfil social sem confirmação
+Status HTTP: 200
+Confiança: 35 (invalido)
+Badges: Interruptor Touch Wi-Fi Novadigital Lite-S (2 teclas) • Tuya • Alexa/Google • Preto
+open_url: https://meli.la/2jwrx5M
+checked_url: https://meli.la/2jwrx5M
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI6SZrG91AytJzSqt3uakStVqw90Pe8cIxeygvTmBW0N5EAkholtAIYALwVhfN4f2PCA5RU4cjl2pGW%2BH1t6J2zHWOTAVyyAo6wJP86r9YaQXid%2FrKN5BpGtiyKD8Qh1S%2FqimdtwVK2%2FLagLGYLpOz8bT53UXiI6jNBgMmSK8hpVa3%2F53meJPXDRIEJSX%2FR%2FR21Hwfk%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-R5DE&tid=22d23a70-64b5-4852-9435-9c97ebc61a1c
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #11
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/11
+SKU: tomada-inteligente-20a-medidor-5j5pkg-fpxm
+Título: Tomada Inteligente WiFi 20A + Medidor de Consumo (Tuya)
+ID ML: 5J5PKG-FPXM
+Ação sugerida: trocar_link
+Motivo: storefront_listing_invalid
+Bucket do motivo: fallback para lista/busca
+Status HTTP: 200
+Confiança: 29 (invalido)
+Memória operacional: histórico recorrente (0x /lists, 1x listing)
+Badges: Achados do Dia, Produto do Dia, Casa Inteligente, Economia de Energia, Tuya, 20A, Medidor de Consumo, Pino Grosso
+open_url: https://mercadolivre.com/sec/1aGeMPL
+checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-FPXM&tid=0f12170f-503a-404b-803f-d89ead34e7c2
+final_url: https://lista.mercadolivre.com.br/5J5PKG-FPXM
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-FPXM&tid=0f12170f-503a-404b-803f-d89ead34e7c2
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #42
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
+SKU: dashcam-4k-gps-azdome-m550-64gb
+Título: Câmera Veicular Dashcam 4K + GPS AZDOME M550 (IR) + Traseira + 64GB
+ID ML: 5J5PKG-3UQV
+Ação sugerida: trocar_link
+Motivo: storefront_listing_invalid
+Bucket do motivo: fallback para lista/busca
+Status HTTP: 200
+Confiança: 29 (invalido)
+Memória operacional: histórico recorrente (0x /lists, 1x listing)
+Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
+open_url: https://mercadolivre.com/sec/2M3LnVg
+checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
+final_url: https://lista.mercadolivre.com.br/5J5PKG-3UQV
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #94
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/94
+SKU: afiador-4em1-torvstore-mzub
+Título: Afiador 4 em 1 TORVSTORE — Afia Facas e Tesouras (Portátil)
+ID ML: 5J5PKG-MZUB
+Ação sugerida: trocar_link
+Motivo: storefront_listing_invalid
+Bucket do motivo: fallback para lista/busca
+Status HTTP: 200
+Confiança: 29 (invalido)
+Memória operacional: histórico recorrente (0x /lists, 1x listing)
+Badges: Achados do Dia, Cozinha, Churrasco, Afiador, Afiador 4 em 1, Facas, Tesouras, TORVSTORE
+open_url: https://meli.la/26NUChD
+checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MZUB&tid=dc7fdfa9-cb4c-4386-8941-21c79f22f427
+final_url: https://lista.mercadolivre.com.br/5J5PKG-MZUB
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MZUB&tid=dc7fdfa9-cb4c-4386-8941-21c79f22f427
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #129
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
+SKU: puma-flyer-runner-mesh-bdp
+Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
+ID ML: 5J5PKG-M95V
+Ação sugerida: trocar_link
+Motivo: storefront_listing_invalid
+Bucket do motivo: fallback para lista/busca
+Status HTTP: 200
+Confiança: 29 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 1x listing)
+Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
+open_url: https://meli.la/2D5FQRJ
+checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
+final_url: https://lista.mercadolivre.com.br/5J5PKG-6B4Q
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
+
+[ALTA] review_only_storefront
+Quando: 2026-03-31T13:54:16Z
+Issue: #172
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172
+SKU: batom-brilho-labial-moranguinho-10un-cheiro-morango
+Título: Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango
+ID ML: 5J5PKG-ZQ3W
+Ação sugerida: trocar_link
+Motivo: storefront_social_profile_unconfirmed
+Bucket do motivo: perfil social sem confirmação
+Status HTTP: 200
+Confiança: 40 (revisar_manual)
+Badges: Achados do Dia, Morango, Brilho Labial, 10 Unidades, Presenteável, Revenda
+open_url: https://meli.la/1SwzQEv
+checked_url: https://meli.la/1SwzQEv
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-ZQ3W
