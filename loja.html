@@ -964,6 +964,28 @@
       justify-content:flex-start;
     }
 
+    .heroActionsMore{
+      display:contents;
+    }
+
+    .heroActionsMore > summary{
+      list-style:none;
+      user-select:none;
+      cursor:pointer;
+    }
+
+    .heroActionsMore > summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .heroActionsMore__toggle{
+      display:none;
+    }
+
+    .heroActionsMore__panel{
+      display:contents;
+    }
+
     @media (max-width: 980px){
       .heroBanner__seal{
         top:14px;
@@ -988,6 +1010,11 @@
     }
 
     @media (max-width: 640px){
+      .hero{
+        padding:16px;
+        gap:14px;
+      }
+
       .heroBanner{
         border-radius:16px;
       }
@@ -999,16 +1026,67 @@
         right:10px;
       }
       .heroBanner__sealLogo{ width:38px; height:38px; }
+
       .hero__sub--banner{
         font-size:.97rem;
         max-width:none;
       }
+
+      .chips{
+        margin-top:10px;
+        gap:7px;
+      }
+
+      .countPill{
+        margin-top:10px;
+        padding:6px 10px;
+        font-size:.88rem;
+      }
+
+      .imperialNote--store{
+        padding:8px 10px;
+      }
+
+      .hero__actions{
+        display:flex !important;
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .heroActionsMore{
+        display:block;
+        width:100%;
+      }
+
+      .heroActionsMore__toggle{
+        display:flex;
+        width:100%;
+        min-height:46px;
+      }
+
+      .heroActionsMore__panel{
+        display:none;
+        margin-top:10px;
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .heroActionsMore[open] .heroActionsMore__panel{
+        display:flex;
+      }
+
+      .heroActionsMore[open] .heroActionsMore__toggle{
+        border-color:rgba(215,176,88,.26);
+        background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.16));
+      }
+
+      .heroActionsMore__panel .btn,
+      .heroActionsMore__panel .miniNote{
+        width:100%;
+      }
     }
 
     @media (max-width: 520px){
-      .hero__actions{
-        grid-template-columns:1fr;
-      }
       .heroBanner{
         border-radius:15px;
       }
@@ -1020,6 +1098,16 @@
         right:8px;
       }
       .heroBanner__sealLogo{ width:34px; height:34px; }
+
+      .hero__sub--banner{
+        font-size:.95rem;
+        line-height:1.34;
+      }
+
+      .heroActionsMore__toggle{
+        min-height:44px;
+        font-size:.92rem;
+      }
     }
 
   </style>
@@ -1092,18 +1180,25 @@
 
       <div class="hero__actions">
         <a class="btn btn--gold" href="./" id="btnHome">🏠 Voltar Home</a>
-        <a class="btn btn--glass" href="#" id="btnCopyLoja">📌 Copiar link da loja</a>
 
-        <!-- ✅ Instagram (mantido) -->
-        <a class="btn btn--glass btn--social-store" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+        <details class="heroActionsMore">
+          <summary class="btn btn--glass heroActionsMore__toggle">➕ Mais opções</summary>
 
-        <!-- ✅ Telegram (novo) -->
-        <a class="btn btn--glass btn--social-store" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+          <div class="heroActionsMore__panel">
+            <a class="btn btn--glass" href="#" id="btnCopyLoja">📌 Copiar link da loja</a>
 
-        <div class="miniNote">
-          <span class="dot"></span>
-          <span>Online • <b><span id="year"></span></b></span>
-        </div>
+            <!-- ✅ Instagram (mantido) -->
+            <a class="btn btn--glass btn--social-store" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+
+            <!-- ✅ Telegram (novo) -->
+            <a class="btn btn--glass btn--social-store" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+
+            <div class="miniNote">
+              <span class="dot"></span>
+              <span>Online • <b><span id="year"></span></b></span>
+            </div>
+          </div>
+        </details>
       </div>
     </header>
 
