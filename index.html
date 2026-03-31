@@ -1387,6 +1387,114 @@
       }
     }
 
+
+    /* =========================
+       AJUSTE MÓVEL CIRÚRGICO
+       - hero menor no celular
+       - CTA principal visível
+       - opções secundárias recolhidas
+       ========================= */
+    .heroMore{
+      display:none;
+    }
+
+    .heroMore__summary{
+      list-style:none;
+      cursor:pointer;
+      user-select:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:40px;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(215,176,88,.16);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.14));
+      color:rgba(255,255,255,.90);
+      font-weight:800;
+      letter-spacing:.08px;
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+
+    .heroMore__summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .heroMore__body{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .heroMore__body .btn,
+    .heroMore__body .miniNote{
+      margin:0;
+    }
+
+    .heroMore__body .heroMore__telegram,
+    .heroMore__body .heroMore__status{
+      grid-column:1 / -1;
+    }
+
+    .heroMore__status{
+      justify-content:flex-start;
+      border-radius:16px;
+      min-height:40px;
+      padding:10px 12px;
+    }
+
+    @media (max-width: 640px){
+      .hero{
+        padding:14px;
+      }
+
+      .hero__brand--banner{
+        gap:10px;
+      }
+
+      .hero__sub--banner{
+        font-size:.95rem;
+        line-height:1.34;
+      }
+
+      .chips{
+        margin-top:10px;
+        gap:7px;
+      }
+
+      .countPill{
+        margin-top:10px;
+      }
+
+      .imperialNote--top{
+        margin-top:10px;
+        padding:8px 10px;
+      }
+
+      .hero__actions{
+        gap:8px;
+      }
+
+      .hero__actions > #copyLoja,
+      .hero__actions > .btn--social,
+      .hero__actions > .miniNote{
+        display:none !important;
+      }
+
+      .heroMore{
+        display:block;
+        width:100%;
+      }
+    }
+
+    @media (max-width: 420px){
+      .heroMore__body{
+        grid-template-columns:1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -1455,6 +1563,22 @@
 
       <div class="hero__actions">
         <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
+
+        <details class="heroMore">
+          <summary class="heroMore__summary">➕ Mais opções</summary>
+          <div class="heroMore__body">
+            <button class="btn btn--glass btn--social" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">📌 Copiar link</button>
+            <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+            <a class="btn btn--glass btn--social heroMore__telegram" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+            <div class="miniNote heroMore__status">
+              <span class="dot"></span>
+              <span>
+                Status: <b>online</b> • Atualizado <span id="lastUpdateMobile">30/03/2026, 20:31</span>
+              </span>
+            </div>
+          </div>
+        </details>
+
         <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
 
         <!-- ✅ Instagram (mais importante) — voltou -->
@@ -1711,5 +1835,22 @@
       }
     })();
   </script>
+
+  <script>
+    (function(){
+      function syncMobileStatus(){
+        var main = document.getElementById('lastUpdate');
+        var mob = document.getElementById('lastUpdateMobile');
+        if(main && mob && main.textContent){
+          mob.textContent = main.textContent;
+        }
+      }
+      document.addEventListener('DOMContentLoaded', function(){
+        syncMobileStatus();
+        setTimeout(syncMobileStatus, 1200);
+      });
+    })();
+  </script>
+
 </body>
 </html>
