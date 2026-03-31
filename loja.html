@@ -819,163 +819,207 @@
     }
 
 
+
     /* =========================
-       HOTFIX 2026-03-31 — HERO MOBILE MAIS COMPACTA
-       - desktop mantém ações abertas
-       - mobile usa "Mais opções" recolhido
+       HERO COM LETREIRO V5
+       - banner separado para desktop e mobile
+       - selo da marca no canto direito
+       - informações abaixo do banner
        ========================= */
-    .heroActionsFold{
+    .srOnly{
+      position:absolute !important;
+      width:1px !important;
+      height:1px !important;
+      padding:0 !important;
+      margin:-1px !important;
+      overflow:hidden !important;
+      clip:rect(0,0,0,0) !important;
+      white-space:nowrap !important;
+      border:0 !important;
+    }
+
+    .hero__brand--banner{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:stretch;
+      justify-content:flex-start;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .heroBanner{
+      position:relative;
       width:100%;
+      min-width:0;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(215,176,88,.16);
+      background:rgba(0,0,0,.18);
+      box-shadow:0 18px 46px rgba(0,0,0,.28);
+      isolation:isolate;
     }
 
-    .heroActionsFold__summary{
-      display:none;
-      list-style:none;
-      user-select:none;
-    }
-    .heroActionsFold__summary::-webkit-details-marker{
-      display:none;
-    }
-
-    .heroActionsFold__content{
-      display:grid;
-      gap:10px;
+    .heroBanner::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 28%);
+      opacity:.55;
     }
 
-    .heroMiniNoteCompact{
+    .heroBanner__picture,
+    .heroBanner__img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .heroBanner__seal{
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(120px 80px at 35% 20%, rgba(224,195,107,.18), transparent 60%),
+        rgba(0,0,0,.38);
+      display:flex;
+      align-items:center;
       justify-content:center;
-      min-height:42px;
+      box-shadow:0 14px 32px rgba(0,0,0,.35);
+      overflow:hidden;
+      z-index:2;
+    }
+
+    .heroBanner__seal::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .heroBanner__seal::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:18px;
+      background:linear-gradient(120deg, transparent 35%, rgba(224,195,107,.18), transparent 65%);
+      transform:translateX(-70%);
+      animation:shine 4.2s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    .heroBanner__sealLogo{
+      width:46px;
+      height:46px;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 16px rgba(0,0,0,.55));
+      position:relative;
+      z-index:1;
+    }
+
+    .heroBanner__sealFallback,
+    .heroBanner__seal--fallback .heroBanner__sealFallback{
+      display:none;
+    }
+
+    .heroBanner__seal--fallback .heroBanner__sealFallback{
+      display:block;
+      position:relative;
+      z-index:1;
+      font-size:24px;
+    }
+
+    .heroBanner--fallback{
+      min-height:180px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+        rgba(10,10,12,.62);
+    }
+
+    .hero__text--bannerstack{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      gap:0;
+      min-width:0;
+    }
+
+    .hero__sub--banner{
       margin-top:0;
+      max-width:560px;
+      font-size:1rem;
+      line-height:1.4;
     }
 
-    @media (min-width: 721px){
-      .heroActionsFold{
-        display:block;
-      }
-
-      .heroActionsFold__content{
-        display:grid;
-        gap:10px;
-      }
+    .hero__actions{
+      justify-content:flex-start;
     }
 
-    @media (max-width: 720px){
-      .hero{
-        padding:14px;
-        gap:12px;
+    @media (max-width: 980px){
+      .heroBanner__seal{
+        top:14px;
+        right:14px;
+        width:58px;
+        height:58px;
       }
+      .heroBanner__sealLogo{ width:42px; height:42px; }
+    }
 
-      .hero__brand--banner{
-        gap:10px;
-      }
-
-      .hero__text--bannerstack{
-        gap:0;
-      }
-
-      .hero__sub--banner{
-        font-size:.94rem;
-        line-height:1.34;
-      }
-
-      .chips{
-        gap:6px;
-        margin-top:10px;
-      }
-
-      .chip{
-        min-height:28px;
-        padding:4px 9px;
-        font-size:.81rem;
-      }
-
-      .countPill{
-        margin-top:10px;
-        padding:6px 10px;
-        font-size:.88rem;
-        row-gap:6px;
-      }
-
-      .imperialNote--store{
-        margin-top:10px;
-        padding:8px 10px;
-      }
-
+    @media (max-width: 860px){
+      .hero__brand--banner{ gap:10px; }
       .hero__actions{
-        gap:8px;
-      }
-
-      .heroActionsFold{
-        display:block;
-      }
-
-      .heroActionsFold[open]{
-        padding-top:2px;
-      }
-
-      .heroActionsFold__summary{
-        display:flex;
-        width:100%;
-        min-height:44px;
-        justify-content:center;
-      }
-
-      .heroActionsFold__content{
         display:grid;
         grid-template-columns:1fr 1fr;
-        gap:8px;
-        padding-top:8px;
+        gap:10px;
       }
-
-      .heroActionsFold__content > .btn,
-      .heroActionsFold__content > .miniNote{
-        min-height:42px;
-        margin-top:0;
-      }
-
-      .heroActionsFold__content > .miniNote{
+      .hero__actions .btn--gold,
+      .hero__actions .miniNote{
         grid-column:1 / -1;
       }
+    }
 
-      .heroActionsFold:not([open]) .heroActionsFold__content{
-        display:none;
+    @media (max-width: 640px){
+      .heroBanner{
+        border-radius:16px;
+      }
+      .heroBanner__seal{
+        width:54px;
+        height:54px;
+        border-radius:16px;
+        top:10px;
+        right:10px;
+      }
+      .heroBanner__sealLogo{ width:38px; height:38px; }
+      .hero__sub--banner{
+        font-size:.97rem;
+        max-width:none;
       }
     }
 
     @media (max-width: 520px){
-      .hero{
-        padding:12px;
-      }
-
-      .heroBanner{
-        border-radius:14px;
-      }
-
-      .hero__sub--banner{
-        font-size:.90rem;
-      }
-
-      .chips{
-        margin-top:8px;
-      }
-
-      .countPill{
-        font-size:.84rem;
-      }
-
-      .heroActionsFold__summary{
-        min-height:42px;
-        font-size:.92rem;
-      }
-
-      .heroActionsFold__content{
+      .hero__actions{
         grid-template-columns:1fr;
       }
-
-      .heroActionsFold__content > .btn,
-      .heroActionsFold__content > .miniNote{
-        min-height:40px;
+      .heroBanner{
+        border-radius:15px;
       }
+      .heroBanner__seal{
+        width:48px;
+        height:48px;
+        border-radius:14px;
+        top:8px;
+        right:8px;
+      }
+      .heroBanner__sealLogo{ width:34px; height:34px; }
     }
 
   </style>
@@ -995,21 +1039,31 @@
 
   <main class="page" id="sec-topo">
     <header class="hero">
-      <div class="hero__brand">
-        <div class="brandMark" aria-hidden="true">
-          <img
-            class="brandLogo"
-            src="assets/logo.png"
-            alt="Cosa Nostra"
-            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
-          />
-          <span class="brandFallback">🎩♟️</span>
+      <div class="hero__brand hero__brand--banner">
+        <div class="heroBanner" aria-hidden="false">
+          <picture class="heroBanner__picture">
+            <source media="(max-width: 640px)" srcset="assets/topo-loja-completa-fachada-cn-mobile-v1.png">
+            <img
+              class="heroBanner__img"
+              src="assets/topo-loja-completa-fachada-cn-desktop-v1.png"
+              alt="Loja Completa — Cosa Nostra • A Família das Ideias"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-loja-completa-fachada-cn-desktop-v1.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
+            />
+          </picture>
+          <div class="heroBanner__seal" aria-hidden="true">
+            <img
+              class="heroBanner__sealLogo"
+              src="assets/logo.png"
+              alt=""
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
+            />
+            <span class="heroBanner__sealFallback">👑</span>
+          </div>
         </div>
 
-        <div class="hero__text hero__text--store">
-          <h1 class="title title--store">Loja Completa</h1>
-          <p class="kicker kicker--store">Cosa Nostra • A Família das Ideias</p>
-          <p class="sub sub--store">
+        <div class="hero__text hero__text--bannerstack hero__text--store">
+          <h1 class="srOnly">Loja Completa</h1>
+          <p class="sub sub--store hero__sub--banner">
             Todos os produtos vendáveis da vitrine, com filtro rápido e compra direta.
           </p>
 
@@ -1038,25 +1092,18 @@
 
       <div class="hero__actions">
         <a class="btn btn--gold" href="./" id="btnHome">🏠 Voltar Home</a>
+        <a class="btn btn--glass" href="#" id="btnCopyLoja">📌 Copiar link da loja</a>
 
-        <details class="heroActionsFold" id="heroActionsFold" open>
-          <summary class="btn btn--glass heroActionsFold__summary">✚ Mais opções</summary>
+        <!-- ✅ Instagram (mantido) -->
+        <a class="btn btn--glass btn--social-store" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
 
-          <div class="heroActionsFold__content">
-            <a class="btn btn--glass" href="#" id="btnCopyLoja">📌 Copiar link da loja</a>
+        <!-- ✅ Telegram (novo) -->
+        <a class="btn btn--glass btn--social-store" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
 
-            <!-- ✅ Instagram (mantido) -->
-            <a class="btn btn--glass btn--social-store" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
-
-            <!-- ✅ Telegram (novo) -->
-            <a class="btn btn--glass btn--social-store" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
-
-            <div class="miniNote heroMiniNoteCompact">
-              <span class="dot"></span>
-              <span>Online • <b><span id="year"></span></b></span>
-            </div>
-          </div>
-        </details>
+        <div class="miniNote">
+          <span class="dot"></span>
+          <span>Online • <b><span id="year"></span></b></span>
+        </div>
       </div>
     </header>
 
@@ -1185,19 +1232,6 @@
       if(el) el.textContent = String(y);
       var el2 = document.getElementById("year");
       if(el2) el2.textContent = String(y);
-
-      var fold = document.getElementById("heroActionsFold");
-      if (fold) {
-        var applyFoldMode = function(){
-          if (window.innerWidth <= 720) {
-            fold.removeAttribute("open");
-          } else {
-            fold.setAttribute("open", "open");
-          }
-        };
-        applyFoldMode();
-        window.addEventListener("resize", applyFoldMode, { passive: true });
-      }
     })();
   </script>
 
