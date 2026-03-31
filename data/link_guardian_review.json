@@ -1,64 +1,12 @@
 {
-  "updated_at": "2026-03-30T23:11:50Z",
-  "total_items": 1,
+  "updated_at": "2026-03-31T03:27:20Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 1,
-    "by_state": {
-      "review_only_storefront": 1
-    },
-    "by_reason": {
-      "storefront_social_lists_invalid": 1
-    },
-    "by_action": {
-      "trocar_link": 1
-    },
-    "high_priority": 1
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-03-30T23:08:07Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 41,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/41",
-      "issue_title": "[CMS] Produto: Mandolin 13 em 1 (Fatiador/Ralador/Julienne)",
-      "sku": "mandolin-13-em-1-fatiador-ralador-julienne",
-      "title": "🥗✨ Mandolin 13 em 1 — Fatiador • Ralador • Julienne (com coletor) 🔪",
-      "id_busca": "5J5PKG-8WBH",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/1p6PAmi",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/1p6PAmi",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-8WBH&tid=83ea4b47-04d0-4f4a-bc68-d1694954901d",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Cozinha",
-        "Utensílios",
-        "Mandolin",
-        "Fatiador",
-        "Ralador",
-        "Julienne",
-        "Praticidade"
-      ]
-    }
-  ]
+  "items": []
 }
