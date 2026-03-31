@@ -1184,6 +1184,260 @@
       }
     }
 
+    /* =========================
+       HERO COM LETREIRO + LOGO SOBREPOSTA
+       ========================= */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .hero--letreiro {
+      padding: 16px;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .hero__brand--letreiro {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .hero__letreiroWrap {
+      position: relative;
+      width: min(100%, 660px);
+      min-width: 0;
+    }
+
+    .hero__letreiroPicture,
+    .hero__letreiroImg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero__letreiroImg {
+      border-radius: 18px;
+      filter: drop-shadow(0 16px 30px rgba(0,0,0,.24));
+    }
+
+    .brandMark--overlay {
+      position: absolute;
+      left: 3.9%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      pointer-events: none;
+      width: 66px;
+      height: 66px;
+    }
+
+    .hero__text--letreiroMeta {
+      display: grid;
+      gap: 10px;
+      max-width: 560px;
+      padding-top: 0;
+    }
+
+    .sub--hero-lead {
+      margin: 0;
+      font-size: .98rem;
+      line-height: 1.38;
+      max-width: 520px;
+    }
+
+    .chips--hero {
+      margin-top: 0;
+      gap: 8px;
+    }
+
+    .countPill--hero {
+      margin-top: 0;
+      min-height: 34px;
+      padding: 5px 10px;
+      font-size: .94rem;
+    }
+
+    .imperialNote--compact {
+      margin-top: 0;
+      max-width: 520px;
+      padding: 8px 11px;
+    }
+
+    .hero__actions--compact {
+      flex: 0 0 312px;
+      gap: 9px;
+      align-self: stretch;
+    }
+
+    .hero__actions--compact .btn {
+      min-height: 50px;
+    }
+
+    .hero__actions--compact .btn--social {
+      min-height: 40px;
+    }
+
+    .hero__actions--compact .miniNote {
+      margin-top: 2px;
+      min-height: 52px;
+      justify-content: flex-start;
+      padding-inline: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero__letreiroWrap {
+        width: min(100%, 620px);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hero--letreiro {
+        gap: 12px;
+      }
+
+      .hero__brand--letreiro {
+        width: 100%;
+      }
+
+      .hero__letreiroWrap {
+        width: 100%;
+        max-width: 640px;
+      }
+
+      .hero__actions--compact {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero--letreiro {
+        padding: 14px;
+      }
+
+      .hero__letreiroWrap {
+        width: 100%;
+      }
+
+      .brandMark--overlay {
+        width: 58px;
+        height: 58px;
+        left: 4.2%;
+      }
+
+      .brandMark--overlay .brandLogo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .sub--hero-lead {
+        font-size: .94rem;
+      }
+
+      .chips--hero .chip {
+        min-height: 30px;
+        padding: 4px 10px;
+        font-size: .84rem;
+      }
+
+      .hero__actions--compact .btn {
+        min-height: 44px;
+        font-size: .92rem;
+      }
+
+      .hero__actions--compact .btn--social {
+        min-height: 38px;
+        font-size: .88rem;
+      }
+
+      .hero__actions--compact .miniNote {
+        min-height: 46px;
+        font-size: .84rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero--letreiro {
+        padding: 12px;
+      }
+
+      .hero__brand--letreiro {
+        gap: 10px;
+      }
+
+      .brandMark--overlay {
+        width: 52px;
+        height: 52px;
+        left: 4.4%;
+      }
+
+      .brandMark--overlay .brandLogo {
+        width: 36px;
+        height: 36px;
+      }
+
+      .hero__text--letreiroMeta {
+        gap: 8px;
+      }
+
+      .sub--hero-lead {
+        font-size: .92rem;
+        line-height: 1.34;
+      }
+
+      .chips--hero {
+        gap: 7px;
+      }
+
+      .chips--hero .chip {
+        font-size: .80rem;
+      }
+
+      .countPill--hero {
+        font-size: .88rem;
+      }
+
+      .imperialNote--compact {
+        padding: 8px 10px;
+        font-size: .92rem;
+      }
+
+      .imperialNote--compact .mini {
+        font-size: .88em;
+      }
+
+      .hero__actions--compact {
+        gap: 8px;
+      }
+
+      .hero__actions--compact .btn {
+        min-height: 42px;
+        border-radius: 16px;
+      }
+
+      .hero__actions--compact .btn--social {
+        min-height: 36px;
+      }
+
+      .hero__actions--compact .miniNote {
+        min-height: 42px;
+        padding: 8px 10px;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -1203,44 +1457,57 @@
   </div>
 
   <main class="page">
-    <header class="hero">
-      <div class="hero__brand">
-        <div class="brandMark" aria-hidden="true">
-          <img
-            class="brandLogo"
-            src="assets/logo.png"
-            alt="Cosa Nostra"
-            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
-          />
-          <span class="brandFallback">🎩♟️</span>
+    <header class="hero hero--letreiro">
+      <div class="hero__brand hero__brand--letreiro">
+        <div class="hero__letreiroWrap" aria-label="Central Premium">
+          <picture class="hero__letreiroPicture">
+            <source media="(max-width: 640px)" srcset="assets/topo-central-premium-mobile.png" />
+            <img
+              class="hero__letreiroImg"
+              src="assets/topo-central-premium-desktop.png"
+              alt="Central Premium"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+
+          <div class="brandMark brandMark--overlay" aria-hidden="true">
+            <img
+              class="brandLogo"
+              src="assets/logo.png"
+              alt="Cosa Nostra"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('brandMark--fallback');"
+            />
+            <span class="brandFallback">🎩♟️</span>
+          </div>
+
+          <h1 class="sr-only">Central Premium</h1>
         </div>
 
-        <div class="hero__text hero__text--brandstack">
-          <h1 class="title title--imperial">Central Premium</h1>
-          <p class="kicker kicker--subtitle">Cosa Nostra • A Família das Ideias</p>
-          <p class="sub">
+        <div class="hero__text hero__text--letreiroMeta">
+          <p class="sub sub--hero-lead">
             Links oficiais + vitrine de produtos (Achados do Dia).
           </p>
 
-          <div class="chips" aria-label="Dicas rápidas">
+          <div class="chips chips--hero" aria-label="Dicas rápidas">
             <span class="chip">⚡ clique 1-toque</span>
             <span class="chip">🛒 vitrine sempre limpa</span>
             <span class="chip">👑 padrão imperial</span>
           </div>
 
-          <div class="countPill" aria-label="Contagem de produtos">
+          <div class="countPill countPill--hero" aria-label="Contagem de produtos">
             <span>📦 Total na Loja Completa:</span>
             <span class="n" data-total-products>—</span>
           </div>
 
-          <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
+          <div class="imperialNote imperialNote--top imperialNote--compact" role="note" aria-label="Aviso importante sobre a loja">
             <div><b>Prévia da vitrine:</b> Produto do Dia + Vitrine Rápida.</div>
             <div class="mini">Para ver tudo, use <b>“Abrir Vitrine / Loja”</b>.</div>
           </div>
         </div>
       </div>
 
-      <div class="hero__actions">
+      <div class="hero__actions hero__actions--compact">
         <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
         <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
 
