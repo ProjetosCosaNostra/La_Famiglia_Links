@@ -1062,3 +1062,84 @@ input:focus-visible{
   .brandMark::after{animation:none !important;}
   *{scroll-behavior:auto !important;}
 }
+
+
+/* =========================
+   AJUSTE CIRÚRGICO MOBILE
+   - sectionNav mais discreto
+   - uma linha com rolagem horizontal
+   - sem dominar a tela ao rolar
+   ========================= */
+@media (max-width: 640px){
+  .sectionNav{
+    top: 6px;
+    margin-top: -2px;
+    padding: 7px 9px;
+    gap: 7px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 20px;
+    background: rgba(6,6,8,.42);
+    border-color: rgba(224,195,107,.12);
+    box-shadow: 0 10px 24px rgba(0,0,0,.24);
+    backdrop-filter: blur(10px);
+  }
+
+  .sectionNav::-webkit-scrollbar{
+    display:none;
+  }
+
+  .sectionNav__pill{
+    flex: 0 0 auto;
+    min-height: 30px;
+    padding: 5px 10px;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    border-color: rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    box-shadow: none;
+  }
+
+  .sectionNav__pill--gold{
+    border-color: rgba(224,195,107,.18);
+    background:
+      radial-gradient(600px 140px at 20% 0%, rgba(224,195,107,.10), transparent 60%),
+      rgba(199,162,75,.08);
+  }
+}
+
+@media (max-width: 520px){
+  .sectionNav{
+    top: 6px;
+    padding: 6px 8px;
+    gap: 6px;
+    border-radius: 18px;
+  }
+
+  .sectionNav__pill{
+    min-height: 28px;
+    padding: 4px 9px;
+    font-size: 10.5px;
+  }
+
+  .floatingStoreCTA{
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .floatingStoreCTA a{
+    min-height: 32px;
+    padding: 5px 9px;
+    border-radius: 12px;
+    font-size: .74rem;
+    letter-spacing: 0;
+    box-shadow: 0 10px 22px rgba(0,0,0,.24);
+    background: rgba(10,10,12,.58);
+    border-color: rgba(215,176,88,.24);
+  }
+}
