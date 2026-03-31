@@ -986,6 +986,29 @@
       display:contents;
     }
 
+    @media (min-width: 641px){
+      .heroActionsMore{
+        display:block;
+        width:100%;
+      }
+
+      .heroActionsMore__toggle{
+        display:none !important;
+      }
+
+      .heroActionsMore__panel{
+        display:flex !important;
+        flex-direction:column;
+        gap:10px;
+        width:100%;
+      }
+
+      .heroActionsMore__panel .btn,
+      .heroActionsMore__panel .miniNote{
+        width:100%;
+      }
+    }
+
     @media (max-width: 980px){
       .heroBanner__seal{
         top:14px;
