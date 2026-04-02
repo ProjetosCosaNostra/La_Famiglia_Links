@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-02T13:50:33Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-04-02T19:16:13Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-04-02T19:07:57Z
+Issue: #48
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
+SKU: lixeira-inteligente-sensor-automatica-16l-preta
+Título: Lixeira Inteligente com Sensor Automático 16L — Abre sem tocar (Preta)
+ID ML: 5J5PKG-CCY5
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
+open_url: https://mercadolivre.com/sec/13oLgYK
+checked_url: https://mercadolivre.com/sec/13oLgYK
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
