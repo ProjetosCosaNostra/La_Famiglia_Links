@@ -540,42 +540,6 @@
       padding-top: 18px;
     }
 
-    .footer__brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-
-    .footer__text{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width:0;
-    }
-
-    .footer__logoWrap{
-      width:22px;
-      height:22px;
-      flex:0 0 22px;
-      border-radius:50%;
-      overflow:hidden;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:
-        0 0 0 1px rgba(238,205,116,.14),
-        0 4px 10px rgba(0,0,0,.20);
-    }
-
-    .footer__logo{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
-      display:block;
-    }
-
     .floatingStoreCTA a {
       min-height: 50px;
       padding-inline: 16px;
@@ -590,6 +554,24 @@
       border-color: rgba(215,176,88,.44);
       background: rgba(12,12,14,.78);
       box-shadow: 0 20px 48px rgba(0,0,0,.44);
+    }
+
+
+    .sig--brand{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .footerLogo{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow:
+        0 0 6px rgba(255,220,140,.18),
+        0 6px 12px rgba(0,0,0,.26);
+      flex:0 0 auto;
     }
 
     .toast {
@@ -695,6 +677,11 @@
 
       .miniNote {
         font-size: .88rem;
+      }
+
+      .footerLogo{
+        width:16px;
+        height:16px;
       }
     }
 
@@ -1138,81 +1125,35 @@
       height:auto;
     }
 
-    
-.heroBanner__seal{
+    .heroBanner__seal{
       position:absolute;
-      top:16px;
-      right:16px;
+      top:18px;
+      right:18px;
       width:58px;
       height:58px;
       border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      border:none;
       background:
-        radial-gradient(circle at 50% 48%, rgba(238,205,116,.16) 0%, rgba(238,205,116,.08) 34%, rgba(6,6,8,.42) 70%, rgba(4,4,6,.62) 100%);
+        url('assets/logo-oficial-circular-glow.png') center/cover no-repeat;
+      display:block;
       box-shadow:
-        0 0 0 1px rgba(238,205,116,.18),
-        0 0 16px rgba(238,205,116,.20),
-        0 8px 18px rgba(0,0,0,.34),
-        inset 0 1px 0 rgba(255,255,255,.06);
-      overflow:visible;
+        0 0 10px rgba(255,220,140,.24),
+        0 0 24px rgba(215,176,88,.14),
+        0 10px 22px rgba(0,0,0,.42);
+      overflow:hidden;
       z-index:2;
       isolation:isolate;
     }
 
-    .heroBanner__seal::before{
-      content:"";
-      position:absolute;
-      inset:-7px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(238,205,116,.24) 0%, rgba(238,205,116,.12) 42%, rgba(238,205,116,0) 74%);
-      filter:blur(5px);
-      opacity:.92;
-      pointer-events:none;
-      z-index:0;
-    }
-
+    .heroBanner__seal::before,
     .heroBanner__seal::after{
-      content:"";
-      position:absolute;
-      inset:1px;
-      border-radius:50%;
-      border:1px solid rgba(255,236,182,.10);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        inset 0 0 10px rgba(238,205,116,.05);
-      pointer-events:none;
-      z-index:2;
-    }
-
-    .heroBanner__sealLogo{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
-      display:block;
-      position:relative;
-      z-index:1;
-      transform:scale(1.04);
-      filter:
-        saturate(1.05)
-        contrast(1.04)
-        brightness(1.03)
-        drop-shadow(0 0 6px rgba(238,205,116,.16))
-        drop-shadow(0 8px 12px rgba(0,0,0,.26));
-    }
-
-    .heroBanner__sealFallback,
-    .heroBanner__seal--fallback .heroBanner__sealFallback{
+      content:none;
       display:none;
     }
 
-    .heroBanner__seal--fallback .heroBanner__sealFallback{
-      display:block;
-      position:relative;
-      z-index:1;
-      font-size:24px;
+    .heroBanner__sealLogo,
+    .heroBanner__sealFallback{
+      display:none !important;
     }
 
     .heroBanner--fallback{
@@ -1244,12 +1185,11 @@
 
     @media (max-width: 980px){
       .heroBanner__seal{
-        top:13px;
-        right:13px;
+        top:14px;
+        right:14px;
         width:54px;
         height:54px;
       }
-      .heroBanner__sealLogo{ width:100%; height:100%; }
     }
 
     @media (max-width: 860px){
@@ -1270,12 +1210,12 @@
         border-radius:16px;
       }
       .heroBanner__seal{
-        width:48px;
-        height:48px;
-        top:9px;
-        right:9px;
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        top:10px;
+        right:10px;
       }
-      .heroBanner__sealLogo{ width:100%; height:100%; }
       .hero__sub--banner{
         font-size:.97rem;
         max-width:none;
@@ -1292,10 +1232,10 @@
       .heroBanner__seal{
         width:44px;
         height:44px;
-        top:7px;
-        right:7px;
+        border-radius:50%;
+        top:8px;
+        right:8px;
       }
-      .heroBanner__sealLogo{ width:100%; height:100%; }
     }
     /* =========================
        AJUSTE APROVADO
@@ -1590,14 +1530,6 @@
       }
     }
 
-    @media (max-width: 520px){
-      .footer__logoWrap{
-        width:18px;
-        height:18px;
-        flex-basis:18px;
-      }
-    }
-
   </style>
 </head>
 
@@ -1629,15 +1561,7 @@
               onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-central-premium-fachada-cn-desktop-v5.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
             />
           </picture>
-          <div class="heroBanner__seal" aria-hidden="true">
-            <img
-              class="heroBanner__sealLogo"
-              src="assets/logo-oficial-circular-glow.png"
-              alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
-            />
-            <span class="heroBanner__sealFallback">👑</span>
-          </div>
+          <div class="heroBanner__seal" aria-hidden="true"></div>
         </div>
 
         <div class="hero__text hero__text--bannerstack">
@@ -1843,19 +1767,9 @@
     </section>
 
     <footer class="footer">
-      <div class="footer__left footer__brand">
-        <span class="footer__logoWrap" aria-hidden="true">
-          <img
-            class="footer__logo"
-            src="assets/logo-oficial-circular-glow.png"
-            alt=""
-            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.style.display='none';"
-          />
-        </span>
-        <span class="footer__text">
-          <span class="sig">Cosa Nostra</span>
-          <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
-        </span>
+      <div class="footer__left">
+        <span class="sig sig--brand"><img class="footerLogo" src="assets/logo-oficial-circular-glow.png" alt="" /><span>Cosa Nostra</span></span>
+        <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
       </div>
 
       <div class="footer__right">
