@@ -560,18 +560,17 @@
     .sig--brand{
       display:inline-flex;
       align-items:center;
-      gap:8px;
+      gap:7px;
     }
 
     .footerLogo{
-      width:18px;
-      height:18px;
+      width:12px;
+      height:12px;
       border-radius:50%;
       object-fit:cover;
-      box-shadow:
-        0 0 6px rgba(255,220,140,.18),
-        0 6px 12px rgba(0,0,0,.26);
+      box-shadow:0 0 4px rgba(255,220,140,.12);
       flex:0 0 auto;
+      transform: translateY(-.3px);
     }
 
     .toast {
@@ -680,8 +679,8 @@
       }
 
       .footerLogo{
-        width:16px;
-        height:16px;
+        width:11px;
+        height:11px;
       }
     }
 
@@ -1129,31 +1128,62 @@
       position:absolute;
       top:18px;
       right:18px;
-      width:58px;
-      height:58px;
-      border-radius:50%;
-      border:none;
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
       background:
-        url('assets/logo-oficial-circular-glow.png') center/cover no-repeat;
-      display:block;
-      box-shadow:
-        0 0 10px rgba(255,220,140,.24),
-        0 0 24px rgba(215,176,88,.14),
-        0 10px 22px rgba(0,0,0,.42);
+        radial-gradient(120px 80px at 35% 20%, rgba(224,195,107,.18), transparent 60%),
+        rgba(0,0,0,.38);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 14px 32px rgba(0,0,0,.35);
       overflow:hidden;
       z-index:2;
-      isolation:isolate;
     }
 
-    .heroBanner__seal::before,
+    .heroBanner__seal::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
+
     .heroBanner__seal::after{
-      content:none;
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:18px;
+      background:linear-gradient(120deg, transparent 35%, rgba(224,195,107,.18), transparent 65%);
+      transform:translateX(-70%);
+      animation:shine 4.2s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    .heroBanner__sealLogo{
+      width:54px;
+      height:54px;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 16px rgba(0,0,0,.55));
+      position:relative;
+      z-index:1;
+      transform: translateY(.2px);
+    }
+
+    .heroBanner__sealFallback,
+    .heroBanner__seal--fallback .heroBanner__sealFallback{
       display:none;
     }
 
-    .heroBanner__sealLogo,
-    .heroBanner__sealFallback{
-      display:none !important;
+    .heroBanner__seal--fallback .heroBanner__sealFallback{
+      display:block;
+      position:relative;
+      z-index:1;
+      font-size:24px;
     }
 
     .heroBanner--fallback{
@@ -1187,9 +1217,10 @@
       .heroBanner__seal{
         top:14px;
         right:14px;
-        width:54px;
-        height:54px;
+        width:58px;
+        height:58px;
       }
+      .heroBanner__sealLogo{ width:50px; height:50px; }
     }
 
     @media (max-width: 860px){
@@ -1210,12 +1241,13 @@
         border-radius:16px;
       }
       .heroBanner__seal{
-        width:50px;
-        height:50px;
-        border-radius:50%;
+        width:54px;
+        height:54px;
+        border-radius:16px;
         top:10px;
         right:10px;
       }
+      .heroBanner__sealLogo{ width:46px; height:46px; }
       .hero__sub--banner{
         font-size:.97rem;
         max-width:none;
@@ -1230,12 +1262,13 @@
         border-radius:15px;
       }
       .heroBanner__seal{
-        width:44px;
-        height:44px;
-        border-radius:50%;
+        width:48px;
+        height:48px;
+        border-radius:14px;
         top:8px;
         right:8px;
       }
+      .heroBanner__sealLogo{ width:40px; height:40px; }
     }
     /* =========================
        AJUSTE APROVADO
@@ -1561,7 +1594,15 @@
               onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-central-premium-fachada-cn-desktop-v5.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
             />
           </picture>
-          <div class="heroBanner__seal" aria-hidden="true"></div>
+          <div class="heroBanner__seal" aria-hidden="true">
+            <img
+              class="heroBanner__sealLogo"
+              src="assets/logo-oficial-circular-glow.png"
+              alt=""
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
+            />
+            <span class="heroBanner__sealFallback">👑</span>
+          </div>
         </div>
 
         <div class="hero__text hero__text--bannerstack">
