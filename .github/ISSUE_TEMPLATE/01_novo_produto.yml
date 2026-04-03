@@ -23,8 +23,11 @@ body:
         - Isso reduz retrabalho e evita a vitrine depender só de inferência no front.
 
         🏛️ **Vitrine Rápida (home):**
-        - Você pode escolher se este produto deve aparecer na Vitrine Rápida da home.
-        - Também pode definir a posição dele.
+        - A Vitrine Rápida agora trabalha com **até 12 posições** na home.
+        - Você pode escolher se este produto deve aparecer nela.
+        - Também pode definir a posição exata (**1 a 12**).
+        - Se você ocupar uma posição já usada, este produto **substitui só aquela posição**.
+        - O restante da estrutura da Vitrine Rápida permanece como está.
         - Se não marcar nada, o produto segue o fluxo normal da loja.
 
   - type: input
@@ -122,7 +125,7 @@ body:
     id: quick_home_order
     attributes:
       label: "Posição na Vitrine Rápida (opcional)"
-      description: "Ex: 1, 2, 3... Menor número aparece primeiro."
+      description: "Ex.: 1 a 12. Se você informar uma posição já ocupada, este produto substitui só aquela posição e o restante da estrutura permanece."
       placeholder: "1"
     validations:
       required: false
