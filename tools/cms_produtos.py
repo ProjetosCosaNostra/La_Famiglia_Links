@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v10.3 (edição preserva featured/quick_home + CMS não auto-desativa por destino social/lists)
+# Versão : v10.4 (edição com ações explícitas para quick_home/featured/active + CMS não auto-desativa por destino social/lists)
 # ==========================================================
 
 from __future__ import annotations
@@ -60,6 +60,9 @@ _VALID_REVIEW_STATUSES = {
     "precisa_relink",
     "desativado_manual",
 }
+
+
+QUICK_HOME_MAX = 12
 
 
 def _utc_now_iso_z() -> str:
@@ -456,6 +459,61 @@ def _parse_optional_bool_text(s: str) -> Optional[bool]:
     if x in no_values:
         return False
     return None
+
+
+def _normalize_quick_home_action(s: str) -> Optional[bool]:
+    x = _clean_optional_text(s).lower()
+    if not x or "manter" in x:
+        return None
+    if "remov" in x:
+        return False
+    if "colocar" in x or "vitrine rápida" in x or "vitrine rapida" in x:
+        return True
+    parsed = _parse_optional_bool_text(x)
+    return parsed
+
+
+def _normalize_active_action(s: str) -> Optional[bool]:
+    x = _clean_optional_text(s).lower()
+    if not x or "manter" in x:
+        return None
+    if "desativ" in x:
+        return False
+    if "ativar" in x or "ativo" == x or "ativa" == x:
+        return True
+    parsed = _parse_optional_bool_text(x)
+    return parsed
+
+
+def _normalize_featured_action(s: str) -> Optional[bool]:
+    x = _clean_optional_text(s).lower()
+    if not x or "manter" in x:
+        return None
+    if "remov" in x:
+        return False
+    if "definir" in x or "featured" in x or "produto do dia" in x:
+        return True
+    parsed = _parse_optional_bool_text(x)
+    return parsed
+
+
+def _clean_quick_home_order_input(v: Any) -> Optional[int]:
+    if v is None:
+        return None
+    x = _strip_html(str(v)).strip()
+    if not x:
+        return None
+
+    m = re.search(r"-?\d+", x)
+    if not m:
+        raise ValueError(f"Posição da Vitrine Rápida inválida. Use um número entre 1 e {QUICK_HOME_MAX}.")
+
+    n = int(m.group(0))
+    if n <= 0:
+        raise ValueError(f"Posição da Vitrine Rápida inválida. Use um número entre 1 e {QUICK_HOME_MAX}.")
+    if n > QUICK_HOME_MAX:
+        raise ValueError(f"Posição da Vitrine Rápida fora do limite. Use um número entre 1 e {QUICK_HOME_MAX}.")
+    return n
 
 
 def _clean_order_int(v: Any, default: int = 0) -> int:
@@ -991,9 +1049,21 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         sections,
         r"Entrar\s+na\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida|Quick\s*Home",
     )
+    quick_home_action_block = _get_section(
+        sections,
+        r"A[cç][aã]o\s+da\s+Vitrine\s+R[aá]pida|Vitrine\s+R[aá]pida\s*\(.*a[cç][aã]o.*\)|Quick\s*Home\s*Action",
+    )
     quick_home_order_block = _get_section(
         sections,
         r"Posi[cç][aã]o\s+na\s+Vitrine\s+R[aá]pida|Ordem\s+da\s+Vitrine\s+R[aá]pida|Quick\s*Home\s*Order",
+    )
+    active_action_block = _get_section(
+        sections,
+        r"Estado\s+do\s+produto|A[cç][aã]o\s+de\s+estado|Product\s*State\s*Action",
+    )
+    featured_action_block = _get_section(
+        sections,
+        r"Produto\s+do\s+Dia\s*/\s*Featured|Produto\s+do\s+Dia|Featured\s*Action",
     )
 
     link_ml = _clean_edit_optional_url(
@@ -1046,22 +1116,22 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         review_action = _normalize_review_action(review_action_line) if review_action_line else None
         review_status = _normalize_review_status(review_status_line) if review_status_line else None
 
-        # MODO EDIÇÃO (SEGURANÇA DE PRODUÇÃO):
-        # ------------------------------------------------------------
-        # Não alterar featured / quick_home / quick_home_order / active
-        # apenas por causa dos campos opcionais do formulário de edição.
-        #
-        # Na prática, Editar Produto Existente deve servir para trocar
-        # título, link, ID, imagem, categorias, aliases, badges etc.,
-        # sem bagunçar Produto do Dia nem Vitrine Rápida.
-        #
-        # Mudanças estruturais continuam sendo feitas por fluxos próprios
-        # (ex.: template dedicado de Produto do Dia / ajustes explícitos).
-        # ------------------------------------------------------------
-        active = None
-        featured = None
-        quick_home = None
-        quick_home_order = None
+        quick_home_action_line = _clean_edit_optional_text(_first_meaningful_line(quick_home_action_block))
+        active_action_line = _clean_edit_optional_text(_first_meaningful_line(active_action_block))
+        featured_action_line = _clean_edit_optional_text(_first_meaningful_line(featured_action_block))
+
+        quick_home = _normalize_quick_home_action(quick_home_action_line) if quick_home_action_line else None
+        active = _normalize_active_action(active_action_line) if active_action_line else None
+        featured = _normalize_featured_action(featured_action_line) if featured_action_line else None
+
+        quick_home_order_clean = _clean_edit_optional_text(quick_home_order_block, field="quick_home_order")
+        quick_home_order = _clean_quick_home_order_input(quick_home_order_clean) if quick_home_order_clean else None
+
+        if quick_home is None and quick_home_order is not None:
+            quick_home = True
+
+        if quick_home is False:
+            quick_home_order = 0
 
     else:
         title = _clean_title(title_raw)
@@ -1087,9 +1157,11 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         if quick_home_state is None:
             quick_home_state = _parse_optional_bool_text(_first_meaningful_line(quick_home_block))
 
-        quick_home_order = _clean_order_int(_first_meaningful_line(quick_home_order_block), default=0)
+        quick_home_order = _clean_quick_home_order_input(_first_meaningful_line(quick_home_order_block))
+        if quick_home_state is None and quick_home_order is not None:
+            quick_home_state = True
 
-        if quick_home_state is False and quick_home_order <= 0:
+        if quick_home_state is False:
             quick_home_order = 0
 
         active = True if active_state is None else bool(active_state)
