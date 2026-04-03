@@ -22,6 +22,12 @@ body:
         - Também pode definir **categorias secundárias** e **aliases de busca**.
         - Isso reduz retrabalho, melhora a busca e evita a vitrine depender só de inferência no front.
 
+        🏛️ **Vitrine Rápida (home):**
+        - A Vitrine Rápida agora trabalha com **até 12 posições**.
+        - Aqui você pode **manter**, **colocar/atualizar** ou **remover** o produto da Vitrine Rápida.
+        - Se você informar uma posição já ocupada, este produto **substitui só aquela posição**.
+        - O restante da estrutura da Vitrine Rápida permanece como está.
+
   - type: input
     id: target_issue_number
     attributes:
@@ -112,31 +118,50 @@ body:
     validations:
       required: false
 
-  - type: checkboxes
-    id: quick_home
+  - type: dropdown
+    id: quick_home_action
     attributes:
-      label: "Vitrine Rápida (opcional)"
-      description: "Marque se quiser colocar este produto na vitrine rápida da home."
+      label: "Ação da Vitrine Rápida (opcional)"
+      description: "Escolha se quer manter, colocar/atualizar ou remover este produto da Vitrine Rápida."
       options:
-        - label: "Colocar este produto na Vitrine Rápida"
+        - "Manter como está"
+        - "Colocar / manter na Vitrine Rápida"
+        - "Remover da Vitrine Rápida"
+    validations:
+      required: false
 
   - type: input
     id: quick_home_order
     attributes:
       label: "Posição na Vitrine Rápida (opcional)"
-      description: "Ex.: 1, 2, 3... Deixe vazio para manter a posição atual ou usar ordem automática."
+      description: "Ex.: 1 a 12. Se informar uma posição já ocupada, este produto substitui só aquela posição e o restante permanece."
       placeholder: "1"
     validations:
       required: false
 
-  - type: checkboxes
-    id: options
+  - type: dropdown
+    id: active_action
     attributes:
-      label: "Opções (opcional)"
-      description: "Marque só se quiser forçar mudança nessas opções."
+      label: "Estado do produto (opcional)"
+      description: "Use só se quiser forçar ativação ou desativação do produto."
       options:
-        - label: "Ativo (aparece na vitrine)"
-        - label: "Definir como Produto do Dia (featured)"
+        - "Manter como está"
+        - "Ativar produto"
+        - "Desativar produto"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: featured_action
+    attributes:
+      label: "Produto do Dia / Featured (opcional)"
+      description: "Use só se quiser forçar mudança nessa opção. Para fluxo dedicado, continue usando o template de Produto do Dia."
+      options:
+        - "Manter como está"
+        - "Definir como Produto do Dia (featured)"
+        - "Remover como Produto do Dia (featured)"
+    validations:
+      required: false
 
   - type: markdown
     attributes:
@@ -163,4 +188,5 @@ body:
         - usando só os campos principais
         - sem aquele monte de campo de manutenção que atrapalha
         - agora também pode definir **categoria principal**, **categorias secundárias** e **aliases de busca**
-        - e também pode definir se o produto entra na **Vitrine Rápida** da home
+        - pode **colocar, reposicionar ou remover** o produto da **Vitrine Rápida**
+        - e, se quiser, também pode ajustar **estado do produto** e **Produto do Dia**
