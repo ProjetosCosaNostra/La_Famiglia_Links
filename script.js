@@ -35,6 +35,11 @@
    - respeita quick_home / quick_home_order vindos do produtos.json
    - se houver seleção manual, a home usa essa ordem
    - se não houver seleção manual, mantém o fallback atual
+
+   ✅ PATCH VITRINE RÁPIDA POSICIONAL (2026-04-03):
+   - a grade rápida agora exibe até 12 produtos
+   - quick_home_order (1..12) fixa o produto na posição desejada
+   - ao substituir 1 posição, o restante da estrutura é preservado
 */
 (function () {
   'use strict';
@@ -45,6 +50,13 @@
   function safeText(v) { return (v === null || v === undefined) ? '' : String(v); }
   function trim(s) { return safeText(s).replace(/^\s+|\s+$/g, ''); }
   function lower(s) { return safeText(s).toLowerCase(); }
+
+  var QUICK_HOME_LIMIT = 12;
+
+  function getProductKey(p) {
+    if (!p) return '';
+    return safeText(p.sku || p.id_busca || p.id || p.title || p.name || '');
+  }
 
   function toast(msg) {
     var el = qs('#toast');
@@ -291,25 +303,100 @@
     return arr;
   }
 
-  function pickQuickProducts(activeList, sortedList) {
+  function pickQuickProducts(activeList, sortedList, limit) {
     var base = Array.isArray(activeList) ? activeList : [];
     var fallback = Array.isArray(sortedList) ? sortedList.slice() : sortRelev(base);
-    var manual = [];
+    var max = parseInt(limit, 10);
+    if (!isFinite(max) || max < 1) max = QUICK_HOME_LIMIT;
 
-    for (var i = 0; i < base.length; i++) {
-      if (getQuickHomeFlag(base[i])) manual.push(base[i]);
+    var manual = [];
+    var ordered = [];
+    var unordered = [];
+    var i;
+
+    for (i = 0; i < base.length; i++) {
+      if (!getQuickHomeFlag(base[i])) continue;
+      manual.push(base[i]);
+      if (getQuickHomeOrder(base[i]) !== null) ordered.push(base[i]);
+      else unordered.push(base[i]);
     }
 
     if (!manual.length) {
       return {
-        items: fallback,
-        source: 'fallback'
+        items: fallback.slice(0, max),
+        source: 'fallback',
+        mode: 'fallback',
+        limit: max
       };
     }
 
+    if (!ordered.length) {
+      var manualOnly = sortQuickManual(manual).slice(0, max);
+      return {
+        items: manualOnly,
+        source: 'manual',
+        mode: 'manual_only',
+        limit: max
+      };
+    }
+
+    var slots = new Array(max);
+    var orderedPositions = {};
+    var usedKeys = {};
+    var p, order, key, pos;
+
+    ordered.sort(function (a, b) {
+      return getQuickHomeOrder(a) - getQuickHomeOrder(b);
+    });
+
+    for (i = 0; i < ordered.length; i++) {
+      p = ordered[i];
+      order = getQuickHomeOrder(p);
+      if (order === null || order < 1 || order > max) continue;
+      key = getProductKey(p);
+      if (usedKeys[key]) continue;
+      pos = order - 1;
+      slots[pos] = p;
+      orderedPositions[pos] = true;
+      usedKeys[key] = true;
+    }
+
+    for (i = 0; i < unordered.length; i++) {
+      p = unordered[i];
+      key = getProductKey(p);
+      if (usedKeys[key]) continue;
+      for (pos = 0; pos < max; pos++) {
+        if (!slots[pos]) {
+          slots[pos] = p;
+          usedKeys[key] = true;
+          break;
+        }
+      }
+    }
+
+    var cursor = 0;
+    for (pos = 0; pos < max; pos++) {
+      if (slots[pos]) continue;
+      while (cursor < fallback.length) {
+        p = fallback[cursor++];
+        key = getProductKey(p);
+        if (!key || usedKeys[key]) continue;
+        slots[pos] = p;
+        usedKeys[key] = true;
+        break;
+      }
+    }
+
+    var finalItems = [];
+    for (pos = 0; pos < max; pos++) {
+      if (slots[pos]) finalItems.push(slots[pos]);
+    }
+
     return {
-      items: sortQuickManual(manual),
-      source: 'manual'
+      items: finalItems,
+      source: 'manual',
+      mode: 'positional_overlay',
+      limit: max
     };
   }
 
@@ -365,7 +452,8 @@
       position_on_page: (meta.position_on_page === 0 || meta.position_on_page) ? meta.position_on_page : null,
       placement: safeText(meta.placement || ''),
       source_block: safeText(meta.source_block || ''),
-      quick_source: safeText(meta.quick_source || '')
+      quick_source: safeText(meta.quick_source || ''),
+      quick_mode: safeText(meta.quick_mode || '')
     };
   }
 
@@ -447,7 +535,8 @@
       placement: 'featured_main',
       source_block: 'produto_do_dia',
       position_on_page: 1,
-      quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+      quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
     });
 
     var wrap = document.createElement('div');
@@ -521,7 +610,8 @@
         placement: 'featured_buy',
         source_block: 'produto_do_dia',
         position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
       return openBuy(buyLink, ev);
@@ -537,7 +627,8 @@
         placement: 'featured_copy_id',
         source_block: 'produto_do_dia',
         position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
       copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
@@ -555,7 +646,8 @@
         placement: 'featured_copy_link',
         source_block: 'produto_do_dia',
         position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
       copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
@@ -573,7 +665,8 @@
         placement: 'featured_copy_alt',
         source_block: 'produto_do_dia',
         position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
       copyText(alt).then(function (ok) { toast(ok ? 'Link alternativo copiado ✅' : 'Falha ao copiar'); });
@@ -590,7 +683,8 @@
         page_type: 'home',
         placement: 'featured_open_store',
         source_block: 'produto_do_dia',
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       });
     };
     row1.appendChild(aStore);
@@ -621,7 +715,8 @@
       placement: 'quick_grid',
       source_block: 'vitrine_rapida',
       position_on_page: idx + 1,
-      quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+      quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
     });
 
     var img = document.createElement('img');
@@ -679,7 +774,8 @@
         placement: 'quick_buy',
         source_block: 'vitrine_rapida',
         position_on_page: idx + 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
       return openBuy(buyLink, ev);
@@ -695,7 +791,8 @@
         placement: 'quick_copy_id',
         source_block: 'vitrine_rapida',
         position_on_page: idx + 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
       copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
@@ -713,7 +810,8 @@
         placement: 'quick_copy_link',
         source_block: 'vitrine_rapida',
         position_on_page: idx + 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback'
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
       copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
@@ -731,7 +829,7 @@
     if (!grid) return;
     grid.innerHTML = '';
 
-    var limit = 9;
+    var limit = QUICK_HOME_LIMIT;
     var n = Math.min(limit, list.length);
     for (var i = 0; i < n; i++) {
       grid.appendChild(makeQuickCard(list[i], i, state));
@@ -886,6 +984,7 @@
       sorted: [],
       quickDefault: [],
       quickSource: 'fallback',
+      quickMode: 'fallback',
       featured: null,
       updated_at: '',
       _trackedViews: {
@@ -903,9 +1002,10 @@
         state.active = state.products.filter(isActive);
         state.sorted = sortRelev(state.active);
 
-        var quickPick = pickQuickProducts(state.active, state.sorted);
+        var quickPick = pickQuickProducts(state.active, state.sorted, QUICK_HOME_LIMIT);
         state.quickDefault = quickPick.items;
         state.quickSource = quickPick.source;
+        state.quickMode = quickPick.mode || quickPick.source || 'fallback';
 
         setTotals(state.active.length);
         setLastUpdate(state.updated_at);
