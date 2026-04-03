@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-04-03T16:18:48Z",
-  "total_items": 2,
+  "updated_at": "2026-04-03T19:05:18Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 4
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 4
     },
-    "high_priority": 2
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-04-03T16:15:14Z",
+      "happened_at": "2026-04-03T19:00:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,52 @@
       ]
     },
     {
-      "happened_at": "2026-04-03T16:15:14Z",
+      "happened_at": "2026-04-03T19:00:00Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 130,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/130",
+      "issue_title": "[CMS] Produto: Bermuda Tectel Masculino Leve Fresca Bolsos Frontais",
+      "sku": "bermuda-tectel-masculino-leve-fresca-bolsos-frontais",
+      "title": "🩳🔥 Bermuda Tectel Masculina — Leveza, Conforto e Estilo no Dia a Dia",
+      "id_busca": "5J5PKG-G9YH",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1YZYzdi",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1YZYzdi",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOPnxhtKCoe2fPT9sf5N%2BuK0Q5YNe%2ByXcFhdCwcZ48LBrqMQ1pGkOrK0QWiv1QGhdPX%2BywoOQ3LBtj%2BuEsYnskpKgDfguLPVNf%2F6cRt8IhFhs2twWzXBxFHG759T9ollL8ghH2JxMZnS2%2Fk3bM%2B9atXFe1Q1jjPXjEyxRXrjcNYzCOBfCQqYUbR4GAWl2Vxqk8iaJA%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-G9YH&tid=243528f4-75d4-4289-ba7f-58ebbdcb3081",
+      "short_url": "https://meli.la/1YZYzdi",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOPnxhtKCoe2fPT9sf5N%2BuK0Q5YNe%2ByXcFhdCwcZ48LBrqMQ1pGkOrK0QWiv1QGhdPX%2BywoOQ3LBtj%2BuEsYnskpKgDfguLPVNf%2F6cRt8IhFhs2twWzXBxFHG759T9ollL8ghH2JxMZnS2%2Fk3bM%2B9atXFe1Q1jjPXjEyxRXrjcNYzCOBfCQqYUbR4GAWl2Vxqk8iaJA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOPnxhtKCoe2fPT9sf5N%2BuK0Q5YNe%2ByXcFhdCwcZ48LBrqMQ1pGkOrK0QWiv1QGhdPX%2BywoOQ3LBtj%2BuEsYnskpKgDfguLPVNf%2F6cRt8IhFhs2twWzXBxFHG759T9ollL8ghH2JxMZnS2%2Fk3bM%2B9atXFe1Q1jjPXjEyxRXrjcNYzCOBfCQqYUbR4GAWl2Vxqk8iaJA%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Bermuda Tectel",
+        "Bermuda Masculina",
+        "Leve",
+        "Fresca",
+        "Bolsos Frontais",
+        "Conforto",
+        "Dia a Dia"
+      ]
+    },
+    {
+      "happened_at": "2026-04-03T19:00:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -102,6 +147,51 @@
         "Suporte Organizador",
         "Utilidades Domésticas",
         "Casa"
+      ]
+    },
+    {
+      "happened_at": "2026-04-03T19:00:00Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 48,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48",
+      "issue_title": "[CMS] Produto: 🗑️✨ Lixeira Inteligente — Mais higiene, menos toque",
+      "sku": "lixeira-inteligente-sensor-automatica-16l-preta",
+      "title": "Lixeira Inteligente com Sensor Automático 16L — Abre sem tocar (Preta)",
+      "id_busca": "5J5PKG-CCY5",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/13oLgYK",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/13oLgYK",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBHiTzZVXznJqSWQkA%2Fmq5ui6fi4pq1wkt2ApUQ4HRy0187U%2Bvr%2B%2F%2FDFrUj4UhwflBEUOv0S%2FiWsP62%2FLFhw3OMuXW%2FW4eYI3YWyk7Gbyj4slZNVIE5EcBaND7jPcYCjBYPPr4WyxiCxYDkIoXkG9e1LyHyJPxm50TZPN6jE%2BQpTH1kwKH1lQU7p%2Fd2Xvsa8qppRPz0%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBHiTzZVXznJqSWQkA%2Fmq5ui6fi4pq1wkt2ApUQ4HRy0187U%2Bvr%2B%2F%2FDFrUj4UhwflBEUOv0S%2FiWsP62%2FLFhw3OMuXW%2FW4eYI3YWyk7Gbyj4slZNVIE5EcBaND7jPcYCjBYPPr4WyxiCxYDkIoXkG9e1LyHyJPxm50TZPN6jE%2BQpTH1kwKH1lQU7p%2Fd2Xvsa8qppRPz0%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBHiTzZVXznJqSWQkA%2Fmq5ui6fi4pq1wkt2ApUQ4HRy0187U%2Bvr%2B%2F%2FDFrUj4UhwflBEUOv0S%2FiWsP62%2FLFhw3OMuXW%2FW4eYI3YWyk7Gbyj4slZNVIE5EcBaND7jPcYCjBYPPr4WyxiCxYDkIoXkG9e1LyHyJPxm50TZPN6jE%2BQpTH1kwKH1lQU7p%2Fd2Xvsa8qppRPz0%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Casa",
+        "Cozinha",
+        "Banheiro",
+        "Lixeira",
+        "Lixeira Inteligente",
+        "Sensor",
+        "Automática"
       ]
     }
   ]
