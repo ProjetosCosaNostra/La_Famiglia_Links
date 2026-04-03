@@ -15,9 +15,9 @@
   <meta property="og:title" content="Cosa Nostra — Central Premium" />
   <meta property="og:description" content="Links oficiais + vitrine de produtos (Achados do Dia). Vitrine Rápida = prévia. Loja Completa = TODOS os produtos." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo-oficial-circular-glow.png" />
+  <meta property="og:image" content="assets/logo-oficial-black-gold-society.jpg" />
 
-  <link rel="icon" href="assets/logo-oficial-circular-glow.png" />
+  <link rel="icon" href="assets/logo-oficial-black-gold-society.jpg" />
 
   <!-- Fonts (premium) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -540,47 +540,6 @@
       padding-top: 18px;
     }
 
-.footer__brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;
-}
-
-.footer__logoWrap{
-  width:50px;
-  height:50px;
-  flex:0 0 50px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(232,197,102,.16) 0%, rgba(232,197,102,.06) 52%, rgba(232,197,102,0) 76%);
-  box-shadow:
-    0 0 0 1px rgba(245,214,128,.08),
-    0 0 18px rgba(232,197,102,.10);
-  overflow:visible;
-}
-
-.footer__logo{
-  width:42px;
-  height:42px;
-  display:block;
-  object-fit:contain;
-  border-radius:50%;
-  filter:
-    drop-shadow(0 0 2px rgba(250,228,152,.12))
-    drop-shadow(0 0 8px rgba(232,197,102,.14))
-    drop-shadow(0 4px 8px rgba(0,0,0,.24));
-}
-
-.footer__text{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  min-width:0;
-}
-
     .floatingStoreCTA a {
       min-height: 50px;
       padding-inline: 16px;
@@ -949,7 +908,6 @@
       .footer__logoWrap{
         width:42px;
         height:42px;
-        flex-basis:42px;
       }
 
       .footer__logo{
@@ -1153,78 +1111,66 @@
       width:100%;
       height:auto;
     }
-.heroBanner__seal{
-  position:absolute;
-  top:13px;
-  right:13px;
-  width:62px;
-  height:62px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:none;
-  border-radius:50%;
-  background:transparent;
-  box-shadow:none;
-  overflow:visible;
-  z-index:2;
-  pointer-events:none;
-  isolation:isolate;
-}
 
-.heroBanner__seal::before{
-  content:"";
-  position:absolute;
-  inset:-4px;
-  border-radius:50%;
-  background:
-    radial-gradient(circle,
-      rgba(255,228,146,.34) 0%,
-      rgba(232,197,102,.18) 34%,
-      rgba(232,197,102,.08) 54%,
-      rgba(232,197,102,0) 74%);
-  filter:blur(8px);
-  opacity:.98;
-  pointer-events:none;
-  z-index:0;
-}
+    .heroBanner__seal{
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(120px 80px at 35% 20%, rgba(224,195,107,.22), transparent 60%),
+        rgba(0,0,0,.38);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:
+        0 14px 32px rgba(0,0,0,.35),
+        0 0 26px rgba(224,195,107,.12);
+      overflow:hidden;
+      z-index:2;
+    }
 
-.heroBanner__seal::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:50%;
-  box-shadow:
-    0 0 0 1px rgba(245,214,128,.10),
-    0 0 18px rgba(232,197,102,.16),
-    0 0 28px rgba(232,197,102,.10);
-  opacity:.9;
-  pointer-events:none;
-  z-index:0;
-}
+    .heroBanner__seal::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
 
-.heroBanner__sealLogo{
-  position:relative;
-  z-index:1;
-  width:62px;
-  height:62px;
-  display:block;
-  object-fit:contain;
-  border-radius:50%;
-  background:transparent;
-  box-shadow:none;
-  transform:none;
-  transform-origin:center center;
-  filter:
-    saturate(1.05)
-    contrast(1.04)
-    brightness(1.03)
-    drop-shadow(0 0 2px rgba(250,228,152,.16))
-    drop-shadow(0 0 8px rgba(232,197,102,.22))
-    drop-shadow(0 0 16px rgba(232,197,102,.16))
-    drop-shadow(0 6px 10px rgba(0,0,0,.34));
-}
+    .heroBanner__seal::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:18px;
+      background:linear-gradient(120deg, transparent 35%, rgba(224,195,107,.18), transparent 65%);
+      transform:translateX(-70%);
+      animation:shine 4.2s ease-in-out infinite;
+      pointer-events:none;
+    }
 
+    .heroBanner__sealLogo{
+      width:46px;
+      height:46px;
+      object-fit:cover;
+      border-radius:50%;
+      background:#050505;
+      box-shadow:
+        0 0 0 1px rgba(224,195,107,.28),
+        0 0 18px rgba(224,195,107,.14),
+        0 10px 16px rgba(0,0,0,.55);
+      filter:
+        saturate(1.03)
+        contrast(1.03)
+        drop-shadow(0 0 10px rgba(224,195,107,.12));
+      position:relative;
+      z-index:1;
+    }
 
     .heroBanner__sealFallback,
     .heroBanner__seal--fallback .heroBanner__sealFallback{
@@ -1267,12 +1213,12 @@
 
     @media (max-width: 980px){
       .heroBanner__seal{
-        top:12px;
-        right:12px;
+        top:14px;
+        right:14px;
         width:58px;
         height:58px;
       }
-      .heroBanner__sealLogo{ width:58px; height:58px; }
+      .heroBanner__sealLogo{ width:42px; height:42px; }
     }
 
     @media (max-width: 860px){
@@ -1293,12 +1239,13 @@
         border-radius:16px;
       }
       .heroBanner__seal{
-        width:52px;
-        height:52px;
-        top:8px;
-        right:8px;
+        width:54px;
+        height:54px;
+        border-radius:16px;
+        top:10px;
+        right:10px;
       }
-      .heroBanner__sealLogo{ width:52px; height:52px; }
+      .heroBanner__sealLogo{ width:38px; height:38px; }
       .hero__sub--banner{
         font-size:.97rem;
         max-width:none;
@@ -1315,10 +1262,11 @@
       .heroBanner__seal{
         width:48px;
         height:48px;
-        top:7px;
-        right:7px;
+        border-radius:14px;
+        top:8px;
+        right:8px;
       }
-      .heroBanner__sealLogo{ width:48px; height:48px; }
+      .heroBanner__sealLogo{ width:34px; height:34px; }
     }
     /* =========================
        AJUSTE APROVADO
@@ -1647,9 +1595,9 @@
           <div class="heroBanner__seal" aria-hidden="true">
             <img
               class="heroBanner__sealLogo"
-              src="assets/logo-oficial-circular-glow.png"
+              src="assets/logo-oficial-black-gold-society.jpg"
               alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-black-gold-society.jpg'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
             />
             <span class="heroBanner__sealFallback">👑</span>
           </div>
@@ -1867,9 +1815,9 @@
         <span class="footer__logoWrap" aria-hidden="true">
           <img
             class="footer__logo"
-            src="assets/logo-oficial-circular-glow.png"
+            src="assets/logo-oficial-black-gold-society.jpg"
             alt=""
-            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none';"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-black-gold-society.jpg'; return;} this.style.display='none';"
           />
         </span>
 
