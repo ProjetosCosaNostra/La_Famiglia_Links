@@ -15,9 +15,9 @@
   <meta property="og:title" content="Cosa Nostra — Central Premium" />
   <meta property="og:description" content="Links oficiais + vitrine de produtos (Achados do Dia). Vitrine Rápida = prévia. Loja Completa = TODOS os produtos." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo-oficial-black-gold-society.jpg" />
+  <meta property="og:image" content="assets/logo.png" />
 
-  <link rel="icon" href="assets/logo-oficial-black-gold-society.jpg" />
+  <link rel="icon" href="assets/logo.png" />
 
   <!-- Fonts (premium) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -904,16 +904,6 @@
       .miniNote {
         font-size: .84rem;
       }
-
-      .footer__logoWrap{
-        width:42px;
-        height:42px;
-      }
-
-      .footer__logo{
-        width:34px;
-        height:34px;
-      }
     }
 
     @media (max-width: 520px) {
@@ -1121,14 +1111,12 @@
       border-radius:18px;
       border:1px solid rgba(255,255,255,.14);
       background:
-        radial-gradient(120px 80px at 35% 20%, rgba(224,195,107,.22), transparent 60%),
+        radial-gradient(120px 80px at 35% 20%, rgba(224,195,107,.18), transparent 60%),
         rgba(0,0,0,.38);
       display:flex;
       align-items:center;
       justify-content:center;
-      box-shadow:
-        0 14px 32px rgba(0,0,0,.35),
-        0 0 26px rgba(224,195,107,.12);
+      box-shadow:0 14px 32px rgba(0,0,0,.35);
       overflow:hidden;
       z-index:2;
     }
@@ -1157,17 +1145,8 @@
     .heroBanner__sealLogo{
       width:46px;
       height:46px;
-      object-fit:cover;
-      border-radius:50%;
-      background:#050505;
-      box-shadow:
-        0 0 0 1px rgba(224,195,107,.28),
-        0 0 18px rgba(224,195,107,.14),
-        0 10px 16px rgba(0,0,0,.55);
-      filter:
-        saturate(1.03)
-        contrast(1.03)
-        drop-shadow(0 0 10px rgba(224,195,107,.12));
+      object-fit:contain;
+      filter:drop-shadow(0 10px 16px rgba(0,0,0,.55));
       position:relative;
       z-index:1;
     }
@@ -1595,9 +1574,9 @@
           <div class="heroBanner__seal" aria-hidden="true">
             <img
               class="heroBanner__sealLogo"
-              src="assets/logo-oficial-black-gold-society.jpg"
+              src="assets/logo.png"
               alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-black-gold-society.jpg'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
             />
             <span class="heroBanner__sealFallback">👑</span>
           </div>
@@ -1695,7 +1674,7 @@
         <div>
           <h2>Vitrine rápida</h2>
           <p>
-            Prévia de até <b>12 produtos</b> (pra bater o olho). A lista completa fica na <b>Loja Completa</b>.
+            Prévia de produtos (pra bater o olho). A lista completa fica na <b>Loja Completa</b>.
             <span style="opacity:.85">Mostrando <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b>.</span>
           </p>
         </div>
@@ -1713,17 +1692,12 @@
         <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Abrir loja completa (<span data-total-products>—</span>)</a>
       </div>
 
-      <div class="imperialNote" role="note" aria-label="Informação sobre a vitrine rápida" style="margin: 0 16px 10px;">
-        <div><b>Organização da grade:</b> a Vitrine Rápida agora exibe até <b>12 produtos</b>.</div>
-        <div class="mini">Quando um produto for fixado em uma posição específica, ele <b>substitui só aquela posição</b> — o restante da estrutura continua intacto.</div>
-      </div>
-
       <div class="productsGrid cnGrid" id="quickGrid">
         <!-- preenchido pelo script.js -->
       </div>
 
       <div class="imperialNote" role="note" aria-label="Mensagem para leigos">
-        <div>💡 <b>Não se perca:</b> a <b>Vitrine Rápida</b> mostra até <b>12 itens</b>. Se você não achou o que queria aqui, a <b>Loja Completa</b> tem <b><span data-total-products>—</span> itens</b> — clique em <b>“Ver todos”</b>.</div>
+        <div>💡 <b>Não se perca:</b> se você não achou o que queria aqui, a <b>Loja Completa</b> tem <b><span data-total-products>—</span> itens</b> — clique em <b>“Ver todos”</b>.</div>
       </div>
     </section>
     <section class="panel" id="sec-links">
@@ -1811,20 +1785,9 @@
     </section>
 
     <footer class="footer">
-      <div class="footer__left footer__brand">
-        <span class="footer__logoWrap" aria-hidden="true">
-          <img
-            class="footer__logo"
-            src="assets/logo-oficial-black-gold-society.jpg"
-            alt=""
-            onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-black-gold-society.jpg'; return;} this.style.display='none';"
-          />
-        </span>
-
-        <span class="footer__text">
-          <span class="sig">🎩 Cosa Nostra</span>
-          <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
-        </span>
+      <div class="footer__left">
+        <span class="sig">🎩 Cosa Nostra</span>
+        <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
       </div>
 
       <div class="footer__right">
