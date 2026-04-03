@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-03T01:26:39Z",
+  "updated_at": "2026-04-03T16:09:15Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6718,7 +6718,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-L1KL",
       "image": "https://github.com/user-attachments/assets/7dc6e1ea-8849-4343-83bf-c80c31591571",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6752,6 +6752,58 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1bTnn7V",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF1RDIA1GBl9Vje0VhfLAXRIYvFNNvFiiHFnQGH%2FlWYFwFVKDrei48sXcvu7Dk2YSytMEPMdqZ3AMd3cnBTQ1%2BbxNzU5BgLgqgOYzk%2BXOrivEaN8fbPNzTg8POUIZUnn%2BqMtbgs6A9Ap1PiAkUMbn7S7qAbvFV1QZJTW2NHTDvf5U1Ay%2FyKU7y0bQRcIhTdgtqPquA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "body-splash-kiss-ciclo-200ml",
+      "title": "Body Splash Kiss Ciclo 200ml",
+      "badges": [
+        "Achados do Dia",
+        "Feminino",
+        "Body Splash",
+        "Perfume",
+        "200ml"
+      ],
+      "id_busca": "5J5PKG-V0CZ",
+      "open_url": "https://meli.la/26kvCnG",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLMNeuRR0KV27aSIYANOaCtPQlXVbOL1qyHMgnuI3yQ61%2B3cygJykLWFisaWjn8r%2FrgToid590ixjSr2PcBlMUFsgy4e6sdP5%2FQD7KMIj1Vczctrix184b20KF25rMkCMToDlYtdhw3492U5r%2B5TKECFfZ61160ElXLgbm669b5IRg1KPeKqom6GN%2B8uOmr1pWwe%2FrA%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-V0CZ",
+      "image": "https://github.com/user-attachments/assets/bbb8ee3a-9ecb-4e9f-9a27-cea612aa2c84",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 177,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/177",
+      "issue_title": "Body Splash Kiss Ciclo 200ml",
+      "categoria_principal": "Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Perfumes",
+        "Body Splash",
+        "Beleza",
+        "Perfumaria Feminina"
+      ],
+      "aliases_busca": [
+        "body splash kiss ciclo",
+        "body splash ciclo 200ml",
+        "body splash kiss 200ml",
+        "perfume feminino ciclo",
+        "splash feminino",
+        "perfume ciclo kiss"
+      ],
+      "quick_home": true,
+      "quick_home_order": 4,
+      "_source_issue_number": 177,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/26kvCnG",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLMNeuRR0KV27aSIYANOaCtPQlXVbOL1qyHMgnuI3yQ61%2B3cygJykLWFisaWjn8r%2FrgToid590ixjSr2PcBlMUFsgy4e6sdP5%2FQD7KMIj1Vczctrix184b20KF25rMkCMToDlYtdhw3492U5r%2B5TKECFfZ61160ElXLgbm669b5IRg1KPeKqom6GN%2B8uOmr1pWwe%2FrA%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
