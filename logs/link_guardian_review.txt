@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-04T13:19:42Z
+Atualizado em: 2026-04-04T19:00:33Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-04T13:15:01Z
+Quando: 2026-04-04T18:55:53Z
 Issue: #155
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/155
 SKU: cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cherry Lash, Extensão de Cílios, Cola para Cílios, Lash Designer, Preto
 open_url: https://meli.la/1BpJYQ8
 checked_url: https://meli.la/1BpJYQ8
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHmgJz4cxGJJrrLTY1DgDO4LLCqUxT2W4hYhKvtAn7dBs16INdmH5qYXmPfcffeIP5so1Bs4Aloo91e2Qi7pFx6KXHwZUEfKwwvgaAhWFH5eSqSEJDCCjAWWGjkUNUmb4pJdDPkgJHXSeV9%2Bf5skKU99ZsjeiGT0OITG7r0gjnJoBRIhHIsA5FUQEyu3Rb0UvH4x6Q%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-04-04T13:15:01Z
+Quando: 2026-04-04T18:55:53Z
 Issue: #110
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
 SKU: kit-utensilios-cozinha-premium-rosa
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
 open_url: https://meli.la/1kiePfs
 checked_url: https://meli.la/1kiePfs
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
 
 [ALTA] review_only_storefront
-Quando: 2026-04-04T13:15:01Z
+Quando: 2026-04-04T18:55:53Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://mercadolivre.com/sec/13oLgYK
 checked_url: https://mercadolivre.com/sec/13oLgYK
@@ -81,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-04-04T13:15:01Z
+Quando: 2026-04-04T18:55:53Z
 Issue: #170
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/170
 SKU: organizador-maquiagem-giratorio-360-acrilico-transparente
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Organização, Acrílico, Giratório 360, Premium
 open_url: https://meli.la/1CDrde5
 checked_url: https://meli.la/1CDrde5
