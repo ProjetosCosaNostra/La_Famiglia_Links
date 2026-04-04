@@ -1,24 +1,23 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-04T03:03:24Z
-Itens pendentes: 13
-SKUs únicos: 13
-Prioridade alta: 13
+Atualizado em: 2026-04-04T07:15:17Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 13
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 13
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_listing_invalid: 5
 - storefront_social_lists_invalid: 4
-- storefront_social_profile_unconfirmed: 4
+- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -26,7 +25,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
+Quando: 2026-04-04T07:11:44Z
 Issue: #155
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/155
 SKU: cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto
@@ -37,7 +36,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cherry Lash, Extensão de Cílios, Cola para Cílios, Lash Designer, Preto
 open_url: https://meli.la/1BpJYQ8
 checked_url: https://meli.la/1BpJYQ8
@@ -45,7 +44,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHmgJz4cxGJJrrLTY1DgDO4LLCqUxT2W4hYhKvtAn7dBs16INdmH5qYXmPfcffeIP5so1Bs4Aloo91e2Qi7pFx6KXHwZUEfKwwvgaAhWFH5eSqSEJDCCjAWWGjkUNUmb4pJdDPkgJHXSeV9%2Bf5skKU99ZsjeiGT0OITG7r0gjnJoBRIhHIsA5FUQEyu3Rb0UvH4x6Q%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
+Quando: 2026-04-04T07:11:44Z
 Issue: #110
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
 SKU: kit-utensilios-cozinha-premium-rosa
@@ -56,7 +55,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
 open_url: https://meli.la/1kiePfs
 checked_url: https://meli.la/1kiePfs
@@ -64,26 +63,25 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
 
 [ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #43
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/43
-SKU: camera-solar-wifi-ip66-fullhd
-Título: Câmera Solar Wi-Fi IP66 (Full HD) — Proteção 24/7 sem fiação
-ID ML: 5J5PKG-S1DY
+Quando: 2026-04-04T07:11:44Z
+Issue: #69
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/69
+SKU: hd-externo-2tb-seagate-expansion-usb-30-portatil-preto
+Título: HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto
+ID ML: 5J5PKG-DVNF
 Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
 Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Segurança, Casa, Câmera, Câmera Solar, Wi-Fi, IP66, Full HD
-open_url: https://mercadolivre.com/sec/2SfcKWe
-checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-S1DY&tid=2c4c320c-2c2f-4631-b0c0-7ebbd2f815f2
-final_url: https://lista.mercadolivre.com.br/5J5PKG-S1DY
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-S1DY&tid=2c4c320c-2c2f-4631-b0c0-7ebbd2f815f2
+Confiança: 60 (revisar_manual)
+Badges: Achados do Dia, HD Externo, Seagate, 2TB, Armazenamento, Backup, USB 3.0, Portátil
+open_url: https://meli.la/1GyqzF7
+checked_url: https://meli.la/1GyqzF7
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=a66f434b-cc34-4a8d-994a-7ed189438c33
 
 [ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
+Quando: 2026-04-04T07:11:44Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -94,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://mercadolivre.com/sec/13oLgYK
 checked_url: https://mercadolivre.com/sec/13oLgYK
@@ -102,120 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #55
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/55
-SKU: maquina-de-gelo-turbo-ice-premium-mondial-mg-12-gi
-Título: Máquina de Gelo Turbo Ice Premium Mondial — até 12kg/dia (MG-12-GI)
-ID ML: 5J5PKG-T2HL
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Máquina de Gelo, Turbo Ice, Mondial, Gelo em minutos, Até 12kg/dia, Drinks, Festa
-open_url: https://mercadolivre.com/sec/1JTgtXs
-checked_url: https://mercadolivre.com/sec/1JTgtXs
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FHQbCBy0NFbxeA9wcrccN5ZApNp9Rq%2Bag%2FgX3vggEskILV2e%2BvV8lIWRu5RYsXqHC%2FTpjBQMN%2F8q4tvDVM3hU68L2XdwUwisSnAiBg8woEn6wT67Kt5KOcPcIUpOpBrqPJsShCXKSdpLXn1JmFuAlduJav7hFnGdAVYznjhOgg1eiHOovSO8SiJdLjIKGguyMOnKQ%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T2HL&tid=8204a231-d50d-49c3-9341-5d6d6cd708f1
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #64
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/64
-SKU: smartwatch-amazfit-bip-6-gps
-Título: Smartwatch Amazfit Bip 6 — GPS Multiesporte (Android/iPhone)
-ID ML: 5J5PKG-BV6Z
-Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
-Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Smartwatch, Amazfit, Bip 6, GPS, Multiesporte, Fitness, Corrida
-open_url: https://meli.la/228ZyUW
-checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BV6Z&tid=d11827b7-4fa2-4dfd-88a7-518507fd9003
-final_url: https://lista.mercadolivre.com.br/5J5PKG-BV6Z
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BV6Z&tid=d11827b7-4fa2-4dfd-88a7-518507fd9003
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #68
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/68
-SKU: suporte-notebook-aluminio-dobravel-ajustavel-davely-prateado
-Título: Base Suporte Dobrável para Notebook em Alumínio (Ajustável) – Prateado
-ID ML: 5J5PKG-22S1
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Notebook, Suporte, Alumínio, Dobrável, Ajustável, Portátil, Ventilação
-open_url: https://meli.la/2iV3XdP
-checked_url: https://meli.la/2iV3XdP
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNKaQ5j5npM6n0QYQZeslxG%2Fwajah%2B5PgBi3n5G1y7VYT3JgR2%2BchcwKJyOUbw0CEDcY9PwHo3Dxw50MBf218z7pkbwthPTdtK5xIxMHYRQSkQwKNQQsJbU2r8Ff30wW6u7qONwq4jk5Fymle8m9CWMsYTaqW0thXXKPIw%2B1jLHe1rNAtoDxtsNd4FeneOp%2BqST5CdU%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-22S1&tid=ba0cd592-a44d-4d06-8cae-f319557ebb31
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #117
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
-SKU: microsoft-xbox-series-x-1tb
-Título: Xbox Series X 1TB Premium
-ID ML: 5J5PKG-VKGY
-Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
-Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 2x listing)
-Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
-open_url: https://meli.la/1dLH6zP
-checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
-final_url: https://lista.mercadolivre.com.br/5J5PKG-VKGY
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #122
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/122
-SKU: suporte-tv-fixo-universal-10-a-100-preto
-Título: Suporte TV Fixo Universal 10" a 100" para Todas as Marcas - Preto
-ID ML: 5J5PKG-WG21
-Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
-Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Suporte TV, Suporte Fixo Universal, TV 10 a 100, Instalação Clean, Fixação Firme, Preto, Parosflux
-open_url: https://meli.la/27PiWWY
-checked_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WG21&tid=aef00650-f598-4aaf-af12-c8d46c55271f
-final_url: https://lista.mercadolivre.com.br/5J5PKG-WG21
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WG21&tid=aef00650-f598-4aaf-af12-c8d46c55271f
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #129
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
-SKU: puma-flyer-runner-mesh-bdp
-Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
-ID ML: 5J5PKG-M95V
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 1x listing)
-Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
-open_url: https://meli.la/2D5FQRJ
-checked_url: https://meli.la/2D5FQRJ
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNJpp5THcCIdswpKl8%2FmujU9WtrMmYOGytJAvWGoANEZuZ9A6L87nIDDpqeYCbx7Ryg2NdgGUgLzScvd1DQxvFqcF7tx8wiD0Vz9OAbUNdNJDRtow60pxSoAUl3pyy7Je5KxF%2FmPBUQYhBuN9ZXMPfM9iZwKkoLqJBODl8tiw0SD6BZaF%2BtkeUU%2BNtUmXz1CckwAUQ%3D%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
+Quando: 2026-04-04T07:11:44Z
 Issue: #170
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/170
 SKU: organizador-maquiagem-giratorio-360-acrilico-transparente
@@ -226,46 +111,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Organização, Acrílico, Giratório 360, Premium
 open_url: https://meli.la/1CDrde5
 checked_url: https://meli.la/1CDrde5
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-AJPM
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #174
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/174
-SKU: love-kit-gloss-labial-coracao-lapis-volume-rosada
-Título: Love Kit Gloss Labial Coração Lápis Volume Rosada
-ID ML: 5J5PKG-3DE3
-Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
-Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Gloss Labial, Coração, Rosada, Feminino, Presenteável
-open_url: https://meli.la/1b5R9Wd
-checked_url: https://lista.mercadolivre.com.br/5J5PKG-3DE3
-final_url: https://lista.mercadolivre.com.br/5J5PKG-3DE3
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-3DE3
-
-[ALTA] review_only_storefront
-Quando: 2026-04-04T02:52:10Z
-Issue: #176
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/176
-SKU: cilios-posticos-sace-lady-autoadesivos-reutilizaveis
-Título: Cílios Postiços Autoadesivos Sace Lady Reutilizáveis
-ID ML: 5J5PKG-L1KL
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Feminino, Beleza, Maquiagem, Olhar Marcante, Reutilizável, Autoadesivo, Presenteável
-open_url: https://meli.la/1bTnn7V
-checked_url: https://meli.la/1bTnn7V
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF1RDIA1GBl9Vje0VhfLAXRIYvFNNvFiiHFnQGH%2FlWYFwFVKDrei48sXcvu7Dk2YSytMEPMdqZ3AMd3cnBTQ1%2BbxNzU5BgLgqgOYzk%2BXOrivEaN8fbPNzTg8POUIZUnn%2BqMtbgs6A9Ap1PiAkUMbn7S7qAbvFV1QZJTW2NHTDvf5U1Ay%2FyKU7y0bQRcIhTdgtqPquA%3D%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-L1KL
