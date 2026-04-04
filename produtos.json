@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-03T16:09:15Z",
+  "updated_at": "2026-04-04T02:38:39Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6772,7 +6772,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-V0CZ",
       "image": "https://github.com/user-attachments/assets/bbb8ee3a-9ecb-4e9f-9a27-cea612aa2c84",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6804,6 +6804,62 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/26kvCnG",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLMNeuRR0KV27aSIYANOaCtPQlXVbOL1qyHMgnuI3yQ61%2B3cygJykLWFisaWjn8r%2FrgToid590ixjSr2PcBlMUFsgy4e6sdP5%2FQD7KMIj1Vczctrix184b20KF25rMkCMToDlYtdhw3492U5r%2B5TKECFfZ61160ElXLgbm669b5IRg1KPeKqom6GN%2B8uOmr1pWwe%2FrA%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "payot-boca-rosa-meu-volumao-preto-6ml",
+      "title": "👁️✨ Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml 💙🖤",
+      "badges": [
+        "Achados do Dia",
+        "Maquiagem",
+        "Boca Rosa",
+        "Payot",
+        "Volumizador",
+        "Preto",
+        "Cruelty Free"
+      ],
+      "id_busca": "5J5PKG-KQ94",
+      "open_url": "https://meli.la/1dj3ot3",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK91rjgCUs65o24R6ICifyDt9J2bERTAHYoquygwPe2oyoRwpCoc5mM3PHl13TBfocZrm8jkVlSyJxBcwB14ZBeVFYQy2jHFbwsau35uexDKETpn4EkJQ55RH5CyPGE4XSUNY2duai9eolHsG0ernL%2FXuqfCSYGBww8GFiT74ekaiK6lishoFIsq%2Fo1ox8NpGirMjwU%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-KQ94",
+      "image": "https://github.com/user-attachments/assets/ee2c4171-ce24-4926-94a0-2b70f3e7ad26",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 178,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/178",
+      "issue_title": "Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml",
+      "categoria_principal": "Cuidados Pessoais",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Olhos",
+        "Cílios",
+        "Máscara para Cílios"
+      ],
+      "aliases_busca": [
+        "mascara de cilios payot",
+        "payot boca rosa",
+        "meu volumao",
+        "rimel payot boca rosa",
+        "mascara de cilios preta",
+        "rimel preto volumizador",
+        "mascara para cilios payot",
+        "boca rosa beauty"
+      ],
+      "quick_home": true,
+      "quick_home_order": 1,
+      "_source_issue_number": 178,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1dj3ot3",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK91rjgCUs65o24R6ICifyDt9J2bERTAHYoquygwPe2oyoRwpCoc5mM3PHl13TBfocZrm8jkVlSyJxBcwB14ZBeVFYQy2jHFbwsau35uexDKETpn4EkJQ55RH5CyPGE4XSUNY2duai9eolHsG0ernL%2FXuqfCSYGBww8GFiT74ekaiK6lishoFIsq%2Fo1ox8NpGirMjwU%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
