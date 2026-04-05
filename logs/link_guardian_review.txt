@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-05T13:20:18Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-04-05T16:18:34Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-05T13:16:25Z
+Quando: 2026-04-05T16:16:40Z
 Issue: #155
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/155
 SKU: cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (15x /lists, 0x listing)
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cherry Lash, Extensão de Cílios, Cola para Cílios, Lash Designer, Preto
 open_url: https://meli.la/1BpJYQ8
 checked_url: https://meli.la/1BpJYQ8
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHmgJz4cxGJJrrLTY1DgDO4LLCqUxT2W4hYhKvtAn7dBs16INdmH5qYXmPfcffeIP5so1Bs4Aloo91e2Qi7pFx6KXHwZUEfKwwvgaAhWFH5eSqSEJDCCjAWWGjkUNUmb4pJdDPkgJHXSeV9%2Bf5skKU99ZsjeiGT0OITG7r0gjnJoBRIhHIsA5FUQEyu3Rb0UvH4x6Q%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-04-05T13:16:25Z
+Quando: 2026-04-05T16:16:40Z
 Issue: #110
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
 SKU: kit-utensilios-cozinha-premium-rosa
@@ -54,28 +54,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (15x /lists, 0x listing)
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
 open_url: https://meli.la/1kiePfs
 checked_url: https://meli.la/1kiePfs
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
-
-[ALTA] review_only_storefront
-Quando: 2026-04-05T13:16:25Z
-Issue: #41
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/41
-SKU: mandolin-13-em-1-fatiador-ralador-julienne
-Título: 🥗✨ Mandolin 13 em 1 — Fatiador • Ralador • Julienne (com coletor) 🔪
-ID ML: 5J5PKG-LBKY
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Utensílios, Mandolin, Fatiador, Ralador, Julienne, Praticidade
-open_url: https://meli.la/1jJVQc8
-checked_url: https://meli.la/1jJVQc8
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-8WBH&tid=83ea4b47-04d0-4f4a-bc68-d1694954901d
