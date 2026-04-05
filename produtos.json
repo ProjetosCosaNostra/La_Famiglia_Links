@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-05T00:04:44Z",
+  "updated_at": "2026-04-05T16:12:43Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6883,7 +6883,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-KCY9",
       "image": "https://github.com/user-attachments/assets/62ce109f-f54a-49d6-9803-c12697c1e24b",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -6919,6 +6919,59 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1rUJFHB",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNEdbov35V17bu97yIeMnahB%2F8afaQZlBUPuTE09RIkys4CP8u%2FyU%2BRw99%2BWsD%2BpArElYmhO1xRvqCmlY3YzZ2MZSuogo1vkzQoVyvEeVO1R3bAnA2PILe%2Br6r%2FoLtyLklP7n9AFMTTPe4dWqtLME67J5pCekECswZkZ9nJ4uSF1eTGVWOD66hq0S7kcEBGtczLjNQ%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "fixador-de-maquiagem-ruby-rose-150ml-hb312",
+      "title": "Fixador de Maquiagem Ruby Rose 150ml Hb312",
+      "badges": [
+        "Achados do Dia",
+        "Ruby Rose",
+        "Fixador",
+        "Maquiagem",
+        "150ml",
+        "Feminino"
+      ],
+      "id_busca": "5J5PKG-9E78",
+      "open_url": "https://meli.la/1a6HzXw",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL3tpOqk2qJhV9YgrGSqmGWNs9zGJl99mk5oJb%2BArHfrKjVreTMt7LQFeUZI%2FsEfwtTD0dtqZOaESLJBN2GAo%2FtB%2BI246FLWIjVyBBkN7XvpC12uLSzE7JQpDJeWdRIEP9YpJ%2BQTLIGODOIduKTi3pDwxY92l4YpmL84nratNd1giH44UXEATMrGONj4oT7PmIDgZXQ%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-9E78",
+      "image": "https://github.com/user-attachments/assets/6b90b8ef-ad80-4f69-a221-a4c8c18693eb",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 180,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/180",
+      "issue_title": "Fixador de Maquiagem Ruby Rose 150ml Hb312",
+      "categoria_principal": "Maquiagem",
+      "categorias_secundarias": [
+        "Rosto",
+        "Primer Facial",
+        "Fixador de Maquiagem",
+        "Beleza Feminina"
+      ],
+      "aliases_busca": [
+        "fixador ruby rose",
+        "spray fixador maquiagem",
+        "fixador de maquiagem ruby rose",
+        "ruby rose hb312",
+        "fixador 150ml",
+        "fixador de make"
+      ],
+      "quick_home": true,
+      "quick_home_order": 1,
+      "_source_issue_number": 180,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1a6HzXw",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL3tpOqk2qJhV9YgrGSqmGWNs9zGJl99mk5oJb%2BArHfrKjVreTMt7LQFeUZI%2FsEfwtTD0dtqZOaESLJBN2GAo%2FtB%2BI246FLWIjVyBBkN7XvpC12uLSzE7JQpDJeWdRIEP9YpJ%2BQTLIGODOIduKTi3pDwxY92l4YpmL84nratNd1giH44UXEATMrGONj4oT7PmIDgZXQ%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
