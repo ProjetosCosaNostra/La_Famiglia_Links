@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-04-05T00:10:49Z",
-  "total_items": 2,
+  "updated_at": "2026-04-05T03:34:04Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 4
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 4
     },
-    "high_priority": 2
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-04-05T00:09:18Z",
+      "happened_at": "2026-04-05T03:30:21Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-04-05T00:09:18Z",
+      "happened_at": "2026-04-05T03:30:21Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -102,6 +102,96 @@
         "Suporte Organizador",
         "Utilidades Domésticas",
         "Casa"
+      ]
+    },
+    {
+      "happened_at": "2026-04-05T03:30:21Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 41,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/41",
+      "issue_title": "[CMS] Produto: Mandolin 13 em 1 (Fatiador/Ralador/Julienne)",
+      "sku": "mandolin-13-em-1-fatiador-ralador-julienne",
+      "title": "🥗✨ Mandolin 13 em 1 — Fatiador • Ralador • Julienne (com coletor) 🔪",
+      "id_busca": "5J5PKG-LBKY",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1jJVQc8",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1jJVQc8",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-8WBH&tid=83ea4b47-04d0-4f4a-bc68-d1694954901d",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BB2q9jVdF5ESGyrgDFGV%2FvDE%2FcHeuxnPdhloJTo2vkM%2FmhaE86qPppDut9UDBo%2FJccDWE47fQeExpvXSeMbZIlEvOaZFJ5o9WcfulafpywuGVoRzpiCSqR8XeeGFIWV0%2FZfb3%2FrWxL8s89SyCLxYKBJERcllZR7aa%2Bwj0INIIECo0IHtl5%2BX5YJkivIb0qIdNosbGw%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Utensílios",
+        "Mandolin",
+        "Fatiador",
+        "Ralador",
+        "Julienne",
+        "Praticidade"
+      ]
+    },
+    {
+      "happened_at": "2026-04-05T03:30:21Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 48,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48",
+      "issue_title": "[CMS] Produto: 🗑️✨ Lixeira Inteligente — Mais higiene, menos toque",
+      "sku": "lixeira-inteligente-sensor-automatica-16l-preta",
+      "title": "Lixeira Inteligente com Sensor Automático 16L — Abre sem tocar (Preta)",
+      "id_busca": "5J5PKG-CCY5",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/13oLgYK",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/13oLgYK",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBHiTzZVXznJqSWQkA%2Fmq5ui6fi4pq1wkt2ApUQ4HRy0187U%2Bvr%2B%2F%2FDFrUj4UhwflBEUOv0S%2FiWsP62%2FLFhw3OMuXW%2FW4eYI3YWyk7Gbyj4slZNVIE5EcBaND7jPcYCjBYPPr4WyxiCxYDkIoXkG9e1LyHyJPxm50TZPN6jE%2BQpTH1kwKH1lQU7p%2Fd2Xvsa8qppRPz0%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBHiTzZVXznJqSWQkA%2Fmq5ui6fi4pq1wkt2ApUQ4HRy0187U%2Bvr%2B%2F%2FDFrUj4UhwflBEUOv0S%2FiWsP62%2FLFhw3OMuXW%2FW4eYI3YWyk7Gbyj4slZNVIE5EcBaND7jPcYCjBYPPr4WyxiCxYDkIoXkG9e1LyHyJPxm50TZPN6jE%2BQpTH1kwKH1lQU7p%2Fd2Xvsa8qppRPz0%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBHiTzZVXznJqSWQkA%2Fmq5ui6fi4pq1wkt2ApUQ4HRy0187U%2Bvr%2B%2F%2FDFrUj4UhwflBEUOv0S%2FiWsP62%2FLFhw3OMuXW%2FW4eYI3YWyk7Gbyj4slZNVIE5EcBaND7jPcYCjBYPPr4WyxiCxYDkIoXkG9e1LyHyJPxm50TZPN6jE%2BQpTH1kwKH1lQU7p%2Fd2Xvsa8qppRPz0%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Casa",
+        "Cozinha",
+        "Banheiro",
+        "Lixeira",
+        "Lixeira Inteligente",
+        "Sensor",
+        "Automática"
       ]
     }
   ]
