@@ -1,62 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-06T21:35:24Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-04-06T22:20:22Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 2
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 2
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 2
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-04-06T21:30:34Z
-Issue: #110
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
-SKU: kit-utensilios-cozinha-premium-rosa
-Título: 🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância
-ID ML: 5J5PKG-CDB6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (23x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
-open_url: https://meli.la/1kiePfs
-checked_url: https://meli.la/1kiePfs
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
-
-[ALTA] review_only_storefront
-Quando: 2026-04-06T21:30:34Z
-Issue: #41
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/41
-SKU: mandolin-13-em-1-fatiador-ralador-julienne
-Título: 🥗✨ Mandolin 13 em 1 — Fatiador • Ralador • Julienne (com coletor) 🔪
-ID ML: 5J5PKG-LBKY
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Utensílios, Mandolin, Fatiador, Ralador, Julienne, Praticidade
-open_url: https://meli.la/1jJVQc8
-checked_url: https://meli.la/1jJVQc8
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-8WBH&tid=83ea4b47-04d0-4f4a-bc68-d1694954901d
+Nenhum item pendente de revisão/manutenção no momento.
