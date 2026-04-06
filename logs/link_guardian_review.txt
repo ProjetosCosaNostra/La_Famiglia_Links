@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-06T17:17:56Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-04-06T19:18:07Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-06T17:15:59Z
+Quando: 2026-04-06T19:13:15Z
 Issue: #110
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
 SKU: kit-utensilios-cozinha-premium-rosa
@@ -35,9 +35,47 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 0x listing)
+Memória operacional: histórico recorrente (22x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
 open_url: https://meli.la/1kiePfs
 checked_url: https://meli.la/1kiePfs
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
+
+[ALTA] review_only_storefront
+Quando: 2026-04-06T19:13:15Z
+Issue: #41
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/41
+SKU: mandolin-13-em-1-fatiador-ralador-julienne
+Título: 🥗✨ Mandolin 13 em 1 — Fatiador • Ralador • Julienne (com coletor) 🔪
+ID ML: 5J5PKG-LBKY
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Utensílios, Mandolin, Fatiador, Ralador, Julienne, Praticidade
+open_url: https://meli.la/1jJVQc8
+checked_url: https://meli.la/1jJVQc8
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-8WBH&tid=83ea4b47-04d0-4f4a-bc68-d1694954901d
+
+[ALTA] review_only_storefront
+Quando: 2026-04-06T19:13:15Z
+Issue: #48
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
+SKU: lixeira-inteligente-sensor-automatica-16l-preta
+Título: Lixeira Inteligente com Sensor Automático 16L — Abre sem tocar (Preta)
+ID ML: 5J5PKG-CCY5
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (21x /lists, 0x listing)
+Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
+open_url: https://mercadolivre.com/sec/13oLgYK
+checked_url: https://mercadolivre.com/sec/13oLgYK
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
