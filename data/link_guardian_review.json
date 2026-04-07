@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-04-07T13:57:09Z",
-  "total_items": 3,
+  "updated_at": "2026-04-07T16:40:48Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 1,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 1
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 1
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 1
     },
-    "high_priority": 3
+    "high_priority": 1
   },
   "items": [
     {
-      "happened_at": "2026-04-07T13:51:28Z",
+      "happened_at": "2026-04-07T16:38:39Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -57,94 +57,6 @@
         "Preto Fosco",
         "Viseira",
         "Segurança"
-      ]
-    },
-    {
-      "happened_at": "2026-04-07T13:51:28Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 51,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51",
-      "issue_title": "[CMS] Produto: Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte",
-      "sku": "fita-led-5m-smart-wifi-rgb-alexa-google-fonte",
-      "title": "Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte",
-      "id_busca": "5J5PKG-F3MC",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/12t6XUG",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/12t6XUG",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM6lchADpznaGKoNliepS%2FDTY7DTqmZ3dC07Oeuc6l8mAVPlYH2KiVKMcSlzX9r81sRIeXE5Sklg2EnrtIGIwV3iv3E3Kylxwe03Iihv4fndQlv54K4bO5M4f1WrR4sa%2F36FmiAOQW6yTDKSV%2FjSr5cBD6fyPJ2DSHhW2rVc7Z8L8S1NmdNNz5SPzZDmUV5ElmJQNy4%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM6lchADpznaGKoNliepS%2FDTY7DTqmZ3dC07Oeuc6l8mAVPlYH2KiVKMcSlzX9r81sRIeXE5Sklg2EnrtIGIwV3iv3E3Kylxwe03Iihv4fndQlv54K4bO5M4f1WrR4sa%2F36FmiAOQW6yTDKSV%2FjSr5cBD6fyPJ2DSHhW2rVc7Z8L8S1NmdNNz5SPzZDmUV5ElmJQNy4%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM6lchADpznaGKoNliepS%2FDTY7DTqmZ3dC07Oeuc6l8mAVPlYH2KiVKMcSlzX9r81sRIeXE5Sklg2EnrtIGIwV3iv3E3Kylxwe03Iihv4fndQlv54K4bO5M4f1WrR4sa%2F36FmiAOQW6yTDKSV%2FjSr5cBD6fyPJ2DSHhW2rVc7Z8L8S1NmdNNz5SPzZDmUV5ElmJQNy4%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Fita LED",
-        "RGB",
-        "Wi-Fi",
-        "Alexa",
-        "Google",
-        "Smart Home",
-        "5m"
-      ]
-    },
-    {
-      "happened_at": "2026-04-07T13:51:28Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 174,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/174",
-      "issue_title": "Love Kit Gloss Labial Coração Lápis Volume Rosada",
-      "sku": "love-kit-gloss-labial-coracao-lapis-volume-rosada",
-      "title": "Love Kit Gloss Labial Coração Lápis Volume Rosada",
-      "id_busca": "5J5PKG-3DE3",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1b5R9Wd",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1b5R9Wd",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOEAoBxJkxxby1P7Z6YnhCCdcubnAoQLWQDxY74Um%2F%2BPWeDFjYsnT5SRikpHb98tUbo9yPiCz6kYrSnL4Hsx8cQY3JMXZKVh5yScU866l0o%2BhyT0uguCtQvaWe4WR0Gt7RmGs1f5IqC1MpCeW1Yfz1PD7LRyUYcvdLNTSuUAZ6uhKvI7O4X%2FNjx1PEgSMS9jxHZLgJE%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-3DE3",
-      "short_url": "https://meli.la/1b5R9Wd",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOEAoBxJkxxby1P7Z6YnhCCdcubnAoQLWQDxY74Um%2F%2BPWeDFjYsnT5SRikpHb98tUbo9yPiCz6kYrSnL4Hsx8cQY3JMXZKVh5yScU866l0o%2BhyT0uguCtQvaWe4WR0Gt7RmGs1f5IqC1MpCeW1Yfz1PD7LRyUYcvdLNTSuUAZ6uhKvI7O4X%2FNjx1PEgSMS9jxHZLgJE%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Gloss Labial",
-        "Coração",
-        "Rosada",
-        "Feminino",
-        "Presenteável"
       ]
     }
   ]
