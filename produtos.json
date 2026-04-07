@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-06T17:10:52Z",
+  "updated_at": "2026-04-07T16:33:00Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -6997,7 +6997,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-0NUL",
       "image": "https://github.com/user-attachments/assets/cf828d3c-224d-483a-983c-c20511a7c125",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -7033,6 +7033,59 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/31TgX9M",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF65Q3P1XamMnZRpGr5C0KSCGTkgnNPZYuomVAIazlXXHgasm1Kxp0ij9Qu2Lr6dLJMxBp16bNnMjbugkb9VQBsDrrf9ZSku3VgqjCtToseo5IXKOjeVSsO8GXe3wU2Yhau4FCbwyUOsy%2F4TQXEoqDt6HIbhJOrsCRHCyc8BKfzbEgyrOE%2B%2FxnRBkurhHoApgtTUwVdS1SnJW1mY%2Bw%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "lip-tint-arovida-morango-misterio-3-2ml",
+      "title": "Lip Tint Arovida Morango Mistério 3,2ml",
+      "badges": [
+        "Achados do Dia",
+        "Feminino",
+        "Arovida",
+        "Morango Mistério",
+        "Lábios e Bochechas",
+        "Longa Duração"
+      ],
+      "id_busca": "5J5PKG-4L0N",
+      "open_url": "https://meli.la/13LVk76",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH9WuIvtuXPYvV1%2FV832ynCb9%2Bby4M7Pbzl3Vozbpzkc0WcL6hG71DptVWyAfUbIOrmXHbtsTas5PZgEFBKA2Bt5TY%2B2UWIt6DsbNjnMXyamt4xCP%2BrRretX22HR%2B46ymy29BtPU%2B8mxfpRTJS8iAhD6aLBCZT%2B9B3gw4pIeD3NcfMQvur7ZGgviTsK1JWVQPy997hzDgew9dkXOuQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4L0N",
+      "image": "https://github.com/user-attachments/assets/16db2395-43e6-444d-947f-147b82178a65",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 182,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182",
+      "issue_title": "Lip Tint Arovida Morango Mistério 3,2ml",
+      "categoria_principal": "Maquiagem",
+      "categorias_secundarias": [
+        "Lábios",
+        "Lip Tint",
+        "Beleza Feminina",
+        "Autocuidado"
+      ],
+      "aliases_busca": [
+        "lip tint arovida",
+        "morango mistério",
+        "lip tint morango",
+        "tint labios e bochechas",
+        "efeito coradinho natural",
+        "longa duração"
+      ],
+      "quick_home": true,
+      "quick_home_order": 1,
+      "_source_issue_number": 182,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/13LVk76",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH9WuIvtuXPYvV1%2FV832ynCb9%2Bby4M7Pbzl3Vozbpzkc0WcL6hG71DptVWyAfUbIOrmXHbtsTas5PZgEFBKA2Bt5TY%2B2UWIt6DsbNjnMXyamt4xCP%2BrRretX22HR%2B46ymy29BtPU%2B8mxfpRTJS8iAhD6aLBCZT%2B9B3gw4pIeD3NcfMQvur7ZGgviTsK1JWVQPy997hzDgew9dkXOuQ%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
