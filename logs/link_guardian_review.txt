@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-08T00:48:53Z
+Atualizado em: 2026-04-08T03:30:32Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,20 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-08T00:43:52Z
-Issue: #170
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/170
-SKU: organizador-maquiagem-giratorio-360-acrilico-transparente
-Título: Organizador de Maquiagem Giratório 360° em Acrílico Transparente
-ID ML: 5J5PKG-AJPM
+Quando: 2026-04-08T03:25:46Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-YD9X
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Organização, Acrílico, Giratório 360, Premium
-open_url: https://meli.la/1CDrde5
-checked_url: https://meli.la/1CDrde5
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://mercadolivre.com/sec/2QAteqd
+checked_url: https://mercadolivre.com/sec/2QAteqd
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-AJPM
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
