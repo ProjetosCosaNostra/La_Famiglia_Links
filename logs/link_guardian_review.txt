@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-07T19:21:13Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-04-08T00:48:53Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,39 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-07T19:17:05Z
-Issue: #125
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
-SKU: capacete-asx-city-preto-fosco-viseira
-Título: Capacete ASX City Preto Fosco com Viseira
-ID ML: 5J5PKG-4BMP
+Quando: 2026-04-08T00:43:52Z
+Issue: #170
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/170
+SKU: organizador-maquiagem-giratorio-360-acrilico-transparente
+Título: Organizador de Maquiagem Giratório 360° em Acrílico Transparente
+ID ML: 5J5PKG-AJPM
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
-Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
-open_url: https://meli.la/17S1VsX
-checked_url: https://meli.la/17S1VsX
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Organização, Acrílico, Giratório 360, Premium
+open_url: https://meli.la/1CDrde5
+checked_url: https://meli.la/1CDrde5
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-04-07T19:17:05Z
-Issue: #51
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
-SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
-Título: Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte
-ID ML: 5J5PKG-F3MC
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (12x /lists, 0x listing)
-Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
-open_url: https://mercadolivre.com/sec/12t6XUG
-checked_url: https://mercadolivre.com/sec/12t6XUG
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-AJPM
