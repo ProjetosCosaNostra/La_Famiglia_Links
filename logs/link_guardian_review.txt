@@ -1,22 +1,21 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-08T08:18:11Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-04-08T13:59:43Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_profile_unconfirmed: 2
 - storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
@@ -25,43 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-08T07:48:30Z
-Issue: #101
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/101
-SKU: panela-pressao-panelux-45l-aluminio-polido
-Título: 🥘 Panela de Pressão Panelux 4,5L — Alumínio Polido
-ID ML: 5J5PKG-6T20
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Cozinha, Panela de Pressão, Panelux, 4.5L, Alumínio Polido, Cozimento Rápido, Uso Diário
-open_url: https://meli.la/2drogLW
-checked_url: https://meli.la/2drogLW
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6T20&tid=c52b7906-dbca-4eb6-80c1-8483bfa8a014
-
-[ALTA] review_only_storefront
-Quando: 2026-04-08T07:48:30Z
-Issue: #85
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/85
-SKU: kit-mesh-wifi6-2un-wduu
-Título: Kit Roteador Mesh Wi-Fi 6 (2 unidades) — cobertura e conexão estável
-ID ML: 5J5PKG-WDUU
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Mesh WiFi, WiFi 6, Roteador Mesh, Kit 2 unidades, Casa toda, Cobertura, Conexão estável
-open_url: https://meli.la/2tMMkz2
-checked_url: https://meli.la/2tMMkz2
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE5jjz08nCOr1j0UzSsObjDYD%2FQykoaIptGUImBaHYZnm4SVHD%2F6R3oZ9yUc6AIGDm82KJ6S%2BK7QE9WIKAIFO0oqQx0ses%2BK6CjIUXVuJ%2BDMTiUUVH%2BxSQ8aOJTq8I7ZQ8TogXtsERfyNRZ4QUvWKyB%2F4XIUrDhtsElpjU4%2FBW2xRMDGUuDN4ocITSdzopDN11i9Gf8%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WDUU&tid=1fb8330a-8517-4744-a395-e9aaa7d2cf21
-
-[ALTA] review_only_storefront
-Quando: 2026-04-08T07:48:30Z
+Quando: 2026-04-08T13:54:23Z
 Issue: #37
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
 SKU: projetor-smart-hy320-goodvision
@@ -72,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
 Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
 open_url: https://mercadolivre.com/sec/2QAteqd
 checked_url: https://mercadolivre.com/sec/2QAteqd
