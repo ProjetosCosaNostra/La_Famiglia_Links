@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-08T19:40:35Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-04-09T03:23:58Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-08T19:36:49Z
+Quando: 2026-04-09T03:19:30Z
+Issue: #154
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
+SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
+Título: Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores
+ID ML: 5J5PKG-6VM7
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
+open_url: https://meli.la/1vwXiJg
+checked_url: https://meli.la/1vwXiJg
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-04-09T03:19:30Z
 Issue: #37
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
 SKU: projetor-smart-hy320-goodvision
@@ -35,9 +54,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
 open_url: https://mercadolivre.com/sec/2QAteqd
 checked_url: https://mercadolivre.com/sec/2QAteqd
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
+
+[ALTA] review_only_storefront
+Quando: 2026-04-09T03:19:30Z
+Issue: #40
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/40
+SKU: maquina-cortar-cabelo-dragao-buda-usb
+Título: ✂️🐉 Máquina de Cortar Cabelo Dragão Buda — Recarregável USB (Aparar & Acabamento)
+ID ML: 5J5PKG-21AW
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Cabelo, Barba, Aparador, Recarregável USB, Sem fio, Portátil, Dourado
+open_url: https://mercadolivre.com/sec/2zfsMib
+checked_url: https://mercadolivre.com/sec/2zfsMib
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-21AW&tid=a978b8ad-4395-4778-8336-764106fe63d0

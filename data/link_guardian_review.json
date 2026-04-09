@@ -1,22 +1,65 @@
 {
-  "updated_at": "2026-04-08T19:40:35Z",
-  "total_items": 1,
+  "updated_at": "2026-04-09T03:23:58Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 3
     },
-    "high_priority": 1
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-04-08T19:36:49Z",
+      "happened_at": "2026-04-09T03:19:30Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 154,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154",
+      "issue_title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis",
+      "sku": "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores",
+      "title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores",
+      "id_busca": "5J5PKG-6VM7",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1vwXiJg",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1vwXiJg",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "short_url": "https://meli.la/2ZTeVJ2",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Belle Angel",
+        "Nude",
+        "Paleta de Sombras"
+      ]
+    },
+    {
+      "happened_at": "2026-04-09T03:19:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -58,6 +101,51 @@
         "Bluetooth",
         "Full HD",
         "HDMI"
+      ]
+    },
+    {
+      "happened_at": "2026-04-09T03:19:30Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 40,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/40",
+      "issue_title": "[CMS] Produto: Máquina de Cortar Cabelo Dragão Buda",
+      "sku": "maquina-cortar-cabelo-dragao-buda-usb",
+      "title": "✂️🐉 Máquina de Cortar Cabelo Dragão Buda — Recarregável USB (Aparar & Acabamento)",
+      "id_busca": "5J5PKG-21AW",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2zfsMib",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2zfsMib",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIXX6%2FZnBT8oRDB7fpdwJX6M99eQRiEHCJue9wNL1ktlKXFBlcMuk%2FKgXXtUzGW0qM3OvhZh%2B0P3q2FV2U3lpJiFxTHNh58AXD%2BVlfyfOljUXwVePMAqKalI%2FMpCK%2BkOcsoFRMNNroZWgVpp2lsB%2FrN%2BmFTKHJkXfLqUU94xdyK7H603w8d7jKzxZNizdALOuGQ4LQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-21AW&tid=a978b8ad-4395-4778-8336-764106fe63d0",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIXX6%2FZnBT8oRDB7fpdwJX6M99eQRiEHCJue9wNL1ktlKXFBlcMuk%2FKgXXtUzGW0qM3OvhZh%2B0P3q2FV2U3lpJiFxTHNh58AXD%2BVlfyfOljUXwVePMAqKalI%2FMpCK%2BkOcsoFRMNNroZWgVpp2lsB%2FrN%2BmFTKHJkXfLqUU94xdyK7H603w8d7jKzxZNizdALOuGQ4LQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIXX6%2FZnBT8oRDB7fpdwJX6M99eQRiEHCJue9wNL1ktlKXFBlcMuk%2FKgXXtUzGW0qM3OvhZh%2B0P3q2FV2U3lpJiFxTHNh58AXD%2BVlfyfOljUXwVePMAqKalI%2FMpCK%2BkOcsoFRMNNroZWgVpp2lsB%2FrN%2BmFTKHJkXfLqUU94xdyK7H603w8d7jKzxZNizdALOuGQ4LQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cabelo",
+        "Barba",
+        "Aparador",
+        "Recarregável USB",
+        "Sem fio",
+        "Portátil",
+        "Dourado"
       ]
     }
   ]
