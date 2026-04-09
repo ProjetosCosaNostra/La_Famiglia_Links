@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-09T13:10:46Z
+Atualizado em: 2026-04-09T14:07:27Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-09T13:05:13Z
+Quando: 2026-04-09T14:03:25Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1vwXiJg
 checked_url: https://meli.la/1vwXiJg
@@ -43,26 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-04-09T13:05:13Z
-Issue: #85
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/85
-SKU: kit-mesh-wifi6-2un-wduu
-Título: Kit Roteador Mesh Wi-Fi 6 (2 unidades) — cobertura e conexão estável
-ID ML: 5J5PKG-WDUU
+Quando: 2026-04-09T14:03:25Z
+Issue: #2
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/2
+SKU: xiaomi-redmi-buds-6-play
+Título: Xiaomi Redmi Buds 6 Play
+ID ML: 5J5PKG-E681
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Mesh WiFi, WiFi 6, Roteador Mesh, Kit 2 unidades, Casa toda, Cobertura, Conexão estável
-open_url: https://meli.la/2tMMkz2
-checked_url: https://meli.la/2tMMkz2
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achado do Dia, Bluetooth 5.4, TWS, PRETO
+open_url: https://mercadolivre.com/sec/2T9cpsU
+checked_url: https://mercadolivre.com/sec/2T9cpsU
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WDUU&tid=1fb8330a-8517-4744-a395-e9aaa7d2cf21
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-E681&tid=fda80933-8de9-40b4-bd85-02b942a6e6d8
 
 [ALTA] review_only_storefront
-Quando: 2026-04-09T13:05:13Z
+Quando: 2026-04-09T14:03:25Z
 Issue: #37
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
 SKU: projetor-smart-hy320-goodvision
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
 open_url: https://mercadolivre.com/sec/2QAteqd
 checked_url: https://mercadolivre.com/sec/2QAteqd
