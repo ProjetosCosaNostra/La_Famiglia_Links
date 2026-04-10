@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-09T16:54:58Z",
+  "updated_at": "2026-04-10T20:04:46Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7167,7 +7167,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PATQ",
       "image": "https://github.com/user-attachments/assets/84b484d5-7767-4b69-941a-0474bc2538a3",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -7203,6 +7203,60 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1za7yQv",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK2xhg4NcwbRqw7RzErfXrFgs7pkEJX04SEtFq29Uk7Y%2FvRiy7XIJDjUECO2C%2FGrD4sKQhvdBSHUpIctUfkhQ2QbwZvt3tGo3HzCfINNz%2BiGcaWlHnHoGgDrcqoiRWG6ZxW3G%2B2VD9pWnuj4FawdfZuv%2FeL%2FkD25eqFeOeBiqfV8POm9jdrL6oUsFJHDlwRlZ83%2Fl7U%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "sombra-disney-wish-bruna-tavares-silver-5ml",
+      "title": "Sombra Líquida Magnific Disney Wish Bruna Tavares 5ml Silver",
+      "badges": [
+        "Achados do Dia",
+        "Feminino",
+        "Tendência",
+        "Brilho Intenso",
+        "Maquiagem Premium",
+        "Disney"
+      ],
+      "id_busca": "5J5PKG-RMH4",
+      "open_url": "https://meli.la/1nmdDgc",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNmhC9VpWbHaez2GPNcj3IY2e9GSwzOhmnBXWDslmiZsk1e7fAtKSP2Uayxk0txtGhpRZMWHZfZLC%2BqVOBUxbvnYamWdIGdO9gYlH4FqhqyKiutRZ1riqNcUXsZ5h%2Fhw%2B7nxGuHFrmivvXq0u%2F2QtXQ%2FL4aF9Ho8Te%2B6kswg%2F8sCbUkieTgODFXjYtr7ttOeN3PZj3c%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-RMH4",
+      "image": "https://github.com/user-attachments/assets/45b5bc54-829e-427f-bb81-12d98a99ed91",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 185,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/185",
+      "issue_title": "Sombra Líquida Magnific Disney Wish Bruna Tavares 5ml Silver",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Olhos",
+        "Sombra Líquida",
+        "Bruna Tavares",
+        "Disney Wish"
+      ],
+      "aliases_busca": [
+        "sombra disney wish",
+        "sombra liquida bruna tavares",
+        "sombra silver glitter",
+        "maquiagem disney wish",
+        "sombra brilho prata",
+        "sombra bt magnific"
+      ],
+      "quick_home": true,
+      "quick_home_order": 2,
+      "_source_issue_number": 185,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1nmdDgc",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNmhC9VpWbHaez2GPNcj3IY2e9GSwzOhmnBXWDslmiZsk1e7fAtKSP2Uayxk0txtGhpRZMWHZfZLC%2BqVOBUxbvnYamWdIGdO9gYlH4FqhqyKiutRZ1riqNcUXsZ5h%2Fhw%2B7nxGuHFrmivvXq0u%2F2QtXQ%2FL4aF9Ho8Te%2B6kswg%2F8sCbUkieTgODFXjYtr7ttOeN3PZj3c%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
