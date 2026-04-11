@@ -1,22 +1,23 @@
 {
-  "updated_at": "2026-04-11T07:20:17Z",
-  "total_items": 3,
+  "updated_at": "2026-04-11T13:21:49Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 3,
+      "social_profile_needs_review": 1
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 4
     },
-    "high_priority": 3
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-04-11T07:12:55Z",
+      "happened_at": "2026-04-11T13:16:58Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +33,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +62,52 @@
       ]
     },
     {
-      "happened_at": "2026-04-11T07:12:55Z",
+      "happened_at": "2026-04-11T13:16:58Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 108,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/108",
+      "issue_title": "[CMS] Produto: Kit Regulador de Gás Premium 1,25m",
+      "sku": "kit-regulador-gas-premium-125m",
+      "title": "Kit Regulador de Gás Cozinha com Mangueira 1,25m",
+      "id_busca": "5J5PKG-MX6S",
+      "status": 200,
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
+      "memory_note": "",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/14d89GJ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "open_url": "https://meli.la/14d89GJ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MX6S&tid=d4aef3a8-faf0-488d-b6ca-640bf8aef350",
+      "short_url": "https://meli.la/14d89GJ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Regulador de Gás",
+        "Mangueira de Gás",
+        "Kit Gás",
+        "Instalação",
+        "1",
+        "25m"
+      ]
+    },
+    {
+      "happened_at": "2026-04-11T13:16:58Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +123,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (9x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +152,7 @@
       ]
     },
     {
-      "happened_at": "2026-04-11T07:12:55Z",
+      "happened_at": "2026-04-11T13:16:58Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +168,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

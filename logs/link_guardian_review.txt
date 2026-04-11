@@ -1,22 +1,23 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-11T07:20:17Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-04-11T13:21:49Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 3
+- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +25,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-11T07:12:55Z
+Quando: 2026-04-11T13:16:58Z
 Issue: #107
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/107
 SKU: cuscuzeira-inox-premium-25l
@@ -35,7 +36,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Cuscuzeira, Inox, Cuscuz, Panela a Vapor, 2, 5L
 open_url: https://meli.la/23D4SC7
 checked_url: https://meli.la/23D4SC7
@@ -43,7 +44,25 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=c74a578b-5fb4-4226-b5cb-674903613b47
 
 [ALTA] review_only_storefront
-Quando: 2026-04-11T07:12:55Z
+Quando: 2026-04-11T13:16:58Z
+Issue: #108
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/108
+SKU: kit-regulador-gas-premium-125m
+Título: Kit Regulador de Gás Cozinha com Mangueira 1,25m
+ID ML: 5J5PKG-MX6S
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Badges: Achados do Dia, Cozinha, Regulador de Gás, Mangueira de Gás, Kit Gás, Instalação, 1, 25m
+open_url: https://meli.la/14d89GJ
+checked_url: https://meli.la/14d89GJ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIQ2OXbYctNFwlZSU5dbi%2BvCE9Drpgg8is7vZpXtCgajiyX26gNX1XsRihLtE60JklyeXv%2FPon%2B5Yq09IwnsEjmiylBUqOdGv8vWEjzW4oA3jk%2FKlPtkrstg0KiB0oCjvr4dVBS7gRd4Zg%2Frmeyq6WQZk4Xz0f0i%2BPNudIpOOhL5LVKFbuaf6EpcBkhTrnd5QGbxzCX%2FeiuVC6ToOg%3D%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MX6S&tid=d4aef3a8-faf0-488d-b6ca-640bf8aef350
+
+[ALTA] review_only_storefront
+Quando: 2026-04-11T13:16:58Z
 Issue: #129
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
 SKU: puma-flyer-runner-mesh-bdp
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 1x listing)
+Memória operacional: histórico recorrente (9x /lists, 1x listing)
 Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
 open_url: https://meli.la/2D5FQRJ
 checked_url: https://meli.la/2D5FQRJ
@@ -62,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
 
 [ALTA] review_only_storefront
-Quando: 2026-04-11T07:12:55Z
+Quando: 2026-04-11T13:16:58Z
 Issue: #171
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
 SKU: paleta-sombras-new-york-catharine-hill-10-cores
@@ -73,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
 open_url: https://meli.la/1yfq6U7
 checked_url: https://meli.la/1yfq6U7
