@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-12T03:43:33Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-04-12T07:29:47Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-12T03:37:28Z
+Quando: 2026-04-12T07:26:07Z
+Issue: #118
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
+SKU: nintendo-super-mini-premium
+Título: Nintendo Super Mini Premium
+ID ML: 5J5PKG-N3EA
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
+open_url: https://meli.la/15ypbuc
+checked_url: https://meli.la/15ypbuc
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
+
+[ALTA] review_only_storefront
+Quando: 2026-04-12T07:26:07Z
 Issue: #107
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/107
 SKU: cuscuzeira-inox-premium-25l
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (12x /lists, 0x listing)
+Memória operacional: histórico recorrente (13x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Cuscuzeira, Inox, Cuscuz, Panela a Vapor, 2, 5L
 open_url: https://meli.la/23D4SC7
 checked_url: https://meli.la/23D4SC7
@@ -43,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=c74a578b-5fb4-4226-b5cb-674903613b47
 
 [ALTA] review_only_storefront
-Quando: 2026-04-12T03:37:28Z
+Quando: 2026-04-12T07:26:07Z
 Issue: #171
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
 SKU: paleta-sombras-new-york-catharine-hill-10-cores
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
 open_url: https://meli.la/1yfq6U7
 checked_url: https://meli.la/1yfq6U7
