@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-12T07:29:47Z",
+  "updated_at": "2026-04-12T13:24:06Z",
   "total_items": 3,
   "summary": {
     "unique_skus": 3,
@@ -16,7 +16,7 @@
   },
   "items": [
     {
-      "happened_at": "2026-04-12T07:26:07Z",
+      "happened_at": "2026-04-12T13:19:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-04-12T07:26:07Z",
+      "happened_at": "2026-04-12T13:19:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-04-12T07:26:07Z",
+      "happened_at": "2026-04-12T13:19:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
