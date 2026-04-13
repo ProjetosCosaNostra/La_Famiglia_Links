@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-12T21:29:13Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-04-13T01:36:52Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-12T21:27:36Z
+Quando: 2026-04-13T01:31:57Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/15ypbuc
 checked_url: https://meli.la/15ypbuc
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-04-12T21:27:36Z
+Quando: 2026-04-13T01:31:57Z
 Issue: #107
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/107
 SKU: cuscuzeira-inox-premium-25l
@@ -54,9 +54,47 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (16x /lists, 0x listing)
+Memória operacional: histórico recorrente (17x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Cuscuzeira, Inox, Cuscuz, Panela a Vapor, 2, 5L
 open_url: https://meli.la/23D4SC7
 checked_url: https://meli.la/23D4SC7
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=c74a578b-5fb4-4226-b5cb-674903613b47
+
+[ALTA] review_only_storefront
+Quando: 2026-04-13T01:31:57Z
+Issue: #105
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
+SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
+Título: Jogo de Panelas Tramontina Inox Fundo Triplo 3 Peças
+ID ML: 5J5PKG-T28N
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
+open_url: https://meli.la/18N3x6V
+checked_url: https://meli.la/18N3x6V
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
+
+[ALTA] review_only_storefront
+Quando: 2026-04-13T01:31:57Z
+Issue: #171
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
+SKU: paleta-sombras-new-york-catharine-hill-10-cores
+Título: Paleta de Sombras New York Catharine Hill 10 Cores
+ID ML: 5J5PKG-XXZH
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
+open_url: https://meli.la/1yfq6U7
+checked_url: https://meli.la/1yfq6U7
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-XXZH
