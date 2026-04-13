@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-13T18:45:07Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-04-13T19:29:37Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-13T18:43:03Z
+Quando: 2026-04-13T19:24:33Z
 Issue: #125
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
 SKU: capacete-asx-city-preto-fosco-viseira
@@ -35,9 +35,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
 open_url: https://meli.la/27b6ktD
 checked_url: https://meli.la/27b6ktD
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-04-13T19:24:33Z
+Issue: #35
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/35
+SKU: lampada-inteligente-ekaza-t609
+Título: Lâmpada Inteligente Ekaza T609 RGB Wi-Fi (Alexa/Google Home) – Soquete E27 9W
+ID ML: 5J5PKG-K5V3
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Casa Inteligente, Iluminação, Lâmpada Smart, RGB, Wi-Fi, Alexa, Google Home
+open_url: https://mercadolivre.com/sec/19FcPbY
+checked_url: https://mercadolivre.com/sec/19FcPbY
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K5V3&tid=89cbc60d-20f7-4b20-96e8-d6d726477e37

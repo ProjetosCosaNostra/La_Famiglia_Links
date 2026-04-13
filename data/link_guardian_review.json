@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-04-13T18:45:07Z",
-  "total_items": 1,
+  "updated_at": "2026-04-13T19:29:37Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 2,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 2
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "storefront_social_lists_invalid": 2
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 2
     },
-    "high_priority": 1
+    "high_priority": 2
   },
   "items": [
     {
-      "happened_at": "2026-04-13T18:43:03Z",
+      "happened_at": "2026-04-13T19:24:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -57,6 +57,51 @@
         "Preto Fosco",
         "Viseira",
         "Segurança"
+      ]
+    },
+    {
+      "happened_at": "2026-04-13T19:24:33Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 35,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/35",
+      "issue_title": "[CMS] Produto: Lâmpada Inteligente Ekaza T609 (RGB Wi-Fi)",
+      "sku": "lampada-inteligente-ekaza-t609",
+      "title": "Lâmpada Inteligente Ekaza T609 RGB Wi-Fi (Alexa/Google Home) – Soquete E27 9W",
+      "id_busca": "5J5PKG-K5V3",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/19FcPbY",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/19FcPbY",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BP%2FFgAf2Eu494CBC0EofLtbABhx6k6hUmSOOEdb0Y5S6nn%2BFVRmMkHWIFfGypy9A1iPrQ4iDGxqfh7Sbmj%2FhcqDLtuW%2Bboh7YtTiRkoSw7OjvWzquyEsI%2F0oJ79F0Qb8XCg3ZuNlGiCYLUw4O2WDZaRzLcRVhBwoNh2CJZTyzhIjXIBEny5J8OxtxoXYT%2F0AdixgO3s%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K5V3&tid=89cbc60d-20f7-4b20-96e8-d6d726477e37",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BP%2FFgAf2Eu494CBC0EofLtbABhx6k6hUmSOOEdb0Y5S6nn%2BFVRmMkHWIFfGypy9A1iPrQ4iDGxqfh7Sbmj%2FhcqDLtuW%2Bboh7YtTiRkoSw7OjvWzquyEsI%2F0oJ79F0Qb8XCg3ZuNlGiCYLUw4O2WDZaRzLcRVhBwoNh2CJZTyzhIjXIBEny5J8OxtxoXYT%2F0AdixgO3s%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BP%2FFgAf2Eu494CBC0EofLtbABhx6k6hUmSOOEdb0Y5S6nn%2BFVRmMkHWIFfGypy9A1iPrQ4iDGxqfh7Sbmj%2FhcqDLtuW%2Bboh7YtTiRkoSw7OjvWzquyEsI%2F0oJ79F0Qb8XCg3ZuNlGiCYLUw4O2WDZaRzLcRVhBwoNh2CJZTyzhIjXIBEny5J8OxtxoXYT%2F0AdixgO3s%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Casa Inteligente",
+        "Iluminação",
+        "Lâmpada Smart",
+        "RGB",
+        "Wi-Fi",
+        "Alexa",
+        "Google Home"
       ]
     }
   ]
