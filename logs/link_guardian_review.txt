@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-14T08:04:27Z
+Atualizado em: 2026-04-14T14:08:34Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-14T07:59:49Z
+Quando: 2026-04-14T14:04:38Z
 Issue: #125
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
 SKU: capacete-asx-city-preto-fosco-viseira
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
 Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
 open_url: https://meli.la/27b6ktD
 checked_url: https://meli.la/27b6ktD
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-04-14T07:59:49Z
+Quando: 2026-04-14T14:04:38Z
 Issue: #35
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/35
 SKU: lampada-inteligente-ekaza-t609
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Casa Inteligente, Iluminação, Lâmpada Smart, RGB, Wi-Fi, Alexa, Google Home
 open_url: https://mercadolivre.com/sec/19FcPbY
 checked_url: https://mercadolivre.com/sec/19FcPbY
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K5V3&tid=89cbc60d-20f7-4b20-96e8-d6d726477e37
 
 [ALTA] review_only_storefront
-Quando: 2026-04-14T07:59:49Z
+Quando: 2026-04-14T14:04:38Z
 Issue: #171
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
 SKU: paleta-sombras-new-york-catharine-hill-10-cores
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
 open_url: https://meli.la/2rsx8Ps
 checked_url: https://meli.la/2rsx8Ps
