@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-04-13T19:29:37Z",
+  "updated_at": "2026-04-14T03:46:19Z",
   "summary": {
     "tracked_skus": 151,
     "confirmed_good_links": 0,
-    "recurrent_storefront_invalid": 16,
+    "recurrent_storefront_invalid": 17,
     "relink_priority": 0
   },
   "skus": {
     "kit-pinceis-maquiagem-13-pecas-estojo-rose": {
       "reason_counts": {
-        "social_profile_product_confirmed": 101
+        "social_profile_product_confirmed": 102
       },
       "first_seen_at": "2026-03-27T20:40:24Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -22,10 +22,10 @@
     },
     "too-faced-lip-injection-extreme-gel-branco-4g-branco": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -35,10 +35,10 @@
     },
     "refil-creme-acetinado-hidratante-corporal-lily-250g": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -48,10 +48,10 @@
     },
     "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,10 +61,10 @@
     },
     "po-facial-bruna-tavares-bt-skinpowder": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -74,11 +74,11 @@
     },
     "cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 78,
+        "social_profile_product_confirmed": 79,
         "storefront_social_lists_invalid": 22
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -88,11 +88,11 @@
     },
     "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores": {
       "reason_counts": {
-        "social_profile_product_confirmed": 91,
+        "social_profile_product_confirmed": 92,
         "storefront_social_lists_invalid": 9
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -102,10 +102,10 @@
     },
     "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -115,10 +115,10 @@
     },
     "carregador-sem-fio-stand-inducao-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -128,10 +128,10 @@
     },
     "escova-pet-vapor-3em1-elaf-5j5pkg-atvc": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -141,11 +141,11 @@
     },
     "mochila-impermeavel-notebook-15-6": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -155,10 +155,10 @@
     },
     "kit-2-acendedores-de-fogao-premium": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -168,10 +168,10 @@
     },
     "gloss-fran-liphoney-mel": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -182,10 +182,10 @@
     "capacete-asx-city-preto-fosco-viseira": {
       "reason_counts": {
         "social_profile_product_confirmed": 92,
-        "storefront_social_lists_invalid": 8
+        "storefront_social_lists_invalid": 9
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -195,10 +195,10 @@
     },
     "relogio-skmei-1146-masculino-aco-inox-prata-fundo-preto-anadigi": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -208,10 +208,10 @@
     },
     "kit-6-cuecas-lupo-boxer-box-sem-costura-basic-microfibra": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -221,11 +221,11 @@
     },
     "bermuda-tectel-masculino-leve-fresca-bolsos-frontais": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -235,10 +235,10 @@
     },
     "shampoo-automotivo-v-floc-3l-concentrado": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -248,10 +248,10 @@
     },
     "lavadora-jato-portatil-2-baterias-kit-completo": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -261,10 +261,10 @@
     },
     "suporte-magnetico-adesivo-para-moto-6-imas": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -274,10 +274,10 @@
     },
     "intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -287,11 +287,11 @@
     },
     "smart-box-proeletronic-smartpro-16gb-4k-hd-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -301,10 +301,10 @@
     },
     "rog-xbox-ally-7-120hz-512gb-branco": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -314,11 +314,11 @@
     },
     "nintendo-super-mini-premium": {
       "reason_counts": {
-        "social_profile_product_confirmed": 95,
+        "social_profile_product_confirmed": 96,
         "storefront_social_lists_invalid": 5
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -328,10 +328,10 @@
     },
     "smart-tv-philco-roku-32-premium": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -341,10 +341,10 @@
     },
     "cabo-hdmi-21-premium-8k-144hz-2m": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -354,10 +354,10 @@
     },
     "gamestick-premium-2-controles-wireless": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -367,10 +367,10 @@
     },
     "tradutor-inteligente-premium-online-offline": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -380,10 +380,10 @@
     },
     "zero-mofo-premium-1l-spray": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -393,11 +393,11 @@
     },
     "kit-utensilios-cozinha-premium-rosa": {
       "reason_counts": {
-        "social_profile_product_confirmed": 77,
+        "social_profile_product_confirmed": 78,
         "storefront_social_lists_invalid": 23
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -407,11 +407,11 @@
     },
     "cuscuzeira-inox-premium-25l": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83,
+        "social_profile_product_confirmed": 84,
         "storefront_social_lists_invalid": 17
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -421,11 +421,11 @@
     },
     "jogo-panelas-tramontina-inox-fundo-triplo-3-pecas": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -435,10 +435,10 @@
     },
     "6-descansos-panela-premium": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -448,11 +448,11 @@
     },
     "relogio-parede-30cm-prata-branco-lzbq": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -462,12 +462,12 @@
     },
     "panela-pressao-panelux-45l-aluminio-polido": {
       "reason_counts": {
-        "social_profile_product_confirmed": 97,
+        "social_profile_product_confirmed": 98,
         "storefront_social_profile_unconfirmed": 1,
         "storefront_social_lists_invalid": 2
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -477,10 +477,10 @@
     },
     "kit-4-formas-gelo-tampa-silicone": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -490,10 +490,10 @@
     },
     "kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -503,10 +503,10 @@
     },
     "suporte-porta-xicaras-pires-dourado-fosco-catblack": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -516,11 +516,11 @@
     },
     "kit-porta-mantimentos-hermetico-12un-124l": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -530,10 +530,10 @@
     },
     "jogo-3-peneiras-aco-inox-pmg": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -543,10 +543,10 @@
     },
     "ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -556,10 +556,10 @@
     },
     "kit-2-copos-medidores-500ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -569,11 +569,11 @@
     },
     "kit-10-panos-copa-felpudos-41x64-estampados": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -583,10 +583,10 @@
     },
     "tampa-protetora-microondas-alca-anti-respingo-5j5pkg-bxxq": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -596,10 +596,10 @@
     },
     "microondas-consul-32-litros-branco-5j5pkg-ejtp": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -609,10 +609,10 @@
     },
     "conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -622,10 +622,10 @@
     },
     "revigoran-az-completo-60caps-5j5pkg-xtku": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -635,10 +635,10 @@
     },
     "whey-protein-1kg-chocolate-5j5pkg-68p2": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -648,11 +648,11 @@
     },
     "cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 99,
+        "social_profile_product_confirmed": 100,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -662,12 +662,12 @@
     },
     "kit-mesh-wifi6-2un-wduu": {
       "reason_counts": {
-        "social_profile_product_confirmed": 98,
+        "social_profile_product_confirmed": 99,
         "storefront_social_profile_unconfirmed": 1,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -677,10 +677,10 @@
     },
     "switch-hdmi-2x1-1x2-bidirecional-adem": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -690,10 +690,10 @@
     },
     "lamina-philips-oneblade-qp220-51-2-unidades": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -703,10 +703,10 @@
     },
     "philips-oneblade-qp1424-10": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -716,10 +716,10 @@
     },
     "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -729,10 +729,10 @@
     },
     "luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -742,10 +742,10 @@
     },
     "suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -755,10 +755,10 @@
     },
     "dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -768,10 +768,10 @@
     },
     "kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -781,10 +781,10 @@
     },
     "travesseiro-cervical-viscoelastico-ergonomico-conforto-premium": {
       "reason_counts": {
-        "social_profile_product_confirmed": 100
+        "social_profile_product_confirmed": 101
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -794,11 +794,11 @@
     },
     "hd-externo-2tb-seagate-expansion-usb-30-portatil-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "social_profile_needs_review": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -808,10 +808,10 @@
     },
     "esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -821,10 +821,10 @@
     },
     "aspirador-philco-ciclone-pas1600p-1450w-15l-preto-220v-ou-127v": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -834,11 +834,11 @@
     },
     "escova-secadora-britania-bec07r-4em1-1300w-rosa": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -848,10 +848,10 @@
     },
     "gimbal-dji-osmo-mobile-se": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -861,10 +861,10 @@
     },
     "microfone-lapela-boya-by-v10-usb-c": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -874,10 +874,10 @@
     },
     "cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -887,10 +887,10 @@
     },
     "robo-de-limpeza-wap-robot-w500-policleaner": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -900,11 +900,11 @@
     },
     "xiaomi-redmi-buds-6-play": {
       "reason_counts": {
-        "social_profile_product_confirmed": 80,
+        "social_profile_product_confirmed": 81,
         "storefront_social_lists_invalid": 3
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -914,10 +914,10 @@
     },
     "powerbank-20000mah-22w-usbc-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -927,10 +927,10 @@
     },
     "air-fryer-mondial-4l-1500w-afn-40-bft-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -940,10 +940,10 @@
     },
     "bolsa-tiracolo-antifurto-usb-impermeavel-0nqd": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -953,11 +953,11 @@
     },
     "tomada-inteligente-20a-medidor-5j5pkg-fpxm": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -967,10 +967,10 @@
     },
     "camera-wifi-360-fullhd-tapo": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -993,10 +993,10 @@
     },
     "ring-light-rgb-10-tripe-210m": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1006,11 +1006,11 @@
     },
     "wap-robot-w90-3em1-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1020,10 +1020,10 @@
     },
     "jogo-lencol-400-fios-queen-box-4-pecas": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1033,10 +1033,10 @@
     },
     "carmed-fini-beijos-cor-10g-5j5pkg-er7l": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1046,11 +1046,11 @@
     },
     "ventilador-mondial-30cm-super-power-60w-vsp-30-w": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1060,10 +1060,10 @@
     },
     "bolsa-termica-lancheira-14l-preta-porta-marmita": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1073,10 +1073,10 @@
     },
     "se-j-existir-usa-amazon-echo-pop-c2h4r9-2": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1086,10 +1086,10 @@
     },
     "amazon-fire-tv-stick-4k-wifi6": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1099,11 +1099,11 @@
     },
     "logitech-g203-rgb-lightsync-8000dpi-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1113,10 +1113,10 @@
     },
     "hub-usbc-8em1-h71p": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1126,11 +1126,11 @@
     },
     "sandisk-microsd-128gb-ultra-100mbs": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1140,10 +1140,10 @@
     },
     "suporte-celular-carro-360-trava-automatica-5j5pkg-78ff": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1153,10 +1153,10 @@
     },
     "carregador-veicular-60w-hrebos-2x-usbc-pd": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1166,10 +1166,10 @@
     },
     "calibrador-digital-partida-aux-180psi-12v": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1179,10 +1179,10 @@
     },
     "teclado-redragon-kumara-552w2-lunar-white-abnt2-outemu-brown": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1192,10 +1192,10 @@
     },
     "cadeira-escritorio-newconcept-351049-mesh-preta": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1205,10 +1205,10 @@
     },
     "s-siqueira-kit-soquetes-46pcs-1-4-wxz9": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1219,10 +1219,10 @@
     "lampada-inteligente-ekaza-t609": {
       "reason_counts": {
         "social_profile_product_confirmed": 82,
-        "storefront_social_lists_invalid": 1
+        "storefront_social_lists_invalid": 2
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1232,11 +1232,11 @@
     },
     "niimbot-d110-impressora-etiquetas-branca": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1246,11 +1246,11 @@
     },
     "projetor-smart-hy320-goodvision": {
       "reason_counts": {
-        "social_profile_product_confirmed": 74,
+        "social_profile_product_confirmed": 75,
         "storefront_social_lists_invalid": 9
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1260,10 +1260,10 @@
     },
     "aiwa-sp-05-lb-30w-bluetooth-ipx5": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1273,10 +1273,10 @@
     },
     "fechadura-bio-delta-pro-wifi-tuya-preta": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1286,12 +1286,12 @@
     },
     "maquina-cortar-cabelo-dragao-buda-usb": {
       "reason_counts": {
-        "social_profile_product_confirmed": 80,
+        "social_profile_product_confirmed": 81,
         "storefront_social_lists_invalid": 2,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1301,12 +1301,12 @@
     },
     "mandolin-13-em-1-fatiador-ralador-julienne": {
       "reason_counts": {
-        "social_profile_product_confirmed": 71,
+        "social_profile_product_confirmed": 72,
         "storefront_social_profile_unconfirmed": 1,
         "storefront_social_lists_invalid": 11
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1316,11 +1316,11 @@
     },
     "dashcam-4k-gps-azdome-m550-64gb": {
       "reason_counts": {
-        "social_profile_product_confirmed": 81,
+        "social_profile_product_confirmed": 82,
         "storefront_listing_invalid": 2
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1330,12 +1330,12 @@
     },
     "camera-solar-wifi-ip66-fullhd": {
       "reason_counts": {
-        "social_profile_product_confirmed": 81,
+        "social_profile_product_confirmed": 82,
         "storefront_listing_invalid": 1,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1345,10 +1345,10 @@
     },
     "seladora-a-vacuo-portatil-alimentos": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1358,11 +1358,11 @@
     },
     "aromatizador-chama-kaizu-lavanda-200ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1372,10 +1372,10 @@
     },
     "torneira-gourmet-flexivel-preta": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1385,12 +1385,12 @@
     },
     "lixeira-inteligente-sensor-automatica-16l-preta": {
       "reason_counts": {
-        "social_profile_product_confirmed": 59,
+        "social_profile_product_confirmed": 60,
         "storefront_social_lists_invalid": 23,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1400,10 +1400,10 @@
     },
     "parafusadeira-furadeira-kit-2-baterias-48v-maleta": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1413,10 +1413,10 @@
     },
     "organizadores-geladeira-kit-6-potes-acrilico-22l": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1426,11 +1426,11 @@
     },
     "fita-led-5m-smart-wifi-rgb-alexa-google-fonte": {
       "reason_counts": {
-        "social_profile_product_confirmed": 71,
+        "social_profile_product_confirmed": 72,
         "storefront_social_lists_invalid": 12
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1440,11 +1440,11 @@
     },
     "cafeteira-dolce-gusto-genio-s-capsulas-branca": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1454,10 +1454,10 @@
     },
     "panela-pressao-eletrica-6l-electrolux-rita-lobo-pcc20": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1467,12 +1467,12 @@
     },
     "desumidificador-antimofo-komeco-kdp-250-bivolt": {
       "reason_counts": {
-        "social_profile_product_confirmed": 81,
+        "social_profile_product_confirmed": 82,
         "storefront_social_lists_invalid": 1,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1483,11 +1483,11 @@
     "maquina-de-gelo-turbo-ice-premium-mondial-mg-12-gi": {
       "reason_counts": {
         "storefront_listing_invalid": 1,
-        "social_profile_product_confirmed": 80,
+        "social_profile_product_confirmed": 81,
         "storefront_social_profile_unconfirmed": 2
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1497,10 +1497,10 @@
     },
     "balanca-inteligente-mi-body-composition-scale-2": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1510,11 +1510,11 @@
     },
     "smartwatch-amazfit-bip-6-gps": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1524,11 +1524,11 @@
     },
     "suporte-notebook-aluminio-dobravel-ajustavel-davely-prateado": {
       "reason_counts": {
-        "social_profile_product_confirmed": 81,
+        "social_profile_product_confirmed": 82,
         "storefront_social_profile_unconfirmed": 2
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1538,10 +1538,10 @@
     },
     "smart-tag-localizador-apple-find-my-portatil-discreto-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1551,10 +1551,10 @@
     },
     "purificador-de-ar-silencioso-hepa-h13-luz-ambiente": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1564,11 +1564,11 @@
     },
     "fone-bluetooth-53-tws-gancho-k4k6": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1579,11 +1579,11 @@
     "afiador-4em1-torvstore-mzub": {
       "reason_counts": {
         "storefront_social_profile_unconfirmed": 1,
-        "social_profile_product_confirmed": 81,
+        "social_profile_product_confirmed": 82,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1593,10 +1593,10 @@
     },
     "porta-papel-toalha-premium-parede": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1607,10 +1607,10 @@
     "jogo-panelas-ceramica-marmore-10-pecas": {
       "reason_counts": {
         "storefront_social_profile_unconfirmed": 1,
-        "social_profile_product_confirmed": 82
+        "social_profile_product_confirmed": 83
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1620,12 +1620,12 @@
     },
     "kit-regulador-gas-premium-125m": {
       "reason_counts": {
-        "social_profile_product_confirmed": 81,
+        "social_profile_product_confirmed": 82,
         "social_profile_needs_review": 1,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1635,10 +1635,10 @@
     },
     "ps5-slim-premium-astro-bot-gran-turismo-7": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1649,10 +1649,10 @@
     "microsoft-xbox-series-x-1tb": {
       "reason_counts": {
         "storefront_listing_invalid": 2,
-        "social_profile_product_confirmed": 81
+        "social_profile_product_confirmed": 82
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1662,11 +1662,11 @@
     },
     "headset-gamer-jbl-quantum-100-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1676,11 +1676,11 @@
     },
     "suporte-tv-fixo-universal-10-a-100-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1691,12 +1691,12 @@
     "puma-flyer-runner-mesh-bdp": {
       "reason_counts": {
         "storefront_social_lists_invalid": 9,
-        "social_profile_product_confirmed": 71,
+        "social_profile_product_confirmed": 72,
         "storefront_listing_invalid": 1,
         "storefront_social_profile_unconfirmed": 2
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1706,10 +1706,10 @@
     },
     "xiaomi-mi-band-8-active-sport": {
       "reason_counts": {
-        "social_profile_product_confirmed": 83
+        "social_profile_product_confirmed": 84
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1719,11 +1719,11 @@
     },
     "ugreen-robot-nexode-gan-65w-lilas": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1733,11 +1733,11 @@
     },
     "ssd-nvme-m2-1tb-pcie4-2280-6tsl": {
       "reason_counts": {
-        "social_profile_product_confirmed": 82,
+        "social_profile_product_confirmed": 83,
         "social_profile_ok": 1
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1761,10 +1761,10 @@
     "bt-coca-cola-blush-stick-bruna-tavares-intense-cherry": {
       "reason_counts": {
         "storefront_social_profile_unconfirmed": 1,
-        "social_profile_product_confirmed": 82
+        "social_profile_product_confirmed": 83
       },
       "first_seen_at": "2026-03-27T22:41:46Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1774,10 +1774,10 @@
     },
     "gloss-labial-fantasyland-disney-100-bruna-tavares": {
       "reason_counts": {
-        "social_profile_product_confirmed": 96
+        "social_profile_product_confirmed": 97
       },
       "first_seen_at": "2026-03-28T14:16:18Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1787,11 +1787,11 @@
     },
     "organizador-maquiagem-giratorio-360-acrilico-transparente": {
       "reason_counts": {
-        "social_profile_product_confirmed": 66,
+        "social_profile_product_confirmed": 67,
         "storefront_social_lists_invalid": 5
       },
       "first_seen_at": "2026-03-29T11:15:18Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1802,25 +1802,25 @@
     "paleta-sombras-new-york-catharine-hill-10-cores": {
       "reason_counts": {
         "social_profile_product_confirmed": 55,
-        "storefront_social_lists_invalid": 11
+        "storefront_social_lists_invalid": 12
       },
       "first_seen_at": "2026-03-30T03:31:03Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
       "relink_priority": false,
-      "last_reason": "social_profile_product_confirmed",
-      "last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC83BURjLoMufJQMCP6yblwtAKhc9N%2Bb5Q4QVDZf3yymVujE0nIav0%2FAoC%2F%2Fv7WqzCzRwVuSog2KbPWX6JWnlieDr6FN4yvfOPy9iA4fadYktvZQolEMIHG2jwOuxX6Mx3kXDVMeeu4htwcxoJKJFCf5o9gOnkJ4HwIHl0Z4TTawX42F9BAqExVffmJrvxfsL4reGQ%3D%3D"
+      "last_reason": "storefront_social_lists_invalid",
+      "last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists"
     },
     "batom-brilho-labial-moranguinho-10un-cheiro-morango": {
       "reason_counts": {
-        "social_profile_product_confirmed": 60,
+        "social_profile_product_confirmed": 61,
         "storefront_social_profile_unconfirmed": 1,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-03-30T23:08:07Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1830,11 +1830,11 @@
     },
     "ice-creamy-lip-balm-mari-maria-vanilla-10ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 56,
+        "social_profile_product_confirmed": 57,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-01T03:35:05Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1844,12 +1844,12 @@
     },
     "love-kit-gloss-labial-coracao-lapis-volume-rosada": {
       "reason_counts": {
-        "social_profile_product_confirmed": 52,
+        "social_profile_product_confirmed": 53,
         "storefront_listing_invalid": 1,
         "storefront_social_lists_invalid": 1
       },
       "first_seen_at": "2026-04-01T19:15:57Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1859,11 +1859,11 @@
     },
     "batom-hidratante-sace-lady-a03-terre-rouge": {
       "reason_counts": {
-        "social_profile_product_confirmed": 52,
+        "social_profile_product_confirmed": 53,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-02T03:17:52Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1873,11 +1873,11 @@
     },
     "cilios-posticos-sace-lady-autoadesivos-reutilizaveis": {
       "reason_counts": {
-        "social_profile_product_confirmed": 48,
+        "social_profile_product_confirmed": 49,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-03T03:19:45Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1887,11 +1887,11 @@
     },
     "body-splash-kiss-ciclo-200ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 46,
+        "social_profile_product_confirmed": 47,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-04-03T19:00:00Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1901,10 +1901,10 @@
     },
     "payot-boca-rosa-meu-volumao-preto-6ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 46
+        "social_profile_product_confirmed": 47
       },
       "first_seen_at": "2026-04-04T02:52:10Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1914,11 +1914,11 @@
     },
     "nivea-hidratante-labial-morango-shine-4-8g": {
       "reason_counts": {
-        "social_profile_product_confirmed": 41,
+        "social_profile_product_confirmed": 42,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-04-05T03:30:21Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1928,10 +1928,10 @@
     },
     "fixador-de-maquiagem-ruby-rose-150ml-hb312": {
       "reason_counts": {
-        "social_profile_product_confirmed": 39
+        "social_profile_product_confirmed": 40
       },
       "first_seen_at": "2026-04-05T18:57:53Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1941,11 +1941,11 @@
     },
     "gloss-labial-beautyloo-sabor-tutti-frutti-38ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 34,
+        "social_profile_product_confirmed": 35,
         "storefront_listing_invalid": 1
       },
       "first_seen_at": "2026-04-06T19:13:15Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1955,11 +1955,11 @@
     },
     "lip-tint-arovida-morango-misterio-3-2ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 27,
+        "social_profile_product_confirmed": 28,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-07T19:17:05Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1969,11 +1969,11 @@
     },
     "ruby-rose-angle-blender-feels-mood": {
       "reason_counts": {
-        "social_profile_product_confirmed": 22,
+        "social_profile_product_confirmed": 23,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-08T19:36:49Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1983,11 +1983,11 @@
     },
     "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto": {
       "reason_counts": {
-        "social_profile_product_confirmed": 17,
+        "social_profile_product_confirmed": 18,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-09T19:20:47Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -1997,11 +1997,11 @@
     },
     "sombra-disney-wish-bruna-tavares-silver-5ml": {
       "reason_counts": {
-        "social_profile_product_confirmed": 12,
+        "social_profile_product_confirmed": 13,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-11T02:56:25Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -2011,11 +2011,11 @@
     },
     "kit-unha-postica-francesinha-pe-nude-quadrada": {
       "reason_counts": {
-        "social_profile_product_confirmed": 8,
+        "social_profile_product_confirmed": 9,
         "storefront_social_profile_unconfirmed": 1
       },
       "first_seen_at": "2026-04-12T03:37:28Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -2025,10 +2025,10 @@
     },
     "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz": {
       "reason_counts": {
-        "social_profile_product_confirmed": 5
+        "social_profile_product_confirmed": 6
       },
       "first_seen_at": "2026-04-13T01:31:57Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -2038,10 +2038,10 @@
     },
     "xapadinha-mascara-disciplinante-450g-lola-from-rio": {
       "reason_counts": {
-        "social_profile_product_confirmed": 1
+        "social_profile_product_confirmed": 2
       },
       "first_seen_at": "2026-04-13T19:24:33Z",
-      "last_seen_at": "2026-04-13T19:24:33Z",
+      "last_seen_at": "2026-04-14T03:32:59Z",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

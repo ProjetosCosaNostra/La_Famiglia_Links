@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-04-13T19:29:37Z",
-  "total_items": 2,
+  "updated_at": "2026-04-14T03:46:19Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 3
     },
-    "high_priority": 2
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-04-13T19:24:33Z",
+      "happened_at": "2026-04-14T03:32:59Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-04-13T19:24:33Z",
+      "happened_at": "2026-04-14T03:32:59Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -102,6 +102,50 @@
         "Wi-Fi",
         "Alexa",
         "Google Home"
+      ]
+    },
+    {
+      "happened_at": "2026-04-14T03:32:59Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 171,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171",
+      "issue_title": "Paleta de Sombras New York Catharine Hill 10 Cores",
+      "sku": "paleta-sombras-new-york-catharine-hill-10-cores",
+      "title": "Paleta de Sombras New York Catharine Hill 10 Cores",
+      "id_busca": "5J5PKG-G3RN",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2rsx8Ps",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2rsx8Ps",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BED%2BIpXlhncvTu43M3BCIQKggq50SSmH8Zu%2FUB9XnqM5jsLuR%2FOc5Il4VizpLqYpvBCy4UR4pF6cHHP%2FmPSpUeqgISf3fZ30R2UQv1B%2FkgHkq6BuVEBpSqtmVizgvtRX%2BEaOrjH9Aoigk7fap%2Bv1zPLZrBAFH6TWl8EPr5M7hEwoewzlabU1jKPc6nCORe6RMt8Gs33YyWvj%2Fwu2BA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XXZH",
+      "short_url": "https://meli.la/1yfq6U7",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BED%2BIpXlhncvTu43M3BCIQKggq50SSmH8Zu%2FUB9XnqM5jsLuR%2FOc5Il4VizpLqYpvBCy4UR4pF6cHHP%2FmPSpUeqgISf3fZ30R2UQv1B%2FkgHkq6BuVEBpSqtmVizgvtRX%2BEaOrjH9Aoigk7fap%2Bv1zPLZrBAFH6TWl8EPr5M7hEwoewzlabU1jKPc6nCORe6RMt8Gs33YyWvj%2Fwu2BA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Paleta de Sombras",
+        "Olhos",
+        "Catharine Hill",
+        "Premium"
       ]
     }
   ]
