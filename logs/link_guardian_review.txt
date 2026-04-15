@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-15T08:16:21Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-04-15T14:02:51Z
+Itens pendentes: 9
+SKUs únicos: 9
+Prioridade alta: 9
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 9
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 9
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 9
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-15T08:00:38Z
+Quando: 2026-04-15T13:58:11Z
 Issue: #125
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
 SKU: capacete-asx-city-preto-fosco-viseira
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (15x /lists, 0x listing)
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
 Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
 open_url: https://meli.la/27b6ktD
 checked_url: https://meli.la/27b6ktD
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-04-15T08:00:38Z
+Quando: 2026-04-15T13:58:11Z
 SKU: relogio-parede-30cm-prata-branco-lzbq
 Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
 ID ML: 5J5PKG-LZBQ
@@ -52,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 22 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
 open_url: https://meli.la/12D2w1B
 checked_url: https://meli.la/12D2w1B
@@ -60,7 +60,24 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
 
 [ALTA] review_only_storefront
-Quando: 2026-04-15T08:00:38Z
+Quando: 2026-04-15T13:58:11Z
+SKU: se-j-existir-usa-amazon-echo-pop-c2h4r9-2
+Título: Echo Pop Smart Speaker (Alexa) — Preto (Amazon)
+ID ML: 5J5PKG-ZMR8
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 22 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Alexa, Echo Pop, Smart Speaker, Casa inteligente, Wi-Fi, Bluetooth, Preto
+open_url: https://mercadolivre.com/sec/19Abme6
+checked_url: https://mercadolivre.com/sec/19Abme6
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZMR8&tid=4859dfe6-8a08-4249-ac82-57085079ea12
+
+[ALTA] review_only_storefront
+Quando: 2026-04-15T13:58:11Z
 Issue: #35
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/35
 SKU: lampada-inteligente-ekaza-t609
@@ -71,7 +88,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Casa Inteligente, Iluminação, Lâmpada Smart, RGB, Wi-Fi, Alexa, Google Home
 open_url: https://mercadolivre.com/sec/19FcPbY
 checked_url: https://mercadolivre.com/sec/19FcPbY
@@ -79,7 +96,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K5V3&tid=89cbc60d-20f7-4b20-96e8-d6d726477e37
 
 [ALTA] review_only_storefront
-Quando: 2026-04-15T08:00:38Z
+Quando: 2026-04-15T13:58:11Z
+Issue: #39
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/39
+SKU: fechadura-bio-delta-pro-wifi-tuya-preta
+Título: 🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya) — Preta
+ID ML: 5J5PKG-0SJ2
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Segurança, Casa Inteligente, Fechadura Digital, Biométrica, Wi-Fi, Tuya, PRETO
+open_url: https://mercadolivre.com/sec/1uKVY2p
+checked_url: https://mercadolivre.com/sec/1uKVY2p
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0SJ2&tid=0c11df4f-b7f6-4112-90a9-12d6b815a63c
+
+[ALTA] review_only_storefront
+Quando: 2026-04-15T13:58:11Z
 Issue: #47
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/47
 SKU: torneira-gourmet-flexivel-preta
@@ -90,7 +126,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Torneira, Torneira Gourmet, Casa, Bancada, Pia, Preto
 open_url: https://mercadolivre.com/sec/2ynt61J
 checked_url: https://mercadolivre.com/sec/2ynt61J
@@ -98,7 +134,45 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHR1&tid=d565ad7b-490a-4b0c-bce3-c43ef12b0d2a
 
 [ALTA] review_only_storefront
-Quando: 2026-04-15T08:00:38Z
+Quando: 2026-04-15T13:58:11Z
+Issue: #114
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/114
+SKU: ps5-slim-premium-astro-bot-gran-turismo-7
+Título: 🎮 PS5 Slim Premium — Pacote com Astro Bot e Gran Turismo 7
+ID ML: 5J5PKG-9TK6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, PS5 Slim, PlayStation 5, Astro Bot, Gran Turismo 7, Console, Gamer, Games
+open_url: https://meli.la/2LTPR6d
+checked_url: https://meli.la/2LTPR6d
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9TK6&tid=d3a7c34e-769e-458c-9c61-58a2b139ba4b
+
+[ALTA] review_only_storefront
+Quando: 2026-04-15T13:58:11Z
+Issue: #120
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/120
+SKU: headset-gamer-jbl-quantum-100-preto
+Título: Headset Gamer JBL Quantum 100 com Microfone - Preto
+ID ML: 5J5PKG-YRGV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 1x listing)
+Badges: Achados do Dia, Headset Gamer, JBL, Quantum 100, Com fio, Microfone, Preto, Gamer
+open_url: https://meli.la/2KwjYue
+checked_url: https://meli.la/2KwjYue
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YRGV&tid=01086582-ae9c-45c2-a163-eb7921854dcb
+
+[ALTA] review_only_storefront
+Quando: 2026-04-15T13:58:11Z
 Issue: #171
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
 SKU: paleta-sombras-new-york-catharine-hill-10-cores
@@ -109,7 +183,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Memória operacional: histórico recorrente (18x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
 open_url: https://meli.la/2rsx8Ps
 checked_url: https://meli.la/2rsx8Ps
