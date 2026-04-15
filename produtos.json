@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-13T18:37:44Z",
+  "updated_at": "2026-04-15T01:05:23Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7405,7 +7405,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-H0SZ",
       "image": "https://github.com/user-attachments/assets/9c09bb2a-ed66-49bd-9e6f-2b96daa8e7e2",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -7441,6 +7441,61 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/26CFRci",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAcWwnntmPIiynP%2B0Hkd1R0qwo%2Fp12M0ZGOtwG4%2FCOAPj9yGdKFYduLbXS7I7IMt3lpZgJRFMNhQRKEjv3RHDd6Pum2DiXdoHidZRCBKD33I5jFHl4xS29c07d6D8mgrYN7pq5cc8Vz0qA%2BLpM8k2ta9dLmav2GBX7pDy0m%2ByhvoSYLQm3iay6mMce%2BkOTYIbCKi5w%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "vizzela-bruma-fixadora-de-maquiagem-real-fix-150ml",
+      "title": "Vizzela Bruma Fixadora De Maquiagem Real Fix 150ml",
+      "badges": [
+        "Achados do Dia",
+        "Vizzela",
+        "Real Fix",
+        "Fixador de Maquiagem",
+        "Acabamento Natural",
+        "150ml"
+      ],
+      "id_busca": "5J5PKG-9D7U",
+      "open_url": "https://meli.la/1jKPing",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBOk%2FLBrsc5FbWlspKi6OHaYBNOrpq6sarvpSuORw6lgdZVD4yHj1mFgyBJAV0ytPFVppLT9UUiwqQvHCbSkVdp%2Fno4LGDdppOG1s26ZZ5xIcmsA3bK%2BtZ6EX8bOjnvgV%2FdQ2uRR888frF5SdA85Ev3XwrpTHisx0MbXB%2BuW8ZmfQNOmw9pOXW%2FUX7kWoA7WwfhsJg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-9D7U",
+      "image": "https://github.com/user-attachments/assets/7467e036-2d5a-40f5-bbf2-29e0a4182dbc",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 189,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/189",
+      "issue_title": "Vizzela Bruma Fixadora De Maquiagem Real Fix 150ml",
+      "categoria_principal": "Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Beleza",
+        "Maquiagem",
+        "Rosto",
+        "Primer Facial",
+        "Fixador de Maquiagem"
+      ],
+      "aliases_busca": [
+        "vizzela real fix",
+        "bruma fixadora vizzela",
+        "fixador de maquiagem vizzela",
+        "bruma real fix 150ml",
+        "bruma fixadora maquiagem",
+        "real fix 150ml",
+        "fixador de maquiagem 150ml"
+      ],
+      "quick_home": true,
+      "quick_home_order": 4,
+      "_source_issue_number": 189,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1jKPing",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBOk%2FLBrsc5FbWlspKi6OHaYBNOrpq6sarvpSuORw6lgdZVD4yHj1mFgyBJAV0ytPFVppLT9UUiwqQvHCbSkVdp%2Fno4LGDdppOG1s26ZZ5xIcmsA3bK%2BtZ6EX8bOjnvgV%2FdQ2uRR888frF5SdA85Ev3XwrpTHisx0MbXB%2BuW8ZmfQNOmw9pOXW%2FUX7kWoA7WwfhsJg%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
