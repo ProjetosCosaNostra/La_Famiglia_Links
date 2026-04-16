@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-04-16T19:31:59Z",
-  "total_items": 3,
+  "updated_at": "2026-04-16T19:46:14Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 1,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 1
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 1
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 1
     },
-    "high_priority": 3
+    "high_priority": 1
   },
   "items": [
     {
-      "happened_at": "2026-04-16T19:27:14Z",
+      "happened_at": "2026-04-16T19:44:15Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -57,96 +57,6 @@
         "Preto Fosco",
         "Viseira",
         "Segurança"
-      ]
-    },
-    {
-      "happened_at": "2026-04-16T19:27:14Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 37,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
-      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
-      "sku": "projetor-smart-hy320-goodvision",
-      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
-      "id_busca": "5J5PKG-VC6E",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/153wkmc",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/153wkmc",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Projetor",
-        "Cinema em Casa",
-        "Wi-Fi",
-        "Android",
-        "Bluetooth",
-        "Full HD",
-        "HDMI"
-      ]
-    },
-    {
-      "happened_at": "2026-04-16T19:27:14Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 42,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42",
-      "issue_title": "[CMS] Produto: 🔥 Dashcam 4K + GPS — Segurança no caminho (dia e noite)",
-      "sku": "dashcam-4k-gps-azdome-m550-64gb",
-      "title": "Câmera Veicular Dashcam 4K + GPS AZDOME M550 (IR) + Traseira + 64GB",
-      "id_busca": "5J5PKG-3UQV",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 2x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/2M3LnVg",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/2M3LnVg",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDFIk4ujoILgPHvGhn95r5bxS81dKX8%2FaVkL3hCiavZlXYGVOgwlPvTEYkrXwMXQkqnUcBNX0oquIUkySqxiUR7NLZvcQuTh%2B%2FXMbysMyMJK0qRuZ4u5JioXyVhKLpr3C1VoGnHG4CqEvMBDzZTtxjA6tQDEwkTxNzKqMXkEGD5JBXw8cwarF5ZmsYvExuhdWSiJUg0%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDFIk4ujoILgPHvGhn95r5bxS81dKX8%2FaVkL3hCiavZlXYGVOgwlPvTEYkrXwMXQkqnUcBNX0oquIUkySqxiUR7NLZvcQuTh%2B%2FXMbysMyMJK0qRuZ4u5JioXyVhKLpr3C1VoGnHG4CqEvMBDzZTtxjA6tQDEwkTxNzKqMXkEGD5JBXw8cwarF5ZmsYvExuhdWSiJUg0%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDFIk4ujoILgPHvGhn95r5bxS81dKX8%2FaVkL3hCiavZlXYGVOgwlPvTEYkrXwMXQkqnUcBNX0oquIUkySqxiUR7NLZvcQuTh%2B%2FXMbysMyMJK0qRuZ4u5JioXyVhKLpr3C1VoGnHG4CqEvMBDzZTtxjA6tQDEwkTxNzKqMXkEGD5JBXw8cwarF5ZmsYvExuhdWSiJUg0%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Carro",
-        "Segurança",
-        "Dashcam",
-        "4K",
-        "GPS",
-        "Visão Noturna",
-        "Infra-vermelho"
       ]
     }
   ]
