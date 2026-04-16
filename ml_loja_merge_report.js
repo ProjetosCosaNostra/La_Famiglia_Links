@@ -790,3 +790,21 @@
 
   bootstrap();
 })();
+(async () => {
+  try {
+    const app = window.CNMLLojaMergeReport;
+    if (!app) throw new Error("CNMLLojaMergeReport não encontrado na página.");
+
+    console.log("1) Capturando loja...");
+    const loja = await app.captureLojaOnly();
+    console.log("Loja capturada:", loja);
+
+    console.log("2) Gerando relatório mesclado...");
+    await app.generateMergedReport();
+
+    console.log("3) Merge concluído.");
+    console.log("Resultado final:", app.getLastMerged());
+  } catch (err) {
+    console.error("ERRO NO MERGE:", err);
+  }
+})();
