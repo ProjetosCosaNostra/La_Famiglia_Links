@@ -68,6 +68,11 @@
      - Usa resumo local da própria loja como fallback automático
      - Para de exibir “Tracking indisponível nesta página” ao gerar TXT
      - Quando ainda não houver eventos suficientes, baixa TXT explicando isso
+
+   PATCH 2026-04-16 (CNTRACKING BRIDGE / GETSUMMARY):
+     - Expõe window.CNTracking.getSummary mesmo quando só existir coleta local
+     - Permite que o merge Loja + ML Direto leia o resumo da vitrine sem falhar
+     - Mantém métodos de tracking como no-op quando não houver engine externa
    ========================================================== */
 
 (() => {
@@ -1510,6 +1515,85 @@
     };
   }
 
+
+  function normalizeSummaryRange(options) {
+    const opts = options || {};
+    const endCandidate = opts.end_at || opts.end || opts.until || new Date().toISOString();
+    const startCandidate = opts.start_at || opts.start || opts.from || "";
+    const endDate = parseISO(endCandidate) || new Date();
+    const defaultStart = new Date(endDate);
+    defaultStart.setDate(defaultStart.getDate() - 6);
+    defaultStart.setHours(0, 0, 0, 0);
+    const startDate = parseISO(startCandidate) || defaultStart;
+    return {
+      start: startDate,
+      end: endDate,
+    };
+  }
+
+  function createNoopTrackingMethod() {
+    return function noopTrackingMethod() {
+      return null;
+    };
+  }
+
+  function ensureCNTrackingBridge() {
+    const existing = (window.CNTracking && typeof window.CNTracking === "object")
+      ? window.CNTracking
+      : {};
+
+    if (typeof existing.init !== "function") {
+      existing.init = function initBridge() {
+        return existing;
+      };
+    }
+
+    const noopMethods = [
+      "track",
+      "trackPageView",
+      "trackProductView",
+      "trackFeaturedView",
+      "trackBuyClick",
+      "trackCopyLink",
+      "trackCopyId",
+      "trackCopyStoreLink",
+      "trackSocialClick",
+      "trackFilter",
+      "trackSortChange",
+      "trackLoadMore",
+      "trackSearch",
+      "trackOutboundClick",
+    ];
+
+    noopMethods.forEach((methodName) => {
+      if (typeof existing[methodName] !== "function") {
+        existing[methodName] = createNoopTrackingMethod();
+      }
+    });
+
+    existing.getSummary = function getSummaryBridge(options) {
+      const range = normalizeSummaryRange(options);
+      return buildLocalIntelligenceSummary(range);
+    };
+
+    existing.getLocalIntelligenceEvents = function getLocalIntelligenceEventsBridge(options) {
+      const range = normalizeSummaryRange(options);
+      return getLocalIntelligenceEventsInRange(range);
+    };
+
+    existing.getAttributionState = function getAttributionStateBridge() {
+      return cloneObj(getAttributionState());
+    };
+
+    existing.getTrackingContext = function getTrackingContextBridge(extra) {
+      return buildTrackingContext(extra || {});
+    };
+
+    window.CNTracking = existing;
+    return existing;
+  }
+
+
   function formatPercentBR(value) {
     const n = Number(value || 0) * 100;
     return `${n.toFixed(2).replace(".", ",")}%`;
@@ -1575,8 +1659,9 @@
   }
 
   function getTracking() {
-    if (!window.CNTracking || typeof window.CNTracking.init !== "function") return null;
-    return window.CNTracking;
+    const bridge = ensureCNTrackingBridge();
+    if (!bridge || typeof bridge.init !== "function") return null;
+    return bridge;
   }
 
   function makeTrackingKey(parts) {
@@ -1655,6 +1740,7 @@
     initAttributionState();
     STATE.visitor_id = getOrCreateVisitorId();
     STATE.session_id = getOrCreateSessionId();
+    ensureCNTrackingBridge();
 
     const tracking = getTracking();
     if (tracking) {
@@ -4332,6 +4418,7 @@
     STATE.session_id = getOrCreateSessionId();
     STATE._intelligenceEvents = loadLocalIntelligenceEvents();
     initAttributionState();
+    ensureCNTrackingBridge();
 
     try {
       STATE.products = await fetchProducts();
