@@ -62,6 +62,12 @@
      - Subcategorias herdam contexto da família escolhida e ganham ordem mais comercial
      - Atributos rápidos ficam mais editoriais/táticos, sem duplicar a navegação
      - Mobile ganha seletor de ordenação e bloco de filtros com leitura mais forte
+
+   PATCH 2026-04-16 (RELATÓRIO INTELIGENTE / FALLBACK LOCAL):
+     - Relatório inteligente volta a baixar mesmo sem window.CNTracking.getSummary
+     - Usa resumo local da própria loja como fallback automático
+     - Para de exibir “Tracking indisponível nesta página” ao gerar TXT
+     - Quando ainda não houver eventos suficientes, baixa TXT explicando isso
    ========================================================== */
 
 (() => {
@@ -3625,24 +3631,29 @@
   function doExportSmartReport() {
     try {
       const tracking = window.CNTracking;
-      if (!tracking || typeof tracking.getSummary !== "function") {
-        showToast("Tracking indisponível nesta página");
-        return;
-      }
-
       const now = new Date();
       const todayRange = buildLocalRangeToday();
       const weekRange = buildLocalRangeLastDays(7);
 
-      const todaySummary = tracking.getSummary({
-        start_at: todayRange.start.toISOString(),
-        end_at: todayRange.end.toISOString(),
-      });
+      const hasExternalSummary = !!(tracking && typeof tracking.getSummary === "function");
 
-      const weekSummary = tracking.getSummary({
-        start_at: weekRange.start.toISOString(),
-        end_at: weekRange.end.toISOString(),
-      });
+      const todaySummary = hasExternalSummary
+        ? (tracking.getSummary({
+            start_at: todayRange.start.toISOString(),
+            end_at: todayRange.end.toISOString(),
+          }) || {})
+        : buildLocalIntelligenceSummary(todayRange);
+
+      const weekSummary = hasExternalSummary
+        ? (tracking.getSummary({
+            start_at: weekRange.start.toISOString(),
+            end_at: weekRange.end.toISOString(),
+          }) || {})
+        : buildLocalIntelligenceSummary(weekRange);
+
+      const totalTodayEvents = safeMetricNumber(todaySummary?.totals?.filtered_events);
+      const totalWeekEvents = safeMetricNumber(weekSummary?.totals?.filtered_events);
+      const reportSource = hasExternalSummary ? "CNTracking.getSummary" : "eventos locais da loja";
 
       const lines = [];
       lines.push("RELATÓRIO INTELIGENTE — CLIQUES ANTES DA VENDA");
@@ -3651,6 +3662,7 @@
       lines.push(`Updated_at da vitrine: ${cleanText(STATE.updated_at || "") || "n/d"}`);
       lines.push(`Ativos atuais na loja: ${safeMetricNumber(STATE._activeCount)}`);
       lines.push(`Categorias rastreadas: ${safeArray(STATE._categoryCounts).length}`);
+      lines.push(`Fonte do relatório: ${reportSource}`);
       lines.push("");
       lines.push("Objetivo:");
       lines.push("- medir clique antes de medir venda");
@@ -3659,9 +3671,24 @@
       lines.push("- descobrir qual título puxa mais curiosidade");
       lines.push("- descobrir qual produto leva a pessoa do conteúdo para a loja");
       lines.push("");
+      lines.push("Observação importante:");
+      lines.push("- este relatório mede o que a loja consegue enxergar");
+      lines.push("- links que saem direto do Story/CTA para o Mercado Livre não entram aqui se não passarem pela loja");
+      lines.push("");
 
       lines.push(...buildExecutiveReportSection("HOJE", todaySummary, todayRange));
       lines.push(...buildExecutiveReportSection("ÚLTIMOS 7 DIAS", weekSummary, weekRange));
+
+      if ((totalTodayEvents + totalWeekEvents) <= 0) {
+        lines.push("SEM DADOS SUFICIENTES AINDA");
+        lines.push("- o relatório foi gerado normalmente");
+        lines.push("- mas ainda não existem eventos suficientes salvos nesta página para responder com segurança");
+        lines.push("- continue publicando e testando; quando os eventos entrarem, este TXT passa a apontar rede, criativo, título e produto");
+        lines.push("");
+      } else {
+        lines.push("DECISÕES MAIS IMPORTANTES AGORA:");
+        lines.push(...buildDecisionLines(weekSummary, 5));
+      }
 
       const fname = `relatorio_inteligente_${reportFileStampBR(now)}.txt`;
       downloadFile(fname, lines.join("\n").trim() + "\n", "text/plain;charset=utf-8");
