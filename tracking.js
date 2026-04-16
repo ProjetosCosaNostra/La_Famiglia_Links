@@ -1025,6 +1025,549 @@
   const TRACKING_KEYS = new Set();
   let TRACKING_OBSERVER = null;
 
+
+  const CN_TRACKING_STORAGE_KEYS = {
+    visitorId: "cn_tracking_visitor_id",
+    sessionId: "cn_tracking_session_id",
+    firstTouch: "cn_tracking_first_touch",
+    currentTouch: "cn_tracking_current_touch",
+    lastNonDirectTouch: "cn_tracking_last_non_direct_touch",
+    intelligenceEvents: "cn_tracking_intelligence_events_v2",
+  };
+
+  const CN_INTELLIGENCE_RETENTION_DAYS = 120;
+  const CN_INTELLIGENCE_MAX_EVENTS = 12000;
+
+  function safeStorageRead(storage, key, fallback) {
+    try {
+      const raw = storage.getItem(key);
+      if (!raw) return fallback;
+      return JSON.parse(raw);
+    } catch {
+      return fallback;
+    }
+  }
+
+  function safeStorageWrite(storage, key, value) {
+    try {
+      storage.setItem(key, JSON.stringify(value));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function generateTrackingId(prefix) {
+    const rnd = Math.random().toString(36).slice(2, 10);
+    const now = Date.now().toString(36);
+    return `${String(prefix || "cn")}_${now}_${rnd}`;
+  }
+
+  function getOrCreateVisitorId() {
+    try {
+      const existing = cleanText(localStorage.getItem(CN_TRACKING_STORAGE_KEYS.visitorId) || "");
+      if (existing) return existing;
+      const created = generateTrackingId("visitor");
+      localStorage.setItem(CN_TRACKING_STORAGE_KEYS.visitorId, created);
+      return created;
+    } catch {
+      return generateTrackingId("visitor");
+    }
+  }
+
+  function getOrCreateSessionId() {
+    try {
+      const existing = cleanText(sessionStorage.getItem(CN_TRACKING_STORAGE_KEYS.sessionId) || "");
+      if (existing) return existing;
+      const created = generateTrackingId("session");
+      sessionStorage.setItem(CN_TRACKING_STORAGE_KEYS.sessionId, created);
+      return created;
+    } catch {
+      return generateTrackingId("session");
+    }
+  }
+
+  function cleanAttributionValue(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "_")
+      .replace(/[^a-z0-9_\-./]/g, "");
+  }
+
+  function buildEmptyAttributionTouch() {
+    return {
+      network: "",
+      profile_id: "",
+      format: "",
+      placement_external: "",
+      creative_id: "",
+      title_id: "",
+      hook_id: "",
+      campaign_id: "",
+      utm_source: "",
+      utm_medium: "",
+      utm_campaign: "",
+      utm_content: "",
+      touched_at: "",
+      is_direct: true,
+    };
+  }
+
+  function normalizeAttributionTouch(input) {
+    const src = input || {};
+    const network = cleanAttributionValue(src.network || src.utm_source || "");
+    const format = cleanAttributionValue(src.format || src.utm_medium || "");
+    const campaignId = cleanAttributionValue(src.campaign_id || src.utm_campaign || "");
+    const creativeId = cleanAttributionValue(src.creative_id || src.utm_content || "");
+    const out = {
+      network,
+      profile_id: cleanAttributionValue(src.profile_id || ""),
+      format,
+      placement_external: cleanAttributionValue(src.placement_external || src.placement || ""),
+      creative_id: creativeId,
+      title_id: cleanAttributionValue(src.title_id || ""),
+      hook_id: cleanAttributionValue(src.hook_id || ""),
+      campaign_id: campaignId,
+      utm_source: cleanAttributionValue(src.utm_source || network || ""),
+      utm_medium: cleanAttributionValue(src.utm_medium || format || ""),
+      utm_campaign: cleanAttributionValue(src.utm_campaign || campaignId || ""),
+      utm_content: cleanAttributionValue(src.utm_content || creativeId || ""),
+      touched_at: cleanText(src.touched_at || "") || new Date().toISOString(),
+      is_direct: false,
+    };
+
+    out.is_direct = !(
+      out.network ||
+      out.profile_id ||
+      out.format ||
+      out.placement_external ||
+      out.creative_id ||
+      out.title_id ||
+      out.hook_id ||
+      out.campaign_id
+    );
+
+    return out;
+  }
+
+  function readAttributionTouchFromSearch(search) {
+    const sp = new URLSearchParams(typeof search === "string" ? search : location.search || "");
+    return normalizeAttributionTouch({
+      network: sp.get("network") || "",
+      profile_id: sp.get("profile_id") || "",
+      format: sp.get("format") || "",
+      placement: sp.get("placement") || sp.get("placement_external") || "",
+      creative_id: sp.get("creative_id") || "",
+      title_id: sp.get("title_id") || "",
+      hook_id: sp.get("hook_id") || "",
+      campaign_id: sp.get("campaign_id") || "",
+      utm_source: sp.get("utm_source") || "",
+      utm_medium: sp.get("utm_medium") || "",
+      utm_campaign: sp.get("utm_campaign") || "",
+      utm_content: sp.get("utm_content") || "",
+    });
+  }
+
+  function isMeaningfulAttributionTouch(touch) {
+    const t = touch || {};
+    return !!(
+      cleanText(t.network || "") ||
+      cleanText(t.profile_id || "") ||
+      cleanText(t.format || "") ||
+      cleanText(t.placement_external || "") ||
+      cleanText(t.creative_id || "") ||
+      cleanText(t.title_id || "") ||
+      cleanText(t.hook_id || "") ||
+      cleanText(t.campaign_id || "")
+    );
+  }
+
+  function loadAttributionState() {
+    const first = safeStorageRead(localStorage, CN_TRACKING_STORAGE_KEYS.firstTouch, buildEmptyAttributionTouch());
+    const current = safeStorageRead(sessionStorage, CN_TRACKING_STORAGE_KEYS.currentTouch, buildEmptyAttributionTouch());
+    const last = safeStorageRead(localStorage, CN_TRACKING_STORAGE_KEYS.lastNonDirectTouch, buildEmptyAttributionTouch());
+    return {
+      first_touch: normalizeAttributionTouch(first),
+      current_touch: normalizeAttributionTouch(current),
+      last_non_direct_touch: normalizeAttributionTouch(last),
+    };
+  }
+
+  function saveAttributionState(state) {
+    const payload = state || {};
+    safeStorageWrite(localStorage, CN_TRACKING_STORAGE_KEYS.firstTouch, payload.first_touch || buildEmptyAttributionTouch());
+    safeStorageWrite(sessionStorage, CN_TRACKING_STORAGE_KEYS.currentTouch, payload.current_touch || buildEmptyAttributionTouch());
+    safeStorageWrite(localStorage, CN_TRACKING_STORAGE_KEYS.lastNonDirectTouch, payload.last_non_direct_touch || buildEmptyAttributionTouch());
+  }
+
+  function initAttributionState() {
+    const stored = loadAttributionState();
+    const urlTouch = readAttributionTouchFromSearch(location.search || "");
+
+    let firstTouch = stored.first_touch || buildEmptyAttributionTouch();
+    let currentTouch = stored.current_touch || buildEmptyAttributionTouch();
+    let lastNonDirectTouch = stored.last_non_direct_touch || buildEmptyAttributionTouch();
+
+    if (isMeaningfulAttributionTouch(urlTouch)) {
+      currentTouch = urlTouch;
+      lastNonDirectTouch = urlTouch;
+      if (!isMeaningfulAttributionTouch(firstTouch)) firstTouch = urlTouch;
+    } else if (!isMeaningfulAttributionTouch(currentTouch)) {
+      currentTouch = lastNonDirectTouch;
+    }
+
+    const state = {
+      first_touch: normalizeAttributionTouch(firstTouch),
+      current_touch: normalizeAttributionTouch(currentTouch),
+      last_non_direct_touch: normalizeAttributionTouch(lastNonDirectTouch),
+    };
+
+    saveAttributionState(state);
+    STATE._attribution = state;
+    return state;
+  }
+
+  function getAttributionState() {
+    return STATE._attribution || initAttributionState();
+  }
+
+  function getEffectiveAttributionTouch() {
+    const state = getAttributionState();
+    if (isMeaningfulAttributionTouch(state.current_touch)) return state.current_touch;
+    if (isMeaningfulAttributionTouch(state.last_non_direct_touch)) return state.last_non_direct_touch;
+    if (isMeaningfulAttributionTouch(state.first_touch)) return state.first_touch;
+    return buildEmptyAttributionTouch();
+  }
+
+  function buildTrackingContext(extra) {
+    const ex = extra || {};
+    const state = getAttributionState();
+    const touch = getEffectiveAttributionTouch();
+    const first = state.first_touch || buildEmptyAttributionTouch();
+
+    return {
+      visitor_id: cleanText(ex.visitor_id || STATE.visitor_id || getOrCreateVisitorId()),
+      session_id: cleanText(ex.session_id || STATE.session_id || getOrCreateSessionId()),
+      network: cleanAttributionValue(ex.network || touch.network || ""),
+      profile_id: cleanAttributionValue(ex.profile_id || touch.profile_id || ""),
+      format: cleanAttributionValue(ex.format || touch.format || ""),
+      placement_external: cleanAttributionValue(ex.placement_external || ex.external_placement || ex.placement_source || touch.placement_external || ""),
+      creative_id: cleanAttributionValue(ex.creative_id || touch.creative_id || ""),
+      title_id: cleanAttributionValue(ex.title_id || touch.title_id || ""),
+      hook_id: cleanAttributionValue(ex.hook_id || touch.hook_id || ""),
+      campaign_id: cleanAttributionValue(ex.campaign_id || touch.campaign_id || ""),
+      utm_source: cleanAttributionValue(ex.utm_source || touch.utm_source || ""),
+      utm_medium: cleanAttributionValue(ex.utm_medium || touch.utm_medium || ""),
+      utm_campaign: cleanAttributionValue(ex.utm_campaign || touch.utm_campaign || ""),
+      utm_content: cleanAttributionValue(ex.utm_content || touch.utm_content || ""),
+      first_touch_network: cleanAttributionValue(first.network || ""),
+      first_touch_profile_id: cleanAttributionValue(first.profile_id || ""),
+      first_touch_format: cleanAttributionValue(first.format || ""),
+      first_touch_campaign_id: cleanAttributionValue(first.campaign_id || ""),
+      attribution_touched_at: cleanText(touch.touched_at || ""),
+    };
+  }
+
+  function loadLocalIntelligenceEvents() {
+    const events = safeStorageRead(localStorage, CN_TRACKING_STORAGE_KEYS.intelligenceEvents, []);
+    return Array.isArray(events) ? events : [];
+  }
+
+  function pruneLocalIntelligenceEvents(list) {
+    const cutoff = Date.now() - (CN_INTELLIGENCE_RETENTION_DAYS * 24 * 60 * 60 * 1000);
+    return safeArray(list)
+      .filter((evt) => {
+        const ms = new Date(evt && evt.event_at).getTime();
+        return Number.isFinite(ms) && ms >= cutoff;
+      })
+      .slice(-CN_INTELLIGENCE_MAX_EVENTS);
+  }
+
+  function persistLocalIntelligenceEvents() {
+    STATE._intelligenceEvents = pruneLocalIntelligenceEvents(STATE._intelligenceEvents || []);
+    safeStorageWrite(localStorage, CN_TRACKING_STORAGE_KEYS.intelligenceEvents, STATE._intelligenceEvents);
+  }
+
+  function recordLocalIntelligenceEvent(eventName, payload) {
+    const meta = payload || {};
+    const ctx = buildTrackingContext(meta);
+    const evt = {
+      event_name: cleanText(eventName || ""),
+      event_at: new Date().toISOString(),
+      page_type: cleanText(meta.page_type || "loja") || "loja",
+      visitor_id: cleanText(ctx.visitor_id || ""),
+      session_id: cleanText(ctx.session_id || ""),
+      network: cleanAttributionValue(meta.network || ctx.network || "") || "direto",
+      profile_id: cleanAttributionValue(meta.profile_id || ctx.profile_id || ""),
+      format: cleanAttributionValue(meta.format || ctx.format || ""),
+      placement_external: cleanAttributionValue(meta.placement_external || ctx.placement_external || ""),
+      placement_internal: cleanText(meta.placement_internal || meta.placement || ""),
+      creative_id: cleanAttributionValue(meta.creative_id || ctx.creative_id || ""),
+      title_id: cleanAttributionValue(meta.title_id || ctx.title_id || ""),
+      hook_id: cleanAttributionValue(meta.hook_id || ctx.hook_id || ""),
+      campaign_id: cleanAttributionValue(meta.campaign_id || ctx.campaign_id || ""),
+      sku: cleanText(meta.sku || ""),
+      product_title: cleanText(meta.product_title || meta.title || ""),
+      id_busca: cleanText(meta.id_busca || ""),
+      category: cleanText(meta.category || ""),
+      featured: meta.featured === true,
+      position_on_page: Number(meta.position_on_page || 0) || null,
+      query: cleanText(meta.query || ""),
+      value: cleanText(meta.value || meta.label || ""),
+      href: cleanText(meta.href || meta.target_href || ""),
+      target_network: cleanAttributionValue(meta.target_network || ""),
+      first_touch_network: cleanAttributionValue(ctx.first_touch_network || ""),
+      first_touch_profile_id: cleanAttributionValue(ctx.first_touch_profile_id || ""),
+      first_touch_format: cleanAttributionValue(ctx.first_touch_format || ""),
+      first_touch_campaign_id: cleanAttributionValue(ctx.first_touch_campaign_id || ""),
+      attribution_touched_at: cleanText(ctx.attribution_touched_at || ""),
+    };
+
+    if (!evt.event_name) return null;
+
+    STATE._intelligenceEvents = safeArray(STATE._intelligenceEvents);
+    STATE._intelligenceEvents.push(evt);
+    persistLocalIntelligenceEvents();
+    return evt;
+  }
+
+  function getLocalIntelligenceEventsInRange(range) {
+    const startMs = range && range.start ? new Date(range.start).getTime() : Number.NEGATIVE_INFINITY;
+    const endMs = range && range.end ? new Date(range.end).getTime() : Number.POSITIVE_INFINITY;
+
+    return safeArray(STATE._intelligenceEvents).filter((evt) => {
+      const ms = new Date(evt && evt.event_at).getTime();
+      if (!Number.isFinite(ms)) return false;
+      return ms >= startMs && ms <= endMs;
+    });
+  }
+
+  function metricBucketBase(key, label) {
+    return {
+      key: cleanText(key || ""),
+      label: cleanText(label || key || ""),
+      count: 0,
+      view_count: 0,
+      buy_count: 0,
+      copy_link_count: 0,
+      copy_id_count: 0,
+      open_store_count: 0,
+      intention_score: 0,
+      _sessions: new Set(),
+      network: "",
+      profile_id: "",
+      format: "",
+      placement: "",
+      creative_id: "",
+      title_id: "",
+      hook_id: "",
+      campaign_id: "",
+      sku: "",
+      category: "",
+    };
+  }
+
+  function touchMetricField(bucket, field, value) {
+    const txt = cleanText(value || "");
+    if (!txt) return;
+    if (!bucket[field]) bucket[field] = txt;
+  }
+
+  function applyEventToMetricBucket(bucket, evt) {
+    bucket.count += 1;
+    if (evt.session_id) bucket._sessions.add(evt.session_id);
+
+    if (evt.event_name === "view_product_card" || evt.event_name === "view_featured") bucket.view_count += 1;
+    if (evt.event_name === "click_buy") bucket.buy_count += 1;
+    if (evt.event_name === "click_copy_link") bucket.copy_link_count += 1;
+    if (evt.event_name === "click_copy_id") bucket.copy_id_count += 1;
+    if (evt.event_name === "click_open_store") bucket.open_store_count += 1;
+
+    bucket.intention_score =
+      (bucket.buy_count * 5) +
+      (bucket.copy_link_count * 3) +
+      (bucket.copy_id_count * 3) +
+      (bucket.open_store_count * 2);
+
+    touchMetricField(bucket, "network", evt.network);
+    touchMetricField(bucket, "profile_id", evt.profile_id);
+    touchMetricField(bucket, "format", evt.format);
+    touchMetricField(bucket, "placement", evt.placement_external || evt.placement_internal);
+    touchMetricField(bucket, "creative_id", evt.creative_id);
+    touchMetricField(bucket, "title_id", evt.title_id);
+    touchMetricField(bucket, "hook_id", evt.hook_id);
+    touchMetricField(bucket, "campaign_id", evt.campaign_id);
+    touchMetricField(bucket, "sku", evt.sku);
+    touchMetricField(bucket, "category", evt.category);
+  }
+
+  function finalizeMetricBucket(bucket) {
+    const views = Number(bucket.view_count || 0);
+    const buy = Number(bucket.buy_count || 0);
+    const copyLink = Number(bucket.copy_link_count || 0);
+    const copyId = Number(bucket.copy_id_count || 0);
+    const openStore = Number(bucket.open_store_count || 0);
+    const intention = Number(bucket.intention_score || 0);
+    const buyCtr = views > 0 ? (buy / views) : 0;
+    const intentRate = views > 0 ? (intention / views) : 0;
+    const paidScore =
+      (intentRate * 100) +
+      (buyCtr * 120) +
+      (buy * 8) +
+      (copyLink * 4) +
+      (copyId * 4) +
+      (openStore * 3);
+
+    return {
+      ...bucket,
+      sessions: bucket._sessions.size,
+      buy_ctr: buyCtr,
+      intent_rate: intentRate,
+      paid_score: paidScore,
+    };
+  }
+
+  function sortMetricBucketsBy(field) {
+    return (a, b) => {
+      const av = Number(a && a[field] || 0);
+      const bv = Number(b && b[field] || 0);
+      if (bv !== av) return bv - av;
+      if (Number(b && b.buy_count || 0) !== Number(a && a.buy_count || 0)) return Number(b.buy_count || 0) - Number(a.buy_count || 0);
+      if (Number(b && b.intention_score || 0) !== Number(a && a.intention_score || 0)) return Number(b.intention_score || 0) - Number(a.intention_score || 0);
+      if (Number(b && b.view_count || 0) !== Number(a && a.view_count || 0)) return Number(b.view_count || 0) - Number(a.view_count || 0);
+      return String(a && a.label || "").localeCompare(String(b && b.label || ""), "pt-BR");
+    };
+  }
+
+  function aggregateMetricBuckets(events, keyFn, labelFn) {
+    const map = new Map();
+    for (const evt of (events || [])) {
+      const key = cleanText(keyFn(evt) || "");
+      if (!key) continue;
+      if (!map.has(key)) map.set(key, metricBucketBase(key, labelFn(evt, key)));
+      applyEventToMetricBucket(map.get(key), evt);
+    }
+    return Array.from(map.values()).map(finalizeMetricBucket);
+  }
+
+  function buildLocalIntelligenceSummary(range) {
+    const events = getLocalIntelligenceEventsInRange(range);
+    const productEvents = events.filter((evt) => cleanText(evt.sku || ""));
+
+    const totals = {
+      filtered_events: events.length,
+      unique_sessions: new Set(events.map((evt) => evt.session_id).filter(Boolean)).size,
+    };
+
+    const funnel = {
+      page_view: events.filter((evt) => evt.event_name === "page_view").length,
+      landing_attribution: events.filter((evt) => evt.event_name === "landing_attribution").length,
+      view_product_card: events.filter((evt) => evt.event_name === "view_product_card" || evt.event_name === "view_featured").length,
+      click_buy: events.filter((evt) => evt.event_name === "click_buy").length,
+      click_copy_id: events.filter((evt) => evt.event_name === "click_copy_id").length,
+      click_copy_link: events.filter((evt) => evt.event_name === "click_copy_link").length,
+      click_open_store: events.filter((evt) => evt.event_name === "click_open_store").length,
+    };
+
+    const byNetwork = aggregateMetricBuckets(events, (evt) => evt.network || evt.first_touch_network || "direto", (evt, key) => key);
+    const byCreative = aggregateMetricBuckets(events.filter((evt) => cleanText(evt.creative_id || "")), (evt) => evt.creative_id, (evt) => evt.creative_id);
+    const byTitle = aggregateMetricBuckets(events.filter((evt) => cleanText(evt.title_id || "")), (evt) => evt.title_id, (evt) => evt.title_id);
+    const byProduct = aggregateMetricBuckets(productEvents, (evt) => evt.sku, (evt) => evt.product_title || evt.sku);
+    const byCategory = aggregateMetricBuckets(productEvents.filter((evt) => cleanText(evt.category || "")), (evt) => evt.category, (evt) => evt.category);
+    const byFormat = aggregateMetricBuckets(events.filter((evt) => cleanText(evt.format || "")), (evt) => evt.format, (evt) => evt.format);
+    const byPlacement = aggregateMetricBuckets(events.filter((evt) => cleanText((evt.placement_external || evt.placement_internal) || "")), (evt) => evt.placement_external || evt.placement_internal, (evt) => evt.placement_external || evt.placement_internal);
+
+    const weakProducts = byProduct
+      .filter((item) => Number(item.view_count || 0) >= 5 && Number(item.buy_count || 0) === 0 && Number(item.intent_rate || 0) < 1.5)
+      .sort(sortMetricBucketsBy("view_count"));
+
+    return {
+      totals,
+      funnel,
+      answers_before_first_sale: {
+        top_networks_by_click_buy: byNetwork.slice().sort(sortMetricBucketsBy("buy_count")),
+        top_networks_by_intention: byNetwork.slice().sort(sortMetricBucketsBy("intention_score")),
+        top_creatives_by_click_buy: byCreative.slice().sort(sortMetricBucketsBy("buy_count")),
+        top_creatives_by_intention: byCreative.slice().sort(sortMetricBucketsBy("intention_score")),
+        top_titles_by_click_buy: byTitle.slice().sort(sortMetricBucketsBy("buy_count")),
+        top_titles_by_intention: byTitle.slice().sort(sortMetricBucketsBy("intention_score")),
+        top_products_by_click_buy: byProduct.slice().sort(sortMetricBucketsBy("buy_count")),
+        top_products_by_intention: byProduct.slice().sort(sortMetricBucketsBy("intention_score")),
+        top_products_by_paid_score: byProduct.slice().sort(sortMetricBucketsBy("paid_score")),
+        top_categories_by_click_buy: byCategory.slice().sort(sortMetricBucketsBy("buy_count")),
+        top_categories_by_intention: byCategory.slice().sort(sortMetricBucketsBy("intention_score")),
+        top_formats_by_intention: byFormat.slice().sort(sortMetricBucketsBy("intention_score")),
+        top_placements_by_intention: byPlacement.slice().sort(sortMetricBucketsBy("intention_score")),
+        weak_products: weakProducts,
+      },
+    };
+  }
+
+  function formatPercentBR(value) {
+    const n = Number(value || 0) * 100;
+    return `${n.toFixed(2).replace(".", ",")}%`;
+  }
+
+  function metricDetailLine(prefix, item) {
+    if (!item) return `- ${prefix}: sem dados suficientes`;
+    const bits = [cleanText(item.label || item.key || "sem dado") || "sem dado"];
+    if (item.sku) bits.push(`sku=${item.sku}`);
+    if (item.network) bits.push(`rede=${item.network}`);
+    if (item.profile_id) bits.push(`perfil=${item.profile_id}`);
+    if (item.format) bits.push(`formato=${item.format}`);
+    if (item.title_id) bits.push(`title=${item.title_id}`);
+    if (item.creative_id) bits.push(`criativo=${item.creative_id}`);
+    if (Number(item.view_count || 0) > 0) bits.push(`views=${item.view_count}`);
+    if (Number(item.buy_count || 0) > 0) bits.push(`comprar=${item.buy_count}`);
+    if (Number(item.copy_link_count || 0) > 0) bits.push(`copiar_link=${item.copy_link_count}`);
+    if (Number(item.copy_id_count || 0) > 0) bits.push(`copiar_id=${item.copy_id_count}`);
+    if (Number(item.intention_score || 0) > 0) bits.push(`intenção=${item.intention_score}`);
+    if (Number(item.paid_score || 0) > 0) bits.push(`paid_score=${item.paid_score.toFixed(2).replace(".", ",")}`);
+    if (Number(item.buy_ctr || 0) > 0) bits.push(`buy_ctr=${formatPercentBR(item.buy_ctr)}`);
+    if (Number(item.intent_rate || 0) > 0) bits.push(`intent_rate=${formatPercentBR(item.intent_rate)}`);
+    return `- ${prefix}: ${bits.join(" | ")}`;
+  }
+
+  function buildDecisionLines(summary, limit) {
+    const answers = (summary && summary.answers_before_first_sale) || {};
+    const max = Math.max(1, Number(limit || 5));
+    const lines = [];
+
+    const topProducts = safeArray(answers.top_products_by_paid_score).slice(0, max);
+    const topCreatives = safeArray(answers.top_creatives_by_intention).slice(0, max);
+    const topTitles = safeArray(answers.top_titles_by_intention).slice(0, max);
+    const topNetworks = safeArray(answers.top_networks_by_intention).slice(0, max);
+    const weakProducts = safeArray(answers.weak_products).slice(0, max);
+
+    lines.push("Produtos mais prontos para primeiro tráfego pago:");
+    if (!topProducts.length) lines.push("- sem dados suficientes");
+    else topProducts.forEach((item, idx) => lines.push(metricDetailLine(`Produto #${idx + 1}`, item)));
+    lines.push("");
+
+    lines.push("Criativos com mais intenção:");
+    if (!topCreatives.length) lines.push("- sem dados suficientes");
+    else topCreatives.forEach((item, idx) => lines.push(metricDetailLine(`Criativo #${idx + 1}`, item)));
+    lines.push("");
+
+    lines.push("Títulos com mais curiosidade útil:");
+    if (!topTitles.length) lines.push("- sem dados suficientes");
+    else topTitles.forEach((item, idx) => lines.push(metricDetailLine(`Título #${idx + 1}`, item)));
+    lines.push("");
+
+    lines.push("Redes com melhor sinal de intenção:");
+    if (!topNetworks.length) lines.push("- sem dados suficientes");
+    else topNetworks.forEach((item, idx) => lines.push(metricDetailLine(`Rede #${idx + 1}`, item)));
+    lines.push("");
+
+    lines.push("Produtos fracos / candidatos a pausar:");
+    if (!weakProducts.length) lines.push("- sem dados suficientes");
+    else weakProducts.forEach((item, idx) => lines.push(metricDetailLine(`Fraco #${idx + 1}`, item)));
+    lines.push("");
+
+    return lines;
+  }
+
   function getTracking() {
     if (!window.CNTracking || typeof window.CNTracking.init !== "function") return null;
     return window.CNTracking;
@@ -1071,7 +1614,7 @@
 
   function buildTrackingMeta(p, extra = {}) {
     const product = p || {};
-    return {
+    const meta = {
       sku: cleanText(product.sku || ""),
       product_title: cleanText(product.title || ""),
       id_busca: cleanText(product.id_busca || ""),
@@ -1080,6 +1623,10 @@
       category: getPrimaryCategoryForTracking(product),
       page_type: "loja",
       ...extra,
+    };
+    return {
+      ...buildTrackingContext(meta),
+      ...meta,
     };
   }
 
@@ -1099,27 +1646,53 @@
   }
 
   function initLojaTracking() {
-    const tracking = getTracking();
-    if (!tracking) return;
+    initAttributionState();
+    STATE.visitor_id = getOrCreateVisitorId();
+    STATE.session_id = getOrCreateSessionId();
 
-    try {
-      tracking.init({
-        pageType: "loja",
-        autoPageView: false,
-        debug: false,
-      });
-    } catch (err) {
-      console.error(err);
+    const tracking = getTracking();
+    if (tracking) {
+      try {
+        tracking.init({
+          pageType: "loja",
+          autoPageView: false,
+          debug: false,
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
 
-    trackOnce("page_view|loja", () => {
-      if (typeof tracking.trackPageView === "function") {
+    const pageMeta = buildTrackingContext({
+      page_type: "loja",
+      placement: "loja_page",
+      placement_external: getEffectiveAttributionTouch().placement_external || "direct_entry",
+    });
+
+    trackOnce(`landing_attribution|${pageMeta.session_id}|${pageMeta.network}|${pageMeta.creative_id}|${pageMeta.title_id}`, () => {
+      recordLocalIntelligenceEvent("landing_attribution", {
+        ...pageMeta,
+        placement: "loja_page",
+        placement_internal: "loja_page",
+      });
+    });
+
+    trackOnce(`page_view|${pageMeta.session_id}|loja`, () => {
+      recordLocalIntelligenceEvent("page_view", {
+        ...pageMeta,
+        placement: "loja_page",
+        placement_internal: "loja_page",
+      });
+
+      if (tracking && typeof tracking.trackPageView === "function") {
         tracking.trackPageView({
+          ...pageMeta,
           page_type: "loja",
           placement: "loja_page",
         });
-      } else if (typeof tracking.track === "function") {
+      } else if (tracking && typeof tracking.track === "function") {
         tracking.track("page_view", {
+          ...pageMeta,
           page_type: "loja",
           placement: "loja_page",
         });
@@ -1149,8 +1722,11 @@
           trackOnce(key, () => {
             const meta = buildTrackingMeta(product, {
               placement,
+              placement_internal: placement,
               position_on_page: position,
             });
+            const eventName = (type === "featured") ? "view_featured" : "view_product_card";
+            recordLocalIntelligenceEvent(eventName, meta);
 
             if (type === "featured" && typeof tracking.trackFeaturedView === "function") {
               tracking.trackFeaturedView(meta, {
@@ -1213,8 +1789,11 @@
         trackOnce(key, () => {
           const meta = buildTrackingMeta(product, {
             placement,
+            placement_internal: placement,
             position_on_page: position,
           });
+          const eventName = (type === "featured") ? "view_featured" : "view_product_card";
+          recordLocalIntelligenceEvent(eventName, meta);
 
           if (type === "featured" && typeof tracking.trackFeaturedView === "function") {
             tracking.trackFeaturedView(meta, {
@@ -3300,6 +3879,12 @@
         STATE._trackingSearchTimer = setTimeout(() => {
           const value = cleanText(STATE.query || "");
           if (!value) return;
+          recordLocalIntelligenceEvent("search", {
+            page_type: "loja",
+            query: value,
+            placement: "search_loja",
+            placement_internal: "search_loja",
+          });
           if (typeof tracking.trackSearch === "function") {
             tracking.trackSearch(value, {
               page_type: "loja",
@@ -3349,6 +3934,12 @@
         render();
 
         const tracking = getTracking();
+        recordLocalIntelligenceEvent("filter", {
+          page_type: "loja",
+          value: "limpar_filtros",
+          placement: "clear_filters",
+          placement_internal: "clear_filters",
+        });
         if (tracking && typeof tracking.trackFilter === "function") {
           tracking.trackFilter("limpar_filtros", {
             page_type: "loja",
@@ -3365,6 +3956,12 @@
         e.preventDefault();
 
         const tracking = getTracking();
+        recordLocalIntelligenceEvent("click_open_store", {
+          page_type: "loja",
+          href: lojaUrl(),
+          placement: "hero_copy_store_link",
+          placement_internal: "hero_copy_store_link",
+        });
         if (tracking && typeof tracking.trackCopyStoreLink === "function") {
           tracking.trackCopyStoreLink({
             page_type: "loja",
@@ -3383,6 +3980,12 @@
     } else if (copyPageBtn) {
       copyPageBtn.addEventListener("click", () => {
         const tracking = getTracking();
+        recordLocalIntelligenceEvent("click_open_store", {
+          page_type: "loja",
+          href: location.href,
+          placement: "page_copy_store_link",
+          placement_internal: "page_copy_store_link",
+        });
         if (tracking && typeof tracking.trackCopyStoreLink === "function") {
           tracking.trackCopyStoreLink({
             page_type: "loja",
@@ -3401,6 +4004,12 @@
         render();
 
         const tracking = getTracking();
+        recordLocalIntelligenceEvent("sort_change", {
+          page_type: "loja",
+          value: STATE.sort,
+          placement: "sort_loja",
+          placement_internal: "sort_loja",
+        });
         if (tracking && typeof tracking.trackSortChange === "function") {
           tracking.trackSortChange(STATE.sort, {
             page_type: "loja",
@@ -3416,6 +4025,12 @@
         render();
 
         const tracking = getTracking();
+        recordLocalIntelligenceEvent("load_more", {
+          page_type: "loja",
+          value: String(STATE.limit || ""),
+          placement: "load_more_grid",
+          placement_internal: "load_more_grid",
+        });
         if (tracking && typeof tracking.trackLoadMore === "function") {
           tracking.trackLoadMore({
             page_type: "loja",
@@ -3476,6 +4091,15 @@
       if (socialAnchor && !socialAnchor.matches('[data-role="buy-link"]')) {
         const href = socialAnchor.getAttribute("href") || socialAnchor.href || "";
         const socialNetwork = detectSocialNetworkFromHref(href);
+        if (socialNetwork) {
+          recordLocalIntelligenceEvent("social_click", {
+            page_type: "loja",
+            target_network: socialNetwork,
+            href,
+            placement: socialAnchor.id || getPlacementFromNode(socialAnchor) || "loja_link",
+            placement_internal: socialAnchor.id || getPlacementFromNode(socialAnchor) || "loja_link",
+          });
+        }
         if (socialNetwork && tracking && typeof tracking.trackSocialClick === "function") {
           tracking.trackSocialClick(socialNetwork, {
             page_type: "loja",
@@ -3486,6 +4110,12 @@
           typeof tracking.trackOutboundClick === "function" &&
           (socialAnchor.id === "btnHome" || socialAnchor.id === "dockHome")
         ) {
+          recordLocalIntelligenceEvent("click_open_store", {
+            page_type: "loja",
+            href,
+            placement: socialAnchor.id,
+            placement_internal: socialAnchor.id,
+          });
           tracking.trackOutboundClick("voltar_home", {
             page_type: "loja",
             placement: socialAnchor.id,
@@ -3518,6 +4148,13 @@
           return;
         }
 
+        if (product) {
+          recordLocalIntelligenceEvent("click_buy", buildTrackingMeta(product, {
+            placement,
+            placement_internal: placement,
+            href,
+          }));
+        }
         if (tracking && product && typeof tracking.trackBuyClick === "function") {
           tracking.trackBuyClick(buildTrackingMeta(product, {
             placement,
@@ -3544,6 +4181,12 @@
         STATE.limit = PAGE_SIZE;
         render();
 
+        recordLocalIntelligenceEvent("filter", {
+          page_type: "loja",
+          value: isSame ? "tudo" : cleanText(chip.textContent || t || "tag"),
+          placement: "tag_chips_loja",
+          placement_internal: "tag_chips_loja",
+        });
         if (tracking && typeof tracking.trackFilter === "function") {
           tracking.trackFilter(isSame ? "tudo" : cleanText(chip.textContent || t || "tag"), {
             page_type: "loja",
@@ -3562,6 +4205,11 @@
       const placement = getPlacementFromNode(el);
 
       if (action === "copyLink" && p) {
+        recordLocalIntelligenceEvent("click_copy_link", buildTrackingMeta(p, {
+          placement,
+          placement_internal: placement,
+          href: bestBuyUrl(p) || "",
+        }));
         if (tracking && typeof tracking.trackCopyLink === "function") {
           tracking.trackCopyLink(buildTrackingMeta(p, { placement }), {
             page_type: "loja",
@@ -3572,6 +4220,11 @@
       }
 
       if (action === "copyAlt" && p) {
+        recordLocalIntelligenceEvent("click_copy_link", buildTrackingMeta(p, {
+          placement: `${placement}_alt`,
+          placement_internal: `${placement}_alt`,
+          href: p.alt_url || p.canonical_url || p.check_url || "",
+        }));
         if (tracking && typeof tracking.trackCopyLink === "function") {
           tracking.trackCopyLink(buildTrackingMeta(p, { placement: `${placement}_alt` }), {
             page_type: "loja",
@@ -3582,6 +4235,10 @@
       }
 
       if (action === "copyId" && p) {
+        recordLocalIntelligenceEvent("click_copy_id", buildTrackingMeta(p, {
+          placement,
+          placement_internal: placement,
+        }));
         if (tracking && typeof tracking.trackCopyId === "function") {
           tracking.trackCopyId(buildTrackingMeta(p, { placement }), {
             page_type: "loja",
@@ -3625,6 +4282,10 @@
     tag: "",
     sort: "relev",
     limit: PAGE_SIZE,
+    visitor_id: "",
+    session_id: "",
+    _attribution: null,
+    _intelligenceEvents: [],
     _failsafeNotified: false,
     _export: null,
     _categoryCounts: [],
@@ -3640,6 +4301,10 @@
 
     readUrlState();
     setText($("#year"), new Date().getFullYear());
+    STATE.visitor_id = getOrCreateVisitorId();
+    STATE.session_id = getOrCreateSessionId();
+    STATE._intelligenceEvents = loadLocalIntelligenceEvents();
+    initAttributionState();
 
     try {
       STATE.products = await fetchProducts();
