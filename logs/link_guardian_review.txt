@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-16T03:43:39Z
+Atualizado em: 2026-04-16T08:05:26Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-16T03:39:00Z
+Quando: 2026-04-16T08:00:28Z
 Issue: #125
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
 SKU: capacete-asx-city-preto-fosco-viseira
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
 Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
 open_url: https://meli.la/27b6ktD
 checked_url: https://meli.la/27b6ktD
