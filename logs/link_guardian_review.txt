@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-15T22:14:55Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-04-16T03:43:39Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,75 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-15T22:10:38Z
-SKU: relogio-parede-30cm-prata-branco-lzbq
-Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
-ID ML: 5J5PKG-LZBQ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 22 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
-Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
-open_url: https://meli.la/12D2w1B
-checked_url: https://meli.la/12D2w1B
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
-
-[ALTA] review_only_storefront
-Quando: 2026-04-15T22:10:38Z
-Issue: #35
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/35
-SKU: lampada-inteligente-ekaza-t609
-Título: Lâmpada Inteligente Ekaza T609 RGB Wi-Fi (Alexa/Google Home) – Soquete E27 9W
-ID ML: 5J5PKG-K5V3
+Quando: 2026-04-16T03:39:00Z
+Issue: #125
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
+SKU: capacete-asx-city-preto-fosco-viseira
+Título: Capacete ASX City Preto Fosco com Viseira
+ID ML: 5J5PKG-1QZG
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
-Badges: Achados do Dia, Casa Inteligente, Iluminação, Lâmpada Smart, RGB, Wi-Fi, Alexa, Google Home
-open_url: https://mercadolivre.com/sec/19FcPbY
-checked_url: https://mercadolivre.com/sec/19FcPbY
+Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
+open_url: https://meli.la/27b6ktD
+checked_url: https://meli.la/27b6ktD
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K5V3&tid=89cbc60d-20f7-4b20-96e8-d6d726477e37
-
-[ALTA] review_only_storefront
-Quando: 2026-04-15T22:10:38Z
-Issue: #47
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/47
-SKU: torneira-gourmet-flexivel-preta
-Título: Torneira Gourmet Flexível Preta — Bico alto + jato forte (pia e bancada)
-ID ML: 5J5PKG-AHR1
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Torneira, Torneira Gourmet, Casa, Bancada, Pia, Preto
-open_url: https://mercadolivre.com/sec/2ynt61J
-checked_url: https://mercadolivre.com/sec/2ynt61J
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHR1&tid=d565ad7b-490a-4b0c-bce3-c43ef12b0d2a
-
-[ALTA] review_only_storefront
-Quando: 2026-04-15T22:10:38Z
-Issue: #171
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
-SKU: paleta-sombras-new-york-catharine-hill-10-cores
-Título: Paleta de Sombras New York Catharine Hill 10 Cores
-ID ML: 5J5PKG-G3RN
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
-open_url: https://meli.la/2rsx8Ps
-checked_url: https://meli.la/2rsx8Ps
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-XXZH
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
