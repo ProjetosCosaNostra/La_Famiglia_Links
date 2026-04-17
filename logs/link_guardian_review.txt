@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-17T08:05:52Z
+Atualizado em: 2026-04-17T13:54:30Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-17T08:01:41Z
+Quando: 2026-04-17T13:49:42Z
 Issue: #125
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
 SKU: capacete-asx-city-preto-fosco-viseira
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Memória operacional: histórico recorrente (25x /lists, 0x listing)
 Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
 open_url: https://meli.la/27b6ktD
 checked_url: https://meli.la/27b6ktD
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-04-17T08:01:41Z
+Quando: 2026-04-17T13:49:42Z
 Issue: #37
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
 SKU: projetor-smart-hy320-goodvision
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (12x /lists, 0x listing)
+Memória operacional: histórico recorrente (13x /lists, 0x listing)
 Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
 open_url: https://meli.la/153wkmc
 checked_url: https://meli.la/153wkmc
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
 
 [ALTA] review_only_storefront
-Quando: 2026-04-17T08:01:41Z
+Quando: 2026-04-17T13:49:42Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 2x listing)
+Memória operacional: histórico recorrente (5x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://mercadolivre.com/sec/2M3LnVg
 checked_url: https://mercadolivre.com/sec/2M3LnVg
@@ -81,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-04-17T08:01:41Z
+Quando: 2026-04-17T13:49:42Z
 Issue: #189
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/189
 SKU: vizzela-bruma-fixadora-de-maquiagem-real-fix-150ml
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
 Badges: Achados do Dia, Vizzela, Real Fix, Fixador de Maquiagem, Acabamento Natural, 150ml
 open_url: https://meli.la/1jKPing
 checked_url: https://meli.la/1jKPing
