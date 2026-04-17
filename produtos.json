@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-16T19:38:51Z",
+  "updated_at": "2026-04-17T22:05:55Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7581,7 +7581,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6QS9",
       "image": "https://github.com/user-attachments/assets/484a5fed-3f6a-4ef2-bd2d-a1ccc68c52be",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -7618,6 +7618,60 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2f6UGXq",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFtcKnmI3EPvKWDFU7cg6ZdWQxuPK9GZzc7mCK6%2FxzbLRSq5%2BM6ky2ClvMIHX7hLQWCZl4G%2F%2Fyw3iZwr6s1Pz5mVKDzTZL4xMOczoJ9cwqB7v0j1oyqg2rkwNseFXulGYxfWYKFb8mBWcGbmZpaQuUEYX%2F6aKbkdrn2m6pVAW400WR0h0HkMG0PG1c2RuGGvcK%2BR8Q%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "gel-para-sobrancelhas-brow-rise-ruby-rose",
+      "title": "Gel para Sobrancelhas Brow Rise Ruby Rose",
+      "badges": [
+        "Seleção do Dia",
+        "Ruby Rose",
+        "Incolor",
+        "Longa Duração",
+        "Efeito Natural",
+        "Fixação"
+      ],
+      "id_busca": "5J5PKG-XRTJ",
+      "open_url": "https://meli.la/2cC6jBy",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH9zqPPTWzEDA5KRMpnxROe%2FzoX0FsW%2BN0apKGX101211EVVGvnSprYU5XJEMquk%2BEkbUMw0fUjTJgFCxkd%2Fwc5aQyDvAknwXIFYUihUczHW5dIbHsg0WFhxji9f8u5jHOx9%2FPRpskGsvn0bqpTo8bKEoob%2FAx1VNpXStFWvAe2uhFy%2FmLiFkruRDVddYJC8QGm%2BCj8%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XRTJ",
+      "image": "https://github.com/user-attachments/assets/56299e17-e624-4ca8-8cab-c44d0e89ffcd",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 193,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/193",
+      "issue_title": "Gel para Sobrancelhas Brow Rise Ruby Rose",
+      "categoria_principal": "Maquiagem",
+      "categorias_secundarias": [
+        "Sobrancelhas",
+        "Olhos",
+        "Beleza Feminina"
+      ],
+      "aliases_busca": [
+        "gel para sobrancelhas",
+        "brow rise",
+        "ruby rose",
+        "gel incolor sobrancelhas",
+        "fixador de sobrancelhas",
+        "modelador de sobrancelhas",
+        "efeito laminacao",
+        "mascara para sobrancelhas"
+      ],
+      "quick_home": true,
+      "quick_home_order": 1,
+      "_source_issue_number": 193,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2cC6jBy",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH9zqPPTWzEDA5KRMpnxROe%2FzoX0FsW%2BN0apKGX101211EVVGvnSprYU5XJEMquk%2BEkbUMw0fUjTJgFCxkd%2Fwc5aQyDvAknwXIFYUihUczHW5dIbHsg0WFhxji9f8u5jHOx9%2FPRpskGsvn0bqpTo8bKEoob%2FAx1VNpXStFWvAe2uhFy%2FmLiFkruRDVddYJC8QGm%2BCj8%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
