@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-18T21:23:36Z",
+  "updated_at": "2026-04-19T21:20:31Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7697,7 +7697,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4RAF",
       "image": "https://github.com/user-attachments/assets/566de061-b26a-4750-abf5-d69e92072b30",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -7735,6 +7735,60 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2g94WcQ",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO3Qeumf3wbZzvvM0Ff8%2Fn0hRqVFytzu7tD3AVzcguk2kzWMr8SvBYO6kOmm08qz2wKNjSYKQWVItjjHvL3U2dRs2rqAQllzShAsawZOAEHV7fnbqi%2BR3mKn17iqpddLcOlZp5zrvUOqYcAauoKB0Sz6g2oFzz0w21D6XLYlJ9GwX2LOtonlp3PFL9YqMATT9USLlnx70yoBUNknIA%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "depilador-eletrico-feminino-4-em-1",
+      "title": "Depilador Elétrico Feminino 4 em 1",
+      "badges": [
+        "Achados do Dia",
+        "Feminino",
+        "4 em 1",
+        "Depilação",
+        "Autocuidado",
+        "Branco"
+      ],
+      "id_busca": "5J5PKG-PYRM",
+      "open_url": "https://meli.la/2LK3ZKv",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BN8zvg0a%2B5lPmk4OgNncZrRw1KvBxaLd%2BP961rfsb7Kxm4zfpt%2FYgvDNShOIIaRW%2FKulyGsKt%2B6eRykBLyyk2ylnLlEW3huwo3bnxFqed%2BkEUZijwPDsPyRbovw3AAugoJWLRdbu33YJHXO4GFwY%2BKHYcpwh7ro%2B1teIh4jYb7o5oGJbjm1%2FssH0fYr0aWSbnfvse92gT3LqdYij5A%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PYRM",
+      "image": "https://github.com/user-attachments/assets/93f92c1c-5933-451d-888a-6c1da89ca1d0",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 195,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195",
+      "issue_title": "Depilador Elétrico Feminino 4 em 1",
+      "categoria_principal": "Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Depilação",
+        "Beleza Feminina",
+        "Autocuidado",
+        "Aparador Feminino"
+      ],
+      "aliases_busca": [
+        "depiladora eletrica feminina",
+        "depilador feminino 4 em 1",
+        "aparador feminino",
+        "removedor de pelos feminino",
+        "aparador nariz feminino",
+        "aparador sobrancelha feminino",
+        "depilador axila feminino"
+      ],
+      "quick_home": true,
+      "quick_home_order": 6,
+      "_source_issue_number": 195,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2LK3ZKv",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BN8zvg0a%2B5lPmk4OgNncZrRw1KvBxaLd%2BP961rfsb7Kxm4zfpt%2FYgvDNShOIIaRW%2FKulyGsKt%2B6eRykBLyyk2ylnLlEW3huwo3bnxFqed%2BkEUZijwPDsPyRbovw3AAugoJWLRdbu33YJHXO4GFwY%2BKHYcpwh7ro%2B1teIh4jYb7o5oGJbjm1%2FssH0fYr0aWSbnfvse92gT3LqdYij5A%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
