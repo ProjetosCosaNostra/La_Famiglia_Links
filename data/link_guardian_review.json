@@ -1,64 +1,12 @@
 {
-  "updated_at": "2026-04-21T14:07:57Z",
-  "total_items": 1,
+  "updated_at": "2026-04-21T19:28:35Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 1,
-    "by_state": {
-      "review_only_storefront": 1
-    },
-    "by_reason": {
-      "storefront_social_lists_invalid": 1
-    },
-    "by_action": {
-      "trocar_link": 1
-    },
-    "high_priority": 1
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-04-21T14:03:05Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 0,
-      "issue_url": "",
-      "issue_title": "",
-      "sku": "relogio-parede-30cm-prata-branco-lzbq",
-      "title": "⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler",
-      "id_busca": "5J5PKG-APR4",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 22,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2pnZgyH",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2pnZgyH",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338",
-      "short_url": "https://meli.la/12D2w1B",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "CosaNostra",
-        "Relógio de Parede",
-        "Decoração",
-        "Sala",
-        "Cozinha",
-        "Escritório",
-        "Hall"
-      ]
-    }
-  ]
+  "items": []
 }
