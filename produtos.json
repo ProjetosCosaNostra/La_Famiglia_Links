@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-21T22:33:25Z",
+  "updated_at": "2026-04-22T23:04:02Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7870,7 +7870,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-BBHC",
       "image": "https://github.com/user-attachments/assets/6112e430-edd8-4105-9f00-36ab119dc4bf",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -7907,6 +7907,62 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/257Mpir",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC7VfG3wZ%2FbYuQa7q1j6yAeSwXd8ZcF%2BrOpnpVRLhp5jbueR52I%2BGK3LgnrRSqmKwhC4aeSAAmuIPoP7xWaMLRBFyTdH1ogQ8ucZC62gKBBVwjQD6olxMsSA9ABj1Q%2B%2FV%2BvfY3woYrlupaDuCh0J1P04qpUmRKpoBTOtqxGneD1fjmAJJ9Q2MikdJ%2FeK5v5EppFcfg%3D%3D",
+      "price_text": "",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
+      "title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
+      "badges": [
+        "Achados do Dia",
+        "Body Splash",
+        "Perfume Feminino",
+        "Floral",
+        "200ml",
+        "Barbour's Beauty",
+        "Autocuidado"
+      ],
+      "id_busca": "5J5PKG-R4BJ",
+      "open_url": "https://meli.la/2SekHEZ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R4BJ",
+      "image": "https://github.com/user-attachments/assets/fddf682f-49de-4709-9f99-e300787efc26",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 198,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198",
+      "issue_title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
+      "categoria_principal": "Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Perfumes",
+        "Body Splash",
+        "Fragrâncias",
+        "Beleza Feminina"
+      ],
+      "aliases_busca": [
+        "my sweet delight",
+        "body splash my sweet delight",
+        "barbour's beauty",
+        "body splash barbour's beauty",
+        "perfume feminino lichia peônia cedro",
+        "body splash 200ml",
+        "fragrância floral",
+        "perfume delicado feminino"
+      ],
+      "quick_home": true,
+      "quick_home_order": 9,
+      "_source_issue_number": 198,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2SekHEZ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
       "price_text": "",
       "last_checked": "",
       "last_ok": ""
