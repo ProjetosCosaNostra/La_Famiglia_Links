@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-22T08:07:11Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-04-22T14:08:34Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-22T08:02:00Z
+Quando: 2026-04-22T14:03:11Z
+Issue: #98
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/98
+SKU: suporte-porta-xicaras-pires-dourado-fosco-catblack
+Título: Suporte Organizador Porta Xícaras e Pires Dourado Fosco Premium (Cat Black Presentes)
+ID ML: 5J5PKG-4AEX
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Cosa Nostra, Cozinha, Cantinho do Café, Organizador, Porta Xícaras, Pires, Dourado Fosco
+open_url: https://meli.la/2vL6Ywk
+checked_url: https://meli.la/2vL6Ywk
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-4AEX&tid=5850ec75-58f6-4e17-a207-4a89df9aa2b5
+
+[ALTA] review_only_storefront
+Quando: 2026-04-22T14:03:11Z
 SKU: cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto
 Título: interruptor-touch-wifi-novadigital-lite-s-2-teclas-preto
 ID ML: 5J5PKG-R5DE
@@ -33,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 19 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Interruptor Touch Wi-Fi Novadigital Lite-S (2 teclas) • Tuya • Alexa/Google • Preto
 open_url: https://meli.la/2jwrx5M
 checked_url: https://meli.la/2jwrx5M
@@ -41,7 +60,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-R5DE&tid=22d23a70-64b5-4852-9435-9c97ebc61a1c
 
 [ALTA] review_only_storefront
-Quando: 2026-04-22T08:02:00Z
+Quando: 2026-04-22T14:03:11Z
+Issue: #69
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/69
+SKU: hd-externo-2tb-seagate-expansion-usb-30-portatil-preto
+Título: HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto
+ID ML: 5J5PKG-DVNF
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, HD Externo, Seagate, 2TB, Armazenamento, Backup, USB 3.0, Portátil
+open_url: https://meli.la/1GyqzF7
+checked_url: https://meli.la/1GyqzF7
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=a66f434b-cc34-4a8d-994a-7ed189438c33
+
+[ALTA] review_only_storefront
+Quando: 2026-04-22T14:03:11Z
 Issue: #195
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195
 SKU: depilador-eletrico-feminino-4-em-1
@@ -52,7 +90,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, 4 em 1, Depilação, Autocuidado, Branco
 open_url: https://meli.la/2LK3ZKv
 checked_url: https://meli.la/2LK3ZKv
