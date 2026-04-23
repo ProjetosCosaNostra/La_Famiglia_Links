@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-23T08:12:29Z
+Atualizado em: 2026-04-23T14:08:54Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-23T08:07:11Z
+Quando: 2026-04-23T14:04:46Z
 Issue: #129
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
 SKU: puma-flyer-runner-mesh-bdp
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 1x listing)
+Memória operacional: histórico recorrente (22x /lists, 1x listing)
 Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
 open_url: https://meli.la/2D5FQRJ
 checked_url: https://meli.la/2D5FQRJ
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
 
 [ALTA] review_only_storefront
-Quando: 2026-04-23T08:07:11Z
+Quando: 2026-04-23T14:04:46Z
 Issue: #195
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195
 SKU: depilador-eletrico-feminino-4-em-1
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, 4 em 1, Depilação, Autocuidado, Branco
 open_url: https://meli.la/2LK3ZKv
 checked_url: https://meli.la/2LK3ZKv
