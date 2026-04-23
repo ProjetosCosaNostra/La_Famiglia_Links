@@ -1,9 +1,62 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-22T23:11:10Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-04-23T03:42:53Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 2
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 2
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 2
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-04-23T03:37:31Z
+Issue: #129
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
+SKU: puma-flyer-runner-mesh-bdp
+Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
+ID ML: 5J5PKG-M95V
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (20x /lists, 1x listing)
+Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
+open_url: https://meli.la/2D5FQRJ
+checked_url: https://meli.la/2D5FQRJ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
+
+[ALTA] review_only_storefront
+Quando: 2026-04-23T03:37:31Z
+Issue: #195
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195
+SKU: depilador-eletrico-feminino-4-em-1
+Título: Depilador Elétrico Feminino 4 em 1
+ID ML: 5J5PKG-PYRM
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Badges: Achados do Dia, Feminino, 4 em 1, Depilação, Autocuidado, Branco
+open_url: https://meli.la/2LK3ZKv
+checked_url: https://meli.la/2LK3ZKv
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PYRM
