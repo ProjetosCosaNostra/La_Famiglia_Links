@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-24T08:21:48Z
+Atualizado em: 2026-04-24T14:03:04Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-24T08:16:57Z
+Quando: 2026-04-24T13:58:57Z
 SKU: relogio-parede-30cm-prata-branco-lzbq
 Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
 ID ML: 5J5PKG-APR4
@@ -33,7 +33,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 22 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
 open_url: https://meli.la/2pnZgyH
 checked_url: https://meli.la/2pnZgyH
@@ -41,7 +41,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
 
 [ALTA] review_only_storefront
-Quando: 2026-04-24T08:16:57Z
+Quando: 2026-04-24T13:58:57Z
 Issue: #129
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
 SKU: puma-flyer-runner-mesh-bdp
@@ -52,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (26x /lists, 1x listing)
+Memória operacional: histórico recorrente (27x /lists, 1x listing)
 Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
 open_url: https://meli.la/2D5FQRJ
 checked_url: https://meli.la/2D5FQRJ
@@ -60,7 +60,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
 
 [ALTA] review_only_storefront
-Quando: 2026-04-24T08:16:57Z
+Quando: 2026-04-24T13:58:57Z
 Issue: #195
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195
 SKU: depilador-eletrico-feminino-4-em-1
@@ -71,7 +71,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, 4 em 1, Depilação, Autocuidado, Branco
 open_url: https://meli.la/2LK3ZKv
 checked_url: https://meli.la/2LK3ZKv
