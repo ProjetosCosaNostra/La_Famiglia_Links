@@ -51,7 +51,7 @@
   function trim(s) { return safeText(s).replace(/^\s+|\s+$/g, ''); }
   function lower(s) { return safeText(s).toLowerCase(); }
 
-  var QUICK_HOME_LIMIT = 12;
+  var QUICK_HOME_LIMIT = 6;
 
   function getProductKey(p) {
     if (!p) return '';
@@ -518,6 +518,45 @@
     }
   }
 
+  function getPriceText(p) {
+    if (!p) return '';
+    var raw = p.price_text || p.priceText || p.preco_texto || p.precoTexto || p.valor_texto || p.valorTexto || '';
+    if (raw) return safeText(raw);
+
+    var n = p.price;
+    if (n === null || n === undefined || n === '') n = p.preco;
+    if (n === null || n === undefined || n === '') n = p.valor;
+    if (n === null || n === undefined || n === '') n = p.current_price;
+    if (n === null || n === undefined || n === '') n = p.currentPrice;
+
+    if (typeof n === 'string') {
+      if (/R\$/.test(n)) return n;
+      n = n.replace(/[^0-9,\.]/g, '').replace(/\./g, '').replace(',', '.');
+    }
+
+    var num = parseFloat(n);
+    if (!isFinite(num)) return '';
+    return 'R$ ' + num.toFixed(2).replace('.', ',');
+  }
+
+  function getProductDescription(p) {
+    if (!p) return 'Achado selecionado com curadoria premium para sua vitrine.';
+    var d = p.description || p.descricao || p.desc || p.short_description || p.shortDescription || p.resumo || p.summary || '';
+    d = trim(d);
+    if (!d) d = 'Produto selecionado com padrão premium, pensado para compra rápida e apresentação elegante.';
+    if (d.length > 138) d = d.slice(0, 135).replace(/\s+\S*$/, '') + '...';
+    return d;
+  }
+
+  function getProductBrandLine(p) {
+    if (!p) return 'ACHADOS DO DIA';
+    var brand = p.brand || p.marca || p.store || p.loja || p.category || p.categoria || 'Achados do Dia';
+    var extra = p.volume || p.size || p.tamanho || '';
+    var out = safeText(brand);
+    if (extra) out += ' • ' + safeText(extra);
+    return out.toUpperCase();
+  }
+
   function renderFeatured(p, state) {
     var root = qs('#featured');
     if (!root) return;
@@ -539,144 +578,69 @@
       quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
     });
 
-    var wrap = document.createElement('div');
-    wrap.className = 'cnFeaturedWrap';
+    var card = document.createElement('article');
+    card.className = 'productDayCard';
 
-    var cardImg = document.createElement('div');
-    cardImg.className = 'cnCard';
+    var label = document.createElement('div');
+    label.className = 'productDayCard__label';
+    label.innerHTML = '<span>Produto do Dia</span><i></i>';
+    card.appendChild(label);
+
+    var body = document.createElement('div');
+    body.className = 'productDayCard__body';
+
+    var media = document.createElement('div');
+    media.className = 'productDayCard__media';
     var img = document.createElement('img');
-    img.className = 'cnImg';
-    img.alt = safeText(p.title || 'Produto do Dia');
+    img.alt = safeText(p.title || p.name || 'Produto do Dia');
     img.loading = 'lazy';
     var src = getImage(p);
-    if (src) {
-      img.src = src;
-    } else {
-      img.style.display = 'none';
-    }
-    cardImg.appendChild(img);
-    wrap.appendChild(cardImg);
+    if (src) img.src = src;
+    else img.style.display = 'none';
+    media.appendChild(img);
+    body.appendChild(media);
 
-    var cardInfo = document.createElement('div');
-    cardInfo.className = 'cnCard';
-    var pad = document.createElement('div');
-    pad.className = 'cnCardPad';
+    var info = document.createElement('div');
+    info.className = 'productDayCard__info';
 
     var h = document.createElement('h3');
-    h.className = 'cnTitle';
     h.textContent = safeText(p.title || p.name || p.sku || 'Produto do Dia');
-    pad.appendChild(h);
+    info.appendChild(h);
+
+    var brand = document.createElement('div');
+    brand.className = 'productDayCard__brand';
+    brand.textContent = getProductBrandLine(p);
+    info.appendChild(brand);
+
+    var desc = document.createElement('p');
+    desc.className = 'productDayCard__desc';
+    desc.textContent = getProductDescription(p);
+    info.appendChild(desc);
 
     var badges = parseBadges(p);
     if (badges.length) {
       var bwrap = document.createElement('div');
-      bwrap.className = 'cnBadges';
-      for (var i = 0; i < badges.length && i < 6; i++) {
+      bwrap.className = 'productBadges';
+      for (var i = 0; i < badges.length && i < 5; i++) {
         var sp = document.createElement('span');
         sp.textContent = badges[i];
         bwrap.appendChild(sp);
       }
-      pad.appendChild(bwrap);
+      info.appendChild(bwrap);
     }
 
-    var steps = document.createElement('ol');
-    steps.className = 'cnSteps';
-    var mlid = getMlId(p);
-    steps.innerHTML =
-      '<li>Abra o app/site do <b>Mercado Livre</b></li>' +
-      '<li>Cole o ID na busca: <b>' + safeText(mlid) + '</b></li>' +
-      '<li>Ou clique em <b>COMPRAR AGORA</b> (abre direto)</li>';
-    pad.appendChild(steps);
+    var bottom = document.createElement('div');
+    bottom.className = 'productDayCard__bottom';
 
-    var row1 = document.createElement('div');
-    row1.className = 'cnRow';
-
-    var aBuy = document.createElement('a');
-    aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary';
-    aBuy.textContent = 'COMPRAR AGORA';
-    var buyLink = getLink(p);
-    aBuy.href = buyLink || '#';
-    aBuy.target = '_blank';
-    aBuy.rel = 'noopener noreferrer';
-    aBuy.setAttribute('data-cn-track-owned', '1');
-    aBuy.onclick = function (ev) {
-      if (!buyLink) {
-        if (ev && ev.preventDefault) ev.preventDefault();
-        toast('Link do produto não encontrado');
-        return false;
-      }
-
-      trackEvent('click_buy_home_featured', getTrackProduct(p, {
-        placement: 'featured_buy',
-        source_block: 'produto_do_dia',
-        position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      return openBuy(buyLink, ev);
-    };
-    row1.appendChild(aBuy);
-
-    var bCopyId = document.createElement('button');
-    bCopyId.type = 'button';
-    bCopyId.className = 'btn btn--glass btn--tiny';
-    bCopyId.textContent = 'Copiar ID';
-    bCopyId.onclick = function () {
-      trackEvent('click_copy_id_home', getTrackProduct(p, {
-        placement: 'featured_copy_id',
-        source_block: 'produto_do_dia',
-        position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
-    };
-    row1.appendChild(bCopyId);
-
-    var bCopyLink = document.createElement('button');
-    bCopyLink.type = 'button';
-    bCopyLink.className = 'btn btn--glass btn--tiny';
-    bCopyLink.textContent = 'Copiar Link';
-    bCopyLink.onclick = function () {
-      var link = getLink(p);
-
-      trackEvent('click_copy_link_home', getTrackProduct(p, {
-        placement: 'featured_copy_link',
-        source_block: 'produto_do_dia',
-        position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
-    };
-    row1.appendChild(bCopyLink);
-
-    var bAlt = document.createElement('button');
-    bAlt.type = 'button';
-    bAlt.className = 'btn btn--glass btn--tiny';
-    bAlt.textContent = 'Copiar Link Alternativo';
-    bAlt.onclick = function () {
-      var alt = (location.origin + location.pathname.replace(/index\.html$/,'') + 'loja.html');
-
-      trackEvent('click_copy_alt_home', getTrackProduct(p, {
-        placement: 'featured_copy_alt',
-        source_block: 'produto_do_dia',
-        position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      copyText(alt).then(function (ok) { toast(ok ? 'Link alternativo copiado ✅' : 'Falha ao copiar'); });
-    };
-    row1.appendChild(bAlt);
+    var price = document.createElement('div');
+    price.className = 'productPrice';
+    price.textContent = getPriceText(p) || 'Ver preço';
+    bottom.appendChild(price);
 
     var aStore = document.createElement('a');
-    aStore.className = 'btn btn--glass btn--tiny';
+    aStore.className = 'btn btn--outline-gold productDayCard__store';
     aStore.setAttribute('data-cn-track-owned', '1');
-    aStore.textContent = 'Abrir Loja Completa';
+    aStore.innerHTML = '<span>🛍️</span><span>Ver na Loja Completa</span>';
     aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
     aStore.onclick = function () {
       trackEvent('click_open_store', {
@@ -684,32 +648,20 @@
         placement: 'featured_open_store',
         source_block: 'produto_do_dia',
         quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+        quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       });
     };
-    row1.appendChild(aStore);
+    bottom.appendChild(aStore);
 
-    pad.appendChild(row1);
-
-    var meta = document.createElement('div');
-    meta.className = 'cnMeta';
-    meta.innerHTML = '<span style="opacity:.85">ID Mercado Livre:</span> <b>' + safeText(mlid) + '</b>';
-    pad.appendChild(meta);
-
-    var mini = document.createElement('div');
-    mini.className = 'cnMini';
-    mini.innerHTML = 'Melhor funil: <b>Story com sticker de LINK</b> + <b>Loja na Bio</b>.';
-    pad.appendChild(mini);
-
-    cardInfo.appendChild(pad);
-    wrap.appendChild(cardInfo);
-
-    root.appendChild(wrap);
+    info.appendChild(bottom);
+    body.appendChild(info);
+    card.appendChild(body);
+    root.appendChild(card);
   }
 
   function makeQuickCard(p, idx, state) {
     var card = document.createElement('article');
-    card.className = 'cnProd';
+    card.className = 'quickProductCard';
 
     trackProductViewOnce(state, 'quick', p, {
       placement: 'quick_grid',
@@ -719,108 +671,56 @@
       quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
     });
 
+    var buyLink = getLink(p);
+    var a = document.createElement('a');
+    a.className = 'quickProductCard__link';
+    a.href = buyLink || getStoreUrl(['cn_source_page=home', 'cn_source_block=vitrine_rapida']);
+    if (buyLink) {
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+    }
+    a.setAttribute('data-cn-track-owned', '1');
+    a.onclick = function (ev) {
+      trackEvent('click_buy_home_quick', getTrackProduct(p, {
+        placement: 'quick_card',
+        source_block: 'vitrine_rapida',
+        position_on_page: idx + 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+        quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+      if (buyLink) return openBuy(buyLink, ev);
+      return true;
+    };
+
+    var imgWrap = document.createElement('div');
+    imgWrap.className = 'quickProductCard__media';
     var img = document.createElement('img');
-    img.className = 'cnImg';
     img.loading = 'lazy';
     img.alt = safeText(p.title || p.sku || 'Produto');
     var src = getImage(p);
     if (src) img.src = src;
-    card.appendChild(img);
+    imgWrap.appendChild(img);
+    a.appendChild(imgWrap);
 
-    var pad = document.createElement('div');
-    pad.className = 'cnProdPad';
+    var body = document.createElement('div');
+    body.className = 'quickProductCard__body';
 
     var h3 = document.createElement('h3');
     h3.textContent = safeText(p.title || p.name || p.sku || 'Produto');
-    pad.appendChild(h3);
+    body.appendChild(h3);
 
-    var badges = parseBadges(p);
-    if (badges.length) {
-      var bwrap = document.createElement('div');
-      bwrap.className = 'cnBadges';
-      for (var i = 0; i < badges.length && i < 4; i++) {
-        var sp = document.createElement('span');
-        sp.textContent = badges[i];
-        bwrap.appendChild(sp);
-      }
-      pad.appendChild(bwrap);
-    }
+    var price = document.createElement('div');
+    price.className = 'quickProductCard__price';
+    price.textContent = getPriceText(p) || 'Ver preço';
+    body.appendChild(price);
 
-    var mlid = getMlId(p);
-    var meta = document.createElement('div');
-    meta.className = 'cnMeta';
-    meta.innerHTML = '<span style="opacity:.85">ID:</span> <b>' + safeText(mlid) + '</b>';
-    pad.appendChild(meta);
+    var cart = document.createElement('span');
+    cart.className = 'quickProductCard__cart';
+    cart.textContent = '🛒';
+    body.appendChild(cart);
 
-    var row = document.createElement('div');
-    row.className = 'cnRow';
-
-    var buy = document.createElement('a');
-    buy.className = 'btn btn--gold btn--tiny btn--buy-primary';
-    buy.textContent = 'Comprar';
-    var buyLink = getLink(p);
-    buy.href = buyLink || '#';
-    buy.target = '_blank';
-    buy.rel = 'noopener noreferrer';
-    buy.setAttribute('data-cn-track-owned', '1');
-    buy.onclick = function (ev) {
-      if (!buyLink) {
-        if (ev && ev.preventDefault) ev.preventDefault();
-        toast('Link do produto não encontrado');
-        return false;
-      }
-
-      trackEvent('click_buy_home_quick', getTrackProduct(p, {
-        placement: 'quick_buy',
-        source_block: 'vitrine_rapida',
-        position_on_page: idx + 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      return openBuy(buyLink, ev);
-    };
-    row.appendChild(buy);
-
-    var cId = document.createElement('button');
-    cId.className = 'btn btn--glass btn--tiny';
-    cId.type = 'button';
-    cId.textContent = 'Copiar ID';
-    cId.onclick = function () {
-      trackEvent('click_copy_id_home', getTrackProduct(p, {
-        placement: 'quick_copy_id',
-        source_block: 'vitrine_rapida',
-        position_on_page: idx + 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
-    };
-    row.appendChild(cId);
-
-    var cLink = document.createElement('button');
-    cLink.className = 'btn btn--glass btn--tiny';
-    cLink.type = 'button';
-    cLink.textContent = 'Copiar Link';
-    cLink.onclick = function () {
-      var link = getLink(p);
-
-      trackEvent('click_copy_link_home', getTrackProduct(p, {
-        placement: 'quick_copy_link',
-        source_block: 'vitrine_rapida',
-        position_on_page: idx + 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
-    };
-    row.appendChild(cLink);
-
-    pad.appendChild(row);
-    card.appendChild(pad);
-
+    a.appendChild(body);
+    card.appendChild(a);
     return card;
   }
 
