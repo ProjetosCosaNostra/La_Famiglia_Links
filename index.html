@@ -15,9 +15,9 @@
   <meta property="og:title" content="Cosa Nostra — Central Premium" />
   <meta property="og:description" content="Links oficiais + vitrine de produtos (Achados do Dia). Vitrine Rápida = prévia. Loja Completa = TODOS os produtos." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo-cn-round.png" />
+  <meta property="og:image" content="assets/logo.png" />
 
-  <link rel="icon" href="assets/logo-cn-square.png" />
+  <link rel="icon" href="assets/logo.png" />
 
   <!-- Fonts (premium) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1563,148 +1563,7 @@
       }
     }
 
-  
-
-    /* =========================
-       FASE 2 — TOPO COM NOVOS ASSETS
-       - usa imagens de título separadas
-       - logos oficiais sobrepostas como assets próprios
-       - não altera nem escurece o background
-       ========================= */
-    .heroBanner{
-      border:0 !important;
-      background:transparent !important;
-      box-shadow:0 14px 34px rgba(0,0,0,.24) !important;
-      overflow:hidden !important;
-    }
-
-    .heroBanner__picture,
-    .heroBanner__img{
-      display:block !important;
-      width:100% !important;
-      height:auto !important;
-    }
-
-    .heroBanner__img{
-      border-radius:18px !important;
-      object-fit:contain !important;
-      filter:drop-shadow(0 12px 22px rgba(0,0,0,.30));
-    }
-
-    .heroBanner__mark,
-    .heroBanner__seal{
-      position:absolute !important;
-      z-index:3 !important;
-      display:flex !important;
-      align-items:center !important;
-      justify-content:center !important;
-      pointer-events:none !important;
-      overflow:hidden !important;
-      backdrop-filter: blur(10px) !important;
-      border: 1px solid rgba(224,195,107,.40) !important;
-      background:
-        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.22), transparent 60%),
-        linear-gradient(180deg, rgba(199,162,75,.34), rgba(199,162,75,.10)) !important;
-      box-shadow:
-        0 12px 32px rgba(199,162,75,.12),
-        0 10px 24px rgba(0,0,0,.42) !important;
-    }
-
-    .heroBanner__mark{
-      top:clamp(12px, 2.1vw, 18px) !important;
-      left:clamp(12px, 2.1vw, 18px) !important;
-      width:clamp(52px, 8.3vw, 74px) !important;
-      height:clamp(52px, 8.3vw, 74px) !important;
-      border-radius:18px !important;
-      padding:7px !important;
-    }
-
-    .heroBanner__seal{
-      top:clamp(12px, 2.1vw, 18px) !important;
-      right:clamp(12px, 2.1vw, 18px) !important;
-      width:clamp(52px, 8.3vw, 74px) !important;
-      height:clamp(52px, 8.3vw, 74px) !important;
-      border-radius:999px !important;
-      padding:7px !important;
-    }
-
-    .heroBanner__mark::before,
-    .heroBanner__seal::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
-      opacity:.62;
-      pointer-events:none;
-    }
-
-    .heroBanner__mark::after,
-    .heroBanner__seal::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
-      transform: translateX(-60%);
-      animation: shine 3.8s ease-in-out infinite;
-      pointer-events:none;
-    }
-
-    .heroBanner__markLogo,
-    .heroBanner__sealLogo{
-      position:relative !important;
-      z-index:1 !important;
-      display:block !important;
-      width:100% !important;
-      height:100% !important;
-      object-fit:contain !important;
-      filter:
-        drop-shadow(0 0 7px rgba(255,214,116,.40))
-        drop-shadow(0 8px 14px rgba(0,0,0,.52));
-      transform:none !important;
-    }
-
-    .heroBanner__markFallback,
-    .heroBanner__mark--fallback .heroBanner__markLogo{
-      display:none !important;
-    }
-
-    .heroBanner__mark--fallback .heroBanner__markFallback{
-      display:block !important;
-      color:rgba(255,220,140,.95);
-      font-family:var(--font-display);
-      font-weight:800;
-      font-size:22px;
-      text-shadow:0 0 10px rgba(224,195,107,.35);
-    }
-
-    @media (max-width: 640px){
-      .heroBanner{
-        border-radius:16px !important;
-        box-shadow:0 10px 24px rgba(0,0,0,.22) !important;
-      }
-
-      .heroBanner__img{
-        border-radius:16px !important;
-      }
-
-      .heroBanner__mark,
-      .heroBanner__seal{
-        top:clamp(8px, 2vw, 12px) !important;
-        width:clamp(44px, 11vw, 54px) !important;
-        height:clamp(44px, 11vw, 54px) !important;
-        padding:5px !important;
-      }
-
-      .heroBanner__mark{
-        left:clamp(8px, 2.2vw, 12px) !important;
-        border-radius:14px !important;
-      }
-
-      .heroBanner__seal{
-        right:clamp(8px, 2.2vw, 12px) !important;
-      }
-    }
-</style>
+  </style>
 </head>
 
 <body>
@@ -1727,30 +1586,20 @@
       <div class="hero__brand hero__brand--banner">
         <div class="heroBanner" aria-hidden="false">
           <picture class="heroBanner__picture">
-            <source media="(max-width: 640px)" srcset="assets/topo-central-premium-titulo-cn-mobile-v1.png">
+            <source media="(max-width: 640px)" srcset="assets/topo-central-premium-fachada-cn-mobile-v5.png">
             <img
               class="heroBanner__img"
-              src="assets/topo-central-premium-titulo-cn-desktop-v1.png"
+              src="assets/topo-central-premium-fachada-cn-desktop-v5.png"
               alt="Central Premium — Cosa Nostra • A Família das Ideias"
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-central-premium-titulo-cn-desktop-v1.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-central-premium-fachada-cn-desktop-v5.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
             />
           </picture>
-          <div class="heroBanner__mark" aria-hidden="true">
-            <img
-              class="heroBanner__markLogo"
-              src="assets/logo-cn-square.png"
-              alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-cn-square.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__mark--fallback');"
-            />
-            <span class="heroBanner__markFallback">CN</span>
-          </div>
-
           <div class="heroBanner__seal" aria-hidden="true">
             <img
               class="heroBanner__sealLogo"
-              src="assets/logo-cn-round.png"
+              src="assets/logo-oficial-circular-glow.png"
               alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-cn-round.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
             />
             <span class="heroBanner__sealFallback">👑</span>
           </div>
@@ -1960,7 +1809,7 @@
 
     <footer class="footer">
       <div class="footer__left">
-        <span class="sig sig--brand"><img class="footerLogo" src="assets/logo-cn-round.png" alt="" /><span>Cosa Nostra</span></span>
+        <span class="sig sig--brand"><img class="footerLogo" src="assets/logo-oficial-circular-glow.png" alt="" /><span>Cosa Nostra</span></span>
         <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
       </div>
 
