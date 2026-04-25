@@ -5,1817 +5,190 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosa Nostra — Central Premium</title>
 
-  <!-- ✅ FIX MOBILE: garante que caminhos relativos funcionem mesmo se abrir sem barra no final -->
   <base href="/La_Famiglia_Links/">
 
-  <meta name="description" content="Central premium de links + vitrine de Achados do Dia. A Vitrine Rápida é só uma prévia — veja TODOS os produtos na Loja Completa." />
+  <meta name="description" content="Central premium de links + vitrine de Achados do Dia. Achados selecionados diariamente para quem valoriza qualidade, sofisticação e praticidade." />
   <meta name="theme-color" content="#050505" />
   <meta name="robots" content="index,follow" />
 
   <meta property="og:title" content="Cosa Nostra — Central Premium" />
-  <meta property="og:description" content="Links oficiais + vitrine de produtos (Achados do Dia). Vitrine Rápida = prévia. Loja Completa = TODOS os produtos." />
+  <meta property="og:description" content="Sua vitrine de produtos com padrão Premium. Produto do Dia, Vitrine Rápida e Loja Completa." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:image" content="assets/logo-cn-round.png" />
 
-  <link rel="icon" href="assets/logo.png" />
+  <link rel="icon" href="assets/logo-cn-square.png" />
 
-  <!-- Fonts (premium) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
   <script defer src="tracking.js"></script>
   <script defer src="script.js"></script>
-
-  <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
-  <style>
-    .imperialNote {
-      margin-top: 12px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(215, 176, 88, .25);
-      background: rgba(0,0,0,.35);
-      color: rgba(255,255,255,.86);
-      line-height: 1.35;
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
-    }
-    .imperialNote b { color: rgba(215, 176, 88, .95); }
-    .imperialNote .mini { opacity: .9; font-size: .95em; }
-
-    .countPill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(215, 176, 88, .25);
-      background: rgba(0,0,0,.30);
-      color: rgba(255,255,255,.88);
-      font-weight: 600;
-      margin-top: 10px;
-      width: fit-content;
-    }
-    .countPill .n {
-      color: rgba(215, 176, 88, .98);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .floatingStoreCTA {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      pointer-events: none;
-    }
-    .floatingStoreCTA a {
-      pointer-events: auto;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(215, 176, 88, .35);
-      background: rgba(10,10,12,.72);
-      color: rgba(255,255,255,.92);
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      backdrop-filter: blur(10px);
-      font-weight: 800;
-      letter-spacing: .2px;
-    }
-    .floatingStoreCTA a .gold { color: rgba(215, 176, 88, 1); }
-
-    /* ✅ FIX MOBILE: Featured/Quick render garantido e bonito mesmo sem CSS externo */
-    .cnFeaturedWrap {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 14px;
-      margin-top: 14px;
-    }
-    @media (max-width: 860px){
-      .cnFeaturedWrap { grid-template-columns: 1fr; }
-    }
-    .cnCard {
-      border: 1px solid rgba(215,176,88,.18);
-      background: rgba(0,0,0,.28);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 18px 60px rgba(0,0,0,.50);
-      backdrop-filter: blur(10px);
-    }
-    .cnCardPad { padding: 14px; }
-    .cnImg {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: rgba(0,0,0,.35);
-    }
-    .cnTitle {
-      margin: 0;
-      font-family: Cinzel, serif;
-      letter-spacing: .3px;
-    }
-    .cnSub {
-      margin: 8px 0 0 0;
-      opacity: .9;
-    }
-    .cnSteps {
-      margin: 10px 0 0 0;
-      padding-left: 18px;
-      opacity: .92;
-    }
-    .cnSteps li { margin: 4px 0; }
-    .cnRow {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .cnMeta {
-      margin-top: 10px;
-      font-size: 12px;
-      opacity: .9;
-    }
-    .cnMini {
-      font-size: 12px;
-      opacity: .82;
-      margin-top: 10px;
-    }
-
-    .cnGrid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-    @media (max-width: 980px){
-      .cnGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 520px){
-      .cnGrid { grid-template-columns: 1fr; }
-    }
-    .cnProd {
-      border: 1px solid rgba(215,176,88,.16);
-      background: rgba(0,0,0,.24);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 14px 50px rgba(0,0,0,.45);
-    }
-    .cnProd .cnProdPad { padding: 12px; }
-    .cnProd h3 {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.2;
-      font-family: Cinzel, serif;
-      letter-spacing: .2px;
-    }
-    .cnBadges {
-      margin-top: 8px;
-      font-size: 12px;
-      opacity: .85;
-    }
-    .cnBadges span {
-      display: inline-block;
-      margin: 4px 6px 0 0;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(215,176,88,.18);
-      background: rgba(0,0,0,.25);
-    }
-    .cnProd .cnMeta { margin-top: 8px; }
-    .cnProd .cnRow { margin-top: 10px; }
-
-    @media (max-width: 520px) {
-      .floatingStoreCTA { right: 10px; bottom: 10px; }
-      .floatingStoreCTA a { padding: 10px 12px; border-radius: 14px; }
-    }
-  
-    /* =========================
-       POLIMENTO CIRÚRGICO
-       ========================= */
-    :root {
-      --cn-gold-1: rgba(215, 176, 88, 0.98);
-      --cn-gold-2: rgba(255, 221, 145, 0.22);
-      --cn-panel: rgba(10, 10, 12, 0.56);
-      --cn-panel-2: rgba(0, 0, 0, 0.28);
-      --cn-border: rgba(215, 176, 88, 0.18);
-      --cn-border-strong: rgba(215, 176, 88, 0.34);
-      --cn-text-soft: rgba(255,255,255,.76);
-      --cn-shadow: 0 18px 60px rgba(0,0,0,.46);
-      --cn-shadow-soft: 0 10px 34px rgba(0,0,0,.28);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .page {
-      width: min(1120px, calc(100vw - 32px));
-      margin-inline: auto;
-    }
-
-    .hero,
-    .panel,
-    .sectionNav {
-      animation: cnFadeUp .45s ease both;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--cn-border-strong);
-      background:
-        radial-gradient(circle at top right, rgba(215,176,88,.16), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
-        rgba(8, 8, 10, 0.46);
-      box-shadow: 0 24px 80px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.04);
-      backdrop-filter: blur(14px);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.05) 25%, transparent 48%);
-      opacity: .48;
-    }
-
-    .hero__brand {
-      gap: 24px;
-      align-items: start;
-    }
-
-    .hero__text .title,
-    .title {
-      line-height: .96;
-      font-size: clamp(2.3rem, 5vw, 4rem);
-      letter-spacing: .4px;
-      text-wrap: balance;
-      margin-bottom: 10px;
-    }
-
-    .hero__text .sub,
-    .sub {
-      max-width: 640px;
-      color: var(--cn-text-soft);
-      line-height: 1.5;
-      font-size: 1rem;
-    }
-
-    .kicker {
-      letter-spacing: 1.3px;
-      color: rgba(255, 224, 151, .9);
-      margin-bottom: 10px;
-    }
-
-    .chips {
-      gap: 10px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-
-    .chip {
-      border: 1px solid rgba(215,176,88,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.16));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
-      padding-inline: 12px;
-      min-height: 34px;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .chip:hover {
-      transform: translateY(-1px);
-      border-color: rgba(215,176,88,.28);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.14));
-    }
-
-    .countPill {
-      margin-top: 14px;
-      min-height: 38px;
-      border-color: rgba(215,176,88,.22);
-      background: rgba(0,0,0,.26);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-    }
-
-    .imperialNote {
-      margin-top: 14px;
-      border-radius: 16px;
-      border-color: rgba(215, 176, 88, .20);
-      background: linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.16));
-      box-shadow: 0 12px 34px rgba(0,0,0,.24);
-      color: rgba(255,255,255,.82);
-    }
-
-    .imperialNote .mini {
-      color: rgba(255,255,255,.72);
-    }
-
-    .hero__actions {
-      gap: 12px;
-      align-content: start;
-    }
-
-    .hero__actions .btn {
-      min-height: 54px;
-      border-radius: 18px;
-      font-weight: 800;
-      letter-spacing: .15px;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-      box-shadow: var(--cn-shadow-soft);
-    }
-
-    .hero__actions .btn:hover,
-    .hero__actions .btn:focus-visible,
-    .sectionNav__pill:hover,
-    .sectionNav__pill:focus-visible,
-    .linkCard:hover,
-    .linkCard:focus-visible,
-    .floatingStoreCTA a:hover,
-    .floatingStoreCTA a:focus-visible {
-      transform: translateY(-1px);
-    }
-
-    .hero__actions .btn--gold {
-      box-shadow: 0 16px 42px rgba(145, 111, 34, .28);
-    }
-
-    .hero__actions .btn--glass {
-      border: 1px solid rgba(215,176,88,.18);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.12));
-    }
-
-    .hero__actions .btn--glass:hover,
-    .hero__actions .btn--glass:focus-visible {
-      border-color: rgba(215,176,88,.28);
-      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(0,0,0,.10));
-    }
-
-    .miniNote {
-      margin-top: 4px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(215,176,88,.14);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.72);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-    }
-
-    .miniNote + .miniNote,
-    .hero__actions .miniNote:last-child {
-      font-size: .92rem;
-      line-height: 1.35;
-    }
-
-    .sectionNav {
-      position: sticky;
-      top: 10px;
-      z-index: 90;
-      margin-top: 12px;
-      border: 1px solid rgba(215,176,88,.16);
-      background: rgba(5,5,7,.56);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 14px 38px rgba(0,0,0,.30);
-    }
-
-    .sectionNav__pill {
-      min-height: 38px;
-      border-radius: 999px;
-      border: 1px solid rgba(215,176,88,.16);
-      background: rgba(255,255,255,.025);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
-    }
-
-    .sectionNav__pill:hover,
-    .sectionNav__pill:focus-visible {
-      border-color: rgba(215,176,88,.28);
-      background: rgba(255,255,255,.05);
-      box-shadow: 0 10px 26px rgba(0,0,0,.20);
-    }
-
-    .sectionNav__pill--gold {
-      border-color: rgba(215,176,88,.32);
-      box-shadow: 0 10px 28px rgba(145, 111, 34, .18);
-    }
-
-    .panel {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(215,176,88,.16);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
-        rgba(7,7,9,.48);
-      box-shadow: var(--cn-shadow);
-      backdrop-filter: blur(12px);
-    }
-
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 24%);
-      opacity: .55;
-    }
-
-    .panel__head {
-      position: relative;
-      z-index: 1;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-      border-bottom: 1px solid rgba(215,176,88,.10);
-    }
-
-    .panel__head h2 {
-      letter-spacing: 1px;
-    }
-
-    .panel__head p {
-      color: rgba(255,255,255,.70);
-    }
-
-    .featured,
-    #featured,
-    #quickGrid,
-    .linksGrid {
-      position: relative;
-      z-index: 1;
-    }
-
-    #featured > *,
-    #quickGrid > *,
-    .linksGrid > * {
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    #featured > *:hover,
-    #quickGrid > *:hover,
-    .linksGrid > *:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 44px rgba(0,0,0,.28);
-    }
-
-    .quickTools {
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-
-    .quickSearch {
-      border: 1px solid rgba(215,176,88,.16);
-      background: rgba(0,0,0,.18);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-
-    .quickSearch:focus-within {
-      border-color: rgba(215,176,88,.30);
-      background: rgba(0,0,0,.24);
-      box-shadow: 0 0 0 4px rgba(215,176,88,.08);
-    }
-
-    .quickSearch input {
-      color: rgba(255,255,255,.92);
-    }
-
-    .quickSearch input::placeholder {
-      color: rgba(255,255,255,.44);
-    }
-
-    .cnProd,
-    .cnCard {
-      border-color: rgba(215,176,88,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.16));
-      box-shadow: 0 14px 40px rgba(0,0,0,.26);
-    }
-
-    .cnProd h3,
-    .cnTitle {
-      text-wrap: balance;
-    }
-
-    .cnBadges span {
-      transition: border-color .18s ease, background .18s ease;
-    }
-
-    .cnProd:hover .cnBadges span {
-      border-color: rgba(215,176,88,.26);
-      background: rgba(255,255,255,.035);
-    }
-
-    .linksGrid {
-      gap: 14px;
-    }
-
-    .linkCard {
-      border: 1px solid rgba(215,176,88,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.16));
-      box-shadow: 0 14px 34px rgba(0,0,0,.22);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .linkCard:hover,
-    .linkCard:focus-visible {
-      border-color: rgba(215,176,88,.26);
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.14));
-    }
-
-    .linkCard--gold {
-      border-color: rgba(215,176,88,.28);
-      box-shadow: 0 16px 40px rgba(145, 111, 34, .16);
-    }
-
-    .footer {
-      border-top: 1px solid rgba(215,176,88,.10);
-      margin-top: 24px;
-      padding-top: 18px;
-    }
-
-    .floatingStoreCTA a {
-      min-height: 50px;
-      padding-inline: 16px;
-      border-color: rgba(215,176,88,.30);
-      background: rgba(10,10,12,.66);
-      box-shadow: 0 16px 42px rgba(0,0,0,.38);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .floatingStoreCTA a:hover,
-    .floatingStoreCTA a:focus-visible {
-      border-color: rgba(215,176,88,.44);
-      background: rgba(12,12,14,.78);
-      box-shadow: 0 20px 48px rgba(0,0,0,.44);
-    }
-
-
-    .sig--brand{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-    }
-
-    .footerLogo{
-      width:28px;
-      height:28px;
-      border-radius:50%;
-      object-fit:cover;
-      box-shadow:0 0 4px rgba(255,220,140,.12);
-      flex:0 0 auto;
-      transform: translateY(-.3px);
-    }
-
-    .toast {
-      box-shadow: 0 14px 36px rgba(0,0,0,.34);
-      border: 1px solid rgba(215,176,88,.18);
-      backdrop-filter: blur(10px);
-    }
-
-    @keyframes cnFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 980px) {
-      .page {
-        width: min(100vw - 20px, 1120px);
-      }
-
-      .hero__brand {
-        gap: 18px;
-      }
-
-      .hero__actions .btn {
-        min-height: 50px;
-      }
-    }
-
-    @media (max-width: 860px) {
-      .hero {
-        padding-bottom: 18px;
-      }
-
-      .hero__brand {
-        grid-template-columns: 1fr;
-      }
-
-      .hero__text .sub,
-      .sub {
-        max-width: none;
-      }
-
-      .sectionNav {
-        top: 8px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .title {
-        font-size: clamp(1.9rem, 8vw, 2.6rem);
-      }
-
-      .hero__actions {
-        gap: 10px;
-      }
-
-      .hero__actions .btn {
-        min-height: 48px;
-        border-radius: 16px;
-      }
-
-      .countPill,
-      .chip,
-      .sectionNav__pill {
-        font-size: .92rem;
-      }
-
-      .quickTools {
-        gap: 10px;
-      }
-
-      .quickSearch {
-        min-height: 46px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .page {
-        width: min(100vw - 14px, 1120px);
-      }
-
-      .hero,
-      .panel {
-        border-radius: 18px;
-      }
-
-      .floatingStoreCTA {
-        right: 10px;
-        bottom: 10px;
-      }
-
-      .floatingStoreCTA a {
-        min-height: 46px;
-        padding: 10px 13px;
-        border-radius: 14px;
-        font-size: .94rem;
-      }
-
-      .miniNote {
-        font-size: .88rem;
-      }
-
-      .footerLogo{
-        width:16px;
-        height:16px;
-      }
-    }
-
-  
-    /* =========================
-       REFINO APROVADO — TOPO/MOBILE
-       ========================= */
-    .hero {
-      border-color: rgba(215,176,88,.24);
-      background:
-        radial-gradient(circle at top right, rgba(215,176,88,.10), transparent 36%),
-        linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0)),
-        rgba(7,7,9,.46);
-      box-shadow: 0 18px 56px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.03);
-      backdrop-filter: blur(12px);
-    }
-
-    .hero__brand {
-      gap: 18px;
-      align-items: start;
-    }
-
-    .hero__text {
-      padding-top: 2px;
-    }
-
-    .kicker {
-      margin-bottom: 8px;
-      letter-spacing: 1.15px;
-      color: rgba(233, 202, 122, .95);
-    }
-
-    .title--imperial {
-      display: inline-block;
-      margin: 0 0 10px 0;
-      line-height: .92;
-      letter-spacing: .35px;
-      color: rgba(248,244,236,.98);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.04),
-        0 0 14px rgba(215,176,88,.08),
-        0 10px 22px rgba(0,0,0,.18);
-      position: relative;
-    }
-
-    .title--imperial::after {
-      content: "";
-      position: absolute;
-      left: 2px;
-      right: 42%;
-      bottom: -6px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(215,176,88,.42), rgba(215,176,88,0));
-      opacity: .68;
-    }
-
-    .sub {
-      max-width: 580px;
-      line-height: 1.4;
-      color: rgba(255,255,255,.74);
-      margin-top: 8px;
-    }
-
-    .chips {
-      margin-top: 12px;
-      gap: 8px;
-    }
-
-    .chip {
-      min-height: 32px;
-      padding: 5px 11px;
-      font-size: .92rem;
-      border-color: rgba(215,176,88,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.032), rgba(0,0,0,.14));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-    }
-
-    .countPill {
-      margin-top: 12px;
-      min-height: 36px;
-      padding: 6px 11px;
-      font-size: .98rem;
-      border-color: rgba(215,176,88,.18);
-      background: rgba(0,0,0,.24);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
-    }
-
-    .imperialNote--top {
-      margin-top: 12px;
-      padding: 9px 12px;
-      border-radius: 15px;
-      border-color: rgba(215,176,88,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.016), rgba(0,0,0,.14));
-      box-shadow: 0 10px 24px rgba(0,0,0,.18);
-      color: rgba(255,255,255,.80);
-      max-width: 560px;
-    }
-
-    .imperialNote--top .mini {
-      font-size: .92em;
-      color: rgba(255,255,255,.70);
-    }
-
-    .hero__actions {
-      gap: 10px;
-      align-content: start;
-    }
-
-    .hero__actions .btn {
-      min-height: 50px;
-      border-radius: 18px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.20);
-    }
-
-    .hero__actions .btn--gold {
-      min-height: 52px;
-      box-shadow: 0 14px 30px rgba(145,111,34,.22);
-    }
-
-    .hero__actions .btn--social {
-      min-height: 42px;
-      font-size: .95rem;
-      opacity: .94;
-    }
-
-    .miniNote {
-      margin-top: 2px;
-      padding: 8px 11px;
-      border-radius: 14px;
-      font-size: .92rem;
-      line-height: 1.28;
-      color: rgba(255,255,255,.72);
-      border-color: rgba(215,176,88,.10);
-      background: rgba(0,0,0,.16);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
-    }
-
-    .sectionNav {
-      border-color: rgba(215,176,88,.14);
-      background: rgba(7,7,9,.52);
-      box-shadow: 0 10px 24px rgba(0,0,0,.22);
-    }
-
-    .sectionNav__pill {
-      min-height: 34px;
-      padding: 6px 12px;
-      font-size: .92rem;
-      border-color: rgba(215,176,88,.12);
-      background: rgba(255,255,255,.018);
-    }
-
-    .floatingStoreCTA a {
-      box-shadow: 0 12px 28px rgba(0,0,0,.26);
-    }
-
-    @media (max-width: 860px) {
-      .hero__brand {
-        gap: 14px;
-      }
-
-      .title--imperial {
-        letter-spacing: .22px;
-      }
-
-      .sub {
-        max-width: none;
-      }
-
-      .hero__actions .btn {
-        min-height: 46px;
-      }
-
-      .hero__actions .btn--gold {
-        min-height: 48px;
-      }
-
-      .hero__actions .btn--social {
-        min-height: 40px;
-        font-size: .90rem;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .kicker {
-        margin-bottom: 6px;
-        font-size: .92rem;
-      }
-
-      .title--imperial {
-        line-height: .94;
-        margin-bottom: 8px;
-      }
-
-      .title--imperial::after {
-        right: 55%;
-        bottom: -4px;
-      }
-
-      .sub {
-        font-size: .97rem;
-      }
-
-      .chip {
-        min-height: 29px;
-        padding: 4px 10px;
-        font-size: .84rem;
-      }
-
-      .countPill {
-        min-height: 34px;
-        font-size: .90rem;
-      }
-
-      .imperialNote--top {
-        padding: 8px 10px;
-        font-size: .95rem;
-      }
-
-      .sectionNav {
-        padding: 8px 10px;
-      }
-
-      .sectionNav__pill {
-        min-height: 30px;
-        padding: 5px 10px;
-        font-size: .84rem;
-      }
-
-      .hero__actions .btn {
-        min-height: 42px;
-        font-size: .92rem;
-      }
-
-      .hero__actions .btn--gold {
-        min-height: 44px;
-      }
-
-      .hero__actions .btn--social {
-        min-height: 38px;
-        font-size: .86rem;
-      }
-
-      .miniNote {
-        font-size: .84rem;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .hero,
-      .panel {
-        border-radius: 18px;
-      }
-
-      .floatingStoreCTA {
-        right: 8px;
-        bottom: 8px;
-      }
-
-      .floatingStoreCTA a {
-        min-height: 34px;
-        padding: 6px 10px;
-        border-radius: 12px;
-        font-size: .78rem;
-        letter-spacing: 0;
-        gap: 6px;
-      }
-
-      .sectionNav {
-        gap: 8px;
-      }
-
-      .sectionNav__pill {
-        min-height: 28px;
-        padding: 4px 9px;
-        font-size: .79rem;
-      }
-    }
-
-  
-    /* =========================
-       AJUSTE FINAL DO TOPO
-       - mais alinhado com logo + kicker
-       - sem mexer no resto
-       ========================= */
-    .hero__brand {
-      grid-template-columns: auto 1fr;
-      align-items: flex-start;
-      column-gap: 14px;
-    }
-
-    .brandMark {
-      margin-top: 2px;
-      flex: 0 0 auto;
-    }
-
-    .hero__text {
-      padding-top: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      min-width: 0;
-    }
-
-    .kicker {
-      margin: 0 0 4px 0;
-      max-width: 360px;
-      line-height: 1.04;
-      letter-spacing: .85px;
-      font-size: .95rem;
-    }
-
-    .title--imperial {
-      margin: 0;
-      max-width: 440px;
-      line-height: .89;
-      letter-spacing: .12px;
-      font-size: clamp(2.7rem, 4.6vw, 4.15rem);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.035),
-        0 0 10px rgba(215,176,88,.06),
-        0 8px 18px rgba(0,0,0,.16);
-    }
-
-    .title--imperial::after {
-      left: 1px;
-      right: 48%;
-      bottom: -4px;
-      opacity: .56;
-    }
-
-    .sub {
-      margin-top: 12px;
-      max-width: 520px;
-    }
-
-    @media (max-width: 860px) {
-      .hero__brand {
-        column-gap: 12px;
-      }
-
-      .kicker {
-        max-width: none;
-        margin-bottom: 4px;
-      }
-
-      .title--imperial {
-        max-width: none;
-        font-size: clamp(2.4rem, 8vw, 3.45rem);
-      }
-
-      .sub {
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .hero__brand {
-        column-gap: 10px;
-      }
-
-      .brandMark {
-        margin-top: 1px;
-      }
-
-      .kicker {
-        font-size: .86rem;
-        letter-spacing: .7px;
-        margin-bottom: 3px;
-      }
-
-      .title--imperial {
-        font-size: clamp(2.15rem, 10vw, 3.0rem);
-        line-height: .92;
-      }
-
-      .title--imperial::after {
-        right: 58%;
-      }
-
-      .sub {
-        margin-top: 10px;
-      }
-    }
-
-
-
-    /* =========================
-       HERO COM LETREIRO V5
-       - banner separado para desktop e mobile
-       - selo da marca no canto direito
-       - informações abaixo do banner
-       ========================= */
-    .srOnly{
-      position:absolute !important;
-      width:1px !important;
-      height:1px !important;
-      padding:0 !important;
-      margin:-1px !important;
-      overflow:hidden !important;
-      clip:rect(0,0,0,0) !important;
-      white-space:nowrap !important;
-      border:0 !important;
-    }
-
-    .hero__brand--banner{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      align-items:stretch;
-      justify-content:flex-start;
-      min-width:0;
-      flex:1 1 auto;
-    }
-
-    .heroBanner{
-      position:relative;
-      width:100%;
-      min-width:0;
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(215,176,88,.16);
-      background:rgba(0,0,0,.18);
-      box-shadow:0 18px 46px rgba(0,0,0,.28);
-      isolation:isolate;
-    }
-
-    .heroBanner::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 28%);
-      opacity:.55;
-    }
-
-    .heroBanner__picture,
-    .heroBanner__img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    .heroBanner__seal{
-      position:absolute;
-      top:16px;
-      right:16px;
-      width:72px;
-      height:72px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        radial-gradient(120px 80px at 35% 20%, rgba(224,195,107,.18), transparent 60%),
-        rgba(0,0,0,.38);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 14px 32px rgba(0,0,0,.35);
-      overflow:hidden;
-      z-index:2;
-    }
-
-    .heroBanner__seal::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:18px;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), transparent 60%);
-      opacity:.55;
-      pointer-events:none;
-    }
-
-    .heroBanner__seal::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius:18px;
-      background:linear-gradient(120deg, transparent 35%, rgba(224,195,107,.18), transparent 65%);
-      transform:translateX(-70%);
-      animation:shine 4.2s ease-in-out infinite;
-      pointer-events:none;
-    }
-
-    .heroBanner__sealLogo{
-      width:70px;
-      height:70px;
-      object-fit:contain;
-      filter:drop-shadow(0 10px 16px rgba(0,0,0,.55));
-      position:relative;
-      z-index:1;
-      transform: translateY(.2px);
-    }
-
-    .heroBanner__sealFallback,
-    .heroBanner__seal--fallback .heroBanner__sealFallback{
-      display:none;
-    }
-
-    .heroBanner__seal--fallback .heroBanner__sealFallback{
-      display:block;
-      position:relative;
-      z-index:1;
-      font-size:24px;
-    }
-
-    .heroBanner--fallback{
-      min-height:180px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
-        rgba(10,10,12,.62);
-    }
-
-    .hero__text--bannerstack{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:flex-start;
-      gap:0;
-      min-width:0;
-    }
-
-    .hero__sub--banner{
-      margin-top:0;
-      max-width:560px;
-      font-size:1rem;
-      line-height:1.4;
-    }
-
-    .hero__actions{
-      justify-content:flex-start;
-    }
-
-    @media (max-width: 980px){
-      .heroBanner__seal{
-        top:12px;
-        right:12px;
-        width:64px;
-        height:64px;
-      }
-      .heroBanner__sealLogo{ width:62px; height:62px; }
-    }
-
-    @media (max-width: 860px){
-      .hero__brand--banner{ gap:10px; }
-      .hero__actions{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-      }
-      .hero__actions .btn--gold,
-      .hero__actions .miniNote{
-        grid-column:1 / -1;
-      }
-    }
-
-    @media (max-width: 640px){
-      .heroBanner{
-        border-radius:16px;
-      }
-      .heroBanner__seal{
-        width:56px;
-        height:56px;
-        border-radius:15px;
-        top:10px;
-        right:6px;
-      }
-      .heroBanner__sealLogo{ width:56px; height:56px; }
-      .hero__sub--banner{
-        font-size:.97rem;
-        max-width:none;
-      }
-    }
-
-    @media (max-width: 520px){
-      .hero__actions{
-        grid-template-columns:1fr;
-      }
-      .heroBanner{
-        border-radius:15px;
-      }
-      .heroBanner__seal{
-        width:50px;
-        height:50px;
-        border-radius:13px;
-        top:8px;
-        right:4px;
-      }
-      .heroBanner__sealLogo{ width:50px; height:50px; }
-    }
-    /* =========================
-       AJUSTE APROVADO
-       - Central Premium acima
-       - subtítulo institucional abaixo
-       - comprar com mais presença
-       ========================= */
-    .hero__brand{
-      grid-template-columns:auto 1fr;
-      align-items:flex-start;
-      column-gap:14px;
-    }
-
-    .brandMark{
-      margin-top:4px;
-      align-self:flex-start;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,.20));
-    }
-
-    .hero__text--brandstack{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:flex-start;
-      min-width:0;
-      padding-top:0;
-    }
-
-    .title--imperial{
-      margin:0 0 6px 0;
-      max-width:460px;
-      line-height:.89;
-      letter-spacing:.08px;
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.03),
-        0 0 10px rgba(215,176,88,.05),
-        0 8px 18px rgba(0,0,0,.15);
-    }
-
-    .title--imperial::after{
-      left:1px;
-      right:50%;
-      bottom:-4px;
-      opacity:.46;
-    }
-
-    .kicker--subtitle{
-      margin:0 0 12px 1px;
-      max-width:420px;
-      line-height:1.05;
-      letter-spacing:.78px;
-      font-size:.92rem;
-      color:rgba(232,202,124,.92);
-      opacity:.96;
-    }
-
-    .sub{
-      max-width:520px;
-      margin-top:0;
-    }
-
-    /* botão mais importante = comprar */
-    .btn--buy-primary{
-      position:relative;
-      min-height:44px;
-      padding-inline:16px;
-      border-color:rgba(215,176,88,.42) !important;
-      background:
-        linear-gradient(180deg, rgba(215,176,88,.30), rgba(145,111,34,.20)),
-        rgba(0,0,0,.14) !important;
-      box-shadow:
-        0 14px 32px rgba(145,111,34,.22),
-        inset 0 1px 0 rgba(255,255,255,.10) !important;
-      color:rgba(255,247,225,.98) !important;
-      font-weight:800;
-      letter-spacing:.15px;
-      text-shadow:0 1px 0 rgba(0,0,0,.20);
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
-    }
-
-    .btn--buy-primary:hover,
-    .btn--buy-primary:focus-visible{
-      transform:translateY(-1px);
-      border-color:rgba(230,195,108,.62) !important;
-      box-shadow:
-        0 18px 40px rgba(145,111,34,.30),
-        inset 0 1px 0 rgba(255,255,255,.14) !important;
-      filter:brightness(1.03);
-    }
-
-    .cnRow .btn--buy-primary{
-      border-radius:16px;
-    }
-
-    @media (max-width:860px){
-      .hero__brand{
-        column-gap:12px;
-      }
-
-      .title--imperial{
-        max-width:none;
-      }
-
-      .kicker--subtitle{
-        max-width:none;
-        margin-bottom:10px;
-      }
-    }
-
-    @media (max-width:520px){
-      .hero__brand{
-        column-gap:10px;
-      }
-
-      .brandMark{
-        margin-top:2px;
-      }
-
-      .title--imperial{
-        font-size:clamp(2.18rem, 10vw, 3.05rem);
-        line-height:.92;
-        margin-bottom:5px;
-      }
-
-      .kicker--subtitle{
-        font-size:.84rem;
-        letter-spacing:.62px;
-        margin-bottom:9px;
-      }
-
-      .title--imperial::after{
-        right:58%;
-      }
-
-      .btn--buy-primary{
-        min-height:40px;
-        padding-inline:14px;
-        font-size:.92rem;
-      }
-    }
-
-
-    /* =========================
-       AJUSTE MÓVEL CIRÚRGICO
-       - hero menor no celular
-       - CTA principal visível
-       - opções secundárias recolhidas
-       ========================= */
-    .heroMore{
-      display:none;
-    }
-
-    .heroMore__summary{
-      list-style:none;
-      cursor:pointer;
-      user-select:none;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      min-height:40px;
-      padding:10px 12px;
-      border-radius:16px;
-      border:1px solid rgba(215,176,88,.16);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.14));
-      color:rgba(255,255,255,.90);
-      font-weight:800;
-      letter-spacing:.08px;
-      box-shadow:0 10px 24px rgba(0,0,0,.18);
-    }
-
-    .heroMore__summary::-webkit-details-marker{
-      display:none;
-    }
-
-    .heroMore__body{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:8px;
-      margin-top:8px;
-    }
-
-    .heroMore__body .btn,
-    .heroMore__body .miniNote{
-      margin:0;
-    }
-
-    .heroMore__body .heroMore__telegram,
-    .heroMore__body .heroMore__status{
-      grid-column:1 / -1;
-    }
-
-    .heroMore__status{
-      justify-content:flex-start;
-      border-radius:16px;
-      min-height:40px;
-      padding:10px 12px;
-    }
-
-    @media (max-width: 640px){
-      .hero{
-        padding:14px;
-      }
-
-      .hero__brand--banner{
-        gap:10px;
-      }
-
-      .hero__sub--banner{
-        font-size:.95rem;
-        line-height:1.34;
-      }
-
-      .chips{
-        margin-top:10px;
-        gap:7px;
-      }
-
-      .countPill{
-        margin-top:10px;
-      }
-
-      .imperialNote--top{
-        margin-top:10px;
-        padding:8px 10px;
-      }
-
-      .hero__actions{
-        gap:8px;
-      }
-
-      .hero__actions > #copyLoja,
-      .hero__actions > .btn--social,
-      .hero__actions > .miniNote{
-        display:none !important;
-      }
-
-      .heroMore{
-        display:block;
-        width:100%;
-      }
-    }
-
-    @media (max-width: 420px){
-      .heroMore__body{
-        grid-template-columns:1fr;
-      }
-    }
-
-    /* =========================
-       HOTFIX 2026-03-31
-       botão "Ver todos" da Vitrine Rápida no mobile
-       - correção cirúrgica
-       - sem mexer na estrutura geral
-       ========================= */
-    #btnVerTodosTop{
-      white-space: nowrap;
-      flex-wrap: nowrap;
-      line-height: 1;
-    }
-
-    #btnVerTodosTop span{
-      white-space: nowrap;
-    }
-
-    @media (max-width: 640px){
-      #sec-vitrine-rapida .panel__head{
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-      }
-
-      #sec-vitrine-rapida .panel__right{
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      #btnVerTodosTop{
-        width: fit-content;
-        max-width: 100%;
-        align-self: flex-start;
-        min-height: 40px;
-        padding: 10px 14px;
-        font-size: .92rem;
-      }
-    }
-
-    @media (max-width: 420px){
-      #btnVerTodosTop{
-        font-size: .88rem;
-        padding: 10px 12px;
-      }
-    }
-
-  </style>
 </head>
-
 <body>
-  <div class="bg">
+  <div class="bg" aria-hidden="true">
     <div class="orb orb--1"></div>
     <div class="orb orb--2"></div>
     <div class="orb orb--3"></div>
     <div class="grain"></div>
   </div>
 
-  <!-- CTA flutuante (alto padrão) -->
   <div class="floatingStoreCTA" aria-hidden="false">
     <a href="./loja.html" id="floatingLoja">
-      👑 Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> produtos
+      <span class="statusDot"></span>
+      👑 Loja Completa <span class="gold">•</span> <span data-total-products>—</span> produtos
     </a>
   </div>
 
   <main class="page">
-    <header class="hero">
-      <div class="hero__brand hero__brand--banner">
-        <div class="heroBanner" aria-hidden="false">
-          <picture class="heroBanner__picture">
-            <source media="(max-width: 640px)" srcset="assets/topo-central-premium-fachada-cn-mobile-v5.png">
-            <img
-              class="heroBanner__img"
-              src="assets/topo-central-premium-fachada-cn-desktop-v5.png"
-              alt="Central Premium — Cosa Nostra • A Família das Ideias"
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-central-premium-fachada-cn-desktop-v5.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
-            />
-          </picture>
-          <div class="heroBanner__seal" aria-hidden="true">
-            <img
-              class="heroBanner__sealLogo"
-              src="assets/logo-oficial-circular-glow.png"
-              alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
-            />
-            <span class="heroBanner__sealFallback">👑</span>
+    <header class="hero hero--central" id="topo">
+      <div class="hero__layout">
+        <div class="hero__main">
+          <div class="brandStrip" aria-label="Central Premium — Cosa Nostra">
+            <img class="brandStrip__square" src="assets/logo-cn-square.png" alt="Cosa Nostra CN" />
+
+            <div class="brandStrip__titleBlock">
+              <div class="brandStrip__title">Central Premium</div>
+              <div class="brandStrip__rule" aria-hidden="true"></div>
+              <div class="brandStrip__sub">Cosa Nostra <span>•</span> A Família das Ideias</div>
+            </div>
+
+            <img class="brandStrip__round" src="assets/logo-cn-round.png" alt="Cosa Nostra Premium Store" />
           </div>
+
+          <section class="heroCopy" aria-label="Apresentação da vitrine">
+            <h1>Sua vitrine de produtos<br>com padrão <em>Premium</em></h1>
+            <p>Achados selecionados diariamente para quem valoriza qualidade, sofisticação e praticidade.</p>
+            <div class="heroOrnament" aria-hidden="true"></div>
+
+            <a class="btn btn--gold btn--hero" href="./loja.html" id="goLoja">
+              <span>🛒</span>
+              <span>Abrir Vitrine / Loja ( <b data-total-products>—</b> )</span>
+            </a>
+          </section>
+
+          <details class="heroMore">
+            <summary>➕ Mais opções</summary>
+            <div class="heroMore__body">
+              <button class="btn btn--glass" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">🔗 Copiar link da vitrine</button>
+              <a class="btn btn--glass" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+              <a class="btn btn--glass" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+            </div>
+          </details>
         </div>
 
-        <div class="hero__text hero__text--bannerstack">
-          <h1 class="srOnly">Central Premium</h1>
-          <p class="sub hero__sub--banner">
-            Links oficiais + vitrine de produtos (Achados do Dia).
-          </p>
+        <aside class="hero__actions" aria-label="Links rápidos">
+          <button class="btn btn--glass" id="copyLoja" type="button">🔗 Copiar link da vitrine</button>
+          <a class="btn btn--glass" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+          <a class="btn btn--glass" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
 
-          <div class="chips" aria-label="Dicas rápidas">
-            <span class="chip">⚡ clique 1-toque</span>
-            <span class="chip">🛒 vitrine sempre limpa</span>
-            <span class="chip">👑 padrão imperial</span>
+          <div class="statusBox">
+            <span class="statusDot"></span>
+            <span>Status: <b>online</b> • Atualizado<br><span id="lastUpdate">agora</span></span>
           </div>
-
-          <div class="countPill" aria-label="Contagem de produtos">
-            <span>📦 Total na Loja Completa:</span>
-            <span class="n" data-total-products>—</span>
-          </div>
-
-          <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>Prévia da vitrine:</b> Produto do Dia + Vitrine Rápida.</div>
-            <div class="mini">Para ver tudo, use <b>“Abrir Vitrine / Loja”</b>.</div>
-          </div>
-        </div>
+        </aside>
       </div>
 
-      <div class="hero__actions">
-        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
-
-        <details class="heroMore">
-          <summary class="heroMore__summary">➕ Mais opções</summary>
-          <div class="heroMore__body">
-            <button class="btn btn--glass btn--social" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">📌 Copiar link</button>
-            <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
-            <a class="btn btn--glass btn--social heroMore__telegram" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
-            <div class="miniNote heroMore__status">
-              <span class="dot"></span>
-              <span>
-                Status: <b>online</b> • Atualizado <span id="lastUpdateMobile">30/03/2026, 20:31</span>
-              </span>
-            </div>
-          </div>
-        </details>
-
-        <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
-
-        <!-- ✅ Instagram (mais importante) — voltou -->
-        <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
-
-        <!-- ✅ Telegram (Achados) — mantido -->
-        <a class="btn btn--glass btn--social" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
-
-        <div class="miniNote">
-          <span class="dot"></span>
-          <span>
-            Status: <b>online</b> • Atualizado <span id="lastUpdate">agora</span>
-          </span>
+      <div class="heroStats" aria-label="Resumo da loja">
+        <div class="heroStat">
+          <div class="heroStat__icon">▱</div>
+          <div><b data-total-products>—</b><span>Produtos na<br>Loja Completa</span></div>
+        </div>
+        <div class="heroStat">
+          <div class="heroStat__icon">☆</div>
+          <div><b>Achados do Dia</b><span>Selecionados com<br>carinho</span></div>
+        </div>
+        <div class="heroStat">
+          <div class="heroStat__icon">↻</div>
+          <div><b>Atualizado diariamente</b><span>Novos produtos<br>toda semana</span></div>
         </div>
       </div>
     </header>
 
-    <!-- ✅ MENU “IMPERIAL” -->
     <nav class="sectionNav" aria-label="Atalhos da Central Premium">
-      <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
+      <a class="sectionNav__pill sectionNav__pill--active" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
       <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
-      <a class="sectionNav__pill sectionNav__pill--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
+      <a class="sectionNav__pill" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
       <a class="sectionNav__pill" href="#sec-links">🔗 Links Oficiais</a>
     </nav>
 
-    <section class="panel" id="sec-produto-do-dia">
-      <div class="panel__head">
-        <div>
-          <h2>Produto do dia</h2>
-          <p>Vitrine com destaque + botões rápidos (comprar / copiar ID / copiar link).</p>
+    <section class="showcase" id="sec-produto-do-dia" aria-label="Produto do Dia e Achados selecionados">
+      <div class="showcase__top">
+        <div id="featured" class="featuredSlot">
+          <!-- preenchido pelo script.js -->
         </div>
-        <div class="panel__right">
-          <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
-        </div>
+
+        <aside class="trustPanel" aria-label="Diferenciais da loja">
+          <div class="trustItem">
+            <span>◇</span>
+            <div><b>Seleção Premium</b><small>Produtos escolhidos com alto padrão de qualidade.</small></div>
+          </div>
+          <div class="trustItem">
+            <span>▢</span>
+            <div><b>Compra Rápida e Segura</b><small>Links diretos para facilitar sua experiência.</small></div>
+          </div>
+          <div class="trustItem">
+            <span>↻</span>
+            <div><b>Vitrine Sempre Atualizada</b><small>Novos achados todos os dias para você descobrir.</small></div>
+          </div>
+        </aside>
       </div>
 
-      <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
-        <div>🧭 Se você quer <b>ver mais opções</b>: a Loja Completa tem <b><span data-total-products>—</span> produtos</b> prontos pra comprar.</div>
-      </div>
+      <section class="quickBlock" id="sec-vitrine-rapida" aria-label="Achados selecionados">
+        <div class="quickBlock__head">
+          <h2>Achados Selecionados</h2>
+          <a id="btnVerTodosTop" href="./loja.html">Ver todos os produtos →</a>
+        </div>
 
-      <div class="featured" id="featured">
-        <!-- preenchido pelo script.js -->
-      </div>
+        <div class="quickCarousel" id="quickGrid">
+          <!-- preenchido pelo script.js -->
+        </div>
+
+        <a class="wideStoreCTA" href="./loja.html" id="btnAbrirLojaCompleta">
+          <span>👑 Loja Completa</span>
+          <b>•</b>
+          <span><span data-total-products>—</span> produtos</span>
+          <i>›</i>
+        </a>
+      </section>
     </section>
 
-    <section class="panel" id="sec-vitrine-rapida">
-      <div class="panel__head">
-        <div>
-          <h2>Vitrine rápida</h2>
-          <p>
-            Prévia de produtos (pra bater o olho). A lista completa fica na <b>Loja Completa</b>.
-            <span style="opacity:.85">Mostrando <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b>.</span>
-          </p>
-        </div>
-        <div class="panel__right">
-          <a class="btn btn--tiny btn--gold" href="./loja.html" id="btnVerTodosTop">Ver todos (<span data-total-products>—</span>)</a>
-        </div>
-      </div>
-
-      <div class="quickTools">
-        <div class="quickSearch" role="search">
-          <span class="quickIcon">🔎</span>
-          <input id="qHome" placeholder="Buscar produto (ex: fone, mochila, mouse...)" />
-        </div>
-        <button class="btn btn--tiny btn--glass" id="qClear" type="button">Limpar</button>
-        <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Abrir loja completa (<span data-total-products>—</span>)</a>
-      </div>
-
-      <div class="productsGrid cnGrid" id="quickGrid">
-        <!-- preenchido pelo script.js -->
-      </div>
-
-      <div class="imperialNote" role="note" aria-label="Mensagem para leigos">
-        <div>💡 <b>Não se perca:</b> se você não achou o que queria aqui, a <b>Loja Completa</b> tem <b><span data-total-products>—</span> itens</b> — clique em <b>“Ver todos”</b>.</div>
-      </div>
-    </section>
-    <section class="panel" id="sec-links">
-      <div class="panel__head">
-        <div>
-          <h2>Links oficiais</h2>
-          <p>Hub premium (pra bio). A loja está no topo como CTA principal.</p>
-        </div>
+    <section class="linksPanel" id="sec-links" aria-label="Links oficiais">
+      <div class="linksPanel__head">
+        <h2>Links Oficiais</h2>
+        <p>Central de acesso rápido para acompanhar a Cosa Nostra e abrir a loja completa.</p>
       </div>
 
       <div class="linksGrid">
         <a class="linkCard linkCard--gold" href="./loja.html" id="linkCardLoja">
-          <div class="linkCard__icon">🛒</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">Vitrine / Loja</div>
-            <div class="linkCard__sub">Todos os produtos (clique e compre)</div>
-          </div>
-          <div class="linkCard__go">›</div>
+          <span>🛒</span><b>Vitrine / Loja</b><small>Todos os produtos</small><i>›</i>
         </a>
-
-        <!-- ✅ Telegram dentro do site (sem poluir bio) -->
-        <a class="linkCard" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">
-          <div class="linkCard__icon">📣</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">Telegram (Achados)</div>
-            <div class="linkCard__sub">Canal com novos produtos</div>
-          </div>
-          <div class="linkCard__go">›</div>
-        </a>
-
         <a class="linkCard" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">
-          <div class="linkCard__icon">📸</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">Instagram</div>
-            <div class="linkCard__sub">Stories + reposts</div>
-          </div>
-          <div class="linkCard__go">›</div>
+          <span>📸</span><b>Instagram</b><small>Stories + reposts</small><i>›</i>
         </a>
-
-        <a class="linkCard" href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener">
-          <div class="linkCard__icon">💻</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">GitHub</div>
-            <div class="linkCard__sub">Projetos e repositórios</div>
-          </div>
-          <div class="linkCard__go">›</div>
+        <a class="linkCard" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">
+          <span>📣</span><b>Telegram</b><small>Canal com novos produtos</small><i>›</i>
         </a>
-
-        <a class="linkCard" href="https://www.youtube.com/@CosaNostraAI" target="_blank" rel="noopener">
-          <div class="linkCard__icon">▶</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">YouTube</div>
-            <div class="linkCard__sub">Conteúdo longo</div>
-          </div>
-          <div class="linkCard__go">›</div>
-        </a>
-
-        <a class="linkCard" href="https://www.tiktok.com/@cosanostra.ia" target="_blank" rel="noopener">
-          <div class="linkCard__icon">🎬</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">TikTok</div>
-            <div class="linkCard__sub">Shorts / trends</div>
-          </div>
-          <div class="linkCard__go">›</div>
-        </a>
-
-        <a class="linkCard" href="https://kwai-video.com/u/@Cosa_Nostra_AI/CNr8xPva" target="_blank" rel="noopener">
-          <div class="linkCard__icon">🎥</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">Kwai</div>
-            <div class="linkCard__sub">Distribuição extra</div>
-          </div>
-          <div class="linkCard__go">›</div>
-        </a>
-
         <a class="linkCard" href="https://www.mercadolivre.com.br/social/felipecosanostra" target="_blank" rel="noopener">
-          <div class="linkCard__icon">🛒</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">Mercado Livre</div>
-            <div class="linkCard__sub">Perfil / vitrine oficial</div>
-          </div>
-          <div class="linkCard__go">›</div>
+          <span>🛍️</span><b>Mercado Livre</b><small>Perfil / vitrine oficial</small><i>›</i>
+        </a>
+        <a class="linkCard" href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener">
+          <span>💻</span><b>GitHub</b><small>Projetos e repositórios</small><i>›</i>
+        </a>
+        <a class="linkCard" href="https://www.youtube.com/@CosaNostraAI" target="_blank" rel="noopener">
+          <span>▶</span><b>YouTube</b><small>Conteúdo longo</small><i>›</i>
         </a>
       </div>
     </section>
 
     <footer class="footer">
-      <div class="footer__left">
-        <span class="sig sig--brand"><img class="footerLogo" src="assets/logo-oficial-circular-glow.png" alt="" /><span>Cosa Nostra</span></span>
-        <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
+      <div class="footer__brand">
+        <img src="assets/logo-cn-round.png" alt="" />
+        <span>Cosa Nostra</span>
+        <em>• A Família das Ideias</em>
       </div>
-
-      <div class="footer__right">
-        <button class="btn btn--tiny btn--glass" type="button" data-copy="bio" id="btnCopyHomeLink">Copiar link da home</button>
-      </div>
+      <button class="btn btn--tiny btn--glass" type="button" data-copy="bio" id="btnCopyHomeLink">Copiar link da home</button>
     </footer>
   </main>
 
@@ -1824,101 +197,26 @@
   <script>
     (function () {
       "use strict";
-
       function initHomeTracking() {
         if (!window.CNTracking || typeof window.CNTracking.init !== "function") return;
-
-        window.CNTracking.init({
-          pageType: "home",
-          autoPageView: false,
-          debug: false
-        });
-
-        window.CNTracking.track("page_view_home", {
-          page_type: "home"
-        });
-
+        window.CNTracking.init({ pageType: "home", autoPageView: false, debug: false });
+        window.CNTracking.track("page_view_home", { page_type: "home" });
         function bindOpenStore(selector, placement) {
           var el = document.querySelector(selector);
           if (!el) return;
-
           el.addEventListener("click", function () {
-            window.CNTracking.trackOpenStore({
-              page_type: "home",
-              placement: placement
-            });
+            window.CNTracking.trackOpenStore({ page_type: "home", placement: placement });
           });
         }
-
         bindOpenStore("#floatingLoja", "floating_cta");
         bindOpenStore("#goLoja", "hero_cta");
         bindOpenStore("#btnVerTodosTop", "quick_top_cta");
-        bindOpenStore("#btnAbrirLojaCompleta", "quick_tools_cta");
+        bindOpenStore("#btnAbrirLojaCompleta", "wide_store_cta");
         bindOpenStore("#linkCardLoja", "links_grid_cta");
-
-        var btnCopyLoja = document.getElementById("copyLoja");
-        if (btnCopyLoja) {
-          btnCopyLoja.addEventListener("click", function () {
-            window.CNTracking.trackCopyStoreLink({
-              page_type: "home",
-              placement: "hero_copy_store_link"
-            });
-          });
-        }
-
-        var btnCopyHomeLink = document.getElementById("btnCopyHomeLink");
-        if (btnCopyHomeLink) {
-          btnCopyHomeLink.addEventListener("click", function () {
-            window.CNTracking.track("click_copy_home_link", {
-              page_type: "home",
-              placement: "footer_copy_home_link"
-            });
-          });
-        }
-
-        var qHome = document.getElementById("qHome");
-        if (qHome) {
-          var tm = null;
-
-          qHome.addEventListener("input", function () {
-            clearTimeout(tm);
-            tm = setTimeout(function () {
-              var q = String(qHome.value || "").trim();
-              if (!q) return;
-
-              window.CNTracking.track("search_home", {
-                page_type: "home",
-                query: q,
-                placement: "quick_search"
-              });
-            }, 700);
-          });
-        }
       }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initHomeTracking);
-      } else {
-        initHomeTracking();
-      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initHomeTracking);
+      else initHomeTracking();
     })();
   </script>
-
-  <script>
-    (function(){
-      function syncMobileStatus(){
-        var main = document.getElementById('lastUpdate');
-        var mob = document.getElementById('lastUpdateMobile');
-        if(main && mob && main.textContent){
-          mob.textContent = main.textContent;
-        }
-      }
-      document.addEventListener('DOMContentLoaded', function(){
-        syncMobileStatus();
-        setTimeout(syncMobileStatus, 1200);
-      });
-    })();
-  </script>
-
 </body>
 </html>
