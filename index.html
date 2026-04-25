@@ -1599,38 +1599,54 @@
       align-items:center !important;
       justify-content:center !important;
       pointer-events:none !important;
-      background:transparent !important;
-      border:0 !important;
-      box-shadow:none !important;
-      overflow:visible !important;
+      overflow:hidden !important;
+      backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(224,195,107,.40) !important;
+      background:
+        radial-gradient(900px 200px at 20% 0%, rgba(224,195,107,.22), transparent 60%),
+        linear-gradient(180deg, rgba(199,162,75,.34), rgba(199,162,75,.10)) !important;
+      box-shadow:
+        0 12px 32px rgba(199,162,75,.12),
+        0 10px 24px rgba(0,0,0,.42) !important;
     }
 
     .heroBanner__mark{
-      top:7.2% !important;
-      left:4.2% !important;
-      width:13.4% !important;
-      max-width:86px !important;
-      min-width:52px !important;
-      aspect-ratio:1/1;
+      top:clamp(12px, 2.1vw, 18px) !important;
+      left:clamp(12px, 2.1vw, 18px) !important;
+      width:clamp(52px, 8.3vw, 74px) !important;
+      height:clamp(52px, 8.3vw, 74px) !important;
+      border-radius:18px !important;
+      padding:7px !important;
     }
 
     .heroBanner__seal{
-      top:7.2% !important;
-      right:4.2% !important;
-      width:13.4% !important;
-      max-width:86px !important;
-      min-width:52px !important;
-      height:auto !important;
-      aspect-ratio:1/1;
-      border-radius:50% !important;
+      top:clamp(12px, 2.1vw, 18px) !important;
+      right:clamp(12px, 2.1vw, 18px) !important;
+      width:clamp(52px, 8.3vw, 74px) !important;
+      height:clamp(52px, 8.3vw, 74px) !important;
+      border-radius:999px !important;
+      padding:7px !important;
     }
 
     .heroBanner__mark::before,
+    .heroBanner__seal::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
+      opacity:.62;
+      pointer-events:none;
+    }
+
     .heroBanner__mark::after,
-    .heroBanner__seal::before,
     .heroBanner__seal::after{
-      display:none !important;
-      content:none !important;
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
+      transform: translateX(-60%);
+      animation: shine 3.8s ease-in-out infinite;
+      pointer-events:none;
     }
 
     .heroBanner__markLogo,
@@ -1673,18 +1689,19 @@
 
       .heroBanner__mark,
       .heroBanner__seal{
-        top:7.4% !important;
-        width:12.8% !important;
-        min-width:42px !important;
-        max-width:58px !important;
+        top:clamp(8px, 2vw, 12px) !important;
+        width:clamp(44px, 11vw, 54px) !important;
+        height:clamp(44px, 11vw, 54px) !important;
+        padding:5px !important;
       }
 
       .heroBanner__mark{
-        left:5.2% !important;
+        left:clamp(8px, 2.2vw, 12px) !important;
+        border-radius:14px !important;
       }
 
       .heroBanner__seal{
-        right:5.2% !important;
+        right:clamp(8px, 2.2vw, 12px) !important;
       }
     }
 </style>
