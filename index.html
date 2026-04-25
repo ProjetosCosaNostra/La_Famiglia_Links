@@ -1565,11 +1565,11 @@
 
 
     /* =========================
-       HOTFIX PRODUTO DO DIA — 2026-04-25
-       - corrige o vazio grande à direita no desktop
-       - faz o bloco renderizado pelo script ocupar a largura inteira do painel
-       - mantém mobile empilhado e seguro
-       - não mexe no script.js nem na loja.html
+       REFINO PRODUTO DO DIA — 2026-04-25
+       - melhora a proporção do card no desktop
+       - reduz peso visual da imagem
+       - organiza instruções e botões com aparência mais premium
+       - mantém script.js, style.css e loja.html intactos
        ========================= */
     #featured.featured {
       display: block;
@@ -1580,8 +1580,8 @@
     #featured .cnFeaturedWrap {
       width: 100%;
       display: grid;
-      grid-template-columns: minmax(280px, .92fr) minmax(320px, 1.08fr);
-      gap: 14px;
+      grid-template-columns: minmax(260px, .82fr) minmax(380px, 1.18fr);
+      gap: 16px;
       align-items: stretch;
       margin-top: 0;
     }
@@ -1589,21 +1589,30 @@
     #featured .cnCard {
       min-width: 0;
       height: 100%;
+      border-color: rgba(215,176,88,.16);
+      background:
+        radial-gradient(520px 220px at 20% 0%, rgba(215,176,88,.075), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.026), rgba(0,0,0,.20));
+      box-shadow: 0 16px 42px rgba(0,0,0,.30);
     }
 
     #featured .cnCard:first-child {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 12px;
+      background:
+        radial-gradient(420px 220px at 55% 18%, rgba(215,176,88,.08), transparent 62%),
+        rgba(0,0,0,.24);
     }
 
     #featured .cnCard:first-child .cnImg {
       width: 100%;
-      height: clamp(360px, 34vw, 520px);
+      height: clamp(300px, 29vw, 445px);
       object-fit: contain;
       border-radius: 14px;
-      background: rgba(0,0,0,.22);
+      background: rgba(0,0,0,.18);
+      box-shadow: 0 18px 42px rgba(0,0,0,.42);
     }
 
     #featured .cnCardPad {
@@ -1611,22 +1620,138 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: clamp(16px, 2.1vw, 24px);
     }
 
     #featured .cnTitle {
-      font-size: clamp(1.15rem, 2vw, 1.72rem);
-      line-height: 1.08;
-      max-width: 620px;
+      font-size: clamp(1.42rem, 2.15vw, 2rem);
+      line-height: 1.02;
+      max-width: 660px;
+      letter-spacing: .02em;
+      text-shadow: 0 10px 22px rgba(0,0,0,.30);
+    }
+
+    #featured .cnBadges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    #featured .cnBadges span {
+      margin: 0;
+      padding: 4px 9px;
+      border-color: rgba(215,176,88,.17);
+      background: rgba(255,255,255,.025);
+      color: rgba(255,255,255,.78);
+      font-size: 11px;
+      line-height: 1.05;
+    }
+
+    #featured .cnBadges span:nth-child(n+5) {
+      display: none;
     }
 
     #featured .cnSteps {
-      margin-top: 14px;
-      line-height: 1.35;
+      list-style: none;
+      counter-reset: cnStep;
+      margin: 16px 0 0 0;
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+      border-radius: 16px;
+      border: 1px solid rgba(215,176,88,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.026), rgba(0,0,0,.14));
+      line-height: 1.25;
+      color: rgba(255,255,255,.82);
+    }
+
+    #featured .cnSteps li {
+      counter-increment: cnStep;
+      position: relative;
+      margin: 0;
+      padding: 7px 9px 7px 38px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.16);
+      font-size: 13px;
+    }
+
+    #featured .cnSteps li::before {
+      content: counter(cnStep);
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(215,176,88,.24);
+      background: rgba(215,176,88,.12);
+      color: rgba(255,230,165,.96);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    #featured .cnSteps b {
+      color: rgba(255,232,170,.98);
     }
 
     #featured .cnRow {
-      gap: 10px;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+
+    #featured .cnRow .btn {
+      width: 100%;
+      min-height: 39px;
+      border-radius: 14px;
+      padding: 9px 12px;
+      font-size: 12px;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    #featured .cnRow .btn--buy-primary {
+      grid-column: 1 / -1;
+      min-height: 46px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      box-shadow:
+        0 16px 34px rgba(145,111,34,.24),
+        inset 0 1px 0 rgba(255,255,255,.12) !important;
+    }
+
+    #featured .cnMeta {
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 13px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(215,176,88,.13);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.72);
+      font-size: 11px;
+    }
+
+    #featured .cnMini {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(240px, .9fr) minmax(330px, 1.1fr);
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+      }
     }
 
     @media (max-width: 860px) {
@@ -1653,17 +1778,39 @@
         gap: 12px;
       }
 
+      #featured .cnCard:first-child {
+        padding: 9px;
+      }
+
       #featured .cnTitle {
-        font-size: 1.15rem;
+        font-size: 1.18rem;
+        line-height: 1.08;
       }
 
       #featured .cnSteps {
-        padding-left: 17px;
-        font-size: .92rem;
+        padding: 8px;
+        gap: 7px;
       }
 
-      #featured .cnRow .btn {
-        min-height: 38px;
+      #featured .cnSteps li {
+        font-size: .88rem;
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+
+      #featured .cnRow {
+        grid-template-columns: 1fr;
+      }
+
+      #featured .cnRow .btn,
+      #featured .cnRow .btn--buy-primary {
+        min-height: 39px;
+        font-size: .88rem;
+      }
+
+      #featured .cnMeta {
+        border-radius: 13px;
+        width: 100%;
       }
     }
 
@@ -1781,7 +1928,7 @@
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
-          <p>Vitrine com destaque + botões rápidos (comprar / copiar ID / copiar link).</p>
+          <p>Destaque especial da vitrine, organizado para compra rápida e segura.</p>
         </div>
         <div class="panel__right">
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
@@ -1789,7 +1936,7 @@
       </div>
 
       <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
-        <div>🧭 Se você quer <b>ver mais opções</b>: a Loja Completa tem <b><span data-total-products>—</span> produtos</b> prontos pra comprar.</div>
+        <div>👑 Quer explorar mais? A Loja Completa reúne <b><span data-total-products>—</span> produtos</b> selecionados para você.</div>
       </div>
 
       <div class="featured" id="featured">
