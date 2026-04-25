@@ -1,21 +1,62 @@
-/* script.js — Central Premium (Home) V5 Corrigido
-   - Layout fiel ao conceito proposto
-   - Achados Selecionados horizontal como bloco extra
-   - Vitrine Rápida vertical com rolagem preservada
-   - Sem ID/link visível nos cards
-   - Compatível com navegadores Android mais antigos
+/* script.js — Central Premium (Home)
+   ✅ FIX MOBILE: reescrito para rodar em navegadores Android mais antigos.
+   - Sem dateStyle/timeStyle (quebra em alguns celulares)
+   - Sem replaceAll / toSorted / optional chaining
+   - Copy com fallback (execCommand)
+
+   ✅ FIX LINK/COMPRAR (2026-02-24):
+   - getLink() agora aceita open_url/check_url/canonical_url/short_url/resolved_url
+   - normaliza links sem https://
+   - abrir em in-app browsers (IG/FB): window.open + fallback location.href
+
+   ✅ PATCH TRACKING HOME (2026-03-20):
+   - view_featured
+   - view_quick_product
+   - click_buy_home_featured
+   - click_buy_home_quick
+   - click_copy_id_home
+   - click_copy_link_home
+   - click_copy_alt_home
+   - click_open_store
+
+   ✅ FIX HOME BUY DESKTOP (2026-03-20):
+   - no desktop, NÃO intercepta o link
+   - deixa o <a target="_blank"> nativo abrir a nova guia
+   - em in-app browser, intercepta e tenta abrir manualmente
+
+   ✅ PATCH TRACKING HOME + ENTRY FLOW (2026-03-21):
+   - page_view da home
+   - busca da home com contagem de resultados
+   - copy da home / vitrine com tracking
+   - rastreio de links sociais / saída
+   - preserva UTM/contexto ao abrir loja.html
+
+   ✅ PATCH VITRINE RÁPIDA MANUAL (2026-03-21):
+   - respeita quick_home / quick_home_order vindos do produtos.json
+   - se houver seleção manual, a home usa essa ordem
+   - se não houver seleção manual, mantém o fallback atual
+
+   ✅ PATCH VITRINE RÁPIDA POSICIONAL (2026-04-03):
+   - a grade rápida agora exibe até 12 produtos
+   - quick_home_order (1..12) fixa o produto na posição desejada
+   - ao substituir 1 posição, o restante da estrutura é preservado
 */
 (function () {
   'use strict';
 
   function qs(sel, root) { return (root || document).querySelector(sel); }
   function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+
   function safeText(v) { return (v === null || v === undefined) ? '' : String(v); }
   function trim(s) { return safeText(s).replace(/^\s+|\s+$/g, ''); }
   function lower(s) { return safeText(s).toLowerCase(); }
 
   var QUICK_HOME_LIMIT = 12;
-  var SELECTED_LIMIT = 6;
+
+  function getProductKey(p) {
+    if (!p) return '';
+    return safeText(p.sku || p.id_busca || p.id || p.title || p.name || '');
+  }
 
   function toast(msg) {
     var el = qs('#toast');
@@ -29,7 +70,7 @@
   function fallbackCopy(text) {
     try {
       var ta = document.createElement('textarea');
-      ta.value = safeText(text);
+      ta.value = text;
       ta.setAttribute('readonly', '');
       ta.style.position = 'fixed';
       ta.style.left = '-9999px';
@@ -60,12 +101,15 @@
   function ensureHttpUrl(u) {
     var s = trim(u);
     if (!s) return '';
+
     if (/^https?:\/\//i.test(s)) return s;
     if (s.indexOf('//') === 0) return 'https:' + s;
+
     if (/^(mercadolivre|mercadolibre)\./i.test(s)) return 'https://' + s;
     if (/^meli\./i.test(s)) return 'https://' + s;
     if (s.indexOf('meli.la/') === 0) return 'https://' + s;
     if (s.indexOf('meli.co/') === 0) return 'https://' + s;
+
     return s;
   }
 
@@ -104,6 +148,7 @@
     var out = [];
     var query = safeText(location.search || '').replace(/^\?/, '');
     if (!query) return out;
+
     var parts = query.split('&');
     for (var i = 0; i < parts.length; i++) {
       var piece = trim(parts[i]);
@@ -140,8 +185,17 @@
       if (ev && ev.preventDefault) ev.preventDefault();
       return false;
     }
-    if (!isInAppBrowser()) return true;
+
+    // Desktop / navegador normal:
+    // deixa o <a target="_blank"> trabalhar sozinho.
+    if (!isInAppBrowser()) {
+      return true;
+    }
+
+    // In-app browser:
+    // intercepta e tenta abrir manualmente.
     if (ev && ev.preventDefault) ev.preventDefault();
+
     try {
       var w = window.open(u, '_blank');
       if (w && typeof w.focus === 'function') {
@@ -149,6 +203,7 @@
         return false;
       }
     } catch (e) {}
+
     window.location.assign(u);
     return false;
   }
@@ -182,16 +237,12 @@
       p.mercado_livre_link ||
       p.ml_link ||
       '';
+
     return ensureHttpUrl(link);
   }
 
   function getMlId(p) {
     return p.id_busca || p.ml_id || p.id_ml || p.mercadolivre_id || p.mercado_livre_id || p.id || '';
-  }
-
-  function getProductKey(p) {
-    if (!p) return '';
-    return safeText(p.sku || p.id_busca || p.id || p.title || p.name || '');
   }
 
   function isActive(p) {
@@ -230,21 +281,6 @@
     return n;
   }
 
-  function sortRelev(list) {
-    var arr = list.slice();
-    arr.sort(function (a, b) {
-      var fa = isFeatured(a) ? 0 : 1;
-      var fb = isFeatured(b) ? 0 : 1;
-      if (fa !== fb) return fa - fb;
-      var ta = lower(a.title || a.name || a.sku);
-      var tb = lower(b.title || b.name || b.sku);
-      if (ta < tb) return -1;
-      if (ta > tb) return 1;
-      return 0;
-    });
-    return arr;
-  }
-
   function sortQuickManual(list) {
     var arr = list.slice();
     arr.sort(function (a, b) {
@@ -253,9 +289,11 @@
       var ha = (oa === null || oa === undefined) ? 999999 : oa;
       var hb = (ob === null || ob === undefined) ? 999999 : ob;
       if (ha !== hb) return ha - hb;
+
       var fa = isFeatured(a) ? 0 : 1;
       var fb = isFeatured(b) ? 0 : 1;
       if (fa !== fb) return fa - fb;
+
       var ta = lower(a.title || a.name || a.sku);
       var tb = lower(b.title || b.name || b.sku);
       if (ta < tb) return -1;
@@ -284,18 +322,32 @@
     }
 
     if (!manual.length) {
-      return { items: fallback.slice(0, max), source: 'fallback', mode: 'fallback', limit: max };
+      return {
+        items: fallback.slice(0, max),
+        source: 'fallback',
+        mode: 'fallback',
+        limit: max
+      };
     }
 
     if (!ordered.length) {
-      return { items: sortQuickManual(manual).slice(0, max), source: 'manual', mode: 'manual_only', limit: max };
+      var manualOnly = sortQuickManual(manual).slice(0, max);
+      return {
+        items: manualOnly,
+        source: 'manual',
+        mode: 'manual_only',
+        limit: max
+      };
     }
 
     var slots = new Array(max);
+    var orderedPositions = {};
     var usedKeys = {};
     var p, order, key, pos;
 
-    ordered.sort(function (a, b) { return getQuickHomeOrder(a) - getQuickHomeOrder(b); });
+    ordered.sort(function (a, b) {
+      return getQuickHomeOrder(a) - getQuickHomeOrder(b);
+    });
 
     for (i = 0; i < ordered.length; i++) {
       p = ordered[i];
@@ -305,6 +357,7 @@
       if (usedKeys[key]) continue;
       pos = order - 1;
       slots[pos] = p;
+      orderedPositions[pos] = true;
       usedKeys[key] = true;
     }
 
@@ -339,53 +392,35 @@
       if (slots[pos]) finalItems.push(slots[pos]);
     }
 
-    return { items: finalItems, source: 'manual', mode: 'positional_overlay', limit: max };
+    return {
+      items: finalItems,
+      source: 'manual',
+      mode: 'positional_overlay',
+      limit: max
+    };
   }
 
   function formatIsoToPt(iso) {
     iso = safeText(iso);
     var m = iso.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
     if (!m) return iso ? iso : 'agora';
-    return m[3] + '/' + m[2] + '/' + m[1] + ', ' + m[4] + ':' + m[5];
+    var dd = m[3], mm = m[2], yyyy = m[1], hh = m[4], mi = m[5];
+    return dd + '/' + mm + '/' + yyyy + ', ' + hh + ':' + mi;
   }
 
-  function getPriceText(p) {
-    if (!p) return '';
-    var raw = p.price_text || p.priceText || p.preco_texto || p.precoTexto || p.valor_texto || p.valorTexto || '';
-    if (raw) return safeText(raw);
-
-    var n = p.price;
-    if (n === null || n === undefined || n === '') n = p.preco;
-    if (n === null || n === undefined || n === '') n = p.valor;
-    if (n === null || n === undefined || n === '') n = p.current_price;
-    if (n === null || n === undefined || n === '') n = p.currentPrice;
-
-    if (typeof n === 'string') {
-      if (/R\$/.test(n)) return n;
-      n = n.replace(/[^0-9,\.]/g, '').replace(/\./g, '').replace(',', '.');
-    }
-
-    var num = parseFloat(n);
-    if (!isFinite(num)) return '';
-    return 'R$ ' + num.toFixed(2).replace('.', ',');
-  }
-
-  function getProductDescription(p) {
-    if (!p) return 'Achado selecionado com curadoria premium para sua vitrine.';
-    var d = p.description || p.descricao || p.desc || p.short_description || p.shortDescription || p.resumo || p.summary || '';
-    d = trim(d);
-    if (!d) d = 'Produto selecionado com padrão premium, pensado para compra rápida e apresentação elegante.';
-    if (d.length > 132) d = d.slice(0, 129).replace(/\s+\S*$/, '') + '...';
-    return d;
-  }
-
-  function getProductBrandLine(p) {
-    if (!p) return 'ACHADOS DO DIA';
-    var brand = p.brand || p.marca || p.store || p.loja || p.category || p.categoria || 'Achados do Dia';
-    var extra = p.volume || p.size || p.tamanho || '';
-    var out = safeText(brand);
-    if (extra) out += ' • ' + safeText(extra);
-    return out.toUpperCase();
+  function sortRelev(list) {
+    var arr = list.slice();
+    arr.sort(function (a, b) {
+      var fa = isFeatured(a) ? 0 : 1;
+      var fb = isFeatured(b) ? 0 : 1;
+      if (fa !== fb) return fa - fb;
+      var ta = lower(a.title || a.name || a.sku);
+      var tb = lower(b.title || b.name || b.sku);
+      if (ta < tb) return -1;
+      if (ta > tb) return 1;
+      return 0;
+    });
+    return arr;
   }
 
   function setTotals(n) {
@@ -396,11 +431,11 @@
     qsa('[data-quick-products]').forEach(function (el) { el.textContent = String(n); });
   }
 
-  function trackEvent(eventName, payload) {
-    try {
-      if (!window.CNTracking || typeof window.CNTracking.track !== 'function') return;
-      window.CNTracking.track(eventName, payload || {});
-    } catch (e) {}
+  function makeBgClickThrough() {
+    var bg = qs('.bg');
+    if (!bg) return;
+    bg.style.pointerEvents = 'none';
+    qsa('.bg *').forEach(function (el) { el.style.pointerEvents = 'none'; });
   }
 
   function getTrackProduct(p, extra) {
@@ -422,6 +457,13 @@
     };
   }
 
+  function trackEvent(eventName, payload) {
+    try {
+      if (!window.CNTracking || typeof window.CNTracking.track !== 'function') return;
+      window.CNTracking.track(eventName, payload || {});
+    } catch (e) {}
+  }
+
   function getPageTrackBase(extra) {
     var meta = extra || {};
     return {
@@ -430,306 +472,6 @@
       source_block: safeText(meta.source_block || ''),
       section: safeText(meta.section || '')
     };
-  }
-
-  function trackProductViewOnce(state, kind, p, extra) {
-    if (!state || !p) return;
-    var sku = safeText(p.sku || p.title || p.name || '');
-    if (!sku) return;
-    if (!state._trackedViews) state._trackedViews = { featured: {}, selected: {}, quick: {} };
-    if (!state._trackedViews[kind]) state._trackedViews[kind] = {};
-    if (state._trackedViews[kind][sku]) return;
-    state._trackedViews[kind][sku] = true;
-    if (kind === 'featured') trackEvent('view_featured', getTrackProduct(p, extra));
-    if (kind === 'selected') trackEvent('view_selected_product', getTrackProduct(p, extra));
-    if (kind === 'quick') trackEvent('view_quick_product', getTrackProduct(p, extra));
-  }
-
-  function createImg(src, alt) {
-    var img = document.createElement('img');
-    img.loading = 'lazy';
-    img.alt = safeText(alt || 'Produto');
-    if (src) img.src = src;
-    return img;
-  }
-
-  function renderFeatured(p, state) {
-    var root = qs('#featured');
-    if (!root) return;
-    root.innerHTML = '';
-
-    if (!p) {
-      root.innerHTML = '<div class="productDayCard"><div class="productDayCard__label"><span>Produto do Dia</span><i></i></div><div class="productDayCard__body"><div class="productDayCard__info"><h3>Nenhum produto ativo encontrado</h3><p class="productDayCard__desc">Confira o arquivo produtos.json.</p></div></div></div>';
-      return;
-    }
-
-    trackProductViewOnce(state, 'featured', p, {
-      placement: 'featured_main',
-      source_block: 'produto_do_dia',
-      position_on_page: 1,
-      quick_source: state.quickSource,
-      quick_mode: state.quickMode
-    });
-
-    var card = document.createElement('article');
-    card.className = 'productDayCard';
-
-    var label = document.createElement('div');
-    label.className = 'productDayCard__label';
-    label.innerHTML = '<span>Produto do Dia</span><i></i>';
-    card.appendChild(label);
-
-    var body = document.createElement('div');
-    body.className = 'productDayCard__body';
-
-    var media = document.createElement('div');
-    media.className = 'productDayCard__media';
-    media.appendChild(createImg(getImage(p), p.title || p.name || 'Produto do Dia'));
-    body.appendChild(media);
-
-    var info = document.createElement('div');
-    info.className = 'productDayCard__info';
-
-    var h = document.createElement('h3');
-    h.textContent = safeText(p.title || p.name || p.sku || 'Produto do Dia');
-    info.appendChild(h);
-
-    var brand = document.createElement('div');
-    brand.className = 'productDayCard__brand';
-    brand.textContent = getProductBrandLine(p);
-    info.appendChild(brand);
-
-    var desc = document.createElement('p');
-    desc.className = 'productDayCard__desc';
-    desc.textContent = getProductDescription(p);
-    info.appendChild(desc);
-
-    var badges = parseBadges(p);
-    if (badges.length) {
-      var bwrap = document.createElement('div');
-      bwrap.className = 'productBadges';
-      for (var i = 0; i < badges.length && i < 5; i++) {
-        var sp = document.createElement('span');
-        sp.textContent = badges[i];
-        bwrap.appendChild(sp);
-      }
-      info.appendChild(bwrap);
-    }
-
-    var bottom = document.createElement('div');
-    bottom.className = 'productDayCard__bottom';
-
-    var price = document.createElement('div');
-    price.className = 'productPrice';
-    price.textContent = getPriceText(p) || 'Ver preço';
-    bottom.appendChild(price);
-
-    var aStore = document.createElement('a');
-    aStore.className = 'productDayCard__store';
-    aStore.setAttribute('data-cn-track-owned', '1');
-    aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
-    aStore.innerHTML = '<span>🛍️</span><span>Ver na Loja Completa</span>';
-    aStore.onclick = function () {
-      trackEvent('click_open_store', {
-        page_type: 'home',
-        placement: 'featured_open_store',
-        source_block: 'produto_do_dia',
-        quick_source: state.quickSource,
-        quick_mode: state.quickMode
-      });
-    };
-    bottom.appendChild(aStore);
-
-    info.appendChild(bottom);
-    body.appendChild(info);
-    card.appendChild(body);
-    root.appendChild(card);
-  }
-
-  function makeHorizontalCard(p, idx, state) {
-    var card = document.createElement('article');
-    card.className = 'horizontalCard';
-
-    trackProductViewOnce(state, 'selected', p, {
-      placement: 'selected_rail',
-      source_block: 'achados_selecionados',
-      position_on_page: idx + 1,
-      quick_source: state.quickSource,
-      quick_mode: state.quickMode
-    });
-
-    var buyLink = getLink(p);
-    var a = document.createElement('a');
-    a.href = buyLink || getStoreUrl(['cn_source_page=home', 'cn_source_block=achados_selecionados']);
-    if (buyLink) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
-    a.setAttribute('data-cn-track-owned', '1');
-    a.onclick = function (ev) {
-      trackEvent('click_buy_home_selected', getTrackProduct(p, {
-        placement: 'selected_card',
-        source_block: 'achados_selecionados',
-        position_on_page: idx + 1,
-        quick_source: state.quickSource,
-        quick_mode: state.quickMode
-      }));
-      if (buyLink) return openBuy(buyLink, ev);
-      return true;
-    };
-
-    var media = document.createElement('div');
-    media.className = 'horizontalCard__media';
-    media.appendChild(createImg(getImage(p), p.title || p.name || 'Produto'));
-    a.appendChild(media);
-
-    var body = document.createElement('div');
-    body.className = 'horizontalCard__body';
-    var h = document.createElement('h3');
-    h.textContent = safeText(p.title || p.name || p.sku || 'Produto');
-    body.appendChild(h);
-    var price = document.createElement('div');
-    price.className = 'horizontalCard__price';
-    price.textContent = getPriceText(p) || 'Ver preço';
-    body.appendChild(price);
-    var cart = document.createElement('span');
-    cart.className = 'horizontalCard__cart';
-    cart.textContent = '🛒';
-    body.appendChild(cart);
-    a.appendChild(body);
-    card.appendChild(a);
-    return card;
-  }
-
-  function renderSelected(list, state) {
-    var root = qs('#selectedRail');
-    if (!root) return;
-    root.innerHTML = '';
-    var n = Math.min(SELECTED_LIMIT, list.length);
-    for (var i = 0; i < n; i++) {
-      root.appendChild(makeHorizontalCard(list[i], i, state));
-    }
-  }
-
-  function makeVerticalCard(p, idx, state) {
-    var card = document.createElement('article');
-    card.className = 'verticalCard';
-
-    trackProductViewOnce(state, 'quick', p, {
-      placement: 'quick_vertical_scroll',
-      source_block: 'vitrine_rapida_vertical',
-      position_on_page: idx + 1,
-      quick_source: state.quickSource,
-      quick_mode: state.quickMode
-    });
-
-    var buyLink = getLink(p);
-    var a = document.createElement('a');
-    a.href = buyLink || getStoreUrl(['cn_source_page=home', 'cn_source_block=vitrine_rapida_vertical']);
-    if (buyLink) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
-    a.setAttribute('data-cn-track-owned', '1');
-    a.onclick = function (ev) {
-      trackEvent('click_buy_home_quick', getTrackProduct(p, {
-        placement: 'quick_vertical_card',
-        source_block: 'vitrine_rapida_vertical',
-        position_on_page: idx + 1,
-        quick_source: state.quickSource,
-        quick_mode: state.quickMode
-      }));
-      if (buyLink) return openBuy(buyLink, ev);
-      return true;
-    };
-
-    var media = document.createElement('div');
-    media.className = 'verticalCard__media';
-    media.appendChild(createImg(getImage(p), p.title || p.name || 'Produto'));
-    a.appendChild(media);
-
-    var body = document.createElement('div');
-    body.className = 'verticalCard__body';
-    var h = document.createElement('h3');
-    h.textContent = safeText(p.title || p.name || p.sku || 'Produto');
-    body.appendChild(h);
-    var price = document.createElement('div');
-    price.className = 'verticalCard__price';
-    price.textContent = getPriceText(p) || 'Ver preço';
-    body.appendChild(price);
-    var badges = parseBadges(p);
-    if (badges.length) {
-      var tag = document.createElement('div');
-      tag.className = 'verticalCard__tag';
-      tag.textContent = badges.slice(0, 2).join(' • ');
-      body.appendChild(tag);
-    }
-    var cart = document.createElement('span');
-    cart.className = 'verticalCard__cart';
-    cart.textContent = '🛒';
-    body.appendChild(cart);
-    a.appendChild(body);
-    card.appendChild(a);
-    return card;
-  }
-
-  function renderQuick(list, state) {
-    var grid = qs('#quickGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-    var n = Math.min(QUICK_HOME_LIMIT, list.length);
-    for (var i = 0; i < n; i++) {
-      grid.appendChild(makeVerticalCard(list[i], i, state));
-    }
-    setQuickCount(n);
-  }
-
-  function bindSearch(state) {
-    var input = qs('#qHome');
-    var clear = qs('#qClear');
-    if (!input) {
-      renderQuick(state.quickDefault || state.sorted || [], state);
-      return;
-    }
-
-    var debounce = 0;
-    function apply(shouldTrack) {
-      var q = lower(input.value);
-      var out = [];
-      if (!q) {
-        out = (state.quickDefault && state.quickDefault.length) ? state.quickDefault : state.sorted;
-      } else {
-        for (var i = 0; i < state.sorted.length; i++) {
-          var p = state.sorted[i];
-          var blob = lower((p.title || '') + ' ' + (p.name || '') + ' ' + parseBadges(p).join(' ') + ' ' + getMlId(p) + ' ' + (p.sku || ''));
-          if (blob.indexOf(q) >= 0) out.push(p);
-        }
-      }
-      renderQuick(out, state);
-
-      if (shouldTrack) {
-        var normalized = trim(q);
-        if (state._lastTrackedSearch !== normalized) {
-          state._lastTrackedSearch = normalized;
-          trackEvent('search_home', {
-            page_type: 'home',
-            placement: 'quick_search',
-            source_block: 'vitrine_rapida_vertical',
-            query: normalized,
-            results_count: out.length,
-            quick_source: !normalized ? (state.quickSource || 'fallback') : 'search_all'
-          });
-        }
-      }
-    }
-
-    input.addEventListener('input', function () {
-      clearTimeout(debounce);
-      debounce = setTimeout(function () { apply(true); }, 350);
-    });
-
-    if (clear) {
-      clear.addEventListener('click', function () {
-        input.value = '';
-        state._lastTrackedSearch = '__force__';
-        apply(true);
-      });
-    }
-    apply(false);
   }
 
   function detectSocialPlatform(url) {
@@ -754,24 +496,402 @@
     return null;
   }
 
-  function bindOutboundLinks() {
-    document.addEventListener('click', function (ev) {
-      var a = findAnchor(ev.target);
-      if (!a) return;
-      if (a.getAttribute('data-cn-track-owned') === '1') return;
-      var href = ensureHttpUrl(a.getAttribute('href') || a.href || '');
-      if (!href || href === '#') return;
-      var platform = detectSocialPlatform(href);
-      if (!platform) return;
-      trackEvent('click_outbound_link', {
+  function trackProductViewOnce(state, kind, p, extra) {
+    if (!state || !p) return;
+
+    var sku = safeText(p.sku || p.title || '');
+    if (!sku) return;
+
+    if (!state._trackedViews) state._trackedViews = { featured: {}, quick: {} };
+    if (!state._trackedViews[kind]) state._trackedViews[kind] = {};
+
+    if (state._trackedViews[kind][sku]) return;
+    state._trackedViews[kind][sku] = true;
+
+    if (kind === 'featured') {
+      trackEvent('view_featured', getTrackProduct(p, extra));
+      return;
+    }
+
+    if (kind === 'quick') {
+      trackEvent('view_quick_product', getTrackProduct(p, extra));
+    }
+  }
+
+  function renderFeatured(p, state) {
+    var root = qs('#featured');
+    if (!root) return;
+    root.innerHTML = '';
+
+    if (!p) {
+      var note = document.createElement('div');
+      note.className = 'imperialNote';
+      note.innerHTML = '<b>ATENÇÃO:</b> nenhum produto ativo encontrado.';
+      root.appendChild(note);
+      return;
+    }
+
+    trackProductViewOnce(state, 'featured', p, {
+      placement: 'featured_main',
+      source_block: 'produto_do_dia',
+      position_on_page: 1,
+      quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+    });
+
+    var wrap = document.createElement('div');
+    wrap.className = 'cnFeaturedWrap';
+
+    var cardImg = document.createElement('div');
+    cardImg.className = 'cnCard';
+    var img = document.createElement('img');
+    img.className = 'cnImg';
+    img.alt = safeText(p.title || 'Produto do Dia');
+    img.loading = 'lazy';
+    var src = getImage(p);
+    if (src) {
+      img.src = src;
+    } else {
+      img.style.display = 'none';
+    }
+    cardImg.appendChild(img);
+    wrap.appendChild(cardImg);
+
+    var cardInfo = document.createElement('div');
+    cardInfo.className = 'cnCard';
+    var pad = document.createElement('div');
+    pad.className = 'cnCardPad';
+
+    var h = document.createElement('h3');
+    h.className = 'cnTitle';
+    h.textContent = safeText(p.title || p.name || p.sku || 'Produto do Dia');
+    pad.appendChild(h);
+
+    var badges = parseBadges(p);
+    if (badges.length) {
+      var bwrap = document.createElement('div');
+      bwrap.className = 'cnBadges';
+      for (var i = 0; i < badges.length && i < 6; i++) {
+        var sp = document.createElement('span');
+        sp.textContent = badges[i];
+        bwrap.appendChild(sp);
+      }
+      pad.appendChild(bwrap);
+    }
+
+    var steps = document.createElement('ol');
+    steps.className = 'cnSteps';
+    var mlid = getMlId(p);
+    steps.innerHTML =
+      '<li>Abra o app/site do <b>Mercado Livre</b></li>' +
+      '<li>Cole o ID na busca: <b>' + safeText(mlid) + '</b></li>' +
+      '<li>Ou clique em <b>COMPRAR AGORA</b> (abre direto)</li>';
+    pad.appendChild(steps);
+
+    var row1 = document.createElement('div');
+    row1.className = 'cnRow';
+
+    var aBuy = document.createElement('a');
+    aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary';
+    aBuy.textContent = 'COMPRAR AGORA';
+    var buyLink = getLink(p);
+    aBuy.href = buyLink || '#';
+    aBuy.target = '_blank';
+    aBuy.rel = 'noopener noreferrer';
+    aBuy.setAttribute('data-cn-track-owned', '1');
+    aBuy.onclick = function (ev) {
+      if (!buyLink) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        toast('Link do produto não encontrado');
+        return false;
+      }
+
+      trackEvent('click_buy_home_featured', getTrackProduct(p, {
+        placement: 'featured_buy',
+        source_block: 'produto_do_dia',
+        position_on_page: 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+
+      return openBuy(buyLink, ev);
+    };
+    row1.appendChild(aBuy);
+
+    var bCopyId = document.createElement('button');
+    bCopyId.type = 'button';
+    bCopyId.className = 'btn btn--glass btn--tiny';
+    bCopyId.textContent = 'Copiar ID';
+    bCopyId.onclick = function () {
+      trackEvent('click_copy_id_home', getTrackProduct(p, {
+        placement: 'featured_copy_id',
+        source_block: 'produto_do_dia',
+        position_on_page: 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+
+      copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
+    };
+    row1.appendChild(bCopyId);
+
+    var bCopyLink = document.createElement('button');
+    bCopyLink.type = 'button';
+    bCopyLink.className = 'btn btn--glass btn--tiny';
+    bCopyLink.textContent = 'Copiar Link';
+    bCopyLink.onclick = function () {
+      var link = getLink(p);
+
+      trackEvent('click_copy_link_home', getTrackProduct(p, {
+        placement: 'featured_copy_link',
+        source_block: 'produto_do_dia',
+        position_on_page: 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+
+      copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
+    };
+    row1.appendChild(bCopyLink);
+
+    var bAlt = document.createElement('button');
+    bAlt.type = 'button';
+    bAlt.className = 'btn btn--glass btn--tiny';
+    bAlt.textContent = 'Copiar Link Alternativo';
+    bAlt.onclick = function () {
+      var alt = (location.origin + location.pathname.replace(/index\.html$/,'') + 'loja.html');
+
+      trackEvent('click_copy_alt_home', getTrackProduct(p, {
+        placement: 'featured_copy_alt',
+        source_block: 'produto_do_dia',
+        position_on_page: 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+
+      copyText(alt).then(function (ok) { toast(ok ? 'Link alternativo copiado ✅' : 'Falha ao copiar'); });
+    };
+    row1.appendChild(bAlt);
+
+    var aStore = document.createElement('a');
+    aStore.className = 'btn btn--glass btn--tiny';
+    aStore.setAttribute('data-cn-track-owned', '1');
+    aStore.textContent = 'Abrir Loja Completa';
+    aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
+    aStore.onclick = function () {
+      trackEvent('click_open_store', {
         page_type: 'home',
-        placement: safeText(a.getAttribute('data-placement') || 'outbound_link'),
-        source_block: safeText(a.getAttribute('data-source-block') || 'home_links'),
-        section: safeText(a.getAttribute('data-section') || 'home'),
-        social_platform: platform,
-        target_url: href
+        placement: 'featured_open_store',
+        source_block: 'produto_do_dia',
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       });
-    }, false);
+    };
+    row1.appendChild(aStore);
+
+    pad.appendChild(row1);
+
+    var meta = document.createElement('div');
+    meta.className = 'cnMeta';
+    meta.innerHTML = '<span style="opacity:.85">ID Mercado Livre:</span> <b>' + safeText(mlid) + '</b>';
+    pad.appendChild(meta);
+
+    var mini = document.createElement('div');
+    mini.className = 'cnMini';
+    mini.innerHTML = 'Melhor funil: <b>Story com sticker de LINK</b> + <b>Loja na Bio</b>.';
+    pad.appendChild(mini);
+
+    cardInfo.appendChild(pad);
+    wrap.appendChild(cardInfo);
+
+    root.appendChild(wrap);
+  }
+
+  function makeQuickCard(p, idx, state) {
+    var card = document.createElement('article');
+    card.className = 'cnProd';
+
+    trackProductViewOnce(state, 'quick', p, {
+      placement: 'quick_grid',
+      source_block: 'vitrine_rapida',
+      position_on_page: idx + 1,
+      quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+    });
+
+    var img = document.createElement('img');
+    img.className = 'cnImg';
+    img.loading = 'lazy';
+    img.alt = safeText(p.title || p.sku || 'Produto');
+    var src = getImage(p);
+    if (src) img.src = src;
+    card.appendChild(img);
+
+    var pad = document.createElement('div');
+    pad.className = 'cnProdPad';
+
+    var h3 = document.createElement('h3');
+    h3.textContent = safeText(p.title || p.name || p.sku || 'Produto');
+    pad.appendChild(h3);
+
+    var badges = parseBadges(p);
+    if (badges.length) {
+      var bwrap = document.createElement('div');
+      bwrap.className = 'cnBadges';
+      for (var i = 0; i < badges.length && i < 4; i++) {
+        var sp = document.createElement('span');
+        sp.textContent = badges[i];
+        bwrap.appendChild(sp);
+      }
+      pad.appendChild(bwrap);
+    }
+
+    var mlid = getMlId(p);
+    var meta = document.createElement('div');
+    meta.className = 'cnMeta';
+    meta.innerHTML = '<span style="opacity:.85">ID:</span> <b>' + safeText(mlid) + '</b>';
+    pad.appendChild(meta);
+
+    var row = document.createElement('div');
+    row.className = 'cnRow';
+
+    var buy = document.createElement('a');
+    buy.className = 'btn btn--gold btn--tiny btn--buy-primary';
+    buy.textContent = 'Comprar';
+    var buyLink = getLink(p);
+    buy.href = buyLink || '#';
+    buy.target = '_blank';
+    buy.rel = 'noopener noreferrer';
+    buy.setAttribute('data-cn-track-owned', '1');
+    buy.onclick = function (ev) {
+      if (!buyLink) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        toast('Link do produto não encontrado');
+        return false;
+      }
+
+      trackEvent('click_buy_home_quick', getTrackProduct(p, {
+        placement: 'quick_buy',
+        source_block: 'vitrine_rapida',
+        position_on_page: idx + 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+
+      return openBuy(buyLink, ev);
+    };
+    row.appendChild(buy);
+
+    var cId = document.createElement('button');
+    cId.className = 'btn btn--glass btn--tiny';
+    cId.type = 'button';
+    cId.textContent = 'Copiar ID';
+    cId.onclick = function () {
+      trackEvent('click_copy_id_home', getTrackProduct(p, {
+        placement: 'quick_copy_id',
+        source_block: 'vitrine_rapida',
+        position_on_page: idx + 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+
+      copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
+    };
+    row.appendChild(cId);
+
+    var cLink = document.createElement('button');
+    cLink.className = 'btn btn--glass btn--tiny';
+    cLink.type = 'button';
+    cLink.textContent = 'Copiar Link';
+    cLink.onclick = function () {
+      var link = getLink(p);
+
+      trackEvent('click_copy_link_home', getTrackProduct(p, {
+        placement: 'quick_copy_link',
+        source_block: 'vitrine_rapida',
+        position_on_page: idx + 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
+
+      copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
+    };
+    row.appendChild(cLink);
+
+    pad.appendChild(row);
+    card.appendChild(pad);
+
+    return card;
+  }
+
+  function renderQuick(list, state) {
+    var grid = qs('#quickGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    var limit = QUICK_HOME_LIMIT;
+    var n = Math.min(limit, list.length);
+    for (var i = 0; i < n; i++) {
+      grid.appendChild(makeQuickCard(list[i], i, state));
+    }
+    setQuickCount(n);
+  }
+
+  function bindSearch(state) {
+    var input = qs('#qHome');
+    var clear = qs('#qClear');
+    if (!input) {
+      renderQuick(state.quickDefault || state.sorted || [], state);
+      return;
+    }
+
+    var debounce = 0;
+
+    function apply(shouldTrack) {
+      var q = lower(input.value);
+      var out = [];
+      if (!q) {
+        out = (state.quickDefault && state.quickDefault.length) ? state.quickDefault : state.sorted;
+      } else {
+        for (var i = 0; i < state.sorted.length; i++) {
+          var p = state.sorted[i];
+          var blob = lower((p.title || '') + ' ' + parseBadges(p).join(' ') + ' ' + getMlId(p) + ' ' + (p.sku || ''));
+          if (blob.indexOf(q) >= 0) out.push(p);
+        }
+      }
+      renderQuick(out, state);
+
+      if (shouldTrack) {
+        var normalized = trim(q);
+        if (state._lastTrackedSearch !== normalized) {
+          state._lastTrackedSearch = normalized;
+          trackEvent('search', {
+            page_type: 'home',
+            placement: 'home_search',
+            source_block: 'vitrine_rapida',
+            query: normalized,
+            results_count: out.length,
+            quick_source: !normalized ? (state.quickSource || 'fallback') : 'search_all'
+          });
+        }
+      }
+    }
+
+    input.addEventListener('input', function () {
+      clearTimeout(debounce);
+      debounce = setTimeout(function () {
+        apply(true);
+      }, 350);
+    });
+
+    if (clear) {
+      clear.addEventListener('click', function () {
+        input.value = '';
+        state._lastTrackedSearch = '__force__';
+        apply(true);
+      });
+    }
+    apply(false);
   }
 
   function bindButtons() {
@@ -793,52 +913,70 @@
       btnCopyHome.addEventListener('click', function () {
         trackEvent('click_copy_home_link', getPageTrackBase({
           placement: 'copy_home_link',
-          source_block: 'footer',
-          section: 'home_footer'
+          source_block: 'header_actions',
+          section: 'home_top'
         }));
         copyText(location.href).then(function (ok) { toast(ok ? 'Link da home copiado ✅' : 'Falha ao copiar'); });
       });
     }
 
-    var storeLinks = ['#floatingLoja', '#goLoja', '#btnVerTodosTop', '#btnLojaBar', '#btnAbrirLojaCompleta', '#linkCardLoja'];
-    for (var i = 0; i < storeLinks.length; i++) {
-      var el = qs(storeLinks[i]);
-      if (!el) continue;
-      el.addEventListener('click', function () {
-        trackEvent('click_open_store', getPageTrackBase({
-          placement: this.id || 'store_link',
-          source_block: 'home',
-          section: 'home'
+    var btnRefresh = qs('#refresh');
+    if (btnRefresh) {
+      btnRefresh.addEventListener('click', function () {
+        trackEvent('click_refresh_home', getPageTrackBase({
+          placement: 'refresh',
+          source_block: 'header_actions',
+          section: 'home_top'
         }));
+        location.reload();
       });
     }
   }
 
-  function setLastUpdate(iso) {
-    var text = iso ? formatIsoToPt(iso) : 'agora';
-    var el = qs('#lastUpdate');
-    if (el) el.textContent = text;
-    var mob = qs('#lastUpdateMobile');
-    if (mob) mob.textContent = text;
+  function bindOutboundLinks() {
+    document.addEventListener('click', function (ev) {
+      var a = findAnchor(ev.target);
+      if (!a) return;
+      if (a.getAttribute('data-cn-track-owned') === '1') return;
+
+      var href = ensureHttpUrl(a.getAttribute('href') || a.href || '');
+      if (!href || href === '#') return;
+
+      var platform = detectSocialPlatform(href);
+      if (!platform) return;
+
+      trackEvent('click_outbound_link', {
+        page_type: 'home',
+        placement: safeText(a.getAttribute('data-placement') || 'outbound_link'),
+        source_block: safeText(a.getAttribute('data-source-block') || 'home_links'),
+        section: safeText(a.getAttribute('data-section') || 'home'),
+        social_platform: platform,
+        target_url: href
+      });
+    }, false);
   }
 
-  function pickFeatured(sorted) {
-    for (var i = 0; i < sorted.length; i++) {
-      if (isFeatured(sorted[i])) return sorted[i];
-    }
-    return sorted.length ? sorted[0] : null;
+  function setLastUpdate(iso) {
+    var el = qs('#lastUpdate');
+    if (!el) return;
+    el.textContent = iso ? formatIsoToPt(iso) : 'agora';
   }
 
   function init() {
+    makeBgClickThrough();
     bindButtons();
     bindOutboundLinks();
 
-    trackEvent('page_view_home', {
+    trackEvent('page_view', {
       page_type: 'home',
       placement: 'landing_entry',
       source_block: 'home',
       section: 'entry'
     });
+
+    var y = new Date().getFullYear();
+    var yEl = qs('#year');
+    if (yEl) yEl.textContent = String(y);
 
     var state = {
       products: [],
@@ -849,14 +987,14 @@
       quickMode: 'fallback',
       featured: null,
       updated_at: '',
-      _trackedViews: { featured: {}, selected: {}, quick: {} }
+      _trackedViews: {
+        featured: {},
+        quick: {}
+      }
     };
 
     fetch('./produtos.json', { cache: 'no-store' })
-      .then(function (r) {
-        if (!r.ok) throw new Error('fetch produtos.json');
-        return r.json();
-      })
+      .then(function (r) { if (!r.ok) throw new Error('fetch produtos.json'); return r.json(); })
       .then(function (j) {
         var list = j.products || j.items || [];
         state.updated_at = j.updated_at || j.updatedAt || (j.meta && (j.meta.updated_at || j.meta.updatedAt)) || '';
@@ -869,22 +1007,29 @@
         state.quickSource = quickPick.source;
         state.quickMode = quickPick.mode || quickPick.source || 'fallback';
 
-        state.featured = pickFeatured(state.sorted);
-
         setTotals(state.active.length);
         setLastUpdate(state.updated_at);
+
+        var feat = null;
+        for (var i = 0; i < state.sorted.length; i++) {
+          if (isFeatured(state.sorted[i])) { feat = state.sorted[i]; break; }
+        }
+        if (!feat) feat = state.sorted.length ? state.sorted[0] : null;
+        state.featured = feat;
+
         renderFeatured(state.featured, state);
-        renderSelected(state.quickDefault.length ? state.quickDefault : state.sorted, state);
         bindSearch(state);
+
+        qsa('[data-total-products]').forEach(function (el) { el.textContent = String(state.active.length); });
       })
       .catch(function () {
+        var rootF = qs('#featured');
+        if (rootF) {
+          rootF.innerHTML = '<div class="imperialNote"><b>ERRO:</b> não consegui carregar <b>produtos.json</b> no celular. Tenta abrir o link com barra no final: <b>/La_Famiglia_Links/</b>.</div>';
+        }
         setTotals(0);
         setQuickCount(0);
         setLastUpdate('');
-        var rootF = qs('#featured');
-        if (rootF) {
-          rootF.innerHTML = '<div class="productDayCard"><div class="productDayCard__label"><span>Erro</span><i></i></div><div class="productDayCard__body"><div class="productDayCard__info"><h3>Não consegui carregar produtos.json</h3><p class="productDayCard__desc">Abra com barra no final ou confira se produtos.json está no GitHub Pages.</p></div></div></div>';
-        }
       });
   }
 
