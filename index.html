@@ -1563,333 +1563,6 @@
       }
     }
 
-
-    /* =========================
-       ETAPA 1 — TOPO/MENU PREMIUM
-       Mudança cirúrgica:
-       - background preservado
-       - script.js preservado
-       - CTA principal movido para a área nobre do topo
-       - opções secundárias mais discretas
-       ========================= */
-    .hero{
-      display:grid !important;
-      grid-template-columns:minmax(0, 1.35fr) minmax(250px, .62fr) !important;
-      align-items:stretch !important;
-      gap:18px !important;
-      padding:18px !important;
-      border-color:rgba(215,176,88,.24) !important;
-      background:
-        radial-gradient(900px 340px at 22% 0%, rgba(215,176,88,.12), transparent 62%),
-        radial-gradient(680px 320px at 92% 8%, rgba(255,221,145,.08), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.008)),
-        rgba(7,7,9,.50) !important;
-      box-shadow:0 22px 70px rgba(0,0,0,.44), inset 0 1px 0 rgba(255,255,255,.04) !important;
-    }
-
-    .hero__brand--banner{
-      gap:14px !important;
-    }
-
-    .heroBanner{
-      border-radius:18px !important;
-      border-color:rgba(215,176,88,.22) !important;
-      background:rgba(0,0,0,.22) !important;
-      box-shadow:0 18px 44px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.035) !important;
-    }
-
-    .heroBanner__img{
-      filter:contrast(1.03) saturate(1.04);
-    }
-
-    .hero__text--bannerstack{
-      gap:0 !important;
-    }
-
-    .hero__sub--banner{
-      max-width:680px !important;
-      margin:0 !important;
-      color:rgba(255,255,255,.78) !important;
-      font-size:1rem !important;
-      line-height:1.42 !important;
-    }
-
-    .heroStats{
-      width:100%;
-      display:grid !important;
-      grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
-      gap:10px !important;
-      margin-top:14px !important;
-    }
-
-    .chip--stat{
-      min-height:58px !important;
-      padding:10px 12px !important;
-      border-radius:16px !important;
-      justify-content:flex-start !important;
-      gap:10px !important;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.16)),
-        rgba(0,0,0,.16) !important;
-      border-color:rgba(215,176,88,.16) !important;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.035) !important;
-    }
-
-    .chip--stat .chip__icon{
-      flex:0 0 auto;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:28px;
-      height:28px;
-      color:rgba(215,176,88,.98);
-      font-size:1.15rem;
-    }
-
-    .chip--stat .chip__txt{
-      min-width:0;
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      line-height:1.05;
-    }
-
-    .chip--stat b{
-      color:rgba(255,225,154,.96);
-      font-size:.92rem;
-      font-weight:900;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .chip--stat small{
-      color:rgba(255,255,255,.68);
-      font-size:.78rem;
-      font-weight:700;
-      line-height:1.15;
-    }
-
-    .heroPrimaryCta{
-      width:min(520px, 100%);
-      min-height:54px !important;
-      margin-top:14px !important;
-      border-radius:16px !important;
-      color:#171107 !important;
-      font-size:1.03rem !important;
-      font-weight:900 !important;
-      letter-spacing:.04em !important;
-      border-color:rgba(255,225,154,.64) !important;
-      background:
-        linear-gradient(180deg, #f0c874, #b87a28) !important;
-      box-shadow:
-        0 18px 38px rgba(145,111,34,.28),
-        inset 0 1px 0 rgba(255,255,255,.34) !important;
-      text-shadow:0 1px 0 rgba(255,255,255,.18) !important;
-    }
-
-    .heroPrimaryCta:hover,
-    .heroPrimaryCta:focus-visible{
-      transform:translateY(-1px);
-      filter:brightness(1.04);
-      box-shadow:
-        0 22px 44px rgba(145,111,34,.34),
-        inset 0 1px 0 rgba(255,255,255,.38) !important;
-    }
-
-    .hero__actions{
-      align-self:stretch !important;
-      display:flex !important;
-      flex-direction:column !important;
-      justify-content:center !important;
-      gap:10px !important;
-      padding:12px !important;
-      border-radius:18px !important;
-      border:1px solid rgba(215,176,88,.12) !important;
-      background:
-        radial-gradient(420px 220px at 20% 0%, rgba(215,176,88,.08), transparent 58%),
-        rgba(0,0,0,.16) !important;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.025) !important;
-    }
-
-    .hero__actions .btn--glass,
-    .heroMore__summary{
-      min-height:44px !important;
-      border-radius:13px !important;
-      justify-content:flex-start !important;
-      padding-inline:14px !important;
-      color:rgba(255,255,255,.88) !important;
-      border-color:rgba(215,176,88,.14) !important;
-      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.12)) !important;
-      box-shadow:none !important;
-    }
-
-    .hero__actions .miniNote{
-      margin:8px 0 0 0 !important;
-      min-height:54px !important;
-      border-radius:14px !important;
-      display:flex !important;
-      align-items:center !important;
-      gap:9px !important;
-      border-color:rgba(215,176,88,.12) !important;
-      background:rgba(0,0,0,.18) !important;
-    }
-
-    .sectionNav{
-      margin-top:-4px !important;
-      padding:8px !important;
-      border-radius:20px !important;
-      display:grid !important;
-      grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
-      gap:6px !important;
-      border-color:rgba(215,176,88,.18) !important;
-      background:rgba(6,6,8,.58) !important;
-      box-shadow:0 14px 34px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.025) !important;
-    }
-
-    .sectionNav__pill{
-      width:100%;
-      min-height:42px !important;
-      border-radius:16px !important;
-      padding:8px 10px !important;
-      font-size:.92rem !important;
-      white-space:nowrap;
-      background:rgba(255,255,255,.025) !important;
-      border-color:rgba(215,176,88,.12) !important;
-    }
-
-    .sectionNav__pill--gold{
-      color:rgba(255,231,169,.96) !important;
-      border-color:rgba(215,176,88,.28) !important;
-      background:
-        radial-gradient(360px 120px at 50% 0%, rgba(215,176,88,.15), transparent 65%),
-        rgba(215,176,88,.06) !important;
-    }
-
-    @media (max-width:980px){
-      .hero{
-        grid-template-columns:1fr !important;
-      }
-
-      .hero__actions{
-        padding:0 !important;
-        border:0 !important;
-        background:transparent !important;
-        box-shadow:none !important;
-      }
-    }
-
-    @media (max-width:700px){
-      .page{
-        padding-top:18px !important;
-      }
-
-      .hero{
-        padding:14px !important;
-        gap:12px !important;
-        border-radius:22px !important;
-      }
-
-      .heroBanner{
-        border-radius:16px !important;
-      }
-
-      .hero__sub--banner{
-        font-size:.93rem !important;
-        line-height:1.32 !important;
-        color:rgba(255,255,255,.72) !important;
-      }
-
-      .heroStats{
-        grid-template-columns:1fr !important;
-        gap:7px !important;
-        margin-top:10px !important;
-      }
-
-      .chip--stat{
-        min-height:44px !important;
-        padding:8px 10px !important;
-        border-radius:14px !important;
-      }
-
-      .chip--stat .chip__icon{
-        width:24px;
-        height:24px;
-        font-size:1rem;
-      }
-
-      .chip--stat b{
-        font-size:.88rem;
-      }
-
-      .chip--stat small{
-        font-size:.74rem;
-      }
-
-      .heroPrimaryCta{
-        width:100%;
-        min-height:50px !important;
-        margin-top:10px !important;
-        border-radius:16px !important;
-        font-size:.98rem !important;
-      }
-
-      .heroMore{
-        display:block !important;
-        width:100%;
-      }
-
-      .hero__actions > #copyLoja,
-      .hero__actions > .btn--social,
-      .hero__actions > .miniNote{
-        display:none !important;
-      }
-
-      .heroMore__summary{
-        min-height:46px !important;
-        justify-content:center !important;
-        border-radius:16px !important;
-      }
-
-      .sectionNav{
-        position:sticky !important;
-        top:8px !important;
-        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
-        padding:8px !important;
-        border-radius:22px !important;
-        gap:7px !important;
-      }
-
-      .sectionNav__pill{
-        min-height:40px !important;
-        border-radius:15px !important;
-        font-size:.88rem !important;
-      }
-    }
-
-    @media (max-width:420px){
-      .hero{
-        padding:12px !important;
-      }
-
-      .hero__sub--banner{
-        font-size:.9rem !important;
-      }
-
-      .chip--stat small{
-        display:none;
-      }
-
-      .sectionNav__pill{
-        font-size:.83rem !important;
-        padding-inline:8px !important;
-      }
-
-      .floatingStoreCTA a{
-        font-size:.86rem !important;
-      }
-    }
-
   </style>
 </head>
 
@@ -1935,33 +1608,34 @@
         <div class="hero__text hero__text--bannerstack">
           <h1 class="srOnly">Central Premium</h1>
           <p class="sub hero__sub--banner">
-            Achados selecionados diariamente para quem valoriza qualidade, sofisticação e praticidade.
+            Links oficiais + vitrine de produtos (Achados do Dia).
           </p>
 
-          <div class="chips heroStats" aria-label="Resumo da vitrine">
-            <span class="chip chip--stat">
-              <span class="chip__icon">📦</span>
-              <span class="chip__txt"><b><span data-total-products>—</span></b><small>Produtos na Loja Completa</small></span>
-            </span>
-            <span class="chip chip--stat">
-              <span class="chip__icon">⭐</span>
-              <span class="chip__txt"><b>Achados do Dia</b><small>Selecionados com carinho</small></span>
-            </span>
-            <span class="chip chip--stat">
-              <span class="chip__icon">↻</span>
-              <span class="chip__txt"><b>Atualizado diariamente</b><small>Novos produtos toda semana</small></span>
-            </span>
+          <div class="chips" aria-label="Dicas rápidas">
+            <span class="chip">⚡ clique 1-toque</span>
+            <span class="chip">🛒 vitrine sempre limpa</span>
+            <span class="chip">👑 padrão imperial</span>
           </div>
 
-          <a class="btn btn--gold heroPrimaryCta" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
+          <div class="countPill" aria-label="Contagem de produtos">
+            <span>📦 Total na Loja Completa:</span>
+            <span class="n" data-total-products>—</span>
+          </div>
+
+          <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
+            <div><b>Prévia da vitrine:</b> Produto do Dia + Vitrine Rápida.</div>
+            <div class="mini">Para ver tudo, use <b>“Abrir Vitrine / Loja”</b>.</div>
+          </div>
         </div>
       </div>
 
       <div class="hero__actions">
+        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
+
         <details class="heroMore">
-          <summary class="heroMore__summary">➕ Opções oficiais</summary>
+          <summary class="heroMore__summary">➕ Mais opções</summary>
           <div class="heroMore__body">
-            <button class="btn btn--glass btn--social" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">🔗 Copiar link</button>
+            <button class="btn btn--glass btn--social" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">📌 Copiar link</button>
             <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
             <a class="btn btn--glass btn--social heroMore__telegram" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
             <div class="miniNote heroMore__status">
@@ -1973,7 +1647,7 @@
           </div>
         </details>
 
-        <button class="btn btn--glass" id="copyLoja" type="button">🔗 Copiar link da vitrine</button>
+        <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
 
         <!-- ✅ Instagram (mais importante) — voltou -->
         <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
@@ -2002,7 +1676,7 @@
       <div class="panel__head">
         <div>
           <h2>Produto do dia</h2>
-          <p>Destaque especial da vitrine, escolhido para abrir a seleção de hoje.</p>
+          <p>Vitrine com destaque + botões rápidos (comprar / copiar ID / copiar link).</p>
         </div>
         <div class="panel__right">
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
@@ -2023,7 +1697,7 @@
         <div>
           <h2>Vitrine rápida</h2>
           <p>
-            Seleção rápida de achados premium. A lista completa fica na <b>Loja Completa</b>.
+            Prévia de produtos (pra bater o olho). A lista completa fica na <b>Loja Completa</b>.
             <span style="opacity:.85">Mostrando <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b>.</span>
           </p>
         </div>
