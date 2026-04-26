@@ -1815,6 +1815,218 @@
     }
 
 
+
+    /* =========================
+       ETAPA 3B — MICROAJUSTE DO TOPO ORIGINAL
+       - mantém banner V5 e estrutura atual
+       - compacta o hero sem reconstruir
+       - deixa CTA, chips, status e nota mais elegantes
+       ========================= */
+    @media (min-width: 861px) {
+      .hero {
+        padding: 14px;
+        gap: 14px;
+        align-items: flex-start;
+        border-color: rgba(215,176,88,.24);
+        background:
+          radial-gradient(760px 220px at 22% 0%, rgba(215,176,88,.09), transparent 62%),
+          linear-gradient(180deg, rgba(255,255,255,.032), rgba(255,255,255,.006)),
+          rgba(7,7,9,.48);
+        box-shadow: 0 18px 54px rgba(0,0,0,.40), inset 0 1px 0 rgba(255,255,255,.035);
+      }
+
+      .hero__brand--banner {
+        gap: 9px;
+      }
+
+      .heroBanner {
+        border-radius: 16px;
+        border-color: rgba(215,176,88,.18);
+        box-shadow: 0 14px 34px rgba(0,0,0,.26);
+      }
+
+      .heroBanner__seal {
+        width: 62px;
+        height: 62px;
+        top: 12px;
+        right: 12px;
+        border-radius: 16px;
+        opacity: .96;
+      }
+
+      .heroBanner__sealLogo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .hero__sub--banner {
+        max-width: 620px;
+        font-size: 13px;
+        line-height: 1.36;
+        color: rgba(255,255,255,.74);
+        margin-top: 0;
+      }
+
+      .chips {
+        margin-top: 8px;
+        gap: 7px;
+      }
+
+      .chip {
+        min-height: 27px;
+        padding: 4px 9px;
+        font-size: 11px;
+        line-height: 1;
+        border-color: rgba(215,176,88,.14);
+        background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.13));
+        color: rgba(255,255,255,.82);
+      }
+
+      .countPill {
+        margin-top: 8px;
+        min-height: 30px;
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1;
+        border-color: rgba(215,176,88,.16);
+        background: rgba(0,0,0,.20);
+      }
+
+      .imperialNote--top {
+        margin-top: 8px;
+        width: fit-content;
+        max-width: min(100%, 570px);
+        padding: 7px 10px;
+        border-radius: 13px;
+        border-color: rgba(215,176,88,.14);
+        background: linear-gradient(180deg, rgba(255,255,255,.014), rgba(0,0,0,.13));
+        box-shadow: 0 8px 22px rgba(0,0,0,.18);
+        font-size: 12px;
+        line-height: 1.24;
+        color: rgba(255,255,255,.78);
+      }
+
+      .hero__actions {
+        flex: 0 0 264px;
+        gap: 8px;
+        justify-content: flex-start;
+      }
+
+      .hero__actions .btn {
+        min-height: 40px;
+        border-radius: 15px;
+        padding: 9px 12px;
+        font-size: 12px;
+        letter-spacing: .01em;
+        box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      }
+
+      .hero__actions .btn--gold {
+        min-height: 46px;
+        border-color: rgba(215,176,88,.44);
+        box-shadow: 0 14px 30px rgba(145,111,34,.24);
+      }
+
+      .hero__actions .btn--glass,
+      .hero__actions .btn--social {
+        border-color: rgba(215,176,88,.13);
+        background: linear-gradient(180deg, rgba(255,255,255,.032), rgba(0,0,0,.16));
+        color: rgba(255,255,255,.84);
+      }
+
+      .hero__actions .miniNote {
+        min-height: 40px;
+        justify-content: flex-start;
+        padding: 8px 10px;
+        border-radius: 14px;
+        border-color: rgba(215,176,88,.12);
+        background: rgba(0,0,0,.19);
+        font-size: 11px;
+        line-height: 1.24;
+      }
+
+      .sectionNav {
+        margin-top: 8px;
+        padding: 8px 10px;
+        gap: 8px;
+        border-color: rgba(215,176,88,.13);
+        background: rgba(6,6,8,.50);
+        box-shadow: 0 12px 30px rgba(0,0,0,.28);
+      }
+
+      .sectionNav__pill {
+        min-height: 32px;
+        padding: 6px 11px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 12px;
+      }
+
+      .hero__brand--banner {
+        gap: 8px;
+      }
+
+      .heroBanner {
+        border-radius: 14px;
+      }
+
+      .hero__sub--banner {
+        font-size: .90rem;
+        line-height: 1.28;
+      }
+
+      .chips {
+        margin-top: 8px;
+        gap: 6px;
+      }
+
+      .chip {
+        min-height: 27px;
+        padding: 4px 8px;
+        font-size: .78rem;
+      }
+
+      .countPill {
+        margin-top: 8px;
+        min-height: 31px;
+        padding: 5px 9px;
+        font-size: .84rem;
+      }
+
+      .imperialNote--top {
+        margin-top: 8px;
+        padding: 7px 9px;
+        font-size: .86rem;
+        line-height: 1.25;
+      }
+
+      .hero__actions {
+        gap: 7px;
+      }
+
+      .hero__actions .btn--gold {
+        min-height: 42px;
+        border-radius: 15px;
+      }
+
+      .heroMore__summary {
+        min-height: 38px;
+        padding: 8px 10px;
+        border-radius: 14px;
+        font-size: .90rem;
+      }
+
+      .sectionNav {
+        margin-top: 8px;
+        padding: 7px 8px;
+        gap: 7px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1860,23 +2072,22 @@
         <div class="hero__text hero__text--bannerstack">
           <h1 class="srOnly">Central Premium</h1>
           <p class="sub hero__sub--banner">
-            Links oficiais + vitrine de produtos (Achados do Dia).
+            Curadoria premium de achados para uma compra rápida, bonita e segura.
           </p>
 
           <div class="chips" aria-label="Dicas rápidas">
-            <span class="chip">⚡ clique 1-toque</span>
-            <span class="chip">🛒 vitrine sempre limpa</span>
-            <span class="chip">👑 padrão imperial</span>
+            <span class="chip">⚡ compra rápida</span>
+            <span class="chip">💎 seleção premium</span>
+            <span class="chip">🔄 sempre atualizada</span>
           </div>
 
           <div class="countPill" aria-label="Contagem de produtos">
-            <span>📦 Total na Loja Completa:</span>
+            <span>📦 Loja Completa:</span>
             <span class="n" data-total-products>—</span>
           </div>
 
           <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>Prévia da vitrine:</b> Produto do Dia + Vitrine Rápida.</div>
-            <div class="mini">Para ver tudo, use <b>“Abrir Vitrine / Loja”</b>.</div>
+            <div><b>Produto do Dia + Vitrine Rápida</b> · explore todos os achados na <b>Loja Completa</b>.</div>
           </div>
         </div>
       </div>
