@@ -2672,6 +2672,261 @@
     }
 
 
+  
+
+    /* =========================
+       ETAPA 3G — REFINO ELEGANTE DE TIPOGRAFIA E HIERARQUIA
+       - título do Produto do Dia em dois níveis
+       - seção e Vitrine Rápida mais editoriais
+       - botões e código de busca mais refinados
+       ========================= */
+    #sec-produto-do-dia .panel__head h2,
+    #sec-vitrine-rapida .panel__head h2 {
+      text-transform: none;
+      letter-spacing: .14em;
+      font-size: 15px;
+    }
+
+    #sec-produto-do-dia .panel__head p,
+    #sec-vitrine-rapida .panel__head p {
+      color: rgba(255,255,255,.68);
+    }
+
+    #sec-produto-do-dia > .imperialNote {
+      padding: 8px 12px;
+      border-color: rgba(215,176,88,.16);
+      background: linear-gradient(180deg, rgba(255,255,255,.012), rgba(0,0,0,.18));
+    }
+
+    #featured .cnTitle {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    #featured .cnTitleMain {
+      display: block;
+      font-family: Cinzel, serif;
+      font-size: clamp(2rem, 3.1vw, 3.25rem);
+      line-height: .96;
+      letter-spacing: .01em;
+      color: rgba(255,249,238,.98);
+      text-shadow: 0 8px 22px rgba(0,0,0,.45);
+      text-transform: none;
+      text-wrap: balance;
+    }
+
+    #featured .cnTitleSub {
+      display: block;
+      max-width: 620px;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: clamp(.92rem, 1.2vw, 1.05rem);
+      line-height: 1.36;
+      font-weight: 700;
+      letter-spacing: .01em;
+      color: rgba(224,195,107,.86);
+      text-transform: none;
+    }
+
+    #featured .cnBadges {
+      margin-top: 12px;
+    }
+
+    #featured .cnBadges span {
+      padding: 4px 10px;
+      border-color: rgba(215,176,88,.16);
+      background: rgba(255,255,255,.028);
+      color: rgba(255,255,255,.78);
+    }
+
+    #featured .cnSteps {
+      list-style: none;
+      counter-reset: cn-step;
+      margin: 16px 0 0;
+      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(215,176,88,.13);
+      background: linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.22));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+    }
+
+    #featured .cnSteps li {
+      counter-increment: cn-step;
+      position: relative;
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 6px 8px 6px 42px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.32;
+    }
+
+    #featured .cnSteps li + li {
+      border-top: 1px solid rgba(255,255,255,.055);
+    }
+
+    #featured .cnSteps li::before {
+      content: counter(cn-step);
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      width: 23px;
+      height: 23px;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(215,176,88,.28);
+      background: rgba(215,176,88,.12);
+      color: rgba(255,223,157,.96);
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    #featured .cnSteps b {
+      color: rgba(239,211,145,.98);
+      font-weight: 900;
+    }
+
+    #featured .cnRow {
+      gap: 10px;
+      align-items: center;
+    }
+
+    #featured .btn--buy-primary {
+      width: 100%;
+      min-height: 46px;
+      border-radius: 15px;
+      font-size: .94rem;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+
+    #featured .cnRow .btn--glass {
+      flex: 1 1 190px;
+      min-height: 41px;
+      border-radius: 14px;
+      color: rgba(255,255,255,.86);
+    }
+
+    #featured .cnRow .btn--glass[data-cn-role="open-store"] {
+      flex: 0 1 270px;
+      opacity: .88;
+    }
+
+    #featured .cnMeta {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(215,176,88,.12);
+      background: rgba(0,0,0,.20);
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+    }
+
+    #featured .cnMeta b {
+      color: rgba(255,236,180,.78);
+    }
+
+    #sec-vitrine-rapida .panel__head .btn--gold {
+      border-radius: 999px;
+    }
+
+    #qHome::placeholder {
+      color: rgba(255,255,255,.38);
+    }
+
+    @media (max-width: 860px) {
+      #featured .cnTitleMain {
+        font-size: clamp(1.65rem, 6vw, 2.35rem);
+        line-height: 1.02;
+      }
+
+      #featured .cnTitleSub {
+        font-size: .93rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      #sec-produto-do-dia .panel__head h2,
+      #sec-vitrine-rapida .panel__head h2 {
+        font-size: 1.08rem;
+        letter-spacing: .17em;
+      }
+
+      #sec-produto-do-dia .panel__head p,
+      #sec-vitrine-rapida .panel__head p {
+        font-size: .88rem;
+        line-height: 1.38;
+      }
+
+      #featured .cnTitleMain {
+        font-size: clamp(1.35rem, 7vw, 1.85rem);
+        line-height: 1.05;
+      }
+
+      #featured .cnTitleSub {
+        margin-top: -2px;
+        font-size: .86rem;
+        line-height: 1.3;
+      }
+
+      #featured .cnBadges {
+        margin-top: 10px;
+      }
+
+      #featured .cnBadges span {
+        padding: 3px 8px;
+        font-size: .82rem;
+      }
+
+      #featured .cnSteps {
+        margin-top: 12px;
+        padding: 9px;
+        border-radius: 15px;
+      }
+
+      #featured .cnSteps li {
+        min-height: 31px;
+        padding: 6px 6px 6px 37px;
+        font-size: .90rem;
+      }
+
+      #featured .cnSteps li::before {
+        left: 6px;
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+      }
+
+      #featured .btn--buy-primary {
+        min-height: 43px;
+        font-size: .92rem;
+      }
+
+      #featured .cnRow .btn--glass {
+        min-height: 39px;
+        flex-basis: calc(50% - 6px);
+      }
+
+      #featured .cnRow .btn--glass[data-cn-role="open-store"] {
+        flex-basis: 100%;
+      }
+
+      #featured .cnMeta {
+        font-size: .80rem;
+        padding: 6px 9px;
+      }
+    }
+
   </style>
 </head>
 
@@ -2774,7 +3029,7 @@
 
     <!-- ✅ MENU “IMPERIAL” -->
     <nav class="sectionNav" aria-label="Atalhos da Central Premium">
-      <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
+      <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Seleção do Dia</a>
       <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
       <a class="sectionNav__pill sectionNav__pill--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
       <a class="sectionNav__pill" href="#sec-links">🔗 Links Oficiais</a>
@@ -2783,8 +3038,8 @@
     <section class="panel" id="sec-produto-do-dia">
       <div class="panel__head">
         <div>
-          <h2>Produto do dia</h2>
-          <p>Destaque especial da vitrine, organizado para compra rápida e segura.</p>
+          <h2>Seleção do Dia</h2>
+          <p>Escolha especial da curadoria, destacada para compra rápida e segura.</p>
         </div>
         <div class="panel__right">
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
@@ -2792,7 +3047,7 @@
       </div>
 
       <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
-        <div>👑 <b>Loja Completa:</b> <b><span data-total-products>—</span> produtos</b> selecionados.</div>
+        <div>👑 <b>Loja Completa</b> · <b><span data-total-products>—</span> produtos</b> selecionados.</div>
       </div>
 
       <div class="featured" id="featured">
@@ -2803,24 +3058,24 @@
     <section class="panel" id="sec-vitrine-rapida">
       <div class="panel__head">
         <div>
-          <h2>Vitrine rápida</h2>
+          <h2>Vitrine Rápida</h2>
           <p>
-            Prévia premium de achados. A lista completa fica na <b>Loja Completa</b>.
-            <span style="opacity:.85">Mostrando <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b>.</span>
+            Uma prévia da curadoria.
+            <span style="opacity:.85">Exibindo <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b> produtos.</span>
           </p>
         </div>
         <div class="panel__right">
-          <a class="btn btn--tiny btn--gold" href="./loja.html" id="btnVerTodosTop">Ver todos (<span data-total-products>—</span>)</a>
+          <a class="btn btn--tiny btn--gold" href="./loja.html" id="btnVerTodosTop">Ver todos · <span data-total-products>—</span></a>
         </div>
       </div>
 
       <div class="quickTools">
         <div class="quickSearch" role="search">
           <span class="quickIcon">🔎</span>
-          <input id="qHome" placeholder="Buscar produto (ex: fone, mochila, mouse...)" />
+          <input id="qHome" placeholder="Buscar produto" />
         </div>
         <button class="btn btn--tiny btn--glass" id="qClear" type="button">Limpar</button>
-        <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Abrir loja completa (<span data-total-products>—</span>)</a>
+        <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Abrir Loja Completa</a>
       </div>
 
       <div class="productsGrid cnGrid" id="quickGrid">
@@ -2828,7 +3083,7 @@
       </div>
 
       <div class="imperialNote" role="note" aria-label="Mensagem para leigos">
-        <div>💡 <b>Não se perca:</b> se você não achou o que queria aqui, a <b>Loja Completa</b> tem <b><span data-total-products>—</span> itens</b> — clique em <b>“Ver todos”</b>.</div>
+        <div>✨ <b>Curadoria completa:</b> a <b>Loja Completa</b> reúne todos os achados selecionados.</div>
       </div>
     </section>
     <section class="panel" id="sec-links">
