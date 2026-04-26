@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-26T07:55:19Z",
+  "updated_at": "2026-04-26T13:28:18Z",
   "total_items": 2,
   "summary": {
     "unique_skus": 2,
@@ -16,7 +16,7 @@
   },
   "items": [
     {
-      "happened_at": "2026-04-26T07:50:06Z",
+      "happened_at": "2026-04-26T13:24:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-04-26T07:50:06Z",
+      "happened_at": "2026-04-26T13:24:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (30x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (31x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
