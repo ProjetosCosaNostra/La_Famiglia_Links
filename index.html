@@ -2448,6 +2448,230 @@
     }
 
 
+
+    /* =========================
+       ETAPA 3F — AJUSTE FINO MOBILE/STICKY
+       - no mobile, menu deixa de flutuar por cima do conteúdo
+       - Produto do Dia mais compacto no celular
+       - aviso de exploração fica menor
+       - Vitrine Rápida fica mais elegante e menos pesada
+       ========================= */
+    @media (max-width: 640px) {
+      .sectionNav {
+        position: relative !important;
+        top: auto !important;
+        z-index: 20 !important;
+        margin-top: 6px !important;
+        margin-bottom: 8px !important;
+        padding: 7px 8px !important;
+        gap: 5px !important;
+        border-radius: 24px !important;
+        background: rgba(5,5,7,.60) !important;
+        box-shadow: 0 10px 24px rgba(0,0,0,.24) !important;
+      }
+
+      .sectionNav__pill {
+        min-height: 25px !important;
+        padding: 4px 8px !important;
+        font-size: .69rem !important;
+        line-height: 1 !important;
+      }
+
+      #sec-produto-do-dia,
+      #sec-vitrine-rapida,
+      #sec-links {
+        scroll-margin-top: 12px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 10px 12px !important;
+        gap: 8px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: .82rem !important;
+        letter-spacing: .15em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        max-width: 78% !important;
+        font-size: .74rem !important;
+        line-height: 1.25 !important;
+      }
+
+      #sec-produto-do-dia .panel__right .btn {
+        min-height: 32px !important;
+        padding: 6px 9px !important;
+        font-size: .72rem !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        margin: 0 10px 7px !important;
+        padding: 6px 8px !important;
+        border-radius: 11px !important;
+        font-size: .76rem !important;
+        line-height: 1.15 !important;
+        background: rgba(0,0,0,.22) !important;
+        box-shadow: 0 6px 14px rgba(0,0,0,.16) !important;
+      }
+
+      #featured.featured {
+        padding: 8px 9px 10px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        gap: 8px !important;
+      }
+
+      #featured .cnCard:first-child {
+        padding: 7px !important;
+      }
+
+      #featured .cnCard:first-child .cnImg {
+        height: min(46vh, 390px) !important;
+        max-height: 390px !important;
+        object-fit: contain !important;
+        border-radius: 12px !important;
+      }
+
+      #featured .cnCardPad {
+        padding: 11px !important;
+      }
+
+      #featured .cnTitle {
+        font-size: 1rem !important;
+        line-height: 1.05 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 6px !important;
+      }
+
+      #featured .cnBadges span {
+        padding: 3px 7px !important;
+        font-size: .70rem !important;
+        margin-top: 4px !important;
+      }
+
+      #featured .cnSteps {
+        margin-top: 9px !important;
+        padding: 6px !important;
+        gap: 5px !important;
+        border-radius: 14px !important;
+      }
+
+      #featured .cnSteps li {
+        font-size: .76rem !important;
+        padding: 6px 8px 6px 30px !important;
+        min-height: 28px !important;
+      }
+
+      #featured .cnSteps li::before {
+        left: 7px !important;
+        width: 17px !important;
+        height: 17px !important;
+        font-size: .67rem !important;
+      }
+
+      #featured .cnRow {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 7px !important;
+        margin-top: 9px !important;
+      }
+
+      #featured .cnRow .btn,
+      #featured .cnRow .btn--buy-primary {
+        min-height: 34px !important;
+        padding: 7px 8px !important;
+        border-radius: 12px !important;
+        font-size: .74rem !important;
+      }
+
+      #featured .cnRow .btn:first-child {
+        grid-column: 1 / -1 !important;
+        min-height: 38px !important;
+        font-size: .78rem !important;
+      }
+
+      #featured .cnRow .btn:last-child {
+        grid-column: 1 / -1 !important;
+        min-height: 32px !important;
+        opacity: .88 !important;
+        background: rgba(255,255,255,.035) !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 8px !important;
+        padding: 7px 9px !important;
+        border-radius: 12px !important;
+        font-size: .72rem !important;
+        background: rgba(0,0,0,.22) !important;
+      }
+
+      #sec-vitrine-rapida .panel__head {
+        padding: 11px 13px !important;
+        gap: 8px !important;
+      }
+
+      #sec-vitrine-rapida .panel__head h2 {
+        font-size: .90rem !important;
+        letter-spacing: .14em !important;
+      }
+
+      #sec-vitrine-rapida .panel__head p {
+        font-size: .78rem !important;
+        line-height: 1.30 !important;
+      }
+
+      #btnVerTodosTop {
+        min-height: 34px !important;
+        padding: 8px 12px !important;
+        border-radius: 14px !important;
+        font-size: .78rem !important;
+      }
+
+      #sec-vitrine-rapida .quickTools {
+        gap: 8px !important;
+        padding-inline: 0 !important;
+      }
+
+      #sec-vitrine-rapida .quickSearch {
+        min-height: 42px !important;
+        border-radius: 18px !important;
+      }
+
+      #sec-vitrine-rapida .quickSearch input {
+        font-size: .82rem !important;
+      }
+
+      #qClear,
+      #btnAbrirLojaCompleta {
+        min-height: 34px !important;
+        padding: 8px 12px !important;
+        border-radius: 14px !important;
+        font-size: .76rem !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .sectionNav__pill {
+        font-size: .66rem !important;
+        padding-inline: 7px !important;
+      }
+
+      #featured .cnCard:first-child .cnImg {
+        height: min(43vh, 350px) !important;
+        max-height: 350px !important;
+      }
+
+      #featured .cnRow .btn,
+      #featured .cnRow .btn--buy-primary {
+        font-size: .72rem !important;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -2568,7 +2792,7 @@
       </div>
 
       <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
-        <div>👑 Quer explorar mais? A Loja Completa reúne <b><span data-total-products>—</span> produtos</b> selecionados para você.</div>
+        <div>👑 <b>Loja Completa:</b> <b><span data-total-products>—</span> produtos</b> selecionados.</div>
       </div>
 
       <div class="featured" id="featured">
@@ -2581,7 +2805,7 @@
         <div>
           <h2>Vitrine rápida</h2>
           <p>
-            Prévia de produtos (pra bater o olho). A lista completa fica na <b>Loja Completa</b>.
+            Prévia premium de achados. A lista completa fica na <b>Loja Completa</b>.
             <span style="opacity:.85">Mostrando <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b>.</span>
           </p>
         </div>
