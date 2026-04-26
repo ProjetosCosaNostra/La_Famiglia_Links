@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-26T13:28:18Z
+Atualizado em: 2026-04-26T19:13:24Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-26T13:24:27Z
+Quando: 2026-04-26T19:07:45Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/1SUkJoM
 checked_url: https://meli.la/1SUkJoM
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-04-26T13:24:27Z
+Quando: 2026-04-26T19:07:45Z
 Issue: #129
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
 SKU: puma-flyer-runner-mesh-bdp
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (31x /lists, 1x listing)
+Memória operacional: histórico recorrente (32x /lists, 1x listing)
 Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
 open_url: https://meli.la/2cmJ3u1
 checked_url: https://meli.la/2cmJ3u1
