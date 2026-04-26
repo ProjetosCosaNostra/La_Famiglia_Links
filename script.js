@@ -595,6 +595,21 @@
     };
   }
 
+
+  function getFeaturedSummary(p) {
+    var raw = lower(p && (p.title || p.name || p.sku || ''));
+    if (raw.indexOf('kit cetim anti') >= 0) {
+      return 'Conforto e cuidado noturno para cabelos mais alinhados.';
+    }
+    if (raw.indexOf('gel para sobrancelhas') >= 0 && raw.indexOf('ruby rose') >= 0) {
+      return 'Acabamento natural para sobrancelhas alinhadas e visual mais polido.';
+    }
+    if (raw.indexOf('unha') >= 0 || raw.indexOf('francesinha') >= 0) {
+      return 'Praticidade e acabamento delicado para uma rotina de beleza mais elegante.';
+    }
+    return 'Achado selecionado pela curadoria para facilitar sua compra.';
+  }
+
   function renderFeatured(p, state) {
     var root = qs('#featured');
     if (!root) return;
@@ -620,7 +635,7 @@
     wrap.className = 'cnFeaturedWrap';
 
     var cardImg = document.createElement('div');
-    cardImg.className = 'cnCard';
+    cardImg.className = 'cnCard cnFeaturedMedia';
     var img = document.createElement('img');
     img.className = 'cnImg';
     img.alt = safeText(p.title || 'Produto do Dia');
@@ -635,7 +650,7 @@
     wrap.appendChild(cardImg);
 
     var cardInfo = document.createElement('div');
-    cardInfo.className = 'cnCard';
+    cardInfo.className = 'cnCard cnFeaturedInfo';
     var pad = document.createElement('div');
     pad.className = 'cnCardPad';
 
@@ -657,6 +672,11 @@
 
     pad.appendChild(h);
 
+    var featureSummary = document.createElement('p');
+    featureSummary.className = 'cnFeatureSummary';
+    featureSummary.textContent = getFeaturedSummary(p);
+    pad.appendChild(featureSummary);
+
     var badges = parseBadges(p);
     if (badges.length) {
       var bwrap = document.createElement('div');
@@ -669,19 +689,28 @@
       pad.appendChild(bwrap);
     }
 
+    var buyBox = document.createElement('div');
+    buyBox.className = 'cnBuyBox';
+
+    var buyTitle = document.createElement('div');
+    buyTitle.className = 'cnBuyTitle';
+    buyTitle.textContent = 'Compra rápida';
+    buyBox.appendChild(buyTitle);
+
     var steps = document.createElement('ol');
     steps.className = 'cnSteps';
     var mlid = getMlId(p);
     steps.innerHTML =
-      '<li>Abra direto no <b>Mercado Livre</b> pelo botão principal</li>' +
-      '<li>Ou use o código de busca: <b>' + safeText(mlid) + '</b></li>';
-    pad.appendChild(steps);
+      '<li>Acesse o <b>Mercado Livre</b> pelo botão principal</li>' +
+      '<li>Se preferir, use o código de busca: <b>' + safeText(mlid) + '</b></li>';
+    buyBox.appendChild(steps);
+    pad.appendChild(buyBox);
 
     var row1 = document.createElement('div');
     row1.className = 'cnRow';
 
     var aBuy = document.createElement('a');
-    aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary';
+    aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary cnActionPrimary';
     aBuy.textContent = 'Ver no Mercado Livre';
     var buyLink = getLink(p);
     aBuy.href = buyLink || '#';
@@ -709,7 +738,7 @@
 
     var bCopyId = document.createElement('button');
     bCopyId.type = 'button';
-    bCopyId.className = 'btn btn--glass btn--tiny';
+    bCopyId.className = 'btn btn--glass btn--tiny cnActionSecondary';
     bCopyId.textContent = 'Copiar ID';
     bCopyId.onclick = function () {
       trackEvent('click_copy_id_home', getTrackProduct(p, {
@@ -726,7 +755,7 @@
 
     var bCopyLink = document.createElement('button');
     bCopyLink.type = 'button';
-    bCopyLink.className = 'btn btn--glass btn--tiny';
+    bCopyLink.className = 'btn btn--glass btn--tiny cnActionSecondary';
     bCopyLink.textContent = 'Copiar Link';
     bCopyLink.onclick = function () {
       var link = getLink(p);
@@ -744,7 +773,7 @@
     row1.appendChild(bCopyLink);
 
     var aStore = document.createElement('a');
-    aStore.className = 'btn btn--glass btn--tiny';
+    aStore.className = 'btn btn--glass btn--tiny cnActionTertiary';
     aStore.setAttribute('data-cn-track-owned', '1');
     aStore.setAttribute('data-cn-role', 'open-store');
     aStore.textContent = 'Abrir Loja Completa';
@@ -764,7 +793,7 @@
 
     var meta = document.createElement('div');
     meta.className = 'cnMeta';
-    meta.innerHTML = '<span style="opacity:.85">Código de busca:</span> <b>' + safeText(mlid) + '</b>';
+    meta.innerHTML = '<span>Código de busca</span><b>' + safeText(mlid) + '</b>';
     pad.appendChild(meta);
 
     cardInfo.appendChild(pad);
@@ -804,7 +833,7 @@
     if (badges.length) {
       var bwrap = document.createElement('div');
       bwrap.className = 'cnBadges';
-      for (var i = 0; i < badges.length && i < 4; i++) {
+      for (var i = 0; i < badges.length && i < 3; i++) {
         var sp = document.createElement('span');
         sp.textContent = badges[i];
         bwrap.appendChild(sp);
@@ -815,14 +844,14 @@
     var mlid = getMlId(p);
     var meta = document.createElement('div');
     meta.className = 'cnMeta';
-    meta.innerHTML = '<span style="opacity:.85">ID:</span> <b>' + safeText(mlid) + '</b>';
+    meta.innerHTML = '<span>Código</span><b>' + safeText(mlid) + '</b>';
     pad.appendChild(meta);
 
     var row = document.createElement('div');
     row.className = 'cnRow';
 
     var buy = document.createElement('a');
-    buy.className = 'btn btn--gold btn--tiny btn--buy-primary';
+    buy.className = 'btn btn--gold btn--tiny btn--buy-primary cnQuickPrimary';
     buy.textContent = 'Comprar';
     var buyLink = getLink(p);
     buy.href = buyLink || '#';
@@ -849,7 +878,7 @@
     row.appendChild(buy);
 
     var cId = document.createElement('button');
-    cId.className = 'btn btn--glass btn--tiny';
+    cId.className = 'btn btn--glass btn--tiny cnQuickSecondary';
     cId.type = 'button';
     cId.textContent = 'Copiar ID';
     cId.onclick = function () {
@@ -866,7 +895,7 @@
     row.appendChild(cId);
 
     var cLink = document.createElement('button');
-    cLink.className = 'btn btn--glass btn--tiny';
+    cLink.className = 'btn btn--glass btn--tiny cnQuickTertiary';
     cLink.type = 'button';
     cLink.textContent = 'Copiar Link';
     cLink.onclick = function () {
