@@ -701,8 +701,8 @@
     steps.className = 'cnSteps';
     var mlid = getMlId(p);
     steps.innerHTML =
-      '<li>Acesse o <b>Mercado Livre</b> pelo botão principal</li>' +
-      '<li>Se preferir, use o código de busca: <b>' + safeText(mlid) + '</b></li>';
+      '<li>Acesse o <b>Mercado Livre</b>&nbsp;pelo botão principal</li>' +
+      '<li>Use o código de busca:&nbsp;<b>' + safeText(mlid) + '</b></li>';
     buyBox.appendChild(steps);
     pad.appendChild(buyBox);
 
