@@ -22,7 +22,7 @@
   <!-- Fonts (premium) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
   <script defer src="tracking.js"></script>
@@ -2924,6 +2924,174 @@
       #featured .cnMeta {
         font-size: .80rem;
         padding: 6px 9px;
+      }
+    }
+
+
+    /* =========================
+       ETAPA 3H — LUXO EDITORIAL
+       - fonte mais elegante no produto em destaque
+       - título menor, mais refinado e menos agressivo
+       - mantém estrutura, topo, produto, tracking e vitrine
+       ========================= */
+    #featured .cnTitle {
+      gap: 5px !important;
+      margin-bottom: 6px !important;
+    }
+
+    #featured .cnTitleMain {
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+      font-size: clamp(1.62rem, 2.18vw, 2.42rem) !important;
+      line-height: 1.02 !important;
+      font-weight: 600 !important;
+      letter-spacing: .018em !important;
+      color: rgba(255, 244, 225, .96) !important;
+      text-shadow: 0 6px 18px rgba(0,0,0,.42) !important;
+      max-width: 520px !important;
+    }
+
+    #featured .cnTitleSub {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+      font-size: clamp(.82rem, .94vw, .94rem) !important;
+      line-height: 1.32 !important;
+      font-weight: 700 !important;
+      letter-spacing: .005em !important;
+      color: rgba(221, 190, 112, .82) !important;
+      max-width: 520px !important;
+    }
+
+    #featured .cnBadges {
+      margin-top: 9px !important;
+    }
+
+    #featured .cnBadges span {
+      font-size: .76rem !important;
+      padding: 3px 8px !important;
+      color: rgba(255,255,255,.70) !important;
+      background: rgba(255,255,255,.020) !important;
+      border-color: rgba(215,176,88,.12) !important;
+    }
+
+    #featured .cnSteps {
+      margin-top: 13px !important;
+      padding: 10px !important;
+      border-radius: 16px !important;
+      background: linear-gradient(180deg, rgba(255,255,255,.012), rgba(0,0,0,.24)) !important;
+      border-color: rgba(215,176,88,.105) !important;
+    }
+
+    #featured .cnSteps li {
+      min-height: 30px !important;
+      padding-top: 5px !important;
+      padding-bottom: 5px !important;
+      font-size: .86rem !important;
+      color: rgba(255,255,255,.72) !important;
+    }
+
+    #featured .btn--buy-primary {
+      min-height: 42px !important;
+      font-size: .86rem !important;
+      letter-spacing: .01em !important;
+      border-radius: 14px !important;
+    }
+
+    #featured .cnRow {
+      gap: 8px !important;
+      margin-top: 10px !important;
+    }
+
+    #featured .cnRow .btn--glass {
+      min-height: 37px !important;
+      font-size: .80rem !important;
+      border-radius: 13px !important;
+      color: rgba(255,255,255,.78) !important;
+      background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.20)) !important;
+    }
+
+    #featured .cnRow .btn--glass[data-cn-role="open-store"] {
+      opacity: .76 !important;
+    }
+
+    #featured .cnMeta {
+      margin-top: 9px !important;
+      font-size: .72rem !important;
+      padding: 5px 9px !important;
+      color: rgba(255,255,255,.46) !important;
+    }
+
+    #sec-produto-do-dia .panel__head h2,
+    #sec-vitrine-rapida .panel__head h2 {
+      font-family: Cinzel, Georgia, serif !important;
+      font-size: 13px !important;
+      letter-spacing: .19em !important;
+      color: rgba(255,232,174,.82) !important;
+    }
+
+    #sec-produto-do-dia .panel__head p,
+    #sec-vitrine-rapida .panel__head p {
+      font-size: .78rem !important;
+      color: rgba(255,255,255,.60) !important;
+    }
+
+    @media (max-width: 860px) {
+      #featured .cnTitleMain {
+        font-size: clamp(1.42rem, 5.6vw, 1.88rem) !important;
+        line-height: 1.04 !important;
+      }
+
+      #featured .cnTitleSub {
+        font-size: .80rem !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      #featured .cnTitleMain {
+        font-size: clamp(1.30rem, 6.1vw, 1.58rem) !important;
+        line-height: 1.06 !important;
+        letter-spacing: .012em !important;
+      }
+
+      #featured .cnTitleSub {
+        font-size: .76rem !important;
+        line-height: 1.25 !important;
+      }
+
+      #featured .cnBadges span {
+        font-size: .72rem !important;
+        padding: 3px 7px !important;
+      }
+
+      #featured .cnSteps {
+        margin-top: 10px !important;
+        padding: 8px !important;
+      }
+
+      #featured .cnSteps li {
+        min-height: 28px !important;
+        font-size: .80rem !important;
+        padding-left: 34px !important;
+      }
+
+      #featured .cnSteps li::before {
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 10px !important;
+      }
+
+      #featured .btn--buy-primary {
+        min-height: 40px !important;
+        font-size: .82rem !important;
+      }
+
+      #featured .cnRow .btn--glass {
+        min-height: 36px !important;
+        font-size: .78rem !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2,
+      #sec-vitrine-rapida .panel__head h2 {
+        font-size: .98rem !important;
+        letter-spacing: .17em !important;
       }
     }
 
