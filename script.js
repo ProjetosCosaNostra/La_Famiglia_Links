@@ -517,6 +517,84 @@
     }
   }
 
+
+
+  function titleCaseWord(word, idx) {
+    var raw = safeText(word);
+    if (!raw) return '';
+    var low = lower(raw);
+    var small = { 'a': true, 'o': true, 'as': true, 'os': true, 'de': true, 'da': true, 'do': true, 'das': true, 'dos': true, 'e': true, 'em': true, 'para': true, 'com': true };
+    if (idx > 0 && small[low]) return low;
+
+    return raw.split('-').map(function (part) {
+      if (!part) return part;
+      var pLow = lower(part);
+      if (pLow === 'anti') return 'Anti';
+      if (pLow === 'frizz') return 'Frizz';
+      return pLow.charAt(0).toUpperCase() + pLow.slice(1);
+    }).join('-');
+  }
+
+  function toDisplayTitle(raw) {
+    var s = trim(raw).replace(/\s+/g, ' ');
+    if (!s) return '';
+    s = s.replace(/\s*\+\s*/g, ' + ');
+    var parts = s.split(' ');
+    var out = [];
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i] === '+') out.push('+');
+      else out.push(titleCaseWord(parts[i], out.length));
+    }
+    return out.join(' ')
+      .replace(/Anti-Frizz/g, 'Anti‑Frizz')
+      .replace(/Ruby rose/gi, 'Ruby Rose')
+      .replace(/Mercado livre/gi, 'Mercado Livre');
+  }
+
+  function sentenceCaseFeature(raw) {
+    var s = trim(raw).replace(/\s+/g, ' ');
+    if (!s) return '';
+    s = s.replace(/\s*\+\s*/g, ', ');
+    s = s.replace(/,\s*2\s+/i, ' e 2 ');
+    s = lower(s);
+    return s;
+  }
+
+  function getFeaturedTitleParts(p) {
+    var raw = trim(p && (p.title || p.name || p.sku || 'Produto do Dia'));
+    if (!raw) return { main: 'Produto em Destaque', sub: '' };
+
+    var normalized = raw.replace(/\s+/g, ' ');
+    var low = lower(normalized);
+
+    if (low.indexOf('kit cetim anti') >= 0) {
+      return {
+        main: 'Kit Cetim Anti‑Frizz',
+        sub: '2 fronhas, touca, modelador e 2 xuxinhas'
+      };
+    }
+
+    if (low.indexOf('gel para sobrancelhas') >= 0 && low.indexOf('ruby rose') >= 0) {
+      return {
+        main: 'Gel para Sobrancelhas Brow Rise',
+        sub: 'Ruby Rose'
+      };
+    }
+
+    var digitSplit = normalized.match(/^(.+?)\s+(\d+\s+.+)$/);
+    if (digitSplit && normalized.length > 40) {
+      return {
+        main: toDisplayTitle(digitSplit[1]),
+        sub: sentenceCaseFeature(digitSplit[2])
+      };
+    }
+
+    return {
+      main: toDisplayTitle(normalized),
+      sub: ''
+    };
+  }
+
   function renderFeatured(p, state) {
     var root = qs('#featured');
     if (!root) return;
@@ -561,16 +639,29 @@
     var pad = document.createElement('div');
     pad.className = 'cnCardPad';
 
+    var titleParts = getFeaturedTitleParts(p);
     var h = document.createElement('h3');
     h.className = 'cnTitle';
-    h.textContent = safeText(p.title || p.name || p.sku || 'Produto do Dia');
+
+    var titleMain = document.createElement('span');
+    titleMain.className = 'cnTitleMain';
+    titleMain.textContent = titleParts.main;
+    h.appendChild(titleMain);
+
+    if (titleParts.sub) {
+      var titleSub = document.createElement('span');
+      titleSub.className = 'cnTitleSub';
+      titleSub.textContent = titleParts.sub;
+      h.appendChild(titleSub);
+    }
+
     pad.appendChild(h);
 
     var badges = parseBadges(p);
     if (badges.length) {
       var bwrap = document.createElement('div');
       bwrap.className = 'cnBadges';
-      for (var i = 0; i < badges.length && i < 6; i++) {
+      for (var i = 0; i < badges.length && i < 3; i++) {
         var sp = document.createElement('span');
         sp.textContent = badges[i];
         bwrap.appendChild(sp);
@@ -583,7 +674,7 @@
     var mlid = getMlId(p);
     steps.innerHTML =
       '<li>Abra direto no <b>Mercado Livre</b> pelo botão principal</li>' +
-      '<li>Ou copie o ID: <b>' + safeText(mlid) + '</b></li>';
+      '<li>Ou use o código de busca: <b>' + safeText(mlid) + '</b></li>';
     pad.appendChild(steps);
 
     var row1 = document.createElement('div');
@@ -591,7 +682,7 @@
 
     var aBuy = document.createElement('a');
     aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary';
-    aBuy.textContent = 'VER NO MERCADO LIVRE';
+    aBuy.textContent = 'Ver no Mercado Livre';
     var buyLink = getLink(p);
     aBuy.href = buyLink || '#';
     aBuy.target = '_blank';
@@ -655,6 +746,7 @@
     var aStore = document.createElement('a');
     aStore.className = 'btn btn--glass btn--tiny';
     aStore.setAttribute('data-cn-track-owned', '1');
+    aStore.setAttribute('data-cn-role', 'open-store');
     aStore.textContent = 'Abrir Loja Completa';
     aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
     aStore.onclick = function () {
@@ -672,7 +764,7 @@
 
     var meta = document.createElement('div');
     meta.className = 'cnMeta';
-    meta.innerHTML = '<span style="opacity:.85">ID Mercado Livre:</span> <b>' + safeText(mlid) + '</b>';
+    meta.innerHTML = '<span style="opacity:.85">Código de busca:</span> <b>' + safeText(mlid) + '</b>';
     pad.appendChild(meta);
 
     cardInfo.appendChild(pad);
@@ -705,7 +797,7 @@
     pad.className = 'cnProdPad';
 
     var h3 = document.createElement('h3');
-    h3.textContent = safeText(p.title || p.name || p.sku || 'Produto');
+    h3.textContent = toDisplayTitle(p.title || p.name || p.sku || 'Produto');
     pad.appendChild(h3);
 
     var badges = parseBadges(p);
