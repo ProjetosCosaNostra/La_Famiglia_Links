@@ -16,7 +16,6 @@
    - click_buy_home_quick
    - click_copy_id_home
    - click_copy_link_home
-   - click_copy_alt_home
    - click_open_store
 
    ✅ FIX HOME BUY DESKTOP (2026-03-20):
@@ -583,9 +582,8 @@
     steps.className = 'cnSteps';
     var mlid = getMlId(p);
     steps.innerHTML =
-      '<li>Abra o app/site do <b>Mercado Livre</b></li>' +
-      '<li>Cole o ID na busca: <b>' + safeText(mlid) + '</b></li>' +
-      '<li>Ou clique em <b>COMPRAR AGORA</b> (abre direto)</li>';
+      '<li>Abra direto no <b>Mercado Livre</b> pelo botão principal</li>' +
+      '<li>Ou copie o ID: <b>' + safeText(mlid) + '</b></li>';
     pad.appendChild(steps);
 
     var row1 = document.createElement('div');
@@ -593,7 +591,7 @@
 
     var aBuy = document.createElement('a');
     aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary';
-    aBuy.textContent = 'COMPRAR AGORA';
+    aBuy.textContent = 'VER NO MERCADO LIVRE';
     var buyLink = getLink(p);
     aBuy.href = buyLink || '#';
     aBuy.target = '_blank';
@@ -654,25 +652,6 @@
     };
     row1.appendChild(bCopyLink);
 
-    var bAlt = document.createElement('button');
-    bAlt.type = 'button';
-    bAlt.className = 'btn btn--glass btn--tiny';
-    bAlt.textContent = 'Copiar Link Alternativo';
-    bAlt.onclick = function () {
-      var alt = (location.origin + location.pathname.replace(/index\.html$/,'') + 'loja.html');
-
-      trackEvent('click_copy_alt_home', getTrackProduct(p, {
-        placement: 'featured_copy_alt',
-        source_block: 'produto_do_dia',
-        position_on_page: 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      copyText(alt).then(function (ok) { toast(ok ? 'Link alternativo copiado ✅' : 'Falha ao copiar'); });
-    };
-    row1.appendChild(bAlt);
-
     var aStore = document.createElement('a');
     aStore.className = 'btn btn--glass btn--tiny';
     aStore.setAttribute('data-cn-track-owned', '1');
@@ -695,11 +674,6 @@
     meta.className = 'cnMeta';
     meta.innerHTML = '<span style="opacity:.85">ID Mercado Livre:</span> <b>' + safeText(mlid) + '</b>';
     pad.appendChild(meta);
-
-    var mini = document.createElement('div');
-    mini.className = 'cnMini';
-    mini.innerHTML = 'Melhor funil: <b>Story com sticker de LINK</b> + <b>Loja na Bio</b>.';
-    pad.appendChild(mini);
 
     cardInfo.appendChild(pad);
     wrap.appendChild(cardInfo);
