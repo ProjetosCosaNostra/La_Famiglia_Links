@@ -4227,7 +4227,177 @@
       }
     }
 
-  </style>
+  
+
+    /* =========================
+       ETAPA 3L — COMPACTAÇÃO DO TOPO PARA MOSTRAR A SELEÇÃO DO DIA
+       - Loja Completa entrou ao lado de atualizada
+       - remove linha redundante do topo
+       - compacta botões laterais sem mexer em produtos/script/loja
+       ========================= */
+    .chips--heroCompact {
+      display: flex !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 6px !important;
+      margin-top: 6px !important;
+    }
+
+    .chips--heroCompact .chip {
+      min-height: 24px !important;
+      padding: 4px 8px !important;
+      font-size: 11px !important;
+      line-height: 1 !important;
+      border-radius: 999px !important;
+    }
+
+    .chips--heroCompact .chip--storeCount {
+      color: rgba(255,255,255,.86) !important;
+      border-color: rgba(215,176,88,.20) !important;
+      background: rgba(0,0,0,.24) !important;
+      font-weight: 800 !important;
+    }
+
+    .chips--heroCompact .chip--storeCount .n {
+      color: rgba(225,185,94,.98) !important;
+      font-variant-numeric: tabular-nums !important;
+    }
+
+    @media (min-width: 861px) {
+      .hero {
+        padding: 10px 12px 10px !important;
+        gap: 10px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 7px !important;
+      }
+
+      .heroBanner {
+        border-radius: 15px !important;
+        box-shadow: 0 10px 26px rgba(0,0,0,.28) !important;
+      }
+
+      .heroBanner__img {
+        height: 132px !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+      }
+
+      .heroBanner__seal {
+        width: 56px !important;
+        height: 56px !important;
+        top: 10px !important;
+        right: 10px !important;
+        border-radius: 15px !important;
+      }
+
+      .heroBanner__sealLogo {
+        width: 54px !important;
+        height: 54px !important;
+      }
+
+      .hero__sub--banner {
+        margin: 0 !important;
+        font-size: 12px !important;
+        line-height: 1.22 !important;
+      }
+
+      .hero__actions {
+        flex: 0 0 308px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 7px !important;
+        align-content: start !important;
+      }
+
+      .hero__actions .btn,
+      .hero__actions .miniNote {
+        min-height: 34px !important;
+        padding: 7px 10px !important;
+        border-radius: 13px !important;
+        font-size: 11px !important;
+        line-height: 1.12 !important;
+        margin: 0 !important;
+      }
+
+      .hero__actions #goLoja,
+      .hero__actions .miniNote {
+        grid-column: 1 / -1 !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 40px !important;
+        font-size: 12px !important;
+      }
+
+      .hero__actions a[href*="BlackGoldSociety"] {
+        grid-column: 1 / -1 !important;
+      }
+
+      .hero__actions .miniNote {
+        min-height: 34px !important;
+        justify-content: flex-start !important;
+      }
+
+      .sectionNav {
+        margin-top: 7px !important;
+        padding: 6px 10px !important;
+        gap: 7px !important;
+      }
+
+      .sectionNav__pill {
+        min-height: 28px !important;
+        padding: 5px 10px !important;
+        font-size: 11px !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 7px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+        margin-bottom: 8px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: 15px !important;
+        letter-spacing: .32em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        font-size: 11px !important;
+        margin-top: 2px !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+        padding: 7px 10px !important;
+        font-size: 11px !important;
+        line-height: 1.16 !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .chips--heroCompact {
+        margin-top: 6px !important;
+        gap: 5px !important;
+      }
+
+      .chips--heroCompact .chip {
+        min-height: 22px !important;
+        padding: 3px 7px !important;
+        font-size: .66rem !important;
+      }
+
+      .chips--heroCompact .chip--storeCount {
+        max-width: 100% !important;
+      }
+    }
+</style>
 </head>
 
 <body>
@@ -4275,19 +4445,11 @@
             Achados premium selecionados para compra rápida e segura.
           </p>
 
-          <div class="chips" aria-label="Dicas rápidas">
+          <div class="chips chips--heroCompact" aria-label="Dicas rápidas">
             <span class="chip">⚡ rápida</span>
             <span class="chip">💎 premium</span>
             <span class="chip">🔄 atualizada</span>
-          </div>
-
-          <div class="countPill" aria-label="Contagem de produtos">
-            <span>📦 Loja Completa:</span>
-            <span class="n" data-total-products>—</span>
-          </div>
-
-          <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>Produto do Dia + Vitrine Rápida</b> · veja tudo na <b>Loja Completa</b>.</div>
+            <span class="chip chip--storeCount" aria-label="Contagem de produtos">📦 Loja Completa: <b><span class="n" data-total-products>—</span></b></span>
           </div>
         </div>
       </div>
