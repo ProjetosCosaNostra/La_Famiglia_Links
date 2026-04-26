@@ -1815,6 +1815,328 @@
     }
 
 
+    /* =========================
+       ETAPA 3 — TOPO PREMIUM REFINADO
+       - reorganiza apenas a área superior
+       - preserva background, script.js, loja.html e conteúdo abaixo
+       ========================= */
+    .hero{
+      display:grid !important;
+      grid-template-columns:minmax(0, 1fr) minmax(260px, 310px);
+      grid-template-areas:
+        "brand actions"
+        "stats stats";
+      align-items:start;
+      gap:14px 16px;
+      padding:16px !important;
+      background:
+        radial-gradient(780px 260px at 18% 0%, rgba(224,195,107,.12), transparent 62%),
+        radial-gradient(520px 260px at 88% 30%, rgba(224,195,107,.09), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.06)),
+        rgba(8,8,10,.54) !important;
+      border-color:rgba(224,195,107,.28) !important;
+      box-shadow:0 24px 70px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.05) !important;
+    }
+
+    .hero__brand--banner{
+      grid-area:brand;
+      display:flex !important;
+      flex-direction:column !important;
+      gap:10px !important;
+      min-width:0;
+      position:relative;
+      z-index:1;
+    }
+
+    .heroBanner{
+      border-radius:18px !important;
+      border-color:rgba(224,195,107,.24) !important;
+      background:rgba(0,0,0,.34) !important;
+      box-shadow:0 16px 42px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.05) !important;
+    }
+
+    .heroBanner__img{
+      height:clamp(118px, 12vw, 158px) !important;
+      width:100% !important;
+      object-fit:cover !important;
+      object-position:center !important;
+    }
+
+    .heroBanner__seal{
+      width:58px !important;
+      height:58px !important;
+      top:12px !important;
+      right:12px !important;
+      border-radius:16px !important;
+      background:rgba(0,0,0,.42) !important;
+    }
+
+    .heroBanner__sealLogo{ width:58px !important; height:58px !important; }
+
+    .hero__text--bannerstack{
+      gap:0 !important;
+      padding:0 !important;
+      max-width:720px;
+    }
+
+    .heroHeadline{
+      margin:2px 0 7px 0;
+      max-width:670px;
+      font-family:var(--font-display);
+      font-weight:800;
+      font-size:clamp(30px, 4vw, 50px);
+      line-height:.96;
+      letter-spacing:.015em;
+      color:rgba(255,248,236,.98);
+      text-shadow:0 12px 26px rgba(0,0,0,.45), 0 0 14px rgba(224,195,107,.08);
+      text-wrap:balance;
+    }
+
+    .heroHeadline em{
+      color:rgba(224,195,107,.98);
+      font-style:italic;
+      font-weight:700;
+      text-shadow:0 0 18px rgba(224,195,107,.16);
+    }
+
+    .hero__sub--banner{
+      max-width:650px !important;
+      margin:0 !important;
+      color:rgba(255,255,255,.76) !important;
+      font-size:14px !important;
+      line-height:1.42 !important;
+    }
+
+    .hero .chips{
+      margin-top:10px !important;
+      gap:8px !important;
+    }
+
+    .hero .chip{
+      min-height:28px !important;
+      padding:5px 10px !important;
+      font-size:12px !important;
+      line-height:1 !important;
+      border-color:rgba(224,195,107,.18) !important;
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.16)) !important;
+    }
+
+    .hero .countPill,
+    .hero .imperialNote--top{
+      display:none !important;
+    }
+
+    .hero__actions{
+      grid-area:actions;
+      width:100%;
+      flex:0 1 auto !important;
+      align-self:start;
+      justify-content:flex-start !important;
+      gap:10px !important;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero__actions .btn{
+      min-height:42px !important;
+      border-radius:16px !important;
+      font-size:13px !important;
+      box-shadow:0 12px 26px rgba(0,0,0,.30) !important;
+    }
+
+    .hero__actions .btn--buy-primary,
+    .hero__actions .btn--gold{
+      min-height:50px !important;
+      font-size:14px !important;
+      border-color:rgba(224,195,107,.48) !important;
+      background:
+        radial-gradient(260px 90px at 20% 0%, rgba(255,236,170,.24), transparent 62%),
+        linear-gradient(180deg, rgba(224,195,107,.46), rgba(145,111,34,.22)) !important;
+      color:rgba(255,246,222,.98) !important;
+    }
+
+    .hero__actions .btn--social,
+    .hero__actions #copyLoja{
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.18)) !important;
+      border-color:rgba(224,195,107,.17) !important;
+      color:rgba(255,255,255,.86) !important;
+    }
+
+    .hero__actions .miniNote{
+      min-height:42px !important;
+      border-radius:16px !important;
+      padding:8px 11px !important;
+      justify-content:flex-start !important;
+      color:rgba(255,255,255,.75) !important;
+      background:rgba(0,0,0,.24) !important;
+      border-color:rgba(224,195,107,.13) !important;
+    }
+
+    .heroStats{
+      grid-area:stats;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:10px;
+      position:relative;
+      z-index:1;
+      padding:10px;
+      border-radius:18px;
+      border:1px solid rgba(224,195,107,.16);
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.16));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .heroStat{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+      padding:9px 10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(0,0,0,.18);
+    }
+
+    .heroStat__icon{
+      flex:0 0 auto;
+      font-size:20px;
+      filter:drop-shadow(0 8px 12px rgba(0,0,0,.38));
+    }
+
+    .heroStat__text{
+      display:flex;
+      min-width:0;
+      flex-direction:column;
+      gap:2px;
+      line-height:1.12;
+    }
+
+    .heroStat__text b{
+      color:rgba(224,195,107,.98);
+      font-weight:900;
+      font-size:13px;
+    }
+
+    .heroStat__text small{
+      color:rgba(255,255,255,.72);
+      font-size:11px;
+      line-height:1.15;
+    }
+
+    .sectionNav{
+      margin-top:-2px !important;
+      padding:8px !important;
+      border-color:rgba(224,195,107,.18) !important;
+    }
+
+    .sectionNav__pill{
+      min-height:34px !important;
+      padding:7px 12px !important;
+      font-size:12px !important;
+    }
+
+    @media (max-width:980px){
+      .hero{
+        grid-template-columns:minmax(0,1fr) minmax(240px,280px);
+        gap:12px;
+      }
+      .heroHeadline{ font-size:clamp(28px, 4.5vw, 42px); }
+      .heroBanner__img{ height:clamp(110px, 13vw, 145px) !important; }
+      .heroStats{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+    }
+
+    @media (max-width:860px){
+      .hero{
+        grid-template-columns:1fr;
+        grid-template-areas:
+          "brand"
+          "actions"
+          "stats";
+        padding:14px !important;
+      }
+      .heroBanner__img{ height:clamp(136px, 33vw, 180px) !important; }
+      .hero__actions{
+        display:grid !important;
+        grid-template-columns:1fr 1fr;
+      }
+      .hero__actions .btn--gold,
+      .hero__actions .btn--buy-primary,
+      .hero__actions .miniNote,
+      .hero__actions .heroMore{
+        grid-column:1 / -1;
+      }
+      .heroStats{ padding:9px; }
+    }
+
+    @media (max-width:640px){
+      .hero{
+        gap:11px;
+        border-radius:20px !important;
+      }
+      .heroBanner{ border-radius:16px !important; }
+      .heroBanner__img{ height:clamp(126px, 38vw, 168px) !important; }
+      .heroBanner__seal{
+        width:48px !important;
+        height:48px !important;
+        top:8px !important;
+        right:8px !important;
+        border-radius:13px !important;
+      }
+      .heroBanner__sealLogo{ width:48px !important; height:48px !important; }
+      .heroHeadline{
+        margin-top:0;
+        font-size:clamp(27px, 8.2vw, 36px);
+        line-height:.98;
+      }
+      .hero__sub--banner{
+        font-size:13px !important;
+        line-height:1.35 !important;
+      }
+      .hero .chips{ margin-top:9px !important; }
+      .hero .chip{
+        min-height:26px !important;
+        font-size:11px !important;
+        padding:5px 9px !important;
+      }
+      .hero__actions .btn--gold,
+      .hero__actions .btn--buy-primary{
+        min-height:46px !important;
+        font-size:14px !important;
+      }
+      .heroMore__summary{ min-height:40px !important; }
+      .heroStats{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:7px;
+        padding:8px;
+      }
+      .heroStat{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
+        padding:8px;
+      }
+      .heroStat__icon{ font-size:17px; }
+      .heroStat__text b{ font-size:11px; }
+      .heroStat__text small{ font-size:9px; }
+      .sectionNav{ gap:7px !important; }
+      .sectionNav__pill{
+        min-height:30px !important;
+        padding:5px 9px !important;
+        font-size:11px !important;
+      }
+    }
+
+    @media (max-width:420px){
+      .heroStats{ grid-template-columns:1fr; }
+      .heroStat{
+        flex-direction:row;
+        align-items:center;
+      }
+      .heroStat__text b{ font-size:12px; }
+      .heroStat__text small{ font-size:10px; }
+    }
+
+
   </style>
 </head>
 
@@ -1859,30 +2181,31 @@
 
         <div class="hero__text hero__text--bannerstack">
           <h1 class="srOnly">Central Premium</h1>
+          <h2 class="heroHeadline">Sua vitrine de produtos<br />com padrão <em>Premium</em></h2>
           <p class="sub hero__sub--banner">
-            Links oficiais + vitrine de produtos (Achados do Dia).
+            Achados selecionados diariamente para quem valoriza qualidade, sofisticação e praticidade.
           </p>
 
           <div class="chips" aria-label="Dicas rápidas">
-            <span class="chip">⚡ clique 1-toque</span>
-            <span class="chip">🛒 vitrine sempre limpa</span>
-            <span class="chip">👑 padrão imperial</span>
+            <span class="chip">⚡ compra rápida</span>
+            <span class="chip">🛒 seleção organizada</span>
+            <span class="chip">👑 padrão premium</span>
           </div>
 
           <div class="countPill" aria-label="Contagem de produtos">
-            <span>📦 Total na Loja Completa:</span>
+            <span>📦 Loja Completa:</span>
             <span class="n" data-total-products>—</span>
           </div>
 
           <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>Prévia da vitrine:</b> Produto do Dia + Vitrine Rápida.</div>
-            <div class="mini">Para ver tudo, use <b>“Abrir Vitrine / Loja”</b>.</div>
+            <div><b>Comece pelo destaque:</b> Produto do Dia + Vitrine Rápida.</div>
+            <div class="mini">Para explorar todos os achados, toque em <b>“Abrir Vitrine / Loja”</b>.</div>
           </div>
         </div>
       </div>
 
       <div class="hero__actions">
-        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
+        <a class="btn btn--gold btn--buy-primary" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
 
         <details class="heroMore">
           <summary class="heroMore__summary">➕ Mais opções</summary>
@@ -1912,6 +2235,21 @@
           <span>
             Status: <b>online</b> • Atualizado <span id="lastUpdate">agora</span>
           </span>
+        </div>
+      </div>
+
+      <div class="heroStats" aria-label="Resumo da Central Premium">
+        <div class="heroStat">
+          <span class="heroStat__icon">📦</span>
+          <span class="heroStat__text"><b data-total-products>—</b><small>Produtos na Loja Completa</small></span>
+        </div>
+        <div class="heroStat">
+          <span class="heroStat__icon">⭐</span>
+          <span class="heroStat__text"><b>Achados do Dia</b><small>Selecionados com carinho</small></span>
+        </div>
+        <div class="heroStat">
+          <span class="heroStat__icon">↻</span>
+          <span class="heroStat__text"><b>Atualizado diariamente</b><small>Novos produtos toda semana</small></span>
         </div>
       </div>
     </header>
