@@ -4397,6 +4397,127 @@
         max-width: 100% !important;
       }
     }
+
+    /* =========================
+       ETAPA 3M — BANNER SEM CORTE + FRASE ABAIXO
+       - impede corte vertical da imagem do topo
+       - mantém Loja Completa junto dos chips
+       - deixa a frase abaixo dos chips
+       - compacta o topo sem mexer em produtos/script/loja
+       ========================= */
+    .hero__text--bannerstack {
+      gap: 0 !important;
+    }
+
+    .hero__sub--banner {
+      order: 2 !important;
+    }
+
+    .chips--heroCompact {
+      order: 1 !important;
+    }
+
+    @media (min-width: 861px) {
+      .hero {
+        padding: 9px 12px 8px !important;
+        gap: 9px !important;
+      }
+
+      .heroBanner {
+        border-radius: 15px !important;
+        overflow: hidden !important;
+      }
+
+      .heroBanner__img {
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+
+      .heroBanner__picture {
+        display: block !important;
+        line-height: 0 !important;
+      }
+
+      .chips--heroCompact {
+        margin-top: 5px !important;
+        margin-bottom: 0 !important;
+        gap: 6px !important;
+      }
+
+      .chips--heroCompact .chip {
+        min-height: 23px !important;
+        padding: 4px 8px !important;
+        font-size: 10.5px !important;
+      }
+
+      .hero__sub--banner {
+        margin: 5px 0 0 0 !important;
+        font-size: 11.5px !important;
+        line-height: 1.18 !important;
+        color: rgba(255,255,255,.68) !important;
+      }
+
+      .hero__actions {
+        flex: 0 0 300px !important;
+        gap: 6px !important;
+      }
+
+      .hero__actions .btn,
+      .hero__actions .miniNote {
+        min-height: 32px !important;
+        padding: 6px 9px !important;
+        border-radius: 12px !important;
+        font-size: 10.5px !important;
+        line-height: 1.08 !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 38px !important;
+        font-size: 11.5px !important;
+      }
+
+      .hero__actions .miniNote {
+        min-height: 32px !important;
+        padding: 6px 9px !important;
+      }
+
+      .sectionNav {
+        margin-top: 6px !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 6px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .heroBanner__img {
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+
+      .heroBanner__picture {
+        display: block !important;
+        line-height: 0 !important;
+      }
+
+      .chips--heroCompact {
+        margin-top: 6px !important;
+        margin-bottom: 0 !important;
+      }
+
+      .hero__sub--banner {
+        margin: 5px 0 0 0 !important;
+        font-size: .72rem !important;
+        line-height: 1.16 !important;
+        color: rgba(255,255,255,.66) !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -4441,9 +4562,6 @@
 
         <div class="hero__text hero__text--bannerstack">
           <h1 class="srOnly">Central Premium</h1>
-          <p class="sub hero__sub--banner">
-            Achados premium selecionados para compra rápida e segura.
-          </p>
 
           <div class="chips chips--heroCompact" aria-label="Dicas rápidas">
             <span class="chip">⚡ rápida</span>
@@ -4451,6 +4569,10 @@
             <span class="chip">🔄 atualizada</span>
             <span class="chip chip--storeCount" aria-label="Contagem de produtos">📦 Loja Completa: <b><span class="n" data-total-products>—</span></b></span>
           </div>
+
+          <p class="sub hero__sub--banner">
+            Achados premium selecionados para compra rápida e segura.
+          </p>
         </div>
       </div>
 
