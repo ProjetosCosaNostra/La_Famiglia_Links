@@ -3745,832 +3745,489 @@
       }
     }
 
-  
+
+
     /* =========================
-       ETAPA 3K — COMPACTAÇÃO PREMIUM ABOVE-THE-FOLD
-       - Seleção do Dia mais visível na primeira dobra
-       - cards alinhados e visual mais luxuoso
+       ETAPA 3J — LUXO ESTRUTURAL + ALINHAMENTO FINAL
+       - Seleção do Dia mais compacta para aparecer inteira
+       - cards da Vitrine Rápida com botões alinhados
+       - menos ruído visual, mais respiro e hierarquia premium
        ========================= */
-    @media (min-width: 861px) {
-      .page {
-        padding-top: 18px !important;
-        gap: 10px !important;
-        width: min(1080px, calc(100vw - 34px)) !important;
-      }
-
-      .hero {
-        padding: 10px 12px !important;
-        gap: 10px !important;
-        border-radius: 19px !important;
-      }
-
-      .hero__brand--banner { gap: 7px !important; }
-
-      .heroBanner {
-        border-radius: 14px !important;
-        box-shadow: 0 10px 26px rgba(0,0,0,.24) !important;
-      }
-
-      .heroBanner__img {
-        max-height: 138px !important;
-        object-fit: cover !important;
-        object-position: center !important;
-      }
-
-      .heroBanner__seal {
-        width: 52px !important;
-        height: 52px !important;
-        top: 9px !important;
-        right: 9px !important;
-        border-radius: 14px !important;
-      }
-
-      .heroBanner__sealLogo {
-        width: 50px !important;
-        height: 50px !important;
-      }
-
-      .hero__sub--banner {
-        font-size: 12px !important;
-        line-height: 1.24 !important;
-        margin: 0 !important;
-      }
-
-      .chips { margin-top: 5px !important; gap: 5px !important; }
-      .chip {
-        min-height: 22px !important;
-        padding: 3px 8px !important;
-        font-size: 10px !important;
-      }
-
-      .countPill {
-        min-height: 25px !important;
-        margin-top: 6px !important;
-        padding: 4px 9px !important;
-        font-size: 11px !important;
-      }
-
-      .imperialNote--top {
-        margin-top: 6px !important;
-        padding: 6px 9px !important;
-        font-size: 11px !important;
-        line-height: 1.16 !important;
-        border-radius: 12px !important;
-      }
-
-      .hero__actions {
-        flex-basis: 232px !important;
-        gap: 6px !important;
-      }
-
-      .hero__actions .btn {
-        min-height: 34px !important;
-        padding: 7px 10px !important;
-        border-radius: 13px !important;
-        font-size: 11px !important;
-      }
-
-      .hero__actions .btn--gold { min-height: 40px !important; }
-
-      .hero__actions .miniNote {
-        min-height: 34px !important;
-        padding: 7px 9px !important;
-        font-size: 10px !important;
-        border-radius: 12px !important;
-      }
-
-      .sectionNav {
-        margin-top: 2px !important;
-        margin-bottom: 0 !important;
-        padding: 6px 8px !important;
-        gap: 6px !important;
-        top: 6px !important;
-        border-radius: 999px !important;
-      }
-
-      .sectionNav__pill {
-        min-height: 28px !important;
-        padding: 5px 10px !important;
-        font-size: 11px !important;
-      }
+    :root{
+      --cn-lux-panel: rgba(4,4,6,.68);
+      --cn-lux-panel-soft: rgba(4,4,6,.46);
+      --cn-lux-line: rgba(224,195,107,.105);
+      --cn-lux-line-2: rgba(224,195,107,.18);
+      --cn-lux-text: rgba(247,240,226,.92);
+      --cn-lux-muted: rgba(255,255,255,.56);
+      --cn-lux-gold: rgba(224,195,107,.86);
     }
 
-    #sec-produto-do-dia.panel {
-      border-color: rgba(215,176,88,.15) !important;
+    #sec-produto-do-dia{
       background:
-        radial-gradient(620px 220px at 16% 0%, rgba(215,176,88,.055), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.014), rgba(0,0,0,.10)),
-        rgba(6,6,8,.62) !important;
+        linear-gradient(180deg, rgba(255,255,255,.012), rgba(255,255,255,0)),
+        rgba(4,4,6,.50) !important;
+      border-color: rgba(224,195,107,.12) !important;
+      box-shadow: 0 16px 42px rgba(0,0,0,.32) !important;
     }
 
-    #sec-produto-do-dia .panel__head {
-      padding: 10px 14px 8px !important;
-      margin: 0 !important;
+    #sec-produto-do-dia .panel__head{
+      padding: 12px 18px 9px !important;
       min-height: 0 !important;
-      border-bottom-color: rgba(215,176,88,.09) !important;
-    }
-
-    #sec-produto-do-dia .panel__head h2,
-    #sec-vitrine-rapida .panel__head h2 {
-      font-family: "Cinzel", Georgia, serif !important;
-      font-size: 15px !important;
-      line-height: 1 !important;
-      letter-spacing: .30em !important;
-      color: rgba(245,222,164,.92) !important;
-      margin: 0 0 5px 0 !important;
-      font-weight: 700 !important;
-    }
-
-    #sec-produto-do-dia .panel__head p,
-    #sec-vitrine-rapida .panel__head p {
-      margin: 0 !important;
-      font-size: 11px !important;
-      line-height: 1.22 !important;
-      color: rgba(255,255,255,.62) !important;
-    }
-
-    #sec-produto-do-dia .panel__right .btn,
-    #sec-vitrine-rapida .panel__right .btn {
-      min-height: 28px !important;
-      padding: 5px 10px !important;
-      border-radius: 999px !important;
-      font-size: 10px !important;
-    }
-
-    #sec-produto-do-dia > .imperialNote { display: none !important; }
-
-    #featured.featured { padding: 10px 12px 12px !important; }
-
-    #featured .cnFeaturedWrap {
-      grid-template-columns: minmax(230px, .47fr) minmax(360px, .53fr) !important;
-      gap: 12px !important;
-      align-items: stretch !important;
-    }
-
-    #featured .cnCard {
-      border-radius: 18px !important;
-      box-shadow: 0 12px 30px rgba(0,0,0,.28) !important;
-    }
-
-    #featured .cnCard:first-child { padding: 8px !important; }
-
-    #featured .cnCard:first-child .cnImg {
-      height: clamp(252px, 22vw, 326px) !important;
-      max-height: 326px !important;
-      object-fit: contain !important;
-      border-radius: 13px !important;
-      box-shadow: 0 12px 28px rgba(0,0,0,.36) !important;
-    }
-
-    #featured .cnCardPad {
-      padding: 13px 15px !important;
-      justify-content: center !important;
-    }
-
-    #featured .cnTitle {
-      font-family: "Cormorant Garamond", Georgia, serif !important;
-      font-size: clamp(1.28rem, 1.65vw, 1.72rem) !important;
-      line-height: .96 !important;
-      letter-spacing: .015em !important;
-      margin: 0 !important;
-      color: rgba(248,241,226,.96) !important;
-    }
-
-    #featured .cnTitleMain,
-    #featured .cnTitleSub { display: block !important; }
-
-    #featured .cnTitleSub {
-      margin-top: 6px !important;
-      font-family: "Inter", system-ui, sans-serif !important;
-      font-size: 12px !important;
-      line-height: 1.12 !important;
-      color: rgba(224,195,107,.96) !important;
-      font-weight: 800 !important;
-    }
-
-    #featured .cnFeatureSummary {
-      margin: 7px 0 0 !important;
-      font-size: 11.5px !important;
-      line-height: 1.24 !important;
-      color: rgba(255,255,255,.62) !important;
-    }
-
-    #featured .cnBadges { margin-top: 8px !important; gap: 5px !important; }
-
-    #featured .cnBadges span {
-      padding: 3px 8px !important;
-      font-size: 10px !important;
-      line-height: 1 !important;
-      color: rgba(255,255,255,.68) !important;
-      border-color: rgba(215,176,88,.12) !important;
-    }
-
-    #featured .cnBuyBox {
-      margin-top: 11px !important;
-      padding: 9px !important;
-      border-radius: 15px !important;
-      border: 1px solid rgba(215,176,88,.105) !important;
-      background: linear-gradient(180deg, rgba(255,255,255,.012), rgba(0,0,0,.16)) !important;
-    }
-
-    #featured .cnBuyTitle {
-      margin: 0 0 6px 0 !important;
-      font-size: 10px !important;
-      line-height: 1 !important;
-      letter-spacing: .24em !important;
-      color: rgba(224,195,107,.88) !important;
-      font-weight: 900 !important;
-      text-transform: uppercase !important;
-    }
-
-    #featured .cnSteps {
-      margin: 0 !important;
-      padding: 0 !important;
-      gap: 5px !important;
-      border: 0 !important;
-      background: transparent !important;
-      box-shadow: none !important;
-    }
-
-    #featured .cnSteps li {
-      min-height: 28px !important;
-      padding: 5px 8px 5px 31px !important;
-      border-radius: 11px !important;
-      font-size: 11px !important;
-      line-height: 1.15 !important;
-      background: rgba(0,0,0,.18) !important;
-    }
-
-    #featured .cnSteps li::before {
-      left: 8px !important;
-      width: 17px !important;
-      height: 17px !important;
-      font-size: 9px !important;
-    }
-
-    #featured .cnRow { margin-top: 10px !important; gap: 7px !important; }
-
-    #featured .cnRow .btn,
-    #featured .cnRow .btn--buy-primary {
-      min-height: 32px !important;
-      padding: 7px 10px !important;
-      border-radius: 12px !important;
-      font-size: 10.5px !important;
-      line-height: 1.05 !important;
-    }
-
-    #featured .cnRow .btn--buy-primary {
-      min-height: 38px !important;
-      font-size: 11px !important;
-      letter-spacing: .015em !important;
-    }
-
-    #featured .cnActionTertiary {
-      max-width: 48% !important;
-      opacity: .72 !important;
-    }
-
-    #featured .cnMeta {
-      margin-top: 8px !important;
-      padding: 0 !important;
-      border: 0 !important;
-      background: transparent !important;
-      font-size: 10.5px !important;
-      color: rgba(255,255,255,.50) !important;
-    }
-
-    #featured .cnMeta b {
-      margin-left: 6px !important;
-      color: rgba(224,195,107,.82) !important;
-    }
-
-    #sec-vitrine-rapida.panel { margin-top: 0 !important; }
-
-    #sec-vitrine-rapida .panel__head {
-      padding: 10px 14px 8px !important;
-      margin-bottom: 8px !important;
-    }
-
-    #sec-vitrine-rapida .quickTools {
-      display: grid !important;
-      grid-template-columns: 1fr auto auto !important;
-      gap: 8px !important;
-      padding: 0 14px 10px !important;
-      margin: 0 !important;
       align-items: center !important;
     }
 
-    #sec-vitrine-rapida .quickSearch {
-      min-height: 36px !important;
-      border-radius: 999px !important;
+    #sec-produto-do-dia .panel__head h2{
+      font-family: "Cormorant Garamond", Georgia, serif !important;
+      font-size: clamp(.94rem, 1.05vw, 1.10rem) !important;
+      letter-spacing: .24em !important;
+      font-weight: 700 !important;
+      color: rgba(238,218,161,.92) !important;
+      margin-bottom: 5px !important;
     }
 
-    #sec-vitrine-rapida .quickSearch input { font-size: 12px !important; }
-
-    #sec-vitrine-rapida .quickTools .btn {
-      min-height: 34px !important;
-      padding: 7px 12px !important;
-      border-radius: 999px !important;
-      font-size: 11px !important;
-      white-space: nowrap !important;
+    #sec-produto-do-dia .panel__head p{
+      font-size: .78rem !important;
+      line-height: 1.32 !important;
+      color: rgba(255,255,255,.55) !important;
     }
 
-    #quickGrid.cnGrid,
-    #quickGrid.productsGrid {
-      padding: 0 14px 14px !important;
-      margin-top: 0 !important;
-      gap: 12px !important;
+    #sec-produto-do-dia .panel__right .btn{
+      min-height: 30px !important;
+      padding: 6px 12px !important;
+      font-size: .74rem !important;
+      opacity: .74 !important;
+      box-shadow: none !important;
+    }
+
+    #sec-produto-do-dia > .imperialNote{
+      margin: 9px 18px 10px !important;
+      padding: 5px 10px !important;
+      min-height: 28px !important;
+      font-size: .76rem !important;
+      color: rgba(255,255,255,.58) !important;
+      border-color: rgba(224,195,107,.10) !important;
+      background: rgba(0,0,0,.18) !important;
+    }
+
+    #sec-produto-do-dia > .imperialNote b{
+      color: rgba(224,195,107,.80) !important;
+    }
+
+    #featured.featured{
+      padding: 0 18px 16px !important;
+    }
+
+    #featured .cnFeaturedWrap{
+      grid-template-columns: minmax(250px, .84fr) minmax(390px, 1.16fr) !important;
+      gap: 16px !important;
       align-items: stretch !important;
     }
 
-    #quickGrid .cnProd {
-      display: flex !important;
-      flex-direction: column !important;
-      min-height: 100% !important;
+    #featured .cnCard{
+      border-radius: 20px !important;
+      border-color: rgba(224,195,107,.105) !important;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.010), rgba(255,255,255,0)),
+        rgba(2,2,4,.70) !important;
+      box-shadow: 0 14px 34px rgba(0,0,0,.28) !important;
+    }
+
+    #featured .cnFeaturedMedia{
+      padding: 12px !important;
+      align-self: stretch !important;
+    }
+
+    #featured .cnFeaturedMedia .cnImg{
+      height: clamp(310px, 25vw, 390px) !important;
+      max-height: 390px !important;
+      border-radius: 15px !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      box-shadow: 0 10px 24px rgba(0,0,0,.24) !important;
+    }
+
+    #featured .cnFeaturedInfo .cnCardPad{
+      justify-content: center !important;
+      padding: clamp(15px, 1.65vw, 21px) !important;
+    }
+
+    #featured .cnTitle{
+      max-width: 470px !important;
+    }
+
+    #featured .cnTitleMain{
+      font-family: "Cormorant Garamond", Georgia, serif !important;
+      font-size: clamp(1.38rem, 1.78vw, 1.88rem) !important;
+      line-height: 1.03 !important;
+      letter-spacing: .018em !important;
+      font-weight: 650 !important;
+      color: rgba(248,240,224,.94) !important;
+      text-shadow: 0 10px 22px rgba(0,0,0,.30) !important;
+    }
+
+    #featured .cnTitleSub{
+      margin-top: 5px !important;
+      font-size: .78rem !important;
+      line-height: 1.26 !important;
+      color: rgba(224,195,107,.75) !important;
+      font-weight: 750 !important;
+    }
+
+    #featured .cnFeatureSummary{
+      margin-top: 8px !important;
+      font-size: .78rem !important;
+      line-height: 1.34 !important;
+      color: rgba(255,255,255,.50) !important;
+      max-width: 430px !important;
+    }
+
+    #featured .cnBadges{
+      margin-top: 9px !important;
+      gap: 6px !important;
+    }
+
+    #featured .cnBadges span{
+      padding: 3px 8px !important;
+      font-size: .66rem !important;
+      color: rgba(255,255,255,.52) !important;
+      border-color: rgba(224,195,107,.095) !important;
+      background: rgba(255,255,255,.018) !important;
+    }
+
+    #featured .cnBuyBox{
+      margin-top: 12px !important;
+      padding: 10px 11px !important;
       border-radius: 16px !important;
-      overflow: hidden !important;
+      border-color: rgba(224,195,107,.085) !important;
+      background: rgba(0,0,0,.18) !important;
     }
 
-    #quickGrid .cnProd > .cnImg {
-      width: 100% !important;
-      height: clamp(230px, 21vw, 310px) !important;
-      object-fit: cover !important;
-      object-position: top center !important;
+    #featured .cnBuyTitle{
+      margin-bottom: 7px !important;
+      font-size: .62rem !important;
+      letter-spacing: .20em !important;
+      color: rgba(224,195,107,.72) !important;
     }
 
-    #quickGrid .cnProdPad {
-      flex: 1 1 auto !important;
+    #featured .cnSteps{
+      gap: 6px !important;
+    }
+
+    #featured .cnSteps li{
+      min-height: 29px !important;
+      padding: 6px 9px 6px 31px !important;
+      font-size: .74rem !important;
+      line-height: 1.28 !important;
+      color: rgba(255,255,255,.62) !important;
+      border-radius: 12px !important;
+    }
+
+    #featured .cnSteps li::before{
+      left: 8px !important;
+      width: 16px !important;
+      height: 16px !important;
+      font-size: .62rem !important;
+    }
+
+    #featured .cnRow{
+      gap: 8px !important;
+      margin-top: 11px !important;
+    }
+
+    #featured .cnRow .btn{
+      min-height: 33px !important;
+      border-radius: 13px !important;
+      font-size: .72rem !important;
+      font-weight: 820 !important;
+    }
+
+    #featured .cnActionPrimary{
+      min-height: 39px !important;
+      font-size: .78rem !important;
+      border-radius: 14px !important;
+      background:
+        linear-gradient(180deg, rgba(224,195,107,.46), rgba(101,77,25,.46)),
+        rgba(224,195,107,.24) !important;
+      box-shadow: 0 10px 22px rgba(111,83,24,.16) !important;
+    }
+
+    #featured .cnActionTertiary{
+      min-height: 31px !important;
+      max-width: 230px !important;
+      opacity: .72 !important;
+    }
+
+    #featured .cnMeta{
+      margin-top: 9px !important;
+      font-size: .68rem !important;
+      color: rgba(255,255,255,.38) !important;
+    }
+
+    #featured .cnMeta b{
+      color: rgba(224,195,107,.62) !important;
+    }
+
+    /* Vitrine Rápida mais boutique, menos painel */
+    #sec-vitrine-rapida{
+      margin-top: 12px !important;
+    }
+
+    #sec-vitrine-rapida .panel__head{
+      padding: 12px 18px 10px !important;
+      align-items: center !important;
+      border-bottom-color: rgba(224,195,107,.085) !important;
+    }
+
+    #sec-vitrine-rapida .panel__head h2{
+      font-size: clamp(.94rem, 1.05vw, 1.10rem) !important;
+      letter-spacing: .22em !important;
+      margin-bottom: 5px !important;
+    }
+
+    #sec-vitrine-rapida .panel__head p{
+      font-size: .76rem !important;
+      color: rgba(255,255,255,.52) !important;
+    }
+
+    #sec-vitrine-rapida .panel__head .btn--gold{
+      min-height: 31px !important;
+      padding: 6px 12px !important;
+      font-size: .72rem !important;
+      background: rgba(224,195,107,.23) !important;
+    }
+
+    #sec-vitrine-rapida .quickTools{
+      padding: 0 18px 14px !important;
+      grid-template-columns: minmax(280px, 1fr) auto auto !important;
+    }
+
+    #btnAbrirLojaCompleta{
+      grid-column: auto !important;
+      justify-self: end !important;
+      min-height: 36px !important;
+      padding-inline: 13px !important;
+    }
+
+    #quickGrid.cnGrid{
+      padding: 0 18px 18px !important;
+      gap: 16px !important;
+      align-items: stretch !important;
+    }
+
+    #quickGrid .cnProd{
       display: flex !important;
       flex-direction: column !important;
-      padding: 11px !important;
+      height: 100% !important;
+      border-radius: 19px !important;
+      overflow: hidden !important;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.012), rgba(255,255,255,0)),
+        rgba(3,3,5,.70) !important;
+      border-color: rgba(224,195,107,.10) !important;
+      box-shadow: 0 12px 28px rgba(0,0,0,.24) !important;
     }
 
-    #quickGrid .cnProd h3 {
-      min-height: 38px !important;
+    #quickGrid .cnProd .cnImg{
+      width: 100% !important;
+      aspect-ratio: 4 / 5 !important;
+      height: auto !important;
+      object-fit: contain !important;
+      object-position: center top !important;
+      background: rgba(0,0,0,.26) !important;
+      border-bottom: 1px solid rgba(224,195,107,.075);
+    }
+
+    #quickGrid .cnProd .cnProdPad{
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
+      padding: 12px !important;
+      min-height: 220px !important;
+    }
+
+    #quickGrid .cnProd h3{
+      min-height: 2.32em !important;
       display: -webkit-box !important;
       -webkit-line-clamp: 2 !important;
       -webkit-box-orient: vertical !important;
       overflow: hidden !important;
-      font-family: "Cormorant Garamond", Georgia, serif !important;
-      font-size: 17px !important;
-      line-height: 1.08 !important;
+      font-size: clamp(.96rem, 1.08vw, 1.08rem) !important;
+      line-height: 1.16 !important;
+      letter-spacing: .006em !important;
+      margin: 0 !important;
     }
 
-    #quickGrid .cnBadges {
-      min-height: 27px !important;
-      margin-top: 6px !important;
+    #quickGrid .cnBadges{
+      min-height: 28px !important;
+      margin-top: 8px !important;
       overflow: hidden !important;
     }
 
-    #quickGrid .cnBadges span {
+    #quickGrid .cnBadges span{
+      font-size: .64rem !important;
+      padding: 2px 7px !important;
       margin: 0 5px 5px 0 !important;
-      padding: 3px 7px !important;
-      font-size: 10px !important;
-      line-height: 1 !important;
     }
 
-    #quickGrid .cnMeta {
-      margin-top: 4px !important;
-      font-size: 10.5px !important;
-      color: rgba(255,255,255,.52) !important;
+    #quickGrid .cnMeta{
+      margin-top: 5px !important;
+      font-size: .67rem !important;
+      min-height: 18px !important;
     }
 
-    #quickGrid .cnMeta b { color: rgba(224,195,107,.82) !important; }
-
-    #quickGrid .cnRow {
+    #quickGrid .cnRow{
       margin-top: auto !important;
-      padding-top: 10px !important;
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
-      gap: 7px !important;
+      gap: 8px !important;
+      padding-top: 10px !important;
       align-items: stretch !important;
     }
 
-    #quickGrid .cnRow .btn {
+    #quickGrid .cnRow .btn{
       width: 100% !important;
       min-height: 33px !important;
+      border-radius: 13px !important;
+      font-size: .72rem !important;
+      font-weight: 850 !important;
       padding: 7px 9px !important;
-      border-radius: 12px !important;
-      font-size: 10.5px !important;
-      line-height: 1 !important;
       white-space: nowrap !important;
     }
 
-    #quickGrid .cnQuickTertiary {
-      grid-column: 1 / -1 !important;
-      min-height: 30px !important;
-      opacity: .70 !important;
-    }
-
-    #sec-vitrine-rapida > .imperialNote { display: none !important; }
-
-    @media (max-width: 860px) {
-      #featured .cnFeaturedWrap { grid-template-columns: 1fr !important; }
-      #featured .cnCard:first-child .cnImg {
-        height: auto !important;
-        max-height: 520px !important;
-      }
-      #featured .cnActionTertiary { max-width: none !important; }
-    }
-
-    @media (max-width: 640px) {
-      .page { padding-top: 12px !important; gap: 10px !important; }
-      .heroBanner__img {
-        max-height: 182px !important;
-        object-fit: cover !important;
-        object-position: center !important;
-      }
-      .hero__sub--banner { font-size: .82rem !important; }
-      .countPill,
-      .imperialNote--top { display: none !important; }
-      .sectionNav {
-        position: static !important;
-        padding: 7px !important;
-        gap: 7px !important;
-        border-radius: 22px !important;
-      }
-      #sec-produto-do-dia .panel__head,
-      #sec-vitrine-rapida .panel__head {
-        padding: 12px 12px 9px !important;
-      }
-      #featured.featured { padding: 10px !important; }
-      #featured .cnCard:first-child .cnImg { max-height: 470px !important; }
-      #featured .cnCardPad { padding: 12px !important; }
-      #featured .cnTitle {
-        font-size: 1.34rem !important;
-        line-height: 1 !important;
-      }
-      #featured .cnTitleSub { font-size: .78rem !important; }
-      #featured .cnRow { grid-template-columns: 1fr 1fr !important; }
-      #featured .cnRow .btn--buy-primary,
-      #featured .cnActionTertiary {
-        grid-column: 1 / -1 !important;
-      }
-      #sec-vitrine-rapida .quickTools {
-        grid-template-columns: 1fr auto !important;
-        padding: 0 12px 10px !important;
-      }
-      #btnAbrirLojaCompleta {
-        grid-column: 1 / -1 !important;
-        width: fit-content !important;
-      }
-      #quickGrid.cnGrid,
-      #quickGrid.productsGrid {
-        padding: 0 12px 12px !important;
-        gap: 12px !important;
-      }
-      #quickGrid .cnProd > .cnImg {
-        height: auto !important;
-        max-height: 610px !important;
-        object-fit: contain !important;
-        background: rgba(0,0,0,.18) !important;
-      }
-    }
-
-
-    /* =========================
-       ETAPA 4B — TOPO REORGANIZADO
-       - corrige a versão anterior que ficou pesada/desorganizada
-       - logos ficam em áreas próprias, fora da imagem do título
-       - topo fica compacto para aparecer a Seleção do Dia mais cedo
-       ========================= */
-
-    .hero.hero--luxo-reorganizado {
-      display: block !important;
-      padding: 12px !important;
-      border-radius: 22px !important;
+    #quickGrid .cnQuickPrimary{
+      background:
+        linear-gradient(180deg, rgba(224,195,107,.42), rgba(91,69,24,.38)),
+        rgba(224,195,107,.20) !important;
       border-color: rgba(224,195,107,.24) !important;
-      background:
-        radial-gradient(760px 220px at 22% 0%, rgba(224,195,107,.075), transparent 64%),
-        linear-gradient(180deg, rgba(255,255,255,.024), rgba(0,0,0,.08)),
-        rgba(5,5,7,.62) !important;
-      box-shadow: 0 18px 52px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.035) !important;
-      backdrop-filter: blur(10px) !important;
-      overflow: hidden !important;
     }
 
-    .hero.hero--luxo-reorganizado::before,
-    .hero.hero--luxo-reorganizado::after {
-      pointer-events: none !important;
+    #quickGrid .cnQuickSecondary{
+      background: rgba(255,255,255,.035) !important;
+      border-color: rgba(255,255,255,.10) !important;
     }
 
-    .hero.hero--luxo-reorganizado .hero__brand--banner {
-      width: 100% !important;
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 10px !important;
-      align-items: stretch !important;
-      justify-content: flex-start !important;
-      min-width: 0 !important;
-      flex: 0 0 auto !important;
-    }
-
-    .heroBannerShell {
-      position: relative !important;
-      z-index: 1 !important;
-      display: grid !important;
-      grid-template-columns: 78px minmax(0, 1fr) 78px !important;
-      gap: 10px !important;
-      align-items: stretch !important;
-      padding: 8px !important;
-      border-radius: 20px !important;
-      border: 1px solid rgba(224,195,107,.18) !important;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.16)),
-        rgba(0,0,0,.22) !important;
-      box-shadow: 0 14px 34px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.035) !important;
-    }
-
-    .heroLogoSlot {
-      min-width: 0 !important;
-      min-height: 126px !important;
-      border-radius: 16px !important;
-      border: 1px solid rgba(224,195,107,.12) !important;
-      background:
-        radial-gradient(90px 80px at 50% 28%, rgba(224,195,107,.12), transparent 68%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.20)),
-        rgba(0,0,0,.20) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 10px 22px rgba(0,0,0,.20) !important;
-      overflow: hidden !important;
-    }
-
-    .heroLogoSlot__img {
-      display: block !important;
-      width: 58px !important;
-      height: 58px !important;
-      object-fit: contain !important;
-      filter: drop-shadow(0 10px 16px rgba(0,0,0,.54)) drop-shadow(0 0 8px rgba(224,195,107,.08)) !important;
-      user-select: none !important;
-      pointer-events: none !important;
-    }
-
-    .heroLogoSlot__img--round {
-      width: 62px !important;
-      height: 62px !important;
-    }
-
-    .hero.hero--luxo-reorganizado .heroBanner {
-      min-width: 0 !important;
-      width: 100% !important;
-      height: 126px !important;
-      border-radius: 16px !important;
-      overflow: hidden !important;
-      border: 1px solid rgba(224,195,107,.15) !important;
-      background: rgba(0,0,0,.30) !important;
-      box-shadow: 0 12px 28px rgba(0,0,0,.26) !important;
-    }
-
-    .hero.hero--luxo-reorganizado .heroBanner__picture,
-    .hero.hero--luxo-reorganizado .heroBanner__img {
-      display: block !important;
-      width: 100% !important;
-      height: 100% !important;
-    }
-
-    .hero.hero--luxo-reorganizado .heroBanner__img {
-      object-fit: cover !important;
-      object-position: center center !important;
-      max-height: none !important;
-      filter: saturate(1.03) contrast(1.02) brightness(1.01) !important;
-    }
-
-    .heroInfoActions {
-      position: relative !important;
-      z-index: 1 !important;
-      display: grid !important;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 392px) !important;
-      gap: 12px !important;
-      align-items: stretch !important;
-    }
-
-    .hero.hero--luxo-reorganizado .hero__text--bannerstack {
-      min-width: 0 !important;
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 8px !important;
-      padding: 0 !important;
-      align-content: start !important;
-    }
-
-    .hero.hero--luxo-reorganizado .hero__sub--banner {
-      margin: 0 !important;
-      max-width: none !important;
-      font-size: 13px !important;
-      line-height: 1.34 !important;
-      color: rgba(255,255,255,.72) !important;
-    }
-
-    .hero.hero--luxo-reorganizado .chips {
-      margin: 0 !important;
-      display: flex !important;
-      flex-wrap: wrap !important;
-      gap: 7px !important;
-    }
-
-    .hero.hero--luxo-reorganizado .chip {
-      min-height: 27px !important;
-      padding: 4px 9px !important;
-      border-radius: 999px !important;
-      font-size: 11px !important;
-      line-height: 1 !important;
-      color: rgba(255,255,255,.78) !important;
-      border-color: rgba(224,195,107,.13) !important;
-      background: rgba(0,0,0,.20) !important;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.025) !important;
-    }
-
-    .hero.hero--luxo-reorganizado .countPill {
-      margin: 0 !important;
-      width: fit-content !important;
-      min-height: 29px !important;
-      padding: 5px 10px !important;
-      border-radius: 999px !important;
-      font-size: 12px !important;
-      line-height: 1 !important;
-      color: rgba(255,255,255,.82) !important;
-      border-color: rgba(224,195,107,.15) !important;
-      background: rgba(0,0,0,.21) !important;
-    }
-
-    .hero.hero--luxo-reorganizado .imperialNote--top {
-      margin: 0 !important;
-      width: fit-content !important;
-      max-width: 100% !important;
-      padding: 7px 10px !important;
-      border-radius: 13px !important;
-      font-size: 12px !important;
-      line-height: 1.22 !important;
-      color: rgba(255,255,255,.76) !important;
-      border-color: rgba(224,195,107,.13) !important;
-      background: rgba(0,0,0,.16) !important;
-      box-shadow: none !important;
-    }
-
-    .hero.hero--luxo-reorganizado .hero__actions {
-      flex: none !important;
-      flex-basis: auto !important;
-      width: 100% !important;
-      margin: 0 !important;
-      display: grid !important;
-      grid-template-columns: 1fr 1fr !important;
-      gap: 8px !important;
-      align-items: stretch !important;
-      justify-content: stretch !important;
-      align-content: start !important;
-    }
-
-    .hero.hero--luxo-reorganizado .heroMore {
-      display: none !important;
-    }
-
-    .hero.hero--luxo-reorganizado .hero__actions > .btn,
-    .hero.hero--luxo-reorganizado .hero__actions > .miniNote {
-      width: 100% !important;
-      min-height: 38px !important;
-      margin: 0 !important;
-      padding: 8px 10px !important;
-      border-radius: 14px !important;
-      font-size: 12px !important;
-      line-height: 1.08 !important;
-      box-shadow: 0 9px 22px rgba(0,0,0,.20) !important;
-    }
-
-    .hero.hero--luxo-reorganizado .hero__actions > .btn--gold {
+    #quickGrid .cnQuickTertiary{
       grid-column: 1 / -1 !important;
-      min-height: 42px !important;
-      font-size: 13px !important;
-      border-color: rgba(224,195,107,.42) !important;
-      box-shadow: 0 12px 28px rgba(145,111,34,.20) !important;
+      justify-self: stretch !important;
+      min-width: 0 !important;
+      opacity: .70 !important;
+      background: rgba(255,255,255,.018) !important;
+      border-color: rgba(255,255,255,.075) !important;
     }
 
-    .hero.hero--luxo-reorganizado .hero__actions > .miniNote {
-      grid-column: 1 / -1 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      color: rgba(255,255,255,.72) !important;
-      border-color: rgba(224,195,107,.11) !important;
-      background: rgba(0,0,0,.17) !important;
+    @media (min-width: 981px){
+      #sec-produto-do-dia,
+      #sec-vitrine-rapida{
+        width: 100%;
+      }
     }
 
-    @media (max-width: 860px) {
-      .heroInfoActions {
+    @media (max-width: 980px){
+      #featured .cnFeaturedWrap{
+        grid-template-columns: minmax(240px, .9fr) minmax(330px, 1.1fr) !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg{
+        height: clamp(300px, 32vw, 370px) !important;
+      }
+    }
+
+    @media (max-width: 860px){
+      #featured .cnFeaturedWrap{
         grid-template-columns: 1fr !important;
-        gap: 10px !important;
       }
 
-      .hero.hero--luxo-reorganizado .hero__actions {
-        grid-template-columns: 1fr 1fr !important;
+      #featured .cnFeaturedMedia .cnImg{
+        height: min(40vh, 340px) !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad{
+        padding: 13px !important;
+      }
+
+      #sec-vitrine-rapida .quickTools{
+        grid-template-columns: minmax(0,1fr) auto !important;
+      }
+
+      #btnAbrirLojaCompleta{
+        grid-column: 1 / -1 !important;
+        justify-self: start !important;
       }
     }
 
-    @media (max-width: 640px) {
-      .hero.hero--luxo-reorganizado {
-        padding: 8px !important;
-        border-radius: 18px !important;
+    @media (max-width: 520px){
+      #sec-produto-do-dia .panel__head{
+        padding: 11px 14px 8px !important;
       }
 
-      .hero.hero--luxo-reorganizado .hero__brand--banner {
-        gap: 8px !important;
+      #sec-produto-do-dia > .imperialNote{
+        margin: 8px 14px 9px !important;
       }
 
-      .heroBannerShell {
-        grid-template-columns: 46px minmax(0, 1fr) 46px !important;
-        gap: 6px !important;
-        padding: 6px !important;
-        border-radius: 16px !important;
+      #featured.featured{
+        padding: 0 14px 13px !important;
       }
 
-      .heroLogoSlot {
-        min-height: 72px !important;
-        border-radius: 12px !important;
+      #featured .cnFeaturedMedia{
+        padding: 9px !important;
       }
 
-      .heroLogoSlot__img,
-      .heroLogoSlot__img--round {
-        width: 36px !important;
-        height: 36px !important;
+      #featured .cnFeaturedMedia .cnImg{
+        height: min(37vh, 315px) !important;
+        max-height: 315px !important;
       }
 
-      .hero.hero--luxo-reorganizado .heroBanner {
-        height: 72px !important;
-        border-radius: 12px !important;
+      #featured .cnTitleMain{
+        font-size: clamp(1.24rem, 6.2vw, 1.62rem) !important;
+        line-height: 1.04 !important;
       }
 
-      .hero.hero--luxo-reorganizado .hero__sub--banner {
-        font-size: 12px !important;
-        line-height: 1.26 !important;
+      #featured .cnTitleSub{
+        font-size: .72rem !important;
       }
 
-      .hero.hero--luxo-reorganizado .chips {
-        gap: 5px !important;
+      #featured .cnFeatureSummary{
+        font-size: .73rem !important;
       }
 
-      .hero.hero--luxo-reorganizado .chip {
-        min-height: 24px !important;
-        padding: 3px 8px !important;
-        font-size: 10px !important;
+      #featured .cnBuyBox{
+        margin-top: 10px !important;
+        padding: 9px !important;
       }
 
-      .hero.hero--luxo-reorganizado .countPill,
-      .hero.hero--luxo-reorganizado .imperialNote--top {
-        display: none !important;
+      #featured .cnSteps li{
+        font-size: .70rem !important;
+        min-height: 28px !important;
       }
 
-      .hero.hero--luxo-reorganizado .hero__actions {
-        grid-template-columns: 1fr !important;
-        gap: 7px !important;
+      #featured .cnActionPrimary{
+        min-height: 37px !important;
       }
 
-      .hero.hero--luxo-reorganizado .hero__actions > #copyLoja,
-      .hero.hero--luxo-reorganizado .hero__actions > .btn--social,
-      .hero.hero--luxo-reorganizado .hero__actions > .miniNote:not(.heroMore__status) {
-        display: none !important;
+      #sec-vitrine-rapida .quickTools{
+        padding: 0 14px 12px !important;
       }
 
-      .hero.hero--luxo-reorganizado .heroMore {
-        display: block !important;
-        width: 100% !important;
+      #quickGrid.cnGrid{
+        padding: 0 14px 14px !important;
+        gap: 13px !important;
       }
 
-      .hero.hero--luxo-reorganizado .heroMore__summary {
-        width: 100% !important;
-        min-height: 36px !important;
-        padding: 8px 10px !important;
-        border-radius: 13px !important;
-        font-size: 13px !important;
+      #quickGrid .cnProd .cnImg{
+        aspect-ratio: 4 / 5 !important;
       }
 
-      .hero.hero--luxo-reorganizado .hero__actions > .btn--gold {
-        min-height: 42px !important;
-        font-size: 13px !important;
+      #quickGrid .cnProd .cnProdPad{
+        min-height: 205px !important;
+      }
+
+      #quickGrid .cnRow .btn{
+        min-height: 34px !important;
       }
     }
 
-    @media (max-width: 420px) {
-      .heroBannerShell {
-        grid-template-columns: 42px minmax(0, 1fr) 42px !important;
-        gap: 5px !important;
-      }
-
-      .heroLogoSlot {
-        min-height: 66px !important;
-      }
-
-      .hero.hero--luxo-reorganizado .heroBanner {
-        height: 66px !important;
-      }
-
-      .heroLogoSlot__img,
-      .heroLogoSlot__img--round {
-        width: 32px !important;
-        height: 32px !important;
-      }
-    }
-</style>
+  </style>
 </head>
 
 <body>
@@ -4589,92 +4246,83 @@
   </div>
 
   <main class="page">
-    <header class="hero hero--luxo-reorganizado">
+    <header class="hero">
       <div class="hero__brand hero__brand--banner">
-        <div class="heroBannerShell" aria-label="Central Premium">
-          <div class="heroLogoSlot heroLogoSlot--left" aria-hidden="true">
+        <div class="heroBanner" aria-hidden="false">
+          <picture class="heroBanner__picture">
+            <source media="(max-width: 640px)" srcset="assets/topo-central-premium-fachada-cn-mobile-v5.png">
             <img
-              class="heroLogoSlot__img heroLogoSlot__img--square"
-              src="assets/logo-cn-square.png"
-              alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-cn-square.png'; return;} this.style.display='none';"
+              class="heroBanner__img"
+              src="assets/topo-central-premium-fachada-cn-desktop-v5.png"
+              alt="Central Premium — Cosa Nostra • A Família das Ideias"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-central-premium-fachada-cn-desktop-v5.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
             />
-          </div>
-
-          <div class="heroBanner" aria-hidden="false">
-            <picture class="heroBanner__picture">
-              <source media="(max-width: 640px)" srcset="assets/topo-central-premium-luxo-mobile.png">
-              <img
-                class="heroBanner__img"
-                src="assets/topo-central-premium-luxo-desktop.png"
-                alt="Central Premium — Cosa Nostra • A Família das Ideias"
-                onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-central-premium-luxo-desktop.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
-              />
-            </picture>
-          </div>
-
-          <div class="heroLogoSlot heroLogoSlot--right" aria-hidden="true">
+          </picture>
+          <div class="heroBanner__seal" aria-hidden="true">
             <img
-              class="heroLogoSlot__img heroLogoSlot__img--round"
-              src="assets/logo-cn-round.png"
+              class="heroBanner__sealLogo"
+              src="assets/logo-oficial-circular-glow.png"
               alt=""
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-cn-round.png'; return;} this.style.display='none';"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
             />
+            <span class="heroBanner__sealFallback">👑</span>
           </div>
         </div>
 
-        <div class="heroInfoActions">
-          <div class="hero__text hero__text--bannerstack">
-            <h1 class="srOnly">Central Premium</h1>
-            <p class="sub hero__sub--banner">
-              Achados premium selecionados para compra rápida e segura.
-            </p>
+        <div class="hero__text hero__text--bannerstack">
+          <h1 class="srOnly">Central Premium</h1>
+          <p class="sub hero__sub--banner">
+            Achados premium selecionados para compra rápida e segura.
+          </p>
 
-            <div class="chips" aria-label="Dicas rápidas">
-              <span class="chip">⚡ rápida</span>
-              <span class="chip">💎 premium</span>
-              <span class="chip">🔄 atualizada</span>
-            </div>
-
-            <div class="countPill" aria-label="Contagem de produtos">
-              <span>📦 Loja Completa:</span>
-              <span class="n" data-total-products>—</span>
-            </div>
-
-            <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
-              <div><b>Seleção do Dia + Vitrine Rápida</b> · veja tudo na <b>Loja Completa</b>.</div>
-            </div>
+          <div class="chips" aria-label="Dicas rápidas">
+            <span class="chip">⚡ rápida</span>
+            <span class="chip">💎 premium</span>
+            <span class="chip">🔄 atualizada</span>
           </div>
 
-          <div class="hero__actions">
-            <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
+          <div class="countPill" aria-label="Contagem de produtos">
+            <span>📦 Loja Completa:</span>
+            <span class="n" data-total-products>—</span>
+          </div>
 
-            <details class="heroMore">
-              <summary class="heroMore__summary">➕ Mais opções</summary>
-              <div class="heroMore__body">
-                <button class="btn btn--glass btn--social" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">📌 Copiar link</button>
-                <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
-                <a class="btn btn--glass btn--social heroMore__telegram" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
-                <div class="miniNote heroMore__status">
-                  <span class="dot"></span>
-                  <span>
-                    Status: <b>online</b> • Atualizado <span id="lastUpdateMobile">30/03/2026, 20:31</span>
-                  </span>
-                </div>
-              </div>
-            </details>
+          <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
+            <div><b>Produto do Dia + Vitrine Rápida</b> · veja tudo na <b>Loja Completa</b>.</div>
+          </div>
+        </div>
+      </div>
 
-            <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link</button>
+      <div class="hero__actions">
+        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
+
+        <details class="heroMore">
+          <summary class="heroMore__summary">➕ Mais opções</summary>
+          <div class="heroMore__body">
+            <button class="btn btn--glass btn--social" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">📌 Copiar link</button>
             <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
-            <a class="btn btn--glass btn--social" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram</a>
-
-            <div class="miniNote">
+            <a class="btn btn--glass btn--social heroMore__telegram" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+            <div class="miniNote heroMore__status">
               <span class="dot"></span>
               <span>
-                Status: <b>online</b> • Atualizado <span id="lastUpdate">agora</span>
+                Status: <b>online</b> • Atualizado <span id="lastUpdateMobile">30/03/2026, 20:31</span>
               </span>
             </div>
           </div>
+        </details>
+
+        <button class="btn btn--glass" id="copyLoja" type="button">📌 Copiar link da vitrine</button>
+
+        <!-- ✅ Instagram (mais importante) — voltou -->
+        <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
+
+        <!-- ✅ Telegram (Achados) — mantido -->
+        <a class="btn btn--glass btn--social" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram (Achados)</a>
+
+        <div class="miniNote">
+          <span class="dot"></span>
+          <span>
+            Status: <b>online</b> • Atualizado <span id="lastUpdate">agora</span>
+          </span>
         </div>
       </div>
     </header>
@@ -4691,7 +4339,7 @@
       <div class="panel__head">
         <div>
           <h2>Seleção do Dia</h2>
-          <p>Destaque premium da curadoria.</p>
+          <p>Curadoria especial para compra rápida e segura.</p>
         </div>
         <div class="panel__right">
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
@@ -4712,7 +4360,7 @@
         <div>
           <h2>Vitrine Rápida</h2>
           <p>
-            Prévia premium da curadoria.
+            Seleção resumida da curadoria.
             <span style="opacity:.85">Exibindo <b><span data-quick-products>—</span></b> de <b><span data-total-products>—</span></b>.</span>
           </p>
         </div>
