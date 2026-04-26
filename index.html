@@ -2027,6 +2027,153 @@
       }
     }
 
+  
+
+    /* =========================
+       ETAPA 3C — REFINAMENTO MOBILE PREMIUM
+       - compacta o topo no celular
+       - deixa chips, aviso, menu e CTA flutuante mais discretos
+       - preserva desktop, banner V5, Produto do Dia, JS e loja.html
+       ========================= */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 10px 10px 12px;
+      }
+
+      .hero__brand--banner {
+        gap: 7px;
+      }
+
+      .heroBanner {
+        border-radius: 13px;
+        box-shadow: 0 10px 24px rgba(0,0,0,.24);
+      }
+
+      .hero__sub--banner {
+        font-size: .82rem;
+        line-height: 1.22;
+        letter-spacing: .005em;
+        color: rgba(255,255,255,.73);
+      }
+
+      .chips {
+        margin-top: 7px;
+        gap: 5px;
+      }
+
+      .chip {
+        min-height: 24px;
+        padding: 3px 8px;
+        font-size: .72rem;
+        line-height: 1;
+        border-radius: 999px;
+        font-weight: 850;
+        color: rgba(255,255,255,.82);
+      }
+
+      .countPill {
+        margin-top: 7px;
+        min-height: 28px;
+        padding: 4px 9px;
+        font-size: .80rem;
+        border-radius: 999px;
+      }
+
+      .imperialNote--top {
+        margin-top: 7px;
+        padding: 7px 9px;
+        border-radius: 12px;
+        font-size: .79rem;
+        line-height: 1.18;
+        max-width: 100%;
+      }
+
+      .hero__actions {
+        gap: 7px;
+      }
+
+      .hero__actions .btn--gold {
+        min-height: 42px;
+        padding: 8px 10px;
+        border-radius: 14px;
+        font-size: .86rem;
+      }
+
+      .heroMore__summary {
+        min-height: 34px;
+        padding: 7px 10px;
+        border-radius: 13px;
+        font-size: .86rem;
+        box-shadow: 0 8px 18px rgba(0,0,0,.16);
+      }
+
+      .sectionNav {
+        margin-top: 8px;
+        padding: 7px 8px;
+        gap: 6px;
+        border-radius: 24px;
+        box-shadow: 0 10px 24px rgba(0,0,0,.24);
+      }
+
+      .sectionNav__pill {
+        min-height: 26px;
+        padding: 4px 8px;
+        font-size: .75rem;
+        letter-spacing: 0;
+      }
+
+      .floatingStoreCTA {
+        right: 6px;
+        bottom: 6px;
+      }
+
+      .floatingStoreCTA a {
+        min-height: 30px;
+        max-width: 76vw;
+        padding: 5px 8px;
+        border-radius: 10px;
+        font-size: .70rem;
+        line-height: 1;
+        gap: 4px;
+        opacity: .88;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-shadow: 0 10px 22px rgba(0,0,0,.28);
+        backdrop-filter: blur(8px);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero__sub--banner {
+        font-size: .79rem;
+      }
+
+      .chip {
+        font-size: .69rem;
+        padding: 3px 7px;
+      }
+
+      .imperialNote--top {
+        font-size: .76rem;
+      }
+
+      .sectionNav {
+        gap: 5px;
+      }
+
+      .sectionNav__pill {
+        min-height: 25px;
+        padding: 4px 7px;
+        font-size: .72rem;
+      }
+
+      .heroMore__summary {
+        min-height: 32px;
+        font-size: .82rem;
+      }
+    }
+
   </style>
 </head>
 
@@ -2072,13 +2219,13 @@
         <div class="hero__text hero__text--bannerstack">
           <h1 class="srOnly">Central Premium</h1>
           <p class="sub hero__sub--banner">
-            Curadoria premium de achados para uma compra rápida, bonita e segura.
+            Achados premium selecionados para compra rápida e segura.
           </p>
 
           <div class="chips" aria-label="Dicas rápidas">
-            <span class="chip">⚡ compra rápida</span>
-            <span class="chip">💎 seleção premium</span>
-            <span class="chip">🔄 sempre atualizada</span>
+            <span class="chip">⚡ rápida</span>
+            <span class="chip">💎 premium</span>
+            <span class="chip">🔄 atualizada</span>
           </div>
 
           <div class="countPill" aria-label="Contagem de produtos">
@@ -2087,7 +2234,7 @@
           </div>
 
           <div class="imperialNote imperialNote--top" role="note" aria-label="Aviso importante sobre a loja">
-            <div><b>Produto do Dia + Vitrine Rápida</b> · explore todos os achados na <b>Loja Completa</b>.</div>
+            <div><b>Produto do Dia + Vitrine Rápida</b> · veja tudo na <b>Loja Completa</b>.</div>
           </div>
         </div>
       </div>
