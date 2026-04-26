@@ -2173,6 +2173,280 @@
         font-size: .82rem;
       }
     }
+    /* =========================
+       ETAPA 3D — ACABAMENTO PREMIUM FINAL
+       - mantém o topo original e o banner V5
+       - escurece levemente os painéis para leitura mais premium
+       - compacta o Produto do Dia no mobile
+       - remove o CTA flutuante no mobile para não cobrir produto/QR
+       ========================= */
+    .hero,
+    .panel {
+      border-color: rgba(215,176,88,.20);
+      background:
+        radial-gradient(720px 220px at 18% 0%, rgba(215,176,88,.065), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.09)),
+        rgba(5,5,7,.66);
+      backdrop-filter: blur(9px);
+      box-shadow: 0 18px 52px rgba(0,0,0,.46);
+    }
+
+    .sectionNav {
+      background: rgba(5,5,7,.68);
+      border-color: rgba(215,176,88,.13);
+      backdrop-filter: blur(9px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.30);
+    }
+
+    .hero__actions .btn:not(.btn--gold),
+    .hero__actions .miniNote {
+      border-color: rgba(215,176,88,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.026), rgba(0,0,0,.18));
+      box-shadow: 0 8px 20px rgba(0,0,0,.18);
+    }
+
+    .hero__actions .btn--gold {
+      border-color: rgba(215,176,88,.38);
+      box-shadow: 0 13px 30px rgba(145,111,34,.20);
+    }
+
+    #sec-produto-do-dia > .imperialNote {
+      margin: 10px 14px 0 !important;
+      padding: 9px 12px;
+      border-color: rgba(215,176,88,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.016), rgba(0,0,0,.18));
+      box-shadow: 0 8px 22px rgba(0,0,0,.20);
+    }
+
+    #featured .cnCard {
+      background:
+        radial-gradient(520px 220px at 22% 0%, rgba(215,176,88,.055), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.24));
+      border-color: rgba(215,176,88,.13);
+      box-shadow: 0 14px 34px rgba(0,0,0,.30);
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-top: 16px;
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 9px 9px 10px !important;
+        border-radius: 18px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 6px !important;
+      }
+
+      .heroBanner {
+        border-radius: 12px !important;
+        box-shadow: 0 8px 18px rgba(0,0,0,.22) !important;
+      }
+
+      .heroBanner__seal {
+        width: 48px !important;
+        height: 48px !important;
+        top: 7px !important;
+        right: 5px !important;
+        border-radius: 12px !important;
+        opacity: .92;
+      }
+
+      .heroBanner__sealLogo {
+        width: 48px !important;
+        height: 48px !important;
+      }
+
+      .hero__sub--banner {
+        font-size: .76rem !important;
+        line-height: 1.18 !important;
+        color: rgba(255,255,255,.70) !important;
+        margin-top: 0 !important;
+      }
+
+      .chips {
+        margin-top: 6px !important;
+        gap: 4px !important;
+      }
+
+      .chip {
+        min-height: 21px !important;
+        padding: 3px 7px !important;
+        font-size: .66rem !important;
+        line-height: 1 !important;
+        border-color: rgba(215,176,88,.11) !important;
+        background: rgba(0,0,0,.18) !important;
+      }
+
+      .countPill {
+        margin-top: 6px !important;
+        min-height: 26px !important;
+        padding: 4px 8px !important;
+        font-size: .74rem !important;
+        border-color: rgba(215,176,88,.13) !important;
+        background: rgba(0,0,0,.20) !important;
+      }
+
+      .imperialNote--top {
+        margin-top: 6px !important;
+        padding: 6px 8px !important;
+        border-radius: 11px !important;
+        font-size: .72rem !important;
+        line-height: 1.16 !important;
+        max-width: 100% !important;
+      }
+
+      .hero__actions {
+        gap: 6px !important;
+      }
+
+      .hero__actions .btn--gold {
+        min-height: 38px !important;
+        padding: 7px 10px !important;
+        border-radius: 13px !important;
+        font-size: .82rem !important;
+      }
+
+      .heroMore__summary {
+        min-height: 30px !important;
+        padding: 6px 9px !important;
+        border-radius: 12px !important;
+        font-size: .78rem !important;
+        opacity: .88;
+      }
+
+      .sectionNav {
+        margin-top: 7px !important;
+        padding: 6px 7px !important;
+        gap: 5px !important;
+        border-radius: 22px !important;
+      }
+
+      .sectionNav__pill {
+        min-height: 24px !important;
+        padding: 4px 7px !important;
+        font-size: .68rem !important;
+        border-color: rgba(215,176,88,.10) !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 11px 13px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: .86rem !important;
+        letter-spacing: .13em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        font-size: .78rem !important;
+        line-height: 1.35 !important;
+      }
+
+      #sec-produto-do-dia .panel__right .btn {
+        min-height: 34px !important;
+        padding: 7px 10px !important;
+        border-radius: 14px !important;
+        font-size: .76rem !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        margin: 0 11px 8px !important;
+        padding: 7px 9px !important;
+        border-radius: 12px !important;
+        font-size: .84rem !important;
+        line-height: 1.24 !important;
+      }
+
+      #featured.featured {
+        padding: 9px 10px 11px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        gap: 10px !important;
+      }
+
+      #featured .cnCard:first-child {
+        padding: 8px !important;
+      }
+
+      #featured .cnCard:first-child .cnImg {
+        width: 100% !important;
+        height: min(56vh, 500px) !important;
+        max-height: 500px !important;
+        object-fit: contain !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnCardPad {
+        padding: 13px !important;
+      }
+
+      #featured .cnTitle {
+        font-size: 1.05rem !important;
+        line-height: 1.06 !important;
+      }
+
+      #featured .cnSteps {
+        margin-top: 11px !important;
+        padding: 7px !important;
+        gap: 6px !important;
+      }
+
+      #featured .cnSteps li {
+        font-size: .80rem !important;
+        padding: 6px 8px 6px 33px !important;
+      }
+
+      #featured .cnSteps li::before {
+        left: 8px !important;
+        width: 18px !important;
+        height: 18px !important;
+      }
+
+      #featured .cnRow .btn,
+      #featured .cnRow .btn--buy-primary {
+        min-height: 36px !important;
+        font-size: .80rem !important;
+        border-radius: 12px !important;
+      }
+
+      .floatingStoreCTA {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero__sub--banner {
+        font-size: .73rem !important;
+      }
+
+      .chip {
+        font-size: .63rem !important;
+        padding-inline: 6px !important;
+      }
+
+      .countPill {
+        font-size: .70rem !important;
+      }
+
+      .imperialNote--top {
+        font-size: .69rem !important;
+      }
+
+      .sectionNav__pill {
+        font-size: .65rem !important;
+        padding-inline: 6px !important;
+      }
+
+      #featured .cnCard:first-child .cnImg {
+        height: min(52vh, 460px) !important;
+      }
+    }
+
 
   </style>
 </head>
