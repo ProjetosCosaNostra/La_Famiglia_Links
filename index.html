@@ -4605,10 +4605,190 @@
         margin-right: .22em !important;
       }
     }
-</style>
+
+    /* ==========================================================
+       ETAPA 3T — AJUSTE EXCLUSIVO MOBILE
+       Objetivo:
+       - NÃO alterar layout do PC
+       - reduzir chips do topo no celular
+       - deixar menu flutuante mobile com Seleção, Loja e Topo
+       - manter o botão Mais opções no mobile
+       - restaurar CTA flutuante no mobile
+       ========================================================== */
+
+    .floatingStoreCTA__mobile,
+    .sectionNav__pill--top {
+      display: none !important;
+    }
+
+    @media (max-width: 640px) {
+      /* Proteção: tudo aqui vale só para celular */
+      body {
+        padding-bottom: 58px;
+      }
+
+      /* Topo: no mobile ficam só Premium + Loja Completa */
+      .hero .chips {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+        margin-top: 8px !important;
+      }
+
+      .hero .chips .chip:nth-child(1),
+      .hero .chips .chip:nth-child(3) {
+        display: none !important;
+      }
+
+      .hero .chips .chip:nth-child(2),
+      .hero .chips .chip--storeCount {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 28px !important;
+        padding: 5px 10px !important;
+        font-size: .80rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+      }
+
+      .hero .chips .chip--storeCount {
+        margin: 0 !important;
+      }
+
+      .hero__sub--banner {
+        text-align: center !important;
+        max-width: 100% !important;
+      }
+
+      /* Mantém o bloco "Mais opções" no mobile: Instagram + Telegram ficam acessíveis */
+      .heroMore {
+        display: block !important;
+      }
+
+      /* Menu flutuante/sticky do mobile: só Seleção, Loja e Topo */
+      .sectionNav {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        overflow: visible !important;
+        padding: 8px 9px !important;
+        margin-top: 9px !important;
+        border-radius: 24px !important;
+        position: sticky !important;
+        top: 8px !important;
+      }
+
+      .sectionNav .sectionNav__pill:nth-child(2),
+      .sectionNav .sectionNav__pill:nth-child(5) {
+        display: none !important;
+      }
+
+      .sectionNav .sectionNav__pill,
+      .sectionNav .sectionNav__pill--gold,
+      .sectionNav .sectionNav__pill--top {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 30px !important;
+        padding: 6px 10px !important;
+        border-radius: 999px !important;
+        font-size: .78rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 36px !important;
+        min-width: 36px !important;
+        padding-inline: 0 !important;
+        font-size: .92rem !important;
+      }
+
+      /* CTA flutuante restaurado no mobile, pequeno e com 3 ações */
+      .floatingStoreCTA {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 7px !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        max-width: calc(100vw - 18px) !important;
+        z-index: 9999 !important;
+        pointer-events: none !important;
+      }
+
+      .floatingStoreCTA__desktop {
+        display: none !important;
+      }
+
+      .floatingStoreCTA__mobile {
+        pointer-events: auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 34px !important;
+        padding: 7px 10px !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(215,176,88,.30) !important;
+        background: rgba(8,8,10,.78) !important;
+        color: rgba(255,255,255,.92) !important;
+        box-shadow: 0 10px 28px rgba(0,0,0,.45) !important;
+        backdrop-filter: blur(10px) !important;
+        font-size: .74rem !important;
+        font-weight: 850 !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        text-decoration: none !important;
+      }
+
+      .floatingStoreCTA__top {
+        width: 34px !important;
+        min-width: 34px !important;
+        padding-inline: 0 !important;
+        font-size: 1rem !important;
+      }
+
+      /* Corrige respiro do destaque "Mercado Livre" no mobile */
+      #featured .cnSteps b {
+        display: inline-block !important;
+        margin: 0 .22em !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .sectionNav .sectionNav__pill,
+      .sectionNav .sectionNav__pill--gold {
+        font-size: .72rem !important;
+        padding-inline: 8px !important;
+      }
+
+      .floatingStoreCTA__mobile {
+        font-size: .68rem !important;
+        padding-inline: 8px !important;
+      }
+
+      .floatingStoreCTA__top {
+        width: 32px !important;
+        min-width: 32px !important;
+      }
+    }
+
+  </style>
 </head>
 
-<body>
+<body id="topo">
   <div class="bg">
     <div class="orb orb--1"></div>
     <div class="orb orb--2"></div>
@@ -4618,8 +4798,17 @@
 
   <!-- CTA flutuante (alto padrão) -->
   <div class="floatingStoreCTA" aria-hidden="false">
-    <a href="./loja.html" id="floatingLoja">
+    <a class="floatingStoreCTA__desktop" href="./loja.html" id="floatingLoja">
       👑 Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> produtos
+    </a>
+    <a class="floatingStoreCTA__mobile" href="#sec-produto-do-dia" aria-label="Ir para Seleção do Dia">
+      ⭐ Seleção
+    </a>
+    <a class="floatingStoreCTA__mobile" href="./loja.html" aria-label="Abrir Loja Completa">
+      👑 Loja (<span data-total-products>—</span>)
+    </a>
+    <a class="floatingStoreCTA__mobile floatingStoreCTA__top" href="#topo" aria-label="Voltar para o topo">
+      ↑
     </a>
   </div>
 
@@ -4703,6 +4892,7 @@
       <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Seleção do Dia</a>
       <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
       <a class="sectionNav__pill sectionNav__pill--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
+      <a class="sectionNav__pill sectionNav__pill--top" href="#topo" aria-label="Voltar para o topo">↑</a>
       <a class="sectionNav__pill" href="#sec-links">🔗 Links Oficiais</a>
     </nav>
 
