@@ -2227,6 +2227,14 @@
     }
 
     @media (max-width: 640px) {
+      .goLojaTextDesktop {
+        display: none !important;
+      }
+
+      .goLojaTextMobile {
+        display: inline !important;
+      }
+
       .page {
         padding-top: 16px;
         gap: 12px;
@@ -4809,6 +4817,219 @@
         display: none !important;
       }
     }
+
+
+    /* ==========================================================
+       ETAPA 3V — REFINO MOBILE 27/04
+       Objetivo:
+       - NÃO alterar PC
+       - trocar CTA principal para mensagem premium
+       - transformar "Mais opções" em "Canais oficiais"
+       - mostrar + fechado e - aberto no bloco de canais
+       - compactar a primeira dobra para revelar mais da imagem da Seleção do Dia
+       ========================================================== */
+    .goLojaTextMobile {
+      display: none;
+    }
+
+    .goLojaTextDesktop {
+      display: inline;
+    }
+
+    .heroMore__toggleIcon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.15em;
+      min-width: 1.15em;
+      height: 1.15em;
+      font-weight: 950;
+      line-height: 1;
+      color: rgba(255,232,170,.96);
+    }
+
+    .heroMore__toggleIcon::before {
+      content: "+";
+    }
+
+    .heroMore[open] .heroMore__toggleIcon::before {
+      content: "−";
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-top: 12px !important;
+        gap: 8px !important;
+      }
+
+      .hero {
+        padding: 8px 8px 9px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 5px !important;
+      }
+
+      .heroBanner {
+        border-radius: 12px !important;
+      }
+
+      .hero .chips {
+        margin-top: 6px !important;
+        gap: 7px !important;
+      }
+
+      .hero .chips .chip:nth-child(2),
+      .hero .chips .chip--storeCount {
+        min-height: 25px !important;
+        padding: 4px 9px !important;
+        font-size: .76rem !important;
+      }
+
+      .hero__sub--banner {
+        margin-top: 5px !important;
+        font-size: .72rem !important;
+        line-height: 1.12 !important;
+      }
+
+      .hero__actions {
+        gap: 6px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 39px !important;
+        padding: 8px 10px !important;
+        border-radius: 14px !important;
+        font-size: .86rem !important;
+        letter-spacing: .01em !important;
+      }
+
+      .heroMore__summary {
+        min-height: 32px !important;
+        padding: 6px 10px !important;
+        border-radius: 13px !important;
+        font-size: .84rem !important;
+        gap: 7px !important;
+      }
+
+      .heroMore__body {
+        margin-top: 6px !important;
+        gap: 7px !important;
+      }
+
+      .heroMore__body .btn,
+      .heroMore__body .miniNote {
+        min-height: 36px !important;
+        padding: 8px 10px !important;
+        border-radius: 13px !important;
+        font-size: .82rem !important;
+        line-height: 1.12 !important;
+      }
+
+      .heroMore__status {
+        min-height: 38px !important;
+      }
+
+      .sectionNav {
+        margin-top: 7px !important;
+        margin-bottom: 7px !important;
+        padding: 6px 7px !important;
+        gap: 6px !important;
+        border-radius: 22px !important;
+      }
+
+      .sectionNav .sectionNav__pill,
+      .sectionNav .sectionNav__pill--gold,
+      .sectionNav .sectionNav__pill--top {
+        min-height: 28px !important;
+        padding: 5px 9px !important;
+        font-size: .75rem !important;
+      }
+
+      .sectionNav .sectionNav__pill--gold {
+        max-width: 43vw !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 34px !important;
+        min-width: 34px !important;
+        padding-inline: 0 !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 6px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 8px 10px !important;
+        margin-bottom: 5px !important;
+        gap: 6px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: .86rem !important;
+        letter-spacing: .28em !important;
+        line-height: 1.05 !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        display: none !important;
+      }
+
+      #sec-produto-do-dia .panel__right .btn,
+      #refresh {
+        min-height: 30px !important;
+        padding: 6px 9px !important;
+        border-radius: 13px !important;
+        font-size: .70rem !important;
+        line-height: 1 !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        display: none !important;
+      }
+
+      #featured.featured {
+        padding: 7px 9px 10px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        gap: 7px !important;
+      }
+
+      #featured .cnCard:first-child,
+      #featured .cnFeaturedMedia {
+        padding: 6px !important;
+        border-radius: 18px !important;
+      }
+
+      #featured .cnCard:first-child .cnImg,
+      #featured .cnFeaturedMedia .cnImg {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 58svh !important;
+        object-fit: contain !important;
+        border-radius: 12px !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .sectionNav .sectionNav__pill,
+      .sectionNav .sectionNav__pill--gold {
+        font-size: .70rem !important;
+        padding-inline: 7px !important;
+      }
+
+      .hero__actions #goLoja {
+        font-size: .82rem !important;
+      }
+
+      .heroMore__summary {
+        font-size: .80rem !important;
+      }
+    }
   </style>
 </head>
 
@@ -4877,10 +5098,10 @@
       </div>
 
       <div class="hero__actions">
-        <a class="btn btn--gold" href="./loja.html" id="goLoja">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</a>
+        <a class="btn btn--gold" href="./loja.html" id="goLoja"><span class="goLojaTextDesktop">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</span><span class="goLojaTextMobile">👑 Entrar na Loja Premium</span></a>
 
         <details class="heroMore">
-          <summary class="heroMore__summary">➕ Mais opções</summary>
+          <summary class="heroMore__summary"><span class="heroMore__toggleIcon" aria-hidden="true"></span><span>Canais oficiais</span></summary>
           <div class="heroMore__body">
             <button class="btn btn--glass btn--social" id="copyLojaMobile" type="button" onclick="document.getElementById('copyLoja').click()">📌 Copiar link</button>
             <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.ai" target="_blank" rel="noopener">📸 Instagram</a>
