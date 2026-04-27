@@ -4785,6 +4785,30 @@
       }
     }
 
+
+
+    /* ==========================================================
+       ETAPA 3U — HOTFIX MOBILE 27/04
+       Objetivo:
+       - NÃO alterar o PC
+       - remover os botões flutuantes inferiores do mobile
+       - liberar a visualização do Produto/Seleção do Dia e do QR Code
+       ========================================================== */
+    @media (max-width: 640px) {
+      body {
+        padding-bottom: 0 !important;
+      }
+
+      .floatingStoreCTA {
+        display: none !important;
+      }
+
+      .floatingStoreCTA__mobile,
+      .floatingStoreCTA__desktop,
+      .floatingStoreCTA__top {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 
