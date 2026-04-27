@@ -6323,6 +6323,353 @@
       }
     }
 
+
+    /* ==========================================================
+       HOTFIX FINAL — MOBILE BUTTONS 2026-04-27
+       Escopo: SOMENTE MOBILE
+       - restaura os botões flutuantes no celular
+       - reduz tamanho visual dos botões mobile
+       - reforça clique/toque dos atalhos mobile
+       - não altera PC/Desktop
+       ========================================================== */
+    @media (max-width: 640px) {
+      body {
+        padding-bottom: calc(46px + env(safe-area-inset-bottom)) !important;
+      }
+
+      /* Barra flutuante inferior mobile restaurada, menor e mais premium */
+      .floatingStoreCTA {
+        position: fixed !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: calc(7px + env(safe-area-inset-bottom)) !important;
+        transform: translateX(-50%) !important;
+        z-index: 10050 !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        width: auto !important;
+        max-width: calc(100vw - 18px) !important;
+        margin: 0 !important;
+        padding: 4px !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(215,176,88,.20) !important;
+        background:
+          radial-gradient(130px 44px at 50% 0%, rgba(215,176,88,.12), transparent 72%),
+          linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.24)),
+          rgba(5,5,7,.74) !important;
+        box-shadow:
+          0 12px 30px rgba(0,0,0,.46),
+          inset 0 1px 0 rgba(255,255,255,.06) !important;
+        backdrop-filter: blur(14px) saturate(1.08) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(1.08) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: none !important;
+      }
+
+      .floatingStoreCTA__desktop {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .floatingStoreCTA .floatingStoreCTA__mobile {
+        pointer-events: auto !important;
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 29px !important;
+        height: 29px !important;
+        max-height: 29px !important;
+        padding: 0 8px !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(215,176,88,.24) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.055), rgba(0,0,0,.18)),
+          rgba(12,12,14,.70) !important;
+        color: rgba(255,255,255,.91) !important;
+        box-shadow:
+          0 7px 16px rgba(0,0,0,.28),
+          inset 0 1px 0 rgba(255,255,255,.045) !important;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+        font-size: .68rem !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        letter-spacing: -.01em !important;
+        white-space: nowrap !important;
+        text-decoration: none !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        cursor: pointer !important;
+      }
+
+      .floatingStoreCTA .floatingStoreCTA__mobile:nth-of-type(3) {
+        color: rgba(255,236,178,.98) !important;
+        border-color: rgba(215,176,88,.36) !important;
+        background:
+          linear-gradient(180deg, rgba(215,176,88,.20), rgba(92,68,24,.26)),
+          rgba(12,12,14,.72) !important;
+      }
+
+      .floatingStoreCTA .floatingStoreCTA__top {
+        width: 29px !important;
+        min-width: 29px !important;
+        max-width: 29px !important;
+        padding-inline: 0 !important;
+        font-size: .92rem !important;
+      }
+
+      .floatingStoreCTA .floatingStoreCTA__mobile:active,
+      .sectionNav .sectionNav__pill:active,
+      .hero__actions #goLoja:active,
+      .heroMore__summary:active {
+        transform: translateY(1px) scale(.985) !important;
+        filter: brightness(1.08) !important;
+      }
+
+      /* Menu mobile superior: menor, elegante, clicável e sem afetar desktop */
+      .sectionNav {
+        position: sticky !important;
+        top: max(6px, env(safe-area-inset-top)) !important;
+        z-index: 9000 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, .98fr) minmax(0, 1.08fr) 34px !important;
+        align-items: center !important;
+        justify-content: stretch !important;
+        gap: 5px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 8px auto 8px !important;
+        padding: 5px !important;
+        border-radius: 18px !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        border: 1px solid rgba(215,176,88,.18) !important;
+        background:
+          radial-gradient(150px 54px at 50% 0%, rgba(215,176,88,.105), transparent 72%),
+          linear-gradient(180deg, rgba(255,255,255,.040), rgba(0,0,0,.22)),
+          rgba(5,5,7,.78) !important;
+        box-shadow:
+          0 10px 24px rgba(0,0,0,.34),
+          inset 0 1px 0 rgba(255,255,255,.045) !important;
+        backdrop-filter: blur(12px) saturate(1.08) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(1.08) !important;
+      }
+
+      .sectionNav.sectionNav--mobileFloating {
+        position: fixed !important;
+        top: max(6px, env(safe-area-inset-top)) !important;
+        left: var(--cn-mobile-nav-left, 9px) !important;
+        width: var(--cn-mobile-nav-width, calc(100vw - 18px)) !important;
+        margin: 0 !important;
+        z-index: 10040 !important;
+        animation: cnMobileNavFloatIn .16s ease both !important;
+      }
+
+      .sectionNav::before {
+        inset: 1px !important;
+        border-radius: 17px !important;
+        pointer-events: none !important;
+      }
+
+      .sectionNav .sectionNav__pill {
+        position: relative !important;
+        z-index: 2 !important;
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 32px !important;
+        height: 32px !important;
+        max-height: 32px !important;
+        padding: 0 8px !important;
+        border-radius: 999px !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        cursor: pointer !important;
+        user-select: none !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        font-size: .72rem !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        letter-spacing: -.012em !important;
+        color: rgba(255,255,255,.92) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.052), rgba(0,0,0,.18)),
+          rgba(12,12,14,.66) !important;
+        border: 1px solid rgba(215,176,88,.16) !important;
+        box-shadow:
+          0 6px 15px rgba(0,0,0,.22),
+          inset 0 1px 0 rgba(255,255,255,.042) !important;
+      }
+
+      .sectionNav .sectionNav__pill--store,
+      .sectionNav .sectionNav__pill--gold {
+        color: rgba(255,236,178,.99) !important;
+        border-color: rgba(215,176,88,.34) !important;
+        background:
+          linear-gradient(180deg, rgba(215,176,88,.20), rgba(88,66,24,.26)),
+          rgba(12,12,14,.72) !important;
+        box-shadow:
+          0 7px 17px rgba(145,111,34,.18),
+          inset 0 1px 0 rgba(255,255,255,.065) !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        display: inline-flex !important;
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+        min-height: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        font-size: .98rem !important;
+      }
+
+      .sectionNav .sectionNav__pill--quick,
+      .sectionNav .sectionNav__pill--links,
+      .sectionNav a[href="#sec-vitrine-rapida"],
+      .sectionNav a[href="#sec-links"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .sectionNav .sectionNav__pill--selection,
+      .sectionNav .sectionNav__pill--store {
+        display: inline-flex !important;
+      }
+
+      .cnMobileNavSpacer.is-active {
+        height: var(--cn-mobile-nav-height, 44px) !important;
+      }
+
+      #topo,
+      #sec-produto-do-dia,
+      #sec-vitrine-rapida,
+      #sec-links {
+        scroll-margin-top: 72px !important;
+      }
+
+      /* Botões do topo mobile: menores e mais finos */
+      .hero__actions {
+        gap: 6px !important;
+        margin-top: 7px !important;
+      }
+
+      .hero__actions #goLoja,
+      .hero__actions .btn--gold {
+        min-height: 40px !important;
+        padding: 8px 10px !important;
+        border-radius: 14px !important;
+        font-size: .86rem !important;
+        line-height: 1.08 !important;
+      }
+
+      .heroMore {
+        border-radius: 14px !important;
+      }
+
+      .heroMore__summary {
+        min-height: 34px !important;
+        height: 34px !important;
+        padding: 0 10px !important;
+        border-radius: 14px !important;
+        font-size: .82rem !important;
+        line-height: 1 !important;
+        gap: 6px !important;
+      }
+
+      .heroMore__body {
+        gap: 6px !important;
+        margin-top: 6px !important;
+      }
+
+      .heroMore__body .btn,
+      .heroMore__body .miniNote {
+        min-height: 36px !important;
+        padding: 8px 10px !important;
+        border-radius: 13px !important;
+        font-size: .78rem !important;
+        line-height: 1.08 !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .floatingStoreCTA {
+        max-width: calc(100vw - 14px) !important;
+        gap: 4px !important;
+        padding: 3px !important;
+      }
+
+      .floatingStoreCTA .floatingStoreCTA__mobile {
+        min-height: 28px !important;
+        height: 28px !important;
+        padding-inline: 7px !important;
+        font-size: .64rem !important;
+      }
+
+      .floatingStoreCTA .floatingStoreCTA__top {
+        width: 28px !important;
+        min-width: 28px !important;
+        max-width: 28px !important;
+        font-size: .88rem !important;
+      }
+
+      .sectionNav {
+        grid-template-columns: minmax(0, .98fr) minmax(0, 1.08fr) 32px !important;
+        gap: 4px !important;
+        padding: 4px !important;
+        border-radius: 17px !important;
+      }
+
+      .sectionNav .sectionNav__pill {
+        min-height: 30px !important;
+        height: 30px !important;
+        padding-inline: 7px !important;
+        font-size: .68rem !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
+        min-height: 30px !important;
+        height: 30px !important;
+        font-size: .92rem !important;
+      }
+
+      .hero__actions #goLoja,
+      .hero__actions .btn--gold {
+        min-height: 38px !important;
+        font-size: .82rem !important;
+      }
+
+      .heroMore__summary {
+        min-height: 32px !important;
+        height: 32px !important;
+        font-size: .78rem !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -6872,6 +7219,123 @@
       }
     })();
   </script>
+
+
+  <script id="cnMobileButtonsHotfix">
+    (function () {
+      "use strict";
+
+      var MOBILE_QUERY = "(max-width: 640px)";
+      var media = window.matchMedia ? window.matchMedia(MOBILE_QUERY) : null;
+
+      function isMobile() {
+        return !media || media.matches;
+      }
+
+      function getNav() {
+        return document.querySelector("[data-cn-mobile-floating-nav]") || document.querySelector(".sectionNav");
+      }
+
+      function getOffset() {
+        var nav = getNav();
+        if (!nav) return 72;
+
+        var rect = nav.getBoundingClientRect();
+        var height = Math.ceil(rect.height || 42);
+
+        return Math.max(64, height + 22);
+      }
+
+      function scrollToHash(hash) {
+        if (!hash || hash === "#") return false;
+
+        if (hash === "#topo") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return true;
+        }
+
+        var target = document.querySelector(hash);
+        if (!target) return false;
+
+        var y = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+        return true;
+      }
+
+      function trackStoreOpen(placement) {
+        try {
+          if (window.CNTracking && typeof window.CNTracking.trackOpenStore === "function") {
+            window.CNTracking.trackOpenStore({
+              page_type: "home",
+              placement: placement || "mobile_button_hotfix"
+            });
+          }
+        } catch (err) {}
+      }
+
+      function isManagedMobileButton(link) {
+        if (!link) return false;
+
+        return Boolean(
+          link.closest(".sectionNav") ||
+          link.closest(".floatingStoreCTA") ||
+          link.id === "goLoja" ||
+          link.id === "btnVerTodosTop" ||
+          link.id === "btnAbrirLojaCompleta"
+        );
+      }
+
+      function handleMobileButtonClick(event) {
+        if (!isMobile()) return;
+
+        var link = event.target && event.target.closest ? event.target.closest("a") : null;
+        if (!isManagedMobileButton(link)) return;
+
+        var rawHref = link.getAttribute("href") || "";
+        if (!rawHref) return;
+
+        if (rawHref.charAt(0) === "#") {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (typeof event.stopImmediatePropagation === "function") {
+            event.stopImmediatePropagation();
+          }
+
+          scrollToHash(rawHref);
+
+          try {
+            history.replaceState(null, "", rawHref);
+          } catch (err) {}
+
+          return;
+        }
+
+        if (rawHref.indexOf("loja.html") !== -1 || link.href.indexOf("loja.html") !== -1) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (typeof event.stopImmediatePropagation === "function") {
+            event.stopImmediatePropagation();
+          }
+
+          var placement = "mobile_button_hotfix";
+          if (link.closest(".floatingStoreCTA")) placement = "mobile_bottom_floating_store";
+          if (link.closest(".sectionNav")) placement = "mobile_top_floating_store";
+          if (link.id === "goLoja") placement = "mobile_hero_store";
+
+          trackStoreOpen(placement);
+          window.location.assign(link.href);
+
+          return;
+        }
+      }
+
+      document.addEventListener("click", handleMobileButtonClick, true);
+      document.addEventListener("touchend", function () {}, { passive: true });
+    })();
+  </script>
+
 
 </body>
 </html>
