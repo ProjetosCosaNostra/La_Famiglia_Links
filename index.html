@@ -5692,7 +5692,131 @@
       }
     }
 
-  </style>
+  
+
+    /* ==========================================================
+       HOTFIX MOBILE 27/04 — RESTAURA BOTÕES FLUTUANTES
+       Escopo: somente mobile. PC preservado.
+       - desfaz o display:none aplicado no dock inferior
+       - mantém Loja, Seleção e Topo clicáveis no celular
+       - adiciona respiro inferior para não cobrir produto/QR
+       ========================================================== */
+    @media (max-width: 640px) {
+      body {
+        padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
+      }
+
+      .page {
+        padding-bottom: calc(84px + env(safe-area-inset-bottom)) !important;
+      }
+
+      .floatingStoreCTA {
+        position: fixed !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+        transform: translateX(-50%) !important;
+        z-index: 99999 !important;
+        width: calc(100vw - 18px) !important;
+        max-width: 430px !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) 42px !important;
+        gap: 7px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        pointer-events: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .floatingStoreCTA__desktop {
+        display: none !important;
+      }
+
+      .floatingStoreCTA__mobile,
+      .floatingStoreCTA__top {
+        pointer-events: auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 42px !important;
+        padding: 9px 10px !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(215,176,88,.34) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.055), rgba(0,0,0,.20)),
+          rgba(8,8,10,.86) !important;
+        color: rgba(255,255,255,.94) !important;
+        box-shadow: 0 12px 30px rgba(0,0,0,.50) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        font-size: 13px !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        text-decoration: none !important;
+        opacity: .96 !important;
+      }
+
+      .floatingStoreCTA__mobile[href="./loja.html"],
+      #floatingLojaMobile {
+        border-color: rgba(230,195,108,.54) !important;
+        background:
+          linear-gradient(180deg, rgba(215,176,88,.30), rgba(145,111,34,.22)),
+          rgba(8,8,10,.90) !important;
+        color: rgba(255,246,222,.98) !important;
+        text-shadow: 0 1px 0 rgba(0,0,0,.22) !important;
+      }
+
+      .floatingStoreCTA__top {
+        width: 42px !important;
+        min-width: 42px !important;
+        padding: 0 !important;
+        font-size: 20px !important;
+      }
+
+      .floatingStoreCTA__mobile:active,
+      .floatingStoreCTA__top:active {
+        transform: translateY(1px) !important;
+      }
+
+      .sectionNav {
+        z-index: 9000 !important;
+      }
+
+      #sec-links,
+      #sec-vitrine-rapida,
+      #sec-produto-do-dia {
+        scroll-margin-top: 78px !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .floatingStoreCTA {
+        width: calc(100vw - 12px) !important;
+        grid-template-columns: minmax(0, .95fr) minmax(0, 1.1fr) 38px !important;
+        gap: 5px !important;
+      }
+
+      .floatingStoreCTA__mobile,
+      .floatingStoreCTA__top {
+        min-height: 40px !important;
+        padding: 8px 8px !important;
+        font-size: 12px !important;
+      }
+
+      .floatingStoreCTA__top {
+        width: 38px !important;
+        min-width: 38px !important;
+        font-size: 18px !important;
+      }
+    }
+</style>
 </head>
 
 <body id="topo">
@@ -5711,7 +5835,7 @@
     <a class="floatingStoreCTA__mobile" href="#sec-produto-do-dia" aria-label="Ir para Seleção do Dia">
       ⭐ Seleção
     </a>
-    <a class="floatingStoreCTA__mobile" href="./loja.html" aria-label="Abrir Loja Completa">
+    <a class="floatingStoreCTA__mobile" href="./loja.html" id="floatingLojaMobile" aria-label="Abrir Loja Completa">
       👑 Loja (<span data-total-products>—</span>)
     </a>
     <a class="floatingStoreCTA__mobile floatingStoreCTA__top" href="#topo" aria-label="Voltar para o topo">
@@ -5982,6 +6106,7 @@
         }
 
         bindOpenStore("#floatingLoja", "floating_cta");
+        bindOpenStore("#floatingLojaMobile", "floating_cta_mobile");
         bindOpenStore("#goLoja", "hero_cta");
         bindOpenStore("#btnVerTodosTop", "quick_top_cta");
         bindOpenStore("#btnAbrirLojaCompleta", "quick_tools_cta");
