@@ -6325,48 +6325,23 @@
 
 
     /* ==========================================================
-       HOTFIX FINAL — MOBILE BUTTONS 2026-04-27
-       Escopo: SOMENTE MOBILE
-       - restaura os botões flutuantes no celular
-       - reduz tamanho visual dos botões mobile
-       - reforça clique/toque dos atalhos mobile
-       - não altera PC/Desktop
+       HOTFIX FINAL — SOMENTE MOBILE — 2026-04-27
+       Correção cirúrgica:
+       - NÃO cria botões extras embaixo no celular.
+       - Mantém a barra existente funcionando e flutuando no mobile.
+       - Não altera PC/Desktop.
        ========================================================== */
     @media (max-width: 640px) {
       body {
-        padding-bottom: calc(46px + env(safe-area-inset-bottom)) !important;
+        padding-bottom: 0 !important;
       }
 
-      /* Barra flutuante inferior mobile restaurada, menor e mais premium */
-      .floatingStoreCTA {
-        position: fixed !important;
-        left: 50% !important;
-        right: auto !important;
-        bottom: calc(7px + env(safe-area-inset-bottom)) !important;
-        transform: translateX(-50%) !important;
-        z-index: 10050 !important;
-        display: inline-flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 5px !important;
-        width: auto !important;
-        max-width: calc(100vw - 18px) !important;
-        margin: 0 !important;
-        padding: 4px !important;
-        border-radius: 999px !important;
-        border: 1px solid rgba(215,176,88,.20) !important;
-        background:
-          radial-gradient(130px 44px at 50% 0%, rgba(215,176,88,.12), transparent 72%),
-          linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.24)),
-          rgba(5,5,7,.74) !important;
-        box-shadow:
-          0 12px 30px rgba(0,0,0,.46),
-          inset 0 1px 0 rgba(255,255,255,.06) !important;
-        backdrop-filter: blur(14px) saturate(1.08) !important;
-        -webkit-backdrop-filter: blur(14px) saturate(1.08) !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+      .floatingStoreCTA,
+      .floatingStoreCTA__mobile,
+      .floatingStoreCTA__top {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
         pointer-events: none !important;
       }
 
@@ -6377,69 +6352,12 @@
         pointer-events: none !important;
       }
 
-      .floatingStoreCTA .floatingStoreCTA__mobile {
-        pointer-events: auto !important;
-        display: inline-flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        align-items: center !important;
-        justify-content: center !important;
-        min-height: 29px !important;
-        height: 29px !important;
-        max-height: 29px !important;
-        padding: 0 8px !important;
-        border-radius: 999px !important;
-        border: 1px solid rgba(215,176,88,.24) !important;
-        background:
-          linear-gradient(180deg, rgba(255,255,255,.055), rgba(0,0,0,.18)),
-          rgba(12,12,14,.70) !important;
-        color: rgba(255,255,255,.91) !important;
-        box-shadow:
-          0 7px 16px rgba(0,0,0,.28),
-          inset 0 1px 0 rgba(255,255,255,.045) !important;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-        font-size: .68rem !important;
-        font-weight: 900 !important;
-        line-height: 1 !important;
-        letter-spacing: -.01em !important;
-        white-space: nowrap !important;
-        text-decoration: none !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        cursor: pointer !important;
-      }
-
-      .floatingStoreCTA .floatingStoreCTA__mobile:nth-of-type(3) {
-        color: rgba(255,236,178,.98) !important;
-        border-color: rgba(215,176,88,.36) !important;
-        background:
-          linear-gradient(180deg, rgba(215,176,88,.20), rgba(92,68,24,.26)),
-          rgba(12,12,14,.72) !important;
-      }
-
-      .floatingStoreCTA .floatingStoreCTA__top {
-        width: 29px !important;
-        min-width: 29px !important;
-        max-width: 29px !important;
-        padding-inline: 0 !important;
-        font-size: .92rem !important;
-      }
-
-      .floatingStoreCTA .floatingStoreCTA__mobile:active,
-      .sectionNav .sectionNav__pill:active,
-      .hero__actions #goLoja:active,
-      .heroMore__summary:active {
-        transform: translateY(1px) scale(.985) !important;
-        filter: brightness(1.08) !important;
-      }
-
-      /* Menu mobile superior: menor, elegante, clicável e sem afetar desktop */
       .sectionNav {
         position: sticky !important;
         top: max(6px, env(safe-area-inset-top)) !important;
         z-index: 9000 !important;
         display: grid !important;
-        grid-template-columns: minmax(0, .98fr) minmax(0, 1.08fr) 34px !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr) 34px !important;
         align-items: center !important;
         justify-content: stretch !important;
         gap: 5px !important;
@@ -6448,99 +6366,41 @@
         margin: 8px auto 8px !important;
         padding: 5px !important;
         border-radius: 18px !important;
-        overflow: visible !important;
         box-sizing: border-box !important;
+        overflow: visible !important;
         pointer-events: auto !important;
         touch-action: manipulation !important;
-        border: 1px solid rgba(215,176,88,.18) !important;
-        background:
-          radial-gradient(150px 54px at 50% 0%, rgba(215,176,88,.105), transparent 72%),
-          linear-gradient(180deg, rgba(255,255,255,.040), rgba(0,0,0,.22)),
-          rgba(5,5,7,.78) !important;
-        box-shadow:
-          0 10px 24px rgba(0,0,0,.34),
-          inset 0 1px 0 rgba(255,255,255,.045) !important;
-        backdrop-filter: blur(12px) saturate(1.08) !important;
-        -webkit-backdrop-filter: blur(12px) saturate(1.08) !important;
+        -webkit-tap-highlight-color: transparent !important;
       }
 
       .sectionNav.sectionNav--mobileFloating {
         position: fixed !important;
         top: max(6px, env(safe-area-inset-top)) !important;
         left: var(--cn-mobile-nav-left, 9px) !important;
+        right: auto !important;
+        bottom: auto !important;
         width: var(--cn-mobile-nav-width, calc(100vw - 18px)) !important;
+        max-width: calc(100vw - 18px) !important;
         margin: 0 !important;
         z-index: 10040 !important;
-        animation: cnMobileNavFloatIn .16s ease both !important;
-      }
-
-      .sectionNav::before {
-        inset: 1px !important;
-        border-radius: 17px !important;
-        pointer-events: none !important;
+        transform: translateZ(0) !important;
+        will-change: transform !important;
       }
 
       .sectionNav .sectionNav__pill {
-        position: relative !important;
-        z-index: 2 !important;
-        display: inline-flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
         min-width: 0 !important;
         min-height: 32px !important;
         height: 32px !important;
         max-height: 32px !important;
         padding: 0 8px !important;
         border-radius: 999px !important;
-        box-sizing: border-box !important;
-        text-align: center !important;
-        text-decoration: none !important;
+        font-size: .72rem !important;
+        line-height: 1 !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
-        cursor: pointer !important;
-        user-select: none !important;
         pointer-events: auto !important;
         touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        font-size: .72rem !important;
-        font-weight: 900 !important;
-        line-height: 1 !important;
-        letter-spacing: -.012em !important;
-        color: rgba(255,255,255,.92) !important;
-        background:
-          linear-gradient(180deg, rgba(255,255,255,.052), rgba(0,0,0,.18)),
-          rgba(12,12,14,.66) !important;
-        border: 1px solid rgba(215,176,88,.16) !important;
-        box-shadow:
-          0 6px 15px rgba(0,0,0,.22),
-          inset 0 1px 0 rgba(255,255,255,.042) !important;
-      }
-
-      .sectionNav .sectionNav__pill--store,
-      .sectionNav .sectionNav__pill--gold {
-        color: rgba(255,236,178,.99) !important;
-        border-color: rgba(215,176,88,.34) !important;
-        background:
-          linear-gradient(180deg, rgba(215,176,88,.20), rgba(88,66,24,.26)),
-          rgba(12,12,14,.72) !important;
-        box-shadow:
-          0 7px 17px rgba(145,111,34,.18),
-          inset 0 1px 0 rgba(255,255,255,.065) !important;
-      }
-
-      .sectionNav .sectionNav__pill--top {
-        display: inline-flex !important;
-        width: 34px !important;
-        min-width: 34px !important;
-        max-width: 34px !important;
-        min-height: 32px !important;
-        height: 32px !important;
-        padding: 0 !important;
-        font-size: .98rem !important;
       }
 
       .sectionNav .sectionNav__pill--quick,
@@ -6554,11 +6414,28 @@
       }
 
       .sectionNav .sectionNav__pill--selection,
-      .sectionNav .sectionNav__pill--store {
+      .sectionNav .sectionNav__pill--store,
+      .sectionNav .sectionNav__pill--top {
         display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+        padding: 0 !important;
+        font-size: .98rem !important;
+      }
+
+      .cnMobileNavSpacer {
+        display: none;
+        height: 0;
       }
 
       .cnMobileNavSpacer.is-active {
+        display: block;
         height: var(--cn-mobile-nav-height, 44px) !important;
       }
 
@@ -6568,109 +6445,9 @@
       #sec-links {
         scroll-margin-top: 72px !important;
       }
-
-      /* Botões do topo mobile: menores e mais finos */
-      .hero__actions {
-        gap: 6px !important;
-        margin-top: 7px !important;
-      }
-
-      .hero__actions #goLoja,
-      .hero__actions .btn--gold {
-        min-height: 40px !important;
-        padding: 8px 10px !important;
-        border-radius: 14px !important;
-        font-size: .86rem !important;
-        line-height: 1.08 !important;
-      }
-
-      .heroMore {
-        border-radius: 14px !important;
-      }
-
-      .heroMore__summary {
-        min-height: 34px !important;
-        height: 34px !important;
-        padding: 0 10px !important;
-        border-radius: 14px !important;
-        font-size: .82rem !important;
-        line-height: 1 !important;
-        gap: 6px !important;
-      }
-
-      .heroMore__body {
-        gap: 6px !important;
-        margin-top: 6px !important;
-      }
-
-      .heroMore__body .btn,
-      .heroMore__body .miniNote {
-        min-height: 36px !important;
-        padding: 8px 10px !important;
-        border-radius: 13px !important;
-        font-size: .78rem !important;
-        line-height: 1.08 !important;
-      }
     }
 
-    @media (max-width: 390px) {
-      .floatingStoreCTA {
-        max-width: calc(100vw - 14px) !important;
-        gap: 4px !important;
-        padding: 3px !important;
-      }
-
-      .floatingStoreCTA .floatingStoreCTA__mobile {
-        min-height: 28px !important;
-        height: 28px !important;
-        padding-inline: 7px !important;
-        font-size: .64rem !important;
-      }
-
-      .floatingStoreCTA .floatingStoreCTA__top {
-        width: 28px !important;
-        min-width: 28px !important;
-        max-width: 28px !important;
-        font-size: .88rem !important;
-      }
-
-      .sectionNav {
-        grid-template-columns: minmax(0, .98fr) minmax(0, 1.08fr) 32px !important;
-        gap: 4px !important;
-        padding: 4px !important;
-        border-radius: 17px !important;
-      }
-
-      .sectionNav .sectionNav__pill {
-        min-height: 30px !important;
-        height: 30px !important;
-        padding-inline: 7px !important;
-        font-size: .68rem !important;
-      }
-
-      .sectionNav .sectionNav__pill--top {
-        width: 32px !important;
-        min-width: 32px !important;
-        max-width: 32px !important;
-        min-height: 30px !important;
-        height: 30px !important;
-        font-size: .92rem !important;
-      }
-
-      .hero__actions #goLoja,
-      .hero__actions .btn--gold {
-        min-height: 38px !important;
-        font-size: .82rem !important;
-      }
-
-      .heroMore__summary {
-        min-height: 32px !important;
-        height: 32px !important;
-        font-size: .78rem !important;
-      }
-    }
-
-  </style>
+</style>
 </head>
 
 <body id="topo">
@@ -7029,16 +6806,24 @@
     })();
   </script>
 
-
   <script id="cnMobileFloatingNav">
     (function () {
       "use strict";
+
+      /*
+        HOTFIX FINAL — SOMENTE MOBILE
+        Objetivo:
+        - Não cria botões novos embaixo.
+        - Usa SOMENTE a barra existente: Seleção do Dia / Loja Completa / ↑.
+        - No PC não faz nada.
+      */
 
       var MOBILE_QUERY = "(max-width: 640px)";
       var media = window.matchMedia ? window.matchMedia(MOBILE_QUERY) : null;
       var nav = null;
       var spacer = null;
       var originalTop = 0;
+      var navHeight = 0;
       var ticking = false;
 
       function isMobile() {
@@ -7051,30 +6836,77 @@
 
       function ensureSpacer() {
         if (!nav) return null;
-        if (spacer && spacer.parentNode) return spacer;
+
+        if (spacer && spacer.parentNode) {
+          return spacer;
+        }
 
         spacer = document.createElement("div");
         spacer.className = "cnMobileNavSpacer";
         spacer.setAttribute("aria-hidden", "true");
         nav.parentNode.insertBefore(spacer, nav.nextSibling);
+
         return spacer;
+      }
+
+      function getFixedTop() {
+        var safeTop = 6;
+
+        try {
+          var probe = document.createElement("div");
+          probe.style.position = "fixed";
+          probe.style.top = "env(safe-area-inset-top)";
+          probe.style.visibility = "hidden";
+          probe.style.pointerEvents = "none";
+          document.body.appendChild(probe);
+
+          var value = parseFloat(window.getComputedStyle(probe).top || "0");
+          if (!isNaN(value) && value > 0) {
+            safeTop = value + 6;
+          }
+
+          probe.remove();
+        } catch (err) {}
+
+        return Math.max(6, safeTop);
+      }
+
+      function clearFloatingInline() {
+        if (!nav) return;
+
+        nav.classList.remove("sectionNav--mobileFloating");
+        nav.style.removeProperty("position");
+        nav.style.removeProperty("top");
+        nav.style.removeProperty("left");
+        nav.style.removeProperty("right");
+        nav.style.removeProperty("bottom");
+        nav.style.removeProperty("width");
+        nav.style.removeProperty("max-width");
+        nav.style.removeProperty("margin");
+        nav.style.removeProperty("z-index");
+        nav.style.removeProperty("--cn-mobile-nav-left");
+        nav.style.removeProperty("--cn-mobile-nav-width");
+        nav.style.removeProperty("--cn-mobile-nav-height");
+
+        if (spacer) {
+          spacer.classList.remove("is-active");
+          spacer.style.removeProperty("--cn-mobile-nav-height");
+          spacer.style.height = "";
+        }
       }
 
       function measureOriginalTop() {
         if (!nav) return;
+
         var wasFloating = nav.classList.contains("sectionNav--mobileFloating");
 
         if (wasFloating) {
-          nav.classList.remove("sectionNav--mobileFloating");
-          nav.style.removeProperty("--cn-mobile-nav-left");
-          nav.style.removeProperty("--cn-mobile-nav-width");
-          nav.style.removeProperty("--cn-mobile-nav-height");
-          nav.style.left = "";
-          nav.style.width = "";
-          nav.style.top = "";
+          clearFloatingInline();
         }
 
-        originalTop = nav.getBoundingClientRect().top + window.pageYOffset;
+        var rect = nav.getBoundingClientRect();
+        navHeight = Math.max(40, Math.ceil(rect.height || 44));
+        originalTop = Math.max(0, Math.round(rect.top + window.pageYOffset));
 
         if (wasFloating) {
           setFloating(true);
@@ -7083,37 +6915,41 @@
 
       function setFloating(active) {
         if (!nav) return;
+
         var s = ensureSpacer();
-        var rect = nav.getBoundingClientRect();
+
+        if (!isMobile()) {
+          clearFloatingInline();
+          return;
+        }
+
+        if (!active) {
+          clearFloatingInline();
+          return;
+        }
+
         var page = document.querySelector(".page");
         var pageRect = page ? page.getBoundingClientRect() : null;
+        var width = pageRect ? pageRect.width : Math.min(window.innerWidth - 18, nav.getBoundingClientRect().width || window.innerWidth - 18);
+        var left = pageRect ? pageRect.left : 9;
 
-        if (active) {
-          var width = pageRect ? pageRect.width : Math.min(window.innerWidth - 18, rect.width || window.innerWidth - 18);
-          var left = pageRect ? pageRect.left : 9;
+        nav.style.setProperty("--cn-mobile-nav-left", Math.round(left) + "px");
+        nav.style.setProperty("--cn-mobile-nav-width", Math.round(width) + "px");
+        nav.style.setProperty("--cn-mobile-nav-height", navHeight + "px");
 
-          nav.style.setProperty("--cn-mobile-nav-left", Math.round(left) + "px");
-          nav.style.setProperty("--cn-mobile-nav-width", Math.round(width) + "px");
-          nav.style.setProperty("--cn-mobile-nav-height", Math.ceil(rect.height || 58) + "px");
+        nav.style.position = "fixed";
+        nav.style.top = getFixedTop() + "px";
+        nav.style.left = Math.round(left) + "px";
+        nav.style.width = Math.round(width) + "px";
+        nav.style.maxWidth = "calc(100vw - 18px)";
+        nav.style.margin = "0";
+        nav.style.zIndex = "10040";
+        nav.classList.add("sectionNav--mobileFloating");
 
-          if (s) {
-            s.style.setProperty("--cn-mobile-nav-height", Math.ceil(rect.height || 58) + "px");
-            s.classList.add("is-active");
-          }
-
-          nav.classList.add("sectionNav--mobileFloating");
-        } else {
-          nav.classList.remove("sectionNav--mobileFloating");
-          nav.style.removeProperty("--cn-mobile-nav-left");
-          nav.style.removeProperty("--cn-mobile-nav-width");
-          nav.style.removeProperty("--cn-mobile-nav-height");
-          nav.style.left = "";
-          nav.style.width = "";
-          nav.style.top = "";
-
-          if (s) {
-            s.classList.remove("is-active");
-          }
+        if (s) {
+          s.style.setProperty("--cn-mobile-nav-height", navHeight + "px");
+          s.style.height = navHeight + "px";
+          s.classList.add("is-active");
         }
       }
 
@@ -7127,9 +6963,11 @@
           return;
         }
 
-        var triggerTop = Math.max(0, originalTop - 8);
-        var shouldFloat = window.pageYOffset > triggerTop;
+        if (!originalTop) {
+          measureOriginalTop();
+        }
 
+        var shouldFloat = window.pageYOffset > Math.max(0, originalTop - 6);
         setFloating(shouldFloat);
       }
 
@@ -7139,6 +6977,11 @@
         window.requestAnimationFrame(updateFloatingState);
       }
 
+      function getScrollOffset() {
+        var height = nav ? Math.ceil(nav.getBoundingClientRect().height || navHeight || 44) : 44;
+        return Math.max(68, height + 24);
+      }
+
       function scrollToHash(hash) {
         if (!hash || hash === "#") return false;
 
@@ -7150,41 +6993,85 @@
         var target = document.querySelector(hash);
         if (!target) return false;
 
-        var offset = 88;
-        if (nav && nav.classList.contains("sectionNav--mobileFloating")) {
-          offset = Math.max(78, Math.ceil(nav.getBoundingClientRect().height + 24));
-        }
-
-        var y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        var y = target.getBoundingClientRect().top + window.pageYOffset - getScrollOffset();
         window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+
         return true;
       }
 
-      function bindClicks() {
-        if (!nav) return;
+      function trackStoreOpen(link) {
+        try {
+          if (window.CNTracking && typeof window.CNTracking.trackOpenStore === "function") {
+            window.CNTracking.trackOpenStore({
+              page_type: "home",
+              placement: link && link.closest(".sectionNav") ? "mobile_top_floating_store" : "mobile_store"
+            });
+          }
+        } catch (err) {}
+      }
 
-        nav.addEventListener("click", function (event) {
+      function bindMobileClicks() {
+        document.addEventListener("click", function (event) {
           if (!isMobile()) return;
 
-          var link = event.target.closest ? event.target.closest("a") : null;
-          if (!link || !nav.contains(link)) return;
+          var link = event.target && event.target.closest ? event.target.closest("a") : null;
+          if (!link) return;
 
-          var href = link.getAttribute("href") || "";
+          var inNav = nav && nav.contains(link);
+          var isHeroStore = link.id === "goLoja";
+          var isKnownStoreButton =
+            link.id === "sectionNavLoja" ||
+            link.id === "btnVerTodosTop" ||
+            link.id === "btnAbrirLojaCompleta";
 
-          if (href.charAt(0) === "#") {
+          if (!inNav && !isHeroStore && !isKnownStoreButton) return;
+
+          var rawHref = link.getAttribute("href") || "";
+          if (!rawHref) return;
+
+          if (rawHref.charAt(0) === "#") {
             event.preventDefault();
-            scrollToHash(href);
-            try { history.replaceState(null, "", href); } catch (err) {}
+            event.stopPropagation();
+
+            if (typeof event.stopImmediatePropagation === "function") {
+              event.stopImmediatePropagation();
+            }
+
+            scrollToHash(rawHref);
+
+            try {
+              history.replaceState(null, "", rawHref);
+            } catch (err) {}
+
             return;
           }
 
-          if (window.CNTracking && typeof window.CNTracking.trackOpenStore === "function" && href.indexOf("loja.html") !== -1) {
-            window.CNTracking.trackOpenStore({
-              page_type: "home",
-              placement: "mobile_floating_top_nav"
-            });
+          if (rawHref.indexOf("loja.html") !== -1 || link.href.indexOf("loja.html") !== -1) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (typeof event.stopImmediatePropagation === "function") {
+              event.stopImmediatePropagation();
+            }
+
+            trackStoreOpen(link);
+            window.location.assign(link.href);
+
+            return;
           }
-        }, false);
+        }, true);
+      }
+
+      function refreshMeasurements() {
+        if (!nav) return;
+
+        var wasFloating = nav.classList.contains("sectionNav--mobileFloating");
+        clearFloatingInline();
+        measureOriginalTop();
+
+        if (wasFloating || window.pageYOffset > Math.max(0, originalTop - 6)) {
+          updateFloatingState();
+        }
       }
 
       function init() {
@@ -7192,24 +7079,41 @@
         if (!nav) return;
 
         ensureSpacer();
-        bindClicks();
         measureOriginalTop();
         updateFloatingState();
+        bindMobileClicks();
 
         window.addEventListener("scroll", requestUpdate, { passive: true });
-        window.addEventListener("resize", function () {
-          setFloating(false);
-          measureOriginalTop();
-          updateFloatingState();
+        window.addEventListener("resize", refreshMeasurements, { passive: true });
+        window.addEventListener("orientationchange", function () {
+          setTimeout(refreshMeasurements, 250);
+        }, { passive: true });
+        window.addEventListener("load", function () {
+          setTimeout(refreshMeasurements, 120);
+          setTimeout(refreshMeasurements, 800);
+        }, { passive: true });
+        window.addEventListener("pageshow", function () {
+          setTimeout(refreshMeasurements, 120);
         }, { passive: true });
 
         if (media && typeof media.addEventListener === "function") {
-          media.addEventListener("change", function () {
-            setFloating(false);
-            measureOriginalTop();
-            updateFloatingState();
-          });
+          media.addEventListener("change", refreshMeasurements);
         }
+
+        try {
+          document.fonts && document.fonts.ready && document.fonts.ready.then(function () {
+            setTimeout(refreshMeasurements, 60);
+          });
+        } catch (err) {}
+
+        var imgs = document.querySelectorAll("img");
+        imgs.forEach(function (img) {
+          if (!img.complete) {
+            img.addEventListener("load", function () {
+              setTimeout(refreshMeasurements, 60);
+            }, { once: true, passive: true });
+          }
+        });
       }
 
       if (document.readyState === "loading") {
@@ -7219,123 +7123,5 @@
       }
     })();
   </script>
-
-
-  <script id="cnMobileButtonsHotfix">
-    (function () {
-      "use strict";
-
-      var MOBILE_QUERY = "(max-width: 640px)";
-      var media = window.matchMedia ? window.matchMedia(MOBILE_QUERY) : null;
-
-      function isMobile() {
-        return !media || media.matches;
-      }
-
-      function getNav() {
-        return document.querySelector("[data-cn-mobile-floating-nav]") || document.querySelector(".sectionNav");
-      }
-
-      function getOffset() {
-        var nav = getNav();
-        if (!nav) return 72;
-
-        var rect = nav.getBoundingClientRect();
-        var height = Math.ceil(rect.height || 42);
-
-        return Math.max(64, height + 22);
-      }
-
-      function scrollToHash(hash) {
-        if (!hash || hash === "#") return false;
-
-        if (hash === "#topo") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          return true;
-        }
-
-        var target = document.querySelector(hash);
-        if (!target) return false;
-
-        var y = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
-        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
-        return true;
-      }
-
-      function trackStoreOpen(placement) {
-        try {
-          if (window.CNTracking && typeof window.CNTracking.trackOpenStore === "function") {
-            window.CNTracking.trackOpenStore({
-              page_type: "home",
-              placement: placement || "mobile_button_hotfix"
-            });
-          }
-        } catch (err) {}
-      }
-
-      function isManagedMobileButton(link) {
-        if (!link) return false;
-
-        return Boolean(
-          link.closest(".sectionNav") ||
-          link.closest(".floatingStoreCTA") ||
-          link.id === "goLoja" ||
-          link.id === "btnVerTodosTop" ||
-          link.id === "btnAbrirLojaCompleta"
-        );
-      }
-
-      function handleMobileButtonClick(event) {
-        if (!isMobile()) return;
-
-        var link = event.target && event.target.closest ? event.target.closest("a") : null;
-        if (!isManagedMobileButton(link)) return;
-
-        var rawHref = link.getAttribute("href") || "";
-        if (!rawHref) return;
-
-        if (rawHref.charAt(0) === "#") {
-          event.preventDefault();
-          event.stopPropagation();
-
-          if (typeof event.stopImmediatePropagation === "function") {
-            event.stopImmediatePropagation();
-          }
-
-          scrollToHash(rawHref);
-
-          try {
-            history.replaceState(null, "", rawHref);
-          } catch (err) {}
-
-          return;
-        }
-
-        if (rawHref.indexOf("loja.html") !== -1 || link.href.indexOf("loja.html") !== -1) {
-          event.preventDefault();
-          event.stopPropagation();
-
-          if (typeof event.stopImmediatePropagation === "function") {
-            event.stopImmediatePropagation();
-          }
-
-          var placement = "mobile_button_hotfix";
-          if (link.closest(".floatingStoreCTA")) placement = "mobile_bottom_floating_store";
-          if (link.closest(".sectionNav")) placement = "mobile_top_floating_store";
-          if (link.id === "goLoja") placement = "mobile_hero_store";
-
-          trackStoreOpen(placement);
-          window.location.assign(link.href);
-
-          return;
-        }
-      }
-
-      document.addEventListener("click", handleMobileButtonClick, true);
-      document.addEventListener("touchend", function () {}, { passive: true });
-    })();
-  </script>
-
-
 </body>
 </html>
