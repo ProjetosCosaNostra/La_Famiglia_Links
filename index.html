@@ -4518,6 +4518,93 @@
       }
     }
 
+
+    /* =========================
+       ETAPA 3P — AJUSTE CIRÚRGICO 26/04
+       - corrige Mercado Livre colado no texto da Compra Rápida
+       - centraliza informações do topo enquanto a imagem final não fica pronta
+       - mantém Loja Completa depois de atualizada nos chips
+       - melhora respiro no mobile sem mexer em script.js/style.css/loja.html
+       ========================= */
+    #featured .cnSteps li b,
+    #featured .cnBuyBox b,
+    #featured b {
+      display: inline-block !important;
+      margin-left: .26em !important;
+      margin-right: .26em !important;
+      white-space: nowrap !important;
+    }
+
+    #featured .cnSteps li {
+      word-spacing: .04em !important;
+      letter-spacing: .002em !important;
+    }
+
+    .hero__text--bannerstack {
+      align-items: center !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+
+    .chips--heroCompact {
+      justify-content: center !important;
+      width: 100% !important;
+    }
+
+    .chips--heroCompact .chip:nth-child(1) { order: 1 !important; }
+    .chips--heroCompact .chip:nth-child(2) { order: 2 !important; }
+    .chips--heroCompact .chip:nth-child(3) { order: 3 !important; }
+    .chips--heroCompact .chip--storeCount { order: 4 !important; }
+
+    .hero__sub--banner {
+      width: 100% !important;
+      max-width: 100% !important;
+      text-align: center !important;
+    }
+
+    @media (min-width: 861px) {
+      .hero__brand--banner {
+        align-items: center !important;
+      }
+
+      .heroBanner {
+        width: 100% !important;
+      }
+
+      .hero__actions .btn,
+      .hero__actions .miniNote {
+        text-align: center !important;
+        justify-content: center !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero__text--bannerstack {
+        align-items: center !important;
+      }
+
+      .chips--heroCompact {
+        justify-content: center !important;
+        gap: 5px !important;
+      }
+
+      .chips--heroCompact .chip--storeCount {
+        flex: 0 0 auto !important;
+        margin-top: 1px !important;
+      }
+
+      .hero__sub--banner {
+        margin-top: 6px !important;
+        padding-inline: 4px !important;
+      }
+
+      #featured .cnSteps li b,
+      #featured .cnBuyBox b,
+      #featured b {
+        margin-left: .22em !important;
+        margin-right: .22em !important;
+      }
+    }
 </style>
 </head>
 
