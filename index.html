@@ -5992,6 +5992,337 @@
       }
     }
 
+
+    /* ==========================================================
+       ETAPA 3W — MOBILE FLOATING NAV + BOTÕES PREMIUM
+       Data: 2026-04-27
+       Escopo: SOMENTE MOBILE
+       - os botões de baixo continuam removidos no mobile
+       - a barra superior vira flutuante de verdade durante o scroll
+       - todos os botões mobile recebem acabamento mais premium
+       - PC preservado
+       ========================================================== */
+    @media (max-width: 640px) {
+      html,
+      body {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      body {
+        padding-bottom: 0 !important;
+      }
+
+      .page {
+        width: min(100vw - 18px, 1120px) !important;
+        max-width: calc(100vw - 18px) !important;
+        margin-inline: auto !important;
+      }
+
+      /* Mantém removido no celular o rodapé flutuante errado */
+      .floatingStoreCTA,
+      .floatingStoreCTA__mobile,
+      .floatingStoreCTA__desktop,
+      .floatingStoreCTA__top {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* Barra superior normal + modo flutuante real via JS */
+      .sectionNav {
+        position: relative !important;
+        z-index: 3500 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.04fr) minmax(0, 1.16fr) 44px !important;
+        align-items: center !important;
+        justify-content: stretch !important;
+        gap: 8px !important;
+        margin: 10px auto 10px !important;
+        padding: 8px !important;
+        box-sizing: border-box !important;
+        border-radius: 24px !important;
+        overflow: visible !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        border: 1px solid rgba(215,176,88,.22) !important;
+        background:
+          radial-gradient(180px 70px at 50% 0%, rgba(215,176,88,.13), transparent 72%),
+          linear-gradient(180deg, rgba(255,255,255,.050), rgba(0,0,0,.24)),
+          rgba(7,7,9,.78) !important;
+        box-shadow:
+          0 14px 34px rgba(0,0,0,.42),
+          inset 0 1px 0 rgba(255,255,255,.055) !important;
+        backdrop-filter: blur(14px) saturate(1.12) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(1.12) !important;
+      }
+
+      .sectionNav::before {
+        content: "" !important;
+        position: absolute !important;
+        inset: 1px !important;
+        border-radius: 23px !important;
+        pointer-events: none !important;
+        background:
+          linear-gradient(90deg, transparent, rgba(215,176,88,.09), transparent) !important;
+        opacity: .88 !important;
+        z-index: 0 !important;
+      }
+
+      .sectionNav.sectionNav--mobileFloating {
+        position: fixed !important;
+        top: max(8px, env(safe-area-inset-top)) !important;
+        left: var(--cn-mobile-nav-left, 9px) !important;
+        width: var(--cn-mobile-nav-width, calc(100vw - 18px)) !important;
+        margin: 0 !important;
+        z-index: 9998 !important;
+        transform: translateZ(0) !important;
+        animation: cnMobileNavFloatIn .18s ease both !important;
+      }
+
+      .cnMobileNavSpacer {
+        display: none;
+        height: 0;
+      }
+
+      .cnMobileNavSpacer.is-active {
+        display: block;
+        height: var(--cn-mobile-nav-height, 58px);
+      }
+
+      @keyframes cnMobileNavFloatIn {
+        from {
+          opacity: .88;
+          transform: translate3d(0, -6px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .sectionNav .sectionNav__pill {
+        position: relative !important;
+        z-index: 2 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 42px !important;
+        padding: 9px 10px !important;
+        border-radius: 999px !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        cursor: pointer !important;
+        user-select: none !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+        font-size: .82rem !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        letter-spacing: -.01em !important;
+        color: rgba(255,255,255,.93) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.060), rgba(0,0,0,.20)),
+          rgba(13,13,16,.68) !important;
+        border: 1px solid rgba(215,176,88,.18) !important;
+        box-shadow:
+          0 8px 20px rgba(0,0,0,.28),
+          inset 0 1px 0 rgba(255,255,255,.045) !important;
+      }
+
+      .sectionNav .sectionNav__pill:active {
+        transform: translateY(1px) scale(.985) !important;
+        filter: brightness(1.08) !important;
+      }
+
+      .sectionNav .sectionNav__pill--store,
+      .sectionNav .sectionNav__pill--gold {
+        color: rgba(255,237,184,.99) !important;
+        border-color: rgba(215,176,88,.42) !important;
+        background:
+          linear-gradient(180deg, rgba(215,176,88,.25), rgba(95,70,20,.31)),
+          rgba(12,12,14,.76) !important;
+        box-shadow:
+          0 10px 24px rgba(145,111,34,.26),
+          inset 0 1px 0 rgba(255,255,255,.08) !important;
+        text-shadow: 0 1px 0 rgba(0,0,0,.30) !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 44px !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        min-height: 42px !important;
+        padding: 0 !important;
+        border-radius: 999px !important;
+        font-size: 1.18rem !important;
+        color: rgba(255,238,190,.96) !important;
+        border-color: rgba(215,176,88,.28) !important;
+      }
+
+      .sectionNav .sectionNav__pill--quick,
+      .sectionNav .sectionNav__pill--links,
+      .sectionNav a[href="#sec-vitrine-rapida"],
+      .sectionNav a[href="#sec-links"] {
+        display: none !important;
+      }
+
+      /* Botões do topo: CTA + Canais oficiais */
+      .hero__actions {
+        gap: 9px !important;
+      }
+
+      .hero__actions .btn,
+      .heroMore__summary,
+      .heroMore__body .btn,
+      .heroMore__body .miniNote {
+        min-height: 46px !important;
+        border-radius: 17px !important;
+        border: 1px solid rgba(215,176,88,.20) !important;
+        box-shadow:
+          0 10px 24px rgba(0,0,0,.26),
+          inset 0 1px 0 rgba(255,255,255,.045) !important;
+        font-weight: 900 !important;
+        letter-spacing: -.01em !important;
+      }
+
+      .hero__actions #goLoja,
+      .hero__actions .btn--gold {
+        min-height: 50px !important;
+        border-color: rgba(215,176,88,.44) !important;
+        color: rgba(255,238,190,.99) !important;
+        background:
+          radial-gradient(160px 50px at 50% 0%, rgba(255,235,180,.16), transparent 72%),
+          linear-gradient(180deg, rgba(215,176,88,.36), rgba(105,79,28,.36)),
+          rgba(12,12,14,.76) !important;
+        box-shadow:
+          0 14px 32px rgba(145,111,34,.28),
+          inset 0 1px 0 rgba(255,255,255,.10) !important;
+        text-shadow: 0 1px 0 rgba(0,0,0,.34) !important;
+      }
+
+      .heroMore__summary {
+        color: rgba(255,255,255,.92) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.050), rgba(0,0,0,.20)),
+          rgba(12,12,14,.62) !important;
+      }
+
+      .heroMore[open] .heroMore__summary {
+        color: rgba(255,237,184,.99) !important;
+        border-color: rgba(215,176,88,.36) !important;
+        background:
+          linear-gradient(180deg, rgba(215,176,88,.16), rgba(0,0,0,.20)),
+          rgba(12,12,14,.72) !important;
+      }
+
+      .heroMore__body {
+        gap: 8px !important;
+        margin-top: 8px !important;
+      }
+
+      .heroMore__body .btn {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.18)),
+          rgba(10,10,12,.68) !important;
+      }
+
+      .heroMore__status {
+        justify-content: center !important;
+        text-align: center !important;
+        color: rgba(255,255,255,.78) !important;
+      }
+
+      /* Botões de painel/produto no mobile */
+      .panel .btn,
+      #featured .cnRow .btn,
+      #quickGrid .btn,
+      .quickTools .btn,
+      #btnVerTodosTop,
+      #btnAbrirLojaCompleta {
+        min-height: 42px !important;
+        border-radius: 16px !important;
+        border-color: rgba(215,176,88,.18) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.042), rgba(0,0,0,.17)),
+          rgba(12,12,14,.62) !important;
+        box-shadow:
+          0 9px 22px rgba(0,0,0,.22),
+          inset 0 1px 0 rgba(255,255,255,.04) !important;
+        font-weight: 850 !important;
+      }
+
+      #featured .cnRow .btn--buy-primary,
+      .panel .btn--gold,
+      #btnVerTodosTop {
+        border-color: rgba(215,176,88,.38) !important;
+        color: rgba(255,237,184,.98) !important;
+        background:
+          linear-gradient(180deg, rgba(215,176,88,.27), rgba(101,78,29,.30)),
+          rgba(12,12,14,.72) !important;
+      }
+
+      .panel__right #refresh,
+      #refresh {
+        min-height: 40px !important;
+        padding-inline: 14px !important;
+        border-radius: 999px !important;
+      }
+
+      #topo,
+      #sec-produto-do-dia,
+      #sec-vitrine-rapida,
+      #sec-links {
+        scroll-margin-top: 86px !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .sectionNav {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) 40px !important;
+        gap: 6px !important;
+        padding: 7px !important;
+        border-radius: 22px !important;
+      }
+
+      .sectionNav .sectionNav__pill {
+        min-height: 40px !important;
+        padding-inline: 8px !important;
+        font-size: .76rem !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 40px !important;
+        min-width: 40px !important;
+        max-width: 40px !important;
+        min-height: 40px !important;
+        font-size: 1.10rem !important;
+      }
+
+      .hero__actions #goLoja,
+      .hero__actions .btn--gold {
+        min-height: 48px !important;
+        font-size: .95rem !important;
+      }
+
+      .heroMore__summary {
+        min-height: 44px !important;
+        font-size: .94rem !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -6095,12 +6426,12 @@
     </header>
 
     <!-- ✅ MENU “IMPERIAL” -->
-    <nav class="sectionNav" aria-label="Atalhos da Central Premium">
-      <a class="sectionNav__pill" href="#sec-produto-do-dia">⭐ Seleção do Dia</a>
-      <a class="sectionNav__pill" href="#sec-vitrine-rapida">🧊 Vitrine Rápida</a>
-      <a class="sectionNav__pill sectionNav__pill--gold" href="./loja.html">👑 Loja Completa (<span data-total-products>—</span>)</a>
-      <a class="sectionNav__pill sectionNav__pill--top" href="#topo" aria-label="Voltar para o topo">↑</a>
-      <a class="sectionNav__pill" href="#sec-links">🔗 Links Oficiais</a>
+    <nav class="sectionNav" aria-label="Atalhos da Central Premium" id="cnMobileTopNav" data-cn-mobile-floating-nav>
+      <a class="sectionNav__pill sectionNav__pill--selection" href="#sec-produto-do-dia" data-cn-mobile-nav-link="selection">⭐ Seleção do Dia</a>
+      <a class="sectionNav__pill sectionNav__pill--quick" href="#sec-vitrine-rapida" data-cn-mobile-nav-link="quick">🧊 Vitrine Rápida</a>
+      <a class="sectionNav__pill sectionNav__pill--gold sectionNav__pill--store" href="./loja.html" id="sectionNavLoja" data-cn-mobile-nav-link="store">👑 Loja Completa (<span data-total-products>—</span>)</a>
+      <a class="sectionNav__pill sectionNav__pill--top" href="#topo" aria-label="Voltar para o topo" data-cn-mobile-nav-link="top">↑</a>
+      <a class="sectionNav__pill sectionNav__pill--links" href="#sec-links" data-cn-mobile-nav-link="links">🔗 Links Oficiais</a>
     </nav>
 
     <section class="panel" id="sec-produto-do-dia">
@@ -6348,6 +6679,197 @@
         syncMobileStatus();
         setTimeout(syncMobileStatus, 1200);
       });
+    })();
+  </script>
+
+
+  <script id="cnMobileFloatingNav">
+    (function () {
+      "use strict";
+
+      var MOBILE_QUERY = "(max-width: 640px)";
+      var media = window.matchMedia ? window.matchMedia(MOBILE_QUERY) : null;
+      var nav = null;
+      var spacer = null;
+      var originalTop = 0;
+      var ticking = false;
+
+      function isMobile() {
+        return !media || media.matches;
+      }
+
+      function getNav() {
+        return document.querySelector("[data-cn-mobile-floating-nav]") || document.querySelector(".sectionNav");
+      }
+
+      function ensureSpacer() {
+        if (!nav) return null;
+        if (spacer && spacer.parentNode) return spacer;
+
+        spacer = document.createElement("div");
+        spacer.className = "cnMobileNavSpacer";
+        spacer.setAttribute("aria-hidden", "true");
+        nav.parentNode.insertBefore(spacer, nav.nextSibling);
+        return spacer;
+      }
+
+      function measureOriginalTop() {
+        if (!nav) return;
+        var wasFloating = nav.classList.contains("sectionNav--mobileFloating");
+
+        if (wasFloating) {
+          nav.classList.remove("sectionNav--mobileFloating");
+          nav.style.removeProperty("--cn-mobile-nav-left");
+          nav.style.removeProperty("--cn-mobile-nav-width");
+          nav.style.removeProperty("--cn-mobile-nav-height");
+          nav.style.left = "";
+          nav.style.width = "";
+          nav.style.top = "";
+        }
+
+        originalTop = nav.getBoundingClientRect().top + window.pageYOffset;
+
+        if (wasFloating) {
+          setFloating(true);
+        }
+      }
+
+      function setFloating(active) {
+        if (!nav) return;
+        var s = ensureSpacer();
+        var rect = nav.getBoundingClientRect();
+        var page = document.querySelector(".page");
+        var pageRect = page ? page.getBoundingClientRect() : null;
+
+        if (active) {
+          var width = pageRect ? pageRect.width : Math.min(window.innerWidth - 18, rect.width || window.innerWidth - 18);
+          var left = pageRect ? pageRect.left : 9;
+
+          nav.style.setProperty("--cn-mobile-nav-left", Math.round(left) + "px");
+          nav.style.setProperty("--cn-mobile-nav-width", Math.round(width) + "px");
+          nav.style.setProperty("--cn-mobile-nav-height", Math.ceil(rect.height || 58) + "px");
+
+          if (s) {
+            s.style.setProperty("--cn-mobile-nav-height", Math.ceil(rect.height || 58) + "px");
+            s.classList.add("is-active");
+          }
+
+          nav.classList.add("sectionNav--mobileFloating");
+        } else {
+          nav.classList.remove("sectionNav--mobileFloating");
+          nav.style.removeProperty("--cn-mobile-nav-left");
+          nav.style.removeProperty("--cn-mobile-nav-width");
+          nav.style.removeProperty("--cn-mobile-nav-height");
+          nav.style.left = "";
+          nav.style.width = "";
+          nav.style.top = "";
+
+          if (s) {
+            s.classList.remove("is-active");
+          }
+        }
+      }
+
+      function updateFloatingState() {
+        ticking = false;
+
+        if (!nav) return;
+
+        if (!isMobile()) {
+          setFloating(false);
+          return;
+        }
+
+        var triggerTop = Math.max(0, originalTop - 8);
+        var shouldFloat = window.pageYOffset > triggerTop;
+
+        setFloating(shouldFloat);
+      }
+
+      function requestUpdate() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(updateFloatingState);
+      }
+
+      function scrollToHash(hash) {
+        if (!hash || hash === "#") return false;
+
+        if (hash === "#topo") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return true;
+        }
+
+        var target = document.querySelector(hash);
+        if (!target) return false;
+
+        var offset = 88;
+        if (nav && nav.classList.contains("sectionNav--mobileFloating")) {
+          offset = Math.max(78, Math.ceil(nav.getBoundingClientRect().height + 24));
+        }
+
+        var y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+        return true;
+      }
+
+      function bindClicks() {
+        if (!nav) return;
+
+        nav.addEventListener("click", function (event) {
+          if (!isMobile()) return;
+
+          var link = event.target.closest ? event.target.closest("a") : null;
+          if (!link || !nav.contains(link)) return;
+
+          var href = link.getAttribute("href") || "";
+
+          if (href.charAt(0) === "#") {
+            event.preventDefault();
+            scrollToHash(href);
+            try { history.replaceState(null, "", href); } catch (err) {}
+            return;
+          }
+
+          if (window.CNTracking && typeof window.CNTracking.trackOpenStore === "function" && href.indexOf("loja.html") !== -1) {
+            window.CNTracking.trackOpenStore({
+              page_type: "home",
+              placement: "mobile_floating_top_nav"
+            });
+          }
+        }, false);
+      }
+
+      function init() {
+        nav = getNav();
+        if (!nav) return;
+
+        ensureSpacer();
+        bindClicks();
+        measureOriginalTop();
+        updateFloatingState();
+
+        window.addEventListener("scroll", requestUpdate, { passive: true });
+        window.addEventListener("resize", function () {
+          setFloating(false);
+          measureOriginalTop();
+          updateFloatingState();
+        }, { passive: true });
+
+        if (media && typeof media.addEventListener === "function") {
+          media.addEventListener("change", function () {
+            setFloating(false);
+            measureOriginalTop();
+            updateFloatingState();
+          });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
     })();
   </script>
 
