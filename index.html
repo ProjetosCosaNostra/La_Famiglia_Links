@@ -4950,6 +4950,157 @@
       }
     }
 
+
+    /* ==========================================================
+       ETAPA 3V — AJUSTE EXCLUSIVO MOBILE
+       Pedido atual:
+       - NÃO alterar PC
+       - botão Topo vira só seta elegante
+       - chip Premium menor
+       - frase do topo mais curta em uma linha
+       - menu mobile mais compacto para não vazar
+       ========================================================== */
+     (max-width: 640px) {
+      /* Chip premium menor e mais discreto */
+      .hero .chips .chip:nth-child(2) {
+        min-height: 24px !important;
+        padding: 4px 11px !important;
+        font-size: .74rem !important;
+        line-height: 1 !important;
+        gap: 4px !important;
+        letter-spacing: .01em !important;
+      }
+
+      /* Frase mobile curta: cabe em uma linha e mantém sensação premium */
+      .hero__sub--banner {
+        margin-top: 5px !important;
+        padding-inline: 0 !important;
+        text-align: center !important;
+        font-size: 0 !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+      }
+
+      .hero__sub--banner::after {
+        content: "Luxo, praticidade e compra rápida.";
+        display: block !important;
+        font-size: .76rem !important;
+        line-height: 1.12 !important;
+        color: rgba(255,255,255,.78) !important;
+        letter-spacing: .01em !important;
+        white-space: nowrap !important;
+      }
+
+      /* Menu superior mobile mais compacto: evita corte lateral */
+      .sectionNav {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        gap: 6px !important;
+        padding: 7px 6px !important;
+        overflow: visible !important;
+      }
+
+      .sectionNav .sectionNav__pill,
+      .sectionNav .sectionNav__pill--gold,
+      .sectionNav .sectionNav__pill--top {
+        min-height: 32px !important;
+        padding: 7px 10px !important;
+        font-size: .76rem !important;
+        line-height: 1 !important;
+      }
+
+      /* Encurta visualmente só no mobile para caber elegante */
+      .sectionNav .sectionNav__pill:first-child {
+        font-size: 0 !important;
+      }
+
+      .sectionNav .sectionNav__pill:first-child::before {
+        content: "⭐ Seleção";
+        font-size: .76rem !important;
+        line-height: 1 !important;
+      }
+
+      .sectionNav .sectionNav__pill--gold {
+        font-size: 0 !important;
+        min-width: auto !important;
+      }
+
+      .sectionNav .sectionNav__pill--gold::before {
+        content: "👑 Loja (";
+        font-size: .76rem !important;
+        line-height: 1 !important;
+      }
+
+      .sectionNav .sectionNav__pill--gold span {
+        font-size: .76rem !important;
+        line-height: 1 !important;
+      }
+
+      .sectionNav .sectionNav__pill--gold::after {
+        content: ")";
+        font-size: .76rem !important;
+        line-height: 1 !important;
+      }
+
+      /* Topo: somente seta, sem texto */
+      .sectionNav .sectionNav__pill--top {
+        width: 38px !important;
+        min-width: 38px !important;
+        max-width: 38px !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+        border-color: rgba(215,176,88,.30) !important;
+      }
+
+      .sectionNav .sectionNav__pill--top::before {
+        content: "↑";
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 1.18rem !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        color: rgba(255,247,225,.98) !important;
+        text-shadow: 0 0 10px rgba(215,176,88,.18) !important;
+      }
+    }
+
+     (max-width: 390px) {
+      .hero .chips .chip:nth-child(2) {
+        font-size: .70rem !important;
+        padding-inline: 10px !important;
+      }
+
+      .hero__sub--banner::after {
+        content: "Compra rápida, segura e premium.";
+        font-size: .71rem !important;
+      }
+
+      .sectionNav {
+        gap: 5px !important;
+        padding-inline: 5px !important;
+      }
+
+      .sectionNav .sectionNav__pill,
+      .sectionNav .sectionNav__pill--gold {
+        padding-inline: 8px !important;
+      }
+
+      .sectionNav .sectionNav__pill:first-child::before,
+      .sectionNav .sectionNav__pill--gold::before,
+      .sectionNav .sectionNav__pill--gold span,
+      .sectionNav .sectionNav__pill--gold::after {
+        font-size: .71rem !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+      }
+    }
   </style>
 </head>
 
