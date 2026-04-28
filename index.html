@@ -6993,6 +6993,104 @@
         max-height: 48svh !important;
       }
     }
+
+
+    /* ==========================================================
+       ETAPA 3E — MICROREDUÇÃO DOS BOTÕES DO TOPO — 2026-04-28
+       Escopo: SOMENTE MOBILE
+       Objetivo:
+       - deixar o CTA “Entrar na Loja Premium” mais elegante;
+       - deixar “Canais oficiais” menos pesado;
+       - reduzir levemente a barra superior sem quebrar o sticky.
+       ========================================================== */
+    @media (max-width: 640px) {
+      .hero__actions {
+        gap: 6px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 36px !important;
+        padding: 6px 10px !important;
+        border-radius: 12px !important;
+        font-size: .80rem !important;
+        line-height: 1 !important;
+        letter-spacing: 0 !important;
+      }
+
+      .heroMore__summary {
+        min-height: 32px !important;
+        padding: 6px 9px !important;
+        border-radius: 12px !important;
+        font-size: .79rem !important;
+        line-height: 1 !important;
+        gap: 6px !important;
+      }
+
+      .heroMore__body {
+        gap: 7px !important;
+        margin-top: 7px !important;
+      }
+
+      .heroMore__body .btn,
+      .heroMore__body .miniNote,
+      .heroMore__status {
+        min-height: 31px !important;
+        padding: 6px 9px !important;
+        border-radius: 12px !important;
+        font-size: .70rem !important;
+        line-height: 1.05 !important;
+      }
+
+      .sectionNav {
+        padding: 6px 7px !important;
+        gap: 6px !important;
+      }
+
+      .sectionNav .sectionNav__pill {
+        min-height: 25px !important;
+        padding: 4px 7px !important;
+        border-radius: 999px !important;
+        font-size: .71rem !important;
+        line-height: 1 !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 30px !important;
+        min-width: 30px !important;
+        height: 30px !important;
+        min-height: 30px !important;
+        padding: 0 !important;
+        font-size: .90rem !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero__actions #goLoja {
+        min-height: 34px !important;
+        padding: 6px 9px !important;
+        font-size: .77rem !important;
+      }
+
+      .heroMore__summary {
+        min-height: 30px !important;
+        padding: 5px 8px !important;
+        font-size: .75rem !important;
+      }
+
+      .sectionNav .sectionNav__pill {
+        min-height: 24px !important;
+        padding: 4px 6px !important;
+        font-size: .68rem !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 28px !important;
+        min-width: 28px !important;
+        height: 28px !important;
+        min-height: 28px !important;
+        font-size: .86rem !important;
+      }
+    }
 </style>
 </head>
 
