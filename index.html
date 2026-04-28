@@ -6325,11 +6325,13 @@
 
 
     /* ==========================================================
-       HOTFIX FINAL — SOMENTE MOBILE — 2026-04-27
-       Correção cirúrgica:
-       - NÃO cria botões extras embaixo no celular.
-       - Mantém a barra existente funcionando e flutuando no mobile.
-       - Não altera PC/Desktop.
+       CORREÇÃO CIRÚRGICA — MOBILE NAV NATIVA — 2026-04-27
+       Escopo: SOMENTE MOBILE
+       - remove o comportamento JS/fixed que quebrava o celular
+       - usa a barra superior existente, como no PC: sticky nativo
+       - mantém Seleção do Dia / Loja Completa / Topo no mobile
+       - não cria botões inferiores
+       - PC/Desktop preservado
        ========================================================== */
     @media (max-width: 640px) {
       body {
@@ -6338,14 +6340,8 @@
 
       .floatingStoreCTA,
       .floatingStoreCTA__mobile,
+      .floatingStoreCTA__desktop,
       .floatingStoreCTA__top {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-
-      .floatingStoreCTA__desktop {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -6355,6 +6351,9 @@
       .sectionNav {
         position: sticky !important;
         top: max(6px, env(safe-area-inset-top)) !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
         z-index: 9000 !important;
         display: grid !important;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr) 34px !important;
@@ -6368,23 +6367,24 @@
         border-radius: 18px !important;
         box-sizing: border-box !important;
         overflow: visible !important;
+        transform: none !important;
+        will-change: auto !important;
         pointer-events: auto !important;
         touch-action: manipulation !important;
         -webkit-tap-highlight-color: transparent !important;
       }
 
       .sectionNav.sectionNav--mobileFloating {
-        position: fixed !important;
+        position: sticky !important;
         top: max(6px, env(safe-area-inset-top)) !important;
-        left: var(--cn-mobile-nav-left, 9px) !important;
+        left: auto !important;
         right: auto !important;
         bottom: auto !important;
-        width: var(--cn-mobile-nav-width, calc(100vw - 18px)) !important;
-        max-width: calc(100vw - 18px) !important;
-        margin: 0 !important;
-        z-index: 10040 !important;
-        transform: translateZ(0) !important;
-        will-change: transform !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 8px auto 8px !important;
+        transform: none !important;
+        will-change: auto !important;
       }
 
       .sectionNav .sectionNav__pill {
@@ -6419,6 +6419,8 @@
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
 
       .sectionNav .sectionNav__pill--top {
@@ -6429,14 +6431,10 @@
         font-size: .98rem !important;
       }
 
-      .cnMobileNavSpacer {
-        display: none;
-        height: 0;
-      }
-
+      .cnMobileNavSpacer,
       .cnMobileNavSpacer.is-active {
-        display: block;
-        height: var(--cn-mobile-nav-height, 44px) !important;
+        display: none !important;
+        height: 0 !important;
       }
 
       #topo,
@@ -6446,6 +6444,7 @@
         scroll-margin-top: 72px !important;
       }
     }
+
 
 </style>
 </head>
@@ -6550,7 +6549,7 @@
     </header>
 
     <!-- ✅ MENU “IMPERIAL” -->
-    <nav class="sectionNav" aria-label="Atalhos da Central Premium" id="cnMobileTopNav" data-cn-mobile-floating-nav>
+    <nav class="sectionNav" aria-label="Atalhos da Central Premium" id="cnMobileTopNav">
       <a class="sectionNav__pill sectionNav__pill--selection" href="#sec-produto-do-dia" data-cn-mobile-nav-link="selection">⭐ Seleção do Dia</a>
       <a class="sectionNav__pill sectionNav__pill--quick" href="#sec-vitrine-rapida" data-cn-mobile-nav-link="quick">🧊 Vitrine Rápida</a>
       <a class="sectionNav__pill sectionNav__pill--gold sectionNav__pill--store" href="./loja.html" id="sectionNavLoja" data-cn-mobile-nav-link="store">👑 Loja Completa (<span data-total-products>—</span>)</a>
@@ -6806,322 +6805,5 @@
     })();
   </script>
 
-  <script id="cnMobileFloatingNav">
-    (function () {
-      "use strict";
-
-      /*
-        HOTFIX FINAL — SOMENTE MOBILE
-        Objetivo:
-        - Não cria botões novos embaixo.
-        - Usa SOMENTE a barra existente: Seleção do Dia / Loja Completa / ↑.
-        - No PC não faz nada.
-      */
-
-      var MOBILE_QUERY = "(max-width: 640px)";
-      var media = window.matchMedia ? window.matchMedia(MOBILE_QUERY) : null;
-      var nav = null;
-      var spacer = null;
-      var originalTop = 0;
-      var navHeight = 0;
-      var ticking = false;
-
-      function isMobile() {
-        return !media || media.matches;
-      }
-
-      function getNav() {
-        return document.querySelector("[data-cn-mobile-floating-nav]") || document.querySelector(".sectionNav");
-      }
-
-      function ensureSpacer() {
-        if (!nav) return null;
-
-        if (spacer && spacer.parentNode) {
-          return spacer;
-        }
-
-        spacer = document.createElement("div");
-        spacer.className = "cnMobileNavSpacer";
-        spacer.setAttribute("aria-hidden", "true");
-        nav.parentNode.insertBefore(spacer, nav.nextSibling);
-
-        return spacer;
-      }
-
-      function getFixedTop() {
-        var safeTop = 6;
-
-        try {
-          var probe = document.createElement("div");
-          probe.style.position = "fixed";
-          probe.style.top = "env(safe-area-inset-top)";
-          probe.style.visibility = "hidden";
-          probe.style.pointerEvents = "none";
-          document.body.appendChild(probe);
-
-          var value = parseFloat(window.getComputedStyle(probe).top || "0");
-          if (!isNaN(value) && value > 0) {
-            safeTop = value + 6;
-          }
-
-          probe.remove();
-        } catch (err) {}
-
-        return Math.max(6, safeTop);
-      }
-
-      function clearFloatingInline() {
-        if (!nav) return;
-
-        nav.classList.remove("sectionNav--mobileFloating");
-        nav.style.removeProperty("position");
-        nav.style.removeProperty("top");
-        nav.style.removeProperty("left");
-        nav.style.removeProperty("right");
-        nav.style.removeProperty("bottom");
-        nav.style.removeProperty("width");
-        nav.style.removeProperty("max-width");
-        nav.style.removeProperty("margin");
-        nav.style.removeProperty("z-index");
-        nav.style.removeProperty("--cn-mobile-nav-left");
-        nav.style.removeProperty("--cn-mobile-nav-width");
-        nav.style.removeProperty("--cn-mobile-nav-height");
-
-        if (spacer) {
-          spacer.classList.remove("is-active");
-          spacer.style.removeProperty("--cn-mobile-nav-height");
-          spacer.style.height = "";
-        }
-      }
-
-      function measureOriginalTop() {
-        if (!nav) return;
-
-        var wasFloating = nav.classList.contains("sectionNav--mobileFloating");
-
-        if (wasFloating) {
-          clearFloatingInline();
-        }
-
-        var rect = nav.getBoundingClientRect();
-        navHeight = Math.max(40, Math.ceil(rect.height || 44));
-        originalTop = Math.max(0, Math.round(rect.top + window.pageYOffset));
-
-        if (wasFloating) {
-          setFloating(true);
-        }
-      }
-
-      function setFloating(active) {
-        if (!nav) return;
-
-        var s = ensureSpacer();
-
-        if (!isMobile()) {
-          clearFloatingInline();
-          return;
-        }
-
-        if (!active) {
-          clearFloatingInline();
-          return;
-        }
-
-        var page = document.querySelector(".page");
-        var pageRect = page ? page.getBoundingClientRect() : null;
-        var width = pageRect ? pageRect.width : Math.min(window.innerWidth - 18, nav.getBoundingClientRect().width || window.innerWidth - 18);
-        var left = pageRect ? pageRect.left : 9;
-
-        nav.style.setProperty("--cn-mobile-nav-left", Math.round(left) + "px");
-        nav.style.setProperty("--cn-mobile-nav-width", Math.round(width) + "px");
-        nav.style.setProperty("--cn-mobile-nav-height", navHeight + "px");
-
-        nav.style.position = "fixed";
-        nav.style.top = getFixedTop() + "px";
-        nav.style.left = Math.round(left) + "px";
-        nav.style.width = Math.round(width) + "px";
-        nav.style.maxWidth = "calc(100vw - 18px)";
-        nav.style.margin = "0";
-        nav.style.zIndex = "10040";
-        nav.classList.add("sectionNav--mobileFloating");
-
-        if (s) {
-          s.style.setProperty("--cn-mobile-nav-height", navHeight + "px");
-          s.style.height = navHeight + "px";
-          s.classList.add("is-active");
-        }
-      }
-
-      function updateFloatingState() {
-        ticking = false;
-
-        if (!nav) return;
-
-        if (!isMobile()) {
-          setFloating(false);
-          return;
-        }
-
-        if (!originalTop) {
-          measureOriginalTop();
-        }
-
-        var shouldFloat = window.pageYOffset > Math.max(0, originalTop - 6);
-        setFloating(shouldFloat);
-      }
-
-      function requestUpdate() {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(updateFloatingState);
-      }
-
-      function getScrollOffset() {
-        var height = nav ? Math.ceil(nav.getBoundingClientRect().height || navHeight || 44) : 44;
-        return Math.max(68, height + 24);
-      }
-
-      function scrollToHash(hash) {
-        if (!hash || hash === "#") return false;
-
-        if (hash === "#topo") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          return true;
-        }
-
-        var target = document.querySelector(hash);
-        if (!target) return false;
-
-        var y = target.getBoundingClientRect().top + window.pageYOffset - getScrollOffset();
-        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
-
-        return true;
-      }
-
-      function trackStoreOpen(link) {
-        try {
-          if (window.CNTracking && typeof window.CNTracking.trackOpenStore === "function") {
-            window.CNTracking.trackOpenStore({
-              page_type: "home",
-              placement: link && link.closest(".sectionNav") ? "mobile_top_floating_store" : "mobile_store"
-            });
-          }
-        } catch (err) {}
-      }
-
-      function bindMobileClicks() {
-        document.addEventListener("click", function (event) {
-          if (!isMobile()) return;
-
-          var link = event.target && event.target.closest ? event.target.closest("a") : null;
-          if (!link) return;
-
-          var inNav = nav && nav.contains(link);
-          var isHeroStore = link.id === "goLoja";
-          var isKnownStoreButton =
-            link.id === "sectionNavLoja" ||
-            link.id === "btnVerTodosTop" ||
-            link.id === "btnAbrirLojaCompleta";
-
-          if (!inNav && !isHeroStore && !isKnownStoreButton) return;
-
-          var rawHref = link.getAttribute("href") || "";
-          if (!rawHref) return;
-
-          if (rawHref.charAt(0) === "#") {
-            event.preventDefault();
-            event.stopPropagation();
-
-            if (typeof event.stopImmediatePropagation === "function") {
-              event.stopImmediatePropagation();
-            }
-
-            scrollToHash(rawHref);
-
-            try {
-              history.replaceState(null, "", rawHref);
-            } catch (err) {}
-
-            return;
-          }
-
-          if (rawHref.indexOf("loja.html") !== -1 || link.href.indexOf("loja.html") !== -1) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            if (typeof event.stopImmediatePropagation === "function") {
-              event.stopImmediatePropagation();
-            }
-
-            trackStoreOpen(link);
-            window.location.assign(link.href);
-
-            return;
-          }
-        }, true);
-      }
-
-      function refreshMeasurements() {
-        if (!nav) return;
-
-        var wasFloating = nav.classList.contains("sectionNav--mobileFloating");
-        clearFloatingInline();
-        measureOriginalTop();
-
-        if (wasFloating || window.pageYOffset > Math.max(0, originalTop - 6)) {
-          updateFloatingState();
-        }
-      }
-
-      function init() {
-        nav = getNav();
-        if (!nav) return;
-
-        ensureSpacer();
-        measureOriginalTop();
-        updateFloatingState();
-        bindMobileClicks();
-
-        window.addEventListener("scroll", requestUpdate, { passive: true });
-        window.addEventListener("resize", refreshMeasurements, { passive: true });
-        window.addEventListener("orientationchange", function () {
-          setTimeout(refreshMeasurements, 250);
-        }, { passive: true });
-        window.addEventListener("load", function () {
-          setTimeout(refreshMeasurements, 120);
-          setTimeout(refreshMeasurements, 800);
-        }, { passive: true });
-        window.addEventListener("pageshow", function () {
-          setTimeout(refreshMeasurements, 120);
-        }, { passive: true });
-
-        if (media && typeof media.addEventListener === "function") {
-          media.addEventListener("change", refreshMeasurements);
-        }
-
-        try {
-          document.fonts && document.fonts.ready && document.fonts.ready.then(function () {
-            setTimeout(refreshMeasurements, 60);
-          });
-        } catch (err) {}
-
-        var imgs = document.querySelectorAll("img");
-        imgs.forEach(function (img) {
-          if (!img.complete) {
-            img.addEventListener("load", function () {
-              setTimeout(refreshMeasurements, 60);
-            }, { once: true, passive: true });
-          }
-        });
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
-      } else {
-        init();
-      }
-    })();
-  </script>
 </body>
 </html>
