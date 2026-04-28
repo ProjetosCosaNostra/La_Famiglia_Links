@@ -1133,6 +1133,580 @@
       }
     }
 
+  
+
+/* ==========================================================
+   REFINO FINAL 2026-04-28 — LOJA COMPLETA
+   Objetivo:
+   - usar o novo título da loja completa
+   - compactar botões sem perder presença premium
+   - reduzir imagens de produto para layout mais elegante
+   - aplicar em PC e Mobile sem mexer na lógica JS/produtos
+   ========================================================== */
+
+.heroBanner__seal{
+  display:none !important;
+}
+
+.hero{
+  gap:12px !important;
+  padding:14px !important;
+  border-radius:22px !important;
+}
+
+.hero__brand--banner{
+  gap:10px !important;
+}
+
+.heroBanner{
+  border-radius:16px !important;
+  border-color:rgba(215,176,88,.22) !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.32) !important;
+}
+
+.heroBanner__img{
+  width:100% !important;
+  height:auto !important;
+  display:block !important;
+  object-fit:cover !important;
+  object-position:center !important;
+}
+
+.hero__sub--banner{
+  max-width:620px !important;
+  font-size:14px !important;
+  line-height:1.34 !important;
+  color:rgba(255,255,255,.74) !important;
+}
+
+.chips{
+  gap:7px !important;
+  margin-top:9px !important;
+}
+
+.chip,
+.tagChips .tagChip,
+#tagPrimaryChips .tagChip,
+#tagSecondaryChips .tagChip,
+#tagUtilityChips .tagChip{
+  min-height:28px !important;
+  padding:5px 10px !important;
+  font-size:12px !important;
+  line-height:1 !important;
+  border-radius:999px !important;
+}
+
+.countPill{
+  gap:7px !important;
+  min-height:34px !important;
+  margin-top:9px !important;
+  padding:7px 11px !important;
+  font-size:12.5px !important;
+  line-height:1.15 !important;
+  border-radius:18px !important;
+}
+
+.imperialNote--store{
+  margin-top:10px !important;
+  padding:9px 12px !important;
+  font-size:13px !important;
+  line-height:1.28 !important;
+  border-radius:15px !important;
+}
+
+.hero__actions{
+  gap:8px !important;
+}
+
+.hero__actions .btn,
+.heroActionsMore__toggle,
+.heroActionsMore__panel .btn,
+.cnToolsGrid .btn,
+.loadMoreWrap .btn,
+#btnClear{
+  min-height:38px !important;
+  padding:8px 12px !important;
+  border-radius:14px !important;
+  font-size:12.5px !important;
+  line-height:1.05 !important;
+}
+
+.hero__actions .btn--gold,
+.heroActionsMore__panel .btn--gold{
+  min-height:42px !important;
+}
+
+.miniNote{
+  min-height:34px !important;
+  padding:7px 10px !important;
+  border-radius:13px !important;
+  font-size:11.5px !important;
+}
+
+.panel{
+  border-radius:22px !important;
+}
+
+.panel__head{
+  gap:10px !important;
+  padding:16px 18px 14px !important;
+  margin-bottom:0 !important;
+}
+
+.panel__head h2{
+  font-size:clamp(1.08rem, 1.7vw, 1.42rem) !important;
+  line-height:1.06 !important;
+  letter-spacing:.16em !important;
+}
+
+.panel__head p{
+  font-size:14px !important;
+  line-height:1.38 !important;
+  max-width:760px !important;
+}
+
+.lojaTools{
+  padding:14px 18px 16px !important;
+  gap:10px !important;
+}
+
+.quickSearch{
+  min-height:44px !important;
+  max-height:44px !important;
+  padding:8px 13px !important;
+  border-radius:18px !important;
+}
+
+.quickSearch input{
+  font-size:14px !important;
+}
+
+.select{
+  min-height:40px !important;
+  padding:8px 12px !important;
+  font-size:12px !important;
+  border-radius:16px !important;
+}
+
+.chipFold__summary{
+  min-height:38px !important;
+  padding:8px 12px !important;
+}
+
+.cnStoreDock{
+  gap:7px !important;
+}
+
+.cnStoreDock__btn{
+  width:34px !important;
+  height:34px !important;
+  border-radius:11px !important;
+  font-size:14px !important;
+}
+
+/* Produto do Dia: imagem menor, bloco mais respirado */
+#featured.featured{
+  display:grid !important;
+  grid-template-columns:minmax(260px,.88fr) minmax(340px,1.12fr) !important;
+  gap:14px !important;
+  padding:14px !important;
+  align-items:stretch !important;
+}
+
+#featured .card{
+  border-radius:20px !important;
+  overflow:hidden !important;
+  border-color:rgba(215,176,88,.15) !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.22)), rgba(5,5,7,.66) !important;
+}
+
+#featured .card:first-child .card__img{
+  height:350px !important;
+  min-height:350px !important;
+  padding:18px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+#featured .card:first-child .card__img img{
+  width:100% !important;
+  height:100% !important;
+  max-width:88% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  margin:auto !important;
+  border-radius:14px !important;
+}
+
+#featured .card__body{
+  padding:18px !important;
+}
+
+#featured .name,
+#featured .card__body .name{
+  font-size:clamp(1.18rem, 2vw, 1.76rem) !important;
+  line-height:1.08 !important;
+  letter-spacing:.03em !important;
+}
+
+#featured .meta{
+  font-size:13.5px !important;
+  line-height:1.38 !important;
+}
+
+#featured .actions{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+}
+
+#featured .actions .btn{
+  min-height:37px !important;
+  padding:8px 12px !important;
+  border-radius:14px !important;
+  font-size:12.5px !important;
+}
+
+#featured .actions .btn--buy-primary{
+  min-height:42px !important;
+  padding-inline:16px !important;
+}
+
+/* Vitrine Comercial: cards menores e mais elegantes */
+.productsGrid{
+  gap:14px !important;
+  padding:14px !important;
+}
+
+.productsGrid .pCard{
+  border-radius:20px !important;
+  border-color:rgba(215,176,88,.15) !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.22)), rgba(5,5,7,.66) !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.26) !important;
+}
+
+.productsGrid .pImg{
+  height:300px !important;
+  min-height:300px !important;
+  padding:16px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:rgba(0,0,0,.24) !important;
+}
+
+.productsGrid .pImg img{
+  width:100% !important;
+  height:100% !important;
+  max-width:90% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  margin:auto !important;
+  border-radius:14px !important;
+}
+
+.productsGrid .pBody{
+  padding:14px !important;
+  gap:7px !important;
+}
+
+.productsGrid .pName{
+  font-size:15px !important;
+  line-height:1.16 !important;
+  min-height:2.35em !important;
+  -webkit-line-clamp:2 !important;
+}
+
+.productsGrid .pSmall{
+  font-size:12px !important;
+  line-height:1.28 !important;
+}
+
+.productsGrid .pBody .pSmall:nth-of-type(1){
+  -webkit-line-clamp:2 !important;
+  min-height:2.55em !important;
+}
+
+.productsGrid .pBody .pSmall:nth-of-type(2){
+  -webkit-line-clamp:2 !important;
+  min-height:2.55em !important;
+}
+
+.productsGrid .pActions{
+  gap:7px !important;
+  padding-top:8px !important;
+}
+
+.productsGrid .pActions .smallBtn{
+  min-height:34px !important;
+  padding:7px 10px !important;
+  border-radius:13px !important;
+  font-size:12px !important;
+  line-height:1.05 !important;
+}
+
+.productsGrid .pActions .smallBtnGold.btn--buy-primary{
+  min-height:38px !important;
+}
+
+.pFeatured{
+  top:8px !important;
+  left:8px !important;
+  padding:6px 9px !important;
+  font-size:11px !important;
+}
+
+@media (max-width:980px){
+  #featured.featured{
+    grid-template-columns:1fr !important;
+  }
+
+  #featured .card:first-child .card__img{
+    height:330px !important;
+    min-height:330px !important;
+  }
+
+  .productsGrid .pImg{
+    height:330px !important;
+    min-height:330px !important;
+  }
+}
+
+@media (max-width:640px){
+  .page{
+    width:min(100vw - 22px, 1120px) !important;
+    gap:12px !important;
+  }
+
+  .hero{
+    padding:9px !important;
+    gap:9px !important;
+    border-radius:18px !important;
+  }
+
+  .heroBanner{
+    border-radius:13px !important;
+  }
+
+  .hero__sub--banner{
+    font-size:.80rem !important;
+    line-height:1.20 !important;
+  }
+
+  .chips{
+    margin-top:7px !important;
+    gap:5px !important;
+  }
+
+  .chip,
+  .tagChips .tagChip,
+  #tagPrimaryChips .tagChip,
+  #tagSecondaryChips .tagChip,
+  #tagUtilityChips .tagChip{
+    min-height:24px !important;
+    padding:4px 8px !important;
+    font-size:.72rem !important;
+  }
+
+  .countPill{
+    min-height:30px !important;
+    padding:6px 9px !important;
+    font-size:.78rem !important;
+    gap:6px !important;
+  }
+
+  .imperialNote--store{
+    padding:8px 9px !important;
+    font-size:.80rem !important;
+  }
+
+  .hero__actions .btn,
+  .heroActionsMore__toggle,
+  .heroActionsMore__panel .btn,
+  #btnClear,
+  .cnToolsGrid .btn,
+  .loadMoreWrap .btn{
+    min-height:34px !important;
+    padding:7px 10px !important;
+    border-radius:13px !important;
+    font-size:.78rem !important;
+  }
+
+  .hero__actions .btn--gold,
+  .heroActionsMore__panel .btn--gold{
+    min-height:38px !important;
+  }
+
+  .panel{
+    border-radius:20px !important;
+  }
+
+  .panel__head{
+    padding:14px 16px 12px !important;
+  }
+
+  .panel__head h2{
+    font-size:1rem !important;
+    letter-spacing:.14em !important;
+  }
+
+  .panel__head p{
+    font-size:.82rem !important;
+    line-height:1.32 !important;
+  }
+
+  .lojaTools{
+    padding:12px 16px 14px !important;
+  }
+
+  .quickSearch{
+    min-height:40px !important;
+    max-height:40px !important;
+    border-radius:16px !important;
+    padding:7px 11px !important;
+  }
+
+  .quickSearch input{
+    font-size:15px !important;
+  }
+
+  .select{
+    min-height:38px !important;
+    font-size:.78rem !important;
+  }
+
+  .chipFold__summary{
+    min-height:35px !important;
+    padding:7px 10px !important;
+  }
+
+  #featured.featured{
+    display:block !important;
+    padding:12px !important;
+  }
+
+  #featured .card{
+    border-radius:18px !important;
+  }
+
+  #featured .card + .card{
+    margin-top:12px !important;
+  }
+
+  #featured .card:first-child .card__img{
+    height:255px !important;
+    min-height:255px !important;
+    padding:13px !important;
+  }
+
+  #featured .card:first-child .card__img img{
+    max-width:84% !important;
+  }
+
+  #featured .card__body{
+    padding:15px !important;
+  }
+
+  #featured .name,
+  #featured .card__body .name{
+    font-size:1.22rem !important;
+    line-height:1.08 !important;
+  }
+
+  #featured .meta{
+    font-size:.86rem !important;
+  }
+
+  #featured .actions{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+    gap:8px !important;
+  }
+
+  #featured .actions .btn--buy-primary{
+    grid-column:1 / -1 !important;
+  }
+
+  .productsGrid{
+    gap:13px !important;
+    padding:12px !important;
+  }
+
+  .productsGrid .pCard{
+    border-radius:19px !important;
+  }
+
+  .productsGrid .pImg{
+    height:385px !important;
+    min-height:385px !important;
+    padding:16px 18px !important;
+  }
+
+  .productsGrid .pImg img{
+    max-width:86% !important;
+  }
+
+  .productsGrid .pBody{
+    padding:14px 15px 15px !important;
+  }
+
+  .productsGrid .pName{
+    font-size:1.03rem !important;
+    line-height:1.14 !important;
+    min-height:auto !important;
+  }
+
+  .productsGrid .pSmall{
+    font-size:.82rem !important;
+  }
+
+  .productsGrid .pBody .pSmall:nth-of-type(1),
+  .productsGrid .pBody .pSmall:nth-of-type(2){
+    min-height:auto !important;
+  }
+
+  .productsGrid .pActions{
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+  }
+
+  .productsGrid .pActions .smallBtn{
+    min-height:35px !important;
+    border-radius:14px !important;
+    font-size:.82rem !important;
+  }
+
+  .cnStoreDock{
+    right:7px !important;
+    bottom:9px !important;
+    gap:6px !important;
+  }
+
+  .cnStoreDock__btn{
+    width:32px !important;
+    height:32px !important;
+    border-radius:10px !important;
+    font-size:13px !important;
+  }
+}
+
+@media (max-width:420px){
+  .productsGrid .pImg{
+    height:360px !important;
+    min-height:360px !important;
+  }
+
+  #featured .card:first-child .card__img{
+    height:235px !important;
+    min-height:235px !important;
+  }
+
+  .productsGrid .pImg img{
+    max-width:85% !important;
+  }
+}
+
   </style>
 
   <!-- JS da loja -->
@@ -1153,12 +1727,12 @@
       <div class="hero__brand hero__brand--banner">
         <div class="heroBanner" aria-hidden="false">
           <picture class="heroBanner__picture">
-            <source media="(max-width: 640px)" srcset="assets/topo-loja-completa-fachada-cn-mobile-v1.png">
+            <source media="(max-width: 640px)" srcset="assets/loja-completa-hero-mobile.webp">
             <img
               class="heroBanner__img"
-              src="assets/topo-loja-completa-fachada-cn-desktop-v1.png"
+              src="assets/loja-completa-hero-desktop.webp"
               alt="Loja Completa — Cosa Nostra • A Família das Ideias"
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/topo-loja-completa-fachada-cn-desktop-v1.png'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/loja-completa-hero-desktop.webp'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
             />
           </picture>
           <div class="heroBanner__seal" aria-hidden="true">
