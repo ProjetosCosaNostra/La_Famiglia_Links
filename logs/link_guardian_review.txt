@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-28T19:56:32Z
+Atualizado em: 2026-04-28T20:31:39Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-28T19:51:59Z
+Quando: 2026-04-28T20:26:12Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 0x listing)
+Memória operacional: histórico recorrente (22x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/1SUkJoM
 checked_url: https://meli.la/1SUkJoM
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-04-28T19:51:59Z
+Quando: 2026-04-28T20:26:12Z
 Issue: #113
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
 SKU: gamestick-premium-2-controles-wireless
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
 open_url: https://meli.la/1DeTTFh
 checked_url: https://meli.la/1DeTTFh
