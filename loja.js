@@ -69,7 +69,7 @@
   const $$ = (s) => Array.from(document.querySelectorAll(s));
 
   const ADMIN = new URLSearchParams(location.search).get("admin") === "1";
-  const SHOW_FEATURED_IN_GRID = true;
+  const SHOW_FEATURED_IN_GRID = false;
 
   const PAGE_SIZE = 60;
 
@@ -1966,6 +1966,7 @@
     return `
       <div class="card card--featuredClean">
         <div class="card__img card__img--featuredClean">
+          ${isProdutoDoDia ? `<div class="pFeatured pFeatured--featuredClean">⭐ do dia</div>` : ``}
           ${img}
         </div>
         <div class="card__body card__body--featuredClean">
@@ -2512,10 +2513,12 @@
 
     let list = filtered.slice();
 
+    if (destaque && destaque.sku) {
+      list = list.filter((p) => p.sku !== destaque.sku);
+    }
+
     if (featuredPass && SHOW_FEATURED_IN_GRID) {
       list = [featuredPass, ...list.filter((p) => p.sku !== featuredPass.sku)];
-    } else if (featuredPass && !SHOW_FEATURED_IN_GRID) {
-      list = list.filter((p) => p.sku !== featuredPass.sku);
     }
 
     const shown = list.slice(0, STATE.limit);
