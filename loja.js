@@ -1957,75 +1957,34 @@
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buyBtn = (disabled || !hasLink)
-      ? `<button class="btn btn--gold" type="button" disabled style="opacity:.55; cursor:not-allowed;">INDISPONÍVEL</button>`
-      : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">COMPRAR AGORA</a>`;
+      ? `<button class="btn btn--gold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
+      : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
     const badge = isProdutoDoDia
-      ? `<div class="badge">⭐ Produto do dia</div>`
-      : `<div class="badge" style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.88);">🛒 Destaque</div>`;
+      ? `<div class="badge badge--featuredClean">⭐ do dia</div>`
+      : `<div class="badge badge--featuredClean">🛒 destaque</div>`;
 
-    const desc = safeArray(p.badges).join(" • ");
-    const tags = tagsText(p.badges);
-
-    const altBtn = p.alt_url
-      ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Link Alt</button>`
-      : ``;
+    const desc = safeArray(p.badges).slice(0, 6).join(" • ");
+    const idBusca = String(p.id_busca || "").trim();
 
     return `
-      <div class="card">
-        <div class="card__img">
+      <div class="card card--featuredClean">
+        <div class="card__img card__img--featuredClean">
           ${badge}
           ${img}
         </div>
-        <div class="card__body">
-          <h3 class="name">${escapeHTML(p.title)}</h3>
-          ${p.price_text ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
-          <p class="meta">${escapeHTML(desc)}</p>
+        <div class="card__body card__body--featuredClean">
+          <h3 class="name name--featuredClean">${escapeHTML(p.title)}</h3>
+          ${p.price_text ? `<p class="meta meta--featuredPrice">${escapeHTML(p.price_text)}</p>` : ``}
+          ${desc ? `<p class="meta meta--featuredTags">${escapeHTML(desc)}</p>` : ``}
 
-          <div class="row">
-            <div class="idbox">ID Mercado Livre: <b>${escapeHTML(p.id_busca || "")}</b></div>
-          </div>
+          ${idBusca ? `<div class="idbox idbox--featuredClean">Código: <b>${escapeHTML(idBusca)}</b></div>` : ``}
 
-          ${tags ? `<p class="meta" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
-
-          <div class="actions">
+          <div class="actions actions--featuredClean">
             ${buyBtn}
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar link</button>
-            ${altBtn}
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card__body">
-          <h3 class="name" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:rgba(224,195,107,.95);">
-            ${escapeHTML(isProdutoDoDia ? "⭐ Produto do Dia" : "🛒 Destaque da Vitrine")}
-          </h3>
-
-          <p class="meta" style="margin-top:6px;">
-            ${escapeHTML(isProdutoDoDia
-              ? "Esse é o produto escolhido como Produto do Dia."
-              : "Nenhum Produto do Dia foi definido — esse é um destaque automático.")}
-          </p>
-
-          <p class="meta">
-            ✅ Como comprar (rápido)<br/>
-            1) Abra o app/site do <b>Mercado Livre</b><br/>
-            2) Cole o <b>ID</b> na busca: <b>${escapeHTML(p.id_busca || "")}</b><br/>
-            3) Ou clique em <b>COMPRAR AGORA</b> (abre direto)
-          </p>
-
-          <div class="actions" style="margin-top:6px;">
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
+            ${idBusca ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>` : ``}
             <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Copiar Alt</button>` : ``}
-            <a class="btn btn--tiny btn--gold" href="./">Abrir Home</a>
           </div>
-
-          <p class="meta" style="margin-top:10px;">
-            Melhor funil: <b>Story com sticker de LINK</b> + <b>Loja na Bio</b>.
-          </p>
         </div>
       </div>
     `;
