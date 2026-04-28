@@ -1,4 +1,4 @@
-# 🎩 La Famiglia Links — Central Premium
+# 👑 La Famiglia Links — Central Premium
 
 **Vitrine premium da Cosa Nostra para achados do dia, links oficiais e produtos selecionados.**
 
