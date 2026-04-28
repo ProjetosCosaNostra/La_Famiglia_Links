@@ -1960,17 +1960,12 @@
       ? `<button class="btn btn--gold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
       : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
 
-    const badge = isProdutoDoDia
-      ? `<div class="badge badge--featuredClean">⭐ do dia</div>`
-      : `<div class="badge badge--featuredClean">🛒 destaque</div>`;
-
     const desc = safeArray(p.badges).slice(0, 6).join(" • ");
     const idBusca = String(p.id_busca || "").trim();
 
     return `
       <div class="card card--featuredClean">
         <div class="card__img card__img--featuredClean">
-          ${badge}
           ${img}
         </div>
         <div class="card__body card__body--featuredClean">
