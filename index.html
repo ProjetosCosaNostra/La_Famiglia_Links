@@ -6584,6 +6584,28 @@
       }
     }
 
+
+
+    /* =========================
+       AJUSTE CIRÚRGICO — SELEÇÃO DO DIA
+       - centraliza "Abrir Loja Completa"
+       - não altera barra sticky, vitrine rápida, loja.html, script.js, tracking.js ou produtos.json
+       ========================= */
+    #featured .cnRow .cnActionTertiary {
+      grid-column: 1 / -1 !important;
+      justify-self: center !important;
+      width: min(260px, 72%) !important;
+      min-width: 0 !important;
+      max-width: 260px !important;
+      text-align: center !important;
+    }
+
+    @media (max-width: 520px) {
+      #featured .cnRow .cnActionTertiary {
+        width: min(260px, 74%) !important;
+      }
+    }
+
 </style>
 </head>
 
