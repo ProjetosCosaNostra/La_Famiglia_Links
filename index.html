@@ -6446,6 +6446,144 @@
     }
 
 
+
+    /* ==========================================================
+       HOTFIX FINAL REAL — BARRA MOBILE ACOMPANHA O SCROLL — 2026-04-27
+       Escopo: SOMENTE MOBILE
+       Causa corrigida:
+       - a .page estava com overflow:hidden em blocos anteriores;
+       - isso quebra position: sticky no celular, então a barra para de acompanhar.
+       Solução:
+       - liberar overflow da .page no mobile;
+       - manter a barra superior existente como sticky nativo;
+       - não criar botão inferior;
+       - preservar desktop.
+       ========================================================== */
+    @media (max-width: 640px) {
+      main.page,
+      .page {
+        overflow: visible !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        contain: none !important;
+      }
+
+      .sectionNav {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: max(6px, env(safe-area-inset-top)) !important;
+        z-index: 10040 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr) 34px !important;
+        align-items: center !important;
+        justify-content: stretch !important;
+        gap: 5px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 8px auto 8px !important;
+        padding: 5px !important;
+        border-radius: 18px !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+        transform: none !important;
+        will-change: auto !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+
+      .sectionNav .sectionNav__pill--quick,
+      .sectionNav .sectionNav__pill--links,
+      .sectionNav a[href="#sec-vitrine-rapida"],
+      .sectionNav a[href="#sec-links"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .sectionNav .sectionNav__pill--selection,
+      .sectionNav .sectionNav__pill--store,
+      .sectionNav .sectionNav__pill--top {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      .sectionNav .sectionNav__pill {
+        min-width: 0 !important;
+        min-height: 32px !important;
+        height: 32px !important;
+        max-height: 32px !important;
+        padding: 0 8px !important;
+        border-radius: 999px !important;
+        font-size: .72rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+        padding: 0 !important;
+        font-size: .98rem !important;
+      }
+
+      .floatingStoreCTA,
+      .floatingStoreCTA__mobile,
+      .floatingStoreCTA__desktop,
+      .floatingStoreCTA__top {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .cnMobileNavSpacer,
+      .cnMobileNavSpacer.is-active {
+        display: none !important;
+        height: 0 !important;
+      }
+
+      #topo,
+      #sec-produto-do-dia,
+      #sec-vitrine-rapida,
+      #sec-links {
+        scroll-margin-top: 74px !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      main.page,
+      .page {
+        overflow: visible !important;
+      }
+
+      .sectionNav {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) 34px !important;
+        gap: 5px !important;
+        padding: 5px !important;
+      }
+
+      .sectionNav .sectionNav__pill {
+        font-size: .70rem !important;
+        padding: 0 7px !important;
+      }
+
+      .sectionNav .sectionNav__pill--top {
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+      }
+    }
+
 </style>
 </head>
 
