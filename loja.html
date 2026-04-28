@@ -982,6 +982,18 @@
       display:none;
     }
 
+    .heroActionsMore__label--open{
+      display:none;
+    }
+
+    .heroActionsMore[open] .heroActionsMore__label--closed{
+      display:none;
+    }
+
+    .heroActionsMore[open] .heroActionsMore__label--open{
+      display:inline;
+    }
+
     .heroActionsMore__panel{
       display:contents;
     }
@@ -2125,7 +2137,10 @@
         <a class="btn btn--gold" href="./" id="btnHome">🏠 Voltar Home</a>
 
         <details class="heroActionsMore">
-          <summary class="btn btn--glass heroActionsMore__toggle">➕ Mais opções</summary>
+          <summary class="btn btn--glass heroActionsMore__toggle">
+            <span class="heroActionsMore__label heroActionsMore__label--closed">+ Canais oficiais</span>
+            <span class="heroActionsMore__label heroActionsMore__label--open">− Canais oficiais</span>
+          </summary>
 
           <div class="heroActionsMore__panel">
             <a class="btn btn--glass" href="#" id="btnCopyLoja">📌 Copiar link da loja</a>
