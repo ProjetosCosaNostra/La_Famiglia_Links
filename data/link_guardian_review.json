@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-04-29T08:33:53Z",
-  "total_items": 0,
+  "updated_at": "2026-04-29T14:29:27Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-04-29T14:23:50Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 95,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95",
+      "issue_title": "[CMS] Produto: 🍳🖤 Jogo de Utensílios 19 Peças Ponte Lar — Silicone + Cabos de Madeira",
+      "sku": "ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira",
+      "title": "🍳🖤 Jogo de Utensílios 19 Peças Ponte Lar (Silicone Preto + Cabos de Madeira)",
+      "id_busca": "5J5PKG-89J4",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1sLJKwg",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1sLJKwg",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c",
+      "short_url": "https://meli.la/1sLJKwg",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Utensílios",
+        "Silicone",
+        "Cabos de Madeira",
+        "Preto",
+        "Organizador",
+        "Design Premium"
+      ]
+    }
+  ]
 }
