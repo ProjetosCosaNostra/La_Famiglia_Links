@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-29T22:11:07Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-04-30T03:59:25Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-29T22:09:15Z
+Quando: 2026-04-30T03:54:52Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -35,9 +35,47 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
+
+[ALTA] review_only_storefront
+Quando: 2026-04-30T03:54:52Z
+Issue: #129
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
+SKU: puma-flyer-runner-mesh-bdp
+Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
+ID ML: 5J5PKG-6B4Q
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (33x /lists, 1x listing)
+Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
+open_url: https://meli.la/2cmJ3u1
+checked_url: https://meli.la/2cmJ3u1
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
+
+[ALTA] review_only_storefront
+Quando: 2026-04-30T03:54:52Z
+Issue: #172
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172
+SKU: batom-brilho-labial-moranguinho-10un-cheiro-morango
+Título: Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango
+ID ML: 5J5PKG-ZQ3W
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 1x listing)
+Badges: Achados do Dia, Morango, Brilho Labial, 10 Unidades, Presenteável, Revenda
+open_url: https://meli.la/1SwzQEv
+checked_url: https://meli.la/1SwzQEv
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-ZQ3W

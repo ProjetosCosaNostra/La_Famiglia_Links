@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-04-29T22:11:07Z",
-  "total_items": 1,
+  "updated_at": "2026-04-30T03:59:25Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 3
     },
-    "high_priority": 1
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-04-29T22:09:15Z",
+      "happened_at": "2026-04-30T03:54:52Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -58,6 +58,94 @@
         "Preto",
         "Organizador",
         "Design Premium"
+      ]
+    },
+    {
+      "happened_at": "2026-04-30T03:54:52Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 129,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129",
+      "issue_title": "[CMS] Produto: Puma Flyer Runner Mesh Bdp",
+      "sku": "puma-flyer-runner-mesh-bdp",
+      "title": "👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium",
+      "id_busca": "5J5PKG-6B4Q",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (33x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2cmJ3u1",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2cmJ3u1",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNJpp5THcCIdswpKl8%2FmujU9WtrMmYOGytJAvWGoANEZuZ9A6L87nIDDpqeYCbx7Ryg2NdgGUgLzScvd1DQxvFqcF7tx8wiD0Vz9OAbUNdNJDRtow60pxSoAUl3pyy7Je5KxF%2FmPBUQYhBuN9ZXMPfM9iZwKkoLqJBODl8tiw0SD6BZaF%2BtkeUU%2BNtUmXz1CckwAUQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e",
+      "short_url": "https://meli.la/2cmJ3u1",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNJpp5THcCIdswpKl8%2FmujU9WtrMmYOGytJAvWGoANEZuZ9A6L87nIDDpqeYCbx7Ryg2NdgGUgLzScvd1DQxvFqcF7tx8wiD0Vz9OAbUNdNJDRtow60pxSoAUl3pyy7Je5KxF%2FmPBUQYhBuN9ZXMPfM9iZwKkoLqJBODl8tiw0SD6BZaF%2BtkeUU%2BNtUmXz1CckwAUQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNJpp5THcCIdswpKl8%2FmujU9WtrMmYOGytJAvWGoANEZuZ9A6L87nIDDpqeYCbx7Ryg2NdgGUgLzScvd1DQxvFqcF7tx8wiD0Vz9OAbUNdNJDRtow60pxSoAUl3pyy7Je5KxF%2FmPBUQYhBuN9ZXMPfM9iZwKkoLqJBODl8tiw0SD6BZaF%2BtkeUU%2BNtUmXz1CckwAUQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Puma",
+        "Flyer Runner Mesh Bdp",
+        "Tênis",
+        "Tênis Puma",
+        "Calçado",
+        "Conforto",
+        "Leve"
+      ]
+    },
+    {
+      "happened_at": "2026-04-30T03:54:52Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 172,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172",
+      "issue_title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
+      "sku": "batom-brilho-labial-moranguinho-10un-cheiro-morango",
+      "title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
+      "id_busca": "5J5PKG-ZQ3W",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1SwzQEv",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1SwzQEv",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ZQ3W",
+      "short_url": "https://meli.la/1SwzQEv",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Morango",
+        "Brilho Labial",
+        "10 Unidades",
+        "Presenteável",
+        "Revenda"
       ]
     }
   ]
