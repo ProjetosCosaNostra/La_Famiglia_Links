@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-04-30T21:06:24Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-01T04:10:24Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-04-30T21:00:52Z
+Quando: 2026-05-01T04:06:40Z
+Issue: #120
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/120
+SKU: headset-gamer-jbl-quantum-100-preto
+Título: Headset Gamer JBL Quantum 100 com Microfone - Preto
+ID ML: 5J5PKG-YRGV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 1x listing)
+Badges: Achados do Dia, Headset Gamer, JBL, Quantum 100, Com fio, Microfone, Preto, Gamer
+open_url: https://meli.la/2KwjYue
+checked_url: https://meli.la/2KwjYue
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YRGV&tid=01086582-ae9c-45c2-a163-eb7921854dcb
+
+[ALTA] review_only_storefront
+Quando: 2026-05-01T04:06:40Z
 Issue: #172
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172
 SKU: batom-brilho-labial-moranguinho-10un-cheiro-morango
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 1x listing)
+Memória operacional: histórico recorrente (6x /lists, 1x listing)
 Badges: Achados do Dia, Morango, Brilho Labial, 10 Unidades, Presenteável, Revenda
 open_url: https://meli.la/1SwzQEv
 checked_url: https://meli.la/1SwzQEv
