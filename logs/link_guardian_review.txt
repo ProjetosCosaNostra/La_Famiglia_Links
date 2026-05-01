@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-01T08:28:23Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-01T13:52:05Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-01T08:22:46Z
+Quando: 2026-05-01T13:46:58Z
+Issue: #110
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
+SKU: kit-utensilios-cozinha-premium-rosa
+Título: 🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância
+ID ML: 5J5PKG-UV2F
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
+open_url: https://meli.la/2U3vPC8
+checked_url: https://meli.la/2U3vPC8
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
+
+[ALTA] review_only_storefront
+Quando: 2026-05-01T13:46:58Z
 Issue: #172
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172
 SKU: batom-brilho-labial-moranguinho-10un-cheiro-morango
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 1x listing)
+Memória operacional: histórico recorrente (8x /lists, 1x listing)
 Badges: Achados do Dia, Morango, Brilho Labial, 10 Unidades, Presenteável, Revenda
 open_url: https://meli.la/1SwzQEv
 checked_url: https://meli.la/1SwzQEv

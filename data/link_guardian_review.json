@@ -1,22 +1,67 @@
 {
-  "updated_at": "2026-05-01T08:28:23Z",
-  "total_items": 1,
+  "updated_at": "2026-05-01T13:52:05Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 2,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 2
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "storefront_social_lists_invalid": 2
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 2
     },
-    "high_priority": 1
+    "high_priority": 2
   },
   "items": [
     {
-      "happened_at": "2026-05-01T08:22:46Z",
+      "happened_at": "2026-05-01T13:46:58Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 110,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110",
+      "issue_title": "[CMS] Produto: Kit Utensílios de Cozinha Premium Rosa",
+      "sku": "kit-utensilios-cozinha-premium-rosa",
+      "title": "🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância",
+      "id_busca": "5J5PKG-UV2F",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2U3vPC8",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2U3vPC8",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843",
+      "short_url": "https://meli.la/1kiePfs",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Utensílios de Cozinha",
+        "Rosa",
+        "Silicone",
+        "Suporte Organizador",
+        "Utilidades Domésticas",
+        "Casa"
+      ]
+    },
+    {
+      "happened_at": "2026-05-01T13:46:58Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (8x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
