@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-01T22:06:11Z",
-  "total_items": 1,
+  "updated_at": "2026-05-02T03:43:01Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 3
     },
-    "high_priority": 1
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-05-01T22:04:40Z",
+      "happened_at": "2026-05-02T03:39:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (27x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -58,6 +58,94 @@
         "Suporte Organizador",
         "Utilidades Domésticas",
         "Casa"
+      ]
+    },
+    {
+      "happened_at": "2026-05-02T03:39:13Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 39,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/39",
+      "issue_title": "[CMS] Produto: 🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya)",
+      "sku": "fechadura-bio-delta-pro-wifi-tuya-preta",
+      "title": "🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya) — Preta",
+      "id_busca": "5J5PKG-0SJ2",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/1uKVY2p",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/1uKVY2p",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0SJ2&tid=0c11df4f-b7f6-4112-90a9-12d6b815a63c",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Segurança",
+        "Casa Inteligente",
+        "Fechadura Digital",
+        "Biométrica",
+        "Wi-Fi",
+        "Tuya",
+        "PRETO"
+      ]
+    },
+    {
+      "happened_at": "2026-05-02T03:39:13Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 172,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172",
+      "issue_title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
+      "sku": "batom-brilho-labial-moranguinho-10un-cheiro-morango",
+      "title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
+      "id_busca": "5J5PKG-ZQ3W",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (10x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1SwzQEv",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1SwzQEv",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ZQ3W",
+      "short_url": "https://meli.la/1SwzQEv",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Morango",
+        "Brilho Labial",
+        "10 Unidades",
+        "Presenteável",
+        "Revenda"
       ]
     }
   ]
