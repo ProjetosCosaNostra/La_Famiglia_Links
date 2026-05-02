@@ -1,107 +1,12 @@
 {
-  "updated_at": "2026-05-02T11:39:24Z",
-  "total_items": 2,
+  "updated_at": "2026-05-02T13:45:15Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 2,
-    "by_state": {
-      "review_only_storefront": 2
-    },
-    "by_reason": {
-      "storefront_social_lists_invalid": 2
-    },
-    "by_action": {
-      "trocar_link": 2
-    },
-    "high_priority": 2
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-05-02T11:34:23Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 110,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110",
-      "issue_title": "[CMS] Produto: Kit Utensílios de Cozinha Premium Rosa",
-      "sku": "kit-utensilios-cozinha-premium-rosa",
-      "title": "🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância",
-      "id_busca": "5J5PKG-UV2F",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (29x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2U3vPC8",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2U3vPC8",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843",
-      "short_url": "https://meli.la/1kiePfs",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Cozinha",
-        "Utensílios de Cozinha",
-        "Rosa",
-        "Silicone",
-        "Suporte Organizador",
-        "Utilidades Domésticas",
-        "Casa"
-      ]
-    },
-    {
-      "happened_at": "2026-05-02T11:34:23Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 172,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/172",
-      "issue_title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
-      "sku": "batom-brilho-labial-moranguinho-10un-cheiro-morango",
-      "title": "Batom Brilho Labial Moranguinho 10 Unidades Cheiro De Morango",
-      "id_busca": "5J5PKG-ZQ3W",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1SwzQEv",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1SwzQEv",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ZQ3W",
-      "short_url": "https://meli.la/1SwzQEv",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAB%2BZFtY9YTF0GiSbsyCZbGrDlhD3acC0AxNBhQ04mxtAR4j%2FaEk8D26dxIvFziiDTB8I99zdDG7yWVdUbr3j%2BrvaOIPxs%2FpyLzArl4j%2B2h%2FVAAr%2FXNEE7cNoqvK5dmcXA0beWrFxG8hz6ZmYzmV7JLA1Cw3ld204sqTD0qcP62XULQuWsQBdkXf%2FzyY7zlUdey7lJfOoE3imRdu",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Morango",
-        "Brilho Labial",
-        "10 Unidades",
-        "Presenteável",
-        "Revenda"
-      ]
-    }
-  ]
+  "items": []
 }
