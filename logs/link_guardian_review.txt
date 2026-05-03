@@ -1,41 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-03T13:45:09Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-03T19:16:01Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 1
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 1
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 1
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-05-03T13:41:08Z
-SKU: cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto
-Título: interruptor-touch-wifi-novadigital-lite-s-2-teclas-preto
-ID ML: 5J5PKG-R5DE
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 19 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
-Badges: Interruptor Touch Wi-Fi Novadigital Lite-S (2 teclas) • Tuya • Alexa/Google • Preto
-open_url: https://meli.la/2jwrx5M
-checked_url: https://meli.la/2jwrx5M
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-R5DE&tid=22d23a70-64b5-4852-9435-9c97ebc61a1c
+Nenhum item pendente de revisão/manutenção no momento.
