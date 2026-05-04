@@ -1,7 +1,7 @@
 # ==========================================================
 # Arquivo: tools/cms_produtos.py
 # Módulo : CMS Produtos — Issue -> produtos.json (gh-pages)
-# Versão : v10.4 (edição com ações explícitas para quick_home/featured/active + CMS não auto-desativa por destino social/lists)
+# Versão : v10.5 (quick_home_order exclusivo ao editar posição + ações explícitas para quick_home/featured/active)
 # ==========================================================
 
 from __future__ import annotations
@@ -811,6 +811,75 @@ def _enforce_single_featured(products: List[Dict[str, Any]]) -> None:
             p["featured"] = False
 
 
+def _quick_home_enabled(product: Dict[str, Any]) -> bool:
+    if not isinstance(product, dict):
+        return False
+
+    if product.get("active") is False:
+        return False
+
+    raw = product.get("quick_home")
+    if isinstance(raw, bool):
+        return raw
+
+    if isinstance(raw, str):
+        parsed = _parse_optional_bool_text(raw)
+        return bool(parsed) if parsed is not None else False
+
+    if raw in {0, 1}:
+        return bool(raw)
+
+    return False
+
+
+def _enforce_unique_quick_home_order_for_sku(products: List[Dict[str, Any]], sku: str) -> None:
+    # Regra cirúrgica:
+    # quando um produto recebe uma posição fixa na Vitrine Rápida,
+    # nenhum outro produto pode continuar com a mesma posição.
+    # O outro produto continua na Vitrine Rápida, apenas perde a posição fixa
+    # para ser encaixado automaticamente pelo front-end.
+    if not isinstance(products, list):
+        return
+
+    target_sku = (sku or "").strip()
+    if not target_sku:
+        return
+
+    target: Optional[Dict[str, Any]] = None
+    for product in products:
+        if not isinstance(product, dict):
+            continue
+        if str(product.get("sku") or "").strip() == target_sku:
+            target = product
+            break
+
+    if target is None:
+        return
+
+    order = _clean_order_int(target.get("quick_home_order"), default=0)
+    if not _quick_home_enabled(target) or order <= 0:
+        target.pop("quick_home_order", None)
+        return
+
+    if order > QUICK_HOME_MAX:
+        target.pop("quick_home_order", None)
+        return
+
+    target["quick_home_order"] = order
+
+    for product in products:
+        if not isinstance(product, dict):
+            continue
+        if product is target:
+            continue
+        if str(product.get("sku") or "").strip() == target_sku:
+            continue
+
+        other_order = _clean_order_int(product.get("quick_home_order"), default=0)
+        if other_order == order:
+            product.pop("quick_home_order", None)
+
+
 def _dedupe_key(id_busca: str, open_url: str, canonical_url: str) -> str:
     ib = (id_busca or "").strip().upper()
     cu = (canonical_url or "").strip().lower()
@@ -1582,6 +1651,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
                 p["featured"] = False
 
     products = _sanitize_existing_products(products)
+    _enforce_unique_quick_home_order_for_sku(products, sku)
     _enforce_single_featured(products)
 
     data["products"] = products
