@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-04T16:46:58Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-05-04T17:08:53Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-04T16:41:25Z
+Quando: 2026-05-04T17:03:25Z
 SKU: cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto
 Título: interruptor-touch-wifi-novadigital-lite-s-2-teclas-preto
 ID ML: 5J5PKG-R5DE
@@ -33,28 +33,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 19 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Interruptor Touch Wi-Fi Novadigital Lite-S (2 teclas) • Tuya • Alexa/Google • Preto
 open_url: https://meli.la/2jwrx5M
 checked_url: https://meli.la/2jwrx5M
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-R5DE&tid=22d23a70-64b5-4852-9435-9c97ebc61a1c
-
-[ALTA] review_only_storefront
-Quando: 2026-05-04T16:41:25Z
-Issue: #193
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/193
-SKU: gel-para-sobrancelhas-brow-rise-ruby-rose
-Título: Gel para Sobrancelhas Brow Rise Ruby Rose
-ID ML: 5J5PKG-XRTJ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Seleção do Dia, Ruby Rose, Incolor, Longa Duração, Efeito Natural, Fixação
-open_url: https://meli.la/2cC6jBy
-checked_url: https://meli.la/2cC6jBy
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-XRTJ
