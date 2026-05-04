@@ -1,62 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-04T14:27:13Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-05-04T16:32:25Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 2
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 2
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 2
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-05-04T14:23:16Z
-Issue: #20
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/20
-SKU: ventilador-mondial-30cm-super-power-60w-vsp-30-w
-Título: Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)
-ID ML: 5J5PKG-YXAM
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achado do Dia, Ventilador, Mondial, 30cm, 60W, Super Power, VSP-30-W, Casa
-open_url: https://mercadolivre.com/sec/1PnEZeq
-checked_url: https://mercadolivre.com/sec/1PnEZeq
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YXAM&tid=de6d92c9-f438-4822-8945-f5a3d58a5b9a
-
-[ALTA] review_only_storefront
-Quando: 2026-05-04T14:23:16Z
-Issue: #114
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/114
-SKU: ps5-slim-premium-astro-bot-gran-turismo-7
-Título: 🎮 PS5 Slim Premium — Pacote com Astro Bot e Gran Turismo 7
-ID ML: 5J5PKG-9TK6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, PS5 Slim, PlayStation 5, Astro Bot, Gran Turismo 7, Console, Gamer, Games
-open_url: https://meli.la/2LTPR6d
-checked_url: https://meli.la/2LTPR6d
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9TK6&tid=d3a7c34e-769e-458c-9c61-58a2b139ba4b
+Nenhum item pendente de revisão/manutenção no momento.

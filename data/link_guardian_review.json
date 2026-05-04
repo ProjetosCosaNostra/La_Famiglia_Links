@@ -1,109 +1,12 @@
 {
-  "updated_at": "2026-05-04T14:27:13Z",
-  "total_items": 2,
+  "updated_at": "2026-05-04T16:32:25Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 2,
-    "by_state": {
-      "review_only_storefront": 2
-    },
-    "by_reason": {
-      "storefront_social_lists_invalid": 2
-    },
-    "by_action": {
-      "trocar_link": 2
-    },
-    "high_priority": 2
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-05-04T14:23:16Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 20,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/20",
-      "issue_title": "[CMS] Produto: Ventilador Mondial 30cm Super Power 60W (VSP-30-W)",
-      "sku": "ventilador-mondial-30cm-super-power-60w-vsp-30-w",
-      "title": "Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)",
-      "id_busca": "5J5PKG-YXAM",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/1PnEZeq",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/1PnEZeq",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIbru4V1fEqrC75cFAJSbknlc4UnWO%2F7xhpwKeK7YErVXEP0UhloJ7lTiQwCxIdg%2BlcDdmajpZtr3xhGr1twVvKrIfUmn6uVx4h0Gd%2BPuIayJzRGojnsKJ1yTssG7gx%2BWIchJ33JxN6Ahd9nTTDgTVe48ctuGbsZ8BvZ13L006n%2FNrm%2FtCL5AVBXlVgZX0xPOAF3xmk%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YXAM&tid=de6d92c9-f438-4822-8945-f5a3d58a5b9a",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIbru4V1fEqrC75cFAJSbknlc4UnWO%2F7xhpwKeK7YErVXEP0UhloJ7lTiQwCxIdg%2BlcDdmajpZtr3xhGr1twVvKrIfUmn6uVx4h0Gd%2BPuIayJzRGojnsKJ1yTssG7gx%2BWIchJ33JxN6Ahd9nTTDgTVe48ctuGbsZ8BvZ13L006n%2FNrm%2FtCL5AVBXlVgZX0xPOAF3xmk%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIbru4V1fEqrC75cFAJSbknlc4UnWO%2F7xhpwKeK7YErVXEP0UhloJ7lTiQwCxIdg%2BlcDdmajpZtr3xhGr1twVvKrIfUmn6uVx4h0Gd%2BPuIayJzRGojnsKJ1yTssG7gx%2BWIchJ33JxN6Ahd9nTTDgTVe48ctuGbsZ8BvZ13L006n%2FNrm%2FtCL5AVBXlVgZX0xPOAF3xmk%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achado do Dia",
-        "Ventilador",
-        "Mondial",
-        "30cm",
-        "60W",
-        "Super Power",
-        "VSP-30-W",
-        "Casa"
-      ]
-    },
-    {
-      "happened_at": "2026-05-04T14:23:16Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 114,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/114",
-      "issue_title": "[CMS] Produto: PS5 Slim Premium com Astro Bot e Gran Turismo 7 SKU (único).",
-      "sku": "ps5-slim-premium-astro-bot-gran-turismo-7",
-      "title": "🎮 PS5 Slim Premium — Pacote com Astro Bot e Gran Turismo 7",
-      "id_busca": "5J5PKG-9TK6",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2LTPR6d",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2LTPR6d",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9TK6&tid=d3a7c34e-769e-458c-9c61-58a2b139ba4b",
-      "short_url": "https://meli.la/2LTPR6d",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "PS5 Slim",
-        "PlayStation 5",
-        "Astro Bot",
-        "Gran Turismo 7",
-        "Console",
-        "Gamer",
-        "Games"
-      ]
-    }
-  ]
+  "items": []
 }
