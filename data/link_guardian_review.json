@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-04T19:55:12Z",
-  "total_items": 1,
+  "updated_at": "2026-05-04T22:33:09Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 2,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 2
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "storefront_social_lists_invalid": 2
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 2
     },
-    "high_priority": 1
+    "high_priority": 2
   },
   "items": [
     {
-      "happened_at": "2026-05-04T19:51:01Z",
+      "happened_at": "2026-05-04T22:27:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 19,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -51,6 +51,49 @@
       "smart_categories": [],
       "badges": [
         "Interruptor Touch Wi-Fi Novadigital Lite-S (2 teclas) • Tuya • Alexa/Google • Preto"
+      ]
+    },
+    {
+      "happened_at": "2026-05-04T22:27:30Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 195,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195",
+      "issue_title": "Depilador Elétrico Feminino 4 em 1",
+      "sku": "depilador-eletrico-feminino-4-em-1",
+      "title": "Depilador Elétrico Feminino 4 em 1",
+      "id_busca": "5J5PKG-HLCZ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2Vkn6z5",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2Vkn6z5",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BN8zvg0a%2B5lPmk4OgNncZrRw1KvBxaLd%2BP961rfsb7Kxm4zfpt%2FYgvDNShOIIaRW%2FKulyGsKt%2B6eRykBLyyk2ylnLlEW3huwo3bnxFqed%2BkEUZijwPDsPyRbovw3AAugoJWLRdbu33YJHXO4GFwY%2BKHYcpwh7ro%2B1teIh4jYb7o5oGJbjm1%2FssH0fYr0aWSbnfvse92gT3LqdYij5A%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PYRM",
+      "short_url": "https://meli.la/2LK3ZKv",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BN8zvg0a%2B5lPmk4OgNncZrRw1KvBxaLd%2BP961rfsb7Kxm4zfpt%2FYgvDNShOIIaRW%2FKulyGsKt%2B6eRykBLyyk2ylnLlEW3huwo3bnxFqed%2BkEUZijwPDsPyRbovw3AAugoJWLRdbu33YJHXO4GFwY%2BKHYcpwh7ro%2B1teIh4jYb7o5oGJbjm1%2FssH0fYr0aWSbnfvse92gT3LqdYij5A%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Feminino",
+        "4 em 1",
+        "Depilação",
+        "Autocuidado",
+        "Branco"
       ]
     }
   ]
