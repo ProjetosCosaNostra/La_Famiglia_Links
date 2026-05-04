@@ -39,6 +39,11 @@
    - a grade rápida agora exibe até 12 produtos
    - quick_home_order (1..12) fixa o produto na posição desejada
    - ao substituir 1 posição, o restante da estrutura é preservado
+
+   ✅ HOTFIX VITRINE RÁPIDA POSIÇÕES DUPLICADAS (2026-05-04):
+   - quando dois produtos disputam a mesma quick_home_order, vence o produto editado/publicado mais recentemente
+   - evita que um produto antigo sobrescreva a posição recém-definida via issue
+   - remove Produto do Dia da Vitrine Rápida para não duplicar destaque na home
 */
 (function () {
   'use strict';
@@ -55,6 +60,37 @@
   function getProductKey(p) {
     if (!p) return '';
     return safeText(p.sku || p.id_busca || p.id || p.title || p.name || '');
+  }
+
+  function toPositiveInt(v) {
+    var n = parseInt(v, 10);
+    if (!isFinite(n) || n <= 0) return 0;
+    return n;
+  }
+
+  function getQuickPriority(p) {
+    if (!p) return 0;
+
+    var best = 0;
+    var candidates = [
+      p._source_issue_number,
+      p.source_issue_number,
+      p.sourceIssueNumber,
+      p._target_issue_number,
+      p.target_issue_number,
+      p.targetIssueNumber,
+      p.issue_number,
+      p.issueNumber,
+      p.issue,
+      p.id
+    ];
+
+    for (var i = 0; i < candidates.length; i++) {
+      var n = toPositiveInt(candidates[i]);
+      if (n > best) best = n;
+    }
+
+    return best;
   }
 
   function toast(msg) {
@@ -303,10 +339,27 @@
   }
 
   function pickQuickProducts(activeList, sortedList, limit) {
-    var base = Array.isArray(activeList) ? activeList : [];
-    var fallback = Array.isArray(sortedList) ? sortedList.slice() : sortRelev(base);
+    var rawBase = Array.isArray(activeList) ? activeList : [];
     var max = parseInt(limit, 10);
     if (!isFinite(max) || max < 1) max = QUICK_HOME_LIMIT;
+
+    var base = [];
+    for (var bi = 0; bi < rawBase.length; bi++) {
+      // Produto do Dia não entra na Vitrine Rápida enquanto estiver em destaque.
+      // Assim ele só volta para a grade quando deixar de ser featured.
+      if (isFeatured(rawBase[bi])) continue;
+      base.push(rawBase[bi]);
+    }
+
+    if (!base.length) base = rawBase.slice();
+
+    var fallbackSource = Array.isArray(sortedList) ? sortedList.slice() : sortRelev(base);
+    var fallback = [];
+    for (var fi = 0; fi < fallbackSource.length; fi++) {
+      if (isFeatured(fallbackSource[fi]) && base.length < rawBase.length) continue;
+      fallback.push(fallbackSource[fi]);
+    }
+    if (!fallback.length) fallback = fallbackSource.slice();
 
     var manual = [];
     var ordered = [];
@@ -340,12 +393,25 @@
     }
 
     var slots = new Array(max);
-    var orderedPositions = {};
     var usedKeys = {};
     var p, order, key, pos;
 
     ordered.sort(function (a, b) {
-      return getQuickHomeOrder(a) - getQuickHomeOrder(b);
+      var oa = getQuickHomeOrder(a);
+      var ob = getQuickHomeOrder(b);
+      if (oa !== ob) return oa - ob;
+
+      // Quando houver conflito de posição, prioriza o produto com issue/edit mais recente.
+      // Ex.: edição #213 do produto #100 deve ganhar da publicação antiga #199 na mesma posição 10.
+      var pa = getQuickPriority(a);
+      var pb = getQuickPriority(b);
+      if (pa !== pb) return pb - pa;
+
+      var ta = lower(a.title || a.name || a.sku);
+      var tb = lower(b.title || b.name || b.sku);
+      if (ta < tb) return -1;
+      if (ta > tb) return 1;
+      return 0;
     });
 
     for (i = 0; i < ordered.length; i++) {
@@ -353,17 +419,18 @@
       order = getQuickHomeOrder(p);
       if (order === null || order < 1 || order > max) continue;
       key = getProductKey(p);
-      if (usedKeys[key]) continue;
+      if (!key || usedKeys[key]) continue;
       pos = order - 1;
+      if (slots[pos]) continue;
       slots[pos] = p;
-      orderedPositions[pos] = true;
       usedKeys[key] = true;
     }
 
+    unordered = sortQuickManual(unordered);
     for (i = 0; i < unordered.length; i++) {
       p = unordered[i];
       key = getProductKey(p);
-      if (usedKeys[key]) continue;
+      if (!key || usedKeys[key]) continue;
       for (pos = 0; pos < max; pos++) {
         if (!slots[pos]) {
           slots[pos] = p;
@@ -394,7 +461,7 @@
     return {
       items: finalItems,
       source: 'manual',
-      mode: 'positional_overlay',
+      mode: 'positional_priority',
       limit: max
     };
   }
