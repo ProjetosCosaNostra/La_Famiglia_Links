@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-03T20:36:19Z",
+  "updated_at": "2026-05-04T16:27:55Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -1897,13 +1897,15 @@
         "Empilhável",
         "Freezer",
         "Drinks",
-        "Organização"
+        "Organização",
+        "Utilidades Domésticas",
+        "Premium"
       ],
       "id_busca": "5J5PKG-PZ8V",
       "open_url": "https://meli.la/19fvuVX",
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PZ8V&tid=b862de91-8e9b-4096-8542-512429d9393c",
-      "image": "https://github.com/user-attachments/assets/a56fdff8-0e6b-4d16-9467-79a1372d5400",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PZ8V",
+      "image": "https://github.com/user-attachments/assets/15a19165-023f-452f-a3ef-8d61c20e7b58",
       "active": true,
       "featured": false,
       "short_url": "https://meli.la/19fvuVX",
@@ -1921,15 +1923,41 @@
       "review_status": "ativo",
       "review_reason": "",
       "replacement_vendor": "",
-      "relink_open_url": "",
+      "relink_open_url": "https://meli.la/19fvuVX",
       "notes": "",
       "alt_url": "",
       "issue_number": 100,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/100",
-      "issue_title": "[CMS] Produto: 🍹🧊 Kit 4 Formas de Gelo com Tampa — Sem bagunça, empilhável",
+      "issue_title": "Kit 4 Formas de Gelo com Tampa — Silicone",
       "guardian_confidence_score": 87,
       "guardian_confidence_bucket": "forte_evidencia",
-      "guardian_reason_bucket": "storefront_profile_confirmed"
+      "guardian_reason_bucket": "storefront_profile_confirmed",
+      "categoria_principal": "Casa, Móveis e Decoração",
+      "categorias_secundarias": [
+        "Cozinha",
+        "Formas e Baldes para Gelo",
+        "Placas de Gelo",
+        "Forma de Silicone",
+        "Utilidades Domésticas"
+      ],
+      "aliases_busca": [
+        "formas de gelo",
+        "forma de gelo com tampa",
+        "kit formas de gelo",
+        "4 formas de gelo",
+        "forma de gelo silicone",
+        "forma gelo fundo flexível",
+        "forma de gelo tampa rígida",
+        "cubos de gelo",
+        "gelo para drinks",
+        "forma para freezer",
+        "placa de gelo",
+        "formas empilháveis"
+      ],
+      "quick_home": true,
+      "quick_home_order": 10,
+      "_source_issue_number": 211,
+      "_target_issue_number": 100
     },
     {
       "sku": "kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco",
