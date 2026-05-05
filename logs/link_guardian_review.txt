@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-05T03:43:28Z
+Atualizado em: 2026-05-05T08:26:33Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-05T03:39:17Z
+Quando: 2026-05-05T08:22:22Z
 SKU: cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto
 Título: interruptor-touch-wifi-novadigital-lite-s-2-teclas-preto
 ID ML: 5J5PKG-R5DE
@@ -33,7 +33,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 19 (invalido)
-Memória operacional: histórico recorrente (16x /lists, 0x listing)
+Memória operacional: histórico recorrente (17x /lists, 0x listing)
 Badges: Interruptor Touch Wi-Fi Novadigital Lite-S (2 teclas) • Tuya • Alexa/Google • Preto
 open_url: https://meli.la/2jwrx5M
 checked_url: https://meli.la/2jwrx5M
@@ -41,7 +41,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-R5DE&tid=22d23a70-64b5-4852-9435-9c97ebc61a1c
 
 [ALTA] review_only_storefront
-Quando: 2026-05-05T03:39:17Z
+Quando: 2026-05-05T08:22:22Z
 Issue: #195
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195
 SKU: depilador-eletrico-feminino-4-em-1
@@ -52,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (15x /lists, 0x listing)
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, 4 em 1, Depilação, Autocuidado, Branco
 open_url: https://meli.la/2Vkn6z5
 checked_url: https://meli.la/2Vkn6z5
