@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-06T08:44:19Z",
-  "total_items": 1,
+  "updated_at": "2026-05-06T14:40:33Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 2,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 2
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "storefront_social_lists_invalid": 2
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 2
     },
-    "high_priority": 1
+    "high_priority": 2
   },
   "items": [
     {
-      "happened_at": "2026-05-06T08:38:36Z",
+      "happened_at": "2026-05-06T14:35:55Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -56,6 +56,51 @@
         "Depilação",
         "Autocuidado",
         "Branco"
+      ]
+    },
+    {
+      "happened_at": "2026-05-06T14:35:55Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 215,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215",
+      "issue_title": "💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial",
+      "sku": "depilador-batom-portatil-facial-branco-rose-gold",
+      "title": "💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial",
+      "id_busca": "5J5PKG-23E9",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2jRXJqQ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2jRXJqQ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMsNkBf8nwX1bXfBSZ28M1NqX4JZYXvFX6eB8HSRNuSHqOvf2%2Bnn%2FfX4Ee35KBgmhhgOEIqplEPzLoNI65ROITkc6mN%2BwE3HImyWYHM0Q6BlTz9dC9LYzKYbpCA%2Fhmb%2FqfSenXiXs3lNECAr%2B4DladEscxH6nkoAcLhGuSi9HyHLisunl%2FUZK6OLmINw1cXXnz9KWg%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-23E9",
+      "short_url": "https://meli.la/2jRXJqQ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMsNkBf8nwX1bXfBSZ28M1NqX4JZYXvFX6eB8HSRNuSHqOvf2%2Bnn%2FfX4Ee35KBgmhhgOEIqplEPzLoNI65ROITkc6mN%2BwE3HImyWYHM0Q6BlTz9dC9LYzKYbpCA%2Fhmb%2FqfSenXiXs3lNECAr%2B4DladEscxH6nkoAcLhGuSi9HyHLisunl%2FUZK6OLmINw1cXXnz9KWg%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Depilador Facial",
+        "Aparador Facial",
+        "Depilador Batom",
+        "Beleza Feminina",
+        "Autocuidado",
+        "Cuidados com a Pele",
+        "Buço"
       ]
     }
   ]
