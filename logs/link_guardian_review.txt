@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-06T04:01:06Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-05-06T08:44:19Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 1
-- storefront_social_profile_unconfirmed: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-06T03:55:51Z
-Issue: #187
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/187
-SKU: loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz
-Título: L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico
-ID ML: 5J5PKG-X39L
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Feminino, Cabelos, Anti-frizz, Protetor Térmico, Leave-in, Óleo Capilar, Brilho
-open_url: https://meli.la/1U9BG5d
-checked_url: https://meli.la/1U9BG5d
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBpmXgJ0QckiV6CFdEFHLtovpnF0u2TFqhItKNv908Pq0ZdBFRjFVqIRarIH4QxPfiyb1iWj0F4FIJMCaWnCrbQ11SUyacbcRAS26%2Bkr%2F6xNjn79F%2FkP6E8tD0qjvjIfEktKBcMNFc2RhtmOtyXKWnuEmzOKy%2FJf34l6rhRDPp1oeSG7pNrMohqeNzfO28PE5mJ7nAQ%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-X39L
-
-[ALTA] review_only_storefront
-Quando: 2026-05-06T03:55:51Z
+Quando: 2026-05-06T08:38:36Z
 Issue: #195
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/195
 SKU: depilador-eletrico-feminino-4-em-1
@@ -55,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, 4 em 1, Depilação, Autocuidado, Branco
 open_url: https://meli.la/2Vkn6z5
 checked_url: https://meli.la/2Vkn6z5
