@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-06T00:28:10Z",
+  "updated_at": "2026-05-06T22:42:35Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -1751,15 +1751,20 @@
         "Achados do Dia",
         "Cozinha",
         "Descanso de Panela",
+        "Kit 6 Peças",
+        "Bambu",
         "Antiderrapante",
-        "Madeira",
-        "Proteção Térmica"
+        "Proteção Térmica",
+        "Suporte Térmico",
+        "Mesa Posta",
+        "Utilidades Domésticas",
+        "Premium"
       ],
       "id_busca": "5J5PKG-STH7",
       "open_url": "https://meli.la/2CzaiF6",
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKg%2BaeS3T8wHunm8HqeXERIjVGfawrwhTrXrrNCcNOAF2cFD3EBJdnwhs32Rn4L19OFjs9B7bwLzSp0sUxryC%2Bip3oMdoX1Nt38NjbQKu2RuKmcQSdO1n31bv4EneVqgOXGVme8WjFJ2KlLN7bRsGSZgfxqej5Gbd0HvEkocsFHpjVs39yHB6WwQzXorGsnJJ7g9QkQ%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-STH7&tid=05944047-86a3-40ab-ade7-707abe1319d5",
-      "image": "https://github.com/user-attachments/assets/6de36b71-75e6-4bff-869a-0590b9350db8",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-STH7",
+      "image": "https://github.com/user-attachments/assets/1d96dea9-33a9-4e0e-8957-e31bea8096c2",
       "active": true,
       "featured": false,
       "short_url": "https://meli.la/2CzaiF6",
@@ -1777,15 +1782,43 @@
       "review_status": "ativo",
       "review_reason": "",
       "replacement_vendor": "",
-      "relink_open_url": "",
+      "relink_open_url": "https://meli.la/2CzaiF6",
       "notes": "",
       "alt_url": "",
       "issue_number": 103,
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/103",
-      "issue_title": "[CMS] Produto: 6 Descansos de Panela Premium",
+      "issue_title": "6 Descansos de Panela Premium Antiderrapantes",
       "guardian_confidence_score": 87,
       "guardian_confidence_bucket": "forte_evidencia",
-      "guardian_reason_bucket": "storefront_profile_confirmed"
+      "guardian_reason_bucket": "storefront_profile_confirmed",
+      "categoria_principal": "Casa, Móveis e Decoração",
+      "categorias_secundarias": [
+        "Cozinha",
+        "Louças e Artigos para Servir",
+        "Suportes",
+        "Descansos para Panelas",
+        "Utilidades Domésticas"
+      ],
+      "aliases_busca": [
+        "descanso de panela",
+        "descanso para panela",
+        "suporte de panela",
+        "suporte térmico",
+        "base antiderrapante",
+        "descanso de panela bambu",
+        "kit 6 descansos",
+        "descanso decorativo",
+        "protege mesa",
+        "protege bancada",
+        "descanso cozinha",
+        "mesa posta",
+        "utilidade doméstica",
+        "trivet"
+      ],
+      "quick_home": true,
+      "quick_home_order": 11,
+      "_source_issue_number": 217,
+      "_target_issue_number": 103
     },
     {
       "sku": "relogio-parede-30cm-prata-branco-lzbq",
@@ -8106,7 +8139,6 @@
         "escova massageadora cabelo"
       ],
       "quick_home": true,
-      "quick_home_order": 11,
       "_source_issue_number": 200,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2mbKAww",
@@ -8478,7 +8510,6 @@
         "\"lixadeira de unha\""
       ],
       "quick_home": true,
-      "quick_home_order": 11,
       "_source_issue_number": 209,
       "_target_issue_number": 206,
       "short_url": "https://meli.la/2mckjxV",
