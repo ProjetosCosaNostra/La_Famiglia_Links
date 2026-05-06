@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-06T20:01:35Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-05-06T22:47:08Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-05-06T22:42:54Z
+Issue: #156
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/156
+SKU: po-facial-bruna-tavares-bt-skinpowder
+Título: Pó Facial Bruna Tavares BT Skinpowder
+ID ML: 5J5PKG-JCJ6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Bruna Tavares, BT Skinpowder, Pó Facial, Rosto
+open_url: https://meli.la/2KQ7xEb
+checked_url: https://meli.la/2KQ7xEb
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPKlfH4sscHQK6t9pthtufjGIhH22fjw3QWpDdgqniiAh4ODFOfoN2Duf%2FM%2FuyzrNjg8j3vRANwRRBFsz%2FlYfHy5CDlIIVdM%2B0L%2FagR%2BfyIedRBFC7t3INbe78lIazz5qMjAoGPW24WjWyNddFroazK7ZhZ%2B0bdzvSciGlk4DF8qoWnmT3aoGDfBA%2FeVNbuu5Lc%2FcA%3D%3D
