@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-07T00:04:50Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-07T04:00:16Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-07T00:00:09Z
+Quando: 2026-05-07T03:54:00Z
 Issue: #156
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/156
 SKU: po-facial-bruna-tavares-bt-skinpowder
@@ -35,9 +35,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Bruna Tavares, BT Skinpowder, Pó Facial, Rosto
 open_url: https://meli.la/2KQ7xEb
 checked_url: https://meli.la/2KQ7xEb
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPKlfH4sscHQK6t9pthtufjGIhH22fjw3QWpDdgqniiAh4ODFOfoN2Duf%2FM%2FuyzrNjg8j3vRANwRRBFsz%2FlYfHy5CDlIIVdM%2B0L%2FagR%2BfyIedRBFC7t3INbe78lIazz5qMjAoGPW24WjWyNddFroazK7ZhZ%2B0bdzvSciGlk4DF8qoWnmT3aoGDfBA%2FeVNbuu5Lc%2FcA%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-05-07T03:54:00Z
+Issue: #51
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
+SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
+Título: Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte
+ID ML: 5J5PKG-18G6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
+open_url: https://meli.la/2SENbeC
+checked_url: https://meli.la/2SENbeC
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
