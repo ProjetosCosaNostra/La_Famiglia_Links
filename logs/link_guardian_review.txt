@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-07T08:49:14Z
+Atualizado em: 2026-05-07T13:43:30Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-07T08:45:25Z
+Quando: 2026-05-07T13:37:50Z
 Issue: #156
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/156
 SKU: po-facial-bruna-tavares-bt-skinpowder
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Bruna Tavares, BT Skinpowder, Pó Facial, Rosto
 open_url: https://meli.la/2KQ7xEb
 checked_url: https://meli.la/2KQ7xEb
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPKlfH4sscHQK6t9pthtufjGIhH22fjw3QWpDdgqniiAh4ODFOfoN2Duf%2FM%2FuyzrNjg8j3vRANwRRBFsz%2FlYfHy5CDlIIVdM%2B0L%2FagR%2BfyIedRBFC7t3INbe78lIazz5qMjAoGPW24WjWyNddFroazK7ZhZ%2B0bdzvSciGlk4DF8qoWnmT3aoGDfBA%2FeVNbuu5Lc%2FcA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-07T08:45:25Z
+Quando: 2026-05-07T13:37:50Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/1hXHAsa
 checked_url: https://meli.la/1hXHAsa
