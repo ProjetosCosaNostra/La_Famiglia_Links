@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-07T13:43:30Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-05-07T14:44:53Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,39 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-07T13:37:50Z
-Issue: #156
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/156
-SKU: po-facial-bruna-tavares-bt-skinpowder
-Título: Pó Facial Bruna Tavares BT Skinpowder
-ID ML: 5J5PKG-JCJ6
+Quando: 2026-05-07T14:39:38Z
+Issue: #51
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
+SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
+Título: Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte
+ID ML: 5J5PKG-18G6
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Bruna Tavares, BT Skinpowder, Pó Facial, Rosto
-open_url: https://meli.la/2KQ7xEb
-checked_url: https://meli.la/2KQ7xEb
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
+Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
+open_url: https://meli.la/2SENbeC
+checked_url: https://meli.la/2SENbeC
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPKlfH4sscHQK6t9pthtufjGIhH22fjw3QWpDdgqniiAh4ODFOfoN2Duf%2FM%2FuyzrNjg8j3vRANwRRBFsz%2FlYfHy5CDlIIVdM%2B0L%2FagR%2BfyIedRBFC7t3INbe78lIazz5qMjAoGPW24WjWyNddFroazK7ZhZ%2B0bdzvSciGlk4DF8qoWnmT3aoGDfBA%2FeVNbuu5Lc%2FcA%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-05-07T13:37:50Z
-Issue: #76
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
-SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
-Título: Luminária LED Touch
-ID ML: 5J5PKG-3TT2
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
-open_url: https://meli.la/1hXHAsa
-checked_url: https://meli.la/1hXHAsa
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
