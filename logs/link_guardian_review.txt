@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-08T03:49:23Z
+Atualizado em: 2026-05-08T07:56:16Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-08T03:44:49Z
+Quando: 2026-05-08T07:51:37Z
 Issue: #113
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
 SKU: gamestick-premium-2-controles-wireless
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
 open_url: https://meli.la/2uCMiAU
 checked_url: https://meli.la/2uCMiAU
@@ -43,26 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-08T03:44:49Z
-Issue: #38
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/38
-SKU: aiwa-sp-05-lb-30w-bluetooth-ipx5
-Título: Caixa de Som Speaker Aiwa SP-05-LB 30W Bluetooth IPX5 (Portátil)
-ID ML: 5J5PKG-SVGB
+Quando: 2026-05-08T07:51:37Z
+Issue: #49
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/49
+SKU: parafusadeira-furadeira-kit-2-baterias-48v-maleta
+Título: Parafusadeira Furadeira sem Fio — Kit com Maleta + 2 Baterias + LED (48V)
+ID ML: 5J5PKG-1WFH
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
 Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Caixa de Som, Aiwa, 30W, Bluetooth, IPX5, Portátil, Áudio
-open_url: https://mercadolivre.com/sec/1r9vTNq
-checked_url: https://mercadolivre.com/sec/1r9vTNq
+Badges: Achados do Dia, Ferramentas, Parafusadeira, Furadeira, Kit Completo, Maleta, 2 Baterias, LED
+open_url: https://mercadolivre.com/sec/279S9Us
+checked_url: https://mercadolivre.com/sec/279S9Us
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-SVGB&tid=15b463d7-6b80-4eb7-b4ea-1d6e287417c3
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1WFH&tid=a2928bb5-abd4-47fe-bbb2-d7a413674a66
 
 [ALTA] review_only_storefront
-Quando: 2026-05-08T03:44:49Z
+Quando: 2026-05-08T07:51:37Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Memória operacional: histórico recorrente (18x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://meli.la/2SENbeC
 checked_url: https://meli.la/2SENbeC
@@ -81,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
 
 [ALTA] review_only_storefront
-Quando: 2026-05-08T03:44:49Z
+Quando: 2026-05-08T07:51:37Z
 Issue: #183
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/183
 SKU: ruby-rose-angle-blender-feels-mood
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Maquiagem, Ruby Rose, Esponja de Maquiagem, Livre de Látex, Acabamento Uniforme
 open_url: https://meli.la/13DuSvr
 checked_url: https://meli.la/13DuSvr
