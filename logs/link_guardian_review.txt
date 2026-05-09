@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-08T19:46:24Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-05-09T03:51:38Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 2
-- storefront_social_profile_unconfirmed: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,45 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-08T19:40:40Z
-Issue: #97
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/97
-SKU: kit-porta-mantimentos-hermetico-12un-124l
-Título: Kit Porta Mantimentos Hermético Quadrado 12 Unidades (12,4L)
-ID ML: 5J5PKG-7Y0N
+Quando: 2026-05-09T03:47:21Z
+Issue: #137
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/137
+SKU: gloss-fran-liphoney-mel
+Título: Gloss Fran By Franciny Ehlke Liphoney Mel
+ID ML: 5J5PKG-2V09
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
 Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Organização, Porta Mantimentos, Potes Herméticos, Empilhável, Quadrado, 12 Unidades
-open_url: https://meli.la/1LXCKN3
-checked_url: https://meli.la/1LXCKN3
+Badges: Achados do Dia, Cuidado Pessoal, Beleza, Gloss, Franciny Ehlke, Liphoney Mel, Brilho Labial, Maquiagem
+open_url: https://meli.la/1vQje5p
+checked_url: https://meli.la/1vQje5p
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-7Y0N&tid=fd09048a-053d-4697-847f-0e76f97791b8
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAQRdiQfHgMuPb1L%2BGBeLGSo%2FDnpfbJrvSk0FPiYUeu2foL5XSdiw2GRlU7jbVbXD9qseGkRzzoY53yX1mZgrp2gVXdyYDh9p7LrmL6IHD3ae1czZph6pV5QPAfFn6FphnmqbAc2XND0jm729zM%2Fvog9NQOKdljU9zR2T90OMZCo0epb3vHAFVt%2FQ9zkVNoRKXFD8w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-08T19:40:40Z
-Issue: #30
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/30
-SKU: carregador-veicular-60w-hrebos-2x-usbc-pd
-Título: Carregador Veicular 60W — 2x USB-C PD (30W + 30W)
-ID ML: 5J5PKG-01QQ
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Carregador Veicular, USB-C PD, 60W, Carga Rápida, 2 Portas, Carro, Uber/99
-open_url: https://mercadolivre.com/sec/2hEwHwh
-checked_url: https://mercadolivre.com/sec/2hEwHwh
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBAv75ziVz8daSHqS%2BjwRBefMTV81m1z9PlP1gZBo9yWfrc9E0Tns5t7pZ6tftKirotFGPfKXYAo9hTJ5A0Bu4RalXu0%2BUjZmdGLk1Te1x4O6p2yxNPZLhrWpteTfOA%2FeXj4GsK85ZgokuTHyG9OjLifFznS7ge9cS1dfRmJJORNG2Nq2Vf%2Fic%2FcypDnOgwnVyMDjdg%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-01QQ&tid=fe7f3d48-d886-45a6-beb4-a72bc96a84ef
-
-[ALTA] review_only_storefront
-Quando: 2026-05-08T19:40:40Z
+Quando: 2026-05-09T03:47:21Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -74,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/2SekHEZ
 checked_url: https://meli.la/2SekHEZ
