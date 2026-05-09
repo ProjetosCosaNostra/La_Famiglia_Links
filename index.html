@@ -9629,100 +9629,119 @@
 
 
 
-    /* =========================================================
-       AJUSTE CIRÚRGICO FINAL — IMAGENS MAIORES NO PC
-       - não mexe na estrutura mobile da Vitrine Rápida
-       - aumenta só a área/imagem dos cards no desktop
-       - mantém botões e informações compactos
-       ========================================================= */
+    /* ==========================================================
+       AJUSTE CIRÚRGICO — 2026-05-09
+       Escopo controlado:
+       1) PC: aumentar somente as imagens dos produtos.
+       2) Mobile: enxugar somente o topo removendo chips redundantes
+          e a frase menor abaixo do botão principal.
+       Não altera script.js, loja.js nem a estrutura mobile da vitrine.
+       ========================================================== */
+
     @media (min-width: 861px) {
+      /* Produto do Dia — imagem um pouco maior, sem aumentar demais o card */
       #featured .cnFeaturedMedia,
       #featured .cnCard:first-child {
-        height: 318px !important;
-        padding: 8px !important;
+        height: 330px !important;
+        min-height: 330px !important;
+        padding: 12px !important;
       }
 
       #featured .cnFeaturedMedia .cnMediaShell,
       #featured .cnCard:first-child .cnMediaShell {
         width: 100% !important;
         height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
 
       #featured .cnFeaturedMedia .cnImg,
       #featured .cnCard:first-child .cnImg {
         width: auto !important;
         height: auto !important;
-        max-width: 100% !important;
-        max-height: 302px !important;
+        max-width: 96% !important;
+        max-height: 306px !important;
         object-fit: contain !important;
         object-position: center center !important;
       }
 
-      #quickGrid.cnGrid {
-        gap: 10px !important;
-      }
-
+      /* Vitrine Rápida — aumenta área visual das imagens sem voltar aos cards gigantes */
       #quickGrid .cnProd > .cnMediaShell {
-        height: 176px !important;
-        min-height: 176px !important;
-        padding: 7px 8px 3px !important;
+        height: clamp(188px, 14vw, 220px) !important;
+        min-height: clamp(188px, 14vw, 220px) !important;
+        padding: 10px 10px 6px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
 
       #quickGrid .cnProd .cnImg {
         width: auto !important;
         height: auto !important;
-        max-width: 100% !important;
-        max-height: 166px !important;
+        max-width: 96% !important;
+        max-height: clamp(176px, 13vw, 204px) !important;
         object-fit: contain !important;
         object-position: center center !important;
-        border-radius: 10px !important;
+        margin: auto !important;
       }
 
+      /* Mantém o bloco de texto compacto para o aumento ir para a imagem, não para botão */
       #quickGrid .cnProd .cnProdPad {
         padding-top: 7px !important;
-      }
-
-      #quickGrid .cnProd h3 {
-        font-size: .74rem !important;
-        line-height: 1.08 !important;
-        min-height: 2.10em !important;
-      }
-
-      #quickGrid .cnBadges {
-        margin-top: 5px !important;
-      }
-
-      #quickGrid .cnMeta {
-        margin-top: 6px !important;
-        padding-top: 6px !important;
-      }
-
-      #quickGrid .cnRow {
-        margin-top: 7px !important;
       }
     }
 
     @media (min-width: 861px) and (max-width: 1080px) {
-      #featured .cnFeaturedMedia,
-      #featured .cnCard:first-child {
-        height: 306px !important;
-      }
-
-      #featured .cnFeaturedMedia .cnImg,
-      #featured .cnCard:first-child .cnImg {
-        max-height: 290px !important;
-      }
-
       #quickGrid .cnProd > .cnMediaShell {
-        height: 184px !important;
-        min-height: 184px !important;
+        height: 205px !important;
+        min-height: 205px !important;
       }
 
       #quickGrid .cnProd .cnImg {
-        max-height: 174px !important;
+        max-height: 190px !important;
       }
     }
 
+    @media (max-width: 640px) {
+      /* Topo mobile: remove chips redundantes "premium / Loja Completa".
+         O número de produtos já aparece no botão principal e no menu. */
+      .hero .chips,
+      .hero .chips--heroCompact,
+      .chips--heroCompact {
+        display: none !important;
+      }
+
+      /* Remove a frase menor abaixo do CTA para ganhar altura útil no celular */
+      .hero .goLojaHint,
+      .goLojaHint {
+        display: none !important;
+      }
+
+      .hero__text--bannerstack {
+        gap: 0 !important;
+        margin-top: 2px !important;
+      }
+
+      .hero__sub--banner {
+        margin: 4px 0 0 0 !important;
+        padding: 0 8px !important;
+        font-size: .88rem !important;
+        line-height: 1.22 !important;
+        color: rgba(255,255,255,.78) !important;
+      }
+
+      .hero__actions {
+        margin-top: 2px !important;
+        gap: 7px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 42px !important;
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+      }
+    }
 </style>
 </head>
 
