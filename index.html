@@ -9158,34 +9158,29 @@
 
 
     /* =========================================================
-       ETAPA 3Q — FECHAMENTO VISUAL REAL DO INDEX
-       Objetivo:
-       - banner não cortar
-       - Seleção do Dia com encaixe profissional
-       - Vitrine Rápida com cards coerentes, imagens maiores e 3 por linha
-       - sem alterar script.js / style.css / loja.html / loja.js
+       CORREÇÃO FINAL 2026-05-09
+       OBJETIVO:
+       - preservar a Vitrine Rápida mobile já aprovada
+       - corrigir APENAS desktop/PC da Vitrine Rápida
+       - compactar Produto do Dia no mobile sem alterar a lista mobile
        ========================================================= */
 
     @media (min-width: 861px) {
       .hero {
-        padding: 12px 14px 14px !important;
-        gap: 10px !important;
-        border-radius: 22px !important;
-        background:
-          radial-gradient(680px 180px at 50% 0%, rgba(215,176,88,.055), transparent 62%),
-          linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.08)),
-          rgba(6,6,8,.62) !important;
+        width: 100% !important;
+        max-width: 1000px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 12px !important;
+        overflow: visible !important;
       }
 
       .heroBanner {
+        width: 100% !important;
         height: auto !important;
-        min-height: 0 !important;
         max-height: none !important;
-        aspect-ratio: auto !important;
+        overflow: hidden !important;
         border-radius: 16px !important;
-        overflow: visible !important;
-        box-shadow: 0 12px 28px rgba(0,0,0,.24) !important;
-        background: rgba(0,0,0,.12) !important;
       }
 
       .heroBanner__picture,
@@ -9193,276 +9188,489 @@
         display: block !important;
         width: 100% !important;
         height: auto !important;
-        min-height: 0 !important;
         max-height: none !important;
         object-fit: contain !important;
         object-position: center center !important;
-        border-radius: 15px !important;
       }
 
-      .heroBanner::after,
-      .heroBanner__seal {
-        display: none !important;
-      }
-
-      .hero__brand--banner {
-        gap: 8px !important;
-      }
-
-      .hero__sub--banner {
-        text-align: center !important;
-        align-self: center !important;
-        max-width: 660px !important;
-        font-size: 13px !important;
-        line-height: 1.35 !important;
-        color: rgba(255,255,255,.74) !important;
-      }
-
-      .hero .chips {
-        display: none !important;
-      }
-
-      .hero .imperialNote--top {
-        display: none !important;
-      }
-
-      .hero__actions {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
+      .sectionNav {
         width: 100% !important;
-        flex: 1 1 auto !important;
-        gap: 8px !important;
+        max-width: 1000px !important;
+        margin: 10px auto 14px !important;
+        padding: 7px 10px !important;
       }
 
-      .hero__actions .btn--gold {
+      #sec-produto-do-dia {
         width: 100% !important;
-        min-height: 44px !important;
-        border-radius: 15px !important;
-        font-size: 13px !important;
-      }
-
-      .hero__actions > .btn:not(.btn--gold),
-      .hero__actions > .miniNote,
-      .heroMore {
-        display: none !important;
-      }
-    }
-
-    @media (min-width: 861px) {
-      #sec-produto-do-dia.panel {
-        padding-bottom: 12px !important;
-        border-radius: 24px !important;
-        background:
-          radial-gradient(760px 260px at 50% 8%, rgba(215,176,88,.07), transparent 64%),
-          linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.10)),
-          rgba(6,6,8,.68) !important;
+        max-width: 1000px !important;
+        margin: 0 auto 18px !important;
+        border-radius: 20px !important;
       }
 
       #sec-produto-do-dia .panel__head {
-        display: grid !important;
-        grid-template-columns: minmax(0,1fr) auto auto !important;
-        align-items: center !important;
-        gap: 12px !important;
-        padding: 13px 16px 10px !important;
-        margin-bottom: 0 !important;
+        padding: 11px 15px 8px !important;
+        margin-bottom: 5px !important;
       }
 
       #sec-produto-do-dia .panel__head h2 {
-        font-size: 16px !important;
-        letter-spacing: .34em !important;
+        font-size: .95rem !important;
         line-height: 1 !important;
+        letter-spacing: .22em !important;
       }
 
       #sec-produto-do-dia .panel__head p {
-        font-size: 12px !important;
-        line-height: 1.2 !important;
+        font-size: .78rem !important;
+        line-height: 1.22 !important;
+      }
+
+      #sec-produto-do-dia .panel__right .btn {
+        min-height: 28px !important;
+        padding: 5px 11px !important;
+        border-radius: 999px !important;
+        font-size: .68rem !important;
       }
 
       #sec-produto-do-dia > .imperialNote {
-        position: absolute !important;
-        top: 54px !important;
-        left: 16px !important;
-        margin: 0 !important;
-        padding: 7px 10px !important;
-        font-size: 12px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        width: auto !important;
+        max-width: calc(100% - 30px) !important;
+        margin: 6px 15px 0 !important;
+        padding: 5px 10px !important;
         border-radius: 999px !important;
-        z-index: 2 !important;
+        font-size: .70rem !important;
+        line-height: 1.1 !important;
       }
 
       #featured.featured {
-        padding: 44px 14px 14px !important;
+        padding: 9px 15px 14px !important;
       }
 
       #featured .cnFeaturedWrap {
         display: grid !important;
-        grid-template-columns: 410px minmax(0, 1fr) !important;
+        grid-template-columns: minmax(300px, 0.92fr) minmax(410px, 1.08fr) !important;
         gap: 14px !important;
-        align-items: stretch !important;
+        align-items: center !important;
+        margin: 0 !important;
       }
 
       #featured .cnCard {
-        height: auto !important;
         min-height: 0 !important;
-        border-radius: 20px !important;
-        border-color: rgba(215,176,88,.14) !important;
-        background:
-          linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.20)),
-          rgba(4,4,6,.78) !important;
-        box-shadow: 0 14px 34px rgba(0,0,0,.28) !important;
+        height: auto !important;
+        border-radius: 17px !important;
       }
 
+      #featured .cnFeaturedMedia,
       #featured .cnCard:first-child {
-        min-height: 360px !important;
-        max-height: 390px !important;
-        padding: 14px !important;
+        height: 286px !important;
+        min-height: 0 !important;
+        padding: 10px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
       }
 
-      #featured .cnCard:first-child .cnImg {
-        width: auto !important;
-        max-width: 94% !important;
-        height: 330px !important;
-        max-height: 330px !important;
-        object-fit: contain !important;
-        object-position: center center !important;
-        border-radius: 14px !important;
-        box-shadow: 0 14px 30px rgba(0,0,0,.34) !important;
-      }
-
-      #featured .cnCardPad {
-        min-height: 360px !important;
-        max-height: 390px !important;
-        padding: 18px 20px !important;
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
         display: flex !important;
-        flex-direction: column !important;
+        align-items: center !important;
         justify-content: center !important;
       }
 
-      #featured .cnTitle {
-        font-size: clamp(1.75rem, 2.25vw, 2.28rem) !important;
-        line-height: 1.02 !important;
-        max-width: 720px !important;
-        letter-spacing: .01em !important;
-        margin-bottom: 8px !important;
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 266px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: auto !important;
+        border-radius: 13px !important;
       }
 
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        display: block !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 14px 16px !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.20rem, 1.65vw, 1.56rem) !important;
+        line-height: 1.04 !important;
+        max-width: 540px !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnFeatureSummary,
       #featured .cnSub {
-        margin-top: 5px !important;
-        font-size: 14px !important;
-        line-height: 1.35 !important;
+        margin-top: 6px !important;
+        font-size: .78rem !important;
+        line-height: 1.26 !important;
       }
 
       #featured .cnPromoBox {
-        margin-top: 12px !important;
-        padding: 12px 14px !important;
-        border-radius: 16px !important;
+        margin-top: 9px !important;
+        padding: 9px 11px !important;
+        border-radius: 14px !important;
+      }
+
+      #featured .cnPromoLabel {
+        font-size: .66rem !important;
+        line-height: 1 !important;
       }
 
       #featured .cnCurrentPrice {
-        font-size: 2.1rem !important;
+        font-size: 1.82rem !important;
         line-height: 1 !important;
       }
 
       #featured .cnPromoText,
       #featured .cnPromoChecked {
-        font-size: 12px !important;
-        line-height: 1.26 !important;
-        margin-top: 5px !important;
+        font-size: .70rem !important;
+        line-height: 1.20 !important;
       }
 
       #featured .cnBadges {
-        margin-top: 9px !important;
-        gap: 6px !important;
+        margin-top: 8px !important;
+        gap: 5px !important;
       }
 
       #featured .cnBadges span {
-        padding: 3px 8px !important;
-        font-size: 11px !important;
+        padding: 3px 7px !important;
+        font-size: .60rem !important;
       }
 
       #featured .cnRow {
-        margin-top: 11px !important;
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 8px !important;
+        gap: 7px !important;
+        margin-top: 9px !important;
       }
 
       #featured .cnRow .btn {
-        min-height: 36px !important;
-        border-radius: 12px !important;
-        font-size: 12px !important;
-        padding: 8px 10px !important;
+        min-height: 30px !important;
+        padding: 6px 9px !important;
+        border-radius: 11px !important;
+        font-size: .68rem !important;
+        line-height: 1 !important;
       }
 
-      #featured .cnRow .btn--buy-primary {
+      #featured .cnActionPrimary {
         grid-column: 1 / -1 !important;
-        min-height: 42px !important;
-        font-size: 13px !important;
+        min-height: 35px !important;
+        font-size: .72rem !important;
       }
 
       #featured .cnActionTertiary {
         display: none !important;
       }
 
-      #featured .cnScarcityLine,
-      #featured .cnMeta {
-        margin-top: 9px !important;
-        font-size: 12px !important;
-        line-height: 1.35 !important;
+      #featured .cnScarcityLine {
+        margin-top: 8px !important;
+        font-size: .68rem !important;
+        line-height: 1.20 !important;
       }
-    }
 
-    @media (min-width: 861px) {
-      #sec-vitrine-rapida.panel {
-        border-radius: 24px !important;
-        padding-bottom: 16px !important;
+      #featured .cnMeta {
+        margin-top: 7px !important;
+        padding: 4px 7px !important;
+        font-size: .64rem !important;
+        border-radius: 999px !important;
+      }
+
+      #sec-vitrine-rapida {
+        width: 100% !important;
+        max-width: 1000px !important;
+        margin: 0 auto 18px !important;
+        border-radius: 20px !important;
       }
 
       #sec-vitrine-rapida .panel__head {
-        padding: 13px 16px 8px !important;
-        margin-bottom: 0 !important;
+        padding: 11px 15px 8px !important;
+        margin-bottom: 7px !important;
+      }
+
+      #sec-vitrine-rapida .panel__head h2 {
+        font-size: .96rem !important;
+        line-height: 1 !important;
+        letter-spacing: .22em !important;
+      }
+
+      #sec-vitrine-rapida .panel__head p {
+        font-size: .78rem !important;
+        line-height: 1.22 !important;
+      }
+
+      #sec-vitrine-rapida .panel__right .btn {
+        min-height: 28px !important;
+        padding: 5px 10px !important;
+        border-radius: 999px !important;
+        font-size: .66rem !important;
       }
 
       #sec-vitrine-rapida .quickTools {
-        padding: 10px 16px 12px !important;
-        margin: 0 !important;
-        display: grid !important;
-        grid-template-columns: minmax(0,1fr) auto auto !important;
-        gap: 10px !important;
+        padding: 0 15px 10px !important;
+        gap: 8px !important;
+        align-items: center !important;
       }
 
       #sec-vitrine-rapida .quickSearch {
-        min-height: 44px !important;
-        border-radius: 15px !important;
+        min-height: 34px !important;
+        border-radius: 12px !important;
+        font-size: .74rem !important;
+      }
+
+      #sec-vitrine-rapida .quickSearch input {
+        font-size: .78rem !important;
+      }
+
+      #sec-vitrine-rapida .quickTools .btn {
+        min-height: 34px !important;
+        padding: 6px 10px !important;
+        border-radius: 12px !important;
+        font-size: .70rem !important;
       }
 
       #quickGrid.cnGrid {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 14px !important;
-        padding: 0 16px !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 0 15px 15px !important;
         margin-top: 0 !important;
       }
 
       #quickGrid .cnProd {
-        height: 420px !important;
-        min-height: 420px !important;
-        max-height: 420px !important;
-        display: grid !important;
-        grid-template-rows: 230px minmax(0,1fr) !important;
-        border-radius: 19px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: 0 !important;
+        height: auto !important;
+        border-radius: 15px !important;
         overflow: hidden !important;
         background:
-          linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.18)),
-          rgba(4,4,6,.78) !important;
+          linear-gradient(180deg, rgba(255,255,255,.012), rgba(0,0,0,.11)),
+          rgba(4,4,6,.74) !important;
+        box-shadow: 0 10px 26px rgba(0,0,0,.28) !important;
       }
 
       #quickGrid .cnProd > .cnMediaShell {
-        height: 230px !important;
-        min-height: 230px !important;
-        padding: 12px 12px 0 !important;
+        height: 146px !important;
+        min-height: 146px !important;
+        width: 100% !important;
+        padding: 10px 10px 4px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(0,0,0,.14) !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 132px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: auto !important;
+        border-radius: 10px !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        display: flex !important;
+        flex-direction: column !important;
+        flex: 1 1 auto !important;
+        padding: 8px 9px 9px !important;
+        min-height: 0 !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        min-height: 2.18em !important;
+        margin: 0 !important;
+        font-size: .76rem !important;
+        line-height: 1.09 !important;
+        letter-spacing: .01em !important;
+      }
+
+      #quickGrid .cnBadges {
+        margin-top: 6px !important;
+        max-height: 22px !important;
+        overflow: hidden !important;
+      }
+
+      #quickGrid .cnBadges span {
+        padding: 2px 6px !important;
+        font-size: .54rem !important;
+        line-height: 1 !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: 7px !important;
+        padding-top: 7px !important;
+        font-size: .60rem !important;
+        line-height: 1 !important;
+      }
+
+      #quickGrid .cnMeta b {
+        font-size: .67rem !important;
+      }
+
+      #quickGrid .cnRow {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
+        padding-top: 0 !important;
+      }
+
+      #quickGrid .cnRow .btn {
+        min-height: 29px !important;
+        padding: 6px 7px !important;
+        border-radius: 10px !important;
+        font-size: .62rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+      }
+
+      #quickGrid .cnQuickPrimary,
+      #quickGrid .cnQuickSecondary {
+        width: 100% !important;
+      }
+
+      #quickGrid .cnQuickTertiary {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1080px) {
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 160px !important;
+        min-height: 160px !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        max-height: 146px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        display: block !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 10px 11px 12px !important;
+      }
+
+      #featured .cnFeaturedInfo,
+      #featured .cnCard:nth-child(2) {
+        min-height: 0 !important;
+        height: auto !important;
+      }
+
+      #featured .cnTitle {
+        margin-bottom: 0 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 8px !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 7px !important;
+        margin-bottom: 0 !important;
+      }
+
+      #featured .cnRow {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 7px !important;
+        margin-top: 8px !important;
+        margin-bottom: 0 !important;
+      }
+
+      #featured .cnActionPrimary {
+        grid-column: 1 / -1 !important;
+        min-height: 36px !important;
+        font-size: .78rem !important;
+      }
+
+      #featured .cnActionSecondary {
+        min-height: 32px !important;
+        font-size: .70rem !important;
+      }
+
+      #featured .cnActionTertiary {
+        display: none !important;
+      }
+
+      #featured .cnScarcityLine {
+        margin-top: 9px !important;
+        padding-top: 0 !important;
+        font-size: .70rem !important;
+        line-height: 1.22 !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 7px !important;
+      }
+    }
+
+
+
+    /* ==========================================================
+       AJUSTE CIRÚRGICO — 2026-05-09
+       Escopo controlado:
+       1) PC: aumentar somente as imagens dos produtos.
+       2) Mobile: enxugar somente o topo removendo chips redundantes
+          e a frase menor abaixo do botão principal.
+       Não altera script.js, loja.js nem a estrutura mobile da vitrine.
+       ========================================================== */
+
+    @media (min-width: 861px) {
+      /* Produto do Dia — imagem um pouco maior, sem aumentar demais o card */
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        height: 330px !important;
+        min-height: 330px !important;
+        padding: 12px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: auto !important;
+        height: auto !important;
+        max-width: 96% !important;
+        max-height: 306px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+
+      /* Vitrine Rápida — aumenta área visual das imagens sem voltar aos cards gigantes */
+      #quickGrid .cnProd > .cnMediaShell {
+        height: clamp(188px, 14vw, 220px) !important;
+        min-height: clamp(188px, 14vw, 220px) !important;
+        padding: 10px 10px 6px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -9470,105 +9678,2088 @@
 
       #quickGrid .cnProd .cnImg {
         width: auto !important;
-        max-width: 100% !important;
-        height: 216px !important;
-        max-height: 216px !important;
+        height: auto !important;
+        max-width: 96% !important;
+        max-height: clamp(176px, 13vw, 204px) !important;
         object-fit: contain !important;
         object-position: center center !important;
-        border-radius: 13px !important;
-        box-shadow: 0 10px 24px rgba(0,0,0,.24) !important;
+        margin: auto !important;
       }
 
+      /* Mantém o bloco de texto compacto para o aumento ir para a imagem, não para botão */
       #quickGrid .cnProd .cnProdPad {
-        min-height: 0 !important;
-        padding: 11px 12px 12px !important;
-        display: grid !important;
-        grid-template-rows: 44px 26px 26px 1fr 36px 34px !important;
+        padding-top: 7px !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1080px) {
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 205px !important;
+        min-height: 205px !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        max-height: 190px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      /* Topo mobile: remove chips redundantes "premium / Loja Completa".
+         O número de produtos já aparece no botão principal e no menu. */
+      .hero .chips,
+      .hero .chips--heroCompact,
+      .chips--heroCompact {
+        display: none !important;
+      }
+
+      /* Remove a frase menor abaixo do CTA para ganhar altura útil no celular */
+      .hero .goLojaHint,
+      .goLojaHint {
+        display: none !important;
+      }
+
+      .hero__text--bannerstack {
+        gap: 0 !important;
+        margin-top: 2px !important;
+      }
+
+      .hero__sub--banner {
+        margin: 4px 0 0 0 !important;
+        padding: 0 8px !important;
+        font-size: .88rem !important;
+        line-height: 1.22 !important;
+        color: rgba(255,255,255,.78) !important;
+      }
+
+      .hero__actions {
+        margin-top: 2px !important;
         gap: 7px !important;
       }
 
-      #quickGrid .cnProd h3 {
+      .hero__actions #goLoja {
+        min-height: 42px !important;
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+      }
+    }
+
+
+    /* ==========================================================
+       AJUSTE FINAL DE PROPORÇÃO — 2026-05-09
+       Escopo:
+       - PC: aumentar de verdade as imagens dos cards usando escala real.
+       - PC: alinhar imagem, título, código e botões no mesmo ritmo visual.
+       - PC: compactar Seleção do Dia para caber melhor na primeira tela.
+       - Mobile: manter Vitrine Rápida intacta; recolocar a frase abaixo do CTA.
+       ========================================================== */
+
+    @media (min-width: 861px) {
+      .page {
+        width: min(1060px, calc(100vw - 28px)) !important;
+        gap: 12px !important;
+      }
+
+      .hero {
+        padding: 12px !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 7px !important;
+      }
+
+      .heroBanner {
+        border-radius: 15px !important;
+      }
+
+      .hero__sub--banner {
+        margin-top: 3px !important;
+        font-size: 12px !important;
+        line-height: 1.20 !important;
+      }
+
+      .hero__actions {
+        gap: 6px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 36px !important;
+        padding: 7px 12px !important;
+        border-radius: 12px !important;
+        font-size: 12px !important;
+      }
+
+      .goLojaHint {
+        margin-top: 0 !important;
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        opacity: .72 !important;
+      }
+
+      .sectionNav {
+        margin-top: 6px !important;
+        margin-bottom: 8px !important;
+        padding: 6px 9px !important;
+      }
+
+      #sec-produto-do-dia {
+        max-width: 1060px !important;
+        margin: 0 auto 12px !important;
+        border-radius: 18px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 9px 14px 6px !important;
+        margin-bottom: 4px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: .88rem !important;
+        letter-spacing: .22em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        font-size: .72rem !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        margin: 5px 14px 0 !important;
+        padding: 4px 9px !important;
+        font-size: .66rem !important;
+      }
+
+      #featured.featured {
+        padding: 8px 14px 12px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(350px, .94fr) minmax(420px, 1.06fr) !important;
+        gap: 12px !important;
+        align-items: center !important;
         margin: 0 !important;
-        min-height: 0 !important;
-        font-size: .98rem !important;
-        line-height: 1.18 !important;
-        display: -webkit-box !important;
-        -webkit-line-clamp: 2 !important;
-        -webkit-box-orient: vertical !important;
-        overflow: hidden !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        height: 300px !important;
+        min-height: 300px !important;
+        padding: 8px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        border-radius: 12px !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        padding: 12px 14px !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.18rem, 1.45vw, 1.50rem) !important;
+        line-height: 1.02 !important;
+      }
+
+      #featured .cnFeatureSummary,
+      #featured .cnSub {
+        margin-top: 5px !important;
+        font-size: .73rem !important;
+        line-height: 1.20 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 7px !important;
+        padding: 8px 10px !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 1.72rem !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked,
+      #featured .cnScarcityLine {
+        font-size: .66rem !important;
+        line-height: 1.16 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 6px !important;
+      }
+
+      #featured .cnRow {
+        margin-top: 7px !important;
+        gap: 6px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 28px !important;
+        padding: 5px 8px !important;
+        font-size: .64rem !important;
+      }
+
+      #featured .cnActionPrimary {
+        min-height: 32px !important;
+        font-size: .68rem !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 5px !important;
+        font-size: .62rem !important;
+      }
+
+      #sec-vitrine-rapida {
+        max-width: 1060px !important;
+        margin: 0 auto 18px !important;
+      }
+
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 0 14px 14px !important;
+      }
+
+      #quickGrid .cnProd {
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: 330px !important;
+        height: 330px !important;
+        border-radius: 15px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        width: 100% !important;
+        height: 190px !important;
+        min-height: 190px !important;
+        padding: 8px 10px 4px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(0,0,0,.16) !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: auto !important;
+        border-radius: 10px !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 7px 9px 9px !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        min-height: 2.25em !important;
+        font-size: .74rem !important;
+        line-height: 1.12 !important;
+        margin: 0 !important;
       }
 
       #quickGrid .cnBadges {
-        min-height: 0 !important;
-        max-height: 26px !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-        display: flex !important;
-        gap: 5px !important;
-        align-items: center !important;
+        margin-top: 5px !important;
+        min-height: 18px !important;
       }
 
       #quickGrid .cnBadges span {
-        margin: 0 !important;
+        padding: 2px 5px !important;
+        font-size: .52rem !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: auto !important;
+        padding-top: 7px !important;
+        font-size: .58rem !important;
+      }
+
+      #quickGrid .cnMeta b {
+        font-size: .66rem !important;
+      }
+
+      #quickGrid .cnRow {
+        margin-top: 7px !important;
+        gap: 6px !important;
+      }
+
+      #quickGrid .cnRow .btn {
+        min-height: 28px !important;
+        padding: 5px 7px !important;
+        border-radius: 10px !important;
+        font-size: .60rem !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1080px) {
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+
+      #quickGrid .cnProd {
+        height: 350px !important;
+        min-height: 350px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 210px !important;
+        min-height: 210px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      /* Topo mobile: mantém o visual limpo, mas recoloca a frase no efeito abaixo do CTA. */
+      .hero .chips,
+      .hero .chips--heroCompact,
+      .chips--heroCompact {
+        display: none !important;
+      }
+
+      .hero__sub--banner {
+        display: none !important;
+      }
+
+      .hero__actions {
+        margin-top: 4px !important;
+        gap: 5px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 41px !important;
+        padding: 8px 10px !important;
+      }
+
+      .hero .goLojaHint,
+      .goLojaHint {
+        display: block !important;
+        margin: 5px 0 0 !important;
+        padding: 0 8px !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        color: rgba(255,255,255,.68) !important;
+        font-size: clamp(.62rem, 2.55vw, .72rem) !important;
+        line-height: 1.05 !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 10px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding-top: 10px !important;
+        padding-bottom: 8px !important;
+      }
+
+      #featured.featured {
+        padding-top: 9px !important;
+      }
+    }
+
+
+
+    /* ==========================================================
+       AJUSTE FINAL CONTROLADO — 2026-05-09
+       Escopo:
+       - Desktop: voltar frase original do topo, compactar Seleção do Dia,
+         alinhar cards e aumentar imagens da Vitrine Rápida.
+       - Mobile: frase com efeito acima do botão, topo mais enxuto,
+         sem alterar estrutura aprovada da Vitrine Rápida mobile.
+       ========================================================== */
+
+    /* Desktop: frase volta ao lugar original; dica abaixo do botão fica só no mobile. */
+    .goLojaHint {
+      display: none !important;
+    }
+
+    @media (min-width: 861px) {
+      .page {
+        width: min(1108px, calc(100vw - 34px)) !important;
+        gap: 12px !important;
+      }
+
+      .hero {
+        padding: 12px 14px 13px !important;
+        margin-top: 28px !important;
+        gap: 10px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 7px !important;
+      }
+
+      .heroBanner {
+        border-radius: 16px !important;
+      }
+
+      .hero__text--bannerstack {
+        align-items: center !important;
+      }
+
+      .hero__sub--banner {
+        display: block !important;
+        margin: 7px 0 0 !important;
+        max-width: none !important;
+        font-size: .86rem !important;
+        line-height: 1.25 !important;
+        text-align: center !important;
+        color: rgba(255,255,255,.76) !important;
+      }
+
+      .hero__actions {
+        margin-top: 8px !important;
+        gap: 7px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 42px !important;
+        padding: 8px 14px !important;
+        border-radius: 14px !important;
+        font-size: .84rem !important;
+      }
+
+      .sectionNav {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        min-height: 34px !important;
+      }
+
+      #sec-produto-do-dia {
+        max-width: 1108px !important;
+        margin: 10px auto 12px !important;
+        border-radius: 18px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 11px 14px 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: .92rem !important;
+        letter-spacing: .38em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        font-size: .82rem !important;
+        line-height: 1.2 !important;
+      }
+
+      #sec-produto-do-dia .panel__right .btn {
+        min-height: 30px !important;
+        padding: 6px 11px !important;
+        font-size: .70rem !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        margin: 7px 14px 0 !important;
+        padding: 5px 10px !important;
+        width: fit-content !important;
+        max-width: calc(100% - 28px) !important;
+        font-size: .70rem !important;
+        line-height: 1.15 !important;
+        border-radius: 999px !important;
+      }
+
+      #featured.featured {
+        padding: 9px 14px 12px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(360px, .98fr) minmax(420px, 1.02fr) !important;
+        gap: 12px !important;
+        align-items: center !important;
+        margin-top: 0 !important;
+      }
+
+      #featured .cnCard,
+      #featured .cnFeaturedMedia,
+      #featured .cnFeaturedInfo {
+        height: auto !important;
+        min-height: 0 !important;
+        border-radius: 17px !important;
+      }
+
+      #featured .cnCard:first-child,
+      #featured .cnFeaturedMedia {
+        min-height: 305px !important;
+        padding: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnCard:first-child .cnImg,
+      #featured .cnFeaturedMedia .cnImg {
+        width: min(95%, 430px) !important;
+        height: auto !important;
+        max-height: 292px !important;
+        object-fit: contain !important;
+        margin: auto !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnCardPad {
+        padding: 12px 14px !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.42rem, 1.78vw, 1.96rem) !important;
+        line-height: 1.03 !important;
+        max-width: 560px !important;
+      }
+
+      #featured .cnFeatureSummary,
+      #featured .cnSub {
+        margin-top: 6px !important;
+        font-size: .80rem !important;
+        line-height: 1.24 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 8px !important;
+        padding: 9px 11px !important;
+        border-radius: 14px !important;
+      }
+
+      #featured .cnPromoLabel {
+        min-height: 20px !important;
+        font-size: .64rem !important;
+        letter-spacing: .13em !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 1.75rem !important;
+        line-height: 1 !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked,
+      #featured .cnScarcityLine {
+        font-size: .68rem !important;
+        line-height: 1.18 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 7px !important;
+        gap: 5px !important;
+      }
+
+      #featured .cnBadges span {
         padding: 3px 7px !important;
         font-size: .62rem !important;
       }
 
-      #quickGrid .cnMeta {
-        margin: 0 !important;
-        padding: 0 !important;
-        border: 0 !important;
-        font-size: .74rem !important;
-        line-height: 1.2 !important;
+      #featured .cnRow {
+        margin-top: 8px !important;
+        gap: 6px !important;
       }
 
-      #quickGrid .cnMeta b {
-        font-size: .82rem !important;
-      }
-
-      #quickGrid .cnRow {
-        margin-top: auto !important;
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 8px !important;
-      }
-
-      #quickGrid .cnRow .btn {
-        min-height: 34px !important;
-        padding: 7px 8px !important;
+      #featured .cnRow .btn {
+        min-height: 30px !important;
+        padding: 6px 9px !important;
         border-radius: 11px !important;
+        font-size: .66rem !important;
+      }
+
+      #featured .cnActionPrimary {
+        min-height: 34px !important;
+        font-size: .70rem !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 6px !important;
+        font-size: .62rem !important;
+      }
+
+      #sec-vitrine-rapida {
+        max-width: 1108px !important;
+        margin: 12px auto 18px !important;
+        border-radius: 18px !important;
+      }
+
+      #sec-vitrine-rapida .panel__head {
+        padding: 11px 14px 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      #sec-vitrine-rapida .panel__head h2 {
+        font-size: .96rem !important;
+        letter-spacing: .40em !important;
+      }
+
+      #sec-vitrine-rapida .panel__head p {
+        font-size: .78rem !important;
+        line-height: 1.18 !important;
+      }
+
+      #sec-vitrine-rapida .quickTools {
+        padding: 0 14px !important;
+        gap: 8px !important;
+        margin: 0 0 8px !important;
+      }
+
+      #sec-vitrine-rapida .quickSearch {
+        min-height: 39px !important;
+      }
+
+      #sec-vitrine-rapida .quickTools .btn {
+        min-height: 39px !important;
+        padding: 7px 12px !important;
         font-size: .72rem !important;
       }
 
-      #quickGrid .cnQuickTertiary {
-        grid-column: 1 / -1 !important;
-      }
-    }
-
-    @media (min-width: 861px) and (max-width: 1180px) {
-      #featured .cnFeaturedWrap {
-        grid-template-columns: 390px minmax(0, 1fr) !important;
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 0 14px 14px !important;
+        align-items: stretch !important;
       }
 
       #quickGrid .cnProd {
-        height: 405px !important;
-        min-height: 405px !important;
-        max-height: 405px !important;
-        grid-template-rows: 218px minmax(0,1fr) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        height: 348px !important;
+        min-height: 348px !important;
+        border-radius: 15px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        width: 100% !important;
+        height: 204px !important;
+        min-height: 204px !important;
+        padding: 6px 8px 3px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(0,0,0,.14) !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: auto !important;
+        border-radius: 10px !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 7px 9px 9px !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        min-height: 2.45em !important;
+        font-size: .74rem !important;
+        line-height: 1.12 !important;
+        margin: 0 !important;
+      }
+
+      #quickGrid .cnBadges {
+        margin-top: 5px !important;
+        min-height: 17px !important;
+      }
+
+      #quickGrid .cnBadges span {
+        padding: 2px 5px !important;
+        font-size: .52rem !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: auto !important;
+        padding-top: 7px !important;
+        font-size: .58rem !important;
+      }
+
+      #quickGrid .cnMeta b {
+        font-size: .66rem !important;
+      }
+
+      #quickGrid .cnRow {
+        margin-top: 7px !important;
+        gap: 6px !important;
+      }
+
+      #quickGrid .cnRow .btn {
+        min-height: 28px !important;
+        padding: 5px 7px !important;
+        border-radius: 10px !important;
+        font-size: .60rem !important;
+      }
+
+      .floatingStoreCTA__desktop {
+        padding: 10px 14px !important;
+        min-height: 42px !important;
+        font-size: .84rem !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1080px) {
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+
+      #quickGrid .cnProd {
+        height: 366px !important;
+        min-height: 366px !important;
       }
 
       #quickGrid .cnProd > .cnMediaShell {
         height: 218px !important;
         min-height: 218px !important;
       }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 8px 8px 8px !important;
+        border-radius: 18px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 5px !important;
+      }
+
+      .heroBanner {
+        border-radius: 12px !important;
+        box-shadow: 0 8px 18px rgba(0,0,0,.22) !important;
+      }
+
+      .hero .chips,
+      .hero .chips--heroCompact,
+      .chips--heroCompact {
+        display: none !important;
+      }
+
+      .hero__sub--banner {
+        display: none !important;
+      }
+
+      .hero__actions {
+        margin-top: 5px !important;
+        gap: 5px !important;
+      }
+
+      .hero__actions .goLojaHint,
+      .goLojaHint {
+        display: block !important;
+        order: -1 !important;
+        margin: 0 2px 0 !important;
+        padding: 6px 9px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(215,176,88,.14) !important;
+        background:
+          radial-gradient(160px 44px at 50% 0%, rgba(215,176,88,.10), transparent 70%),
+          linear-gradient(180deg, rgba(255,255,255,.022), rgba(0,0,0,.13)) !important;
+        box-shadow: 0 8px 18px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.025) !important;
+        color: rgba(255,255,255,.75) !important;
+        font-size: clamp(.60rem, 2.40vw, .69rem) !important;
+        line-height: 1 !important;
+        letter-spacing: .01em !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 39px !important;
+        padding: 8px 10px !important;
+        border-radius: 14px !important;
+      }
+
+      .sectionNav {
+        margin-top: 7px !important;
+        margin-bottom: 7px !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 8px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding-top: 9px !important;
+        padding-bottom: 7px !important;
+      }
+
+      #featured.featured {
+        padding-top: 8px !important;
+      }
+    }
+
+
+    /* ==========================================================
+       ETAPA 3P — AJUSTE CIRÚRGICO DE PROPORÇÃO — 2026-05-09
+       Escopo: somente index.html.
+       - PC: recuperar frase no topo original, reduzir espaços, alinhar Seleção do Dia,
+         igualar cards e aumentar imagens da Vitrine Rápida.
+       - Mobile: frase acima do CTA com brilho, topo mais curto, Seleção do Dia mais compacta
+         em estrutura parecida com a Vitrine Rápida.
+       ========================================================== */
+
+    .goLojaHint {
+      display: none !important;
+    }
+
+    @media (min-width: 861px) {
+      .page {
+        width: min(1110px, calc(100vw - 30px)) !important;
+        gap: 8px !important;
+      }
+
+      .hero {
+        margin-top: 24px !important;
+        padding: 10px 13px 11px !important;
+        gap: 7px !important;
+        border-radius: 18px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 5px !important;
+      }
+
+      .heroBanner {
+        border-radius: 15px !important;
+      }
+
+      .hero__text--bannerstack {
+        align-items: center !important;
+      }
+
+      .hero__sub--banner {
+        display: block !important;
+        margin: 6px 0 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        max-width: none !important;
+        color: rgba(255,255,255,.76) !important;
+        font-size: .84rem !important;
+        line-height: 1.18 !important;
+        text-align: center !important;
+        white-space: normal !important;
+      }
+
+      .hero__actions {
+        margin-top: 7px !important;
+        gap: 6px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 39px !important;
+        padding: 7px 14px !important;
+        border-radius: 13px !important;
+        font-size: .82rem !important;
+      }
+
+      .sectionNav {
+        margin-top: 7px !important;
+        margin-bottom: 6px !important;
+        min-height: 32px !important;
+        padding: 6px 9px !important;
+        gap: 7px !important;
+      }
+
+      .sectionNav__pill {
+        min-height: 28px !important;
+        padding: 5px 10px !important;
+        font-size: .72rem !important;
+      }
+
+      #sec-produto-do-dia {
+        max-width: 1110px !important;
+        margin: 6px auto 8px !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        min-height: 0 !important;
+        padding: 9px 13px 6px !important;
+        margin-bottom: 6px !important;
+        align-items: center !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: .86rem !important;
+        line-height: 1 !important;
+        letter-spacing: .34em !important;
+        margin: 0 !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        margin-top: 4px !important;
+        font-size: .76rem !important;
+        line-height: 1.12 !important;
+      }
+
+      #sec-produto-do-dia .panel__right .btn {
+        min-height: 28px !important;
+        padding: 5px 10px !important;
+        font-size: .66rem !important;
+        border-radius: 999px !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        margin: 6px 13px 0 !important;
+        padding: 4px 9px !important;
+        width: fit-content !important;
+        max-width: calc(100% - 26px) !important;
+        font-size: .66rem !important;
+        line-height: 1.1 !important;
+        border-radius: 999px !important;
+      }
+
+      #featured.featured {
+        padding: 8px 13px 11px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: minmax(405px, .98fr) minmax(430px, 1.02fr) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnCard,
+      #featured .cnFeaturedMedia,
+      #featured .cnFeaturedInfo {
+        height: 322px !important;
+        min-height: 322px !important;
+        max-height: 322px !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 7px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnCard:first-child .cnImg,
+      #featured .cnFeaturedMedia .cnImg {
+        width: auto !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: auto !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnCardPad {
+        height: 100% !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 10px 13px !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.36rem, 1.70vw, 1.86rem) !important;
+        line-height: 1.02 !important;
+        max-width: 560px !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnFeatureSummary,
+      #featured .cnSub {
+        margin-top: 5px !important;
+        font-size: .76rem !important;
+        line-height: 1.15 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 7px !important;
+        padding: 8px 10px !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnPromoLabel {
+        min-height: 18px !important;
+        font-size: .60rem !important;
+        line-height: 1 !important;
+        letter-spacing: .13em !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 1.68rem !important;
+        line-height: .98 !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked,
+      #featured .cnScarcityLine {
+        font-size: .65rem !important;
+        line-height: 1.12 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 6px !important;
+        gap: 5px !important;
+      }
+
+      #featured .cnBadges span {
+        padding: 3px 7px !important;
+        font-size: .58rem !important;
+      }
+
+      #featured .cnRow {
+        margin-top: 7px !important;
+        gap: 6px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 28px !important;
+        padding: 5px 8px !important;
+        border-radius: 10px !important;
+        font-size: .62rem !important;
+      }
+
+      #featured .cnActionPrimary,
+      #featured .cnRow .btn--buy-primary {
+        min-height: 31px !important;
+        font-size: .66rem !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 5px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        font-size: .60rem !important;
+      }
+
+      #sec-vitrine-rapida {
+        max-width: 1110px !important;
+        margin: 8px auto 14px !important;
+        border-radius: 18px !important;
+      }
+
+      #sec-vitrine-rapida .panel__head {
+        min-height: 0 !important;
+        padding: 9px 13px 6px !important;
+        margin-bottom: 6px !important;
+      }
+
+      #sec-vitrine-rapida .panel__head h2 {
+        font-size: .92rem !important;
+        line-height: 1 !important;
+        letter-spacing: .36em !important;
+        margin: 0 !important;
+      }
+
+      #sec-vitrine-rapida .panel__head p {
+        margin-top: 4px !important;
+        font-size: .74rem !important;
+        line-height: 1.1 !important;
+      }
+
+      #sec-vitrine-rapida .quickTools {
+        padding: 0 13px !important;
+        gap: 6px !important;
+        margin: 0 0 7px !important;
+      }
+
+      #sec-vitrine-rapida .quickSearch {
+        min-height: 36px !important;
+      }
+
+      #sec-vitrine-rapida .quickTools .btn {
+        min-height: 36px !important;
+        padding: 6px 10px !important;
+        font-size: .68rem !important;
+      }
+
+      #quickGrid.cnGrid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        padding: 0 13px 12px !important;
+        align-items: stretch !important;
+      }
+
+      #quickGrid .cnProd {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 342px !important;
+        min-height: 342px !important;
+        max-height: 342px !important;
+        border-radius: 14px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        width: 100% !important;
+        height: 216px !important;
+        min-height: 216px !important;
+        padding: 4px 5px 2px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(0,0,0,.10) !important;
+      }
 
       #quickGrid .cnProd .cnImg {
-        height: 204px !important;
-        max-height: 204px !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: auto !important;
+        border-radius: 9px !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 6px 8px 8px !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        min-height: 2.35em !important;
+        max-height: 2.35em !important;
+        overflow: hidden !important;
+        font-size: .70rem !important;
+        line-height: 1.12 !important;
+        margin: 0 !important;
+      }
+
+      #quickGrid .cnBadges {
+        margin-top: 4px !important;
+        min-height: 16px !important;
+        max-height: 17px !important;
+        overflow: hidden !important;
+      }
+
+      #quickGrid .cnBadges span {
+        padding: 2px 5px !important;
+        font-size: .50rem !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: auto !important;
+        padding-top: 6px !important;
+        font-size: .56rem !important;
+      }
+
+      #quickGrid .cnMeta b {
+        font-size: .64rem !important;
+      }
+
+      #quickGrid .cnRow {
+        margin-top: 6px !important;
+        gap: 5px !important;
+      }
+
+      #quickGrid .cnRow .btn {
+        min-height: 26px !important;
+        padding: 4px 6px !important;
+        border-radius: 9px !important;
+        font-size: .56rem !important;
+      }
+
+      .floatingStoreCTA__desktop {
+        min-height: 42px !important;
+        padding: 10px 14px !important;
+        border-radius: 14px !important;
+        font-size: .84rem !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1080px) {
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(330px, .96fr) minmax(390px, 1.04fr) !important;
+      }
+
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+
+      #quickGrid .cnProd {
+        height: 358px !important;
+        min-height: 358px !important;
+        max-height: 358px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 226px !important;
+        min-height: 226px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-top: 12px !important;
+        gap: 8px !important;
+      }
+
+      .hero {
+        padding: 8px 8px 8px !important;
+        border-radius: 18px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 5px !important;
+      }
+
+      .hero .chips,
+      .hero .chips--heroCompact,
+      .chips--heroCompact,
+      .hero__sub--banner {
+        display: none !important;
+      }
+
+      .hero__actions {
+        margin-top: 4px !important;
+        gap: 5px !important;
+      }
+
+      .hero__actions .goLojaHint,
+      .goLojaHint {
+        display: block !important;
+        order: -1 !important;
+        margin: 0 2px 0 !important;
+        padding: 7px 10px !important;
+        border-radius: 13px !important;
+        border: 1px solid rgba(215,176,88,.17) !important;
+        background:
+          radial-gradient(260px 52px at 50% 50%, rgba(232,196,108,.20), rgba(215,176,88,.075) 44%, rgba(0,0,0,.12) 100%),
+          linear-gradient(180deg, rgba(255,255,255,.026), rgba(0,0,0,.18)) !important;
+        box-shadow:
+          0 0 22px rgba(215,176,88,.12),
+          inset 0 1px 0 rgba(255,255,255,.035) !important;
+        color: rgba(255,255,255,.76) !important;
+        font-size: clamp(.62rem, 2.42vw, .72rem) !important;
+        line-height: 1 !important;
+        letter-spacing: .01em !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 38px !important;
+        padding: 8px 10px !important;
+        border-radius: 14px !important;
+      }
+
+      .sectionNav {
+        margin-top: 6px !important;
+        margin-bottom: 6px !important;
+        padding: 6px 7px !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 7px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 9px 10px 7px !important;
+      }
+
+      #featured.featured {
+        padding: 8px 10px 10px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: minmax(118px, 38%) minmax(0, 1fr) !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+      }
+
+      #featured .cnCard,
+      #featured .cnFeaturedMedia,
+      #featured .cnFeaturedInfo {
+        border-radius: 16px !important;
+        min-height: 0 !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        padding: 7px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        margin: auto !important;
+      }
+
+      #featured .cnCardPad {
+        padding: 9px 10px !important;
+        justify-content: flex-start !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(.92rem, 4vw, 1.15rem) !important;
+        line-height: 1.06 !important;
+      }
+
+      #featured .cnFeatureSummary,
+      #featured .cnSub {
+        margin-top: 4px !important;
+        font-size: .66rem !important;
+        line-height: 1.12 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 6px !important;
+        padding: 7px 8px !important;
+        border-radius: 12px !important;
+      }
+
+      #featured .cnPromoLabel {
+        font-size: .54rem !important;
+        letter-spacing: .11em !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 1.30rem !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked,
+      #featured .cnScarcityLine {
+        font-size: .58rem !important;
+        line-height: 1.1 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 5px !important;
+        gap: 4px !important;
+      }
+
+      #featured .cnBadges span {
+        padding: 2px 5px !important;
+        font-size: .54rem !important;
+      }
+
+      #featured .cnRow {
+        margin-top: 6px !important;
+        gap: 5px !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 30px !important;
+        padding: 5px 6px !important;
+        border-radius: 10px !important;
+        font-size: .58rem !important;
+      }
+
+      #featured .cnRow .cnActionPrimary,
+      #featured .cnRow .btn--buy-primary {
+        grid-column: 1 / -1 !important;
+        min-height: 32px !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 5px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        font-size: .58rem !important;
+      }
+    }
+
+    /* ==========================================================
+       PATCH 3Q — CORREÇÃO SELEÇÃO DO DIA + PROPORÇÃO FINAL
+       Escopo: somente index.html.
+       ========================================================== */
+
+    #sec-produto-do-dia > .imperialNote { display: none !important; }
+
+    .featuredHeaderCount{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:28px; padding:6px 11px; border-radius:999px;
+      border:1px solid rgba(215,176,88,.14);
+      background:rgba(0,0,0,.22); color:rgba(255,255,255,.62);
+      font-size:.72rem; line-height:1; white-space:nowrap;
+    }
+    .featuredHeaderCount b{ color:rgba(224,195,107,.86); font-weight:850; }
+    #sec-produto-do-dia .panel__right--featured{
+      display:inline-flex!important; align-items:center!important;
+      justify-content:flex-end!important; gap:8px!important; flex-wrap:nowrap!important;
+    }
+
+    @media (min-width:861px){
+      .page{ width:min(1120px,calc(100vw - 30px))!important; gap:7px!important; }
+      .hero{ margin-top:22px!important; margin-bottom:6px!important; padding:10px 13px 11px!important; }
+      .sectionNav{ margin-top:6px!important; margin-bottom:7px!important; }
+
+      #sec-produto-do-dia{ max-width:1120px!important; margin:6px auto 8px!important; border-radius:18px!important; overflow:hidden!important; }
+      #sec-produto-do-dia .panel__head{
+        display:grid!important; grid-template-columns:minmax(0,1fr) auto!important;
+        align-items:center!important; gap:14px!important; min-height:46px!important;
+        padding:9px 14px!important; margin:0!important;
+      }
+      #sec-produto-do-dia .panel__head h2{ font-size:.88rem!important; letter-spacing:.34em!important; line-height:1!important; margin:0!important; }
+      #sec-produto-do-dia .panel__head p{ font-size:.74rem!important; line-height:1.15!important; margin-top:4px!important; }
+      #sec-produto-do-dia .panel__right--featured #refresh{
+        min-height:28px!important; padding:5px 11px!important; border-radius:999px!important;
+        font-size:.66rem!important; white-space:nowrap!important;
+      }
+
+      #featured.featured{ padding:10px 14px 12px!important; }
+      #featured .cnFeaturedWrap{
+        display:grid!important; grid-template-columns:minmax(400px,.98fr) minmax(440px,1.02fr)!important;
+        gap:10px!important; align-items:stretch!important; margin:0!important;
+      }
+      #featured .cnCard,#featured .cnFeaturedMedia,#featured .cnFeaturedInfo{
+        height:326px!important; min-height:326px!important; max-height:326px!important;
+        border-radius:16px!important; overflow:hidden!important;
+      }
+      #featured .cnFeaturedMedia,#featured .cnCard:first-child{
+        display:flex!important; align-items:center!important; justify-content:center!important; padding:8px!important;
+      }
+      #featured .cnFeaturedMedia .cnMediaShell,#featured .cnCard:first-child .cnMediaShell{
+        width:100%!important; height:100%!important; display:flex!important; align-items:center!important; justify-content:center!important;
+      }
+      #featured .cnFeaturedMedia .cnImg,#featured .cnCard:first-child .cnImg{
+        width:auto!important; height:100%!important; max-width:100%!important; max-height:100%!important;
+        object-fit:contain!important; object-position:center!important; margin:auto!important; border-radius:12px!important;
+      }
+      #featured .cnCardPad,#featured .cnFeaturedInfo .cnCardPad{
+        height:100%!important; min-height:0!important; display:flex!important; flex-direction:column!important;
+        justify-content:center!important; padding:10px 13px!important;
+      }
+      #featured .cnTitle{ margin:0!important; max-width:100%!important; }
+      #featured .cnTitleMain{ font-size:clamp(1.32rem,1.62vw,1.78rem)!important; line-height:1.03!important; }
+      #featured .cnTitleSub,#featured .cnFeatureSummary,#featured .cnSub{ margin-top:4px!important; font-size:.72rem!important; line-height:1.15!important; }
+      #featured .cnPromoBox{ margin-top:7px!important; padding:8px 10px!important; border-radius:13px!important; }
+      #featured .cnPromoLabel{ min-height:18px!important; font-size:.58rem!important; letter-spacing:.13em!important; }
+      #featured .cnCurrentPrice{ font-size:1.60rem!important; line-height:1!important; }
+      #featured .cnPromoPrices{ margin-top:4px!important; }
+      #featured .cnPromoText,#featured .cnPromoChecked,#featured .cnScarcityLine{ font-size:.62rem!important; line-height:1.12!important; }
+      #featured .cnBadges{ margin-top:6px!important; gap:5px!important; max-height:22px!important; overflow:hidden!important; }
+      #featured .cnBadges span{ padding:2px 6px!important; font-size:.56rem!important; }
+      #featured .cnRow{ margin-top:7px!important; gap:6px!important; }
+      #featured .cnRow .btn{ min-height:28px!important; padding:5px 8px!important; border-radius:10px!important; font-size:.60rem!important; }
+      #featured .cnActionPrimary,#featured .cnRow .btn--buy-primary{
+        grid-column:1/-1!important; min-height:31px!important; font-size:.64rem!important; white-space:nowrap!important;
+      }
+      #featured .cnMeta{ margin-top:5px!important; padding:0!important; border:0!important; background:transparent!important; font-size:.58rem!important; }
+
+      #sec-vitrine-rapida{ max-width:1120px!important; margin:8px auto 16px!important; border-radius:18px!important; }
+      #sec-vitrine-rapida .panel__head{ padding:9px 14px 7px!important; margin-bottom:6px!important; }
+      #sec-vitrine-rapida .quickTools{ padding:0 14px!important; gap:6px!important; margin:0 0 7px!important; }
+
+      #quickGrid.cnGrid{
+        display:grid!important; grid-template-columns:repeat(4,minmax(0,1fr))!important;
+        gap:6px!important; padding:0 14px 12px!important; align-items:stretch!important;
+      }
+      #quickGrid .cnProd{
+        height:360px!important; min-height:360px!important; max-height:360px!important;
+        border-radius:14px!important; display:flex!important; flex-direction:column!important;
+      }
+      #quickGrid .cnProd > .cnMediaShell{
+        height:235px!important; min-height:235px!important; padding:4px 5px 2px!important;
+        display:flex!important; align-items:center!important; justify-content:center!important;
+        background:rgba(0,0,0,.10)!important;
+      }
+      #quickGrid .cnProd .cnImg{
+        width:100%!important; height:100%!important; max-width:100%!important; max-height:100%!important;
+        object-fit:contain!important; object-position:center!important; margin:auto!important; border-radius:9px!important;
+      }
+      #quickGrid .cnProd .cnProdPad{
+        flex:1 1 auto!important; display:flex!important; flex-direction:column!important; padding:6px 8px 8px!important;
+      }
+      #quickGrid .cnProd h3{
+        min-height:2.35em!important; max-height:2.35em!important; font-size:.70rem!important;
+        line-height:1.12!important; overflow:hidden!important;
+      }
+      #quickGrid .cnBadges{ margin-top:4px!important; min-height:16px!important; max-height:17px!important; overflow:hidden!important; }
+      #quickGrid .cnBadges span{ padding:2px 5px!important; font-size:.50rem!important; }
+      #quickGrid .cnMeta{ margin-top:auto!important; padding-top:6px!important; font-size:.56rem!important; }
+      #quickGrid .cnMeta b{ font-size:.64rem!important; }
+      #quickGrid .cnRow{ margin-top:6px!important; gap:5px!important; }
+      #quickGrid .cnRow .btn{ min-height:26px!important; padding:4px 6px!important; border-radius:9px!important; font-size:.56rem!important; }
+    }
+
+    @media (min-width:861px) and (max-width:1080px){
+      #featured .cnFeaturedWrap{ grid-template-columns:minmax(330px,.96fr) minmax(390px,1.04fr)!important; }
+      #quickGrid.cnGrid{ grid-template-columns:repeat(3,minmax(0,1fr))!important; }
+      #quickGrid .cnProd{ height:374px!important; min-height:374px!important; max-height:374px!important; }
+      #quickGrid .cnProd > .cnMediaShell{ height:246px!important; min-height:246px!important; }
+    }
+
+    @media (max-width:640px){
+      .featuredHeaderCount{ display:none!important; }
+      .page{ padding-top:10px!important; gap:7px!important; }
+      .hero{ padding:7px!important; border-radius:17px!important; }
+      .hero__brand--banner{ gap:5px!important; }
+      .hero .chips,.hero .chips--heroCompact,.chips--heroCompact,.hero__sub--banner{ display:none!important; }
+
+      .hero__actions{ margin-top:4px!important; gap:5px!important; }
+      .hero__actions .goLojaHint,.goLojaHint{
+        display:block!important; order:-1!important; margin:0 2px!important; padding:7px 10px!important;
+        border-radius:13px!important; border:1px solid rgba(215,176,88,.17)!important;
+        background:radial-gradient(260px 52px at 50% 50%,rgba(232,196,108,.20),rgba(215,176,88,.075) 44%,rgba(0,0,0,.12) 100%),
+                   linear-gradient(180deg,rgba(255,255,255,.026),rgba(0,0,0,.18))!important;
+        box-shadow:0 0 22px rgba(215,176,88,.12), inset 0 1px 0 rgba(255,255,255,.035)!important;
+        color:rgba(255,255,255,.76)!important; font-size:clamp(.62rem,2.42vw,.72rem)!important;
+        line-height:1!important; white-space:nowrap!important; text-align:center!important; overflow:hidden!important; text-overflow:ellipsis!important;
+      }
+      .hero__actions #goLoja{ min-height:38px!important; padding:8px 10px!important; border-radius:14px!important; }
+      .sectionNav{ margin-top:6px!important; margin-bottom:6px!important; padding:6px 7px!important; }
+
+      #sec-produto-do-dia{ margin-top:7px!important; border-radius:18px!important; }
+      #sec-produto-do-dia .panel__head{ padding:9px 10px 7px!important; }
+      #sec-produto-do-dia .panel__head p{ display:none!important; }
+
+      #featured.featured{ padding:8px 10px 10px!important; }
+      #featured .cnFeaturedWrap{
+        display:grid!important; grid-template-columns:1fr!important; gap:8px!important; align-items:stretch!important;
+      }
+      #featured .cnCard,#featured .cnFeaturedMedia,#featured .cnFeaturedInfo{
+        border-radius:16px!important; min-height:0!important; height:auto!important; max-height:none!important;
+      }
+      #featured .cnFeaturedMedia,#featured .cnCard:first-child{
+        padding:7px!important; display:flex!important; align-items:center!important; justify-content:center!important;
+      }
+      #featured .cnFeaturedMedia .cnImg,#featured .cnCard:first-child .cnImg{
+        width:min(86%,520px)!important; height:auto!important; max-height:42svh!important;
+        object-fit:contain!important; margin:auto!important; border-radius:13px!important;
+      }
+      #featured .cnCardPad{
+        height:auto!important; min-height:0!important; display:block!important; padding:10px 11px 12px!important;
+      }
+      #featured .cnTitleMain{
+        display:-webkit-box!important; -webkit-line-clamp:2!important; -webkit-box-orient:vertical!important;
+        overflow:hidden!important; font-size:clamp(1.18rem,5.3vw,1.45rem)!important; line-height:1.04!important;
+      }
+      #featured .cnTitleSub,#featured .cnFeatureSummary,#featured .cnSub{ margin-top:4px!important; font-size:.70rem!important; line-height:1.16!important; }
+      #featured .cnFeatureSummary{ display:none!important; }
+      #featured .cnPromoBox{ margin-top:7px!important; padding:8px 9px!important; border-radius:13px!important; }
+      #featured .cnPromoLabel{ font-size:.58rem!important; letter-spacing:.11em!important; }
+      #featured .cnCurrentPrice{ font-size:1.30rem!important; }
+      #featured .cnPromoText{ display:none!important; }
+      #featured .cnPromoChecked,#featured .cnScarcityLine{ font-size:.62rem!important; line-height:1.12!important; }
+      #featured .cnBadges{ margin-top:6px!important; gap:5px!important; max-height:24px!important; overflow:hidden!important; }
+      #featured .cnBadges span{ padding:2px 6px!important; font-size:.58rem!important; }
+      #featured .cnRow{ margin-top:7px!important; gap:6px!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; }
+      #featured .cnRow .btn{
+        min-height:32px!important; padding:6px 7px!important; border-radius:10px!important;
+        font-size:.66rem!important; white-space:normal!important; line-height:1.08!important;
+      }
+      #featured .cnRow .cnActionPrimary,#featured .cnRow .btn--buy-primary{
+        grid-column:1/-1!important; min-height:35px!important; font-size:.70rem!important;
+      }
+      #featured .cnActionTertiary{ display:none!important; }
+      #featured .cnMeta{ margin-top:6px!important; padding:0!important; border:0!important; background:transparent!important; font-size:.62rem!important; }
+    }
+
+
+    /* ==========================================================
+       PATCH 3R — SELEÇÃO DO DIA SEM CORTES + PROPORÇÃO ESTÁVEL
+       Escopo: index.html. Não altera script.js/loja.js.
+       ========================================================== */
+
+    #sec-produto-do-dia > .imperialNote {
+      display: none !important;
+    }
+
+    #featured,
+    #featured * {
+      box-sizing: border-box !important;
+    }
+
+    #featured .cnTitle,
+    #featured .cnTitleMain,
+    #featured .cnTitleSub,
+    #featured .cnFeatureSummary,
+    #featured .cnSub,
+    #featured .cnPromoBox,
+    #featured .cnPromoText,
+    #featured .cnPromoChecked,
+    #featured .cnScarcityLine,
+    #featured .cnMeta,
+    #featured .cnBadges,
+    #featured .cnRow {
+      max-height: none !important;
+      overflow: visible !important;
+      clip-path: none !important;
+      transform: none !important;
+    }
+
+    #featured .cnTitleMain,
+    #featured .cnTitleSub {
+      display: block !important;
+      white-space: normal !important;
+      text-overflow: clip !important;
+      -webkit-line-clamp: unset !important;
+      -webkit-box-orient: initial !important;
+    }
+
+    @media (min-width: 861px) {
+      #sec-produto-do-dia {
+        max-width: 1120px !important;
+        margin: 6px auto 8px !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        align-items: center !important;
+        gap: 12px !important;
+        min-height: 42px !important;
+        padding: 8px 12px !important;
+        margin: 0 !important;
+        border-bottom: 1px solid rgba(215,176,88,.10) !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        margin: 0 !important;
+        font-size: .84rem !important;
+        line-height: 1 !important;
+        letter-spacing: .32em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        margin: 4px 0 0 !important;
+        font-size: .72rem !important;
+        line-height: 1.15 !important;
+      }
+
+      #sec-produto-do-dia .panel__right--featured {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+      }
+
+      .featuredHeaderCount {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 28px !important;
+        padding: 6px 11px !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(215,176,88,.14) !important;
+        background: rgba(0,0,0,.22) !important;
+        color: rgba(255,255,255,.68) !important;
+        font-size: .70rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+      }
+
+      .featuredHeaderCount b {
+        color: rgba(224,195,107,.92) !important;
+        font-weight: 850 !important;
+      }
+
+      #sec-produto-do-dia .panel__right--featured #refresh {
+        min-height: 28px !important;
+        padding: 5px 11px !important;
+        border-radius: 999px !important;
+        font-size: .66rem !important;
+        white-space: nowrap !important;
+      }
+
+      #featured.featured {
+        padding: 10px 12px 12px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: minmax(400px, .96fr) minmax(450px, 1.04fr) !important;
+        gap: 12px !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnCard,
+      #featured .cnFeaturedMedia,
+      #featured .cnFeaturedInfo {
+        height: auto !important;
+        min-height: 318px !important;
+        max-height: none !important;
+        border-radius: 16px !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 9px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: auto !important;
+        height: min(300px, 100%) !important;
+        max-width: 92% !important;
+        max-height: 300px !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        margin: auto !important;
+        border-radius: 12px !important;
+      }
+
+      #featured .cnFeaturedInfo {
+        display: flex !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 12px 16px !important;
+      }
+
+      #featured .cnTitle {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        text-wrap: balance !important;
+      }
+
+      #featured .cnTitleMain {
+        font-size: clamp(1.24rem, 1.55vw, 1.62rem) !important;
+        line-height: 1.04 !important;
+        letter-spacing: .02em !important;
+      }
+
+      #featured .cnTitleSub {
+        margin-top: 1px !important;
+        font-size: clamp(1.02rem, 1.24vw, 1.24rem) !important;
+        line-height: 1.05 !important;
+        opacity: .96 !important;
+      }
+
+      #featured .cnFeatureSummary,
+      #featured .cnSub {
+        margin: 5px 0 0 !important;
+        font-size: .72rem !important;
+        line-height: 1.18 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 8px !important;
+        padding: 8px 10px !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnPromoLabel {
+        min-height: 18px !important;
+        font-size: .58rem !important;
+        letter-spacing: .13em !important;
+      }
+
+      #featured .cnPromoPrices {
+        margin-top: 4px !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 1.58rem !important;
+        line-height: 1 !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked,
+      #featured .cnScarcityLine {
+        font-size: .62rem !important;
+        line-height: 1.16 !important;
+      }
+
+      #featured .cnBadges {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 5px !important;
+        margin-top: 7px !important;
+      }
+
+      #featured .cnBadges span {
+        padding: 2px 6px !important;
+        font-size: .56rem !important;
+      }
+
+      #featured .cnRow {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 29px !important;
+        padding: 5px 8px !important;
+        border-radius: 10px !important;
+        font-size: .62rem !important;
+        line-height: 1.08 !important;
+        white-space: nowrap !important;
+      }
+
+      #featured .cnRow .cnActionPrimary,
+      #featured .cnRow .btn--buy-primary {
+        grid-column: 1 / -1 !important;
+        min-height: 32px !important;
+        font-size: .64rem !important;
+      }
+
+      #featured .cnActionTertiary {
+        display: none !important;
+      }
+
+      #featured .cnScarcityLine {
+        margin-top: 7px !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 5px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        font-size: .58rem !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #sec-produto-do-dia {
+        margin-top: 7px !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 9px 10px 7px !important;
+      }
+
+      #sec-produto-do-dia .panel__head p,
+      .featuredHeaderCount {
+        display: none !important;
+      }
+
+      #featured.featured {
+        padding: 8px 10px 10px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnCard,
+      #featured .cnFeaturedMedia,
+      #featured .cnFeaturedInfo {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        padding: 7px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: min(84%, 500px) !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        margin: auto !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        height: auto !important;
+        min-height: 0 !important;
+        display: block !important;
+        padding: 10px 11px 12px !important;
+      }
+
+      #featured .cnTitleMain,
+      #featured .cnTitleSub {
+        display: block !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        max-height: none !important;
+        -webkit-line-clamp: unset !important;
+      }
+
+      #featured .cnTitleMain {
+        font-size: clamp(1.06rem, 4.6vw, 1.32rem) !important;
+        line-height: 1.08 !important;
+      }
+
+      #featured .cnTitleSub {
+        margin-top: 2px !important;
+        font-size: clamp(.92rem, 4vw, 1.08rem) !important;
+        line-height: 1.08 !important;
+      }
+
+      #featured .cnFeatureSummary {
+        display: none !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 7px !important;
+        padding: 8px 9px !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnPromoLabel {
+        font-size: .58rem !important;
+        letter-spacing: .11em !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 1.34rem !important;
+      }
+
+      #featured .cnPromoText {
+        display: none !important;
+      }
+
+      #featured .cnPromoChecked,
+      #featured .cnScarcityLine {
+        font-size: .62rem !important;
+        line-height: 1.12 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 6px !important;
+        gap: 5px !important;
+      }
+
+      #featured .cnBadges span {
+        padding: 2px 6px !important;
+        font-size: .58rem !important;
+      }
+
+      #featured .cnRow {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        margin-top: 7px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 32px !important;
+        padding: 6px 7px !important;
+        border-radius: 10px !important;
+        font-size: .66rem !important;
+        white-space: normal !important;
+        line-height: 1.08 !important;
+      }
+
+      #featured .cnRow .cnActionPrimary,
+      #featured .cnRow .btn--buy-primary {
+        grid-column: 1 / -1 !important;
+        min-height: 35px !important;
+        font-size: .70rem !important;
+      }
+
+      #featured .cnActionTertiary {
+        display: none !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 6px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        font-size: .62rem !important;
       }
     }
 
   </style>
+
 </head>
 
 <body id="topo">
@@ -9581,8 +11772,8 @@
 
   <!-- CTA flutuante (alto padrão) -->
   <div class="floatingStoreCTA" aria-hidden="false">
-    <a class="floatingStoreCTA__desktop" href="./loja.html" id="floatingLoja">
-      🛍️ Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> produtos
+    <a class="floatingStoreCTA__desktop" href="./loja.html" id="floatingLoja" aria-label="Abrir loja completa com todos os produtos">
+      🛍️ Loja completa • <span data-total-products>—</span> produtos
     </a>
     <a class="floatingStoreCTA__mobile" href="#sec-produto-do-dia" aria-label="Ir para Seleção do Dia">
       ⭐ Seleção
@@ -9636,8 +11827,8 @@
       </div>
 
       <div class="hero__actions">
+        <div class="goLojaHint">Achados premium selecionados para compra rápida e segura.</div>
         <a class="btn btn--gold" href="./loja.html" id="goLoja"><span class="goLojaTextDesktop">🛍️ Ver todos os <span data-total-products>—</span> produtos</span><span class="goLojaTextMobile">🛍️ Ver todos os <span data-total-products>—</span> produtos</span></a>
-        <div class="goLojaHint">Toque aqui para abrir a loja completa com todos os achados.</div>
 
         <details class="heroMore">
           <summary class="heroMore__summary"><span class="heroMore__toggleIcon" aria-hidden="true"></span><span>Canais oficiais</span></summary>
@@ -9686,15 +11877,13 @@
           <h2>Seleção do Dia</h2>
           <p>Curadoria especial para compra rápida e segura.</p>
         </div>
-        <div class="panel__right">
+        <div class="panel__right panel__right--featured">
+          <div class="featuredHeaderCount" aria-label="Curadoria completa">
+            <b>Curadoria completa</b> · <span data-total-products>—</span> produtos selecionados
+          </div>
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
         </div>
       </div>
-
-      <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
-        <div><b>Curadoria completa</b> · <span data-total-products>—</span> produtos selecionados</div>
-      </div>
-
       <div class="featured" id="featured">
         <!-- preenchido pelo script.js -->
       </div>
