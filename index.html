@@ -11758,6 +11758,162 @@
       }
     }
 
+
+    /* ==========================================================
+       AJUSTE CIRÚRGICO 2026-05-09 — SELEÇÃO DO DIA + LOGO RODAPÉ
+       - mantém o botão Atualizar
+       - remove o contador lateral do cabeçalho
+       - alinha imagem e informações com mesma presença visual no desktop
+       - troca a logo pequena do rodapé por logo-cn-round.png sem quebrar estrutura
+       ========================================================== */
+
+    #sec-produto-do-dia .featuredHeaderCount {
+      display: none !important;
+    }
+
+    #sec-produto-do-dia .panel__right--featured {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 0 !important;
+      flex: 0 0 auto !important;
+      min-width: 0 !important;
+    }
+
+    #sec-produto-do-dia .panel__right--featured #refresh {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      white-space: nowrap !important;
+    }
+
+    .footerLogo {
+      width: 18px !important;
+      height: 18px !important;
+      border-radius: 50% !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      opacity: 1 !important;
+      background: rgba(0,0,0,.24) !important;
+      border: 1px solid rgba(224,195,107,.18) !important;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.035),
+        0 0 10px rgba(224,195,107,.18),
+        0 6px 14px rgba(0,0,0,.22) !important;
+      filter: saturate(1.08) contrast(1.05) brightness(1.08) !important;
+      transform: translateY(-.5px) !important;
+      flex: 0 0 18px !important;
+    }
+
+    .footer .sig--brand {
+      gap: 7px !important;
+      align-items: center !important;
+    }
+
+    @media (min-width: 861px) {
+      #sec-produto-do-dia .panel__head {
+        grid-template-columns: minmax(0, 1fr) auto !important;
+      }
+
+      #sec-produto-do-dia .panel__right--featured #refresh {
+        min-height: 28px !important;
+        padding: 5px 12px !important;
+        border-radius: 999px !important;
+        font-size: .66rem !important;
+        line-height: 1 !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnFeaturedWrap > * {
+        align-self: stretch !important;
+        height: auto !important;
+        min-height: 352px !important;
+      }
+
+      #featured .cnCard,
+      #featured .cnFeaturedMedia,
+      #featured .cnFeaturedInfo {
+        height: 100% !important;
+        min-height: 352px !important;
+        border-radius: 16px !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 328px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 92% !important;
+        max-height: 328px !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        margin: auto !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnFeaturedInfo {
+        display: flex !important;
+        align-items: stretch !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnFeaturedInfo > .cnCardPad {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 352px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 13px 17px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footerLogo {
+        width: 15px !important;
+        height: 15px !important;
+        flex-basis: 15px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        align-items: center !important;
+        gap: 8px !important;
+      }
+
+      #sec-produto-do-dia .panel__right--featured #refresh {
+        min-height: 26px !important;
+        padding: 4px 9px !important;
+        border-radius: 999px !important;
+        font-size: .62rem !important;
+        line-height: 1 !important;
+      }
+    }
+
   </style>
 
 </head>
@@ -11878,9 +12034,6 @@
           <p>Curadoria especial para compra rápida e segura.</p>
         </div>
         <div class="panel__right panel__right--featured">
-          <div class="featuredHeaderCount" aria-label="Curadoria completa">
-            <b>Curadoria completa</b> · <span data-total-products>—</span> produtos selecionados
-          </div>
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
         </div>
       </div>
@@ -12006,7 +12159,7 @@
 
     <footer class="footer">
       <div class="footer__left">
-        <span class="sig sig--brand"><img class="footerLogo" src="assets/logo-oficial-circular-glow.png" alt="" onerror="this.onerror=null; this.src='assets/logo.png';" /><span>Cosa Nostra</span></span>
+        <span class="sig sig--brand"><img class="footerLogo" src="assets/logo-cn-round.png" alt="" onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='assets/logo-oficial-circular-glow.png'; return;} this.onerror=null; this.src='assets/logo.png';" /><span>Cosa Nostra</span></span>
         <span class="muted">© <span id="year"></span> — A Família das Ideias</span>
       </div>
 
