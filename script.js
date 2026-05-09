@@ -418,11 +418,12 @@
 
   function getBuyCtaText(p, compact) {
     var promo = getPromoInfo(p);
+    if (promo.buyCta) return promo.buyCta;
 
-    // Vitrine Rápida precisa ser direta e curta para o card ficar limpo.
+    // Na Vitrine Rápida, o CTA precisa ser curto e direto.
     if (compact) return 'Comprar';
 
-    // Produto do Dia mantém CTA comercial, sem alongar demais o botão.
+    // No Produto do Dia, mantém o apelo de desconto sem alongar demais o botão.
     if (promo.current || promo.discount) return '🔥 Comprar com desconto';
 
     return '🔥 Comprar agora';
@@ -1277,25 +1278,6 @@
       copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
     };
     row.appendChild(cId);
-
-    var cLink = document.createElement('button');
-    cLink.className = 'btn btn--glass btn--tiny cnQuickTertiary';
-    cLink.type = 'button';
-    cLink.textContent = 'Copiar Link';
-    cLink.onclick = function () {
-      var link = getLink(p);
-
-      trackEvent('click_copy_link_home', getTrackProduct(p, {
-        placement: 'quick_copy_link',
-        source_block: 'vitrine_rapida',
-        position_on_page: idx + 1,
-        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-      }));
-
-      copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
-    };
-    row.appendChild(cLink);
 
     pad.appendChild(row);
     card.appendChild(pad);
