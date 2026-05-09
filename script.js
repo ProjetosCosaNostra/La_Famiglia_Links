@@ -44,6 +44,11 @@
    - quando dois produtos disputam a mesma quick_home_order, vence o produto editado/publicado mais recentemente
    - evita que um produto antigo sobrescreva a posição recém-definida via issue
    - remove Produto do Dia da Vitrine Rápida para não duplicar destaque na home
+
+   ✅ PATCH MOBILE UX + PREÇO/GALERIA (2026-05-09):
+   - CTA principal agora fala compra, não apenas visualização
+   - suporte a preço/desconto editável via produtos.json
+   - suporte a galeria de imagens por produto na home
 */
 (function () {
   'use strict';
@@ -256,6 +261,327 @@
 
   function getImage(p) {
     return p.image_url || p.image || p.img || p.imageUrl || p.imageURL || p.image_path || p.imagePath || p.media || p.cover || '';
+  }
+
+  function firstFilled(values) {
+    for (var i = 0; i < values.length; i++) {
+      var s = trim(values[i]);
+      if (s) return s;
+    }
+    return '';
+  }
+
+  function looksLikeImageUrl(v) {
+    var s = trim(v);
+    var x = lower(s);
+    if (!s) return false;
+    if (x.indexOf('data:image/') === 0) return true;
+    if (x.indexOf('github.com/user-attachments/assets/') >= 0) return true;
+    if (x.indexOf('raw.githubusercontent.com/') >= 0) return true;
+    if (/\.(png|jpg|jpeg|webp|gif)(\?.*)?$/i.test(s)) return true;
+    return false;
+  }
+
+  function pushImageCandidate(out, value) {
+    if (value === null || value === undefined) return;
+
+    if (Array.isArray(value)) {
+      for (var i = 0; i < value.length; i++) pushImageCandidate(out, value[i]);
+      return;
+    }
+
+    if (typeof value === 'object') {
+      pushImageCandidate(out, value.url || value.src || value.image || value.image_url || value.href || '');
+      return;
+    }
+
+    var raw = trim(value);
+    if (!raw) return;
+
+    var parts = raw.split(/[\n,;|]+/);
+    for (var j = 0; j < parts.length; j++) {
+      var item = ensureHttpUrl(trim(parts[j]));
+      if (!item || !looksLikeImageUrl(item)) continue;
+      var key = lower(item);
+      var exists = false;
+      for (var k = 0; k < out.length; k++) {
+        if (lower(out[k]) === key) { exists = true; break; }
+      }
+      if (!exists) out.push(item);
+    }
+  }
+
+  function getImages(p) {
+    var out = [];
+    if (!p) return out;
+
+    pushImageCandidate(out, getImage(p));
+    pushImageCandidate(out, p.images);
+    pushImageCandidate(out, p.imagens);
+    pushImageCandidate(out, p.gallery);
+    pushImageCandidate(out, p.galeria);
+    pushImageCandidate(out, p.gallery_images);
+    pushImageCandidate(out, p.image_gallery);
+    pushImageCandidate(out, p.extra_images);
+    pushImageCandidate(out, p.images_extra);
+    pushImageCandidate(out, p.additional_images);
+    pushImageCandidate(out, p.product_images);
+
+    for (var i = 2; i <= 12; i++) {
+      pushImageCandidate(out, p['image_' + i]);
+      pushImageCandidate(out, p['imagem_' + i]);
+      pushImageCandidate(out, p['image' + i]);
+      pushImageCandidate(out, p['imagem' + i]);
+    }
+
+    return out;
+  }
+
+  function formatCheckedDate(v) {
+    var s = trim(v);
+    if (!s) return '';
+    if (/^\d{4}-\d{2}-\d{2}T/.test(s)) return formatIsoToPt(s);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
+      return s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4);
+    }
+    return s;
+  }
+
+  function getPromoInfo(p) {
+    p = p || {};
+    var current = firstFilled([
+      p.price_text,
+      p.current_price_text,
+      p.price_current_text,
+      p.sale_price_text,
+      p.preco_texto,
+      p.preco_atual,
+      p.preco,
+      p.price_current,
+      p.current_price,
+      p.price
+    ]);
+
+    var old = firstFilled([
+      p.old_price_text,
+      p.price_old_text,
+      p.price_before_text,
+      p.previous_price_text,
+      p.preco_anterior,
+      p.preco_de,
+      p.old_price,
+      p.price_old,
+      p.previous_price
+    ]);
+
+    var discount = firstFilled([
+      p.discount_text,
+      p.desconto_texto,
+      p.desconto,
+      p.sale_badge,
+      p.offer_badge,
+      p.promo_badge
+    ]);
+
+    var checked = firstFilled([
+      p.price_checked_at,
+      p.price_checked,
+      p.preco_conferido_em,
+      p.last_price_checked,
+      p.price_last_checked
+    ]);
+
+    var note = firstFilled([
+      p.promo_text,
+      p.offer_text,
+      p.price_note,
+      p.preco_observacao,
+      p.urgency_text
+    ]);
+
+    var buyCta = firstFilled([
+      p.buy_cta,
+      p.cta_buy_text,
+      p.cta_text
+    ]);
+
+    return {
+      has: !!(current || old || discount || checked || note),
+      current: current,
+      old: old,
+      discount: discount,
+      checked: formatCheckedDate(checked),
+      note: note,
+      buyCta: buyCta
+    };
+  }
+
+  function getBuyCtaText(p, compact) {
+    var promo = getPromoInfo(p);
+    if (promo.buyCta) return promo.buyCta;
+    if (promo.current || promo.discount) return compact ? 'Comprar oferta' : '🔥 Comprar com desconto no Mercado Livre';
+    return compact ? 'Comprar agora' : '🔥 Comprar agora no Mercado Livre';
+  }
+
+  function createPromoBox(p, compact) {
+    var promo = getPromoInfo(p);
+    if (!promo.has) return null;
+
+    var box = document.createElement('div');
+    box.className = compact ? 'cnPromoBox cnPromoBox--compact' : 'cnPromoBox';
+
+    var label = document.createElement('div');
+    label.className = 'cnPromoLabel';
+    var labelText = document.createElement('span');
+    labelText.textContent = promo.current ? 'Preço em destaque' : 'Oferta em destaque';
+    label.appendChild(labelText);
+
+    if (promo.discount) {
+      var discount = document.createElement('span');
+      discount.className = 'cnPromoDiscount';
+      discount.textContent = promo.discount;
+      label.appendChild(discount);
+    }
+
+    box.appendChild(label);
+
+    if (promo.current || promo.old) {
+      var prices = document.createElement('div');
+      prices.className = 'cnPromoPrices';
+      if (promo.current) {
+        var current = document.createElement('strong');
+        current.className = 'cnCurrentPrice';
+        current.textContent = promo.current;
+        prices.appendChild(current);
+      }
+      if (promo.old) {
+        var old = document.createElement('span');
+        old.className = 'cnOldPrice';
+        old.textContent = promo.old;
+        prices.appendChild(old);
+      }
+      box.appendChild(prices);
+    }
+
+    if (promo.note) {
+      var note = document.createElement('div');
+      note.className = 'cnPromoText';
+      note.textContent = promo.note;
+      box.appendChild(note);
+    }
+
+    if (promo.checked) {
+      var checked = document.createElement('div');
+      checked.className = 'cnPromoChecked';
+      checked.textContent = 'Preço conferido em ' + promo.checked + '. Pode mudar no Mercado Livre.';
+      box.appendChild(checked);
+    }
+
+    return box;
+  }
+
+  function createProductMedia(p, options) {
+    options = options || {};
+    var images = getImages(p);
+    var shell = document.createElement('div');
+    shell.className = 'cnMediaShell';
+
+    var img = document.createElement('img');
+    img.className = 'cnImg';
+    img.loading = options.loading || 'lazy';
+    img.alt = safeText(options.alt || (p && (p.title || p.sku)) || 'Produto');
+
+    if (images.length) {
+      img.src = images[0];
+    } else {
+      img.style.display = 'none';
+    }
+
+    shell.appendChild(img);
+
+    if (images.length > 1) {
+      shell.className += ' cnMediaShell--gallery';
+
+      var count = document.createElement('div');
+      count.className = 'cnGalleryCount';
+      count.textContent = '1/' + images.length;
+      shell.appendChild(count);
+
+      var arrow = document.createElement('button');
+      arrow.type = 'button';
+      arrow.className = 'cnGalleryArrow';
+      arrow.setAttribute('aria-label', 'Ver próxima imagem do produto');
+      arrow.textContent = '›';
+      shell.appendChild(arrow);
+
+      var hint = document.createElement('div');
+      hint.className = 'cnGalleryHint';
+      hint.textContent = '📸 Mais imagens';
+      shell.appendChild(hint);
+
+      var dots = document.createElement('div');
+      dots.className = 'cnGalleryDots';
+      var dotButtons = [];
+      for (var i = 0; i < images.length; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = i === 0 ? 'cnGalleryDot is-active' : 'cnGalleryDot';
+        dot.setAttribute('aria-label', 'Imagem ' + (i + 1) + ' de ' + images.length);
+        (function (pos) {
+          dot.addEventListener('click', function (ev) {
+            if (ev && ev.preventDefault) ev.preventDefault();
+            if (ev && ev.stopPropagation) ev.stopPropagation();
+            setIndex(pos);
+          });
+        })(i);
+        dotButtons.push(dot);
+        dots.appendChild(dot);
+      }
+      shell.appendChild(dots);
+
+      var currentIndex = 0;
+      var touchStartX = 0;
+
+      function setIndex(nextIndex) {
+        if (!images.length) return;
+        currentIndex = ((nextIndex % images.length) + images.length) % images.length;
+        img.style.opacity = '0.65';
+        setTimeout(function () {
+          img.src = images[currentIndex];
+          img.style.opacity = '1';
+        }, 60);
+        count.textContent = String(currentIndex + 1) + '/' + String(images.length);
+        for (var d = 0; d < dotButtons.length; d++) {
+          if (d === currentIndex) dotButtons[d].classList.add('is-active');
+          else dotButtons[d].classList.remove('is-active');
+        }
+      }
+
+      function nextImage(ev) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        if (ev && ev.stopPropagation) ev.stopPropagation();
+        setIndex(currentIndex + 1);
+      }
+
+      arrow.addEventListener('click', nextImage);
+      img.addEventListener('click', nextImage);
+
+      shell.addEventListener('touchstart', function (ev) {
+        if (!ev.touches || !ev.touches.length) return;
+        touchStartX = ev.touches[0].clientX;
+      }, { passive: true });
+
+      shell.addEventListener('touchend', function (ev) {
+        if (!touchStartX || !ev.changedTouches || !ev.changedTouches.length) return;
+        var dx = ev.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 38) {
+          setIndex(currentIndex + (dx < 0 ? 1 : -1));
+        }
+        touchStartX = 0;
+      }, { passive: true });
+    }
+
+    return shell;
   }
 
   function getLink(p) {
@@ -703,17 +1029,10 @@
 
     var cardImg = document.createElement('div');
     cardImg.className = 'cnCard cnFeaturedMedia';
-    var img = document.createElement('img');
-    img.className = 'cnImg';
-    img.alt = safeText(p.title || 'Produto do Dia');
-    img.loading = 'lazy';
-    var src = getImage(p);
-    if (src) {
-      img.src = src;
-    } else {
-      img.style.display = 'none';
-    }
-    cardImg.appendChild(img);
+    cardImg.appendChild(createProductMedia(p, {
+      alt: safeText(p.title || 'Produto do Dia'),
+      loading: 'lazy'
+    }));
     wrap.appendChild(cardImg);
 
     var cardInfo = document.createElement('div');
@@ -744,6 +1063,9 @@
     featureSummary.textContent = getFeaturedSummary(p);
     pad.appendChild(featureSummary);
 
+    var promoBox = createPromoBox(p, false);
+    if (promoBox) pad.appendChild(promoBox);
+
     var badges = parseBadges(p);
     if (badges.length) {
       var bwrap = document.createElement('div');
@@ -768,8 +1090,9 @@
     steps.className = 'cnSteps';
     var mlid = getMlId(p);
     steps.innerHTML =
-      '<li>Acesse o <b>Mercado Livre</b>&nbsp;pelo botão principal</li>' +
-      '<li>Use o código de busca:&nbsp;<b>' + safeText(mlid) + '</b></li>';
+      '<li>Toque em <b>Comprar agora</b> para abrir o Mercado Livre</li>' +
+      '<li>Confira preço final, frete e disponibilidade antes de concluir</li>' +
+      (mlid ? '<li>Se precisar buscar manualmente, use:&nbsp;<b>' + safeText(mlid) + '</b></li>' : '');
     buyBox.appendChild(steps);
     pad.appendChild(buyBox);
 
@@ -778,7 +1101,7 @@
 
     var aBuy = document.createElement('a');
     aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary cnActionPrimary';
-    aBuy.textContent = 'Ver no Mercado Livre';
+    aBuy.textContent = getBuyCtaText(p, false);
     var buyLink = getLink(p);
     aBuy.href = buyLink || '#';
     aBuy.target = '_blank';
@@ -843,7 +1166,7 @@
     aStore.className = 'btn btn--glass btn--tiny cnActionTertiary';
     aStore.setAttribute('data-cn-track-owned', '1');
     aStore.setAttribute('data-cn-role', 'open-store');
-    aStore.textContent = 'Abrir Loja Completa';
+    aStore.textContent = 'Ver todos os produtos';
     aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
     aStore.onclick = function () {
       trackEvent('click_open_store', {
@@ -857,6 +1180,11 @@
     row1.appendChild(aStore);
 
     pad.appendChild(row1);
+
+    var scarcity = document.createElement('div');
+    scarcity.className = 'cnScarcityLine';
+    scarcity.textContent = 'Preço e estoque podem mudar no Mercado Livre. Aproveite quando a oferta estiver boa.';
+    pad.appendChild(scarcity);
 
     var meta = document.createElement('div');
     meta.className = 'cnMeta';
@@ -881,13 +1209,10 @@
       quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
     });
 
-    var img = document.createElement('img');
-    img.className = 'cnImg';
-    img.loading = 'lazy';
-    img.alt = safeText(p.title || p.sku || 'Produto');
-    var src = getImage(p);
-    if (src) img.src = src;
-    card.appendChild(img);
+    card.appendChild(createProductMedia(p, {
+      alt: safeText(p.title || p.sku || 'Produto'),
+      loading: 'lazy'
+    }));
 
     var pad = document.createElement('div');
     pad.className = 'cnProdPad';
@@ -908,6 +1233,9 @@
       pad.appendChild(bwrap);
     }
 
+    var quickPromo = createPromoBox(p, true);
+    if (quickPromo) pad.appendChild(quickPromo);
+
     var mlid = getMlId(p);
     var meta = document.createElement('div');
     meta.className = 'cnMeta';
@@ -919,7 +1247,7 @@
 
     var buy = document.createElement('a');
     buy.className = 'btn btn--gold btn--tiny btn--buy-primary cnQuickPrimary';
-    buy.textContent = 'Comprar';
+    buy.textContent = getBuyCtaText(p, true);
     var buyLink = getLink(p);
     buy.href = buyLink || '#';
     buy.target = '_blank';
