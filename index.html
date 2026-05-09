@@ -7787,6 +7787,298 @@
       }
     }
 
+
+    /* ==========================================================
+       ETAPA 4 — REFINO VISUAL DESKTOP
+       - Seleção do Dia mais elegante no PC
+       - imagem principal mais valorizada
+       - Vitrine Rápida mais premium
+       - sem alterar lógica JS
+       ========================================================== */
+    @media (min-width: 861px) {
+      #sec-produto-do-dia,
+      #sec-vitrine-rapida {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.028), rgba(0,0,0,.24)),
+          radial-gradient(900px 300px at 20% 0%, rgba(215,176,88,.08), transparent 60%),
+          rgba(9,9,12,.54) !important;
+        border-color: rgba(215,176,88,.20) !important;
+        box-shadow: 0 24px 60px rgba(0,0,0,.34) !important;
+      }
+
+      #sec-produto-do-dia .panel__head,
+      #sec-vitrine-rapida .panel__head {
+        padding-bottom: 10px !important;
+      }
+
+      #sec-produto-do-dia .imperialNote,
+      #sec-vitrine-rapida .imperialNote {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.18)),
+          rgba(0,0,0,.22) !important;
+        border-color: rgba(215,176,88,.18) !important;
+        color: rgba(255,255,255,.78) !important;
+      }
+
+      #featured.featured {
+        padding: 12px 4px 4px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(320px, .84fr) minmax(420px, 1.16fr) !important;
+        gap: 18px !important;
+        align-items: stretch !important;
+      }
+
+      #featured .cnCard {
+        border-radius: 24px !important;
+        border: 1px solid rgba(215,176,88,.16) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.028), rgba(0,0,0,.18)),
+          radial-gradient(420px 200px at 20% 0%, rgba(215,176,88,.08), transparent 65%),
+          rgba(7,7,10,.74) !important;
+        box-shadow: 0 18px 44px rgba(0,0,0,.30) !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        padding: 18px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.16)),
+          radial-gradient(360px 180px at 50% 10%, rgba(215,176,88,.11), transparent 65%),
+          rgba(4,4,6,.74) !important;
+      }
+
+      #featured .cnFeaturedMedia > .cnMediaShell,
+      #featured .cnCard:first-child > .cnMediaShell {
+        width: 100% !important;
+        min-height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(215,176,88,.12) !important;
+        background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.12)) !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: min(76%, 430px) !important;
+        max-width: 100% !important;
+        max-height: 460px !important;
+        height: auto !important;
+        object-fit: contain !important;
+        margin: 0 auto !important;
+        border-radius: 16px !important;
+        box-shadow: 0 20px 42px rgba(0,0,0,.36) !important;
+        background: rgba(255,255,255,.02) !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        padding: 22px 24px 22px !important;
+        justify-content: flex-start !important;
+      }
+
+      #featured .cnTitleMain {
+        display: block !important;
+        font-size: clamp(1.7rem, 2.25vw, 2.25rem) !important;
+        line-height: 1.02 !important;
+      }
+
+      #featured .cnTitleSub {
+        display: block !important;
+        margin-top: 6px !important;
+        font-size: .92rem !important;
+        color: rgba(255,244,210,.72) !important;
+      }
+
+      #featured .cnFeatureSummary {
+        display: block !important;
+        margin-top: 12px !important;
+        max-width: 52ch !important;
+        font-size: .93rem !important;
+        line-height: 1.55 !important;
+        color: rgba(255,255,255,.78) !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 18px !important;
+        padding: 18px 20px !important;
+        border-radius: 20px !important;
+        background:
+          linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.12)),
+          rgba(0,0,0,.18) !important;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 12px 28px rgba(0,0,0,.18) !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: clamp(2.1rem, 3vw, 2.8rem) !important;
+        line-height: .95 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 14px !important;
+        gap: 8px !important;
+      }
+
+      #featured .cnBadges span {
+        padding: 5px 11px !important;
+        font-size: .72rem !important;
+        background: rgba(255,255,255,.04) !important;
+        color: rgba(255,255,255,.82) !important;
+      }
+
+      #featured .cnRow {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 10px !important;
+        margin-top: 18px !important;
+      }
+
+      #featured .cnActionPrimary,
+      #featured .cnActionSecondary {
+        min-height: 46px !important;
+        border-radius: 15px !important;
+      }
+
+      #featured .cnActionTertiary {
+        grid-column: 1 / -1 !important;
+        min-height: 42px !important;
+        border-radius: 15px !important;
+        display: flex !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnScarcityLine {
+        margin-top: 14px !important;
+        font-size: .88rem !important;
+        color: rgba(255,255,255,.68) !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+        border-top: 1px solid rgba(255,255,255,.08) !important;
+        font-size: .78rem !important;
+      }
+
+      #sec-vitrine-rapida .quickTools {
+        padding: 10px 0 2px !important;
+        gap: 12px !important;
+      }
+
+      #sec-vitrine-rapida .quickSearch,
+      #sec-vitrine-rapida #qClear,
+      #sec-vitrine-rapida #btnAbrirLojaCompleta,
+      #sec-vitrine-rapida #btnVerTodosTop {
+        min-height: 44px !important;
+        border-radius: 16px !important;
+      }
+
+      #quickGrid.cnGrid {
+        padding: 12px 0 4px !important;
+        gap: 16px !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+
+      #quickGrid .cnProd {
+        border-radius: 22px !important;
+        border: 1px solid rgba(215,176,88,.14) !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.024), rgba(0,0,0,.20)),
+          rgba(7,7,10,.74) !important;
+        box-shadow: 0 18px 38px rgba(0,0,0,.22) !important;
+        overflow: hidden !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        min-height: 350px !important;
+        padding: 14px 14px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background:
+          radial-gradient(360px 180px at 50% 8%, rgba(215,176,88,.12), transparent 62%),
+          linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.08)) !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        width: 100% !important;
+        max-height: 336px !important;
+        height: auto !important;
+        object-fit: contain !important;
+        border-radius: 16px !important;
+        box-shadow: 0 16px 34px rgba(0,0,0,.30) !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        padding: 14px 15px 16px !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        min-height: 2.55em !important;
+        font-size: 1.05rem !important;
+        line-height: 1.22 !important;
+      }
+
+      #quickGrid .cnBadges span {
+        padding: 4px 9px !important;
+        font-size: .70rem !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+        border-top: 1px solid rgba(255,255,255,.07) !important;
+        font-size: .78rem !important;
+      }
+
+      #quickGrid .cnRow {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+        margin-top: 12px !important;
+      }
+
+      #quickGrid .cnQuickPrimary,
+      #quickGrid .cnQuickSecondary,
+      #quickGrid .cnQuickTertiary {
+        min-height: 40px !important;
+        font-size: .84rem !important;
+        border-radius: 14px !important;
+        width: 100% !important;
+      }
+
+      #quickGrid .cnQuickTertiary {
+        grid-column: 1 / -1 !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1180px) {
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(290px, .8fr) minmax(360px, 1.2fr) !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: min(84%, 410px) !important;
+        max-height: 430px !important;
+      }
+
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
 </style>
 </head>
 
