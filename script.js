@@ -419,8 +419,8 @@
   function getBuyCtaText(p, compact) {
     var promo = getPromoInfo(p);
     if (promo.buyCta) return promo.buyCta;
-    if (promo.current || promo.discount) return compact ? 'Comprar agora' : '🔥 Comprar com desconto';
-    return compact ? 'Comprar agora' : '🔥 Comprar no Mercado Livre';
+    if (promo.current || promo.discount) return compact ? 'Comprar oferta' : '🔥 Comprar com desconto';
+    return compact ? 'Comprar' : '🔥 Comprar agora';
   }
 
   function createPromoBox(p, compact) {
@@ -473,7 +473,7 @@
     if (promo.checked) {
       var checked = document.createElement('div');
       checked.className = 'cnPromoChecked';
-      checked.textContent = 'Conferido em ' + promo.checked + ' no Mercado Livre.';
+      checked.textContent = 'Preço conferido em ' + promo.checked + '. Pode mudar no Mercado Livre.';
       box.appendChild(checked);
     }
 
@@ -1080,11 +1080,6 @@
 
     var mlid = getMlId(p);
 
-    var microcopy = document.createElement('div');
-    microcopy.className = 'cnFeatureMicrocopy';
-    microcopy.textContent = 'Compra finalizada com segurança no Mercado Livre. Confira frete e disponibilidade antes de concluir.';
-    pad.appendChild(microcopy);
-
     var row1 = document.createElement('div');
     row1.className = 'cnRow';
 
@@ -1169,6 +1164,11 @@
     row1.appendChild(aStore);
 
     pad.appendChild(row1);
+
+    var scarcity = document.createElement('div');
+    scarcity.className = 'cnScarcityLine';
+    scarcity.textContent = 'Confira preço, frete e disponibilidade no Mercado Livre antes de concluir.';
+    pad.appendChild(scarcity);
 
     var meta = document.createElement('div');
     meta.className = 'cnMeta';
