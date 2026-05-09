@@ -9742,6 +9742,346 @@
         padding-bottom: 9px !important;
       }
     }
+
+
+    /* ==========================================================
+       AJUSTE FINAL DE PROPORÇÃO — 2026-05-09
+       Escopo:
+       - PC: aumentar de verdade as imagens dos cards usando escala real.
+       - PC: alinhar imagem, título, código e botões no mesmo ritmo visual.
+       - PC: compactar Seleção do Dia para caber melhor na primeira tela.
+       - Mobile: manter Vitrine Rápida intacta; recolocar a frase abaixo do CTA.
+       ========================================================== */
+
+    @media (min-width: 861px) {
+      .page {
+        width: min(1060px, calc(100vw - 28px)) !important;
+        gap: 12px !important;
+      }
+
+      .hero {
+        padding: 12px !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 7px !important;
+      }
+
+      .heroBanner {
+        border-radius: 15px !important;
+      }
+
+      .hero__sub--banner {
+        margin-top: 3px !important;
+        font-size: 12px !important;
+        line-height: 1.20 !important;
+      }
+
+      .hero__actions {
+        gap: 6px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 36px !important;
+        padding: 7px 12px !important;
+        border-radius: 12px !important;
+        font-size: 12px !important;
+      }
+
+      .goLojaHint {
+        margin-top: 0 !important;
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        opacity: .72 !important;
+      }
+
+      .sectionNav {
+        margin-top: 6px !important;
+        margin-bottom: 8px !important;
+        padding: 6px 9px !important;
+      }
+
+      #sec-produto-do-dia {
+        max-width: 1060px !important;
+        margin: 0 auto 12px !important;
+        border-radius: 18px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding: 9px 14px 6px !important;
+        margin-bottom: 4px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: .88rem !important;
+        letter-spacing: .22em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        font-size: .72rem !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote {
+        margin: 5px 14px 0 !important;
+        padding: 4px 9px !important;
+        font-size: .66rem !important;
+      }
+
+      #featured.featured {
+        padding: 8px 14px 12px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(350px, .94fr) minmax(420px, 1.06fr) !important;
+        gap: 12px !important;
+        align-items: center !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        height: 300px !important;
+        min-height: 300px !important;
+        padding: 8px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        border-radius: 12px !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        padding: 12px 14px !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.18rem, 1.45vw, 1.50rem) !important;
+        line-height: 1.02 !important;
+      }
+
+      #featured .cnFeatureSummary,
+      #featured .cnSub {
+        margin-top: 5px !important;
+        font-size: .73rem !important;
+        line-height: 1.20 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 7px !important;
+        padding: 8px 10px !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 1.72rem !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked,
+      #featured .cnScarcityLine {
+        font-size: .66rem !important;
+        line-height: 1.16 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 6px !important;
+      }
+
+      #featured .cnRow {
+        margin-top: 7px !important;
+        gap: 6px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 28px !important;
+        padding: 5px 8px !important;
+        font-size: .64rem !important;
+      }
+
+      #featured .cnActionPrimary {
+        min-height: 32px !important;
+        font-size: .68rem !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 5px !important;
+        font-size: .62rem !important;
+      }
+
+      #sec-vitrine-rapida {
+        max-width: 1060px !important;
+        margin: 0 auto 18px !important;
+      }
+
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 0 14px 14px !important;
+      }
+
+      #quickGrid .cnProd {
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: 330px !important;
+        height: 330px !important;
+        border-radius: 15px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        width: 100% !important;
+        height: 190px !important;
+        min-height: 190px !important;
+        padding: 8px 10px 4px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(0,0,0,.16) !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: auto !important;
+        border-radius: 10px !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 7px 9px 9px !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        min-height: 2.25em !important;
+        font-size: .74rem !important;
+        line-height: 1.12 !important;
+        margin: 0 !important;
+      }
+
+      #quickGrid .cnBadges {
+        margin-top: 5px !important;
+        min-height: 18px !important;
+      }
+
+      #quickGrid .cnBadges span {
+        padding: 2px 5px !important;
+        font-size: .52rem !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: auto !important;
+        padding-top: 7px !important;
+        font-size: .58rem !important;
+      }
+
+      #quickGrid .cnMeta b {
+        font-size: .66rem !important;
+      }
+
+      #quickGrid .cnRow {
+        margin-top: 7px !important;
+        gap: 6px !important;
+      }
+
+      #quickGrid .cnRow .btn {
+        min-height: 28px !important;
+        padding: 5px 7px !important;
+        border-radius: 10px !important;
+        font-size: .60rem !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1080px) {
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+
+      #quickGrid .cnProd {
+        height: 350px !important;
+        min-height: 350px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 210px !important;
+        min-height: 210px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      /* Topo mobile: mantém o visual limpo, mas recoloca a frase no efeito abaixo do CTA. */
+      .hero .chips,
+      .hero .chips--heroCompact,
+      .chips--heroCompact {
+        display: none !important;
+      }
+
+      .hero__sub--banner {
+        display: none !important;
+      }
+
+      .hero__actions {
+        margin-top: 4px !important;
+        gap: 5px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 41px !important;
+        padding: 8px 10px !important;
+      }
+
+      .hero .goLojaHint,
+      .goLojaHint {
+        display: block !important;
+        margin: 5px 0 0 !important;
+        padding: 0 8px !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        color: rgba(255,255,255,.68) !important;
+        font-size: clamp(.62rem, 2.55vw, .72rem) !important;
+        line-height: 1.05 !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 10px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding-top: 10px !important;
+        padding-bottom: 8px !important;
+      }
+
+      #featured.featured {
+        padding-top: 9px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -9811,7 +10151,7 @@
 
       <div class="hero__actions">
         <a class="btn btn--gold" href="./loja.html" id="goLoja"><span class="goLojaTextDesktop">🛍️ Ver todos os <span data-total-products>—</span> produtos</span><span class="goLojaTextMobile">🛍️ Ver todos os <span data-total-products>—</span> produtos</span></a>
-        <div class="goLojaHint">Toque aqui para abrir a loja completa com todos os achados.</div>
+        <div class="goLojaHint">Achados premium selecionados para compra rápida e segura.</div>
 
         <details class="heroMore">
           <summary class="heroMore__summary"><span class="heroMore__toggleIcon" aria-hidden="true"></span><span>Canais oficiais</span></summary>
