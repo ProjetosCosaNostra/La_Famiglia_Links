@@ -8798,6 +8798,363 @@
       }
     }
 
+
+
+    /* ==========================================================
+       ETAPA 3O — FECHAMENTO VISUAL DO INDEX
+       Objetivo:
+       - tirar o topo da cara de painel administrativo
+       - remover Canais oficiais do hero, mantendo Links Oficiais no menu/seção
+       - reduzir altura vertical da placa Premium Store sem deformar
+       - compactar e refinar Seleção do Dia
+       - aumentar imagens da Vitrine Rápida mantendo 3 produtos por linha
+       - ajustar logo pequena do rodapé
+       ========================================================== */
+
+    .footerLogo{
+      width:22px !important;
+      height:22px !important;
+      border-radius:50% !important;
+      object-fit:contain !important;
+      background:rgba(0,0,0,.18) !important;
+      box-shadow:0 0 8px rgba(224,195,107,.22) !important;
+      flex:0 0 22px !important;
+    }
+
+    .footer .sig--brand{
+      gap:8px !important;
+      align-items:center !important;
+    }
+
+    @media (min-width:861px){
+      .hero{
+        display:block !important;
+        padding:10px 14px 12px !important;
+        border-radius:22px !important;
+        border-color:rgba(215,176,88,.22) !important;
+        background:
+          radial-gradient(760px 220px at 50% 0%, rgba(215,176,88,.07), transparent 62%),
+          linear-gradient(180deg, rgba(255,255,255,.022), rgba(0,0,0,.10)),
+          rgba(5,5,7,.64) !important;
+        box-shadow:0 18px 48px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.03) !important;
+      }
+
+      .hero::before{
+        opacity:.28 !important;
+      }
+
+      .hero__brand--banner{
+        width:100% !important;
+        gap:8px !important;
+        align-items:stretch !important;
+      }
+
+      .heroBanner{
+        width:100% !important;
+        max-width:100% !important;
+        height:154px !important;
+        min-height:154px !important;
+        border-radius:17px !important;
+        border-color:rgba(215,176,88,.18) !important;
+        box-shadow:0 12px 28px rgba(0,0,0,.28) !important;
+        background:rgba(0,0,0,.22) !important;
+      }
+
+      .heroBanner__picture,
+      .heroBanner__img{
+        width:100% !important;
+        height:100% !important;
+        display:block !important;
+      }
+
+      .heroBanner__img{
+        object-fit:cover !important;
+        object-position:center center !important;
+      }
+
+      .heroBanner__seal{
+        display:none !important;
+      }
+
+      .hero__text--bannerstack{
+        padding-top:0 !important;
+        align-items:center !important;
+        text-align:center !important;
+      }
+
+      .hero .chips--heroCompact{
+        display:flex !important;
+        justify-content:center !important;
+        margin-top:8px !important;
+        gap:7px !important;
+      }
+
+      .hero .chips--heroCompact .chip{
+        min-height:24px !important;
+        padding:4px 9px !important;
+        font-size:.70rem !important;
+        border-color:rgba(215,176,88,.12) !important;
+        background:rgba(0,0,0,.18) !important;
+      }
+
+      .hero__sub--banner{
+        margin:8px auto 0 !important;
+        max-width:620px !important;
+        font-size:.88rem !important;
+        line-height:1.32 !important;
+        color:rgba(255,255,255,.76) !important;
+        text-align:center !important;
+      }
+
+      .hero__actions{
+        width:100% !important;
+        display:block !important;
+        margin-top:12px !important;
+      }
+
+      .hero__actions #goLoja{
+        width:100% !important;
+        min-height:42px !important;
+        border-radius:14px !important;
+        font-size:.86rem !important;
+        border-color:rgba(215,176,88,.38) !important;
+        color:rgba(255,236,184,.98) !important;
+        background:
+          linear-gradient(180deg, rgba(215,176,88,.27), rgba(103,78,28,.28)),
+          rgba(11,11,13,.68) !important;
+        box-shadow:0 12px 26px rgba(145,111,34,.22), inset 0 1px 0 rgba(255,255,255,.07) !important;
+      }
+
+      .goLojaHint{
+        margin-top:7px !important;
+        min-height:0 !important;
+        font-size:.72rem !important;
+        line-height:1.2 !important;
+        text-align:center !important;
+        color:rgba(255,255,255,.52) !important;
+      }
+
+      .heroMore,
+      .hero__actions > #copyLoja,
+      .hero__actions > .btn--social,
+      .hero__actions > .miniNote{
+        display:none !important;
+      }
+
+      .sectionNav{
+        margin-top:8px !important;
+      }
+
+      /* Seleção do Dia mais compacta e com imagem melhor encaixada */
+      #sec-produto-do-dia{
+        margin-top:12px !important;
+        border-radius:22px !important;
+      }
+
+      #sec-produto-do-dia .panel__head{
+        padding:12px 14px 8px !important;
+        margin-bottom:7px !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2{
+        font-size:1rem !important;
+        letter-spacing:.23em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p{
+        font-size:.80rem !important;
+      }
+
+      #sec-produto-do-dia > .imperialNote{
+        display:inline-flex !important;
+        width:auto !important;
+        max-width:calc(100% - 28px) !important;
+        margin:7px 14px 0 !important;
+        padding:7px 10px !important;
+        font-size:.74rem !important;
+        border-radius:999px !important;
+      }
+
+      #featured.featured{
+        padding:9px 14px 14px !important;
+      }
+
+      #featured .cnFeaturedWrap{
+        grid-template-columns:minmax(300px,.88fr) minmax(430px,1.12fr) !important;
+        gap:13px !important;
+        align-items:center !important;
+      }
+
+      #featured .cnCard{
+        height:auto !important;
+        min-height:0 !important;
+        border-radius:18px !important;
+      }
+
+      #featured .cnCard:first-child,
+      #featured .cnFeaturedMedia{
+        padding:8px !important;
+        align-self:center !important;
+      }
+
+      #featured .cnCard:first-child .cnImg,
+      #featured .cnFeaturedMedia .cnImg{
+        width:min(92%, 390px) !important;
+        height:auto !important;
+        max-height:342px !important;
+        object-fit:contain !important;
+        margin:auto !important;
+        border-radius:13px !important;
+        box-shadow:0 12px 28px rgba(0,0,0,.34) !important;
+      }
+
+      #featured .cnCardPad{
+        padding:14px 16px !important;
+        justify-content:center !important;
+      }
+
+      #featured .cnTitle{
+        font-size:clamp(1.20rem, 1.52vw, 1.58rem) !important;
+        line-height:1.08 !important;
+        max-width:560px !important;
+      }
+
+      #featured .cnFeatureSummary,
+      #featured .cnSub{
+        font-size:.82rem !important;
+        line-height:1.32 !important;
+        margin-top:7px !important;
+      }
+
+      #featured .cnPromoBox{
+        margin-top:9px !important;
+        padding:10px 12px !important;
+        border-radius:15px !important;
+      }
+
+      #featured .cnCurrentPrice{
+        font-size:1.78rem !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked{
+        font-size:.77rem !important;
+        line-height:1.24 !important;
+      }
+
+      #featured .cnBadges{
+        margin-top:8px !important;
+      }
+
+      #featured .cnRow{
+        margin-top:9px !important;
+        gap:7px !important;
+      }
+
+      #featured .cnRow .btn{
+        min-height:32px !important;
+        font-size:.70rem !important;
+      }
+
+      #featured .cnRow .btn--buy-primary{
+        min-height:38px !important;
+        font-size:.76rem !important;
+      }
+
+      #featured .cnMeta{
+        margin-top:8px !important;
+        padding:5px 9px !important;
+        font-size:.67rem !important;
+      }
+
+      /* Vitrine Rápida: 3 por linha, com imagem maior e cards ainda controlados */
+      #quickGrid.cnGrid{
+        grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+        gap:13px !important;
+        padding:0 14px 16px !important;
+      }
+
+      #quickGrid .cnProd{
+        border-radius:18px !important;
+        background:rgba(4,4,6,.66) !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell{
+        height:242px !important;
+        min-height:242px !important;
+        padding:11px 11px 0 !important;
+      }
+
+      #quickGrid .cnProd .cnImg{
+        max-height:232px !important;
+        width:auto !important;
+        max-width:100% !important;
+        object-fit:contain !important;
+        border-radius:13px !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad{
+        padding:10px 11px 12px !important;
+        gap:7px !important;
+      }
+
+      #quickGrid .cnProd h3{
+        font-size:.94rem !important;
+        line-height:1.18 !important;
+        min-height:2.35em !important;
+      }
+
+      #quickGrid .cnBadges span{
+        font-size:.64rem !important;
+      }
+
+      #quickGrid .cnMeta{
+        font-size:.70rem !important;
+      }
+
+      #quickGrid .cnRow .btn{
+        min-height:32px !important;
+        font-size:.70rem !important;
+      }
+    }
+
+    @media (min-width:861px) and (max-width:1180px){
+      .heroBanner{
+        height:142px !important;
+        min-height:142px !important;
+      }
+
+      #featured .cnFeaturedWrap{
+        grid-template-columns:minmax(280px,.9fr) minmax(380px,1.1fr) !important;
+      }
+
+      #featured .cnCard:first-child .cnImg,
+      #featured .cnFeaturedMedia .cnImg{
+        width:min(92%, 360px) !important;
+        max-height:320px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell{
+        height:222px !important;
+        min-height:222px !important;
+      }
+
+      #quickGrid .cnProd .cnImg{
+        max-height:212px !important;
+      }
+    }
+
+    @media (max-width:640px){
+      .footerLogo{
+        width:18px !important;
+        height:18px !important;
+        flex:0 0 18px !important;
+      }
+
+      .heroMore{
+        display:none !important;
+      }
+    }
 </style>
 </head>
 
