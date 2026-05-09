@@ -419,8 +419,14 @@
   function getBuyCtaText(p, compact) {
     var promo = getPromoInfo(p);
     if (promo.buyCta) return promo.buyCta;
-    if (promo.current || promo.discount) return compact ? 'Comprar oferta' : '🔥 Comprar com desconto';
-    return compact ? 'Comprar' : '🔥 Comprar agora';
+
+    // CTA da home precisa levar naturalmente para a compra.
+    // Na Vitrine Rápida, texto curto para não quebrar o card.
+    if (promo.current || promo.discount) {
+      return compact ? 'Ver no Mercado Livre' : '🔥 Comprar com desconto no Mercado Livre';
+    }
+
+    return compact ? 'Ver no Mercado Livre' : '🔥 Ver no Mercado Livre';
   }
 
   function createPromoBox(p, compact) {
