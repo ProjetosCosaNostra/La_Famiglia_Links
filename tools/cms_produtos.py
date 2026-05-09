@@ -161,6 +161,36 @@ def _first_image_url(text: str) -> str:
     return u3 if _is_image_url(u3) else ""
 
 
+def _image_urls_from_text(text: str) -> List[str]:
+    if not text:
+        return []
+
+    candidates: List[str] = []
+
+    for m in _IMG_SRC_RE.finditer(text):
+        candidates.append(_clean_url(m.group(1)))
+
+    for m in _MD_IMG_RE.finditer(text):
+        candidates.append(_clean_url(m.group(1)))
+
+    for m in _URL_RE.finditer(text):
+        candidates.append(_clean_url(m.group(1)))
+
+    out: List[str] = []
+    seen = set()
+    for raw in candidates:
+        u = _normalize_asset_path(raw)
+        if not u or not _is_image_url(u):
+            continue
+        key = u.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(u)
+
+    return out
+
+
 def _first_meaningful_line(block: str) -> str:
     if not block:
         return ""
@@ -1109,6 +1139,34 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     canonical_block = _get_section(sections, r"canonical_url|Canonical\s+URL")
     alt_block = _get_section(sections, r"Link\s+Alternativo|Alt\s+URL|Fallback")
     img_block = _get_section(sections, r"Imagem\b")
+    extra_images_block = _get_section(
+        sections,
+        r"Imagens\s+extras|Imagens\s+do\s+produto|Galeria\s+de\s+imagens|Galeria|Fotos\s+extras",
+    )
+    price_text_block = _get_section(
+        sections,
+        r"^Pre[cç]o\s+atual\b|^Pre[cç]o\s+Mercado\s+Livre\b|^Pre[cç]o\s*$|^Price\s*$",
+    )
+    old_price_text_block = _get_section(
+        sections,
+        r"Pre[cç]o\s+anterior|Pre[cç]o\s+de|Pre[cç]o\s+antigo|Old\s+Price|Previous\s+Price",
+    )
+    discount_text_block = _get_section(
+        sections,
+        r"Desconto|Oferta|Promo[cç][aã]o|Discount",
+    )
+    price_checked_block = _get_section(
+        sections,
+        r"Pre[cç]o\s+conferido|Data\s+do\s+pre[cç]o|Conferido\s+em|Price\s+Checked",
+    )
+    promo_text_block = _get_section(
+        sections,
+        r"Texto\s+promocional|Chamada\s+promocional|Observa[cç][aã]o\s+do\s+pre[cç]o|Promo\s+Text|Offer\s+Text",
+    )
+    buy_cta_block = _get_section(
+        sections,
+        r"CTA\s+de\s+compra|Bot[aã]o\s+de\s+compra|Texto\s+do\s+bot[aã]o|Buy\s+CTA",
+    )
     review_action_block = _get_section(sections, r"A[cç][aã]o\s+manual|A[cç][aã]o\b")
     review_status_block = _get_section(sections, r"Status\s+de\s+revis[aã]o|Status\s+de\s+manut")
     review_reason_block = _get_section(sections, r"Motivo|Problema|Raz[aã]o")
@@ -1148,6 +1206,8 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if not image_url:
         image_url = _first_image_url(body)
 
+    extra_images = _image_urls_from_text(extra_images_block)
+
     sku = _clean_sku(sku_raw)
 
     if is_edit_mode:
@@ -1182,6 +1242,13 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         replacement_vendor = _clean_edit_optional_text(_first_meaningful_line(replacement_vendor_block))
         notes = _clean_edit_optional_text(notes_block.replace("- [x]", "").replace("- [ ]", "").replace("- ", "\n"))
 
+        price_text = _clean_edit_optional_text(_first_meaningful_line(price_text_block), field="price_text")
+        old_price_text = _clean_edit_optional_text(_first_meaningful_line(old_price_text_block), field="old_price_text")
+        discount_text = _clean_edit_optional_text(_first_meaningful_line(discount_text_block), field="discount_text")
+        price_checked_at = _clean_edit_optional_text(_first_meaningful_line(price_checked_block), field="price_checked_at")
+        promo_text = _clean_edit_optional_text(_first_meaningful_line(promo_text_block), field="promo_text")
+        buy_cta = _clean_edit_optional_text(_first_meaningful_line(buy_cta_block), field="buy_cta")
+
         review_action = _normalize_review_action(review_action_line) if review_action_line else None
         review_status = _normalize_review_status(review_status_line) if review_status_line else None
 
@@ -1215,6 +1282,13 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         review_reason = _clean_optional_text(_first_meaningful_line(review_reason_block))
         replacement_vendor = _clean_optional_text(_first_meaningful_line(replacement_vendor_block))
         notes = _clean_optional_text(notes_block.replace("- [x]", "").replace("- [ ]", "").replace("- ", "\n"))
+
+        price_text = _clean_optional_text(_first_meaningful_line(price_text_block))
+        old_price_text = _clean_optional_text(_first_meaningful_line(old_price_text_block))
+        discount_text = _clean_optional_text(_first_meaningful_line(discount_text_block))
+        price_checked_at = _clean_optional_text(_first_meaningful_line(price_checked_block))
+        promo_text = _clean_optional_text(_first_meaningful_line(promo_text_block))
+        buy_cta = _clean_optional_text(_first_meaningful_line(buy_cta_block))
 
         active_state = _checkbox_state(body, r"Ativo")
         featured_state = _checkbox_state(body, r"Definir\s+como\s+Produto\s+do\s+Dia|featured|Produto\s+do\s+Dia")
@@ -1359,7 +1433,13 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "check_url": check_url,
         "canonical_url": canonical_url,
         "image": image,
-        "price_text": None,
+        "images": extra_images or None,
+        "price_text": price_text or None,
+        "old_price_text": old_price_text or None,
+        "discount_text": discount_text or None,
+        "price_checked_at": price_checked_at or None,
+        "promo_text": promo_text or None,
+        "buy_cta": buy_cta or None,
         "active": active,
         "featured": featured,
         "last_checked": "",
