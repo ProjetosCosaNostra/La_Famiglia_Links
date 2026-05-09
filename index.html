@@ -9627,6 +9627,102 @@
       }
     }
 
+
+
+    /* =========================================================
+       AJUSTE CIRÚRGICO FINAL — IMAGENS MAIORES NO PC
+       - não mexe na estrutura mobile da Vitrine Rápida
+       - aumenta só a área/imagem dos cards no desktop
+       - mantém botões e informações compactos
+       ========================================================= */
+    @media (min-width: 861px) {
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        height: 318px !important;
+        padding: 8px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell,
+      #featured .cnCard:first-child .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 302px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+
+      #quickGrid.cnGrid {
+        gap: 10px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 176px !important;
+        min-height: 176px !important;
+        padding: 7px 8px 3px !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 166px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        border-radius: 10px !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        padding-top: 7px !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        font-size: .74rem !important;
+        line-height: 1.08 !important;
+        min-height: 2.10em !important;
+      }
+
+      #quickGrid .cnBadges {
+        margin-top: 5px !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: 6px !important;
+        padding-top: 6px !important;
+      }
+
+      #quickGrid .cnRow {
+        margin-top: 7px !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1080px) {
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        height: 306px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        max-height: 290px !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 184px !important;
+        min-height: 184px !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        max-height: 174px !important;
+      }
+    }
+
 </style>
 </head>
 
