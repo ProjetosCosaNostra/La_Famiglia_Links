@@ -420,13 +420,13 @@
     var promo = getPromoInfo(p);
     if (promo.buyCta) return promo.buyCta;
 
-    // CTA da home precisa levar naturalmente para a compra.
-    // Na Vitrine Rápida, texto curto para não quebrar o card.
+    // CTA direto e comercial: a pessoa já está vendo o produto; o próximo passo é comprar.
+    // Compacto na Vitrine Rápida para manter os botões alinhados e limpos.
     if (promo.current || promo.discount) {
-      return compact ? 'Ver no Mercado Livre' : '🔥 Comprar com desconto no Mercado Livre';
+      return compact ? 'Comprar' : '🔥 Comprar com desconto';
     }
 
-    return compact ? 'Ver no Mercado Livre' : '🔥 Ver no Mercado Livre';
+    return compact ? 'Comprar' : '🔥 Comprar agora';
   }
 
   function createPromoBox(p, compact) {
