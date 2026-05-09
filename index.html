@@ -11317,6 +11317,490 @@
       #featured .cnMeta{ margin-top:6px!important; padding:0!important; border:0!important; background:transparent!important; font-size:.62rem!important; }
     }
 
+
+    /* ============================================================
+       AJUSTE FINAL CIRÚRGICO — SELEÇÃO DO DIA + VITRINE RÁPIDA
+       Mantém script.js, loja.js, tracking.js e produtos.json intactos.
+       ============================================================ */
+
+    #sec-produto-do-dia > .imperialNote[aria-label="Dica de navegação"] {
+      display: none !important;
+    }
+
+    #sec-produto-do-dia .panel__head {
+      min-height: 54px !important;
+      padding: 10px 16px !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      border-bottom: 1px solid rgba(215,176,88,.12) !important;
+    }
+
+    #sec-produto-do-dia .panel__head > div:first-child {
+      min-width: 0 !important;
+    }
+
+    #sec-produto-do-dia .panel__head h2 {
+      margin: 0 !important;
+      font-size: 17px !important;
+      line-height: 1 !important;
+      letter-spacing: .38em !important;
+    }
+
+    #sec-produto-do-dia .panel__head p {
+      margin: 5px 0 0 !important;
+      font-size: 13px !important;
+      line-height: 1.15 !important;
+      color: rgba(255,255,255,.74) !important;
+    }
+
+    #sec-produto-do-dia .panel__right--featured {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 10px !important;
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
+    }
+
+    #sec-produto-do-dia .featuredHeaderCount {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+      white-space: nowrap !important;
+      min-height: 30px !important;
+      padding: 6px 12px !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(215,176,88,.18) !important;
+      background: rgba(0,0,0,.20) !important;
+      color: rgba(255,255,255,.76) !important;
+      font-size: 12px !important;
+      line-height: 1 !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+    }
+
+    #sec-produto-do-dia .featuredHeaderCount b {
+      color: rgba(234,202,123,.96) !important;
+      font-weight: 900 !important;
+    }
+
+    #sec-produto-do-dia #refresh {
+      min-height: 30px !important;
+      padding: 6px 13px !important;
+      border-radius: 999px !important;
+      font-size: 12px !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
+    }
+
+    @media (min-width: 861px) {
+      #sec-produto-do-dia.panel {
+        overflow: hidden !important;
+      }
+
+      #featured.featured {
+        padding: 12px 16px 16px !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: minmax(360px, .95fr) minmax(460px, 1.05fr) !important;
+        gap: 14px !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+        min-height: 312px !important;
+      }
+
+      #featured .cnCard {
+        height: 312px !important;
+        min-height: 312px !important;
+        border-radius: 17px !important;
+        overflow: hidden !important;
+        box-shadow: 0 14px 34px rgba(0,0,0,.30) !important;
+      }
+
+      #featured .cnFeaturedMedia {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 14px !important;
+        background:
+          radial-gradient(360px 180px at 50% 45%, rgba(215,176,88,.075), transparent 64%),
+          rgba(0,0,0,.18) !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg {
+        width: auto !important;
+        max-width: 92% !important;
+        height: 276px !important;
+        max-height: 276px !important;
+        object-fit: contain !important;
+        border-radius: 12px !important;
+        background: transparent !important;
+        box-shadow: 0 12px 30px rgba(0,0,0,.34) !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad {
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 14px 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        overflow: hidden !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.44rem, 1.92vw, 1.78rem) !important;
+        line-height: 1.02 !important;
+        letter-spacing: .012em !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-wrap: balance !important;
+      }
+
+      #featured .cnFeatureSummary {
+        margin: 7px 0 0 !important;
+        font-size: 13px !important;
+        line-height: 1.22 !important;
+        color: rgba(255,255,255,.76) !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 1 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 9px !important;
+        padding: 10px 12px !important;
+        border-radius: 14px !important;
+      }
+
+      #featured .cnPromoLabel {
+        margin-bottom: 4px !important;
+        font-size: 11px !important;
+        line-height: 1 !important;
+      }
+
+      #featured .cnPromoDiscount {
+        min-height: 24px !important;
+        padding: 5px 10px !important;
+        font-size: 11px !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: clamp(1.75rem, 2.35vw, 2.25rem) !important;
+        line-height: .96 !important;
+      }
+
+      #featured .cnPromoText,
+      #featured .cnPromoChecked {
+        margin-top: 4px !important;
+        font-size: 12px !important;
+        line-height: 1.15 !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 8px !important;
+        gap: 6px !important;
+      }
+
+      #featured .cnBadges span {
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+        line-height: 1 !important;
+      }
+
+      #featured .cnRow {
+        margin-top: 9px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 32px !important;
+        padding: 7px 10px !important;
+        border-radius: 12px !important;
+        font-size: 11.5px !important;
+        line-height: 1 !important;
+      }
+
+      #featured .cnRow .btn--buy-primary {
+        grid-column: 1 / -1 !important;
+        min-height: 36px !important;
+        font-size: 12px !important;
+      }
+
+      #featured .cnScarcityLine {
+        margin-top: 8px !important;
+        font-size: 12px !important;
+        line-height: 1.15 !important;
+        color: rgba(255,255,255,.70) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 7px !important;
+        padding: 0 !important;
+        width: auto !important;
+        border: 0 !important;
+        background: transparent !important;
+        font-size: 11.5px !important;
+        line-height: 1 !important;
+        color: rgba(255,255,255,.56) !important;
+      }
+
+      #featured .cnMeta b {
+        color: rgba(214,179,82,.95) !important;
+        margin-left: 7px !important;
+      }
+
+      #sec-vitrine-rapida .quickTools {
+        margin-bottom: 10px !important;
+        gap: 8px !important;
+      }
+
+      #quickGrid.cnGrid,
+      #quickGrid.productsGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        margin-top: 10px !important;
+      }
+
+      #quickGrid .cnProd {
+        min-height: 334px !important;
+        height: 334px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        border-radius: 16px !important;
+      }
+
+      #quickGrid .cnMediaShell {
+        height: 156px !important;
+        min-height: 156px !important;
+        padding: 9px 10px 5px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #quickGrid .cnImg {
+        width: auto !important;
+        height: 148px !important;
+        max-height: 148px !important;
+        max-width: 96% !important;
+        object-fit: contain !important;
+        background: transparent !important;
+      }
+
+      #quickGrid .cnProdPad {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        padding: 8px 10px 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        min-height: 38px !important;
+        max-height: 38px !important;
+        overflow: hidden !important;
+        font-size: 15px !important;
+        line-height: 1.15 !important;
+        margin: 0 !important;
+      }
+
+      #quickGrid .cnBadges {
+        margin-top: 7px !important;
+        min-height: 24px !important;
+        max-height: 24px !important;
+        overflow: hidden !important;
+      }
+
+      #quickGrid .cnBadges span {
+        padding: 3px 7px !important;
+        font-size: 10.5px !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: 8px !important;
+        padding-top: 9px !important;
+        border-top: 1px solid rgba(255,255,255,.065) !important;
+        font-size: 11.5px !important;
+      }
+
+      #quickGrid .cnMeta b {
+        font-size: 13px !important;
+      }
+
+      #quickGrid .cnRow {
+        margin-top: auto !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+      }
+
+      #quickGrid .cnRow .btn {
+        min-height: 32px !important;
+        padding: 7px 9px !important;
+        border-radius: 11px !important;
+        font-size: 11.5px !important;
+        line-height: 1 !important;
+      }
+
+      #quickGrid .cnQuickTertiary {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 860px) {
+      #sec-produto-do-dia .panel__head {
+        padding: 12px 14px !important;
+        align-items: center !important;
+      }
+
+      #sec-produto-do-dia .panel__head h2 {
+        font-size: 16px !important;
+        letter-spacing: .34em !important;
+      }
+
+      #sec-produto-do-dia .panel__head p {
+        display: none !important;
+      }
+
+      #sec-produto-do-dia .featuredHeaderCount {
+        display: none !important;
+      }
+
+      #sec-produto-do-dia #refresh {
+        min-height: 34px !important;
+        padding: 8px 13px !important;
+        font-size: 12px !important;
+      }
+
+      #featured.featured {
+        padding: 10px 12px 14px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        margin: 0 !important;
+      }
+
+      #featured .cnCard {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        border-radius: 18px !important;
+      }
+
+      #featured .cnFeaturedMedia {
+        padding: 10px !important;
+      }
+
+      #featured .cnFeaturedMedia .cnMediaShell {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg {
+        width: min(100%, 390px) !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        border-radius: 13px !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad {
+        padding: 13px 14px 14px !important;
+        overflow: visible !important;
+      }
+
+      #featured .cnTitle {
+        font-size: clamp(1.28rem, 6.3vw, 1.62rem) !important;
+        line-height: 1.07 !important;
+        margin: 0 !important;
+        display: block !important;
+        overflow: visible !important;
+        text-wrap: balance !important;
+      }
+
+      #featured .cnFeatureSummary {
+        margin-top: 7px !important;
+        font-size: .88rem !important;
+        line-height: 1.22 !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 10px !important;
+        padding: 12px !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: 2rem !important;
+      }
+
+      #featured .cnBadges {
+        margin-top: 9px !important;
+        gap: 6px !important;
+      }
+
+      #featured .cnRow {
+        margin-top: 11px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 40px !important;
+        border-radius: 13px !important;
+        font-size: .86rem !important;
+      }
+
+      #featured .cnRow .btn--buy-primary {
+        grid-column: 1 / -1 !important;
+        white-space: normal !important;
+        line-height: 1.15 !important;
+      }
+
+      #featured .cnScarcityLine {
+        margin-top: 11px !important;
+        font-size: .88rem !important;
+        line-height: 1.25 !important;
+      }
+
+      #featured .cnMeta {
+        margin-top: 9px !important;
+        width: 100% !important;
+        border-radius: 12px !important;
+        font-size: .82rem !important;
+      }
+    }
+
 </style>
 
 </head>
@@ -11443,12 +11927,7 @@
           <button class="btn btn--tiny btn--glass" type="button" id="refresh">↻ Atualizar</button>
         </div>
       </div>
-
-      <div class="imperialNote" style="margin-top: 0;" role="note" aria-label="Dica de navegação">
-        <div><b>Curadoria completa</b> · <span data-total-products>—</span> produtos selecionados</div>
-      </div>
-
-      <div class="featured" id="featured">
+<div class="featured" id="featured">
         <!-- preenchido pelo script.js -->
       </div>
     </section>
