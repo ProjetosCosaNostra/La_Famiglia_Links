@@ -7787,6 +7787,216 @@
       }
     }
 
+
+
+    /* =========================
+       REFINO DESKTOP — ENTRADA PREMIUM V1
+       - melhora apenas o topo no PC
+       - mantém o mobile preservado
+       ========================= */
+    .heroDesktopIntro{
+      display:none;
+    }
+
+    @media (min-width: 861px){
+      .hero{
+        display:grid !important;
+        grid-template-columns:minmax(0, 1fr) 330px !important;
+        gap:14px !important;
+        align-items:stretch !important;
+        padding:14px 16px !important;
+        border-radius:22px !important;
+      }
+
+      .hero__brand,
+      .hero__brand--banner{
+        min-width:0 !important;
+        width:100% !important;
+        gap:10px !important;
+      }
+
+      .heroBanner{
+        border-radius:17px !important;
+        border-color:rgba(215,176,88,.20) !important;
+        background:
+          radial-gradient(620px 180px at 30% 0%, rgba(215,176,88,.08), transparent 58%),
+          rgba(0,0,0,.20) !important;
+        box-shadow:0 16px 42px rgba(0,0,0,.30) !important;
+      }
+
+      .heroBanner__seal{
+        width:62px !important;
+        height:62px !important;
+        top:12px !important;
+        right:12px !important;
+        border-radius:16px !important;
+        opacity:.92 !important;
+      }
+
+      .heroBanner__sealLogo{
+        width:60px !important;
+        height:60px !important;
+      }
+
+      .hero__text--bannerstack{
+        align-items:center !important;
+        text-align:center !important;
+        width:100% !important;
+      }
+
+      .chips--heroCompact{
+        justify-content:center !important;
+        margin-top:8px !important;
+        gap:8px !important;
+      }
+
+      .chips--heroCompact .chip{
+        min-height:28px !important;
+        padding:5px 10px !important;
+        font-size:11px !important;
+        border-color:rgba(215,176,88,.14) !important;
+        background:rgba(0,0,0,.22) !important;
+      }
+
+      .hero__sub--banner{
+        margin-top:8px !important;
+        max-width:620px !important;
+        text-align:center !important;
+        font-size:13px !important;
+        line-height:1.34 !important;
+        color:rgba(255,255,255,.76) !important;
+      }
+
+      .hero__actions{
+        display:grid !important;
+        grid-template-columns:1fr 1fr !important;
+        gap:8px !important;
+        align-content:center !important;
+        align-items:stretch !important;
+        justify-content:stretch !important;
+        flex:0 0 auto !important;
+        width:100% !important;
+        min-width:0 !important;
+        padding:12px !important;
+        border-radius:20px !important;
+        border:1px solid rgba(215,176,88,.18) !important;
+        background:
+          radial-gradient(420px 180px at 70% 0%, rgba(215,176,88,.15), transparent 58%),
+          linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.20)),
+          rgba(5,5,7,.34) !important;
+        box-shadow:0 16px 42px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.035) !important;
+        backdrop-filter:blur(12px) !important;
+      }
+
+      .heroDesktopIntro{
+        grid-column:1 / -1;
+        display:flex;
+        flex-direction:column;
+        gap:3px;
+        padding:10px 10px 9px;
+        border-radius:16px;
+        border:1px solid rgba(215,176,88,.13);
+        background:rgba(0,0,0,.20);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+        text-align:center;
+      }
+
+      .heroDesktopIntro__kicker{
+        color:rgba(224,195,107,.96);
+        text-transform:uppercase;
+        letter-spacing:.18em;
+        font-size:10px;
+        font-weight:900;
+      }
+
+      .heroDesktopIntro strong{
+        color:rgba(255,255,255,.94);
+        font-family:var(--font-display, Cinzel, serif);
+        font-size:19px;
+        line-height:1.06;
+        letter-spacing:.02em;
+      }
+
+      .heroDesktopIntro small{
+        color:rgba(255,255,255,.64);
+        font-size:11px;
+        line-height:1.25;
+      }
+
+      .hero__actions #goLoja{
+        grid-column:1 / -1;
+        min-height:52px !important;
+        border-radius:16px !important;
+        padding:12px 14px !important;
+        font-size:14px !important;
+        letter-spacing:.02em !important;
+        text-transform:none !important;
+        color:rgba(255,239,195,.98) !important;
+        border-color:rgba(224,195,107,.42) !important;
+        background:
+          radial-gradient(260px 90px at 50% 0%, rgba(255,232,169,.22), transparent 62%),
+          linear-gradient(180deg, rgba(167,136,52,.74), rgba(94,78,28,.70)) !important;
+        box-shadow:0 12px 28px rgba(145,111,34,.26), inset 0 1px 0 rgba(255,255,255,.10) !important;
+      }
+
+      .goLojaHint{
+        grid-column:1 / -1;
+        margin:-2px 2px 0 !important;
+        padding:0 4px 3px !important;
+        text-align:center !important;
+        color:rgba(255,255,255,.62) !important;
+        font-size:11px !important;
+        line-height:1.25 !important;
+      }
+
+      .heroMore{
+        display:none !important;
+      }
+
+      .hero__actions #copyLoja,
+      .hero__actions > .btn--social{
+        min-height:38px !important;
+        border-radius:14px !important;
+        padding:9px 10px !important;
+        font-size:12px !important;
+        letter-spacing:.01em !important;
+        background:rgba(0,0,0,.25) !important;
+        border-color:rgba(255,255,255,.10) !important;
+        box-shadow:none !important;
+      }
+
+      .hero__actions #copyLoja{
+        grid-column:auto !important;
+      }
+
+      .hero__actions > .btn--social[href*="instagram"]{
+        grid-column:auto !important;
+      }
+
+      .hero__actions > .btn--social[href*="t.me"]{
+        grid-column:1 / -1 !important;
+      }
+
+      .hero__actions > .miniNote{
+        grid-column:1 / -1 !important;
+        margin:1px 0 0 !important;
+        min-height:30px !important;
+        padding:7px 10px !important;
+        border-radius:14px !important;
+        display:flex !important;
+        justify-content:center !important;
+        align-items:center !important;
+        text-align:center !important;
+        font-size:11px !important;
+        color:rgba(255,255,255,.68) !important;
+        background:rgba(0,0,0,.22) !important;
+        border-color:rgba(215,176,88,.10) !important;
+      }
+
+      .sectionNav{
+        margin-top:10px !important;
+      }
+    }
 </style>
 </head>
 
@@ -7855,8 +8065,14 @@
       </div>
 
       <div class="hero__actions">
-        <a class="btn btn--gold" href="./loja.html" id="goLoja"><span class="goLojaTextDesktop">🛍️ Ver todos os <span data-total-products>—</span> produtos</span><span class="goLojaTextMobile">🛍️ Ver todos os <span data-total-products>—</span> produtos</span></a>
-        <div class="goLojaHint">Toque aqui para abrir a loja completa com todos os achados.</div>
+        <div class="heroDesktopIntro" aria-hidden="true">
+          <span class="heroDesktopIntro__kicker">Entrada da loja</span>
+          <strong>Loja completa com <span data-total-products>—</span> achados</strong>
+          <small>Curadoria premium organizada para compra rápida e segura.</small>
+        </div>
+
+        <a class="btn btn--gold" href="./loja.html" id="goLoja"><span class="goLojaTextDesktop">🛍️ Abrir loja completa — <span data-total-products>—</span> produtos</span><span class="goLojaTextMobile">🛍️ Ver todos os <span data-total-products>—</span> produtos</span></a>
+        <div class="goLojaHint">Acesse todos os achados selecionados em uma vitrine completa.</div>
 
         <details class="heroMore">
           <summary class="heroMore__summary"><span class="heroMore__toggleIcon" aria-hidden="true"></span><span>Canais oficiais</span></summary>
