@@ -7091,6 +7091,308 @@
         font-size: .86rem !important;
       }
     }
+
+
+    /* ==========================================================
+       PATCH MOBILE UX + PREÇO/GALERIA — 2026-05-09
+       Escopo: Home/index.html + script.js
+       Objetivo: deixar o mobile mais claro para compra, sem mexer no loja.html/loja.js.
+       ========================================================== */
+    .goLojaHint {
+      display: none;
+      margin-top: -4px;
+      padding: 0 4px 2px;
+      color: rgba(255,255,255,.70);
+      font-size: .78rem;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .cnMediaShell {
+      position: relative;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+
+    .cnMediaShell .cnImg {
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-drag: none;
+      transition: opacity .16s ease, transform .18s ease;
+    }
+
+    .cnMediaShell--gallery .cnImg:active {
+      transform: scale(.995);
+    }
+
+    .cnGalleryCount,
+    .cnGalleryHint {
+      position: absolute;
+      z-index: 4;
+      pointer-events: none;
+      border: 1px solid rgba(215,176,88,.28);
+      background: rgba(0,0,0,.58);
+      color: rgba(255,255,255,.92);
+      box-shadow: 0 10px 28px rgba(0,0,0,.32);
+      backdrop-filter: blur(10px);
+    }
+
+    .cnGalleryCount {
+      top: 10px;
+      left: 10px;
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .cnGalleryHint {
+      right: 10px;
+      bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 800;
+    }
+
+    .cnGalleryArrow {
+      position: absolute;
+      z-index: 5;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(215,176,88,.34);
+      background: rgba(0,0,0,.50);
+      color: rgba(255,236,184,.98);
+      box-shadow: 0 14px 34px rgba(0,0,0,.42);
+      backdrop-filter: blur(10px);
+      font-size: 1.35rem;
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .cnGalleryArrow:focus-visible {
+      outline: 2px solid rgba(255,221,145,.75);
+      outline-offset: 2px;
+    }
+
+    .cnGalleryDots {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-height: 18px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.38);
+      border: 1px solid rgba(215,176,88,.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .cnGalleryDot {
+      width: 6px;
+      height: 6px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.42);
+      cursor: pointer;
+    }
+
+    .cnGalleryDot.is-active {
+      width: 16px;
+      background: rgba(215,176,88,.95);
+    }
+
+    .cnPromoBox {
+      margin-top: 12px;
+      padding: 11px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(215,176,88,.24);
+      background:
+        radial-gradient(circle at top left, rgba(215,176,88,.16), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.16));
+      box-shadow: 0 14px 38px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .cnPromoBox--compact {
+      margin-top: 10px;
+      padding: 9px 10px;
+      border-radius: 14px;
+    }
+
+    .cnPromoLabel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: rgba(255,221,145,.96);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .cnPromoDiscount {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(215,176,88,.16);
+      border: 1px solid rgba(215,176,88,.22);
+      color: rgba(255,255,255,.94);
+      letter-spacing: .04em;
+      font-size: .70rem;
+    }
+
+    .cnPromoPrices {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 7px;
+    }
+
+    .cnCurrentPrice {
+      color: rgba(255,255,255,.97);
+      font-size: clamp(1.45rem, 3.2vw, 2.05rem);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.03em;
+    }
+
+    .cnPromoBox--compact .cnCurrentPrice {
+      font-size: 1.15rem;
+    }
+
+    .cnOldPrice {
+      color: rgba(255,255,255,.50);
+      font-size: .92rem;
+      text-decoration: line-through;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cnPromoText,
+    .cnPromoChecked {
+      margin-top: 6px;
+      color: rgba(255,255,255,.73);
+      font-size: .82rem;
+      line-height: 1.32;
+    }
+
+    .cnPromoChecked {
+      color: rgba(255,255,255,.62);
+      font-size: .74rem;
+    }
+
+    .cnBuyBox .cnSteps li:first-child b,
+    .cnActionPrimary,
+    .cnQuickPrimary {
+      letter-spacing: .01em;
+    }
+
+    .cnActionPrimary {
+      min-height: 46px !important;
+      font-size: .94rem !important;
+    }
+
+    .cnQuickPrimary {
+      min-height: 38px !important;
+      font-weight: 900 !important;
+    }
+
+    .cnScarcityLine {
+      margin-top: 8px;
+      color: rgba(255,255,255,.70);
+      font-size: .78rem;
+      line-height: 1.28;
+    }
+
+    @media (max-width: 640px) {
+      .hero__actions #goLoja {
+        min-height: 48px !important;
+        padding: 10px 13px !important;
+        border-radius: 16px !important;
+        font-size: .92rem !important;
+        line-height: 1.08 !important;
+        letter-spacing: .01em !important;
+        box-shadow: 0 16px 42px rgba(145,111,34,.34), inset 0 1px 0 rgba(255,255,255,.08) !important;
+      }
+
+      .goLojaHint {
+        display: block;
+      }
+
+      .floatingStoreCTA__mobile:nth-of-type(3),
+      .sectionNav__pill--store {
+        font-weight: 900 !important;
+      }
+
+      .cnGalleryArrow {
+        width: 30px;
+        height: 40px;
+        right: 6px;
+        font-size: 1.15rem;
+      }
+
+      .cnGalleryCount {
+        top: 8px;
+        left: 8px;
+        min-height: 24px;
+        padding: 4px 8px;
+        font-size: .68rem;
+      }
+
+      .cnGalleryHint {
+        right: 8px;
+        bottom: 8px;
+        padding: 5px 8px;
+        font-size: .66rem;
+      }
+
+      .cnGalleryDots {
+        bottom: 8px;
+      }
+
+      .cnPromoBox {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 14px;
+      }
+
+      .cnPromoLabel {
+        font-size: .66rem;
+        letter-spacing: .12em;
+      }
+
+      .cnCurrentPrice {
+        font-size: 1.42rem;
+      }
+
+      .cnActionPrimary {
+        width: 100% !important;
+        min-height: 44px !important;
+        font-size: .86rem !important;
+      }
+    }
 </style>
 </head>
 
@@ -7105,13 +7407,13 @@
   <!-- CTA flutuante (alto padrão) -->
   <div class="floatingStoreCTA" aria-hidden="false">
     <a class="floatingStoreCTA__desktop" href="./loja.html" id="floatingLoja">
-      👑 Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> produtos
+      🛍️ Loja Completa <span class="gold">•</span> <span class="n" data-total-products>—</span> produtos
     </a>
     <a class="floatingStoreCTA__mobile" href="#sec-produto-do-dia" aria-label="Ir para Seleção do Dia">
       ⭐ Seleção
     </a>
     <a class="floatingStoreCTA__mobile" href="./loja.html" aria-label="Abrir Loja Completa">
-      👑 Loja (<span data-total-products>—</span>)
+      🛍️ Todos (<span data-total-products>—</span>)
     </a>
     <a class="floatingStoreCTA__mobile floatingStoreCTA__top" href="#topo" aria-label="Voltar para o topo">
       ↑
@@ -7159,7 +7461,8 @@
       </div>
 
       <div class="hero__actions">
-        <a class="btn btn--gold" href="./loja.html" id="goLoja"><span class="goLojaTextDesktop">🛒 Abrir Vitrine / Loja (<span data-total-products>—</span>)</span><span class="goLojaTextMobile">👑 Entrar na Loja Premium</span></a>
+        <a class="btn btn--gold" href="./loja.html" id="goLoja"><span class="goLojaTextDesktop">🛍️ Ver todos os <span data-total-products>—</span> produtos</span><span class="goLojaTextMobile">🛍️ Ver todos os <span data-total-products>—</span> produtos</span></a>
+        <div class="goLojaHint">Toque aqui para abrir a loja completa com todos os achados.</div>
 
         <details class="heroMore">
           <summary class="heroMore__summary"><span class="heroMore__toggleIcon" aria-hidden="true"></span><span>Canais oficiais</span></summary>
@@ -7197,7 +7500,7 @@
     <nav class="sectionNav" aria-label="Atalhos da Central Premium" id="cnMobileTopNav">
       <a class="sectionNav__pill sectionNav__pill--selection" href="#sec-produto-do-dia" data-cn-mobile-nav-link="selection">⭐ Seleção do Dia</a>
       <a class="sectionNav__pill sectionNav__pill--quick" href="#sec-vitrine-rapida" data-cn-mobile-nav-link="quick">🧊 Vitrine Rápida</a>
-      <a class="sectionNav__pill sectionNav__pill--gold sectionNav__pill--store" href="./loja.html" id="sectionNavLoja" data-cn-mobile-nav-link="store">👑 Loja Completa (<span data-total-products>—</span>)</a>
+      <a class="sectionNav__pill sectionNav__pill--gold sectionNav__pill--store" href="./loja.html" id="sectionNavLoja" data-cn-mobile-nav-link="store">🛍️ Todos os Produtos (<span data-total-products>—</span>)</a>
       <a class="sectionNav__pill sectionNav__pill--top" href="#topo" aria-label="Voltar para o topo" data-cn-mobile-nav-link="top">↑</a>
       <a class="sectionNav__pill sectionNav__pill--links" href="#sec-links" data-cn-mobile-nav-link="links">🔗 Links Oficiais</a>
     </nav>
@@ -7232,7 +7535,7 @@
           </p>
         </div>
         <div class="panel__right">
-          <a class="btn btn--tiny btn--gold" href="./loja.html" id="btnVerTodosTop">Ver todos · <span data-total-products>—</span></a>
+          <a class="btn btn--tiny btn--gold" href="./loja.html" id="btnVerTodosTop">🛍️ Ver todos · <span data-total-products>—</span></a>
         </div>
       </div>
 
@@ -7242,7 +7545,7 @@
           <input id="qHome" placeholder="Buscar produto" />
         </div>
         <button class="btn btn--tiny btn--glass" id="qClear" type="button">Limpar</button>
-        <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Abrir Loja Completa</a>
+        <a class="btn btn--tiny btn--glass" href="./loja.html" id="btnAbrirLojaCompleta">Ver todos os produtos</a>
       </div>
 
       <div class="productsGrid cnGrid" id="quickGrid">
