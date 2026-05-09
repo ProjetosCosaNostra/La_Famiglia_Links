@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-09T03:51:38Z
+Atualizado em: 2026-05-09T08:10:04Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-09T03:47:21Z
+Quando: 2026-05-09T08:05:28Z
 Issue: #137
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/137
 SKU: gloss-fran-liphoney-mel
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Achados do Dia, Cuidado Pessoal, Beleza, Gloss, Franciny Ehlke, Liphoney Mel, Brilho Labial, Maquiagem
 open_url: https://meli.la/1vQje5p
 checked_url: https://meli.la/1vQje5p
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAQRdiQfHgMuPb1L%2BGBeLGSo%2FDnpfbJrvSk0FPiYUeu2foL5XSdiw2GRlU7jbVbXD9qseGkRzzoY53yX1mZgrp2gVXdyYDh9p7LrmL6IHD3ae1czZph6pV5QPAfFn6FphnmqbAc2XND0jm729zM%2Fvog9NQOKdljU9zR2T90OMZCo0epb3vHAFVt%2FQ9zkVNoRKXFD8w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-09T03:47:21Z
+Quando: 2026-05-09T08:05:28Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/2SekHEZ
 checked_url: https://meli.la/2SekHEZ
