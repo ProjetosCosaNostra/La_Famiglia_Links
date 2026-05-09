@@ -7787,6 +7787,336 @@
       }
     }
 
+
+
+    /* ==========================================================
+       PATCH FINAL — HERO + CARDS PC/MOBILE
+       Data: 2026-05-09
+       Objetivo:
+       1) carregar os banners com os nomes já enviados ao GitHub
+       2) reduzir peso visual dos cards no desktop
+       3) melhorar proporção das imagens dos produtos
+       4) manter a lógica do script intacta
+       ========================================================== */
+
+    .heroBanner__seal {
+      display: none !important;
+    }
+
+    .heroBanner,
+    .heroBanner__picture,
+    .heroBanner__img {
+      background: rgba(0,0,0,.18) !important;
+    }
+
+    .heroBanner__img {
+      aspect-ratio: 1920 / 560 !important;
+      width: 100% !important;
+      height: auto !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+    }
+
+    @media (max-width: 640px) {
+      .heroBanner__img {
+        aspect-ratio: 1080 / 520 !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+      }
+    }
+
+    @media (min-width: 861px) {
+      .hero {
+        padding: 14px 16px 16px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 10px !important;
+      }
+
+      .heroBanner {
+        border-radius: 18px !important;
+        box-shadow: 0 14px 38px rgba(0,0,0,.26) !important;
+      }
+
+      .chips--heroCompact {
+        margin-top: 4px !important;
+        justify-content: center !important;
+      }
+
+      .hero__sub--banner {
+        text-align: center !important;
+        align-self: center !important;
+        margin-top: 0 !important;
+        font-size: .92rem !important;
+        color: rgba(255,255,255,.76) !important;
+      }
+
+      .hero__actions {
+        align-content: start !important;
+        gap: 8px !important;
+      }
+
+      .hero__actions .btn {
+        min-height: 40px !important;
+        border-radius: 14px !important;
+        font-size: .86rem !important;
+        box-shadow: 0 10px 24px rgba(0,0,0,.20) !important;
+      }
+
+      .hero__actions .btn--gold {
+        min-height: 46px !important;
+        font-size: .92rem !important;
+      }
+
+      .hero__actions .miniNote {
+        min-height: 34px !important;
+        padding: 8px 10px !important;
+        border-radius: 13px !important;
+        font-size: .80rem !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+
+      #sec-produto-do-dia {
+        padding-bottom: 18px !important;
+      }
+
+      #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(300px, .88fr) minmax(430px, 1.12fr) !important;
+        gap: 16px !important;
+        align-items: stretch !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 14px !important;
+        min-height: 360px !important;
+      }
+
+      #featured .cnFeaturedMedia > .cnMediaShell,
+      #featured .cnCard:first-child > .cnMediaShell {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        min-height: 330px !important;
+        border-radius: 18px !important;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(215,176,88,.08), transparent 54%),
+          rgba(0,0,0,.16) !important;
+      }
+
+      #featured .cnFeaturedMedia .cnImg,
+      #featured .cnCard:first-child .cnImg {
+        width: min(76%, 380px) !important;
+        max-width: 100% !important;
+        max-height: 360px !important;
+        height: auto !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: 0 auto !important;
+        border-radius: 14px !important;
+        box-shadow: 0 14px 34px rgba(0,0,0,.28) !important;
+      }
+
+      #featured .cnFeaturedInfo .cnCardPad,
+      #featured .cnCardPad {
+        padding: 18px 20px !important;
+      }
+
+      #featured .cnTitle {
+        line-height: 1.06 !important;
+      }
+
+      #featured .cnTitleMain {
+        font-size: clamp(1.48rem, 2vw, 2.05rem) !important;
+        line-height: 1.08 !important;
+      }
+
+      #featured .cnFeatureSummary {
+        font-size: .90rem !important;
+        line-height: 1.42 !important;
+        color: rgba(255,255,255,.74) !important;
+      }
+
+      #featured .cnPromoBox {
+        margin-top: 12px !important;
+        padding: 13px 15px !important;
+        border-radius: 17px !important;
+      }
+
+      #featured .cnCurrentPrice {
+        font-size: clamp(2.05rem, 2.7vw, 2.55rem) !important;
+        line-height: .96 !important;
+      }
+
+      #featured .cnRow {
+        gap: 8px !important;
+        margin-top: 12px !important;
+      }
+
+      #featured .cnRow .btn {
+        min-height: 38px !important;
+        border-radius: 13px !important;
+        font-size: .80rem !important;
+      }
+
+      #sec-vitrine-rapida {
+        padding-bottom: 18px !important;
+      }
+
+      #sec-vitrine-rapida .quickTools {
+        padding: 0 18px 12px !important;
+        gap: 10px !important;
+      }
+
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+        padding: 0 18px 4px !important;
+      }
+
+      #quickGrid .cnProd {
+        border-radius: 18px !important;
+        overflow: hidden !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.018), rgba(0,0,0,.12)),
+          rgba(5,5,7,.78) !important;
+        box-shadow: 0 14px 32px rgba(0,0,0,.22) !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 245px !important;
+        min-height: 245px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px 12px 0 !important;
+        background:
+          radial-gradient(circle at 50% 8%, rgba(215,176,88,.08), transparent 54%),
+          rgba(0,0,0,.12) !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: 230px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        margin: 0 auto !important;
+        border-radius: 13px !important;
+        box-shadow: 0 12px 24px rgba(0,0,0,.22) !important;
+        background: rgba(0,0,0,.16) !important;
+      }
+
+      #quickGrid .cnProd .cnProdPad {
+        padding: 11px 13px 13px !important;
+      }
+
+      #quickGrid .cnProd h3 {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        min-height: 2.32em !important;
+        font-size: .94rem !important;
+        line-height: 1.16 !important;
+      }
+
+      #quickGrid .cnBadges {
+        margin-top: 7px !important;
+        max-height: 28px !important;
+        overflow: hidden !important;
+      }
+
+      #quickGrid .cnBadges span {
+        padding: 3px 8px !important;
+        font-size: .66rem !important;
+      }
+
+      #quickGrid .cnBadges span:nth-child(n+3) {
+        display: none !important;
+      }
+
+      #quickGrid .cnMeta {
+        margin-top: 8px !important;
+        font-size: .72rem !important;
+        line-height: 1.15 !important;
+      }
+
+      #quickGrid .cnMeta b {
+        font-size: .80rem !important;
+      }
+
+      #quickGrid .cnRow {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 7px !important;
+        margin-top: 10px !important;
+      }
+
+      #quickGrid .cnRow .btn {
+        min-height: 34px !important;
+        padding: 7px 8px !important;
+        border-radius: 12px !important;
+        font-size: .72rem !important;
+        line-height: 1 !important;
+      }
+
+      #quickGrid .cnQuickTertiary {
+        min-height: 32px !important;
+        grid-column: 1 / -1 !important;
+      }
+    }
+
+    @media (min-width: 861px) and (max-width: 1180px) {
+      #featured .cnFeaturedWrap {
+        grid-template-columns: 1fr !important;
+      }
+
+      #featured .cnFeaturedMedia,
+      #featured .cnCard:first-child {
+        min-height: 330px !important;
+      }
+
+      #quickGrid.cnGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #quickGrid .cnProd > .cnMediaShell {
+        height: 225px !important;
+        min-height: 225px !important;
+      }
+
+      #quickGrid .cnProd .cnImg {
+        max-height: 210px !important;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        padding-top: 12px !important;
+      }
+
+      .heroBanner__seal {
+        display: none !important;
+      }
+
+      .heroBanner {
+        border-radius: 16px !important;
+      }
+
+      #sec-produto-do-dia .panel__head {
+        padding-bottom: 8px !important;
+        margin-bottom: 8px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -7819,12 +8149,12 @@
       <div class="hero__brand hero__brand--banner">
         <div class="heroBanner" aria-hidden="false">
           <picture class="heroBanner__picture">
-            <source media="(max-width: 640px)" srcset="assets/ps-hero-m.webp">
+            <source media="(max-width: 640px)" srcset="assets/premium-store-hero-mobile.webp">
             <img
               class="heroBanner__img"
-              src="assets/ps-hero-d.webp"
+              src="assets/premium-store-hero-desktop.webp"
               alt="Premium Store — Cosa Nostra • A Família das Ideias"
-              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/ps-hero-d.webp'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/premium-store-hero-desktop.webp'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
             />
           </picture>
           <div class="heroBanner__seal" aria-hidden="true">
