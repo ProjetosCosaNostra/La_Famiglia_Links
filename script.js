@@ -418,15 +418,14 @@
 
   function getBuyCtaText(p, compact) {
     var promo = getPromoInfo(p);
-    if (promo.buyCta) return promo.buyCta;
 
-    // CTA direto e comercial: a pessoa já está vendo o produto; o próximo passo é comprar.
-    // Compacto na Vitrine Rápida para manter os botões alinhados e limpos.
-    if (promo.current || promo.discount) {
-      return compact ? 'Comprar' : '🔥 Comprar com desconto';
-    }
+    // Vitrine Rápida precisa ser direta e curta para o card ficar limpo.
+    if (compact) return 'Comprar';
 
-    return compact ? 'Comprar' : '🔥 Comprar agora';
+    // Produto do Dia mantém CTA comercial, sem alongar demais o botão.
+    if (promo.current || promo.discount) return '🔥 Comprar com desconto';
+
+    return '🔥 Comprar agora';
   }
 
   function createPromoBox(p, compact) {
