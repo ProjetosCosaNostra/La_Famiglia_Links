@@ -419,8 +419,8 @@
   function getBuyCtaText(p, compact) {
     var promo = getPromoInfo(p);
     if (promo.buyCta) return promo.buyCta;
-    if (promo.current || promo.discount) return compact ? 'Comprar oferta' : '🔥 Comprar com desconto no Mercado Livre';
-    return compact ? 'Comprar agora' : '🔥 Comprar agora no Mercado Livre';
+    if (promo.current || promo.discount) return compact ? 'Comprar agora' : '🔥 Comprar com desconto';
+    return compact ? 'Comprar agora' : '🔥 Comprar no Mercado Livre';
   }
 
   function createPromoBox(p, compact) {
@@ -473,7 +473,7 @@
     if (promo.checked) {
       var checked = document.createElement('div');
       checked.className = 'cnPromoChecked';
-      checked.textContent = 'Preço conferido em ' + promo.checked + '. Pode mudar no Mercado Livre.';
+      checked.textContent = 'Conferido em ' + promo.checked + ' no Mercado Livre.';
       box.appendChild(checked);
     }
 
@@ -1078,23 +1078,12 @@
       pad.appendChild(bwrap);
     }
 
-    var buyBox = document.createElement('div');
-    buyBox.className = 'cnBuyBox';
-
-    var buyTitle = document.createElement('div');
-    buyTitle.className = 'cnBuyTitle';
-    buyTitle.textContent = 'Compra rápida';
-    buyBox.appendChild(buyTitle);
-
-    var steps = document.createElement('ol');
-    steps.className = 'cnSteps';
     var mlid = getMlId(p);
-    steps.innerHTML =
-      '<li>Toque em <b>Comprar agora</b> para abrir o Mercado Livre</li>' +
-      '<li>Confira preço final, frete e disponibilidade antes de concluir</li>' +
-      (mlid ? '<li>Se precisar buscar manualmente, use:&nbsp;<b>' + safeText(mlid) + '</b></li>' : '');
-    buyBox.appendChild(steps);
-    pad.appendChild(buyBox);
+
+    var microcopy = document.createElement('div');
+    microcopy.className = 'cnFeatureMicrocopy';
+    microcopy.textContent = 'Compra finalizada com segurança no Mercado Livre. Confira frete e disponibilidade antes de concluir.';
+    pad.appendChild(microcopy);
 
     var row1 = document.createElement('div');
     row1.className = 'cnRow';
@@ -1180,11 +1169,6 @@
     row1.appendChild(aStore);
 
     pad.appendChild(row1);
-
-    var scarcity = document.createElement('div');
-    scarcity.className = 'cnScarcityLine';
-    scarcity.textContent = 'Preço e estoque podem mudar no Mercado Livre. Aproveite quando a oferta estiver boa.';
-    pad.appendChild(scarcity);
 
     var meta = document.createElement('div');
     meta.className = 'cnMeta';
