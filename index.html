@@ -12564,6 +12564,251 @@
         object-position: center center !important;
       }
     }
+
+
+    /* ==========================================================
+       PATCH 3V — HERO REAL SEM CORTE + COMPRA PREMIUM DE VOLTA
+       Data: 2026-05-10
+       Escopo: somente index.html.
+       - O banner do topo deixa de usar altura travada/corte.
+       - A imagem fica sempre inteira, proporcional e sem distorção.
+       - O efeito premium dos botões Comprar volta, mas preso ao limite do botão.
+       ========================================================== */
+
+    #topo .hero,
+    #topo .hero__brand,
+    #topo .hero__brand--banner {
+      overflow: visible !important;
+    }
+
+    #topo .heroBanner {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      aspect-ratio: 3 / 1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+      border-radius: 16px !important;
+      background:
+        radial-gradient(720px 180px at 50% 50%, rgba(215,176,88,.055), transparent 68%),
+        rgba(0,0,0,.58) !important;
+      border-color: rgba(215,176,88,.20) !important;
+      box-shadow: 0 12px 30px rgba(0,0,0,.30) !important;
+    }
+
+    #topo .heroBanner__picture {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 0 !important;
+      overflow: visible !important;
+      background: transparent !important;
+    }
+
+    #topo .heroBanner__img {
+      width: 100% !important;
+      height: 100% !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      display: block !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      aspect-ratio: auto !important;
+      transform: none !important;
+      background: transparent !important;
+    }
+
+    @media (min-width: 861px) {
+      #topo .page {
+        padding-top: 8px !important;
+        gap: 8px !important;
+      }
+
+      #topo .hero {
+        padding: 10px 13px 12px !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+        border-radius: 20px !important;
+      }
+
+      #topo .hero__brand--banner {
+        gap: 6px !important;
+      }
+
+      #topo .hero .chips--heroCompact {
+        margin-top: 5px !important;
+        gap: 6px !important;
+      }
+
+      #topo .hero .chips--heroCompact .chip {
+        min-height: 22px !important;
+        padding: 3px 8px !important;
+        font-size: .66rem !important;
+        line-height: 1 !important;
+      }
+
+      #topo .hero__sub--banner {
+        margin: 4px auto 0 !important;
+        font-size: .78rem !important;
+        line-height: 1.15 !important;
+      }
+
+      #topo .hero__actions {
+        margin-top: 6px !important;
+      }
+
+      #topo .hero__actions #goLoja {
+        min-height: 35px !important;
+        padding: 7px 12px !important;
+        border-radius: 13px !important;
+        font-size: .78rem !important;
+      }
+
+      #topo .sectionNav {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+      }
+
+      #topo #sec-produto-do-dia {
+        margin-top: 4px !important;
+      }
+    }
+
+    @media (max-width: 860px) {
+      #topo .heroBanner {
+        aspect-ratio: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+      }
+
+      #topo .heroBanner__picture,
+      #topo .heroBanner__img {
+        height: auto !important;
+        max-height: none !important;
+      }
+
+      #topo .heroBanner__img {
+        width: 100% !important;
+        object-fit: contain !important;
+      }
+    }
+
+    #topo .btn--buy-primary,
+    #topo #quickGrid .cnQuickPrimary,
+    #topo #quickGrid .cnRow .btn--buy-primary,
+    #topo #sec-vitrine-rapida .btn--gold {
+      position: relative !important;
+      isolation: isolate !important;
+      overflow: hidden !important;
+      clip-path: inset(0 round 14px) !important;
+      border-radius: 14px !important;
+      border-color: rgba(230,195,108,.46) !important;
+      color: rgba(255,247,225,.99) !important;
+      text-shadow: 0 1px 0 rgba(0,0,0,.32) !important;
+      background:
+        radial-gradient(220px 48px at 50% 0%, rgba(255,236,176,.26), transparent 66%),
+        linear-gradient(180deg, rgba(226,195,108,.44), rgba(128,95,31,.37)),
+        rgba(10,10,12,.78) !important;
+      box-shadow:
+        0 9px 20px rgba(145,111,34,.20),
+        inset 0 1px 0 rgba(255,255,255,.13),
+        inset 0 -12px 22px rgba(0,0,0,.17) !important;
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease,
+        filter .18s ease !important;
+    }
+
+    #topo .btn--buy-primary::before,
+    #topo #quickGrid .cnQuickPrimary::before,
+    #topo #quickGrid .cnRow .btn--buy-primary::before,
+    #topo #sec-vitrine-rapida .btn--gold::before {
+      content: "" !important;
+      position: absolute !important;
+      inset: 0 !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      background:
+        linear-gradient(115deg,
+          transparent 0%,
+          transparent 34%,
+          rgba(255,244,196,.24) 47%,
+          rgba(255,244,196,.08) 55%,
+          transparent 68%,
+          transparent 100%) !important;
+      transform: translateX(-105%) !important;
+      opacity: .9 !important;
+      transition: transform .55s ease !important;
+    }
+
+    #topo .btn--buy-primary::after,
+    #topo #quickGrid .cnQuickPrimary::after,
+    #topo #quickGrid .cnRow .btn--buy-primary::after,
+    #topo #sec-vitrine-rapida .btn--gold::after {
+      content: "" !important;
+      position: absolute !important;
+      inset: 1px !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.09), transparent 44%, rgba(0,0,0,.10)) !important;
+      opacity: .58 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+
+    #topo .btn--buy-primary:hover,
+    #topo .btn--buy-primary:focus-visible,
+    #topo #quickGrid .cnQuickPrimary:hover,
+    #topo #quickGrid .cnQuickPrimary:focus-visible,
+    #topo #quickGrid .cnRow .btn--buy-primary:hover,
+    #topo #quickGrid .cnRow .btn--buy-primary:focus-visible,
+    #topo #sec-vitrine-rapida .btn--gold:hover,
+    #topo #sec-vitrine-rapida .btn--gold:focus-visible {
+      transform: translateY(-1px) !important;
+      filter: brightness(1.055) !important;
+      border-color: rgba(244,211,126,.66) !important;
+      box-shadow:
+        0 11px 24px rgba(145,111,34,.26),
+        inset 0 1px 0 rgba(255,255,255,.16),
+        inset 0 -12px 22px rgba(0,0,0,.16) !important;
+    }
+
+    #topo .btn--buy-primary:hover::before,
+    #topo .btn--buy-primary:focus-visible::before,
+    #topo #quickGrid .cnQuickPrimary:hover::before,
+    #topo #quickGrid .cnQuickPrimary:focus-visible::before,
+    #topo #quickGrid .cnRow .btn--buy-primary:hover::before,
+    #topo #quickGrid .cnRow .btn--buy-primary:focus-visible::before,
+    #topo #sec-vitrine-rapida .btn--gold:hover::before,
+    #topo #sec-vitrine-rapida .btn--gold:focus-visible::before {
+      transform: translateX(105%) !important;
+    }
+
+    #topo #quickGrid .cnQuickSecondary,
+    #topo #quickGrid .cnRow .btn:not(.cnQuickPrimary):not(.btn--buy-primary) {
+      position: relative !important;
+      overflow: hidden !important;
+      isolation: isolate !important;
+      clip-path: inset(0 round 14px) !important;
+      border-radius: 14px !important;
+      box-shadow:
+        0 5px 12px rgba(0,0,0,.17),
+        inset 0 1px 0 rgba(255,255,255,.06) !important;
+    }
+
 </style>
 
 </head>
