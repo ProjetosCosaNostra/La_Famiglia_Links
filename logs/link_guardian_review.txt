@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-09T19:20:05Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-10T04:08:37Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,45 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-09T19:15:26Z
+Quando: 2026-05-10T04:03:30Z
+Issue: #153
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/153
+SKU: corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy
+Título: Corretivo Líquido Alta Cobertura Ruby Rose Stay Fix - Cores
+ID ML: 5J5PKG-ZRXY
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Ruby Rose, Stay Fix, Corretivo, Alta Cobertura, Premium
+open_url: https://meli.la/1XoHJ5m
+checked_url: https://meli.la/1XoHJ5m
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGssi0F5bljEQd%2FCYQBHrE5QHj0bw2CF55V6Ju6ioXlMZhx8%2FCyAw2MbE%2Bt8Tc1l%2B7r7bG%2F9jXZWr09Xj6fHBaQlvODD07M99Ye1Bv11Ue4cX19o1fOL7IE1%2BIBK%2FTDoRW7tVHh%2BiuoFbOURS0YqJkw7aa74dDIykE%2FRvLJzQys%2FXRLLUqG%2BzopOWTYM44lZ7oP00Q%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-05-10T04:03:30Z
+Issue: #137
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/137
+SKU: gloss-fran-liphoney-mel
+Título: Gloss Fran By Franciny Ehlke Liphoney Mel
+ID ML: 5J5PKG-2V09
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Achados do Dia, Cuidado Pessoal, Beleza, Gloss, Franciny Ehlke, Liphoney Mel, Brilho Labial, Maquiagem
+open_url: https://meli.la/1vQje5p
+checked_url: https://meli.la/1vQje5p
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAQRdiQfHgMuPb1L%2BGBeLGSo%2FDnpfbJrvSk0FPiYUeu2foL5XSdiw2GRlU7jbVbXD9qseGkRzzoY53yX1mZgrp2gVXdyYDh9p7LrmL6IHD3ae1czZph6pV5QPAfFn6FphnmqbAc2XND0jm729zM%2Fvog9NQOKdljU9zR2T90OMZCo0epb3vHAFVt%2FQ9zkVNoRKXFD8w%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-05-10T04:03:30Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -35,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/2SekHEZ
 checked_url: https://meli.la/2SekHEZ
