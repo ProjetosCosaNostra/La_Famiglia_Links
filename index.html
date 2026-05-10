@@ -12214,6 +12214,155 @@
       }
     }
 
+
+
+    /* ==========================================================
+       PATCH 3T — TOPO MAIS ENXUTO + BOTÕES DA VITRINE CONTIDOS — 2026-05-10
+       Escopo: somente index.html.
+       - reduz o espaço vertical do topo no desktop para encaixar melhor a Seleção do Dia
+       - mantém o efeito premium dos botões da Vitrine Rápida, mas prende o brilho dentro do botão
+       ========================================================== */
+
+    @media (min-width: 861px) {
+      .page {
+        padding-top: 10px !important;
+        gap: 8px !important;
+      }
+
+      .hero {
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+        padding: 8px 12px 9px !important;
+        border-radius: 20px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 5px !important;
+      }
+
+      .heroBanner {
+        height: 128px !important;
+        min-height: 128px !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 24px rgba(0,0,0,.26) !important;
+      }
+
+      .heroBanner__picture,
+      .heroBanner__img {
+        height: 100% !important;
+      }
+
+      .heroBanner__img {
+        object-fit: cover !important;
+        object-position: center center !important;
+      }
+
+      .hero .chips--heroCompact {
+        margin-top: 5px !important;
+        gap: 6px !important;
+      }
+
+      .hero .chips--heroCompact .chip {
+        min-height: 21px !important;
+        padding: 3px 8px !important;
+        font-size: .64rem !important;
+        line-height: 1 !important;
+      }
+
+      .hero__sub--banner {
+        margin: 5px auto 0 !important;
+        max-width: 620px !important;
+        font-size: .78rem !important;
+        line-height: 1.16 !important;
+      }
+
+      .hero__actions {
+        margin-top: 7px !important;
+      }
+
+      .hero__actions #goLoja {
+        min-height: 36px !important;
+        padding: 7px 12px !important;
+        border-radius: 13px !important;
+        font-size: .78rem !important;
+        box-shadow:
+          0 8px 18px rgba(145,111,34,.16),
+          inset 0 1px 0 rgba(255,255,255,.07) !important;
+      }
+
+      .sectionNav {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+        min-height: 30px !important;
+        padding: 5px 8px !important;
+        gap: 7px !important;
+      }
+
+      .sectionNav__pill {
+        min-height: 26px !important;
+        padding: 5px 10px !important;
+        font-size: .70rem !important;
+        line-height: 1 !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 4px !important;
+      }
+    }
+
+    #sec-vitrine-rapida .btn,
+    #quickGrid .cnRow .btn,
+    #quickGrid .cnQuickPrimary,
+    #quickGrid .cnQuickSecondary {
+      position: relative !important;
+      overflow: hidden !important;
+      isolation: isolate !important;
+      contain: paint !important;
+      transform: translateZ(0) !important;
+      box-shadow:
+        0 5px 12px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.055) !important;
+    }
+
+    #sec-vitrine-rapida .btn:hover,
+    #sec-vitrine-rapida .btn:focus-visible,
+    #quickGrid .cnRow .btn:hover,
+    #quickGrid .cnRow .btn:focus-visible {
+      transform: translateY(-1px) !important;
+      filter: brightness(1.045) !important;
+      box-shadow:
+        0 6px 14px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.07) !important;
+    }
+
+    #sec-vitrine-rapida .btn--gold::after,
+    #quickGrid .cnQuickPrimary::after {
+      inset: 0 !important;
+      border-radius: inherit !important;
+      opacity: .44 !important;
+      pointer-events: none !important;
+    }
+
+    #quickGrid .cnQuickPrimary {
+      border-color: rgba(224,195,107,.30) !important;
+      background:
+        radial-gradient(220px 44px at 50% 0%, rgba(255,232,166,.18), transparent 62%),
+        linear-gradient(180deg, rgba(224,195,107,.36), rgba(105,80,29,.34)),
+        rgba(12,12,14,.70) !important;
+    }
+
+    #quickGrid .cnQuickSecondary {
+      border-color: rgba(255,255,255,.105) !important;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.12)),
+        rgba(12,12,14,.54) !important;
+    }
+
+    #quickGrid .cnRow {
+      padding-bottom: 2px !important;
+    }
+
+
   </style>
 
 </head>
