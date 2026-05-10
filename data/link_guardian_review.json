@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-10T13:51:22Z",
-  "total_items": 2,
+  "updated_at": "2026-05-10T19:20:39Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 1,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 1
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 1
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 1
     },
-    "high_priority": 2
+    "high_priority": 1
   },
   "items": [
     {
-      "happened_at": "2026-05-10T13:47:22Z",
+      "happened_at": "2026-05-10T19:16:39Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -58,50 +58,6 @@
         "Liphoney Mel",
         "Brilho Labial",
         "Maquiagem"
-      ]
-    },
-    {
-      "happened_at": "2026-05-10T13:47:22Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 198,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198",
-      "issue_title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
-      "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
-      "title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
-      "id_busca": "5J5PKG-R4BJ",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2SekHEZ",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2SekHEZ",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R4BJ",
-      "short_url": "https://meli.la/2SekHEZ",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Body Splash",
-        "Perfume Feminino",
-        "Floral",
-        "200ml",
-        "Barbour's Beauty",
-        "Autocuidado"
       ]
     }
   ]
