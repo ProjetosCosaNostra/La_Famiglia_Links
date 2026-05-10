@@ -12782,75 +12782,121 @@
 
 
     /* ==========================================================
-       PATCH 3V — RESTAURAÇÃO DEFINITIVA DO EFEITO DOS BOTÕES COMPRAR
+       HOTFIX DEFINITIVO — EFEITO DOS BOTÕES COMPRAR — 2026-05-09
        Escopo: somente index.html.
-       Motivo: regras anteriores mais específicas zeravam o transform/shine
-       dos ::before/::after nos botões Comprar da Vitrine Rápida.
+       Alvo real: botões Comprar renderizados pelo script.js dentro de:
+       - Seleção do Dia: #featured .cnRow .btn:first-child
+       - Vitrine Rápida: #quickGrid .cnRow .btn:first-child
+       Motivo: os botões Comprar nem sempre recebem as classes cnActionPrimary/
+       cnQuickPrimary/btn--buy-primary; por isso a correção anterior não pegou.
        ========================================================== */
 
+    @keyframes cnComprarGoldShine {
+      0% {
+        transform: translateX(-150%) skewX(-18deg);
+        opacity: .12;
+      }
+      42% {
+        opacity: .72;
+      }
+      62%, 100% {
+        transform: translateX(230%) skewX(-18deg);
+        opacity: .10;
+      }
+    }
+
+    @keyframes cnComprarGoldPulse {
+      0%, 100% {
+        box-shadow:
+          0 12px 26px rgba(145,111,34,.30),
+          0 0 0 1px rgba(255,226,146,.12),
+          inset 0 1px 0 rgba(255,255,255,.24),
+          inset 0 -13px 24px rgba(0,0,0,.27) !important;
+      }
+      50% {
+        box-shadow:
+          0 15px 34px rgba(145,111,34,.40),
+          0 0 0 1px rgba(255,226,146,.20),
+          0 0 22px rgba(215,176,88,.15),
+          inset 0 1px 0 rgba(255,255,255,.30),
+          inset 0 -13px 24px rgba(0,0,0,.25) !important;
+      }
+    }
+
+    #sec-produto-do-dia #featured .cnRow .btn:first-child,
     #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
     #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary {
+    #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="mercadolivre"],
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="meli.la"],
+    #sec-produto-do-dia #featured .cnRow a[href*="mercadolivre"],
+    #sec-produto-do-dia #featured .cnRow a[href*="meli.la"] {
       position: relative !important;
       isolation: isolate !important;
       overflow: hidden !important;
-      contain: layout paint !important;
-      clip-path: none !important;
-      border-radius: 15px !important;
-      border: 1px solid rgba(255, 223, 138, .62) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 1px solid rgba(255, 223, 138, .64) !important;
       background:
-        radial-gradient(180px 48px at 50% 0%, rgba(255, 244, 190, .46), transparent 64%),
-        linear-gradient(180deg, rgba(238, 205, 104, .78) 0%, rgba(163, 124, 38, .66) 48%, rgba(83, 61, 18, .82) 100%),
+        radial-gradient(180px 52px at 50% 0%, rgba(255, 244, 190, .46), transparent 66%),
+        linear-gradient(180deg, rgba(238, 205, 104, .80) 0%, rgba(164, 124, 38, .68) 48%, rgba(78, 58, 18, .86) 100%),
         rgba(18, 14, 8, .98) !important;
-      color: rgba(255, 248, 226, .98) !important;
+      color: rgba(255, 248, 226, .99) !important;
       font-weight: 900 !important;
-      letter-spacing: .015em !important;
+      letter-spacing: .012em !important;
       text-shadow:
-        0 1px 0 rgba(0,0,0,.52),
+        0 1px 0 rgba(0,0,0,.55),
         0 0 12px rgba(255, 219, 125, .18) !important;
-      box-shadow:
-        0 12px 26px rgba(145,111,34,.28),
-        0 0 0 1px rgba(255,226,146,.10),
-        inset 0 1px 0 rgba(255,255,255,.24),
-        inset 0 -13px 24px rgba(0,0,0,.26) !important;
-      filter: none !important;
       transform: translateZ(0) !important;
+      filter: none !important;
+      animation: cnComprarGoldPulse 2.8s ease-in-out infinite !important;
     }
 
+    #sec-produto-do-dia #featured .cnRow .btn:first-child::before,
     #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::before,
     #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before {
+    #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child::before,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::before,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="mercadolivre"]::before,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="meli.la"]::before,
+    #sec-produto-do-dia #featured .cnRow a[href*="mercadolivre"]::before,
+    #sec-produto-do-dia #featured .cnRow a[href*="meli.la"]::before {
       content: "" !important;
       position: absolute !important;
-      top: 1px !important;
-      right: auto !important;
-      bottom: 1px !important;
-      left: -72% !important;
-      width: 54% !important;
-      height: auto !important;
-      inset-inline-start: -72% !important;
-      border-radius: inherit !important;
+      top: -22% !important;
+      bottom: -22% !important;
+      left: -70% !important;
+      width: 46% !important;
       pointer-events: none !important;
+      border-radius: inherit !important;
       z-index: 0 !important;
       background:
         linear-gradient(100deg,
           transparent 0%,
-          rgba(255,255,255,.10) 18%,
-          rgba(255,255,255,.38) 48%,
-          rgba(255,232,154,.26) 62%,
+          rgba(255,255,255,.08) 18%,
+          rgba(255,255,255,.42) 48%,
+          rgba(255,232,154,.30) 62%,
           transparent 100%) !important;
-      opacity: .58 !important;
-      transform: skewX(-18deg) translateX(0) !important;
-      transition:
-        left .72s ease,
-        inset-inline-start .72s ease,
-        opacity .24s ease !important;
+      opacity: .66 !important;
+      transform: translateX(-150%) skewX(-18deg) !important;
+      animation: cnComprarGoldShine 2.65s ease-in-out infinite !important;
       filter: none !important;
     }
 
+    #sec-produto-do-dia #featured .cnRow .btn:first-child::after,
     #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
     #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after {
+    #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child::after,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::after,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="mercadolivre"]::after,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="meli.la"]::after,
+    #sec-produto-do-dia #featured .cnRow a[href*="mercadolivre"]::after,
+    #sec-produto-do-dia #featured .cnRow a[href*="meli.la"]::after {
       content: "" !important;
       position: absolute !important;
       inset: 0 !important;
@@ -12859,54 +12905,69 @@
       z-index: 0 !important;
       background:
         radial-gradient(90% 120% at 50% -28%, rgba(255,248,199,.24), transparent 54%),
-        linear-gradient(180deg, rgba(255,255,255,.055), transparent 42%) !important;
-      opacity: .78 !important;
-      transform: none !important;
-      filter: none !important;
+        linear-gradient(180deg, rgba(255,255,255,.06), transparent 44%) !important;
+      opacity: .82 !important;
     }
 
+    #sec-produto-do-dia #featured .cnRow .btn:first-child:hover,
+    #sec-produto-do-dia #featured .cnRow .btn:first-child:focus-visible,
     #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover,
     #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:focus-visible,
     #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover,
     #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:focus-visible,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child:hover,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child:focus-visible,
     #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:focus-visible {
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:focus-visible,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary:hover,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary:focus-visible,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="mercadolivre"]:hover,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="mercadolivre"]:focus-visible,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="meli.la"]:hover,
+    #sec-vitrine-rapida #quickGrid .cnRow a[href*="meli.la"]:focus-visible,
+    #sec-produto-do-dia #featured .cnRow a[href*="mercadolivre"]:hover,
+    #sec-produto-do-dia #featured .cnRow a[href*="mercadolivre"]:focus-visible,
+    #sec-produto-do-dia #featured .cnRow a[href*="meli.la"]:hover,
+    #sec-produto-do-dia #featured .cnRow a[href*="meli.la"]:focus-visible {
       transform: translateY(-1px) translateZ(0) !important;
-      border-color: rgba(255, 236, 168, .82) !important;
-      filter: brightness(1.06) saturate(1.03) !important;
-      box-shadow:
-        0 16px 34px rgba(145,111,34,.36),
-        0 0 0 1px rgba(255,226,146,.14),
-        inset 0 1px 0 rgba(255,255,255,.28),
-        inset 0 -13px 24px rgba(0,0,0,.27) !important;
+      border-color: rgba(255, 236, 168, .84) !important;
+      filter: brightness(1.07) saturate(1.04) !important;
     }
 
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover::before,
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:focus-visible::before,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover::before,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:focus-visible::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:focus-visible::before {
-      left: 118% !important;
-      inset-inline-start: 118% !important;
-      opacity: .74 !important;
-      transform: skewX(-18deg) translateX(0) !important;
-    }
-
+    #sec-produto-do-dia #featured .cnRow .btn:first-child > *,
     #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary > *,
     #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary > *,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary > * {
+    #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child > *,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary > *,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary > * {
       position: relative !important;
       z-index: 2 !important;
     }
 
+    #sec-produto-do-dia #featured .cnRow .btn:first-child,
     #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
     #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary {
       min-height: 45px !important;
     }
 
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary {
+    #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary {
       min-height: 35px !important;
+    }
+
+    @media (max-width: 640px) {
+      #sec-produto-do-dia #featured .cnRow .btn:first-child,
+      #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
+      #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary {
+        min-height: 38px !important;
+      }
+
+      #sec-vitrine-rapida #quickGrid .cnRow .btn:first-child,
+      #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
+      #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary {
+        min-height: 32px !important;
+      }
     }
 
 </style>
