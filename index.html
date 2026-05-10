@@ -12363,7 +12363,121 @@
     }
 
 
-  </style>
+  
+
+    /* ==========================================================
+       PATCH 3U — HERO SEM CORTE + BOTÕES MAIS CONTIDOS — 2026-05-10
+       Escopo: somente index.html.
+       - mantém topo mais compacto sem cortar o letreiro PREMIUM STORE
+       - conserva o brilho dos botões da Vitrine Rápida, mas prende o efeito dentro do botão
+       ========================================================== */
+
+    @media (min-width: 861px) {
+      .page {
+        padding-top: 8px !important;
+        gap: 8px !important;
+      }
+
+      .hero {
+        padding: 8px 12px 9px !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+      }
+
+      .heroBanner {
+        height: 156px !important;
+        min-height: 156px !important;
+        max-height: 156px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+        border-radius: 16px !important;
+      }
+
+      .heroBanner__picture,
+      .heroBanner__img {
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+      }
+
+      .heroBanner__img {
+        object-fit: cover !important;
+        object-position: center 61% !important;
+      }
+
+      .hero .chips--heroCompact {
+        margin-top: 4px !important;
+      }
+
+      .hero__sub--banner {
+        margin-top: 4px !important;
+      }
+
+      .hero__actions {
+        margin-top: 6px !important;
+      }
+
+      .sectionNav {
+        margin-top: 4px !important;
+        margin-bottom: 5px !important;
+      }
+
+      #sec-produto-do-dia {
+        margin-top: 3px !important;
+      }
+    }
+
+    #quickGrid .cnRow .btn,
+    #quickGrid .cnQuickPrimary,
+    #quickGrid .cnQuickSecondary,
+    #sec-vitrine-rapida .quickTools .btn {
+      overflow: hidden !important;
+      isolation: isolate !important;
+      contain: paint !important;
+      clip-path: inset(0 round 13px) !important;
+      border-radius: 13px !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.07),
+        inset 0 -10px 22px rgba(0,0,0,.10),
+        0 3px 8px rgba(0,0,0,.16) !important;
+    }
+
+    #quickGrid .cnRow .btn:hover,
+    #quickGrid .cnRow .btn:focus-visible,
+    #sec-vitrine-rapida .quickTools .btn:hover,
+    #sec-vitrine-rapida .quickTools .btn:focus-visible {
+      transform: translateY(-1px) !important;
+      filter: brightness(1.035) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        inset 0 -10px 22px rgba(0,0,0,.11),
+        0 4px 10px rgba(0,0,0,.18) !important;
+    }
+
+    #quickGrid .cnRow .btn::before,
+    #quickGrid .cnRow .btn::after,
+    #quickGrid .cnQuickPrimary::before,
+    #quickGrid .cnQuickPrimary::after,
+    #quickGrid .cnQuickSecondary::before,
+    #quickGrid .cnQuickSecondary::after,
+    #sec-vitrine-rapida .quickTools .btn::before,
+    #sec-vitrine-rapida .quickTools .btn::after {
+      inset: 0 !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      filter: none !important;
+      transform: none !important;
+    }
+
+    @media (max-width: 860px) {
+      .heroBanner__img {
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+    }
+</style>
 
 </head>
 
