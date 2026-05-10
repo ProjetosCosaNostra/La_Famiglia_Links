@@ -12477,6 +12477,93 @@
         object-position: center center !important;
       }
     }
+
+
+    /* ==========================================================
+       AJUSTE FINAL — HERO SEM CORTE — 2026-05-09
+       Objetivo:
+       - A imagem do topo NUNCA deve ser cortada.
+       - Remove o enquadramento forçado que usava aspect-ratio + cover.
+       - Mantém a imagem inteira, proporcional e sem distorção.
+       - Preserva o topo compacto dentro do possível, sem sacrificar o letreiro.
+       ========================================================== */
+    .heroBanner {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      aspect-ratio: auto !important;
+      overflow: hidden !important;
+      border-radius: 16px !important;
+      background: rgba(0,0,0,.34) !important;
+    }
+
+    .heroBanner__picture {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      line-height: 0 !important;
+      aspect-ratio: auto !important;
+      background: transparent !important;
+    }
+
+    .heroBanner__img {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      aspect-ratio: auto !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      background: transparent !important;
+    }
+
+    @media (min-width: 861px) {
+      .hero {
+        padding: 12px 14px 14px !important;
+      }
+
+      .hero__brand--banner {
+        gap: 7px !important;
+      }
+
+      .heroBanner {
+        border-radius: 16px !important;
+      }
+
+      .chips {
+        margin-top: 6px !important;
+      }
+
+      .hero__sub--banner {
+        margin-top: 0 !important;
+      }
+
+      .hero__actions {
+        margin-top: 7px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .heroBanner {
+        height: auto !important;
+        max-height: none !important;
+        aspect-ratio: auto !important;
+        border-radius: 12px !important;
+      }
+
+      .heroBanner__picture,
+      .heroBanner__img {
+        height: auto !important;
+        max-height: none !important;
+        aspect-ratio: auto !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+    }
 </style>
 
 </head>
