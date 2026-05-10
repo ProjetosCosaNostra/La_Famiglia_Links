@@ -12909,6 +12909,174 @@
       min-height: 35px !important;
     }
 
+
+
+    /* ==========================================================
+       PATCH 3W — BRILHO ANIMADO REPETINDO NOS BOTÕES COMPRAR
+       Escopo: somente index.html.
+       - restaura o brilho que atravessa o botão automaticamente
+       - não altera script.js, loja.js, produtos, links ou estrutura
+       - não aplica em Copiar ID, Copiar Link, Limpar ou Ver todos
+       ========================================================== */
+
+    @keyframes cnComprarSweepLoop {
+      0% {
+        opacity: 0;
+        transform: translateX(-170%) skewX(-18deg);
+      }
+      12% {
+        opacity: .20;
+      }
+      24% {
+        opacity: .78;
+      }
+      44% {
+        opacity: .62;
+        transform: translateX(235%) skewX(-18deg);
+      }
+      55% {
+        opacity: 0;
+        transform: translateX(260%) skewX(-18deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(260%) skewX(-18deg);
+      }
+    }
+
+    @keyframes cnComprarPulseLoop {
+      0%, 100% {
+        box-shadow:
+          0 12px 26px rgba(145,111,34,.27),
+          0 0 0 1px rgba(255,226,146,.10),
+          inset 0 1px 0 rgba(255,255,255,.23),
+          inset 0 -13px 24px rgba(0,0,0,.25) !important;
+        filter: brightness(1);
+      }
+      45% {
+        box-shadow:
+          0 15px 32px rgba(145,111,34,.34),
+          0 0 0 1px rgba(255,226,146,.15),
+          inset 0 1px 0 rgba(255,255,255,.29),
+          inset 0 -13px 24px rgba(0,0,0,.26) !important;
+        filter: brightness(1.045);
+      }
+    }
+
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary {
+      position: relative !important;
+      isolation: isolate !important;
+      overflow: hidden !important;
+      contain: paint !important;
+      clip-path: none !important;
+      border-radius: 15px !important;
+      border: 1px solid rgba(255, 223, 138, .62) !important;
+      background:
+        radial-gradient(180px 48px at 50% 0%, rgba(255, 244, 190, .44), transparent 64%),
+        linear-gradient(180deg, rgba(238, 205, 104, .76) 0%, rgba(163, 124, 38, .64) 48%, rgba(83, 61, 18, .80) 100%),
+        rgba(18, 14, 8, .98) !important;
+      color: rgba(255, 248, 226, .98) !important;
+      font-weight: 900 !important;
+      text-shadow:
+        0 1px 0 rgba(0,0,0,.52),
+        0 0 12px rgba(255, 219, 125, .18) !important;
+      transform: translateZ(0) !important;
+      animation: cnComprarPulseLoop 3.25s ease-in-out infinite !important;
+    }
+
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child::before,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::before,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::before,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child::before,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 1px !important;
+      bottom: 1px !important;
+      left: -70% !important;
+      right: auto !important;
+      width: 58% !important;
+      height: auto !important;
+      inset: auto !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      z-index: 3 !important;
+      background:
+        linear-gradient(105deg,
+          transparent 0%,
+          rgba(255,255,255,.06) 18%,
+          rgba(255,255,255,.42) 45%,
+          rgba(255,236,158,.34) 58%,
+          rgba(255,255,255,.10) 72%,
+          transparent 100%) !important;
+      opacity: 0;
+      filter: blur(.15px) !important;
+      transform: translateX(-170%) skewX(-18deg);
+      animation: cnComprarSweepLoop 2.85s ease-in-out infinite !important;
+      transition: none !important;
+    }
+
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child::after,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child::after,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after {
+      content: "" !important;
+      position: absolute !important;
+      inset: 0 !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      background:
+        radial-gradient(90% 120% at 50% -28%, rgba(255,248,199,.22), transparent 54%),
+        linear-gradient(180deg, rgba(255,255,255,.052), transparent 42%) !important;
+      opacity: .74 !important;
+      transform: none !important;
+      filter: none !important;
+      animation: none !important;
+    }
+
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child:hover,
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child:focus-visible,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:focus-visible,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:focus-visible,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child:hover,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child:focus-visible,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:focus-visible {
+      transform: translateY(-1px) translateZ(0) !important;
+      border-color: rgba(255, 236, 168, .84) !important;
+      filter: brightness(1.065) saturate(1.03) !important;
+    }
+
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child:hover::before,
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child:focus-visible::before,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover::before,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:focus-visible::before,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover::before,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:focus-visible::before,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child:hover::before,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child:focus-visible::before,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover::before,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:focus-visible::before {
+      animation-duration: 1.95s !important;
+    }
+
+    #sec-produto-do-dia #featured .cnRow > .btn:first-child > *,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary > *,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary > *,
+    #sec-vitrine-rapida #quickGrid .cnProd .cnRow > .btn:first-child > *,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary > * {
+      position: relative !important;
+      z-index: 4 !important;
+    }
+
 </style>
 
 </head>
