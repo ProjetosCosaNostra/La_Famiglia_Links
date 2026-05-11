@@ -12912,146 +12912,88 @@
 
 
     /* ==========================================================
-       PATCH 3X — BRILHO REAL EM LOOP NOS BOTÕES COMPRAR — 2026-05-10
+       PATCH FINAL — BRILHO REAL EM LOOP NOS BOTÕES COMPRAR
        Escopo: somente index.html.
-       Motivo: o brilho correto é uma faixa luminosa atravessando o botão
-       automaticamente e repetindo em loop. Esta classe é aplicada apenas
-       aos botões com texto de compra dentro da Seleção do Dia e Vitrine Rápida.
+       Correção feita sem pseudo-elemento (::before/::after), porque esses
+       podem ser anulados por outras regras dos botões. O brilho agora é
+       uma camada de background animada no próprio botão.
        ========================================================== */
 
-    @keyframes cnComprarBrilhoPassandoLoop {
-      0% {
-        opacity: 0;
-        transform: translateX(0) skewX(-18deg);
-      }
-      10% {
-        opacity: .16;
-      }
-      22% {
-        opacity: .88;
-      }
-      42% {
-        opacity: .72;
-        transform: translateX(360%) skewX(-18deg);
-      }
-      54% {
-        opacity: 0;
-        transform: translateX(405%) skewX(-18deg);
-      }
-      100% {
-        opacity: 0;
-        transform: translateX(405%) skewX(-18deg);
-      }
-    }
-
-    @keyframes cnComprarRespiraLoop {
-      0%, 100% {
+    @keyframes cnComprarBrilhoBackgroundLoop {
+      0%, 15% {
+        background-position: -230% 0, 50% 0, 50% 0, 50% 0;
         box-shadow:
-          0 12px 26px rgba(145,111,34,.27),
+          0 12px 26px rgba(145,111,34,.25),
           0 0 0 1px rgba(255,226,146,.10),
-          inset 0 1px 0 rgba(255,255,255,.23),
-          inset 0 -13px 24px rgba(0,0,0,.25) !important;
+          inset 0 1px 0 rgba(255,255,255,.22),
+          inset 0 -12px 22px rgba(0,0,0,.26);
         filter: brightness(1) saturate(1);
       }
-      45% {
+      34% {
+        background-position: 18% 0, 50% 0, 50% 0, 50% 0;
         box-shadow:
-          0 16px 34px rgba(145,111,34,.36),
-          0 0 0 1px rgba(255,226,146,.16),
+          0 15px 32px rgba(145,111,34,.34),
+          0 0 0 1px rgba(255,226,146,.18),
           inset 0 1px 0 rgba(255,255,255,.30),
-          inset 0 -13px 24px rgba(0,0,0,.26) !important;
-        filter: brightness(1.055) saturate(1.04);
+          inset 0 -12px 22px rgba(0,0,0,.27);
+        filter: brightness(1.075) saturate(1.05);
+      }
+      50% {
+        background-position: 235% 0, 50% 0, 50% 0, 50% 0;
+        box-shadow:
+          0 13px 28px rgba(145,111,34,.29),
+          0 0 0 1px rgba(255,226,146,.12),
+          inset 0 1px 0 rgba(255,255,255,.24),
+          inset 0 -12px 22px rgba(0,0,0,.26);
+        filter: brightness(1.025) saturate(1.02);
+      }
+      100% {
+        background-position: 235% 0, 50% 0, 50% 0, 50% 0;
+        box-shadow:
+          0 12px 26px rgba(145,111,34,.25),
+          0 0 0 1px rgba(255,226,146,.10),
+          inset 0 1px 0 rgba(255,255,255,.22),
+          inset 0 -12px 22px rgba(0,0,0,.26);
+        filter: brightness(1) saturate(1);
       }
     }
 
-    #sec-produto-do-dia #featured .cnComprarLoopShine,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine {
+    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo,
+    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo {
       position: relative !important;
-      isolation: isolate !important;
       overflow: hidden !important;
-      contain: paint !important;
-      clip-path: none !important;
-      border-radius: 15px !important;
-      border: 1px solid rgba(255, 223, 138, .64) !important;
-      background:
-        radial-gradient(180px 48px at 50% 0%, rgba(255, 244, 190, .46), transparent 64%),
-        linear-gradient(180deg, rgba(238, 205, 104, .78) 0%, rgba(163, 124, 38, .66) 48%, rgba(83, 61, 18, .82) 100%),
-        rgba(18, 14, 8, .98) !important;
-      color: rgba(255, 248, 226, .98) !important;
-      font-weight: 900 !important;
-      text-shadow:
-        0 1px 0 rgba(0,0,0,.52),
-        0 0 12px rgba(255, 219, 125, .18) !important;
-      transform: translateZ(0) !important;
-      animation: cnComprarRespiraLoop 3.25s ease-in-out infinite !important;
-    }
-
-    #sec-produto-do-dia #featured .cnComprarLoopShine::before,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine::before {
-      content: "" !important;
-      position: absolute !important;
-      top: 0 !important;
-      right: auto !important;
-      bottom: 0 !important;
-      left: -82% !important;
-      width: 64% !important;
-      height: 100% !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 3 !important;
-      background:
+      isolation: isolate !important;
+      border: 1px solid rgba(255, 224, 143, .64) !important;
+      color: rgba(255, 248, 226, .99) !important;
+      text-shadow: 0 1px 0 rgba(0,0,0,.55), 0 0 12px rgba(255, 229, 154, .22) !important;
+      background-image:
         linear-gradient(105deg,
           transparent 0%,
-          rgba(255,255,255,.08) 18%,
-          rgba(255,255,255,.48) 45%,
-          rgba(255,238,166,.38) 58%,
-          rgba(255,255,255,.12) 72%,
-          transparent 100%) !important;
-      opacity: 0;
-      filter: blur(.1px) !important;
-      transform: translateX(0) skewX(-18deg);
-      animation: cnComprarBrilhoPassandoLoop 2.85s ease-in-out infinite !important;
-      transition: none !important;
-      will-change: transform, opacity;
-      mix-blend-mode: screen;
+          transparent 39%,
+          rgba(255,255,255,.06) 42%,
+          rgba(255,255,255,.92) 48%,
+          rgba(255,242,176,.86) 52%,
+          rgba(255,255,255,.28) 58%,
+          transparent 66%,
+          transparent 100%),
+        radial-gradient(160px 58px at 50% 0%, rgba(255,246,190,.56), transparent 66%),
+        linear-gradient(180deg, rgba(236,203,94,.88) 0%, rgba(158,119,34,.74) 49%, rgba(69,52,16,.94) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.30)) !important;
+      background-size: 260% 100%, 100% 100%, 100% 100%, 100% 100% !important;
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat !important;
+      background-position: -230% 0, 50% 0, 50% 0, 50% 0;
+      animation: cnComprarBrilhoBackgroundLoop 2.45s ease-in-out infinite !important;
+      transform: translateZ(0) !important;
+      will-change: background-position, box-shadow, filter !important;
     }
 
-    #sec-produto-do-dia #featured .cnComprarLoopShine::after,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine::after {
-      content: "" !important;
-      position: absolute !important;
-      inset: 0 !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 1 !important;
-      background:
-        radial-gradient(90% 120% at 50% -28%, rgba(255,248,199,.22), transparent 54%),
-        linear-gradient(180deg, rgba(255,255,255,.052), transparent 42%) !important;
-      opacity: .74 !important;
-      transform: none !important;
-      filter: none !important;
-      animation: none !important;
-    }
-
-    #sec-produto-do-dia #featured .cnComprarLoopShine:hover,
-    #sec-produto-do-dia #featured .cnComprarLoopShine:focus-visible,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine:hover,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine:focus-visible {
+    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo:hover,
+    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo:focus-visible,
+    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo:hover,
+    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo:focus-visible {
+      animation-duration: 1.9s !important;
+      border-color: rgba(255, 238, 176, .86) !important;
       transform: translateY(-1px) translateZ(0) !important;
-      border-color: rgba(255, 236, 168, .86) !important;
-      filter: brightness(1.07) saturate(1.04) !important;
-    }
-
-    #sec-produto-do-dia #featured .cnComprarLoopShine:hover::before,
-    #sec-produto-do-dia #featured .cnComprarLoopShine:focus-visible::before,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine:hover::before,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine:focus-visible::before {
-      animation-duration: 1.95s !important;
-    }
-
-    #sec-produto-do-dia #featured .cnComprarLoopShine > *,
-    #sec-vitrine-rapida #quickGrid .cnComprarLoopShine > * {
-      position: relative !important;
-      z-index: 4 !important;
     }
 
 </style>
@@ -13416,55 +13358,52 @@
     (function () {
       "use strict";
 
-      function isComprarButton(el) {
-        if (!el) return false;
-        var txt = String(el.textContent || "")
+      function textoNormalizado(el) {
+        return String((el && el.textContent) || "")
           .replace(/\s+/g, " ")
           .trim()
           .toLowerCase();
+      }
 
+      function deveReceberBrilho(el) {
+        var txt = textoNormalizado(el);
         return txt.indexOf("comprar") !== -1 &&
           txt.indexOf("copiar") === -1 &&
           txt.indexOf("ver todos") === -1 &&
           txt.indexOf("limpar") === -1;
       }
 
-      function applyComprarLoopShine(root) {
-        root = root || document;
-        var scopes = [
+      function aplicarBrilhoComprar() {
+        var escopos = [
           document.getElementById("featured"),
           document.getElementById("quickGrid")
         ].filter(Boolean);
 
-        scopes.forEach(function (scope) {
-          var buttons = scope.querySelectorAll("a.btn, button.btn, a, button");
-          buttons.forEach(function (btn) {
-            if (isComprarButton(btn)) {
-              btn.classList.add("cnComprarLoopShine");
+        escopos.forEach(function (escopo) {
+          escopo.querySelectorAll("a, button").forEach(function (el) {
+            if (deveReceberBrilho(el)) {
+              el.classList.add("cnComprarBrilhoAtivo");
+              el.setAttribute("data-cn-buy-shine", "on");
             } else {
-              btn.classList.remove("cnComprarLoopShine");
+              el.classList.remove("cnComprarBrilhoAtivo");
+              el.removeAttribute("data-cn-buy-shine");
             }
           });
         });
       }
 
-      function bootComprarLoopShine() {
-        applyComprarLoopShine(document);
-        setTimeout(applyComprarLoopShine, 250);
-        setTimeout(applyComprarLoopShine, 900);
-        setTimeout(applyComprarLoopShine, 1800);
+      function iniciarBrilhoComprar() {
+        aplicarBrilhoComprar();
+        setTimeout(aplicarBrilhoComprar, 150);
+        setTimeout(aplicarBrilhoComprar, 500);
+        setTimeout(aplicarBrilhoComprar, 1200);
+        setTimeout(aplicarBrilhoComprar, 2500);
 
-        var targets = [
-          document.getElementById("featured"),
-          document.getElementById("quickGrid")
-        ].filter(Boolean);
+        ["featured", "quickGrid"].forEach(function (id) {
+          var alvo = document.getElementById(id);
+          if (!alvo || !window.MutationObserver) return;
 
-        targets.forEach(function (target) {
-          var observer = new MutationObserver(function () {
-            applyComprarLoopShine(target);
-          });
-
-          observer.observe(target, {
+          new MutationObserver(aplicarBrilhoComprar).observe(alvo, {
             childList: true,
             subtree: true,
             characterData: true
@@ -13473,9 +13412,9 @@
       }
 
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", bootComprarLoopShine);
+        document.addEventListener("DOMContentLoaded", iniciarBrilhoComprar);
       } else {
-        bootComprarLoopShine();
+        iniciarBrilhoComprar();
       }
     })();
   </script>
