@@ -16,6 +16,18 @@
     'image_url',
     'image',
     'img',
+    'images',
+    'imagens',
+    'gallery',
+    'galeria',
+    'gallery_images',
+    'extra_images',
+    'price_text',
+    'old_price_text',
+    'discount_text',
+    'price_checked_at',
+    'promo_text',
+    'buy_cta',
     'open_url',
     'canonical_url',
     'check_url',
@@ -153,6 +165,25 @@
     p.image = trim(value);
   }
 
+  function getImages(p) {
+    var raw = p && (p.images || p.gallery_images || p.extra_images || []);
+    if (Array.isArray(raw)) return raw.map(function (v) { return trim(v); }).filter(Boolean);
+    if (typeof raw === 'string') return raw.split(/[\n,;|]+/).map(function (v) { return trim(v); }).filter(Boolean);
+    return [];
+  }
+
+  function setImages(p, value) {
+    var list = trim(value).split(/[\n,;|]+/).map(function (v) { return trim(v); }).filter(Boolean);
+    if (list.length) p.images = list;
+    else delete p.images;
+  }
+
+  function setTextField(p, key, value) {
+    var v = trim(value);
+    if (v) p[key] = v;
+    else delete p[key];
+  }
+
   function isActive(p) {
     if (!p) return false;
     if (p.active === false || p.is_active === false || p.disabled === true) return false;
@@ -217,6 +248,13 @@
     refs.fieldTags = qs('#fieldTags');
     refs.fieldMlId = qs('#fieldMlId');
     refs.fieldImage = qs('#fieldImage');
+    refs.fieldImages = qs('#fieldImages');
+    refs.fieldPriceText = qs('#fieldPriceText');
+    refs.fieldOldPriceText = qs('#fieldOldPriceText');
+    refs.fieldDiscountText = qs('#fieldDiscountText');
+    refs.fieldPriceCheckedAt = qs('#fieldPriceCheckedAt');
+    refs.fieldPromoText = qs('#fieldPromoText');
+    refs.fieldBuyCta = qs('#fieldBuyCta');
     refs.fieldOpenUrl = qs('#fieldOpenUrl');
     refs.fieldCanonicalUrl = qs('#fieldCanonicalUrl');
     refs.fieldCheckUrl = qs('#fieldCheckUrl');
@@ -416,6 +454,13 @@
     refs.fieldTags.value = getTags(p).join(', ');
     refs.fieldMlId.value = getMlId(p);
     refs.fieldImage.value = getImage(p);
+    refs.fieldImages.value = getImages(p).join('\n');
+    refs.fieldPriceText.value = safe(p.price_text);
+    refs.fieldOldPriceText.value = safe(p.old_price_text);
+    refs.fieldDiscountText.value = safe(p.discount_text);
+    refs.fieldPriceCheckedAt.value = safe(p.price_checked_at);
+    refs.fieldPromoText.value = safe(p.promo_text);
+    refs.fieldBuyCta.value = safe(p.buy_cta);
     refs.fieldOpenUrl.value = safe(p.open_url);
     refs.fieldCanonicalUrl.value = safe(p.canonical_url);
     refs.fieldCheckUrl.value = safe(p.check_url);
@@ -470,6 +515,13 @@
       tags: trim(refs.fieldTags.value).split(',').map(function (v) { return trim(v); }).filter(Boolean),
       id_busca: trim(refs.fieldMlId.value),
       image_url: trim(refs.fieldImage.value),
+      images: trim(refs.fieldImages.value),
+      price_text: trim(refs.fieldPriceText.value),
+      old_price_text: trim(refs.fieldOldPriceText.value),
+      discount_text: trim(refs.fieldDiscountText.value),
+      price_checked_at: trim(refs.fieldPriceCheckedAt.value),
+      promo_text: trim(refs.fieldPromoText.value),
+      buy_cta: trim(refs.fieldBuyCta.value),
       open_url: trim(refs.fieldOpenUrl.value),
       canonical_url: trim(refs.fieldCanonicalUrl.value),
       check_url: trim(refs.fieldCheckUrl.value),
@@ -508,6 +560,13 @@
     draft.mercado_livre_id = form.id_busca;
 
     setImage(draft, form.image_url);
+    setImages(draft, form.images);
+    setTextField(draft, 'price_text', form.price_text);
+    setTextField(draft, 'old_price_text', form.old_price_text);
+    setTextField(draft, 'discount_text', form.discount_text);
+    setTextField(draft, 'price_checked_at', form.price_checked_at);
+    setTextField(draft, 'promo_text', form.promo_text);
+    setTextField(draft, 'buy_cta', form.buy_cta);
     draft.open_url = form.open_url;
     draft.canonical_url = form.canonical_url;
     draft.check_url = form.check_url;
@@ -1343,7 +1402,7 @@
       ev.target.value = '';
     });
 
-    qsa('#fieldSku, #fieldTitle, #fieldTags, #fieldMlId, #fieldImage, #fieldOpenUrl, #fieldCanonicalUrl, #fieldCheckUrl, #fieldShortUrl, #fieldResolvedUrl, #fieldNotes, #fieldExtraJson, #fieldActive, #fieldFeatured')
+    qsa('#fieldSku, #fieldTitle, #fieldTags, #fieldMlId, #fieldImage, #fieldImages, #fieldPriceText, #fieldOldPriceText, #fieldDiscountText, #fieldPriceCheckedAt, #fieldPromoText, #fieldBuyCta, #fieldOpenUrl, #fieldCanonicalUrl, #fieldCheckUrl, #fieldShortUrl, #fieldResolvedUrl, #fieldNotes, #fieldExtraJson, #fieldActive, #fieldFeatured')
       .forEach(function (el) {
         el.addEventListener('input', function () { setDirty(true); });
         el.addEventListener('change', function () { setDirty(true); });
