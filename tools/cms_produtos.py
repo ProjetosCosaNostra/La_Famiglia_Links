@@ -1091,6 +1091,38 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         featured_note_block = _get_section(sections, r"Observa[cç][aã]o|Motivo|Notas?")
         featured_note = _clean_optional_text(featured_note_block.replace("- [x]", "").replace("- [ ]", "").replace("- ", "\n"))
 
+        price_text_block = _get_section(
+            sections,
+            r"^Pre[cç]o\s+atual\b|^Pre[cç]o\s+Mercado\s+Livre\b|^Pre[cç]o\s*$|^Price\s*$",
+        )
+        old_price_text_block = _get_section(
+            sections,
+            r"Pre[cç]o\s+anterior|Pre[cç]o\s+de|Pre[cç]o\s+antigo|Old\s+Price|Previous\s+Price",
+        )
+        discount_text_block = _get_section(
+            sections,
+            r"Desconto|Oferta|Promo[cç][aã]o|Discount",
+        )
+        price_checked_block = _get_section(
+            sections,
+            r"Pre[cç]o\s+conferido|Data\s+do\s+pre[cç]o|Conferido\s+em|Price\s+Checked",
+        )
+        promo_text_block = _get_section(
+            sections,
+            r"Texto\s+promocional|Chamada\s+promocional|Observa[cç][aã]o\s+do\s+pre[cç]o|Promo\s+Text|Offer\s+Text",
+        )
+        buy_cta_block = _get_section(
+            sections,
+            r"CTA\s+de\s+compra|Bot[aã]o\s+de\s+compra|Texto\s+do\s+bot[aã]o|Buy\s+CTA",
+        )
+
+        price_text = _clean_optional_text(_first_meaningful_line(price_text_block))
+        old_price_text = _clean_optional_text(_first_meaningful_line(old_price_text_block))
+        discount_text = _clean_optional_text(_first_meaningful_line(discount_text_block))
+        price_checked_at = _clean_optional_text(_first_meaningful_line(price_checked_block))
+        promo_text = _clean_optional_text(_first_meaningful_line(promo_text_block))
+        buy_cta = _clean_optional_text(_first_meaningful_line(buy_cta_block))
+
         return {
             "sku": sku,
             "title": "",
@@ -1100,7 +1132,12 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
             "check_url": "",
             "canonical_url": "",
             "image": "",
-            "price_text": None,
+            "price_text": price_text or None,
+            "old_price_text": old_price_text or None,
+            "discount_text": discount_text or None,
+            "price_checked_at": price_checked_at or None,
+            "promo_text": promo_text or None,
+            "buy_cta": buy_cta or None,
             "active": True,
             "featured": True,
             "last_checked": "",
@@ -1533,6 +1570,21 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
                 p["active"] = True
             if is_target and featured_note:
                 p["featured_note"] = featured_note
+            if is_target:
+                for promo_key in (
+                    "price_text",
+                    "old_price_text",
+                    "discount_text",
+                    "price_checked_at",
+                    "promo_text",
+                    "buy_cta",
+                ):
+                    promo_value = incoming.get(promo_key)
+                    if promo_value is None:
+                        continue
+                    if isinstance(promo_value, str) and not promo_value.strip():
+                        continue
+                    p[promo_key] = promo_value
         _enforce_single_featured(products)
         data["products"] = products
         return data
