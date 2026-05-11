@@ -118,6 +118,83 @@ body:
     validations:
       required: false
 
+  - type: markdown
+    attributes:
+      value: |
+        ## 💰 Preço / Oferta para campanha (opcional)
+        Preencha apenas se quiser alterar o destaque de preço/oferta. Deixe vazio para manter como está.
+
+  - type: input
+    id: price_text
+    attributes:
+      label: "Preço atual (opcional)"
+      description: "Ex.: R$ 139,90. Deixe vazio para manter o preço atual do produto."
+      placeholder: "R$ 139,90"
+    validations:
+      required: false
+
+  - type: input
+    id: old_price_text
+    attributes:
+      label: "Preço anterior / preço de (opcional)"
+      description: "Ex.: R$ 189,90. Deixe vazio para manter."
+      placeholder: "R$ 189,90"
+    validations:
+      required: false
+
+  - type: input
+    id: discount_text
+    attributes:
+      label: "Desconto / selo da oferta (opcional)"
+      description: "Ex.: 24% OFF, Oferta do Dia, Preço em destaque."
+      placeholder: "24% OFF"
+    validations:
+      required: false
+
+  - type: input
+    id: price_checked_at
+    attributes:
+      label: "Preço conferido em (opcional)"
+      description: "Data ou observação curta. Deixe vazio para manter."
+      placeholder: "11/05/2026"
+    validations:
+      required: false
+
+  - type: textarea
+    id: promo_text
+    attributes:
+      label: "Texto promocional / observação do preço (opcional)"
+      description: "Deixe vazio para manter."
+      placeholder: "Preço conferido no Mercado Livre. Pode mudar sem aviso."
+    validations:
+      required: false
+
+  - type: input
+    id: buy_cta
+    attributes:
+      label: "CTA de compra / texto do botão (opcional)"
+      description: "Ex.: Comprar com desconto no Mercado Livre. Deixe vazio para manter."
+      placeholder: "Comprar com desconto no Mercado Livre"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 🖼️ Galeria / carrossel de imagens do produto (opcional)
+        Cole uma URL por linha. Se preencher aqui, a galeria do produto será atualizada.
+
+  - type: textarea
+    id: gallery_images
+    attributes:
+      label: "Imagens extras / Galeria de imagens (opcional)"
+      description: "Cole uma URL por linha. Deixe vazio para manter a galeria atual."
+      placeholder: |
+        https://github.com/user-attachments/assets/imagem-2
+        https://github.com/user-attachments/assets/imagem-3
+    validations:
+      required: false
+
   - type: dropdown
     id: quick_home_action
     attributes:
