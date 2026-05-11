@@ -108,6 +108,85 @@ body:
     validations:
       required: false
 
+  - type: markdown
+    attributes:
+      value: |
+        ## 💰 Preço / Oferta para campanha (opcional)
+        Use estes campos principalmente no **Produto do Dia** ou produto impulsionado.
+        Se deixar vazio, a loja mantém o comportamento atual.
+
+  - type: input
+    id: price_text
+    attributes:
+      label: "Preço atual"
+      description: "Ex.: R$ 139,90. Use somente quando quiser destacar preço no card."
+      placeholder: "R$ 139,90"
+    validations:
+      required: false
+
+  - type: input
+    id: old_price_text
+    attributes:
+      label: "Preço anterior / preço de"
+      description: "Ex.: R$ 189,90. Opcional."
+      placeholder: "R$ 189,90"
+    validations:
+      required: false
+
+  - type: input
+    id: discount_text
+    attributes:
+      label: "Desconto / selo da oferta"
+      description: "Ex.: 24% OFF, Oferta do Dia, Preço em destaque."
+      placeholder: "24% OFF"
+    validations:
+      required: false
+
+  - type: input
+    id: price_checked_at
+    attributes:
+      label: "Preço conferido em"
+      description: "Data ou observação curta para lembrar que o preço pode mudar no Mercado Livre."
+      placeholder: "11/05/2026"
+    validations:
+      required: false
+
+  - type: textarea
+    id: promo_text
+    attributes:
+      label: "Texto promocional / observação do preço"
+      description: "Ex.: Preço conferido no Mercado Livre. Aproveite enquanto estiver disponível."
+      placeholder: "Preço conferido no Mercado Livre. Pode mudar sem aviso."
+    validations:
+      required: false
+
+  - type: input
+    id: buy_cta
+    attributes:
+      label: "CTA de compra / texto do botão"
+      description: "Opcional. Ex.: Comprar com desconto no Mercado Livre"
+      placeholder: "Comprar com desconto no Mercado Livre"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 🖼️ Galeria / carrossel de imagens do produto (opcional)
+        Cole uma URL por linha. A primeira imagem principal continua sendo o campo **Imagem** acima.
+        Use aqui as imagens extras para o usuário navegar por setas na loja.
+
+  - type: textarea
+    id: gallery_images
+    attributes:
+      label: "Imagens extras / Galeria de imagens"
+      description: "Cole uma URL por linha. Também aceita imagens arrastadas/coladas no corpo deste campo."
+      placeholder: |
+        https://github.com/user-attachments/assets/imagem-2
+        https://github.com/user-attachments/assets/imagem-3
+    validations:
+      required: false
+
   - type: checkboxes
     id: flags
     attributes:
