@@ -12999,157 +12999,99 @@
 
 
     /* ==========================================================
-       PATCH 3W — BRILHO AUTOMÁTICO CONTÍNUO DOS BOTÕES COMPRAR
-       Escopo: somente index.html.
-       Corrige o brilho para rodar sozinho, sem depender de hover.
+       HOTFIX REAL — BRILHO AUTOMÁTICO DOS BOTÕES COMPRAR
+       - não depende de hover
+       - não depende de pseudo-elemento
+       - fica no fim do CSS para vencer regras antigas
        ========================================================== */
-    @keyframes cnComprarLuzConstante {
-      0%, 18% {
-        transform: translate3d(-170%, 0, 0) skewX(-21deg) !important;
-        opacity: 0 !important;
+    @keyframes cnComprarLuzAutomaticaFinal {
+      0% {
+        background-position: 180% 0, 0 0, 0 0 !important;
+        filter: brightness(1) !important;
       }
-      26% {
-        opacity: .72 !important;
+      45% {
+        background-position: 0% 0, 0 0, 0 0 !important;
+        filter: brightness(1.035) !important;
       }
-      48% {
-        transform: translate3d(240%, 0, 0) skewX(-21deg) !important;
-        opacity: .78 !important;
-      }
-      58%, 100% {
-        transform: translate3d(330%, 0, 0) skewX(-21deg) !important;
-        opacity: 0 !important;
+      100% {
+        background-position: -180% 0, 0 0, 0 0 !important;
+        filter: brightness(1) !important;
       }
     }
 
-    @keyframes cnComprarPulsoBase {
-      0%, 100% {
-        filter: brightness(1) saturate(1) !important;
-        box-shadow:
-          0 12px 26px rgba(145,111,34,.26),
-          0 0 0 1px rgba(255,226,146,.10),
-          inset 0 1px 0 rgba(255,255,255,.23),
-          inset 0 -13px 24px rgba(0,0,0,.26) !important;
-      }
-      38% {
-        filter: brightness(1.075) saturate(1.04) !important;
-        box-shadow:
-          0 16px 34px rgba(145,111,34,.36),
-          0 0 0 1px rgba(255,226,146,.16),
-          inset 0 1px 0 rgba(255,255,255,.30),
-          inset 0 -13px 24px rgba(0,0,0,.27) !important;
-      }
-    }
-
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-    #sec-produto-do-dia #featured .cnRow .btn.cnComprarBrilhoAtivo,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnComprarBrilhoAtivo,
-    #featured .cnActionPrimary,
-    #featured .btn--buy-primary,
-    #quickGrid .cnQuickPrimary {
+    #sec-produto-do-dia #featured .cnActionPrimary,
+    #sec-produto-do-dia #featured .btn--buy-primary,
+    #sec-vitrine-rapida #quickGrid .cnQuickPrimary,
+    #sec-vitrine-rapida #quickGrid .btn--buy-primary,
+    #quickGrid .cnQuickPrimary,
+    #quickGrid .btn--buy-primary {
       position: relative !important;
       overflow: hidden !important;
       isolation: isolate !important;
       border-radius: 15px !important;
-      border: 1px solid rgba(255, 224, 143, .66) !important;
-      background:
-        radial-gradient(170px 58px at 50% 0%, rgba(255,246,190,.50), transparent 66%),
-        linear-gradient(180deg, rgba(236,203,94,.88) 0%, rgba(158,119,34,.74) 49%, rgba(69,52,16,.94) 100%),
-        rgba(18,14,8,.98) !important;
-      background-size: 100% 100%, 100% 100%, 100% 100% !important;
-      background-position: center center !important;
-      color: rgba(255,248,226,.99) !important;
-      text-shadow: 0 1px 0 rgba(0,0,0,.55), 0 0 12px rgba(255,229,154,.22) !important;
+      border: 1px solid rgba(255, 224, 135, .58) !important;
+      color: rgba(255, 248, 226, .98) !important;
       font-weight: 900 !important;
+      text-shadow: 0 1px 0 rgba(0,0,0,.46), 0 0 12px rgba(255, 218, 120, .18) !important;
+      background-image:
+        linear-gradient(105deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0) 38%,
+          rgba(255,255,255,.24) 45%,
+          rgba(255,245,187,.72) 50%,
+          rgba(255,255,255,.25) 55%,
+          rgba(255,255,255,0) 62%,
+          rgba(255,255,255,0) 100%),
+        radial-gradient(130px 42px at 50% 0%, rgba(255, 242, 180, .42), transparent 66%),
+        linear-gradient(180deg, rgba(230, 194, 92, .72) 0%, rgba(142, 107, 35, .62) 48%, rgba(64, 48, 16, .78) 100%) !important;
+      background-size: 260% 100%, 100% 100%, 100% 100% !important;
+      background-repeat: no-repeat !important;
+      animation: cnComprarLuzAutomaticaFinal 2.35s ease-in-out infinite !important;
+      box-shadow:
+        0 12px 26px rgba(145,111,34,.25),
+        0 0 0 1px rgba(255,226,146,.10),
+        inset 0 1px 0 rgba(255,255,255,.22),
+        inset 0 -12px 24px rgba(0,0,0,.25) !important;
       transform: translateZ(0) !important;
-      will-change: filter, box-shadow !important;
-      animation: cnComprarPulsoBase 2.55s ease-in-out infinite !important;
+      will-change: background-position, filter !important;
     }
 
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::before,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::before,
-    #sec-produto-do-dia #featured .cnRow .btn.cnComprarBrilhoAtivo::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnComprarBrilhoAtivo::before,
-    #featured .cnActionPrimary::before,
-    #featured .btn--buy-primary::before,
-    #quickGrid .cnQuickPrimary::before {
-      content: "" !important;
-      position: absolute !important;
-      top: -18% !important;
-      bottom: -18% !important;
-      left: 0 !important;
-      width: 46% !important;
-      height: auto !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 2 !important;
-      opacity: 0 !important;
-      background:
-        linear-gradient(100deg,
-          transparent 0%,
-          rgba(255,255,255,.08) 18%,
-          rgba(255,255,255,.92) 46%,
-          rgba(255,237,160,.72) 55%,
-          rgba(255,255,255,.20) 66%,
-          transparent 100%) !important;
-      mix-blend-mode: screen !important;
-      filter: blur(.2px) !important;
-      transform: translate3d(-170%, 0, 0) skewX(-21deg) !important;
-      animation: cnComprarLuzConstante 2.55s cubic-bezier(.38,0,.28,1) infinite !important;
-      transition: none !important;
+    #sec-produto-do-dia #featured .cnActionPrimary::before,
+    #sec-produto-do-dia #featured .btn--buy-primary::before,
+    #sec-vitrine-rapida #quickGrid .cnQuickPrimary::before,
+    #sec-vitrine-rapida #quickGrid .btn--buy-primary::before,
+    #quickGrid .cnQuickPrimary::before,
+    #quickGrid .btn--buy-primary::before {
+      display: none !important;
+      content: none !important;
+      animation: none !important;
     }
 
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
-    #sec-produto-do-dia #featured .cnRow .btn.cnComprarBrilhoAtivo::after,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnComprarBrilhoAtivo::after,
-    #featured .cnActionPrimary::after,
-    #featured .btn--buy-primary::after,
-    #quickGrid .cnQuickPrimary::after {
+    #sec-produto-do-dia #featured .cnActionPrimary::after,
+    #sec-produto-do-dia #featured .btn--buy-primary::after,
+    #sec-vitrine-rapida #quickGrid .cnQuickPrimary::after,
+    #sec-vitrine-rapida #quickGrid .btn--buy-primary::after,
+    #quickGrid .cnQuickPrimary::after,
+    #quickGrid .btn--buy-primary::after {
       content: "" !important;
       position: absolute !important;
       inset: 0 !important;
       border-radius: inherit !important;
       pointer-events: none !important;
-      z-index: 1 !important;
-      background:
-        radial-gradient(90% 120% at 50% -30%, rgba(255,248,199,.25), transparent 54%),
-        linear-gradient(180deg, rgba(255,255,255,.060), transparent 45%) !important;
-      opacity: .84 !important;
-      transform: none !important;
-      filter: none !important;
-      animation: none !important;
+      z-index: -1 !important;
+      background: radial-gradient(90% 140% at 50% -35%, rgba(255,246,190,.20), transparent 56%) !important;
+      opacity: .70 !important;
     }
 
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover::before,
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:focus-visible::before,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover::before,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:focus-visible::before,
-    #sec-produto-do-dia #featured .cnRow .btn.cnComprarBrilhoAtivo:hover::before,
-    #sec-produto-do-dia #featured .cnRow .btn.cnComprarBrilhoAtivo:focus-visible::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:focus-visible::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnComprarBrilhoAtivo:hover::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnComprarBrilhoAtivo:focus-visible::before,
-    #featured .cnActionPrimary:hover::before,
-    #featured .cnActionPrimary:focus-visible::before,
-    #featured .btn--buy-primary:hover::before,
-    #featured .btn--buy-primary:focus-visible::before,
-    #quickGrid .cnQuickPrimary:hover::before,
-    #quickGrid .cnQuickPrimary:focus-visible::before {
-      animation: cnComprarLuzConstante 2.05s cubic-bezier(.38,0,.28,1) infinite !important;
-    }
-
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
-    #featured .cnActionPrimary,
-    #featured .btn--buy-primary,
-    #quickGrid .cnQuickPrimary {
-      text-decoration: none !important;
+    #sec-produto-do-dia #featured .cnActionPrimary:hover,
+    #sec-produto-do-dia #featured .btn--buy-primary:hover,
+    #sec-vitrine-rapida #quickGrid .cnQuickPrimary:hover,
+    #sec-vitrine-rapida #quickGrid .btn--buy-primary:hover,
+    #quickGrid .cnQuickPrimary:hover,
+    #quickGrid .btn--buy-primary:hover {
+      animation-duration: 1.55s !important;
+      filter: brightness(1.06) !important;
+      border-color: rgba(255, 232, 154, .74) !important;
     }
 
 </style>
