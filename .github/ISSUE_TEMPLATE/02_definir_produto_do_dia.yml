@@ -17,6 +17,61 @@ body:
     validations:
       required: true
 
+
+  - type: markdown
+    attributes:
+      value: |
+        ## 💰 Preço / Oferta do Produto do Dia (opcional)
+        Use quando o produto impulsionado precisar exibir preço, preço antigo e desconto na loja.
+
+  - type: input
+    id: price_text
+    attributes:
+      label: "Preço atual"
+      placeholder: "R$ 139,90"
+    validations:
+      required: false
+
+  - type: input
+    id: old_price_text
+    attributes:
+      label: "Preço anterior / preço de"
+      placeholder: "R$ 189,90"
+    validations:
+      required: false
+
+  - type: input
+    id: discount_text
+    attributes:
+      label: "Desconto / selo da oferta"
+      placeholder: "24% OFF"
+    validations:
+      required: false
+
+  - type: input
+    id: price_checked_at
+    attributes:
+      label: "Preço conferido em"
+      placeholder: "11/05/2026"
+    validations:
+      required: false
+
+  - type: textarea
+    id: promo_text
+    attributes:
+      label: "Texto promocional / observação do preço"
+      placeholder: "Preço conferido no Mercado Livre. Pode mudar sem aviso."
+    validations:
+      required: false
+
+  - type: input
+    id: buy_cta
+    attributes:
+      label: "CTA de compra / texto do botão"
+      placeholder: "Comprar com desconto no Mercado Livre"
+    validations:
+      required: false
+
   - type: checkboxes
     id: opts
     attributes:
