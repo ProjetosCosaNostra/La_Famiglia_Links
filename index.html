@@ -13112,6 +13112,191 @@
 
 </style>
 
+
+<style>
+
+/* ==========================================================
+   HOTFIX 2026-05-11 — layout preço + galeria mais limpa
+   Motivo: preço/desconto fica só no Produto do Dia; Vitrine Rápida
+   volta a ficar compacta. Galeria do Produto do Dia recebe controle
+   mais elegante, sem selo grande “Mais imagens”.
+   ========================================================== */
+
+/* Produto do Dia: card mais equilibrado em desktop */
+#featured .cnFeaturedWrap{
+  grid-template-columns:minmax(340px,.98fr) minmax(390px,1.02fr) !important;
+  gap:16px !important;
+  align-items:stretch !important;
+}
+
+#featured .cnFeaturedMedia,
+#featured .cnFeaturedInfo{
+  min-height:0 !important;
+  height:auto !important;
+}
+
+#featured .cnFeaturedMedia{
+  padding:14px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+
+#featured .cnFeaturedMedia .cnMediaShell,
+#featured .cnCard:first-child .cnMediaShell{
+  width:100% !important;
+  height:330px !important;
+  min-height:330px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:18px !important;
+  background:rgba(0,0,0,.22) !important;
+  overflow:hidden !important;
+}
+
+#featured .cnFeaturedMedia .cnImg{
+  width:100% !important;
+  height:100% !important;
+  max-width:86% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  margin:auto !important;
+  border-radius:14px !important;
+}
+
+#featured .cnGalleryCount{
+  top:12px !important;
+  left:12px !important;
+  right:auto !important;
+  padding:5px 9px !important;
+  font-size:11px !important;
+  background:rgba(0,0,0,.62) !important;
+  border-color:rgba(224,195,107,.26) !important;
+}
+
+#featured .cnGalleryArrow{
+  width:38px !important;
+  height:44px !important;
+  border-radius:999px !important;
+  background:rgba(8,8,10,.62) !important;
+  color:rgba(255,236,180,.98) !important;
+  border:1px solid rgba(224,195,107,.32) !important;
+  box-shadow:0 14px 32px rgba(0,0,0,.38) !important;
+}
+
+#featured .cnGalleryArrow--prev{ left:12px !important; right:auto !important; }
+#featured .cnGalleryArrow--next{ right:12px !important; left:auto !important; }
+
+#featured .cnGalleryDots{
+  bottom:12px !important;
+  padding:6px 9px !important;
+  background:rgba(0,0,0,.48) !important;
+  border-color:rgba(224,195,107,.18) !important;
+}
+
+#featured .cnGalleryDot{
+  width:7px !important;
+  height:7px !important;
+}
+
+#featured .cnGalleryDot.is-active{
+  width:20px !important;
+}
+
+.cnGalleryHint{ display:none !important; }
+
+/* Produto do Dia: preço bonito, mas sem empurrar o layout */
+#featured .cnPromoBox{
+  margin-top:8px !important;
+  padding:10px 12px !important;
+  border-radius:15px !important;
+}
+
+#featured .cnCurrentPrice{
+  font-size:clamp(1.75rem, 2.3vw, 2.35rem) !important;
+  line-height:1 !important;
+}
+
+#featured .cnPromoText,
+#featured .cnPromoChecked{
+  font-size:.74rem !important;
+  line-height:1.22 !important;
+}
+
+/* Vitrine Rápida: volta a ser compacta. Não mostrar card de preço nos produtos comuns. */
+#quickGrid .cnProd .cnPromoBox,
+.productsGrid .pCard .cnPromoBox{
+  display:none !important;
+}
+
+#quickGrid .cnProd > .cnMediaShell{
+  height:230px !important;
+  min-height:230px !important;
+  padding:10px !important;
+  background:rgba(0,0,0,.18) !important;
+}
+
+#quickGrid .cnProd > .cnMediaShell .cnImg{
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+}
+
+/* Galeria em cards pequenos: discreta, sem atrapalhar compra */
+#quickGrid .cnProd .cnGalleryArrow,
+.productsGrid .pCard .cnGalleryNav,
+.productsGrid .pCard .cnGalleryArrow{
+  width:28px !important;
+  height:34px !important;
+  font-size:22px !important;
+  opacity:.76 !important;
+}
+
+#quickGrid .cnProd .cnGalleryCount,
+.productsGrid .pCard .cnGalleryCounter,
+.productsGrid .pCard .cnGalleryCount{
+  font-size:10px !important;
+  padding:4px 7px !important;
+}
+
+#quickGrid .cnProd .cnGalleryDots,
+.productsGrid .pCard .cnGalleryDots{
+  display:none !important;
+}
+
+@media (max-width:860px){
+  #featured .cnFeaturedWrap{
+    grid-template-columns:1fr !important;
+  }
+  #featured .cnFeaturedMedia .cnMediaShell,
+  #featured .cnCard:first-child .cnMediaShell{
+    height:310px !important;
+    min-height:310px !important;
+  }
+}
+
+@media (max-width:520px){
+  #featured .cnFeaturedMedia{
+    padding:10px !important;
+  }
+  #featured .cnFeaturedMedia .cnMediaShell,
+  #featured .cnCard:first-child .cnMediaShell{
+    height:270px !important;
+    min-height:270px !important;
+  }
+  #featured .cnGalleryArrow{
+    width:32px !important;
+    height:38px !important;
+  }
+  #quickGrid .cnProd > .cnMediaShell{
+    height:210px !important;
+    min-height:210px !important;
+  }
+}
+
+</style>
 </head>
 
 <body id="topo">
