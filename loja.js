@@ -1884,6 +1884,7 @@
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span></div>`;
 
     const gallery = images.length > 1;
+    const mediaVariant = String(className || "").indexOf("featuredClean") >= 0 ? " cnProductMedia--featured" : (String(className || "").indexOf("pImg") >= 0 ? " cnProductMedia--quick" : "");
     const encoded = gallery ? escapeHTML(JSON.stringify(images)) : "";
     const galleryUi = gallery ? `
       <button class="cnGalleryNav cnGalleryNav--prev" type="button" data-action="galleryPrev" aria-label="Imagem anterior">‹</button>
@@ -1895,7 +1896,7 @@
     ` : "";
 
     return `
-      <div class="${className} cnProductMedia ${gallery ? "cnProductMedia--gallery" : ""}" data-gallery-index="0" data-gallery-images="${encoded}">
+      <div class="${className} cnProductMedia${mediaVariant} ${gallery ? "cnProductMedia--gallery" : ""}" data-gallery-index="0" data-gallery-images="${encoded}">
         ${extraInner || ""}
         ${img}
         ${galleryUi}
@@ -2185,7 +2186,7 @@
         ${productMediaHTML(p, "pImg", p.featured ? `<div class="pFeatured">⭐ do dia</div>` : ``)}
         <div class="pBody">
           <p class="pName">${escapeHTML(p.title)}</p>
-          ${promoHTML(p, true)}
+          ${/* Preço/oferta fica só no Produto do Dia para preservar o layout da grade. */ ""}
           <p class="pSmall">${escapeHTML(desc)}</p>
           ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
 
