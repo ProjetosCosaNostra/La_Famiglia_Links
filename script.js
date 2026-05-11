@@ -418,10 +418,11 @@
 
   function getBuyCtaText(p, compact) {
     var promo = getPromoInfo(p);
-    if (promo.buyCta) return promo.buyCta;
 
-    // Na Vitrine Rápida, o CTA precisa ser curto e direto.
+    // Na Vitrine Rápida, o CTA precisa ser curto e direto, mesmo se o produto tiver CTA especial.
     if (compact) return 'Comprar';
+
+    if (promo.buyCta) return promo.buyCta;
 
     // No Produto do Dia, mantém o apelo de desconto sem alongar demais o botão.
     if (promo.current || promo.discount) return '🔥 Comprar com desconto';
@@ -486,9 +487,118 @@
     return box;
   }
 
+  function preloadGalleryImages(images) {
+    if (!images || images.length < 2) return;
+    for (var i = 0; i < images.length; i++) {
+      var u = images[i];
+      if (!u) continue;
+      var im = new Image();
+      im.src = u;
+    }
+  }
+
+  function ensureGalleryLightbox() {
+    var existing = qs('#cnProductLightbox');
+    if (existing) return existing;
+
+    var modal = document.createElement('div');
+    modal.id = 'cnProductLightbox';
+    modal.className = 'cnProductLightbox';
+    modal.setAttribute('aria-hidden', 'true');
+    modal.innerHTML = '' +
+      '<div class="cnProductLightbox__backdrop" data-cn-lightbox-close="1"></div>' +
+      '<div class="cnProductLightbox__dialog" role="dialog" aria-modal="true" aria-label="Galeria do produto">' +
+        '<button class="cnProductLightbox__close" type="button" data-cn-lightbox-close="1" aria-label="Fechar imagem ampliada">×</button>' +
+        '<button class="cnProductLightbox__nav cnProductLightbox__nav--prev" type="button" data-cn-lightbox-prev="1" aria-label="Imagem anterior">‹</button>' +
+        '<img class="cnProductLightbox__img" alt="Imagem do produto ampliada" />' +
+        '<button class="cnProductLightbox__nav cnProductLightbox__nav--next" type="button" data-cn-lightbox-next="1" aria-label="Próxima imagem">›</button>' +
+        '<div class="cnProductLightbox__footer">' +
+          '<div class="cnProductLightbox__title"></div>' +
+          '<div class="cnProductLightbox__counter"></div>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', function (ev) {
+      if (!ev) return;
+      if (ev.target && ev.target.getAttribute('data-cn-lightbox-close') === '1') {
+        closeGalleryLightbox();
+      } else if (ev.target && ev.target.getAttribute('data-cn-lightbox-prev') === '1') {
+        moveGalleryLightbox(-1);
+      } else if (ev.target && ev.target.getAttribute('data-cn-lightbox-next') === '1') {
+        moveGalleryLightbox(1);
+      }
+    });
+
+    document.addEventListener('keydown', function (ev) {
+      var m = qs('#cnProductLightbox');
+      if (!m || !m.classList.contains('is-open')) return;
+      if (ev.key === 'Escape') closeGalleryLightbox();
+      if (ev.key === 'ArrowLeft') moveGalleryLightbox(-1);
+      if (ev.key === 'ArrowRight') moveGalleryLightbox(1);
+    });
+
+    return modal;
+  }
+
+  function closeGalleryLightbox() {
+    var modal = qs('#cnProductLightbox');
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('cnLightboxOpen');
+  }
+
+  function updateGalleryLightboxView() {
+    var modal = qs('#cnProductLightbox');
+    if (!modal || !modal._cnImages || !modal._cnImages.length) return;
+
+    var idx = modal._cnIndex || 0;
+    if (idx < 0) idx = 0;
+    if (idx >= modal._cnImages.length) idx = modal._cnImages.length - 1;
+    modal._cnIndex = idx;
+
+    var img = qs('.cnProductLightbox__img', modal);
+    var title = qs('.cnProductLightbox__title', modal);
+    var counter = qs('.cnProductLightbox__counter', modal);
+    var prev = qs('.cnProductLightbox__nav--prev', modal);
+    var next = qs('.cnProductLightbox__nav--next', modal);
+
+    if (img) img.src = modal._cnImages[idx];
+    if (title) title.textContent = modal._cnTitle || 'Produto';
+    if (counter) counter.textContent = String(idx + 1) + '/' + String(modal._cnImages.length);
+
+    if (prev) prev.classList.toggle('is-hidden', idx <= 0);
+    if (next) next.classList.toggle('is-hidden', idx >= modal._cnImages.length - 1);
+  }
+
+  function openGalleryLightbox(images, index, title) {
+    if (!images || !images.length) return;
+    var modal = ensureGalleryLightbox();
+    modal._cnImages = images.slice();
+    modal._cnIndex = Math.max(0, Math.min(Number(index) || 0, images.length - 1));
+    modal._cnTitle = safeText(title || 'Produto');
+    updateGalleryLightboxView();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('cnLightboxOpen');
+  }
+
+  function moveGalleryLightbox(delta) {
+    var modal = qs('#cnProductLightbox');
+    if (!modal || !modal._cnImages || !modal._cnImages.length) return;
+    var next = (modal._cnIndex || 0) + delta;
+    if (next < 0 || next >= modal._cnImages.length) return;
+    modal._cnIndex = next;
+    updateGalleryLightboxView();
+  }
+
   function createProductMedia(p, options) {
     options = options || {};
     var images = getImages(p);
+    preloadGalleryImages(images);
+
     var shell = document.createElement('div');
     shell.className = 'cnMediaShell';
     if (options.variant === 'featured') shell.className += ' cnMediaShell--featured';
@@ -509,6 +619,7 @@
 
     if (images.length > 1) {
       shell.className += ' cnMediaShell--gallery';
+      shell.setAttribute('data-gallery-count', String(images.length));
 
       var count = document.createElement('div');
       count.className = 'cnGalleryCount';
@@ -517,7 +628,7 @@
 
       var prevArrow = document.createElement('button');
       prevArrow.type = 'button';
-      prevArrow.className = 'cnGalleryArrow cnGalleryArrow--prev';
+      prevArrow.className = 'cnGalleryArrow cnGalleryArrow--prev is-hidden';
       prevArrow.setAttribute('aria-label', 'Imagem anterior');
       prevArrow.textContent = '‹';
       shell.appendChild(prevArrow);
@@ -528,6 +639,16 @@
       arrow.setAttribute('aria-label', 'Próxima imagem do produto');
       arrow.textContent = '›';
       shell.appendChild(arrow);
+
+      var zoom = null;
+      if (options.variant === 'featured') {
+        zoom = document.createElement('button');
+        zoom.type = 'button';
+        zoom.className = 'cnGalleryZoom';
+        zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
+        zoom.textContent = 'Ampliar';
+        shell.appendChild(zoom);
+      }
 
       var dots = document.createElement('div');
       dots.className = 'cnGalleryDots';
@@ -552,19 +673,22 @@
       var currentIndex = 0;
       var touchStartX = 0;
 
-      function setIndex(nextIndex) {
-        if (!images.length) return;
-        currentIndex = ((nextIndex % images.length) + images.length) % images.length;
-        img.style.opacity = '0.65';
-        setTimeout(function () {
-          img.src = images[currentIndex];
-          img.style.opacity = '1';
-        }, 60);
+      function refreshControls() {
         count.textContent = String(currentIndex + 1) + '/' + String(images.length);
+        prevArrow.classList.toggle('is-hidden', currentIndex <= 0);
+        arrow.classList.toggle('is-hidden', currentIndex >= images.length - 1);
         for (var d = 0; d < dotButtons.length; d++) {
           if (d === currentIndex) dotButtons[d].classList.add('is-active');
           else dotButtons[d].classList.remove('is-active');
         }
+      }
+
+      function setIndex(nextIndex) {
+        if (!images.length) return;
+        if (nextIndex < 0 || nextIndex >= images.length) return;
+        currentIndex = nextIndex;
+        img.src = images[currentIndex];
+        refreshControls();
       }
 
       function nextImage(ev) {
@@ -579,7 +703,21 @@
         if (ev && ev.stopPropagation) ev.stopPropagation();
         setIndex(currentIndex - 1);
       });
-      img.addEventListener('click', nextImage);
+
+      if (zoom) {
+        zoom.addEventListener('click', function (ev) {
+          if (ev && ev.preventDefault) ev.preventDefault();
+          if (ev && ev.stopPropagation) ev.stopPropagation();
+          openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
+        });
+        img.addEventListener('click', function (ev) {
+          if (ev && ev.preventDefault) ev.preventDefault();
+          if (ev && ev.stopPropagation) ev.stopPropagation();
+          openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
+        });
+      } else {
+        img.addEventListener('click', nextImage);
+      }
 
       shell.addEventListener('touchstart', function (ev) {
         if (!ev.touches || !ev.touches.length) return;
@@ -594,6 +732,26 @@
         }
         touchStartX = 0;
       }, { passive: true });
+
+      refreshControls();
+    } else if (images.length === 1 && options.variant === 'featured') {
+      var singleZoom = document.createElement('button');
+      singleZoom.type = 'button';
+      singleZoom.className = 'cnGalleryZoom';
+      singleZoom.setAttribute('aria-label', 'Ampliar imagem do produto');
+      singleZoom.textContent = 'Ampliar';
+      shell.appendChild(singleZoom);
+
+      singleZoom.addEventListener('click', function (ev) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        if (ev && ev.stopPropagation) ev.stopPropagation();
+        openGalleryLightbox(images, 0, options.alt || (p && p.title) || 'Produto');
+      });
+      img.addEventListener('click', function (ev) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        if (ev && ev.stopPropagation) ev.stopPropagation();
+        openGalleryLightbox(images, 0, options.alt || (p && p.title) || 'Produto');
+      });
     }
 
     return shell;
