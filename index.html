@@ -12999,220 +12999,115 @@
 
 
     /* ==========================================================
-       HOTFIX REAL — BRILHO AUTOMÁTICO DOS BOTÕES COMPRAR
-       - não depende de hover
-       - não depende de pseudo-elemento
-       - fica no fim do CSS para vencer regras antigas
+       PATCH FINAL CIRÚRGICO — BRILHO AUTOMÁTICO DOS BOTÕES COMPRAR
+       Origem: restaura o comportamento antigo do .btn--gold::after,
+       mas aplicado só nos CTAs de compra.
+       Não depende de hover, JS nem classe dinâmica.
        ========================================================== */
-    @keyframes cnComprarLuzAutomaticaFinal {
-      0% {
-        background-position: 180% 0, 0 0, 0 0 !important;
-        filter: brightness(1) !important;
+    @keyframes cnComprarLuzSempre {
+      0%, 14% {
+        transform: translateX(-190%) skewX(-22deg);
+        opacity: 0;
       }
-      45% {
-        background-position: 0% 0, 0 0, 0 0 !important;
-        filter: brightness(1.035) !important;
+      22% {
+        opacity: .86;
       }
-      100% {
-        background-position: -180% 0, 0 0, 0 0 !important;
-        filter: brightness(1) !important;
+      48% {
+        opacity: .78;
+      }
+      68%, 100% {
+        transform: translateX(360%) skewX(-22deg);
+        opacity: 0;
       }
     }
 
-    #sec-produto-do-dia #featured .cnActionPrimary,
-    #sec-produto-do-dia #featured .btn--buy-primary,
-    #sec-vitrine-rapida #quickGrid .cnQuickPrimary,
-    #sec-vitrine-rapida #quickGrid .btn--buy-primary,
+    #featured .btn--buy-primary,
+    #featured .cnActionPrimary,
     #quickGrid .cnQuickPrimary,
-    #quickGrid .btn--buy-primary {
+    #quickGrid a.btn--gold {
       position: relative !important;
       overflow: hidden !important;
       isolation: isolate !important;
-      border-radius: 15px !important;
-      border: 1px solid rgba(255, 224, 135, .58) !important;
-      color: rgba(255, 248, 226, .98) !important;
-      font-weight: 900 !important;
-      text-shadow: 0 1px 0 rgba(0,0,0,.46), 0 0 12px rgba(255, 218, 120, .18) !important;
-      background-image:
-        linear-gradient(105deg,
-          rgba(255,255,255,0) 0%,
-          rgba(255,255,255,0) 38%,
-          rgba(255,255,255,.24) 45%,
-          rgba(255,245,187,.72) 50%,
-          rgba(255,255,255,.25) 55%,
-          rgba(255,255,255,0) 62%,
-          rgba(255,255,255,0) 100%),
-        radial-gradient(130px 42px at 50% 0%, rgba(255, 242, 180, .42), transparent 66%),
-        linear-gradient(180deg, rgba(230, 194, 92, .72) 0%, rgba(142, 107, 35, .62) 48%, rgba(64, 48, 16, .78) 100%) !important;
-      background-size: 260% 100%, 100% 100%, 100% 100% !important;
-      background-repeat: no-repeat !important;
-      animation: cnComprarLuzAutomaticaFinal 2.35s ease-in-out infinite !important;
+      border-color: rgba(224,195,107,.48) !important;
+      background:
+        radial-gradient(360px 80px at 20% 0%, rgba(255,236,174,.23), transparent 62%),
+        linear-gradient(180deg, rgba(199,162,75,.42), rgba(88,68,24,.46)) !important;
+      color: rgba(255,246,219,.98) !important;
       box-shadow:
-        0 12px 26px rgba(145,111,34,.25),
-        0 0 0 1px rgba(255,226,146,.10),
-        inset 0 1px 0 rgba(255,255,255,.22),
-        inset 0 -12px 24px rgba(0,0,0,.25) !important;
+        0 10px 24px rgba(145,111,34,.20),
+        inset 0 1px 0 rgba(255,255,255,.13),
+        inset 0 -10px 20px rgba(0,0,0,.24) !important;
+      animation: none !important;
       transform: translateZ(0) !important;
-      will-change: background-position, filter !important;
+      will-change: transform !important;
     }
 
-    #sec-produto-do-dia #featured .cnActionPrimary::before,
-    #sec-produto-do-dia #featured .btn--buy-primary::before,
-    #sec-vitrine-rapida #quickGrid .cnQuickPrimary::before,
-    #sec-vitrine-rapida #quickGrid .btn--buy-primary::before,
+    #featured .btn--buy-primary::before,
+    #featured .cnActionPrimary::before,
     #quickGrid .cnQuickPrimary::before,
-    #quickGrid .btn--buy-primary::before {
-      display: none !important;
-      content: none !important;
+    #quickGrid a.btn--gold::before,
+    #featured .btn--buy-primary::after,
+    #featured .cnActionPrimary::after,
+    #quickGrid .cnQuickPrimary::after,
+    #quickGrid a.btn--gold::after {
+      content: "" !important;
+      display: block !important;
+      position: absolute !important;
+      pointer-events: none !important;
+      border-radius: inherit !important;
+    }
+
+    #featured .btn--buy-primary::before,
+    #featured .cnActionPrimary::before,
+    #quickGrid .cnQuickPrimary::before,
+    #quickGrid a.btn--gold::before {
+      inset: 0 !important;
+      z-index: 0 !important;
+      background: radial-gradient(90% 170% at 50% -45%, rgba(255,245,190,.24), transparent 56%) !important;
+      opacity: .78 !important;
+      transform: none !important;
       animation: none !important;
     }
 
-    #sec-produto-do-dia #featured .cnActionPrimary::after,
-    #sec-produto-do-dia #featured .btn--buy-primary::after,
-    #sec-vitrine-rapida #quickGrid .cnQuickPrimary::after,
-    #sec-vitrine-rapida #quickGrid .btn--buy-primary::after,
-    #quickGrid .cnQuickPrimary::after,
-    #quickGrid .btn--buy-primary::after {
-      content: "" !important;
-      position: absolute !important;
-      inset: 0 !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: -1 !important;
-      background: radial-gradient(90% 140% at 50% -35%, rgba(255,246,190,.20), transparent 56%) !important;
-      opacity: .70 !important;
-    }
-
-    #sec-produto-do-dia #featured .cnActionPrimary:hover,
-    #sec-produto-do-dia #featured .btn--buy-primary:hover,
-    #sec-vitrine-rapida #quickGrid .cnQuickPrimary:hover,
-    #sec-vitrine-rapida #quickGrid .btn--buy-primary:hover,
-    #quickGrid .cnQuickPrimary:hover,
-    #quickGrid .btn--buy-primary:hover {
-      animation-duration: 1.55s !important;
-      filter: brightness(1.06) !important;
-      border-color: rgba(255, 232, 154, .74) !important;
-    }
-
-
-
-    /* =========================================================
-       FIX DEFINITIVO — LUZ AUTOMÁTICA NOS BOTÕES COMPRAR
-       - não depende de hover
-       - não muda layout
-       - não mexe em cards, hero ou imagens
-       ========================================================= */
-    @keyframes cnComprarLuzSemprePassando {
-      0%   { transform: translateX(-190%) skewX(-18deg); opacity: 0; }
-      10%  { opacity: .85; }
-      45%  { opacity: 1; }
-      78%  { opacity: .85; }
-      100% { transform: translateX(250%) skewX(-18deg); opacity: 0; }
-    }
-
-    @keyframes cnComprarFundoVivo {
-      0% { filter: brightness(1); }
-      50% { filter: brightness(1.08); }
-      100% { filter: brightness(1); }
-    }
-
-    #featured .cnActionPrimary,
-    #featured .btn--buy-primary,
-    #featured .cnRow .btn:first-child,
-    #quickGrid .cnQuickPrimary,
-    #quickGrid .btn--buy-primary,
-    #quickGrid .cnRow .btn:first-child,
-    .cnProd .cnRow .btn:first-child,
-    .cnComprarLuzSempreOn {
-      position: relative !important;
-      overflow: hidden !important;
-      isolation: isolate !important;
-      background:
-        linear-gradient(180deg, rgba(151,132,48,.98), rgba(66,58,24,.98)) !important;
-      border-color: rgba(226, 190, 98, .52) !important;
-      color: rgba(255, 247, 226, .98) !important;
-      text-shadow: 0 1px 0 rgba(0,0,0,.38) !important;
-      box-shadow:
-        0 10px 24px rgba(145, 111, 34, .20),
-        inset 0 1px 0 rgba(255, 255, 255, .13),
-        inset 0 -1px 0 rgba(0, 0, 0, .28) !important;
-      animation: cnComprarFundoVivo 3.4s ease-in-out infinite !important;
-      will-change: filter !important;
-    }
-
-    #featured .cnActionPrimary::before,
-    #featured .btn--buy-primary::before,
-    #featured .cnRow .btn:first-child::before,
-    #quickGrid .cnQuickPrimary::before,
-    #quickGrid .btn--buy-primary::before,
-    #quickGrid .cnRow .btn:first-child::before,
-    .cnProd .cnRow .btn:first-child::before,
-    .cnComprarLuzSempreOn::before {
-      content: "" !important;
-      position: absolute !important;
-      top: -45% !important;
-      bottom: -45% !important;
-      left: 0 !important;
-      width: 58% !important;
-      display: block !important;
-      pointer-events: none !important;
-      z-index: 1 !important;
-      background: linear-gradient(
-        105deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0) 24%,
-        rgba(255,238,168,.24) 38%,
-        rgba(255,255,255,.78) 50%,
-        rgba(255,214,98,.34) 62%,
-        rgba(255,255,255,0) 78%,
-        rgba(255,255,255,0) 100%
-      ) !important;
-      transform: translateX(-190%) skewX(-18deg);
-      animation: cnComprarLuzSemprePassando 2.25s linear infinite !important;
-      opacity: 1 !important;
-      mix-blend-mode: screen !important;
-    }
-
-    #featured .cnActionPrimary::after,
     #featured .btn--buy-primary::after,
-    #featured .cnRow .btn:first-child::after,
+    #featured .cnActionPrimary::after,
     #quickGrid .cnQuickPrimary::after,
-    #quickGrid .btn--buy-primary::after,
-    #quickGrid .cnRow .btn:first-child::after,
-    .cnProd .cnRow .btn:first-child::after,
-    .cnComprarLuzSempreOn::after {
-      content: "" !important;
-      position: absolute !important;
-      inset: 1px !important;
-      display: block !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 0 !important;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0) 45%, rgba(0,0,0,.12)) !important;
-      opacity: .75 !important;
+    #quickGrid a.btn--gold::after {
+      top: -85% !important;
+      bottom: -85% !important;
+      left: -45% !important;
+      width: 40% !important;
+      z-index: 1 !important;
+      background:
+        linear-gradient(90deg,
+          transparent 0%,
+          rgba(255,255,255,0) 12%,
+          rgba(255,255,255,.24) 34%,
+          rgba(255,250,212,.90) 49%,
+          rgba(255,231,146,.52) 58%,
+          rgba(255,255,255,.16) 70%,
+          transparent 100%) !important;
+      filter: blur(.15px) !important;
+      mix-blend-mode: screen !important;
+      transform: translateX(-190%) skewX(-22deg);
+      opacity: 0;
+      animation: cnComprarLuzSempre 2.85s ease-in-out infinite !important;
+      will-change: transform, opacity !important;
     }
 
-    #featured .cnActionPrimary *,
-    #featured .btn--buy-primary *,
-    #featured .cnRow .btn:first-child *,
-    #quickGrid .cnQuickPrimary *,
-    #quickGrid .btn--buy-primary *,
-    #quickGrid .cnRow .btn:first-child *,
-    .cnProd .cnRow .btn:first-child *,
-    .cnComprarLuzSempreOn * {
+    #featured .btn--buy-primary:hover::after,
+    #featured .cnActionPrimary:hover::after,
+    #quickGrid .cnQuickPrimary:hover::after,
+    #quickGrid a.btn--gold:hover::after {
+      animation-duration: 1.75s !important;
+    }
+
+    #featured .btn--buy-primary > *,
+    #featured .cnActionPrimary > *,
+    #quickGrid .cnQuickPrimary > *,
+    #quickGrid a.btn--gold > * {
       position: relative !important;
-      z-index: 2 !important;
-    }
-
-    #featured .cnActionPrimary:hover::before,
-    #featured .btn--buy-primary:hover::before,
-    #featured .cnRow .btn:first-child:hover::before,
-    #quickGrid .cnQuickPrimary:hover::before,
-    #quickGrid .btn--buy-primary:hover::before,
-    #quickGrid .cnRow .btn:first-child:hover::before,
-    .cnProd .cnRow .btn:first-child:hover::before,
-    .cnComprarLuzSempreOn:hover::before {
-      animation-duration: 1.55s !important;
+      z-index: 3 !important;
     }
 
 </style>
@@ -13634,48 +13529,6 @@
         document.addEventListener("DOMContentLoaded", iniciarBrilhoComprar);
       } else {
         iniciarBrilhoComprar();
-      }
-    })();
-  </script>
-
-
-  <script>
-    /* FIX DEFINITIVO — aplica luz automática aos botões Comprar renderizados pelo script.js */
-    (function(){
-      function texto(el){
-        return (el && el.textContent ? el.textContent : "").replace(/\s+/g," ").trim().toLowerCase();
-      }
-      function deveBrilhar(el){
-        var t = texto(el);
-        if (!t) return false;
-        if (t.indexOf("copiar") >= 0) return false;
-        if (t.indexOf("limpar") >= 0) return false;
-        if (t.indexOf("ver todos") >= 0) return false;
-        if (t.indexOf("abrir") >= 0) return false;
-        return t === "comprar" || t.indexOf("comprar agora") >= 0 || t.indexOf("comprar com desconto") >= 0;
-      }
-      function aplicar(){
-        var botoes = document.querySelectorAll("button, a, .btn");
-        botoes.forEach(function(btn){
-          if (deveBrilhar(btn)) {
-            btn.classList.add("cnComprarLuzSempreOn");
-          }
-        });
-      }
-      function iniciar(){
-        aplicar();
-        setTimeout(aplicar, 250);
-        setTimeout(aplicar, 900);
-        setTimeout(aplicar, 1800);
-        setInterval(aplicar, 2500);
-        if (window.MutationObserver && document.body) {
-          new MutationObserver(aplicar).observe(document.body, { childList:true, subtree:true, characterData:true });
-        }
-      }
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", iniciar);
-      } else {
-        iniciar();
       }
     })();
   </script>
