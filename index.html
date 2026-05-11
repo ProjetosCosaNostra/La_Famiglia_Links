@@ -13297,6 +13297,211 @@
 }
 
 </style>
+
+<style id="cn-gallery-lightbox-patch">
+
+/* ==========================================================
+   PATCH UX GALERIA / ZOOM — Produto do Dia e cards
+   - Voltar só aparece após avançar
+   - Troca de imagem sem atraso
+   - Ampliar imagem em modal estilo e-commerce
+   ========================================================== */
+.cnGalleryArrow.is-hidden,
+.cnGalleryNav.is-hidden,
+.cnProductLightbox__nav.is-hidden{
+  opacity:0 !important;
+  pointer-events:none !important;
+  visibility:hidden !important;
+}
+
+.cnGalleryZoom{
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  z-index:11;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  min-height:34px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(224,195,107,.34);
+  background:rgba(8,8,10,.72);
+  color:rgba(255,236,180,.96);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.02em;
+  cursor:pointer;
+  box-shadow:0 14px 34px rgba(0,0,0,.38);
+  backdrop-filter:blur(10px);
+  transition:transform .16s ease, background .16s ease, border-color .16s ease;
+}
+.cnGalleryZoom::before{ content:"🔍"; font-size:12px; }
+.cnGalleryZoom:hover,
+.cnGalleryZoom:focus-visible{
+  transform:translateY(-1px);
+  background:rgba(12,12,14,.86);
+  border-color:rgba(224,195,107,.50);
+}
+
+#featured .cnMediaShell--featured,
+#featured .cnProductMedia--featured{
+  cursor:zoom-in;
+}
+
+.cnProductLightbox{
+  position:fixed;
+  inset:0;
+  z-index:9999999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.cnProductLightbox.is-open{ display:flex; }
+.cnLightboxOpen{ overflow:hidden; }
+.cnProductLightbox__backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(12px);
+}
+.cnProductLightbox__dialog{
+  position:relative;
+  z-index:1;
+  width:min(92vw, 980px);
+  height:min(88vh, 860px);
+  border-radius:22px;
+  border:1px solid rgba(224,195,107,.28);
+  background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.22)), rgba(8,8,10,.74);
+  box-shadow:0 32px 110px rgba(0,0,0,.72);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.cnProductLightbox__img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:22px;
+  display:block;
+}
+.cnProductLightbox__close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:4;
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border:1px solid rgba(224,195,107,.28);
+  background:rgba(0,0,0,.58);
+  color:rgba(255,255,255,.95);
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 14px 34px rgba(0,0,0,.40);
+}
+.cnProductLightbox__nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:4;
+  width:48px;
+  height:58px;
+  border-radius:999px;
+  border:1px solid rgba(224,195,107,.30);
+  background:rgba(0,0,0,.58);
+  color:rgba(255,236,180,.98);
+  font-size:40px;
+  line-height:1;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 16px 40px rgba(0,0,0,.42);
+  transition:transform .16s ease, background .16s ease, border-color .16s ease;
+}
+.cnProductLightbox__nav:hover,
+.cnProductLightbox__nav:focus-visible{
+  transform:translateY(-50%) scale(1.04);
+  background:rgba(12,12,14,.82);
+  border-color:rgba(224,195,107,.50);
+}
+.cnProductLightbox__nav--prev{ left:18px; }
+.cnProductLightbox__nav--next{ right:18px; }
+.cnProductLightbox__footer{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:14px;
+  z-index:4;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 12px;
+  border-radius:16px;
+  border:1px solid rgba(224,195,107,.18);
+  background:rgba(0,0,0,.50);
+  color:rgba(255,255,255,.88);
+  backdrop-filter:blur(10px);
+}
+.cnProductLightbox__title{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-weight:900;
+  color:rgba(255,236,180,.94);
+}
+.cnProductLightbox__counter{
+  flex:0 0 auto;
+  font-weight:950;
+  font-variant-numeric:tabular-nums;
+  color:rgba(255,255,255,.86);
+}
+
+/* Cards pequenos: CTA sempre curto e estável */
+#quickGrid .cnProd .btn,
+#quickGrid .cnProd .smallBtn,
+.productsGrid .pCard .smallBtn{
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+@media (max-width:720px){
+  .cnProductLightbox{ padding:10px; }
+  .cnProductLightbox__dialog{
+    width:96vw;
+    height:86vh;
+    border-radius:18px;
+  }
+  .cnProductLightbox__img{ padding:14px; }
+  .cnProductLightbox__nav{
+    width:40px;
+    height:50px;
+    font-size:34px;
+  }
+  .cnProductLightbox__nav--prev{ left:10px; }
+  .cnProductLightbox__nav--next{ right:10px; }
+  .cnProductLightbox__footer{
+    left:10px;
+    right:10px;
+    bottom:10px;
+    font-size:12px;
+  }
+  .cnGalleryZoom{
+    right:9px;
+    bottom:9px;
+    min-height:30px;
+    padding:7px 10px;
+    font-size:11px;
+  }
+}
+
+</style>
 </head>
 
 <body id="topo">
