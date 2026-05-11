@@ -12996,6 +12996,140 @@
       transform: translateY(-1px) translateZ(0) !important;
     }
 
+
+
+    /* ==========================================================
+       PATCH BRILHO COMPRAR — EFEITO LUZ PASSANDO NO BOTÃO
+       Escopo: somente botões Comprar da Home.
+       - restaura o brilho lateral que atravessa o botão em loop
+       - não altera layout, tamanho, grid, cards, hero ou imagens
+       ========================================================== */
+    @keyframes cnComprarSweepLight {
+      0%, 16% {
+        left: -92%;
+        opacity: 0;
+      }
+      25% {
+        opacity: .78;
+      }
+      47% {
+        opacity: .95;
+      }
+      66%, 100% {
+        left: 128%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes cnComprarGlowPulse {
+      0%, 100% {
+        filter: brightness(1) saturate(1);
+        box-shadow:
+          0 10px 22px rgba(145,111,34,.22),
+          inset 0 1px 0 rgba(255,255,255,.17),
+          inset 0 -10px 20px rgba(0,0,0,.22) !important;
+      }
+      42% {
+        filter: brightness(1.07) saturate(1.06);
+        box-shadow:
+          0 14px 30px rgba(145,111,34,.34),
+          0 0 0 1px rgba(255,226,146,.16),
+          inset 0 1px 0 rgba(255,255,255,.26),
+          inset 0 -10px 20px rgba(0,0,0,.24) !important;
+      }
+    }
+
+    #featured a.cnComprarSweepFinal,
+    #featured button.cnComprarSweepFinal,
+    #quickGrid a.cnComprarSweepFinal,
+    #quickGrid button.cnComprarSweepFinal,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary {
+      position: relative !important;
+      overflow: hidden !important;
+      isolation: isolate !important;
+      transform: translateZ(0) !important;
+      border-color: rgba(255, 224, 143, .56) !important;
+      background:
+        radial-gradient(150px 48px at 50% 0%, rgba(255,246,190,.34), transparent 66%),
+        linear-gradient(180deg, rgba(226,195,94,.72), rgba(118,91,29,.74)) !important;
+      color: rgba(255,248,226,.99) !important;
+      text-shadow: 0 1px 0 rgba(0,0,0,.42), 0 0 10px rgba(255,229,154,.20) !important;
+      animation: cnComprarGlowPulse 2.6s ease-in-out infinite !important;
+      will-change: filter, box-shadow !important;
+    }
+
+    #featured a.cnComprarSweepFinal::before,
+    #featured button.cnComprarSweepFinal::before,
+    #quickGrid a.cnComprarSweepFinal::before,
+    #quickGrid button.cnComprarSweepFinal::before,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::before,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::before,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before {
+      content: "" !important;
+      position: absolute !important;
+      top: -28% !important;
+      bottom: -28% !important;
+      left: -92%;
+      width: 46% !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      z-index: 2 !important;
+      background:
+        linear-gradient(105deg,
+          transparent 0%,
+          rgba(255,255,255,.10) 22%,
+          rgba(255,255,255,.82) 48%,
+          rgba(255,232,154,.58) 58%,
+          transparent 100%) !important;
+      transform: skewX(-18deg) !important;
+      opacity: 0;
+      filter: blur(.15px) !important;
+      animation: cnComprarSweepLight 2.35s ease-in-out infinite !important;
+    }
+
+    #featured a.cnComprarSweepFinal::after,
+    #featured button.cnComprarSweepFinal::after,
+    #quickGrid a.cnComprarSweepFinal::after,
+    #quickGrid button.cnComprarSweepFinal::after,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after {
+      content: "" !important;
+      position: absolute !important;
+      inset: 0 !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.13), transparent 42%),
+        radial-gradient(90% 120% at 50% -38%, rgba(255,248,199,.26), transparent 56%) !important;
+      opacity: .74 !important;
+    }
+
+    #featured a.cnComprarSweepFinal > *,
+    #featured button.cnComprarSweepFinal > *,
+    #quickGrid a.cnComprarSweepFinal > *,
+    #quickGrid button.cnComprarSweepFinal > *,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary > *,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary > *,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary > * {
+      position: relative !important;
+      z-index: 3 !important;
+    }
+
+    #featured a.cnComprarSweepFinal:hover,
+    #featured button.cnComprarSweepFinal:hover,
+    #quickGrid a.cnComprarSweepFinal:hover,
+    #quickGrid button.cnComprarSweepFinal:hover,
+    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover,
+    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover,
+    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover {
+      border-color: rgba(255, 238, 176, .84) !important;
+      transform: translateY(-1px) translateZ(0) !important;
+    }
+
 </style>
 
 </head>
@@ -13415,6 +13549,69 @@
         document.addEventListener("DOMContentLoaded", iniciarBrilhoComprar);
       } else {
         iniciarBrilhoComprar();
+      }
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      "use strict";
+
+      function textoBotao(el) {
+        return String((el && el.textContent) || "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .toLowerCase();
+      }
+
+      function ehBotaoComprar(el) {
+        var txt = textoBotao(el);
+        return txt.indexOf("comprar") !== -1 &&
+          txt.indexOf("copiar") === -1 &&
+          txt.indexOf("ver todos") === -1 &&
+          txt.indexOf("limpar") === -1;
+      }
+
+      function aplicarSweepComprar() {
+        var roots = [
+          document.getElementById("featured"),
+          document.getElementById("quickGrid")
+        ].filter(Boolean);
+
+        roots.forEach(function (root) {
+          Array.prototype.slice.call(root.querySelectorAll("a, button")).forEach(function (el) {
+            if (ehBotaoComprar(el)) {
+              el.classList.add("cnComprarSweepFinal");
+              el.setAttribute("data-cn-sweep-comprar", "on");
+            }
+          });
+        });
+      }
+
+      function iniciarSweepComprar() {
+        aplicarSweepComprar();
+        [120, 400, 900, 1600, 2600].forEach(function (ms) {
+          setTimeout(aplicarSweepComprar, ms);
+        });
+
+        if (window.MutationObserver) {
+          ["featured", "quickGrid"].forEach(function (id) {
+            var root = document.getElementById(id);
+            if (!root) return;
+            new MutationObserver(aplicarSweepComprar).observe(root, {
+              childList: true,
+              subtree: true,
+              characterData: true
+            });
+          });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", iniciarSweepComprar);
+      } else {
+        iniciarSweepComprar();
       }
     })();
   </script>
