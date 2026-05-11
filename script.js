@@ -491,6 +491,8 @@
     var images = getImages(p);
     var shell = document.createElement('div');
     shell.className = 'cnMediaShell';
+    if (options.variant === 'featured') shell.className += ' cnMediaShell--featured';
+    if (options.variant === 'quick') shell.className += ' cnMediaShell--quick';
 
     var img = document.createElement('img');
     img.className = 'cnImg';
@@ -513,17 +515,19 @@
       count.textContent = '1/' + images.length;
       shell.appendChild(count);
 
+      var prevArrow = document.createElement('button');
+      prevArrow.type = 'button';
+      prevArrow.className = 'cnGalleryArrow cnGalleryArrow--prev';
+      prevArrow.setAttribute('aria-label', 'Imagem anterior');
+      prevArrow.textContent = '‹';
+      shell.appendChild(prevArrow);
+
       var arrow = document.createElement('button');
       arrow.type = 'button';
-      arrow.className = 'cnGalleryArrow';
-      arrow.setAttribute('aria-label', 'Ver próxima imagem do produto');
+      arrow.className = 'cnGalleryArrow cnGalleryArrow--next';
+      arrow.setAttribute('aria-label', 'Próxima imagem do produto');
       arrow.textContent = '›';
       shell.appendChild(arrow);
-
-      var hint = document.createElement('div');
-      hint.className = 'cnGalleryHint';
-      hint.textContent = '📸 Mais imagens';
-      shell.appendChild(hint);
 
       var dots = document.createElement('div');
       dots.className = 'cnGalleryDots';
@@ -570,6 +574,11 @@
       }
 
       arrow.addEventListener('click', nextImage);
+      prevArrow.addEventListener('click', function (ev) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        if (ev && ev.stopPropagation) ev.stopPropagation();
+        setIndex(currentIndex - 1);
+      });
       img.addEventListener('click', nextImage);
 
       shell.addEventListener('touchstart', function (ev) {
@@ -1037,7 +1046,8 @@
     cardImg.className = 'cnCard cnFeaturedMedia';
     cardImg.appendChild(createProductMedia(p, {
       alt: safeText(p.title || 'Produto do Dia'),
-      loading: 'lazy'
+      loading: 'lazy',
+      variant: 'featured'
     }));
     wrap.appendChild(cardImg);
 
@@ -1201,7 +1211,8 @@
 
     card.appendChild(createProductMedia(p, {
       alt: safeText(p.title || p.sku || 'Produto'),
-      loading: 'lazy'
+      loading: 'lazy',
+      variant: 'quick'
     }));
 
     var pad = document.createElement('div');
@@ -1223,8 +1234,7 @@
       pad.appendChild(bwrap);
     }
 
-    var quickPromo = createPromoBox(p, true);
-    if (quickPromo) pad.appendChild(quickPromo);
+    // Preço/oferta fica concentrado no Produto do Dia para não quebrar a Vitrine Rápida.
 
     var mlid = getMlId(p);
     var meta = document.createElement('div');
