@@ -1764,6 +1764,185 @@
     return Array.isArray(x) ? x : [];
   }
 
+
+  function firstFilled(values) {
+    for (const value of (values || [])) {
+      const cleaned = cleanText(value || "");
+      if (cleaned) return cleaned;
+    }
+    return "";
+  }
+
+  function looksLikeImageUrl(url) {
+    const u = cleanUrl(url);
+    if (!u) return false;
+    const low = u.toLowerCase();
+    if (low.startsWith("data:image/")) return true;
+    if (low.includes("github.com/user-attachments/assets/")) return true;
+    if (low.includes("raw.githubusercontent.com/")) return true;
+    return /\.(png|jpe?g|webp|gif)(\?.*)?$/i.test(u);
+  }
+
+  function pushProductImage(out, value) {
+    if (value === null || value === undefined) return;
+
+    if (Array.isArray(value)) {
+      value.forEach((item) => pushProductImage(out, item));
+      return;
+    }
+
+    if (typeof value === "object") {
+      pushProductImage(out, value.url || value.src || value.image || value.image_url || value.href || "");
+      return;
+    }
+
+    String(value || "")
+      .split(/[\n,;|]+/)
+      .map((item) => ensureHttpUrl(cleanUrl(item)))
+      .filter((item) => item && looksLikeImageUrl(item))
+      .forEach((item) => {
+        const key = item.toLowerCase();
+        if (!out.some((existing) => String(existing || "").toLowerCase() === key)) out.push(item);
+      });
+  }
+
+  function getProductImagesFromRaw(raw, primaryImage) {
+    const out = [];
+    pushProductImage(out, primaryImage);
+    pushProductImage(out, raw.images);
+    pushProductImage(out, raw.imagens);
+    pushProductImage(out, raw.gallery);
+    pushProductImage(out, raw.galeria);
+    pushProductImage(out, raw.gallery_images);
+    pushProductImage(out, raw.image_gallery);
+    pushProductImage(out, raw.extra_images);
+    pushProductImage(out, raw.images_extra);
+    pushProductImage(out, raw.additional_images);
+    pushProductImage(out, raw.product_images);
+
+    for (let i = 2; i <= 12; i++) {
+      pushProductImage(out, raw[`image_${i}`]);
+      pushProductImage(out, raw[`imagem_${i}`]);
+      pushProductImage(out, raw[`image${i}`]);
+      pushProductImage(out, raw[`imagem${i}`]);
+    }
+
+    return out;
+  }
+
+  function getPromoInfo(p) {
+    p = p || {};
+    return {
+      current: firstFilled([p.price_text, p.current_price_text, p.sale_price_text, p.preco_atual, p.preco, p.price]),
+      old: firstFilled([p.old_price_text, p.previous_price_text, p.price_before_text, p.preco_de, p.preco_anterior, p.old_price]),
+      discount: firstFilled([p.discount_text, p.desconto_texto, p.desconto, p.sale_badge, p.offer_badge]),
+      checked: firstFilled([p.price_checked_at, p.price_checked, p.preco_conferido_em, p.last_price_checked]),
+      note: firstFilled([p.promo_text, p.offer_text, p.price_note, p.preco_observacao]),
+      buy_cta: firstFilled([p.buy_cta, p.cta_buy_text, p.cta_text]),
+    };
+  }
+
+  function promoHasContent(p) {
+    const promo = getPromoInfo(p);
+    return !!(promo.current || promo.old || promo.discount || promo.checked || promo.note);
+  }
+
+  function promoHTML(p, compact) {
+    const promo = getPromoInfo(p);
+    if (!promoHasContent(p)) return "";
+
+    const checked = promo.checked ? `<div class="cnPromoChecked">Preço conferido em ${escapeHTML(promo.checked)}. Pode mudar no Mercado Livre.</div>` : "";
+    const note = promo.note ? `<div class="cnPromoText">${escapeHTML(promo.note)}</div>` : "";
+    const discount = promo.discount ? `<span class="cnPromoDiscount">${escapeHTML(promo.discount)}</span>` : "";
+    const old = promo.old ? `<span class="cnOldPrice">${escapeHTML(promo.old)}</span>` : "";
+    const current = promo.current ? `<strong class="cnCurrentPrice">${escapeHTML(promo.current)}</strong>` : "";
+    const prices = (current || old) ? `<div class="cnPromoPrices">${current}${old}</div>` : "";
+
+    return `
+      <div class="cnPromoBox ${compact ? "cnPromoBox--compact" : ""}">
+        <div class="cnPromoLabel"><span>${promo.current ? "Preço em destaque" : "Oferta em destaque"}</span>${discount}</div>
+        ${prices}
+        ${note}
+        ${checked}
+      </div>
+    `;
+  }
+
+  function buyText(p, compact) {
+    const promo = getPromoInfo(p);
+    if (promo.buy_cta) return promo.buy_cta;
+    if (compact) return "Comprar";
+    if (promo.current || promo.discount) return "Comprar com desconto";
+    return "Comprar";
+  }
+
+  function productMediaHTML(p, className, extraInner) {
+    const images = safeArray(p.images).filter(Boolean);
+    const first = images[0] || p.image || "";
+    const img = first
+      ? `<img data-cnimg="1" src="${escapeHTML(first)}" alt="${escapeHTML(p.title)}" />`
+      : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span></div>`;
+
+    const gallery = images.length > 1;
+    const encoded = gallery ? escapeHTML(JSON.stringify(images)) : "";
+    const galleryUi = gallery ? `
+      <button class="cnGalleryNav cnGalleryNav--prev" type="button" data-action="galleryPrev" aria-label="Imagem anterior">‹</button>
+      <button class="cnGalleryNav cnGalleryNav--next" type="button" data-action="galleryNext" aria-label="Próxima imagem">›</button>
+      <div class="cnGalleryCounter">1/${images.length}</div>
+      <div class="cnGalleryDots">
+        ${images.map((_, idx) => `<button class="cnGalleryDot ${idx === 0 ? "is-active" : ""}" type="button" data-action="gallerySet" data-index="${idx}" aria-label="Imagem ${idx + 1} de ${images.length}"></button>`).join("")}
+      </div>
+    ` : "";
+
+    return `
+      <div class="${className} cnProductMedia ${gallery ? "cnProductMedia--gallery" : ""}" data-gallery-index="0" data-gallery-images="${encoded}">
+        ${extraInner || ""}
+        ${img}
+        ${galleryUi}
+      </div>
+    `;
+  }
+
+  function updateGallery(el, mode) {
+    const media = el && el.closest ? el.closest(".cnProductMedia") : null;
+    if (!media) return false;
+
+    let images = [];
+    try { images = JSON.parse(media.getAttribute("data-gallery-images") || "[]"); } catch { images = []; }
+    if (!Array.isArray(images) || images.length <= 1) return false;
+
+    let index = Number(media.getAttribute("data-gallery-index") || 0);
+    if (!isFinite(index)) index = 0;
+
+    if (mode === "prev") index -= 1;
+    else if (mode === "next") index += 1;
+    else {
+      const direct = Number(el.getAttribute("data-index"));
+      if (isFinite(direct)) index = direct;
+    }
+
+    index = ((index % images.length) + images.length) % images.length;
+    media.setAttribute("data-gallery-index", String(index));
+
+    const img = media.querySelector("img[data-cnimg]");
+    if (img) {
+      img.style.opacity = "0.65";
+      setTimeout(() => {
+        img.src = images[index];
+        img.style.opacity = "1";
+      }, 60);
+    }
+
+    const counter = media.querySelector(".cnGalleryCounter");
+    if (counter) counter.textContent = `${index + 1}/${images.length}`;
+
+    media.querySelectorAll(".cnGalleryDot").forEach((dot, idx) => {
+      dot.classList.toggle("is-active", idx === index);
+    });
+
+    return true;
+  }
+
   function normalizeProducts(data) {
     if (!data) return [];
     if (Array.isArray(data)) return data;
@@ -1852,7 +2031,13 @@
     const links = pickBestLink(raw);
 
     const image = cleanUrl(raw.image || raw.imagem || "");
-    const price_text = cleanText(raw.price_text || "");
+    const images = getProductImagesFromRaw(raw, image);
+    const price_text = cleanText(raw.price_text || raw.current_price_text || raw.sale_price_text || raw.preco_atual || raw.preco || "");
+    const old_price_text = cleanText(raw.old_price_text || raw.previous_price_text || raw.price_before_text || raw.preco_de || raw.preco_anterior || "");
+    const discount_text = cleanText(raw.discount_text || raw.desconto_texto || raw.desconto || raw.sale_badge || raw.offer_badge || "");
+    const price_checked_at = cleanText(raw.price_checked_at || raw.price_checked || raw.preco_conferido_em || "");
+    const promo_text = cleanText(raw.promo_text || raw.offer_text || raw.price_note || raw.preco_observacao || "");
+    const buy_cta = cleanText(raw.buy_cta || raw.cta_buy_text || raw.cta_text || "");
 
     if (!sku || !title) return null;
 
@@ -1888,7 +2073,13 @@
       alt_url: links.alt,
 
       image,
+      images,
       price_text,
+      old_price_text,
+      discount_text,
+      price_checked_at,
+      promo_text,
+      buy_cta,
 
       active,
       featured,
@@ -1946,32 +2137,23 @@
   }
 
   function featuredHTML(p, isProdutoDoDia) {
-    const img = p.image
-      ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
-      : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:24px;">
-           Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
-         </div>`;
-
     const disabled = (p.active === false);
     const buyUrl = bestBuyUrl(p);
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buyBtn = (disabled || !hasLink)
       ? `<button class="btn btn--gold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(buyText(p, false))}</a>`;
 
     const desc = safeArray(p.badges).slice(0, 6).join(" • ");
     const idBusca = String(p.id_busca || "").trim();
 
     return `
       <div class="card card--featuredClean">
-        <div class="card__img card__img--featuredClean">
-          ${isProdutoDoDia ? `<div class="pFeatured pFeatured--featuredClean">⭐ do dia</div>` : ``}
-          ${img}
-        </div>
+        ${productMediaHTML(p, "card__img card__img--featuredClean", isProdutoDoDia ? `<div class="pFeatured pFeatured--featuredClean">⭐ do dia</div>` : ``)}
         <div class="card__body card__body--featuredClean">
           <h3 class="name name--featuredClean">${escapeHTML(p.title)}</h3>
-          ${p.price_text ? `<p class="meta meta--featuredPrice">${escapeHTML(p.price_text)}</p>` : ``}
+          ${promoHTML(p, false)}
           ${desc ? `<p class="meta meta--featuredTags">${escapeHTML(desc)}</p>` : ``}
 
           ${idBusca ? `<div class="idbox idbox--featuredClean">Código: <b>${escapeHTML(idBusca)}</b></div>` : ``}
@@ -1987,32 +2169,23 @@
   }
 
   function productCardHTML(p) {
-    const img = p.image
-      ? `<img data-cnimg="1" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" />`
-      : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">
-           Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span>
-         </div>`;
-
     const disabled = (p.active === false);
     const buyUrl = bestBuyUrl(p);
     const hasLink = isUsableBuyLink(buyUrl);
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(buyText(p, true))}</a>`;
 
     const desc = safeArray(p.badges).join(" • ");
     const tags = tagsText(p.badges);
 
     return `
       <div class="pCard" data-sku="${escapeHTML(p.sku)}">
-        <div class="pImg">
-          ${p.featured ? `<div class="pFeatured">⭐ do dia</div>` : ``}
-          ${img}
-        </div>
+        ${productMediaHTML(p, "pImg", p.featured ? `<div class="pFeatured">⭐ do dia</div>` : ``)}
         <div class="pBody">
           <p class="pName">${escapeHTML(p.title)}</p>
-          ${p.price_text ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(p.price_text)}</p>` : ``}
+          ${promoHTML(p, true)}
           <p class="pSmall">${escapeHTML(desc)}</p>
           ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
 
@@ -2842,7 +3015,13 @@
         if (p.resolved_url) r.resolved_url = p.resolved_url;
 
         r.image = p.image || r.image || "";
+        if (safeArray(p.images).length > 1) r.images = safeArray(p.images).slice(1);
         r.price_text = p.price_text || "";
+        r.old_price_text = p.old_price_text || "";
+        r.discount_text = p.discount_text || "";
+        r.price_checked_at = p.price_checked_at || "";
+        r.promo_text = p.promo_text || "";
+        r.buy_cta = p.buy_cta || "";
 
         r.active = (p.active !== false);
         r.featured = (p.featured === true);
@@ -3183,6 +3362,16 @@
       if (!el) return;
 
       const action = el.getAttribute("data-action");
+
+      if (action === "galleryPrev" || action === "galleryNext" || action === "gallerySet") {
+        e.preventDefault();
+        e.stopPropagation();
+        if (action === "galleryPrev") updateGallery(el, "prev");
+        else if (action === "galleryNext") updateGallery(el, "next");
+        else updateGallery(el, "set");
+        return;
+      }
+
       const sku = el.getAttribute("data-sku") || "";
       const p = sku ? findBySku(sku) : null;
 
