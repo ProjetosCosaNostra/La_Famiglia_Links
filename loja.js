@@ -1870,24 +1870,131 @@
 
   function buyText(p, compact) {
     const promo = getPromoInfo(p);
-    if (promo.buy_cta) return promo.buy_cta;
+    // Cards pequenos precisam de CTA curto para não quebrar o layout.
     if (compact) return "Comprar";
+    if (promo.buy_cta) return promo.buy_cta;
     if (promo.current || promo.discount) return "Comprar com desconto";
     return "Comprar";
+  }
+
+  function preloadProductImages(images) {
+    if (!Array.isArray(images) || images.length < 2) return;
+    images.forEach((u) => {
+      if (!u) return;
+      try {
+        const im = new Image();
+        im.src = u;
+      } catch {}
+    });
+  }
+
+  function ensureProductLightbox() {
+    let modal = document.getElementById("cnProductLightbox");
+    if (modal) return modal;
+
+    modal = document.createElement("div");
+    modal.id = "cnProductLightbox";
+    modal.className = "cnProductLightbox";
+    modal.setAttribute("aria-hidden", "true");
+    modal.innerHTML = `
+      <div class="cnProductLightbox__backdrop" data-lightbox-close="1"></div>
+      <div class="cnProductLightbox__dialog" role="dialog" aria-modal="true" aria-label="Galeria do produto">
+        <button class="cnProductLightbox__close" type="button" data-lightbox-close="1" aria-label="Fechar imagem ampliada">×</button>
+        <button class="cnProductLightbox__nav cnProductLightbox__nav--prev" type="button" data-lightbox-prev="1" aria-label="Imagem anterior">‹</button>
+        <img class="cnProductLightbox__img" alt="Imagem do produto ampliada" />
+        <button class="cnProductLightbox__nav cnProductLightbox__nav--next" type="button" data-lightbox-next="1" aria-label="Próxima imagem">›</button>
+        <div class="cnProductLightbox__footer">
+          <div class="cnProductLightbox__title"></div>
+          <div class="cnProductLightbox__counter"></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener("click", (ev) => {
+      const target = ev.target;
+      if (!target) return;
+      if (target.getAttribute("data-lightbox-close") === "1") closeProductLightbox();
+      if (target.getAttribute("data-lightbox-prev") === "1") moveProductLightbox(-1);
+      if (target.getAttribute("data-lightbox-next") === "1") moveProductLightbox(1);
+    });
+
+    document.addEventListener("keydown", (ev) => {
+      const m = document.getElementById("cnProductLightbox");
+      if (!m || !m.classList.contains("is-open")) return;
+      if (ev.key === "Escape") closeProductLightbox();
+      if (ev.key === "ArrowLeft") moveProductLightbox(-1);
+      if (ev.key === "ArrowRight") moveProductLightbox(1);
+    });
+
+    return modal;
+  }
+
+  function closeProductLightbox() {
+    const modal = document.getElementById("cnProductLightbox");
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.documentElement.classList.remove("cnLightboxOpen");
+  }
+
+  function updateProductLightboxView() {
+    const modal = document.getElementById("cnProductLightbox");
+    if (!modal || !Array.isArray(modal._cnImages) || !modal._cnImages.length) return;
+
+    let idx = Number(modal._cnIndex || 0);
+    if (!isFinite(idx)) idx = 0;
+    idx = Math.max(0, Math.min(idx, modal._cnImages.length - 1));
+    modal._cnIndex = idx;
+
+    const img = modal.querySelector(".cnProductLightbox__img");
+    const title = modal.querySelector(".cnProductLightbox__title");
+    const counter = modal.querySelector(".cnProductLightbox__counter");
+    const prev = modal.querySelector(".cnProductLightbox__nav--prev");
+    const next = modal.querySelector(".cnProductLightbox__nav--next");
+
+    if (img) img.src = modal._cnImages[idx];
+    if (title) title.textContent = modal._cnTitle || "Produto";
+    if (counter) counter.textContent = `${idx + 1}/${modal._cnImages.length}`;
+    if (prev) prev.classList.toggle("is-hidden", idx <= 0);
+    if (next) next.classList.toggle("is-hidden", idx >= modal._cnImages.length - 1);
+  }
+
+  function openProductLightbox(images, index, title) {
+    if (!Array.isArray(images) || !images.length) return;
+    const modal = ensureProductLightbox();
+    modal._cnImages = images.slice();
+    modal._cnIndex = Math.max(0, Math.min(Number(index) || 0, images.length - 1));
+    modal._cnTitle = title || "Produto";
+    updateProductLightboxView();
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.documentElement.classList.add("cnLightboxOpen");
+  }
+
+  function moveProductLightbox(delta) {
+    const modal = document.getElementById("cnProductLightbox");
+    if (!modal || !Array.isArray(modal._cnImages) || !modal._cnImages.length) return;
+    const next = Number(modal._cnIndex || 0) + delta;
+    if (next < 0 || next >= modal._cnImages.length) return;
+    modal._cnIndex = next;
+    updateProductLightboxView();
   }
 
   function productMediaHTML(p, className, extraInner) {
     const images = safeArray(p.images).filter(Boolean);
     const first = images[0] || p.image || "";
     const img = first
-      ? `<img data-cnimg="1" src="${escapeHTML(first)}" alt="${escapeHTML(p.title)}" />`
+      ? `<img data-cnimg="1" src="${escapeHTML(first)}" alt="${escapeHTML(p.title)}" loading="lazy" />`
       : `<div style="color:rgba(255,255,255,.55); font-weight:950; text-align:center; padding:18px;">Sem imagem<br/><span style="color:rgba(224,195,107,.9)">adicione no produto</span></div>`;
 
     const gallery = images.length > 1;
-    const mediaVariant = String(className || "").indexOf("featuredClean") >= 0 ? " cnProductMedia--featured" : (String(className || "").indexOf("pImg") >= 0 ? " cnProductMedia--quick" : "");
+    const isFeaturedMedia = String(className || "").indexOf("featuredClean") >= 0;
+    const mediaVariant = isFeaturedMedia ? " cnProductMedia--featured" : (String(className || "").indexOf("pImg") >= 0 ? " cnProductMedia--quick" : "");
     const encoded = gallery ? escapeHTML(JSON.stringify(images)) : "";
+    const zoomUi = (first && isFeaturedMedia) ? `<button class="cnGalleryZoom" type="button" data-action="galleryZoom" aria-label="Ampliar imagem do produto">Ampliar</button>` : "";
     const galleryUi = gallery ? `
-      <button class="cnGalleryNav cnGalleryNav--prev" type="button" data-action="galleryPrev" aria-label="Imagem anterior">‹</button>
+      <button class="cnGalleryNav cnGalleryNav--prev is-hidden" type="button" data-action="galleryPrev" aria-label="Imagem anterior">‹</button>
       <button class="cnGalleryNav cnGalleryNav--next" type="button" data-action="galleryNext" aria-label="Próxima imagem">›</button>
       <div class="cnGalleryCounter">1/${images.length}</div>
       <div class="cnGalleryDots">
@@ -1896,10 +2003,11 @@
     ` : "";
 
     return `
-      <div class="${className} cnProductMedia${mediaVariant} ${gallery ? "cnProductMedia--gallery" : ""}" data-gallery-index="0" data-gallery-images="${encoded}">
+      <div class="${className} cnProductMedia${mediaVariant} ${gallery ? "cnProductMedia--gallery" : ""}" data-gallery-index="0" data-gallery-title="${escapeHTML(p.title || "Produto")}" data-gallery-images="${encoded}">
         ${extraInner || ""}
         ${img}
         ${galleryUi}
+        ${zoomUi}
       </div>
     `;
   }
@@ -1912,6 +2020,8 @@
     try { images = JSON.parse(media.getAttribute("data-gallery-images") || "[]"); } catch { images = []; }
     if (!Array.isArray(images) || images.length <= 1) return false;
 
+    preloadProductImages(images);
+
     let index = Number(media.getAttribute("data-gallery-index") || 0);
     if (!isFinite(index)) index = 0;
 
@@ -1922,20 +2032,19 @@
       if (isFinite(direct)) index = direct;
     }
 
-    index = ((index % images.length) + images.length) % images.length;
+    if (index < 0 || index >= images.length) return false;
     media.setAttribute("data-gallery-index", String(index));
 
     const img = media.querySelector("img[data-cnimg]");
-    if (img) {
-      img.style.opacity = "0.65";
-      setTimeout(() => {
-        img.src = images[index];
-        img.style.opacity = "1";
-      }, 60);
-    }
+    if (img) img.src = images[index];
 
     const counter = media.querySelector(".cnGalleryCounter");
     if (counter) counter.textContent = `${index + 1}/${images.length}`;
+
+    const prev = media.querySelector(".cnGalleryNav--prev");
+    const next = media.querySelector(".cnGalleryNav--next");
+    if (prev) prev.classList.toggle("is-hidden", index <= 0);
+    if (next) next.classList.toggle("is-hidden", index >= images.length - 1);
 
     media.querySelectorAll(".cnGalleryDot").forEach((dot, idx) => {
       dot.classList.toggle("is-active", idx === index);
@@ -1944,199 +2053,20 @@
     return true;
   }
 
-  function normalizeProducts(data) {
-    if (!data) return [];
-    if (Array.isArray(data)) return data;
-    if (Array.isArray(data.products)) return data.products;
-    if (Array.isArray(data.items)) return data.items;
-    return [];
-  }
-
-  function formatUpdatedAt(iso) {
-    try {
-      const d = new Date(iso);
-      if (Number.isNaN(d.getTime())) return "";
-      return d.toLocaleString("pt-BR", {
-        day: "2-digit",
-        month: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    } catch {
-      return "";
+  function openGalleryFromMedia(el) {
+    const media = el && el.closest ? el.closest(".cnProductMedia") : null;
+    if (!media) return false;
+    const img = media.querySelector("img[data-cnimg]");
+    let images = [];
+    try { images = JSON.parse(media.getAttribute("data-gallery-images") || "[]"); } catch { images = []; }
+    if (!Array.isArray(images) || !images.length) {
+      if (img && img.getAttribute("src")) images = [img.getAttribute("src")];
     }
+    if (!images.length) return false;
+    const idx = Number(media.getAttribute("data-gallery-index") || 0) || 0;
+    openProductLightbox(images, idx, media.getAttribute("data-gallery-title") || "Produto");
+    return true;
   }
-
-  function tagsText(badges) {
-    const arr = safeArray(badges);
-    return arr
-      .slice(0, 4)
-      .map((t) => `#${String(t).trim().replaceAll(" ", "_")}`)
-      .join(" ");
-  }
-
-  function cloneObj(o) {
-    try {
-      return structuredClone(o);
-    } catch {
-      return JSON.parse(JSON.stringify(o || {}));
-    }
-  }
-
-  function parseISO(iso) {
-    try {
-      const d = new Date(String(iso || ""));
-      if (Number.isNaN(d.getTime())) return null;
-      return d;
-    } catch {
-      return null;
-    }
-  }
-
-  function isRecentOk(iso, days = FRONT_FAILSAFE_OK_DAYS) {
-    const d = parseISO(iso);
-    if (!d) return false;
-    const ms = Date.now() - d.getTime();
-    const max = days * 24 * 60 * 60 * 1000;
-    return ms >= 0 && ms <= max;
-  }
-
-
-  function adaptForUI(rawProduct) {
-    const raw = cloneObj(rawProduct || {});
-
-    const sku = cleanText(raw.sku || raw.slug || "");
-    const title = cleanText(raw.title || raw.nome || raw.name || "");
-    const id_busca = cleanText(raw.id_busca || raw.idML || raw.id || "");
-    const issue_number = Number(
-      raw.issue_number ||
-      raw.issue_id ||
-      raw.issue ||
-      raw.github_issue_number ||
-      raw.source_issue_number ||
-      0
-    ) || 0;
-
-    const badges = uniqLabels(safeArray(raw.badges || raw.tags)
-      .map(cleanText)
-      .filter(Boolean));
-
-    const active =
-      (raw.active !== undefined) ? !!raw.active :
-      (raw.ativo !== undefined) ? !!raw.ativo :
-      true;
-
-    const featured =
-      (raw.featured === true) || (raw.destaque === true) || (raw.is_featured === true);
-
-    const links = pickBestLink(raw);
-
-    const image = cleanUrl(raw.image || raw.imagem || "");
-    const images = getProductImagesFromRaw(raw, image);
-    const price_text = cleanText(raw.price_text || raw.current_price_text || raw.sale_price_text || raw.preco_atual || raw.preco || "");
-    const old_price_text = cleanText(raw.old_price_text || raw.previous_price_text || raw.price_before_text || raw.preco_de || raw.preco_anterior || "");
-    const discount_text = cleanText(raw.discount_text || raw.desconto_texto || raw.desconto || raw.sale_badge || raw.offer_badge || "");
-    const price_checked_at = cleanText(raw.price_checked_at || raw.price_checked || raw.preco_conferido_em || "");
-    const promo_text = cleanText(raw.promo_text || raw.offer_text || raw.price_note || raw.preco_observacao || "");
-    const buy_cta = cleanText(raw.buy_cta || raw.cta_buy_text || raw.cta_text || "");
-
-    if (!sku || !title) return null;
-
-    return {
-      sku,
-      title,
-      badges,
-      id_busca,
-      issue_number,
-
-      categoria_principal: cleanText(raw.categoria_principal || raw.category_primary || raw.primary_category || raw.categoria || raw.category || ""),
-      categorias_secundarias: uniqLabels([
-        ...splitLooseList(raw.categorias_secundarias),
-        ...splitLooseList(raw.categories_secondary),
-        ...splitLooseList(raw.secondary_categories),
-        ...splitLooseList(raw.categorias),
-        ...splitLooseList(raw.categories),
-      ]),
-      aliases_busca: uniqLabels([
-        ...splitLooseList(raw.aliases_busca),
-        ...splitLooseList(raw.search_aliases),
-        ...splitLooseList(raw.aliases),
-      ]),
-
-      open_url: links.open,
-      check_url: links.check || links.open,
-
-      canonical_url: links.canonical || "",
-      short_url: links.shorty || "",
-      resolved_url: links.resolved || "",
-
-      buy_url: links.primary,
-      alt_url: links.alt,
-
-      image,
-      images,
-      price_text,
-      old_price_text,
-      discount_text,
-      price_checked_at,
-      promo_text,
-      buy_cta,
-
-      active,
-      featured,
-
-      last_checked: cleanText(raw.last_checked || ""),
-      last_ok: cleanText(raw.last_ok || ""),
-
-      guardian_last_reason: cleanText(raw.guardian_last_reason || ""),
-      guardian_disabled_at: cleanText(raw.guardian_disabled_at || ""),
-      guardian_dead_reason: cleanText(raw.guardian_dead_reason || ""),
-      guardian_fail_count: Number(raw.guardian_fail_count || 0),
-
-      _raw: raw,
-    };
-  }
-
-  function dedupeProducts(list) {
-    const out = [];
-    const seen = new Set();
-
-    for (const p of (list || [])) {
-      if (!p) continue;
-
-      const kId = p.id_busca ? `id:${String(p.id_busca).trim().toUpperCase()}` : "";
-      const kCan = p.canonical_url ? `c:${String(p.canonical_url).trim().toLowerCase()}` : "";
-      const kUrl = p.buy_url ? `url:${String(p.buy_url).trim().toLowerCase()}` : "";
-      const kSku = p.sku ? `sku:${String(p.sku).trim().toLowerCase()}` : "";
-
-      const key = kId || kCan || kUrl || kSku;
-      if (!key) continue;
-
-      if (seen.has(key)) {
-        const idx = out.findIndex((x) => {
-          const kk =
-            (x.id_busca ? `id:${String(x.id_busca).trim().toUpperCase()}` : "") ||
-            (x.canonical_url ? `c:${String(x.canonical_url).trim().toLowerCase()}` : "") ||
-            (x.buy_url ? `url:${String(x.buy_url).trim().toLowerCase()}` : "") ||
-            (x.sku ? `sku:${String(x.sku).trim().toLowerCase()}` : "");
-          return kk === key;
-        });
-        if (idx >= 0 && p.featured && !out[idx].featured) out[idx] = p;
-        continue;
-      }
-
-      seen.add(key);
-      out.push(p);
-    }
-
-    return out;
-  }
-
-  function getFeatured(list) {
-    const actives = (list || []).filter((p) => p && p.active !== false);
-    return actives.find((p) => p.featured) || null;
-  }
-
   function featuredHTML(p, isProdutoDoDia) {
     const disabled = (p.active === false);
     const buyUrl = bestBuyUrl(p);
@@ -3364,12 +3294,13 @@
 
       const action = el.getAttribute("data-action");
 
-      if (action === "galleryPrev" || action === "galleryNext" || action === "gallerySet") {
+      if (action === "galleryPrev" || action === "galleryNext" || action === "gallerySet" || action === "galleryZoom") {
         e.preventDefault();
         e.stopPropagation();
         if (action === "galleryPrev") updateGallery(el, "prev");
         else if (action === "galleryNext") updateGallery(el, "next");
-        else updateGallery(el, "set");
+        else if (action === "gallerySet") updateGallery(el, "set");
+        else openGalleryFromMedia(el);
         return;
       }
 
