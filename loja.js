@@ -1,4 +1,4 @@
-/* Loja Completa — Cosa Nostra | real4 */
+/* Loja Completa — Cosa Nostra | REAL9 CORREÇÃO ZOOM + MOBILE */
 (function () {
   'use strict';
 
@@ -59,6 +59,19 @@
 
   function isActive(p) { return p && p.active !== false && p.is_active !== false && p.disabled !== true; }
   function isFeatured(p) { return p && (p.featured === true || p.is_featured === true); }
+
+  function isSameProduct(a, b) {
+    if (!a || !b) return false;
+    var aSku = getSku(a);
+    var bSku = getSku(b);
+    if (aSku && bSku && aSku === bSku) return true;
+
+    var aId = getId(a);
+    var bId = getId(b);
+    if (aId && bId && aId === bId) return true;
+
+    return lower(getTitle(a)) === lower(getTitle(b));
+  }
 
   function getBuyUrl(p) {
     var candidates = [p && p.open_url, p && p.short_url, p && p.relink_open_url, p && p.canonical_url, p && p.check_url, p && p.resolved_url];
@@ -277,6 +290,7 @@
 
     var q = lower(state.query);
     var list = state.active.filter(function (p) {
+      if (state.featured && state.active.length > 1 && isSameProduct(p, state.featured)) return false;
       if (state.family && state.family !== 'Tudo' && mainFamily(p) !== state.family) return false;
       if (q && productText(p).indexOf(q) < 0) return false;
       return true;
@@ -316,13 +330,16 @@
     var buy = getBuyUrl(p);
     var badges = getBadges(p).slice(0, 2);
     var price = formatPrice(p);
+    var badgeHtml = badges.map(function (badge) {
+      return '<span class="lcMiniTag">' + escapeHtml(badge) + '</span>';
+    }).join('');
 
     return '' +
       '<article class="lcCard">' +
         '<div class="lcCardMedia">' + (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') + '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" referrerpolicy="no-referrer"></div>' +
         '<div class="lcCardBody">' +
           '<h3 class="lcCardTitle">' + escapeHtml(getTitle(p)) + '</h3>' +
-          '<div class="lcCardMeta">' + escapeHtml(badges.join(' • ')) + '</div>' +
+          (badgeHtml ? '<div class="lcCardMeta">' + badgeHtml + '</div>' : '') +
           (price ? '<div class="lcCardPrice">' + escapeHtml(price) + '</div>' : '') +
           (id ? '<div class="lcCardCode">Código <b>' + escapeHtml(id) + '</b></div>' : '') +
           '<div class="lcCardActions">' +
