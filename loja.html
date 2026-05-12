@@ -23,10 +23,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="loja.css?v=20260512-real9-fix" />
+  <link rel="stylesheet" href="loja.css?v=20260512-real10-ui" />
 
   <script defer src="tracking.js"></script>
-  <script defer src="loja.js?v=20260512-real9-fix"></script>
+  <script defer src="loja.js?v=20260512-real10-ui"></script>
 </head>
 
 <body id="topo" class="lcPage">
@@ -41,8 +41,8 @@
     <header class="lcHero" aria-label="Loja Completa Cosa Nostra">
       <div class="lcHero__banner">
         <picture>
-          <source media="(max-width: 640px)" srcset="assets/loja-completa-hero-mobile.webp?v=20260512-real8">
-          <img src="assets/loja-completa-hero-desktop.webp?v=20260512-real8" alt="Loja Completa — Cosa Nostra • A Família das Ideias">
+          <source media="(max-width: 640px)" srcset="assets/loja-completa-hero-mobile.webp?v=20260512-real10">
+          <img src="assets/loja-completa-hero-desktop.webp?v=20260512-real10" alt="Loja Completa — Cosa Nostra • A Família das Ideias">
         </picture>
       </div>
 
@@ -97,20 +97,22 @@
         </select>
       </div>
 
-      <div class="lcSearchTools">
-        <label class="lcSearchBox">
-          <span>🔎</span>
-          <input id="storeSearch" type="search" placeholder="Buscar produto, categoria ou código..." autocomplete="off">
-        </label>
-        <button class="lcBtn" id="clearSearch" type="button">Limpar filtros</button>
-      </div>
-
-      <div class="lcFilters">
-        <div class="lcFilterGroup">
-          <h3>Famílias principais</h3>
-          <div class="tagChips" id="primaryTags"></div>
+      <div class="lcFinderTop">
+        <div class="lcFilterGroup lcFilterGroup--top">
+          <h3>Buscar por categoria</h3>
+          <div class="tagChips tagChips--top" id="primaryTags"></div>
         </div>
 
+        <div class="lcSearchTools lcSearchTools--showcase">
+          <label class="lcSearchBox" for="storeSearch">
+            <span>🔎</span>
+            <input id="storeSearch" type="search" placeholder="Buscar produto" autocomplete="off">
+          </label>
+          <button class="lcBtn lcBtn--searchClear" id="clearSearch" type="button">Limpar</button>
+        </div>
+      </div>
+
+      <div class="lcFilters lcFilters--refine">
         <details class="lcDetails">
           <summary>Refinar por subcategoria <span>+ abrir</span></summary>
           <div class="tagChips" id="secondaryTags"></div>
