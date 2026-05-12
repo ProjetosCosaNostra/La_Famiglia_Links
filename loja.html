@@ -2107,29 +2107,24 @@
         <div class="hero__text hero__text--bannerstack hero__text--store">
           <h1 class="srOnly">Loja Completa</h1>
           <p class="sub sub--store hero__sub--banner">
-            Todos os produtos vendáveis da vitrine, com filtro rápido e compra direta.
+            Catálogo premium com achados selecionados, busca rápida e compra direta no Mercado Livre.
           </p>
 
-          <div class="chips" aria-label="Dicas rápidas">
-            <span class="chip">👑 padrão imperial</span>
-            <span class="chip">✅ só vendável</span>
-            <span class="chip">⚡ filtro rápido</span>
+          <div class="chips chips--storePublic" aria-label="Dicas rápidas">
+            <span class="chip">🛍️ compra rápida</span>
+            <span class="chip">⭐ produto do dia</span>
+            <span class="chip">🔎 busca inteligente</span>
           </div>
 
-          <div class="countPill" aria-label="Contadores">
-            <span>📦 Ativos:</span> <span class="n" id="countAll">—</span>
-            <span style="opacity:.55;">•</span>
-            <span>🔎 Filtrados:</span> <span class="n" id="countShown">—</span>
-            <span style="opacity:.55;">•</span>
-            <span>🏷️ Categorias:</span> <span class="n" id="tagsCount">—</span>
-            <span style="opacity:.55;">•</span>
-            <span>🧱 Render:</span> <span class="n" id="countRendered">—</span>
+          <div class="countPill countPill--public" aria-label="Total de produtos">
+            <span>🛒 Loja completa:</span> <span class="n" id="countAll">—</span>
+            <span>produtos selecionados</span>
+            <span class="countPill__update">• Atualizado: <b><span id="lastUpdate">—</span></b></span>
           </div>
 
-          <div class="imperialNote imperialNote--store" role="note">
-            <div><b>Loja principal:</b> catálogo completo com produtos ativos e compráveis.</div>
-            <div class="mini">Atualizado: <b><span id="lastUpdate">—</span></b></div>
-          </div>
+          <span id="countShown" class="srOnly">—</span>
+          <span id="tagsCount" class="srOnly">—</span>
+          <span id="countRendered" class="srOnly">—</span>
         </div>
       </div>
 
@@ -2160,11 +2155,20 @@
       </div>
     </header>
 
+    <section class="panel" id="sec-produto-do-dia">
+      <div class="panel__head">
+        <div>
+          <h2>Produto do dia</h2>
+        </div>
+      </div>
+      <div class="featured" id="featured"></div>
+    </section>
+
     <section class="panel" id="sec-navegacao-comercial">
       <div class="panel__head">
         <div>
-          <h2>Navegação comercial</h2>
-          <p>Primeiro escolha a família principal. Depois refine por subcategoria e atributo, com leitura mais comercial e sem poluir a loja.</p>
+          <h2>Encontre seu produto</h2>
+          <p>Busque por nome, escolha uma categoria e encontre o achado certo com leitura simples.</p>
         </div>
         <div class="panel__right">
           <select class="select" id="sortSel" aria-label="Ordenação">
@@ -2235,20 +2239,12 @@
       </div>
     </section>
 
-    <section class="panel" id="sec-produto-do-dia">
-      <div class="panel__head">
-        <div>
-          <h2>Produto do dia</h2>
-        </div>
-      </div>
-      <div class="featured" id="featured"></div>
-    </section>
 
     <section class="panel" id="sec-vitrine-comercial">
       <div class="panel__head">
         <div>
-          <h2>Vitrine comercial</h2>
-          <p>Produtos ativos e compráveis, com hierarquia mais clara, leitura mais forte e decisão mais rápida.</p>
+          <h2>Todos os produtos</h2>
+          <p>Escolha, compare pelas imagens e compre pelo botão principal do card.</p>
         </div>
       </div>
 
