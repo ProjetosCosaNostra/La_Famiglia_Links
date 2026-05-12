@@ -1830,161 +1830,6 @@
     return out;
   }
 
-  function normalizeProducts(data) {
-    if (!data) return [];
-    if (Array.isArray(data)) return data;
-    if (Array.isArray(data.products)) return data.products;
-    if (Array.isArray(data.items)) return data.items;
-    return [];
-  }
-
-  function formatUpdatedAt(iso) {
-    try {
-      const d = new Date(iso);
-      if (Number.isNaN(d.getTime())) return "";
-      return d.toLocaleString("pt-BR", {
-        day: "2-digit",
-        month: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    } catch {
-      return "";
-    }
-  }
-
-  function tagsText(badges) {
-    const arr = safeArray(badges);
-    return arr
-      .slice(0, 4)
-      .map((t) => `#${String(t).trim().split(/\s+/).join("_")}`)
-      .join(" ");
-  }
-
-  function cloneObj(o) {
-    try { return structuredClone(o); }
-    catch { return JSON.parse(JSON.stringify(o || {})); }
-  }
-
-  function parseISO(iso) {
-    try {
-      const d = new Date(String(iso || ""));
-      if (Number.isNaN(d.getTime())) return null;
-      return d;
-    } catch { return null; }
-  }
-
-  function isRecentOk(iso, days = FRONT_FAILSAFE_OK_DAYS) {
-    const d = parseISO(iso);
-    if (!d) return false;
-    const ms = Date.now() - d.getTime();
-    const max = days * 24 * 60 * 60 * 1000;
-    return ms >= 0 && ms <= max;
-  }
-
-  function adaptForUI(rawProduct) {
-    const raw = cloneObj(rawProduct || {});
-
-    const sku = cleanText(raw.sku || raw.slug || "");
-    const title = cleanText(raw.title || raw.nome || raw.name || "");
-    const id_busca = cleanText(raw.id_busca || raw.idML || raw.id || "");
-    const issue_number = Number(
-      raw.issue_number || raw.issue_id || raw.issue || raw.github_issue_number || raw.source_issue_number || 0
-    ) || 0;
-
-    const badges = uniqLabels(safeArray(raw.badges || raw.tags).map(cleanText).filter(Boolean));
-    const active = (raw.active !== undefined) ? !!raw.active : (raw.ativo !== undefined) ? !!raw.ativo : true;
-    const featured = (raw.featured === true) || (raw.destaque === true) || (raw.is_featured === true);
-    const links = pickBestLink(raw);
-    const image = cleanUrl(raw.image || raw.image_url || raw.imagem || raw.img || "");
-    const images = getProductImagesFromRaw(raw, image);
-    const price_text = cleanText(raw.price_text || raw.current_price_text || raw.sale_price_text || raw.preco_atual || raw.preco || raw.price || "");
-
-    if (!sku || !title) return null;
-
-    return {
-      sku,
-      title,
-      badges,
-      id_busca,
-      issue_number,
-      categoria_principal: cleanText(raw.categoria_principal || raw.category_primary || raw.primary_category || raw.categoria || raw.category || ""),
-      categorias_secundarias: uniqLabels([
-        ...splitLooseList(raw.categorias_secundarias),
-        ...splitLooseList(raw.categories_secondary),
-        ...splitLooseList(raw.secondary_categories),
-        ...splitLooseList(raw.categorias),
-        ...splitLooseList(raw.categories),
-      ]),
-      aliases_busca: uniqLabels([
-        ...splitLooseList(raw.aliases_busca),
-        ...splitLooseList(raw.search_aliases),
-        ...splitLooseList(raw.aliases),
-      ]),
-      open_url: links.open,
-      check_url: links.check || links.open,
-      canonical_url: links.canonical || "",
-      short_url: links.shorty || "",
-      resolved_url: links.resolved || "",
-      buy_url: links.primary,
-      alt_url: links.alt || cleanUrl(raw.alt_url || ""),
-      image,
-      images,
-      price_text,
-      old_price_text: cleanText(raw.old_price_text || raw.previous_price_text || raw.price_before_text || raw.preco_de || raw.preco_anterior || raw.old_price || ""),
-      discount_text: cleanText(raw.discount_text || raw.desconto_texto || raw.desconto || raw.sale_badge || raw.offer_badge || ""),
-      price_checked_at: cleanText(raw.price_checked_at || raw.price_checked || raw.preco_conferido_em || raw.last_price_checked || ""),
-      promo_text: cleanText(raw.promo_text || raw.offer_text || raw.price_note || raw.preco_observacao || ""),
-      buy_cta: cleanText(raw.buy_cta || raw.cta_buy_text || raw.cta_text || ""),
-      active,
-      featured,
-      last_checked: cleanText(raw.last_checked || ""),
-      last_ok: cleanText(raw.last_ok || ""),
-      guardian_last_reason: cleanText(raw.guardian_last_reason || ""),
-      guardian_disabled_at: cleanText(raw.guardian_disabled_at || ""),
-      guardian_dead_reason: cleanText(raw.guardian_dead_reason || ""),
-      guardian_fail_count: Number(raw.guardian_fail_count || 0),
-      quick_home: !!raw.quick_home,
-      quick_home_order: Number(raw.quick_home_order || 0) || 0,
-      _raw: raw,
-    };
-  }
-
-  function dedupeProducts(list) {
-    const out = [];
-    const seen = new Set();
-    for (const p of (list || [])) {
-      if (!p) continue;
-      const kId = p.id_busca ? `id:${String(p.id_busca).trim().toUpperCase()}` : "";
-      const kCan = p.canonical_url ? `c:${String(p.canonical_url).trim().toLowerCase()}` : "";
-      const kUrl = p.buy_url ? `url:${String(p.buy_url).trim().toLowerCase()}` : "";
-      const kSku = p.sku ? `sku:${String(p.sku).trim().toLowerCase()}` : "";
-      const key = kId || kCan || kUrl || kSku;
-      if (!key) continue;
-      if (seen.has(key)) {
-        const idx = out.findIndex((x) => {
-          const kk =
-            (x.id_busca ? `id:${String(x.id_busca).trim().toUpperCase()}` : "") ||
-            (x.canonical_url ? `c:${String(x.canonical_url).trim().toLowerCase()}` : "") ||
-            (x.buy_url ? `url:${String(x.buy_url).trim().toLowerCase()}` : "") ||
-            (x.sku ? `sku:${String(x.sku).trim().toLowerCase()}` : "");
-          return kk === key;
-        });
-        if (idx >= 0 && p.featured && !out[idx].featured) out[idx] = p;
-        continue;
-      }
-      seen.add(key);
-      out.push(p);
-    }
-    return out;
-  }
-
-  function getFeatured(list) {
-    const actives = (list || []).filter((p) => p && p.active !== false);
-    return actives.find((p) => p.featured) || null;
-  }
-
-
   function getPromoInfo(p) {
     p = p || {};
     return {
@@ -2137,7 +1982,7 @@
   }
 
   function productMediaHTML(p, className, extraInner) {
-    const images = safeArray(p.images).filter(Boolean);
+    const images = getProductImagesFromRaw(p || {}, (p && (p.image || p.image_url || p.img)) || "").filter(Boolean);
     const first = images[0] || p.image || "";
     const img = first
       ? `<img data-cnimg="1" src="${escapeHTML(first)}" alt="${escapeHTML(p.title)}" loading="lazy" />`
@@ -2231,32 +2076,35 @@
       ? `<button class="btn btn--gold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
       : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(buyText(p, false))}</a>`;
 
-    const desc = safeArray(p.badges).slice(0, 5).join(" • ");
     const idBusca = String(p.id_busca || "").trim();
-    const tags = tagsText(p.badges);
+    const badges = safeArray(p.badges).slice(0, 4);
+    const categoryLine = badges.length ? badges.join(" • ") : "Achado selecionado pela curadoria";
+    const title = String(p.title || "Produto do Dia").replace(/^\s*[\p{Emoji_Presentation}\p{Extended_Pictographic}\s]+/u, "").trim() || String(p.title || "Produto do Dia");
 
     return `
-      <article class="cnFeaturedEcom ${isProdutoDoDia ? "cnFeaturedEcom--day" : ""}" data-sku="${escapeHTML(p.sku)}">
-        <div class="cnFeaturedEcom__media">
-          ${productMediaHTML(p, "card__img card__img--featuredClean", isProdutoDoDia ? `<div class="pFeatured pFeatured--featuredClean">⭐ Produto do dia</div>` : ``)}
+      <div class="cnFeaturedWrap cnFeaturedWrap--lojaPremium">
+        <div class="cnCard cnFeaturedMedia cnFeaturedMedia--lojaPremium">
+          ${productMediaHTML(p, "card__img card__img--featuredClean cnFeaturedImageFrame", isProdutoDoDia ? `<div class="pFeatured pFeatured--featuredClean">⭐ Produto do dia</div>` : ``)}
         </div>
 
-        <div class="cnFeaturedEcom__info">
-          <div class="cnFeaturedEcom__kicker">${isProdutoDoDia ? "Produto impulsionado de hoje" : "Produto em destaque"}</div>
-          <h3 class="name name--featuredClean cnFeaturedEcom__title">${escapeHTML(p.title)}</h3>
-          ${promoHTML(p, false)}
-          ${desc ? `<p class="meta meta--featuredTags cnFeaturedEcom__tags">${escapeHTML(desc)}</p>` : ``}
-          ${tags ? `<p class="cnFeaturedEcom__hashtags">${escapeHTML(tags)}</p>` : ``}
-          ${idBusca ? `<div class="idbox idbox--featuredClean cnFeaturedEcom__id">Código de busca: <b>${escapeHTML(idBusca)}</b></div>` : ``}
+        <div class="cnCard cnFeaturedInfo cnFeaturedInfo--lojaPremium">
+          <div class="cnCardPad cnFeaturedInfoPad">
+            <div class="cnFeaturedEyebrow">Produto impulsionado de hoje</div>
+            <h3 class="cnTitle cnFeaturedTitle">${escapeHTML(title)}</h3>
+            ${promoHTML(p, false)}
+            <p class="cnFeaturedDesc">${escapeHTML(categoryLine)}</p>
+            ${tagsText(p.badges) ? `<p class="cnFeaturedTags">${escapeHTML(tagsText(p.badges))}</p>` : ``}
+            ${idBusca ? `<div class="idbox idbox--featuredClean">Código de busca: <b>${escapeHTML(idBusca)}</b></div>` : ``}
 
-          <div class="actions actions--featuredClean cnFeaturedEcom__actions">
-            ${buyBtn}
-            ${idBusca ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>` : ``}
-            <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
-            ${p.alt_url ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
+            <div class="actions actions--featuredClean cnFeaturedActions">
+              ${buyBtn}
+              ${idBusca ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>` : ``}
+              <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            </div>
+            <p class="cnFeaturedSafeNote">Confira preço, frete e disponibilidade no Mercado Livre antes de concluir.</p>
           </div>
         </div>
-      </article>
+      </div>
     `;
   }
 
@@ -2267,27 +2115,28 @@
 
     const buy = (disabled || !hasLink)
       ? `<button class="smallBtn smallBtnGold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
-      : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">Comprar</a>`;
+      : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(buyText(p, true))}</a>`;
 
-    const tagsArr = safeArray(p.badges).slice(0, 2);
-    const tagsHtml = tagsArr.length ? `<div class="pBadgesLite">${tagsArr.map((x) => `<span>${escapeHTML(x)}</span>`).join("")}</div>` : "";
-    const idBusca = String(p.id_busca || "").trim();
+    const desc = safeArray(p.badges).join(" • ");
+    const tags = tagsText(p.badges);
 
     return `
-      <article class="pCard" data-sku="${escapeHTML(p.sku)}">
+      <div class="pCard" data-sku="${escapeHTML(p.sku)}">
         ${productMediaHTML(p, "pImg", p.featured ? `<div class="pFeatured">⭐ do dia</div>` : ``)}
         <div class="pBody">
           <p class="pName">${escapeHTML(p.title)}</p>
-          ${tagsHtml}
-          ${p.price_text ? `<p class="pPriceLite">${escapeHTML(p.price_text)}</p>` : ``}
-          ${idBusca ? `<p class="pSmall pCodeLite">Código <b>${escapeHTML(idBusca)}</b></p>` : ``}
+          ${/* Preço/oferta fica só no Produto do Dia para preservar o layout da grade. */ ""}
+          <p class="pSmall">${escapeHTML(desc)}</p>
+          ${tags ? `<p class="pSmall" style="color:rgba(224,195,107,.92); font-weight:950;">${escapeHTML(tags)}</p>` : ``}
+
           <div class="pActions">
             ${buy}
-            ${idBusca ? `<button class="smallBtn btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>` : ``}
+            <button class="smallBtn btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>
             <button class="smallBtn btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
+            ${p.alt_url ? `<button class="smallBtn btn--secondary-soft" type="button" data-action="copyAlt" data-sku="${escapeHTML(p.sku)}">Link Alt</button>` : ``}
           </div>
         </div>
-      </article>
+      </div>
     `;
   }
 
