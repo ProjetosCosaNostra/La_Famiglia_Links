@@ -157,3 +157,420 @@
   .lcCard{grid-template-columns:112px minmax(0,1fr)}
   .lcCardActions{grid-template-columns:1fr}
 }
+
+/* ==========================================================
+   REAL5 — REFINO DE ELEGÂNCIA / MOBILE E CAMPANHA
+   - Reduz excesso visual do Produto do Dia
+   - Botões menores e alinhados
+   - Cards mobile mais próximos da Vitrine Rápida
+   ========================================================== */
+
+/* Produto do Dia — desktop mais equilibrado */
+.lcFeaturedCard{
+  gap:14px;
+  align-items:stretch;
+}
+.lcMedia{
+  min-height:360px;
+  padding:14px;
+}
+.lcMedia img{
+  max-height:360px;
+}
+.lcInfo{
+  padding:18px;
+}
+.lcLabel{
+  font-size:11px;
+  padding:5px 10px;
+}
+.lcTitle{
+  font-size:clamp(1.35rem,2.35vw,2.15rem);
+  line-height:1.05;
+  margin:10px 0 6px;
+}
+.lcSub{
+  font-size:.95rem;
+  margin-bottom:10px;
+}
+.lcPrice{
+  padding:12px;
+  border-radius:16px;
+}
+.lcCurrentPrice{
+  font-size:clamp(2rem,4vw,3.15rem);
+}
+.lcNote{
+  font-size:.88rem;
+  line-height:1.34;
+}
+.lcActions{
+  gap:8px;
+}
+.lcBuy,
+.lcBtn{
+  min-height:40px;
+  border-radius:13px;
+  font-size:.92rem;
+  line-height:1.15;
+  text-align:center;
+}
+.lcHelp{
+  margin-top:8px;
+  font-size:.82rem;
+}
+
+/* Todos os produtos — desktop mais clean */
+.lcCardMedia{
+  height:220px;
+}
+.lcCardBody{
+  padding:12px;
+}
+.lcCardTitle{
+  font-size:.98rem;
+}
+.lcCardActions .lcBuy,
+.lcCardActions .lcBtn{
+  min-height:38px;
+}
+
+@media(max-width:640px){
+  /* Shell e topo mais compacto */
+  .lcShell{
+    width:min(100vw - 12px,1120px);
+    padding:8px 0 20px;
+  }
+  .lcHero{
+    padding:12px;
+    border-radius:18px;
+  }
+  .lcHero__copy p{
+    font-size:.92rem;
+    line-height:1.34;
+    margin-bottom:8px;
+  }
+  .lcPill,.lcHero__chips span{
+    min-height:28px;
+    padding:5px 9px;
+    font-size:.78rem;
+  }
+  .lcHero__actions{
+    gap:8px;
+  }
+  .lcHero__actions .lcBtn{
+    min-height:38px;
+    font-size:.88rem;
+    border-radius:13px;
+  }
+
+  /* Nav sticky menos invasiva */
+  .lcNav{
+    top:6px;
+    padding:7px;
+    gap:7px;
+    border-radius:16px;
+  }
+  .lcNav a{
+    min-height:32px;
+    padding:6px 10px;
+    font-size:.82rem;
+  }
+
+  /* Cabeçalhos menores */
+  .lcSection{
+    border-radius:18px;
+    margin-top:13px;
+  }
+  .lcSection__head{
+    padding:13px 12px 10px;
+    gap:8px;
+  }
+  .lcSection__head h2{
+    font-size:1.05rem;
+    letter-spacing:.16em;
+  }
+  .lcSection__head p{
+    font-size:.88rem;
+    line-height:1.32;
+    margin-top:5px;
+  }
+  #refreshFeatured{
+    min-height:32px;
+    padding:6px 10px;
+    font-size:.82rem;
+  }
+
+  /* Produto do Dia — visual compacto e elegante */
+  .lcFeatured{
+    padding:10px;
+  }
+  .lcFeaturedCard{
+    gap:10px;
+  }
+  .lcMedia{
+    padding:8px;
+    border-radius:17px;
+  }
+  .lcMedia img{
+    width:100%;
+    max-height:none;
+    border-radius:12px;
+  }
+  .lcMediaBadge{
+    top:10px;
+    left:10px;
+    padding:5px 9px;
+    font-size:.74rem;
+  }
+  .lcCount{
+    top:43px;
+    left:10px;
+    padding:5px 8px;
+    font-size:.76rem;
+  }
+  .lcGalleryArrow{
+    width:36px;
+    height:36px;
+    font-size:23px;
+    background:rgba(0,0,0,.50);
+  }
+  .lcDots{
+    bottom:10px;
+    padding:6px 9px;
+    gap:6px;
+  }
+  .lcDot{
+    width:7px;
+    height:7px;
+  }
+  .lcDot.is-active{
+    width:20px;
+  }
+  .lcZoom{
+    right:10px;
+    bottom:10px;
+    min-height:34px;
+    padding:7px 11px;
+    font-size:.80rem;
+  }
+
+  .lcInfo{
+    padding:13px;
+    border-radius:17px;
+  }
+  .lcLabel{
+    font-size:.68rem;
+    padding:4px 8px;
+  }
+  .lcTitle{
+    font-size:1.12rem;
+    line-height:1.08;
+    margin:9px 0 6px;
+    letter-spacing:.05em;
+  }
+  .lcSub{
+    display:none;
+  }
+  .lcPrice{
+    padding:11px;
+    margin:6px 0 9px;
+    border-radius:15px;
+  }
+  .lcPriceTop{
+    margin-bottom:4px;
+  }
+  .lcPriceTop span:first-child{
+    font-size:.66rem;
+    letter-spacing:.10em;
+  }
+  .lcDiscount{
+    font-size:.72rem;
+    padding:5px 8px;
+  }
+  .lcCurrentPrice{
+    font-size:2.05rem;
+  }
+  .lcOldPrice{
+    font-size:.82rem;
+    margin-left:7px;
+  }
+  .lcNote{
+    font-size:.78rem;
+    line-height:1.25;
+    margin-top:5px;
+  }
+  .lcTags{
+    font-size:.80rem;
+    line-height:1.32;
+    margin-top:5px;
+  }
+  .lcHash{
+    font-size:.82rem;
+    line-height:1.28;
+    margin:5px 0;
+  }
+  .lcIdBox{
+    font-size:.78rem;
+    padding:7px 9px;
+    margin:7px 0;
+    border-radius:10px;
+  }
+  .lcActions{
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin-top:8px;
+  }
+  .lcActions .lcBuy{
+    grid-column:1/-1;
+  }
+  .lcActions .lcBuy,
+  .lcActions .lcBtn{
+    min-height:37px;
+    border-radius:12px;
+    padding:7px 9px;
+    font-size:.78rem;
+    line-height:1.1;
+  }
+  .lcHelp{
+    display:none;
+  }
+
+  /* Busca/filtros mais compactos */
+  .lcSearchTools{
+    padding:0 12px 11px;
+  }
+  .lcSearch{
+    min-height:40px;
+    border-radius:13px;
+    padding:0 11px;
+  }
+  .lcSearch input{
+    font-size:.86rem;
+  }
+  .lcFilters{
+    padding:0 12px 12px;
+  }
+  .lcFilterBlock h3,
+  .lcDetails summary{
+    font-size:.76rem;
+    letter-spacing:.13em;
+  }
+  .tagChip{
+    min-height:27px;
+    padding:5px 8px;
+    font-size:.76rem;
+  }
+  .lcDetails{
+    border-radius:13px;
+    margin:9px 0 0;
+  }
+  .lcDetails summary{
+    padding:11px;
+  }
+  .lcReportsGrid{
+    gap:8px;
+    padding:0 11px 11px;
+  }
+  .lcReportsGrid .lcBtn{
+    min-height:38px;
+    font-size:.78rem;
+    padding:7px 8px;
+  }
+
+  /* Lista de produtos — mais parecida com Vitrine Rápida e menos gigante */
+  .lcProducts{
+    padding:12px;
+    gap:10px;
+  }
+  .lcCard{
+    grid-template-columns:112px minmax(0,1fr);
+    min-height:136px;
+    border-radius:16px;
+  }
+  .lcCardMedia{
+    min-height:136px;
+    height:100%;
+    padding:7px;
+    background:rgba(0,0,0,.28);
+  }
+  .lcCardMedia img{
+    width:100%;
+    height:100%;
+    max-height:128px;
+    object-fit:contain;
+    border-radius:10px;
+  }
+  .lcCardBadge{
+    top:7px;
+    left:7px;
+    padding:4px 7px;
+    font-size:.70rem;
+  }
+  .lcCardBody{
+    padding:10px 10px 9px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-width:0;
+  }
+  .lcCardTitle{
+    font-size:.84rem;
+    line-height:1.15;
+    letter-spacing:.03em;
+    -webkit-line-clamp:2;
+  }
+  .lcCardCode{
+    margin-top:7px;
+    font-size:.76rem;
+  }
+  .lcCardActions{
+    gap:7px;
+    margin-top:9px;
+  }
+  .lcCardActions .lcBuy,
+  .lcCardActions .lcBtn{
+    min-height:34px;
+    padding:6px 7px;
+    border-radius:11px;
+    font-size:.76rem;
+  }
+
+  .lcResultPill{
+    min-height:28px;
+    padding:5px 9px;
+    font-size:.78rem;
+  }
+
+  .lcFloat{
+    right:7px;
+    bottom:8px;
+    gap:7px;
+  }
+  .lcFloat a{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    font-size:.92rem;
+  }
+}
+
+@media(max-width:390px){
+  .lcCard{
+    grid-template-columns:104px minmax(0,1fr);
+    min-height:128px;
+  }
+  .lcCardMedia{
+    min-height:128px;
+  }
+  .lcCardMedia img{
+    max-height:120px;
+  }
+  .lcCardActions{
+    grid-template-columns:1fr 1fr;
+  }
+  .lcCardActions .lcBuy,
+  .lcCardActions .lcBtn{
+    font-size:.72rem;
+  }
+}
