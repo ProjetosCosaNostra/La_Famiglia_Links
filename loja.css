@@ -1090,3 +1090,253 @@
     font-size:.70rem!important;
   }
 }
+
+/* ==========================================================
+   REAL10 — Finder premium + brilho elegante nos botões
+   ========================================================== */
+
+#buscar .lcSection__head{
+  align-items:flex-end !important;
+  gap:14px !important;
+}
+#buscar .lcSection__head > div{
+  min-width:0 !important;
+}
+#buscar .lcSelect{
+  min-height:42px !important;
+  border-radius:14px !important;
+  padding:0 14px !important;
+  border:1px solid rgba(215,176,88,.22) !important;
+  background:rgba(9,9,11,.88) !important;
+  color:rgba(255,255,255,.96) !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.03) !important;
+}
+#buscar .lcFinderTop{
+  padding:0 16px 14px !important;
+}
+#buscar .lcFilterGroup--top{
+  margin:0 0 12px !important;
+  padding:12px 14px !important;
+  border:1px solid rgba(215,176,88,.13) !important;
+  border-radius:18px !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,0)), rgba(0,0,0,.18) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+#buscar .lcFilterGroup--top h3{
+  margin:0 0 10px !important;
+  font-size:12px !important;
+  letter-spacing:.16em !important;
+}
+#buscar .tagChips--top{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+}
+#buscar .tagChips--top .tagChip{
+  min-height:34px !important;
+  padding:7px 12px !important;
+  border-radius:999px !important;
+  background:rgba(7,7,9,.78) !important;
+  border:1px solid rgba(215,176,88,.14) !important;
+  color:rgba(255,255,255,.90) !important;
+  font-size:.82rem !important;
+  font-weight:800 !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.18) !important;
+}
+#buscar .tagChips--top .tagChip:hover{
+  transform:translateY(-1px);
+}
+#buscar .lcSearchTools--showcase{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  gap:12px !important;
+  padding:0 !important;
+  align-items:stretch !important;
+}
+#buscar .lcSearchBox{
+  min-height:58px !important;
+  padding:0 18px !important;
+  border-radius:20px !important;
+  border:1px solid rgba(215,176,88,.16) !important;
+  background:rgba(6,6,8,.90) !important;
+  box-shadow:0 14px 28px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+#buscar .lcSearchBox span{
+  font-size:1.35rem !important;
+  opacity:.92 !important;
+}
+#buscar .lcSearchBox input{
+  font-size:1.05rem !important;
+  font-weight:700 !important;
+  color:#fff !important;
+}
+#buscar .lcSearchBox input::placeholder{
+  color:rgba(255,255,255,.48) !important;
+}
+#buscar .lcBtn--searchClear{
+  min-width:132px !important;
+  min-height:58px !important;
+  padding:0 22px !important;
+  border-radius:20px !important;
+  background:rgba(6,6,8,.90) !important;
+  border:1px solid rgba(215,176,88,.16) !important;
+  color:#fff !important;
+  font-size:1rem !important;
+  font-weight:900 !important;
+  box-shadow:0 14px 28px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+#buscar .lcBtn--searchClear:hover,
+#buscar .lcBtn--searchClear:focus-visible{
+  border-color:rgba(215,176,88,.26) !important;
+  transform:translateY(-1px);
+}
+#buscar .lcFilters--refine{
+  padding:0 16px 16px !important;
+}
+#buscar .lcFilters--refine .lcDetails{
+  margin-top:10px !important;
+}
+
+/* brilho/reflexo elegante */
+.lcBtn--gold,
+.lcBuy,
+.tagChip--active,
+.lcResultPill{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+.lcBtn--gold::after,
+.lcBuy::after,
+.tagChip--active::after,
+.lcResultPill::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  bottom:-40%;
+  left:-135%;
+  width:38%;
+  transform:skewX(-24deg);
+  background:linear-gradient(100deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.02) 20%,
+    rgba(255,246,212,.34) 48%,
+    rgba(255,255,255,.05) 72%,
+    rgba(255,255,255,0) 100%);
+  pointer-events:none;
+  animation:lcSheen 3.6s ease-in-out infinite;
+  z-index:0;
+}
+@keyframes lcSheen{
+  0%{left:-135%;opacity:0;}
+  8%{opacity:.95;}
+  42%{left:155%;opacity:.95;}
+  56%{left:155%;opacity:0;}
+  100%{left:155%;opacity:0;}
+}
+
+/* reforço visual dos cards */
+#todos-produtos .lcCard{
+  border:1px solid rgba(215,176,88,.14) !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.016), rgba(255,255,255,0)), rgba(5,5,7,.82) !important;
+  box-shadow:0 12px 28px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+#todos-produtos .lcCardActions .lcBuy,
+#todos-produtos .lcCardActions .lcBtn{
+  box-shadow:0 10px 20px rgba(0,0,0,.22) !important;
+}
+
+@media (max-width: 760px){
+  #buscar .lcSection__head{
+    align-items:stretch !important;
+    gap:10px !important;
+  }
+  #buscar .lcSection__head--compact{
+    padding-bottom:0 !important;
+  }
+  #buscar .lcFinderTop{
+    padding:0 12px 12px !important;
+  }
+  #buscar .lcFilterGroup--top{
+    padding:10px 12px !important;
+    border-radius:16px !important;
+    margin-bottom:10px !important;
+  }
+  #buscar .lcFilterGroup--top h3{
+    font-size:11px !important;
+    margin-bottom:9px !important;
+  }
+  #buscar .tagChips--top{
+    gap:7px !important;
+  }
+  #buscar .tagChips--top .tagChip{
+    min-height:31px !important;
+    padding:6px 10px !important;
+    font-size:.78rem !important;
+  }
+  #buscar .lcSearchTools--showcase{
+    grid-template-columns:minmax(0,1fr) auto !important;
+    gap:8px !important;
+  }
+  #buscar .lcSearchBox{
+    min-height:48px !important;
+    border-radius:16px !important;
+    padding:0 14px !important;
+  }
+  #buscar .lcSearchBox span{
+    font-size:1.1rem !important;
+  }
+  #buscar .lcSearchBox input{
+    font-size:.92rem !important;
+  }
+  #buscar .lcBtn--searchClear{
+    min-width:96px !important;
+    min-height:48px !important;
+    padding:0 14px !important;
+    border-radius:16px !important;
+    font-size:.92rem !important;
+  }
+  #buscar .lcFilters--refine{
+    padding:0 12px 12px !important;
+  }
+}
+
+@media (max-width: 480px){
+  #buscar .lcSection__head h2{
+    margin-bottom:4px !important;
+  }
+  #buscar .lcSelect{
+    min-height:40px !important;
+    border-radius:12px !important;
+    font-size:.94rem !important;
+    width:100% !important;
+  }
+  #buscar .lcSearchTools--showcase{
+    grid-template-columns:minmax(0,1fr) auto !important;
+    gap:7px !important;
+  }
+  #buscar .lcSearchBox{
+    min-height:44px !important;
+    border-radius:14px !important;
+    padding:0 12px !important;
+  }
+  #buscar .lcSearchBox input{
+    font-size:.84rem !important;
+  }
+  #buscar .lcBtn--searchClear{
+    min-width:88px !important;
+    min-height:44px !important;
+    padding:0 12px !important;
+    border-radius:14px !important;
+    font-size:.84rem !important;
+  }
+  #buscar .tagChips--top .tagChip{
+    min-height:29px !important;
+    padding:5px 9px !important;
+    font-size:.73rem !important;
+  }
+  #todos-produtos .lcCard{
+    grid-template-columns:102px minmax(0,1fr) !important;
+    min-height:132px !important;
+  }
+}
