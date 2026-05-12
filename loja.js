@@ -164,7 +164,7 @@
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots">' + dots + '</div>' : '') +
-        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" type="button">🔍 Ampliar</button>' +
+        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" onclick="window.CNLcOpenGallery && window.CNLcOpenGallery(this.getAttribute(\'data-zoom-key\'))" type="button" aria-label="Ampliar imagem do produto">🔍 Ampliar</button>' +
       '</div>';
   }
 
@@ -347,6 +347,8 @@
     renderFeatured();
   }
 
+  window.CNLcOpenGallery = function (key) { openModal(key); };
+
   function openModal(key) {
     var p = state.featured;
     if (!p) return;
@@ -423,6 +425,17 @@
   }
 
   function bindEvents() {
+
+    document.addEventListener('click', function (ev) {
+      var z = ev.target && ev.target.closest ? ev.target.closest('.lcZoom,[data-zoom-key]') : null;
+      if (!z) return;
+      var key = z.getAttribute('data-zoom-key');
+      if (!key) return;
+      ev.preventDefault();
+      ev.stopPropagation();
+      openModal(key);
+    }, true);
+
     document.addEventListener('click', function (ev) {
       var target = ev.target;
 
