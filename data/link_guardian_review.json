@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-12T04:03:49Z",
-  "total_items": 3,
+  "updated_at": "2026-05-12T08:56:23Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 4
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 4
     },
-    "high_priority": 3
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-05-12T03:58:28Z",
+      "happened_at": "2026-05-12T08:51:07Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,52 @@
       ]
     },
     {
-      "happened_at": "2026-05-12T03:58:28Z",
+      "happened_at": "2026-05-12T08:51:07Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 20,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/20",
+      "issue_title": "[CMS] Produto: Ventilador Mondial 30cm Super Power 60W (VSP-30-W)",
+      "sku": "ventilador-mondial-30cm-super-power-60w-vsp-30-w",
+      "title": "Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)",
+      "id_busca": "5J5PKG-YXAM",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/1PnEZeq",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/1PnEZeq",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIbru4V1fEqrC75cFAJSbknlc4UnWO%2F7xhpwKeK7YErVXEP0UhloJ7lTiQwCxIdg%2BlcDdmajpZtr3xhGr1twVvKrIfUmn6uVx4h0Gd%2BPuIayJzRGojnsKJ1yTssG7gx%2BWIchJ33JxN6Ahd9nTTDgTVe48ctuGbsZ8BvZ13L006n%2FNrm%2FtCL5AVBXlVgZX0xPOAF3xmk%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YXAM&tid=de6d92c9-f438-4822-8945-f5a3d58a5b9a",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIbru4V1fEqrC75cFAJSbknlc4UnWO%2F7xhpwKeK7YErVXEP0UhloJ7lTiQwCxIdg%2BlcDdmajpZtr3xhGr1twVvKrIfUmn6uVx4h0Gd%2BPuIayJzRGojnsKJ1yTssG7gx%2BWIchJ33JxN6Ahd9nTTDgTVe48ctuGbsZ8BvZ13L006n%2FNrm%2FtCL5AVBXlVgZX0xPOAF3xmk%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIbru4V1fEqrC75cFAJSbknlc4UnWO%2F7xhpwKeK7YErVXEP0UhloJ7lTiQwCxIdg%2BlcDdmajpZtr3xhGr1twVvKrIfUmn6uVx4h0Gd%2BPuIayJzRGojnsKJ1yTssG7gx%2BWIchJ33JxN6Ahd9nTTDgTVe48ctuGbsZ8BvZ13L006n%2FNrm%2FtCL5AVBXlVgZX0xPOAF3xmk%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achado do Dia",
+        "Ventilador",
+        "Mondial",
+        "30cm",
+        "60W",
+        "Super Power",
+        "VSP-30-W",
+        "Casa"
+      ]
+    },
+    {
+      "happened_at": "2026-05-12T08:51:07Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +151,7 @@
       ]
     },
     {
-      "happened_at": "2026-05-12T03:58:28Z",
+      "happened_at": "2026-05-12T08:51:07Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (3x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

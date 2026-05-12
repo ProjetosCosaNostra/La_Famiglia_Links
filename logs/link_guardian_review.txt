@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-12T04:03:49Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-05-12T08:56:23Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-12T03:58:28Z
+Quando: 2026-05-12T08:51:07Z
 Issue: #153
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/153
 SKU: corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Ruby Rose, Stay Fix, Corretivo, Alta Cobertura, Premium
 open_url: https://meli.la/1XoHJ5m
 checked_url: https://meli.la/1XoHJ5m
@@ -43,7 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGssi0F5bljEQd%2FCYQBHrE5QHj0bw2CF55V6Ju6ioXlMZhx8%2FCyAw2MbE%2Bt8Tc1l%2B7r7bG%2F9jXZWr09Xj6fHBaQlvODD07M99Ye1Bv11Ue4cX19o1fOL7IE1%2BIBK%2FTDoRW7tVHh%2BiuoFbOURS0YqJkw7aa74dDIykE%2FRvLJzQys%2FXRLLUqG%2BzopOWTYM44lZ7oP00Q%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-12T03:58:28Z
+Quando: 2026-05-12T08:51:07Z
+Issue: #20
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/20
+SKU: ventilador-mondial-30cm-super-power-60w-vsp-30-w
+Título: Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)
+ID ML: 5J5PKG-YXAM
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Badges: Achado do Dia, Ventilador, Mondial, 30cm, 60W, Super Power, VSP-30-W, Casa
+open_url: https://mercadolivre.com/sec/1PnEZeq
+checked_url: https://mercadolivre.com/sec/1PnEZeq
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YXAM&tid=de6d92c9-f438-4822-8945-f5a3d58a5b9a
+
+[ALTA] review_only_storefront
+Quando: 2026-05-12T08:51:07Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 0x listing)
+Memória operacional: histórico recorrente (22x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://meli.la/1KTRYBS
 checked_url: https://meli.la/1KTRYBS
@@ -62,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
 
 [ALTA] review_only_storefront
-Quando: 2026-05-12T03:58:28Z
+Quando: 2026-05-12T08:51:07Z
 Issue: #82
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82
 SKU: fone-bluetooth-53-tws-gancho-k4k6
@@ -73,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 1x listing)
+Memória operacional: histórico recorrente (3x /lists, 1x listing)
 Badges: Achados do Dia, Bluetooth 5.3, TWS, Gancho, Esportivo, Display Digital, Android iOS, Preto
 open_url: https://meli.la/15p3NHj
 checked_url: https://meli.la/15p3NHj
