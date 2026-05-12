@@ -799,3 +799,294 @@
   .lcCard{grid-template-columns:88px minmax(0,1fr)!important}
   .lcCardMedia{height:116px!important;min-height:116px!important}.lcCardMedia img{max-height:106px!important}
 }
+
+/* ==========================================================
+   REAL9 — CORREÇÃO CIRÚRGICA: zoom, Produto do Dia e cards mobile
+   Data: 2026-05-12
+   ========================================================== */
+
+/* Modal correto: o HTML usa lcImageModal, não lcModal. */
+.lcImageModal{
+  position:fixed!important;
+  inset:0!important;
+  z-index:2147483647!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:18px!important;
+  background:rgba(0,0,0,.88)!important;
+  backdrop-filter:blur(10px)!important;
+}
+.lcImageModal.is-open{
+  display:flex!important;
+}
+.lcImageModal__img{
+  display:block!important;
+  max-width:min(94vw,1180px)!important;
+  max-height:88vh!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+  border-radius:16px!important;
+  box-shadow:0 22px 80px rgba(0,0,0,.70)!important;
+  background:rgba(0,0,0,.24)!important;
+}
+.lcImageModal__close,
+.lcImageModal__nav{
+  position:absolute!important;
+  z-index:2147483647!important;
+  border:1px solid rgba(215,176,88,.30)!important;
+  background:rgba(0,0,0,.72)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+  font-weight:900!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.45)!important;
+}
+.lcImageModal__close{
+  top:14px!important;
+  right:14px!important;
+  width:42px!important;
+  height:42px!important;
+  border-radius:999px!important;
+  font-size:26px!important;
+  line-height:1!important;
+}
+.lcImageModal__nav{
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  width:50px!important;
+  height:50px!important;
+  border-radius:999px!important;
+  font-size:34px!important;
+  line-height:1!important;
+}
+.lcImageModal__nav--prev{left:16px!important;}
+.lcImageModal__nav--next{right:16px!important;}
+.lcImageModal__count{
+  position:absolute!important;
+  left:50%!important;
+  bottom:18px!important;
+  transform:translateX(-50%)!important;
+  padding:8px 12px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(215,176,88,.24)!important;
+  background:rgba(0,0,0,.72)!important;
+  color:#fff!important;
+  font-weight:900!important;
+}
+.lcZoom{
+  pointer-events:auto!important;
+  touch-action:manipulation!important;
+  user-select:none!important;
+}
+
+/* Tags compactas dos cards, iguais ao padrão visual da Vitrine Rápida. */
+.lcMiniTag{
+  display:inline-flex!important;
+  align-items:center!important;
+  min-height:24px!important;
+  padding:4px 9px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  background:rgba(255,255,255,.045)!important;
+  color:rgba(255,255,255,.62)!important;
+  font-weight:700!important;
+  line-height:1!important;
+}
+.lcCardActions .lcBuy{
+  grid-column:auto!important;
+}
+
+@media(max-width:640px){
+  /* Corrige o Produto do Dia: no mobile ele não pode ficar esmagado em duas colunas. */
+  #produto-do-dia .lcFeaturedCard{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  #produto-do-dia .lcMedia{
+    width:100%!important;
+    min-height:0!important;
+    padding:10px!important;
+    border-radius:16px!important;
+  }
+  #produto-do-dia .lcMedia img{
+    width:auto!important;
+    max-width:100%!important;
+    max-height:min(64vh,520px)!important;
+    height:auto!important;
+    object-fit:contain!important;
+    margin:auto!important;
+  }
+  #produto-do-dia .lcInfo{
+    width:100%!important;
+  }
+  #produto-do-dia .lcTitle{
+    font-size:1.08rem!important;
+    line-height:1.08!important;
+    letter-spacing:.025em!important;
+  }
+  #produto-do-dia .lcActions{
+    grid-template-columns:1fr 1fr!important;
+  }
+  #produto-do-dia .lcActions .lcBuy{
+    grid-column:1 / -1!important;
+  }
+
+  /* Todos os Produtos no mesmo padrão da Vitrine Rápida: imagem forte, texto limpo, botões lado a lado. */
+  #todos-produtos .lcProducts{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:12px!important;
+    padding:12px!important;
+  }
+  #todos-produtos .lcCard{
+    display:grid!important;
+    grid-template-columns:132px minmax(0,1fr)!important;
+    min-height:168px!important;
+    align-items:center!important;
+    border-radius:18px!important;
+    overflow:hidden!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(0,0,0,.34)),rgba(0,0,0,.58)!important;
+    border:1px solid rgba(215,176,88,.13)!important;
+    box-shadow:0 14px 34px rgba(0,0,0,.30)!important;
+  }
+  #todos-produtos .lcCardMedia{
+    height:168px!important;
+    min-height:168px!important;
+    padding:10px!important;
+    background:rgba(0,0,0,.24)!important;
+  }
+  #todos-produtos .lcCardMedia img{
+    width:100%!important;
+    height:100%!important;
+    max-height:148px!important;
+    object-fit:contain!important;
+    border-radius:13px!important;
+  }
+  #todos-produtos .lcCardBody{
+    min-width:0!important;
+    height:100%!important;
+    padding:13px 12px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+  }
+  #todos-produtos .lcCardTitle{
+    margin:0!important;
+    min-height:0!important;
+    font-size:.96rem!important;
+    line-height:1.12!important;
+    letter-spacing:.035em!important;
+    display:-webkit-box!important;
+    -webkit-line-clamp:2!important;
+    -webkit-box-orient:vertical!important;
+    overflow:hidden!important;
+  }
+  #todos-produtos .lcCardMeta{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:6px!important;
+    margin:9px 0 0!important;
+    font-size:.68rem!important;
+    line-height:1!important;
+  }
+  #todos-produtos .lcMiniTag{
+    min-height:22px!important;
+    padding:4px 8px!important;
+    font-size:.66rem!important;
+  }
+  #todos-produtos .lcCardPrice{
+    display:none!important;
+  }
+  #todos-produtos .lcCardCode{
+    display:block!important;
+    margin-top:10px!important;
+    color:rgba(255,255,255,.58)!important;
+    font-size:.78rem!important;
+    line-height:1.15!important;
+  }
+  #todos-produtos .lcCardCode b{
+    color:rgba(215,176,88,.98)!important;
+    letter-spacing:.08em!important;
+  }
+  #todos-produtos .lcCardActions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    margin-top:12px!important;
+    padding-top:0!important;
+  }
+  #todos-produtos .lcCardActions .lcBuy,
+  #todos-produtos .lcCardActions .lcBtn{
+    min-height:38px!important;
+    padding:7px 8px!important;
+    border-radius:13px!important;
+    font-size:.78rem!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+  #todos-produtos .lcCardActions .lcBuy{
+    grid-column:auto!important;
+  }
+
+  .lcFloat{
+    right:7px!important;
+    bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;
+  }
+  .lcFloat a{
+    width:34px!important;
+    height:34px!important;
+    border-radius:12px!important;
+    opacity:.84!important;
+  }
+
+  .lcImageModal{
+    padding:12px!important;
+  }
+  .lcImageModal__img{
+    max-width:96vw!important;
+    max-height:84vh!important;
+    border-radius:13px!important;
+  }
+  .lcImageModal__close{
+    top:10px!important;
+    right:10px!important;
+    width:38px!important;
+    height:38px!important;
+    font-size:24px!important;
+  }
+  .lcImageModal__nav{
+    width:42px!important;
+    height:42px!important;
+    font-size:30px!important;
+  }
+  .lcImageModal__nav--prev{left:10px!important;}
+  .lcImageModal__nav--next{right:10px!important;}
+}
+
+@media(max-width:390px){
+  #todos-produtos .lcCard{
+    grid-template-columns:122px minmax(0,1fr)!important;
+    min-height:158px!important;
+  }
+  #todos-produtos .lcCardMedia{
+    height:158px!important;
+    min-height:158px!important;
+    padding:9px!important;
+  }
+  #todos-produtos .lcCardMedia img{
+    max-height:140px!important;
+  }
+  #todos-produtos .lcCardBody{
+    padding:11px 10px!important;
+  }
+  #todos-produtos .lcCardTitle{
+    font-size:.88rem!important;
+  }
+  #todos-produtos .lcCardActions .lcBuy,
+  #todos-produtos .lcCardActions .lcBtn{
+    min-height:35px!important;
+    font-size:.70rem!important;
+  }
+}
