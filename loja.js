@@ -83,7 +83,7 @@
   // =========================
   // IMAGENS: PREMIUM DINÂMICO
   // =========================
-  const CN_IMAGE_MODE = "smart";            // "smart" | "contain" | "cover"
+  const CN_IMAGE_MODE = "contain";            // "smart" | "contain" | "cover"
   const CN_SMART_THRESHOLD = 0.12;
   const CN_BG_BLUR_PX = 18;
   const CN_BG_OPACITY = 0.35;
@@ -918,6 +918,7 @@
       img.style.display = "block";
       img.style.position = "relative";
       img.style.zIndex = "2";
+      img.style.objectFit = "contain";
 
       if (parent && !parent.dataset.cnImgReady) {
         parent.dataset.cnImgReady = "1";
@@ -1992,8 +1993,9 @@
     const isFeaturedMedia = String(className || "").indexOf("featuredClean") >= 0;
     const mediaVariant = isFeaturedMedia ? " cnProductMedia--featured" : (String(className || "").indexOf("pImg") >= 0 ? " cnProductMedia--quick" : "");
     const encoded = gallery ? escapeHTML(JSON.stringify(images)) : "";
-    const zoomUi = (first && isFeaturedMedia) ? `<button class="cnGalleryZoom" type="button" data-action="galleryZoom" aria-label="Ampliar imagem do produto">Ampliar</button>` : "";
-    const galleryUi = gallery ? `
+    const showGalleryControls = gallery && isFeaturedMedia;
+    const zoomUi = (first && isFeaturedMedia) ? `<button class="cnGalleryZoom" type="button" data-action="galleryZoom" aria-label="Ampliar imagem do produto">🔍 Ampliar</button>` : "";
+    const galleryUi = showGalleryControls ? `
       <button class="cnGalleryNav cnGalleryNav--prev is-hidden" type="button" data-action="galleryPrev" aria-label="Imagem anterior">‹</button>
       <button class="cnGalleryNav cnGalleryNav--next" type="button" data-action="galleryNext" aria-label="Próxima imagem">›</button>
       <div class="cnGalleryCounter">1/${images.length}</div>
@@ -2036,7 +2038,12 @@
     media.setAttribute("data-gallery-index", String(index));
 
     const img = media.querySelector("img[data-cnimg]");
-    if (img) img.src = images[index];
+    if (img) {
+      img.style.objectFit = "contain";
+      img.src = images[index];
+      const bg = media.querySelector(":scope > .cnImgBg");
+      if (bg) bg.style.backgroundImage = `url("${images[index]}")`;
+    }
 
     const counter = media.querySelector(".cnGalleryCounter");
     if (counter) counter.textContent = `${index + 1}/${images.length}`;
@@ -2076,26 +2083,28 @@
       ? `<button class="btn btn--gold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
       : `<a class="btn btn--gold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(buyText(p, false))}</a>`;
 
-    const desc = safeArray(p.badges).slice(0, 6).join(" • ");
+    const badges = safeArray(p.badges).filter(Boolean);
+    const desc = badges.slice(0, 5).join(" • ");
     const idBusca = String(p.id_busca || "").trim();
 
     return `
-      <div class="card card--featuredClean">
-        ${productMediaHTML(p, "card__img card__img--featuredClean", isProdutoDoDia ? `<div class="pFeatured pFeatured--featuredClean">⭐ do dia</div>` : ``)}
-        <div class="card__body card__body--featuredClean">
-          <h3 class="name name--featuredClean">${escapeHTML(p.title)}</h3>
+      <article class="card card--featuredClean lojaFeaturedPro">
+        <div class="lojaFeaturedPro__mediaWrap">
+          ${productMediaHTML(p, "card__img card__img--featuredClean lojaFeaturedPro__media", isProdutoDoDia ? `<div class="pFeatured pFeatured--featuredClean">⭐ Produto do dia</div>` : ``)}
+        </div>
+        <div class="card__body card__body--featuredClean lojaFeaturedPro__info">
+          <div class="lojaFeaturedPro__eyebrow">Seleção do Dia</div>
+          <h3 class="name name--featuredClean lojaFeaturedPro__title">${escapeHTML(p.title)}</h3>
           ${promoHTML(p, false)}
-          ${desc ? `<p class="meta meta--featuredTags">${escapeHTML(desc)}</p>` : ``}
-
-          ${idBusca ? `<div class="idbox idbox--featuredClean">Código: <b>${escapeHTML(idBusca)}</b></div>` : ``}
-
-          <div class="actions actions--featuredClean">
+          ${desc ? `<p class="meta meta--featuredTags lojaFeaturedPro__tags">${escapeHTML(desc)}</p>` : ``}
+          ${idBusca ? `<div class="idbox idbox--featuredClean lojaFeaturedPro__id">Código de busca: <b>${escapeHTML(idBusca)}</b></div>` : ``}
+          <div class="actions actions--featuredClean lojaFeaturedPro__actions">
             ${buyBtn}
             ${idBusca ? `<button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyId" data-sku="${escapeHTML(p.sku)}">Copiar ID</button>` : ``}
             <button class="btn btn--tiny btn--glass btn--secondary-soft" type="button" data-action="copyLink" data-sku="${escapeHTML(p.sku)}">Copiar Link</button>
           </div>
         </div>
-      </div>
+      </article>
     `;
   }
 
@@ -2108,7 +2117,7 @@
       ? `<button class="smallBtn smallBtnGold btn--buy-primary" type="button" disabled style="opacity:.55; cursor:not-allowed;">Indisponível</button>`
       : `<a class="smallBtn smallBtnGold btn--buy-primary" data-role="buy-link" href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(buyText(p, true))}</a>`;
 
-    const desc = safeArray(p.badges).join(" • ");
+    const desc = safeArray(p.badges).slice(0, 5).join(" • ");
     const tags = tagsText(p.badges);
 
     return `
