@@ -187,6 +187,7 @@
     var tags = getBadges(p).slice(0, 8);
     var note = promoText(p) || 'Confira preço, frete e disponibilidade no Mercado Livre antes de concluir.';
     var checked = trim(p.price_checked_at || '');
+    var noteExtra = checked && note.indexOf(checked) < 0 ? '<br>Conferido em ' + escapeHtml(checked) + '. Pode mudar no Mercado Livre.' : '';
 
     root.innerHTML = '' +
       '<div class="lcFeaturedCard">' +
@@ -194,13 +195,13 @@
         '<div class="lcInfo">' +
           '<div class="lcLabel">Produto impulsionado de hoje</div>' +
           '<h3 class="lcTitle">' + escapeHtml(getTitle(p)) + '</h3>' +
-          '<p class="lcSub">Achado selecionado pela curadoria para facilitar sua compra.</p>' +
-          (price ? '<div class="lcPrice"><div class="lcPriceTop"><span>Preço em destaque</span>' + (disc ? '<span class="lcDiscount">' + escapeHtml(disc) + '</span>' : '') + '</div><div><span class="lcCurrentPrice">' + escapeHtml(price) + '</span>' + (old ? '<span class="lcOldPrice">' + escapeHtml(old) + '</span>' : '') + '</div><p class="lcNote">' + escapeHtml(note) + (checked ? '<br>Preço conferido em ' + escapeHtml(checked) + '. Pode mudar no Mercado Livre.' : '') + '</p></div>' : '') +
+          '<p class="lcSub">Escolhido para a campanha atual, com oferta e compra rápida.</p>' +
+          (price ? '<div class="lcPrice"><div class="lcPriceTop"><span>Oferta em destaque</span>' + (disc ? '<span class="lcDiscount">' + escapeHtml(disc) + '</span>' : '') + '</div><div><span class="lcCurrentPrice">' + escapeHtml(price) + '</span>' + (old ? '<span class="lcOldPrice">' + escapeHtml(old) + '</span>' : '') + '</div><p class="lcNote">' + escapeHtml(note) + noteExtra + '</p></div>' : '') +
           '<div class="lcTags">' + escapeHtml(tags.join(' • ')) + '</div>' +
           '<div class="lcHash">#Achados_do_Dia #Beleza #Cabelo #Escova_Secadora</div>' +
           (id ? '<div class="lcIdBox">Código de busca: <b>' + escapeHtml(id) + '</b></div>' : '') +
           '<div class="lcActions">' +
-            (buy ? '<a class="lcBuy" href="' + escapeHtml(buy) + '" target="_blank" rel="noopener">' + escapeHtml(buyCta(p)) + '</a>' : '') +
+            (buy ? '<a class="lcBuy" href="' + escapeHtml(buy) + '" target="_blank" rel="noopener">' + 'Comprar agora' + '</a>' : '') +
             '<button class="lcBtn" data-copy-id="' + escapeHtml(id) + '" type="button">Copiar ID</button>' +
             '<button class="lcBtn" data-copy-link="' + escapeHtml(buy) + '" type="button">Copiar Link</button>' +
           '</div>' +
