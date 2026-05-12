@@ -2110,21 +2110,16 @@
             Catálogo premium com achados selecionados, busca rápida e compra direta no Mercado Livre.
           </p>
 
-          <div class="chips chips--storePublic" aria-label="Dicas rápidas">
+          <div class="chips" aria-label="Dicas rápidas">
             <span class="chip">🛍️ compra rápida</span>
             <span class="chip">⭐ produto do dia</span>
             <span class="chip">🔎 busca inteligente</span>
           </div>
 
-          <div class="countPill countPill--public" aria-label="Total de produtos">
-            <span>🛒 Loja completa:</span> <span class="n" id="countAll">—</span>
-            <span>produtos selecionados</span>
-            <span class="countPill__update">• Atualizado: <b><span id="lastUpdate">—</span></b></span>
-          </div>
+          <div class="countPill countPill--customer" aria-label="Resumo da loja">🛒 Loja completa: <span class="n" id="countAll">—</span> produtos selecionados <span style="opacity:.55;">•</span> Atualizado: <span class="n" id="lastUpdate">—</span><span id="countShown" style="display:none">—</span><span id="tagsCount" style="display:none">—</span><span id="countRendered" style="display:none">—</span></div>
 
-          <span id="countShown" class="srOnly">—</span>
-          <span id="tagsCount" class="srOnly">—</span>
-          <span id="countRendered" class="srOnly">—</span>
+          <div class="imperialNote imperialNote--store" role="note"><b>Destaque de hoje:</b> veja primeiro o Produto do Dia, depois explore todos os achados da loja.</div>
+        </div>
         </div>
       </div>
 
@@ -2238,7 +2233,6 @@
         </div>
       </div>
     </section>
-
 
     <section class="panel" id="sec-vitrine-comercial">
       <div class="panel__head">
