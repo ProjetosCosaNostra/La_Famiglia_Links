@@ -1,139 +1,178 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosa Nostra — Loja Completa</title>
-  <base href="/La_Famiglia_Links/" />
-  <meta name="description" content="Loja Completa Cosa Nostra: produtos selecionados, compra rápida e vitrine premium." />
+
+  <base href="/La_Famiglia_Links/">
+
+  <meta name="description" content="Loja Completa Cosa Nostra com todos os achados selecionados. Veja o Produto do Dia, filtre produtos e compre pelo Mercado Livre." />
   <meta name="theme-color" content="#050505" />
   <meta name="robots" content="index,follow" />
+
   <meta property="og:title" content="Cosa Nostra — Loja Completa" />
-  <meta property="og:description" content="Produtos selecionados com compra rápida e curadoria premium." />
+  <meta property="og:description" content="Todos os achados da vitrine em uma loja premium, rápida e direta." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/loja-completa-hero-desktop.webp" />
+  <meta property="og:image" content="assets/logo.png" />
+
   <link rel="icon" href="assets/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="loja.css" />
   <script defer src="tracking.js"></script>
   <script defer src="loja.js"></script>
 </head>
-<body>
-  <div class="bg" aria-hidden="true"><div class="orb orb--1"></div><div class="orb orb--2"></div><div class="orb orb--3"></div></div>
+<body id="topo" class="cn-store-page">
+  <div class="bg" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+    <div class="grain"></div>
+  </div>
 
-  <main class="storePage" id="topo">
-    <section class="storeHero cardSoft" aria-label="Loja completa Cosa Nostra">
-      <div class="storeHero__media">
-        <picture>
-          <source media="(max-width: 720px)" srcset="assets/loja-completa-hero-mobile.webp" />
-          <img src="assets/loja-completa-hero-desktop.webp" alt="Loja Completa Cosa Nostra" class="storeHero__banner" />
-        </picture>
-      </div>
+  <div class="floatingStoreCTA" aria-hidden="false">
+    <a class="floatingStoreCTA__desktop" href="#sec-produto-do-dia" aria-label="Ir para Produto do Dia">⭐ Produto do Dia</a>
+    <a class="floatingStoreCTA__mobile" href="#sec-produto-do-dia" aria-label="Ir para Produto do Dia">⭐ Produto</a>
+    <a class="floatingStoreCTA__mobile" href="#sec-todos-produtos" aria-label="Ir para todos os produtos">🛍️ Todos</a>
+    <a class="floatingStoreCTA__mobile floatingStoreCTA__top" href="#topo" aria-label="Voltar ao topo">↑</a>
+  </div>
 
-      <div class="storeHero__content">
-        <p class="storeHero__text">Catálogo premium com achados selecionados, busca rápida e compra direta no Mercado Livre.</p>
-        <div class="storeHero__chips" aria-label="Destaques da loja">
-          <span>🛍️ compra rápida</span>
-          <span>⭐ produto do dia</span>
-          <span>🔎 busca inteligente</span>
+  <main class="page cnStorePage">
+    <header class="hero cnStoreHero" id="cnStoreHero">
+      <div class="hero__brand hero__brand--banner cnStoreHero__brand">
+        <div class="heroBanner cnStoreHero__banner" aria-hidden="false">
+          <picture class="heroBanner__picture">
+            <source media="(max-width: 640px)" srcset="assets/premium-store-hero-mobile.webp">
+            <img
+              class="heroBanner__img"
+              src="assets/premium-store-hero-desktop.webp"
+              alt="Premium Store — Cosa Nostra • A Família das Ideias"
+              onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/premium-store-hero-desktop.webp'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
+            />
+          </picture>
         </div>
-        <p class="storeHero__count">Loja completa: <b id="countAll">0</b> produtos selecionados · Atualizado: <b id="lastUpdate">--</b></p>
+
+        <div class="hero__text hero__text--bannerstack cnStoreHero__text">
+          <h1 class="srOnly">Loja Completa Cosa Nostra</h1>
+          <div class="chips chips--heroCompact" aria-label="Dicas rápidas">
+            <span class="chip">⚡ rápida</span>
+            <span class="chip">💎 premium</span>
+            <span class="chip">🔄 atualizada</span>
+            <span class="chip chip--storeCount">📦 Loja Completa: <b><span data-total-products>—</span></b></span>
+          </div>
+          <p class="sub hero__sub--banner">Achados premium selecionados para compra rápida e segura.</p>
+        </div>
       </div>
 
-      <div class="storeHero__actions">
-        <a href="index.html" class="btn btn--gold">🏠 Voltar Home</a>
-        <button class="btn btn--glass" type="button" id="copyStoreLink">📌 Copiar link da loja</button>
-        <a class="btn btn--glass" href="https://www.instagram.com/cosanostra.blackgold/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
-        <a class="btn btn--glass" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener noreferrer">📣 Telegram</a>
+      <div class="hero__actions cnStoreHero__actions">
+        <a class="btn btn--gold btn--buy-primary" href="./index.html">🏠 Voltar Home</a>
+        <button class="btn btn--glass" id="copyStoreLink" type="button">📌 Copiar link da loja</button>
+        <a class="btn btn--glass btn--social" href="https://instagram.com/cosanostra.blackgold" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn btn--glass btn--social" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener">📣 Telegram</a>
+        <div class="miniNote cnStoreHero__status"><span class="dot"></span> Status: <b>online</b> • Atualizado <span id="lastUpdate">agora</span></div>
       </div>
-    </section>
+    </header>
 
-    <nav class="storeNav" aria-label="Navegação rápida">
-      <a href="loja.html#produto-do-dia">⭐ Produto do Dia</a>
-      <a href="loja.html#todos-produtos">🛍️ Todos os Produtos</a>
-      <a href="loja.html#filtros">🔎 Buscar</a>
-      <a href="index.html">🏠 Home</a>
+    <nav class="sectionNav cnStoreNav" aria-label="Atalhos da Loja Completa" id="cnMobileTopNav">
+      <a class="sectionNav__pill sectionNav__pill--selection" href="#sec-produto-do-dia">⭐ Produto do Dia</a>
+      <a class="sectionNav__pill sectionNav__pill--store" href="#sec-todos-produtos">🛍️ Todos os Produtos (<span data-total-products>—</span>)</a>
+      <a class="sectionNav__pill sectionNav__pill--links" href="#sec-busca">🔎 Buscar</a>
+      <a class="sectionNav__pill sectionNav__pill--top" href="#topo" aria-label="Voltar ao topo">↑</a>
     </nav>
 
-    <section class="storeSection" id="produto-do-dia">
-      <header class="sectionTitleRow">
+    <section class="panel cnFeaturedPanel" id="sec-produto-do-dia">
+      <div class="panel__head cnPanelHead">
         <div>
-          <h1>Produto do Dia</h1>
-          <p>O destaque da campanha atual, com oferta, galeria e compra rápida.</p>
+          <h2>Produto do Dia</h2>
+          <p>Curadoria especial para compra rápida e segura.</p>
         </div>
-        <button type="button" class="btn btn--glass btn--small" id="btnRefresh">↻ Atualizar</button>
-      </header>
-      <div id="featured" class="featuredMount" aria-live="polite"></div>
+        <div class="panel__right panel__right--featured">
+          <button class="btn btn--tiny btn--glass" type="button" id="refreshFeatured">↻ Atualizar</button>
+        </div>
+      </div>
+      <div class="featured cnStoreFeatured" id="featured">
+        <div class="cnLoading">Carregando Produto do Dia...</div>
+      </div>
     </section>
 
-    <section class="storeSection storeTools" id="filtros">
-      <header class="sectionTitleRow sectionTitleRow--compact">
+    <section class="panel cnSearchPanel" id="sec-busca">
+      <div class="panel__head cnPanelHead cnPanelHead--compact">
         <div>
           <h2>Encontre seu produto</h2>
           <p>Busque por nome, categoria ou código e compre pelo botão principal do card.</p>
         </div>
-        <select id="sortSelect" class="storeSelect" aria-label="Ordenação dos produtos">
-          <option value="relev">Relevância</option>
-          <option value="az">A-Z</option>
-          <option value="za">Z-A</option>
-          <option value="recent">Mais recentes</option>
-        </select>
-      </header>
-
-      <div class="searchRow">
-        <label class="searchBox">
-          <span>🔎</span>
-          <input id="searchInput" type="search" placeholder="Buscar produto, categoria ou código..." autocomplete="off" />
-        </label>
-        <button class="btn btn--glass" type="button" id="clearFilters">Limpar filtros</button>
-      </div>
-
-      <div class="filterGroup">
-        <h3>Famílias principais</h3>
-        <div id="tagPrimaryChips" class="tagChips"></div>
-      </div>
-      <details class="filterDetails" id="secondaryDetails">
-        <summary>Refinar por subcategoria <span>+ abrir</span></summary>
-        <div id="tagSecondaryChips" class="tagChips"></div>
-      </details>
-      <details class="filterDetails" id="utilityDetails">
-        <summary>Atributos rápidos <span>+ abrir</span></summary>
-        <div id="tagUtilityChips" class="tagChips"></div>
-      </details>
-      <details class="filterDetails toolsDetails" open>
-        <summary>🧠 Inteligência & relatórios <span>abrir</span></summary>
-        <div class="toolsButtons">
-          <button class="btn btn--gold btn--small" type="button" id="btnSmartReport">📄 Relatório inteligente</button>
-          <button class="btn btn--glass btn--small" type="button" id="btnCopyList">📋 Copiar ativos</button>
-          <button class="btn btn--glass btn--small" type="button" id="btnDlCsvAll">📊 CSV bruto</button>
-          <button class="btn btn--glass btn--small" type="button" id="btnDlReview">🛠️ TXT manutenção</button>
+        <div class="panel__right">
+          <select class="select" id="sortSelect" aria-label="Ordenar produtos">
+            <option value="featured">Relevância</option>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+            <option value="newest">Mais recentes</option>
+          </select>
         </div>
-      </details>
+      </div>
+
+      <div class="quickTools cnStoreTools">
+        <div class="quickSearch" role="search">
+          <span class="quickIcon">🔎</span>
+          <input id="storeSearch" placeholder="Buscar produto, categoria ou código..." autocomplete="off" />
+        </div>
+        <button class="btn btn--tiny btn--glass" id="clearSearch" type="button">Limpar filtros</button>
+      </div>
+
+      <div class="cnStoreFilters">
+        <div class="cnFilterBlock">
+          <h3>Famílias principais</h3>
+          <div class="tagChips" id="primaryTags"></div>
+        </div>
+        <details class="cnFilterDetails">
+          <summary>Refinar por subcategoria <span>+ abrir</span></summary>
+          <div class="tagChips" id="secondaryTags"></div>
+        </details>
+        <details class="cnFilterDetails">
+          <summary>Atributos rápidos <span>+ abrir</span></summary>
+          <div class="tagChips" id="utilityTags"></div>
+        </details>
+        <details class="cnTools" id="cnReportsTools">
+          <summary class="btn btn--glass">🧠 Inteligência & relatórios <span>abrir</span></summary>
+          <div class="cnToolsGrid">
+            <button class="btn btn--gold" id="btnSmartReport" type="button">📄 Relatório inteligente</button>
+            <button class="btn btn--glass" id="btnCopyActive" type="button">📋 Copiar ativos</button>
+            <button class="btn btn--glass" id="btnCsv" type="button">📊 CSV bruto</button>
+            <button class="btn btn--glass" id="btnMaintenance" type="button">🛠️ TXT manutenção</button>
+          </div>
+        </details>
+      </div>
     </section>
 
-    <section class="storeSection" id="todos-produtos">
-      <header class="sectionTitleRow sectionTitleRow--compact">
+    <section class="panel cnAllProductsPanel" id="sec-todos-produtos">
+      <div class="panel__head cnPanelHead cnPanelHead--compact">
         <div>
           <h2>Todos os produtos</h2>
           <p>Escolha, compare pelas imagens e compre pelo botão principal do card.</p>
         </div>
-        <span class="resultCount"><b id="countShown">0</b> encontrados</span>
-      </header>
-      <div id="grid" class="productsGrid" aria-live="polite"></div>
-      <div id="loadMoreWrap" class="loadMoreWrap hidden">
-        <button class="btn btn--gold" type="button" id="loadMore">Ver mais produtos</button>
+        <div class="panel__right cnResultsPill"><span id="resultCount">—</span> encontrados</div>
+      </div>
+      <div class="productsGrid cnStoreGrid" id="productsGrid"></div>
+      <div class="loadMoreWrap hidden" id="loadMoreWrap">
+        <button class="btn btn--gold" id="loadMore" type="button">Carregar mais</button>
       </div>
     </section>
+
+    <footer class="footer">
+      <p>Cosa Nostra Premium Store — curadoria de achados com compra rápida.</p>
+    </footer>
   </main>
 
-  <div class="floatingStoreCTA" aria-label="atalhos rápidos">
-    <a href="#topo" title="Voltar ao topo">↑</a>
-    <a href="#filtros" title="Buscar produto">🔎</a>
-    <a href="#produto-do-dia" title="Produto do Dia">⭐</a>
-    <a href="index.html" title="Home">🏠</a>
+  <div class="cnImageModal" id="imageModal" aria-hidden="true" role="dialog" aria-label="Galeria do produto">
+    <button class="cnImageModal__close" id="modalClose" type="button" aria-label="Fechar">×</button>
+    <button class="cnImageModal__nav cnImageModal__nav--prev" id="modalPrev" type="button" aria-label="Imagem anterior">‹</button>
+    <img class="cnImageModal__img" id="modalImg" alt="Imagem ampliada do produto" />
+    <button class="cnImageModal__nav cnImageModal__nav--next" id="modalNext" type="button" aria-label="Próxima imagem">›</button>
+    <div class="cnImageModal__count" id="modalCount">1/1</div>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
