@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real22-botoes-home-reflexo-continuo" />
+  <link rel="stylesheet" href="style.css?v=20260513-real23-botoes-home-reflexo-normalizado" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real22-botoes-home-reflexo-continuo"></script>
+  <script defer src="script.js?v=20260513-real23-botoes-home-reflexo-normalizado"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13603,12 +13603,12 @@
 
 </style>
 
-  <style id="cn-real22-buy-buttons-home-reflexo-continuo">
+  <style id="cn-real23-buy-buttons-home-reflexo-normalizado">
     /* ==========================================================
-       REAL22 — Botões Comprar da Home com reflexo CONTÍNUO.
-       Correção desta etapa:
+       REAL23 — Botões Comprar da Home com reflexo contínuo normalizado.
+       Ajuste fino desta etapa:
        - mantém o brilho dourado de fundo aprovado;
-       - o reflexo branco/dourado passa sozinho o tempo todo;
+       - o reflexo branco/dourado passa sozinho o tempo todo, em velocidade mais natural;
        - não depende de hover/focus;
        - usa duas camadas: background animado + span real (.cnBuySheenFx);
        - escopo limitado ao Produto do Dia e Vitrine Rápida da Home.
@@ -13735,7 +13735,7 @@
       contain: none !important;
       animation:
         cnReal22GoldBreath 5.6s ease-in-out infinite,
-        cnReal22SurfaceReflex 4.85s cubic-bezier(.42, 0, .18, 1) infinite !important;
+        cnReal22SurfaceReflex 6.35s cubic-bezier(.42, 0, .18, 1) infinite !important;
       animation-play-state: running, running !important;
       transition:
         transform .18s ease,
@@ -13817,7 +13817,7 @@
       mix-blend-mode: screen !important;
       opacity: 0;
       transform: translate3d(-145%, 0, 0) skewX(-23deg);
-      animation: cnReal22SheenSweep 4.85s cubic-bezier(.42, 0, .18, 1) infinite !important;
+      animation: cnReal22SheenSweep 6.35s cubic-bezier(.42, 0, .18, 1) infinite !important;
       animation-play-state: running !important;
       will-change: transform, opacity !important;
     }
@@ -13847,7 +13847,7 @@
       mix-blend-mode: screen !important;
       opacity: 0;
       transform: translate3d(-150%, 0, 0) skewX(-23deg);
-      animation: cnReal22SheenBackup 4.85s cubic-bezier(.42, 0, .18, 1) infinite !important;
+      animation: cnReal22SheenBackup 6.35s cubic-bezier(.42, 0, .18, 1) infinite !important;
       animation-play-state: running !important;
       will-change: transform, opacity !important;
     }
