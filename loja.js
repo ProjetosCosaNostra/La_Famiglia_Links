@@ -22,7 +22,8 @@
     gallery: {},
     modalImages: [],
     modalIndex: 0,
-    productByKey: {}
+    productByKey: {},
+    imageCache: {}
   };
 
   function escapeHtml(str) {
@@ -147,6 +148,23 @@
     return out.length ? out : ['assets/logo.png'];
   }
 
+  function preloadOneImage(url) {
+    var u = trim(url);
+    if (!u || state.imageCache[u]) return;
+    var im = new Image();
+    try { im.decoding = 'async'; } catch (e) {}
+    im.src = u;
+    state.imageCache[u] = im;
+  }
+
+  function preloadGalleryAround(images, index) {
+    if (!images || images.length < 2) return;
+    var current = typeof index === 'number' ? index : 0;
+    for (var i = Math.max(0, current - 1); i <= Math.min(images.length - 1, current + 1); i++) {
+      preloadOneImage(images[i]);
+    }
+  }
+
   function makeProductKey(p, prefix, index) {
     var raw = getSku(p) || getId(p) || getTitle(p) || ('produto-' + safe(index || 0));
     return safe(prefix || 'produto') + ':' + lower(raw).replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
@@ -222,6 +240,7 @@
     if (idx >= images.length) idx = 0;
     var img = images[idx];
     var hasMany = images.length > 1;
+    preloadGalleryAround(images, idx);
 
     var dots = images.map(function (_, i) {
       return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
@@ -231,11 +250,11 @@
       '<div class="lcMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         '<span class="lcMediaBadge">⭐ Produto do dia</span>' +
         '<span class="lcCount">' + (idx + 1) + '/' + images.length + '</span>' +
-        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" decoding="async" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots">' + dots + '</div>' : '') +
-        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">🔍 Ampliar</button>' +
+        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">⛶ Ampliar</button>' +
       '</div>';
   }
 
@@ -246,6 +265,7 @@
     if (idx >= images.length) idx = 0;
     var img = images[idx];
     var hasMany = images.length > 1;
+    preloadGalleryAround(images, idx);
 
     var dots = images.map(function (_, i) {
       return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
@@ -255,11 +275,11 @@
       '<div class="lcCardMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') +
         (hasMany ? '<span class="lcCardCount">' + (idx + 1) + '/' + images.length + '</span>' : '') +
-        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots lcDots--card">' + dots + '</div>' : '') +
-        '<button class="lcZoom lcZoom--card" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">🔍</button>' +
+        '<button class="lcZoom lcZoom--card" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">⛶</button>' +
       '</div>';
   }
 
@@ -432,6 +452,39 @@
       '</article>';
   }
 
+  function refreshGalleryDom(key) {
+    var p = getProductByKey(key);
+    if (!p) return;
+    var images = getImages(p);
+    var idx = state.gallery[key] || 0;
+    if (idx < 0) idx = 0;
+    if (idx >= images.length) idx = images.length - 1;
+    state.gallery[key] = idx;
+    preloadGalleryAround(images, idx);
+
+    qsa('[data-gallery-key]').forEach(function (shell) {
+      if (shell.getAttribute('data-gallery-key') !== key) return;
+
+      var img = qs('img[data-zoom-key]', shell);
+      if (img && images[idx] && img.getAttribute('src') !== images[idx]) {
+        img.setAttribute('src', images[idx]);
+      }
+
+      var count = qs('.lcCount,.lcCardCount', shell);
+      if (count) count.textContent = (idx + 1) + '/' + images.length;
+
+      var prev = qs('[data-gallery-prev]', shell);
+      var next = qs('[data-gallery-next]', shell);
+      if (prev) prev.hidden = idx <= 0;
+      if (next) next.hidden = idx >= images.length - 1;
+
+      qsa('.lcDot', shell).forEach(function (dot, i) {
+        if (i === idx) dot.classList.add('is-active');
+        else dot.classList.remove('is-active');
+      });
+    });
+  }
+
   function setGallery(key, delta) {
     var p = getProductByKey(key);
     if (!p) return;
@@ -443,11 +496,7 @@
     if (next >= images.length) next = images.length - 1;
 
     state.gallery[key] = next;
-    if (key && key.indexOf('featured:') === 0) {
-      renderFeatured();
-    } else {
-      renderProducts();
-    }
+    refreshGalleryDom(key);
   }
 
   window.CNLcOpenGallery = function (key) { openModal(key); };
@@ -458,6 +507,7 @@
 
     state.modalImages = getImages(p);
     state.modalIndex = state.gallery[key] || 0;
+    preloadGalleryAround(state.modalImages, state.modalIndex);
     updateModal();
 
     var modal = qs('#imageModal');
@@ -488,7 +538,8 @@
     var prev = qs('#modalPrev');
     var next = qs('#modalNext');
 
-    if (img) img.src = state.modalImages[state.modalIndex];
+    if (img && img.getAttribute('src') !== state.modalImages[state.modalIndex]) img.src = state.modalImages[state.modalIndex];
+    preloadGalleryAround(state.modalImages, state.modalIndex);
     if (count) count.textContent = (state.modalIndex + 1) + '/' + state.modalImages.length;
     if (prev) prev.hidden = state.modalIndex <= 0;
     if (next) next.hidden = state.modalIndex >= state.modalImages.length - 1;
