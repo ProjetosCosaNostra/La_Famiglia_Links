@@ -418,17 +418,34 @@
   }
 
   function getBuyCtaText(p, compact) {
-    var promo = getPromoInfo(p);
-
-    // Na Vitrine Rápida, o CTA precisa ser curto e direto, mesmo se o produto tiver CTA especial.
+    // Botão curto e premium: evita quebra de linha e mantém o texto perfeitamente centralizado.
+    // As informações de desconto/preço já aparecem no card; o CTA fica limpo.
     if (compact) return 'Comprar';
+    return 'Comprar agora';
+  }
 
-    if (promo.buyCta) return promo.buyCta;
+  function setupBuyButtonVisual(el, labelText) {
+    if (!el) return;
 
-    // No Produto do Dia, mantém o apelo de desconto sem alongar demais o botão.
-    if (promo.current || promo.discount) return '🔥 Comprar com desconto';
+    var text = trim(labelText) || 'Comprar';
 
-    return '🔥 Comprar agora';
+    el.setAttribute('data-cn-buy-shine', 'on');
+    el.setAttribute('data-cn-buy-ready', '1');
+    el.setAttribute('aria-label', text);
+
+    while (el.firstChild) {
+      el.removeChild(el.firstChild);
+    }
+
+    var label = document.createElement('span');
+    label.className = 'cnBuyLabel';
+    label.textContent = text;
+    el.appendChild(label);
+
+    var fx = document.createElement('span');
+    fx.className = 'cnBuySheenFx';
+    fx.setAttribute('aria-hidden', 'true');
+    el.appendChild(fx);
   }
 
   function createPromoBox(p, compact) {
@@ -1265,7 +1282,7 @@
 
     var aBuy = document.createElement('a');
     aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary cnActionPrimary';
-    aBuy.textContent = getBuyCtaText(p, false);
+    setupBuyButtonVisual(aBuy, getBuyCtaText(p, false));
     var buyLink = getLink(p);
     aBuy.href = buyLink || '#';
     aBuy.target = '_blank';
@@ -1411,7 +1428,7 @@
 
     var buy = document.createElement('a');
     buy.className = 'btn btn--gold btn--tiny btn--buy-primary cnQuickPrimary';
-    buy.textContent = getBuyCtaText(p, true);
+    setupBuyButtonVisual(buy, getBuyCtaText(p, true));
     var buyLink = getLink(p);
     buy.href = buyLink || '#';
     buy.target = '_blank';
@@ -1679,7 +1696,17 @@
   "use strict";
 
   function textOf(el){
-    return String((el && el.textContent) || "").replace(/\s+/g, " ").trim().toLowerCase();
+    if (!el) return "";
+    var label = null;
+    if (el.children) {
+      for (var i = 0; i < el.children.length; i++) {
+        if (el.children[i].classList && el.children[i].classList.contains("cnBuyLabel")) {
+          label = el.children[i];
+          break;
+        }
+      }
+    }
+    return String(((label && label.textContent) || el.textContent) || "").replace(/\s+/g, " ").trim().toLowerCase();
   }
 
   function findOwnChildByClass(el, className){
@@ -1714,6 +1741,7 @@
     label.className = "cnBuyLabel";
     label.textContent = labelText;
     el.appendChild(label);
+    el.setAttribute("aria-label", labelText);
   }
 
   function ensureFx(el){
