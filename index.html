@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real11-brilho-comprar" />
+  <link rel="stylesheet" href="style.css?v=20260513-real12-brilho-loja" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real11-brilho-comprar"></script>
+  <script defer src="script.js?v=20260513-real12-brilho-loja"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13763,6 +13763,178 @@
       #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
       #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::after,
       #quickGrid a.btn--gold::after {
+        animation: none !important;
+      }
+    }
+  </style>
+
+
+
+  <style id="cn-buy-shine-real12-loja-effect">
+    /* ==========================================================
+       REAL12 — efeito Loja.html nos botões Comprar do index.html
+       - brilho/reflexo atravessa o botão em loop
+       - velocidade meio-termo: 5.1s
+       - sobrescreve os patches antigos sem depender de hover
+       ========================================================== */
+    @keyframes cnBuySheenLojaReal12 {
+      0% {
+        left: -135%;
+        opacity: 0;
+      }
+      10% {
+        opacity: .92;
+      }
+      46% {
+        left: 155%;
+        opacity: .92;
+      }
+      60%, 100% {
+        left: 155%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes cnBuyGoldBreathReal12 {
+      0%, 100% {
+        box-shadow:
+          0 11px 24px rgba(145,111,34,.22),
+          0 0 0 1px rgba(255,226,146,.09),
+          inset 0 1px 0 rgba(255,255,255,.17),
+          inset 0 -12px 22px rgba(0,0,0,.25);
+        filter: brightness(1) saturate(1);
+      }
+      42% {
+        box-shadow:
+          0 14px 30px rgba(145,111,34,.28),
+          0 0 0 1px rgba(255,226,146,.13),
+          inset 0 1px 0 rgba(255,255,255,.21),
+          inset 0 -12px 22px rgba(0,0,0,.25);
+        filter: brightness(1.025) saturate(1.015);
+      }
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
+    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"],
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary,
+    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
+      position: relative !important;
+      overflow: hidden !important;
+      isolation: isolate !important;
+      contain: none !important;
+      clip-path: none !important;
+      border: 1px solid rgba(224,195,107,.46) !important;
+      background:
+        radial-gradient(260px 72px at 50% 0%, rgba(255,238,177,.22), transparent 66%),
+        linear-gradient(180deg, rgba(199,162,75,.58), rgba(89,67,24,.58)) !important;
+      color: rgba(255,246,219,.98) !important;
+      text-shadow: 0 1px 0 rgba(0,0,0,.42) !important;
+      transform: translateZ(0) !important;
+      animation: cnBuyGoldBreathReal12 5.1s ease-in-out infinite !important;
+      will-change: filter, box-shadow !important;
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::before,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::before,
+    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::before,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::before,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::before,
+    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::before,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::before {
+      content: "" !important;
+      position: absolute !important;
+      inset: 0 !important;
+      display: block !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+      background:
+        radial-gradient(90% 130% at 50% -34%, rgba(255,245,190,.19), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,.048), transparent 46%) !important;
+      opacity: .78 !important;
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+      filter: none !important;
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
+    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::after,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::after,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::after,
+    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::after,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::after {
+      content: "" !important;
+      position: absolute !important;
+      top: -40% !important;
+      bottom: -40% !important;
+      left: -135% !important;
+      width: 38% !important;
+      height: auto !important;
+      display: block !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      transform: skewX(-24deg) !important;
+      background: linear-gradient(100deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.02) 20%,
+        rgba(255,246,212,.34) 48%,
+        rgba(255,255,255,.05) 72%,
+        rgba(255,255,255,0) 100%) !important;
+      opacity: 0;
+      filter: none !important;
+      mix-blend-mode: screen !important;
+      animation: cnBuySheenLojaReal12 5.1s ease-in-out infinite !important;
+      transition: none !important;
+      will-change: left, opacity !important;
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover,
+    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo:hover,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary:hover,
+    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo:hover,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover {
+      transform: translateY(-1px) translateZ(0) !important;
+      border-color: rgba(255,234,166,.64) !important;
+      filter: brightness(1.045) saturate(1.02) !important;
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary > *,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary > *,
+    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo > *,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] > *,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary > *,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary > *,
+    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo > *,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] > * {
+      position: relative !important;
+      z-index: 3 !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
+      body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
+      body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo,
+      body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
+      body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary,
+      body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo,
+      body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
+      body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
+      body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::after,
+      body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
+      body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::after,
+      body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::after {
         animation: none !important;
       }
     }
