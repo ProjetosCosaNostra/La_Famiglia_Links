@@ -21,7 +21,8 @@
     rendered: PAGE_SIZE,
     gallery: {},
     modalImages: [],
-    modalIndex: 0
+    modalIndex: 0,
+    productByKey: {}
   };
 
   function escapeHtml(str) {
@@ -45,7 +46,9 @@
   function getTitle(p) { return trim((p && (p.title || p.name || p.sku)) || 'Produto'); }
   function getSku(p) { return trim((p && p.sku) || ''); }
   function getId(p) { return trim((p && (p.id_busca || p.ml_id || p.id_ml || p.mercado_livre_id)) || ''); }
-  function getImage(p) { return trim((p && (p.image || p.image_url || p.img)) || ''); }
+  function getImage(p) {
+    return trim((p && (p.image || p.image_url || p.img || p.imageUrl || p.imageURL || p.cover || p.media)) || '');
+  }
 
   function getList(value) {
     if (!value) return [];
@@ -85,24 +88,78 @@
     return id ? 'https://lista.mercadolivre.com.br/' + encodeURIComponent(id) : '';
   }
 
+  function looksLikeImageUrl(u) {
+    var x = lower(u);
+    if (!x) return false;
+    if (x.indexOf('data:image/') === 0) return true;
+    if (x.indexOf('github.com/user-attachments/assets/') >= 0) return true;
+    if (x.indexOf('raw.githubusercontent.com/') >= 0) return true;
+    if (/\.(png|jpg|jpeg|webp|gif)(\?.*)?$/i.test(u)) return true;
+    return false;
+  }
+
+  function pushImage(out, seen, value) {
+    if (value === null || value === undefined) return;
+
+    if (Array.isArray(value)) {
+      value.forEach(function (item) { pushImage(out, seen, item); });
+      return;
+    }
+
+    if (typeof value === 'object') {
+      pushImage(out, seen, value.url || value.src || value.image || value.image_url || value.href || '');
+      return;
+    }
+
+    getList(String(value)).forEach(function (raw) {
+      var u = ensureHttp(raw);
+      if (!u || !looksLikeImageUrl(u)) return;
+      var key = lower(u);
+      if (seen[key]) return;
+      seen[key] = true;
+      out.push(u);
+    });
+  }
+
   function getImages(p) {
     var out = [];
     var seen = {};
 
-    function add(u) {
-      u = trim(u);
-      if (!u) return;
-      if (seen[u]) return;
-      seen[u] = true;
-      out.push(u);
+    pushImage(out, seen, getImage(p));
+    pushImage(out, seen, p && p.images);
+    pushImage(out, seen, p && p.imagens);
+    pushImage(out, seen, p && p.gallery);
+    pushImage(out, seen, p && p.galeria);
+    pushImage(out, seen, p && p.gallery_images);
+    pushImage(out, seen, p && p.image_gallery);
+    pushImage(out, seen, p && p.extra_images);
+    pushImage(out, seen, p && p.images_extra);
+    pushImage(out, seen, p && p.additional_images);
+    pushImage(out, seen, p && p.product_images);
+
+    for (var i = 2; i <= 12; i++) {
+      pushImage(out, seen, p && p['image_' + i]);
+      pushImage(out, seen, p && p['imagem_' + i]);
+      pushImage(out, seen, p && p['image' + i]);
+      pushImage(out, seen, p && p['imagem' + i]);
     }
 
-    add(getImage(p));
-    [p && p.images, p && p.gallery_images, p && p.gallery, p && p.extra_images].forEach(function (value) {
-      getList(value).forEach(add);
-    });
-
     return out.length ? out : ['assets/logo.png'];
+  }
+
+  function makeProductKey(p, prefix, index) {
+    var raw = getSku(p) || getId(p) || getTitle(p) || ('produto-' + safe(index || 0));
+    return safe(prefix || 'produto') + ':' + lower(raw).replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function rememberProduct(key, p) {
+    if (!key || !p) return key;
+    state.productByKey[key] = p;
+    return key;
+  }
+
+  function getProductByKey(key) {
+    return state.productByKey[key] || state.featured || null;
   }
 
   function formatPrice(p) { return trim((p && (p.price_text || p.price || p.preco_atual)) || ''); }
@@ -159,6 +216,7 @@
   }
 
   function mediaHtml(p, key) {
+    key = rememberProduct(key, p);
     var images = getImages(p);
     var idx = state.gallery[key] || 0;
     if (idx >= images.length) idx = 0;
@@ -173,11 +231,35 @@
       '<div class="lcMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         '<span class="lcMediaBadge">⭐ Produto do dia</span>' +
         '<span class="lcCount">' + (idx + 1) + '/' + images.length + '</span>' +
-        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" referrerpolicy="no-referrer">' +
+        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots">' + dots + '</div>' : '') +
-        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" onclick="window.CNLcOpenGallery && window.CNLcOpenGallery(this.getAttribute(\'data-zoom-key\'))" type="button" aria-label="Ampliar imagem do produto">🔍 Ampliar</button>' +
+        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">🔍 Ampliar</button>' +
+      '</div>';
+  }
+
+  function cardMediaHtml(p, key) {
+    key = rememberProduct(key, p);
+    var images = getImages(p);
+    var idx = state.gallery[key] || 0;
+    if (idx >= images.length) idx = 0;
+    var img = images[idx];
+    var hasMany = images.length > 1;
+
+    var dots = images.map(function (_, i) {
+      return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
+    }).join('');
+
+    return '' +
+      '<div class="lcCardMedia" data-gallery-key="' + escapeHtml(key) + '">' +
+        (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') +
+        (hasMany ? '<span class="lcCardCount">' + (idx + 1) + '/' + images.length + '</span>' : '') +
+        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
+        (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
+        (hasMany ? '<div class="lcDots lcDots--card">' + dots + '</div>' : '') +
+        '<button class="lcZoom lcZoom--card" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">🔍</button>' +
       '</div>';
   }
 
@@ -191,7 +273,7 @@
       return;
     }
 
-    var key = 'featured:' + (getSku(p) || getId(p) || 'produto');
+    var key = makeProductKey(p, 'featured', 0);
     var id = getId(p);
     var buy = getBuyUrl(p);
     var price = formatPrice(p);
@@ -324,8 +406,8 @@
     if (loadWrap) loadWrap.classList.toggle('hidden', state.rendered >= state.filtered.length);
   }
 
-  function cardHtml(p) {
-    var img = getImage(p) || getImages(p)[0];
+  function cardHtml(p, index) {
+    var key = makeProductKey(p, 'card', index);
     var id = getId(p);
     var buy = getBuyUrl(p);
     var badges = getBadges(p).slice(0, 2);
@@ -336,7 +418,7 @@
 
     return '' +
       '<article class="lcCard">' +
-        '<div class="lcCardMedia">' + (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') + '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" referrerpolicy="no-referrer"></div>' +
+        cardMediaHtml(p, key) +
         '<div class="lcCardBody">' +
           '<h3 class="lcCardTitle">' + escapeHtml(getTitle(p)) + '</h3>' +
           (badgeHtml ? '<div class="lcCardMeta">' + badgeHtml + '</div>' : '') +
@@ -351,7 +433,7 @@
   }
 
   function setGallery(key, delta) {
-    var p = state.featured;
+    var p = getProductByKey(key);
     if (!p) return;
     var images = getImages(p);
     var cur = state.gallery[key] || 0;
@@ -361,13 +443,17 @@
     if (next >= images.length) next = images.length - 1;
 
     state.gallery[key] = next;
-    renderFeatured();
+    if (key && key.indexOf('featured:') === 0) {
+      renderFeatured();
+    } else {
+      renderProducts();
+    }
   }
 
   window.CNLcOpenGallery = function (key) { openModal(key); };
 
   function openModal(key) {
-    var p = state.featured;
+    var p = getProductByKey(key);
     if (!p) return;
 
     state.modalImages = getImages(p);
@@ -378,6 +464,7 @@
     if (modal) {
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('lcModalOpen');
     }
   }
 
@@ -386,6 +473,7 @@
     if (modal) {
       modal.classList.remove('is-open');
       modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('lcModalOpen');
     }
   }
 
@@ -397,9 +485,13 @@
 
     var img = qs('#modalImg');
     var count = qs('#modalCount');
+    var prev = qs('#modalPrev');
+    var next = qs('#modalNext');
 
     if (img) img.src = state.modalImages[state.modalIndex];
     if (count) count.textContent = (state.modalIndex + 1) + '/' + state.modalImages.length;
+    if (prev) prev.hidden = state.modalIndex <= 0;
+    if (next) next.hidden = state.modalIndex >= state.modalImages.length - 1;
   }
 
   function downloadText(filename, text, type) {
