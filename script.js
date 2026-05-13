@@ -640,15 +640,12 @@
       arrow.textContent = '›';
       shell.appendChild(arrow);
 
-      var zoom = null;
-      if (options.variant === 'featured') {
-        zoom = document.createElement('button');
-        zoom.type = 'button';
-        zoom.className = 'cnGalleryZoom';
-        zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
-        zoom.textContent = 'Ampliar';
-        shell.appendChild(zoom);
-      }
+      var zoom = document.createElement('button');
+      zoom.type = 'button';
+      zoom.className = 'cnGalleryZoom';
+      zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
+      zoom.textContent = 'Ampliar';
+      shell.appendChild(zoom);
 
       var dots = document.createElement('div');
       dots.className = 'cnGalleryDots';
@@ -715,8 +712,6 @@
           if (ev && ev.stopPropagation) ev.stopPropagation();
           openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
         });
-      } else {
-        img.addEventListener('click', nextImage);
       }
 
       shell.addEventListener('touchstart', function (ev) {
@@ -734,7 +729,7 @@
       }, { passive: true });
 
       refreshControls();
-    } else if (images.length === 1 && options.variant === 'featured') {
+    } else if (images.length === 1) {
       var singleZoom = document.createElement('button');
       singleZoom.type = 'button';
       singleZoom.className = 'cnGalleryZoom';
