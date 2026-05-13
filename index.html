@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real12-brilho-loja" />
+  <link rel="stylesheet" href="style.css?v=20260513-real13-gallery-global" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real12-brilho-loja"></script>
+  <script defer src="script.js?v=20260513-real13-gallery-global"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13110,7 +13110,88 @@
       z-index: 3 !important;
     }
 
-</style>
+
+
+    /* =========================
+       REAL13 — brilho premium + zoom global na Home
+       - reforça o reflexo nos botões Comprar
+       - habilita botão Ampliar também na Vitrine Rápida
+       ========================= */
+    .btn--buy-primary,
+    #featured .cnActionPrimary,
+    #quickGrid .cnQuickPrimary,
+    .cnQuickPrimary {
+      position: relative !important;
+      overflow: hidden !important;
+      isolation: isolate !important;
+    }
+
+    .btn--buy-primary::after,
+    #featured .cnActionPrimary::after,
+    #quickGrid .cnQuickPrimary::after,
+    .cnQuickPrimary::after {
+      content: "" !important;
+      position: absolute !important;
+      top: -45% !important;
+      bottom: -45% !important;
+      left: -140% !important;
+      width: 42% !important;
+      transform: skewX(-24deg) !important;
+      background: linear-gradient(100deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.025) 18%,
+        rgba(255,246,212,.36) 48%,
+        rgba(255,255,255,.06) 74%,
+        rgba(255,255,255,0) 100%) !important;
+      pointer-events: none !important;
+      animation: cnSheenReal13 5.1s ease-in-out infinite !important;
+      z-index: 0 !important;
+    }
+
+    @keyframes cnSheenReal13 {
+      0% { left: -140%; opacity: 0; }
+      10% { opacity: .92; }
+      46% { left: 160%; opacity: .92; }
+      60% { left: 160%; opacity: 0; }
+      100% { left: 160%; opacity: 0; }
+    }
+
+    .cnMediaShell {
+      position: relative;
+    }
+
+    .cnMediaShell .cnGalleryZoom {
+      z-index: 8;
+    }
+
+    .cnMediaShell--quick .cnGalleryZoom {
+      right: 8px !important;
+      bottom: 8px !important;
+      min-height: 28px !important;
+      padding: 5px 9px !important;
+      border-radius: 999px !important;
+      font-size: .70rem !important;
+      line-height: 1 !important;
+      background: rgba(0,0,0,.68) !important;
+      border-color: rgba(224,195,107,.26) !important;
+      color: rgba(255,239,190,.96) !important;
+      box-shadow: 0 10px 22px rgba(0,0,0,.34) !important;
+    }
+
+    .cnMediaShell--quick .cnGalleryZoom::before {
+      content: "🔍";
+      margin-right: 4px;
+    }
+
+    @media (max-width: 520px) {
+      .cnMediaShell--quick .cnGalleryZoom {
+        min-height: 26px !important;
+        padding: 5px 8px !important;
+        font-size: .66rem !important;
+      }
+    }
+
+  </style>
 
 
 <style>
