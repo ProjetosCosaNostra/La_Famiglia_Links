@@ -530,7 +530,7 @@ input:focus-visible{
   inset:-2px;
   background: linear-gradient(120deg, transparent 35%, rgba(224,195,107,.24), transparent 65%);
   transform: translateX(-60%);
-  animation: shine 3.8s ease-in-out infinite;
+  animation: shine 4.8s ease-in-out infinite;
   pointer-events:none;
 }
 @keyframes shine{
