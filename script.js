@@ -640,12 +640,15 @@
       arrow.textContent = '›';
       shell.appendChild(arrow);
 
-      var zoom = document.createElement('button');
-      zoom.type = 'button';
-      zoom.className = 'cnGalleryZoom' + (options.variant === 'quick' ? ' cnGalleryZoom--quick' : '');
-      zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
-      zoom.textContent = 'Ampliar';
-      shell.appendChild(zoom);
+      var zoom = null;
+      if (options.variant === 'featured') {
+        zoom = document.createElement('button');
+        zoom.type = 'button';
+        zoom.className = 'cnGalleryZoom';
+        zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
+        zoom.textContent = 'Ampliar';
+        shell.appendChild(zoom);
+      }
 
       var dots = document.createElement('div');
       dots.className = 'cnGalleryDots';
@@ -701,13 +704,12 @@
         setIndex(currentIndex - 1);
       });
 
-      zoom.addEventListener('click', function (ev) {
-        if (ev && ev.preventDefault) ev.preventDefault();
-        if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
-      });
-
-      if (options.variant === 'featured') {
+      if (zoom) {
+        zoom.addEventListener('click', function (ev) {
+          if (ev && ev.preventDefault) ev.preventDefault();
+          if (ev && ev.stopPropagation) ev.stopPropagation();
+          openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
+        });
         img.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
@@ -732,10 +734,10 @@
       }, { passive: true });
 
       refreshControls();
-    } else if (images.length === 1) {
+    } else if (images.length === 1 && options.variant === 'featured') {
       var singleZoom = document.createElement('button');
       singleZoom.type = 'button';
-      singleZoom.className = 'cnGalleryZoom' + (options.variant === 'quick' ? ' cnGalleryZoom--quick' : '');
+      singleZoom.className = 'cnGalleryZoom';
       singleZoom.setAttribute('aria-label', 'Ampliar imagem do produto');
       singleZoom.textContent = 'Ampliar';
       shell.appendChild(singleZoom);
@@ -1661,4 +1663,32 @@
   }
 
   document.addEventListener('DOMContentLoaded', init);
+})();
+
+
+/* REAL14 — marcador de brilho/reflexo nos botões Comprar */
+(function cnReal14ComprarMarkerExternal(){
+  "use strict";
+  function textOf(el){ return String((el && el.textContent) || "").replace(/\s+/g," ").trim().toLowerCase(); }
+  function mark(){
+    [document.getElementById("featured"), document.getElementById("quickGrid")].filter(Boolean).forEach(function(root){
+      root.querySelectorAll("a, button").forEach(function(el){
+        var txt = textOf(el);
+        if (txt.indexOf("comprar") !== -1 && txt.indexOf("copiar") === -1) {
+          el.setAttribute("data-cn-buy-shine", "on");
+        } else {
+          el.removeAttribute("data-cn-buy-shine");
+        }
+      });
+    });
+  }
+  function start(){
+    mark(); setTimeout(mark,250); setTimeout(mark,900); setTimeout(mark,2200);
+    ["featured","quickGrid"].forEach(function(id){
+      var root=document.getElementById(id);
+      if(!root || !window.MutationObserver) return;
+      new MutationObserver(mark).observe(root,{childList:true,subtree:true,characterData:true});
+    });
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",start); else start();
 })();
