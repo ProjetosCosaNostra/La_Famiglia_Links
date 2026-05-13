@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real16-brilho-ampliar-performance" />
+  <link rel="stylesheet" href="style.css?v=20260513-real17-botoes-limpos" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real16-brilho-ampliar-performance"></script>
+  <script defer src="script.js?v=20260513-real17-botoes-limpos"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -14636,6 +14636,215 @@
       body #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx{
         animation:none!important;
         opacity:0!important;
+      }
+    }
+  </style>
+
+
+
+  <style id="cn-real17-button-reset-clean">
+    /* ==========================================================
+       REAL17 — BOTÕES COMPRAR LIMPOS + OURO + REFLEXO LENTO
+       Escopo: somente index.html.
+       Estratégia: resetar os CTAs de compra que estavam herdando muitas
+       regras antigas, zerar ::before/::after e usar apenas a camada
+       .cnBuySheenFx criada no script.js.
+       ========================================================== */
+
+    @keyframes cnReal17BuySheenSweep {
+      0%, 16% {
+        transform: translate3d(-165%, 0, 0) skewX(-21deg);
+        opacity: 0;
+      }
+      25% {
+        opacity: .72;
+      }
+      48% {
+        opacity: .82;
+      }
+      64%, 100% {
+        transform: translate3d(360%, 0, 0) skewX(-21deg);
+        opacity: 0;
+      }
+    }
+
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::before,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::after,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::before,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::after {
+      content: none !important;
+      display: none !important;
+      animation: none !important;
+      transform: none !important;
+      background: none !important;
+      box-shadow: none !important;
+    }
+
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"],
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      position: relative !important;
+      isolation: isolate !important;
+      overflow: hidden !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0 !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+      min-width: 0 !important;
+      width: auto !important;
+      border-radius: 14px !important;
+      border: 1px solid rgba(255, 226, 140, .62) !important;
+      background:
+        radial-gradient(180px 58px at 50% 0%, rgba(255, 246, 192, .46), transparent 68%),
+        linear-gradient(180deg, rgba(255, 218, 111, .92) 0%, rgba(190, 145, 42, .88) 43%, rgba(83, 61, 18, .96) 100%) !important;
+      color: rgba(255, 249, 231, .99) !important;
+      text-decoration: none !important;
+      text-shadow:
+        0 1px 0 rgba(0,0,0,.58),
+        0 0 12px rgba(255, 229, 154, .18) !important;
+      box-shadow:
+        0 12px 28px rgba(145,111,34,.30),
+        0 0 0 1px rgba(255,226,146,.12),
+        inset 0 1px 0 rgba(255,255,255,.30),
+        inset 0 -13px 24px rgba(0,0,0,.30) !important;
+      filter: none !important;
+      transform: translateZ(0) !important;
+      clip-path: none !important;
+      contain: none !important;
+      transition:
+        transform .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease !important;
+    }
+
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] {
+      min-height: 44px !important;
+      padding: 11px 16px !important;
+      font-size: .88rem !important;
+      line-height: 1.12 !important;
+      font-weight: 900 !important;
+      letter-spacing: .01em !important;
+      white-space: normal !important;
+    }
+
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
+      min-height: 34px !important;
+      padding: 8px 12px !important;
+      font-size: .78rem !important;
+      line-height: 1.05 !important;
+      font-weight: 900 !important;
+      letter-spacing: .01em !important;
+      white-space: nowrap !important;
+    }
+
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] .cnBuyLabel,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] .cnBuyLabel {
+      position: relative !important;
+      z-index: 3 !important;
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      text-align: center !important;
+      line-height: inherit !important;
+      pointer-events: none !important;
+      transform: translateY(0) !important;
+    }
+
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx {
+      position: absolute !important;
+      top: -78% !important;
+      bottom: -78% !important;
+      left: -42% !important;
+      width: 34% !important;
+      min-width: 34% !important;
+      height: auto !important;
+      z-index: 2 !important;
+      display: block !important;
+      pointer-events: none !important;
+      border-radius: inherit !important;
+      background:
+        linear-gradient(90deg,
+          transparent 0%,
+          rgba(255,255,255,0) 14%,
+          rgba(255,255,255,.22) 32%,
+          rgba(255,252,224,.92) 48%,
+          rgba(255,226,142,.50) 58%,
+          rgba(255,255,255,.15) 72%,
+          transparent 100%) !important;
+      filter: blur(.12px) !important;
+      mix-blend-mode: screen !important;
+      opacity: 0;
+      transform: translate3d(-165%, 0, 0) skewX(-21deg);
+      animation: cnReal17BuySheenSweep 4.25s ease-in-out infinite !important;
+      will-change: transform, opacity !important;
+    }
+
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:focus-visible,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:focus-visible {
+      transform: translateY(-1px) translateZ(0) !important;
+      border-color: rgba(255, 238, 176, .88) !important;
+      filter: brightness(1.06) saturate(1.04) !important;
+      box-shadow:
+        0 15px 34px rgba(145,111,34,.38),
+        0 0 0 1px rgba(255,226,146,.18),
+        inset 0 1px 0 rgba(255,255,255,.35),
+        inset 0 -13px 24px rgba(0,0,0,.30) !important;
+    }
+
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover .cnBuySheenFx,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover .cnBuySheenFx {
+      animation-duration: 3.55s !important;
+    }
+
+    /* Botões dourados relevantes da Home, sem bagunçar os botões de copiar. */
+    body #btnVerTodosTop,
+    body #btnAbrirLojaCompleta,
+    body #sec-vitrine-rapida .panel__head .btn--gold,
+    body .sectionNav__pill--gold {
+      border-color: rgba(224,195,107,.38) !important;
+      background:
+        radial-gradient(220px 58px at 50% 0%, rgba(255,236,174,.23), transparent 66%),
+        linear-gradient(180deg, rgba(199,162,75,.34), rgba(88,68,24,.44)) !important;
+      color: rgba(255,236,180,.96) !important;
+      box-shadow:
+        0 10px 24px rgba(145,111,34,.18),
+        inset 0 1px 0 rgba(255,255,255,.14),
+        inset 0 -10px 20px rgba(0,0,0,.22) !important;
+    }
+
+    @media (max-width: 640px) {
+      body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] {
+        min-height: 42px !important;
+        padding: 10px 12px !important;
+        font-size: .82rem !important;
+      }
+
+      body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
+        min-height: 34px !important;
+        padding: 8px 10px !important;
+        font-size: .76rem !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
+        font-size: .72rem !important;
+        padding-inline: 8px !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
+      body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx {
+        animation: none !important;
+        opacity: 0 !important;
       }
     }
   </style>
