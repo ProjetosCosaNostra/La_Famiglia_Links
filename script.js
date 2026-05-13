@@ -640,15 +640,12 @@
       arrow.textContent = '›';
       shell.appendChild(arrow);
 
-      var zoom = null;
-      if (options.variant === 'featured') {
-        zoom = document.createElement('button');
-        zoom.type = 'button';
-        zoom.className = 'cnGalleryZoom';
-        zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
-        zoom.textContent = 'Ampliar';
-        shell.appendChild(zoom);
-      }
+      var zoom = document.createElement('button');
+      zoom.type = 'button';
+      zoom.className = 'cnGalleryZoom' + (options.variant === 'quick' ? ' cnGalleryZoom--quick' : '');
+      zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
+      zoom.textContent = 'Ampliar';
+      shell.appendChild(zoom);
 
       var dots = document.createElement('div');
       dots.className = 'cnGalleryDots';
@@ -704,12 +701,13 @@
         setIndex(currentIndex - 1);
       });
 
-      if (zoom) {
-        zoom.addEventListener('click', function (ev) {
-          if (ev && ev.preventDefault) ev.preventDefault();
-          if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
-        });
+      zoom.addEventListener('click', function (ev) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        if (ev && ev.stopPropagation) ev.stopPropagation();
+        openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
+      });
+
+      if (options.variant === 'featured') {
         img.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
@@ -734,10 +732,10 @@
       }, { passive: true });
 
       refreshControls();
-    } else if (images.length === 1 && options.variant === 'featured') {
+    } else if (images.length === 1) {
       var singleZoom = document.createElement('button');
       singleZoom.type = 'button';
-      singleZoom.className = 'cnGalleryZoom';
+      singleZoom.className = 'cnGalleryZoom' + (options.variant === 'quick' ? ' cnGalleryZoom--quick' : '');
       singleZoom.setAttribute('aria-label', 'Ampliar imagem do produto');
       singleZoom.textContent = 'Ampliar';
       shell.appendChild(singleZoom);
