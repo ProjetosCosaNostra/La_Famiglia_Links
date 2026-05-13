@@ -1224,14 +1224,14 @@
     rgba(255,255,255,.05) 72%,
     rgba(255,255,255,0) 100%);
   pointer-events:none;
-  animation:lcSheen 3.6s ease-in-out infinite;
+  animation:lcSheen 5.1s ease-in-out infinite;
   z-index:0;
 }
 @keyframes lcSheen{
   0%{left:-135%;opacity:0;}
-  8%{opacity:.95;}
-  42%{left:155%;opacity:.95;}
-  56%{left:155%;opacity:0;}
+  10%{opacity:.92;}
+  46%{left:155%;opacity:.92;}
+  60%{left:155%;opacity:0;}
   100%{left:155%;opacity:0;}
 }
 
