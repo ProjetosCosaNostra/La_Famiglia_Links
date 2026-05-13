@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real14-brilho-final" />
+  <link rel="stylesheet" href="style.css?v=20260513-real15-galeria-brilho" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real14-brilho-final"></script>
+  <script defer src="script.js?v=20260513-real15-galeria-brilho"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -14465,6 +14465,112 @@
       else start();
     })();
   </script>
+
+
+  <style id="cn-real15-gallery-shine-fix">
+    /* REAL15 — restaura brilho lento nos CTAs e libera ampliar imagens na Home */
+    @keyframes cnReal15ComprarReflexoLento {
+      0%, 18% { transform: translateX(-210%) skewX(-22deg); opacity: 0; }
+      27% { opacity: .78; }
+      50% { opacity: .70; }
+      68%, 100% { transform: translateX(330%) skewX(-22deg); opacity: 0; }
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"],
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]{
+      position:relative!important;
+      overflow:hidden!important;
+      isolation:isolate!important;
+      border-color:rgba(230,198,104,.58)!important;
+      background:
+        radial-gradient(220px 64px at 50% 0%, rgba(255,240,181,.34), transparent 66%),
+        linear-gradient(180deg, rgba(221,184,82,.72), rgba(94,72,23,.72))!important;
+      box-shadow:
+        0 12px 28px rgba(145,111,34,.28),
+        inset 0 1px 0 rgba(255,255,255,.22),
+        inset 0 -12px 24px rgba(0,0,0,.28)!important;
+      transform:translateZ(0)!important;
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::after,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::after,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::after{
+      content:""!important;
+      position:absolute!important;
+      top:-80%!important;
+      bottom:-80%!important;
+      left:-54%!important;
+      width:42%!important;
+      display:block!important;
+      pointer-events:none!important;
+      z-index:4!important;
+      border-radius:inherit!important;
+      background:linear-gradient(90deg,
+        transparent 0%,
+        rgba(255,255,255,0) 14%,
+        rgba(255,255,255,.22) 34%,
+        rgba(255,250,218,.92) 49%,
+        rgba(255,226,142,.54) 58%,
+        rgba(255,255,255,.16) 72%,
+        transparent 100%)!important;
+      mix-blend-mode:screen!important;
+      filter:blur(.12px)!important;
+      animation:cnReal15ComprarReflexoLento 4.4s ease-in-out infinite!important;
+      will-change:transform,opacity!important;
+    }
+
+    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover::after,
+    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover::after,
+    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover::after,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover::after,
+    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary:hover::after,
+    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover::after{
+      animation-duration:3.2s!important;
+    }
+
+    #featured .cnMediaShell .cnImg,
+    #quickGrid .cnMediaShell .cnImg{
+      cursor:zoom-in!important;
+    }
+
+    #quickGrid .cnMediaShell--quick .cnGalleryZoom{
+      right:8px!important;
+      bottom:8px!important;
+      min-height:28px!important;
+      padding:5px 9px!important;
+      border-radius:999px!important;
+      font-size:.66rem!important;
+      background:rgba(0,0,0,.66)!important;
+      border-color:rgba(224,195,107,.30)!important;
+      color:rgba(255,244,208,.96)!important;
+      z-index:8!important;
+      pointer-events:auto!important;
+    }
+
+    @media(max-width:640px){
+      #quickGrid .cnMediaShell--quick .cnGalleryZoom{
+        width:30px!important;
+        height:30px!important;
+        min-height:30px!important;
+        padding:0!important;
+        font-size:0!important;
+        display:inline-flex!important;
+        align-items:center!important;
+        justify-content:center!important;
+      }
+      #quickGrid .cnMediaShell--quick .cnGalleryZoom::before{
+        content:"🔍"!important;
+        font-size:13px!important;
+      }
+    }
+  </style>
 
 </body>
 </html>
