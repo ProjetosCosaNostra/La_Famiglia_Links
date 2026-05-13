@@ -20,6 +20,7 @@
     sort: 'featured',
     rendered: PAGE_SIZE,
     gallery: {},
+    galleryProducts: {},
     modalImages: [],
     modalIndex: 0
   };
@@ -164,6 +165,7 @@
     if (idx >= images.length) idx = 0;
     var img = images[idx];
     var hasMany = images.length > 1;
+    state.galleryProducts[key] = p;
 
     var dots = images.map(function (_, i) {
       return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
@@ -325,7 +327,11 @@
   }
 
   function cardHtml(p) {
-    var img = getImage(p) || getImages(p)[0];
+    var key = 'card:' + (getSku(p) || getId(p) || lower(getTitle(p)).replace(/[^a-z0-9]+/g, '-') || 'produto');
+    var images = getImages(p);
+    var img = images[0] || getImage(p) || 'assets/logo.png';
+    state.galleryProducts[key] = p;
+
     var id = getId(p);
     var buy = getBuyUrl(p);
     var badges = getBadges(p).slice(0, 2);
@@ -336,7 +342,12 @@
 
     return '' +
       '<article class="lcCard">' +
-        '<div class="lcCardMedia">' + (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') + '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" referrerpolicy="no-referrer"></div>' +
+        '<div class="lcCardMedia" data-zoom-key="' + escapeHtml(key) + '" title="Ampliar imagens do produto">' +
+          (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') +
+          '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" referrerpolicy="no-referrer">' +
+          (images.length > 1 ? '<span class="lcCardCount">1/' + images.length + '</span>' : '') +
+          '<button class="lcCardZoom" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">🔍</button>' +
+        '</div>' +
         '<div class="lcCardBody">' +
           '<h3 class="lcCardTitle">' + escapeHtml(getTitle(p)) + '</h3>' +
           (badgeHtml ? '<div class="lcCardMeta">' + badgeHtml + '</div>' : '') +
@@ -351,7 +362,7 @@
   }
 
   function setGallery(key, delta) {
-    var p = state.featured;
+    var p = state.galleryProducts[key] || state.featured;
     if (!p) return;
     var images = getImages(p);
     var cur = state.gallery[key] || 0;
@@ -367,7 +378,7 @@
   window.CNLcOpenGallery = function (key) { openModal(key); };
 
   function openModal(key) {
-    var p = state.featured;
+    var p = state.galleryProducts[key] || state.featured;
     if (!p) return;
 
     state.modalImages = getImages(p);
@@ -397,9 +408,13 @@
 
     var img = qs('#modalImg');
     var count = qs('#modalCount');
+    var prev = qs('#modalPrev');
+    var next = qs('#modalNext');
 
     if (img) img.src = state.modalImages[state.modalIndex];
     if (count) count.textContent = (state.modalIndex + 1) + '/' + state.modalImages.length;
+    if (prev) prev.classList.toggle('is-hidden', state.modalIndex <= 0);
+    if (next) next.classList.toggle('is-hidden', state.modalIndex >= state.modalImages.length - 1);
   }
 
   function downloadText(filename, text, type) {
@@ -538,6 +553,14 @@
     if (refresh) refresh.addEventListener('click', function () {
       renderFeatured();
       toast('Produto do Dia atualizado.');
+    });
+
+    var floatSearch = qs('#lcFloatSearch');
+    if (floatSearch) floatSearch.addEventListener('click', function () {
+      setTimeout(function () {
+        var searchInput = qs('#storeSearch');
+        if (searchInput && typeof searchInput.focus === 'function') searchInput.focus();
+      }, 350);
     });
 
     var modal = qs('#imageModal');
