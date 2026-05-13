@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real17-botoes-limpos" />
+  <link rel="stylesheet" href="style.css?v=20260513-real18-botoes-home-final" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real17-botoes-limpos"></script>
+  <script defer src="script.js?v=20260513-real18-botoes-home-final"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13603,338 +13603,215 @@
 
 </style>
 
-
-  <style id="cn-buy-shine-repair-20260513">
+  <style id="cn-real18-buy-buttons-home-final">
     /* ==========================================================
-       REAL11 — correção cirúrgica do brilho/reflexo dos botões Comprar
-       - neutraliza animações conflitantes anteriores
-       - mantém brilho em loop com velocidade meio-termo
-       - aplica no Produto do Dia e na Vitrine Rápida
+       REAL18 — Botões Comprar da Home limpos, centralizados e com brilho lento.
+       Escopo: somente página principal.
+       Remove a briga visual dos patches antigos e usa camada própria .cnBuySheenFx.
        ========================================================== */
-    @keyframes cnComprarReflexoNormalizado {
-      0% {
-        transform: translateX(-210%) skewX(-22deg);
+    @keyframes cnReal18BuySheenSweep {
+      0%, 17% {
+        transform: translate3d(-170%, 0, 0) skewX(-24deg);
         opacity: 0;
       }
-      12% {
-        opacity: .82;
+      27% {
+        opacity: .78;
       }
-      44% {
-        opacity: .74;
+      49% {
+        transform: translate3d(315%, 0, 0) skewX(-24deg);
+        opacity: .78;
       }
-      58%, 100% {
-        transform: translateX(340%) skewX(-22deg);
+      64%, 100% {
+        transform: translate3d(315%, 0, 0) skewX(-24deg);
         opacity: 0;
       }
     }
 
-    @keyframes cnComprarRespiracaoDourada {
+    @keyframes cnReal18GoldBreath {
       0%, 100% {
         filter: brightness(1) saturate(1);
+        box-shadow:
+          0 10px 24px rgba(145,111,34,.28),
+          0 0 0 1px rgba(255,226,146,.10),
+          inset 0 1px 0 rgba(255,255,255,.24),
+          inset 0 -12px 22px rgba(0,0,0,.28);
       }
-      42% {
-        filter: brightness(1.035) saturate(1.02);
+      45% {
+        filter: brightness(1.035) saturate(1.025);
+        box-shadow:
+          0 13px 30px rgba(145,111,34,.34),
+          0 0 0 1px rgba(255,226,146,.15),
+          inset 0 1px 0 rgba(255,255,255,.30),
+          inset 0 -12px 22px rgba(0,0,0,.28);
       }
     }
 
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
-    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo,
-    #quickGrid a.btn--gold {
-      position: relative !important;
-      overflow: hidden !important;
-      isolation: isolate !important;
-      contain: none !important;
-      clip-path: none !important;
-      border: 1px solid rgba(224,195,107,.46) !important;
-      background:
-        radial-gradient(320px 74px at 22% 0%, rgba(255,236,174,.22), transparent 64%),
-        linear-gradient(180deg, rgba(199,162,75,.44), rgba(83,64,22,.48)) !important;
-      color: rgba(255,246,219,.98) !important;
-      text-shadow: 0 1px 0 rgba(0,0,0,.48) !important;
-      box-shadow:
-        0 10px 24px rgba(145,111,34,.20),
-        inset 0 1px 0 rgba(255,255,255,.13),
-        inset 0 -10px 20px rgba(0,0,0,.24) !important;
-      transform: translateZ(0) !important;
-      animation: cnComprarRespiracaoDourada 4.8s ease-in-out infinite !important;
-      will-change: filter !important;
-    }
-
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::before,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::before,
-    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::before,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before,
-    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::before,
-    #quickGrid a.btn--gold::before {
-      content: "" !important;
-      position: absolute !important;
-      inset: 0 !important;
-      display: block !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 0 !important;
-      background:
-        radial-gradient(90% 150% at 50% -42%, rgba(255,245,190,.23), transparent 58%),
-        linear-gradient(180deg, rgba(255,255,255,.055), transparent 45%) !important;
-      opacity: .78 !important;
-      transform: none !important;
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"]::before,
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"]::after,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"]::before,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"]::after {
+      content: none !important;
+      display: none !important;
       animation: none !important;
-      transition: none !important;
+      background: none !important;
+      box-shadow: none !important;
+      transform: none !important;
     }
 
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
-    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::after,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
-    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::after,
-    #quickGrid a.btn--gold::after {
-      content: "" !important;
-      position: absolute !important;
-      top: -90% !important;
-      bottom: -90% !important;
-      left: -48% !important;
-      width: 38% !important;
-      height: auto !important;
-      display: block !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 1 !important;
-      background:
-        linear-gradient(90deg,
-          transparent 0%,
-          rgba(255,255,255,0) 14%,
-          rgba(255,255,255,.20) 34%,
-          rgba(255,250,212,.86) 49%,
-          rgba(255,231,146,.44) 59%,
-          rgba(255,255,255,.14) 72%,
-          transparent 100%) !important;
-      opacity: 0;
-      filter: blur(.12px) !important;
-      mix-blend-mode: screen !important;
-      transform: translateX(-210%) skewX(-22deg);
-      animation: cnComprarReflexoNormalizado 4.8s ease-in-out infinite !important;
-      transition: none !important;
-      will-change: transform, opacity !important;
-    }
-
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover,
-    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo:hover,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover,
-    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo:hover,
-    #quickGrid a.btn--gold:hover {
-      transform: translateY(-1px) translateZ(0) !important;
-      filter: brightness(1.045) saturate(1.02) !important;
-      border-color: rgba(255, 234, 166, .68) !important;
-    }
-
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover::after,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover::after,
-    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo:hover::after,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover::after,
-    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo:hover::after,
-    #quickGrid a.btn--gold:hover::after {
-      animation-duration: 4.8s !important;
-    }
-
-    #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary > *,
-    #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary > *,
-    #sec-produto-do-dia #featured .cnComprarBrilhoAtivo > *,
-    #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary > *,
-    #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo > *,
-    #quickGrid a.btn--gold > * {
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"],
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"] {
+      appearance: none !important;
+      -webkit-appearance: none !important;
       position: relative !important;
-      z-index: 3 !important;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
-      #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-      #sec-produto-do-dia #featured .cnComprarBrilhoAtivo,
-      #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
-      #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo,
-      #quickGrid a.btn--gold,
-      #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
-      #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
-      #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::after,
-      #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
-      #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::after,
-      #quickGrid a.btn--gold::after {
-        animation: none !important;
-      }
-    }
-  </style>
-
-
-
-  <style id="cn-buy-shine-real12-loja-effect">
-    /* ==========================================================
-       REAL12 — efeito Loja.html nos botões Comprar do index.html
-       - brilho/reflexo atravessa o botão em loop
-       - velocidade meio-termo: 5.1s
-       - sobrescreve os patches antigos sem depender de hover
-       ========================================================== */
-    @keyframes cnBuySheenLojaReal12 {
-      0% {
-        left: -135%;
-        opacity: 0;
-      }
-      10% {
-        opacity: .92;
-      }
-      46% {
-        left: 155%;
-        opacity: .92;
-      }
-      60%, 100% {
-        left: 155%;
-        opacity: 0;
-      }
-    }
-
-    @keyframes cnBuyGoldBreathReal12 {
-      0%, 100% {
-        box-shadow:
-          0 11px 24px rgba(145,111,34,.22),
-          0 0 0 1px rgba(255,226,146,.09),
-          inset 0 1px 0 rgba(255,255,255,.17),
-          inset 0 -12px 22px rgba(0,0,0,.25);
-        filter: brightness(1) saturate(1);
-      }
-      42% {
-        box-shadow:
-          0 14px 30px rgba(145,111,34,.28),
-          0 0 0 1px rgba(255,226,146,.13),
-          inset 0 1px 0 rgba(255,255,255,.21),
-          inset 0 -12px 22px rgba(0,0,0,.25);
-        filter: brightness(1.025) saturate(1.015);
-      }
-    }
-
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"],
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary,
-    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
-      position: relative !important;
-      overflow: hidden !important;
       isolation: isolate !important;
-      contain: none !important;
-      clip-path: none !important;
-      border: 1px solid rgba(224,195,107,.46) !important;
+      overflow: hidden !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+      gap: 0 !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      border: 1px solid rgba(235, 198, 96, .62) !important;
+      border-radius: 14px !important;
       background:
-        radial-gradient(260px 72px at 50% 0%, rgba(255,238,177,.22), transparent 66%),
-        linear-gradient(180deg, rgba(199,162,75,.58), rgba(89,67,24,.58)) !important;
-      color: rgba(255,246,219,.98) !important;
-      text-shadow: 0 1px 0 rgba(0,0,0,.42) !important;
+        radial-gradient(170px 62px at 50% -16%, rgba(255, 246, 190, .48), transparent 66%),
+        linear-gradient(180deg, rgba(231, 194, 88, .92) 0%, rgba(165, 124, 36, .92) 48%, rgba(76, 57, 18, .98) 100%) !important;
+      color: rgba(255, 249, 231, .99) !important;
+      font-family: var(--font-sans, Inter, Arial, sans-serif) !important;
+      font-weight: 900 !important;
+      letter-spacing: .01em !important;
+      text-decoration: none !important;
+      text-shadow:
+        0 1px 0 rgba(0,0,0,.55),
+        0 0 12px rgba(255, 229, 154, .17) !important;
+      box-shadow:
+        0 10px 24px rgba(145,111,34,.28),
+        0 0 0 1px rgba(255,226,146,.10),
+        inset 0 1px 0 rgba(255,255,255,.24),
+        inset 0 -12px 22px rgba(0,0,0,.28) !important;
       transform: translateZ(0) !important;
-      animation: cnBuyGoldBreathReal12 5.1s ease-in-out infinite !important;
+      clip-path: none !important;
+      contain: none !important;
+      filter: none !important;
+      animation: cnReal18GoldBreath 5.1s ease-in-out infinite !important;
+      transition:
+        transform .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease !important;
       will-change: filter, box-shadow !important;
     }
 
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::before,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::before,
-    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::before,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::before,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::before,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::before,
-    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::before,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::before {
-      content: "" !important;
-      position: absolute !important;
-      inset: 0 !important;
-      display: block !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 0 !important;
-      background:
-        radial-gradient(90% 130% at 50% -34%, rgba(255,245,190,.19), transparent 58%),
-        linear-gradient(180deg, rgba(255,255,255,.048), transparent 46%) !important;
-      opacity: .78 !important;
-      transform: none !important;
-      animation: none !important;
-      transition: none !important;
-      filter: none !important;
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"] {
+      min-height: 38px !important;
+      height: 38px !important;
+      padding: 0 15px !important;
+      font-size: .74rem !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
     }
 
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
-    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::after,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::after,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::after,
-    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::after,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::after {
-      content: "" !important;
-      position: absolute !important;
-      top: -40% !important;
-      bottom: -40% !important;
-      left: -135% !important;
-      width: 38% !important;
-      height: auto !important;
-      display: block !important;
-      border-radius: inherit !important;
-      pointer-events: none !important;
-      z-index: 1 !important;
-      transform: skewX(-24deg) !important;
-      background: linear-gradient(100deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,.02) 20%,
-        rgba(255,246,212,.34) 48%,
-        rgba(255,255,255,.05) 72%,
-        rgba(255,255,255,0) 100%) !important;
-      opacity: 0;
-      filter: none !important;
-      mix-blend-mode: screen !important;
-      animation: cnBuySheenLojaReal12 5.1s ease-in-out infinite !important;
-      transition: none !important;
-      will-change: left, opacity !important;
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"] {
+      min-height: 34px !important;
+      height: 34px !important;
+      padding: 0 12px !important;
+      font-size: .70rem !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
     }
 
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover,
-    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo:hover,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary:hover,
-    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo:hover,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover {
-      transform: translateY(-1px) translateZ(0) !important;
-      border-color: rgba(255,234,166,.64) !important;
-      filter: brightness(1.045) saturate(1.02) !important;
-    }
-
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary > *,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary > *,
-    body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo > *,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] > *,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary > *,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary > *,
-    body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo > *,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] > * {
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"] .cnBuyLabel,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"] .cnBuyLabel {
       position: relative !important;
       z-index: 3 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: inherit !important;
+      height: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      line-height: 1 !important;
+      text-align: center !important;
+      white-space: inherit !important;
+      pointer-events: none !important;
+      transform: translateY(0) !important;
+    }
+
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"] .cnBuySheenFx,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"] .cnBuySheenFx {
+      position: absolute !important;
+      top: -52% !important;
+      bottom: -52% !important;
+      left: -46% !important;
+      width: 34% !important;
+      min-width: 34% !important;
+      height: auto !important;
+      z-index: 2 !important;
+      display: block !important;
+      pointer-events: none !important;
+      border-radius: inherit !important;
+      background:
+        linear-gradient(100deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0) 16%,
+          rgba(255,255,255,.20) 34%,
+          rgba(255,252,224,.84) 49%,
+          rgba(255,226,142,.42) 60%,
+          rgba(255,255,255,.12) 73%,
+          rgba(255,255,255,0) 100%) !important;
+      filter: blur(.10px) !important;
+      mix-blend-mode: screen !important;
+      opacity: 0;
+      transform: translate3d(-170%, 0, 0) skewX(-24deg);
+      animation: cnReal18BuySheenSweep 5.1s ease-in-out infinite !important;
+      will-change: transform, opacity !important;
+    }
+
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"]:hover,
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"]:focus-visible,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"]:hover,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"]:focus-visible {
+      transform: translateY(-1px) translateZ(0) !important;
+      border-color: rgba(255, 235, 168, .82) !important;
+      filter: brightness(1.055) saturate(1.03) !important;
+      box-shadow:
+        0 14px 30px rgba(145,111,34,.38),
+        0 0 0 1px rgba(255,226,146,.16),
+        inset 0 1px 0 rgba(255,255,255,.32),
+        inset 0 -12px 22px rgba(0,0,0,.28) !important;
+    }
+
+    html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"]:hover .cnBuySheenFx,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"]:hover .cnBuySheenFx {
+      animation-duration: 4.2s !important;
+    }
+
+    @media (max-width: 640px) {
+      html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"] {
+        min-height: 40px !important;
+        height: 40px !important;
+        padding: 0 12px !important;
+        font-size: .78rem !important;
+      }
+
+      html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"] {
+        min-height: 34px !important;
+        height: 34px !important;
+        padding: 0 10px !important;
+        font-size: .74rem !important;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
-      body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-      body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo,
-      body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
-      body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary,
-      body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo,
-      body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
-      body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
-      body #sec-produto-do-dia #featured .cnComprarBrilhoAtivo::after,
-      body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
-      body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::after,
-      body #sec-vitrine-rapida #quickGrid .cnComprarBrilhoAtivo::after {
+      html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"],
+      html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"],
+      html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"] .cnBuySheenFx,
+      html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"] .cnBuySheenFx {
         animation: none !important;
       }
     }
@@ -14360,181 +14237,8 @@
       }
     })();
   </script>
-
-
-  <style id="cn-real14-comprar-shine-final">
-    /* REAL14 — brilho/reflexo final igual ao padrão da Loja Completa */
-    @keyframes cnReal14ComprarSheen {
-      0% { left: -135%; opacity: 0; }
-      10% { opacity: .92; }
-      46% { left: 155%; opacity: .92; }
-      60%, 100% { left: 155%; opacity: 0; }
-    }
-
-    body .btn--buy-primary,
-    body .cnActionPrimary,
-    body .cnQuickPrimary,
-    body [data-cn-buy-shine="on"] {
-      position: relative !important;
-      overflow: hidden !important;
-      isolation: isolate !important;
-      contain: none !important;
-      clip-path: none !important;
-      border-color: rgba(215,176,88,.46) !important;
-      background:
-        radial-gradient(260px 72px at 50% 0%, rgba(255,238,177,.22), transparent 66%),
-        linear-gradient(180deg, rgba(215,176,88,.64), rgba(94,74,25,.64)) !important;
-      color: rgba(255,246,219,.98) !important;
-      box-shadow:
-        0 11px 24px rgba(145,111,34,.24),
-        0 0 0 1px rgba(255,226,146,.10),
-        inset 0 1px 0 rgba(255,255,255,.18),
-        inset 0 -12px 22px rgba(0,0,0,.25) !important;
-      text-shadow: 0 1px 0 rgba(0,0,0,.42) !important;
-      transform: translateZ(0) !important;
-    }
-
-    body .btn--buy-primary::after,
-    body .cnActionPrimary::after,
-    body .cnQuickPrimary::after,
-    body [data-cn-buy-shine="on"]::after {
-      content: "" !important;
-      position: absolute !important;
-      top: -40% !important;
-      bottom: -40% !important;
-      left: -135% !important;
-      width: 38% !important;
-      display: block !important;
-      transform: skewX(-24deg) !important;
-      background: linear-gradient(100deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,.02) 20%,
-        rgba(255,246,212,.34) 48%,
-        rgba(255,255,255,.05) 72%,
-        rgba(255,255,255,0) 100%) !important;
-      pointer-events: none !important;
-      z-index: 5 !important;
-      opacity: 0;
-      mix-blend-mode: screen !important;
-      animation: cnReal14ComprarSheen 5.1s ease-in-out infinite !important;
-      will-change: left, opacity !important;
-    }
-
-    body .btn--buy-primary:hover,
-    body .cnActionPrimary:hover,
-    body .cnQuickPrimary:hover,
-    body [data-cn-buy-shine="on"]:hover {
-      transform: translateY(-1px) translateZ(0) !important;
-      filter: brightness(1.045) saturate(1.02) !important;
-      border-color: rgba(255,234,166,.64) !important;
-    }
-  </style>
-
-  <script id="cn-real14-comprar-shine-marker">
-    (function () {
-      "use strict";
-      function textOf(el) {
-        return String((el && el.textContent) || "").replace(/\s+/g, " ").trim().toLowerCase();
-      }
-      function markBuyButtons() {
-        var roots = [document.getElementById("featured"), document.getElementById("quickGrid")].filter(Boolean);
-        roots.forEach(function (root) {
-          root.querySelectorAll("a, button").forEach(function (el) {
-            var txt = textOf(el);
-            var isBuy = txt.indexOf("comprar") !== -1 && txt.indexOf("copiar") === -1;
-            if (isBuy) {
-              el.setAttribute("data-cn-buy-shine", "on");
-            } else {
-              el.removeAttribute("data-cn-buy-shine");
-            }
-          });
-        });
-      }
-      function start() {
-        markBuyButtons();
-        setTimeout(markBuyButtons, 250);
-        setTimeout(markBuyButtons, 900);
-        setTimeout(markBuyButtons, 2200);
-        ["featured", "quickGrid"].forEach(function (id) {
-          var root = document.getElementById(id);
-          if (!root || !window.MutationObserver) return;
-          new MutationObserver(markBuyButtons).observe(root, { childList: true, subtree: true, characterData: true });
-        });
-      }
-      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
-      else start();
-    })();
-  </script>
-
-
-  <style id="cn-real15-gallery-shine-fix">
-    /* REAL15 — restaura brilho lento nos CTAs e libera ampliar imagens na Home */
-    @keyframes cnReal15ComprarReflexoLento {
-      0%, 18% { transform: translateX(-210%) skewX(-22deg); opacity: 0; }
-      27% { opacity: .78; }
-      50% { opacity: .70; }
-      68%, 100% { transform: translateX(330%) skewX(-22deg); opacity: 0; }
-    }
-
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"],
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]{
-      position:relative!important;
-      overflow:hidden!important;
-      isolation:isolate!important;
-      border-color:rgba(230,198,104,.58)!important;
-      background:
-        radial-gradient(220px 64px at 50% 0%, rgba(255,240,181,.34), transparent 66%),
-        linear-gradient(180deg, rgba(221,184,82,.72), rgba(94,72,23,.72))!important;
-      box-shadow:
-        0 12px 28px rgba(145,111,34,.28),
-        inset 0 1px 0 rgba(255,255,255,.22),
-        inset 0 -12px 24px rgba(0,0,0,.28)!important;
-      transform:translateZ(0)!important;
-    }
-
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary::after,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary::after,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::after,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary::after,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary::after,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::after{
-      content:""!important;
-      position:absolute!important;
-      top:-80%!important;
-      bottom:-80%!important;
-      left:-54%!important;
-      width:42%!important;
-      display:block!important;
-      pointer-events:none!important;
-      z-index:4!important;
-      border-radius:inherit!important;
-      background:linear-gradient(90deg,
-        transparent 0%,
-        rgba(255,255,255,0) 14%,
-        rgba(255,255,255,.22) 34%,
-        rgba(255,250,218,.92) 49%,
-        rgba(255,226,142,.54) 58%,
-        rgba(255,255,255,.16) 72%,
-        transparent 100%)!important;
-      mix-blend-mode:screen!important;
-      filter:blur(.12px)!important;
-      animation:cnReal15ComprarReflexoLento 4.4s ease-in-out infinite!important;
-      will-change:transform,opacity!important;
-    }
-
-    body #sec-produto-do-dia #featured .cnRow .btn.cnActionPrimary:hover::after,
-    body #sec-produto-do-dia #featured .cnRow .btn.btn--buy-primary:hover::after,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover::after,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.cnQuickPrimary:hover::after,
-    body #sec-vitrine-rapida #quickGrid .cnRow .btn.btn--buy-primary:hover::after,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover::after{
-      animation-duration:3.2s!important;
-    }
-
+  <style id="cn-real15-gallery-zoom-only">
+    /* REAL15 preservado: apenas ajuste visual do botão de ampliar/zoom da galeria. */
     #featured .cnMediaShell .cnImg,
     #quickGrid .cnMediaShell .cnImg{
       cursor:zoom-in!important;
@@ -14571,283 +14275,6 @@
         line-height:1!important;
       }
     }
-  </style>
-
-
-  <style id="cn-real16-buy-shine-layer-final">
-    /* REAL16 — brilho/reflexo real dos botões Comprar.
-       Usa camada .cnBuySheenFx criada pelo script para não brigar com regras antigas de ::before/::after. */
-    @keyframes cnReal16BuySheenSweep {
-      0%, 18% { transform:translate3d(-170%,0,0) skewX(-22deg); opacity:0; }
-      27% { opacity:.88; }
-      52% { transform:translate3d(310%,0,0) skewX(-22deg); opacity:.82; }
-      68%, 100% { transform:translate3d(310%,0,0) skewX(-22deg); opacity:0; }
-    }
-
-    body #featured [data-cn-buy-shine="on"],
-    body #quickGrid [data-cn-buy-shine="on"]{
-      position:relative!important;
-      overflow:hidden!important;
-      isolation:isolate!important;
-      transform:translateZ(0)!important;
-      border-color:rgba(230,198,104,.58)!important;
-      background:
-        radial-gradient(220px 64px at 50% 0%, rgba(255,240,181,.35), transparent 66%),
-        linear-gradient(180deg, rgba(221,184,82,.74), rgba(94,72,23,.76))!important;
-      box-shadow:
-        0 12px 28px rgba(145,111,34,.28),
-        inset 0 1px 0 rgba(255,255,255,.22),
-        inset 0 -12px 24px rgba(0,0,0,.30)!important;
-    }
-
-    body #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
-    body #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx{
-      position:absolute!important;
-      top:-72%!important;
-      bottom:-72%!important;
-      left:-48%!important;
-      width:36%!important;
-      z-index:9!important;
-      display:block!important;
-      pointer-events:none!important;
-      border-radius:inherit!important;
-      background:linear-gradient(90deg,
-        transparent 0%,
-        rgba(255,255,255,0) 12%,
-        rgba(255,255,255,.24) 32%,
-        rgba(255,252,225,.96) 48%,
-        rgba(255,226,142,.58) 59%,
-        rgba(255,255,255,.18) 72%,
-        transparent 100%)!important;
-      filter:blur(.10px)!important;
-      mix-blend-mode:screen!important;
-      transform:translate3d(-170%,0,0) skewX(-22deg);
-      animation:cnReal16BuySheenSweep 5.2s ease-in-out infinite!important;
-      will-change:transform,opacity!important;
-    }
-
-    body #featured [data-cn-buy-shine="on"]:hover .cnBuySheenFx,
-    body #quickGrid [data-cn-buy-shine="on"]:hover .cnBuySheenFx{
-      animation-duration:4.35s!important;
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      body #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
-      body #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx{
-        animation:none!important;
-        opacity:0!important;
-      }
-    }
-  </style>
-
-
-
-  <style id="cn-real17-button-reset-clean">
-    /* ==========================================================
-       REAL17 — BOTÕES COMPRAR LIMPOS + OURO + REFLEXO LENTO
-       Escopo: somente index.html.
-       Estratégia: resetar os CTAs de compra que estavam herdando muitas
-       regras antigas, zerar ::before/::after e usar apenas a camada
-       .cnBuySheenFx criada no script.js.
-       ========================================================== */
-
-    @keyframes cnReal17BuySheenSweep {
-      0%, 16% {
-        transform: translate3d(-165%, 0, 0) skewX(-21deg);
-        opacity: 0;
-      }
-      25% {
-        opacity: .72;
-      }
-      48% {
-        opacity: .82;
-      }
-      64%, 100% {
-        transform: translate3d(360%, 0, 0) skewX(-21deg);
-        opacity: 0;
-      }
-    }
-
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::before,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]::after,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::before,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]::after {
-      content: none !important;
-      display: none !important;
-      animation: none !important;
-      transform: none !important;
-      background: none !important;
-      box-shadow: none !important;
-    }
-
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"],
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
-      appearance: none !important;
-      -webkit-appearance: none !important;
-      position: relative !important;
-      isolation: isolate !important;
-      overflow: hidden !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 0 !important;
-      text-align: center !important;
-      vertical-align: middle !important;
-      min-width: 0 !important;
-      width: auto !important;
-      border-radius: 14px !important;
-      border: 1px solid rgba(255, 226, 140, .62) !important;
-      background:
-        radial-gradient(180px 58px at 50% 0%, rgba(255, 246, 192, .46), transparent 68%),
-        linear-gradient(180deg, rgba(255, 218, 111, .92) 0%, rgba(190, 145, 42, .88) 43%, rgba(83, 61, 18, .96) 100%) !important;
-      color: rgba(255, 249, 231, .99) !important;
-      text-decoration: none !important;
-      text-shadow:
-        0 1px 0 rgba(0,0,0,.58),
-        0 0 12px rgba(255, 229, 154, .18) !important;
-      box-shadow:
-        0 12px 28px rgba(145,111,34,.30),
-        0 0 0 1px rgba(255,226,146,.12),
-        inset 0 1px 0 rgba(255,255,255,.30),
-        inset 0 -13px 24px rgba(0,0,0,.30) !important;
-      filter: none !important;
-      transform: translateZ(0) !important;
-      clip-path: none !important;
-      contain: none !important;
-      transition:
-        transform .18s ease,
-        border-color .18s ease,
-        box-shadow .18s ease,
-        filter .18s ease !important;
-    }
-
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] {
-      min-height: 44px !important;
-      padding: 11px 16px !important;
-      font-size: .88rem !important;
-      line-height: 1.12 !important;
-      font-weight: 900 !important;
-      letter-spacing: .01em !important;
-      white-space: normal !important;
-    }
-
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
-      min-height: 34px !important;
-      padding: 8px 12px !important;
-      font-size: .78rem !important;
-      line-height: 1.05 !important;
-      font-weight: 900 !important;
-      letter-spacing: .01em !important;
-      white-space: nowrap !important;
-    }
-
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] .cnBuyLabel,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] .cnBuyLabel {
-      position: relative !important;
-      z-index: 3 !important;
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      text-align: center !important;
-      line-height: inherit !important;
-      pointer-events: none !important;
-      transform: translateY(0) !important;
-    }
-
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx {
-      position: absolute !important;
-      top: -78% !important;
-      bottom: -78% !important;
-      left: -42% !important;
-      width: 34% !important;
-      min-width: 34% !important;
-      height: auto !important;
-      z-index: 2 !important;
-      display: block !important;
-      pointer-events: none !important;
-      border-radius: inherit !important;
-      background:
-        linear-gradient(90deg,
-          transparent 0%,
-          rgba(255,255,255,0) 14%,
-          rgba(255,255,255,.22) 32%,
-          rgba(255,252,224,.92) 48%,
-          rgba(255,226,142,.50) 58%,
-          rgba(255,255,255,.15) 72%,
-          transparent 100%) !important;
-      filter: blur(.12px) !important;
-      mix-blend-mode: screen !important;
-      opacity: 0;
-      transform: translate3d(-165%, 0, 0) skewX(-21deg);
-      animation: cnReal17BuySheenSweep 4.25s ease-in-out infinite !important;
-      will-change: transform, opacity !important;
-    }
-
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover,
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:focus-visible,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:focus-visible {
-      transform: translateY(-1px) translateZ(0) !important;
-      border-color: rgba(255, 238, 176, .88) !important;
-      filter: brightness(1.06) saturate(1.04) !important;
-      box-shadow:
-        0 15px 34px rgba(145,111,34,.38),
-        0 0 0 1px rgba(255,226,146,.18),
-        inset 0 1px 0 rgba(255,255,255,.35),
-        inset 0 -13px 24px rgba(0,0,0,.30) !important;
-    }
-
-    body #sec-produto-do-dia #featured [data-cn-buy-shine="on"]:hover .cnBuySheenFx,
-    body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"]:hover .cnBuySheenFx {
-      animation-duration: 3.55s !important;
-    }
-
-    /* Botões dourados relevantes da Home, sem bagunçar os botões de copiar. */
-    body #btnVerTodosTop,
-    body #btnAbrirLojaCompleta,
-    body #sec-vitrine-rapida .panel__head .btn--gold,
-    body .sectionNav__pill--gold {
-      border-color: rgba(224,195,107,.38) !important;
-      background:
-        radial-gradient(220px 58px at 50% 0%, rgba(255,236,174,.23), transparent 66%),
-        linear-gradient(180deg, rgba(199,162,75,.34), rgba(88,68,24,.44)) !important;
-      color: rgba(255,236,180,.96) !important;
-      box-shadow:
-        0 10px 24px rgba(145,111,34,.18),
-        inset 0 1px 0 rgba(255,255,255,.14),
-        inset 0 -10px 20px rgba(0,0,0,.22) !important;
-    }
-
-    @media (max-width: 640px) {
-      body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] {
-        min-height: 42px !important;
-        padding: 10px 12px !important;
-        font-size: .82rem !important;
-      }
-
-      body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
-        min-height: 34px !important;
-        padding: 8px 10px !important;
-        font-size: .76rem !important;
-      }
-    }
-
-    @media (max-width: 420px) {
-      body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] {
-        font-size: .72rem !important;
-        padding-inline: 8px !important;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      body #sec-produto-do-dia #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
-      body #sec-vitrine-rapida #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx {
-        animation: none !important;
-        opacity: 0 !important;
-      }
-    }
-  </style>
-
+    </style>
 </body>
 </html>
