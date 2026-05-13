@@ -13603,27 +13603,30 @@
 
 </style>
 
-  <style id="cn-real18-buy-buttons-home-final">
+  <style id="cn-real19-buy-buttons-home-final">
     /* ==========================================================
-       REAL18 — Botões Comprar da Home limpos, centralizados e com brilho lento.
+       REAL19 — Ajuste fino do reflexo dos botões Comprar da Home.
        Escopo: somente página principal.
-       Remove a briga visual dos patches antigos e usa camada própria .cnBuySheenFx.
+       Movimento igual ao brilho da loja.html: atravessa até passar do final do botão.
        ========================================================== */
     @keyframes cnReal18BuySheenSweep {
-      0%, 17% {
-        transform: translate3d(-170%, 0, 0) skewX(-24deg);
+      0% {
+        left: -135%;
         opacity: 0;
+        transform: skewX(-24deg);
       }
-      27% {
-        opacity: .78;
+      10% {
+        opacity: .92;
       }
-      49% {
-        transform: translate3d(315%, 0, 0) skewX(-24deg);
-        opacity: .78;
+      46% {
+        left: 155%;
+        opacity: .92;
+        transform: skewX(-24deg);
       }
-      64%, 100% {
-        transform: translate3d(315%, 0, 0) skewX(-24deg);
+      60%, 100% {
+        left: 155%;
         opacity: 0;
+        transform: skewX(-24deg);
       }
     }
 
@@ -13745,31 +13748,28 @@
     html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"] .cnBuySheenFx,
     html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"] .cnBuySheenFx {
       position: absolute !important;
-      top: -52% !important;
-      bottom: -52% !important;
-      left: -46% !important;
-      width: 34% !important;
-      min-width: 34% !important;
+      top: -40% !important;
+      bottom: -40% !important;
+      left: -135% !important;
+      width: 38% !important;
+      min-width: 38% !important;
       height: auto !important;
       z-index: 2 !important;
       display: block !important;
       pointer-events: none !important;
       border-radius: inherit !important;
-      background:
-        linear-gradient(100deg,
-          rgba(255,255,255,0) 0%,
-          rgba(255,255,255,0) 16%,
-          rgba(255,255,255,.20) 34%,
-          rgba(255,252,224,.84) 49%,
-          rgba(255,226,142,.42) 60%,
-          rgba(255,255,255,.12) 73%,
-          rgba(255,255,255,0) 100%) !important;
-      filter: blur(.10px) !important;
+      background: linear-gradient(100deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.02) 20%,
+        rgba(255,246,212,.34) 48%,
+        rgba(255,255,255,.05) 72%,
+        rgba(255,255,255,0) 100%) !important;
+      filter: none !important;
       mix-blend-mode: screen !important;
       opacity: 0;
-      transform: translate3d(-170%, 0, 0) skewX(-24deg);
+      transform: skewX(-24deg);
       animation: cnReal18BuySheenSweep 5.1s ease-in-out infinite !important;
-      will-change: transform, opacity !important;
+      will-change: left, opacity !important;
     }
 
     html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"]:hover,
@@ -13788,7 +13788,7 @@
 
     html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary[data-cn-buy-shine="on"]:hover .cnBuySheenFx,
     html body #sec-vitrine-rapida #quickGrid .cnRow a.btn.btn--gold.btn--buy-primary.cnQuickPrimary[data-cn-buy-shine="on"]:hover .cnBuySheenFx {
-      animation-duration: 4.2s !important;
+      animation-duration: 5.1s !important;
     }
 
     @media (max-width: 640px) {
