@@ -1340,3 +1340,96 @@
     min-height:132px !important;
   }
 }
+
+
+/* ==========================================================
+   REAL13 — galeria global + atalhos flutuantes corrigidos
+   ========================================================== */
+.lcFloat a{
+  cursor:pointer!important;
+  text-decoration:none!important;
+}
+.lcFloat a#lcFloatHome{
+  color:rgba(255,239,190,.98)!important;
+}
+.lcCardMedia[data-zoom-key]{
+  cursor:zoom-in!important;
+}
+.lcCardZoom{
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  z-index:6;
+  min-height:30px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(215,176,88,.26);
+  background:rgba(0,0,0,.68);
+  color:rgba(255,239,190,.98);
+  font-weight:900;
+  font-size:.72rem;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(0,0,0,.32);
+}
+.lcCardZoom:hover,
+.lcCardZoom:focus-visible{
+  border-color:rgba(215,176,88,.42)!important;
+  filter:brightness(1.08);
+}
+.lcCardCount{
+  position:absolute;
+  left:8px;
+  bottom:8px;
+  z-index:6;
+  min-height:26px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:5px 8px;
+  border-radius:999px;
+  border:1px solid rgba(215,176,88,.18);
+  background:rgba(0,0,0,.62);
+  color:rgba(255,255,255,.94);
+  font-weight:900;
+  font-size:.70rem;
+  line-height:1;
+}
+.lcImageModal__nav.is-hidden{
+  display:none!important;
+}
+.lcBtn--gold,
+.lcBuy,
+.tagChip--active,
+.lcResultPill{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.lcBtn--gold::after,
+.lcBuy::after,
+.tagChip--active::after,
+.lcResultPill::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  bottom:-40%;
+  left:-135%;
+  width:38%;
+  transform:skewX(-24deg);
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.02) 20%,rgba(255,246,212,.34) 48%,rgba(255,255,255,.05) 72%,rgba(255,255,255,0) 100%);
+  pointer-events:none;
+  animation:lcSheenReal13 5.1s ease-in-out infinite;
+  z-index:0;
+}
+@keyframes lcSheenReal13{
+  0%{left:-135%;opacity:0;}
+  10%{opacity:.92;}
+  46%{left:155%;opacity:.92;}
+  60%{left:155%;opacity:0;}
+  100%{left:155%;opacity:0;}
+}
+@media(max-width:520px){
+  .lcCardZoom{right:7px;bottom:7px;min-height:28px;padding:5px 8px;font-size:.66rem;}
+  .lcCardCount{left:7px;bottom:7px;min-height:24px;font-size:.64rem;}
+}
