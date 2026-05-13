@@ -1611,6 +1611,22 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     if incoming.get("image"):
         incoming["image"] = _normalize_asset_path(str(incoming.get("image") or ""))
 
+    if incoming.get("images"):
+        normalized_images: List[str] = []
+        seen_images = set()
+        for raw_image in incoming.get("images") or []:
+            image_url = _normalize_asset_path(str(raw_image or ""))
+            if not image_url:
+                continue
+            if not _is_image_url(image_url):
+                continue
+            image_key = image_url.casefold()
+            if image_key in seen_images:
+                continue
+            seen_images.add(image_key)
+            normalized_images.append(image_url)
+        incoming["images"] = normalized_images or None
+
     idx = next((i for i, p in enumerate(products) if isinstance(p, dict) and (p.get("sku") == sku)), None)
 
     if idx is None:
@@ -1650,6 +1666,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         "check_url",
         "canonical_url",
         "image",
+        "images",
         "active",
         "featured",
         "id_busca",
@@ -1840,6 +1857,8 @@ def main() -> int:
     print(f"Canonical URL: {incoming.get('canonical_url')}")
     print(f"ID Busca: {incoming.get('id_busca')}")
     print(f"Image: {incoming.get('image')}")
+    if incoming.get("images") is not None:
+        print(f"Images: {len(incoming.get('images') or [])}")
     if incoming.get("categoria_principal") is not None:
         print(f"Categoria Principal: {incoming.get('categoria_principal')}")
     if incoming.get("categorias_secundarias") is not None:
