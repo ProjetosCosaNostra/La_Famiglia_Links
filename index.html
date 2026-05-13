@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real21-botoes-home-reflexo-forcado" />
+  <link rel="stylesheet" href="style.css?v=20260513-real22-botoes-home-reflexo-continuo" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real21-botoes-home-reflexo-forcado"></script>
+  <script defer src="script.js?v=20260513-real22-botoes-home-reflexo-continuo"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13603,18 +13603,18 @@
 
 </style>
 
-  <style id="cn-real21-buy-buttons-home-reflexo-forcado">
+  <style id="cn-real22-buy-buttons-home-reflexo-continuo">
     /* ==========================================================
-       REAL21 — Botões Comprar da Home com reflexo forçado.
-       Correção:
-       - mantém o brilho dourado/respiração do fundo;
-       - coloca o reflexo antigo em uma camada REAL (.cnBuySheenFx),
-         não dependendo mais de ::after do botão;
-       - inclui ::after só como reforço visual, mas o principal é o span real;
+       REAL22 — Botões Comprar da Home com reflexo CONTÍNUO.
+       Correção desta etapa:
+       - mantém o brilho dourado de fundo aprovado;
+       - o reflexo branco/dourado passa sozinho o tempo todo;
+       - não depende de hover/focus;
+       - usa duas camadas: background animado + span real (.cnBuySheenFx);
        - escopo limitado ao Produto do Dia e Vitrine Rápida da Home.
        ========================================================== */
 
-    @keyframes cnReal21GoldBreath {
+    @keyframes cnReal22GoldBreath {
       0%, 100% {
         filter: brightness(1) saturate(1);
         box-shadow:
@@ -13634,45 +13634,51 @@
       }
     }
 
-    @keyframes cnReal21OldReflexForced {
-      0% {
-        left: -68%;
-        opacity: 0;
-        transform: skewX(-24deg);
+    @keyframes cnReal22SurfaceReflex {
+      0%, 16% {
+        background-position: -260% 0, 50% 0, 50% 0, 50% 0;
       }
-      9% {
-        opacity: .94;
+      54% {
+        background-position: 330% 0, 50% 0, 50% 0, 50% 0;
       }
-      48% {
-        left: 128%;
-        opacity: .94;
-        transform: skewX(-24deg);
-      }
-      62%, 100% {
-        left: 128%;
-        opacity: 0;
-        transform: skewX(-24deg);
+      72%, 100% {
+        background-position: 330% 0, 50% 0, 50% 0, 50% 0;
       }
     }
 
-    @keyframes cnReal21OldReflexBackup {
-      0% {
-        left: -78%;
+    @keyframes cnReal22SheenSweep {
+      0%, 16% {
+        transform: translate3d(-145%, 0, 0) skewX(-23deg);
         opacity: 0;
-        transform: skewX(-24deg);
       }
-      11% {
+      23% {
+        opacity: .92;
+      }
+      52% {
+        transform: translate3d(420%, 0, 0) skewX(-23deg);
+        opacity: .92;
+      }
+      68%, 100% {
+        transform: translate3d(420%, 0, 0) skewX(-23deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes cnReal22SheenBackup {
+      0%, 16% {
+        transform: translate3d(-150%, 0, 0) skewX(-23deg);
+        opacity: 0;
+      }
+      24% {
         opacity: .38;
       }
-      50% {
-        left: 132%;
+      52% {
+        transform: translate3d(430%, 0, 0) skewX(-23deg);
         opacity: .38;
-        transform: skewX(-24deg);
       }
-      64%, 100% {
-        left: 132%;
+      68%, 100% {
+        transform: translate3d(430%, 0, 0) skewX(-23deg);
         opacity: 0;
-        transform: skewX(-24deg);
       }
     }
 
@@ -13696,8 +13702,21 @@
       border: 1px solid rgba(235, 198, 96, .62) !important;
       border-radius: 14px !important;
       background:
+        linear-gradient(105deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0) 34%,
+          rgba(255,255,255,.18) 43%,
+          rgba(255,252,226,.72) 49%,
+          rgba(255,225,138,.46) 56%,
+          rgba(255,255,255,.10) 64%,
+          rgba(255,255,255,0) 72%,
+          rgba(255,255,255,0) 100%),
         radial-gradient(170px 62px at 50% -16%, rgba(255, 246, 190, .50), transparent 66%),
-        linear-gradient(180deg, rgba(231, 194, 88, .94) 0%, rgba(165, 124, 36, .93) 48%, rgba(76, 57, 18, .99) 100%) !important;
+        linear-gradient(180deg, rgba(231, 194, 88, .94) 0%, rgba(165, 124, 36, .93) 48%, rgba(76, 57, 18, .99) 100%),
+        rgba(0,0,0,.14) !important;
+      background-size: 260% 100%, 100% 100%, 100% 100%, 100% 100% !important;
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat !important;
+      background-position: -260% 0, 50% 0, 50% 0, 50% 0 !important;
       color: rgba(255, 249, 231, .99) !important;
       font-family: var(--font-sans, Inter, Arial, sans-serif) !important;
       font-weight: 900 !important;
@@ -13714,13 +13733,16 @@
       transform: translateZ(0) !important;
       clip-path: none !important;
       contain: none !important;
-      animation: cnReal21GoldBreath 5.6s ease-in-out infinite !important;
+      animation:
+        cnReal22GoldBreath 5.6s ease-in-out infinite,
+        cnReal22SurfaceReflex 4.85s cubic-bezier(.42, 0, .18, 1) infinite !important;
+      animation-play-state: running, running !important;
       transition:
         transform .18s ease,
         border-color .18s ease,
         box-shadow .18s ease,
         filter .18s ease !important;
-      will-change: filter, box-shadow !important;
+      will-change: background-position, filter, box-shadow !important;
     }
 
     html body #sec-produto-do-dia #featured .cnRow a.btn.btn--gold.btn--buy-primary.cnActionPrimary,
@@ -13765,17 +13787,16 @@
       transform: translateY(0) !important;
     }
 
-    /* Reflexo principal: camada real criada/garantida pelo script do próprio index. */
     html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary .cnBuySheenFx,
     html body #sec-vitrine-rapida #quickGrid .cnRow a.cnQuickPrimary .cnBuySheenFx,
     html body #sec-produto-do-dia #featured .cnRow a.btn--buy-primary .cnBuySheenFx,
     html body #sec-vitrine-rapida #quickGrid .cnRow a.btn--buy-primary .cnBuySheenFx {
       position: absolute !important;
-      top: -72% !important;
-      bottom: -72% !important;
-      left: -68% !important;
-      width: 42% !important;
-      min-width: 42% !important;
+      top: -78% !important;
+      bottom: -78% !important;
+      left: -44% !important;
+      width: 44% !important;
+      min-width: 44% !important;
       height: auto !important;
       z-index: 7 !important;
       display: block !important;
@@ -13785,33 +13806,33 @@
         rgba(255,255,255,0) 0%,
         rgba(255,255,255,.035) 18%,
         rgba(255,255,255,.34) 35%,
-        rgba(255,252,226,.96) 48%,
-        rgba(255,225,138,.72) 55%,
+        rgba(255,252,226,.98) 48%,
+        rgba(255,225,138,.74) 55%,
         rgba(255,255,255,.16) 72%,
         rgba(255,255,255,0) 100%) !important;
       box-shadow:
-        0 0 18px rgba(255, 224, 139, .32),
-        0 0 34px rgba(255, 224, 139, .13) !important;
+        0 0 18px rgba(255, 224, 139, .34),
+        0 0 34px rgba(255, 224, 139, .15) !important;
       filter: blur(.08px) !important;
       mix-blend-mode: screen !important;
       opacity: 0;
-      transform: skewX(-24deg);
-      animation: cnReal21OldReflexForced 5.35s cubic-bezier(.42, 0, .18, 1) infinite !important;
-      will-change: left, opacity !important;
+      transform: translate3d(-145%, 0, 0) skewX(-23deg);
+      animation: cnReal22SheenSweep 4.85s cubic-bezier(.42, 0, .18, 1) infinite !important;
+      animation-play-state: running !important;
+      will-change: transform, opacity !important;
     }
 
-    /* Reforço por pseudo-elemento: se o navegador renderizar, soma brilho; se algum CSS antigo bloquear, o span real acima continua funcionando. */
     html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary::after,
     html body #sec-vitrine-rapida #quickGrid .cnRow a.cnQuickPrimary::after,
     html body #sec-produto-do-dia #featured .cnRow a.btn--buy-primary::after,
     html body #sec-vitrine-rapida #quickGrid .cnRow a.btn--buy-primary::after {
       content: "" !important;
       position: absolute !important;
-      top: -62% !important;
-      bottom: -62% !important;
-      left: -78% !important;
-      width: 30% !important;
-      min-width: 30% !important;
+      top: -68% !important;
+      bottom: -68% !important;
+      left: -44% !important;
+      width: 34% !important;
+      min-width: 34% !important;
       z-index: 6 !important;
       display: block !important;
       pointer-events: none !important;
@@ -13825,9 +13846,10 @@
       filter: blur(.16px) !important;
       mix-blend-mode: screen !important;
       opacity: 0;
-      transform: skewX(-24deg);
-      animation: cnReal21OldReflexBackup 5.35s cubic-bezier(.42, 0, .18, 1) infinite !important;
-      will-change: left, opacity !important;
+      transform: translate3d(-150%, 0, 0) skewX(-23deg);
+      animation: cnReal22SheenBackup 4.85s cubic-bezier(.42, 0, .18, 1) infinite !important;
+      animation-play-state: running !important;
+      will-change: transform, opacity !important;
     }
 
     html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary::before,
@@ -13866,6 +13888,18 @@
         0 0 0 1px rgba(255,226,146,.16),
         inset 0 1px 0 rgba(255,255,255,.32),
         inset 0 -12px 22px rgba(0,0,0,.28) !important;
+      animation-play-state: running, running !important;
+    }
+
+    html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary:hover .cnBuySheenFx,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.cnQuickPrimary:hover .cnBuySheenFx,
+    html body #sec-produto-do-dia #featured .cnRow a.btn--buy-primary:hover .cnBuySheenFx,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn--buy-primary:hover .cnBuySheenFx,
+    html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary:focus-visible .cnBuySheenFx,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.cnQuickPrimary:focus-visible .cnBuySheenFx,
+    html body #sec-produto-do-dia #featured .cnRow a.btn--buy-primary:focus-visible .cnBuySheenFx,
+    html body #sec-vitrine-rapida #quickGrid .cnRow a.btn--buy-primary:focus-visible .cnBuySheenFx {
+      animation-play-state: running !important;
     }
 
     @media (max-width: 640px) {
@@ -13883,23 +13917,6 @@
         height: 34px !important;
         padding: 0 10px !important;
         font-size: .74rem !important;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary,
-      html body #sec-vitrine-rapida #quickGrid .cnRow a.cnQuickPrimary,
-      html body #sec-produto-do-dia #featured .cnRow a.btn--buy-primary,
-      html body #sec-vitrine-rapida #quickGrid .cnRow a.btn--buy-primary,
-      html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary .cnBuySheenFx,
-      html body #sec-vitrine-rapida #quickGrid .cnRow a.cnQuickPrimary .cnBuySheenFx,
-      html body #sec-produto-do-dia #featured .cnRow a.btn--buy-primary .cnBuySheenFx,
-      html body #sec-vitrine-rapida #quickGrid .cnRow a.btn--buy-primary .cnBuySheenFx,
-      html body #sec-produto-do-dia #featured .cnRow a.cnActionPrimary::after,
-      html body #sec-vitrine-rapida #quickGrid .cnRow a.cnQuickPrimary::after,
-      html body #sec-produto-do-dia #featured .cnRow a.btn--buy-primary::after,
-      html body #sec-vitrine-rapida #quickGrid .cnRow a.btn--buy-primary::after {
-        animation: none !important;
       }
     }
   </style>
