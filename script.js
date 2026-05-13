@@ -1672,22 +1672,48 @@
 })();
 
 
-/* REAL16 — marcador real do brilho/reflexo nos botões Comprar
-   Usa uma camada interna própria para não depender de ::before/::after,
-   porque várias regras antigas dos botões competem entre si no index.html. */
-(function cnReal16ComprarMarkerExternal(){
+/* REAL17 — marcador limpo do brilho/reflexo nos botões Comprar
+   - envolve o texto em .cnBuyLabel para centralizar corretamente
+   - cria a camada .cnBuySheenFx para o reflexo passar por cima sem depender de ::before/::after */
+(function cnReal17ComprarMarkerExternal(){
   "use strict";
 
   function textOf(el){
     return String((el && el.textContent) || "").replace(/\s+/g, " ").trim().toLowerCase();
   }
 
-  function findOwnFx(el){
-    var nodes = el ? el.getElementsByClassName("cnBuySheenFx") : [];
-    for (var i = 0; i < nodes.length; i++) {
-      if (nodes[i].parentNode === el) return nodes[i];
+  function findOwnChildByClass(el, className){
+    if (!el || !el.children) return null;
+    for (var i = 0; i < el.children.length; i++) {
+      if (el.children[i].classList && el.children[i].classList.contains(className)) return el.children[i];
     }
     return null;
+  }
+
+  function findOwnFx(el){
+    return findOwnChildByClass(el, "cnBuySheenFx");
+  }
+
+  function findOwnLabel(el){
+    return findOwnChildByClass(el, "cnBuyLabel");
+  }
+
+  function ensureLabel(el){
+    if (!el) return;
+    var currentLabel = findOwnLabel(el);
+    if (currentLabel) return;
+
+    var labelText = String((el.textContent || "").replace(/\s+/g, " ").trim());
+    if (!labelText) labelText = "Comprar";
+
+    while (el.firstChild) {
+      el.removeChild(el.firstChild);
+    }
+
+    var label = document.createElement("span");
+    label.className = "cnBuyLabel";
+    label.textContent = labelText;
+    el.appendChild(label);
   }
 
   function ensureFx(el){
@@ -1704,32 +1730,41 @@
   }
 
   function mark(){
-    [document.getElementById("featured"), document.getElementById("quickGrid")].filter(Boolean).forEach(function(root){
-      root.querySelectorAll("a, button").forEach(function(el){
+    var roots = [document.getElementById("featured"), document.getElementById("quickGrid")];
+    for (var r = 0; r < roots.length; r++) {
+      var root = roots[r];
+      if (!root) continue;
+      var nodes = root.querySelectorAll("a, button");
+      for (var i = 0; i < nodes.length; i++) {
+        var el = nodes[i];
         var txt = textOf(el);
         var isBuy = txt.indexOf("comprar") !== -1 && txt.indexOf("copiar") === -1;
         if (isBuy) {
           el.setAttribute("data-cn-buy-shine", "on");
+          ensureLabel(el);
           ensureFx(el);
         } else {
           el.removeAttribute("data-cn-buy-shine");
           removeFx(el);
         }
-      });
-    });
+      }
+    }
   }
 
   function start(){
     mark();
-    setTimeout(mark, 120);
-    setTimeout(mark, 450);
-    setTimeout(mark, 1100);
-    setTimeout(mark, 2400);
-    ["featured", "quickGrid"].forEach(function(id){
-      var root = document.getElementById(id);
-      if (!root || !window.MutationObserver) return;
+    setTimeout(mark, 80);
+    setTimeout(mark, 220);
+    setTimeout(mark, 520);
+    setTimeout(mark, 1200);
+    setTimeout(mark, 2600);
+
+    var ids = ["featured", "quickGrid"];
+    for (var i = 0; i < ids.length; i++) {
+      var root = document.getElementById(ids[i]);
+      if (!root || !window.MutationObserver) continue;
       new MutationObserver(mark).observe(root, { childList:true, subtree:true, characterData:true });
-    });
+    }
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
