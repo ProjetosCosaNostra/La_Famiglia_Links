@@ -1340,3 +1340,96 @@
     min-height:132px !important;
   }
 }
+
+
+/* ==========================================================
+   REAL15 — galeria e ampliar imagem em todos os cards da Loja Completa
+   ========================================================== */
+.lcModalOpen{overflow:hidden!important;}
+.lcCardMedia{overflow:hidden!important;}
+.lcCardMedia img[data-zoom-key]{cursor:zoom-in!important;}
+.lcCardCount{
+  position:absolute!important;
+  top:7px!important;
+  right:7px!important;
+  z-index:6!important;
+  padding:4px 7px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(215,176,88,.22)!important;
+  background:rgba(0,0,0,.66)!important;
+  color:rgba(255,244,208,.96)!important;
+  font-weight:900!important;
+  font-size:.66rem!important;
+  line-height:1!important;
+}
+.lcCardMedia .lcGalleryArrow{
+  width:30px!important;
+  height:30px!important;
+  font-size:19px!important;
+  z-index:7!important;
+  background:rgba(0,0,0,.62)!important;
+  border-color:rgba(215,176,88,.26)!important;
+}
+.lcCardMedia .lcGalleryArrow--prev{left:6px!important;}
+.lcCardMedia .lcGalleryArrow--next{right:6px!important;}
+.lcCardMedia .lcDots--card{
+  bottom:6px!important;
+  gap:5px!important;
+  padding:5px 7px!important;
+  z-index:6!important;
+}
+.lcCardMedia .lcDots--card .lcDot{
+  width:6px!important;
+  height:6px!important;
+}
+.lcCardMedia .lcDots--card .lcDot.is-active{
+  width:17px!important;
+}
+.lcZoom--card{
+  right:7px!important;
+  bottom:7px!important;
+  width:30px!important;
+  height:30px!important;
+  min-height:30px!important;
+  padding:0!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:999px!important;
+  font-size:13px!important;
+  z-index:8!important;
+  background:rgba(0,0,0,.68)!important;
+  border-color:rgba(215,176,88,.30)!important;
+  color:rgba(255,244,208,.98)!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.38)!important;
+}
+.lcZoom--card:hover,.lcZoom--card:focus-visible{
+  transform:translateY(-1px)!important;
+  border-color:rgba(255,230,157,.54)!important;
+}
+.lcImageModal__nav[hidden]{display:none!important;}
+
+@media(max-width:640px){
+  #todos-produtos .lcCardCount{
+    top:5px!important;
+    right:5px!important;
+    font-size:.54rem!important;
+    padding:3px 5px!important;
+  }
+  #todos-produtos .lcCardMedia .lcGalleryArrow{
+    width:26px!important;
+    height:26px!important;
+    font-size:16px!important;
+  }
+  #todos-produtos .lcZoom--card{
+    width:26px!important;
+    height:26px!important;
+    min-height:26px!important;
+    right:5px!important;
+    bottom:5px!important;
+    font-size:11px!important;
+  }
+  #todos-produtos .lcCardMedia .lcDots--card{
+    display:none!important;
+  }
+}
