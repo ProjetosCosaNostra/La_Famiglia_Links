@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-13T14:58:50Z",
-  "total_items": 3,
+  "updated_at": "2026-05-13T20:10:14Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 4
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 4
     },
-    "high_priority": 3
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-05-13T14:53:32Z",
+      "happened_at": "2026-05-13T20:05:01Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-05-13T14:53:32Z",
+      "happened_at": "2026-05-13T20:05:01Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,48 +106,93 @@
       ]
     },
     {
-      "happened_at": "2026-05-13T14:53:32Z",
+      "happened_at": "2026-05-13T20:05:01Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
-      "issue_number": 82,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82",
-      "issue_title": "[CMS] Produto: Fone Bluetooth 5.3 TWS (Gancho premium)",
-      "sku": "fone-bluetooth-53-tws-gancho-k4k6",
-      "title": "Fone Bluetooth 5.3 TWS Esportivo com Gancho Premium (XT80)",
-      "id_busca": "5J5PKG-K4K6",
+      "issue_number": 110,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110",
+      "issue_title": "[CMS] Produto: Kit Utensílios de Cozinha Premium Rosa",
+      "sku": "kit-utensilios-cozinha-premium-rosa",
+      "title": "🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância",
+      "id_busca": "5J5PKG-PW6M",
       "status": 200,
       "reason": "storefront_social_lists_invalid",
       "reason_bucket": "storefront_social_lists_invalid",
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
       "action_suggested": "trocar_link",
       "needs_manual_check": true,
-      "checked_url": "https://meli.la/15p3NHj",
+      "checked_url": "https://meli.la/23Y2RB9",
       "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/15p3NHj",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K4K6&tid=55cc43f9-a99d-4c09-be39-e78e2db293ef",
-      "short_url": "https://meli.la/15p3NHj",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK%2FXa%2Bc5u7bNfLRxUEYk2QOQbjffNJh4QXoYgRTlDDQX4QgTgxGfSQYbgVPHzzlWDTuSIpLVW4cKVzbGwYx42lMAAfYCSpsLYq1cqVr1JWiCwchLPijTAK7EUwPpeMC310SUmb5f9oe%2FrarFVOA%2FC8QAo7ofYL0gvHoBD%2BE7xBcWC4A31F6iLF9QsqkjGb3duaM%2Bhg%3D%3D",
+      "open_url": "https://meli.la/23Y2RB9",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843",
+      "short_url": "https://meli.la/1kiePfs",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLvuK%2F871GuP28swihiPKDJcgQ6crqkMjppV3atcrOu02Ac5JcPqVjHBfnKUg9r9tI1AGr5xgFleEWid4PB3Bm2dL1ropg4ijU6Jdb2p9hhs5Gql0bDEbbwUSHdkCznKj3nRrqinbQgNamTizQOIfOifop%2BrbWTBQQnxWnh4Z%2BrLdq46vjlHAZTdu1See7zp4H5VLZE%3D",
       "active": true,
       "featured": false,
       "smart_categories": [],
       "badges": [
         "Achados do Dia",
-        "Bluetooth 5.3",
-        "TWS",
-        "Gancho",
-        "Esportivo",
-        "Display Digital",
-        "Android iOS",
-        "Preto"
+        "Cozinha",
+        "Utensílios de Cozinha",
+        "Rosa",
+        "Silicone",
+        "Suporte Organizador",
+        "Utilidades Domésticas",
+        "Casa"
+      ]
+    },
+    {
+      "happened_at": "2026-05-13T20:05:01Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 27,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/27",
+      "issue_title": "[CMS] Produto: Hub USB-C 8 em 1 (HDMI/RJ45/USB 3.0/SD/TF)",
+      "sku": "hub-usbc-8em1-h71p",
+      "title": "Hub USB-C 8 em 1 (HDMI + RJ45 + USB 3.0 + SD/TF)",
+      "id_busca": "5J5PKG-H71P",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/21NWPnw",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/21NWPnw",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG6gj0z2en%2F8YFiB5BBiQuKgOUpxAYkiYiKNTXaDzLb9CaEZths%2FEh7HKL0wNqEAxmdOlp3sAlZ9M9pffyY9yZo3np3D3Fky7OSySw2J21oESkUsNW%2Bb6DiyVyY70Q3AAgOBEGjA2qoMEM%2Bije7FY6tOAftmKHyNYPL%2BKGXpHUfkNVY6gq0UGNF0PVjIlW%2FunUNmNg%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H71P&tid=42f8b39d-42a8-497a-8f21-a8ad42b73b22",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG6gj0z2en%2F8YFiB5BBiQuKgOUpxAYkiYiKNTXaDzLb9CaEZths%2FEh7HKL0wNqEAxmdOlp3sAlZ9M9pffyY9yZo3np3D3Fky7OSySw2J21oESkUsNW%2Bb6DiyVyY70Q3AAgOBEGjA2qoMEM%2Bije7FY6tOAftmKHyNYPL%2BKGXpHUfkNVY6gq0UGNF0PVjIlW%2FunUNmNg%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG6gj0z2en%2F8YFiB5BBiQuKgOUpxAYkiYiKNTXaDzLb9CaEZths%2FEh7HKL0wNqEAxmdOlp3sAlZ9M9pffyY9yZo3np3D3Fky7OSySw2J21oESkUsNW%2Bb6DiyVyY70Q3AAgOBEGjA2qoMEM%2Bije7FY6tOAftmKHyNYPL%2BKGXpHUfkNVY6gq0UGNF0PVjIlW%2FunUNmNg%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Hub USB-C",
+        "8 em 1",
+        "HDMI 4K",
+        "RJ45 Ethernet",
+        "USB 3.0",
+        "SD/TF",
+        "Adaptador"
       ]
     }
   ]

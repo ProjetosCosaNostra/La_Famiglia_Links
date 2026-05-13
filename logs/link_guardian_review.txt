@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-13T14:58:50Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-05-13T20:10:14Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-13T14:53:32Z
+Quando: 2026-05-13T20:05:01Z
 Issue: #153
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/153
 SKU: corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (9x /lists, 0x listing)
+Memória operacional: histórico recorrente (10x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Ruby Rose, Stay Fix, Corretivo, Alta Cobertura, Premium
 open_url: https://meli.la/1XoHJ5m
 checked_url: https://meli.la/1XoHJ5m
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGssi0F5bljEQd%2FCYQBHrE5QHj0bw2CF55V6Ju6ioXlMZhx8%2FCyAw2MbE%2Bt8Tc1l%2B7r7bG%2F9jXZWr09Xj6fHBaQlvODD07M99Ye1Bv11Ue4cX19o1fOL7IE1%2BIBK%2FTDoRW7tVHh%2BiuoFbOURS0YqJkw7aa74dDIykE%2FRvLJzQys%2FXRLLUqG%2BzopOWTYM44lZ7oP00Q%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-13T14:53:32Z
+Quando: 2026-05-13T20:05:01Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2v1QEWV
 checked_url: https://meli.la/2v1QEWV
@@ -62,20 +62,39 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-13T14:53:32Z
-Issue: #82
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82
-SKU: fone-bluetooth-53-tws-gancho-k4k6
-Título: Fone Bluetooth 5.3 TWS Esportivo com Gancho Premium (XT80)
-ID ML: 5J5PKG-K4K6
+Quando: 2026-05-13T20:05:01Z
+Issue: #110
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
+SKU: kit-utensilios-cozinha-premium-rosa
+Título: 🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância
+ID ML: 5J5PKG-PW6M
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 1x listing)
-Badges: Achados do Dia, Bluetooth 5.3, TWS, Gancho, Esportivo, Display Digital, Android iOS, Preto
-open_url: https://meli.la/15p3NHj
-checked_url: https://meli.la/15p3NHj
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
+open_url: https://meli.la/23Y2RB9
+checked_url: https://meli.la/23Y2RB9
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K4K6&tid=55cc43f9-a99d-4c09-be39-e78e2db293ef
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
+
+[ALTA] review_only_storefront
+Quando: 2026-05-13T20:05:01Z
+Issue: #27
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/27
+SKU: hub-usbc-8em1-h71p
+Título: Hub USB-C 8 em 1 (HDMI + RJ45 + USB 3.0 + SD/TF)
+ID ML: 5J5PKG-H71P
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Hub USB-C, 8 em 1, HDMI 4K, RJ45 Ethernet, USB 3.0, SD/TF, Adaptador
+open_url: https://mercadolivre.com/sec/21NWPnw
+checked_url: https://mercadolivre.com/sec/21NWPnw
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H71P&tid=42f8b39d-42a8-497a-8f21-a8ad42b73b22
