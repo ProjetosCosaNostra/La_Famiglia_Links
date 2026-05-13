@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260513-real15-galeria-brilho" />
+  <link rel="stylesheet" href="style.css?v=20260513-real16-brilho-ampliar-performance" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260513-real15-galeria-brilho"></script>
+  <script defer src="script.js?v=20260513-real16-brilho-ampliar-performance"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13337,7 +13337,7 @@
   backdrop-filter:blur(10px);
   transition:transform .16s ease, background .16s ease, border-color .16s ease;
 }
-.cnGalleryZoom::before{ content:"🔍"; font-size:12px; }
+.cnGalleryZoom::before{ content:"⛶"; font-size:13px; line-height:1; }
 .cnGalleryZoom:hover,
 .cnGalleryZoom:focus-visible{
   transform:translateY(-1px);
@@ -14566,8 +14566,76 @@
         justify-content:center!important;
       }
       #quickGrid .cnMediaShell--quick .cnGalleryZoom::before{
-        content:"🔍"!important;
-        font-size:13px!important;
+        content:"⛶"!important;
+        font-size:15px!important;
+        line-height:1!important;
+      }
+    }
+  </style>
+
+
+  <style id="cn-real16-buy-shine-layer-final">
+    /* REAL16 — brilho/reflexo real dos botões Comprar.
+       Usa camada .cnBuySheenFx criada pelo script para não brigar com regras antigas de ::before/::after. */
+    @keyframes cnReal16BuySheenSweep {
+      0%, 18% { transform:translate3d(-170%,0,0) skewX(-22deg); opacity:0; }
+      27% { opacity:.88; }
+      52% { transform:translate3d(310%,0,0) skewX(-22deg); opacity:.82; }
+      68%, 100% { transform:translate3d(310%,0,0) skewX(-22deg); opacity:0; }
+    }
+
+    body #featured [data-cn-buy-shine="on"],
+    body #quickGrid [data-cn-buy-shine="on"]{
+      position:relative!important;
+      overflow:hidden!important;
+      isolation:isolate!important;
+      transform:translateZ(0)!important;
+      border-color:rgba(230,198,104,.58)!important;
+      background:
+        radial-gradient(220px 64px at 50% 0%, rgba(255,240,181,.35), transparent 66%),
+        linear-gradient(180deg, rgba(221,184,82,.74), rgba(94,72,23,.76))!important;
+      box-shadow:
+        0 12px 28px rgba(145,111,34,.28),
+        inset 0 1px 0 rgba(255,255,255,.22),
+        inset 0 -12px 24px rgba(0,0,0,.30)!important;
+    }
+
+    body #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
+    body #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx{
+      position:absolute!important;
+      top:-72%!important;
+      bottom:-72%!important;
+      left:-48%!important;
+      width:36%!important;
+      z-index:9!important;
+      display:block!important;
+      pointer-events:none!important;
+      border-radius:inherit!important;
+      background:linear-gradient(90deg,
+        transparent 0%,
+        rgba(255,255,255,0) 12%,
+        rgba(255,255,255,.24) 32%,
+        rgba(255,252,225,.96) 48%,
+        rgba(255,226,142,.58) 59%,
+        rgba(255,255,255,.18) 72%,
+        transparent 100%)!important;
+      filter:blur(.10px)!important;
+      mix-blend-mode:screen!important;
+      transform:translate3d(-170%,0,0) skewX(-22deg);
+      animation:cnReal16BuySheenSweep 5.2s ease-in-out infinite!important;
+      will-change:transform,opacity!important;
+    }
+
+    body #featured [data-cn-buy-shine="on"]:hover .cnBuySheenFx,
+    body #quickGrid [data-cn-buy-shine="on"]:hover .cnBuySheenFx{
+      animation-duration:4.35s!important;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      body #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
+      body #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx{
+        animation:none!important;
+        opacity:0!important;
       }
     }
   </style>
