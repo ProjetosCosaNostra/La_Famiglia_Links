@@ -61,6 +61,7 @@
   function lower(s) { return safeText(s).toLowerCase(); }
 
   var QUICK_HOME_LIMIT = 12;
+  var cnGalleryPreloadCache = {};
 
   function getProductKey(p) {
     if (!p) return '';
@@ -487,14 +488,22 @@
     return box;
   }
 
-  function preloadGalleryImages(images) {
+  function preloadOneGalleryImage(url) {
+    var u = trim(url);
+    if (!u || cnGalleryPreloadCache[u]) return;
+    var im = new Image();
+    try { im.decoding = 'async'; } catch (e) {}
+    im.src = u;
+    cnGalleryPreloadCache[u] = im;
+  }
+
+  function preloadGalleryImages(images, centerIndex, radius) {
     if (!images || images.length < 2) return;
-    for (var i = 0; i < images.length; i++) {
-      var u = images[i];
-      if (!u) continue;
-      var im = new Image();
-      im.src = u;
-    }
+    var center = typeof centerIndex === 'number' ? centerIndex : 0;
+    var span = typeof radius === 'number' ? radius : 1;
+    var start = Math.max(0, center - span);
+    var end = Math.min(images.length - 1, center + span);
+    for (var i = start; i <= end; i++) preloadOneGalleryImage(images[i]);
   }
 
   function ensureGalleryLightbox() {
@@ -597,7 +606,7 @@
   function createProductMedia(p, options) {
     options = options || {};
     var images = getImages(p);
-    preloadGalleryImages(images);
+    preloadGalleryImages(images, 0, 1);
 
     var shell = document.createElement('div');
     shell.className = 'cnMediaShell';
@@ -607,6 +616,7 @@
     var img = document.createElement('img');
     img.className = 'cnImg';
     img.loading = options.loading || 'lazy';
+    try { img.decoding = 'async'; } catch (e) {}
     img.alt = safeText(options.alt || (p && (p.title || p.sku)) || 'Produto');
 
     if (images.length) {
@@ -684,7 +694,8 @@
         if (!images.length) return;
         if (nextIndex < 0 || nextIndex >= images.length) return;
         currentIndex = nextIndex;
-        img.src = images[currentIndex];
+        if (img.getAttribute('src') !== images[currentIndex]) img.src = images[currentIndex];
+        preloadGalleryImages(images, currentIndex, 1);
         refreshControls();
       }
 
@@ -1661,29 +1672,67 @@
 })();
 
 
-/* REAL14 — marcador de brilho/reflexo nos botões Comprar */
-(function cnReal14ComprarMarkerExternal(){
+/* REAL16 — marcador real do brilho/reflexo nos botões Comprar
+   Usa uma camada interna própria para não depender de ::before/::after,
+   porque várias regras antigas dos botões competem entre si no index.html. */
+(function cnReal16ComprarMarkerExternal(){
   "use strict";
-  function textOf(el){ return String((el && el.textContent) || "").replace(/\s+/g," ").trim().toLowerCase(); }
+
+  function textOf(el){
+    return String((el && el.textContent) || "").replace(/\s+/g, " ").trim().toLowerCase();
+  }
+
+  function findOwnFx(el){
+    var nodes = el ? el.getElementsByClassName("cnBuySheenFx") : [];
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].parentNode === el) return nodes[i];
+    }
+    return null;
+  }
+
+  function ensureFx(el){
+    if (!el || findOwnFx(el)) return;
+    var fx = document.createElement("span");
+    fx.className = "cnBuySheenFx";
+    fx.setAttribute("aria-hidden", "true");
+    el.appendChild(fx);
+  }
+
+  function removeFx(el){
+    var fx = findOwnFx(el);
+    if (fx) fx.parentNode.removeChild(fx);
+  }
+
   function mark(){
     [document.getElementById("featured"), document.getElementById("quickGrid")].filter(Boolean).forEach(function(root){
       root.querySelectorAll("a, button").forEach(function(el){
         var txt = textOf(el);
-        if (txt.indexOf("comprar") !== -1 && txt.indexOf("copiar") === -1) {
+        var isBuy = txt.indexOf("comprar") !== -1 && txt.indexOf("copiar") === -1;
+        if (isBuy) {
           el.setAttribute("data-cn-buy-shine", "on");
+          ensureFx(el);
         } else {
           el.removeAttribute("data-cn-buy-shine");
+          removeFx(el);
         }
       });
     });
   }
+
   function start(){
-    mark(); setTimeout(mark,250); setTimeout(mark,900); setTimeout(mark,2200);
-    ["featured","quickGrid"].forEach(function(id){
-      var root=document.getElementById(id);
-      if(!root || !window.MutationObserver) return;
-      new MutationObserver(mark).observe(root,{childList:true,subtree:true,characterData:true});
+    mark();
+    setTimeout(mark, 120);
+    setTimeout(mark, 450);
+    setTimeout(mark, 1100);
+    setTimeout(mark, 2400);
+    ["featured", "quickGrid"].forEach(function(id){
+      var root = document.getElementById(id);
+      if (!root || !window.MutationObserver) return;
+      new MutationObserver(mark).observe(root, { childList:true, subtree:true, characterData:true });
     });
   }
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",start); else start();
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
 })();
+
