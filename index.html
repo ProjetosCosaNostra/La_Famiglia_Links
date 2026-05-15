@@ -14748,5 +14748,280 @@
     }
   </style>
 
+
+<!-- HOTFIX FINAL REAL25 — BRILHO DOS BOTÕES COMPRAR + CTA FEATURED -->
+<style>
+  /* ==========================================================
+     HOTFIX FINAL REAL25 — BOTÕES COMPRAR
+     Escopo: somente botões de compra da home.
+     Objetivo:
+     - restaurar a luz/reflexo passando continuamente;
+     - aplicar também nos cards da Vitrine Rápida;
+     - manter Produto do Dia, tracking, links e estrutura intactos.
+     ========================================================== */
+  @keyframes cnBuySheenReal25Final {
+    0% {
+      left: -135%;
+      opacity: 0;
+    }
+    7% {
+      opacity: .86;
+    }
+    31% {
+      left: 135%;
+      opacity: .92;
+    }
+    38% {
+      left: 155%;
+      opacity: 0;
+    }
+    100% {
+      left: 155%;
+      opacity: 0;
+    }
+  }
+
+  html body #featured .cnActionPrimary,
+  html body #featured .btn--buy-primary,
+  html body #featured [data-cn-buy-shine="on"],
+  html body #quickGrid .cnQuickPrimary,
+  html body #quickGrid .btn--buy-primary,
+  html body #quickGrid [data-cn-buy-shine="on"] {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    border-color: rgba(224,195,107,.48) !important;
+    background:
+      linear-gradient(180deg, rgba(236,204,118,.58), rgba(112,83,25,.58)),
+      rgba(18,14,8,.78) !important;
+    box-shadow:
+      0 12px 28px rgba(111,83,24,.24),
+      inset 0 1px 0 rgba(255,255,255,.16),
+      inset 0 -1px 0 rgba(0,0,0,.22) !important;
+    color: rgba(255,248,224,.98) !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,.32) !important;
+  }
+
+  html body #featured .cnActionPrimary::before,
+  html body #featured .btn--buy-primary::before,
+  html body #featured [data-cn-buy-shine="on"]::before,
+  html body #quickGrid .cnQuickPrimary::before,
+  html body #quickGrid .btn--buy-primary::before,
+  html body #quickGrid [data-cn-buy-shine="on"]::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 1px !important;
+    border-radius: inherit !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 46%),
+      radial-gradient(180px 52px at 50% 0%, rgba(255,238,174,.18), transparent 70%) !important;
+    opacity: .72 !important;
+    animation: none !important;
+  }
+
+  html body #featured .cnActionPrimary::after,
+  html body #featured .btn--buy-primary::after,
+  html body #featured [data-cn-buy-shine="on"]::after,
+  html body #quickGrid .cnQuickPrimary::after,
+  html body #quickGrid .btn--buy-primary::after,
+  html body #quickGrid [data-cn-buy-shine="on"]::after,
+  html body #featured .cnActionPrimary .cnBuySheenFx,
+  html body #featured .btn--buy-primary .cnBuySheenFx,
+  html body #featured [data-cn-buy-shine="on"] .cnBuySheenFx,
+  html body #quickGrid .cnQuickPrimary .cnBuySheenFx,
+  html body #quickGrid .btn--buy-primary .cnBuySheenFx,
+  html body #quickGrid [data-cn-buy-shine="on"] .cnBuySheenFx {
+    content: "" !important;
+    position: absolute !important;
+    top: -55% !important;
+    bottom: -55% !important;
+    left: -135%;
+    width: 42% !important;
+    min-width: 42% !important;
+    height: auto !important;
+    display: block !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+    border-radius: inherit !important;
+    transform: skewX(-24deg) !important;
+    -webkit-transform: skewX(-24deg) !important;
+    background:
+      linear-gradient(100deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.04) 18%,
+        rgba(255,248,219,.55) 46%,
+        rgba(255,255,255,.12) 68%,
+        rgba(255,255,255,0) 100%) !important;
+    box-shadow: 0 0 20px rgba(255,236,170,.14) !important;
+    opacity: 0;
+    mix-blend-mode: screen !important;
+    animation: cnBuySheenReal25Final 4.8s ease-in-out infinite !important;
+    animation-play-state: running !important;
+    will-change: left, opacity !important;
+  }
+
+  html body #featured .cnActionPrimary .cnBuyLabel,
+  html body #featured .btn--buy-primary .cnBuyLabel,
+  html body #featured [data-cn-buy-shine="on"] .cnBuyLabel,
+  html body #quickGrid .cnQuickPrimary .cnBuyLabel,
+  html body #quickGrid .btn--buy-primary .cnBuyLabel,
+  html body #quickGrid [data-cn-buy-shine="on"] .cnBuyLabel {
+    position: relative !important;
+    z-index: 6 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: inherit !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+  }
+
+  html body #featured .cnActionPrimary:hover,
+  html body #featured .btn--buy-primary:hover,
+  html body #featured [data-cn-buy-shine="on"]:hover,
+  html body #quickGrid .cnQuickPrimary:hover,
+  html body #quickGrid .btn--buy-primary:hover,
+  html body #quickGrid [data-cn-buy-shine="on"]:hover {
+    filter: brightness(1.055) !important;
+    border-color: rgba(245,211,126,.64) !important;
+    box-shadow:
+      0 16px 34px rgba(111,83,24,.30),
+      inset 0 1px 0 rgba(255,255,255,.18),
+      inset 0 -1px 0 rgba(0,0,0,.24) !important;
+  }
+
+  html body #featured .cnActionPrimary,
+  html body #featured .btn--buy-primary {
+    min-height: 42px !important;
+    padding-inline: 14px !important;
+  }
+
+  html body #quickGrid .cnQuickPrimary,
+  html body #quickGrid .btn--buy-primary {
+    min-height: 34px !important;
+    padding-inline: 10px !important;
+  }
+
+  @media (max-width: 640px) {
+    html body #featured .cnActionPrimary,
+    html body #featured .btn--buy-primary {
+      min-height: 40px !important;
+      font-size: .78rem !important;
+      padding-inline: 10px !important;
+    }
+
+    html body #featured .cnActionPrimary .cnBuyLabel,
+    html body #featured .btn--buy-primary .cnBuyLabel {
+      white-space: normal !important;
+      line-height: 1.05 !important;
+    }
+
+    html body #quickGrid .cnQuickPrimary,
+    html body #quickGrid .btn--buy-primary {
+      min-height: 34px !important;
+      font-size: .74rem !important;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    'use strict';
+
+    var FEATURED_LABEL = 'Comprar com desconto no Mercado Livre';
+
+    function trimText(value) {
+      return (value === null || value === undefined) ? '' : String(value).replace(/^\s+|\s+$/g, '');
+    }
+
+    function isFeaturedBuyButton(el) {
+      return !!(el && el.closest && el.closest('#featured'));
+    }
+
+    function isQuickBuyButton(el) {
+      return !!(el && el.closest && el.closest('#quickGrid'));
+    }
+
+    function isBuyButton(el) {
+      if (!el || !el.matches) return false;
+      return el.matches('#featured .cnActionPrimary, #featured .btn--buy-primary, #featured [data-cn-buy-shine="on"], #quickGrid .cnQuickPrimary, #quickGrid .btn--buy-primary, #quickGrid [data-cn-buy-shine="on"]');
+    }
+
+    function applyBuyVisual(el) {
+      if (!isBuyButton(el)) return;
+
+      var wantedLabel = isFeaturedBuyButton(el) ? FEATURED_LABEL : 'Comprar';
+      var currentLabel = el.getAttribute('data-cn-hotfix-label') || '';
+      var currentVisible = trimText(el.textContent || '');
+
+      el.setAttribute('data-cn-buy-shine', 'on');
+      el.setAttribute('data-cn-buy-ready', '1');
+      el.setAttribute('aria-label', wantedLabel);
+
+      if (currentLabel === wantedLabel && el.querySelector('.cnBuyLabel') && el.querySelector('.cnBuySheenFx')) {
+        return;
+      }
+
+      if (isFeaturedBuyButton(el) || isQuickBuyButton(el) || currentVisible === 'Comprar agora' || currentVisible === 'Comprar') {
+        while (el.firstChild) {
+          el.removeChild(el.firstChild);
+        }
+
+        var label = document.createElement('span');
+        label.className = 'cnBuyLabel';
+        label.textContent = wantedLabel;
+        el.appendChild(label);
+
+        var fx = document.createElement('span');
+        fx.className = 'cnBuySheenFx';
+        fx.setAttribute('aria-hidden', 'true');
+        el.appendChild(fx);
+
+        el.setAttribute('data-cn-hotfix-label', wantedLabel);
+      }
+    }
+
+    function applyAll() {
+      var buttons = document.querySelectorAll('#featured .cnActionPrimary, #featured .btn--buy-primary, #featured [data-cn-buy-shine="on"], #quickGrid .cnQuickPrimary, #quickGrid .btn--buy-primary, #quickGrid [data-cn-buy-shine="on"]');
+      for (var i = 0; i < buttons.length; i++) {
+        applyBuyVisual(buttons[i]);
+      }
+    }
+
+    function scheduleApply() {
+      clearTimeout(scheduleApply._t);
+      scheduleApply._t = setTimeout(applyAll, 60);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyAll);
+    } else {
+      applyAll();
+    }
+
+    setTimeout(applyAll, 120);
+    setTimeout(applyAll, 450);
+    setTimeout(applyAll, 1200);
+    setTimeout(applyAll, 2500);
+
+    try {
+      var observer = new MutationObserver(scheduleApply);
+      observer.observe(document.documentElement || document.body, {
+        childList: true,
+        subtree: true
+      });
+    } catch (e) {}
+  })();
+</script>
+<!-- /HOTFIX FINAL REAL25 — BRILHO DOS BOTÕES COMPRAR + CTA FEATURED -->
+
 </body>
 </html>
