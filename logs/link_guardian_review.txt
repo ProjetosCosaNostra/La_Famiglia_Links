@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-15T09:25:48Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-05-15T14:33:11Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-15T09:20:56Z
-Issue: #4
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
-SKU: mochila-impermeavel-notebook-15-6
-Título: Mochila Executiva Romantic Crown
-ID ML: 5J5PKG-PQ4S
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
-Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
-open_url: https://meli.la/2v1QEWV
-checked_url: https://meli.la/2v1QEWV
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-05-15T09:20:56Z
+Quando: 2026-05-15T14:27:38Z
 Issue: #27
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/27
 SKU: hub-usbc-8em1-h71p
@@ -54,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Hub USB-C, 8 em 1, HDMI 4K, RJ45 Ethernet, USB 3.0, SD/TF, Adaptador
 open_url: https://mercadolivre.com/sec/21NWPnw
 checked_url: https://mercadolivre.com/sec/21NWPnw
@@ -62,26 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H71P&tid=42f8b39d-42a8-497a-8f21-a8ad42b73b22
 
 [ALTA] review_only_storefront
-Quando: 2026-05-15T09:20:56Z
-Issue: #34
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
-SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
-Título: Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta
-ID ML: 5J5PKG-WXZ9
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
-Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
-open_url: https://mercadolivre.com/sec/2q8tzpj
-checked_url: https://mercadolivre.com/sec/2q8tzpj
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
-
-[ALTA] review_only_storefront
-Quando: 2026-05-15T09:20:56Z
+Quando: 2026-05-15T14:27:38Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -92,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (28x /lists, 0x listing)
+Memória operacional: histórico recorrente (29x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://meli.la/2SENbeC
 checked_url: https://meli.la/2SENbeC
@@ -100,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
 
 [ALTA] review_only_storefront
-Quando: 2026-05-15T09:20:56Z
+Quando: 2026-05-15T14:27:38Z
 Issue: #78
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78
 SKU: purificador-de-ar-silencioso-hepa-h13-luz-ambiente
@@ -111,9 +73,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Purificador de Ar, HEPA H13, Silencioso, Antialérgico, Quarto, Home Office, Poeira
 open_url: https://meli.la/1LaVYwK
 checked_url: https://meli.la/1LaVYwK
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U3PG&tid=907d1ad4-1ba7-4be7-b764-20cc77e26d2c
+
+[ALTA] review_only_storefront
+Quando: 2026-05-15T14:27:38Z
+Issue: #82
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82
+SKU: fone-bluetooth-53-tws-gancho-k4k6
+Título: Fone Bluetooth 5.3 TWS Esportivo com Gancho Premium (XT80)
+ID ML: 5J5PKG-K4K6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (9x /lists, 1x listing)
+Badges: Achados do Dia, Bluetooth 5.3, TWS, Gancho, Esportivo, Display Digital, Android iOS, Preto
+open_url: https://meli.la/15p3NHj
+checked_url: https://meli.la/15p3NHj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K4K6&tid=55cc43f9-a99d-4c09-be39-e78e2db293ef
