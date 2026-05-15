@@ -13922,6 +13922,57 @@
   </style>
 
 
+
+  <style id="cn-fix-quick-gallery-prev-arrow-20260515">
+    /* ==========================================================
+       HOTFIX CIRÚRGICO — VITRINE RÁPIDA / SETA VOLTAR
+       Data: 2026-05-15
+       Escopo: somente a galeria dos cards da Vitrine Rápida.
+       Problema: a seta "voltar" existia no JS, mas herdava right:8px
+       e ficava sobreposta/fora da posição correta nos cards rápidos.
+       Produto do Dia preservado.
+       ========================================================== */
+
+    #quickGrid .cnMediaShell--quick .cnGalleryArrow {
+      z-index: 10 !important;
+      pointer-events: auto !important;
+    }
+
+    #quickGrid .cnMediaShell--quick .cnGalleryArrow--prev {
+      left: 8px !important;
+      right: auto !important;
+    }
+
+    #quickGrid .cnMediaShell--quick .cnGalleryArrow--next {
+      right: 8px !important;
+      left: auto !important;
+    }
+
+    #quickGrid .cnMediaShell--quick .cnGalleryArrow.is-hidden {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    @media (max-width: 640px) {
+      #quickGrid .cnMediaShell--quick .cnGalleryArrow {
+        width: 30px !important;
+        height: 38px !important;
+        font-size: 1.08rem !important;
+      }
+
+      #quickGrid .cnMediaShell--quick .cnGalleryArrow--prev {
+        left: 6px !important;
+        right: auto !important;
+      }
+
+      #quickGrid .cnMediaShell--quick .cnGalleryArrow--next {
+        right: 6px !important;
+        left: auto !important;
+      }
+    }
+  </style>
+
 </head>
 
 <body id="topo">
