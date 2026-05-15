@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-15T18:51:34Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-15T19:55:04Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-15T18:46:02Z
+Quando: 2026-05-15T19:48:37Z
 Issue: #82
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82
 SKU: fone-bluetooth-53-tws-gancho-k4k6
@@ -35,9 +35,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 1x listing)
+Memória operacional: histórico recorrente (11x /lists, 1x listing)
 Badges: Achados do Dia, Bluetooth 5.3, TWS, Gancho, Esportivo, Display Digital, Android iOS, Preto
 open_url: https://meli.la/15p3NHj
 checked_url: https://meli.la/15p3NHj
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K4K6&tid=55cc43f9-a99d-4c09-be39-e78e2db293ef
+
+[ALTA] review_only_storefront
+Quando: 2026-05-15T19:48:37Z
+Issue: #178
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/178
+SKU: payot-boca-rosa-meu-volumao-preto-6ml
+Título: 👁️✨ Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml 💙🖤
+ID ML: 5J5PKG-KQ94
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Maquiagem, Boca Rosa, Payot, Volumizador, Preto, Cruelty Free
+open_url: https://meli.la/1dj3ot3
+checked_url: https://meli.la/1dj3ot3
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-KQ94
