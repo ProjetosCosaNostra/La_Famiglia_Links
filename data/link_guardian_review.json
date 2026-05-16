@@ -1,12 +1,62 @@
 {
-  "updated_at": "2026-05-16T13:55:15Z",
-  "total_items": 0,
+  "updated_at": "2026-05-16T19:22:06Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-05-16T19:17:45Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 182,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182",
+      "issue_title": "Lip Tint Arovida Morango Mistério 3,2ml",
+      "sku": "lip-tint-arovida-morango-misterio-3-2ml",
+      "title": "Lip Tint Arovida Morango Mistério 3,2ml",
+      "id_busca": "5J5PKG-4L0N",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/13LVk76",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/13LVk76",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH9WuIvtuXPYvV1%2FV832ynCb9%2Bby4M7Pbzl3Vozbpzkc0WcL6hG71DptVWyAfUbIOrmXHbtsTas5PZgEFBKA2Bt5TY%2B2UWIt6DsbNjnMXyamt4xCP%2BrRretX22HR%2B46ymy29BtPU%2B8mxfpRTJS8iAhD6aLBCZT%2B9B3gw4pIeD3NcfMQvur7ZGgviTsK1JWVQPy997hzDgew9dkXOuQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4L0N",
+      "short_url": "https://meli.la/13LVk76",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BH9WuIvtuXPYvV1%2FV832ynCb9%2Bby4M7Pbzl3Vozbpzkc0WcL6hG71DptVWyAfUbIOrmXHbtsTas5PZgEFBKA2Bt5TY%2B2UWIt6DsbNjnMXyamt4xCP%2BrRretX22HR%2B46ymy29BtPU%2B8mxfpRTJS8iAhD6aLBCZT%2B9B3gw4pIeD3NcfMQvur7ZGgviTsK1JWVQPy997hzDgew9dkXOuQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Feminino",
+        "Arovida",
+        "Morango Mistério",
+        "Lábios e Bochechas",
+        "Longa Duração"
+      ]
+    }
+  ]
 }

@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-16T13:55:15Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-05-16T19:22:06Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-05-16T19:17:45Z
+Issue: #182
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
+SKU: lip-tint-arovida-morango-misterio-3-2ml
+Título: Lip Tint Arovida Morango Mistério 3,2ml
+ID ML: 5J5PKG-4L0N
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
+open_url: https://meli.la/13LVk76
+checked_url: https://meli.la/13LVk76
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4L0N
