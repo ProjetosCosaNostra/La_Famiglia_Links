@@ -14048,310 +14048,228 @@
     }
     </style>
 
+<style id="cn-buy-shine-final-real-20260516">
+  /* ==========================================================
+     Cosa Nostra — brilho real/restaurado dos botões Comprar
+     Correção final:
+     - NÃO reescreve o botão inteiro;
+     - usa a camada original do script.js: .cnBuySheenFx;
+     - brilho automático, sem depender do mouse;
+     - texto estável, sem piscar/bugar;
+     - preserva Produto do Dia, Vitrine Rápida, links e estrutura.
+     ========================================================== */
 
-<!-- ==========================================================
-     HOTFIX REAL27 — BRILHO FORÇADO VIA JS, SEM HOVER
-     Data: 2026-05-16
-     Escopo: somente botões Comprar da Home
-     Objetivo:
-       - brilho passando automaticamente, sem depender de mouse;
-       - sem trocar texto em loop;
-       - sem pseudo-elemento brigando com CSS antigo;
-       - preservar links, Produto do Dia, Vitrine Rápida e estrutura.
-     ========================================================== -->
-<style id="cn-real27-buy-js-light-style">
-  html body #featured .cnReal27BuyButton,
-  html body #quickGrid .cnReal27BuyButton {
+  @keyframes cnBuySheenFxLoop20260516 {
+    0%, 16% {
+      transform: translate3d(-235%, 0, 0) skewX(-22deg);
+      opacity: 0;
+    }
+    24% {
+      opacity: .96;
+    }
+    48% {
+      opacity: .90;
+    }
+    68%, 100% {
+      transform: translate3d(330%, 0, 0) skewX(-22deg);
+      opacity: 0;
+    }
+  }
+
+  html body #featured .btn--buy-primary,
+  html body #featured .cnActionPrimary,
+  html body #quickGrid .cnQuickPrimary {
     position: relative !important;
     overflow: hidden !important;
     isolation: isolate !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 0 !important;
-    transform: translateZ(0) !important;
-    -webkit-transform: translateZ(0) !important;
-    color: rgba(255, 247, 224, .98) !important;
-    text-decoration: none !important;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .44) !important;
-    border: 1px solid rgba(217, 176, 74, .58) !important;
+    border-color: rgba(224,195,107,.42) !important;
+    color: rgba(255,246,220,.98) !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,.38) !important;
     background:
-      radial-gradient(180px 52px at 50% 0%, rgba(255, 242, 190, .22), transparent 70%),
-      linear-gradient(180deg, rgba(177, 145, 48, .88) 0%, rgba(126, 101, 31, .88) 48%, rgba(64, 51, 18, .92) 100%) !important;
+      radial-gradient(900px 170px at 20% 0%, rgba(255,236,170,.20), transparent 60%),
+      linear-gradient(180deg, rgba(199,162,75,.34), rgba(87,67,22,.34)),
+      rgba(13, 11, 7, .70) !important;
     box-shadow:
-      0 10px 22px rgba(0, 0, 0, .32),
-      0 0 0 1px rgba(255, 229, 148, .08),
-      inset 0 1px 0 rgba(255, 255, 255, .24),
-      inset 0 -10px 18px rgba(0, 0, 0, .24) !important;
+      0 12px 28px rgba(0,0,0,.28),
+      inset 0 1px 0 rgba(255,255,255,.13),
+      inset 0 -10px 18px rgba(0,0,0,.22) !important;
+    transform: translateZ(0) !important;
     filter: none !important;
-    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, filter .18s ease !important;
-    will-change: auto !important;
   }
 
-  html body #featured .cnReal27BuyButton {
-    min-height: 40px !important;
-    height: 40px !important;
-    border-radius: 14px !important;
-    padding: 0 14px !important;
-    font-size: .78rem !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-  }
-
-  html body #quickGrid .cnReal27BuyButton {
-    min-height: 34px !important;
-    height: 34px !important;
-    border-radius: 13px !important;
-    padding: 0 10px !important;
-    font-size: .72rem !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-  }
-
-  html body #featured .cnReal27BuyButton:hover,
-  html body #quickGrid .cnReal27BuyButton:hover,
-  html body #featured .cnReal27BuyButton:focus-visible,
-  html body #quickGrid .cnReal27BuyButton:focus-visible {
-    transform: translateY(-1px) translateZ(0) !important;
-    border-color: rgba(255, 226, 150, .78) !important;
-    filter: brightness(1.04) saturate(1.03) !important;
-    box-shadow:
-      0 13px 27px rgba(0, 0, 0, .36),
-      0 0 0 1px rgba(255, 229, 148, .14),
-      inset 0 1px 0 rgba(255, 255, 255, .30),
-      inset 0 -10px 18px rgba(0, 0, 0, .26) !important;
-  }
-
-  /* Desliga pseudo-elementos antigos só nestes botões. O brilho novo é um span real. */
-  html body #featured .cnReal27BuyButton::before,
-  html body #featured .cnReal27BuyButton::after,
-  html body #quickGrid .cnReal27BuyButton::before,
-  html body #quickGrid .cnReal27BuyButton::after {
+  /* Desliga pseudo-camadas antigas que estavam brigando com o brilho verdadeiro */
+  html body #featured .btn--buy-primary::before,
+  html body #featured .btn--buy-primary::after,
+  html body #featured .cnActionPrimary::before,
+  html body #featured .cnActionPrimary::after,
+  html body #quickGrid .cnQuickPrimary::before,
+  html body #quickGrid .cnQuickPrimary::after {
     content: none !important;
     display: none !important;
     animation: none !important;
-    opacity: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
   }
 
-  html body #featured .cnReal27BuyButton .cnReal27BuyLabel,
-  html body #quickGrid .cnReal27BuyButton .cnReal27BuyLabel {
+  html body #featured .btn--buy-primary .cnBuyLabel,
+  html body #featured .cnActionPrimary .cnBuyLabel,
+  html body #quickGrid .cnQuickPrimary .cnBuyLabel {
     position: relative !important;
-    z-index: 5 !important;
+    z-index: 3 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
     max-width: 100% !important;
-    height: 100% !important;
-    min-height: inherit !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: 1 !important;
-    text-align: center !important;
-    white-space: inherit !important;
-    pointer-events: none !important;
+    color: inherit !important;
+    font: inherit !important;
     font-weight: 900 !important;
-    letter-spacing: .005em !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+    text-shadow: inherit !important;
+    pointer-events: none !important;
   }
 
-  html body #featured .cnReal27BuyButton .cnReal27BuyLight,
-  html body #quickGrid .cnReal27BuyButton .cnReal27BuyLight {
+  html body #featured .btn--buy-primary .cnBuySheenFx,
+  html body #featured .cnActionPrimary .cnBuySheenFx,
+  html body #quickGrid .cnQuickPrimary .cnBuySheenFx {
+    display: block !important;
     position: absolute !important;
     top: -70% !important;
     bottom: -70% !important;
-    left: 0 !important;
+    left: -44% !important;
     width: 42% !important;
     min-width: 42% !important;
-    display: block !important;
-    z-index: 4 !important;
+    z-index: 2 !important;
     pointer-events: none !important;
     border-radius: inherit !important;
     background:
       linear-gradient(100deg,
         rgba(255,255,255,0) 0%,
-        rgba(255,255,255,.05) 16%,
-        rgba(255,250,222,.92) 46%,
-        rgba(255,230,138,.48) 57%,
-        rgba(255,255,255,.13) 70%,
+        rgba(255,255,255,0) 14%,
+        rgba(255,255,255,.28) 34%,
+        rgba(255,250,218,.95) 47%,
+        rgba(255,232,150,.62) 56%,
+        rgba(255,255,255,.18) 70%,
         rgba(255,255,255,0) 100%) !important;
     box-shadow:
-      0 0 20px rgba(255, 235, 176, .30),
-      0 0 42px rgba(255, 215, 101, .16) !important;
+      0 0 18px rgba(255,245,210,.42),
+      0 0 42px rgba(255,221,120,.20) !important;
+    filter: blur(.1px) !important;
     mix-blend-mode: screen !important;
+    transform: translate3d(-235%, 0, 0) skewX(-22deg);
     opacity: 0;
-    transform: translate3d(-170%, 0, 0) skewX(-23deg);
-    -webkit-transform: translate3d(-170%, 0, 0) skewX(-23deg);
+    animation: cnBuySheenFxLoop20260516 2.55s ease-in-out infinite !important;
+    animation-play-state: running !important;
     will-change: transform, opacity !important;
   }
 
-  html body #featured .cnReal27BuyButton .cnBuySheenFx,
-  html body #featured .cnReal27BuyButton .cnBuySweepReal,
-  html body #quickGrid .cnReal27BuyButton .cnBuySheenFx,
-  html body #quickGrid .cnReal27BuyButton .cnBuySweepReal {
-    display: none !important;
-    opacity: 0 !important;
-    animation: none !important;
+  html body #featured .btn--buy-primary:hover .cnBuySheenFx,
+  html body #featured .cnActionPrimary:hover .cnBuySheenFx,
+  html body #quickGrid .cnQuickPrimary:hover .cnBuySheenFx {
+    animation-play-state: running !important;
+  }
+
+  html body #featured .btn--buy-primary {
+    min-height: 40px !important;
+    border-radius: 14px !important;
+  }
+
+  html body #quickGrid .cnQuickPrimary {
+    min-height: 33px !important;
+    border-radius: 13px !important;
   }
 
   @media (max-width: 640px) {
-    html body #featured .cnReal27BuyButton {
-      min-height: 38px !important;
-      height: 38px !important;
-      border-radius: 13px !important;
-      padding: 0 12px !important;
-      font-size: .76rem !important;
+    html body #featured .btn--buy-primary .cnBuyLabel,
+    html body #featured .cnActionPrimary .cnBuyLabel {
+      white-space: normal !important;
+      font-size: .78rem !important;
     }
 
-    html body #quickGrid .cnReal27BuyButton {
-      min-height: 34px !important;
-      height: 34px !important;
-      padding: 0 10px !important;
-      font-size: .72rem !important;
+    html body #quickGrid .cnQuickPrimary .cnBuyLabel {
+      font-size: .74rem !important;
     }
   }
 </style>
 
-<script id="cn-real27-buy-js-light-script">
+<script id="cn-buy-text-final-real-20260516">
   (function () {
     "use strict";
 
     var FEATURED_LABEL = "Comprar com desconto no Mercado Livre";
     var QUICK_LABEL = "Comprar";
-    var buttons = [];
-    var scanTimer = 0;
-    var rafStarted = false;
+    var timer = 0;
 
     function trimText(value) {
       return value == null ? "" : String(value).replace(/\s+/g, " ").replace(/^\s+|\s+$/g, "");
     }
 
-    function isFeatured(el) {
-      return !!(el && el.closest && el.closest("#featured"));
-    }
+    function ensureButtonParts(btn, labelText) {
+      if (!btn) return;
 
-    function isQuick(el) {
-      return !!(el && el.closest && el.closest("#quickGrid"));
-    }
+      btn.classList.add("btn--gold");
+      btn.classList.add("btn--buy-primary");
 
-    function isBuyButton(el) {
-      if (!el || !el.matches) return false;
-      if (!isFeatured(el) && !isQuick(el)) return false;
-      if (!el.matches("a, button")) return false;
-      var text = trimText(el.textContent).toLowerCase();
-      if (text.indexOf("copiar") !== -1) return false;
-      if (el.matches(".cnActionPrimary, .cnQuickPrimary, .btn--buy-primary, [data-cn-buy-shine='on'], [data-cn-buy-ready='1']")) return true;
-      return text.indexOf("comprar") !== -1;
-    }
-
-    function directChild(el, className) {
-      if (!el || !el.children) return null;
-      for (var i = 0; i < el.children.length; i++) {
-        if (el.children[i].classList && el.children[i].classList.contains(className)) return el.children[i];
-      }
-      return null;
-    }
-
-    function removeOldVisualChildren(el) {
-      var names = ["cnBuySheenFx", "cnBuySweepReal", "cnBuyLabel", "cnBuyLabelReal", "cnStableBuyText"];
-      for (var n = 0; n < names.length; n++) {
-        var old;
-        while ((old = directChild(el, names[n]))) old.parentNode.removeChild(old);
-      }
-    }
-
-    function decorate(el) {
-      if (!isBuyButton(el)) return;
-
-      var labelText = isFeatured(el) ? FEATURED_LABEL : QUICK_LABEL;
-      var label = directChild(el, "cnReal27BuyLabel");
-      var light = directChild(el, "cnReal27BuyLight");
-
-      el.classList.add("cnReal27BuyButton");
-      el.classList.add("btn--gold");
-      el.classList.add("btn--buy-primary");
-      el.setAttribute("data-cn-buy-shine", "real27");
-      el.setAttribute("data-cn-buy-ready", "1");
-      el.setAttribute("aria-label", labelText);
-
-      if (!label || !light || el.getAttribute("data-cn-real27-label") !== labelText) {
-        while (el.firstChild) el.removeChild(el.firstChild);
-
+      var label = btn.querySelector(".cnBuyLabel");
+      if (!label) {
         label = document.createElement("span");
-        label.className = "cnReal27BuyLabel";
+        label.className = "cnBuyLabel";
+        while (btn.firstChild) {
+          btn.removeChild(btn.firstChild);
+        }
+        btn.appendChild(label);
+      }
+      if (trimText(label.textContent) !== labelText) {
         label.textContent = labelText;
-        el.appendChild(label);
+      }
 
-        light = document.createElement("span");
-        light.className = "cnReal27BuyLight";
-        light.setAttribute("aria-hidden", "true");
-        el.appendChild(light);
+      var fx = btn.querySelector(".cnBuySheenFx");
+      if (!fx) {
+        fx = document.createElement("span");
+        fx.className = "cnBuySheenFx";
+        fx.setAttribute("aria-hidden", "true");
+        btn.appendChild(fx);
+      }
 
-        el.setAttribute("data-cn-real27-label", labelText);
-      } else {
-        removeOldVisualChildren(el);
+      btn.setAttribute("aria-label", labelText);
+      btn.setAttribute("data-cn-buy-ready", "1");
+      btn.setAttribute("data-cn-buy-shine", "fx");
+    }
+
+    function applyBuyButtons() {
+      var featured = document.querySelector("#featured .cnActionPrimary, #featured .btn--buy-primary");
+      if (featured) ensureButtonParts(featured, FEATURED_LABEL);
+
+      var quickButtons = document.querySelectorAll("#quickGrid .cnQuickPrimary");
+      for (var i = 0; i < quickButtons.length; i++) {
+        ensureButtonParts(quickButtons[i], QUICK_LABEL);
       }
     }
 
-    function scan() {
-      var found = document.querySelectorAll("#featured .cnRow a, #featured .cnRow button, #quickGrid .cnRow a, #quickGrid .cnRow button");
-      for (var i = 0; i < found.length; i++) decorate(found[i]);
-      buttons = Array.prototype.slice.call(document.querySelectorAll(".cnReal27BuyButton .cnReal27BuyLight"));
-      startRaf();
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(applyBuyButtons, 80);
     }
 
-    function scheduleScan() {
-      clearTimeout(scanTimer);
-      scanTimer = setTimeout(scan, 90);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", applyBuyButtons);
+    } else {
+      applyBuyButtons();
     }
 
-    function easeInOut(x) {
-      return x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
-    }
-
-    function animate(now) {
-      var cycle = 3050;
-      for (var i = 0; i < buttons.length; i++) {
-        var light = buttons[i];
-        if (!light || !light.parentNode) continue;
-        var p = ((now + i * 260) % cycle) / cycle;
-        var moving = p < .68;
-        var travel = moving ? easeInOut(p / .68) : 1;
-        var x = -175 + travel * 455;
-        var opacity = 0;
-        if (p < .08) opacity = p / .08 * .92;
-        else if (p < .58) opacity = .92;
-        else if (p < .68) opacity = (1 - ((p - .58) / .10)) * .92;
-        else opacity = 0;
-
-        light.style.opacity = opacity.toFixed(3);
-        light.style.transform = "translate3d(" + x.toFixed(2) + "%,0,0) skewX(-23deg)";
-        light.style.webkitTransform = light.style.transform;
-      }
-      window.requestAnimationFrame(animate);
-    }
-
-    function startRaf() {
-      if (rafStarted || !window.requestAnimationFrame) return;
-      rafStarted = true;
-      window.requestAnimationFrame(animate);
-    }
-
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", scan);
-    else scan();
-
-    setTimeout(scan, 120);
-    setTimeout(scan, 420);
-    setTimeout(scan, 1000);
-    setTimeout(scan, 2200);
-    window.addEventListener("load", scan);
+    setTimeout(applyBuyButtons, 120);
+    setTimeout(applyBuyButtons, 450);
+    setTimeout(applyBuyButtons, 1200);
+    window.addEventListener("load", applyBuyButtons);
 
     try {
-      var observer = new MutationObserver(scheduleScan);
-      observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
-    } catch (e) {
-      setInterval(scan, 1500);
-    }
+      var observer = new MutationObserver(schedule);
+      observer.observe(document.body || document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    } catch (e) {}
   })();
 </script>
 
