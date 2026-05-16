@@ -418,9 +418,14 @@
   }
 
   function getBuyCtaText(p, compact) {
-    // Botão curto e premium: evita quebra de linha e mantém o texto perfeitamente centralizado.
-    // As informações de desconto/preço já aparecem no card; o CTA fica limpo.
+    // Vitrine Rápida usa CTA curto para não quebrar o card.
     if (compact) return 'Comprar';
+
+    // Produto do Dia pode usar o CTA premium vindo do produtos.json.
+    var promo = getPromoInfo(p || {});
+    var custom = trim(promo.buyCta || '');
+    if (custom) return custom;
+
     return 'Comprar agora';
   }
 
