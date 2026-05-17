@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-16T19:22:06Z
+Atualizado em: 2026-05-17T04:17:19Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-16T19:17:45Z
+Quando: 2026-05-17T04:11:36Z
 Issue: #182
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
 SKU: lip-tint-arovida-morango-misterio-3-2ml
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
 open_url: https://meli.la/13LVk76
 checked_url: https://meli.la/13LVk76
