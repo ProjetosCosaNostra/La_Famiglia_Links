@@ -1,64 +1,12 @@
 {
-  "updated_at": "2026-05-17T14:41:31Z",
-  "total_items": 1,
+  "updated_at": "2026-05-17T19:25:08Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 1,
-    "by_state": {
-      "review_only_storefront": 1
-    },
-    "by_reason": {
-      "storefront_social_lists_invalid": 1
-    },
-    "by_action": {
-      "trocar_link": 1
-    },
-    "high_priority": 1
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-05-17T14:36:57Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 38,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/38",
-      "issue_title": "[CMS] Produto: 🔊 Caixa de Som Aiwa SP-05-LB 30W Bluetooth IPX5",
-      "sku": "aiwa-sp-05-lb-30w-bluetooth-ipx5",
-      "title": "Caixa de Som Speaker Aiwa SP-05-LB 30W Bluetooth IPX5 (Portátil)",
-      "id_busca": "5J5PKG-SVGB",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/1r9vTNq",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/1r9vTNq",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK4O21O2QYopsSU9qcvZ9orc4NhpiOZrk7P4QZ6BIczhRTEG1jUgx0KokmvgE0OIlzEYUpebWVFdJPC%2BIY6uvkYYtzHTGTO3jNjMtzB%2BiztczUQNq8qvWn8xutmW%2B97RnfxH%2F5dtblShSBVs%2BDm9yLkJEPooVpxQuu2pFbWpwsAkG%2FIt2FiOQaffMGFr%2BMC6Okuic1Y%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-SVGB&tid=15b463d7-6b80-4eb7-b4ea-1d6e287417c3",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK4O21O2QYopsSU9qcvZ9orc4NhpiOZrk7P4QZ6BIczhRTEG1jUgx0KokmvgE0OIlzEYUpebWVFdJPC%2BIY6uvkYYtzHTGTO3jNjMtzB%2BiztczUQNq8qvWn8xutmW%2B97RnfxH%2F5dtblShSBVs%2BDm9yLkJEPooVpxQuu2pFbWpwsAkG%2FIt2FiOQaffMGFr%2BMC6Okuic1Y%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK4O21O2QYopsSU9qcvZ9orc4NhpiOZrk7P4QZ6BIczhRTEG1jUgx0KokmvgE0OIlzEYUpebWVFdJPC%2BIY6uvkYYtzHTGTO3jNjMtzB%2BiztczUQNq8qvWn8xutmW%2B97RnfxH%2F5dtblShSBVs%2BDm9yLkJEPooVpxQuu2pFbWpwsAkG%2FIt2FiOQaffMGFr%2BMC6Okuic1Y%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Caixa de Som",
-        "Aiwa",
-        "30W",
-        "Bluetooth",
-        "IPX5",
-        "Portátil",
-        "Áudio"
-      ]
-    }
-  ]
+  "items": []
 }
