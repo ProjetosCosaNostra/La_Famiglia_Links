@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-17T22:57:25Z",
+  "updated_at": "2026-05-17T23:11:08Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -784,7 +784,6 @@
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109",
       "issue_title": "Kit 2 Acendedores de Fogão Premium",
       "quick_home": true,
-      "quick_home_order": 4,
       "_source_issue_number": 138,
       "_target_issue_number": 109,
       "guardian_confidence_score": 87,
@@ -6842,7 +6841,6 @@
         "perfume ciclo kiss"
       ],
       "quick_home": true,
-      "quick_home_order": 4,
       "_source_issue_number": 177,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/26kvCnG",
@@ -7408,7 +7406,6 @@
         "óleo extraordinário loreal paris"
       ],
       "quick_home": true,
-      "quick_home_order": 4,
       "_source_issue_number": 187,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1U9BG5d",
@@ -7524,7 +7521,6 @@
         "fixador de maquiagem 150ml"
       ],
       "quick_home": true,
-      "quick_home_order": 4,
       "_source_issue_number": 189,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1jKPing",
@@ -8305,7 +8301,6 @@
         "organizador de acessórios"
       ],
       "quick_home": true,
-      "quick_home_order": 4,
       "_source_issue_number": 203,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/18Kx2gM",
@@ -8507,7 +8502,7 @@
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-N91P",
       "image": "https://github.com/user-attachments/assets/648141c9-df44-4ce2-a830-e5a03937a5b2",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -8958,10 +8953,10 @@
       "price_checked_at": "17/05/2026",
       "promo_text": "Preço conferido no Mercado Livre em 17/05/2026. Pode mudar sem aviso.",
       "buy_cta": "Comprar",
-      "active": false,
-      "featured": false,
-      "review_action": "precisa_relink",
-      "review_status": "precisa_relink",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
       "review_reason": "",
       "replacement_vendor": "",
       "relink_open_url": "",
@@ -8995,13 +8990,14 @@
         "depilador indolor",
         "depilador íntimo"
       ],
-      "quick_home": false,
+      "quick_home": true,
       "_source_issue_number": 224,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2YKAybJ",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF4gOCSptcr%2BrtM4qm2gU39LmAGHC%2FqhPozeXVJjOqR8WB1YEr3ysTaZ1CzCUaVhKDrw9g1ZyKD5cGpnA2%2BIb2hMBUhD0TYrMpOdQQE3pT3Wx%2F9Pz7tkFjBxWT2cV4%2B1c6fITvdpbS6xylaan7ib%2FoJo4TMs%2FhL2Vr9Drj5YWhT5ZF1asLrYJPUeL9l%2Bv0yb%2F6IeXik%3D",
       "last_checked": "",
-      "last_ok": ""
+      "last_ok": "",
+      "quick_home_order": 4
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
