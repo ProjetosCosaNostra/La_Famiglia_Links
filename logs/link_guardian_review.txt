@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-17T13:33:49Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-05-17T13:54:28Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-17T13:29:31Z
-Issue: #125
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
-SKU: capacete-asx-city-preto-fosco-viseira
-Título: Capacete ASX City Preto Fosco com Viseira
-ID ML: 5J5PKG-M6Q2
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (43x /lists, 0x listing)
-Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
-open_url: https://meli.la/2FLJCzq
-checked_url: https://meli.la/2FLJCzq
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-05-17T13:29:31Z
+Quando: 2026-05-17T13:50:16Z
 Issue: #107
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/107
 SKU: cuscuzeira-inox-premium-25l
@@ -54,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Cuscuzeira, Inox, Cuscuz, Panela a Vapor, 2, 5L
 open_url: https://meli.la/17NLvox
 checked_url: https://meli.la/17NLvox
@@ -62,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=c74a578b-5fb4-4226-b5cb-674903613b47
 
 [ALTA] review_only_storefront
-Quando: 2026-05-17T13:29:31Z
+Quando: 2026-05-17T13:50:16Z
 Issue: #56
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/56
 SKU: robo-de-limpeza-wap-robot-w500-policleaner
@@ -73,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Achados do Dia, Robô de Limpeza, WAP, W500, Policleaner, Mais vendido, Casa, Limpeza
 open_url: https://mercadolivre.com/sec/2y45bZm
 checked_url: https://mercadolivre.com/sec/2y45bZm
@@ -81,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-KN35&tid=d630c484-d158-458c-b4b9-5c36335d31de
 
 [ALTA] review_only_storefront
-Quando: 2026-05-17T13:29:31Z
+Quando: 2026-05-17T13:50:16Z
 Issue: #182
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
 SKU: lip-tint-arovida-morango-misterio-3-2ml
@@ -92,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
 open_url: https://meli.la/13LVk76
 checked_url: https://meli.la/13LVk76
