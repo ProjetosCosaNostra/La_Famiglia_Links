@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-17T13:54:28Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-05-17T14:41:31Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,58 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-17T13:50:16Z
-Issue: #107
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/107
-SKU: cuscuzeira-inox-premium-25l
-Título: Cuscuzeira Inox Premium 2,5L
-ID ML: 5J5PKG-YN13
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Cuscuzeira, Inox, Cuscuz, Panela a Vapor, 2, 5L
-open_url: https://meli.la/17NLvox
-checked_url: https://meli.la/17NLvox
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=c74a578b-5fb4-4226-b5cb-674903613b47
-
-[ALTA] review_only_storefront
-Quando: 2026-05-17T13:50:16Z
-Issue: #56
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/56
-SKU: robo-de-limpeza-wap-robot-w500-policleaner
-Título: Robô de Limpeza WAP Robot W500 Policleaner — Mais Vendido
-ID ML: 5J5PKG-KN35
+Quando: 2026-05-17T14:36:57Z
+Issue: #38
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/38
+SKU: aiwa-sp-05-lb-30w-bluetooth-ipx5
+Título: Caixa de Som Speaker Aiwa SP-05-LB 30W Bluetooth IPX5 (Portátil)
+ID ML: 5J5PKG-SVGB
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
 Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Robô de Limpeza, WAP, W500, Policleaner, Mais vendido, Casa, Limpeza
-open_url: https://mercadolivre.com/sec/2y45bZm
-checked_url: https://mercadolivre.com/sec/2y45bZm
+Badges: Achados do Dia, Caixa de Som, Aiwa, 30W, Bluetooth, IPX5, Portátil, Áudio
+open_url: https://mercadolivre.com/sec/1r9vTNq
+checked_url: https://mercadolivre.com/sec/1r9vTNq
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-KN35&tid=d630c484-d158-458c-b4b9-5c36335d31de
-
-[ALTA] review_only_storefront
-Quando: 2026-05-17T13:50:16Z
-Issue: #182
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
-SKU: lip-tint-arovida-morango-misterio-3-2ml
-Título: Lip Tint Arovida Morango Mistério 3,2ml
-ID ML: 5J5PKG-4L0N
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
-Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
-open_url: https://meli.la/13LVk76
-checked_url: https://meli.la/13LVk76
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4L0N
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-SVGB&tid=15b463d7-6b80-4eb7-b4ea-1d6e287417c3
