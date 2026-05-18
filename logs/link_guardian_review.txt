@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-18T10:25:55Z
+Atualizado em: 2026-05-18T15:55:47Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-18T10:21:42Z
+Quando: 2026-05-18T15:51:34Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (31x /lists, 0x listing)
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://meli.la/1KTRYBS
 checked_url: https://meli.la/1KTRYBS
@@ -43,20 +43,20 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
 
 [ALTA] review_only_storefront
-Quando: 2026-05-18T10:21:42Z
-Issue: #194
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
-SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
-Título: Bolsa Feminina Grande Mochila Antifurto Impermeável Reforçada
-ID ML: 5J5PKG-4RAF
+Quando: 2026-05-18T15:51:34Z
+Issue: #53
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/53
+SKU: panela-pressao-eletrica-6l-electrolux-rita-lobo-pcc20
+Título: Panela de Pressão Elétrica Electrolux 6L (Rita Lobo) — Experience Digital PCC20
+ID ML: 5J5PKG-K2GE
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
-open_url: https://meli.la/2g94WcQ
-checked_url: https://meli.la/2g94WcQ
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Panela de Pressão Elétrica, Electrolux, Rita Lobo, 6L, Cozinha, Casa, Jantar rápido
+open_url: https://mercadolivre.com/sec/1amQzWM
+checked_url: https://mercadolivre.com/sec/1amQzWM
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K2GE&tid=26cc2d34-68ab-4c2c-ad7f-4203973c1012
