@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-19T15:47:25Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-05-19T17:58:58Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,24 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-19T15:42:47Z
-SKU: se-j-existir-usa-amazon-echo-pop-c2h4r9-2
-Título: Echo Pop Smart Speaker (Alexa) — Preto (Amazon)
-ID ML: 5J5PKG-ZMR8
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 22 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Alexa, Echo Pop, Smart Speaker, Casa inteligente, Wi-Fi, Bluetooth, Preto
-open_url: https://mercadolivre.com/sec/19Abme6
-checked_url: https://mercadolivre.com/sec/19Abme6
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZMR8&tid=4859dfe6-8a08-4249-ac82-57085079ea12
-
-[ALTA] review_only_storefront
-Quando: 2026-05-19T15:42:47Z
+Quando: 2026-05-19T17:54:18Z
 Issue: #38
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/38
 SKU: aiwa-sp-05-lb-30w-bluetooth-ipx5
@@ -52,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Caixa de Som, Aiwa, 30W, Bluetooth, IPX5, Portátil, Áudio
 open_url: https://meli.la/2X2bJcp
 checked_url: https://meli.la/2X2bJcp
@@ -60,26 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-SVGB&tid=15b463d7-6b80-4eb7-b4ea-1d6e287417c3
 
 [ALTA] review_only_storefront
-Quando: 2026-05-19T15:42:47Z
-Issue: #40
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/40
-SKU: maquina-cortar-cabelo-dragao-buda-usb
-Título: ✂️🐉 Máquina de Cortar Cabelo Dragão Buda — Recarregável USB (Aparar & Acabamento)
-ID ML: 5J5PKG-21AW
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
-Badges: Achados do Dia, Cabelo, Barba, Aparador, Recarregável USB, Sem fio, Portátil, Dourado
-open_url: https://mercadolivre.com/sec/2zfsMib
-checked_url: https://mercadolivre.com/sec/2zfsMib
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-21AW&tid=a978b8ad-4395-4778-8336-764106fe63d0
-
-[ALTA] review_only_storefront
-Quando: 2026-05-19T15:42:47Z
+Quando: 2026-05-19T17:54:18Z
 Issue: #188
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/188
 SKU: xapadinha-mascara-disciplinante-450g-lola-from-rio
@@ -90,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cabelos, Lola From Rio, Máscara Capilar, Anti-frizz, Brilho, Vegano
 open_url: https://meli.la/26CFRci
 checked_url: https://meli.la/26CFRci
