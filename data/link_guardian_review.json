@@ -1,22 +1,67 @@
 {
-  "updated_at": "2026-05-19T20:05:19Z",
-  "total_items": 2,
+  "updated_at": "2026-05-20T04:24:48Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 4
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 4
     },
-    "high_priority": 2
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-05-19T20:00:44Z",
+      "happened_at": "2026-05-20T04:20:11Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 105,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105",
+      "issue_title": "[CMS] Produto: Jogo de Panelas Tramontina Inox",
+      "sku": "jogo-panelas-tramontina-inox-fundo-triplo-3-pecas",
+      "title": "Jogo de Panelas Tramontina Inox Fundo Triplo 3 Peças",
+      "id_busca": "5J5PKG-SRH7",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/11STL4L",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/11STL4L",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742",
+      "short_url": "https://meli.la/18N3x6V",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Tramontina",
+        "Jogo de Panelas",
+        "Inox",
+        "Fundo Triplo",
+        "3 Peças",
+        "Utilidades Domésticas"
+      ]
+    },
+    {
+      "happened_at": "2026-05-20T04:20:11Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-05-19T20:00:44Z",
+      "happened_at": "2026-05-20T04:20:11Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -103,6 +148,50 @@
         "Anti-frizz",
         "Brilho",
         "Vegano"
+      ]
+    },
+    {
+      "happened_at": "2026-05-20T04:20:11Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 198,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198",
+      "issue_title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
+      "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
+      "title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
+      "id_busca": "5J5PKG-R4BJ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2SekHEZ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2SekHEZ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R4BJ",
+      "short_url": "https://meli.la/2SekHEZ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Body Splash",
+        "Perfume Feminino",
+        "Floral",
+        "200ml",
+        "Barbour's Beauty",
+        "Autocuidado"
       ]
     }
   ]
