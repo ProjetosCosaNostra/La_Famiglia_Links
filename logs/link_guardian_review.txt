@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-21T20:08:33Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-05-22T04:26:21Z
+Itens pendentes: 7
+SKUs únicos: 7
+Prioridade alta: 7
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 7
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 7
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 7
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,83 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-21T20:04:14Z
-Issue: #124
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/124
-SKU: intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto
-Título: Intercomunicador Bluetooth para Capacete V10 com Redução de Ruído USB-C 16H - Preto
-ID ML: 5J5PKG-5111
+Quando: 2026-05-22T04:22:14Z
+Issue: #165
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
+SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
+Título: Kit de Pincéis de Maquiagem 13 Peças com Estojo Rosé
+ID ML: 5J5PKG-CU2P
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
 Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Intercomunicador, Bluetooth, Capacete, Moto, V10, Sem fio, Redução de ruído
-open_url: https://meli.la/2Lo3w8F
-checked_url: https://meli.la/2Lo3w8F
+Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
+open_url: https://meli.la/22qx74W
+checked_url: https://meli.la/22qx74W
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5111&tid=b5726868-cff7-4ba4-8227-81a298b06fec
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
 
 [ALTA] review_only_storefront
-Quando: 2026-05-21T20:04:14Z
+Quando: 2026-05-22T04:22:14Z
+Issue: #154
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
+SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
+Título: Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores
+ID ML: 5J5PKG-YHPD
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (10x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
+open_url: https://meli.la/1iBx7VY
+checked_url: https://meli.la/1iBx7VY
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-05-22T04:22:14Z
+Issue: #112
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
+SKU: tradutor-inteligente-premium-online-offline
+Título: Tradutor Inteligente Premium
+ID ML: 5J5PKG-PBU0
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
+open_url: https://meli.la/33ubZYj
+checked_url: https://meli.la/33ubZYj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-05-22T04:22:14Z
+Issue: #110
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
+SKU: kit-utensilios-cozinha-premium-rosa
+Título: 🍓 Kit Utensílios de Cozinha Premium — Praticidade, Organização e Elegância
+ID ML: 5J5PKG-PW6M
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (36x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
+open_url: https://meli.la/23Y2RB9
+checked_url: https://meli.la/23Y2RB9
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
+
+[ALTA] review_only_storefront
+Quando: 2026-05-22T04:22:14Z
 Issue: #105
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
 SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
@@ -54,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (9x /lists, 0x listing)
+Memória operacional: histórico recorrente (10x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
 open_url: https://meli.la/11STL4L
 checked_url: https://meli.la/11STL4L
@@ -62,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
 
 [ALTA] review_only_storefront
-Quando: 2026-05-21T20:04:14Z
+Quando: 2026-05-22T04:22:14Z
 Issue: #38
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/38
 SKU: aiwa-sp-05-lb-30w-bluetooth-ipx5
@@ -73,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (16x /lists, 0x listing)
+Memória operacional: histórico recorrente (17x /lists, 0x listing)
 Badges: Achados do Dia, Caixa de Som, Aiwa, 30W, Bluetooth, IPX5, Portátil, Áudio
 open_url: https://meli.la/2X2bJcp
 checked_url: https://meli.la/2X2bJcp
@@ -81,7 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-SVGB&tid=15b463d7-6b80-4eb7-b4ea-1d6e287417c3
 
 [ALTA] review_only_storefront
-Quando: 2026-05-21T20:04:14Z
+Quando: 2026-05-22T04:22:14Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -92,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/2SekHEZ
 checked_url: https://meli.la/2SekHEZ
