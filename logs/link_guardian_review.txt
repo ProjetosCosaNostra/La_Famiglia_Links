@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-22T15:00:37Z
+Atualizado em: 2026-05-22T17:33:09Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-22T14:56:09Z
+Quando: 2026-05-22T17:27:14Z
 Issue: #105
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
 SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (12x /lists, 0x listing)
+Memória operacional: histórico recorrente (13x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
 open_url: https://meli.la/11STL4L
 checked_url: https://meli.la/11STL4L
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
 
 [ALTA] review_only_storefront
-Quando: 2026-05-22T14:56:09Z
+Quando: 2026-05-22T17:27:14Z
 Issue: #38
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/38
 SKU: aiwa-sp-05-lb-30w-bluetooth-ipx5
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 0x listing)
+Memória operacional: histórico recorrente (20x /lists, 0x listing)
 Badges: Achados do Dia, Caixa de Som, Aiwa, 30W, Bluetooth, IPX5, Portátil, Áudio
 open_url: https://meli.la/2X2bJcp
 checked_url: https://meli.la/2X2bJcp
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-SVGB&tid=15b463d7-6b80-4eb7-b4ea-1d6e287417c3
 
 [ALTA] review_only_storefront
-Quando: 2026-05-22T14:56:09Z
+Quando: 2026-05-22T17:27:14Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 0x listing)
+Memória operacional: histórico recorrente (22x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/2SekHEZ
 checked_url: https://meli.la/2SekHEZ
