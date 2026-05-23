@@ -1,9 +1,63 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-22T23:14:32Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-05-23T04:07:30Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 2
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 2
+
+TOP MOTIVOS
+----------------------------------------
+- social_profile_needs_review: 1
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-05-23T04:01:22Z
+Issue: #190
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/190
+SKU: lip-oil-volumizador-labial-epidrat-hyalu-berry-fps30-6ml
+Título: Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml
+ID ML: 5J5PKG-94MJ
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Lip Oil, Epidrat Hyalu, Berry, FPS 30, Hidratante Labial, Volume Natural
+open_url: https://meli.la/1kPMdsr
+checked_url: https://meli.la/1kPMdsr
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-94MJ
+
+[ALTA] review_only_storefront
+Quando: 2026-05-23T04:01:22Z
+Issue: #198
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
+SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
+Título: Body Splash My Sweet Delight Barbour's Beauty 200ml
+ID ML: 5J5PKG-R4BJ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
+open_url: https://meli.la/2SekHEZ
+checked_url: https://meli.la/2SekHEZ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-R4BJ

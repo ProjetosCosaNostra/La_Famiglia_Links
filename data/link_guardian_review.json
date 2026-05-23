@@ -1,12 +1,109 @@
 {
-  "updated_at": "2026-05-22T23:14:32Z",
-  "total_items": 0,
+  "updated_at": "2026-05-23T04:07:30Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 2,
+    "by_state": {
+      "review_only_storefront": 2
+    },
+    "by_reason": {
+      "social_profile_needs_review": 1,
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 2
+    },
+    "high_priority": 2
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-05-23T04:01:22Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 190,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/190",
+      "issue_title": "Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml",
+      "sku": "lip-oil-volumizador-labial-epidrat-hyalu-berry-fps30-6ml",
+      "title": "Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml",
+      "id_busca": "5J5PKG-94MJ",
+      "status": 200,
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1kPMdsr",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
+      "open_url": "https://meli.la/1kPMdsr",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-94MJ",
+      "short_url": "https://meli.la/1kPMdsr",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Lip Oil",
+        "Epidrat Hyalu",
+        "Berry",
+        "FPS 30",
+        "Hidratante Labial",
+        "Volume Natural"
+      ]
+    },
+    {
+      "happened_at": "2026-05-23T04:01:22Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 198,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198",
+      "issue_title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
+      "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
+      "title": "Body Splash My Sweet Delight Barbour's Beauty 200ml",
+      "id_busca": "5J5PKG-R4BJ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2SekHEZ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2SekHEZ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R4BJ",
+      "short_url": "https://meli.la/2SekHEZ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Body Splash",
+        "Perfume Feminino",
+        "Floral",
+        "200ml",
+        "Barbour's Beauty",
+        "Autocuidado"
+      ]
+    }
+  ]
 }
