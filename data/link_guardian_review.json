@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-25T04:59:48Z",
-  "total_items": 2,
+  "updated_at": "2026-05-25T10:51:12Z",
+  "total_items": 4,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 4,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 4
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 4
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 4
     },
-    "high_priority": 2
+    "high_priority": 4
   },
   "items": [
     {
-      "happened_at": "2026-05-25T04:43:54Z",
+      "happened_at": "2026-05-25T10:25:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,97 @@
       ]
     },
     {
-      "happened_at": "2026-05-25T04:43:54Z",
+      "happened_at": "2026-05-25T10:25:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 30,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/30",
+      "issue_title": "[CMS] Produto: Carregador Veicular 60W (2x USB-C PD 30W+30W)",
+      "sku": "carregador-veicular-60w-hrebos-2x-usbc-pd",
+      "title": "Carregador Veicular 60W — 2x USB-C PD (30W + 30W)",
+      "id_busca": "5J5PKG-01QQ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2hEwHwh",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2hEwHwh",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBAv75ziVz8daSHqS%2BjwRBefMTV81m1z9PlP1gZBo9yWfrc9E0Tns5t7pZ6tftKirotFGPfKXYAo9hTJ5A0Bu4RalXu0%2BUjZmdGLk1Te1x4O6p2yxNPZLhrWpteTfOA%2FeXj4GsK85ZgokuTHyG9OjLifFznS7ge9cS1dfRmJJORNG2Nq2Vf%2Fic%2FcypDnOgwnVyMDjdg%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-01QQ&tid=fe7f3d48-d886-45a6-beb4-a72bc96a84ef",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBAv75ziVz8daSHqS%2BjwRBefMTV81m1z9PlP1gZBo9yWfrc9E0Tns5t7pZ6tftKirotFGPfKXYAo9hTJ5A0Bu4RalXu0%2BUjZmdGLk1Te1x4O6p2yxNPZLhrWpteTfOA%2FeXj4GsK85ZgokuTHyG9OjLifFznS7ge9cS1dfRmJJORNG2Nq2Vf%2Fic%2FcypDnOgwnVyMDjdg%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBAv75ziVz8daSHqS%2BjwRBefMTV81m1z9PlP1gZBo9yWfrc9E0Tns5t7pZ6tftKirotFGPfKXYAo9hTJ5A0Bu4RalXu0%2BUjZmdGLk1Te1x4O6p2yxNPZLhrWpteTfOA%2FeXj4GsK85ZgokuTHyG9OjLifFznS7ge9cS1dfRmJJORNG2Nq2Vf%2Fic%2FcypDnOgwnVyMDjdg%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Carregador Veicular",
+        "USB-C PD",
+        "60W",
+        "Carga Rápida",
+        "2 Portas",
+        "Carro",
+        "Uber/99"
+      ]
+    },
+    {
+      "happened_at": "2026-05-25T10:25:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 42,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42",
+      "issue_title": "[CMS] Produto: 🔥 Dashcam 4K + GPS — Segurança no caminho (dia e noite)",
+      "sku": "dashcam-4k-gps-azdome-m550-64gb",
+      "title": "Câmera Veicular Dashcam 4K + GPS AZDOME M550 (IR) + Traseira + 64GB",
+      "id_busca": "5J5PKG-3GVF",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (21x /lists, 2x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1KMS1NS",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1KMS1NS",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDFIk4ujoILgPHvGhn95r5bxS81dKX8%2FaVkL3hCiavZlXYGVOgwlPvTEYkrXwMXQkqnUcBNX0oquIUkySqxiUR7NLZvcQuTh%2B%2FXMbysMyMJK0qRuZ4u5JioXyVhKLpr3C1VoGnHG4CqEvMBDzZTtxjA6tQDEwkTxNzKqMXkEGD5JBXw8cwarF5ZmsYvExuhdWSiJUg0%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDFIk4ujoILgPHvGhn95r5bxS81dKX8%2FaVkL3hCiavZlXYGVOgwlPvTEYkrXwMXQkqnUcBNX0oquIUkySqxiUR7NLZvcQuTh%2B%2FXMbysMyMJK0qRuZ4u5JioXyVhKLpr3C1VoGnHG4CqEvMBDzZTtxjA6tQDEwkTxNzKqMXkEGD5JBXw8cwarF5ZmsYvExuhdWSiJUg0%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDFIk4ujoILgPHvGhn95r5bxS81dKX8%2FaVkL3hCiavZlXYGVOgwlPvTEYkrXwMXQkqnUcBNX0oquIUkySqxiUR7NLZvcQuTh%2B%2FXMbysMyMJK0qRuZ4u5JioXyVhKLpr3C1VoGnHG4CqEvMBDzZTtxjA6tQDEwkTxNzKqMXkEGD5JBXw8cwarF5ZmsYvExuhdWSiJUg0%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Carro",
+        "Segurança",
+        "Dashcam",
+        "4K",
+        "GPS",
+        "Visão Noturna",
+        "Infra-vermelho"
+      ]
+    },
+    {
+      "happened_at": "2026-05-25T10:25:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (33x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

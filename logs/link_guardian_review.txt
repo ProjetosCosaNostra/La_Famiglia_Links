@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-25T04:59:48Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-05-25T10:51:12Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-25T04:43:54Z
+Quando: 2026-05-25T10:25:56Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/2fVVn8u
 checked_url: https://meli.la/2fVVn8u
@@ -43,7 +43,45 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-05-25T04:43:54Z
+Quando: 2026-05-25T10:25:56Z
+Issue: #30
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/30
+SKU: carregador-veicular-60w-hrebos-2x-usbc-pd
+Título: Carregador Veicular 60W — 2x USB-C PD (30W + 30W)
+ID ML: 5J5PKG-01QQ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Carregador Veicular, USB-C PD, 60W, Carga Rápida, 2 Portas, Carro, Uber/99
+open_url: https://mercadolivre.com/sec/2hEwHwh
+checked_url: https://mercadolivre.com/sec/2hEwHwh
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-01QQ&tid=fe7f3d48-d886-45a6-beb4-a72bc96a84ef
+
+[ALTA] review_only_storefront
+Quando: 2026-05-25T10:25:56Z
+Issue: #42
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
+SKU: dashcam-4k-gps-azdome-m550-64gb
+Título: Câmera Veicular Dashcam 4K + GPS AZDOME M550 (IR) + Traseira + 64GB
+ID ML: 5J5PKG-3GVF
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (21x /lists, 2x listing)
+Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
+open_url: https://meli.la/1KMS1NS
+checked_url: https://meli.la/1KMS1NS
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
+
+[ALTA] review_only_storefront
+Quando: 2026-05-25T10:25:56Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -54,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (32x /lists, 0x listing)
+Memória operacional: histórico recorrente (33x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/2SekHEZ
 checked_url: https://meli.la/2SekHEZ
