@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-24T22:40:08Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-25T04:59:48Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-24T22:38:10Z
+Quando: 2026-05-25T04:43:54Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -35,9 +35,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/2fVVn8u
 checked_url: https://meli.la/2fVVn8u
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-05-25T04:43:54Z
+Issue: #198
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
+SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
+Título: Body Splash My Sweet Delight Barbour's Beauty 200ml
+ID ML: 5J5PKG-R4BJ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
+Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
+open_url: https://meli.la/2SekHEZ
+checked_url: https://meli.la/2SekHEZ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-R4BJ
