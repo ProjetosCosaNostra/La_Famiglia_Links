@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-24T22:32:01Z",
+  "updated_at": "2026-05-26T22:10:32Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -5545,7 +5545,6 @@
         "smartwatch multiesporte"
       ],
       "quick_home": true,
-      "quick_home_order": 3,
       "_source_issue_number": 223,
       "_target_issue_number": 64
     },
@@ -9117,7 +9116,7 @@
       "promo_text": "Preço conferido no Mercado Livre. Pode mudar sem aviso.",
       "buy_cta": "Comprar no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -9158,6 +9157,79 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1ox9T41",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDohJm4X1gyAfIYFZB6lB%2Bt9iE84pIN7TXSOSUbUlxhHBV4Znf5y2GFTECuun81X1cs9IRLBeIMztyk%2FHqkf6Cnbpm8ju6dPCYulH%2FpB8so8pSr2d0tmZk5v4UM51xeayiDGjaDuR4w8rt3Cr8avYOe1ohxANmFl2Kms%2Bh3Y5DMHFMPZHz%2FpjCbC1Nf%2BCX572bD2v5o%3D",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "extrator-facial-xn-8030-4-bicos",
+      "title": "Extrator de Cravos e Espinhas Facial Elétrico XN-8030 com 4 Bicos",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Skincare",
+        "Limpeza Facial",
+        "Removedor de Cravos",
+        "XN-8030",
+        "Recarregável USB"
+      ],
+      "id_busca": "5J5PKG-ZDRZ",
+      "open_url": "https://meli.la/2nC1PpG",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFmDnqZf95r89M0o74Vy6Aqg0fQSucQiiCxuakkEfARPQFz2p706L02N6ZoFPvggj5MJf%2Fx7golQEEkaj%2Fg4pUNDKw4qPjLiygg6Tc6MzVIFagbaV5BrrUO5JBSaAqStAZ9v7QbXGCMIwSNDN8jmzbFb%2FH0JfDVYUJXGu9F03pvGDZO3O9YSTLnBaqFgaCjDsZpGrIAfAxUbEo5t",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ZDRZ",
+      "image": "https://github.com/user-attachments/assets/ea537b2b-c68b-44f1-8a21-38328cea571b",
+      "images": [
+        "https://github.com/user-attachments/assets/8f0b77be-6ecf-459a-8153-5c1a940406f8",
+        "https://github.com/user-attachments/assets/6811d3ec-a606-467f-ba7c-36512164e4f6",
+        "https://github.com/user-attachments/assets/ba5b58f8-88d0-4b1c-8a24-c1d777685d6f",
+        "https://github.com/user-attachments/assets/69804e11-922f-4934-ad6a-b6b2245b3cc9",
+        "https://github.com/user-attachments/assets/01d9b828-cf4c-449d-8e3c-6bfb2b7a5a55"
+      ],
+      "price_text": "R$ 32,60",
+      "old_price_text": "R$ 35,90",
+      "discount_text": "9% OFF",
+      "price_checked_at": "26/05/2026",
+      "promo_text": "Preço conferido no Mercado Livre. Pode mudar sem aviso. Oferta válida enquanto estiver disponível.",
+      "buy_cta": "Comprar com desconto no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 227,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/227",
+      "issue_title": "Extrator Facial XN-8030 4 Bicos",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Tratamentos de Beleza",
+        "Aparelhos de Cosmetologia",
+        "Removedores de Cravos",
+        "Sugadores de Cravos",
+        "Skincare"
+      ],
+      "aliases_busca": [
+        "extrator de cravos",
+        "removedor de cravos",
+        "sugador de cravos",
+        "limpeza facial",
+        "limpador de poros",
+        "aparelho de sucção facial",
+        "extrator facial",
+        "xn-8030",
+        "xn8030",
+        "4 bicos",
+        "recarregável usb",
+        "skincare"
+      ],
+      "quick_home": true,
+      "quick_home_order": 3,
+      "_source_issue_number": 227,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2nC1PpG",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFmDnqZf95r89M0o74Vy6Aqg0fQSucQiiCxuakkEfARPQFz2p706L02N6ZoFPvggj5MJf%2Fx7golQEEkaj%2Fg4pUNDKw4qPjLiygg6Tc6MzVIFagbaV5BrrUO5JBSaAqStAZ9v7QbXGCMIwSNDN8jmzbFb%2FH0JfDVYUJXGu9F03pvGDZO3O9YSTLnBaqFgaCjDsZpGrIAfAxUbEo5t",
       "last_checked": "",
       "last_ok": ""
     }
