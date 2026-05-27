@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-05-26T22:16:46Z",
-  "total_items": 0,
+  "updated_at": "2026-05-27T04:47:56Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-05-27T04:42:00Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 51,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51",
+      "issue_title": "[CMS] Produto: Fita LED 5m Smart Wi-Fi RGB (Alexa/Google) + Fonte",
+      "sku": "fita-led-5m-smart-wifi-rgb-alexa-google-fonte",
+      "title": "Fita Led 5m Smart Wi-fi Rgb Inteligente Alexa Google + Fonte",
+      "id_busca": "5J5PKG-F3MC",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (36x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1KTRYBS",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1KTRYBS",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM6lchADpznaGKoNliepS%2FDTY7DTqmZ3dC07Oeuc6l8mAVPlYH2KiVKMcSlzX9r81sRIeXE5Sklg2EnrtIGIwV3iv3E3Kylxwe03Iihv4fndQlv54K4bO5M4f1WrR4sa%2F36FmiAOQW6yTDKSV%2FjSr5cBD6fyPJ2DSHhW2rVc7Z8L8S1NmdNNz5SPzZDmUV5ElmJQNy4%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM6lchADpznaGKoNliepS%2FDTY7DTqmZ3dC07Oeuc6l8mAVPlYH2KiVKMcSlzX9r81sRIeXE5Sklg2EnrtIGIwV3iv3E3Kylxwe03Iihv4fndQlv54K4bO5M4f1WrR4sa%2F36FmiAOQW6yTDKSV%2FjSr5cBD6fyPJ2DSHhW2rVc7Z8L8S1NmdNNz5SPzZDmUV5ElmJQNy4%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM6lchADpznaGKoNliepS%2FDTY7DTqmZ3dC07Oeuc6l8mAVPlYH2KiVKMcSlzX9r81sRIeXE5Sklg2EnrtIGIwV3iv3E3Kylxwe03Iihv4fndQlv54K4bO5M4f1WrR4sa%2F36FmiAOQW6yTDKSV%2FjSr5cBD6fyPJ2DSHhW2rVc7Z8L8S1NmdNNz5SPzZDmUV5ElmJQNy4%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Fita LED",
+        "RGB",
+        "Wi-Fi",
+        "Alexa",
+        "Google",
+        "Smart Home",
+        "5m"
+      ]
+    }
+  ]
 }
