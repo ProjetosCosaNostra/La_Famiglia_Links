@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-27T16:09:29Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-05-27T20:32:04Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,24 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-27T16:04:53Z
+Quando: 2026-05-27T20:27:02Z
+SKU: se-j-existir-usa-amazon-echo-pop-c2h4r9-2
+Título: Echo Pop Smart Speaker (Alexa) — Preto (Amazon)
+ID ML: 5J5PKG-ZMR8
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 22 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Achados do Dia, Alexa, Echo Pop, Smart Speaker, Casa inteligente, Wi-Fi, Bluetooth, Preto
+open_url: https://mercadolivre.com/sec/19Abme6
+checked_url: https://mercadolivre.com/sec/19Abme6
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZMR8&tid=4859dfe6-8a08-4249-ac82-57085079ea12
+
+[ALTA] review_only_storefront
+Quando: 2026-05-27T20:27:02Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -35,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (38x /lists, 0x listing)
+Memória operacional: histórico recorrente (39x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://meli.la/1KTRYBS
 checked_url: https://meli.la/1KTRYBS
