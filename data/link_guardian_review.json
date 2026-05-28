@@ -1,22 +1,67 @@
 {
-  "updated_at": "2026-05-28T10:27:16Z",
-  "total_items": 2,
+  "updated_at": "2026-05-28T16:29:29Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 3
     },
-    "high_priority": 2
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-05-28T10:20:45Z",
+      "happened_at": "2026-05-28T16:19:47Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 63,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/63",
+      "issue_title": "[CMS] Produto: Gimbal DJI Osmo Mobile SE (Estabilizador Celular)",
+      "sku": "gimbal-dji-osmo-mobile-se",
+      "title": "Gimbal DJI Osmo Mobile SE — Estabilizador para Celular (Reels/Filmagem)",
+      "id_busca": "5J5PKG-C1TY",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1bsuctK",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1bsuctK",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=62c0d095-ed86-4b15-b057-74a48b16c075",
+      "short_url": "https://meli.la/1bsuctK",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Creator",
+        "Gimbal",
+        "Estabilizador",
+        "Filmagem",
+        "Reels",
+        "TikTok",
+        "Vídeo"
+      ]
+    },
+    {
+      "happened_at": "2026-05-28T16:19:47Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-05-28T10:20:45Z",
+      "happened_at": "2026-05-28T16:19:47Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

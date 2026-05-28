@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-28T10:27:16Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-05-28T16:29:29Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-28T10:20:45Z
+Quando: 2026-05-28T16:19:47Z
+Issue: #63
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/63
+SKU: gimbal-dji-osmo-mobile-se
+Título: Gimbal DJI Osmo Mobile SE — Estabilizador para Celular (Reels/Filmagem)
+ID ML: 5J5PKG-C1TY
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Creator, Gimbal, Estabilizador, Filmagem, Reels, TikTok, Vídeo
+open_url: https://meli.la/1bsuctK
+checked_url: https://meli.la/1bsuctK
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=62c0d095-ed86-4b15-b057-74a48b16c075
+
+[ALTA] review_only_storefront
+Quando: 2026-05-28T16:19:47Z
 Issue: #34
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
 SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
 open_url: https://mercadolivre.com/sec/2q8tzpj
 checked_url: https://mercadolivre.com/sec/2q8tzpj
@@ -43,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
 
 [ALTA] review_only_storefront
-Quando: 2026-05-28T10:20:45Z
+Quando: 2026-05-28T16:19:47Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Memória operacional: histórico recorrente (25x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://mercadolivre.com/sec/13oLgYK
 checked_url: https://mercadolivre.com/sec/13oLgYK
