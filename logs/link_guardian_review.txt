@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-29T15:27:14Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-05-29T16:09:12Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-29T15:21:19Z
-Issue: #92
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/92
-SKU: kit-10-panos-copa-felpudos-41x64-estampados
-Título: Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)
-ID ML: 5J5PKG-URBN
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 1x listing)
-Badges: Achados do Dia, Cozinha, Pano de Copa, Pano de Prato, Têxteis de Cozinha, Kit 10, Felpudo, Estampados
-open_url: https://meli.la/2tA4Gqh
-checked_url: https://meli.la/2tA4Gqh
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982
-
-[ALTA] review_only_storefront
-Quando: 2026-05-29T15:21:19Z
+Quando: 2026-05-29T16:02:48Z
 Issue: #63
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/63
 SKU: gimbal-dji-osmo-mobile-se
@@ -54,28 +35,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Creator, Gimbal, Estabilizador, Filmagem, Reels, TikTok, Vídeo
 open_url: https://meli.la/1bsuctK
 checked_url: https://meli.la/1bsuctK
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=62c0d095-ed86-4b15-b057-74a48b16c075
-
-[ALTA] review_only_storefront
-Quando: 2026-05-29T15:21:19Z
-Issue: #120
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/120
-SKU: headset-gamer-jbl-quantum-100-preto
-Título: Headset Gamer JBL Quantum 100 com Microfone - Preto
-ID ML: 5J5PKG-YRGV
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 1x listing)
-Badges: Achados do Dia, Headset Gamer, JBL, Quantum 100, Com fio, Microfone, Preto, Gamer
-open_url: https://meli.la/2KwjYue
-checked_url: https://meli.la/2KwjYue
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YRGV&tid=01086582-ae9c-45c2-a163-eb7921854dcb
