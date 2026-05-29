@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-28T20:39:30Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-05-29T10:15:48Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-28T20:33:38Z
+Quando: 2026-05-29T10:10:04Z
 Issue: #63
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/63
 SKU: gimbal-dji-osmo-mobile-se
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Creator, Gimbal, Estabilizador, Filmagem, Reels, TikTok, Vídeo
 open_url: https://meli.la/1bsuctK
 checked_url: https://meli.la/1bsuctK
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=62c0d095-ed86-4b15-b057-74a48b16c075
 
 [ALTA] review_only_storefront
-Quando: 2026-05-28T20:33:38Z
+Quando: 2026-05-29T10:10:04Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -54,9 +54,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (26x /lists, 0x listing)
+Memória operacional: histórico recorrente (27x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://mercadolivre.com/sec/13oLgYK
 checked_url: https://mercadolivre.com/sec/13oLgYK
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
+
+[ALTA] review_only_storefront
+Quando: 2026-05-29T10:10:04Z
+Issue: #24
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/24
+SKU: xiaomi-mi-band-8-active-sport
+Título: ⌚👑 Xiaomi Smart Band 9 Active Global
+ID ML: 5J5PKG-V23P
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Tecnologia, Xiaomi, Smart Band 9, Smartwatch, Pulseira Inteligente, Versão Global, Fitness
+open_url: https://meli.la/2vfkeqn
+checked_url: https://meli.la/2vfkeqn
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIE4%2FBURfQXlnuOzPFxNnD7fyvQvRJIB0koXB9YmWfStojUuOuQTgqR5VliqgXoGvGej3Bg69INKyAH%2FUqXFhq3dtnwGysWwenMRm9h53%2BmC9CW401Ry7BnVGdiqs4yvOf03SM6UD2vasuvZbElgA1iLjosDrjoKBtQcmEc9o2Jxu12%2BWV6s7D9lFrONoHzaoDBFQg%3D%3D
