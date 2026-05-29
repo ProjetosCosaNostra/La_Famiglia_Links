@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-05-29T10:15:48Z
+Atualizado em: 2026-05-29T15:27:14Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-05-29T10:10:04Z
+Quando: 2026-05-29T15:21:19Z
+Issue: #92
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/92
+SKU: kit-10-panos-copa-felpudos-41x64-estampados
+Título: Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)
+ID ML: 5J5PKG-URBN
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 1x listing)
+Badges: Achados do Dia, Cozinha, Pano de Copa, Pano de Prato, Têxteis de Cozinha, Kit 10, Felpudo, Estampados
+open_url: https://meli.la/2tA4Gqh
+checked_url: https://meli.la/2tA4Gqh
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982
+
+[ALTA] review_only_storefront
+Quando: 2026-05-29T15:21:19Z
 Issue: #63
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/63
 SKU: gimbal-dji-osmo-mobile-se
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Creator, Gimbal, Estabilizador, Filmagem, Reels, TikTok, Vídeo
 open_url: https://meli.la/1bsuctK
 checked_url: https://meli.la/1bsuctK
@@ -43,39 +62,20 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=62c0d095-ed86-4b15-b057-74a48b16c075
 
 [ALTA] review_only_storefront
-Quando: 2026-05-29T10:10:04Z
-Issue: #48
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
-SKU: lixeira-inteligente-sensor-automatica-16l-preta
-Título: Lixeira Inteligente com Sensor Automático 16L — Abre sem tocar (Preta)
-ID ML: 5J5PKG-CCY5
+Quando: 2026-05-29T15:21:19Z
+Issue: #120
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/120
+SKU: headset-gamer-jbl-quantum-100-preto
+Título: Headset Gamer JBL Quantum 100 com Microfone - Preto
+ID ML: 5J5PKG-YRGV
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (27x /lists, 0x listing)
-Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
-open_url: https://mercadolivre.com/sec/13oLgYK
-checked_url: https://mercadolivre.com/sec/13oLgYK
+Memória operacional: histórico recorrente (4x /lists, 1x listing)
+Badges: Achados do Dia, Headset Gamer, JBL, Quantum 100, Com fio, Microfone, Preto, Gamer
+open_url: https://meli.la/2KwjYue
+checked_url: https://meli.la/2KwjYue
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
-
-[ALTA] review_only_storefront
-Quando: 2026-05-29T10:10:04Z
-Issue: #24
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/24
-SKU: xiaomi-mi-band-8-active-sport
-Título: ⌚👑 Xiaomi Smart Band 9 Active Global
-ID ML: 5J5PKG-V23P
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Tecnologia, Xiaomi, Smart Band 9, Smartwatch, Pulseira Inteligente, Versão Global, Fitness
-open_url: https://meli.la/2vfkeqn
-checked_url: https://meli.la/2vfkeqn
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIE4%2FBURfQXlnuOzPFxNnD7fyvQvRJIB0koXB9YmWfStojUuOuQTgqR5VliqgXoGvGej3Bg69INKyAH%2FUqXFhq3dtnwGysWwenMRm9h53%2BmC9CW401Ry7BnVGdiqs4yvOf03SM6UD2vasuvZbElgA1iLjosDrjoKBtQcmEc9o2Jxu12%2BWV6s7D9lFrONoHzaoDBFQg%3D%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YRGV&tid=01086582-ae9c-45c2-a163-eb7921854dcb
