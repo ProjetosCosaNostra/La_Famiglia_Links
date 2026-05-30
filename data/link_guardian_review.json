@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-30T14:02:49Z",
+  "updated_at": "2026-05-30T19:42:10Z",
   "total_items": 1,
   "summary": {
     "unique_skus": 1,
@@ -16,7 +16,7 @@
   },
   "items": [
     {
-      "happened_at": "2026-05-30T13:58:25Z",
+      "happened_at": "2026-05-30T19:37:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (31x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
