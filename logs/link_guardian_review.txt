@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-02T10:54:44Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-06-02T16:55:44Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-02T10:50:20Z
+Quando: 2026-06-02T16:49:43Z
 Issue: #153
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/153
 SKU: corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (14x /lists, 0x listing)
+Memória operacional: histórico recorrente (15x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Ruby Rose, Stay Fix, Corretivo, Alta Cobertura, Premium
 open_url: https://meli.la/1XoHJ5m
 checked_url: https://meli.la/1XoHJ5m
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGssi0F5bljEQd%2FCYQBHrE5QHj0bw2CF55V6Ju6ioXlMZhx8%2FCyAw2MbE%2Bt8Tc1l%2B7r7bG%2F9jXZWr09Xj6fHBaQlvODD07M99Ye1Bv11Ue4cX19o1fOL7IE1%2BIBK%2FTDoRW7tVHh%2BiuoFbOURS0YqJkw7aa74dDIykE%2FRvLJzQys%2FXRLLUqG%2BzopOWTYM44lZ7oP00Q%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-02T10:50:20Z
+Quando: 2026-06-02T16:49:43Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (31x /lists, 2x listing)
+Memória operacional: histórico recorrente (32x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/2XpRLtA
 checked_url: https://meli.la/2XpRLtA
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-06-02T10:50:20Z
+Quando: 2026-06-02T16:49:43Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -73,28 +73,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (39x /lists, 0x listing)
+Memória operacional: histórico recorrente (40x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://mercadolivre.com/sec/13oLgYK
 checked_url: https://mercadolivre.com/sec/13oLgYK
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
-
-[ALTA] review_only_storefront
-Quando: 2026-06-02T10:50:20Z
-Issue: #51
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
-SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
-Título: Fita Led 5m Smart Wi-fi Rgb Inteligente Alexa Google + Fonte
-ID ML: 5J5PKG-F3MC
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (45x /lists, 0x listing)
-Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
-open_url: https://meli.la/1KTRYBS
-checked_url: https://meli.la/1KTRYBS
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
