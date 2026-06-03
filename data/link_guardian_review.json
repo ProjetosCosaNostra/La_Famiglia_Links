@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-06-03T05:10:17Z",
-  "total_items": 4,
+  "updated_at": "2026-06-03T11:33:43Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 4,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 4
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 4
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 4
+      "trocar_link": 5
     },
-    "high_priority": 4
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-06-03T05:03:37Z",
+      "happened_at": "2026-06-03T11:19:29Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (18x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,52 +61,52 @@
       ]
     },
     {
-      "happened_at": "2026-06-03T05:03:37Z",
+      "happened_at": "2026-06-03T11:19:29Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
-      "issue_number": 123,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123",
-      "issue_title": "[CMS] Produto: Smart Box Proeletronic Smartpro 16GB 4K HD Preto",
-      "sku": "smart-box-proeletronic-smartpro-16gb-4k-hd-preto",
-      "title": "Smart Box Proeletronic Smartpro 16GB 4K HD com Controle Remoto - Preto",
-      "id_busca": "5J5PKG-XJE6",
+      "issue_number": 100,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/100",
+      "issue_title": "Kit 4 Formas de Gelo com Tampa — Silicone",
+      "sku": "kit-4-formas-gelo-tampa-silicone",
+      "title": "Kit 4 Formas de Gelo com Tampa — Silicone (Fundo Flexível + Tampa Rígida)",
+      "id_busca": "5J5PKG-PZ8V",
       "status": 200,
       "reason": "storefront_social_lists_invalid",
       "reason_bucket": "storefront_social_lists_invalid",
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
       "action_suggested": "trocar_link",
       "needs_manual_check": true,
-      "checked_url": "https://meli.la/28cnKAr",
+      "checked_url": "https://meli.la/19fvuVX",
       "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/28cnKAr",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL88f9oJPB5pGVzFXYaFrp9B%2FyILUcOcggZLYT6Bu99KRVL4MYAxq%2BMJaLqTBJVlx9TInlGfCkFd5vvuu4UrE%2BYpGFp5aNcyue%2FZ6WTd50p1zCkKtszzgXvTLE%2B36sgqkJDGya57NzJ8eIq13rKo5kZt2qxrxOOatsvHAFdKl59ZIULS4Evh2lqz%2BYkWVVH8NCuDtxg%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93",
-      "short_url": "https://meli.la/28cnKAr",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL88f9oJPB5pGVzFXYaFrp9B%2FyILUcOcggZLYT6Bu99KRVL4MYAxq%2BMJaLqTBJVlx9TInlGfCkFd5vvuu4UrE%2BYpGFp5aNcyue%2FZ6WTd50p1zCkKtszzgXvTLE%2B36sgqkJDGya57NzJ8eIq13rKo5kZt2qxrxOOatsvHAFdKl59ZIULS4Evh2lqz%2BYkWVVH8NCuDtxg%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL88f9oJPB5pGVzFXYaFrp9B%2FyILUcOcggZLYT6Bu99KRVL4MYAxq%2BMJaLqTBJVlx9TInlGfCkFd5vvuu4UrE%2BYpGFp5aNcyue%2FZ6WTd50p1zCkKtszzgXvTLE%2B36sgqkJDGya57NzJ8eIq13rKo5kZt2qxrxOOatsvHAFdKl59ZIULS4Evh2lqz%2BYkWVVH8NCuDtxg%3D",
+      "open_url": "https://meli.la/19fvuVX",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PZ8V",
+      "short_url": "https://meli.la/19fvuVX",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
       "active": true,
       "featured": false,
       "smart_categories": [],
       "badges": [
         "Achados do Dia",
-        "Smart Box",
-        "Proeletronic",
-        "Smartpro",
-        "16GB",
-        "4K HD",
-        "Streaming",
-        "WiFi"
+        "Cozinha",
+        "Formas de Gelo",
+        "Silicone",
+        "Tampa Rígida",
+        "Fundo Flexível",
+        "Empilhável",
+        "Freezer"
       ]
     },
     {
-      "happened_at": "2026-06-03T05:03:37Z",
+      "happened_at": "2026-06-03T11:19:29Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (34x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (35x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +151,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-03T05:03:37Z",
+      "happened_at": "2026-06-03T11:19:29Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (42x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (43x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -193,6 +193,50 @@
         "Lixeira Inteligente",
         "Sensor",
         "Automática"
+      ]
+    },
+    {
+      "happened_at": "2026-06-03T11:19:29Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 198,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198",
+      "issue_title": "Body Splash My Sweet Delight - Barbour's Beauty - 200ml",
+      "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
+      "title": "Body Splash Barbour’s Beauty My Sweet Delight para Mulheres 200 mL",
+      "id_busca": "5J5PKG-GK4R",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (40x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1ZsJi9w",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1ZsJi9w",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-R4BJ",
+      "short_url": "https://meli.la/2SekHEZ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGxI26UE9mYal3WXDqr0gjXcnCEQAtlGeEzrGQ0BBOZzCcxiUBbO7BsKdTm425Y90URQA1eW%2B0V7vNzLZanZsZF1rm%2FdTWNc2wgXzlFlLr33%2Ffo5dRkpdyMpMeKeogXsdznU3sxwAzd8JnDCdNI1Pf9dTWK5rvuVUB%2FOkAT7C379C8gh8koRFo5XO0zLTvL1dH6wrA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Body Splash",
+        "Perfume Feminino",
+        "Floral",
+        "200ml",
+        "Barbour's Beauty",
+        "Autocuidado"
       ]
     }
   ]
