@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-05T10:10:35Z
-Itens pendentes: 6
-SKUs únicos: 6
-Prioridade alta: 6
+Atualizado em: 2026-06-05T15:27:35Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 6
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 6
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 6
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-05T10:06:09Z
-Issue: #34
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
-SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
-Título: Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta
-ID ML: 5J5PKG-WXZ9
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
-Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
-open_url: https://mercadolivre.com/sec/2q8tzpj
-checked_url: https://mercadolivre.com/sec/2q8tzpj
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
-
-[ALTA] review_only_storefront
-Quando: 2026-06-05T10:06:09Z
+Quando: 2026-06-05T15:22:59Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -54,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (43x /lists, 2x listing)
+Memória operacional: histórico recorrente (44x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/2XpRLtA
 checked_url: https://meli.la/2XpRLtA
@@ -62,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-06-05T10:06:09Z
+Quando: 2026-06-05T15:22:59Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -73,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (51x /lists, 0x listing)
+Memória operacional: histórico recorrente (52x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://mercadolivre.com/sec/13oLgYK
 checked_url: https://mercadolivre.com/sec/13oLgYK
@@ -81,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-06-05T10:06:09Z
+Quando: 2026-06-05T15:22:59Z
 Issue: #184
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/184
 SKU: ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto
@@ -92,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Ruby Rose, Maquiagem, Delineador, Olhos, Preto, Efeito Matte
 open_url: https://meli.la/1za7yQv
 checked_url: https://meli.la/1za7yQv
@@ -100,26 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PATQ
 
 [ALTA] review_only_storefront
-Quando: 2026-06-05T10:06:09Z
-Issue: #194
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
-SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
-Título: Bolsa Feminina Grande Mochila Antifurto Impermeável Reforçada
-ID ML: 5J5PKG-4RAF
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
-Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
-open_url: https://meli.la/2g94WcQ
-checked_url: https://meli.la/2g94WcQ
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
-
-[ALTA] review_only_storefront
-Quando: 2026-06-05T10:06:09Z
+Quando: 2026-06-05T15:22:59Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -130,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (48x /lists, 0x listing)
+Memória operacional: histórico recorrente (49x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/1ZsJi9w
 checked_url: https://meli.la/1ZsJi9w
