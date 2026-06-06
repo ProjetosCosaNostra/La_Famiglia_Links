@@ -1,63 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-06T20:04:02Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-06-06T23:32:44Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 2
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 2
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_listing_invalid: 1
-- storefront_social_lists_invalid: 1
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-06-06T19:41:59Z
-Issue: #37
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
-SKU: projetor-smart-hy320-goodvision
-Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
-ID ML: 5J5PKG-D9EV
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (30x /lists, 0x listing)
-Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
-open_url: https://meli.la/1YAEmtS
-checked_url: https://meli.la/1YAEmtS
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
-
-[ALTA] review_only_storefront
-Quando: 2026-06-06T19:41:59Z
-Issue: #225
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/225
-SKU: kit-5-mini-frascos-porta-perfume-recarregaveis-spray-5ml
-Título: Kit com 5 Mini Frascos Porta Perfume Recarregáveis Spray 5ml
-ID ML: 5J5PKG-RPA7
-Ação sugerida: trocar_link
-Motivo: storefront_listing_invalid
-Bucket do motivo: fallback para lista/busca
-Status HTTP: 200
-Confiança: 29 (invalido)
-Memória operacional: histórico recorrente (0x /lists, 1x listing)
-Badges: Achados do Dia, Beleza, Perfume, Porta Perfume, Recarregável, Kit 5 Unidades, 5ml, Portátil
-open_url: https://meli.la/2r1hGf6
-checked_url: https://lista.mercadolivre.com.br/5J5PKG-RPA7
-final_url: https://lista.mercadolivre.com.br/5J5PKG-RPA7
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-RPA7
+Nenhum item pendente de revisão/manutenção no momento.
