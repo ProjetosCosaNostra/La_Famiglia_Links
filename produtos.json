@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-29T20:20:21Z",
+  "updated_at": "2026-06-06T23:21:40Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -9072,7 +9072,6 @@
         "fragrância portátil"
       ],
       "quick_home": true,
-      "quick_home_order": 1,
       "_source_issue_number": 225,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2r1hGf6",
@@ -9268,7 +9267,7 @@
       "promo_text": "Preço conferido no Mercado Livre. Pode mudar sem aviso.",
       "buy_cta": "Comprar agora no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -9309,6 +9308,78 @@
       "_target_issue_number": 0,
       "short_url": "https://meli.la/291jPnZ",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMx4AzSAd4XwPkms7gYtOEbvwah1FDIyy%2F6CmfQLv3%2BXo8CBpKopyLtFh7zwDI4kvmzGHK25QKijcE342%2Fbk%2FxVfJZRgpumtQOFMx26EyXqQ9xfZHTIKJJKpgHs%2Fkss1I5mCr1nA6pbeCSfixVoDO7emXr2WKioJtyjxFI6Ro6UAgtEm%2FfUDrxoXRRtyYdF2w2oXoyY%3D",
+      "last_checked": "",
+      "last_ok": ""
+    },
+    {
+      "sku": "paleta-mystic-glow-ruby-rose",
+      "title": "💖✨ Paleta Mystic Glow Ruby Rose — 18 Tons Para Iluminar Seu Olhar",
+      "badges": [
+        "Seleção do Dia",
+        "Ruby Rose",
+        "Mystic Glow",
+        "Paleta de Sombras",
+        "Maquiagem",
+        "18 Cores",
+        "Beleza Feminina",
+        "Achados do Dia",
+        "Mercado Livre"
+      ],
+      "id_busca": "5J5PKG-QC18",
+      "open_url": "https://meli.la/2JFYs3x",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOwS3g0dgmFHLJwitmQD6l4v9x6OkiielDk0%2FcjZ%2BKdHLoPFrq%2BajkECoShyTvIIrJ4IvhmEGRjvd0u%2BiEvSl3W38iGoLKb7HyLudUAUf7h4JDX6U%2FH1ezPztACyfZRoGCWpWeK3JFVD16jcr%2Bvt6yshhPGf9ufPCUru201NAGU2dnPF8B%2F%2BYkxlVUN8YkFU7LsMm9I%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-QC18",
+      "image": "https://github.com/user-attachments/assets/e853aa6b-8267-4586-b5c1-3ad0b76ad6dd",
+      "images": [
+        "https://github.com/user-attachments/assets/8e42b752-d5b1-4704-b5d0-1768e456326e",
+        "https://github.com/user-attachments/assets/15b3cb69-536b-482c-be19-3adf8b8317e1",
+        "https://github.com/user-attachments/assets/1ac69599-c90f-4e0f-a10f-5388418a202c",
+        "https://github.com/user-attachments/assets/a5b546c7-15ad-4ff4-a200-488828e59196"
+      ],
+      "price_text": "R$ 62,75",
+      "old_price_text": "_No response_",
+      "discount_text": "Mais vendido",
+      "price_checked_at": "06/06/2026",
+      "promo_text": "Preço conferido no Mercado Livre em 06/06/2026. Pode mudar sem aviso. Aproveite enquanto estiver disponível.",
+      "buy_cta": "Comprar com desconto no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 229,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/229",
+      "issue_title": "Paleta Mystic Glow Ruby Rose",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Olhos",
+        "Cílios e Sobrancelhas",
+        "Paleta de Sombras",
+        "Paleta Colorida Sombras"
+      ],
+      "aliases_busca": [
+        "paleta de sombras",
+        "mystic glow",
+        "ruby rose",
+        "paleta ruby rose",
+        "sombra colorida",
+        "paleta de maquiagem",
+        "paleta 18 cores",
+        "sombras cintilantes",
+        "maquiagem feminina",
+        "make brilho"
+      ],
+      "quick_home": true,
+      "quick_home_order": 1,
+      "_source_issue_number": 229,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2JFYs3x",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOwS3g0dgmFHLJwitmQD6l4v9x6OkiielDk0%2FcjZ%2BKdHLoPFrq%2BajkECoShyTvIIrJ4IvhmEGRjvd0u%2BiEvSl3W38iGoLKb7HyLudUAUf7h4JDX6U%2FH1ezPztACyfZRoGCWpWeK3JFVD16jcr%2Bvt6yshhPGf9ufPCUru201NAGU2dnPF8B%2F%2BYkxlVUN8YkFU7LsMm9I%3D",
       "last_checked": "",
       "last_ok": ""
     }
