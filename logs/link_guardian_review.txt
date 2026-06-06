@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-06T14:06:19Z
-Itens pendentes: 10
-SKUs únicos: 10
-Prioridade alta: 10
+Atualizado em: 2026-06-06T16:55:25Z
+Itens pendentes: 7
+SKUs únicos: 7
+Prioridade alta: 7
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 10
+- review_only_storefront: 7
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 10
+- trocar_link: 7
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 7
-- storefront_social_profile_unconfirmed: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
+Quando: 2026-06-06T16:51:00Z
 Issue: #113
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
 SKU: gamestick-premium-2-controles-wireless
@@ -36,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
 open_url: https://meli.la/2rJWgvj
 checked_url: https://meli.la/2rJWgvj
@@ -44,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
+Quando: 2026-06-06T16:51:00Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -55,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (48x /lists, 2x listing)
+Memória operacional: histórico recorrente (49x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/2XpRLtA
 checked_url: https://meli.la/2XpRLtA
@@ -63,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
+Quando: 2026-06-06T16:51:00Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -74,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (55x /lists, 0x listing)
+Memória operacional: histórico recorrente (56x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://mercadolivre.com/sec/13oLgYK
 checked_url: https://mercadolivre.com/sec/13oLgYK
@@ -82,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
+Quando: 2026-06-06T16:51:00Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -93,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (46x /lists, 0x listing)
+Memória operacional: histórico recorrente (47x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://meli.la/1KTRYBS
 checked_url: https://meli.la/1KTRYBS
@@ -101,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
 
 [ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
+Quando: 2026-06-06T16:51:00Z
 Issue: #184
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/184
 SKU: ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto
@@ -112,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Ruby Rose, Maquiagem, Delineador, Olhos, Preto, Efeito Matte
 open_url: https://meli.la/1za7yQv
 checked_url: https://meli.la/1za7yQv
@@ -120,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PATQ
 
 [ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
+Quando: 2026-06-06T16:51:00Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -131,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/2g94WcQ
 checked_url: https://meli.la/2g94WcQ
@@ -139,7 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
 
 [ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
+Quando: 2026-06-06T16:51:00Z
 Issue: #198
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/198
 SKU: body-splash-my-sweet-delight-barbours-beauty-200ml
@@ -150,65 +149,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (53x /lists, 0x listing)
+Memória operacional: histórico recorrente (54x /lists, 0x listing)
 Badges: Achados do Dia, Body Splash, Perfume Feminino, Floral, 200ml, Barbour's Beauty, Autocuidado
 open_url: https://meli.la/1ZsJi9w
 checked_url: https://meli.la/1ZsJi9w
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-R4BJ
-
-[ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
-Issue: #202
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/202
-SKU: espelho-led-dobravel-maquiagem-rosto-make
-Título: Espelho LED Dobrável de Maquiagem Rosto Make
-ID ML: 5J5PKG-U8G2
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Beleza, Maquiagem, Skincare, LED, Dobrável, Portátil, Feminino
-open_url: https://meli.la/2zDAba1
-checked_url: https://meli.la/2zDAba1
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJ7khsJitPhN4bpwIfMRzme754KC%2BtR1Lqnrd%2BZQshugMUJUvmhDLD2YVOtDJkIszbcLRIkRO2b%2F%2BBFBkpewYPtdHRDAq%2FAt3PQj5xkKZv9JzTFmk3bl936c1Lp7TJKaDx0%2B86rFz8X4mFY0vz8L1goCdto7fs8nv%2FbymHl7PVfAvmsgTPfxp%2F4QfGQrHBbEmwKMIefhYaSCpm0FVkATFWM6CjXn2ZT57kbXJw%3D%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-U8G2
-
-[ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
-Issue: #205
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/205
-SKU: coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador
-Título: Coletor de Pó Nail Designer 4500rpm 100w Sugador Aspirador
-ID ML: 5J5PKG-7K5Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 500
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Manicure, Nail Designer, Coletor de Pó, Aspirador de Pó, Sugador de Pó, 100W
-open_url: https://meli.la/1TXqzvA
-checked_url: https://meli.la/1TXqzvA
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIOnkM4PpBcjWvVwXfAZkrlg0ySAkpO43mCb1QUlwnbK159avXzrVDv%2B8hnME%2BRagUo3Svj%2BdPo5CJNkUx8uWbYV%2BcPlGwM2IXqluJetHpnLoSlIABUsTecadCBa5%2FEu9%2BSnfAVUj1wDadJTpbiBSsqY9UT%2Bqh78xPYEswOtFBvk%2Bw3wCD%2FCb2nNMmrLAiziWnKxgA%3D%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-7K5Q
-
-[ALTA] review_only_storefront
-Quando: 2026-06-06T14:01:43Z
-Issue: #210
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210
-SKU: limpador-eletrico-pinceis-maquiagem-automatico-usb
-Título: Limpador Elétrico de Pincéis de Maquiagem Automático USB
-ID ML: 5J5PKG-016F
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Cuidado Pessoal, USB, Automático, Higiene, Pincéis
-open_url: https://meli.la/2xj3hnt
-checked_url: https://meli.la/2xj3hnt
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAzoQqx4TUjaqnNaOoXM6XwyaTX%2FCL0WyLVep60mRtOcRdYhLq%2BmvwoWvyhw5nLQAUklnpeiQ24rtyOCrNKoaJT9Dbj2IUWW%2BU%2FlD%2BqOEE9FWTI4XdP97L9uxuhgIOlT0K1he5KYjNF86n1bW0mcB4Tuz7%2Fdj6LYVCPw8pSH9WebHoJKz5z9KAi2wW5RWK1vyCS4Xje2JTFInGXcWA%3D%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-016F

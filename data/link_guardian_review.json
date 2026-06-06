@@ -1,23 +1,22 @@
 {
-  "updated_at": "2026-06-06T14:06:19Z",
-  "total_items": 10,
+  "updated_at": "2026-06-06T16:55:25Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 10,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 10
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7,
-      "storefront_social_profile_unconfirmed": 3
+      "storefront_social_lists_invalid": 7
     },
     "by_action": {
-      "trocar_link": 10
+      "trocar_link": 7
     },
-    "high_priority": 10
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-06-06T14:01:43Z",
+      "happened_at": "2026-06-06T16:51:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -33,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-06T14:01:43Z",
+      "happened_at": "2026-06-06T16:51:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (48x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (49x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-06T14:01:43Z",
+      "happened_at": "2026-06-06T16:51:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (55x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (56x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -150,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-06T14:01:43Z",
+      "happened_at": "2026-06-06T16:51:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -166,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (46x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (47x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -195,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-06T14:01:43Z",
+      "happened_at": "2026-06-06T16:51:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -211,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -240,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-06T14:01:43Z",
+      "happened_at": "2026-06-06T16:51:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -256,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -285,7 +284,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-06T14:01:43Z",
+      "happened_at": "2026-06-06T16:51:00Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -301,7 +300,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (53x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (54x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -326,141 +325,6 @@
         "200ml",
         "Barbour's Beauty",
         "Autocuidado"
-      ]
-    },
-    {
-      "happened_at": "2026-06-06T14:01:43Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 202,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/202",
-      "issue_title": "Espelho LED Dobrável de Maquiagem Rosto Make",
-      "sku": "espelho-led-dobravel-maquiagem-rosto-make",
-      "title": "Espelho LED Dobrável de Maquiagem Rosto Make",
-      "id_busca": "5J5PKG-U8G2",
-      "status": 200,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2zDAba1",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJ7khsJitPhN4bpwIfMRzme754KC%2BtR1Lqnrd%2BZQshugMUJUvmhDLD2YVOtDJkIszbcLRIkRO2b%2F%2BBFBkpewYPtdHRDAq%2FAt3PQj5xkKZv9JzTFmk3bl936c1Lp7TJKaDx0%2B86rFz8X4mFY0vz8L1goCdto7fs8nv%2FbymHl7PVfAvmsgTPfxp%2F4QfGQrHBbEmwKMIefhYaSCpm0FVkATFWM6CjXn2ZT57kbXJw%3D%3D",
-      "open_url": "https://meli.la/2zDAba1",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJ7khsJitPhN4bpwIfMRzme754KC%2BtR1Lqnrd%2BZQshugMUJUvmhDLD2YVOtDJkIszbcLRIkRO2b%2F%2BBFBkpewYPtdHRDAq%2FAt3PQj5xkKZv9JzTFmk3bl936c1Lp7TJKaDx0%2B86rFz8X4mFY0vz8L1goCdto7fs8nv%2FbymHl7PVfAvmsgTPfxp%2F4QfGQrHBbEmwKMIefhYaSCpm0FVkATFWM6CjXn2ZT57kbXJw%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-U8G2",
-      "short_url": "https://meli.la/2zDAba1",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJ7khsJitPhN4bpwIfMRzme754KC%2BtR1Lqnrd%2BZQshugMUJUvmhDLD2YVOtDJkIszbcLRIkRO2b%2F%2BBFBkpewYPtdHRDAq%2FAt3PQj5xkKZv9JzTFmk3bl936c1Lp7TJKaDx0%2B86rFz8X4mFY0vz8L1goCdto7fs8nv%2FbymHl7PVfAvmsgTPfxp%2F4QfGQrHBbEmwKMIefhYaSCpm0FVkATFWM6CjXn2ZT57kbXJw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJ7khsJitPhN4bpwIfMRzme754KC%2BtR1Lqnrd%2BZQshugMUJUvmhDLD2YVOtDJkIszbcLRIkRO2b%2F%2BBFBkpewYPtdHRDAq%2FAt3PQj5xkKZv9JzTFmk3bl936c1Lp7TJKaDx0%2B86rFz8X4mFY0vz8L1goCdto7fs8nv%2FbymHl7PVfAvmsgTPfxp%2F4QfGQrHBbEmwKMIefhYaSCpm0FVkATFWM6CjXn2ZT57kbXJw%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Beleza",
-        "Maquiagem",
-        "Skincare",
-        "LED",
-        "Dobrável",
-        "Portátil",
-        "Feminino"
-      ]
-    },
-    {
-      "happened_at": "2026-06-06T14:01:43Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 205,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/205",
-      "issue_title": "Coletor de Pó Nail Designer 4500rpm 100w Sugador Aspirador",
-      "sku": "coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador",
-      "title": "Coletor de Pó Nail Designer 4500rpm 100w Sugador Aspirador",
-      "id_busca": "5J5PKG-7K5Q",
-      "status": 500,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1TXqzvA",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIOnkM4PpBcjWvVwXfAZkrlg0ySAkpO43mCb1QUlwnbK159avXzrVDv%2B8hnME%2BRagUo3Svj%2BdPo5CJNkUx8uWbYV%2BcPlGwM2IXqluJetHpnLoSlIABUsTecadCBa5%2FEu9%2BSnfAVUj1wDadJTpbiBSsqY9UT%2Bqh78xPYEswOtFBvk%2Bw3wCD%2FCb2nNMmrLAiziWnKxgA%3D%3D",
-      "open_url": "https://meli.la/1TXqzvA",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIOnkM4PpBcjWvVwXfAZkrlg0ySAkpO43mCb1QUlwnbK159avXzrVDv%2B8hnME%2BRagUo3Svj%2BdPo5CJNkUx8uWbYV%2BcPlGwM2IXqluJetHpnLoSlIABUsTecadCBa5%2FEu9%2BSnfAVUj1wDadJTpbiBSsqY9UT%2Bqh78xPYEswOtFBvk%2Bw3wCD%2FCb2nNMmrLAiziWnKxgA%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-7K5Q",
-      "short_url": "https://meli.la/1TXqzvA",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIOnkM4PpBcjWvVwXfAZkrlg0ySAkpO43mCb1QUlwnbK159avXzrVDv%2B8hnME%2BRagUo3Svj%2BdPo5CJNkUx8uWbYV%2BcPlGwM2IXqluJetHpnLoSlIABUsTecadCBa5%2FEu9%2BSnfAVUj1wDadJTpbiBSsqY9UT%2Bqh78xPYEswOtFBvk%2Bw3wCD%2FCb2nNMmrLAiziWnKxgA%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIOnkM4PpBcjWvVwXfAZkrlg0ySAkpO43mCb1QUlwnbK159avXzrVDv%2B8hnME%2BRagUo3Svj%2BdPo5CJNkUx8uWbYV%2BcPlGwM2IXqluJetHpnLoSlIABUsTecadCBa5%2FEu9%2BSnfAVUj1wDadJTpbiBSsqY9UT%2Bqh78xPYEswOtFBvk%2Bw3wCD%2FCb2nNMmrLAiziWnKxgA%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Beleza",
-        "Manicure",
-        "Nail Designer",
-        "Coletor de Pó",
-        "Aspirador de Pó",
-        "Sugador de Pó",
-        "100W"
-      ]
-    },
-    {
-      "happened_at": "2026-06-06T14:01:43Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 210,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210",
-      "issue_title": "Limpador Elétrico de Pincéis de Maquiagem Automático USB",
-      "sku": "limpador-eletrico-pinceis-maquiagem-automatico-usb",
-      "title": "Limpador Elétrico de Pincéis de Maquiagem Automático USB",
-      "id_busca": "5J5PKG-016F",
-      "status": 200,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2xj3hnt",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAzoQqx4TUjaqnNaOoXM6XwyaTX%2FCL0WyLVep60mRtOcRdYhLq%2BmvwoWvyhw5nLQAUklnpeiQ24rtyOCrNKoaJT9Dbj2IUWW%2BU%2FlD%2BqOEE9FWTI4XdP97L9uxuhgIOlT0K1he5KYjNF86n1bW0mcB4Tuz7%2Fdj6LYVCPw8pSH9WebHoJKz5z9KAi2wW5RWK1vyCS4Xje2JTFInGXcWA%3D%3D",
-      "open_url": "https://meli.la/2xj3hnt",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAzoQqx4TUjaqnNaOoXM6XwyaTX%2FCL0WyLVep60mRtOcRdYhLq%2BmvwoWvyhw5nLQAUklnpeiQ24rtyOCrNKoaJT9Dbj2IUWW%2BU%2FlD%2BqOEE9FWTI4XdP97L9uxuhgIOlT0K1he5KYjNF86n1bW0mcB4Tuz7%2Fdj6LYVCPw8pSH9WebHoJKz5z9KAi2wW5RWK1vyCS4Xje2JTFInGXcWA%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-016F",
-      "short_url": "https://meli.la/2xj3hnt",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAzoQqx4TUjaqnNaOoXM6XwyaTX%2FCL0WyLVep60mRtOcRdYhLq%2BmvwoWvyhw5nLQAUklnpeiQ24rtyOCrNKoaJT9Dbj2IUWW%2BU%2FlD%2BqOEE9FWTI4XdP97L9uxuhgIOlT0K1he5KYjNF86n1bW0mcB4Tuz7%2Fdj6LYVCPw8pSH9WebHoJKz5z9KAi2wW5RWK1vyCS4Xje2JTFInGXcWA%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAzoQqx4TUjaqnNaOoXM6XwyaTX%2FCL0WyLVep60mRtOcRdYhLq%2BmvwoWvyhw5nLQAUklnpeiQ24rtyOCrNKoaJT9Dbj2IUWW%2BU%2FlD%2BqOEE9FWTI4XdP97L9uxuhgIOlT0K1he5KYjNF86n1bW0mcB4Tuz7%2Fdj6LYVCPw8pSH9WebHoJKz5z9KAi2wW5RWK1vyCS4Xje2JTFInGXcWA%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Beleza",
-        "Maquiagem",
-        "Cuidado Pessoal",
-        "USB",
-        "Automático",
-        "Higiene",
-        "Pincéis"
       ]
     }
   ]
