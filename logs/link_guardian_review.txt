@@ -1,9 +1,62 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-07T14:16:21Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-06-07T19:47:56Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 2
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 2
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 2
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-06-07T19:42:48Z
+Issue: #154
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
+SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
+Título: Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores
+ID ML: 5J5PKG-YHPD
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
+open_url: https://meli.la/1iBx7VY
+checked_url: https://meli.la/1iBx7VY
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-06-07T19:42:48Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-D9EV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://meli.la/1YAEmtS
+checked_url: https://meli.la/1YAEmtS
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43

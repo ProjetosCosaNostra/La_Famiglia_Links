@@ -1,12 +1,107 @@
 {
-  "updated_at": "2026-06-07T14:16:21Z",
-  "total_items": 0,
+  "updated_at": "2026-06-07T19:47:56Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 2,
+    "by_state": {
+      "review_only_storefront": 2
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 2
+    },
+    "by_action": {
+      "trocar_link": 2
+    },
+    "high_priority": 2
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-06-07T19:42:48Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 154,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154",
+      "issue_title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis",
+      "sku": "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores",
+      "title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores",
+      "id_busca": "5J5PKG-YHPD",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1iBx7VY",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1iBx7VY",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "short_url": "https://meli.la/2ZTeVJ2",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Belle Angel",
+        "Nude",
+        "Paleta de Sombras"
+      ]
+    },
+    {
+      "happened_at": "2026-06-07T19:42:48Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 37,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
+      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
+      "sku": "projetor-smart-hy320-goodvision",
+      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
+      "id_busca": "5J5PKG-D9EV",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1YAEmtS",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1YAEmtS",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Projetor",
+        "Cinema em Casa",
+        "Wi-Fi",
+        "Android",
+        "Bluetooth",
+        "Full HD",
+        "HDMI"
+      ]
+    }
+  ]
 }
