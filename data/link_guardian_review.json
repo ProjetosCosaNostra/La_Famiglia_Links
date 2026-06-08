@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-06-08T16:16:53Z",
-  "total_items": 5,
+  "updated_at": "2026-06-08T20:34:20Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 6
     },
-    "high_priority": 5
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-06-08T16:11:33Z",
+      "happened_at": "2026-06-08T20:28:22Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T16:11:33Z",
+      "happened_at": "2026-06-08T20:28:22Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T16:11:33Z",
+      "happened_at": "2026-06-08T20:28:22Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -118,7 +118,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -145,7 +145,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T16:11:33Z",
+      "happened_at": "2026-06-08T20:28:22Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -161,7 +161,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -190,7 +190,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T16:11:33Z",
+      "happened_at": "2026-06-08T20:28:22Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -206,7 +206,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -232,6 +232,51 @@
         "Aspirador de Pó",
         "Sugador de Pó",
         "100W"
+      ]
+    },
+    {
+      "happened_at": "2026-06-08T20:28:22Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 228,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/228",
+      "issue_title": "Protetor de Calcanhar Silicone Doctor Z Gel Reutilizável Conforto",
+      "sku": "protetor-de-calcanhar-silicone-doctor-z-gel-reutilizavel-conforto",
+      "title": "Protetor de Calcanhar Silicone Doctor Z Gel Reutilizável Conforto",
+      "id_busca": "5J5PKG-RP3H",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/291jPnZ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/291jPnZ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMx4AzSAd4XwPkms7gYtOEbvwah1FDIyy%2F6CmfQLv3%2BXo8CBpKopyLtFh7zwDI4kvmzGHK25QKijcE342%2Fbk%2FxVfJZRgpumtQOFMx26EyXqQ9xfZHTIKJJKpgHs%2Fkss1I5mCr1nA6pbeCSfixVoDO7emXr2WKioJtyjxFI6Ro6UAgtEm%2FfUDrxoXRRtyYdF2w2oXoyY%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-RP3H",
+      "short_url": "https://meli.la/291jPnZ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMx4AzSAd4XwPkms7gYtOEbvwah1FDIyy%2F6CmfQLv3%2BXo8CBpKopyLtFh7zwDI4kvmzGHK25QKijcE342%2Fbk%2FxVfJZRgpumtQOFMx26EyXqQ9xfZHTIKJJKpgHs%2Fkss1I5mCr1nA6pbeCSfixVoDO7emXr2WKioJtyjxFI6Ro6UAgtEm%2FfUDrxoXRRtyYdF2w2oXoyY%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Moda & Acessórios",
+        "Cuidados com os Pés",
+        "Protetor de Calcanhar",
+        "Silicone Gel",
+        "Doctor Z",
+        "Conforto",
+        "Anti Atrito"
       ]
     }
   ]
