@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-06-08T04:59:16Z",
-  "total_items": 5,
+  "updated_at": "2026-06-08T11:18:46Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 3
     },
-    "high_priority": 5
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-06-08T04:54:58Z",
+      "happened_at": "2026-06-08T11:13:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,97 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T04:54:58Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 16,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/16",
-      "issue_title": "[CMS] Produto: Robô Aspirador WAP Robot W90 3 em 1 (Varre/Aspira/Passa Pano)",
-      "sku": "wap-robot-w90-3em1-preto",
-      "title": "Robô Aspirador WAP Robot W90 3 em 1 (Varre, Aspira e Passa Pano)",
-      "id_busca": "5J5PKG-TCW4",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/2J1MBX9",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/2J1MBX9",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGL72D3oimRRHUEchzZL%2BPjQxzGqIEpA3PIxCsTOoB1bOyNrcmAFSYR6jKDGw6OwpnBB1WaeCh3hIZFWmWU8aPh3IVQH%2FW2%2FxMRc6WQ7cU7uixBz7hc%2ByatN%2BuLB0mq4pP1DAaGA8BHhDZDGiTwG25ZAXoRi72IDrJ7040P2q2QeSTc%2F%2FP36K46ms35H4B9n2TW0Ko4%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-TCW4&tid=1669e005-bc86-4f9f-b89c-2f5234957ed9",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGL72D3oimRRHUEchzZL%2BPjQxzGqIEpA3PIxCsTOoB1bOyNrcmAFSYR6jKDGw6OwpnBB1WaeCh3hIZFWmWU8aPh3IVQH%2FW2%2FxMRc6WQ7cU7uixBz7hc%2ByatN%2BuLB0mq4pP1DAaGA8BHhDZDGiTwG25ZAXoRi72IDrJ7040P2q2QeSTc%2F%2FP36K46ms35H4B9n2TW0Ko4%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGL72D3oimRRHUEchzZL%2BPjQxzGqIEpA3PIxCsTOoB1bOyNrcmAFSYR6jKDGw6OwpnBB1WaeCh3hIZFWmWU8aPh3IVQH%2FW2%2FxMRc6WQ7cU7uixBz7hc%2ByatN%2BuLB0mq4pP1DAaGA8BHhDZDGiTwG25ZAXoRi72IDrJ7040P2q2QeSTc%2F%2FP36K46ms35H4B9n2TW0Ko4%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Casa & Pets",
-        "Robô Aspirador",
-        "WAP",
-        "3 em 1",
-        "Passa pano",
-        "Sensores",
-        "Oferta"
-      ]
-    },
-    {
-      "happened_at": "2026-06-08T04:54:58Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 37,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
-      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
-      "sku": "projetor-smart-hy320-goodvision",
-      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
-      "id_busca": "5J5PKG-D9EV",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (33x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1YAEmtS",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1YAEmtS",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Projetor",
-        "Cinema em Casa",
-        "Wi-Fi",
-        "Android",
-        "Bluetooth",
-        "Full HD",
-        "HDMI"
-      ]
-    },
-    {
-      "happened_at": "2026-06-08T04:54:58Z",
+      "happened_at": "2026-06-08T11:13:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (3x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +102,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T04:54:58Z",
+      "happened_at": "2026-06-08T11:13:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +118,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
