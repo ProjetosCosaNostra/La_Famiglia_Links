@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-06-08T11:18:46Z",
-  "total_items": 3,
+  "updated_at": "2026-06-08T16:16:53Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 5
     },
-    "high_priority": 3
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-06-08T11:13:40Z",
+      "happened_at": "2026-06-08T16:11:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,50 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T11:13:40Z",
+      "happened_at": "2026-06-08T16:11:33Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 113,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113",
+      "issue_title": "Gamestick Premium",
+      "sku": "gamestick-premium-2-controles-wireless",
+      "title": "Game Stick Hdmi Mais 20 Mil Jogos + 2 Controle Sem Fio",
+      "id_busca": "5J5PKG-H48U",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1zdRuA2",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1zdRuA2",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "short_url": "https://meli.la/1DeTTFh",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Tecnologia",
+        "Games",
+        "Retro",
+        "HDMI",
+        "Premium"
+      ]
+    },
+    {
+      "happened_at": "2026-06-08T16:11:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +118,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (3x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (4x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -102,7 +145,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-08T11:13:40Z",
+      "happened_at": "2026-06-08T16:11:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -118,7 +161,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -144,6 +187,51 @@
         "Olhos",
         "Preto",
         "Efeito Matte"
+      ]
+    },
+    {
+      "happened_at": "2026-06-08T16:11:33Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 205,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/205",
+      "issue_title": "Coletor de Pó Nail Designer 4500rpm 100w Sugador Aspirador",
+      "sku": "coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador",
+      "title": "Coletor de Pó Nail Designer 4500rpm 100w Sugador Aspirador",
+      "id_busca": "5J5PKG-7K5Q",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1TXqzvA",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1TXqzvA",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIOnkM4PpBcjWvVwXfAZkrlg0ySAkpO43mCb1QUlwnbK159avXzrVDv%2B8hnME%2BRagUo3Svj%2BdPo5CJNkUx8uWbYV%2BcPlGwM2IXqluJetHpnLoSlIABUsTecadCBa5%2FEu9%2BSnfAVUj1wDadJTpbiBSsqY9UT%2Bqh78xPYEswOtFBvk%2Bw3wCD%2FCb2nNMmrLAiziWnKxgA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-7K5Q",
+      "short_url": "https://meli.la/1TXqzvA",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIOnkM4PpBcjWvVwXfAZkrlg0ySAkpO43mCb1QUlwnbK159avXzrVDv%2B8hnME%2BRagUo3Svj%2BdPo5CJNkUx8uWbYV%2BcPlGwM2IXqluJetHpnLoSlIABUsTecadCBa5%2FEu9%2BSnfAVUj1wDadJTpbiBSsqY9UT%2Bqh78xPYEswOtFBvk%2Bw3wCD%2FCb2nNMmrLAiziWnKxgA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Manicure",
+        "Nail Designer",
+        "Coletor de Pó",
+        "Aspirador de Pó",
+        "Sugador de Pó",
+        "100W"
       ]
     }
   ]

@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-08T11:18:46Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-06-08T16:16:53Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-08T11:13:40Z
+Quando: 2026-06-08T16:11:33Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1iBx7VY
 checked_url: https://meli.la/1iBx7VY
@@ -43,7 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-08T11:13:40Z
+Quando: 2026-06-08T16:11:33Z
+Issue: #113
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
+SKU: gamestick-premium-2-controles-wireless
+Título: Game Stick Hdmi Mais 20 Mil Jogos + 2 Controle Sem Fio
+ID ML: 5J5PKG-H48U
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
+Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
+open_url: https://meli.la/1zdRuA2
+checked_url: https://meli.la/1zdRuA2
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
+
+[ALTA] review_only_storefront
+Quando: 2026-06-08T16:11:33Z
 Issue: #64
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/64
 SKU: smartwatch-amazfit-bip-6-gps
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 1x listing)
+Memória operacional: histórico recorrente (4x /lists, 1x listing)
 Badges: Achados do Dia, Tecnologia, Premium, Smartwatch, GPS, Fitness
 open_url: https://meli.la/16igaoj
 checked_url: https://meli.la/16igaoj
@@ -62,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-FRNH
 
 [ALTA] review_only_storefront
-Quando: 2026-06-08T11:13:40Z
+Quando: 2026-06-08T16:11:33Z
 Issue: #184
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/184
 SKU: ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto
@@ -73,9 +92,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Ruby Rose, Maquiagem, Delineador, Olhos, Preto, Efeito Matte
 open_url: https://meli.la/2g88US5
 checked_url: https://meli.la/2g88US5
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PATQ
+
+[ALTA] review_only_storefront
+Quando: 2026-06-08T16:11:33Z
+Issue: #205
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/205
+SKU: coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador
+Título: Coletor de Pó Nail Designer 4500rpm 100w Sugador Aspirador
+ID ML: 5J5PKG-7K5Q
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Manicure, Nail Designer, Coletor de Pó, Aspirador de Pó, Sugador de Pó, 100W
+open_url: https://meli.la/1TXqzvA
+checked_url: https://meli.la/1TXqzvA
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-7K5Q
