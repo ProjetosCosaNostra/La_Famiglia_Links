@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-07T19:47:56Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-06-08T04:59:16Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-07T19:42:48Z
+Quando: 2026-06-08T04:54:58Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1iBx7VY
 checked_url: https://meli.la/1iBx7VY
@@ -43,7 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-07T19:42:48Z
+Quando: 2026-06-08T04:54:58Z
+Issue: #16
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/16
+SKU: wap-robot-w90-3em1-preto
+Título: Robô Aspirador WAP Robot W90 3 em 1 (Varre, Aspira e Passa Pano)
+ID ML: 5J5PKG-TCW4
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Casa & Pets, Robô Aspirador, WAP, 3 em 1, Passa pano, Sensores, Oferta
+open_url: https://mercadolivre.com/sec/2J1MBX9
+checked_url: https://mercadolivre.com/sec/2J1MBX9
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-TCW4&tid=1669e005-bc86-4f9f-b89c-2f5234957ed9
+
+[ALTA] review_only_storefront
+Quando: 2026-06-08T04:54:58Z
 Issue: #37
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
 SKU: projetor-smart-hy320-goodvision
@@ -54,9 +73,47 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (32x /lists, 0x listing)
+Memória operacional: histórico recorrente (33x /lists, 0x listing)
 Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
 open_url: https://meli.la/1YAEmtS
 checked_url: https://meli.la/1YAEmtS
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
+
+[ALTA] review_only_storefront
+Quando: 2026-06-08T04:54:58Z
+Issue: #64
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/64
+SKU: smartwatch-amazfit-bip-6-gps
+Título: Smartwatch Amazfit Bip 6 — GPS Multiesporte (Android/iPhone)
+ID ML: 5J5PKG-FRNH
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 1x listing)
+Badges: Achados do Dia, Tecnologia, Premium, Smartwatch, GPS, Fitness
+open_url: https://meli.la/16igaoj
+checked_url: https://meli.la/16igaoj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-FRNH
+
+[ALTA] review_only_storefront
+Quando: 2026-06-08T04:54:58Z
+Issue: #184
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/184
+SKU: ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto
+Título: Caneta Delineadora Gatinho Mood Ruby Rose Preto Matte 2x1
+ID ML: 5J5PKG-13RG
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
+Badges: Achados do Dia, Feminino, Ruby Rose, Maquiagem, Delineador, Olhos, Preto, Efeito Matte
+open_url: https://meli.la/2g88US5
+checked_url: https://meli.la/2g88US5
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PATQ
