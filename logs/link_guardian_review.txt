@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-09T20:23:34Z
+Atualizado em: 2026-06-10T04:43:49Z
 Itens pendentes: 7
 SKUs únicos: 7
 Prioridade alta: 7
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-09T20:17:08Z
+Quando: 2026-06-10T04:38:08Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 0x listing)
+Memória operacional: histórico recorrente (20x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1iBx7VY
 checked_url: https://meli.la/1iBx7VY
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-09T20:17:08Z
+Quando: 2026-06-10T04:38:08Z
 Issue: #113
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
 SKU: gamestick-premium-2-controles-wireless
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (14x /lists, 0x listing)
+Memória operacional: histórico recorrente (15x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
 open_url: https://meli.la/1zdRuA2
 checked_url: https://meli.la/1zdRuA2
@@ -62,26 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-09T20:17:08Z
-Issue: #75
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/75
-SKU: suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto
-Título: Suporte Articulado para Monitor (Pistão a Gás) 17”–35” – Ergonômico – Preto
-ID ML: 5J5PKG-YGV9
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Suporte Monitor, Braço Articulado, Pistão a Gás, 17-35, Ergonômico, Setup, Home Office
-open_url: https://meli.la/11CcWqi
-checked_url: https://meli.la/11CcWqi
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YGV9&tid=90e3e25c-6215-4610-aaa8-6d870610dc0a
-
-[ALTA] review_only_storefront
-Quando: 2026-06-09T20:17:08Z
+Quando: 2026-06-10T04:38:08Z
 Issue: #27
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/27
 SKU: hub-usbc-8em1-h71p
@@ -92,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, Hub USB-C, 8 em 1, HDMI 4K, RJ45 Ethernet, USB 3.0, SD/TF, Adaptador
 open_url: https://meli.la/1QX9aqA
 checked_url: https://meli.la/1QX9aqA
@@ -100,7 +81,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H71P&tid=42f8b39d-42a8-497a-8f21-a8ad42b73b22
 
 [ALTA] review_only_storefront
-Quando: 2026-06-09T20:17:08Z
+Quando: 2026-06-10T04:38:08Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-D9EV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (35x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://meli.la/1YAEmtS
+checked_url: https://meli.la/1YAEmtS
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
+
+[ALTA] review_only_storefront
+Quando: 2026-06-10T04:38:08Z
 Issue: #64
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/64
 SKU: smartwatch-amazfit-bip-6-gps
@@ -111,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (9x /lists, 1x listing)
+Memória operacional: histórico recorrente (10x /lists, 1x listing)
 Badges: Achados do Dia, Tecnologia, Premium, Smartwatch, GPS, Fitness
 open_url: https://meli.la/16igaoj
 checked_url: https://meli.la/16igaoj
@@ -119,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-FRNH
 
 [ALTA] review_only_storefront
-Quando: 2026-06-09T20:17:08Z
+Quando: 2026-06-10T04:38:08Z
 Issue: #188
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/188
 SKU: xapadinha-mascara-disciplinante-450g-lola-from-rio
@@ -130,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (12x /lists, 0x listing)
+Memória operacional: histórico recorrente (13x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cabelos, Lola From Rio, Máscara Capilar, Anti-frizz, Brilho, Vegano
 open_url: https://meli.la/26CFRci
 checked_url: https://meli.la/26CFRci
@@ -138,7 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-H0SZ
 
 [ALTA] review_only_storefront
-Quando: 2026-06-09T20:17:08Z
+Quando: 2026-06-10T04:38:08Z
 Issue: #205
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/205
 SKU: coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador
@@ -149,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Manicure, Nail Designer, Coletor de Pó, Aspirador de Pó, Sugador de Pó, 100W
 open_url: https://meli.la/1TXqzvA
 checked_url: https://meli.la/1TXqzvA
