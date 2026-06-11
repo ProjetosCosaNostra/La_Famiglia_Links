@@ -1,65 +1,22 @@
 {
-  "updated_at": "2026-06-11T04:57:11Z",
-  "total_items": 9,
+  "updated_at": "2026-06-11T10:56:23Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 9,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 9
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 9
+      "storefront_social_lists_invalid": 7
     },
     "by_action": {
-      "trocar_link": 9
+      "trocar_link": 7
     },
-    "high_priority": 9
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-06-11T04:50:36Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 154,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154",
-      "issue_title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis",
-      "sku": "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores",
-      "title": "Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores",
-      "id_busca": "5J5PKG-YHPD",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1iBx7VY",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1iBx7VY",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
-      "short_url": "https://meli.la/2ZTeVJ2",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Beleza",
-        "Maquiagem",
-        "Belle Angel",
-        "Nude",
-        "Paleta de Sombras"
-      ]
-    },
-    {
-      "happened_at": "2026-06-11T04:50:36Z",
+      "happened_at": "2026-06-11T10:52:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -102,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T04:50:36Z",
+      "happened_at": "2026-06-11T10:52:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -118,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -147,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T04:50:36Z",
+      "happened_at": "2026-06-11T10:52:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -163,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (18x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T04:50:36Z",
+      "happened_at": "2026-06-11T10:52:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -237,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T04:50:36Z",
+      "happened_at": "2026-06-11T10:52:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -253,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -280,7 +237,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T04:50:36Z",
+      "happened_at": "2026-06-11T10:52:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -296,7 +253,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (18x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -325,52 +282,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T04:50:36Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 202,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/202",
-      "issue_title": "Espelho LED Dobrável de Maquiagem Rosto Make",
-      "sku": "espelho-led-dobravel-maquiagem-rosto-make",
-      "title": "Espelho LED Dobrável de Maquiagem Rosto Make",
-      "id_busca": "5J5PKG-U8G2",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2zDAba1",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2zDAba1",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJ7khsJitPhN4bpwIfMRzme754KC%2BtR1Lqnrd%2BZQshugMUJUvmhDLD2YVOtDJkIszbcLRIkRO2b%2F%2BBFBkpewYPtdHRDAq%2FAt3PQj5xkKZv9JzTFmk3bl936c1Lp7TJKaDx0%2B86rFz8X4mFY0vz8L1goCdto7fs8nv%2FbymHl7PVfAvmsgTPfxp%2F4QfGQrHBbEmwKMIefhYaSCpm0FVkATFWM6CjXn2ZT57kbXJw%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-U8G2",
-      "short_url": "https://meli.la/2zDAba1",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJ7khsJitPhN4bpwIfMRzme754KC%2BtR1Lqnrd%2BZQshugMUJUvmhDLD2YVOtDJkIszbcLRIkRO2b%2F%2BBFBkpewYPtdHRDAq%2FAt3PQj5xkKZv9JzTFmk3bl936c1Lp7TJKaDx0%2B86rFz8X4mFY0vz8L1goCdto7fs8nv%2FbymHl7PVfAvmsgTPfxp%2F4QfGQrHBbEmwKMIefhYaSCpm0FVkATFWM6CjXn2ZT57kbXJw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Beleza",
-        "Maquiagem",
-        "Skincare",
-        "LED",
-        "Dobrável",
-        "Portátil",
-        "Feminino"
-      ]
-    },
-    {
-      "happened_at": "2026-06-11T04:50:36Z",
+      "happened_at": "2026-06-11T10:52:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -386,7 +298,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
