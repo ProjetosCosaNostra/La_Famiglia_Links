@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-06-11T10:56:23Z",
-  "total_items": 7,
+  "updated_at": "2026-06-11T16:20:55Z",
+  "total_items": 8,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 8,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 8
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 8
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 8
     },
-    "high_priority": 7
+    "high_priority": 8
   },
   "items": [
     {
-      "happened_at": "2026-06-11T10:52:06Z",
+      "happened_at": "2026-06-11T16:16:28Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,52 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T10:52:06Z",
+      "happened_at": "2026-06-11T16:16:28Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 85,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/85",
+      "issue_title": "[CMS] Produto: Kit Mesh Wi-Fi 6 (2 un.) — sinal forte na casa toda",
+      "sku": "kit-mesh-wifi6-2un-wduu",
+      "title": "Kit Roteador Mesh Wi-Fi 6 (2 unidades) — cobertura e conexão estável",
+      "id_busca": "5J5PKG-WDUU",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2tMMkz2",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2tMMkz2",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE5jjz08nCOr1j0UzSsObjDYD%2FQykoaIptGUImBaHYZnm4SVHD%2F6R3oZ9yUc6AIGDm82KJ6S%2BK7QE9WIKAIFO0oqQx0ses%2BK6CjIUXVuJ%2BDMTiUUVH%2BxSQ8aOJTq8I7ZQ8TogXtsERfyNRZ4QUvWKyB%2F4XIUrDhtsElpjU4%2FBW2xRMDGUuDN4ocITSdzopDN11i9Gf8%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WDUU&tid=1fb8330a-8517-4744-a395-e9aaa7d2cf21",
+      "short_url": "https://meli.la/2tMMkz2",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE5jjz08nCOr1j0UzSsObjDYD%2FQykoaIptGUImBaHYZnm4SVHD%2F6R3oZ9yUc6AIGDm82KJ6S%2BK7QE9WIKAIFO0oqQx0ses%2BK6CjIUXVuJ%2BDMTiUUVH%2BxSQ8aOJTq8I7ZQ8TogXtsERfyNRZ4QUvWKyB%2F4XIUrDhtsElpjU4%2FBW2xRMDGUuDN4ocITSdzopDN11i9Gf8%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE5jjz08nCOr1j0UzSsObjDYD%2FQykoaIptGUImBaHYZnm4SVHD%2F6R3oZ9yUc6AIGDm82KJ6S%2BK7QE9WIKAIFO0oqQx0ses%2BK6CjIUXVuJ%2BDMTiUUVH%2BxSQ8aOJTq8I7ZQ8TogXtsERfyNRZ4QUvWKyB%2F4XIUrDhtsElpjU4%2FBW2xRMDGUuDN4ocITSdzopDN11i9Gf8%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Mesh WiFi",
+        "WiFi 6",
+        "Roteador Mesh",
+        "Kit 2 unidades",
+        "Casa toda",
+        "Cobertura",
+        "Conexão estável"
+      ]
+    },
+    {
+      "happened_at": "2026-06-11T16:16:28Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T10:52:06Z",
+      "happened_at": "2026-06-11T16:16:28Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T10:52:06Z",
+      "happened_at": "2026-06-11T16:16:28Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T10:52:06Z",
+      "happened_at": "2026-06-11T16:16:28Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (15x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (16x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -237,7 +282,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T10:52:06Z",
+      "happened_at": "2026-06-11T16:16:28Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -253,7 +298,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (18x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -282,7 +327,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-11T10:52:06Z",
+      "happened_at": "2026-06-11T16:16:28Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -298,7 +343,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
