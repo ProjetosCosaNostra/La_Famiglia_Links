@@ -13326,14 +13326,14 @@
   </style>
 
 
-
-  <!-- REAL34 — Produto do Dia mobile card único refinado estilo Vitrine Rápida -->
-  <style id="cn-real34-featured-mobile-vitrine-refino">
+  <!-- REAL35 — Produto do Dia mobile limpo, realmente no estilo Vitrine Rápida -->
+  <style id="cn-real35-featured-mobile-vitrine-clean">
     /*
-      REAL34
+      REAL35
       Escopo: somente Produto do Dia no mobile.
-      Direção: manter a estrutura de card único estilo Vitrine Rápida,
-      mas limpar o excesso visual: preço compacto, CTA curto, menos texto e menos altura.
+      Correção: remove a aparência de banner/destaque pesado e força o Produto do Dia
+      a se comportar como um card limpo de Vitrine Rápida: imagem à esquerda,
+      informação à direita, altura menor, menos textos e botões compactos.
       PC, Vitrine Rápida, tracking, brilho, JSON, script.js e style.css permanecem intactos.
     */
     @media (max-width: 640px) {
@@ -13342,7 +13342,7 @@
       }
 
       html body #sec-produto-do-dia .panel__head {
-        padding: 10px 14px 8px !important;
+        padding: 11px 14px 9px !important;
         margin-bottom: 0 !important;
       }
 
@@ -13358,26 +13358,26 @@
       }
 
       html body #featured.featured {
-        padding: 9px !important;
+        padding: 10px 12px 12px !important;
         display: block !important;
         width: 100% !important;
       }
 
-      /* Card único, na linguagem da Vitrine Rápida mobile */
+      /* Card único: mesma leitura dos cards da Vitrine Rápida */
       html body #featured .cnFeaturedWrap {
         display: grid !important;
-        grid-template-columns: minmax(118px, 36%) minmax(0, 1fr) !important;
-        gap: 10px !important;
-        align-items: stretch !important;
+        grid-template-columns: minmax(128px, 39%) minmax(0, 1fr) !important;
+        gap: 12px !important;
+        align-items: center !important;
         width: 100% !important;
         margin: 0 !important;
-        padding: 10px !important;
+        padding: 12px !important;
         border-radius: 20px !important;
         border: 1px solid rgba(215,176,88,.14) !important;
         background:
-          radial-gradient(360px 170px at 12% 0%, rgba(215,176,88,.060), transparent 64%),
-          linear-gradient(180deg, rgba(255,255,255,.016), rgba(0,0,0,.24)),
-          rgba(2,2,4,.70) !important;
+          radial-gradient(320px 150px at 15% 0%, rgba(215,176,88,.055), transparent 66%),
+          linear-gradient(180deg, rgba(255,255,255,.014), rgba(0,0,0,.22)),
+          rgba(2,2,4,.76) !important;
         box-shadow: 0 15px 34px rgba(0,0,0,.34) !important;
         overflow: hidden !important;
       }
@@ -13400,20 +13400,21 @@
 
       html body #featured .cnFeaturedMedia {
         display: flex !important;
-        align-items: stretch !important;
+        align-items: center !important;
         justify-content: center !important;
       }
 
       html body #featured .cnMediaShell--featured {
         position: relative !important;
         width: 100% !important;
-        height: 100% !important;
-        min-height: 188px !important;
-        max-height: 214px !important;
+        aspect-ratio: 4 / 5 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
         border-radius: 16px !important;
         overflow: hidden !important;
-        border: 1px solid rgba(215,176,88,.12) !important;
-        background: rgba(0,0,0,.24) !important;
+        border: 1px solid rgba(215,176,88,.13) !important;
+        background: rgba(0,0,0,.18) !important;
         box-shadow: 0 10px 24px rgba(0,0,0,.30) !important;
       }
 
@@ -13421,8 +13422,8 @@
         display: block !important;
         width: 100% !important;
         height: 100% !important;
-        min-height: 188px !important;
-        max-height: 214px !important;
+        min-height: 0 !important;
+        max-height: none !important;
         object-fit: cover !important;
         object-position: center center !important;
         border-radius: 15px !important;
@@ -13430,7 +13431,7 @@
         box-shadow: none !important;
       }
 
-      /* Galeria não disputa atenção no card compacto */
+      /* Galeria fica discreta no card compacto */
       html body #featured .cnMediaShell--featured .cnGalleryCount,
       html body #featured .cnMediaShell--featured .cnGalleryArrow,
       html body #featured .cnMediaShell--featured .cnGalleryDots {
@@ -13440,17 +13441,17 @@
       html body #featured .cnMediaShell--featured .cnGalleryZoom {
         right: 7px !important;
         bottom: 7px !important;
-        width: 30px !important;
-        height: 30px !important;
-        min-height: 30px !important;
+        width: 31px !important;
+        height: 31px !important;
+        min-height: 31px !important;
         padding: 0 !important;
         border-radius: 999px !important;
         font-size: 0 !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        background: rgba(0,0,0,.68) !important;
-        border-color: rgba(224,195,107,.34) !important;
+        background: rgba(0,0,0,.66) !important;
+        border-color: rgba(224,195,107,.36) !important;
         z-index: 8 !important;
       }
 
@@ -13468,47 +13469,48 @@
         justify-content: center !important;
         min-width: 0 !important;
         width: 100% !important;
-        height: 100% !important;
+        height: auto !important;
         min-height: 0 !important;
         padding: 0 !important;
       }
 
       html body #featured .cnTitle {
         margin: 0 !important;
-        gap: 1px !important;
+        display: block !important;
       }
 
       html body #featured .cnTitleMain {
-        font-size: clamp(.94rem, 4vw, 1.10rem) !important;
-        line-height: 1.04 !important;
-        letter-spacing: .004em !important;
-        max-width: none !important;
         display: -webkit-box !important;
         -webkit-line-clamp: 2 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
+        max-width: none !important;
+        font-size: clamp(.98rem, 4.25vw, 1.14rem) !important;
+        line-height: 1.04 !important;
+        letter-spacing: .002em !important;
         text-shadow: 0 7px 18px rgba(0,0,0,.32) !important;
       }
 
       html body #featured .cnTitleSub {
-        margin: 3px 0 0 0 !important;
-        font-size: .72rem !important;
-        line-height: 1.08 !important;
-        color: rgba(224,195,107,.92) !important;
         display: -webkit-box !important;
         -webkit-line-clamp: 1 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
+        margin: 3px 0 0 0 !important;
+        font-size: .74rem !important;
+        line-height: 1.08 !important;
+        color: rgba(224,195,107,.92) !important;
       }
 
       html body #featured .cnFeatureSummary,
       html body #featured .cnPromoText,
       html body #featured .cnPromoChecked,
-      html body #featured .cnScarcityLine {
+      html body #featured .cnScarcityLine,
+      html body #featured .cnMini {
         display: none !important;
       }
 
-      /* Preço compacto: vira linha de venda, não caixa gigante */
+      /* Preço limpo, sem caixa pesada */
       html body #featured .cnPromoBox {
         margin: 7px 0 0 0 !important;
         padding: 0 !important;
@@ -13533,9 +13535,10 @@
       }
 
       html body #featured .cnCurrentPrice {
-        font-size: clamp(1.38rem, 6.7vw, 1.78rem) !important;
-        line-height: .98 !important;
-        letter-spacing: -.032em !important;
+        display: block !important;
+        font-size: clamp(1.56rem, 7.4vw, 2rem) !important;
+        line-height: .96 !important;
+        letter-spacing: -.035em !important;
         color: rgba(255,255,255,.98) !important;
         text-shadow: 0 8px 18px rgba(0,0,0,.36) !important;
       }
@@ -13554,6 +13557,8 @@
         font-size: .60rem !important;
         line-height: 1 !important;
         color: rgba(255,255,255,.70) !important;
+        background: rgba(255,255,255,.035) !important;
+        border-color: rgba(215,176,88,.12) !important;
       }
 
       html body #featured .cnBadges span:nth-child(n+3) {
@@ -13561,9 +13566,9 @@
       }
 
       html body #featured .cnRow {
-        margin-top: 7px !important;
+        margin-top: 8px !important;
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr .78fr !important;
         gap: 7px !important;
         align-items: stretch !important;
       }
@@ -13571,23 +13576,21 @@
       html body #featured .cnRow .btn {
         width: 100% !important;
         min-width: 0 !important;
-        min-height: 33px !important;
-        padding: 6px 7px !important;
+        min-height: 35px !important;
+        padding: 7px 8px !important;
         border-radius: 13px !important;
-        font-size: .68rem !important;
+        font-size: .70rem !important;
         line-height: 1.05 !important;
         white-space: nowrap !important;
       }
 
       html body #featured .cnRow .cnActionPrimary {
         grid-column: auto !important;
-        min-height: 33px !important;
-        padding: 6px 7px !important;
+        min-height: 35px !important;
+        padding: 7px 8px !important;
         border-radius: 13px !important;
-        font-size: .68rem !important;
       }
 
-      /* Produto do Dia segue a Vitrine Rápida: Comprar + Copiar ID */
       html body #featured .cnRow .cnActionSecondary:nth-child(3),
       html body #featured .cnRow .cnActionTertiary {
         display: none !important;
@@ -13600,13 +13603,13 @@
 
       html body #featured .cnRow .cnBuyLabel::after {
         content: "Comprar" !important;
-        font-size: .70rem !important;
+        font-size: .72rem !important;
         line-height: 1 !important;
         white-space: nowrap !important;
       }
 
       html body #featured .cnMeta {
-        margin-top: 6px !important;
+        margin-top: 7px !important;
         padding: 0 !important;
         border: 0 !important;
         background: transparent !important;
@@ -13640,35 +13643,31 @@
 
     @media (max-width: 380px) {
       html body #featured .cnFeaturedWrap {
-        grid-template-columns: minmax(108px, 34%) minmax(0, 1fr) !important;
-        gap: 8px !important;
-        padding: 9px !important;
-      }
-
-      html body #featured .cnMediaShell--featured,
-      html body #featured .cnMediaShell--featured .cnImg {
-        min-height: 176px !important;
-        max-height: 198px !important;
+        grid-template-columns: minmax(118px, 38%) minmax(0, 1fr) !important;
+        gap: 9px !important;
+        padding: 10px !important;
       }
 
       html body #featured .cnTitleMain {
-        font-size: .90rem !important;
+        font-size: .92rem !important;
       }
 
       html body #featured .cnTitleSub {
-        font-size: .68rem !important;
+        font-size: .67rem !important;
       }
 
       html body #featured .cnCurrentPrice {
-        font-size: clamp(1.24rem, 6.4vw, 1.54rem) !important;
+        font-size: clamp(1.34rem, 7vw, 1.66rem) !important;
+      }
+
+      html body #featured .cnRow {
+        gap: 6px !important;
       }
 
       html body #featured .cnRow .btn,
       html body #featured .cnRow .cnActionPrimary,
       html body #featured .cnRow .cnBuyLabel::after {
-        font-size: .63rem !important;
-        padding-left: 5px !important;
-        padding-right: 5px !important;
+        font-size: .64rem !important;
       }
     }
   </style>
