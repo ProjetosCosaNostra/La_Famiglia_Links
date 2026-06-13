@@ -36,8 +36,8 @@
    - se não houver seleção manual, mantém o fallback atual
 
    ✅ PATCH VITRINE RÁPIDA POSICIONAL (2026-04-03):
-   - a grade rápida agora exibe até 12 produtos
-   - quick_home_order (1..12) fixa o produto na posição desejada
+   - a grade rápida agora exibe até 30 produtos
+   - quick_home_order (1..30) fixa o produto na posição desejada
    - ao substituir 1 posição, o restante da estrutura é preservado
 
    ✅ HOTFIX VITRINE RÁPIDA POSIÇÕES DUPLICADAS (2026-05-04):
@@ -60,7 +60,7 @@
   function trim(s) { return safeText(s).replace(/^\s+|\s+$/g, ''); }
   function lower(s) { return safeText(s).toLowerCase(); }
 
-  var QUICK_HOME_LIMIT = 12;
+  var QUICK_HOME_LIMIT = 30;
   var cnGalleryPreloadCache = {};
 
   function getProductKey(p) {
