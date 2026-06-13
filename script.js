@@ -1458,22 +1458,29 @@
     };
     row.appendChild(buy);
 
-    var cId = document.createElement('button');
-    cId.className = 'btn btn--glass btn--tiny cnQuickSecondary';
-    cId.type = 'button';
-    cId.textContent = 'Copiar ID';
-    cId.onclick = function () {
-      trackEvent('click_copy_id_home', getTrackProduct(p, {
-        placement: 'quick_copy_id',
+    var cLink = document.createElement('button');
+    cLink.className = 'btn btn--glass btn--tiny cnQuickSecondary';
+    cLink.type = 'button';
+    cLink.textContent = 'Copiar Link';
+    cLink.onclick = function () {
+      var link = getLink(p);
+
+      trackEvent('click_copy_link_home', getTrackProduct(p, {
+        placement: 'quick_copy_link',
         source_block: 'vitrine_rapida',
         position_on_page: idx + 1,
         quick_source: state && state.quickSource ? state.quickSource : 'fallback',
       quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
       }));
 
-      copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
+      if (!link) {
+        toast('Link do produto não encontrado');
+        return;
+      }
+
+      copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
     };
-    row.appendChild(cId);
+    row.appendChild(cLink);
 
     pad.appendChild(row);
     card.appendChild(pad);
