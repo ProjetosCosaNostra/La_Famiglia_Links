@@ -26,7 +26,7 @@
 
   <link rel="stylesheet" href="style.css?v=20260516-brilho-estavel-origem" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260613-vitrine-rapida-32"></script>
+  <script defer src="script.js?v=20260613-real37-link-buttons"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13325,22 +13325,19 @@
     }
   </style>
 
-  <!-- REAL36 — Produto do Dia mobile realmente alinhado com a Vitrine Rápida -->
-  <style id="cn-real36-featured-mobile-like-quick-card">
+  <!-- REAL37 — Produto do Dia alinhado à Vitrine Rápida + botões Copiar Link -->
+  <style id="cn-real37-featured-and-quick-link-buttons">
     /*
-      REAL36
-      Escopo: somente mobile.
-      Objetivo:
-      - Produto do Dia com a mesma lógica visual dos cards da Vitrine Rápida.
-      - Imagem do Produto do Dia com proporção/tamanho compatível com as imagens da Vitrine Rápida.
-      - Código acima dos botões, como na Vitrine Rápida.
-      - Botões lado a lado: Comprar + Copiar Link.
-      - Informação de quantidade da Vitrine Rápida visível no mobile.
-      PC, Vitrine Rápida em si, script.js, style.css, produtos.json, tracking e brilho permanecem intactos.
+      REAL37
+      Escopo:
+      - Mobile: Produto do Dia com a mesma organização visual da Vitrine Rápida.
+      - Mobile/PC: Vitrine Rápida troca Copiar ID por Copiar Link via script.js.
+      - Index: só organiza layout e força o Produto do Dia a usar botões lado a lado.
+      Mantém: PC do Produto do Dia, tracking, brilho dos botões, produtos.json e estilo geral.
     */
 
     @media (max-width: 640px) {
-      /* Quantidade da Vitrine Rápida visível no mobile */
+      /* Mostra no mobile a contagem real da Vitrine Rápida */
       html body #sec-vitrine-rapida .panel__head {
         display: flex !important;
         flex-direction: column !important;
@@ -13349,21 +13346,12 @@
         padding: 12px 14px 9px !important;
       }
 
-      html body #sec-vitrine-rapida .panel__head > div:first-child {
-        width: 100% !important;
-      }
-
-      html body #sec-vitrine-rapida .panel__head h2 {
-        margin-bottom: 2px !important;
-      }
-
       html body #sec-vitrine-rapida .panel__head p {
         display: block !important;
         margin: 2px 0 0 !important;
-        padding: 0 !important;
         max-height: none !important;
-        opacity: 1 !important;
         overflow: visible !important;
+        opacity: 1 !important;
         color: rgba(255,255,255,.62) !important;
         font-size: .73rem !important;
         line-height: 1.18 !important;
@@ -13375,7 +13363,6 @@
         gap: 3px !important;
         margin-left: 2px !important;
         color: rgba(255,255,255,.78) !important;
-        opacity: 1 !important;
         white-space: nowrap !important;
       }
 
@@ -13390,7 +13377,7 @@
         display: none !important;
       }
 
-      /* Produto do Dia: card único, alinhado à linguagem da Vitrine Rápida */
+      /* Cabeçalho do Produto do Dia permanece compacto */
       html body #sec-produto-do-dia.panel {
         overflow: hidden !important;
       }
@@ -13417,15 +13404,16 @@
         padding: 10px 12px 12px !important;
       }
 
+      /* Card único: proporção e ritmo dos cards da Vitrine Rápida */
       html body #featured .cnFeaturedWrap {
         display: grid !important;
-        grid-template-columns: 42% 58% !important;
+        grid-template-columns: 40% minmax(0, 1fr) !important;
         align-items: center !important;
-        gap: 0 !important;
+        gap: 12px !important;
         width: 100% !important;
-        min-height: 254px !important;
+        min-height: 244px !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 12px !important;
         border-radius: 18px !important;
         border: 1px solid rgba(215,176,88,.13) !important;
         background:
@@ -13440,7 +13428,7 @@
       html body #featured .cnFeaturedInfo {
         width: 100% !important;
         min-width: 0 !important;
-        height: 100% !important;
+        height: auto !important;
         min-height: 0 !important;
         padding: 0 !important;
         border: 0 !important;
@@ -13451,23 +13439,20 @@
         overflow: visible !important;
       }
 
-      /* Mesmo peso visual da área de imagem dos cards da Vitrine Rápida */
+      /* Imagem do Produto do Dia no mesmo porte visual das imagens da Vitrine Rápida */
       html body #featured .cnFeaturedMedia {
-        height: 100% !important;
-        min-height: 254px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        padding: 9px 0 9px 9px !important;
-        background: rgba(0,0,0,.10) !important;
       }
 
       html body #featured .cnMediaShell--featured {
         position: relative !important;
         width: 100% !important;
-        height: 236px !important;
-        min-height: 236px !important;
-        max-height: 236px !important;
+        min-width: 0 !important;
+        height: 226px !important;
+        min-height: 226px !important;
+        max-height: 226px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -13481,15 +13466,16 @@
       }
 
       html body #featured .cnMediaShell--featured .cnImg {
+        display: block !important;
         width: 100% !important;
         height: 100% !important;
         max-width: 100% !important;
         max-height: 100% !important;
         min-height: 0 !important;
-        object-fit: contain !important;
+        object-fit: cover !important;
         object-position: center center !important;
         margin: auto !important;
-        border-radius: 10px !important;
+        border-radius: 12px !important;
         background: transparent !important;
         box-shadow: none !important;
       }
@@ -13503,12 +13489,14 @@
       html body #featured .cnMediaShell--featured .cnZoomBtn,
       html body #featured .cnZoomBtn {
         display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         width: 34px !important;
         height: 34px !important;
         min-width: 34px !important;
         min-height: 34px !important;
-        right: 3px !important;
-        bottom: 3px !important;
+        right: 4px !important;
+        bottom: 4px !important;
         border-radius: 12px !important;
         font-size: 0 !important;
         background: rgba(31,29,25,.82) !important;
@@ -13523,21 +13511,15 @@
         line-height: 1 !important;
       }
 
-      /* Área de texto do Produto do Dia segue a cadência dos cards rápidos */
-      html body #featured .cnFeaturedInfo {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
-
+      html body #featured .cnFeaturedInfo,
       html body #featured .cnCardPad {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         width: 100% !important;
-        height: 100% !important;
-        min-height: 254px !important;
-        padding: 10px 11px 11px !important;
+        min-width: 0 !important;
+        min-height: 226px !important;
+        padding: 0 !important;
         overflow: visible !important;
       }
 
@@ -13557,7 +13539,7 @@
         -webkit-line-clamp: 2 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
-        font-size: clamp(.92rem, 4.6vw, 1.08rem) !important;
+        font-size: clamp(.92rem, 4.25vw, 1.06rem) !important;
         line-height: 1.06 !important;
         font-weight: 700 !important;
       }
@@ -13573,7 +13555,6 @@
         line-height: 1.05 !important;
         color: rgba(224,195,107,.94) !important;
         font-weight: 900 !important;
-        letter-spacing: .01em !important;
       }
 
       html body #featured .cnFeatureSummary,
@@ -13584,7 +13565,6 @@
         display: none !important;
       }
 
-      /* Preço compacto, sem caixa pesada */
       html body #featured .cnPromoBox {
         order: 2 !important;
         margin: 6px 0 0 !important;
@@ -13611,7 +13591,7 @@
 
       html body #featured .cnCurrentPrice {
         display: block !important;
-        font-size: clamp(1.42rem, 7.8vw, 1.92rem) !important;
+        font-size: clamp(1.28rem, 7.1vw, 1.76rem) !important;
         line-height: .92 !important;
         letter-spacing: -.035em !important;
         color: rgba(255,255,255,.98) !important;
@@ -13683,21 +13663,21 @@
         white-space: nowrap !important;
       }
 
-      /* Botões exatamente na lógica da Vitrine Rápida: Comprar + Copiar Link */
+      /* Botões exatamente como na Vitrine Rápida: Comprar + Copiar Link lado a lado */
       html body #featured .cnRow {
         order: 5 !important;
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
         align-items: stretch !important;
         gap: 7px !important;
-        margin: 9px 0 0 !important;
+        margin: 8px 0 0 !important;
         padding: 0 !important;
         overflow: visible !important;
       }
 
       html body #featured .cnRow .btn,
-      html body #featured .cnActionPrimary,
-      html body #featured .cnActionSecondary {
+      html body #featured .cnRow .btn--buy-primary.cnActionPrimary,
+      html body #featured .cnRow .cnActionSecondary {
         width: 100% !important;
         min-width: 0 !important;
         min-height: 34px !important;
@@ -13713,10 +13693,11 @@
         justify-content: center !important;
       }
 
-      html body #featured .cnActionPrimary {
+      html body #featured .cnRow .btn--buy-primary.cnActionPrimary {
         grid-column: auto !important;
       }
 
+      /* Child 2 = Copiar ID: escondido; Child 3 = Copiar Link: exibido */
       html body #featured .cnRow .cnActionSecondary:nth-child(2),
       html body #featured .cnRow .cnActionTertiary {
         display: none !important;
@@ -13724,6 +13705,7 @@
 
       html body #featured .cnRow .cnActionSecondary:nth-child(3) {
         display: inline-flex !important;
+        grid-column: auto !important;
       }
 
       html body #featured .cnRow .cnBuyLabel {
@@ -13741,31 +13723,32 @@
 
     @media (max-width: 390px) {
       html body #featured .cnFeaturedWrap {
-        grid-template-columns: 44% 56% !important;
-        min-height: 246px !important;
-      }
-
-      html body #featured .cnFeaturedMedia,
-      html body #featured .cnCardPad {
-        min-height: 246px !important;
+        grid-template-columns: 42% 58% !important;
+        min-height: 238px !important;
+        gap: 10px !important;
+        padding: 10px !important;
       }
 
       html body #featured .cnMediaShell--featured {
-        height: 226px !important;
-        min-height: 226px !important;
-        max-height: 226px !important;
+        height: 218px !important;
+        min-height: 218px !important;
+        max-height: 218px !important;
+      }
+
+      html body #featured .cnCardPad {
+        min-height: 218px !important;
       }
 
       html body #featured .cnTitleMain {
-        font-size: .90rem !important;
+        font-size: .89rem !important;
       }
 
       html body #featured .cnTitleSub {
-        font-size: .66rem !important;
+        font-size: .65rem !important;
       }
 
       html body #featured .cnCurrentPrice {
-        font-size: clamp(1.34rem, 7.4vw, 1.74rem) !important;
+        font-size: clamp(1.22rem, 6.8vw, 1.58rem) !important;
       }
 
       html body #featured .cnRow {
@@ -13773,10 +13756,10 @@
       }
 
       html body #featured .cnRow .btn,
-      html body #featured .cnActionPrimary,
-      html body #featured .cnActionSecondary,
+      html body #featured .cnRow .btn--buy-primary.cnActionPrimary,
+      html body #featured .cnRow .cnActionSecondary,
       html body #featured .cnRow .cnBuyLabel::after {
-        font-size: .62rem !important;
+        font-size: .61rem !important;
       }
     }
   </style>
