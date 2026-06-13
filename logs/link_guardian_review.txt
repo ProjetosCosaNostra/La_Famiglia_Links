@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-13T14:25:16Z
-Itens pendentes: 7
-SKUs únicos: 7
-Prioridade alta: 7
+Atualizado em: 2026-06-13T19:51:59Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 7
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 7
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 7
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-13T14:19:06Z
+Quando: 2026-06-13T19:46:58Z
 Issue: #113
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
 SKU: gamestick-premium-2-controles-wireless
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (29x /lists, 0x listing)
+Memória operacional: histórico recorrente (30x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
 open_url: https://meli.la/1zdRuA2
 checked_url: https://meli.la/1zdRuA2
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-13T14:19:06Z
+Quando: 2026-06-13T19:46:58Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (23x /lists, 0x listing)
+Memória operacional: histórico recorrente (24x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/2ZHKt6k
 checked_url: https://meli.la/2ZHKt6k
@@ -62,24 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-13T14:19:06Z
-SKU: se-j-existir-usa-amazon-echo-pop-c2h4r9-2
-Título: Echo Pop Smart Speaker (Alexa) — Preto (Amazon)
-ID ML: 5J5PKG-ZMR8
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 22 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
-Badges: Achados do Dia, Alexa, Echo Pop, Smart Speaker, Casa inteligente, Wi-Fi, Bluetooth, Preto
-open_url: https://mercadolivre.com/sec/19Abme6
-checked_url: https://mercadolivre.com/sec/19Abme6
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZMR8&tid=4859dfe6-8a08-4249-ac82-57085079ea12
-
-[ALTA] review_only_storefront
-Quando: 2026-06-13T14:19:06Z
+Quando: 2026-06-13T19:46:58Z
 Issue: #27
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/27
 SKU: hub-usbc-8em1-h71p
@@ -90,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (28x /lists, 0x listing)
+Memória operacional: histórico recorrente (29x /lists, 0x listing)
 Badges: Achados do Dia, Hub USB-C, 8 em 1, HDMI 4K, RJ45 Ethernet, USB 3.0, SD/TF, Adaptador
 open_url: https://meli.la/1QX9aqA
 checked_url: https://meli.la/1QX9aqA
@@ -98,26 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H71P&tid=42f8b39d-42a8-497a-8f21-a8ad42b73b22
 
 [ALTA] review_only_storefront
-Quando: 2026-06-13T14:19:06Z
-Issue: #30
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/30
-SKU: carregador-veicular-60w-hrebos-2x-usbc-pd
-Título: Carregador Veicular 60W — 2x USB-C PD (30W + 30W)
-ID ML: 5J5PKG-01QQ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, Carregador Veicular, USB-C PD, 60W, Carga Rápida, 2 Portas, Carro, Uber/99
-open_url: https://mercadolivre.com/sec/2hEwHwh
-checked_url: https://mercadolivre.com/sec/2hEwHwh
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-01QQ&tid=fe7f3d48-d886-45a6-beb4-a72bc96a84ef
-
-[ALTA] review_only_storefront
-Quando: 2026-06-13T14:19:06Z
+Quando: 2026-06-13T19:46:58Z
 Issue: #34
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
 SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
@@ -128,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (23x /lists, 0x listing)
+Memória operacional: histórico recorrente (24x /lists, 0x listing)
 Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
 open_url: https://mercadolivre.com/sec/2q8tzpj
 checked_url: https://mercadolivre.com/sec/2q8tzpj
@@ -136,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
 
 [ALTA] review_only_storefront
-Quando: 2026-06-13T14:19:06Z
+Quando: 2026-06-13T19:46:58Z
 Issue: #205
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/205
 SKU: coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador
@@ -147,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (22x /lists, 0x listing)
+Memória operacional: histórico recorrente (23x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Manicure, Nail Designer, Coletor de Pó, Aspirador de Pó, Sugador de Pó, 100W
 open_url: https://meli.la/1TXqzvA
 checked_url: https://meli.la/1TXqzvA
