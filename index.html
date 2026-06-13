@@ -26,7 +26,7 @@
 
   <link rel="stylesheet" href="style.css?v=20260516-brilho-estavel-origem" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260613-real37-link-buttons"></script>
+  <script defer src="script.js?v=20260613-real38-featured-mobile"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13325,65 +13325,26 @@
     }
   </style>
 
-  <!-- REAL37 — Produto do Dia alinhado à Vitrine Rápida + botões Copiar Link -->
-  <style id="cn-real37-featured-and-quick-link-buttons">
+
+  <!-- REAL38 — Produto do Dia mobile alinhado à Vitrine Rápida -->
+  <style id="cn-real38-featured-mobile-like-quick">
     /*
-      REAL37
-      Escopo:
-      - Mobile: Produto do Dia com a mesma organização visual da Vitrine Rápida.
-      - Mobile/PC: Vitrine Rápida troca Copiar ID por Copiar Link via script.js.
-      - Index: só organiza layout e força o Produto do Dia a usar botões lado a lado.
-      Mantém: PC do Produto do Dia, tracking, brilho dos botões, produtos.json e estilo geral.
+      REAL38
+      Escopo: somente mobile.
+      Objetivo:
+      - Produto do Dia com a mesma leitura da Vitrine Rápida.
+      - Imagem do destaque com proporção/tamanho visual compatível com os cards rápidos.
+      - Código acima dos botões.
+      - Botões organizados como na Vitrine Rápida: Comprar + Copiar Link.
+      - Sem alterar PC, produtos, tracking, brilho ou estrutura geral.
     */
-
     @media (max-width: 640px) {
-      /* Mostra no mobile a contagem real da Vitrine Rápida */
-      html body #sec-vitrine-rapida .panel__head {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 5px !important;
-        padding: 12px 14px 9px !important;
-      }
-
-      html body #sec-vitrine-rapida .panel__head p {
-        display: block !important;
-        margin: 2px 0 0 !important;
-        max-height: none !important;
-        overflow: visible !important;
-        opacity: 1 !important;
-        color: rgba(255,255,255,.62) !important;
-        font-size: .73rem !important;
-        line-height: 1.18 !important;
-      }
-
-      html body #sec-vitrine-rapida .panel__head p > span {
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 3px !important;
-        margin-left: 2px !important;
-        color: rgba(255,255,255,.78) !important;
-        white-space: nowrap !important;
-      }
-
-      html body #sec-vitrine-rapida .panel__head p b,
-      html body #sec-vitrine-rapida .panel__head p [data-quick-products],
-      html body #sec-vitrine-rapida .panel__head p [data-total-products] {
-        color: rgba(224,195,107,.98) !important;
-        font-weight: 900 !important;
-      }
-
-      html body #sec-vitrine-rapida .panel__right {
-        display: none !important;
-      }
-
-      /* Cabeçalho do Produto do Dia permanece compacto */
       html body #sec-produto-do-dia.panel {
         overflow: hidden !important;
       }
 
       html body #sec-produto-do-dia .panel__head {
-        padding: 11px 14px 9px !important;
+        padding: 10px 14px 9px !important;
         margin-bottom: 0 !important;
       }
 
@@ -13404,30 +13365,30 @@
         padding: 10px 12px 12px !important;
       }
 
-      /* Card único: proporção e ritmo dos cards da Vitrine Rápida */
+      /* Card do Produto do Dia seguindo a linguagem da Vitrine Rápida */
       html body #featured .cnFeaturedWrap {
         display: grid !important;
-        grid-template-columns: 40% minmax(0, 1fr) !important;
+        grid-template-columns: minmax(152px, 44%) minmax(0, 1fr) !important;
+        gap: 11px !important;
         align-items: center !important;
-        gap: 12px !important;
         width: 100% !important;
-        min-height: 244px !important;
         margin: 0 !important;
         padding: 12px !important;
-        border-radius: 18px !important;
-        border: 1px solid rgba(215,176,88,.13) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(215,176,88,.14) !important;
         background:
-          linear-gradient(180deg, rgba(255,255,255,.012), rgba(0,0,0,.12)),
-          rgba(3,3,5,.76) !important;
-        box-shadow: 0 14px 32px rgba(0,0,0,.30) !important;
+          radial-gradient(320px 150px at 15% 0%, rgba(215,176,88,.055), transparent 66%),
+          linear-gradient(180deg, rgba(255,255,255,.014), rgba(0,0,0,.22)),
+          rgba(2,2,4,.76) !important;
+        box-shadow: 0 15px 34px rgba(0,0,0,.34) !important;
         overflow: hidden !important;
       }
 
       html body #featured .cnCard,
       html body #featured .cnFeaturedMedia,
       html body #featured .cnFeaturedInfo {
-        width: 100% !important;
         min-width: 0 !important;
+        width: 100% !important;
         height: auto !important;
         min-height: 0 !important;
         padding: 0 !important;
@@ -13439,30 +13400,28 @@
         overflow: visible !important;
       }
 
-      /* Imagem do Produto do Dia no mesmo porte visual das imagens da Vitrine Rápida */
       html body #featured .cnFeaturedMedia {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
       }
 
+      /* Tamanho da imagem do Produto do Dia igualado visualmente aos cards rápidos */
       html body #featured .cnMediaShell--featured {
         position: relative !important;
         width: 100% !important;
-        min-width: 0 !important;
-        height: 226px !important;
-        min-height: 226px !important;
+        height: clamp(205px, 58vw, 226px) !important;
+        min-height: clamp(205px, 58vw, 226px) !important;
         max-height: 226px !important;
+        aspect-ratio: auto !important;
+        border-radius: 17px !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(215,176,88,.13) !important;
+        background: rgba(0,0,0,.18) !important;
+        box-shadow: 0 10px 24px rgba(0,0,0,.30) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border-radius: 13px !important;
-        border: 0 !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        overflow: hidden !important;
       }
 
       html body #featured .cnMediaShell--featured .cnImg {
@@ -13471,67 +13430,64 @@
         height: 100% !important;
         max-width: 100% !important;
         max-height: 100% !important;
-        min-height: 0 !important;
-        object-fit: cover !important;
+        object-fit: contain !important;
         object-position: center center !important;
-        margin: auto !important;
-        border-radius: 12px !important;
-        background: transparent !important;
+        border-radius: 15px !important;
+        background: rgba(0,0,0,.10) !important;
         box-shadow: none !important;
       }
 
+      /* Galeria discreta, como na Vitrine Rápida */
       html body #featured .cnMediaShell--featured .cnGalleryCount,
       html body #featured .cnMediaShell--featured .cnGalleryArrow,
       html body #featured .cnMediaShell--featured .cnGalleryDots {
         display: none !important;
       }
 
-      html body #featured .cnMediaShell--featured .cnZoomBtn,
-      html body #featured .cnZoomBtn {
+      html body #featured .cnMediaShell--featured .cnGalleryZoom {
+        right: 8px !important;
+        bottom: 8px !important;
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        min-height: 42px !important;
+        padding: 0 !important;
+        border-radius: 999px !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        width: 34px !important;
-        height: 34px !important;
-        min-width: 34px !important;
-        min-height: 34px !important;
-        right: 4px !important;
-        bottom: 4px !important;
-        border-radius: 12px !important;
+        gap: 0 !important;
         font-size: 0 !important;
-        background: rgba(31,29,25,.82) !important;
-        border: 1px solid rgba(224,195,107,.28) !important;
-        box-shadow: 0 10px 18px rgba(0,0,0,.30) !important;
+        line-height: 0 !important;
+        overflow: hidden !important;
+        background: rgba(24,22,20,.78) !important;
+        border-color: rgba(215,176,88,.30) !important;
+        box-shadow: 0 10px 22px rgba(0,0,0,.34) !important;
       }
 
-      html body #featured .cnMediaShell--featured .cnZoomBtn::before,
-      html body #featured .cnZoomBtn::before {
+      html body #featured .cnMediaShell--featured .cnGalleryZoom::before {
         content: "⛶" !important;
-        font-size: 1rem !important;
+        font-size: 17px !important;
         line-height: 1 !important;
+        color: rgba(255,244,208,.96) !important;
       }
 
       html body #featured .cnFeaturedInfo,
-      html body #featured .cnCardPad {
+      html body #featured .cnFeaturedInfo .cnCardPad {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
-        width: 100% !important;
         min-width: 0 !important;
-        min-height: 226px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
         padding: 0 !important;
-        overflow: visible !important;
       }
 
       html body #featured .cnTitle {
         order: 1 !important;
         margin: 0 !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-        font-family: var(--cn-serif-luxury, "Cormorant Garamond", Georgia, serif) !important;
-        color: rgba(248,239,221,.96) !important;
-        letter-spacing: .01em !important;
-        text-shadow: 0 7px 15px rgba(0,0,0,.26) !important;
+        display: block !important;
       }
 
       html body #featured .cnTitleMain {
@@ -13539,9 +13495,9 @@
         -webkit-line-clamp: 2 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
-        font-size: clamp(.92rem, 4.25vw, 1.06rem) !important;
-        line-height: 1.06 !important;
-        font-weight: 700 !important;
+        font-size: clamp(.98rem, 4.45vw, 1.30rem) !important;
+        line-height: 1.03 !important;
+        letter-spacing: .01em !important;
       }
 
       html body #featured .cnTitleSub {
@@ -13551,9 +13507,9 @@
         overflow: hidden !important;
         margin-top: 4px !important;
         font-family: var(--font-sans, Inter, Arial, sans-serif) !important;
-        font-size: .70rem !important;
-        line-height: 1.05 !important;
-        color: rgba(224,195,107,.94) !important;
+        font-size: clamp(.74rem, 3.55vw, .94rem) !important;
+        line-height: 1.12 !important;
+        color: rgba(224,195,107,.95) !important;
         font-weight: 900 !important;
       }
 
@@ -13567,7 +13523,7 @@
 
       html body #featured .cnPromoBox {
         order: 2 !important;
-        margin: 6px 0 0 !important;
+        margin: 6px 0 0 0 !important;
         padding: 0 !important;
         border: 0 !important;
         border-radius: 0 !important;
@@ -13582,130 +13538,126 @@
       }
 
       html body #featured .cnPromoPrices {
+        margin: 0 !important;
         display: flex !important;
         align-items: baseline !important;
         gap: 7px !important;
-        margin: 0 !important;
-        padding: 0 !important;
       }
 
       html body #featured .cnCurrentPrice {
-        display: block !important;
-        font-size: clamp(1.28rem, 7.1vw, 1.76rem) !important;
-        line-height: .92 !important;
+        font-size: clamp(1.70rem, 8.8vw, 2.26rem) !important;
+        line-height: .96 !important;
         letter-spacing: -.035em !important;
         color: rgba(255,255,255,.98) !important;
-        text-shadow: 0 8px 16px rgba(0,0,0,.35) !important;
+        text-shadow: 0 10px 20px rgba(0,0,0,.34) !important;
       }
 
       html body #featured .cnBadges {
         order: 3 !important;
         display: flex !important;
         flex-wrap: nowrap !important;
-        gap: 5px !important;
-        margin: 7px 0 0 !important;
-        min-height: 19px !important;
-        max-height: 20px !important;
+        gap: 6px !important;
+        margin: 7px 0 0 0 !important;
         overflow: hidden !important;
       }
 
       html body #featured .cnBadges span {
         margin: 0 !important;
-        padding: 3px 7px !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 3px 8px !important;
         border-radius: 999px !important;
         font-size: .64rem !important;
         line-height: 1 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
         color: rgba(255,255,255,.70) !important;
         background: rgba(255,255,255,.035) !important;
         border-color: rgba(215,176,88,.12) !important;
-        white-space: nowrap !important;
       }
 
       html body #featured .cnBadges span:nth-child(n+3) {
         display: none !important;
       }
 
-      /* Código acima dos botões, igual à Vitrine Rápida */
+      /* Código acima dos botões, como na Vitrine Rápida */
       html body #featured .cnMeta {
         order: 4 !important;
-        margin: 8px 0 0 !important;
+        margin: 8px 0 0 0 !important;
         padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
         width: 100% !important;
         max-width: 100% !important;
-        border: 0 !important;
-        border-radius: 0 !important;
-        background: transparent !important;
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
         gap: 8px !important;
-        color: rgba(255,255,255,.58) !important;
-        font-size: .67rem !important;
+        font-size: .66rem !important;
         line-height: 1.05 !important;
+        color: rgba(255,255,255,.52) !important;
       }
 
       html body #featured .cnMeta span {
-        font-size: 0 !important;
-        line-height: 0 !important;
-      }
-
-      html body #featured .cnMeta span::before {
-        content: "Código" !important;
-        font-size: .67rem !important;
-        line-height: 1 !important;
-      }
-
-      html body #featured .cnMeta b,
-      html body #featured .cnMeta strong {
-        color: rgba(224,195,107,.96) !important;
-        font-size: .69rem !important;
-        font-weight: 900 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
         white-space: nowrap !important;
       }
 
-      /* Botões exatamente como na Vitrine Rápida: Comprar + Copiar Link lado a lado */
-      html body #featured .cnRow {
-        order: 5 !important;
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        align-items: stretch !important;
-        gap: 7px !important;
-        margin: 8px 0 0 !important;
-        padding: 0 !important;
-        overflow: visible !important;
+      html body #featured .cnMeta span::after {
+        content: "" !important;
       }
 
-      html body #featured .cnRow .btn,
-      html body #featured .cnRow .btn--buy-primary.cnActionPrimary,
-      html body #featured .cnRow .cnActionSecondary {
+      html body #featured .cnMeta b,
+      html body #featured .cnMeta strong,
+      html body #featured .cnMeta .gold {
+        color: rgba(224,195,107,.92) !important;
+        font-size: .76rem !important;
+        white-space: nowrap !important;
+      }
+
+      html body #featured .cnRow {
+        order: 5 !important;
+        margin-top: 8px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+        align-items: stretch !important;
+      }
+
+      html body #featured .cnRow .btn {
         width: 100% !important;
         min-width: 0 !important;
         min-height: 34px !important;
         padding: 7px 8px !important;
         border-radius: 11px !important;
         font-size: .66rem !important;
-        line-height: 1.05 !important;
+        line-height: 1.06 !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
+      }
+
+      html body #featured .cnRow .cnActionPrimary {
         display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
-
-      html body #featured .cnRow .btn--buy-primary.cnActionPrimary {
         grid-column: auto !important;
+        min-height: 34px !important;
+        padding: 7px 8px !important;
+        border-radius: 11px !important;
       }
 
-      /* Child 2 = Copiar ID: escondido; Child 3 = Copiar Link: exibido */
-      html body #featured .cnRow .cnActionSecondary:nth-child(2),
-      html body #featured .cnRow .cnActionTertiary {
+      /* Esconde Copiar ID e mantém Copiar Link como segundo botão */
+      html body #featured .cnRow > .cnActionSecondary {
         display: none !important;
       }
 
-      html body #featured .cnRow .cnActionSecondary:nth-child(3) {
+      html body #featured .cnRow > .cnActionSecondary:nth-child(3) {
         display: inline-flex !important;
-        grid-column: auto !important;
+      }
+
+      html body #featured .cnRow > .cnActionTertiary {
+        display: none !important;
       }
 
       html body #featured .cnRow .cnBuyLabel {
@@ -13715,7 +13667,7 @@
 
       html body #featured .cnRow .cnBuyLabel::after {
         content: "Comprar" !important;
-        font-size: .66rem !important;
+        font-size: .70rem !important;
         line-height: 1 !important;
         white-space: nowrap !important;
       }
@@ -13723,32 +13675,26 @@
 
     @media (max-width: 390px) {
       html body #featured .cnFeaturedWrap {
-        grid-template-columns: 42% 58% !important;
-        min-height: 238px !important;
-        gap: 10px !important;
+        grid-template-columns: minmax(142px, 43%) minmax(0, 1fr) !important;
+        gap: 9px !important;
         padding: 10px !important;
       }
 
       html body #featured .cnMediaShell--featured {
-        height: 218px !important;
-        min-height: 218px !important;
-        max-height: 218px !important;
-      }
-
-      html body #featured .cnCardPad {
-        min-height: 218px !important;
+        height: clamp(196px, 56vw, 210px) !important;
+        min-height: clamp(196px, 56vw, 210px) !important;
       }
 
       html body #featured .cnTitleMain {
-        font-size: .89rem !important;
+        font-size: .98rem !important;
       }
 
       html body #featured .cnTitleSub {
-        font-size: .65rem !important;
+        font-size: .72rem !important;
       }
 
       html body #featured .cnCurrentPrice {
-        font-size: clamp(1.22rem, 6.8vw, 1.58rem) !important;
+        font-size: clamp(1.54rem, 8vw, 1.96rem) !important;
       }
 
       html body #featured .cnRow {
@@ -13756,10 +13702,8 @@
       }
 
       html body #featured .cnRow .btn,
-      html body #featured .cnRow .btn--buy-primary.cnActionPrimary,
-      html body #featured .cnRow .cnActionSecondary,
       html body #featured .cnRow .cnBuyLabel::after {
-        font-size: .61rem !important;
+        font-size: .62rem !important;
       }
     }
   </style>
