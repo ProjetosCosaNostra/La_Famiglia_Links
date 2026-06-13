@@ -60,6 +60,20 @@
   function trim(s) { return safeText(s).replace(/^\s+|\s+$/g, ''); }
   function lower(s) { return safeText(s).toLowerCase(); }
 
+  function isMobileHomeLayout() {
+    try {
+      if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) return true;
+    } catch (e) {}
+
+    try {
+      var ua = lower(navigator.userAgent || '');
+      if (/android|iphone|ipad|ipod|mobile/i.test(ua)) return true;
+      if (navigator.maxTouchPoints && navigator.maxTouchPoints > 1 && window.innerWidth <= 860) return true;
+    } catch (e2) {}
+
+    return false;
+  }
+
   var QUICK_HOME_LIMIT = 32;
   var cnGalleryPreloadCache = {};
 
@@ -218,14 +232,6 @@
   function isInAppBrowser() {
     var ua = lower(navigator.userAgent || '');
     return /instagram|fbav|fban|line|micromessenger|wv|webview|messenger/i.test(ua);
-  }
-
-  function isMobileHome() {
-    try {
-      return !!(window.matchMedia && window.matchMedia('(max-width: 640px)').matches);
-    } catch (e) {
-      return (window.innerWidth || 9999) <= 640;
-    }
   }
 
   function openBuy(url, ev) {
@@ -636,8 +642,8 @@
   function createProductMedia(p, options) {
     options = options || {};
     var images = getImages(p);
-    if (options.preload === true) {
-      preloadGalleryImages(images, 0, 0);
+    if (options.preload === true || options.variant === 'featured') {
+      preloadGalleryImages(images, 0, 1);
     }
 
     var shell = document.createElement('div');
@@ -654,10 +660,6 @@
     }
     try { img.decoding = 'async'; } catch (e) {}
     img.alt = safeText(options.alt || (p && (p.title || p.sku)) || 'Produto');
-    try {
-      img.setAttribute('width', '800');
-      img.setAttribute('height', '1000');
-    } catch (e) {}
 
     if (images.length) {
       img.src = images[0];
@@ -1252,7 +1254,7 @@
       alt: safeText(p.title || 'Produto do Dia'),
       loading: 'eager',
       fetchPriority: 'high',
-      preload: false,
+      preload: true,
       variant: 'featured'
     }));
     wrap.appendChild(cardImg);
@@ -1302,17 +1304,13 @@
 
     var mlid = getMlId(p);
 
-    var meta = document.createElement('div');
-    meta.className = 'cnMeta';
-    meta.innerHTML = '<span>Código</span><b>' + safeText(mlid) + '</b>';
-    if (isMobileHome()) pad.appendChild(meta);
-
     var row1 = document.createElement('div');
     row1.className = 'cnRow';
 
     var aBuy = document.createElement('a');
     aBuy.className = 'btn btn--gold btn--tiny btn--buy-primary cnActionPrimary';
-    setupBuyButtonVisual(aBuy, isMobileHome() ? 'Comprar' : getBuyCtaText(p, false));
+    var isMobileFeaturedLayout = isMobileHomeLayout();
+    setupBuyButtonVisual(aBuy, isMobileFeaturedLayout ? 'Comprar' : getBuyCtaText(p, false));
     var buyLink = getLink(p);
     aBuy.href = buyLink || '#';
     aBuy.target = '_blank';
@@ -1337,28 +1335,26 @@
     };
     row1.appendChild(aBuy);
 
-    if (!isMobileHome()) {
-      var bCopyId = document.createElement('button');
-      bCopyId.type = 'button';
-      bCopyId.className = 'btn btn--glass btn--tiny cnActionSecondary';
-      bCopyId.textContent = 'Copiar ID';
-      bCopyId.onclick = function () {
-        trackEvent('click_copy_id_home', getTrackProduct(p, {
-          placement: 'featured_copy_id',
-          source_block: 'produto_do_dia',
-          position_on_page: 1,
-          quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-        quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-        }));
+    var bCopyId = document.createElement('button');
+    bCopyId.type = 'button';
+    bCopyId.className = 'btn btn--glass btn--tiny cnActionSecondary cnFeaturedCopyId';
+    bCopyId.textContent = 'Copiar ID';
+    bCopyId.onclick = function () {
+      trackEvent('click_copy_id_home', getTrackProduct(p, {
+        placement: 'featured_copy_id',
+        source_block: 'produto_do_dia',
+        position_on_page: 1,
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      }));
 
-        copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
-      };
-      row1.appendChild(bCopyId);
-    }
+      copyText(mlid).then(function (ok) { toast(ok ? 'ID copiado ✅' : 'Falha ao copiar'); });
+    };
+    if (!isMobileFeaturedLayout) row1.appendChild(bCopyId);
 
     var bCopyLink = document.createElement('button');
     bCopyLink.type = 'button';
-    bCopyLink.className = 'btn btn--glass btn--tiny cnActionSecondary';
+    bCopyLink.className = 'btn btn--glass btn--tiny cnActionSecondary cnFeaturedCopyLink';
     bCopyLink.textContent = 'Copiar Link';
     bCopyLink.onclick = function () {
       var link = getLink(p);
@@ -1375,33 +1371,34 @@
     };
     row1.appendChild(bCopyLink);
 
-    if (!isMobileHome()) {
-      var aStore = document.createElement('a');
-      aStore.className = 'btn btn--glass btn--tiny cnActionTertiary';
-      aStore.setAttribute('data-cn-track-owned', '1');
-      aStore.setAttribute('data-cn-role', 'open-store');
-      aStore.textContent = 'Ver todos os produtos';
-      aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
-      aStore.onclick = function () {
-        trackEvent('click_open_store', {
-          page_type: 'home',
-          placement: 'featured_open_store',
-          source_block: 'produto_do_dia',
-          quick_source: state && state.quickSource ? state.quickSource : 'fallback',
-        quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
-        });
-      };
-      row1.appendChild(aStore);
-    }
+    var aStore = document.createElement('a');
+    aStore.className = 'btn btn--glass btn--tiny cnActionTertiary cnFeaturedOpenStore';
+    aStore.setAttribute('data-cn-track-owned', '1');
+    aStore.setAttribute('data-cn-role', 'open-store');
+    aStore.textContent = 'Ver todos os produtos';
+    aStore.href = getStoreUrl(['cn_source_page=home', 'cn_source_block=produto_do_dia']);
+    aStore.onclick = function () {
+      trackEvent('click_open_store', {
+        page_type: 'home',
+        placement: 'featured_open_store',
+        source_block: 'produto_do_dia',
+        quick_source: state && state.quickSource ? state.quickSource : 'fallback',
+      quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
+      });
+    };
+    if (!isMobileFeaturedLayout) row1.appendChild(aStore);
 
     pad.appendChild(row1);
 
     var scarcity = document.createElement('div');
     scarcity.className = 'cnScarcityLine';
     scarcity.textContent = 'Confira preço, frete e disponibilidade no Mercado Livre antes de concluir.';
-    if (!isMobileHome()) pad.appendChild(scarcity);
+    pad.appendChild(scarcity);
 
-    if (!isMobileHome()) pad.appendChild(meta);
+    var meta = document.createElement('div');
+    meta.className = 'cnMeta';
+    meta.innerHTML = '<span>Código de busca</span><b>' + safeText(mlid) + '</b>';
+    pad.appendChild(meta);
 
     cardInfo.appendChild(pad);
     wrap.appendChild(cardInfo);
@@ -1423,8 +1420,8 @@
 
     card.appendChild(createProductMedia(p, {
       alt: safeText(p.title || p.sku || 'Produto'),
-      loading: idx < 1 ? 'eager' : 'lazy',
-      fetchPriority: idx < 1 ? 'high' : 'low',
+      loading: idx < 2 ? 'eager' : 'lazy',
+      fetchPriority: idx < 2 ? 'high' : 'low',
       preload: false,
       variant: 'quick'
     }));
