@@ -513,6 +513,54 @@
     el.appendChild(fx);
   }
 
+
+
+  function applyFeaturedMobileActionsLikeQuick(row, buyBtn, copyBtn) {
+    if (!row || !isMobileHomeLayout()) return;
+
+    row.setAttribute('data-cn-featured-mobile-actions', '1');
+    row.style.setProperty('display', 'grid', 'important');
+    row.style.setProperty('grid-template-columns', 'repeat(2, minmax(0, 1fr))', 'important');
+    row.style.setProperty('gap', '8px', 'important');
+    row.style.setProperty('align-items', 'stretch', 'important');
+    row.style.setProperty('width', '100%', 'important');
+    row.style.setProperty('margin-top', '10px', 'important');
+    row.style.setProperty('padding', '0', 'important');
+    row.style.setProperty('overflow', 'visible', 'important');
+
+    function forceButton(btn) {
+      if (!btn) return;
+      btn.style.setProperty('display', 'inline-flex', 'important');
+      btn.style.setProperty('align-items', 'center', 'important');
+      btn.style.setProperty('justify-content', 'center', 'important');
+      btn.style.setProperty('grid-column', 'auto', 'important');
+      btn.style.setProperty('justify-self', 'stretch', 'important');
+      btn.style.setProperty('align-self', 'stretch', 'important');
+      btn.style.setProperty('width', '100%', 'important');
+      btn.style.setProperty('min-width', '0', 'important');
+      btn.style.setProperty('max-width', 'none', 'important');
+      btn.style.setProperty('min-height', '36px', 'important');
+      btn.style.setProperty('height', '36px', 'important');
+      btn.style.setProperty('padding', '0 8px', 'important');
+      btn.style.setProperty('border-radius', '12px', 'important');
+      btn.style.setProperty('font-size', '.70rem', 'important');
+      btn.style.setProperty('line-height', '1', 'important');
+      btn.style.setProperty('white-space', 'nowrap', 'important');
+      btn.style.setProperty('text-align', 'center', 'important');
+      btn.style.setProperty('overflow', 'hidden', 'important');
+    }
+
+    forceButton(buyBtn);
+    forceButton(copyBtn);
+
+    if (copyBtn) {
+      copyBtn.style.setProperty('background', 'rgba(255,255,255,.035)', 'important');
+      copyBtn.style.setProperty('border-color', 'rgba(255,255,255,.10)', 'important');
+      copyBtn.style.setProperty('color', 'rgba(255,255,255,.88)', 'important');
+      copyBtn.style.setProperty('box-shadow', '0 10px 22px rgba(0,0,0,.22)', 'important');
+    }
+  }
+
   function createPromoBox(p, compact) {
     var promo = getPromoInfo(p);
     if (!promo.has) return null;
@@ -1428,6 +1476,8 @@
     };
     row1.appendChild(bCopyLink);
 
+    applyFeaturedMobileActionsLikeQuick(row1, aBuy, bCopyLink);
+
     var aStore = document.createElement('a');
     aStore.className = 'btn btn--glass btn--tiny cnActionTertiary cnFeaturedOpenStore';
     aStore.setAttribute('data-cn-track-owned', '1');
@@ -1476,14 +1526,17 @@
     });
 
     var quickIsMobile = isMobileHomeLayout();
-    var quickEagerLimit = quickIsMobile ? 1 : 2;
-    var quickDeferAfter = 2;
+    // Performance geral: Produto do Dia fica prioritário; Vitrine Rápida carrega sob demanda.
+    // Mobile: só a primeira imagem da Vitrine Rápida fica pronta para entrar; o resto espera chegar perto da tela.
+    // PC: as primeiras imagens ficam normais e o restante também usa IntersectionObserver.
+    var quickEagerLimit = quickIsMobile ? 0 : 1;
+    var quickDeferAfter = quickIsMobile ? 0 : 3;
     card.appendChild(createProductMedia(p, {
       alt: safeText(p.title || p.sku || 'Produto'),
       loading: idx < quickEagerLimit ? 'eager' : 'lazy',
       fetchPriority: idx < quickEagerLimit ? 'high' : 'low',
       preload: false,
-      deferSrc: quickIsMobile ? idx > quickDeferAfter : false,
+      deferSrc: idx > quickDeferAfter,
       variant: 'quick'
     }));
 
@@ -1743,7 +1796,7 @@
       }
     };
 
-    fetch('./produtos.json', { cache: 'no-cache' })
+    fetch('./produtos.json', { cache: 'default' })
       .then(function (r) { if (!r.ok) throw new Error('fetch produtos.json'); return r.json(); })
       .then(function (j) {
         var list = j.products || j.items || [];
