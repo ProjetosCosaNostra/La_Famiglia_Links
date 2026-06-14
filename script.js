@@ -76,6 +76,52 @@
 
   var QUICK_HOME_LIMIT = 32;
   var cnGalleryPreloadCache = {};
+  var cnLazyImageObserver = null;
+
+  function scheduleIdleTask(fn, delay) {
+    if (typeof fn !== 'function') return;
+    try {
+      if (window.requestIdleCallback) {
+        window.requestIdleCallback(fn, { timeout: 1800 });
+        return;
+      }
+    } catch (e) {}
+    setTimeout(fn, delay || 700);
+  }
+
+  function loadDeferredImage(img) {
+    if (!img) return;
+    var src = img.getAttribute('data-cn-src') || '';
+    if (!src) return;
+    img.removeAttribute('data-cn-src');
+    img.src = src;
+  }
+
+  function observeDeferredImage(img) {
+    if (!img) return;
+    try {
+      if (!('IntersectionObserver' in window)) {
+        loadDeferredImage(img);
+        return;
+      }
+
+      if (!cnLazyImageObserver) {
+        cnLazyImageObserver = new IntersectionObserver(function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            var entry = entries[i];
+            if (entry && (entry.isIntersecting || entry.intersectionRatio > 0)) {
+              cnLazyImageObserver.unobserve(entry.target);
+              loadDeferredImage(entry.target);
+            }
+          }
+        }, { rootMargin: '520px 0px', threshold: 0.01 });
+      }
+
+      cnLazyImageObserver.observe(img);
+    } catch (e) {
+      loadDeferredImage(img);
+    }
+  }
 
   function getProductKey(p) {
     if (!p) return '';
@@ -642,9 +688,6 @@
   function createProductMedia(p, options) {
     options = options || {};
     var images = getImages(p);
-    if (options.preload === true || options.variant === 'featured') {
-      preloadGalleryImages(images, 0, 1);
-    }
 
     var shell = document.createElement('div');
     shell.className = 'cnMediaShell';
@@ -661,8 +704,22 @@
     try { img.decoding = 'async'; } catch (e) {}
     img.alt = safeText(options.alt || (p && (p.title || p.sku)) || 'Produto');
 
+    var didScheduleGalleryPreload = false;
+    img.onload = function () {
+      if (shell.className.indexOf('is-loaded') < 0) shell.className += ' is-loaded';
+      if (!didScheduleGalleryPreload && images.length > 1 && (options.preload === true || options.variant === 'featured')) {
+        didScheduleGalleryPreload = true;
+        scheduleIdleTask(function () { preloadGalleryImages(images, 0, 1); }, 900);
+      }
+    };
+
     if (images.length) {
-      img.src = images[0];
+      if (options.deferSrc === true) {
+        img.setAttribute('data-cn-src', images[0]);
+        observeDeferredImage(img);
+      } else {
+        img.src = images[0];
+      }
     } else {
       img.style.display = 'none';
     }
@@ -1418,11 +1475,15 @@
       quick_mode: state && state.quickMode ? state.quickMode : 'fallback'
     });
 
+    var quickIsMobile = isMobileHomeLayout();
+    var quickEagerLimit = quickIsMobile ? 1 : 2;
+    var quickDeferAfter = 2;
     card.appendChild(createProductMedia(p, {
       alt: safeText(p.title || p.sku || 'Produto'),
-      loading: idx < 2 ? 'eager' : 'lazy',
-      fetchPriority: idx < 2 ? 'high' : 'low',
+      loading: idx < quickEagerLimit ? 'eager' : 'lazy',
+      fetchPriority: idx < quickEagerLimit ? 'high' : 'low',
       preload: false,
+      deferSrc: quickIsMobile ? idx > quickDeferAfter : false,
       variant: 'quick'
     }));
 
@@ -1682,7 +1743,7 @@
       }
     };
 
-    fetch('./produtos.json', { cache: 'no-store' })
+    fetch('./produtos.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw new Error('fetch produtos.json'); return r.json(); })
       .then(function (j) {
         var list = j.products || j.items || [];
