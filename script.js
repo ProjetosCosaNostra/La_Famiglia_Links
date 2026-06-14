@@ -76,6 +76,7 @@
 
   var QUICK_HOME_LIMIT = 32;
   var cnGalleryPreloadCache = {};
+  var cnGalleryPreloadLinkCache = {};
   var cnLazyImageObserver = null;
 
   function scheduleIdleTask(fn, delay) {
@@ -618,22 +619,71 @@
     return box;
   }
 
-  function preloadOneGalleryImage(url) {
+  function injectGalleryPreloadLink(url, highPriority) {
     var u = trim(url);
-    if (!u || cnGalleryPreloadCache[u]) return;
-    var im = new Image();
-    try { im.decoding = 'async'; } catch (e) {}
-    im.src = u;
-    cnGalleryPreloadCache[u] = im;
+    if (!u || cnGalleryPreloadLinkCache[u]) return;
+
+    try {
+      var link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = u;
+      if (highPriority) {
+        try { link.fetchPriority = 'high'; } catch (e1) {}
+        try { link.setAttribute('fetchpriority', 'high'); } catch (e2) {}
+      }
+      document.head.appendChild(link);
+      cnGalleryPreloadLinkCache[u] = true;
+    } catch (e) {}
   }
 
-  function preloadGalleryImages(images, centerIndex, radius) {
+  function preloadOneGalleryImage(url, highPriority) {
+    var u = trim(url);
+    if (!u) return null;
+
+    if (highPriority) injectGalleryPreloadLink(u, true);
+
+    if (cnGalleryPreloadCache[u]) return cnGalleryPreloadCache[u];
+
+    var entry = {
+      url: u,
+      img: new Image(),
+      loaded: false,
+      failed: false
+    };
+
+    try { entry.img.decoding = 'async'; } catch (e0) {}
+    if (highPriority) {
+      try { entry.img.fetchPriority = 'high'; } catch (e3) {}
+    }
+
+    entry.img.onload = function () {
+      entry.loaded = true;
+      entry.failed = false;
+    };
+    entry.img.onerror = function () {
+      entry.failed = true;
+    };
+
+    entry.img.src = u;
+    cnGalleryPreloadCache[u] = entry;
+    return entry;
+  }
+
+  function preloadGalleryImages(images, centerIndex, radius, highPriority) {
     if (!images || images.length < 2) return;
     var center = typeof centerIndex === 'number' ? centerIndex : 0;
     var span = typeof radius === 'number' ? radius : 1;
     var start = Math.max(0, center - span);
     var end = Math.min(images.length - 1, center + span);
-    for (var i = start; i <= end; i++) preloadOneGalleryImage(images[i]);
+    for (var i = start; i <= end; i++) preloadOneGalleryImage(images[i], highPriority === true);
+  }
+
+  function preloadAllGalleryImages(images, highPriority) {
+    if (!images || images.length < 2) return;
+    for (var i = 0; i < images.length; i++) {
+      preloadOneGalleryImage(images[i], highPriority === true);
+    }
   }
 
   function ensureGalleryLightbox() {
@@ -755,10 +805,22 @@
     var didScheduleGalleryPreload = false;
     img.onload = function () {
       if (shell.className.indexOf('is-loaded') < 0) shell.className += ' is-loaded';
+      shell.className = shell.className.replace(/\bis-gallery-loading\b/g, '').replace(/\s{2,}/g, ' ');
+      img.removeAttribute('aria-busy');
+
       if (!didScheduleGalleryPreload && images.length > 1 && (options.preload === true || options.variant === 'featured')) {
         didScheduleGalleryPreload = true;
-        scheduleIdleTask(function () { preloadGalleryImages(images, 0, 1); }, 900);
+        if (options.variant === 'featured') {
+          preloadAllGalleryImages(images, true);
+        } else {
+          scheduleIdleTask(function () { preloadGalleryImages(images, 0, 1, false); }, 700);
+        }
       }
+    };
+
+    img.onerror = function () {
+      shell.className = shell.className.replace(/\bis-gallery-loading\b/g, '').replace(/\s{2,}/g, ' ');
+      img.removeAttribute('aria-busy');
     };
 
     if (images.length) {
@@ -777,6 +839,12 @@
     if (images.length > 1) {
       shell.className += ' cnMediaShell--gallery';
       shell.setAttribute('data-gallery-count', String(images.length));
+
+      if (options.variant === 'featured') {
+        // Produto do Dia: deixa todas as imagens do carrossel aquecidas logo no início.
+        // Isso evita o travamento visual de ficar em 2/5, 3/5 etc. esperando a rede.
+        preloadAllGalleryImages(images, true);
+      }
 
       var count = document.createElement('div');
       count.className = 'cnGalleryCount';
@@ -827,6 +895,15 @@
       var currentIndex = 0;
       var touchStartX = 0;
 
+      function warmGalleryNow() {
+        if (options.variant === 'featured') preloadAllGalleryImages(images, true);
+        else preloadGalleryImages(images, currentIndex, 2, false);
+      }
+
+      try { shell.addEventListener('pointerdown', warmGalleryNow, { passive: true }); } catch (e0) {}
+      try { shell.addEventListener('touchstart', warmGalleryNow, { passive: true }); } catch (e1) {}
+      try { shell.addEventListener('mouseenter', warmGalleryNow); } catch (e2) {}
+
       function refreshControls() {
         count.textContent = String(currentIndex + 1) + '/' + String(images.length);
         prevArrow.classList.toggle('is-hidden', currentIndex <= 0);
@@ -840,9 +917,23 @@
       function setIndex(nextIndex) {
         if (!images.length) return;
         if (nextIndex < 0 || nextIndex >= images.length) return;
+
+        var target = images[nextIndex];
+        if (!target) return;
+
         currentIndex = nextIndex;
-        if (img.getAttribute('src') !== images[currentIndex]) img.src = images[currentIndex];
-        preloadGalleryImages(images, currentIndex, 1);
+
+        // Aquece o alvo e as imagens vizinhas antes/depois da troca.
+        // No Produto do Dia a prioridade é alta porque o usuário realmente está clicando no carrossel.
+        preloadOneGalleryImage(target, options.variant === 'featured');
+        preloadGalleryImages(images, currentIndex, 2, options.variant === 'featured');
+
+        if (img.getAttribute('src') !== target) {
+          if (shell.className.indexOf('is-gallery-loading') < 0) shell.className += ' is-gallery-loading';
+          img.setAttribute('aria-busy', 'true');
+          img.src = target;
+        }
+
         refreshControls();
       }
 
