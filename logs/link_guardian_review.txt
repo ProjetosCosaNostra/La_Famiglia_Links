@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-14T12:11:22Z
-Itens pendentes: 6
-SKUs únicos: 6
-Prioridade alta: 6
+Atualizado em: 2026-06-14T12:35:30Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 6
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 6
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 6
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,115 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-14T12:05:53Z
-Issue: #154
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
-SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
-Título: Paleta De Maquiagem Belle Angel 28 Sombras Nude + Pincéis Sombra 28 Cores
-ID ML: 5J5PKG-YHPD
+Quando: 2026-06-14T12:29:34Z
+Issue: #111
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/111
+SKU: zero-mofo-premium-1l-spray
+Título: 🛡️ Zero Mofo Premium 1L + Spray — Proteção Prolongada para Parede, Teto e Piso
+ID ML: 5J5PKG-J7T0
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (27x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
-open_url: https://meli.la/1iBx7VY
-checked_url: https://meli.la/1iBx7VY
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Limpeza, Anti Mofo, Zero Mofo, Banheiro, Parede, Teto, Piso
+open_url: https://meli.la/1qHEv74
+checked_url: https://meli.la/1qHEv74
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-06-14T12:05:53Z
-Issue: #113
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
-SKU: gamestick-premium-2-controles-wireless
-Título: Game Stick Hdmi Mais 20 Mil Jogos + 2 Controle Sem Fio
-ID ML: 5J5PKG-H48U
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (33x /lists, 0x listing)
-Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
-open_url: https://meli.la/1zdRuA2
-checked_url: https://meli.la/1zdRuA2
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-06-14T12:05:53Z
-Issue: #76
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
-SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
-Título: Luminária Mesa Abajur Led Dimerizável Sem Fio Recarregável
-ID ML: 5J5PKG-2H1Y
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (27x /lists, 0x listing)
-Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
-open_url: https://meli.la/2ZHKt6k
-checked_url: https://meli.la/2ZHKt6k
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-06-14T12:05:53Z
-Issue: #27
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/27
-SKU: hub-usbc-8em1-h71p
-Título: Adaptador Hub Usb-c 8 Em 1 Rj45 Usb 3.0 Sd/tf Slot Several Hdmi Cinza 8 Portas
-ID ML: 5J5PKG-PKJ2
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (32x /lists, 0x listing)
-Badges: Achados do Dia, Hub USB-C, 8 em 1, HDMI 4K, RJ45 Ethernet, USB 3.0, SD/TF, Adaptador
-open_url: https://meli.la/1QX9aqA
-checked_url: https://meli.la/1QX9aqA
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H71P&tid=42f8b39d-42a8-497a-8f21-a8ad42b73b22
-
-[ALTA] review_only_storefront
-Quando: 2026-06-14T12:05:53Z
-Issue: #34
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
-SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
-Título: Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta
-ID ML: 5J5PKG-WXZ9
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (27x /lists, 0x listing)
-Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
-open_url: https://mercadolivre.com/sec/2q8tzpj
-checked_url: https://mercadolivre.com/sec/2q8tzpj
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
-
-[ALTA] review_only_storefront
-Quando: 2026-06-14T12:05:53Z
-Issue: #205
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/205
-SKU: coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador
-Título: Coletor de Pó Nail Designer 4500rpm 100w Sugador Aspirador
-ID ML: 5J5PKG-7K5Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (26x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Manicure, Nail Designer, Coletor de Pó, Aspirador de Pó, Sugador de Pó, 100W
-open_url: https://meli.la/1TXqzvA
-checked_url: https://meli.la/1TXqzvA
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-7K5Q
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J7T0&tid=9ef326de-f93f-485e-a3eb-610b5b06d2f2
