@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T21:52:16Z",
+  "updated_at": "2026-06-14T23:52:06Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -9825,13 +9825,13 @@
       "open_url": "https://meli.la/1aCcT6W",
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGx0nRx2r6TXlzFBoUsIEZ%2F0SJLD9sRPBaR8XsEs1oKSzrl%2FXuGSyRmD%2FF%2B8e7mueqImKTk626E9eDt6qGZwm6iWUoG0hKjWjrQ%2F3RUJV8JMlOSAg%2BiPkM6Y1SZIGlaSpXEJgoQd9qq%2FTUCH%2BL%2FsCofP67l1WMSjPJW1rWcOF9oJS7VJyhMn5Bnfm3Na6hPQDiRcJCg65TmHfiHH2Q%3D%3D",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6Y7S",
-      "image": "https://github.com/user-attachments/assets/eacfc107-1630-4184-9652-72981aedf660",
+      "image": "assets/produtos-webp/rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval-cover-98fdd2e878.webp",
       "images": [
-        "https://github.com/user-attachments/assets/647cd423-585b-4745-bf26-dc951303d672",
-        "https://github.com/user-attachments/assets/6059c022-7e37-4ef6-a606-d9df9860bbeb",
-        "https://github.com/user-attachments/assets/431a1806-60a2-444d-a301-49e096984ed4",
-        "https://github.com/user-attachments/assets/a7cfb674-8f48-4993-ad0b-1844bd6b03d7",
-        "https://github.com/user-attachments/assets/6add0dd7-334c-486f-a3cf-d0fe8d6409cb"
+        "assets/produtos-webp/rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval-images-01-1221c71d60.webp",
+        "assets/produtos-webp/rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval-images-02-ef25a7163b.webp",
+        "assets/produtos-webp/rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval-images-03-c1a9ce2770.webp",
+        "assets/produtos-webp/rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval-images-04-a1185195b9.webp",
+        "assets/produtos-webp/rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval-images-05-9822b53cde.webp"
       ],
       "price_text": "R$ 19,99",
       "old_price_text": "R$ 39,99",
@@ -9881,18 +9881,27 @@
       "short_url": "https://meli.la/1aCcT6W",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGx0nRx2r6TXlzFBoUsIEZ%2F0SJLD9sRPBaR8XsEs1oKSzrl%2FXuGSyRmD%2FF%2B8e7mueqImKTk626E9eDt6qGZwm6iWUoG0hKjWjrQ%2F3RUJV8JMlOSAg%2BiPkM6Y1SZIGlaSpXEJgoQd9qq%2FTUCH%2BL%2FsCofP67l1WMSjPJW1rWcOF9oJS7VJyhMn5Bnfm3Na6hPQDiRcJCg65TmHfiHH2Q%3D%3D",
       "last_checked": "",
-      "last_ok": ""
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/eacfc107-1630-4184-9652-72981aedf660",
+      "images_original": [
+        "https://github.com/user-attachments/assets/647cd423-585b-4745-bf26-dc951303d672",
+        "https://github.com/user-attachments/assets/6059c022-7e37-4ef6-a606-d9df9860bbeb",
+        "https://github.com/user-attachments/assets/431a1806-60a2-444d-a301-49e096984ed4",
+        "https://github.com/user-attachments/assets/a7cfb674-8f48-4993-ad0b-1844bd6b03d7",
+        "https://github.com/user-attachments/assets/6add0dd7-334c-486f-a3cf-d0fe8d6409cb"
+      ],
+      "webp_optimized_at": "2026-06-14T23:52:06Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-06-14T13:55:20Z",
+    "updated_at": "2026-06-14T23:52:06Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
-    "products_touched": 0,
-    "converted": 0,
+    "products_touched": 1,
+    "converted": 6,
     "already_existed": 0,
     "dry_run": 0,
     "failed": 0,
