@@ -33,7 +33,7 @@
 
   <link rel="stylesheet" href="style.css?v=20260516-brilho-estavel-origem" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260614-mobile-botoes-galeria-fast"></script>
+  <script defer src="script.js?v=20260614-mobile-botoes-real-fast-geral"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13365,6 +13365,9 @@
             <source media="(max-width: 640px)" srcset="assets/premium-store-hero-mobile.webp">
             <img
               class="heroBanner__img"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
               src="assets/premium-store-hero-desktop.webp"
               alt="Premium Store — Cosa Nostra • A Família das Ideias"
               onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/premium-store-hero-desktop.webp'; return;} this.style.display='none'; this.closest('.heroBanner').classList.add('heroBanner--fallback');"
@@ -13373,6 +13376,8 @@
           <div class="heroBanner__seal" aria-hidden="true">
             <img
               class="heroBanner__sealLogo"
+              loading="eager"
+              decoding="async"
               src="assets/logo-oficial-circular-glow.png"
               alt=""
               onerror="if(!this.dataset.retry){this.dataset.retry='1'; this.src='/La_Famiglia_Links/assets/logo-oficial-circular-glow.png'; return;} this.style.display='none'; this.parentElement.classList.add('heroBanner__seal--fallback');"
@@ -14911,6 +14916,97 @@
       .orb,
       .grain {
         animation: none !important;
+      }
+    }
+  </style>
+
+
+  <style id="cn-correcao-real-mobile-botoes-fast-geral-20260614">
+    /* ==========================================================
+       CORREÇÃO REAL — MOBILE BOTÕES + PERFORMANCE GERAL
+       - Botões do Produto do Dia iguais aos da Vitrine Rápida apenas no mobile.
+       - Performance de imagens aplicada também no PC via content-visibility.
+       ========================================================== */
+
+    /* Performance geral: o navegador não gasta renderização nos cards fora da tela. */
+    #quickGrid .cnProd {
+      content-visibility: auto;
+      contain-intrinsic-size: 190px 360px;
+    }
+
+    #quickGrid .cnMediaShell,
+    #featured .cnMediaShell {
+      contain: layout paint;
+    }
+
+    .cnImg {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    @media (max-width: 640px) {
+      html body #quickGrid .cnProd {
+        contain-intrinsic-size: 162px 360px;
+      }
+
+      /* A classe/data abaixo é aplicada também pelo JS com style !important.
+         Isso vence regras antigas que forçavam o botão Comprar a ocupar a linha inteira. */
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnActionPrimary,
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnFeaturedCopyLink {
+        grid-column: auto !important;
+        justify-self: stretch !important;
+        align-self: stretch !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        min-height: 36px !important;
+        height: 36px !important;
+        padding: 0 8px !important;
+        border-radius: 12px !important;
+        font-size: .70rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        overflow: hidden !important;
+      }
+
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnActionPrimary .cnBuyLabel {
+        font-size: 0 !important;
+        line-height: 0 !important;
+      }
+
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnActionPrimary .cnBuyLabel::after {
+        content: "Comprar" !important;
+        font-size: .70rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+      }
+
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnFeaturedCopyLink {
+        background: rgba(255,255,255,.035) !important;
+        border-color: rgba(255,255,255,.10) !important;
+        color: rgba(255,255,255,.88) !important;
+        box-shadow: 0 10px 22px rgba(0,0,0,.22) !important;
+      }
+
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnFeaturedCopyId,
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnFeaturedOpenStore,
+      html body #featured .cnRow[data-cn-featured-mobile-actions="1"] > .cnActionTertiary {
+        display: none !important;
       }
     }
   </style>
