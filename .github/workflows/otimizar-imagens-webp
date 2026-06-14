@@ -1,0 +1,53 @@
+name: Otimizar imagens para WebP
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "produtos.json"
+      - "scripts/otimizar_produtos_webp.py"
+      - "scripts/requirements-webp.txt"
+
+permissions:
+  contents: write
+
+jobs:
+  webp:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip webp]') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements-webp.txt
+
+      - name: Converter imagens para WebP
+        run: |
+          python scripts/otimizar_produtos_webp.py \
+            --input produtos.json \
+            --out produtos.json \
+            --assets-dir assets/produtos-webp \
+            --quality 78 \
+            --max-size 1000 \
+            --report webp-report.json
+
+      - name: Commit automático se mudou algo
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add produtos.json assets/produtos-webp webp-report.json
+            git commit -m "Otimiza imagens para WebP [skip webp]"
+            git push
+          else
+            echo "Nada para commitar."
+          fi
