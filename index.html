@@ -15014,5 +15014,62 @@
     }
   </style>
 
+
+  <style id="cn-mobile-produto-dia-imagem-maior-20260614">
+    /* ==========================================================
+       AJUSTE FINAL MOBILE — Produto do Dia com imagem maior
+       Escopo: somente mobile. Não altera a Vitrine Rápida nem o PC.
+       ========================================================== */
+    @media (max-width: 720px) {
+      html body #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(clamp(142px, 44vw, 172px), 48%) minmax(0, 1fr) !important;
+        gap: 10px !important;
+        padding: 10px !important;
+        align-items: center !important;
+      }
+
+      html body #featured .cnFeaturedMedia,
+      html body #featured .cnCard:first-child {
+        align-self: stretch !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnMediaShell,
+      html body #featured .cnFeaturedMedia .cnMediaShell--featured,
+      html body #featured .cnCard:first-child .cnMediaShell,
+      html body #featured .cnMediaShell--featured,
+      html body #featured .cnProductMedia--featured {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        aspect-ratio: 4 / 5 !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnImg,
+      html body #featured .cnFeaturedMedia .cnMediaShell .cnImg,
+      html body #featured .cnFeaturedMedia .cnMediaShell--featured .cnImg,
+      html body #featured .cnCard:first-child .cnImg,
+      html body #featured .cnMediaShell--featured .cnImg,
+      html body #featured .cnProductMedia--featured img[data-cnimg],
+      html body #featured .cnFeaturedMedia img[data-cnimg] {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      html body #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(140px, 47%) minmax(0, 1fr) !important;
+        gap: 8px !important;
+        padding: 9px !important;
+      }
+    }
+  </style>
+
 </body>
 </html>
