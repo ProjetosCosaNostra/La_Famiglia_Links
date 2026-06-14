@@ -79,6 +79,57 @@
   var cnGalleryPreloadLinkCache = {};
   var cnLazyImageObserver = null;
 
+
+  // ✅ FIX REAL VELOCIDADE IMAGENS — usa versão leve/cached para exibição.
+  // Mantém o link original como fallback caso o proxy de imagem não consiga buscar a origem.
+  var CN_IMAGE_OPTIMIZE = true;
+  var CN_IMAGE_PROXY_BASE = 'https://wsrv.nl/';
+
+  function canUseFastImageProxy(url) {
+    var u = trim(url);
+    var x = lower(u);
+    if (!CN_IMAGE_OPTIMIZE || !u) return false;
+    if (!/^https?:\/\//i.test(u)) return false;
+    if (x.indexOf('wsrv.nl/') >= 0 || x.indexOf('images.weserv.nl/') >= 0) return false;
+    if (x.indexOf('data:image/') === 0 || x.indexOf('blob:') === 0) return false;
+    if (/\.(svg|gif)(\?.*)?$/i.test(u)) return false;
+    return true;
+  }
+
+  function getFastImageWidth(kind) {
+    var mobile = isMobileHomeLayout();
+    if (kind === 'lightbox') return mobile ? 1200 : 1600;
+    if (kind === 'featured') return mobile ? 620 : 860;
+    if (kind === 'hero') return mobile ? 900 : 1400;
+    return mobile ? 520 : 620;
+  }
+
+  function fastImageUrl(url, kind) {
+    var u = ensureHttpUrl(url);
+    if (!canUseFastImageProxy(u)) return u;
+
+    var w = getFastImageWidth(kind || 'quick');
+    // URL precisa ser codificada porque muitas imagens do GitHub têm querystring/token.
+    return CN_IMAGE_PROXY_BASE + '?url=' + encodeURIComponent(u) + '&w=' + encodeURIComponent(String(w)) + '&q=78&output=webp&we=1';
+  }
+
+  function mapFastImages(images, kind) {
+    var out = [];
+    if (!images || !images.length) return out;
+    for (var i = 0; i < images.length; i++) {
+      out.push(fastImageUrl(images[i], kind));
+    }
+    return out;
+  }
+
+  function setImageSrcWithFallback(img, src, fallbackSrc) {
+    if (!img || !src) return;
+    var fb = trim(fallbackSrc || '');
+    if (fb && fb !== src) img.setAttribute('data-cn-fallback-src', fb);
+    else img.removeAttribute('data-cn-fallback-src');
+    img.src = src;
+  }
+
   function scheduleIdleTask(fn, delay) {
     if (typeof fn !== 'function') return;
     try {
@@ -786,6 +837,9 @@
   function createProductMedia(p, options) {
     options = options || {};
     var images = getImages(p);
+    var displayKind = options.variant === 'featured' ? 'featured' : 'quick';
+    var displayImages = mapFastImages(images, displayKind);
+    var lightboxImages = mapFastImages(images, 'lightbox');
 
     var shell = document.createElement('div');
     shell.className = 'cnMediaShell';
@@ -811,24 +865,31 @@
       if (!didScheduleGalleryPreload && images.length > 1 && (options.preload === true || options.variant === 'featured')) {
         didScheduleGalleryPreload = true;
         if (options.variant === 'featured') {
-          preloadAllGalleryImages(images, true);
+          preloadAllGalleryImages(displayImages, true);
         } else {
-          scheduleIdleTask(function () { preloadGalleryImages(images, 0, 1, false); }, 700);
+          scheduleIdleTask(function () { preloadGalleryImages(displayImages, 0, 1, false); }, 700);
         }
       }
     };
 
     img.onerror = function () {
+      var fb = img.getAttribute('data-cn-fallback-src') || '';
+      if (fb && img.getAttribute('src') !== fb) {
+        img.removeAttribute('data-cn-fallback-src');
+        img.src = fb;
+        return;
+      }
       shell.className = shell.className.replace(/\bis-gallery-loading\b/g, '').replace(/\s{2,}/g, ' ');
       img.removeAttribute('aria-busy');
     };
 
     if (images.length) {
       if (options.deferSrc === true) {
-        img.setAttribute('data-cn-src', images[0]);
+        if (images[0] && displayImages[0] !== images[0]) img.setAttribute('data-cn-fallback-src', images[0]);
+        img.setAttribute('data-cn-src', displayImages[0]);
         observeDeferredImage(img);
       } else {
-        img.src = images[0];
+        setImageSrcWithFallback(img, displayImages[0], images[0]);
       }
     } else {
       img.style.display = 'none';
@@ -843,7 +904,7 @@
       if (options.variant === 'featured') {
         // Produto do Dia: deixa todas as imagens do carrossel aquecidas logo no início.
         // Isso evita o travamento visual de ficar em 2/5, 3/5 etc. esperando a rede.
-        preloadAllGalleryImages(images, true);
+        preloadAllGalleryImages(displayImages, true);
       }
 
       var count = document.createElement('div');
@@ -896,8 +957,8 @@
       var touchStartX = 0;
 
       function warmGalleryNow() {
-        if (options.variant === 'featured') preloadAllGalleryImages(images, true);
-        else preloadGalleryImages(images, currentIndex, 2, false);
+        if (options.variant === 'featured') preloadAllGalleryImages(displayImages, true);
+        else preloadGalleryImages(displayImages, currentIndex, 2, false);
       }
 
       try { shell.addEventListener('pointerdown', warmGalleryNow, { passive: true }); } catch (e0) {}
@@ -918,7 +979,8 @@
         if (!images.length) return;
         if (nextIndex < 0 || nextIndex >= images.length) return;
 
-        var target = images[nextIndex];
+        var target = displayImages[nextIndex] || images[nextIndex];
+        var originalTarget = images[nextIndex] || target;
         if (!target) return;
 
         currentIndex = nextIndex;
@@ -926,12 +988,12 @@
         // Aquece o alvo e as imagens vizinhas antes/depois da troca.
         // No Produto do Dia a prioridade é alta porque o usuário realmente está clicando no carrossel.
         preloadOneGalleryImage(target, options.variant === 'featured');
-        preloadGalleryImages(images, currentIndex, 2, options.variant === 'featured');
+        preloadGalleryImages(displayImages, currentIndex, 2, options.variant === 'featured');
 
         if (img.getAttribute('src') !== target) {
           if (shell.className.indexOf('is-gallery-loading') < 0) shell.className += ' is-gallery-loading';
           img.setAttribute('aria-busy', 'true');
-          img.src = target;
+          setImageSrcWithFallback(img, target, originalTarget);
         }
 
         refreshControls();
@@ -954,12 +1016,12 @@
         zoom.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto');
         });
         img.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(images, currentIndex, options.alt || (p && p.title) || 'Produto');
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto');
         });
       }
 
@@ -989,12 +1051,12 @@
       singleZoom.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(images, 0, options.alt || (p && p.title) || 'Produto');
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto');
       });
       img.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(images, 0, options.alt || (p && p.title) || 'Produto');
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto');
       });
     }
 
