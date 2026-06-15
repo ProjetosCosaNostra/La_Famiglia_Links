@@ -1,4 +1,4 @@
-/* Loja Completa — Cosa Nostra | REAL9 CORREÇÃO ZOOM + MOBILE */
+/* Loja Completa — Cosa Nostra | REAL10 IMAGENS RÁPIDAS PC + MOBILE */
 (function () {
   'use strict';
 
@@ -25,6 +25,69 @@
     productByKey: {},
     imageCache: {}
   };
+
+
+  // ✅ Performance da Loja Completa:
+  // - cards fora da tela não baixam imagem imediatamente;
+  // - galeria dos cards só pré-carrega quando o usuário interage;
+  // - Produto do Dia continua com prioridade alta.
+  var CN_TRANSPARENT_PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+  var cnStoreImageObserver = null;
+
+  function isCompactStoreLayout() {
+    try {
+      if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) return true;
+    } catch (e) {}
+    try {
+      return /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent || '') || window.innerWidth <= 720;
+    } catch (e2) {}
+    return false;
+  }
+
+  function loadDeferredStoreImage(img) {
+    if (!img) return;
+    var src = img.getAttribute('data-cn-src') || '';
+    if (!src) return;
+    img.removeAttribute('data-cn-src');
+    if (img.getAttribute('src') !== src) img.setAttribute('src', src);
+  }
+
+  function observeStoreImages(root) {
+    var scope = root || document;
+    var imgs = qsa('img[data-cn-src]', scope);
+    if (!imgs.length) return;
+
+    try {
+      if (!('IntersectionObserver' in window)) {
+        imgs.forEach(loadDeferredStoreImage);
+        return;
+      }
+
+      if (!cnStoreImageObserver) {
+        cnStoreImageObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry && (entry.isIntersecting || entry.intersectionRatio > 0)) {
+              cnStoreImageObserver.unobserve(entry.target);
+              loadDeferredStoreImage(entry.target);
+            }
+          });
+        }, {
+          rootMargin: (isCompactStoreLayout() ? '620px 0px' : '760px 0px'),
+          threshold: 0.01
+        });
+      }
+
+      imgs.forEach(function (img) { cnStoreImageObserver.observe(img); });
+    } catch (e) {
+      imgs.forEach(loadDeferredStoreImage);
+    }
+  }
+
+  function forceStoreImage(img, src) {
+    if (!img || !src) return;
+    img.removeAttribute('data-cn-src');
+    if (img.getAttribute('src') !== src) img.setAttribute('src', src);
+  }
 
   function escapeHtml(str) {
     return safe(str)
@@ -250,7 +313,7 @@
       '<div class="lcMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         '<span class="lcMediaBadge">⭐ Produto do dia</span>' +
         '<span class="lcCount">' + (idx + 1) + '/' + images.length + '</span>' +
-        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" decoding="async" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots">' + dots + '</div>' : '') +
@@ -265,7 +328,8 @@
     if (idx >= images.length) idx = 0;
     var img = images[idx];
     var hasMany = images.length > 1;
-    preloadGalleryAround(images, idx);
+    // Performance: não pré-carregar galerias da lista inteira.
+    // A imagem do card é carregada por IntersectionObserver e a galeria só no clique.
 
     var dots = images.map(function (_, i) {
       return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
@@ -275,7 +339,7 @@
       '<div class="lcCardMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') +
         (hasMany ? '<span class="lcCardCount">' + (idx + 1) + '/' + images.length + '</span>' : '') +
-        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        '<img src="' + CN_TRANSPARENT_PIXEL + '" data-cn-src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots lcDots--card">' + dots + '</div>' : '') +
@@ -423,6 +487,7 @@
     if (!grid) return;
 
     grid.innerHTML = state.filtered.slice(0, state.rendered).map(cardHtml).join('');
+    observeStoreImages(grid);
     if (loadWrap) loadWrap.classList.toggle('hidden', state.rendered >= state.filtered.length);
   }
 
@@ -466,8 +531,8 @@
       if (shell.getAttribute('data-gallery-key') !== key) return;
 
       var img = qs('img[data-zoom-key]', shell);
-      if (img && images[idx] && img.getAttribute('src') !== images[idx]) {
-        img.setAttribute('src', images[idx]);
+      if (img && images[idx]) {
+        forceStoreImage(img, images[idx]);
       }
 
       var count = qs('.lcCount,.lcCardCount', shell);
