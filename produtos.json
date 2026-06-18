@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-15T00:28:01Z",
+  "updated_at": "2026-06-18T01:09:56Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -9896,7 +9896,7 @@
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-06-15T00:28:01Z",
+    "updated_at": "2026-06-18T01:09:56Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
