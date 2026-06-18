@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-18T10:46:41Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-06-18T15:51:14Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-18T10:42:23Z
+Quando: 2026-06-18T15:46:51Z
 Issue: #110
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
 SKU: kit-utensilios-cozinha-premium-rosa
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (44x /lists, 0x listing)
+Memória operacional: histórico recorrente (45x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
 open_url: https://meli.la/23Y2RB9
 checked_url: https://meli.la/23Y2RB9
@@ -43,7 +43,45 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
 
 [ALTA] review_only_storefront
-Quando: 2026-06-18T10:42:23Z
+Quando: 2026-06-18T15:46:51Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-D9EV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (42x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://meli.la/1YAEmtS
+checked_url: https://meli.la/1YAEmtS
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
+
+[ALTA] review_only_storefront
+Quando: 2026-06-18T15:46:51Z
+Issue: #47
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/47
+SKU: torneira-gourmet-flexivel-preta
+Título: Gourmet Luxo Cozinha Flexível Parede 2 Bocal Pia, Preto
+ID ML: 5J5PKG-9BK6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Torneira, Torneira Gourmet, Casa, Bancada, Pia, Preto
+open_url: https://meli.la/1Z7Dhob
+checked_url: https://meli.la/1Z7Dhob
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHR1&tid=d565ad7b-490a-4b0c-bce3-c43ef12b0d2a
+
+[ALTA] review_only_storefront
+Quando: 2026-06-18T15:46:51Z
 Issue: #175
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/175
 SKU: batom-hidratante-sace-lady-a03-terre-rouge
@@ -54,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Beleza, Maquiagem, Batom, Hidratante, Longa Duração, Terre Rouge
 open_url: https://meli.la/1aqi6Tb
 checked_url: https://meli.la/1aqi6Tb
