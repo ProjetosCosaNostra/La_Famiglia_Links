@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-17T20:29:57Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-06-18T04:58:20Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-17T20:25:22Z
-Issue: #113
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
-SKU: gamestick-premium-2-controles-wireless
-Título: Game Stick Hdmi Mais 20 Mil Jogos + 2 Controle Sem Fio
-ID ML: 5J5PKG-1Y93
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (37x /lists, 0x listing)
-Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
-open_url: https://meli.la/22FwjPg
-checked_url: https://meli.la/22FwjPg
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-06-17T20:25:22Z
+Quando: 2026-06-18T04:51:57Z
 Issue: #110
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
 SKU: kit-utensilios-cozinha-premium-rosa
@@ -54,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (42x /lists, 0x listing)
+Memória operacional: histórico recorrente (43x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
 open_url: https://meli.la/23Y2RB9
 checked_url: https://meli.la/23Y2RB9
@@ -62,26 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
 
 [ALTA] review_only_storefront
-Quando: 2026-06-17T20:25:22Z
-Issue: #47
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/47
-SKU: torneira-gourmet-flexivel-preta
-Título: Gourmet Luxo Cozinha Flexível Parede 2 Bocal Pia, Preto
-ID ML: 5J5PKG-9BK6
+Quando: 2026-06-18T04:51:57Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-D9EV
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (16x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Torneira, Torneira Gourmet, Casa, Bancada, Pia, Preto
-open_url: https://meli.la/1Z7Dhob
-checked_url: https://meli.la/1Z7Dhob
+Memória operacional: histórico recorrente (41x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://meli.la/1YAEmtS
+checked_url: https://meli.la/1YAEmtS
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHR1&tid=d565ad7b-490a-4b0c-bce3-c43ef12b0d2a
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
 
 [ALTA] review_only_storefront
-Quando: 2026-06-17T20:25:22Z
+Quando: 2026-06-18T04:51:57Z
 Issue: #175
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/175
 SKU: batom-hidratante-sace-lady-a03-terre-rouge
@@ -92,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Beleza, Maquiagem, Batom, Hidratante, Longa Duração, Terre Rouge
 open_url: https://meli.la/1aqi6Tb
 checked_url: https://meli.la/1aqi6Tb
