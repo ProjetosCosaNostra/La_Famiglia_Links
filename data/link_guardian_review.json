@@ -1,12 +1,109 @@
 {
-  "updated_at": "2026-06-20T09:43:24Z",
-  "total_items": 0,
+  "updated_at": "2026-06-20T14:27:34Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 2,
+    "by_state": {
+      "review_only_storefront": 2
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 2
+    },
+    "by_action": {
+      "trocar_link": 2
+    },
+    "high_priority": 2
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-06-20T14:22:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 101,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/101",
+      "issue_title": "[CMS] Produto: 🥘 Panela de Pressão Panelux 4,5L (Alumínio Polido) — 5J5PKG-6T20",
+      "sku": "panela-pressao-panelux-45l-aluminio-polido",
+      "title": "🥘 Panela de Pressão Panelux 4,5L — Alumínio Polido",
+      "id_busca": "5J5PKG-6T20",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2drogLW",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2drogLW",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6T20&tid=c52b7906-dbca-4eb6-80c1-8483bfa8a014",
+      "short_url": "https://meli.la/2drogLW",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Panela de Pressão",
+        "Panelux",
+        "4.5L",
+        "Alumínio Polido",
+        "Cozimento Rápido",
+        "Uso Diário"
+      ]
+    },
+    {
+      "happened_at": "2026-06-20T14:22:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 37,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
+      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
+      "sku": "projetor-smart-hy320-goodvision",
+      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
+      "id_busca": "5J5PKG-D9EV",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (47x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1YAEmtS",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1YAEmtS",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Projetor",
+        "Cinema em Casa",
+        "Wi-Fi",
+        "Android",
+        "Bluetooth",
+        "Full HD",
+        "HDMI"
+      ]
+    }
+  ]
 }

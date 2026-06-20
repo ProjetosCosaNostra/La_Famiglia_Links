@@ -1,9 +1,62 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-20T09:43:24Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-06-20T14:27:34Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 2
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 2
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 2
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-06-20T14:22:56Z
+Issue: #101
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/101
+SKU: panela-pressao-panelux-45l-aluminio-polido
+Título: 🥘 Panela de Pressão Panelux 4,5L — Alumínio Polido
+ID ML: 5J5PKG-6T20
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Panela de Pressão, Panelux, 4.5L, Alumínio Polido, Cozimento Rápido, Uso Diário
+open_url: https://meli.la/2drogLW
+checked_url: https://meli.la/2drogLW
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6T20&tid=c52b7906-dbca-4eb6-80c1-8483bfa8a014
+
+[ALTA] review_only_storefront
+Quando: 2026-06-20T14:22:56Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-D9EV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (47x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://meli.la/1YAEmtS
+checked_url: https://meli.la/1YAEmtS
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
