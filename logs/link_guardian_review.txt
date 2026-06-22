@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-22T12:27:29Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-06-22T21:13:35Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-22T12:21:15Z
-Issue: #125
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
-SKU: capacete-asx-city-preto-fosco-viseira
-Título: Capacete ASX City Preto Fosco com Viseira
-ID ML: 5J5PKG-M6Q2
+Quando: 2026-06-22T21:09:13Z
+Issue: #39
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/39
+SKU: fechadura-bio-delta-pro-wifi-tuya-preta
+Título: 🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya) — Preta
+ID ML: 5J5PKG-0SJ2
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (44x /lists, 0x listing)
-Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
-open_url: https://meli.la/2FLJCzq
-checked_url: https://meli.la/2FLJCzq
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Achados do Dia, Segurança, Casa Inteligente, Fechadura Digital, Biométrica, Wi-Fi, Tuya, PRETO
+open_url: https://mercadolivre.com/sec/1uKVY2p
+checked_url: https://mercadolivre.com/sec/1uKVY2p
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0SJ2&tid=0c11df4f-b7f6-4112-90a9-12d6b815a63c
 
 [ALTA] review_only_storefront
-Quando: 2026-06-22T12:21:15Z
+Quando: 2026-06-22T21:09:13Z
 Issue: #47
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/47
 SKU: torneira-gourmet-flexivel-preta
@@ -54,9 +54,66 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (22x /lists, 0x listing)
+Memória operacional: histórico recorrente (23x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Torneira, Torneira Gourmet, Casa, Bancada, Pia, Preto
 open_url: https://meli.la/1Z7Dhob
 checked_url: https://meli.la/1Z7Dhob
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHR1&tid=d565ad7b-490a-4b0c-bce3-c43ef12b0d2a
+
+[ALTA] review_only_storefront
+Quando: 2026-06-22T21:09:13Z
+Issue: #82
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82
+SKU: fone-bluetooth-53-tws-gancho-k4k6
+Título: Fone Bluetooth 5.3 TWS Esportivo com Gancho Premium (XT80)
+ID ML: 5J5PKG-K4K6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (13x /lists, 1x listing)
+Badges: Achados do Dia, Bluetooth 5.3, TWS, Gancho, Esportivo, Display Digital, Android iOS, Preto
+open_url: https://meli.la/15p3NHj
+checked_url: https://meli.la/15p3NHj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K4K6&tid=55cc43f9-a99d-4c09-be39-e78e2db293ef
+
+[ALTA] review_only_storefront
+Quando: 2026-06-22T21:09:13Z
+Issue: #199
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/199
+SKU: necessaire-unissex-viagem-organizador-impermeavel-preto
+Título: Necessaire Unissex Viagem Trabalho Organizador Impermeável
+ID ML: 5J5PKG-FMWN
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Viagem, Organização, Impermeável, Unissex, Bolsa, Necessaire, PRETO
+open_url: https://meli.la/2CqEw11
+checked_url: https://meli.la/2CqEw11
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-FMWN
+
+[ALTA] review_only_storefront
+Quando: 2026-06-22T21:09:13Z
+Issue: #226
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/226
+SKU: escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer
+Título: Escova de Cabelo Desembaraçadora The Wet Detangler Rosa Tangle Teezer
+ID ML: 5J5PKG-Q9B5
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Cabelo, Escova Desembaraçadora, The Wet Detangler, Tangle Teezer, Rosa, Original
+open_url: https://meli.la/1ox9T41
+checked_url: https://meli.la/1ox9T41
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-Q9B5
