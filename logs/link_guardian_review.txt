@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-23T10:04:13Z
+Atualizado em: 2026-06-23T15:25:01Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-23T09:58:17Z
+Quando: 2026-06-23T15:18:53Z
 Issue: #82
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82
 SKU: fone-bluetooth-53-tws-gancho-k4k6
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (15x /lists, 1x listing)
+Memória operacional: histórico recorrente (16x /lists, 1x listing)
 Badges: Achados do Dia, Bluetooth 5.3, TWS, Gancho, Esportivo, Display Digital, Android iOS, Preto
 open_url: https://meli.la/15p3NHj
 checked_url: https://meli.la/15p3NHj
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K4K6&tid=55cc43f9-a99d-4c09-be39-e78e2db293ef
 
 [ALTA] review_only_storefront
-Quando: 2026-06-23T09:58:17Z
+Quando: 2026-06-23T15:18:53Z
 Issue: #199
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/199
 SKU: necessaire-unissex-viagem-organizador-impermeavel-preto
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Viagem, Organização, Impermeável, Unissex, Bolsa, Necessaire, PRETO
 open_url: https://meli.la/2CqEw11
 checked_url: https://meli.la/2CqEw11
