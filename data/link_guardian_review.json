@@ -1,22 +1,67 @@
 {
-  "updated_at": "2026-06-23T20:21:10Z",
-  "total_items": 2,
+  "updated_at": "2026-06-24T04:23:14Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 3
     },
-    "high_priority": 2
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-06-23T20:16:37Z",
+      "happened_at": "2026-06-24T04:17:01Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 29,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/29",
+      "issue_title": "[CMS] Produto: Suporte Porta Celular Carro 360° (Trava Automática)",
+      "sku": "suporte-celular-carro-360-trava-automatica-5j5pkg-78ff",
+      "title": "Suporte Porta Celular para Carro com Trava Automática + Rotação 360° (Ventosa Forte)",
+      "id_busca": "5J5PKG-78FF",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2Mu2vro",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2Mu2vro",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK8wLB%2FLTUyOwDDLc7VHfNVo1X1sAhpE4dY3yJJh2BMW3mOM2cHsI2cJomzz53aBg3tmKkpsHRiiga7F7R9kTZ8D4Nrqx156ry%2FRDbxA46jlwjip%2F5VG%2BW8cN%2BfV7fpTJqFfA%2B5F3mi3m5%2FZLMx32FAyl0NRifvZfXDoPvrGht1Y0YIf4cNEbu4m%2F%2FZStNsJKYB9iHQ%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-78FF&tid=701fa64d-6a4a-4841-9e81-c997d04ba074",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK8wLB%2FLTUyOwDDLc7VHfNVo1X1sAhpE4dY3yJJh2BMW3mOM2cHsI2cJomzz53aBg3tmKkpsHRiiga7F7R9kTZ8D4Nrqx156ry%2FRDbxA46jlwjip%2F5VG%2BW8cN%2BfV7fpTJqFfA%2B5F3mi3m5%2FZLMx32FAyl0NRifvZfXDoPvrGht1Y0YIf4cNEbu4m%2F%2FZStNsJKYB9iHQ%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK8wLB%2FLTUyOwDDLc7VHfNVo1X1sAhpE4dY3yJJh2BMW3mOM2cHsI2cJomzz53aBg3tmKkpsHRiiga7F7R9kTZ8D4Nrqx156ry%2FRDbxA46jlwjip%2F5VG%2BW8cN%2BfV7fpTJqFfA%2B5F3mi3m5%2FZLMx32FAyl0NRifvZfXDoPvrGht1Y0YIf4cNEbu4m%2F%2FZStNsJKYB9iHQ%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Carro",
+        "Suporte Celular",
+        "Rotação 360",
+        "Trava Automática",
+        "Ventosa Forte",
+        "Anti Queda",
+        "Acessórios"
+      ]
+    },
+    {
+      "happened_at": "2026-06-24T04:17:01Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (17x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (18x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-23T20:16:37Z",
+      "happened_at": "2026-06-24T04:17:01Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
