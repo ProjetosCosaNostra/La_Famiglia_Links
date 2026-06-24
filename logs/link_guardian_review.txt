@@ -1,81 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-24T12:18:57Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-06-24T14:54:52Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 3
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 3
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 3
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-06-24T12:13:37Z
-Issue: #47
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/47
-SKU: torneira-gourmet-flexivel-preta
-Título: Gourmet Luxo Cozinha Flexível Parede 2 Bocal Pia, Preto
-ID ML: 5J5PKG-9BK6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (25x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Torneira, Torneira Gourmet, Casa, Bancada, Pia, Preto
-open_url: https://meli.la/1Z7Dhob
-checked_url: https://meli.la/1Z7Dhob
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHR1&tid=d565ad7b-490a-4b0c-bce3-c43ef12b0d2a
-
-[ALTA] review_only_storefront
-Quando: 2026-06-24T12:13:37Z
-Issue: #82
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/82
-SKU: fone-bluetooth-53-tws-gancho-k4k6
-Título: Fone Bluetooth 5.3 TWS Esportivo com Gancho Premium (XT80)
-ID ML: 5J5PKG-K4K6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (20x /lists, 1x listing)
-Badges: Achados do Dia, Bluetooth 5.3, TWS, Gancho, Esportivo, Display Digital, Android iOS, Preto
-open_url: https://meli.la/15p3NHj
-checked_url: https://meli.la/15p3NHj
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-K4K6&tid=55cc43f9-a99d-4c09-be39-e78e2db293ef
-
-[ALTA] review_only_storefront
-Quando: 2026-06-24T12:13:37Z
-Issue: #199
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/199
-SKU: necessaire-unissex-viagem-organizador-impermeavel-preto
-Título: Necessaire Unissex Viagem Trabalho Organizador Impermeável
-ID ML: 5J5PKG-FMWN
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
-Badges: Achados do Dia, Viagem, Organização, Impermeável, Unissex, Bolsa, Necessaire, PRETO
-open_url: https://meli.la/2CqEw11
-checked_url: https://meli.la/2CqEw11
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-FMWN
+Nenhum item pendente de revisão/manutenção no momento.
