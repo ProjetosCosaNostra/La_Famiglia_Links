@@ -1,43 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-24T20:04:43Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-06-24T22:08:37Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 1
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 1
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 1
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-06-24T19:58:29Z
-Issue: #190
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/190
-SKU: lip-oil-volumizador-labial-epidrat-hyalu-berry-fps30-6ml
-Título: Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml
-ID ML: 5J5PKG-94MJ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Lip Oil, Epidrat Hyalu, Berry, FPS 30, Hidratante Labial, Volume Natural
-open_url: https://meli.la/1kPMdsr
-checked_url: https://meli.la/1kPMdsr
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-94MJ
+Nenhum item pendente de revisão/manutenção no momento.
