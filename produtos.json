@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T22:37:23Z",
+  "updated_at": "2026-06-24T12:29:58Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -9912,12 +9912,12 @@
       "open_url": "https://meli.la/21eNben",
       "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFxa%2F1gQ5o0pPH6u8MYm5skIVZubQ0y%2BEG1PCBRDnCo%2BGq0COWYM86bhpdK7UG5cVRicPlE4t6yjVJOaKRbH4Uo3X6SHCsDLK3RLG02QJrxgkxHBMhftLF8dQPIvuHIW5SP7S6127luhFD8R4OzeL9ZGgMhzIfEvBb4h5fRQIoFG%2BgqLLgYjscuFYdnQDIy7mlnM1w%3D%3D",
       "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-7CPR",
-      "image": "https://github.com/user-attachments/assets/a42d0948-af49-4701-8415-f2b5ef2bfb81",
+      "image": "assets/produtos-webp/mascara-para-dormir-gel-termico-rosa-laco-cover-2453a3ded4.webp",
       "images": [
-        "https://github.com/user-attachments/assets/db486afc-150c-41f2-96c8-cd908d9a1cf4",
-        "https://github.com/user-attachments/assets/49258970-6834-463e-acce-c8d70882cb7f",
-        "https://github.com/user-attachments/assets/903cce25-3943-4155-b6d4-204f61604b3a",
-        "https://github.com/user-attachments/assets/370fb2e9-6f82-40bc-95f1-c86035db78fe"
+        "assets/produtos-webp/mascara-para-dormir-gel-termico-rosa-laco-images-01-eaab98ae22.webp",
+        "assets/produtos-webp/mascara-para-dormir-gel-termico-rosa-laco-images-02-98d533f5f1.webp",
+        "assets/produtos-webp/mascara-para-dormir-gel-termico-rosa-laco-images-03-b97940ee8c.webp",
+        "assets/produtos-webp/mascara-para-dormir-gel-termico-rosa-laco-images-04-87b874692c.webp"
       ],
       "price_text": "R$ 18,79",
       "old_price_text": "R$ 20,84",
@@ -9969,18 +9969,26 @@
       "short_url": "https://meli.la/21eNben",
       "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFxa%2F1gQ5o0pPH6u8MYm5skIVZubQ0y%2BEG1PCBRDnCo%2BGq0COWYM86bhpdK7UG5cVRicPlE4t6yjVJOaKRbH4Uo3X6SHCsDLK3RLG02QJrxgkxHBMhftLF8dQPIvuHIW5SP7S6127luhFD8R4OzeL9ZGgMhzIfEvBb4h5fRQIoFG%2BgqLLgYjscuFYdnQDIy7mlnM1w%3D%3D",
       "last_checked": "",
-      "last_ok": ""
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/a42d0948-af49-4701-8415-f2b5ef2bfb81",
+      "images_original": [
+        "https://github.com/user-attachments/assets/db486afc-150c-41f2-96c8-cd908d9a1cf4",
+        "https://github.com/user-attachments/assets/49258970-6834-463e-acce-c8d70882cb7f",
+        "https://github.com/user-attachments/assets/903cce25-3943-4155-b6d4-204f61604b3a",
+        "https://github.com/user-attachments/assets/370fb2e9-6f82-40bc-95f1-c86035db78fe"
+      ],
+      "webp_optimized_at": "2026-06-24T12:29:58Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-06-19T21:56:14Z",
+    "updated_at": "2026-06-24T12:29:58Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
-    "products_touched": 0,
-    "converted": 0,
+    "products_touched": 1,
+    "converted": 5,
     "already_existed": 0,
     "dry_run": 0,
     "failed": 0,
