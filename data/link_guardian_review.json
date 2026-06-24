@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-06-24T14:54:52Z",
-  "total_items": 0,
+  "updated_at": "2026-06-24T20:04:43Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-06-24T19:58:29Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 190,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/190",
+      "issue_title": "Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml",
+      "sku": "lip-oil-volumizador-labial-epidrat-hyalu-berry-fps30-6ml",
+      "title": "Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml",
+      "id_busca": "5J5PKG-94MJ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1kPMdsr",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1kPMdsr",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-94MJ",
+      "short_url": "https://meli.la/1kPMdsr",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Lip Oil",
+        "Epidrat Hyalu",
+        "Berry",
+        "FPS 30",
+        "Hidratante Labial",
+        "Volume Natural"
+      ]
+    }
+  ]
 }
