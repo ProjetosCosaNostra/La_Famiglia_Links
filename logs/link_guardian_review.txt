@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-24T22:08:37Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-06-25T04:21:34Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-06-25T04:17:17Z
+Issue: #124
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/124
+SKU: intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto
+Título: Intercomunicador Bluetooth para Capacete V10 com Redução de Ruído USB-C 16H - Preto
+ID ML: 5J5PKG-5111
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Achados do Dia, Intercomunicador, Bluetooth, Capacete, Moto, V10, Sem fio, Redução de ruído
+open_url: https://meli.la/2Lo3w8F
+checked_url: https://meli.la/2Lo3w8F
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5111&tid=b5726868-cff7-4ba4-8227-81a298b06fec
