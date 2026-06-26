@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-25T20:20:16Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-06-26T04:28:00Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-25T20:15:52Z
+Quando: 2026-06-26T04:23:35Z
 Issue: #112
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
 SKU: tradutor-inteligente-premium-online-offline
@@ -35,28 +35,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
 open_url: https://meli.la/33ubZYj
 checked_url: https://meli.la/33ubZYj
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-06-25T20:15:52Z
-Issue: #32
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/32
-SKU: teclado-redragon-kumara-552w2-lunar-white-abnt2-outemu-brown
-Título: Teclado Mecânico Redragon Kumara 552W-2 (Lunar White) ABNT2 — Outemu DIY Brown + Luz Vermelha
-ID ML: 5J5PKG-P2C6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Teclado Mecânico, Gamer, Redragon, Kumara, ABNT2, Português Brasil, Lunar White
-open_url: https://mercadolivre.com/sec/1DW4AtR
-checked_url: https://mercadolivre.com/sec/1DW4AtR
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-P2C6&tid=871d12eb-f762-4861-b870-73282a054336

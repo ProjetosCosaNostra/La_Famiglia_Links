@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-06-25T20:20:16Z",
-  "total_items": 2,
+  "updated_at": "2026-06-26T04:28:00Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 1,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 1
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 1
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 1
     },
-    "high_priority": 2
+    "high_priority": 1
   },
   "items": [
     {
-      "happened_at": "2026-06-25T20:15:52Z",
+      "happened_at": "2026-06-26T04:23:35Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -58,51 +58,6 @@
         "Voz",
         "Texto",
         "Imagem"
-      ]
-    },
-    {
-      "happened_at": "2026-06-25T20:15:52Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 32,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/32",
-      "issue_title": "[CMS] Produto: Teclado Mecânico Redragon Kumara 552W-2 ABNT2 (Lunar White) – Outemu DIY Brown + Luz Vermelha",
-      "sku": "teclado-redragon-kumara-552w2-lunar-white-abnt2-outemu-brown",
-      "title": "Teclado Mecânico Redragon Kumara 552W-2 (Lunar White) ABNT2 — Outemu DIY Brown + Luz Vermelha",
-      "id_busca": "5J5PKG-P2C6",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/1DW4AtR",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/1DW4AtR",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLPZTO930CYQUXah7Q6o%2FfHZousz7NX9mprUWhCMsrCE9B8z552OLTIicHLMJLLHZDQ9i%2FEiix1HqRFzJJYF5E%2Bef5h4B6AovRgRP5rM12DPgQijdvhyAZHQpwQp9VWniUpW8Y1%2FvAzZ%2F%2B2HyQ5NzeqXd8M%2B2jXAy4AyMVwi8lOGdesWD3jideq%2Fc5i7nQ7t%2FD9mjT8%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-P2C6&tid=871d12eb-f762-4861-b870-73282a054336",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLPZTO930CYQUXah7Q6o%2FfHZousz7NX9mprUWhCMsrCE9B8z552OLTIicHLMJLLHZDQ9i%2FEiix1HqRFzJJYF5E%2Bef5h4B6AovRgRP5rM12DPgQijdvhyAZHQpwQp9VWniUpW8Y1%2FvAzZ%2F%2B2HyQ5NzeqXd8M%2B2jXAy4AyMVwi8lOGdesWD3jideq%2Fc5i7nQ7t%2FD9mjT8%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLPZTO930CYQUXah7Q6o%2FfHZousz7NX9mprUWhCMsrCE9B8z552OLTIicHLMJLLHZDQ9i%2FEiix1HqRFzJJYF5E%2Bef5h4B6AovRgRP5rM12DPgQijdvhyAZHQpwQp9VWniUpW8Y1%2FvAzZ%2F%2B2HyQ5NzeqXd8M%2B2jXAy4AyMVwi8lOGdesWD3jideq%2Fc5i7nQ7t%2FD9mjT8%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Teclado Mecânico",
-        "Gamer",
-        "Redragon",
-        "Kumara",
-        "ABNT2",
-        "Português Brasil",
-        "Lunar White"
       ]
     }
   ]
