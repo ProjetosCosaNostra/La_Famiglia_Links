@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-26T09:50:46Z
+Atualizado em: 2026-06-26T14:46:35Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -16,8 +16,7 @@ RESUMO POR AÇÃO
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
-- social_profile_needs_review: 1
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-26T09:44:51Z
-Issue: #125
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
-SKU: capacete-asx-city-preto-fosco-viseira
-Título: Capacete ASX City Preto Fosco com Viseira
-ID ML: 5J5PKG-M6Q2
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (45x /lists, 0x listing)
-Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
-open_url: https://meli.la/2FLJCzq
-checked_url: https://meli.la/2FLJCzq
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-06-26T09:44:51Z
+Quando: 2026-06-26T14:40:32Z
 Issue: #112
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
 SKU: tradutor-inteligente-premium-online-offline
@@ -55,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
 open_url: https://meli.la/33ubZYj
 checked_url: https://meli.la/33ubZYj
@@ -63,20 +43,39 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-26T09:44:51Z
-Issue: #69
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/69
-SKU: hd-externo-2tb-seagate-expansion-usb-30-portatil-preto
-Título: HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto
-ID ML: 5J5PKG-DVNF
+Quando: 2026-06-26T14:40:32Z
+Issue: #110
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
+SKU: kit-utensilios-cozinha-premium-rosa
+Título: Kit 12 Peças De Utensílios De Cozinha Em Silicone Com Cabo De Madeira Premium Tragaluz Rosa
+ID ML: 5J5PKG-X8TV
 Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, HD Externo, Seagate, 2TB, Armazenamento, Backup, USB 3.0, Portátil
-open_url: https://meli.la/1GyqzF7
-checked_url: https://meli.la/1GyqzF7
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=a66f434b-cc34-4a8d-994a-7ed189438c33
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (52x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
+open_url: https://meli.la/1xUvH8B
+checked_url: https://meli.la/1xUvH8B
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
+
+[ALTA] review_only_storefront
+Quando: 2026-06-26T14:40:32Z
+Issue: #117
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
+SKU: microsoft-xbox-series-x-1tb
+Título: Xbox Series X 1TB Premium
+ID ML: 5J5PKG-VKGY
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 2x listing)
+Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
+open_url: https://meli.la/1dLH6zP
+checked_url: https://meli.la/1dLH6zP
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
