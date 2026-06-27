@@ -971,18 +971,6 @@
         copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
       };
     }
-
-    var copyCaption = qs('[data-cn-detail-copy-caption="1"]', modal);
-    if (copyCaption) {
-      copyCaption.onclick = function () {
-        trackEvent('click_copy_caption_home', getTrackProduct(p, {
-          placement: 'lightbox_copy_caption',
-          source_block: 'image_zoom_details'
-        }));
-
-        copyText(getProductStoreCaption(p)).then(function (ok) { toast(ok ? 'Descrição copiada ✅' : 'Falha ao copiar'); });
-      };
-    }
   }
 
 
@@ -1019,7 +1007,6 @@
           '<div class="cnProductLightbox__detailActions">' +
             '<a class="btn btn--gold btn--tiny cnProductLightbox__buy" data-cn-detail-buy="1" href="#" target="_blank" rel="noopener noreferrer">Comprar</a>' +
             '<button class="btn btn--glass btn--tiny" type="button" data-cn-detail-copy-link="1">Copiar link</button>' +
-            '<button class="btn btn--glass btn--tiny" type="button" data-cn-detail-copy-caption="1">Copiar descrição</button>' +
           '</div>' +
         '</aside>' +
       '</div>';
