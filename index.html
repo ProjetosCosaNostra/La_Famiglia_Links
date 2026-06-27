@@ -36,7 +36,7 @@
 
   <link rel="stylesheet" href="style.css?v=20260516-brilho-estavel-origem" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260627-modal-fast-v2-polido"></script>
+  <script defer src="script.js?v=20260627-modal-fast-v3-mobile-fix"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13595,6 +13595,150 @@
       min-height:46px !important;
       border-radius:18px !important;
       font-size:14px !important;
+    }
+  }
+</style>
+
+
+
+<style id="cn-lightbox-mobile-v3-fix-20260627">
+  /* ==========================================================
+     HOTFIX MOBILE V3 — sem perder abertura rápida das imagens
+     - Remove CTA sticky no celular para não cobrir informações.
+     - Mantém a imagem do card/cache no modal para abrir rápido.
+     - Organiza a leitura: título, descrição, botões, badges e dados.
+     ========================================================== */
+  @media (max-width: 900px){
+    .cnProductLightbox .cnProductLightbox__dialog{
+      grid-template-columns: 1fr !important;
+      grid-template-rows: minmax(250px, 43svh) minmax(0, 1fr) !important;
+      height: min(92svh, 920px) !important;
+      max-height: calc(100svh - 18px) !important;
+    }
+
+    .cnProductLightbox__visual{
+      min-height: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .cnProductLightbox .cnProductLightbox__img{
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      padding: 10px !important;
+    }
+
+    .cnProductLightbox__details{
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 0 !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding: 12px 12px 16px !important;
+      scroll-padding-bottom: 16px !important;
+      border-left: 0 !important;
+      border-top: 1px solid rgba(224,195,107,.18) !important;
+    }
+
+    .cnProductLightbox__eyebrow{ order: 1 !important; align-self: flex-start !important; }
+    .cnProductLightbox__detailTitle{ order: 2 !important; margin-top: 4px !important; }
+    .cnProductLightbox__desc{ order: 3 !important; margin-top: 10px !important; }
+    .cnProductLightbox__detailActions{ order: 4 !important; }
+    .cnProductLightbox__chips{ order: 5 !important; }
+    .cnProductLightbox__meta{ order: 6 !important; }
+    .cnProductLightbox__storeTitle{ order: 7 !important; }
+    .cnProductLightbox__store{ order: 8 !important; }
+    .cnProductLightbox__hash{ order: 9 !important; }
+
+    .cnProductLightbox__detailActions{
+      position: static !important;
+      bottom: auto !important;
+      z-index: auto !important;
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 8px !important;
+      margin: 12px 0 4px !important;
+      padding: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .cnProductLightbox__detailActions .cnProductLightbox__buy{
+      grid-column: auto !important;
+    }
+
+    .cnProductLightbox__detailActions .btn{
+      min-height: 44px !important;
+      border-radius: 16px !important;
+      font-size: 14px !important;
+      justify-content: center !important;
+      width: 100% !important;
+    }
+
+    .cnProductLightbox__chips{
+      margin-top: 10px !important;
+    }
+
+    .cnProductLightbox__meta,
+    .cnProductLightbox__store{
+      margin-top: 12px !important;
+    }
+
+    .cnProductLightbox__detailRow{
+      grid-template-columns: 96px minmax(0, 1fr) !important;
+      padding: 10px 11px !important;
+    }
+  }
+
+  @media (max-width: 520px){
+    .cnProductLightbox{ padding: 8px !important; }
+
+    .cnProductLightbox .cnProductLightbox__dialog{
+      width: calc(100vw - 16px) !important;
+      height: calc(100svh - 18px) !important;
+      max-height: calc(100svh - 18px) !important;
+      grid-template-rows: minmax(230px, 41svh) minmax(0, 1fr) !important;
+      border-radius: 18px !important;
+    }
+
+    .cnProductLightbox__close{
+      width: 42px !important;
+      height: 42px !important;
+      top: 10px !important;
+      right: 10px !important;
+      font-size: 30px !important;
+    }
+
+    .cnProductLightbox__nav{
+      width: 42px !important;
+      height: 54px !important;
+    }
+
+    .cnProductLightbox__footer{
+      left: 8px !important;
+      right: 8px !important;
+      bottom: 8px !important;
+      padding: 8px 10px !important;
+      font-size: 12px !important;
+    }
+
+    .cnProductLightbox__detailTitle{
+      font-size: 1.12rem !important;
+      line-height: 1.12 !important;
+    }
+
+    .cnProductLightbox__desc{
+      font-size: .92rem !important;
+      line-height: 1.42 !important;
+    }
+
+    .cnProductLightbox__detailActions .btn{
+      min-height: 46px !important;
+      font-size: 14px !important;
+    }
+
+    .cnProductLightbox__detailRow{
+      grid-template-columns: 92px minmax(0, 1fr) !important;
     }
   }
 </style>
