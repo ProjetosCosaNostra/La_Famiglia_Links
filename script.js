@@ -996,14 +996,16 @@
           '</div>' +
         '</div>' +
         '<aside class="cnProductLightbox__details" aria-label="Detalhes do produto">' +
-          '<div class="cnProductLightbox__eyebrow">Informações do achado</div>' +
-          '<h3 class="cnProductLightbox__detailTitle"></h3>' +
-          '<p class="cnProductLightbox__desc"></p>' +
-          '<div class="cnProductLightbox__chips"></div>' +
-          '<div class="cnProductLightbox__meta"></div>' +
-          '<div class="cnProductLightbox__storeTitle">Canais oficiais da loja</div>' +
-          '<div class="cnProductLightbox__store"></div>' +
-          '<div class="cnProductLightbox__hash"></div>' +
+          '<div class="cnProductLightbox__scrollBody">' +
+            '<div class="cnProductLightbox__eyebrow">Informações do achado</div>' +
+            '<h3 class="cnProductLightbox__detailTitle"></h3>' +
+            '<p class="cnProductLightbox__desc"></p>' +
+            '<div class="cnProductLightbox__chips"></div>' +
+            '<div class="cnProductLightbox__meta"></div>' +
+            '<div class="cnProductLightbox__storeTitle">Canais oficiais da loja</div>' +
+            '<div class="cnProductLightbox__store"></div>' +
+            '<div class="cnProductLightbox__hash"></div>' +
+          '</div>' +
           '<div class="cnProductLightbox__detailActions">' +
             '<a class="btn btn--gold btn--tiny cnProductLightbox__buy" data-cn-detail-buy="1" href="#" target="_blank" rel="noopener noreferrer">Comprar</a>' +
             '<button class="btn btn--glass btn--tiny" type="button" data-cn-detail-copy-link="1">Copiar link</button>' +
