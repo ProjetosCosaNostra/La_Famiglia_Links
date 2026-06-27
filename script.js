@@ -1235,8 +1235,8 @@
       var zoom = document.createElement('button');
       zoom.type = 'button';
       zoom.className = 'cnGalleryZoom';
-      zoom.setAttribute('aria-label', 'Ampliar imagem do produto');
-      zoom.textContent = 'Ampliar';
+      zoom.setAttribute('aria-label', 'Ver detalhes do produto');
+      zoom.textContent = 'Ver detalhes';
       shell.appendChild(zoom);
 
       var dots = document.createElement('div');
@@ -1349,8 +1349,8 @@
       var singleZoom = document.createElement('button');
       singleZoom.type = 'button';
       singleZoom.className = 'cnGalleryZoom';
-      singleZoom.setAttribute('aria-label', 'Ampliar imagem do produto');
-      singleZoom.textContent = 'Ampliar';
+      singleZoom.setAttribute('aria-label', 'Ver detalhes do produto');
+      singleZoom.textContent = 'Ver detalhes';
       shell.appendChild(singleZoom);
 
       singleZoom.addEventListener('click', function (ev) {
