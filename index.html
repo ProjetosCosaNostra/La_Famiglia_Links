@@ -13334,6 +13334,220 @@
       }
     }
   </style>
+
+<style id="cn-lightbox-details-patch-20260627">
+  /* ==========================================================
+     PATCH HOME — detalhes só no zoom/ampliação
+     - Mantém cards limpos.
+     - Mostra descrição, canais oficiais e hashtags somente no modal.
+     ========================================================== */
+  .cnProductLightbox .cnProductLightbox__dialog{
+    width:min(96vw, 1180px) !important;
+    height:min(90vh, 860px) !important;
+    display:grid !important;
+    grid-template-columns:minmax(0, 1.05fr) minmax(320px, .62fr) !important;
+    align-items:stretch !important;
+    justify-content:stretch !important;
+  }
+
+  .cnProductLightbox__visual{
+    position:relative;
+    min-width:0;
+    min-height:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+
+  .cnProductLightbox .cnProductLightbox__img{
+    padding:22px !important;
+  }
+
+  .cnProductLightbox__details{
+    position:relative;
+    z-index:3;
+    min-width:0;
+    overflow:auto;
+    padding:22px 22px 18px;
+    border-left:1px solid rgba(224,195,107,.18);
+    background:
+      radial-gradient(540px 240px at 50% 0%, rgba(224,195,107,.10), transparent 65%),
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.16));
+    color:rgba(255,255,255,.90);
+  }
+
+  .cnProductLightbox__eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:10px;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid rgba(224,195,107,.24);
+    color:rgba(255,236,180,.94);
+    background:rgba(0,0,0,.20);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+
+  .cnProductLightbox__detailTitle{
+    margin:0;
+    font-family:var(--font-display, Cinzel, serif);
+    font-size:clamp(1.25rem, 2.2vw, 1.8rem);
+    line-height:1.08;
+    color:rgba(255,236,180,.98);
+    letter-spacing:.02em;
+  }
+
+  .cnProductLightbox__desc{
+    margin:12px 0 0;
+    color:rgba(255,255,255,.82);
+    font-size:.95rem;
+    line-height:1.45;
+  }
+
+  .cnProductLightbox__chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:12px;
+  }
+
+  .cnProductLightbox__chips span{
+    display:inline-flex;
+    align-items:center;
+    min-height:28px;
+    padding:5px 9px;
+    border-radius:999px;
+    border:1px solid rgba(224,195,107,.18);
+    background:rgba(0,0,0,.20);
+    color:rgba(255,255,255,.82);
+    font-size:12px;
+    font-weight:800;
+  }
+
+  .cnProductLightbox__meta,
+  .cnProductLightbox__store{
+    display:grid;
+    gap:8px;
+    margin-top:14px;
+  }
+
+  .cnProductLightbox__detailRow{
+    display:grid;
+    grid-template-columns:128px minmax(0, 1fr);
+    gap:10px;
+    align-items:start;
+    padding:9px 10px;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:13px;
+    background:rgba(0,0,0,.20);
+  }
+
+  .cnProductLightbox__detailRow span{
+    color:rgba(255,255,255,.56);
+    font-size:12px;
+    line-height:1.25;
+  }
+
+  .cnProductLightbox__detailRow b{
+    min-width:0;
+    color:rgba(255,255,255,.90);
+    font-size:12px;
+    line-height:1.25;
+    overflow-wrap:anywhere;
+  }
+
+  .cnProductLightbox__storeTitle{
+    margin-top:16px;
+    color:rgba(255,236,180,.95);
+    font-weight:950;
+    letter-spacing:.03em;
+  }
+
+  .cnProductLightbox__hash{
+    margin-top:14px;
+    padding:10px 11px;
+    border-radius:14px;
+    border:1px dashed rgba(224,195,107,.22);
+    background:rgba(0,0,0,.18);
+    color:rgba(255,255,255,.72);
+    font-size:12px;
+    line-height:1.45;
+    overflow-wrap:anywhere;
+  }
+
+  .cnProductLightbox__detailActions{
+    position:sticky;
+    bottom:0;
+    z-index:4;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:14px;
+    padding-top:12px;
+    background:linear-gradient(180deg, transparent, rgba(8,8,10,.84) 28%, rgba(8,8,10,.96));
+  }
+
+  .cnProductLightbox__detailActions .cnProductLightbox__buy{
+    grid-column:1 / -1;
+  }
+
+  .cnProductLightbox__detailActions .btn{
+    min-height:40px;
+    justify-content:center;
+    white-space:nowrap;
+  }
+
+  @media (max-width:900px){
+    .cnProductLightbox .cnProductLightbox__dialog{
+      width:96vw !important;
+      height:92vh !important;
+      grid-template-columns:1fr !important;
+      grid-template-rows:minmax(0, 1fr) auto !important;
+    }
+
+    .cnProductLightbox__details{
+      max-height:43vh;
+      border-left:0;
+      border-top:1px solid rgba(224,195,107,.18);
+      padding:14px 14px 12px;
+    }
+
+    .cnProductLightbox .cnProductLightbox__img{
+      padding:14px !important;
+    }
+
+    .cnProductLightbox__detailTitle{
+      font-size:1.15rem;
+    }
+
+    .cnProductLightbox__desc{
+      font-size:.88rem;
+    }
+
+    .cnProductLightbox__detailRow{
+      grid-template-columns:104px minmax(0, 1fr);
+    }
+
+    .cnProductLightbox__chips span{
+      font-size:11px;
+      min-height:25px;
+    }
+
+    .cnProductLightbox__detailActions{
+      grid-template-columns:1fr;
+    }
+
+    .cnProductLightbox__detailActions .cnProductLightbox__buy{
+      grid-column:auto;
+    }
+  }
+</style>
+
 </head>
 
 <body id="topo">
