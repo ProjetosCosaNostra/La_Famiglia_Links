@@ -98,7 +98,7 @@
 
   function getFastImageWidth(kind) {
     var mobile = isMobileHomeLayout();
-    if (kind === 'lightbox') return mobile ? 1200 : 1600;
+    if (kind === 'lightbox') return mobile ? 900 : 1180;
     if (kind === 'featured') return mobile ? 620 : 860;
     if (kind === 'hero') return mobile ? 900 : 1400;
     return mobile ? 520 : 620;
@@ -110,7 +110,7 @@
 
     var w = getFastImageWidth(kind || 'quick');
     // URL precisa ser codificada porque muitas imagens do GitHub têm querystring/token.
-    return CN_IMAGE_PROXY_BASE + '?url=' + encodeURIComponent(u) + '&w=' + encodeURIComponent(String(w)) + '&q=78&output=webp&we=1';
+    return CN_IMAGE_PROXY_BASE + '?url=' + encodeURIComponent(u) + '&w=' + encodeURIComponent(String(w)) + '&q=72&output=webp&we=1';
   }
 
   function mapFastImages(images, kind) {
@@ -127,6 +127,12 @@
     var fb = trim(fallbackSrc || '');
     if (fb && fb !== src) img.setAttribute('data-cn-fallback-src', fb);
     else img.removeAttribute('data-cn-fallback-src');
+
+    // ✅ PERFORMANCE: se a imagem já está carregada no elemento, não reatribui src.
+    // Reatribuir o mesmo src pode causar piscada/revalidação no modal.
+    var current = img.currentSrc || img.getAttribute('src') || '';
+    if (current === src || img.getAttribute('src') === src) return;
+
     img.src = src;
   }
 
@@ -1066,6 +1072,16 @@
     document.documentElement.classList.remove('cnLightboxOpen');
   }
 
+  function warmCurrentModalImage(modal) {
+    if (!modal || !modal._cnImages || !modal._cnImages.length) return;
+    var idx = modal._cnIndex || 0;
+    var target = modal._cnImages[idx] || '';
+    if (target) preloadOneGalleryImage(target, true);
+
+    // Aquece só as vizinhas. Nada de baixar galeria inteira na abertura.
+    if (modal._cnImages.length > 1) preloadGalleryImages(modal._cnImages, idx, 1, false);
+  }
+
   function updateGalleryLightboxView() {
     var modal = qs('#cnProductLightbox');
     if (!modal || !modal._cnImages || !modal._cnImages.length) return;
@@ -1084,7 +1100,23 @@
     if (img) {
       var target = modal._cnImages[idx] || '';
       var fallback = (modal._cnOriginalImages && modal._cnOriginalImages[idx]) ? modal._cnOriginalImages[idx] : target;
-      setImageSrcWithFallback(img, target, fallback);
+
+      // ✅ PERFORMANCE: na primeira abertura usa a imagem que já estava no card.
+      // Como ela já está em cache, o modal aparece praticamente instantâneo.
+      var instant = '';
+      if (modal._cnInstantSrc && idx === modal._cnInstantIndex) {
+        instant = trim(modal._cnInstantSrc);
+        modal._cnInstantSrc = '';
+      }
+
+      if (instant) {
+        setImageSrcWithFallback(img, instant, fallback || target);
+        if (target && target !== instant) preloadOneGalleryImage(target, true);
+      } else {
+        setImageSrcWithFallback(img, target, fallback);
+      }
+
+      warmCurrentModalImage(modal);
     }
     if (title) title.textContent = modal._cnTitle || 'Produto';
     if (counter) counter.textContent = String(idx + 1) + '/' + String(modal._cnImages.length);
@@ -1095,7 +1127,7 @@
     fillLightboxDetails(modal);
   }
 
-  function openGalleryLightbox(images, index, title, product, originalImages) {
+  function openGalleryLightbox(images, index, title, product, originalImages, instantSrc) {
     if (!images || !images.length) return;
     var modal = ensureGalleryLightbox();
     modal._cnImages = images.slice();
@@ -1103,10 +1135,14 @@
     modal._cnIndex = Math.max(0, Math.min(Number(index) || 0, images.length - 1));
     modal._cnTitle = safeText(title || 'Produto');
     modal._cnProduct = product || null;
-    updateGalleryLightboxView();
+    modal._cnInstantSrc = trim(instantSrc || '');
+    modal._cnInstantIndex = modal._cnIndex;
+
+    // Abre a camada imediatamente; a imagem vem da cache do card quando possível.
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('cnLightboxOpen');
+    updateGalleryLightboxView();
   }
 
   function moveGalleryLightbox(delta) {
@@ -1123,7 +1159,9 @@
     var images = getImages(p);
     var displayKind = options.variant === 'featured' ? 'featured' : 'quick';
     var displayImages = mapFastImages(images, displayKind);
-    var lightboxImages = mapFastImages(images, 'lightbox');
+    // ✅ MODAL RÁPIDO: usa a mesma imagem otimizada do card/featured.
+    // Essa imagem normalmente já foi baixada, então o zoom abre sem travar.
+    var lightboxImages = displayImages.slice ? displayImages.slice() : mapFastImages(images, displayKind);
 
     var shell = document.createElement('div');
     shell.className = 'cnMediaShell';
@@ -1148,11 +1186,9 @@
 
       if (!didScheduleGalleryPreload && images.length > 1 && (options.preload === true || options.variant === 'featured')) {
         didScheduleGalleryPreload = true;
-        if (options.variant === 'featured') {
-          preloadAllGalleryImages(displayImages, true);
-        } else {
-          scheduleIdleTask(function () { preloadGalleryImages(displayImages, 0, 1, false); }, 700);
-        }
+        // ✅ PERFORMANCE: não baixa a galeria inteira na entrada da loja.
+        // Aquece só a próxima imagem depois que o card principal carregou.
+        scheduleIdleTask(function () { preloadGalleryImages(displayImages, 0, 1, options.variant === 'featured'); }, 500);
       }
     };
 
@@ -1185,11 +1221,8 @@
       shell.className += ' cnMediaShell--gallery';
       shell.setAttribute('data-gallery-count', String(images.length));
 
-      if (options.variant === 'featured') {
-        // Produto do Dia: deixa todas as imagens do carrossel aquecidas logo no início.
-        // Isso evita o travamento visual de ficar em 2/5, 3/5 etc. esperando a rede.
-        preloadAllGalleryImages(displayImages, true);
-      }
+      // ✅ PERFORMANCE: evita baixar todas as imagens da galeria logo na entrada.
+      // O carrossel aquece sob demanda no hover/toque e ao abrir o modal.
 
       var count = document.createElement('div');
       count.className = 'cnGalleryCount';
@@ -1241,8 +1274,7 @@
       var touchStartX = 0;
 
       function warmGalleryNow() {
-        if (options.variant === 'featured') preloadAllGalleryImages(displayImages, true);
-        else preloadGalleryImages(displayImages, currentIndex, 2, false);
+        preloadGalleryImages(displayImages, currentIndex, 2, options.variant === 'featured');
       }
 
       try { shell.addEventListener('pointerdown', warmGalleryNow, { passive: true }); } catch (e0) {}
@@ -1300,12 +1332,12 @@
         zoom.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p, images);
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p, images, img.currentSrc || img.src || '');
         });
         img.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p, images);
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p, images, img.currentSrc || img.src || '');
         });
       }
 
@@ -1335,12 +1367,12 @@
       singleZoom.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p, images);
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p, images, img.currentSrc || img.src || '');
       });
       img.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p, images);
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p, images, img.currentSrc || img.src || '');
       });
     }
 
