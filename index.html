@@ -36,7 +36,7 @@
 
   <link rel="stylesheet" href="style.css?v=20260516-brilho-estavel-origem" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260627-modal-fast-v5-fixed-actions"></script>
+  <script defer src="script.js?v=20260627-modal-fast-v6-featured-detalhes"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13937,6 +13937,122 @@
     }
   }
 </style>
+
+
+
+  <style id="cn-final-polish-featured-detalhes-v6">
+    /* ==========================================================
+       POLIMENTO FINAL INDEX — v6
+       - Seleção do Dia com imagem um pouco maior
+       - Botão de ampliar mais claro para usuário leigo: "Ver detalhes"
+       - Mantém a otimização rápida das imagens do modal
+       ========================================================== */
+
+    html body .cnGalleryZoom,
+    html body #featured .cnMediaShell--featured .cnGalleryZoom,
+    html body #quickGrid .cnMediaShell--quick .cnGalleryZoom {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: auto !important;
+      height: auto !important;
+      min-width: 0 !important;
+      max-width: calc(100% - 18px) !important;
+      min-height: 30px !important;
+      padding: 7px 11px !important;
+      gap: 6px !important;
+      border-radius: 999px !important;
+      font-size: .68rem !important;
+      line-height: 1 !important;
+      font-weight: 900 !important;
+      letter-spacing: .01em !important;
+      white-space: nowrap !important;
+      color: rgba(255, 239, 190, .98) !important;
+      background:
+        radial-gradient(120px 42px at 50% 10%, rgba(224,195,107,.22), transparent 70%),
+        rgba(8,8,10,.82) !important;
+      border: 1px solid rgba(224,195,107,.42) !important;
+      box-shadow: 0 12px 30px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.05) !important;
+      backdrop-filter: blur(10px) !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      z-index: 28 !important;
+    }
+
+    html body .cnGalleryZoom::before,
+    html body #featured .cnMediaShell--featured .cnGalleryZoom::before,
+    html body #quickGrid .cnMediaShell--quick .cnGalleryZoom::before {
+      content: "🔎" !important;
+      font-size: 13px !important;
+      line-height: 1 !important;
+    }
+
+    html body #featured .cnMediaShell--featured .cnGalleryZoom {
+      right: 10px !important;
+      bottom: 10px !important;
+      padding: 8px 12px !important;
+      min-height: 32px !important;
+      font-size: .70rem !important;
+    }
+
+    html body #quickGrid .cnMediaShell--quick .cnGalleryZoom {
+      right: 7px !important;
+      bottom: 7px !important;
+      padding: 6px 9px !important;
+      min-height: 28px !important;
+      font-size: .58rem !important;
+    }
+
+    @media (min-width: 861px) {
+      html body #featured .cnFeaturedMedia,
+      html body #featured .cnCard:first-child {
+        padding: 10px !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnImg,
+      html body #featured .cnCard:first-child .cnImg {
+        max-width: 98% !important;
+        max-height: 352px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      html body #featured .cnFeaturedMedia,
+      html body #featured .cnCard:first-child {
+        padding: 6px !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnImg,
+      html body #featured .cnCard:first-child .cnImg {
+        width: min(94%, 540px) !important;
+        max-width: 94% !important;
+      }
+
+      html body #featured .cnMediaShell--featured .cnGalleryZoom {
+        right: 9px !important;
+        bottom: 9px !important;
+        padding: 7px 10px !important;
+        min-height: 30px !important;
+        font-size: .62rem !important;
+      }
+
+      html body #quickGrid .cnMediaShell--quick .cnGalleryZoom {
+        right: 6px !important;
+        bottom: 6px !important;
+        padding: 6px 8px !important;
+        min-height: 27px !important;
+        font-size: .54rem !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      html body #quickGrid .cnMediaShell--quick .cnGalleryZoom {
+        font-size: .50rem !important;
+        padding: 5px 7px !important;
+      }
+    }
+  </style>
 
 </head>
 
