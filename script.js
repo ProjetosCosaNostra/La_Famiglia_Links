@@ -1020,6 +1020,22 @@
 
     document.body.appendChild(modal);
 
+    var modalImg = qs('.cnProductLightbox__img', modal);
+    if (modalImg) {
+      modalImg.onerror = function () {
+        var fb = modalImg.getAttribute('data-cn-fallback-src') || '';
+        if (fb && modalImg.getAttribute('src') !== fb) {
+          modalImg.removeAttribute('data-cn-fallback-src');
+          modalImg.src = fb;
+          return;
+        }
+        modal.classList.add('has-image-error');
+      };
+      modalImg.onload = function () {
+        modal.classList.remove('has-image-error');
+      };
+    }
+
     modal.addEventListener('click', function (ev) {
       if (!ev) return;
       if (ev.target && ev.target.getAttribute('data-cn-lightbox-close') === '1') {
@@ -1065,7 +1081,11 @@
     var prev = qs('.cnProductLightbox__nav--prev', modal);
     var next = qs('.cnProductLightbox__nav--next', modal);
 
-    if (img) img.src = modal._cnImages[idx];
+    if (img) {
+      var target = modal._cnImages[idx] || '';
+      var fallback = (modal._cnOriginalImages && modal._cnOriginalImages[idx]) ? modal._cnOriginalImages[idx] : target;
+      setImageSrcWithFallback(img, target, fallback);
+    }
     if (title) title.textContent = modal._cnTitle || 'Produto';
     if (counter) counter.textContent = String(idx + 1) + '/' + String(modal._cnImages.length);
 
@@ -1075,10 +1095,11 @@
     fillLightboxDetails(modal);
   }
 
-  function openGalleryLightbox(images, index, title, product) {
+  function openGalleryLightbox(images, index, title, product, originalImages) {
     if (!images || !images.length) return;
     var modal = ensureGalleryLightbox();
     modal._cnImages = images.slice();
+    modal._cnOriginalImages = (originalImages && originalImages.length) ? originalImages.slice() : images.slice();
     modal._cnIndex = Math.max(0, Math.min(Number(index) || 0, images.length - 1));
     modal._cnTitle = safeText(title || 'Produto');
     modal._cnProduct = product || null;
@@ -1279,12 +1300,12 @@
         zoom.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p);
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p, images);
         });
         img.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p);
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p, images);
         });
       }
 
@@ -1314,12 +1335,12 @@
       singleZoom.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p);
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p, images);
       });
       img.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p);
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p, images);
       });
     }
 
