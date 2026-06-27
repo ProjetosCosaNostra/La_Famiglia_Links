@@ -737,6 +737,249 @@
     }
   }
 
+
+  var CN_STORE_INSTAGRAM = '@cosanostra.blackgold';
+  var CN_STORE_TELEGRAM = '@BlackGoldSociety';
+  var CN_STORE_HOME_URL = 'https://projetoscosanostra.github.io/La_Famiglia_Links/';
+
+  function getProductDescription(p) {
+    if (!p) return '';
+
+    var raw =
+      p.description ||
+      p.descricao ||
+      p.descricao_curta ||
+      p.short_description ||
+      p.shortDescription ||
+      p.summary ||
+      p.resumo ||
+      '';
+
+    if (trim(raw)) return trim(raw);
+
+    var title = toDisplayTitle(p.title || p.name || p.sku || 'Produto');
+    var blob = lower(title + ' ' + parseBadges(p).join(' ') + ' ' + (p.aliases_busca || []).join(' '));
+
+    if (blob.indexOf('agua micelar') >= 0 || blob.indexOf('água micelar') >= 0 || blob.indexOf('garnier') >= 0) {
+      return '💧 ' + title + ' — limpa, demaquila, hidrata e suaviza em um só passo. Ideal para todos os tipos de pele, com textura não oleosa e uso no rosto, olhos e lábios.';
+    }
+
+    if (blob.indexOf('skincare') >= 0 || blob.indexOf('limpeza facial') >= 0 || blob.indexOf('cuidados com a pele') >= 0) {
+      return title + ' — achado de skincare selecionado para deixar sua rotina de cuidado mais prática, bonita e fácil de comprar.';
+    }
+
+    if (blob.indexOf('maquiagem') >= 0 || blob.indexOf('beleza') >= 0) {
+      return title + ' — achado de beleza selecionado para quem gosta de praticidade, estilo e compra segura pelo Mercado Livre.';
+    }
+
+    return title + ' — achado selecionado pela curadoria da loja para facilitar sua compra. Confira preço, frete e disponibilidade no Mercado Livre antes de concluir.';
+  }
+
+  function normalizeHashtagWord(s) {
+    var x = lower(s);
+    x = x.replace(/[áàâãä]/g, 'a').replace(/[éèêë]/g, 'e').replace(/[íìîï]/g, 'i');
+    x = x.replace(/[óòôõö]/g, 'o').replace(/[úùûü]/g, 'u').replace(/[ç]/g, 'c');
+    x = x.replace(/[^a-z0-9]+/g, ' ');
+    x = trim(x);
+    if (!x) return '';
+    var parts = x.split(/\s+/);
+    var out = '';
+    for (var i = 0; i < parts.length; i++) {
+      if (!parts[i]) continue;
+      out += parts[i].charAt(0).toUpperCase() + parts[i].slice(1);
+    }
+    return out ? ('#' + out) : '';
+  }
+
+  function getProductHashtags(p) {
+    if (!p) return '#AchadosDoDia #CosaNostraBlackGold';
+
+    var raw = p.hashtags || p.hash_tags || p.tags_hashtags || '';
+    if (Array.isArray(raw)) raw = raw.join(' ');
+    raw = trim(raw);
+    if (raw) return raw;
+
+    var title = safeText(p.title || p.name || p.sku || '');
+    var blob = lower(title + ' ' + parseBadges(p).join(' ') + ' ' + (p.aliases_busca || []).join(' '));
+
+    if (blob.indexOf('agua micelar') >= 0 || blob.indexOf('água micelar') >= 0 || blob.indexOf('garnier') >= 0) {
+      return '#AguaMicelar #Garnier #GarnierSkinActive #Skincare #LimpezaFacial #Demaquilante #CuidadosComAPele #PeleLimpa #RotinaDeBeleza #BelezaFeminina #AchadosDoDia #MercadoLivre #CosaNostraBlackGold #BlackGoldSociety';
+    }
+
+    var seed = parseBadges(p).slice(0, 8);
+    if (p.categoria_principal) seed.push(p.categoria_principal);
+    if (p.sku) seed.push('Cosa Nostra BlackGold');
+
+    var out = [];
+    var seen = {};
+    for (var i = 0; i < seed.length; i++) {
+      var h = normalizeHashtagWord(seed[i]);
+      if (!h) continue;
+      var key = lower(h);
+      if (seen[key]) continue;
+      seen[key] = true;
+      out.push(h);
+      if (out.length >= 10) break;
+    }
+
+    if (!seen['#achadosdodia']) out.push('#AchadosDoDia');
+    if (!seen['#mercadolivre']) out.push('#MercadoLivre');
+    if (!seen['#cosanostrablackgold']) out.push('#CosaNostraBlackGold');
+    return out.join(' ');
+  }
+
+  function getProductStoreCaption(p) {
+    var desc = getProductDescription(p);
+    var id = trim(getMlId(p));
+    var link = trim(getLink(p));
+    var tags = getProductHashtags(p);
+
+    var lines = [];
+    if (desc) lines.push(desc);
+    if (id) {
+      lines.push('');
+      lines.push('🔍 Cole este texto no buscador do Mercado Livre: ' + id);
+    }
+    if (link) {
+      lines.push('');
+      lines.push('🔗 Ou acesse o link:');
+      lines.push(link);
+    }
+
+    lines.push('');
+    lines.push('🛒 A vitrine da loja fica no Instagram: ' + CN_STORE_INSTAGRAM);
+    lines.push('📣 Telegram: ' + CN_STORE_TELEGRAM);
+    lines.push('🏛️ Página principal da Loja Oficial:');
+    lines.push(CN_STORE_HOME_URL);
+
+    if (tags) {
+      lines.push('');
+      lines.push(tags);
+    }
+
+    return lines.join('\n');
+  }
+
+  function setTextBySelector(root, selector, value) {
+    var el = qs(selector, root);
+    if (el) el.textContent = safeText(value);
+  }
+
+  function appendDetailRow(parent, label, value) {
+    if (!parent || !trim(value)) return;
+
+    var row = document.createElement('div');
+    row.className = 'cnProductLightbox__detailRow';
+
+    var lab = document.createElement('span');
+    lab.textContent = label;
+
+    var val = document.createElement('b');
+    val.textContent = value;
+
+    row.appendChild(lab);
+    row.appendChild(val);
+    parent.appendChild(row);
+  }
+
+  function fillLightboxDetails(modal) {
+    if (!modal) return;
+
+    var p = modal._cnProduct || {};
+    var title = toDisplayTitle(p.title || p.name || modal._cnTitle || 'Produto');
+    var desc = getProductDescription(p);
+    var mlid = trim(getMlId(p));
+    var link = trim(getLink(p));
+    var tags = getProductHashtags(p);
+    var promo = getPromoInfo(p);
+
+    setTextBySelector(modal, '.cnProductLightbox__detailTitle', title);
+    setTextBySelector(modal, '.cnProductLightbox__desc', desc);
+    setTextBySelector(modal, '.cnProductLightbox__hash', tags);
+
+    var chips = qs('.cnProductLightbox__chips', modal);
+    if (chips) {
+      chips.innerHTML = '';
+      var badges = parseBadges(p);
+      for (var i = 0; i < badges.length && i < 6; i++) {
+        var chip = document.createElement('span');
+        chip.textContent = badges[i];
+        chips.appendChild(chip);
+      }
+    }
+
+    var meta = qs('.cnProductLightbox__meta', modal);
+    if (meta) {
+      meta.innerHTML = '';
+      appendDetailRow(meta, 'Código Mercado Livre', mlid);
+      if (promo.current) appendDetailRow(meta, 'Preço atual', promo.current);
+      if (promo.old) appendDetailRow(meta, 'Preço anterior', promo.old);
+      if (promo.discount) appendDetailRow(meta, 'Oferta', promo.discount);
+      if (promo.checked) appendDetailRow(meta, 'Preço conferido', promo.checked);
+    }
+
+    var store = qs('.cnProductLightbox__store', modal);
+    if (store) {
+      store.innerHTML = '';
+
+      appendDetailRow(store, 'Instagram da vitrine', CN_STORE_INSTAGRAM);
+      appendDetailRow(store, 'Telegram', CN_STORE_TELEGRAM);
+      appendDetailRow(store, 'Página oficial', CN_STORE_HOME_URL);
+    }
+
+    var buy = qs('[data-cn-detail-buy="1"]', modal);
+    if (buy) {
+      setupBuyButtonVisual(buy, getBuyCtaText(p, false));
+      buy.href = link || '#';
+      buy.target = '_blank';
+      buy.rel = 'noopener noreferrer';
+      buy.onclick = function (ev) {
+        if (!link) {
+          if (ev && ev.preventDefault) ev.preventDefault();
+          toast('Link do produto não encontrado');
+          return false;
+        }
+
+        trackEvent('click_buy_home_lightbox', getTrackProduct(p, {
+          placement: 'lightbox_buy',
+          source_block: 'image_zoom_details'
+        }));
+
+        return openBuy(link, ev);
+      };
+    }
+
+    var copyLink = qs('[data-cn-detail-copy-link="1"]', modal);
+    if (copyLink) {
+      copyLink.onclick = function () {
+        if (!link) {
+          toast('Link do produto não encontrado');
+          return;
+        }
+
+        trackEvent('click_copy_link_home', getTrackProduct(p, {
+          placement: 'lightbox_copy_link',
+          source_block: 'image_zoom_details'
+        }));
+
+        copyText(link).then(function (ok) { toast(ok ? 'Link copiado ✅' : 'Falha ao copiar'); });
+      };
+    }
+
+    var copyCaption = qs('[data-cn-detail-copy-caption="1"]', modal);
+    if (copyCaption) {
+      copyCaption.onclick = function () {
+        trackEvent('click_copy_caption_home', getTrackProduct(p, {
+          placement: 'lightbox_copy_caption',
+          source_block: 'image_zoom_details'
+        }));
+
+        copyText(getProductStoreCaption(p)).then(function (ok) { toast(ok ? 'Descrição copiada ✅' : 'Falha ao copiar'); });
+      };
+    }
+  }
+
+
   function ensureGalleryLightbox() {
     var existing = qs('#cnProductLightbox');
     if (existing) return existing;
@@ -747,15 +990,32 @@
     modal.setAttribute('aria-hidden', 'true');
     modal.innerHTML = '' +
       '<div class="cnProductLightbox__backdrop" data-cn-lightbox-close="1"></div>' +
-      '<div class="cnProductLightbox__dialog" role="dialog" aria-modal="true" aria-label="Galeria do produto">' +
+      '<div class="cnProductLightbox__dialog" role="dialog" aria-modal="true" aria-label="Galeria e detalhes do produto">' +
         '<button class="cnProductLightbox__close" type="button" data-cn-lightbox-close="1" aria-label="Fechar imagem ampliada">×</button>' +
-        '<button class="cnProductLightbox__nav cnProductLightbox__nav--prev" type="button" data-cn-lightbox-prev="1" aria-label="Imagem anterior">‹</button>' +
-        '<img class="cnProductLightbox__img" alt="Imagem do produto ampliada" />' +
-        '<button class="cnProductLightbox__nav cnProductLightbox__nav--next" type="button" data-cn-lightbox-next="1" aria-label="Próxima imagem">›</button>' +
-        '<div class="cnProductLightbox__footer">' +
-          '<div class="cnProductLightbox__title"></div>' +
-          '<div class="cnProductLightbox__counter"></div>' +
+        '<div class="cnProductLightbox__visual">' +
+          '<button class="cnProductLightbox__nav cnProductLightbox__nav--prev" type="button" data-cn-lightbox-prev="1" aria-label="Imagem anterior">‹</button>' +
+          '<img class="cnProductLightbox__img" alt="Imagem do produto ampliada" />' +
+          '<button class="cnProductLightbox__nav cnProductLightbox__nav--next" type="button" data-cn-lightbox-next="1" aria-label="Próxima imagem">›</button>' +
+          '<div class="cnProductLightbox__footer">' +
+            '<div class="cnProductLightbox__title"></div>' +
+            '<div class="cnProductLightbox__counter"></div>' +
+          '</div>' +
         '</div>' +
+        '<aside class="cnProductLightbox__details" aria-label="Detalhes do produto">' +
+          '<div class="cnProductLightbox__eyebrow">Informações do achado</div>' +
+          '<h3 class="cnProductLightbox__detailTitle"></h3>' +
+          '<p class="cnProductLightbox__desc"></p>' +
+          '<div class="cnProductLightbox__chips"></div>' +
+          '<div class="cnProductLightbox__meta"></div>' +
+          '<div class="cnProductLightbox__storeTitle">Canais oficiais da loja</div>' +
+          '<div class="cnProductLightbox__store"></div>' +
+          '<div class="cnProductLightbox__hash"></div>' +
+          '<div class="cnProductLightbox__detailActions">' +
+            '<a class="btn btn--gold btn--tiny cnProductLightbox__buy" data-cn-detail-buy="1" href="#" target="_blank" rel="noopener noreferrer">Comprar</a>' +
+            '<button class="btn btn--glass btn--tiny" type="button" data-cn-detail-copy-link="1">Copiar link</button>' +
+            '<button class="btn btn--glass btn--tiny" type="button" data-cn-detail-copy-caption="1">Copiar descrição</button>' +
+          '</div>' +
+        '</aside>' +
       '</div>';
 
     document.body.appendChild(modal);
@@ -811,14 +1071,17 @@
 
     if (prev) prev.classList.toggle('is-hidden', idx <= 0);
     if (next) next.classList.toggle('is-hidden', idx >= modal._cnImages.length - 1);
+
+    fillLightboxDetails(modal);
   }
 
-  function openGalleryLightbox(images, index, title) {
+  function openGalleryLightbox(images, index, title, product) {
     if (!images || !images.length) return;
     var modal = ensureGalleryLightbox();
     modal._cnImages = images.slice();
     modal._cnIndex = Math.max(0, Math.min(Number(index) || 0, images.length - 1));
     modal._cnTitle = safeText(title || 'Produto');
+    modal._cnProduct = product || null;
     updateGalleryLightboxView();
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
@@ -1016,12 +1279,12 @@
         zoom.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto');
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p);
         });
         img.addEventListener('click', function (ev) {
           if (ev && ev.preventDefault) ev.preventDefault();
           if (ev && ev.stopPropagation) ev.stopPropagation();
-          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto');
+          openGalleryLightbox(lightboxImages.length ? lightboxImages : images, currentIndex, options.alt || (p && p.title) || 'Produto', p);
         });
       }
 
@@ -1051,12 +1314,12 @@
       singleZoom.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto');
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p);
       });
       img.addEventListener('click', function (ev) {
         if (ev && ev.preventDefault) ev.preventDefault();
         if (ev && ev.stopPropagation) ev.stopPropagation();
-        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto');
+        openGalleryLightbox(lightboxImages.length ? lightboxImages : images, 0, options.alt || (p && p.title) || 'Produto', p);
       });
     }
 
