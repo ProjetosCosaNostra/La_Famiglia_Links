@@ -1736,7 +1736,10 @@
     return out.join(' ')
       .replace(/Anti-Frizz/g, 'Anti‑Frizz')
       .replace(/Ruby rose/gi, 'Ruby Rose')
-      .replace(/Mercado livre/gi, 'Mercado Livre');
+      .replace(/Mercado livre/gi, 'Mercado Livre')
+      // Polimento visual: evita título grudado como "Tudo em 1 400ml".
+      .replace(/(Tudo em 1)\s+(\d+\s*(?:ml|g|kg|un|unidades?)\b)/gi, '$1 — $2')
+      .replace(/\b(\d+)\s+(ml|g|kg)\b/gi, '$1$2');
   }
 
   function sentenceCaseFeature(raw) {
