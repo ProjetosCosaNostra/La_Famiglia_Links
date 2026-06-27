@@ -1118,7 +1118,7 @@
 
       warmCurrentModalImage(modal);
     }
-    if (title) title.textContent = modal._cnTitle || 'Produto';
+    if (title) title.textContent = toDisplayTitle(modal._cnTitle || 'Produto');
     if (counter) counter.textContent = String(idx + 1) + '/' + String(modal._cnImages.length);
 
     if (prev) prev.classList.toggle('is-hidden', idx <= 0);
