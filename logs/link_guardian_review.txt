@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-27T08:53:11Z
+Atualizado em: 2026-06-27T14:06:39Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-27T08:47:06Z
-Issue: #123
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
-SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
-Título: Smart Box Proeletronic Smartpro 16GB 4K HD com Controle Remoto - Preto
-ID ML: 5J5PKG-XJE6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
-open_url: https://meli.la/28cnKAr
-checked_url: https://meli.la/28cnKAr
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
-
-[ALTA] review_only_storefront
-Quando: 2026-06-27T08:47:06Z
+Quando: 2026-06-27T14:00:01Z
 Issue: #112
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
 SKU: tradutor-inteligente-premium-online-offline
@@ -54,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (9x /lists, 0x listing)
+Memória operacional: histórico recorrente (10x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
 open_url: https://meli.la/33ubZYj
 checked_url: https://meli.la/33ubZYj
@@ -62,26 +43,45 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-27T08:47:06Z
-Issue: #110
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
-SKU: kit-utensilios-cozinha-premium-rosa
-Título: Kit 12 Peças De Utensílios De Cozinha Em Silicone Com Cabo De Madeira Premium Tragaluz Rosa
-ID ML: 5J5PKG-X8TV
+Quando: 2026-06-27T14:00:01Z
+Issue: #81
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/81
+SKU: lamina-philips-oneblade-qp220-51-2-unidades
+Título: Lâminas Philips OneBlade QP220/51 (2 Unidades) – Original
+ID ML: 5J5PKG-5RAU
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (55x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
-open_url: https://meli.la/1xUvH8B
-checked_url: https://meli.la/1xUvH8B
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Philips, OneBlade, Lâmina de reposição, Barbeador, Aparador, Cuidados pessoais, Original
+open_url: https://meli.la/2sn3pjB
+checked_url: https://meli.la/2sn3pjB
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5RAU&tid=9f5cb70c-2912-43b9-a521-6808e4bda385
 
 [ALTA] review_only_storefront
-Quando: 2026-06-27T08:47:06Z
+Quando: 2026-06-27T14:00:01Z
+Issue: #20
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/20
+SKU: ventilador-mondial-30cm-super-power-60w-vsp-30-w
+Título: Ventilador de Mesa 30cm Mondial Super Power 60W (VSP-30-W)
+ID ML: 5J5PKG-YXAM
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Badges: Achado do Dia, Ventilador, Mondial, 30cm, 60W, Super Power, VSP-30-W, Casa
+open_url: https://mercadolivre.com/sec/1PnEZeq
+checked_url: https://mercadolivre.com/sec/1PnEZeq
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YXAM&tid=de6d92c9-f438-4822-8945-f5a3d58a5b9a
+
+[ALTA] review_only_storefront
+Quando: 2026-06-27T14:00:01Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (51x /lists, 2x listing)
+Memória operacional: histórico recorrente (52x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/15nTpbu
 checked_url: https://meli.la/15nTpbu
