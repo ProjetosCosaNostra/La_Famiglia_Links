@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-27T14:20:29Z
+Atualizado em: 2026-06-27T19:48:26Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-27T14:19:01Z
+Quando: 2026-06-27T19:46:27Z
 Issue: #112
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
 SKU: tradutor-inteligente-premium-online-offline
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
 open_url: https://meli.la/33ubZYj
 checked_url: https://meli.la/33ubZYj
