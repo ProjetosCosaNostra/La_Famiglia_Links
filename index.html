@@ -36,7 +36,7 @@
 
   <link rel="stylesheet" href="style.css?v=20260516-brilho-estavel-origem" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260627-modal-fast-v1"></script>
+  <script defer src="script.js?v=20260627-modal-fast-v2-polido"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -13342,10 +13342,10 @@
      - Mostra descrição, canais oficiais e hashtags somente no modal.
      ========================================================== */
   .cnProductLightbox .cnProductLightbox__dialog{
-    width:min(96vw, 1180px) !important;
-    height:min(90vh, 860px) !important;
+    width:min(97vw, 1260px) !important;
+    height:min(91vh, 880px) !important;
     display:grid !important;
-    grid-template-columns:minmax(0, 1.05fr) minmax(320px, .62fr) !important;
+    grid-template-columns:minmax(0, 1.22fr) minmax(330px, .58fr) !important;
     align-items:stretch !important;
     justify-content:stretch !important;
   }
@@ -13361,7 +13361,9 @@
   }
 
   .cnProductLightbox .cnProductLightbox__img{
-    padding:22px !important;
+    padding:18px !important;
+    max-width:100% !important;
+    max-height:100% !important;
   }
 
   .cnProductLightbox__details{
@@ -13507,14 +13509,16 @@
       width:96vw !important;
       height:92vh !important;
       grid-template-columns:1fr !important;
-      grid-template-rows:minmax(0, 1fr) auto !important;
+      grid-template-rows:minmax(300px, 49vh) minmax(0, 1fr) !important;
     }
 
     .cnProductLightbox__details{
-      max-height:43vh;
+      max-height:none;
+      min-height:0;
       border-left:0;
       border-top:1px solid rgba(224,195,107,.18);
-      padding:14px 14px 12px;
+      padding:14px 14px 178px;
+      scroll-padding-bottom:178px;
     }
 
     .cnProductLightbox .cnProductLightbox__img{
@@ -13544,6 +13548,53 @@
 
     .cnProductLightbox__detailActions .cnProductLightbox__buy{
       grid-column:auto;
+    }
+  }
+
+  @media (max-width:520px){
+    .cnProductLightbox{ padding:8px !important; }
+
+    .cnProductLightbox .cnProductLightbox__dialog{
+      width:calc(100vw - 16px) !important;
+      height:calc(100dvh - 18px) !important;
+      max-height:calc(100vh - 18px) !important;
+      grid-template-rows:minmax(260px, 47vh) minmax(0, 1fr) !important;
+    }
+
+    .cnProductLightbox__visual{
+      align-items:center !important;
+    }
+
+    .cnProductLightbox .cnProductLightbox__img{
+      padding:10px !important;
+      width:100% !important;
+      height:100% !important;
+      object-fit:contain !important;
+    }
+
+    .cnProductLightbox__footer{
+      left:8px !important;
+      right:8px !important;
+      bottom:8px !important;
+      padding:8px 10px !important;
+    }
+
+    .cnProductLightbox__details{
+      padding:12px 12px 188px !important;
+      scroll-padding-bottom:188px !important;
+    }
+
+    .cnProductLightbox__detailActions{
+      gap:8px !important;
+      padding:12px 0 8px !important;
+      margin-top:14px !important;
+      background:linear-gradient(180deg, transparent, rgba(8,8,10,.92) 22%, rgba(8,8,10,.98) 100%) !important;
+    }
+
+    .cnProductLightbox__detailActions .btn{
+      min-height:46px !important;
+      border-radius:18px !important;
+      font-size:14px !important;
     }
   }
 </style>
