@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-06-28T09:29:07Z
+Atualizado em: 2026-06-28T14:13:31Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-06-28T09:24:48Z
+Quando: 2026-06-28T14:06:53Z
 Issue: #112
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
 SKU: tradutor-inteligente-premium-online-offline
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (14x /lists, 0x listing)
+Memória operacional: histórico recorrente (15x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
 open_url: https://meli.la/33ubZYj
 checked_url: https://meli.la/33ubZYj
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-06-28T09:24:48Z
+Quando: 2026-06-28T14:06:53Z
 Issue: #110
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/110
 SKU: kit-utensilios-cozinha-premium-rosa
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (57x /lists, 0x listing)
+Memória operacional: histórico recorrente (58x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios de Cozinha, Rosa, Silicone, Suporte Organizador, Utilidades Domésticas, Casa
 open_url: https://meli.la/1xUvH8B
 checked_url: https://meli.la/1xUvH8B
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CDB6&tid=fe6b5bc8-b687-41c1-a37a-fa859c12c843
 
 [ALTA] review_only_storefront
-Quando: 2026-06-28T09:24:48Z
+Quando: 2026-06-28T14:06:53Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (54x /lists, 2x listing)
+Memória operacional: histórico recorrente (55x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/15nTpbu
 checked_url: https://meli.la/15nTpbu
@@ -81,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-06-28T09:24:48Z
+Quando: 2026-06-28T14:06:53Z
 Issue: #78
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78
 SKU: purificador-de-ar-silencioso-hepa-h13-luz-ambiente
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, Purificador de Ar, HEPA H13, Silencioso, Antialérgico, Quarto, Home Office, Poeira
 open_url: https://meli.la/1cEAj6X
 checked_url: https://meli.la/1cEAj6X
