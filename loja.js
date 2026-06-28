@@ -1,4 +1,4 @@
-/* Loja Completa — Cosa Nostra | V2 MODAL DETALHES + IMAGENS RÁPIDAS */
+/* Loja Completa — Cosa Nostra | V3 MODAL DETALHES + IMAGENS RÁPIDAS + CACHE */
 (function () {
   'use strict';
 
@@ -12,7 +12,7 @@
   function trim(v) { return safe(v).replace(/^\s+|\s+$/g, ''); }
   function lower(v) { return trim(v).toLowerCase(); }
 
-  var PAGE_SIZE = 60;
+  var PAGE_SIZE = isCompactStoreLayout() ? 24 : 36;
 
   var state = {
     products: [],
@@ -42,6 +42,63 @@
   var CN_TRANSPARENT_PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
   var cnStoreImageObserver = null;
 
+  // ✅ Mesma lógica de velocidade da index:
+  // - quando a imagem for URL externa, usa proxy WebP leve;
+  // - quando a imagem já for asset local WebP, mantém direto;
+  // - preserva fallback original se o proxy falhar.
+  var CN_IMAGE_OPTIMIZE = true;
+  var CN_IMAGE_PROXY_BASE = 'https://wsrv.nl/';
+
+  function canUseFastImageProxy(url) {
+    var u = trim(url);
+    var x = lower(u);
+    if (!CN_IMAGE_OPTIMIZE || !u) return false;
+    if (!/^https?:\/\//i.test(u)) return false;
+    if (x.indexOf('wsrv.nl/') >= 0 || x.indexOf('images.weserv.nl/') >= 0) return false;
+    if (x.indexOf('data:image/') === 0 || x.indexOf('blob:') === 0) return false;
+    if (/\.(svg|gif)(\?.*)?$/i.test(u)) return false;
+    return true;
+  }
+
+  function getFastImageWidth(kind) {
+    var mobile = isCompactStoreLayout();
+    if (kind === 'modal' || kind === 'lightbox') return mobile ? 900 : 1180;
+    if (kind === 'featured') return mobile ? 720 : 900;
+    if (kind === 'hero') return mobile ? 900 : 1400;
+    return mobile ? 420 : 560;
+  }
+
+  function fastImageUrl(url, kind) {
+    var u = ensureHttp(url);
+    if (!canUseFastImageProxy(u)) return u;
+
+    var w = getFastImageWidth(kind || 'card');
+    return CN_IMAGE_PROXY_BASE +
+      '?url=' + encodeURIComponent(u) +
+      '&w=' + encodeURIComponent(String(w)) +
+      '&q=72&output=webp&we=1';
+  }
+
+  function setImageFallback(img, fallbackSrc) {
+    if (!img) return;
+    var fb = trim(fallbackSrc || '');
+    if (fb) img.setAttribute('data-cn-fallback-src', fb);
+    else img.removeAttribute('data-cn-fallback-src');
+
+    if (img.getAttribute('data-cn-fallback-bound') === '1') return;
+    img.setAttribute('data-cn-fallback-bound', '1');
+
+    img.addEventListener('error', function () {
+      var fallback = trim(img.getAttribute('data-cn-fallback-src') || '');
+      var current = trim(img.getAttribute('src') || '');
+      if (fallback && fallback !== current) {
+        img.removeAttribute('data-cn-fallback-src');
+        img.src = fallback;
+      }
+    });
+  }
+
+
   function isCompactStoreLayout() {
     try {
       if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) return true;
@@ -56,7 +113,10 @@
     if (!img) return;
     var src = img.getAttribute('data-cn-src') || '';
     if (!src) return;
+
+    setImageFallback(img, img.getAttribute('data-cn-fallback-src') || '');
     img.removeAttribute('data-cn-src');
+
     if (img.getAttribute('src') !== src) img.setAttribute('src', src);
   }
 
@@ -91,10 +151,12 @@
     }
   }
 
-  function forceStoreImage(img, src) {
+  function forceStoreImage(img, src, kind) {
     if (!img || !src) return;
+    var fast = fastImageUrl(src, kind || 'card');
     img.removeAttribute('data-cn-src');
-    if (img.getAttribute('src') !== src) img.setAttribute('src', src);
+    setImageFallback(img, src);
+    if (img.getAttribute('src') !== fast) img.setAttribute('src', fast);
   }
 
   function escapeHtml(str) {
@@ -219,21 +281,32 @@
     return out.length ? out : ['assets/logo.png'];
   }
 
-  function preloadOneImage(url) {
-    var u = trim(url);
+  function preloadOneImage(url, kind) {
+    var original = trim(url);
+    if (!original) return;
+    var u = fastImageUrl(original, kind || 'modal');
     if (!u || state.imageCache[u]) return;
+
     var im = new Image();
     try { im.decoding = 'async'; } catch (e) {}
+    im.onerror = function () {
+      if (original && original !== u && !state.imageCache[original]) {
+        var fallback = new Image();
+        try { fallback.decoding = 'async'; } catch (e2) {}
+        fallback.src = original;
+        state.imageCache[original] = fallback;
+      }
+    };
     im.src = u;
     state.imageCache[u] = im;
   }
 
-  function preloadGalleryAround(images, index, skipCurrent) {
+  function preloadGalleryAround(images, index, skipCurrent, kind) {
     if (!images || images.length < 2) return;
     var current = typeof index === 'number' ? index : 0;
     for (var i = Math.max(0, current - 1); i <= Math.min(images.length - 1, current + 1); i++) {
       if (skipCurrent && i === current) continue;
-      preloadOneImage(images[i]);
+      preloadOneImage(images[i], kind || 'modal');
     }
   }
 
@@ -248,15 +321,17 @@
     window.setTimeout(fn, ms);
   }
 
-  function schedulePreloadOneImage(url, delay) {
+  function schedulePreloadOneImage(url, delay, kind) {
     var u = trim(url);
-    if (!u || state.imageCache[u]) return;
-    runWhenIdle(function () { preloadOneImage(u); }, delay);
+    if (!u) return;
+    var fast = fastImageUrl(u, kind || 'modal');
+    if (state.imageCache[fast] || state.imageCache[u]) return;
+    runWhenIdle(function () { preloadOneImage(u, kind || 'modal'); }, delay);
   }
 
-  function schedulePreloadGalleryAround(images, index, skipCurrent, delay) {
+  function schedulePreloadGalleryAround(images, index, skipCurrent, delay, kind) {
     if (!images || images.length < 2) return;
-    runWhenIdle(function () { preloadGalleryAround(images, index, skipCurrent); }, delay);
+    runWhenIdle(function () { preloadGalleryAround(images, index, skipCurrent, kind || 'modal'); }, delay);
   }
 
   function makeProductKey(p, prefix, index) {
@@ -432,7 +507,7 @@
     var img = images[idx];
     var hasMany = images.length > 1;
     // Produto do Dia: carrega só a imagem atual. Vizinhas entram em idle para não travar a abertura.
-    schedulePreloadGalleryAround(images, idx, true, 900);
+    schedulePreloadGalleryAround(images, idx, true, 900, 'featured');
 
     var dots = images.map(function (_, i) {
       return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
@@ -442,7 +517,7 @@
       '<div class="lcMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         '<span class="lcMediaBadge">⭐ Produto do dia</span>' +
         '<span class="lcCount">' + (idx + 1) + '/' + images.length + '</span>' +
-        '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        '<img src="' + escapeHtml(fastImageUrl(img, 'featured')) + '" data-cn-fallback-src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="eager" decoding="async" fetchpriority="high" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots">' + dots + '</div>' : '') +
@@ -468,7 +543,7 @@
       '<div class="lcCardMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') +
         (hasMany ? '<span class="lcCardCount">' + (idx + 1) + '/' + images.length + '</span>' : '') +
-        '<img src="' + CN_TRANSPARENT_PIXEL + '" data-cn-src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        '<img src="' + CN_TRANSPARENT_PIXEL + '" data-cn-src="' + escapeHtml(fastImageUrl(img, 'card')) + '" data-cn-fallback-src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots lcDots--card">' + dots + '</div>' : '') +
@@ -654,14 +729,14 @@
     if (idx < 0) idx = 0;
     if (idx >= images.length) idx = images.length - 1;
     state.gallery[key] = idx;
-    schedulePreloadGalleryAround(images, idx, true, 450);
+    schedulePreloadGalleryAround(images, idx, true, 450, 'card');
 
     qsa('[data-gallery-key]').forEach(function (shell) {
       if (shell.getAttribute('data-gallery-key') !== key) return;
 
       var img = qs('img[data-zoom-key]', shell);
       if (img && images[idx]) {
-        forceStoreImage(img, images[idx]);
+        forceStoreImage(img, images[idx], shell.classList && shell.classList.contains('lcMedia') ? 'featured' : 'card');
       }
 
       var count = qs('.lcCount,.lcCardCount', shell);
@@ -709,7 +784,7 @@
     state.modalInstantIndex = state.modalIndex;
 
     // Modal rápido: abre primeiro com a imagem já carregada no card e deixa vizinhas para depois.
-    schedulePreloadGalleryAround(state.modalImages, state.modalIndex, true, 700);
+    schedulePreloadGalleryAround(state.modalImages, state.modalIndex, true, 700, 'modal');
     updateModal();
 
     var scroll = qs('#modalDetailsScroll');
@@ -750,16 +825,17 @@
     var target = state.modalImages[state.modalIndex] || '';
 
     if (img) {
-      var chosen = target;
+      var chosen = target ? fastImageUrl(target, 'modal') : '';
       if (state.modalInstantSrc && state.modalIndex === state.modalInstantIndex) {
         chosen = state.modalInstantSrc;
         state.modalInstantSrc = '';
-        if (target && target !== chosen) schedulePreloadOneImage(target, 900);
+        if (target && target !== chosen) schedulePreloadOneImage(target, 900, 'modal');
       }
+      setImageFallback(img, target);
       if (chosen && img.getAttribute('src') !== chosen) img.src = chosen;
     }
 
-    schedulePreloadGalleryAround(state.modalImages, state.modalIndex, true, 700);
+    schedulePreloadGalleryAround(state.modalImages, state.modalIndex, true, 700, 'modal');
     if (count) count.textContent = (state.modalIndex + 1) + '/' + state.modalImages.length;
     if (title) title.textContent = displayTitle(getTitle(p));
     if (prev) prev.hidden = state.modalIndex <= 0;
@@ -1050,7 +1126,7 @@
     bindEvents();
   }
 
-  fetch('produtos.json?ts=' + Date.now(), { cache: 'no-store' })
+  fetch('produtos.json?v=20260628-loja-modal-detalhes-v3-img-fast-cache', { cache: 'default' })
     .then(function (r) { return r.json(); })
     .then(init)
     .catch(function (err) {
