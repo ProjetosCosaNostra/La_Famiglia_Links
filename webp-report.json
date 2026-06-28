@@ -1,1 +1,144 @@
-[]
+[
+  {
+    "sku": "toalha-demaquilante-reutilizavel-make-off-klass-vough",
+    "results": [
+      {
+        "source": "https://github.com/user-attachments/assets/937a4da3-e65f-4ad4-94dd-5ada468898b5",
+        "status": "converted",
+        "output": "assets/produtos-webp/toalha-demaquilante-reutilizavel-make-off-klass-vough-cover-0aee603d65.webp",
+        "original_bytes": 2004866,
+        "webp_bytes": 92054,
+        "saved_percent": 95.4,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/195bbef6-02c4-4ae4-8fe2-4aa6c60da2ac",
+        "status": "converted",
+        "output": "assets/produtos-webp/toalha-demaquilante-reutilizavel-make-off-klass-vough-images-01-0abb44c513.webp",
+        "original_bytes": 1849968,
+        "webp_bytes": 83944,
+        "saved_percent": 95.5,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/8d914acd-af44-42a3-b68b-2d06d677d95c",
+        "status": "converted",
+        "output": "assets/produtos-webp/toalha-demaquilante-reutilizavel-make-off-klass-vough-images-02-13a18ee8c9.webp",
+        "original_bytes": 1733694,
+        "webp_bytes": 81962,
+        "saved_percent": 95.3,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/277b6ce6-d853-442c-8b8b-186e514e5468",
+        "status": "converted",
+        "output": "assets/produtos-webp/toalha-demaquilante-reutilizavel-make-off-klass-vough-images-03-57b16d3e75.webp",
+        "original_bytes": 2000440,
+        "webp_bytes": 98864,
+        "saved_percent": 95.1,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/a5546bb0-eefc-440d-ba0b-fef46cf07858",
+        "status": "converted",
+        "output": "assets/produtos-webp/toalha-demaquilante-reutilizavel-make-off-klass-vough-images-04-572157d28e.webp",
+        "original_bytes": 2229878,
+        "webp_bytes": 126182,
+        "saved_percent": 94.3,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/c895dc23-1aac-41c8-a79f-faf1e603fdca",
+        "status": "converted",
+        "output": "assets/produtos-webp/toalha-demaquilante-reutilizavel-make-off-klass-vough-images-05-a9b687b433.webp",
+        "original_bytes": 2234452,
+        "webp_bytes": 106004,
+        "saved_percent": 95.3,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      }
+    ]
+  },
+  {
+    "sku": "agua-micelar-garnier-skinactive-tudo-em-1-400ml",
+    "results": [
+      {
+        "source": "https://github.com/user-attachments/assets/1c48e908-87c8-4e04-86cb-ac5485e978e6",
+        "status": "converted",
+        "output": "assets/produtos-webp/agua-micelar-garnier-skinactive-tudo-em-1-400ml-cover-f6982f39f1.webp",
+        "original_bytes": 1974220,
+        "webp_bytes": 91364,
+        "saved_percent": 95.4,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/40b60f70-9e9c-481e-bca0-c7bf3ee6c6d4",
+        "status": "converted",
+        "output": "assets/produtos-webp/agua-micelar-garnier-skinactive-tudo-em-1-400ml-images-01-24586f2e77.webp",
+        "original_bytes": 1507956,
+        "webp_bytes": 63442,
+        "saved_percent": 95.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/3ae598df-7c80-4912-8ce8-e46a16bc0665",
+        "status": "converted",
+        "output": "assets/produtos-webp/agua-micelar-garnier-skinactive-tudo-em-1-400ml-images-02-bf1a8af2a7.webp",
+        "original_bytes": 1872658,
+        "webp_bytes": 84854,
+        "saved_percent": 95.5,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/8ac06785-8d80-48d6-98ab-78f18260759a",
+        "status": "converted",
+        "output": "assets/produtos-webp/agua-micelar-garnier-skinactive-tudo-em-1-400ml-images-03-14079e049b.webp",
+        "original_bytes": 1845440,
+        "webp_bytes": 61682,
+        "saved_percent": 96.7,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/a0d23906-6e98-4423-af71-72cc6d5b192b",
+        "status": "converted",
+        "output": "assets/produtos-webp/agua-micelar-garnier-skinactive-tudo-em-1-400ml-images-04-07b2250ee8.webp",
+        "original_bytes": 1919832,
+        "webp_bytes": 99188,
+        "saved_percent": 94.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      }
+    ]
+  }
+]
