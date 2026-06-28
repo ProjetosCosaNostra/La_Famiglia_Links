@@ -1,4 +1,4 @@
-/* Loja Completa — Cosa Nostra | V5 TURBO IMAGENS — cache index + GitHub direto */
+/* Loja Completa — Cosa Nostra | V6 TURBO — WebP local direto + modal rápido */
 (function () {
   'use strict';
 
@@ -84,6 +84,32 @@
       '?url=' + encodeURIComponent(u) +
       '&w=' + encodeURIComponent(String(w)) +
       '&q=72&output=webp&we=1';
+  }
+
+
+  function isLocalProductImage(url) {
+    var u = trim(url);
+    var x = lower(u).split('?')[0];
+    if (!u) return false;
+    if (/^https?:\/\//i.test(u) || x.indexOf('data:image/') === 0 || x.indexOf('blob:') === 0) return false;
+    if (x.indexOf('assets/produtos-webp/') === 0 || x.indexOf('./assets/produtos-webp/') === 0 || x.indexOf('/assets/produtos-webp/') >= 0) return true;
+    return /\.(webp|png|jpe?g)(\?.*)?$/i.test(u);
+  }
+
+  function cardImageTag(img, title, key, index) {
+    var original = trim(img || '');
+    var fast = fastImageUrl(original, 'card');
+    var safeTitle = escapeHtml(title || 'Produto');
+    var attrs = ' alt="' + safeTitle + '" decoding="async" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '"';
+    var priority = Number(index || 0) < 4 ? ' fetchpriority="auto"' : ' fetchpriority="low"';
+
+    // ✅ V6: se já é WebP local, não usa pixel transparente nem IntersectionObserver.
+    // O navegador carrega direto com lazy nativo, bem mais rápido e estável na loja completa.
+    if (isLocalProductImage(original)) {
+      return '<img src="' + escapeHtml(fast) + '" loading="lazy"' + priority + attrs + '>';
+    }
+
+    return '<img src="' + CN_TRANSPARENT_PIXEL + '" data-cn-src="' + escapeHtml(fast) + '" data-cn-fallback-src="' + escapeHtml(original) + '" loading="lazy"' + priority + attrs + '>';
   }
 
   function setImageFallback(img, fallbackSrc) {
@@ -585,7 +611,7 @@
       '</div>';
   }
 
-  function cardMediaHtml(p, key) {
+  function cardMediaHtml(p, key, index) {
     key = rememberProduct(key, p);
     var images = getImages(p);
     var idx = state.gallery[key] || 0;
@@ -603,7 +629,7 @@
       '<div class="lcCardMedia" data-gallery-key="' + escapeHtml(key) + '">' +
         (isFeatured(p) ? '<span class="lcCardBadge">⭐ do dia</span>' : '') +
         (hasMany ? '<span class="lcCardCount">' + (idx + 1) + '/' + images.length + '</span>' : '') +
-        '<img src="' + CN_TRANSPARENT_PIXEL + '" data-cn-src="' + escapeHtml(fastImageUrl(img, 'card')) + '" data-cn-fallback-src="' + escapeHtml(img) + '" alt="' + escapeHtml(getTitle(p)) + '" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" data-zoom-key="' + escapeHtml(key) + '">' +
+        cardImageTag(img, getTitle(p), key, index) +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots lcDots--card">' + dots + '</div>' : '') +
@@ -768,7 +794,7 @@
 
     return '' +
       '<article class="lcCard">' +
-        cardMediaHtml(p, key) +
+        cardMediaHtml(p, key, index) +
         '<div class="lcCardBody">' +
           '<h3 class="lcCardTitle">' + escapeHtml(displayTitle(getTitle(p))) + '</h3>' +
           (badgeHtml ? '<div class="lcCardMeta">' + badgeHtml + '</div>' : '') +
@@ -1188,7 +1214,7 @@
     bindEvents();
   }
 
-  fetch('produtos.json?v=20260628-loja-modal-detalhes-v5-turbo-direct-github', { cache: 'default' })
+  fetch('produtos.json?v=20260628-loja-v6-local-webp-direct', { cache: 'default' })
     .then(function (r) { return r.json(); })
     .then(init)
     .catch(function (err) {
