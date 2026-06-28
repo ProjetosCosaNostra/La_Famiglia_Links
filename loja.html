@@ -33,10 +33,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="loja.css?v=20260513-real16-brilho-ampliar-performance" />
+  <link rel="stylesheet" href="loja.css?v=20260628-loja-modal-detalhes-v1" />
 
   <script defer src="tracking.js"></script>
-  <script defer src="loja.js?v=20260614-loja-img-fast-v1"></script>
+  <script defer src="loja.js?v=20260628-loja-modal-detalhes-v1"></script>
 </head>
 
 <body id="topo" class="lcPage">
@@ -173,12 +173,26 @@
     <a href="./loja.html#topo" data-lc-float-action="top" aria-label="Voltar ao topo da Loja Completa">↑</a>
   </div>
 
-  <div class="lcImageModal" id="imageModal" aria-hidden="true" role="dialog" aria-label="Galeria do produto">
-    <button class="lcImageModal__close" id="modalClose" type="button" aria-label="Fechar">×</button>
-    <button class="lcImageModal__nav lcImageModal__nav--prev" id="modalPrev" type="button" aria-label="Imagem anterior">‹</button>
-    <img class="lcImageModal__img" id="modalImg" alt="Imagem ampliada do produto">
-    <button class="lcImageModal__nav lcImageModal__nav--next" id="modalNext" type="button" aria-label="Próxima imagem">›</button>
-    <div class="lcImageModal__count" id="modalCount">1/1</div>
+  <div class="lcImageModal" id="imageModal" aria-hidden="true" role="dialog" aria-label="Galeria e detalhes do produto">
+    <div class="lcImageModal__panel">
+      <button class="lcImageModal__close" id="modalClose" type="button" aria-label="Fechar">×</button>
+      <div class="lcImageModal__visual">
+        <button class="lcImageModal__nav lcImageModal__nav--prev" id="modalPrev" type="button" aria-label="Imagem anterior">‹</button>
+        <img class="lcImageModal__img" id="modalImg" alt="Imagem ampliada do produto">
+        <button class="lcImageModal__nav lcImageModal__nav--next" id="modalNext" type="button" aria-label="Próxima imagem">›</button>
+        <div class="lcImageModal__footer">
+          <div class="lcImageModal__title" id="modalTitle">Produto</div>
+          <div class="lcImageModal__count" id="modalCount">1/1</div>
+        </div>
+      </div>
+      <aside class="lcImageModal__details" aria-label="Informações do produto">
+        <div class="lcImageModal__scroll" id="modalDetailsScroll"></div>
+        <div class="lcImageModal__actions">
+          <a class="lcBuy lcImageModal__buy" id="modalBuy" href="#" target="_blank" rel="noopener">Comprar</a>
+          <button class="lcBtn lcImageModal__copy" id="modalCopyLink" type="button">Copiar Link</button>
+        </div>
+      </aside>
+    </div>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
