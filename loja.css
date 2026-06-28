@@ -1594,3 +1594,321 @@
     max-height:142px!important;
   }
 }
+
+
+/* ==========================================================
+   LOJA COMPLETA — MODAL DE DETALHES RÁPIDO V1
+   Mantém a loja completa diferente da home, mas leva a lógica:
+   imagem rápida + detalhes em caixa rolável + ações fixas.
+   ========================================================== */
+.lcImageModal{
+  align-items:center!important;
+  justify-content:center!important;
+  padding:18px!important;
+  background:rgba(0,0,0,.82)!important;
+  backdrop-filter:blur(12px)!important;
+}
+.lcImageModal__panel{
+  width:min(1220px,calc(100vw - 34px))!important;
+  height:min(860px,calc(100dvh - 34px))!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(340px,410px)!important;
+  border-radius:22px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(215,176,88,.28)!important;
+  background:
+    radial-gradient(circle at 70% 0%,rgba(215,176,88,.10),transparent 36%),
+    linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.22)),
+    rgba(6,6,7,.94)!important;
+  box-shadow:0 30px 110px rgba(0,0,0,.78), inset 0 1px 0 rgba(255,255,255,.04)!important;
+  position:relative!important;
+}
+.lcImageModal__visual{
+  position:relative!important;
+  min-width:0!important;
+  min-height:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:22px 26px 58px!important;
+  border-right:1px solid rgba(215,176,88,.16)!important;
+  background:radial-gradient(circle at center,rgba(255,255,255,.045),rgba(0,0,0,.34) 56%,rgba(0,0,0,.68))!important;
+}
+.lcImageModal__img{
+  max-width:100%!important;
+  max-height:100%!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+  border-radius:14px!important;
+  box-shadow:0 18px 58px rgba(0,0,0,.50)!important;
+  background:rgba(0,0,0,.14)!important;
+}
+.lcImageModal__footer{
+  position:absolute!important;
+  left:18px!important;
+  right:18px!important;
+  bottom:14px!important;
+  z-index:5!important;
+  min-height:40px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:10px!important;
+  padding:8px 12px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(215,176,88,.22)!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38),rgba(0,0,0,.78))!important;
+  color:rgba(255,239,190,.98)!important;
+  font-weight:900!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.44)!important;
+}
+.lcImageModal__title{
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:.92rem!important;
+}
+.lcImageModal__count{
+  position:static!important;
+  transform:none!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  font-size:.92rem!important;
+}
+.lcImageModal__details{
+  min-width:0!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.026),rgba(0,0,0,.20)),rgba(9,9,10,.92)!important;
+}
+.lcImageModal__scroll{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow:auto!important;
+  padding:22px 22px 16px!important;
+  scrollbar-width:thin!important;
+  scrollbar-color:rgba(215,176,88,.55) rgba(255,255,255,.06)!important;
+}
+.lcImageModal__actions{
+  flex:0 0 auto!important;
+  padding:14px 18px 16px!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:10px!important;
+  border-top:1px solid rgba(215,176,88,.18)!important;
+  background:linear-gradient(180deg,rgba(18,16,11,.92),rgba(6,6,7,.98))!important;
+  box-shadow:0 -18px 36px rgba(0,0,0,.34)!important;
+}
+.lcImageModal__actions .lcBuy,
+.lcImageModal__actions .lcBtn{
+  min-height:44px!important;
+  width:100%!important;
+  border-radius:16px!important;
+  font-weight:950!important;
+  font-size:.86rem!important;
+}
+.lcImageModal__eyebrow{
+  width:max-content!important;
+  max-width:100%!important;
+  margin-bottom:10px!important;
+  padding:6px 11px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(215,176,88,.22)!important;
+  background:rgba(215,176,88,.10)!important;
+  color:rgba(255,229,164,.96)!important;
+  font-weight:900!important;
+  text-transform:uppercase!important;
+  letter-spacing:.06em!important;
+  font-size:.72rem!important;
+}
+.lcImageModal__detailTitle{
+  margin:0 0 10px!important;
+  color:rgba(255,239,190,.98)!important;
+  font-family:Cinzel,serif!important;
+  font-size:clamp(1.25rem,2.2vw,1.85rem)!important;
+  line-height:1.07!important;
+  letter-spacing:.025em!important;
+  text-transform:uppercase!important;
+}
+.lcImageModal__desc{
+  margin:0 0 12px!important;
+  color:rgba(255,255,255,.82)!important;
+  line-height:1.42!important;
+  font-size:.94rem!important;
+}
+.lcImageModal__chips{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+  margin:10px 0 14px!important;
+}
+.lcImageModal__chips span{
+  min-height:26px!important;
+  padding:5px 9px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(215,176,88,.16)!important;
+  background:rgba(255,255,255,.045)!important;
+  color:rgba(255,255,255,.84)!important;
+  font-weight:850!important;
+  font-size:.72rem!important;
+}
+.lcImageModal__meta,.lcImageModal__store{
+  display:grid!important;
+  gap:8px!important;
+  margin:10px 0 14px!important;
+}
+.lcImageModal__row{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(120px,1.12fr)!important;
+  align-items:center!important;
+  gap:10px!important;
+  min-height:37px!important;
+  padding:8px 10px!important;
+  border-radius:12px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  background:rgba(0,0,0,.24)!important;
+}
+.lcImageModal__row span{
+  color:rgba(255,255,255,.56)!important;
+  font-size:.76rem!important;
+}
+.lcImageModal__row b{
+  color:rgba(255,255,255,.92)!important;
+  font-size:.78rem!important;
+  line-height:1.18!important;
+  overflow-wrap:anywhere!important;
+}
+.lcImageModal__storeTitle{
+  margin:12px 0 6px!important;
+  color:rgba(255,229,164,.98)!important;
+  font-weight:950!important;
+  font-size:.95rem!important;
+}
+.lcImageModal__hash{
+  margin:10px 0!important;
+  padding:10px!important;
+  border-radius:12px!important;
+  border:1px dashed rgba(215,176,88,.20)!important;
+  color:rgba(255,229,164,.92)!important;
+  background:rgba(215,176,88,.045)!important;
+  font-size:.78rem!important;
+  line-height:1.38!important;
+  overflow-wrap:anywhere!important;
+}
+.lcImageModal__hint{
+  margin:7px 0 0!important;
+  color:rgba(255,255,255,.60)!important;
+  font-size:.74rem!important;
+  line-height:1.32!important;
+  overflow-wrap:anywhere!important;
+}
+.lcImageModal__close{z-index:10!important;}
+.lcImageModal__nav{z-index:8!important;}
+.lcZoom{gap:7px!important;}
+.lcZoom--card{
+  width:auto!important;
+  min-width:104px!important;
+  height:30px!important;
+  padding:0 10px!important;
+  border-radius:999px!important;
+  font-size:.68rem!important;
+}
+
+@media(max-width:760px){
+  .lcImageModal{
+    padding:8px!important;
+    align-items:flex-start!important;
+    overflow:hidden!important;
+  }
+  .lcImageModal__panel{
+    width:calc(100vw - 16px)!important;
+    height:calc(100dvh - 16px)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    border-radius:18px!important;
+  }
+  .lcImageModal__visual{
+    flex:0 0 auto!important;
+    min-height:0!important;
+    max-height:45dvh!important;
+    padding:16px 14px 54px!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(215,176,88,.15)!important;
+  }
+  .lcImageModal__img{
+    max-height:calc(45dvh - 70px)!important;
+    max-width:100%!important;
+    border-radius:12px!important;
+  }
+  .lcImageModal__footer{
+    left:10px!important;
+    right:10px!important;
+    bottom:9px!important;
+    min-height:38px!important;
+    padding:7px 10px!important;
+  }
+  .lcImageModal__title{font-size:.74rem!important;}
+  .lcImageModal__count{font-size:.78rem!important;}
+  .lcImageModal__details{
+    flex:1 1 auto!important;
+    min-height:0!important;
+  }
+  .lcImageModal__scroll{
+    padding:14px 13px 12px!important;
+  }
+  .lcImageModal__actions{
+    padding:11px 13px calc(12px + env(safe-area-inset-bottom,0px))!important;
+    gap:9px!important;
+  }
+  .lcImageModal__actions .lcBuy,
+  .lcImageModal__actions .lcBtn{
+    min-height:44px!important;
+    font-size:.82rem!important;
+    border-radius:15px!important;
+  }
+  .lcImageModal__detailTitle{
+    font-size:1.04rem!important;
+    line-height:1.08!important;
+  }
+  .lcImageModal__desc{
+    font-size:.86rem!important;
+    line-height:1.36!important;
+  }
+  .lcImageModal__row{
+    grid-template-columns:minmax(0,.95fr) minmax(110px,1.05fr)!important;
+    min-height:38px!important;
+  }
+  .lcImageModal__row span{font-size:.70rem!important;}
+  .lcImageModal__row b{font-size:.72rem!important;}
+  .lcImageModal__nav{
+    width:42px!important;
+    height:42px!important;
+    font-size:26px!important;
+  }
+  .lcImageModal__nav--prev{left:10px!important;}
+  .lcImageModal__nav--next{right:10px!important;}
+  .lcImageModal__close{
+    top:10px!important;
+    right:10px!important;
+    width:44px!important;
+    height:44px!important;
+  }
+  .lcZoom--card{
+    min-width:92px!important;
+    height:28px!important;
+    padding:0 8px!important;
+    font-size:.60rem!important;
+    right:5px!important;
+    bottom:5px!important;
+  }
+  #todos-produtos .lcCardMedia .lcGalleryArrow--next{right:5px!important;}
+}
+@media(max-width:390px){
+  .lcZoom--card{min-width:84px!important;font-size:.56rem!important;padding:0 7px!important;}
+  .lcImageModal__detailTitle{font-size:.98rem!important;}
+}
