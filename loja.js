@@ -1,4 +1,4 @@
-/* Loja Completa — Cosa Nostra | V3 MODAL DETALHES + IMAGENS RÁPIDAS + CACHE */
+/* Loja Completa — Cosa Nostra | V5 TURBO IMAGENS — cache index + GitHub direto */
 (function () {
   'use strict';
 
@@ -12,7 +12,7 @@
   function trim(v) { return safe(v).replace(/^\s+|\s+$/g, ''); }
   function lower(v) { return trim(v).toLowerCase(); }
 
-  var PAGE_SIZE = isCompactStoreLayout() ? 24 : 36;
+  var PAGE_SIZE = isCompactStoreLayout() ? 16 : 28;
 
   var state = {
     products: [],
@@ -57,15 +57,22 @@
     if (x.indexOf('wsrv.nl/') >= 0 || x.indexOf('images.weserv.nl/') >= 0) return false;
     if (x.indexOf('data:image/') === 0 || x.indexOf('blob:') === 0) return false;
     if (/\.(svg|gif)(\?.*)?$/i.test(u)) return false;
+
+    // ✅ V5 TURBO: imagens novas do GitHub user-attachments abrem melhor direto.
+    // O proxy pode criar conversão fria e parecer travamento, principalmente no Produto do Dia.
+    // Mantemos proxy para outros externos, mas GitHub attachments usam a URL original/cache do navegador.
+    if (x.indexOf('github.com/user-attachments/assets/') >= 0) return false;
     return true;
   }
 
   function getFastImageWidth(kind) {
     var mobile = isCompactStoreLayout();
+    // ✅ V4 TURBO: mesmas larguras da index para reaproveitar cache do navegador/wsrv.
+    // Antes a loja usava larguras diferentes (ex.: 720/420), criando novas conversões e travando.
     if (kind === 'modal' || kind === 'lightbox') return mobile ? 900 : 1180;
-    if (kind === 'featured') return mobile ? 720 : 900;
+    if (kind === 'featured') return mobile ? 620 : 860;
     if (kind === 'hero') return mobile ? 900 : 1400;
-    return mobile ? 420 : 560;
+    return mobile ? 520 : 620;
   }
 
   function fastImageUrl(url, kind) {
@@ -140,7 +147,7 @@
             }
           });
         }, {
-          rootMargin: (isCompactStoreLayout() ? '620px 0px' : '760px 0px'),
+          rootMargin: (isCompactStoreLayout() ? '1300px 0px' : '1100px 0px'),
           threshold: 0.01
         });
       }
@@ -334,6 +341,59 @@
     runWhenIdle(function () { preloadGalleryAround(images, index, skipCurrent, kind || 'modal'); }, delay);
   }
 
+
+  function addImagePreload(url, kind) {
+    var original = trim(url);
+    if (!original) return;
+    var href = fastImageUrl(original, kind || 'card');
+    if (!href) return;
+
+    try {
+      var links = qsa('link[rel="preload"][as="image"]');
+      for (var i = 0; i < links.length; i++) {
+        if ((links[i].href || links[i].getAttribute('href') || '') === href || links[i].getAttribute('href') === href) return;
+      }
+      var link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = href;
+      link.setAttribute('fetchpriority', kind === 'featured' ? 'high' : 'low');
+      link.setAttribute('data-cn-store-preload', '1');
+      document.head.appendChild(link);
+    } catch (e) {}
+  }
+
+  function primeFeaturedImages() {
+    if (!state.featured) return;
+    var images = getImages(state.featured);
+    if (!images.length) return;
+
+    // Começa a buscar a imagem principal imediatamente e com a mesma URL usada no <img>.
+    addImagePreload(images[0], 'featured');
+    preloadOneImage(images[0], 'featured');
+
+    // Só aquece vizinhas depois, para não disputar com a imagem principal.
+    schedulePreloadGalleryAround(images, 0, true, 450, 'featured');
+  }
+
+  function primeStoreGridImages(root) {
+    var scope = root || qs('#productsGrid') || document;
+    var immediate = isCompactStoreLayout() ? 6 : 8;
+    var imgs = qsa('img[data-cn-src]', scope);
+
+    // ✅ V4 TURBO: os primeiros cards já começam a carregar agora,
+    // antes do usuário chegar na grade. O restante continua lazy.
+    imgs.slice(0, immediate).forEach(loadDeferredStoreImage);
+
+    // Pré-aquece mais alguns cards com baixa prioridade em idle.
+    var warmCount = isCompactStoreLayout() ? 10 : 12;
+    state.filtered.slice(0, warmCount).forEach(function (p, i) {
+      var first = getImages(p)[0];
+      if (!first) return;
+      schedulePreloadOneImage(first, 450 + (i * 90), 'card');
+    });
+  }
+
   function makeProductKey(p, prefix, index) {
     var raw = getSku(p) || getId(p) || getTitle(p) || ('produto-' + safe(index || 0));
     return safe(prefix || 'produto') + ':' + lower(raw).replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
@@ -507,7 +567,7 @@
     var img = images[idx];
     var hasMany = images.length > 1;
     // Produto do Dia: carrega só a imagem atual. Vizinhas entram em idle para não travar a abertura.
-    schedulePreloadGalleryAround(images, idx, true, 900, 'featured');
+    schedulePreloadGalleryAround(images, idx, true, 450, 'featured');
 
     var dots = images.map(function (_, i) {
       return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
@@ -691,6 +751,7 @@
     if (!grid) return;
 
     grid.innerHTML = state.filtered.slice(0, state.rendered).map(cardHtml).join('');
+    primeStoreGridImages(grid);
     observeStoreImages(grid);
     if (loadWrap) loadWrap.classList.toggle('hidden', state.rendered >= state.filtered.length);
   }
@@ -1121,12 +1182,13 @@
 
     updateCounters();
     buildTags();
+    primeFeaturedImages();
     renderFeatured();
     applyFilters(true);
     bindEvents();
   }
 
-  fetch('produtos.json?v=20260628-loja-modal-detalhes-v3-img-fast-cache', { cache: 'default' })
+  fetch('produtos.json?v=20260628-loja-modal-detalhes-v5-turbo-direct-github', { cache: 'default' })
     .then(function (r) { return r.json(); })
     .then(init)
     .catch(function (err) {
