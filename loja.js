@@ -1,4 +1,4 @@
-/* Loja Completa — Cosa Nostra | REAL10 IMAGENS RÁPIDAS PC + MOBILE */
+/* Loja Completa — Cosa Nostra | V2 MODAL DETALHES + IMAGENS RÁPIDAS */
 (function () {
   'use strict';
 
@@ -228,12 +228,35 @@
     state.imageCache[u] = im;
   }
 
-  function preloadGalleryAround(images, index) {
+  function preloadGalleryAround(images, index, skipCurrent) {
     if (!images || images.length < 2) return;
     var current = typeof index === 'number' ? index : 0;
     for (var i = Math.max(0, current - 1); i <= Math.min(images.length - 1, current + 1); i++) {
+      if (skipCurrent && i === current) continue;
       preloadOneImage(images[i]);
     }
+  }
+
+  function runWhenIdle(fn, delay) {
+    var ms = typeof delay === 'number' ? delay : 250;
+    try {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(fn, { timeout: Math.max(700, ms + 500) });
+        return;
+      }
+    } catch (e) {}
+    window.setTimeout(fn, ms);
+  }
+
+  function schedulePreloadOneImage(url, delay) {
+    var u = trim(url);
+    if (!u || state.imageCache[u]) return;
+    runWhenIdle(function () { preloadOneImage(u); }, delay);
+  }
+
+  function schedulePreloadGalleryAround(images, index, skipCurrent, delay) {
+    if (!images || images.length < 2) return;
+    runWhenIdle(function () { preloadGalleryAround(images, index, skipCurrent); }, delay);
   }
 
   function makeProductKey(p, prefix, index) {
@@ -408,7 +431,8 @@
     if (idx >= images.length) idx = 0;
     var img = images[idx];
     var hasMany = images.length > 1;
-    preloadGalleryAround(images, idx);
+    // Produto do Dia: carrega só a imagem atual. Vizinhas entram em idle para não travar a abertura.
+    schedulePreloadGalleryAround(images, idx, true, 900);
 
     var dots = images.map(function (_, i) {
       return '<span class="lcDot' + (i === idx ? ' is-active' : '') + '"></span>';
@@ -630,7 +654,7 @@
     if (idx < 0) idx = 0;
     if (idx >= images.length) idx = images.length - 1;
     state.gallery[key] = idx;
-    preloadGalleryAround(images, idx);
+    schedulePreloadGalleryAround(images, idx, true, 450);
 
     qsa('[data-gallery-key]').forEach(function (shell) {
       if (shell.getAttribute('data-gallery-key') !== key) return;
@@ -684,7 +708,8 @@
     state.modalInstantSrc = trim(instantSrc || '');
     state.modalInstantIndex = state.modalIndex;
 
-    preloadGalleryAround(state.modalImages, state.modalIndex);
+    // Modal rápido: abre primeiro com a imagem já carregada no card e deixa vizinhas para depois.
+    schedulePreloadGalleryAround(state.modalImages, state.modalIndex, true, 700);
     updateModal();
 
     var scroll = qs('#modalDetailsScroll');
@@ -729,12 +754,12 @@
       if (state.modalInstantSrc && state.modalIndex === state.modalInstantIndex) {
         chosen = state.modalInstantSrc;
         state.modalInstantSrc = '';
-        if (target && target !== chosen) preloadOneImage(target);
+        if (target && target !== chosen) schedulePreloadOneImage(target, 900);
       }
       if (chosen && img.getAttribute('src') !== chosen) img.src = chosen;
     }
 
-    preloadGalleryAround(state.modalImages, state.modalIndex);
+    schedulePreloadGalleryAround(state.modalImages, state.modalIndex, true, 700);
     if (count) count.textContent = (state.modalIndex + 1) + '/' + state.modalImages.length;
     if (title) title.textContent = displayTitle(getTitle(p));
     if (prev) prev.hidden = state.modalIndex <= 0;
@@ -917,7 +942,7 @@
       if (zoom) {
         var shell2 = zoom.closest ? zoom.closest('[data-gallery-key]') : null;
         var imgEl2 = (zoom.tagName && zoom.tagName.toLowerCase() === 'img') ? zoom : (shell2 ? qs('img[data-zoom-key]', shell2) : null);
-        var instant2 = imgEl2 ? trim(imgEl2.getAttribute('src') || '') : '';
+        var instant2 = imgEl2 ? trim((imgEl2.currentSrc || imgEl2.getAttribute('src') || '')) : '';
         if (instant2 === CN_TRANSPARENT_PIXEL) instant2 = '';
         openModal(zoom.getAttribute('data-zoom-key'), instant2);
         return;
