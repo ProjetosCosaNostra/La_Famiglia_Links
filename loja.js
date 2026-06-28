@@ -2,6 +2,10 @@
 (function () {
   'use strict';
 
+  var CN_STORE_INSTAGRAM = '@cosanostra.blackgold';
+  var CN_STORE_TELEGRAM = '@BlackGoldSociety';
+  var CN_STORE_HOME_URL = 'https://projetoscosanostra.github.io/La_Famiglia_Links/';
+
   function qs(sel, root) { return (root || document).querySelector(sel); }
   function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function safe(v) { return v === null || v === undefined ? '' : String(v); }
@@ -22,6 +26,10 @@
     gallery: {},
     modalImages: [],
     modalIndex: 0,
+    modalProduct: null,
+    modalKey: '',
+    modalInstantSrc: '',
+    modalInstantIndex: 0,
     productByKey: {},
     imageCache: {}
   };
@@ -249,6 +257,103 @@
   function promoText(p) { return trim((p && (p.promo_text || p.price_note || p.price_observation)) || ''); }
   function buyCta(p) { return trim((p && (p.buy_cta || p.cta_text)) || '') || 'Comprar'; }
 
+
+  function displayTitle(raw) {
+    var t = trim(raw || 'Produto');
+    t = t.replace(/Skinactive/g, 'SkinActive');
+    t = t.replace(/Tudo\s+em\s+1\s+400\s*ml/ig, 'Tudo em 1 — 400ml');
+    t = t.replace(/Tudo\s+em\s+1\s+—\s+400\s*ml/ig, 'Tudo em 1 — 400ml');
+    t = t.replace(/\s+400\s*ml\b/ig, ' — 400ml');
+    t = t.replace(/—\s+—/g, '—');
+    return t;
+  }
+
+  function getShortDescription(p) {
+    var desc = trim(p && (p.description || p.descricao || p.short_description || p.descricao_curta || p.summary || p.resumo));
+    if (desc) return desc;
+
+    var title = displayTitle(getTitle(p));
+    var badges = getBadges(p).concat(getSecondary(p)).map(lower).join(' ');
+
+    if (/agua micelar|água micelar|garnier|skinactive/i.test(title + ' ' + badges)) {
+      return '💧 Água Micelar Garnier SkinActive Tudo em 1 — 400ml — limpa, demaquila, hidrata e suaviza em um só passo. Ideal para todos os tipos de pele, com textura não oleosa e uso no rosto, olhos e lábios.';
+    }
+
+    var promo = promoText(p);
+    if (promo) return promo;
+    return 'Achado premium selecionado pela curadoria Cosa Nostra para compra rápida e segura. Confira preço, frete e disponibilidade no Mercado Livre antes de concluir.';
+  }
+
+  function normalizeHashtagWord(s) {
+    var out = trim(s);
+    try { out = out.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch (e) {}
+    out = out.replace(/[^a-zA-Z0-9]+/g, ' ').trim();
+    if (!out) return '';
+    return out.split(/\s+/).map(function (part) {
+      return part ? part.charAt(0).toUpperCase() + part.slice(1) : '';
+    }).join('');
+  }
+
+  function getModalHashtags(p) {
+    var seen = {};
+    var words = [];
+    getBadges(p).concat(getSecondary(p)).forEach(function (item) {
+      var tag = normalizeHashtagWord(item);
+      if (!tag) return;
+      var k = lower(tag);
+      if (seen[k]) return;
+      seen[k] = true;
+      words.push('#' + tag);
+    });
+    ['MercadoLivre','CosaNostraBlackGold','BlackGoldSociety'].forEach(function (tag) {
+      var k = lower(tag);
+      if (!seen[k]) {
+        seen[k] = true;
+        words.push('#' + tag);
+      }
+    });
+    return words.slice(0, 14).join(' ');
+  }
+
+  function detailRowHtml(label, value) {
+    value = trim(value);
+    if (!value) return '';
+    return '<div class="lcImageModal__row"><span>' + escapeHtml(label) + '</span><b>' + escapeHtml(value) + '</b></div>';
+  }
+
+  function modalDetailsHtml(p) {
+    var id = getId(p);
+    var buy = getBuyUrl(p);
+    var price = formatPrice(p);
+    var old = oldPrice(p);
+    var disc = discount(p);
+    var checked = trim(p && (p.price_checked_at || p.preco_conferido_em || p.checked_at));
+    var badges = getBadges(p).slice(0, 6);
+    var chips = badges.map(function (b) { return '<span>' + escapeHtml(b) + '</span>'; }).join('');
+
+    return '' +
+      '<div class="lcImageModal__eyebrow">Informações do achado</div>' +
+      '<h3 class="lcImageModal__detailTitle">' + escapeHtml(displayTitle(getTitle(p))) + '</h3>' +
+      '<p class="lcImageModal__desc">' + escapeHtml(getShortDescription(p)) + '</p>' +
+      (chips ? '<div class="lcImageModal__chips">' + chips + '</div>' : '') +
+      '<div class="lcImageModal__meta">' +
+        detailRowHtml('Código Mercado Livre', id) +
+        detailRowHtml('Preço atual', price) +
+        detailRowHtml('Preço anterior', old) +
+        detailRowHtml('Oferta', disc) +
+        detailRowHtml('Preço conferido', checked) +
+      '</div>' +
+      '<div class="lcImageModal__storeTitle">Canais oficiais da loja</div>' +
+      '<div class="lcImageModal__store">' +
+        detailRowHtml('Instagram da vitrine', CN_STORE_INSTAGRAM) +
+        detailRowHtml('Telegram', CN_STORE_TELEGRAM) +
+        detailRowHtml('Página oficial', CN_STORE_HOME_URL) +
+      '</div>' +
+      '<div class="lcImageModal__hash">' + escapeHtml(getModalHashtags(p)) + '</div>' +
+      (id ? '<p class="lcImageModal__hint">🔍 Busque no Mercado Livre por: <b>' + escapeHtml(id) + '</b></p>' : '') +
+      (buy ? '<p class="lcImageModal__hint">🔗 Link direto: <b>' + escapeHtml(buy) + '</b></p>' : '');
+  }
+
   function toast(msg) {
     var el = qs('#toast');
     if (!el) return;
@@ -317,7 +422,7 @@
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots">' + dots + '</div>' : '') +
-        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">⛶ Ampliar</button>' +
+        '<button class="lcZoom" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ver detalhes do produto">🔎 Ver detalhes</button>' +
       '</div>';
   }
 
@@ -343,7 +448,7 @@
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--prev" data-gallery-prev="' + escapeHtml(key) + '" type="button" ' + (idx === 0 ? 'hidden' : '') + '>‹</button>' : '') +
         (hasMany ? '<button class="lcGalleryArrow lcGalleryArrow--next" data-gallery-next="' + escapeHtml(key) + '" type="button" ' + (idx >= images.length - 1 ? 'hidden' : '') + '>›</button>' : '') +
         (hasMany ? '<div class="lcDots lcDots--card">' + dots + '</div>' : '') +
-        '<button class="lcZoom lcZoom--card" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ampliar imagem do produto">⛶</button>' +
+        '<button class="lcZoom lcZoom--card" data-zoom-key="' + escapeHtml(key) + '" type="button" aria-label="Ver detalhes do produto">🔎 Ver detalhes</button>' +
       '</div>';
   }
 
@@ -373,11 +478,11 @@
         mediaHtml(p, key) +
         '<div class="lcInfo">' +
           '<div class="lcLabel">Produto impulsionado de hoje</div>' +
-          '<h3 class="lcTitle">' + escapeHtml(getTitle(p)) + '</h3>' +
+          '<h3 class="lcTitle">' + escapeHtml(displayTitle(getTitle(p))) + '</h3>' +
           '<p class="lcSub">Escolhido para a campanha atual, com oferta e compra rápida.</p>' +
           (price ? '<div class="lcPrice"><div class="lcPriceTop"><span>Oferta em destaque</span>' + (disc ? '<span class="lcDiscount">' + escapeHtml(disc) + '</span>' : '') + '</div><div><span class="lcCurrentPrice">' + escapeHtml(price) + '</span>' + (old ? '<span class="lcOldPrice">' + escapeHtml(old) + '</span>' : '') + '</div><p class="lcNote">' + escapeHtml(note) + noteExtra + '</p></div>' : '') +
           '<div class="lcTags">' + escapeHtml(tags.join(' • ')) + '</div>' +
-          '<div class="lcHash">#Achados_do_Dia #Beleza #Cabelo #Escova_Secadora</div>' +
+          '<div class="lcHash">' + escapeHtml(getModalHashtags(p).replace(/#/g, '#')) + '</div>' +
           (id ? '<div class="lcIdBox">Código de busca: <b>' + escapeHtml(id) + '</b></div>' : '') +
           '<div class="lcActions">' +
             (buy ? '<a class="lcBuy" href="' + escapeHtml(buy) + '" target="_blank" rel="noopener">' + 'Comprar agora' + '</a>' : '') +
@@ -505,7 +610,7 @@
       '<article class="lcCard">' +
         cardMediaHtml(p, key) +
         '<div class="lcCardBody">' +
-          '<h3 class="lcCardTitle">' + escapeHtml(getTitle(p)) + '</h3>' +
+          '<h3 class="lcCardTitle">' + escapeHtml(displayTitle(getTitle(p))) + '</h3>' +
           (badgeHtml ? '<div class="lcCardMeta">' + badgeHtml + '</div>' : '') +
           (price ? '<div class="lcCardPrice">' + escapeHtml(price) + '</div>' : '') +
           (id ? '<div class="lcCardCode">Código <b>' + escapeHtml(id) + '</b></div>' : '') +
@@ -566,14 +671,24 @@
 
   window.CNLcOpenGallery = function (key) { openModal(key); };
 
-  function openModal(key) {
+  function openModal(key, instantSrc) {
     var p = getProductByKey(key);
     if (!p) return;
 
+    state.modalProduct = p;
+    state.modalKey = key || '';
     state.modalImages = getImages(p);
     state.modalIndex = state.gallery[key] || 0;
+    if (state.modalIndex < 0) state.modalIndex = 0;
+    if (state.modalIndex >= state.modalImages.length) state.modalIndex = state.modalImages.length - 1;
+    state.modalInstantSrc = trim(instantSrc || '');
+    state.modalInstantIndex = state.modalIndex;
+
     preloadGalleryAround(state.modalImages, state.modalIndex);
     updateModal();
+
+    var scroll = qs('#modalDetailsScroll');
+    if (scroll) scroll.scrollTop = 0;
 
     var modal = qs('#imageModal');
     if (modal) {
@@ -598,16 +713,57 @@
     if (state.modalIndex < 0) state.modalIndex = 0;
     if (state.modalIndex >= state.modalImages.length) state.modalIndex = state.modalImages.length - 1;
 
+    var p = state.modalProduct || getProductByKey(state.modalKey);
     var img = qs('#modalImg');
     var count = qs('#modalCount');
     var prev = qs('#modalPrev');
     var next = qs('#modalNext');
+    var title = qs('#modalTitle');
+    var details = qs('#modalDetailsScroll');
+    var buy = qs('#modalBuy');
+    var copy = qs('#modalCopyLink');
+    var target = state.modalImages[state.modalIndex] || '';
 
-    if (img && img.getAttribute('src') !== state.modalImages[state.modalIndex]) img.src = state.modalImages[state.modalIndex];
+    if (img) {
+      var chosen = target;
+      if (state.modalInstantSrc && state.modalIndex === state.modalInstantIndex) {
+        chosen = state.modalInstantSrc;
+        state.modalInstantSrc = '';
+        if (target && target !== chosen) preloadOneImage(target);
+      }
+      if (chosen && img.getAttribute('src') !== chosen) img.src = chosen;
+    }
+
     preloadGalleryAround(state.modalImages, state.modalIndex);
     if (count) count.textContent = (state.modalIndex + 1) + '/' + state.modalImages.length;
+    if (title) title.textContent = displayTitle(getTitle(p));
     if (prev) prev.hidden = state.modalIndex <= 0;
     if (next) next.hidden = state.modalIndex >= state.modalImages.length - 1;
+
+    if (details && p) details.innerHTML = modalDetailsHtml(p);
+    if (buy) {
+      var link = p ? getBuyUrl(p) : '';
+      buy.href = link || '#';
+      buy.textContent = buyCta(p) || 'Comprar agora';
+      buy.onclick = function (ev) {
+        if (!link) {
+          if (ev && ev.preventDefault) ev.preventDefault();
+          toast('Link do produto não encontrado.');
+          return false;
+        }
+        return true;
+      };
+    }
+    if (copy) {
+      copy.onclick = function () {
+        var link = p ? getBuyUrl(p) : '';
+        if (!link) {
+          toast('Link do produto não encontrado.');
+          return;
+        }
+        copyText(link);
+      };
+    }
   }
 
   function downloadText(filename, text, type) {
@@ -707,7 +863,11 @@
       if (!key) return;
       ev.preventDefault();
       ev.stopPropagation();
-      openModal(key);
+      var shell = z.closest ? z.closest('[data-gallery-key]') : null;
+      var imgEl = (z.tagName && z.tagName.toLowerCase() === 'img') ? z : (shell ? qs('img[data-zoom-key]', shell) : null);
+      var instant = imgEl ? trim(imgEl.getAttribute('src') || '') : '';
+      if (instant === CN_TRANSPARENT_PIXEL) instant = '';
+      openModal(key, instant);
     }, true);
 
     document.addEventListener('click', function (ev) {
@@ -755,7 +915,11 @@
 
       var zoom = target.closest('[data-zoom-key]');
       if (zoom) {
-        openModal(zoom.getAttribute('data-zoom-key'));
+        var shell2 = zoom.closest ? zoom.closest('[data-gallery-key]') : null;
+        var imgEl2 = (zoom.tagName && zoom.tagName.toLowerCase() === 'img') ? zoom : (shell2 ? qs('img[data-zoom-key]', shell2) : null);
+        var instant2 = imgEl2 ? trim(imgEl2.getAttribute('src') || '') : '';
+        if (instant2 === CN_TRANSPARENT_PIXEL) instant2 = '';
+        openModal(zoom.getAttribute('data-zoom-key'), instant2);
         return;
       }
     });
