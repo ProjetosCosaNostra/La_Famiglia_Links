@@ -9,6 +9,8 @@ body:
         ✅ **Como usar (cadastro normal):**
         - Preencha os campos principais do produto.
         - Esse formulário é para **cadastro / atualização normal**.
+        - A **descrição curta** agora é campo importante: ela aparece no modal/detalhes e evita produto sem texto comercial.
+        - Em **Badges/Tags/Hashtags**, coloque também os benefícios principais para a busca e para as hashtags automáticas.
         - **Pra imagem bonita (com QR):** arraste a imagem para dentro do texto do issue (ou cole a URL da imagem).
         - Ao enviar, a Action atualiza o `produtos.json` sozinha.
 
@@ -77,11 +79,20 @@ body:
   - type: textarea
     id: badges
     attributes:
-      label: "Badges/Tags (separe por vírgula)"
-      description: "Ex: Achados do Dia, Bluetooth 5.4, TWS, PRETO"
-      placeholder: "Achados do Dia, Bluetooth 5.4, TWS, PRETO"
+      label: "Badges/Tags/Hashtags (separe por vírgula)"
+      description: "Use aqui categorias, benefícios e palavras para hashtags automáticas. Ex: Achados do Dia, Beleza, Skincare, Água Micelar, Textura Não Oleosa, Frete Grátis"
+      placeholder: "Achados do Dia, Beleza, Skincare, Água Micelar, Textura Não Oleosa, Frete Grátis"
     validations:
       required: false
+
+  - type: textarea
+    id: promo_text
+    attributes:
+      label: "Descrição curta / texto promocional do produto"
+      description: "Texto comercial curto para aparecer no modal/detalhes e para reaproveitar em redes sociais. Evite texto longo."
+      placeholder: "💧 Água Micelar Garnier SkinActive Tudo em 1 — 400ml. Limpa, demaquila, hidrata e suaviza em um só passo. Ideal para todos os tipos de pele, com textura não oleosa e uso no rosto, olhos e lábios."
+    validations:
+      required: true
 
   - type: input
     id: id_busca
@@ -113,6 +124,7 @@ body:
       value: |
         ## 💰 Preço / Oferta para campanha (opcional)
         Use estes campos principalmente no **Produto do Dia** ou produto impulsionado.
+        A descrição curta fica mais acima, antes do preço, para não faltar texto no produto.
         Se deixar vazio, a loja mantém o comportamento atual.
 
   - type: input
@@ -148,15 +160,6 @@ body:
       label: "Preço conferido em"
       description: "Data ou observação curta para lembrar que o preço pode mudar no Mercado Livre."
       placeholder: "11/05/2026"
-    validations:
-      required: false
-
-  - type: textarea
-    id: promo_text
-    attributes:
-      label: "Texto promocional / observação do preço"
-      description: "Ex.: Preço conferido no Mercado Livre. Aproveite enquanto estiver disponível."
-      placeholder: "Preço conferido no Mercado Livre. Pode mudar sem aviso."
     validations:
       required: false
 
