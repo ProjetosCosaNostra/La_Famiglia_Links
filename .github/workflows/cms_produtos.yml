@@ -42,6 +42,17 @@ jobs:
             pip install -r requirements.txt
           fi
 
+      - name: Install deps WebP (para imagens rápidas)
+        run: |
+          set -euo pipefail
+          if [ -f scripts/otimizar_produtos_webp.py ] && [ -f scripts/requirements-webp.txt ]; then
+            pip install -r scripts/requirements-webp.txt
+          elif [ -f scripts/otimizar_produtos_webp.py ]; then
+            echo "scripts/requirements-webp.txt não encontrado; tentando usar dependências já instaladas."
+          else
+            echo "scripts/otimizar_produtos_webp.py não encontrado; etapa WebP será ignorada."
+          fi
+
       - name: Debug (versions + context)
         run: |
           set -euo pipefail
@@ -51,6 +62,7 @@ jobs:
           echo "LABELS: ${{ join(github.event.issue.labels.*.name, ',') }}"
           ls -la
           ls -la tools || true
+          ls -la scripts || true
 
       - name: Run CMS
         env:
@@ -59,6 +71,21 @@ jobs:
         run: |
           set -euo pipefail
           python tools/cms_produtos.py
+
+      - name: Otimizar imagens para WebP antes do commit
+        run: |
+          set -euo pipefail
+          if [ -f scripts/otimizar_produtos_webp.py ]; then
+            python scripts/otimizar_produtos_webp.py \
+              --input produtos.json \
+              --out produtos.json \
+              --assets-dir assets/produtos-webp \
+              --quality 78 \
+              --max-size 1000 \
+              --report webp-report.json
+          else
+            echo "scripts/otimizar_produtos_webp.py não encontrado; seguindo sem otimizar."
+          fi
 
       - name: Validate produtos.json
         run: |
@@ -93,7 +120,7 @@ jobs:
             git add -A
 
             if [ -n "$(git diff --cached --name-only)" ]; then
-              git commit -m "cms: update produtos.json via issue #${{ github.event.issue.number }}"
+              git commit -m "cms: update produtos.json via issue #${{ github.event.issue.number }} [skip webp]"
             else
               echo "Nada staged para commit nesta tentativa."
             fi
@@ -104,11 +131,22 @@ jobs:
               exit 0
             fi
 
-            echo "Push rejeitado. Sincronizando com origin/gh-pages e reaplicando CMS..."
+            echo "Push rejeitado. Sincronizando com origin/gh-pages e reaplicando CMS + WebP..."
             git fetch origin gh-pages
             git reset --hard origin/gh-pages
 
             python tools/cms_produtos.py
+
+            if [ -f scripts/otimizar_produtos_webp.py ]; then
+              python scripts/otimizar_produtos_webp.py \
+                --input produtos.json \
+                --out produtos.json \
+                --assets-dir assets/produtos-webp \
+                --quality 78 \
+                --max-size 1000 \
+                --report webp-report.json
+            fi
+
             test -f produtos.json
             python -m json.tool produtos.json >/dev/null
 
