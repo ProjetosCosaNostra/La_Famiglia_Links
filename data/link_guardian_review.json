@@ -1,23 +1,22 @@
 {
-  "updated_at": "2026-06-28T19:47:19Z",
-  "total_items": 7,
+  "updated_at": "2026-06-29T04:58:35Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 6,
-      "social_profile_needs_review": 1
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 5
     },
-    "high_priority": 7
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-06-28T19:41:16Z",
+      "happened_at": "2026-06-29T04:52:17Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -33,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (39x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (40x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-28T19:41:16Z",
+      "happened_at": "2026-06-29T04:52:17Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-28T19:41:16Z",
+      "happened_at": "2026-06-29T04:52:17Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (59x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (60x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -150,97 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-28T19:41:16Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 81,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/81",
-      "issue_title": "[CMS] Produto: lamina-philips-oneblade-qp220-51-2-unidades",
-      "sku": "lamina-philips-oneblade-qp220-51-2-unidades",
-      "title": "Lâminas Philips OneBlade QP220/51 (2 Unidades) – Original",
-      "id_busca": "5J5PKG-5RAU",
-      "status": 200,
-      "reason": "social_profile_needs_review",
-      "reason_bucket": "storefront_profile_needs_review",
-      "reason_bucket_label": "perfil social com revisão manual",
-      "confidence_score": 60,
-      "confidence_bucket": "revisar_manual",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2sn3pjB",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D",
-      "open_url": "https://meli.la/2sn3pjB",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5RAU&tid=9f5cb70c-2912-43b9-a521-6808e4bda385",
-      "short_url": "https://meli.la/2sn3pjB",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNHz70yUMI38Tk4DJmm4Nykjnhl1w60UgwRJ9Bey6UJlujfUEZRbBJ6jkvFUI39wuNLIHe1%2F30EnZUfu0xRu3cuMeOd0jnIDf0NX1sxHjvSgHHRfbbZ0Z5TEcCOGnAfkUgnEQWb%2FvCMqR7Q3SBKuOVewG1v0yIy0p2e1FiyrndCUYy2oLuj%2FQzlFcQqK24E19MXnvkI%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Philips",
-        "OneBlade",
-        "Lâmina de reposição",
-        "Barbeador",
-        "Aparador",
-        "Cuidados pessoais",
-        "Original"
-      ]
-    },
-    {
-      "happened_at": "2026-06-28T19:41:16Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 37,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
-      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
-      "sku": "projetor-smart-hy320-goodvision",
-      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
-      "id_busca": "5J5PKG-D9EV",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (54x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1YAEmtS",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1YAEmtS",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Projetor",
-        "Cinema em Casa",
-        "Wi-Fi",
-        "Android",
-        "Bluetooth",
-        "Full HD",
-        "HDMI"
-      ]
-    },
-    {
-      "happened_at": "2026-06-28T19:41:16Z",
+      "happened_at": "2026-06-29T04:52:17Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -256,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (56x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (57x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -285,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-28T19:41:16Z",
+      "happened_at": "2026-06-29T04:52:17Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -301,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
