@@ -1,22 +1,23 @@
 {
-  "updated_at": "2026-06-30T14:41:50Z",
-  "total_items": 5,
+  "updated_at": "2026-06-30T20:15:16Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 6,
+      "social_profile_needs_review": 1
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 7
     },
-    "high_priority": 5
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-06-30T14:36:37Z",
+      "happened_at": "2026-06-30T20:09:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +33,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (46x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (47x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-30T14:36:37Z",
+      "happened_at": "2026-06-30T20:09:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (23x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-06-30T14:36:37Z",
+      "happened_at": "2026-06-30T20:09:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (65x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (66x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +150,52 @@
       ]
     },
     {
-      "happened_at": "2026-06-30T14:36:37Z",
+      "happened_at": "2026-06-30T20:09:06Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 37,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
+      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
+      "sku": "projetor-smart-hy320-goodvision",
+      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
+      "id_busca": "5J5PKG-D9EV",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (58x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1YAEmtS",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1YAEmtS",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Projetor",
+        "Cinema em Casa",
+        "Wi-Fi",
+        "Android",
+        "Bluetooth",
+        "Full HD",
+        "HDMI"
+      ]
+    },
+    {
+      "happened_at": "2026-06-30T20:09:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +211,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (63x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (64x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +240,52 @@
       ]
     },
     {
-      "happened_at": "2026-06-30T14:36:37Z",
+      "happened_at": "2026-06-30T20:09:06Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 52,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/52",
+      "issue_title": "[CMS] Produto: Cafeteira Dolce Gusto Genio S (Cápsulas) — Branca",
+      "sku": "cafeteira-dolce-gusto-genio-s-capsulas-branca",
+      "title": "Cafeteira Dolce Gusto Genio S (Cápsulas) — Branca",
+      "id_busca": "5J5PKG-1KY6",
+      "status": 200,
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
+      "memory_note": "histórico recorrente (1x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2Nj2xGv",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA35qXE6sdagV9hq37dGIFcPCga2hK6%2FuBbl3uuEK3kOIPQaAlbYsYjF2kXQlI9rKpE4rf06LV3cqY6OROToDEk0GKdRlQS5PrcvJ9iDOSvbd6MKSteh%2BD6oztcrFHyvma2dVXP5BYZLZc%2F%2FYDb6bmStk3xUKtc0GyU6ylEeqJQ0ZW3REL4Qf2IdoLPZwxDnqWBazzo%3D",
+      "open_url": "https://mercadolivre.com/sec/2Nj2xGv",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA35qXE6sdagV9hq37dGIFcPCga2hK6%2FuBbl3uuEK3kOIPQaAlbYsYjF2kXQlI9rKpE4rf06LV3cqY6OROToDEk0GKdRlQS5PrcvJ9iDOSvbd6MKSteh%2BD6oztcrFHyvma2dVXP5BYZLZc%2F%2FYDb6bmStk3xUKtc0GyU6ylEeqJQ0ZW3REL4Qf2IdoLPZwxDnqWBazzo%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1KY6&tid=eec2d724-6290-43f0-aef9-d263f058bfcd",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA35qXE6sdagV9hq37dGIFcPCga2hK6%2FuBbl3uuEK3kOIPQaAlbYsYjF2kXQlI9rKpE4rf06LV3cqY6OROToDEk0GKdRlQS5PrcvJ9iDOSvbd6MKSteh%2BD6oztcrFHyvma2dVXP5BYZLZc%2F%2FYDb6bmStk3xUKtc0GyU6ylEeqJQ0ZW3REL4Qf2IdoLPZwxDnqWBazzo%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA35qXE6sdagV9hq37dGIFcPCga2hK6%2FuBbl3uuEK3kOIPQaAlbYsYjF2kXQlI9rKpE4rf06LV3cqY6OROToDEk0GKdRlQS5PrcvJ9iDOSvbd6MKSteh%2BD6oztcrFHyvma2dVXP5BYZLZc%2F%2FYDb6bmStk3xUKtc0GyU6ylEeqJQ0ZW3REL4Qf2IdoLPZwxDnqWBazzo%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cafeteira",
+        "Dolce Gusto",
+        "Nescafé",
+        "Arno",
+        "Café",
+        "Cápsulas",
+        "Bebidas quentes e frias"
+      ]
+    },
+    {
+      "happened_at": "2026-06-30T20:09:06Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +301,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (23x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
