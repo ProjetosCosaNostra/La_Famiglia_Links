@@ -1,66 +1,22 @@
 {
-  "updated_at": "2026-07-01T10:11:42Z",
-  "total_items": 7,
+  "updated_at": "2026-07-01T14:59:08Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 6
     },
-    "high_priority": 7
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-07-01T10:05:11Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 109,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109",
-      "issue_title": "Kit 2 Acendedores de Fogão Premium",
-      "sku": "kit-2-acendedores-de-fogao-premium",
-      "title": "Kit 2 Acendedores de Fogão Premium",
-      "id_busca": "5J5PKG-ASLN",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1XNUc7N",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1XNUc7N",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
-      "short_url": "https://meli.la/1XNUc7N",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Cozinha",
-        "Fogão",
-        "Acendedor de Fogão",
-        "Kit 2 Peças",
-        "Utilidades Domésticas",
-        "Casa"
-      ]
-    },
-    {
-      "happened_at": "2026-07-01T10:05:11Z",
+      "happened_at": "2026-07-01T14:52:51Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (49x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (50x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -103,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-01T10:05:11Z",
+      "happened_at": "2026-07-01T14:52:51Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -119,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (27x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -148,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-01T10:05:11Z",
+      "happened_at": "2026-07-01T14:52:51Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -164,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (68x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (69x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -193,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-01T10:05:11Z",
+      "happened_at": "2026-07-01T14:52:51Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -209,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (59x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (60x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -238,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-01T10:05:11Z",
+      "happened_at": "2026-07-01T14:52:51Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -254,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (66x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (67x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -283,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-01T10:05:11Z",
+      "happened_at": "2026-07-01T14:52:51Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -299,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
