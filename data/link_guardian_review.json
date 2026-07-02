@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-02T14:29:36Z",
-  "total_items": 7,
+  "updated_at": "2026-07-02T19:48:08Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 6
     },
-    "high_priority": 7
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-07-02T14:23:16Z",
+      "happened_at": "2026-07-02T19:43:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (54x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (55x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-02T14:23:16Z",
+      "happened_at": "2026-07-02T19:43:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (31x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-02T14:23:16Z",
+      "happened_at": "2026-07-02T19:43:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (73x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (74x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-02T14:23:16Z",
+      "happened_at": "2026-07-02T19:43:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-02T14:23:16Z",
+      "happened_at": "2026-07-02T19:43:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (63x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (64x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-02T14:23:16Z",
+      "happened_at": "2026-07-02T19:43:33Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (71x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (72x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -281,51 +281,6 @@
         "GPS",
         "Visão Noturna",
         "Infra-vermelho"
-      ]
-    },
-    {
-      "happened_at": "2026-07-02T14:23:16Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 78,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78",
-      "issue_title": "[CMS] Produto: purificador-de-ar-silencioso-hepa-h13-luz-ambiente",
-      "sku": "purificador-de-ar-silencioso-hepa-h13-luz-ambiente",
-      "title": "Purificador De Ar Silencioso Com Filtro Hepa E Abajur Komeco",
-      "id_busca": "5J5PKG-B27T",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1cEAj6X",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1cEAj6X",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U3PG&tid=907d1ad4-1ba7-4be7-b764-20cc77e26d2c",
-      "short_url": "https://meli.la/1LaVYwK",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHHJm3K2ZQz%2Fop5yGINkHXKhMecJpkMLWNdXwE8QMBcIwqYaTJrooX6FTQjbFWPxtkUGDKqhsH1T5LvV79xtrQX%2FFkH0RyB7ylXR%2BRy1zTiEVLyscrMTnz8DH5ZSZ2dmp9BzXH%2FkGG3fE1kWMjSiNju9uyCpMW7ZhOJ6jINo8299vx2ZBl043P6DaWVXJNbPY2%2FYUjM%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Purificador de Ar",
-        "HEPA H13",
-        "Silencioso",
-        "Antialérgico",
-        "Quarto",
-        "Home Office",
-        "Poeira"
       ]
     }
   ]
