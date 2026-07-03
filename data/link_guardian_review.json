@@ -1,22 +1,23 @@
 {
-  "updated_at": "2026-07-03T04:05:46Z",
-  "total_items": 6,
+  "updated_at": "2026-07-03T09:35:43Z",
+  "total_items": 8,
   "summary": {
-    "unique_skus": 6,
+    "unique_skus": 8,
     "by_state": {
-      "review_only_storefront": 6
+      "review_only_storefront": 8
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 6
+      "storefront_social_lists_invalid": 7,
+      "social_profile_needs_review": 1
     },
     "by_action": {
-      "trocar_link": 6
+      "trocar_link": 8
     },
-    "high_priority": 6
+    "high_priority": 8
   },
   "items": [
     {
-      "happened_at": "2026-07-03T04:00:23Z",
+      "happened_at": "2026-07-03T09:31:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +33,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (56x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (57x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-03T04:00:23Z",
+      "happened_at": "2026-07-03T09:31:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (33x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (34x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-03T04:00:23Z",
+      "happened_at": "2026-07-03T09:31:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (75x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (76x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +150,52 @@
       ]
     },
     {
-      "happened_at": "2026-07-03T04:00:23Z",
+      "happened_at": "2026-07-03T09:31:09Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 74,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/74",
+      "issue_title": "[CMS] Produto: dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto",
+      "sku": "dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto",
+      "title": "DPS iClamper Energia (5 Tomadas) – Proteção Contra Surtos – Preto",
+      "id_busca": "5J5PKG-0QEF",
+      "status": 200,
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
+      "memory_note": "",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2e9LLGJ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "open_url": "https://meli.la/2e9LLGJ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0QEF&tid=6d448ff8-ffe3-4779-afa6-b8bac597046a",
+      "short_url": "https://meli.la/2e9LLGJ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "DPS",
+        "iClamper",
+        "Filtro de Linha",
+        "Proteção Contra Surtos",
+        "Anti Raio",
+        "Energia",
+        "5 Tomadas"
+      ]
+    },
+    {
+      "happened_at": "2026-07-03T09:31:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +211,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +240,52 @@
       ]
     },
     {
-      "happened_at": "2026-07-03T04:00:23Z",
+      "happened_at": "2026-07-03T09:31:09Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 37,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
+      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
+      "sku": "projetor-smart-hy320-goodvision",
+      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
+      "id_busca": "5J5PKG-D9EV",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (65x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1YAEmtS",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1YAEmtS",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Projetor",
+        "Cinema em Casa",
+        "Wi-Fi",
+        "Android",
+        "Bluetooth",
+        "Full HD",
+        "HDMI"
+      ]
+    },
+    {
+      "happened_at": "2026-07-03T09:31:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +301,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (73x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (74x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +330,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-03T04:00:23Z",
+      "happened_at": "2026-07-03T09:31:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +346,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
