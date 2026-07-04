@@ -16293,5 +16293,123 @@
     }
   </style>
 
+
+  <style id="cn-mobile-produto-dia-microajustes-20260704">
+    /* ==========================================================
+       MICROAJUSTES APROVADOS — Produto do Dia Mobile
+       Escopo: somente #sec-produto-do-dia / #featured no mobile.
+       Ajustes:
+       1) troca "PICK DO DIA" por português;
+       2) deixa "Ver detalhes" discreto para não competir com Comprar;
+       3) remove frase cortada e usa texto curto.
+       ========================================================== */
+    @media (max-width: 720px) {
+      html body #featured .cnFeaturedWrap::after {
+        content: "SELEÇÃO DO DIA" !important;
+        top: 8px !important;
+        right: 9px !important;
+        padding: 3px 7px !important;
+        font-size: .44rem !important;
+        letter-spacing: .10em !important;
+        color: rgba(246,226,168,.86) !important;
+      }
+
+      html body #featured .cnFeatureSummary {
+        display: block !important;
+        -webkit-line-clamp: unset !important;
+        -webkit-box-orient: initial !important;
+        overflow: visible !important;
+        margin-top: 5px !important;
+        font-size: 0 !important;
+        line-height: 1 !important;
+        color: transparent !important;
+      }
+
+      html body #featured .cnFeatureSummary::before {
+        content: "Compra rápida e segura.";
+        display: block;
+        max-width: 100%;
+        font-size: .64rem !important;
+        line-height: 1.16 !important;
+        color: rgba(255,255,255,.50) !important;
+      }
+
+      html body #featured .cnMediaShell--featured .cnGalleryZoom,
+      html body #featured .cnProductMedia--featured .cnGalleryZoom,
+      html body #featured .cnFeaturedMedia .cnGalleryZoom,
+      html body #featured .cnCard:first-child .cnGalleryZoom {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        max-width: 30px !important;
+        min-height: 30px !important;
+        padding: 0 !important;
+        right: 6px !important;
+        bottom: 6px !important;
+        border-radius: 999px !important;
+        font-size: 0 !important;
+        line-height: 1 !important;
+        gap: 0 !important;
+        color: transparent !important;
+        background:
+          radial-gradient(34px 24px at 50% 18%, rgba(224,195,107,.20), transparent 72%),
+          rgba(7,7,9,.74) !important;
+        border-color: rgba(224,195,107,.30) !important;
+        box-shadow: 0 10px 22px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.04) !important;
+        opacity: .88 !important;
+      }
+
+      html body #featured .cnMediaShell--featured .cnGalleryZoom::before,
+      html body #featured .cnProductMedia--featured .cnGalleryZoom::before,
+      html body #featured .cnFeaturedMedia .cnGalleryZoom::before,
+      html body #featured .cnCard:first-child .cnGalleryZoom::before {
+        content: "🔎" !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 13px !important;
+        line-height: 1 !important;
+        color: rgba(255,239,190,.94) !important;
+      }
+
+      html body #featured .cnMediaShell--featured .cnGalleryZoom:hover,
+      html body #featured .cnProductMedia--featured .cnGalleryZoom:hover,
+      html body #featured .cnFeaturedMedia .cnGalleryZoom:hover,
+      html body #featured .cnCard:first-child .cnGalleryZoom:hover,
+      html body #featured .cnMediaShell--featured .cnGalleryZoom:focus-visible,
+      html body #featured .cnProductMedia--featured .cnGalleryZoom:focus-visible,
+      html body #featured .cnFeaturedMedia .cnGalleryZoom:focus-visible,
+      html body #featured .cnCard:first-child .cnGalleryZoom:focus-visible {
+        opacity: 1 !important;
+        transform: translateY(-1px) !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      html body #featured .cnFeaturedWrap::after {
+        font-size: .40rem !important;
+        letter-spacing: .08em !important;
+        padding: 3px 6px !important;
+      }
+
+      html body #featured .cnFeatureSummary::before {
+        font-size: .60rem !important;
+      }
+
+      html body #featured .cnMediaShell--featured .cnGalleryZoom,
+      html body #featured .cnProductMedia--featured .cnGalleryZoom,
+      html body #featured .cnFeaturedMedia .cnGalleryZoom,
+      html body #featured .cnCard:first-child .cnGalleryZoom {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        max-width: 28px !important;
+        min-height: 28px !important;
+      }
+    }
+  </style>
+
 </body>
 </html>
