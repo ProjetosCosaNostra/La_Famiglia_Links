@@ -466,6 +466,56 @@
     return s;
   }
 
+  function normalizePriceText(v) {
+    var s = trim(v);
+    if (!s) return '';
+
+    s = s.replace(/\s+/g, ' ');
+    if (/^r\$\s*/i.test(s)) {
+      return s.replace(/^r\$\s*/i, 'R$ ').replace(/\s+/g, ' ');
+    }
+
+    var compact = s.replace(/\s+/g, '');
+    var looksBrazilianMoney = /^\d{1,3}(\.\d{3})*,\d{1,2}$/.test(compact);
+    var looksSimpleMoney = /^\d+([\.,]\d{1,2})?$/.test(compact);
+
+    if (looksBrazilianMoney || looksSimpleMoney) {
+      var parsed = compact;
+      if (looksBrazilianMoney) parsed = parsed.replace(/\./g, '').replace(',', '.');
+      else parsed = parsed.replace(',', '.');
+
+      var n = parseFloat(parsed);
+      if (isFinite(n)) {
+        return 'R$ ' + n.toFixed(2).replace('.', ',');
+      }
+    }
+
+    return s;
+  }
+
+  function appendPriceParts(el, priceText) {
+    if (!el) return;
+    var s = normalizePriceText(priceText);
+    el.setAttribute('aria-label', s);
+
+    var m = s.match(/^(R\$)\s*(.+)$/i);
+    if (!m) {
+      el.textContent = s;
+      return;
+    }
+
+    var currency = document.createElement('span');
+    currency.className = 'cnCurrency';
+    currency.textContent = 'R$';
+
+    var amount = document.createElement('span');
+    amount.className = 'cnAmount';
+    amount.textContent = m[2];
+
+    el.appendChild(currency);
+    el.appendChild(amount);
+  }
+
   function getPromoInfo(p) {
     p = p || {};
     var current = firstFilled([
@@ -523,6 +573,9 @@
       p.cta_buy_text,
       p.cta_text
     ]);
+
+    current = normalizePriceText(current);
+    old = normalizePriceText(old);
 
     return {
       has: !!(current || old || discount || checked || note),
@@ -647,7 +700,7 @@
       if (promo.current) {
         var current = document.createElement('strong');
         current.className = 'cnCurrentPrice';
-        current.textContent = promo.current;
+        appendPriceParts(current, promo.current);
         prices.appendChild(current);
       }
       if (promo.old) {
