@@ -1,1 +1,55 @@
-[]
+[
+  {
+    "sku": "suporte-secador-cabelo-escova-multiuso-organizador",
+    "results": [
+      {
+        "source": "https://github.com/user-attachments/assets/d6b0a31d-90a9-4f06-8193-ea845f548b24",
+        "status": "converted",
+        "output": "assets/produtos-webp/suporte-secador-cabelo-escova-multiuso-organizador-cover-696d42b3a6.webp",
+        "original_bytes": 1817559,
+        "webp_bytes": 58240,
+        "saved_percent": 96.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/69214f82-7576-4e62-8608-45b7101981c3",
+        "status": "converted",
+        "output": "assets/produtos-webp/suporte-secador-cabelo-escova-multiuso-organizador-images-01-94d1255977.webp",
+        "original_bytes": 1809502,
+        "webp_bytes": 57216,
+        "saved_percent": 96.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/69deec0a-6768-40dd-8734-c8248385ccbe",
+        "status": "converted",
+        "output": "assets/produtos-webp/suporte-secador-cabelo-escova-multiuso-organizador-images-02-ec52caac1e.webp",
+        "original_bytes": 1941108,
+        "webp_bytes": 49418,
+        "saved_percent": 97.5,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/a4f05724-288b-40d7-864c-eecca104f858",
+        "status": "converted",
+        "output": "assets/produtos-webp/suporte-secador-cabelo-escova-multiuso-organizador-images-03-6bb3625774.webp",
+        "original_bytes": 1718974,
+        "webp_bytes": 69400,
+        "saved_percent": 96.0,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      }
+    ]
+  }
+]
