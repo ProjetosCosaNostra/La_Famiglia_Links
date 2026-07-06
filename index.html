@@ -16755,5 +16755,120 @@
     }
   </style>
 
+
+  <style id="cn-mobile-produto-dia-imagem-destaque-20260706">
+    /* ==========================================================
+       AJUSTE MOBILE — Seleção do Dia com imagem em destaque
+       Escopo: somente mobile. PC/Desktop preservado.
+       Objetivo: imagem do Produto do Dia maior que antes, com preço
+       e título ainda responsivos quando o produto trocar.
+       ========================================================== */
+    @media (max-width: 720px) {
+      html body #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(164px, 51%) minmax(0, 1fr) !important;
+        gap: 8px !important;
+        padding: 9px !important;
+        align-items: stretch !important;
+      }
+
+      html body #featured .cnFeaturedMedia,
+      html body #featured .cnCard:first-child {
+        padding: 3px 5px 3px 2px !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnMediaShell,
+      html body #featured .cnFeaturedMedia .cnMediaShell--featured,
+      html body #featured .cnCard:first-child .cnMediaShell,
+      html body #featured .cnMediaShell--featured,
+      html body #featured .cnProductMedia--featured {
+        width: 100% !important;
+        max-width: 100% !important;
+        aspect-ratio: 4 / 5 !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnImg,
+      html body #featured .cnFeaturedMedia .cnMediaShell .cnImg,
+      html body #featured .cnFeaturedMedia .cnMediaShell--featured .cnImg,
+      html body #featured .cnCard:first-child .cnImg,
+      html body #featured .cnMediaShell--featured .cnImg,
+      html body #featured .cnProductMedia--featured img[data-cnimg],
+      html body #featured .cnFeaturedMedia img[data-cnimg] {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+
+      html body #featured .cnFeaturedInfo .cnCardPad {
+        padding: 18px 4px 6px 7px !important;
+      }
+
+      html body #featured .cnTitleMain {
+        font-size: clamp(.96rem, 4.15vw, 1.17rem) !important;
+        line-height: 1.03 !important;
+      }
+
+      html body #featured .cnTitleSub,
+      html body #featured .cnFeatureSummary::before {
+        font-size: .60rem !important;
+      }
+
+      html body #featured .cnPromoBox {
+        margin-top: 6px !important;
+        padding: 7px 7px !important;
+      }
+
+      html body #featured .cnCurrentPrice {
+        font-size: clamp(1.22rem, 5.8vw, 1.52rem) !important;
+        white-space: nowrap !important;
+      }
+
+      html body #featured .cnBadges {
+        margin-top: 6px !important;
+        max-height: 36px !important;
+      }
+
+      html body #featured .cnMeta {
+        margin-top: 6px !important;
+      }
+
+      html body #featured .cnRow {
+        margin-top: 8px !important;
+        gap: 6px !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      html body #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(154px, 50%) minmax(0, 1fr) !important;
+        gap: 7px !important;
+        padding: 7px !important;
+      }
+
+      html body #featured .cnFeaturedInfo .cnCardPad {
+        padding: 17px 3px 5px 6px !important;
+      }
+
+      html body #featured .cnTitleMain {
+        font-size: clamp(.86rem, 3.95vw, 1.04rem) !important;
+        line-height: 1.02 !important;
+      }
+
+      html body #featured .cnFeatureSummary::before,
+      html body #featured .cnTitleSub {
+        font-size: .56rem !important;
+      }
+
+      html body #featured .cnCurrentPrice {
+        font-size: clamp(1.06rem, 5.35vw, 1.34rem) !important;
+      }
+
+      html body #featured .cnBadges span {
+        font-size: .52rem !important;
+        padding: 3px 5px !important;
+      }
+    }
+  </style>
+
 </body>
 </html>
