@@ -35,9 +35,9 @@
   <link rel="preload" href="produtos.json" as="fetch" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260516-brilho-estavel-origem" />
+  <link rel="stylesheet" href="style.css?v=20260706-produto-dia-mobile-v1" />
   <script defer src="tracking.js"></script>
-  <script defer src="script.js?v=20260627-modal-fast-v7-featured-ver-detalhes"></script>
+  <script defer src="script.js?v=20260706-produto-dia-mobile-v1"></script>
 
   <!-- Ajustes imperiais + avisos pro leigo (sem depender do CSS externo) -->
   <style>
@@ -16407,6 +16407,350 @@
         min-width: 28px !important;
         max-width: 28px !important;
         min-height: 28px !important;
+      }
+    }
+  </style>
+
+  <style id="cn-mobile-produto-dia-dinamico-elegante-20260706">
+    /* ==========================================================
+       PRODUTO DO DIA — MOBILE RESPONSIVO PADRONIZADO
+       Escopo: somente mobile. PC/Desktop preservado.
+       Objetivo: título longo não bagunça, preço nunca quebra em duas linhas
+       e card fica elegante/dinâmico quando o produto muda.
+       ========================================================== */
+    @media (max-width: 720px) {
+      html body #featured.featured {
+        padding: 9px 10px 11px !important;
+      }
+
+      html body #featured .cnFeaturedWrap {
+        display: grid !important;
+        grid-template-columns: minmax(136px, 40%) minmax(0, 1fr) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+        padding: 10px !important;
+        border-radius: 22px !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      html body #featured .cnFeaturedMedia,
+      html body #featured .cnCard:first-child {
+        min-width: 0 !important;
+        align-self: stretch !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 4px 6px 4px 3px !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnMediaShell,
+      html body #featured .cnFeaturedMedia .cnMediaShell--featured,
+      html body #featured .cnCard:first-child .cnMediaShell,
+      html body #featured .cnMediaShell--featured,
+      html body #featured .cnProductMedia--featured {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        aspect-ratio: 4 / 5 !important;
+        border-radius: 17px !important;
+      }
+
+      html body #featured .cnFeaturedMedia .cnImg,
+      html body #featured .cnFeaturedMedia .cnMediaShell .cnImg,
+      html body #featured .cnFeaturedMedia .cnMediaShell--featured .cnImg,
+      html body #featured .cnCard:first-child .cnImg,
+      html body #featured .cnMediaShell--featured .cnImg,
+      html body #featured .cnProductMedia--featured img[data-cnimg],
+      html body #featured .cnFeaturedMedia img[data-cnimg] {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        border-radius: 13px !important;
+      }
+
+      html body #featured .cnFeaturedInfo,
+      html body #featured .cnFeaturedInfo .cnCardPad {
+        min-width: 0 !important;
+        overflow: visible !important;
+      }
+
+      html body #featured .cnFeaturedInfo .cnCardPad {
+        min-height: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 18px 6px 6px 8px !important;
+      }
+
+      html body #featured .cnTitle {
+        display: block !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      html body #featured .cnTitleMain {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        white-space: normal !important;
+        text-overflow: clip !important;
+        font-family: "Cormorant Garamond", Georgia, serif !important;
+        font-size: clamp(1.02rem, 4.55vw, 1.24rem) !important;
+        line-height: 1.03 !important;
+        letter-spacing: .006em !important;
+        max-height: 2.12em !important;
+      }
+
+      html body #featured .cnTitleSub {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 1 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        margin-top: 2px !important;
+        font-size: .66rem !important;
+        line-height: 1.08 !important;
+      }
+
+      html body #featured .cnFeatureSummary {
+        display: block !important;
+        margin-top: 4px !important;
+        font-size: 0 !important;
+        line-height: 1 !important;
+        color: transparent !important;
+      }
+
+      html body #featured .cnFeatureSummary::before {
+        content: "Compra rápida e segura.";
+        display: block !important;
+        font-size: .62rem !important;
+        line-height: 1.12 !important;
+        color: rgba(255,255,255,.50) !important;
+      }
+
+      html body #featured .cnPromoBox {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin-top: 7px !important;
+        padding: 7px 8px !important;
+        border-radius: 15px !important;
+      }
+
+      html body #featured .cnPromoLabel {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 5px !important;
+        margin-bottom: 4px !important;
+        font-size: .50rem !important;
+        line-height: 1 !important;
+        letter-spacing: .12em !important;
+        white-space: nowrap !important;
+      }
+
+      html body #featured .cnPromoDiscount,
+      html body #featured .cnOldPrice {
+        display: none !important;
+      }
+
+      html body #featured .cnPromoPrices {
+        display: flex !important;
+        align-items: baseline !important;
+        justify-content: flex-start !important;
+        flex-wrap: nowrap !important;
+        gap: 4px !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
+
+      html body #featured .cnCurrentPrice {
+        display: inline-flex !important;
+        align-items: baseline !important;
+        justify-content: flex-start !important;
+        gap: .12em !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        flex: 0 1 auto !important;
+        font-size: clamp(1.28rem, 6.15vw, 1.62rem) !important;
+        line-height: .96 !important;
+        letter-spacing: -.035em !important;
+        color: rgba(255,255,255,.98) !important;
+        text-shadow: 0 10px 20px rgba(0,0,0,.46) !important;
+      }
+
+      html body #featured .cnCurrentPrice .cnCurrency {
+        display: inline-block !important;
+        font-size: .52em !important;
+        line-height: 1 !important;
+        letter-spacing: -.02em !important;
+        opacity: .96 !important;
+      }
+
+      html body #featured .cnCurrentPrice .cnAmount {
+        display: inline-block !important;
+        font-size: 1em !important;
+        line-height: .96 !important;
+      }
+
+      html body #featured .cnPromoText,
+      html body #featured .cnPromoChecked,
+      html body #featured .cnScarcityLine {
+        display: none !important;
+      }
+
+      html body #featured .cnBadges {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 5px !important;
+        max-height: 43px !important;
+        overflow: hidden !important;
+        margin-top: 7px !important;
+      }
+
+      html body #featured .cnBadges span {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 3px 7px !important;
+        font-size: .59rem !important;
+        line-height: 1.05 !important;
+        white-space: nowrap !important;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+      }
+
+      html body #featured .cnMeta {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        margin-top: 7px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        font-size: .61rem !important;
+        line-height: 1 !important;
+      }
+
+      html body #featured .cnMeta span {
+        flex: 0 0 auto !important;
+        font-size: 0 !important;
+      }
+
+      html body #featured .cnMeta span::after {
+        content: "Código";
+        font-size: .61rem !important;
+        color: rgba(255,255,255,.42) !important;
+      }
+
+      html body #featured .cnMeta b {
+        min-width: 0 !important;
+        max-width: 86px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        font-size: .70rem !important;
+        line-height: 1 !important;
+        color: rgba(224,195,107,.88) !important;
+        letter-spacing: .035em !important;
+      }
+
+      html body #featured .cnRow {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+        margin-top: 9px !important;
+        width: 100% !important;
+      }
+
+      html body #featured .cnRow .btn,
+      html body #featured .cnActionPrimary,
+      html body #featured .cnActionSecondary {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        min-height: 34px !important;
+        height: 34px !important;
+        padding: 0 7px !important;
+        border-radius: 11px !important;
+        font-size: .66rem !important;
+        line-height: 1.06 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      html body #featured .cnRow .cnActionPrimary,
+      html body #featured .cnRow .btn--buy-primary {
+        grid-column: auto !important;
+        min-height: 34px !important;
+        height: 34px !important;
+        font-size: .68rem !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      html body #featured .cnFeaturedWrap {
+        grid-template-columns: minmax(128px, 39%) minmax(0, 1fr) !important;
+        gap: 8px !important;
+        padding: 8px !important;
+      }
+
+      html body #featured .cnFeaturedInfo .cnCardPad {
+        padding: 17px 4px 5px 7px !important;
+      }
+
+      html body #featured .cnTitleMain {
+        font-size: clamp(.94rem, 4.45vw, 1.12rem) !important;
+      }
+
+      html body #featured .cnFeatureSummary::before {
+        font-size: .58rem !important;
+      }
+
+      html body #featured .cnCurrentPrice {
+        font-size: clamp(1.16rem, 5.85vw, 1.42rem) !important;
+        letter-spacing: -.04em !important;
+      }
+
+      html body #featured .cnBadges {
+        max-height: 40px !important;
+        gap: 4px !important;
+      }
+
+      html body #featured .cnBadges span {
+        font-size: .54rem !important;
+        padding: 3px 6px !important;
+      }
+
+      html body #featured .cnMeta b {
+        max-width: 74px !important;
+        font-size: .66rem !important;
+      }
+
+      html body #featured .cnRow {
+        gap: 6px !important;
+      }
+
+      html body #featured .cnRow .btn,
+      html body #featured .cnActionPrimary,
+      html body #featured .cnActionSecondary {
+        min-height: 32px !important;
+        height: 32px !important;
+        font-size: .61rem !important;
+        padding: 0 6px !important;
       }
     }
   </style>
