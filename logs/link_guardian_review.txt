@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-07T04:14:38Z
+Atualizado em: 2026-07-07T10:02:20Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-07T04:10:07Z
+Quando: 2026-07-07T09:56:40Z
 Issue: #37
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
 SKU: projetor-smart-hy320-goodvision
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (74x /lists, 0x listing)
+Memória operacional: histórico recorrente (75x /lists, 0x listing)
 Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
 open_url: https://meli.la/1YAEmtS
 checked_url: https://meli.la/1YAEmtS
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
 
 [ALTA] review_only_storefront
-Quando: 2026-07-07T04:10:07Z
+Quando: 2026-07-07T09:56:40Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (90x /lists, 2x listing)
+Memória operacional: histórico recorrente (91x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/15nTpbu
 checked_url: https://meli.la/15nTpbu
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-07-07T04:10:07Z
+Quando: 2026-07-07T09:56:40Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (30x /lists, 0x listing)
+Memória operacional: histórico recorrente (31x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
