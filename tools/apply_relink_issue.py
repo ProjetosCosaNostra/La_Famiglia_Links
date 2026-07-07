@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Link Guardian — aplica correção em lote v3 por Issue.
+Link Guardian — aplica correção em lote v4 por Issue.
 Lê o JSON gerado pelo relink-lote.html no corpo de uma issue, atualiza produtos.json,
-baixa/converte imagens novas para WebP e mantém imagens antigas quando campos estão vazios.
+baixa/converte imagens novas para WebP, mantém campos vazios sem alteração
+e permite destacar como Produto do Dia ou escolher posição na Vitrine Rápida.
 """
 from __future__ import annotations
 
@@ -99,6 +100,12 @@ def validate_payload(payload: Dict[str, Any]) -> List[str]:
         for u in extras:
             if not re.match(r"^(https?://|assets/)", u, re.I):
                 errors.append(f"{sku}: imagem extra inválida: {u}")
+        quick_pos = str(c.get("quick_home_position", "")).strip()
+        if quick_pos:
+            if not quick_pos.isdigit() or not (1 <= int(quick_pos) <= 32):
+                errors.append(f"{sku}: quick_home_position precisa ser número entre 1 e 32.")
+        if "make_product_day" in c and not isinstance(c.get("make_product_day"), bool):
+            errors.append(f"{sku}: make_product_day precisa ser true/false.")
     return errors
 
 
@@ -147,7 +154,61 @@ def product_index(products: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
     return {str(p.get("sku", "")).strip(): p for p in products if str(p.get("sku", "")).strip()}
 
 
-def apply_one(product: Dict[str, Any], correction: Dict[str, Any], assets_dir: Path, now: str) -> Tuple[bool, List[str]]:
+def to_int_or_none(value: Any) -> int | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return int(text)
+    except ValueError:
+        return None
+
+
+def apply_product_day(products: List[Dict[str, Any]], target: Dict[str, Any]) -> List[str]:
+    """Faz o produto virar Produto do Dia sem mexer quando a opção não foi marcada."""
+    changes: List[str] = []
+    for p in products:
+        if p is target:
+            continue
+        if p.get("featured") is True:
+            p["featured"] = False
+            changes.append("remove featured anterior")
+    if target.get("featured") is not True:
+        target["featured"] = True
+        changes.append("featured/produto do dia")
+    return changes
+
+
+def apply_quick_home_position(products: List[Dict[str, Any]], target: Dict[str, Any], position: int) -> List[str]:
+    """Coloca o produto em posição 1..32 na Vitrine Rápida e empurra pedidos explícitos."""
+    changes: List[str] = []
+    old_pos = to_int_or_none(target.get("quick_home_order"))
+
+    # Remove temporariamente a posição do alvo para evitar conflito consigo mesmo.
+    if "quick_home_order" in target:
+        target.pop("quick_home_order", None)
+
+    # Empurra para baixo quem já tinha ordem explícita igual ou posterior à escolhida.
+    ordered = []
+    for p in products:
+        if p is target:
+            continue
+        order = to_int_or_none(p.get("quick_home_order"))
+        if order is not None and order >= position:
+            ordered.append((order, p))
+    for order, p in sorted(ordered, key=lambda x: x[0], reverse=True):
+        p["quick_home_order"] = order + 1
+
+    target["quick_home"] = True
+    target["quick_home_order"] = position
+    if old_pos != position or target.get("quick_home") is not True:
+        changes.append(f"vitrine rápida posição {position}")
+    else:
+        changes.append(f"vitrine rápida posição {position}")
+    return changes
+
+
+def apply_one(products: List[Dict[str, Any]], product: Dict[str, Any], correction: Dict[str, Any], assets_dir: Path, now: str) -> Tuple[bool, List[str]]:
     sku = str(correction.get("sku", "")).strip()
     changes: List[str] = []
 
@@ -197,6 +258,13 @@ def apply_one(product: Dict[str, Any], correction: Dict[str, Any], assets_dir: P
             product["images_original"] = old_orig + extra_urls
             changes.append(f"extras add ({len(new_paths)})")
         product["webp_optimized_at"] = now
+
+    if correction.get("make_product_day") is True:
+        changes.extend(apply_product_day(products, product))
+
+    quick_pos = to_int_or_none(correction.get("quick_home_position"))
+    if quick_pos is not None:
+        changes.extend(apply_quick_home_position(products, product, quick_pos))
 
     if changes:
         # Limpa estado de revisão do Link Guardian para produto relinkado manualmente.
@@ -270,10 +338,12 @@ def main() -> int:
             if str(c.get("cover_image_url","")).strip(): simulated_changes.append("cover")
             extras = normalize_url_list(c.get("extra_image_urls"))
             if extras: simulated_changes.append(f"extras {c.get('extras_mode')} ({len(extras)})")
+            if c.get("make_product_day") is True: simulated_changes.append("featured/produto do dia")
+            if str(c.get("quick_home_position","")).strip(): simulated_changes.append(f"vitrine rápida posição {c.get('quick_home_position')}")
             changed = bool(simulated_changes)
             changes = simulated_changes
         else:
-            changed, changes = apply_one(target, c, assets_dir, now)
+            changed, changes = apply_one(products, target, c, assets_dir, now)
         if changed:
             changed_any = True
             updated_count += 1
