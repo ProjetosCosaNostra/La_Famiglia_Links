@@ -59,7 +59,7 @@
   <header>
     <div class="wrap">
       <h1>Link Guardian — Correção em Lote</h1>
-      <div class="sub">Corrija todos os produtos pendentes em cards: título, ID, link, capa opcional e imagens extras com acrescentar/substituir.</div>
+      <div class="sub">Corrija todos os produtos pendentes em cards: título, ID, link, imagens e destaque opcional na loja.</div>
       <div class="topbar">
         <div>
           <button class="ghost" id="reloadBtn">↻ Recarregar pendências</button>
@@ -223,6 +223,21 @@ function renderCards(){
             </div>
             <div class="small">Essa escolha nunca mexe na capa principal.</div>
           </div>
+
+          <div class="image-rules">
+            <label>Destaque na loja, opcional</label>
+            <label class="radio-card" style="display:block;min-width:0;margin-bottom:10px">
+              <input type="checkbox" class="make-day" style="width:auto;margin-right:8px">
+              <b>⭐ Colocar como Produto do Dia</b>
+              <span>Se marcar, este produto vira a Seleção do Dia. Se não marcar, não altera o Produto do Dia atual.</span>
+            </label>
+            <label>Posição na Vitrine Rápida, opcional</label>
+            <select class="quick-pos">
+              <option value="">Não alterar posição atual</option>
+              ${Array.from({length:32},(_,i)=>`<option value="${i+1}">${i+1}ª posição</option>`).join('')}
+            </select>
+            <div class="small">Se escolher uma posição, o produto entra na Vitrine Rápida e os produtos já ordenados nessa posição ou depois são empurrados para baixo. Se deixar vazio, mantém como está.</div>
+          </div>
           <div class="errtxt hide"></div>
           <div class="oktxt hide"></div>
         </div>
@@ -237,19 +252,20 @@ function renderCards(){
 }
 function bindCardEvents(){
   document.querySelectorAll('.card').forEach(card=>{
-    const inputs = card.querySelectorAll('input:not(.use-card), textarea');
+    const inputs = card.querySelectorAll('input:not(.use-card), textarea, select');
     const use = card.querySelector('.use-card');
-    inputs.forEach(inp=>inp.addEventListener('input',()=>{ if(anyFieldFilled(card)) use.checked = true; validateCard(card,false); }));
+    inputs.forEach(inp=>{ const ev = inp.tagName === 'SELECT' || inp.type === 'checkbox' ? 'change' : 'input'; inp.addEventListener(ev,()=>{ if(anyFieldFilled(card)) use.checked = true; validateCard(card,false); }); });
     card.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',()=>{ use.checked = true; validateCard(card,false); }));
     card.querySelector('.clear-card').addEventListener('click',()=>{
       card.querySelectorAll('input[type=text], input:not([type]), textarea').forEach(x=>x.value='');
-      card.querySelectorAll('input[type=radio]').forEach(x=>x.checked=false);
+      card.querySelectorAll('select').forEach(x=>x.value='');
+      card.querySelectorAll('input[type=radio], input[type=checkbox]:not(.use-card)').forEach(x=>x.checked=false);
       use.checked=false; showCardMsg(card,'','');
     });
   });
 }
 function anyFieldFilled(card){
-  return ['.new-title','.new-id','.new-link','.cover-url','.extra-urls'].some(sel=>norm(card.querySelector(sel).value));
+  return ['.new-title','.new-id','.new-link','.cover-url','.extra-urls','.quick-pos'].some(sel=>norm(card.querySelector(sel).value)) || card.querySelector('.make-day').checked;
 }
 function selectedExtrasMode(card){ const r=card.querySelector('input[type=radio]:checked'); return r?r.value:''; }
 function showCardMsg(card,type,msg){
@@ -269,6 +285,8 @@ function validateCard(card, show=true){
   const cover = norm(card.querySelector('.cover-url').value);
   if(cover && !(/^(https?:\/\/|assets\/)/i.test(cover))){ if(show) showCardMsg(card,'err','A capa precisa ser uma URL http(s) ou caminho assets/.'); return false; }
   for(const u of extras){ if(!/^(https?:\/\/|assets\/)/i.test(u)){ if(show) showCardMsg(card,'err','Cada imagem extra precisa ser URL http(s) ou caminho assets/.'); return false; } }
+  const quickPos = norm(card.querySelector('.quick-pos').value);
+  if(quickPos && (!/^\d+$/.test(quickPos) || Number(quickPos)<1 || Number(quickPos)>32)){ if(show) showCardMsg(card,'err','A posição da Vitrine Rápida precisa ser entre 1 e 32.'); return false; }
   if(show) showCardMsg(card,'ok','Card válido.');
   return true;
 }
@@ -286,7 +304,9 @@ function buildPayload(){
       open_url: norm(card.querySelector('.new-link').value),
       cover_image_url: norm(card.querySelector('.cover-url').value),
       extra_image_urls: lines(card.querySelector('.extra-urls').value),
-      extras_mode: selectedExtrasMode(card)
+      extras_mode: selectedExtrasMode(card),
+      make_product_day: card.querySelector('.make-day').checked,
+      quick_home_position: norm(card.querySelector('.quick-pos').value)
     };
     corrections.push(c);
   });
