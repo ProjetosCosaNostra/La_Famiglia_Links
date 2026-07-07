@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-07T10:02:20Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-07-07T15:00:04Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-07T09:56:40Z
-Issue: #37
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
-SKU: projetor-smart-hy320-goodvision
-Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
-ID ML: 5J5PKG-D9EV
+Quando: 2026-07-07T14:55:24Z
+Issue: #67
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/67
+SKU: esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas
+Título: Esfregão Mop 9 em 1 — Escova de Limpeza Elétrica Rotatória (9 peças) + Extensor
+ID ML: 5J5PKG-W2VM
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (75x /lists, 0x listing)
-Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
-open_url: https://meli.la/1YAEmtS
-checked_url: https://meli.la/1YAEmtS
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Limpeza, Casa, Banheiro, Cozinha, 9 em 1, 9 peças, Escova Rotatória
+open_url: https://meli.la/1WeBSnu
+checked_url: https://meli.la/1WeBSnu
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-W2VM&tid=3b4e0d3f-18b1-4deb-806b-cfa451f1d320
 
 [ALTA] review_only_storefront
-Quando: 2026-07-07T09:56:40Z
+Quando: 2026-07-07T14:55:24Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (91x /lists, 2x listing)
+Memória operacional: histórico recorrente (92x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/15nTpbu
 checked_url: https://meli.la/15nTpbu
@@ -62,7 +62,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-07-07T09:56:40Z
+Quando: 2026-07-07T14:55:24Z
+Issue: #174
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/174
+SKU: love-kit-gloss-labial-coracao-lapis-volume-rosada
+Título: Love Kit Gloss Labial Coração Lápis Volume Rosada
+ID ML: 5J5PKG-3DE3
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 1x listing)
+Badges: Achados do Dia, Gloss Labial, Coração, Rosada, Feminino, Presenteável
+open_url: https://meli.la/1b5R9Wd
+checked_url: https://meli.la/1b5R9Wd
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-3DE3
+
+[ALTA] review_only_storefront
+Quando: 2026-07-07T14:55:24Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -73,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (31x /lists, 0x listing)
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
