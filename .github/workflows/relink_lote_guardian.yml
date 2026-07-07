@@ -1,0 +1,112 @@
+name: Link Guardian — Aplicar Relink em Lote
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_json:
+        description: 'Opcional: cole aqui o JSON preenchido. Se ficar vazio, a Action usa batch_file.'
+        required: false
+        default: ''
+        type: string
+      batch_file:
+        description: 'Arquivo JSON no repositório usado quando batch_json estiver vazio.'
+        required: true
+        default: 'docs/RELINK_LOTE_INPUT.json'
+        type: string
+      dry_run:
+        description: 'Teste sem salvar alterações?'
+        required: true
+        default: true
+        type: boolean
+      commit_changes:
+        description: 'Fazer commit/push automático se o teste estiver OK?'
+        required: true
+        default: false
+        type: boolean
+      run_link_guardian_after:
+        description: 'Rodar tools/link_guardian.py depois de aplicar?'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  issues: write
+
+env:
+  PYTHONUTF8: '1'
+
+jobs:
+  relink-lote:
+    name: Aplicar correções no produtos.json
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests pillow
+
+      - name: Aplicar lote no produtos.json
+        env:
+          RELINK_BATCH_JSON: ${{ inputs.batch_json }}
+          RELINK_DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          python tools/apply_relink_batch.py --input "${{ inputs.batch_file }}" --dry-run "${{ inputs.dry_run }}"
+
+      - name: Mostrar relatório
+        if: always()
+        run: |
+          echo '========================================'
+          echo 'RELATÓRIO DO RELINK EM LOTE'
+          echo '========================================'
+          if [ -f logs/relink_lote_report.txt ]; then
+            cat logs/relink_lote_report.txt
+          else
+            echo 'Relatório não encontrado.'
+          fi
+
+      - name: Validar JSON final
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          python -m json.tool produtos.json > /tmp/produtos.validado.json
+          echo 'produtos.json validado com sucesso.'
+
+      - name: Rodar Link Guardian depois
+        if: ${{ inputs.dry_run == false && inputs.run_link_guardian_after == true }}
+        run: |
+          if [ -f tools/link_guardian.py ]; then
+            python tools/link_guardian.py || true
+          else
+            echo 'tools/link_guardian.py não encontrado, pulando.'
+          fi
+
+      - name: Ver mudanças
+        if: always()
+        run: |
+          git status --short
+          git diff -- produtos.json | head -n 240 || true
+
+      - name: Commit e push
+        if: ${{ inputs.dry_run == false && inputs.commit_changes == true }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add produtos.json assets/produtos-webp logs/relink_lote_report.txt
+          if git diff --cached --quiet; then
+            echo 'Sem alterações para commit.'
+          else
+            git commit -m 'Link Guardian: aplicar relink em lote'
+            git push origin gh-pages
+          fi
