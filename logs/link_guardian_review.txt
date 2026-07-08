@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-07T20:12:03Z
+Atualizado em: 2026-07-08T03:40:29Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -24,26 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-07T20:07:15Z
-Issue: #87
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/87
-SKU: whey-protein-1kg-chocolate-5j5pkg-68p2
-Título: Whey Protein 1kg (Chocolate) — Alta proteína no pós-treino
-ID ML: 5J5PKG-68P2
+Quando: 2026-07-08T03:34:30Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-D9EV
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Suplementos, Whey, Chocolate, Alta proteína, Pós-treino, Fitness, Academia
-open_url: https://meli.la/14pqCNv
-checked_url: https://meli.la/14pqCNv
+Memória operacional: histórico recorrente (76x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://meli.la/1YAEmtS
+checked_url: https://meli.la/1YAEmtS
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-68P2&tid=7b1f415b-80d8-48db-879b-00bb48fa898d
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
 
 [ALTA] review_only_storefront
-Quando: 2026-07-07T20:07:15Z
+Quando: 2026-07-08T03:34:30Z
 Issue: #42
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/42
 SKU: dashcam-4k-gps-azdome-m550-64gb
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (93x /lists, 2x listing)
+Memória operacional: histórico recorrente (94x /lists, 2x listing)
 Badges: Achados do Dia, Carro, Segurança, Dashcam, 4K, GPS, Visão Noturna, Infra-vermelho
 open_url: https://meli.la/15nTpbu
 checked_url: https://meli.la/15nTpbu
@@ -62,26 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-3UQV&tid=6e6a87ec-6828-4f68-82de-3719df48a828
 
 [ALTA] review_only_storefront
-Quando: 2026-07-07T20:07:15Z
-Issue: #54
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
-SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
-Título: Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia
-ID ML: 5J5PKG-BJJ0
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 1x listing)
-Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
-open_url: https://mercadolivre.com/sec/29Gq2Ww
-checked_url: https://mercadolivre.com/sec/29Gq2Ww
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
-
-[ALTA] review_only_storefront
-Quando: 2026-07-07T20:07:15Z
+Quando: 2026-07-08T03:34:30Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -92,9 +73,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (33x /lists, 0x listing)
+Memória operacional: histórico recorrente (34x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
+
+[ALTA] review_only_storefront
+Quando: 2026-07-08T03:34:30Z
+Issue: #233
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/233
+SKU: agua-micelar-garnier-skinactive-tudo-em-1-400ml
+Título: Água Micelar Garnier SkinActive Tudo em 1 400ml
+ID ML: 5J5PKG-RH6K
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Skincare, Garnier, Água Micelar, Limpeza Facial, Demaquilante, Tudo em 1
+open_url: https://meli.la/2qvGAQ8
+checked_url: https://meli.la/2qvGAQ8
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-RH6K
