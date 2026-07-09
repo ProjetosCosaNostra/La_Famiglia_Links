@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-08T19:51:07Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-07-09T04:08:54Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-08T19:46:30Z
+Quando: 2026-07-09T04:04:24Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (28x /lists, 0x listing)
+Memória operacional: histórico recorrente (29x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1vwXiJg
 checked_url: https://meli.la/1vwXiJg
@@ -43,7 +43,43 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-07-08T19:46:30Z
+Quando: 2026-07-09T04:04:24Z
+Issue: #105
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
+SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
+Título: Jogo De Panelas Para Fogão De Indução Aço Inox 3 Peças
+ID ML: 5J5PKG-8EBB
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
+open_url: https://meli.la/1HHX2Jj
+checked_url: https://meli.la/1HHX2Jj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
+
+[ALTA] review_only_storefront
+Quando: 2026-07-09T04:04:24Z
+SKU: relogio-parede-30cm-prata-branco-lzbq
+Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
+ID ML: 5J5PKG-TL8Q
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 22 (invalido)
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
+Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
+open_url: https://meli.la/12UKJSY
+checked_url: https://meli.la/12UKJSY
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
+
+[ALTA] review_only_storefront
+Quando: 2026-07-09T04:04:24Z
 Issue: #54
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
 SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
@@ -54,7 +90,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 1x listing)
+Memória operacional: histórico recorrente (6x /lists, 1x listing)
 Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
 open_url: https://mercadolivre.com/sec/29Gq2Ww
 checked_url: https://mercadolivre.com/sec/29Gq2Ww
@@ -62,7 +98,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
 
 [ALTA] review_only_storefront
-Quando: 2026-07-08T19:46:30Z
+Quando: 2026-07-09T04:04:24Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -73,7 +109,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (37x /lists, 0x listing)
+Memória operacional: histórico recorrente (38x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9

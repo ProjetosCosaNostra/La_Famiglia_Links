@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-08T19:51:07Z",
-  "total_items": 3,
+  "updated_at": "2026-07-09T04:08:54Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 3,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 3
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 3
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 3
+      "trocar_link": 5
     },
-    "high_priority": 3
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-07-08T19:46:30Z",
+      "happened_at": "2026-07-09T04:04:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (28x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (29x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,97 @@
       ]
     },
     {
-      "happened_at": "2026-07-08T19:46:30Z",
+      "happened_at": "2026-07-09T04:04:24Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 105,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105",
+      "issue_title": "[CMS] Produto: Jogo de Panelas Tramontina Inox",
+      "sku": "jogo-panelas-tramontina-inox-fundo-triplo-3-pecas",
+      "title": "Jogo De Panelas Para Fogão De Indução Aço Inox 3 Peças",
+      "id_busca": "5J5PKG-8EBB",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1HHX2Jj",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1HHX2Jj",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742",
+      "short_url": "https://meli.la/18N3x6V",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Tramontina",
+        "Jogo de Panelas",
+        "Inox",
+        "Fundo Triplo",
+        "3 Peças",
+        "Utilidades Domésticas"
+      ]
+    },
+    {
+      "happened_at": "2026-07-09T04:04:24Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 0,
+      "issue_url": "",
+      "issue_title": "",
+      "sku": "relogio-parede-30cm-prata-branco-lzbq",
+      "title": "⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler",
+      "id_busca": "5J5PKG-TL8Q",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 22,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/12UKJSY",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/12UKJSY",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338",
+      "short_url": "https://meli.la/12D2w1B",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL0X4P7jYb9OPkkpP9eeNCU5LLBTRf5JWyT0VSoYlDSIu1gOfr1AqMjYNgQESirtu3j8dbmKt1btCG4e%2F1WByzjy1BDjC5wT4JlShbvB0LmWKnCo01QPWu9I%2Fi9iV89jFe%2BzepuxLb2ceRlZ%2FaKx9ZrHk3cLU8TKYTfpdWQudCzqAtAutWjR3T3QVwCE%2F4j36k7raQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "CosaNostra",
+        "Relógio de Parede",
+        "Decoração",
+        "Sala",
+        "Cozinha",
+        "Escritório",
+        "Hall"
+      ]
+    },
+    {
+      "happened_at": "2026-07-09T04:04:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-08T19:46:30Z",
+      "happened_at": "2026-07-09T04:04:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (37x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (38x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
