@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Link Guardian — aplica correção em lote v4 por Issue.
+Link Guardian — aplica correção em lote v5 por Issue.
+
 Lê o JSON gerado pelo relink-lote.html no corpo de uma issue, atualiza produtos.json,
-baixa/converte imagens novas para WebP, mantém campos vazios sem alteração
-e permite destacar como Produto do Dia ou escolher posição na Vitrine Rápida.
+baixa/converte imagens novas para WebP, aceita imagens arrastadas no painel como
+base64/data-url, mantém campos vazios sem alteração e permite destacar como Produto do Dia
+ou escolher posição na Vitrine Rápida.
 """
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import io
 import json
-import os
 import re
-import sys
-import time
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -28,6 +28,7 @@ except Exception:  # Pillow é instalado na Action
 
 JSON_BLOCK_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.DOTALL | re.IGNORECASE)
 ID_RE = re.compile(r"^5J5PKG-[A-Z0-9]+$", re.I)
+DATA_IMAGE_RE = re.compile(r"^data:image/([a-zA-Z0-9+.-]+);base64,(.+)$", re.DOTALL)
 
 
 def utc_now() -> str:
@@ -75,6 +76,35 @@ def normalize_url_list(value: Any) -> List[str]:
     return [str(x).strip() for x in items if str(x).strip()]
 
 
+def normalize_data_images(value: Any) -> List[Dict[str, str]]:
+    if not value:
+        return []
+    items = value if isinstance(value, list) else [value]
+    out: List[Dict[str, str]] = []
+    for item in items:
+        if isinstance(item, dict):
+            data_url = str(item.get("data_url", "")).strip()
+            filename = str(item.get("filename", "imagem.webp")).strip() or "imagem.webp"
+        else:
+            data_url = str(item).strip()
+            filename = "imagem.webp"
+        if data_url:
+            out.append({"filename": filename, "data_url": data_url})
+    return out
+
+
+def has_data_image(value: Any) -> bool:
+    if not value:
+        return False
+    if isinstance(value, dict):
+        return bool(str(value.get("data_url", "")).strip())
+    return bool(str(value).strip())
+
+
+def is_valid_data_image(data_url: str) -> bool:
+    return bool(DATA_IMAGE_RE.match(data_url or ""))
+
+
 def validate_payload(payload: Dict[str, Any]) -> List[str]:
     errors: List[str] = []
     for i, c in enumerate(payload.get("corrections", []), 1):
@@ -90,16 +120,28 @@ def validate_payload(payload: Dict[str, Any]) -> List[str]:
         open_url = str(c.get("open_url", "")).strip()
         if open_url and not re.match(r"^https?://", open_url, re.I):
             errors.append(f"{sku}: open_url precisa começar com http/https.")
-        cover = str(c.get("cover_image_url", "")).strip()
-        if cover and not re.match(r"^(https?://|assets/)", cover, re.I):
+
+        cover_url = str(c.get("cover_image_url", "")).strip()
+        cover_data = c.get("cover_image_data")
+        if cover_url and not re.match(r"^(https?://|assets/)", cover_url, re.I):
             errors.append(f"{sku}: cover_image_url precisa ser URL http(s) ou caminho assets/.")
-        extras = normalize_url_list(c.get("extra_image_urls"))
+        if has_data_image(cover_data):
+            data_url = cover_data.get("data_url") if isinstance(cover_data, dict) else str(cover_data)
+            if not is_valid_data_image(str(data_url)):
+                errors.append(f"{sku}: cover_image_data não é uma data-url de imagem válida.")
+
+        extra_urls = normalize_url_list(c.get("extra_image_urls"))
+        extra_data = normalize_data_images(c.get("extra_image_data"))
         mode = str(c.get("extras_mode", "")).strip().lower()
-        if extras and mode not in {"add", "replace"}:
-            errors.append(f"{sku}: extra_image_urls preenchido exige extras_mode 'add' ou 'replace'.")
-        for u in extras:
+        if (extra_urls or extra_data) and mode not in {"add", "replace"}:
+            errors.append(f"{sku}: imagens extras preenchidas exigem extras_mode 'add' ou 'replace'.")
+        for u in extra_urls:
             if not re.match(r"^(https?://|assets/)", u, re.I):
                 errors.append(f"{sku}: imagem extra inválida: {u}")
+        for item in extra_data:
+            if not is_valid_data_image(item.get("data_url", "")):
+                errors.append(f"{sku}: imagem extra arrastada inválida: {item.get('filename','imagem')}")
+
         quick_pos = str(c.get("quick_home_position", "")).strip()
         if quick_pos:
             if not quick_pos.isdigit() or not (1 <= int(quick_pos) <= 32):
@@ -111,23 +153,42 @@ def validate_payload(payload: Dict[str, Any]) -> List[str]:
 
 def download_bytes(url: str, timeout: int = 40) -> bytes:
     req = urllib.request.Request(url, headers={
-        "User-Agent": "Mozilla/5.0 LinkGuardianRelink/3.0",
+        "User-Agent": "Mozilla/5.0 LinkGuardianRelink/5.0",
         "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
     })
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read()
 
 
-def convert_to_webp(url: str, out_dir: Path, sku: str, kind: str, index: int | None = None) -> str:
-    """Baixa imagem remota e salva WebP. Se já for caminho assets/, retorna como está."""
-    url = url.strip()
-    if url.startswith("assets/"):
-        return url
+def decode_data_image(data_url: str) -> bytes:
+    m = DATA_IMAGE_RE.match(data_url or "")
+    if not m:
+        raise RuntimeError("data-url de imagem inválida.")
+    b64 = re.sub(r"\s+", "", m.group(2))
+    return base64.b64decode(b64, validate=True)
+
+
+def image_ref_bytes(ref: Any) -> Tuple[bytes, str]:
+    """Retorna bytes e nome de origem. Ref pode ser URL ou dict {filename,data_url}."""
+    if isinstance(ref, dict):
+        filename = str(ref.get("filename", "imagem.webp")).strip() or "imagem.webp"
+        data_url = str(ref.get("data_url", "")).strip()
+        return decode_data_image(data_url), filename
+    text = str(ref or "").strip()
+    if text.startswith("data:image/"):
+        return decode_data_image(text), "imagem.webp"
+    return download_bytes(text), text
+
+
+def convert_image_ref(ref: Any, out_dir: Path, sku: str, kind: str, index: int | None = None) -> str:
+    """Baixa/decodifica imagem e salva WebP. Se já for caminho assets/, retorna como está."""
+    if isinstance(ref, str) and ref.strip().startswith("assets/"):
+        return ref.strip()
     if Image is None:
         raise RuntimeError("Pillow não está instalado; não consigo converter imagem para WebP.")
 
-    raw = download_bytes(url)
-    h = hashlib.sha1((url + str(len(raw))).encode("utf-8")).hexdigest()[:10]
+    raw, origin = image_ref_bytes(ref)
+    h = hashlib.sha1((str(origin) + str(len(raw)) + hashlib.sha1(raw).hexdigest()).encode("utf-8")).hexdigest()[:10]
     prefix = slug_safe(sku)
     if kind == "cover":
         name = f"{prefix}-cover-{h}.webp"
@@ -140,7 +201,6 @@ def convert_to_webp(url: str, out_dir: Path, sku: str, kind: str, index: int | N
     with Image.open(io.BytesIO(raw)) as im:
         if im.mode not in ("RGB", "RGBA"):
             im = im.convert("RGBA" if "A" in im.getbands() else "RGB")
-        # Mantém proporção, evita arquivos gigantes.
         max_side = 1400
         w, hgt = im.size
         if max(w, hgt) > max_side:
@@ -148,6 +208,12 @@ def convert_to_webp(url: str, out_dir: Path, sku: str, kind: str, index: int | N
             im = im.resize((int(w * scale), int(hgt * scale)))
         im.save(dest, "WEBP", quality=86, method=6)
     return str(dest).replace("\\", "/")
+
+
+def original_label(ref: Any) -> str:
+    if isinstance(ref, dict):
+        return "painel_upload:" + (str(ref.get("filename", "imagem.webp")).strip() or "imagem.webp")
+    return str(ref)
 
 
 def product_index(products: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
@@ -165,7 +231,6 @@ def to_int_or_none(value: Any) -> int | None:
 
 
 def apply_product_day(products: List[Dict[str, Any]], target: Dict[str, Any]) -> List[str]:
-    """Faz o produto virar Produto do Dia sem mexer quando a opção não foi marcada."""
     changes: List[str] = []
     for p in products:
         if p is target:
@@ -180,15 +245,10 @@ def apply_product_day(products: List[Dict[str, Any]], target: Dict[str, Any]) ->
 
 
 def apply_quick_home_position(products: List[Dict[str, Any]], target: Dict[str, Any], position: int) -> List[str]:
-    """Coloca o produto em posição 1..32 na Vitrine Rápida e empurra pedidos explícitos."""
     changes: List[str] = []
     old_pos = to_int_or_none(target.get("quick_home_order"))
-
-    # Remove temporariamente a posição do alvo para evitar conflito consigo mesmo.
     if "quick_home_order" in target:
         target.pop("quick_home_order", None)
-
-    # Empurra para baixo quem já tinha ordem explícita igual ou posterior à escolhida.
     ordered = []
     for p in products:
         if p is target:
@@ -198,13 +258,9 @@ def apply_quick_home_position(products: List[Dict[str, Any]], target: Dict[str, 
             ordered.append((order, p))
     for order, p in sorted(ordered, key=lambda x: x[0], reverse=True):
         p["quick_home_order"] = order + 1
-
     target["quick_home"] = True
     target["quick_home_order"] = position
-    if old_pos != position or target.get("quick_home") is not True:
-        changes.append(f"vitrine rápida posição {position}")
-    else:
-        changes.append(f"vitrine rápida posição {position}")
+    changes.append(f"vitrine rápida posição {position}" if old_pos != position else f"vitrine rápida posição {position}")
     return changes
 
 
@@ -231,31 +287,36 @@ def apply_one(products: List[Dict[str, Any]], product: Dict[str, Any], correctio
                 product[key] = open_url
         changes.append("links")
 
+    cover_data = correction.get("cover_image_data")
     cover_url = str(correction.get("cover_image_url", "")).strip()
-    if cover_url:
-        new_cover = convert_to_webp(cover_url, assets_dir, sku, "cover")
+    cover_ref: Any = cover_data if has_data_image(cover_data) else cover_url
+    if cover_ref:
+        new_cover = convert_image_ref(cover_ref, assets_dir, sku, "cover")
         if product.get("image") != new_cover:
             product["image"] = new_cover
-            product["image_original"] = cover_url
+            product["image_original"] = original_label(cover_ref)
             product["webp_optimized_at"] = now
             changes.append("cover")
 
-    extra_urls = normalize_url_list(correction.get("extra_image_urls"))
-    if extra_urls:
+    extra_url_refs: List[Any] = normalize_url_list(correction.get("extra_image_urls"))
+    extra_data_refs: List[Any] = normalize_data_images(correction.get("extra_image_data"))
+    extra_refs = extra_url_refs + extra_data_refs
+    if extra_refs:
         mode = str(correction.get("extras_mode", "")).strip().lower()
         current = list(product.get("images") or [])
         start = 1 if mode == "replace" else len(current) + 1
         new_paths = []
-        for offset, u in enumerate(extra_urls):
-            new_paths.append(convert_to_webp(u, assets_dir, sku, "extra", start + offset))
+        for offset, ref in enumerate(extra_refs):
+            new_paths.append(convert_image_ref(ref, assets_dir, sku, "extra", start + offset))
+        labels = [original_label(ref) for ref in extra_refs]
         if mode == "replace":
             product["images"] = new_paths
-            product["images_original"] = extra_urls
+            product["images_original"] = labels
             changes.append(f"extras replace ({len(new_paths)})")
         else:
             product["images"] = current + new_paths
             old_orig = list(product.get("images_original") or [])
-            product["images_original"] = old_orig + extra_urls
+            product["images_original"] = old_orig + labels
             changes.append(f"extras add ({len(new_paths)})")
         product["webp_optimized_at"] = now
 
@@ -267,7 +328,6 @@ def apply_one(products: List[Dict[str, Any]], product: Dict[str, Any], correctio
         changes.extend(apply_quick_home_position(products, product, quick_pos))
 
     if changes:
-        # Limpa estado de revisão do Link Guardian para produto relinkado manualmente.
         product["active"] = True
         product["review_action"] = "manter"
         product["review_status"] = "ativo"
@@ -328,22 +388,24 @@ def main() -> int:
             missing.append(sku)
             report_lines.append(f"- ❌ `{sku}` não encontrado no produtos.json.")
             continue
-        # Em dry_run, aplica em cópia para validar imagens? Não baixa imagens no dry-run para evitar lentidão/custo.
-        target = dict(product) if dry_run else product
         if dry_run:
-            # Simula campos textuais e informa imagens sem baixar.
             simulated_changes = []
-            for key,label in [("title","title"),("id_busca","id_busca"),("open_url","links")]:
-                if str(c.get(key," ")).strip(): simulated_changes.append(label)
-            if str(c.get("cover_image_url","")).strip(): simulated_changes.append("cover")
-            extras = normalize_url_list(c.get("extra_image_urls"))
-            if extras: simulated_changes.append(f"extras {c.get('extras_mode')} ({len(extras)})")
-            if c.get("make_product_day") is True: simulated_changes.append("featured/produto do dia")
-            if str(c.get("quick_home_position","")).strip(): simulated_changes.append(f"vitrine rápida posição {c.get('quick_home_position')}")
+            for key, label in [("title", "title"), ("id_busca", "id_busca"), ("open_url", "links")]:
+                if str(c.get(key, "")).strip():
+                    simulated_changes.append(label)
+            if str(c.get("cover_image_url", "")).strip() or has_data_image(c.get("cover_image_data")):
+                simulated_changes.append("cover")
+            extras_count = len(normalize_url_list(c.get("extra_image_urls"))) + len(normalize_data_images(c.get("extra_image_data")))
+            if extras_count:
+                simulated_changes.append(f"extras {c.get('extras_mode')} ({extras_count})")
+            if c.get("make_product_day") is True:
+                simulated_changes.append("featured/produto do dia")
+            if str(c.get("quick_home_position", "")).strip():
+                simulated_changes.append(f"vitrine rápida posição {c.get('quick_home_position')}")
             changed = bool(simulated_changes)
             changes = simulated_changes
         else:
-            changed, changes = apply_one(products, target, c, assets_dir, now)
+            changed, changes = apply_one(products, product, c, assets_dir, now)
         if changed:
             changed_any = True
             updated_count += 1
