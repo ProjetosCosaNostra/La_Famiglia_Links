@@ -79,16 +79,17 @@
           <a class="btn" href="./logs/link_guardian_relink_lote.json" download="link_guardian_relink_lote.json">⬇️ JSON bruto</a>
         </div>
         <div>
-          <button class="ghost" id="copyPayloadBtn">📋 Copiar payload</button>
-          <button class="primary" id="openIssueBtn">🚀 Abrir Issue de aplicação</button>
+          <button class="ghost" id="previewPackageBtn">👁️ Prévia do pacote</button>
+          <button class="primary" id="downloadZipBtn">⬇️ Baixar pacote .zip</button>
+          <a class="btn" id="uploadInboxBtn" href="https://github.com/ProjetosCosaNostra/La_Famiglia_Links/upload/gh-pages/relink_inbox" target="_blank" rel="noopener">📤 Enviar pacote</a>
         </div>
       </div>
     </div>
   </header>
   <main class="wrap">
     <div class="notice">
-      <strong>Fluxo certo:</strong> você preenche os cards nesta página e clica em <strong>Abrir Issue de aplicação</strong>. O GitHub abre uma issue já preenchida; ao enviar, a Action <strong>Link Guardian — Aplicar Relink por Issue</strong> altera o <strong>produtos.json</strong>, baixa/converte imagens novas para WebP, inclusive imagens arrastadas do computador e faz commit na <strong>gh-pages</strong>.
-      <div class="small">Campo vazio não altera nada. Extras novas exigem escolher: acrescentar ou substituir. A capa nunca é alterada pela escolha das extras.</div>
+      <strong>Fluxo certo v6:</strong> você preenche os cards nesta página e clica em <strong>Baixar pacote .zip</strong>. Depois envia esse ZIP na pasta <strong>relink_inbox</strong> do GitHub. A Action <strong>Link Guardian — Aplicar Pacote de Relink</strong> lê o pacote, altera o <strong>produtos.json</strong>, converte as imagens do computador para WebP e faz commit na <strong>gh-pages</strong>.
+      <div class="small">Agora não vai mais por Issue e não usa URL gigante. As imagens entram no ZIP como arquivo real. Campo vazio não altera nada. Extras novas exigem escolher: acrescentar ou substituir. A capa nunca é alterada pela escolha das extras.</div>
     </div>
     <div id="globalStatus" class="notice">Carregando pendências...</div>
     <div class="grid" id="cards"></div>
@@ -96,12 +97,12 @@
 
   <div class="modal" id="modal">
     <div class="modal-box">
-      <h2>Payload da correção</h2>
-      <p class="small">Esse conteúdo é gerado automaticamente pelos cards. Ele vai dentro da issue para a Action aplicar no produtos.json.</p>
+      <h2>Prévia do pacote de correção</h2>
+      <p class="small">Esse manifesto é gerado automaticamente pelos cards. No uso real, ele vai dentro do ZIP junto com as imagens para a Action aplicar no produtos.json.</p>
       <pre id="payloadPre"></pre>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-        <button class="primary" id="copyPayloadBtn2">📋 Copiar</button>
-        <button class="ghost" id="downloadPayloadBtn">⬇️ Baixar JSON</button>
+        <button class="primary" id="downloadZipBtn2">⬇️ Baixar pacote .zip</button>
+        <button class="ghost" id="downloadManifestBtn">⬇️ Baixar manifesto JSON</button>
         <button class="danger" id="closeModalBtn">Fechar</button>
       </div>
     </div>
@@ -274,9 +275,6 @@ function renderCards(){
   bindCardEvents();
 }
 
-const IMG_MAX_SIDE = 820;
-const IMG_QUALITY = 0.68;
-const ISSUE_BODY_SOFT_LIMIT = 60000;
 
 function getImageStore(card){
   if(!card._coverImage) card._coverImage = null;
@@ -289,55 +287,31 @@ function prettyBytes(n){
   if(n < 1024*1024) return Math.round(n/1024) + ' KB';
   return (n/1024/1024).toFixed(1) + ' MB';
 }
-function loadImageFromFile(file){
-  return new Promise((resolve,reject)=>{
-    const url = URL.createObjectURL(file);
-    const img = new Image();
-    img.onload=()=>{URL.revokeObjectURL(url); resolve(img);};
-    img.onerror=()=>{URL.revokeObjectURL(url); reject(new Error('Não consegui ler a imagem '+file.name));};
-    img.src=url;
-  });
+function safePathName(s){
+  return String(s||'arquivo').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9._-]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,90) || 'arquivo';
 }
-async function compressImageFile(file, maxSide=IMG_MAX_SIDE, quality=IMG_QUALITY){
-  if(!file.type || !file.type.startsWith('image/')) throw new Error(file.name+' não é imagem.');
-  const img = await loadImageFromFile(file);
-  let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
-  const scale = Math.min(1, maxSide / Math.max(w,h));
-  w = Math.max(1, Math.round(w*scale)); h = Math.max(1, Math.round(h*scale));
-  const canvas = document.createElement('canvas');
-  canvas.width = w; canvas.height = h;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0,0,w,h);
-  ctx.drawImage(img,0,0,w,h);
-  let data = canvas.toDataURL('image/webp', quality);
-  // Se ainda ficar grande para issue, tenta uma versão menor automaticamente.
-  if(data.length > 48000 && maxSide > 620){
-    data = await compressImageFile(file, 620, 0.56);
-  }
-  return data;
+function safeSkuPath(s){
+  return String(s||'produto').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,90) || 'produto';
 }
 async function handleImageFiles(card, kind, files){
   const list = Array.from(files||[]).filter(f=>f.type && f.type.startsWith('image/'));
   if(!list.length) return;
   const use = card.querySelector('.use-card');
   use.checked = true;
-  showCardMsg(card,'ok','Processando imagem...');
   try{
     if(kind === 'cover'){
+      if(card._coverImage && card._coverImage.preview_url) URL.revokeObjectURL(card._coverImage.preview_url);
       const f = list[0];
-      const data = await compressImageFile(f);
-      card._coverImage = { filename: f.name || 'capa.webp', data_url: data };
+      card._coverImage = { filename: f.name || 'capa', file: f, preview_url: URL.createObjectURL(f), size: f.size };
     }else{
       if(!card._extraImages) card._extraImages = [];
       for(const f of list){
-        const data = await compressImageFile(f);
-        card._extraImages.push({ filename: f.name || 'extra.webp', data_url: data });
+        card._extraImages.push({ filename: f.name || 'extra', file: f, preview_url: URL.createObjectURL(f), size: f.size });
       }
     }
     updateImageFileLists(card);
     validateCard(card,false);
-    showCardMsg(card,'ok','Imagem carregada no card.');
+    showCardMsg(card,'ok','Imagem carregada no card. Ela será enviada dentro do ZIP, sem URL gigante.');
   }catch(e){
     showCardMsg(card,'err',e.message || String(e));
   }
@@ -350,23 +324,23 @@ function updateImageFileLists(card){
   const cover = card._coverImage;
   const extras = card._extraImages || [];
   if(cover){
-    coverBox.appendChild(makeFileItem(cover, ()=>{ card._coverImage=null; updateImageFileLists(card); validateCard(card,false); }));
+    coverBox.appendChild(makeFileItem(cover, ()=>{ if(cover.preview_url) URL.revokeObjectURL(cover.preview_url); card._coverImage=null; updateImageFileLists(card); validateCard(card,false); }));
   }
   extras.forEach((item, idx)=>{
-    extraBox.appendChild(makeFileItem(item, ()=>{ card._extraImages.splice(idx,1); updateImageFileLists(card); validateCard(card,false); }));
+    extraBox.appendChild(makeFileItem(item, ()=>{ if(item.preview_url) URL.revokeObjectURL(item.preview_url); card._extraImages.splice(idx,1); updateImageFileLists(card); validateCard(card,false); }));
   });
-  const total = (cover ? cover.data_url.length : 0) + extras.reduce((a,x)=>a+(x.data_url||'').length,0);
+  const total = (cover ? (cover.size||0) : 0) + extras.reduce((a,x)=>a+(x.size||0),0);
   const size = card.querySelector('.payload-size');
   if(total){
-    size.textContent = 'Imagens carregadas no card: '+(cover?1:0)+' capa + '+extras.length+' extras · payload aproximado '+prettyBytes(total);
-    size.style.color = total > ISSUE_BODY_SOFT_LIMIT ? 'var(--danger)' : 'var(--muted)';
+    size.textContent = 'Imagens carregadas no card: '+(cover?1:0)+' capa + '+extras.length+' extras · tamanho real aproximado no ZIP '+prettyBytes(total);
+    size.style.color = 'var(--muted)';
   }else{
     size.textContent = '';
   }
 }
 function makeFileItem(item, onRemove){
   const div=document.createElement('div'); div.className='file-item';
-  div.innerHTML = `<button type="button" class="remove-img">×</button><img src="${item.data_url}" alt=""><div class="name">${esc(item.filename||'imagem')}</div>`;
+  div.innerHTML = `<button type="button" class="remove-img">×</button><img src="${item.preview_url}" alt=""><div class="name">${esc(item.filename||'imagem')}<br>${prettyBytes(item.size||0)}</div>`;
   div.querySelector('button').addEventListener('click', onRemove);
   return div;
 }
@@ -395,6 +369,9 @@ function bindCardEvents(){
       card.querySelectorAll('input[type=text], input:not([type]), input[type=file], textarea').forEach(x=>x.value='');
       card.querySelectorAll('select').forEach(x=>x.value='');
       card.querySelectorAll('input[type=radio], input[type=checkbox]:not(.use-card)').forEach(x=>x.checked=false);
+      const imgs = getImageStore(card);
+      if(imgs.cover && imgs.cover.preview_url) URL.revokeObjectURL(imgs.cover.preview_url);
+      imgs.extras.forEach(x=>{ if(x.preview_url) URL.revokeObjectURL(x.preview_url); });
       card._coverImage = null; card._extraImages = []; updateImageFileLists(card);
       use.checked=false; showCardMsg(card,'','');
     });
@@ -429,7 +406,8 @@ function validateCard(card, show=true){
   if(show) showCardMsg(card,'ok','Card válido.');
   return true;
 }
-function buildPayload(){
+
+function buildManifestOnly(){
   const corrections=[]; let ok=true;
   document.querySelectorAll('.card').forEach(card=>{
     const use = card.querySelector('.use-card').checked || anyFieldFilled(card);
@@ -443,9 +421,9 @@ function buildPayload(){
       id_busca: norm(card.querySelector('.new-id').value),
       open_url: norm(card.querySelector('.new-link').value),
       cover_image_url: norm(card.querySelector('.cover-url').value),
-      cover_image_data: imgs.cover,
+      cover_image_file: imgs.cover ? '(será incluído no ZIP)' : '',
       extra_image_urls: lines(card.querySelector('.extra-urls').value),
-      extra_image_data: imgs.extras,
+      extra_image_files: imgs.extras.map(x=>x.filename),
       extras_mode: selectedExtrasMode(card),
       make_product_day: card.querySelector('.make-day').checked,
       quick_home_position: norm(card.querySelector('.quick-pos').value)
@@ -454,33 +432,113 @@ function buildPayload(){
   });
   if(!ok) throw new Error('Corrija os cards com erro antes de continuar.');
   if(!corrections.length) throw new Error('Nenhuma correção preenchida.');
-  return { dry_run:false, source:'relink-lote.html', generated_at:new Date().toISOString(), corrections };
+  return { version:6, dry_run:false, source:'relink-lote.html', generated_at:new Date().toISOString(), corrections };
 }
-async function copyText(txt){
-  try{ await navigator.clipboard.writeText(txt); return true; }
-  catch(e){ return false; }
-}
-function issueBody(payload){
-  return `Aplicar correção em lote gerada pelo painel Link Guardian.\n\n`+
-`\`\`\`json\n${JSON.stringify(payload,null,2)}\n\`\`\`\n`;
-}
-function openIssue(payload){
-  const body = issueBody(payload);
-  const url = `https://github.com/${OWNER}/${REPO}/issues/new?title=${encodeURIComponent(ISSUE_TITLE)}&body=${encodeURIComponent(body)}&labels=${encodeURIComponent('relink-lote')}`;
-  copyText(body);
-  if(body.length > ISSUE_BODY_SOFT_LIMIT){
-    alert('As imagens foram carregadas, mas o payload ficou grande. A página já copiou tudo para a área de transferência. Se a issue abrir vazia, cole o conteúdo copiado no corpo da issue. Se o GitHub reclamar de limite, reduza a quantidade de imagens nesta rodada.');
+async function buildPackageFiles(){
+  const corrections=[]; const files=[]; let ok=true;
+  document.querySelectorAll('.card').forEach(card=>{
+    const use = card.querySelector('.use-card').checked || anyFieldFilled(card);
+    if(!use) return;
+    card.querySelector('.use-card').checked = true;
+    if(!validateCard(card,true)){ ok=false; return; }
+  });
+  if(!ok) throw new Error('Corrija os cards com erro antes de continuar.');
+  for(const card of document.querySelectorAll('.card')){
+    const use = card.querySelector('.use-card').checked || anyFieldFilled(card);
+    if(!use) continue;
+    const imgs = getImageStore(card);
+    const skuPath = safeSkuPath(card.dataset.sku);
+    let coverPath = '';
+    if(imgs.cover){
+      coverPath = `images/${skuPath}/cover-${safePathName(imgs.cover.filename)}`;
+      files.push({name: coverPath, data: new Uint8Array(await imgs.cover.file.arrayBuffer())});
+    }
+    const extraFilePaths=[];
+    for(let i=0;i<imgs.extras.length;i++){
+      const item = imgs.extras[i];
+      const p = `images/${skuPath}/extra-${String(i+1).padStart(2,'0')}-${safePathName(item.filename)}`;
+      extraFilePaths.push(p);
+      files.push({name:p, data:new Uint8Array(await item.file.arrayBuffer())});
+    }
+    corrections.push({
+      sku: card.dataset.sku,
+      title: norm(card.querySelector('.new-title').value),
+      id_busca: norm(card.querySelector('.new-id').value),
+      open_url: norm(card.querySelector('.new-link').value),
+      cover_image_url: norm(card.querySelector('.cover-url').value),
+      cover_image_file: coverPath,
+      extra_image_urls: lines(card.querySelector('.extra-urls').value),
+      extra_image_files: extraFilePaths,
+      extras_mode: selectedExtrasMode(card),
+      make_product_day: card.querySelector('.make-day').checked,
+      quick_home_position: norm(card.querySelector('.quick-pos').value)
+    });
   }
-  if(url.length > 7500){
-    alert('Payload copiado. Como ficou grande, a issue vai abrir sem corpo. Cole o conteúdo copiado no corpo da issue e envie.');
-    window.open(`https://github.com/${OWNER}/${REPO}/issues/new?title=${encodeURIComponent(ISSUE_TITLE)}&labels=${encodeURIComponent('relink-lote')}`,'_blank');
-  }else{
-    window.open(url,'_blank');
-  }
+  if(!corrections.length) throw new Error('Nenhuma correção preenchida.');
+  const manifest = { version:6, dry_run:false, source:'relink-lote.html', generated_at:new Date().toISOString(), corrections };
+  const enc = new TextEncoder();
+  files.unshift({name:'manifest.json', data:enc.encode(JSON.stringify(manifest,null,2))});
+  return {manifest, files};
 }
-function showPayload(){
+
+// ZIP sem dependência externa, método STORE sem compactação. Evita URL gigante e preserva os arquivos originais no pacote.
+const crcTable = (()=>{let c, table=[]; for(let n=0;n<256;n++){ c=n; for(let k=0;k<8;k++) c=((c&1)?(0xEDB88320^(c>>>1)):(c>>>1)); table[n]=c>>>0;} return table;})();
+function crc32(data){ let crc=0^(-1); for(let i=0;i<data.length;i++) crc=(crc>>>8)^crcTable[(crc^data[i])&0xFF]; return (crc^(-1))>>>0; }
+function u16(n){ return new Uint8Array([n&255,(n>>>8)&255]); }
+function u32(n){ return new Uint8Array([n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255]); }
+function dosTimeDate(d){
+  const time = (d.getHours()<<11) | (d.getMinutes()<<5) | Math.floor(d.getSeconds()/2);
+  const date = ((d.getFullYear()-1980)<<9) | ((d.getMonth()+1)<<5) | d.getDate();
+  return {time,date};
+}
+function concatArrays(parts){ const len=parts.reduce((a,p)=>a+p.length,0); const out=new Uint8Array(len); let off=0; for(const p of parts){out.set(p,off); off+=p.length;} return out; }
+function makeZipBlob(files){
+  const enc = new TextEncoder();
+  const now = dosTimeDate(new Date());
+  let offset = 0;
+  const localParts=[]; const centralParts=[];
+  for(const f of files){
+    const nameBytes = enc.encode(f.name.replace(/^\/+/,''));
+    const data = f.data instanceof Uint8Array ? f.data : new Uint8Array(f.data);
+    const crc = crc32(data);
+    const localHeader = concatArrays([
+      u32(0x04034b50), u16(20), u16(0x0800), u16(0), u16(now.time), u16(now.date), u32(crc), u32(data.length), u32(data.length), u16(nameBytes.length), u16(0), nameBytes
+    ]);
+    localParts.push(localHeader, data);
+    const centralHeader = concatArrays([
+      u32(0x02014b50), u16(20), u16(20), u16(0x0800), u16(0), u16(now.time), u16(now.date), u32(crc), u32(data.length), u32(data.length), u16(nameBytes.length), u16(0), u16(0), u16(0), u16(0), u32(0), u32(offset), nameBytes
+    ]);
+    centralParts.push(centralHeader);
+    offset += localHeader.length + data.length;
+  }
+  const centralSize = centralParts.reduce((a,p)=>a+p.length,0);
+  const centralOffset = offset;
+  const end = concatArrays([u32(0x06054b50), u16(0), u16(0), u16(files.length), u16(files.length), u32(centralSize), u32(centralOffset), u16(0)]);
+  return new Blob([...localParts, ...centralParts, end], {type:'application/zip'});
+}
+function timestampName(){
+  const d=new Date(); const pad=n=>String(n).padStart(2,'0');
+  return `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
+}
+async function downloadZip(){
+  const btn = $('downloadZipBtn');
+  const old = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Gerando ZIP...';
   try{
-    state.payload = buildPayload();
+    const pkg = await buildPackageFiles();
+    const blob = makeZipBlob(pkg.files);
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=`relink_lote_${timestampName()}.zip`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    alert('Pacote ZIP gerado. Agora envie esse arquivo na pasta relink_inbox do GitHub. A Action vai aplicar no produtos.json automaticamente.');
+  }catch(e){ alert(e.message || String(e)); }
+  finally{ btn.disabled=false; btn.textContent=old; }
+}
+function showPackagePreview(){
+  try{
+    state.payload = buildManifestOnly();
     $('payloadPre').textContent = JSON.stringify(state.payload,null,2);
     $('modal').classList.add('open');
   }catch(e){ alert(e.message); }
@@ -509,23 +567,14 @@ async function loadAll(){
   renderCards();
 }
 $('reloadBtn').addEventListener('click', loadAll);
-$('copyPayloadBtn').addEventListener('click', showPayload);
-$('copyPayloadBtn2').addEventListener('click', async()=>{
-  const txt = $('payloadPre').textContent;
-  const ok = await copyText(txt);
-  alert(ok ? 'Payload copiado.' : 'Não consegui copiar automaticamente. Selecione e copie manualmente.');
-});
-$('downloadPayloadBtn').addEventListener('click',()=>{
-  const txt = $('payloadPre').textContent || JSON.stringify(state.payload||{},null,2);
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([txt],{type:'application/json'}));
-  a.download='relink_lote_payload.json'; a.click(); URL.revokeObjectURL(a.href);
-});
-$('closeModalBtn').addEventListener('click',()=>$('modal').classList.remove('open'));
-$('openIssueBtn').addEventListener('click',()=>{
-  try{ const payload = buildPayload(); openIssue(payload); }
+$('previewPackageBtn').addEventListener('click', showPackagePreview);
+$('downloadZipBtn').addEventListener('click', downloadZip);
+$('downloadZipBtn2').addEventListener('click', downloadZip);
+$('downloadManifestBtn').addEventListener('click',()=>{
+  try{ const txt = JSON.stringify(buildManifestOnly(),null,2); const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'application/json'})); a.download='manifest_relink_lote.json'; a.click(); URL.revokeObjectURL(a.href); }
   catch(e){ alert(e.message); }
 });
+$('closeModalBtn').addEventListener('click',()=>$('modal').classList.remove('open'));
 loadAll();
 </script>
 </body>
