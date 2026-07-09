@@ -60,6 +60,37 @@
   function trim(s) { return safeText(s).replace(/^\s+|\s+$/g, ''); }
   function lower(s) { return safeText(s).toLowerCase(); }
 
+  // ✅ FIX PLACEHOLDER: valores vindos como "_No response_"/"NO RESPONSE" não devem aparecer na loja.
+  function isEmptyDisplayValue(v) {
+    var raw = trim(v);
+    if (!raw) return true;
+
+    var x = lower(raw)
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[\s_\-]+/g, ' ')
+      .replace(/^\s+|\s+$/g, '');
+
+    return (
+      x === 'no response' ||
+      x === 'noresponse' ||
+      x === 'sem resposta' ||
+      x === 'sem informacao' ||
+      x === 'sem informações' ||
+      x === 'sem informação' ||
+      x === 'n/a' ||
+      x === 'na' ||
+      x === 'null' ||
+      x === 'undefined' ||
+      x === 'none' ||
+      x === '-' ||
+      x === '--'
+    );
+  }
+
+  function cleanDisplayValue(v) {
+    return isEmptyDisplayValue(v) ? '' : trim(v);
+  }
+
   function isMobileHomeLayout() {
     try {
       if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) return true;
@@ -384,7 +415,7 @@
 
   function firstFilled(values) {
     for (var i = 0; i < values.length; i++) {
-      var s = trim(values[i]);
+      var s = cleanDisplayValue(values[i]);
       if (s) return s;
     }
     return '';
@@ -467,7 +498,7 @@
   }
 
   function normalizePriceText(v) {
-    var s = trim(v);
+    var s = cleanDisplayValue(v);
     if (!s) return '';
 
     s = s.replace(/\s+/g, ' ');
