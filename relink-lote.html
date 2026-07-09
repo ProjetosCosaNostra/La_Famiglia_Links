@@ -51,6 +51,18 @@
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
     .modal.open{display:flex}.modal-box{width:min(980px,100%);max-height:92vh;overflow:auto;background:#0a0704;border:1px solid var(--gold);border-radius:18px;padding:18px;box-shadow:0 20px 80px rgba(0,0,0,.7)}
     .modal h2{margin:0 0 10px;color:var(--gold2)}pre{white-space:pre-wrap;word-break:break-word;background:#050403;border:1px solid var(--line);border-radius:14px;padding:12px;color:#e8ddc3;font-size:12px;max-height:420px;overflow:auto}
+
+    .dropzone{border:1px dashed var(--gold);border-radius:14px;background:rgba(214,179,95,.06);padding:12px;margin-top:8px;cursor:pointer;transition:.15s;min-height:72px;display:flex;align-items:center;justify-content:center;text-align:center}
+    .dropzone.drag{background:rgba(214,179,95,.18);box-shadow:0 0 0 3px rgba(214,179,95,.18)}
+    .dropzone input[type=file]{display:none}
+    .dropzone b{color:var(--gold2)}
+    .dropzone .small{margin-top:4px}
+    .file-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .file-item{border:1px solid var(--line);border-radius:12px;background:#090704;padding:7px;width:132px;position:relative}
+    .file-item img{width:100%;height:82px;object-fit:cover;border-radius:8px;background:#111}
+    .file-item .name{font-size:11px;color:var(--muted);word-break:break-word;margin-top:5px;line-height:1.2}
+    .file-item .remove-img{position:absolute;right:4px;top:4px;border-radius:999px;border:1px solid #743b35;background:#24100f;color:#ffd2d2;width:24px;height:24px;padding:0;display:flex;align-items:center;justify-content:center}
+    .payload-size{font-size:12px;color:var(--muted);margin-top:8px}
     .small{font-size:12px;color:var(--muted);line-height:1.35}.hide{display:none!important}.errtxt{color:var(--danger);font-size:12px;margin-top:6px}.oktxt{color:var(--ok);font-size:12px;margin-top:6px}
     @media(max-width:820px){.card-body{grid-template-columns:1fr}.cols{grid-template-columns:1fr}.topbar{align-items:stretch}.topbar>div{display:flex;flex-wrap:wrap;gap:8px}.preview{min-height:auto}}
   </style>
@@ -75,7 +87,7 @@
   </header>
   <main class="wrap">
     <div class="notice">
-      <strong>Fluxo certo:</strong> você preenche os cards nesta página e clica em <strong>Abrir Issue de aplicação</strong>. O GitHub abre uma issue já preenchida; ao enviar, a Action <strong>Link Guardian — Aplicar Relink por Issue</strong> altera o <strong>produtos.json</strong>, baixa/converte imagens novas para WebP e faz commit na <strong>gh-pages</strong>.
+      <strong>Fluxo certo:</strong> você preenche os cards nesta página e clica em <strong>Abrir Issue de aplicação</strong>. O GitHub abre uma issue já preenchida; ao enviar, a Action <strong>Link Guardian — Aplicar Relink por Issue</strong> altera o <strong>produtos.json</strong>, baixa/converte imagens novas para WebP, inclusive imagens arrastadas do computador e faz commit na <strong>gh-pages</strong>.
       <div class="small">Campo vazio não altera nada. Extras novas exigem escolher: acrescentar ou substituir. A capa nunca é alterada pela escolha das extras.</div>
     </div>
     <div id="globalStatus" class="notice">Carregando pendências...</div>
@@ -212,10 +224,21 @@ function renderCards(){
           <div class="image-rules">
             <label>Nova capa, opcional</label>
             <input class="cover-url" placeholder="Cole URL de imagem. Se vazio, mantém a capa atual.">
+            <div class="dropzone cover-drop" data-kind="cover">
+              <input type="file" class="cover-file" accept="image/*">
+              <div><b>📌 Arraste a nova CAPA aqui</b><div class="small">ou clique para escolher 1 imagem do computador</div></div>
+            </div>
+            <div class="file-list cover-file-list"></div>
             <div class="small">Capa enviada troca somente a capa. Capa vazia não mexe na capa atual.</div>
 
             <label>Novas imagens extras, opcional</label>
             <textarea class="extra-urls" placeholder="Cole uma URL por linha. Se vazio, mantém as extras atuais."></textarea>
+            <div class="dropzone extras-drop" data-kind="extras">
+              <input type="file" class="extras-file" accept="image/*" multiple>
+              <div><b>🖼️ Arraste as imagens EXTRAS aqui</b><div class="small">ou clique para escolher várias imagens do computador</div></div>
+            </div>
+            <div class="file-list extras-file-list"></div>
+            <div class="payload-size"></div>
             <div class="small">Quando preencher extras novas, escolha obrigatoriamente uma opção:</div>
             <div class="radio-row">
               <label class="radio-card"><input type="radio" name="extras_mode_${idx}" value="add"><b>+ Acrescentar às atuais</b><span>Mantém as extras atuais e adiciona as novas.</span></label>
@@ -250,22 +273,136 @@ function renderCards(){
   });
   bindCardEvents();
 }
+
+const IMG_MAX_SIDE = 820;
+const IMG_QUALITY = 0.68;
+const ISSUE_BODY_SOFT_LIMIT = 60000;
+
+function getImageStore(card){
+  if(!card._coverImage) card._coverImage = null;
+  if(!card._extraImages) card._extraImages = [];
+  return {cover: card._coverImage, extras: card._extraImages};
+}
+function prettyBytes(n){
+  if(!n) return '0 KB';
+  if(n < 1024) return n + ' B';
+  if(n < 1024*1024) return Math.round(n/1024) + ' KB';
+  return (n/1024/1024).toFixed(1) + ' MB';
+}
+function loadImageFromFile(file){
+  return new Promise((resolve,reject)=>{
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload=()=>{URL.revokeObjectURL(url); resolve(img);};
+    img.onerror=()=>{URL.revokeObjectURL(url); reject(new Error('Não consegui ler a imagem '+file.name));};
+    img.src=url;
+  });
+}
+async function compressImageFile(file, maxSide=IMG_MAX_SIDE, quality=IMG_QUALITY){
+  if(!file.type || !file.type.startsWith('image/')) throw new Error(file.name+' não é imagem.');
+  const img = await loadImageFromFile(file);
+  let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+  const scale = Math.min(1, maxSide / Math.max(w,h));
+  w = Math.max(1, Math.round(w*scale)); h = Math.max(1, Math.round(h*scale));
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0,0,w,h);
+  ctx.drawImage(img,0,0,w,h);
+  let data = canvas.toDataURL('image/webp', quality);
+  // Se ainda ficar grande para issue, tenta uma versão menor automaticamente.
+  if(data.length > 48000 && maxSide > 620){
+    data = await compressImageFile(file, 620, 0.56);
+  }
+  return data;
+}
+async function handleImageFiles(card, kind, files){
+  const list = Array.from(files||[]).filter(f=>f.type && f.type.startsWith('image/'));
+  if(!list.length) return;
+  const use = card.querySelector('.use-card');
+  use.checked = true;
+  showCardMsg(card,'ok','Processando imagem...');
+  try{
+    if(kind === 'cover'){
+      const f = list[0];
+      const data = await compressImageFile(f);
+      card._coverImage = { filename: f.name || 'capa.webp', data_url: data };
+    }else{
+      if(!card._extraImages) card._extraImages = [];
+      for(const f of list){
+        const data = await compressImageFile(f);
+        card._extraImages.push({ filename: f.name || 'extra.webp', data_url: data });
+      }
+    }
+    updateImageFileLists(card);
+    validateCard(card,false);
+    showCardMsg(card,'ok','Imagem carregada no card.');
+  }catch(e){
+    showCardMsg(card,'err',e.message || String(e));
+  }
+}
+function updateImageFileLists(card){
+  const coverBox = card.querySelector('.cover-file-list');
+  const extraBox = card.querySelector('.extras-file-list');
+  coverBox.innerHTML = '';
+  extraBox.innerHTML = '';
+  const cover = card._coverImage;
+  const extras = card._extraImages || [];
+  if(cover){
+    coverBox.appendChild(makeFileItem(cover, ()=>{ card._coverImage=null; updateImageFileLists(card); validateCard(card,false); }));
+  }
+  extras.forEach((item, idx)=>{
+    extraBox.appendChild(makeFileItem(item, ()=>{ card._extraImages.splice(idx,1); updateImageFileLists(card); validateCard(card,false); }));
+  });
+  const total = (cover ? cover.data_url.length : 0) + extras.reduce((a,x)=>a+(x.data_url||'').length,0);
+  const size = card.querySelector('.payload-size');
+  if(total){
+    size.textContent = 'Imagens carregadas no card: '+(cover?1:0)+' capa + '+extras.length+' extras · payload aproximado '+prettyBytes(total);
+    size.style.color = total > ISSUE_BODY_SOFT_LIMIT ? 'var(--danger)' : 'var(--muted)';
+  }else{
+    size.textContent = '';
+  }
+}
+function makeFileItem(item, onRemove){
+  const div=document.createElement('div'); div.className='file-item';
+  div.innerHTML = `<button type="button" class="remove-img">×</button><img src="${item.data_url}" alt=""><div class="name">${esc(item.filename||'imagem')}</div>`;
+  div.querySelector('button').addEventListener('click', onRemove);
+  return div;
+}
+function bindDropZone(card, zoneSel, inputSel, kind){
+  const zone = card.querySelector(zoneSel);
+  const input = card.querySelector(inputSel);
+  if(!zone || !input) return;
+  zone.addEventListener('click',()=>input.click());
+  input.addEventListener('change',()=>handleImageFiles(card, kind, input.files));
+  ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,(e)=>{e.preventDefault(); e.stopPropagation(); zone.classList.add('drag');}));
+  ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,(e)=>{e.preventDefault(); e.stopPropagation(); zone.classList.remove('drag');}));
+  zone.addEventListener('drop',(e)=>handleImageFiles(card, kind, e.dataTransfer.files));
+}
+
 function bindCardEvents(){
   document.querySelectorAll('.card').forEach(card=>{
+    card._coverImage = card._coverImage || null;
+    card._extraImages = card._extraImages || [];
+    bindDropZone(card, '.cover-drop', '.cover-file', 'cover');
+    bindDropZone(card, '.extras-drop', '.extras-file', 'extras');
     const inputs = card.querySelectorAll('input:not(.use-card), textarea, select');
     const use = card.querySelector('.use-card');
     inputs.forEach(inp=>{ const ev = inp.tagName === 'SELECT' || inp.type === 'checkbox' ? 'change' : 'input'; inp.addEventListener(ev,()=>{ if(anyFieldFilled(card)) use.checked = true; validateCard(card,false); }); });
     card.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',()=>{ use.checked = true; validateCard(card,false); }));
     card.querySelector('.clear-card').addEventListener('click',()=>{
-      card.querySelectorAll('input[type=text], input:not([type]), textarea').forEach(x=>x.value='');
+      card.querySelectorAll('input[type=text], input:not([type]), input[type=file], textarea').forEach(x=>x.value='');
       card.querySelectorAll('select').forEach(x=>x.value='');
       card.querySelectorAll('input[type=radio], input[type=checkbox]:not(.use-card)').forEach(x=>x.checked=false);
+      card._coverImage = null; card._extraImages = []; updateImageFileLists(card);
       use.checked=false; showCardMsg(card,'','');
     });
   });
 }
 function anyFieldFilled(card){
-  return ['.new-title','.new-id','.new-link','.cover-url','.extra-urls','.quick-pos'].some(sel=>norm(card.querySelector(sel).value)) || card.querySelector('.make-day').checked;
+  const imgs = getImageStore(card);
+  return ['.new-title','.new-id','.new-link','.cover-url','.extra-urls','.quick-pos'].some(sel=>norm(card.querySelector(sel).value)) || card.querySelector('.make-day').checked || !!imgs.cover || imgs.extras.length > 0;
 }
 function selectedExtrasMode(card){ const r=card.querySelector('input[type=radio]:checked'); return r?r.value:''; }
 function showCardMsg(card,type,msg){
@@ -278,8 +415,10 @@ function validateCard(card, show=true){
   const use = card.querySelector('.use-card').checked;
   if(!use){ showCardMsg(card,'',''); return true; }
   if(!anyFieldFilled(card)){ if(show) showCardMsg(card,'err','Este card está marcado, mas nenhum campo foi preenchido.'); return false; }
+  const imgs = getImageStore(card);
   const extras = lines(card.querySelector('.extra-urls').value);
-  if(extras.length && !selectedExtrasMode(card)){ if(show) showCardMsg(card,'err','Você colocou imagens extras novas. Escolha Acrescentar ou Substituir.'); return false; }
+  const totalExtras = extras.length + imgs.extras.length;
+  if(totalExtras && !selectedExtrasMode(card)){ if(show) showCardMsg(card,'err','Você colocou imagens extras novas. Escolha Acrescentar ou Substituir.'); return false; }
   const link = norm(card.querySelector('.new-link').value);
   if(link && !/^https?:\/\//i.test(link)){ if(show) showCardMsg(card,'err','O novo link precisa começar com http:// ou https://'); return false; }
   const cover = norm(card.querySelector('.cover-url').value);
@@ -297,13 +436,16 @@ function buildPayload(){
     if(!use) return;
     card.querySelector('.use-card').checked = true;
     if(!validateCard(card,true)){ ok=false; return; }
+    const imgs = getImageStore(card);
     const c = {
       sku: card.dataset.sku,
       title: norm(card.querySelector('.new-title').value),
       id_busca: norm(card.querySelector('.new-id').value),
       open_url: norm(card.querySelector('.new-link').value),
       cover_image_url: norm(card.querySelector('.cover-url').value),
+      cover_image_data: imgs.cover,
       extra_image_urls: lines(card.querySelector('.extra-urls').value),
+      extra_image_data: imgs.extras,
       extras_mode: selectedExtrasMode(card),
       make_product_day: card.querySelector('.make-day').checked,
       quick_home_position: norm(card.querySelector('.quick-pos').value)
@@ -326,6 +468,9 @@ function openIssue(payload){
   const body = issueBody(payload);
   const url = `https://github.com/${OWNER}/${REPO}/issues/new?title=${encodeURIComponent(ISSUE_TITLE)}&body=${encodeURIComponent(body)}&labels=${encodeURIComponent('relink-lote')}`;
   copyText(body);
+  if(body.length > ISSUE_BODY_SOFT_LIMIT){
+    alert('As imagens foram carregadas, mas o payload ficou grande. A página já copiou tudo para a área de transferência. Se a issue abrir vazia, cole o conteúdo copiado no corpo da issue. Se o GitHub reclamar de limite, reduza a quantidade de imagens nesta rodada.');
+  }
   if(url.length > 7500){
     alert('Payload copiado. Como ficou grande, a issue vai abrir sem corpo. Cole o conteúdo copiado no corpo da issue e envie.');
     window.open(`https://github.com/${OWNER}/${REPO}/issues/new?title=${encodeURIComponent(ISSUE_TITLE)}&labels=${encodeURIComponent('relink-lote')}`,'_blank');
