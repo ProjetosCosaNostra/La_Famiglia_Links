@@ -117,3 +117,241 @@ jobs:
               issue_number: context.issue.number,
               state: 'closed'
             });
+name: Link Guardian — Aplicar Relink por Issue
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Número da issue [RELINK-LOTE] para reaplicar"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: relink-lote-issue-gh-pages
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    name: Aplicar correção em lote
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.title, '[RELINK-LOTE]')
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências de imagem
+        run: python -m pip install --upgrade pillow
+
+      - name: Baixar corpo da issue manual
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(core.getInput('issue_number'));
+            const {data: issue} = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number
+            });
+            fs.writeFileSync('issue_body.md', issue.body || '', 'utf8');
+            fs.writeFileSync('issue_number.txt', String(issue_number), 'utf8');
+
+      - name: Salvar corpo da issue automática
+        if: github.event_name == 'issues'
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          Path('issue_body.md').write_text(os.environ.get('ISSUE_BODY',''), encoding='utf-8')
+          Path('issue_number.txt').write_text(os.environ.get('ISSUE_NUMBER',''), encoding='utf-8')
+          PY
+
+      - name: Aplicar payload da issue
+        run: |
+          python tools/apply_relink_issue.py \
+            --issue-body-file issue_body.md \
+            --produtos produtos.json \
+            --assets-dir assets/produtos-webp \
+            --report relink_lote_report.md \
+            --env-file relink_lote_result.env
+          cat relink_lote_result.env >> "$GITHUB_ENV"
+
+      - name: Commit e push
+        if: env.CHANGED == 'true' && env.DRY_RUN != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add produtos.json assets/produtos-webp || true
+          git commit -m "relink: aplicar lote via issue #$(cat issue_number.txt)"
+          git push origin gh-pages
+
+      - name: Comentar relatório na issue
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let issue_number = 0;
+            try { issue_number = Number(fs.readFileSync('issue_number.txt','utf8').trim()); } catch(e) {}
+            if (!issue_number) return;
+            let report = 'Relatório indisponível.';
+            try { report = fs.readFileSync('relink_lote_report.md','utf8'); } catch(e) {}
+            const body = report + `\n\nWorkflow: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body
+            });
+
+      - name: Fechar issue aplicada
+        if: github.event_name == 'issues' && env.CHANGED == 'true' && env.DRY_RUN != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
+name: Link Guardian — Aplicar Relink por Issue
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Número da issue [RELINK-LOTE] para reaplicar"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: relink-lote-issue-gh-pages
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    name: Aplicar correção em lote
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.title, '[RELINK-LOTE]')
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências de imagem
+        run: python -m pip install --upgrade pillow
+
+      - name: Baixar corpo da issue manual
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const issue_number = Number(core.getInput('issue_number'));
+            const {data: issue} = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number
+            });
+            fs.writeFileSync('issue_body.md', issue.body || '', 'utf8');
+            fs.writeFileSync('issue_number.txt', String(issue_number), 'utf8');
+
+      - name: Salvar corpo da issue automática
+        if: github.event_name == 'issues'
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          Path('issue_body.md').write_text(os.environ.get('ISSUE_BODY',''), encoding='utf-8')
+          Path('issue_number.txt').write_text(os.environ.get('ISSUE_NUMBER',''), encoding='utf-8')
+          PY
+
+      - name: Aplicar payload da issue
+        run: |
+          python tools/apply_relink_issue.py \
+            --issue-body-file issue_body.md \
+            --produtos produtos.json \
+            --assets-dir assets/produtos-webp \
+            --report relink_lote_report.md \
+            --env-file relink_lote_result.env
+          cat relink_lote_result.env >> "$GITHUB_ENV"
+
+      - name: Commit e push
+        if: env.CHANGED == 'true' && env.DRY_RUN != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add produtos.json assets/produtos-webp || true
+          git commit -m "relink: aplicar lote via issue #$(cat issue_number.txt)"
+          git push origin gh-pages
+
+      - name: Comentar relatório na issue
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let issue_number = 0;
+            try { issue_number = Number(fs.readFileSync('issue_number.txt','utf8').trim()); } catch(e) {}
+            if (!issue_number) return;
+            let report = 'Relatório indisponível.';
+            try { report = fs.readFileSync('relink_lote_report.md','utf8'); } catch(e) {}
+            const body = report + `\n\nWorkflow: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body
+            });
+
+      - name: Fechar issue aplicada
+        if: github.event_name == 'issues' && env.CHANGED == 'true' && env.DRY_RUN != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
