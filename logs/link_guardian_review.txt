@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-09T18:18:51Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-07-09T18:42:05Z
+Itens pendentes: 6
+SKUs únicos: 6
+Prioridade alta: 6
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 6
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 6
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 6
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-09T18:16:53Z
+Quando: 2026-07-09T18:36:25Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (32x /lists, 0x listing)
+Memória operacional: histórico recorrente (33x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1vwXiJg
 checked_url: https://meli.la/1vwXiJg
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-07-09T18:16:53Z
+Quando: 2026-07-09T18:36:25Z
 Issue: #105
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
 SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Memória operacional: histórico recorrente (18x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
 open_url: https://meli.la/1HHX2Jj
 checked_url: https://meli.la/1HHX2Jj
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
 
 [ALTA] review_only_storefront
-Quando: 2026-07-09T18:16:53Z
+Quando: 2026-07-09T18:36:25Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -73,9 +73,66 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Memória operacional: histórico recorrente (9x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
+
+[ALTA] review_only_storefront
+Quando: 2026-07-09T18:36:25Z
+Issue: #54
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
+SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
+Título: Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia
+ID ML: 5J5PKG-BJJ0
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (9x /lists, 1x listing)
+Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
+open_url: https://mercadolivre.com/sec/29Gq2Ww
+checked_url: https://mercadolivre.com/sec/29Gq2Ww
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
+
+[ALTA] review_only_storefront
+Quando: 2026-07-09T18:36:25Z
+Issue: #173
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
+SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
+Título: Ice Creamy Lip Balm Mari Maria Makeup Vanilla 10ml
+ID ML: 5J5PKG-B7HJ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
+open_url: https://meli.la/1tZaBVw
+checked_url: https://meli.la/1tZaBVw
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
+
+[ALTA] review_only_storefront
+Quando: 2026-07-09T18:36:25Z
+Issue: #194
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
+SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
+Título: Bolsa Feminina Grande Mochila Antfurto Impermeável Reforçada
+ID ML: 5J5PKG-1SRZ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (41x /lists, 0x listing)
+Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
+open_url: https://meli.la/1Dj4GN9
+checked_url: https://meli.la/1Dj4GN9
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
