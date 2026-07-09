@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-09T04:08:54Z",
-  "total_items": 5,
+  "updated_at": "2026-07-09T10:08:24Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 6
     },
-    "high_priority": 5
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-07-09T04:04:24Z",
+      "happened_at": "2026-07-09T10:03:48Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (29x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,52 @@
       ]
     },
     {
-      "happened_at": "2026-07-09T04:04:24Z",
+      "happened_at": "2026-07-09T10:03:48Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 121,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/121",
+      "issue_title": "[CMS] Produto: ROG Xbox Ally 7\" 120Hz 512GB Branco",
+      "sku": "rog-xbox-ally-7-120hz-512gb-branco",
+      "title": "ROG Xbox Ally Console Portátil 7\" Touchscreen 120Hz 16GB RAM 512GB SSD Branco",
+      "id_busca": "5J5PKG-ZPYQ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1FmZq7Y",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1FmZq7Y",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNUK0SCdb%2Bhc8A%2FNxSL4CFZZEm5o%2F5%2FPgiWN%2B88NgIi2ZVX1PQ2dQr%2FyzS5OAFbI0%2BtYfG8lZsWsivxLdqiLUx4MGG%2Fi9YWHR6SjugtEBZjKjQaZA0BO%2FD6g6xxm1HkGbuTGFqkdVnr2LktBH0gMUMbhDqJyNnAT5cXzDqPfn4q3rKHV0tTSteMCNPxZfQHcYBdBjOM%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZPYQ&tid=7f123e45-e6c8-4988-b1ee-180d65a887c0",
+      "short_url": "https://meli.la/1FmZq7Y",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNUK0SCdb%2Bhc8A%2FNxSL4CFZZEm5o%2F5%2FPgiWN%2B88NgIi2ZVX1PQ2dQr%2FyzS5OAFbI0%2BtYfG8lZsWsivxLdqiLUx4MGG%2Fi9YWHR6SjugtEBZjKjQaZA0BO%2FD6g6xxm1HkGbuTGFqkdVnr2LktBH0gMUMbhDqJyNnAT5cXzDqPfn4q3rKHV0tTSteMCNPxZfQHcYBdBjOM%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNUK0SCdb%2Bhc8A%2FNxSL4CFZZEm5o%2F5%2FPgiWN%2B88NgIi2ZVX1PQ2dQr%2FyzS5OAFbI0%2BtYfG8lZsWsivxLdqiLUx4MGG%2Fi9YWHR6SjugtEBZjKjQaZA0BO%2FD6g6xxm1HkGbuTGFqkdVnr2LktBH0gMUMbhDqJyNnAT5cXzDqPfn4q3rKHV0tTSteMCNPxZfQHcYBdBjOM%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "ROG Xbox Ally",
+        "Console Portátil",
+        "ASUS",
+        "Tela 7\"",
+        "120Hz",
+        "16GB RAM",
+        "512GB SSD"
+      ]
+    },
+    {
+      "happened_at": "2026-07-09T10:03:48Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-09T04:04:24Z",
+      "happened_at": "2026-07-09T10:03:48Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 22,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-09T04:04:24Z",
+      "happened_at": "2026-07-09T10:03:48Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (6x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (7x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-09T04:04:24Z",
+      "happened_at": "2026-07-09T10:03:48Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (38x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (39x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
