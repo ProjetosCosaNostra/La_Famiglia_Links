@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-12T03:47:03Z
+Atualizado em: 2026-07-12T08:33:11Z
 Itens pendentes: 5
 SKUs únicos: 5
 Prioridade alta: 5
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-12T03:42:23Z
+Quando: 2026-07-12T08:28:10Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 0x listing)
+Memória operacional: histórico recorrente (20x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-07-12T03:42:23Z
+Quando: 2026-07-12T08:28:10Z
 Issue: #89
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/89
 SKU: conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Panelas, Jogo de Panelas, Antiaderente, Teflon, 10 peças, Casa e Cozinha
 open_url: https://meli.la/2D19CwL
 checked_url: https://meli.la/2D19CwL
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=0dc765c4-4b3d-4e5e-bd8d-a867bf3a66aa
 
 [ALTA] review_only_storefront
-Quando: 2026-07-12T03:42:23Z
+Quando: 2026-07-12T08:28:10Z
 Issue: #54
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
 SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 1x listing)
+Memória operacional: histórico recorrente (20x /lists, 1x listing)
 Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
 open_url: https://mercadolivre.com/sec/29Gq2Ww
 checked_url: https://mercadolivre.com/sec/29Gq2Ww
@@ -81,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
 
 [ALTA] review_only_storefront
-Quando: 2026-07-12T03:42:23Z
+Quando: 2026-07-12T08:28:10Z
 Issue: #173
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
 SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
 open_url: https://meli.la/1tZaBVw
 checked_url: https://meli.la/1tZaBVw
@@ -100,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
 
 [ALTA] review_only_storefront
-Quando: 2026-07-12T03:42:23Z
+Quando: 2026-07-12T08:28:10Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -111,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (51x /lists, 0x listing)
+Memória operacional: histórico recorrente (52x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
