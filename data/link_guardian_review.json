@@ -1,22 +1,67 @@
 {
-  "updated_at": "2026-07-13T09:47:52Z",
-  "total_items": 5,
+  "updated_at": "2026-07-13T15:05:16Z",
+  "total_items": 8,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 8,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 8
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 8
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 8
     },
-    "high_priority": 5
+    "high_priority": 8
   },
   "items": [
     {
-      "happened_at": "2026-07-13T09:42:20Z",
+      "happened_at": "2026-07-13T14:52:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 100,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/100",
+      "issue_title": "Kit 4 Formas de Gelo com Tampa — Silicone",
+      "sku": "kit-4-formas-gelo-tampa-silicone",
+      "title": "Kit 4 Formas de Gelo com Tampa — Silicone (Fundo Flexível + Tampa Rígida)",
+      "id_busca": "5J5PKG-PZ8V",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/19fvuVX",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/19fvuVX",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-PZ8V",
+      "short_url": "https://meli.la/19fvuVX",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Formas de Gelo",
+        "Silicone",
+        "Tampa Rígida",
+        "Fundo Flexível",
+        "Empilhável",
+        "Freezer"
+      ]
+    },
+    {
+      "happened_at": "2026-07-13T14:52:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T09:42:20Z",
+      "happened_at": "2026-07-13T14:52:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +151,52 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T09:42:20Z",
+      "happened_at": "2026-07-13T14:52:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 74,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/74",
+      "issue_title": "[CMS] Produto: dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto",
+      "sku": "dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto",
+      "title": "DPS iClamper Energia (5 Tomadas) – Proteção Contra Surtos – Preto",
+      "id_busca": "5J5PKG-0QEF",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2e9LLGJ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2e9LLGJ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0QEF&tid=6d448ff8-ffe3-4779-afa6-b8bac597046a",
+      "short_url": "https://meli.la/2e9LLGJ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "DPS",
+        "iClamper",
+        "Filtro de Linha",
+        "Proteção Contra Surtos",
+        "Anti Raio",
+        "Energia",
+        "5 Tomadas"
+      ]
+    },
+    {
+      "happened_at": "2026-07-13T14:52:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +241,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T09:42:20Z",
+      "happened_at": "2026-07-13T14:52:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +257,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +284,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T09:42:20Z",
+      "happened_at": "2026-07-13T14:52:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +300,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (56x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (57x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -236,6 +326,51 @@
         "Preto",
         "Rosé",
         "Trabalho"
+      ]
+    },
+    {
+      "happened_at": "2026-07-13T14:52:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 221,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/221",
+      "issue_title": "Escova Oval Secadora Taiff Easy Lilás 1200W",
+      "sku": "escova-oval-secadora-taiff-easy-lilas-1200w",
+      "title": "💜 Escova Oval Secadora Taiff Easy Lilás 1200W",
+      "id_busca": "5J5PKG-RQ9A",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1gj7Dvb",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1gj7Dvb",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJB2ctUUv7oJVm7wvQZa5dpxDAHfba8zYVGO3Ceh8bVKBCAYq1eK4AiAposLYNFZFmOfIqKA8kWUOXhCnQPh2GujYrJvr0Nfbo51uidIC4FVLHiG7Nj%2FhLaUDS4s03ZhsX6itQoGJggEyZGBk95TIp5yCkv%2BPAnO3ElPw%2F8c6IGmfTINsCRyhqtrwTJTkg71r5qBpA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-RQ9A",
+      "short_url": "https://meli.la/1gj7Dvb",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJB2ctUUv7oJVm7wvQZa5dpxDAHfba8zYVGO3Ceh8bVKBCAYq1eK4AiAposLYNFZFmOfIqKA8kWUOXhCnQPh2GujYrJvr0Nfbo51uidIC4FVLHiG7Nj%2FhLaUDS4s03ZhsX6itQoGJggEyZGBk95TIp5yCkv%2BPAnO3ElPw%2F8c6IGmfTINsCRyhqtrwTJTkg71r5qBpA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Cabelo",
+        "Escova Secadora",
+        "Taiff",
+        "Easy Lilás",
+        "1200W",
+        "Feminino"
       ]
     }
   ]
