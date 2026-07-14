@@ -1,74 +1,50 @@
 [
   {
-    "sku": "dashcam-4k-gps-azdome-m550-64gb",
+    "sku": "sabonete-facial-garnier-uniform-matte-vitamina-c-120g",
     "results": [
       {
-        "source": "https://github.com/user-attachments/assets/78f5b2c2-c00f-4a65-a203-2d9fa8356a94",
+        "source": "https://github.com/user-attachments/assets/dd51bf6d-5d46-4536-bedf-5b8897a69729",
         "status": "converted",
-        "output": "assets/produtos-webp/dashcam-4k-gps-azdome-m550-64gb-cover-14f3c0bdd8.webp",
-        "original_bytes": 336778,
-        "webp_bytes": 93116,
-        "saved_percent": 72.4,
+        "output": "assets/produtos-webp/sabonete-facial-garnier-uniform-matte-vitamina-c-120g-cover-d028599539.webp",
+        "original_bytes": 2413455,
+        "webp_bytes": 109444,
+        "saved_percent": 95.5,
         "size": {
           "width": 666,
           "height": 1000
         }
       },
       {
-        "source": "https://github.com/user-attachments/assets/21a0adf9-b773-4eb4-9d03-ce519f6964b6",
+        "source": "https://github.com/user-attachments/assets/85980d3d-90e9-4d91-87a0-e13418f5bdb6",
         "status": "converted",
-        "output": "assets/produtos-webp/dashcam-4k-gps-azdome-m550-64gb-images-01-cb31f79c4e.webp",
-        "original_bytes": 314120,
-        "webp_bytes": 92720,
-        "saved_percent": 70.5,
+        "output": "assets/produtos-webp/sabonete-facial-garnier-uniform-matte-vitamina-c-120g-images-01-2dda26df83.webp",
+        "original_bytes": 1835743,
+        "webp_bytes": 74454,
+        "saved_percent": 95.9,
         "size": {
           "width": 666,
           "height": 1000
         }
       },
       {
-        "source": "https://github.com/user-attachments/assets/50ba53ad-2bf1-44c1-b060-7e0129eae785",
+        "source": "https://github.com/user-attachments/assets/359e7550-3527-43e9-81fe-b2c095e66b17",
         "status": "converted",
-        "output": "assets/produtos-webp/dashcam-4k-gps-azdome-m550-64gb-images-02-d4f6af2ed4.webp",
-        "original_bytes": 336946,
-        "webp_bytes": 98648,
-        "saved_percent": 70.7,
+        "output": "assets/produtos-webp/sabonete-facial-garnier-uniform-matte-vitamina-c-120g-images-02-9a9ca1ec9f.webp",
+        "original_bytes": 1979893,
+        "webp_bytes": 74828,
+        "saved_percent": 96.2,
         "size": {
           "width": 666,
           "height": 1000
         }
       },
       {
-        "source": "https://github.com/user-attachments/assets/68abc914-af38-4df0-89ae-070e8cc1091c",
+        "source": "https://github.com/user-attachments/assets/e3c173a8-2b7a-4704-8505-6df002b4cfd2",
         "status": "converted",
-        "output": "assets/produtos-webp/dashcam-4k-gps-azdome-m550-64gb-images-03-7617d21d7c.webp",
-        "original_bytes": 348774,
-        "webp_bytes": 103972,
-        "saved_percent": 70.2,
-        "size": {
-          "width": 666,
-          "height": 1000
-        }
-      },
-      {
-        "source": "https://github.com/user-attachments/assets/2bb6fb9b-c2ed-4deb-ae58-10ab9a90d70f",
-        "status": "converted",
-        "output": "assets/produtos-webp/dashcam-4k-gps-azdome-m550-64gb-images-04-dd53cedf02.webp",
-        "original_bytes": 283742,
-        "webp_bytes": 89436,
-        "saved_percent": 68.5,
-        "size": {
-          "width": 666,
-          "height": 1000
-        }
-      },
-      {
-        "source": "https://github.com/user-attachments/assets/a8e4cf77-a374-438d-92d3-cf26dfc3a0c9",
-        "status": "converted",
-        "output": "assets/produtos-webp/dashcam-4k-gps-azdome-m550-64gb-images-05-1b8331b26f.webp",
-        "original_bytes": 291722,
-        "webp_bytes": 86600,
-        "saved_percent": 70.3,
+        "output": "assets/produtos-webp/sabonete-facial-garnier-uniform-matte-vitamina-c-120g-images-03-5f0114c421.webp",
+        "original_bytes": 2315691,
+        "webp_bytes": 107716,
+        "saved_percent": 95.3,
         "size": {
           "width": 666,
           "height": 1000
