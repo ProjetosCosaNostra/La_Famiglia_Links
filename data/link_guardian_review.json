@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-13T19:44:21Z",
-  "total_items": 8,
+  "updated_at": "2026-07-14T03:23:52Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 8,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 8
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 8
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 8
+      "trocar_link": 6
     },
-    "high_priority": 8
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-07-13T19:39:52Z",
+      "happened_at": "2026-07-14T03:19:26Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (44x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (45x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T19:39:52Z",
+      "happened_at": "2026-07-14T03:19:26Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (27x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T19:39:52Z",
+      "happened_at": "2026-07-14T03:19:26Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,52 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T19:39:52Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 87,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/87",
-      "issue_title": "[CMS] Produto: Whey Protein 1kg Chocolate (5J5PKG-68P2)",
-      "sku": "whey-protein-1kg-chocolate-5j5pkg-68p2",
-      "title": "Whey Protein 1kg (Chocolate) — Alta proteína no pós-treino",
-      "id_busca": "5J5PKG-68P2",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/14pqCNv",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/14pqCNv",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHz5OAfOO3ComCMB%2By3UDf8p3i1NEsu4nhOCVc7xZe8SsI7V7PZgvOijFww691lKA93rqbldMOXPDqtn74Lefpdy58LOc%2FxsYJ3%2FZXuRbDDP5mc5a4yV%2FCBAvJQcfgdvhA1kQSvl3lfc1ZKkVx4oBIXgtsE4qkGtRxzAG5wi7KRMJgQ%2BXZH6P4qeT6PaxCJxId%2FzKw%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-68P2&tid=7b1f415b-80d8-48db-879b-00bb48fa898d",
-      "short_url": "https://meli.la/14pqCNv",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHz5OAfOO3ComCMB%2By3UDf8p3i1NEsu4nhOCVc7xZe8SsI7V7PZgvOijFww691lKA93rqbldMOXPDqtn74Lefpdy58LOc%2FxsYJ3%2FZXuRbDDP5mc5a4yV%2FCBAvJQcfgdvhA1kQSvl3lfc1ZKkVx4oBIXgtsE4qkGtRxzAG5wi7KRMJgQ%2BXZH6P4qeT6PaxCJxId%2FzKw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHz5OAfOO3ComCMB%2By3UDf8p3i1NEsu4nhOCVc7xZe8SsI7V7PZgvOijFww691lKA93rqbldMOXPDqtn74Lefpdy58LOc%2FxsYJ3%2FZXuRbDDP5mc5a4yV%2FCBAvJQcfgdvhA1kQSvl3lfc1ZKkVx4oBIXgtsE4qkGtRxzAG5wi7KRMJgQ%2BXZH6P4qeT6PaxCJxId%2FzKw%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Suplementos",
-        "Whey",
-        "Chocolate",
-        "Alta proteína",
-        "Pós-treino",
-        "Fitness",
-        "Academia"
-      ]
-    },
-    {
-      "happened_at": "2026-07-13T19:39:52Z",
+      "happened_at": "2026-07-14T03:19:26Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (26x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (27x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T19:39:52Z",
+      "happened_at": "2026-07-14T03:19:26Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (18x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -282,51 +237,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-13T19:39:52Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 178,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/178",
-      "issue_title": "Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml",
-      "sku": "payot-boca-rosa-meu-volumao-preto-6ml",
-      "title": "👁️✨ Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml 💙🖤",
-      "id_busca": "5J5PKG-KQ94",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1dj3ot3",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1dj3ot3",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK91rjgCUs65o24R6ICifyDt9J2bERTAHYoquygwPe2oyoRwpCoc5mM3PHl13TBfocZrm8jkVlSyJxBcwB14ZBeVFYQy2jHFbwsau35uexDKETpn4EkJQ55RH5CyPGE4XSUNY2duai9eolHsG0ernL%2FXuqfCSYGBww8GFiT74ekaiK6lishoFIsq%2Fo1ox8NpGirMjwU%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-KQ94",
-      "short_url": "https://meli.la/1dj3ot3",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BK91rjgCUs65o24R6ICifyDt9J2bERTAHYoquygwPe2oyoRwpCoc5mM3PHl13TBfocZrm8jkVlSyJxBcwB14ZBeVFYQy2jHFbwsau35uexDKETpn4EkJQ55RH5CyPGE4XSUNY2duai9eolHsG0ernL%2FXuqfCSYGBww8GFiT74ekaiK6lishoFIsq%2Fo1ox8NpGirMjwU%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Maquiagem",
-        "Boca Rosa",
-        "Payot",
-        "Volumizador",
-        "Preto",
-        "Cruelty Free"
-      ]
-    },
-    {
-      "happened_at": "2026-07-13T19:39:52Z",
+      "happened_at": "2026-07-14T03:19:26Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -342,7 +253,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (58x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (59x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
