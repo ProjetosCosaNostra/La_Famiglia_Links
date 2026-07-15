@@ -1,22 +1,23 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-14T23:00:19Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-07-15T03:24:22Z
+Itens pendentes: 7
+SKUs únicos: 7
+Prioridade alta: 7
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 7
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 7
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 6
+- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +25,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-14T22:58:52Z
+Quando: 2026-07-15T03:18:57Z
+Issue: #105
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
+SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
+Título: Jogo De Panelas Para Fogão De Indução Aço Inox 3 Peças
+ID ML: 5J5PKG-8EBB
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (22x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
+open_url: https://meli.la/1HHX2Jj
+checked_url: https://meli.la/1HHX2Jj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
+
+[ALTA] review_only_storefront
+Quando: 2026-07-15T03:18:57Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -35,7 +55,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (31x /lists, 0x listing)
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -43,7 +63,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-07-14T22:58:52Z
+Quando: 2026-07-15T03:18:57Z
 Issue: #89
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/89
 SKU: conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm
@@ -54,9 +74,84 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Memória operacional: histórico recorrente (18x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Panelas, Jogo de Panelas, Antiaderente, Teflon, 10 peças, Casa e Cozinha
 open_url: https://meli.la/2D19CwL
 checked_url: https://meli.la/2D19CwL
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=0dc765c4-4b3d-4e5e-bd8d-a867bf3a66aa
+
+[ALTA] review_only_storefront
+Quando: 2026-07-15T03:18:57Z
+Issue: #87
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/87
+SKU: whey-protein-1kg-chocolate-5j5pkg-68p2
+Título: Whey Protein 1kg (Chocolate) — Alta proteína no pós-treino
+ID ML: 5J5PKG-68P2
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Badges: Achados do Dia, Suplementos, Whey, Chocolate, Alta proteína, Pós-treino, Fitness, Academia
+open_url: https://meli.la/14pqCNv
+checked_url: https://meli.la/14pqCNv
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-68P2&tid=7b1f415b-80d8-48db-879b-00bb48fa898d
+
+[ALTA] review_only_storefront
+Quando: 2026-07-15T03:18:57Z
+Issue: #173
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
+SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
+Título: Ice Creamy Lip Balm Mari Maria Makeup Vanilla 10ml
+ID ML: 5J5PKG-B7HJ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (23x /lists, 0x listing)
+Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
+open_url: https://meli.la/1tZaBVw
+checked_url: https://meli.la/1tZaBVw
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
+
+[ALTA] review_only_storefront
+Quando: 2026-07-15T03:18:57Z
+Issue: #194
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
+SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
+Título: Bolsa Feminina Grande Mochila Antfurto Impermeável Reforçada
+ID ML: 5J5PKG-1SRZ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (63x /lists, 0x listing)
+Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
+open_url: https://meli.la/1Dj4GN9
+checked_url: https://meli.la/1Dj4GN9
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
+
+[ALTA] review_only_storefront
+Quando: 2026-07-15T03:18:57Z
+Issue: #235
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
+SKU: suporte-secador-cabelo-escova-multiuso-organizador
+Título: Suporte Para Secador De Cabelo Escova Multiuso Organizador
+ID ML: 5J5PKG-0RK9
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
+open_url: https://meli.la/17hVhbS
+checked_url: https://meli.la/17hVhbS
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEFKWgvEwOng9LXyLrfotYJ15T6raFyE8NSxw87gG%2FEY5apPXpH1Ex3sDvka%2BllS6MfPnnuQ9h6CIikzasEuehhQ3Vvl8BnKdiMPikyVLyibkhRm73MdZoE%2BQVw%2FXZGooTA8MEsb8wXWUGdU%2BckC43pVEZJwteDJaFIDa5AS1WDBS8QX8NMTBfo5e2T09PHfE6qlcxijg7jP4upCrQ%3D%3D
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-0RK9
