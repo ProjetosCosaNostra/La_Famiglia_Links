@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-15T08:34:07Z",
-  "total_items": 6,
+  "updated_at": "2026-07-15T14:06:22Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 6,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 6
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 6
+      "storefront_social_lists_invalid": 7
     },
     "by_action": {
-      "trocar_link": 6
+      "trocar_link": 7
     },
-    "high_priority": 6
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-07-15T08:28:10Z",
+      "happened_at": "2026-07-15T14:00:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (23x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-15T08:28:10Z",
+      "happened_at": "2026-07-15T14:00:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (33x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (34x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-15T08:28:10Z",
+      "happened_at": "2026-07-15T14:00:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +151,52 @@
       ]
     },
     {
-      "happened_at": "2026-07-15T08:28:10Z",
+      "happened_at": "2026-07-15T14:00:27Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 54,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54",
+      "issue_title": "[CMS] Produto: Desumidificador Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia",
+      "sku": "desumidificador-antimofo-komeco-kdp-250-bivolt",
+      "title": "Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia",
+      "id_busca": "5J5PKG-BJJ0",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (30x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/29Gq2Ww",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/29Gq2Ww",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFhp7aZSzrogZnZzUJsl6uIcofKCxdgSQ%2F%2FZMEqq%2FeFrm737KlKHxzjJuCjgsEOrA5LppAP4TOKOuk2eFyysKU4jwibBzORZoN3HJSIziR1E7r49oOeJ7YdTNFT0MqoG44%2F2fsNnc%2BJwI0FruX7Z%2B%2FDcM9Nurk31VC%2FPQZl1QHks2DnJH1OTLdXSzsZzGrzRr3zevCY%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFhp7aZSzrogZnZzUJsl6uIcofKCxdgSQ%2F%2FZMEqq%2FeFrm737KlKHxzjJuCjgsEOrA5LppAP4TOKOuk2eFyysKU4jwibBzORZoN3HJSIziR1E7r49oOeJ7YdTNFT0MqoG44%2F2fsNnc%2BJwI0FruX7Z%2B%2FDcM9Nurk31VC%2FPQZl1QHks2DnJH1OTLdXSzsZzGrzRr3zevCY%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFhp7aZSzrogZnZzUJsl6uIcofKCxdgSQ%2F%2FZMEqq%2FeFrm737KlKHxzjJuCjgsEOrA5LppAP4TOKOuk2eFyysKU4jwibBzORZoN3HJSIziR1E7r49oOeJ7YdTNFT0MqoG44%2F2fsNnc%2BJwI0FruX7Z%2B%2FDcM9Nurk31VC%2FPQZl1QHks2DnJH1OTLdXSzsZzGrzRr3zevCY%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Desumidificador",
+        "Antimofo",
+        "Komeco",
+        "KDP 250",
+        "Bivolt",
+        "Casa",
+        "Quarto"
+      ]
+    },
+    {
+      "happened_at": "2026-07-15T14:00:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (31x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -196,7 +241,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-15T08:28:10Z",
+      "happened_at": "2026-07-15T14:00:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -212,7 +257,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +284,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-15T08:28:10Z",
+      "happened_at": "2026-07-15T14:00:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +300,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (64x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (65x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
