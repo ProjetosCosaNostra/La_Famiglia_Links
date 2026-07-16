@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-16T14:16:23Z
+Atualizado em: 2026-07-16T19:27:52Z
 Itens pendentes: 11
 SKUs únicos: 11
 Prioridade alta: 11
@@ -25,7 +25,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -36,7 +36,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (50x /lists, 0x listing)
+Memória operacional: histórico recorrente (51x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1vwXiJg
 checked_url: https://meli.la/1vwXiJg
@@ -44,7 +44,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #105
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
 SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
@@ -55,7 +55,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (28x /lists, 0x listing)
+Memória operacional: histórico recorrente (29x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
 open_url: https://meli.la/1HHX2Jj
 checked_url: https://meli.la/1HHX2Jj
@@ -63,26 +63,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
-Issue: #101
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/101
-SKU: panela-pressao-panelux-45l-aluminio-polido
-Título: 🥘 Panela de Pressão Panelux 4,5L — Alumínio Polido
-ID ML: 5J5PKG-6T20
-Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
-Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Panela de Pressão, Panelux, 4.5L, Alumínio Polido, Cozimento Rápido, Uso Diário
-open_url: https://meli.la/2drogLW
-checked_url: https://meli.la/2drogLW
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA8zP3gY4khLo%2FadHj5G6qBytvNbLlncaZ2rv2JsOc6VWmbGE2y7dWIQ8f%2BkqxptvGjQT4RJezbl7G2%2FnEgaU3jIXZCJML9ams2Ta1so1yKPlWBffnk0xmmmvtIhS5QNI5lLrL5hI0vhi9ctOZb0W35Fhe55XtvgyQQD21%2Fauekkr23D2aXhXkK68fQqps0p1h1juuU%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6T20&tid=c52b7906-dbca-4eb6-80c1-8483bfa8a014
-
-[ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -93,7 +74,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (38x /lists, 0x listing)
+Memória operacional: histórico recorrente (39x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -101,7 +82,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #89
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/89
 SKU: conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm
@@ -112,7 +93,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Memória operacional: histórico recorrente (25x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Panelas, Jogo de Panelas, Antiaderente, Teflon, 10 peças, Casa e Cozinha
 open_url: https://meli.la/2D19CwL
 checked_url: https://meli.la/2D19CwL
@@ -120,7 +101,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=0dc765c4-4b3d-4e5e-bd8d-a867bf3a66aa
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -131,7 +112,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (59x /lists, 0x listing)
+Memória operacional: histórico recorrente (60x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://meli.la/2aDZHZR
 checked_url: https://meli.la/2aDZHZR
@@ -139,7 +120,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
+Issue: #54
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
+SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
+Título: Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia
+ID ML: 5J5PKG-BJJ0
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Memória operacional: histórico recorrente (33x /lists, 1x listing)
+Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
+open_url: https://mercadolivre.com/sec/29Gq2Ww
+checked_url: https://mercadolivre.com/sec/29Gq2Ww
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFhp7aZSzrogZnZzUJsl6uIcofKCxdgSQ%2F%2FZMEqq%2FeFrm737KlKHxzjJuCjgsEOrA5LppAP4TOKOuk2eFyysKU4jwibBzORZoN3HJSIziR1E7r49oOeJ7YdTNFT0MqoG44%2F2fsNnc%2BJwI0FruX7Z%2B%2FDcM9Nurk31VC%2FPQZl1QHks2DnJH1OTLdXSzsZzGrzRr3zevCY%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
+
+[ALTA] review_only_storefront
+Quando: 2026-07-16T19:23:31Z
 Issue: #129
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
 SKU: puma-flyer-runner-mesh-bdp
@@ -150,7 +150,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (35x /lists, 1x listing)
+Memória operacional: histórico recorrente (36x /lists, 1x listing)
 Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
 open_url: https://meli.la/2cmJ3u1
 checked_url: https://meli.la/2cmJ3u1
@@ -158,26 +158,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
-Issue: #170
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/170
-SKU: organizador-maquiagem-giratorio-360-acrilico-transparente
-Título: Organizador Giratório 360 Acrílico Transparente 12 Compartimentos
-ID ML: 5J5PKG-3FL8
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (9x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Organização, Acrílico, Giratório 360, Premium
-open_url: https://meli.la/2eaX8xC
-checked_url: https://meli.la/2eaX8xC
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-AJPM
-
-[ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #173
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
 SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
@@ -188,7 +169,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (29x /lists, 0x listing)
+Memória operacional: histórico recorrente (30x /lists, 0x listing)
 Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
 open_url: https://meli.la/1tZaBVw
 checked_url: https://meli.la/1tZaBVw
@@ -196,7 +177,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #182
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
 SKU: lip-tint-arovida-morango-misterio-3-2ml
@@ -207,7 +188,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
 open_url: https://meli.la/2LdCtt4
 checked_url: https://meli.la/2LdCtt4
@@ -215,7 +196,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4L0N
 
 [ALTA] review_only_storefront
-Quando: 2026-07-16T14:11:58Z
+Quando: 2026-07-16T19:23:31Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -226,9 +207,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (69x /lists, 0x listing)
+Memória operacional: histórico recorrente (70x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
+
+[ALTA] review_only_storefront
+Quando: 2026-07-16T19:23:31Z
+Issue: #224
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/224
+SKU: depilador-ipl-basike-sensacao-gelo-9-niveis
+Título: Depilador IPL Basike Sensação Gelo — 9 Níveis e 1 Milhão de Disparos
+ID ML: 5J5PKG-ECCG
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Depilador IPL, Basike, Luz Pulsada, Sensação Gelo, 9 Níveis, 1 Milhão de Disparos, Feminino
+open_url: https://meli.la/2YKAybJ
+checked_url: https://meli.la/2YKAybJ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-ECCG
