@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T22:54:03Z",
+  "updated_at": "2026-07-17T17:17:12Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -5082,7 +5082,6 @@
         "m550 pro"
       ],
       "quick_home": true,
-      "quick_home_order": 2,
       "_source_issue_number": 236,
       "_target_issue_number": 42,
       "short_url": "https://meli.la/2f8v9BC",
@@ -10331,7 +10330,7 @@
       "promo_text": "🍋 Sabonete Facial Garnier SkinActive Uniform & Matte com Vitamina C — 120g. Limpa profundamente, remove impurezas, oleosidade e maquiagem, proporcionando efeito matte sem ressecar. Sua fórmula ajuda a purificar, uniformizar e reduzir marcas, sendo ideal para a rotina diária de skincare.",
       "buy_cta": "Comprar com 50% OFF no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -10384,12 +10383,92 @@
         "https://github.com/user-attachments/assets/e3c173a8-2b7a-4704-8505-6df002b4cfd2"
       ],
       "webp_optimized_at": "2026-07-14T22:54:03Z"
+    },
+    {
+      "sku": "neutrogena-hydro-boost-water-gel-50g",
+      "title": "Neutrogena Hydro Boost Water Gel 50 g",
+      "badges": [
+        "Mais Vendido",
+        "Neutrogena",
+        "Hydro Boost",
+        "Hidratação Facial",
+        "Ácido Hialurônico",
+        "Textura Water Gel",
+        "Textura Ultraleve",
+        "Oil-Free",
+        "Uso Dia e Noite",
+        "Todos os Tipos de Pele",
+        "50 g"
+      ],
+      "id_busca": "5J5PKG-6345",
+      "open_url": "https://meli.la/23eDowg",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEgvNzqwgUlqYDXQhVcKflyqSdKdrEcivm5TrcY%2Fu4285V66mx9nwMgxtsqlZlc8t6YxjvdY5byGeXwqh%2FlHV6G7rTNOwWws9g1WWUgllE6ZK40pNASMrHChu%2B4vwHnpg9TICJsCEhgikoVa2zgFLuG2w63t40Z7v5wQLCUMNU7IEoaTgPZKIR%2BFA8Nb1YbbNZJ%2B9zM%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-6345",
+      "image": "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-cover-053ed04490.webp",
+      "images": [
+        "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-images-01-7f2074fdc7.webp",
+        "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-images-02-35f4b98a2a.webp",
+        "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-images-03-137594e702.webp"
+      ],
+      "price_text": "R$ 53,93",
+      "old_price_text": "R$ 90,99",
+      "discount_text": "40% OFF",
+      "price_checked_at": "17/07/2026",
+      "promo_text": "💧 Neutrogena Hydro Boost Water Gel 50 g: hidratação facial refrescante com ácido hialurônico e textura aqua ultraleve, oil-free. Ajuda a manter a pele hidratada ao longo do dia, com rápida absorção e sensação leve. Indicado para todos os tipos de pele e para uso diário.",
+      "buy_cta": "Comprar com 40% OFF no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 238,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/238",
+      "issue_title": "Neutrogena Hydro Boost Water Gel 50 g",
+      "categoria_principal": "Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Beleza",
+        "Skincare",
+        "Cuidados com a Pele",
+        "Hidratação Facial"
+      ],
+      "aliases_busca": [
+        "neutrogena hydro boost",
+        "hydro boost 50g",
+        "hidratante facial",
+        "gel hidratante facial",
+        "water gel",
+        "ácido hialurônico",
+        "hidratante neutrogena",
+        "hidratante oil-free",
+        "hidratante para o rosto",
+        "skincare facial",
+        "creme facial 50g"
+      ],
+      "quick_home": true,
+      "quick_home_order": 2,
+      "_source_issue_number": 238,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/23eDowg",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEgvNzqwgUlqYDXQhVcKflyqSdKdrEcivm5TrcY%2Fu4285V66mx9nwMgxtsqlZlc8t6YxjvdY5byGeXwqh%2FlHV6G7rTNOwWws9g1WWUgllE6ZK40pNASMrHChu%2B4vwHnpg9TICJsCEhgikoVa2zgFLuG2w63t40Z7v5wQLCUMNU7IEoaTgPZKIR%2BFA8Nb1YbbNZJ%2B9zM%3D",
+      "last_checked": "",
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/408df0f6-89a7-4cdb-9ace-d25fae9c345e",
+      "images_original": [
+        "https://github.com/user-attachments/assets/1f488e98-0691-45b1-b0ac-25f30ada1370",
+        "https://github.com/user-attachments/assets/28c24f68-fecd-41ee-b782-448f9353e539",
+        "https://github.com/user-attachments/assets/2d66de1b-8c27-4488-801d-ee00a8e63d33"
+      ],
+      "webp_optimized_at": "2026-07-17T17:17:12Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-07-14T22:54:03Z",
+    "updated_at": "2026-07-17T17:17:12Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
