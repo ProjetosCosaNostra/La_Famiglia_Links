@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-18T13:44:59Z
-Itens pendentes: 11
-SKUs únicos: 11
-Prioridade alta: 11
+Atualizado em: 2026-07-18T19:24:17Z
+Itens pendentes: 9
+SKUs únicos: 9
+Prioridade alta: 9
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 11
+- review_only_storefront: 9
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 11
+- trocar_link: 9
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 10
-- social_profile_needs_review: 1
+- storefront_social_lists_invalid: 9
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -36,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (59x /lists, 0x listing)
+Memória operacional: histórico recorrente (60x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1vwXiJg
 checked_url: https://meli.la/1vwXiJg
@@ -44,26 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
-Issue: #100
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/100
-SKU: kit-4-formas-gelo-tampa-silicone
-Título: Kit 4 Formas de Gelo com Tampa — Silicone (Fundo Flexível + Tampa Rígida)
-ID ML: 5J5PKG-PZ8V
-Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
-Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Formas de Gelo, Silicone, Tampa Rígida, Fundo Flexível, Empilhável, Freezer
-open_url: https://meli.la/19fvuVX
-checked_url: https://meli.la/19fvuVX
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BE7a4cqpxQyzphS3rwgDiPjvrRducRNDva4qiF6xouXzxKMzgsI1UOrfHLqF8rqQ13P%2BLZVdOFJH2nFoE45aaGlh9qKcPjiWrTrlRThGSQdpoL6OKswpzTjcPBCwfIG4xWWDltt7oNojZla7q9o%2FYBvmQgRE32iIjrPoGnafPEyvOS0EOJGpYJhAgb%2F3fK%2FXrDbH2bY%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-PZ8V
-
-[ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -74,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (47x /lists, 0x listing)
+Memória operacional: histórico recorrente (48x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -82,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #89
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/89
 SKU: conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm
@@ -93,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (33x /lists, 0x listing)
+Memória operacional: histórico recorrente (34x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Panelas, Jogo de Panelas, Antiaderente, Teflon, 10 peças, Casa e Cozinha
 open_url: https://meli.la/2D19CwL
 checked_url: https://meli.la/2D19CwL
@@ -101,26 +81,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=0dc765c4-4b3d-4e5e-bd8d-a867bf3a66aa
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
-Issue: #28
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/28
-SKU: sandisk-microsd-128gb-ultra-100mbs
-Título: Cartão de Memória SanDisk 128GB MicroSDXC (Classe 10) — até 100MB/s
-ID ML: 5J5PKG-CPA9
+Quando: 2026-07-18T19:15:24Z
+Issue: #32
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/32
+SKU: teclado-redragon-kumara-552w2-lunar-white-abnt2-outemu-brown
+Título: Teclado gamer Redragon Kumara QWERTY Outemu Black português Brasil cor preto com luz RGB
+ID ML: 5J5PKG-Q48S
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, SanDisk, MicroSD, MicroSDXC, 128GB, Classe 10, Até 100MB/s, Celular
-open_url: https://meli.la/15F1XpC
-checked_url: https://meli.la/15F1XpC
+Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Badges: Achados do Dia, Teclado Mecânico, Gamer, Redragon, Kumara, ABNT2, Português Brasil, Lunar White
+open_url: https://meli.la/1cJzSff
+checked_url: https://meli.la/1cJzSff
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-KT52&tid=8108bf52-7565-4cb9-9f71-57d57a8d5cb1
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-P2C6&tid=871d12eb-f762-4861-b870-73282a054336
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -131,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (67x /lists, 0x listing)
+Memória operacional: histórico recorrente (68x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://meli.la/2aDZHZR
 checked_url: https://meli.la/2aDZHZR
@@ -139,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #54
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
 SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
@@ -150,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (39x /lists, 1x listing)
+Memória operacional: histórico recorrente (40x /lists, 1x listing)
 Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
 open_url: https://mercadolivre.com/sec/29Gq2Ww
 checked_url: https://mercadolivre.com/sec/29Gq2Ww
@@ -158,26 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
-Issue: #129
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
-SKU: puma-flyer-runner-mesh-bdp
-Título: 👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium
-ID ML: 5J5PKG-6B4Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (39x /lists, 1x listing)
-Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
-open_url: https://meli.la/2cmJ3u1
-checked_url: https://meli.la/2cmJ3u1
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
-
-[ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #173
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
 SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
@@ -188,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (37x /lists, 0x listing)
+Memória operacional: histórico recorrente (38x /lists, 0x listing)
 Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
 open_url: https://meli.la/1tZaBVw
 checked_url: https://meli.la/1tZaBVw
@@ -196,7 +157,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #182
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
 SKU: lip-tint-arovida-morango-misterio-3-2ml
@@ -207,7 +168,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 0x listing)
+Memória operacional: histórico recorrente (20x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
 open_url: https://meli.la/2LdCtt4
 checked_url: https://meli.la/2LdCtt4
@@ -215,7 +176,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4L0N
 
 [ALTA] review_only_storefront
-Quando: 2026-07-18T13:39:07Z
+Quando: 2026-07-18T19:15:24Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -226,7 +187,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (77x /lists, 0x listing)
+Memória operacional: histórico recorrente (78x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
