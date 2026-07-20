@@ -1,23 +1,22 @@
 {
-  "updated_at": "2026-07-20T03:58:14Z",
-  "total_items": 11,
+  "updated_at": "2026-07-20T09:35:56Z",
+  "total_items": 9,
   "summary": {
-    "unique_skus": 11,
+    "unique_skus": 9,
     "by_state": {
-      "review_only_storefront": 11
+      "review_only_storefront": 9
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 10,
-      "social_profile_needs_review": 1
+      "storefront_social_lists_invalid": 9
     },
     "by_action": {
-      "trocar_link": 11
+      "trocar_link": 9
     },
-    "high_priority": 11
+    "high_priority": 9
   },
   "items": [
     {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -33,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (53x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (54x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -62,7 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -78,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (39x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (40x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -107,52 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 77,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/77",
-      "issue_title": "[CMS] Produto: escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
-      "sku": "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
-      "title": "Escova de Dente Elétrica Sônica Philips Colgate SonicPro 10 – Recarregável",
-      "id_busca": "5J5PKG-UGW4",
-      "status": 200,
-      "reason": "social_profile_needs_review",
-      "reason_bucket": "storefront_profile_needs_review",
-      "reason_bucket_label": "perfil social com revisão manual",
-      "confidence_score": 60,
-      "confidence_bucket": "revisar_manual",
-      "memory_note": "",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1ZHKRNy",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
-      "open_url": "https://meli.la/1ZHKRNy",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UGW4&tid=e4f97185-b556-4b64-9e62-5af047788fe5",
-      "short_url": "https://meli.la/1ZHKRNy",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Escova Elétrica",
-        "Escova Sônica",
-        "Philips",
-        "Colgate",
-        "SonicPro 10",
-        "Higiene Bucal",
-        "Remove Placa"
-      ]
-    },
-    {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -168,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (31x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -197,7 +151,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -213,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (6x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -242,7 +196,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -258,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (73x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (74x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -287,7 +241,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -303,7 +257,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (45x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (46x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -332,52 +286,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 129,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129",
-      "issue_title": "[CMS] Produto: Puma Flyer Runner Mesh Bdp",
-      "sku": "puma-flyer-runner-mesh-bdp",
-      "title": "👟🔥 Puma Flyer Runner Mesh Bdp — Conforto, Leveza e Visual Premium",
-      "id_busca": "5J5PKG-6B4Q",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (44x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2cmJ3u1",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2cmJ3u1",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNJpp5THcCIdswpKl8%2FmujU9WtrMmYOGytJAvWGoANEZuZ9A6L87nIDDpqeYCbx7Ryg2NdgGUgLzScvd1DQxvFqcF7tx8wiD0Vz9OAbUNdNJDRtow60pxSoAUl3pyy7Je5KxF%2FmPBUQYhBuN9ZXMPfM9iZwKkoLqJBODl8tiw0SD6BZaF%2BtkeUU%2BNtUmXz1CckwAUQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e",
-      "short_url": "https://meli.la/2cmJ3u1",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNJpp5THcCIdswpKl8%2FmujU9WtrMmYOGytJAvWGoANEZuZ9A6L87nIDDpqeYCbx7Ryg2NdgGUgLzScvd1DQxvFqcF7tx8wiD0Vz9OAbUNdNJDRtow60pxSoAUl3pyy7Je5KxF%2FmPBUQYhBuN9ZXMPfM9iZwKkoLqJBODl8tiw0SD6BZaF%2BtkeUU%2BNtUmXz1CckwAUQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNJpp5THcCIdswpKl8%2FmujU9WtrMmYOGytJAvWGoANEZuZ9A6L87nIDDpqeYCbx7Ryg2NdgGUgLzScvd1DQxvFqcF7tx8wiD0Vz9OAbUNdNJDRtow60pxSoAUl3pyy7Je5KxF%2FmPBUQYhBuN9ZXMPfM9iZwKkoLqJBODl8tiw0SD6BZaF%2BtkeUU%2BNtUmXz1CckwAUQ%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Puma",
-        "Flyer Runner Mesh Bdp",
-        "Tênis",
-        "Tênis Puma",
-        "Calçado",
-        "Conforto",
-        "Leve"
-      ]
-    },
-    {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -393,7 +302,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (43x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (44x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -420,7 +329,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -436,7 +345,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -463,7 +372,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-20T03:52:36Z",
+      "happened_at": "2026-07-20T09:30:13Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -479,7 +388,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (83x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (84x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
