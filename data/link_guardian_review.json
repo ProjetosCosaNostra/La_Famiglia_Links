@@ -1,22 +1,23 @@
 {
-  "updated_at": "2026-07-19T19:22:43Z",
-  "total_items": 9,
+  "updated_at": "2026-07-20T03:58:14Z",
+  "total_items": 11,
   "summary": {
-    "unique_skus": 9,
+    "unique_skus": 11,
     "by_state": {
-      "review_only_storefront": 9
+      "review_only_storefront": 11
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 9
+      "storefront_social_lists_invalid": 10,
+      "social_profile_needs_review": 1
     },
     "by_action": {
-      "trocar_link": 9
+      "trocar_link": 11
     },
-    "high_priority": 9
+    "high_priority": 11
   },
   "items": [
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +33,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (52x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (53x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +62,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +78,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (38x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (39x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +107,97 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 77,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/77",
+      "issue_title": "[CMS] Produto: escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
+      "sku": "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
+      "title": "Escova de Dente Elétrica Sônica Philips Colgate SonicPro 10 – Recarregável",
+      "id_busca": "5J5PKG-UGW4",
+      "status": 200,
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
+      "memory_note": "",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1ZHKRNy",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
+      "open_url": "https://meli.la/1ZHKRNy",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UGW4&tid=e4f97185-b556-4b64-9e62-5af047788fe5",
+      "short_url": "https://meli.la/1ZHKRNy",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Escova Elétrica",
+        "Escova Sônica",
+        "Philips",
+        "Colgate",
+        "SonicPro 10",
+        "Higiene Bucal",
+        "Remove Placa"
+      ]
+    },
+    {
+      "happened_at": "2026-07-20T03:52:36Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 34,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34",
+      "issue_title": "[CMS] Produto: Kit de Soquetes 46 Peças S Siqueira (Catraca 1/4) — 5J5PKG-WXZ9",
+      "sku": "s-siqueira-kit-soquetes-46pcs-1-4-wxz9",
+      "title": "Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta",
+      "id_busca": "5J5PKG-66MX",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2dvtxCQ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2dvtxCQ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEDnxTj3g%2Fw%2F1gfvllGxLKiTcKQYcJ3rly9ZKDvQ2%2Fjx9CmcqkV%2B86%2BZzf87Fe6a3v72jOpoQrSJtsd1SES18n4L1ckjRc2ZVicyVZ6nXhw%2F0kz4YHr5UXd6lpHULXibqGsb0h9DkSkXNkPFO%2FqzXEPD%2FX6HMgVJ%2FEQKSyj1Mtz1V8TET%2BzAdX1zeD%2B8SmptuF1rBQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEDnxTj3g%2Fw%2F1gfvllGxLKiTcKQYcJ3rly9ZKDvQ2%2Fjx9CmcqkV%2B86%2BZzf87Fe6a3v72jOpoQrSJtsd1SES18n4L1ckjRc2ZVicyVZ6nXhw%2F0kz4YHr5UXd6lpHULXibqGsb0h9DkSkXNkPFO%2FqzXEPD%2FX6HMgVJ%2FEQKSyj1Mtz1V8TET%2BzAdX1zeD%2B8SmptuF1rBQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEDnxTj3g%2Fw%2F1gfvllGxLKiTcKQYcJ3rly9ZKDvQ2%2Fjx9CmcqkV%2B86%2BZzf87Fe6a3v72jOpoQrSJtsd1SES18n4L1ckjRc2ZVicyVZ6nXhw%2F0kz4YHr5UXd6lpHULXibqGsb0h9DkSkXNkPFO%2FqzXEPD%2FX6HMgVJ%2FEQKSyj1Mtz1V8TET%2BzAdX1zeD%2B8SmptuF1rBQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Ferramentas",
+        "Kit de Soquetes",
+        "Catraca 1/4",
+        "Aço CRV",
+        "Maleta",
+        "Oficina",
+        "Carro"
+      ]
+    },
+    {
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +213,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +242,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +258,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (72x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (73x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -196,7 +287,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -212,7 +303,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (44x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (45x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -241,7 +332,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -257,7 +348,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (43x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (44x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -286,7 +377,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -302,7 +393,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (42x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (43x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -329,7 +420,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -345,7 +436,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -372,7 +463,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-19T19:16:58Z",
+      "happened_at": "2026-07-20T03:52:36Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -388,7 +479,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (82x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (83x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

@@ -1,22 +1,23 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-19T19:22:43Z
-Itens pendentes: 9
-SKUs únicos: 9
-Prioridade alta: 9
+Atualizado em: 2026-07-20T03:58:14Z
+Itens pendentes: 11
+SKUs únicos: 11
+Prioridade alta: 11
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 9
+- review_only_storefront: 11
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 9
+- trocar_link: 11
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 9
+- storefront_social_lists_invalid: 10
+- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +25,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -35,7 +36,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (52x /lists, 0x listing)
+Memória operacional: histórico recorrente (53x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -43,7 +44,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #89
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/89
 SKU: conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm
@@ -54,7 +55,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (38x /lists, 0x listing)
+Memória operacional: histórico recorrente (39x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Panelas, Jogo de Panelas, Antiaderente, Teflon, 10 peças, Casa e Cozinha
 open_url: https://meli.la/2D19CwL
 checked_url: https://meli.la/2D19CwL
@@ -62,7 +63,44 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=0dc765c4-4b3d-4e5e-bd8d-a867bf3a66aa
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
+Issue: #77
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/77
+SKU: escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel
+Título: Escova de Dente Elétrica Sônica Philips Colgate SonicPro 10 – Recarregável
+ID ML: 5J5PKG-UGW4
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Badges: Achados do Dia, Escova Elétrica, Escova Sônica, Philips, Colgate, SonicPro 10, Higiene Bucal, Remove Placa
+open_url: https://meli.la/1ZHKRNy
+checked_url: https://meli.la/1ZHKRNy
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAOjrg9lit%2Fdzq0YDylecvTAjlsTDDGZI4dpaEDHGSCmezuPFN4J6fnn8NnNhL%2Fel6MXdkw%2BDfHv7Ic0T6uP6rVLa9O7Wit%2BPrZN7Rw8V7YcOhj3%2FrNqYOZvCe%2FZwg4mUhTNVwgsbxPGs%2FfAG6FeOQ87kyHZvOBcsQUqOQebhkbxyW4FGcQV7wotqbCueoEWYe3bayw%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-UGW4&tid=e4f97185-b556-4b64-9e62-5af047788fe5
+
+[ALTA] review_only_storefront
+Quando: 2026-07-20T03:52:36Z
+Issue: #34
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
+SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
+Título: Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta
+ID ML: 5J5PKG-66MX
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (30x /lists, 0x listing)
+Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
+open_url: https://meli.la/2dvtxCQ
+checked_url: https://meli.la/2dvtxCQ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
+
+[ALTA] review_only_storefront
+Quando: 2026-07-20T03:52:36Z
 Issue: #46
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/46
 SKU: aromatizador-chama-kaizu-lavanda-200ml
@@ -73,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Aromatizador, Umidificador, Difusor, Lavanda, Relaxante, Decoração
 open_url: https://mercadolivre.com/sec/1Qip248
 checked_url: https://mercadolivre.com/sec/1Qip248
@@ -81,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0V2K&tid=fcbea03d-0e7b-4189-bc61-e82ddb867b20
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -92,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (72x /lists, 0x listing)
+Memória operacional: histórico recorrente (73x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://meli.la/2aDZHZR
 checked_url: https://meli.la/2aDZHZR
@@ -100,7 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #54
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
 SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
@@ -111,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (44x /lists, 1x listing)
+Memória operacional: histórico recorrente (45x /lists, 1x listing)
 Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
 open_url: https://mercadolivre.com/sec/29Gq2Ww
 checked_url: https://mercadolivre.com/sec/29Gq2Ww
@@ -119,7 +157,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #129
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/129
 SKU: puma-flyer-runner-mesh-bdp
@@ -130,7 +168,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (43x /lists, 1x listing)
+Memória operacional: histórico recorrente (44x /lists, 1x listing)
 Badges: Achados do Dia, Puma, Flyer Runner Mesh Bdp, Tênis, Tênis Puma, Calçado, Conforto, Leve
 open_url: https://meli.la/2cmJ3u1
 checked_url: https://meli.la/2cmJ3u1
@@ -138,7 +176,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-6B4Q&tid=73e92bbb-4f73-4ee7-8521-39ca3d15dc2e
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #173
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
 SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
@@ -149,7 +187,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (42x /lists, 0x listing)
+Memória operacional: histórico recorrente (43x /lists, 0x listing)
 Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
 open_url: https://meli.la/1tZaBVw
 checked_url: https://meli.la/1tZaBVw
@@ -157,7 +195,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #182
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
 SKU: lip-tint-arovida-morango-misterio-3-2ml
@@ -168,7 +206,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Memória operacional: histórico recorrente (25x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
 open_url: https://meli.la/2LdCtt4
 checked_url: https://meli.la/2LdCtt4
@@ -176,7 +214,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4L0N
 
 [ALTA] review_only_storefront
-Quando: 2026-07-19T19:16:58Z
+Quando: 2026-07-20T03:52:36Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -187,7 +225,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (82x /lists, 0x listing)
+Memória operacional: histórico recorrente (83x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
