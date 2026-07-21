@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-21T03:38:31Z",
-  "total_items": 10,
+  "updated_at": "2026-07-21T08:46:49Z",
+  "total_items": 9,
   "summary": {
-    "unique_skus": 10,
+    "unique_skus": 9,
     "by_state": {
-      "review_only_storefront": 10
+      "review_only_storefront": 9
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 10
+      "storefront_social_lists_invalid": 9
     },
     "by_action": {
-      "trocar_link": 10
+      "trocar_link": 9
     },
-    "high_priority": 10
+    "high_priority": 9
   },
   "items": [
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (75x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (76x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (57x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (58x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (43x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (44x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,52 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 0,
-      "issue_url": "",
-      "issue_title": "",
-      "sku": "se-j-existir-usa-amazon-echo-pop-c2h4r9-2",
-      "title": "Echo Pop Smart Speaker (Alexa) — Preto (Amazon)",
-      "id_busca": "5J5PKG-ZMR8",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 22,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/19Abme6",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/19Abme6",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDBPbjjd0uQspWk8ev%2B4FufZSnwsxBp4aQ2sr0EeEVyk3jbak8FVnftTGdNuPKBKcMk%2BZSgRTspeUn25weNHGPlzSxuGAUj9JkT1cRrQazjy5P7hkKRAkry8MvJPpz67euifCETHeJUQjy%2B%2BLsr%2B%2B9Ak%2FGLBf%2BNRD1bvkt0F%2BzHFpZQMygfJI2a4mz6RY%2BNvMF%2Bord4%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZMR8&tid=4859dfe6-8a08-4249-ac82-57085079ea12",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDBPbjjd0uQspWk8ev%2B4FufZSnwsxBp4aQ2sr0EeEVyk3jbak8FVnftTGdNuPKBKcMk%2BZSgRTspeUn25weNHGPlzSxuGAUj9JkT1cRrQazjy5P7hkKRAkry8MvJPpz67euifCETHeJUQjy%2B%2BLsr%2B%2B9Ak%2FGLBf%2BNRD1bvkt0F%2BzHFpZQMygfJI2a4mz6RY%2BNvMF%2Bord4%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDBPbjjd0uQspWk8ev%2B4FufZSnwsxBp4aQ2sr0EeEVyk3jbak8FVnftTGdNuPKBKcMk%2BZSgRTspeUn25weNHGPlzSxuGAUj9JkT1cRrQazjy5P7hkKRAkry8MvJPpz67euifCETHeJUQjy%2B%2BLsr%2B%2B9Ak%2FGLBf%2BNRD1bvkt0F%2BzHFpZQMygfJI2a4mz6RY%2BNvMF%2Bord4%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Alexa",
-        "Echo Pop",
-        "Smart Speaker",
-        "Casa inteligente",
-        "Wi-Fi",
-        "Bluetooth",
-        "Preto"
-      ]
-    },
-    {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (77x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (78x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -284,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -300,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -328,7 +283,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -344,7 +299,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (47x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (48x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -371,7 +326,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -387,7 +342,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (29x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -414,7 +369,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-21T03:32:36Z",
+      "happened_at": "2026-07-21T08:40:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -430,7 +385,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (87x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (88x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
