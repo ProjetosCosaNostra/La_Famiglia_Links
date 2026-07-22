@@ -1,50 +1,26 @@
 [
   {
-    "sku": "neutrogena-hydro-boost-water-gel-50g",
+    "sku": "o-boticario-floratta-my-blue-colonia-75ml",
     "results": [
       {
-        "source": "https://github.com/user-attachments/assets/408df0f6-89a7-4cdb-9ace-d25fae9c345e",
+        "source": "https://github.com/user-attachments/assets/3e4a9cdc-c15c-41c7-b3e6-16394c040217",
         "status": "converted",
-        "output": "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-cover-053ed04490.webp",
-        "original_bytes": 2189241,
-        "webp_bytes": 67286,
-        "saved_percent": 96.9,
+        "output": "assets/produtos-webp/o-boticario-floratta-my-blue-colonia-75ml-cover-3a7ab51f24.webp",
+        "original_bytes": 2333948,
+        "webp_bytes": 80478,
+        "saved_percent": 96.6,
         "size": {
           "width": 666,
           "height": 1000
         }
       },
       {
-        "source": "https://github.com/user-attachments/assets/1f488e98-0691-45b1-b0ac-25f30ada1370",
+        "source": "https://github.com/user-attachments/assets/4ee20571-c503-4402-b58c-2af4fd9453d7",
         "status": "converted",
-        "output": "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-images-01-7f2074fdc7.webp",
-        "original_bytes": 1993068,
-        "webp_bytes": 74738,
-        "saved_percent": 96.3,
-        "size": {
-          "width": 666,
-          "height": 1000
-        }
-      },
-      {
-        "source": "https://github.com/user-attachments/assets/28c24f68-fecd-41ee-b782-448f9353e539",
-        "status": "converted",
-        "output": "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-images-02-35f4b98a2a.webp",
-        "original_bytes": 2065190,
-        "webp_bytes": 93168,
-        "saved_percent": 95.5,
-        "size": {
-          "width": 666,
-          "height": 1000
-        }
-      },
-      {
-        "source": "https://github.com/user-attachments/assets/2d66de1b-8c27-4488-801d-ee00a8e63d33",
-        "status": "converted",
-        "output": "assets/produtos-webp/neutrogena-hydro-boost-water-gel-50g-images-03-137594e702.webp",
-        "original_bytes": 2312175,
-        "webp_bytes": 104340,
-        "saved_percent": 95.5,
+        "output": "assets/produtos-webp/o-boticario-floratta-my-blue-colonia-75ml-images-01-0872576428.webp",
+        "original_bytes": 2145247,
+        "webp_bytes": 77128,
+        "saved_percent": 96.4,
         "size": {
           "width": 666,
           "height": 1000
