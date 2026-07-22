@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-22T18:40:44Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-07-22T19:42:11Z
+Itens pendentes: 11
+SKUs únicos: 11
+Prioridade alta: 11
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 11
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 11
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 11
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-22T18:38:45Z
+Quando: 2026-07-22T19:37:33Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (62x /lists, 0x listing)
+Memória operacional: histórico recorrente (63x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1vwXiJg
 checked_url: https://meli.la/1vwXiJg
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-07-22T18:38:45Z
+Quando: 2026-07-22T19:37:33Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (64x /lists, 0x listing)
+Memória operacional: histórico recorrente (65x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-07-22T18:38:45Z
+Quando: 2026-07-22T19:37:33Z
 Issue: #89
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/89
 SKU: conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm
@@ -73,9 +73,161 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (50x /lists, 0x listing)
+Memória operacional: histórico recorrente (51x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Panelas, Jogo de Panelas, Antiaderente, Teflon, 10 peças, Casa e Cozinha
 open_url: https://meli.la/2D19CwL
 checked_url: https://meli.la/2D19CwL
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=0dc765c4-4b3d-4e5e-bd8d-a867bf3a66aa
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #46
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/46
+SKU: aromatizador-chama-kaizu-lavanda-200ml
+Título: Umidificador Aromatizador Kaizu Chama (Efeito Fogo) 200ml USB — Lavanda
+ID ML: 5J5PKG-0V2K
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (15x /lists, 0x listing)
+Badges: Achados do Dia, Casa, Aromatizador, Umidificador, Difusor, Lavanda, Relaxante, Decoração
+open_url: https://mercadolivre.com/sec/1Qip248
+checked_url: https://mercadolivre.com/sec/1Qip248
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0V2K&tid=fcbea03d-0e7b-4189-bc61-e82ddb867b20
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #47
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/47
+SKU: torneira-gourmet-flexivel-preta
+Título: Torneira Gourmet Cozinha Flexível Duplo Jato Bancada/parede Preto Bancada Fosco
+ID ML: 5J5PKG-ZWWZ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (26x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Torneira, Torneira Gourmet, Casa, Bancada, Pia, Preto
+open_url: https://meli.la/2DsuQCz
+checked_url: https://meli.la/2DsuQCz
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHR1&tid=d565ad7b-490a-4b0c-bce3-c43ef12b0d2a
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #48
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
+SKU: lixeira-inteligente-sensor-automatica-16l-preta
+Título: Lixeira Automática Inteligente Smart 16l Preto Sensor Banheiro Cozinha Design Moderno
+ID ML: 5J5PKG-WF6P
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (84x /lists, 0x listing)
+Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
+open_url: https://meli.la/2aDZHZR
+checked_url: https://meli.la/2aDZHZR
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #170
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/170
+SKU: organizador-maquiagem-giratorio-360-acrilico-transparente
+Título: Organizador Giratório 360 Acrílico Transparente 12 Compartimentos
+ID ML: 5J5PKG-3FL8
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Maquiagem, Organização, Acrílico, Giratório 360, Premium
+open_url: https://meli.la/2eaX8xC
+checked_url: https://meli.la/2eaX8xC
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-AJPM
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #173
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
+SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
+Título: Ice Creamy Lip Balm Mari Maria Makeup Vanilla 10ml
+ID ML: 5J5PKG-B7HJ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (54x /lists, 0x listing)
+Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
+open_url: https://meli.la/1tZaBVw
+checked_url: https://meli.la/1tZaBVw
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #182
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
+SKU: lip-tint-arovida-morango-misterio-3-2ml
+Título: Lip Tint Arovida Morango Mistério 3,2ml
+ID ML: 5J5PKG-57JE
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (36x /lists, 0x listing)
+Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
+open_url: https://meli.la/2LdCtt4
+checked_url: https://meli.la/2LdCtt4
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4L0N
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #194
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
+SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
+Título: Bolsa Feminina Grande Mochila Antfurto Impermeável Reforçada
+ID ML: 5J5PKG-1SRZ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (94x /lists, 0x listing)
+Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
+open_url: https://meli.la/1Dj4GN9
+checked_url: https://meli.la/1Dj4GN9
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
+
+[ALTA] review_only_storefront
+Quando: 2026-07-22T19:37:33Z
+Issue: #237
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/237
+SKU: sabonete-facial-garnier-uniform-matte-vitamina-c-120g
+Título: Sabonete Facial Garnier SkinActive Uniform & Matte Vitamina C 120g
+ID ML: 5J5PKG-4BHR
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Garnier, SkinActive, Uniform & Matte, Vitamina C, Limpeza Facial, Efeito Matte, Antioleosidade
+open_url: https://meli.la/1GawSXm
+checked_url: https://meli.la/1GawSXm
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4BHR
