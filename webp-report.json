@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "sku": "mondial-modelador-cachos-infinity-em-12",
+    "results": [
+      {
+        "source": "https://github.com/user-attachments/assets/fff5a1bf-5449-452f-b9fa-17a08862e99c",
+        "status": "converted",
+        "output": "assets/produtos-webp/mondial-modelador-cachos-infinity-em-12-cover-f6eb4376f2.webp",
+        "original_bytes": 169304,
+        "webp_bytes": 91208,
+        "saved_percent": 46.1,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/7f20d386-b43c-4b2b-8f34-b0575ee9e9ec",
+        "status": "converted",
+        "output": "assets/produtos-webp/mondial-modelador-cachos-infinity-em-12-images-01-980fdbf9f6.webp",
+        "original_bytes": 107094,
+        "webp_bytes": 64470,
+        "saved_percent": 39.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/a555f494-f8d3-4c39-8497-f5424f22c15b",
+        "status": "converted",
+        "output": "assets/produtos-webp/mondial-modelador-cachos-infinity-em-12-images-02-c3c4244c2a.webp",
+        "original_bytes": 142864,
+        "webp_bytes": 82588,
+        "saved_percent": 42.2,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      }
+    ]
+  }
+]

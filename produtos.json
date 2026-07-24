@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24T22:28:32Z",
+  "updated_at": "2026-07-24T23:34:55Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -10448,7 +10448,6 @@
         "creme facial 50g"
       ],
       "quick_home": true,
-      "quick_home_order": 2,
       "_source_issue_number": 238,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/23eDowg",
@@ -10501,7 +10500,7 @@
       "promo_text": "💙 O Boticário Floratta My Blue Colônia 75 ml — fragrância feminina elegante e envolvente, com toque floral sofisticado e frescor ideal para o dia a dia. Um perfume marcante para deixar todos os momentos ainda mais especiais.",
       "buy_cta": "Comprar com 37% OFF no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -10553,17 +10552,96 @@
         "https://github.com/user-attachments/assets/4ee20571-c503-4402-b58c-2af4fd9453d7"
       ],
       "webp_optimized_at": "2026-07-22T18:32:15Z"
+    },
+    {
+      "sku": "mondial-modelador-cachos-infinity-em-12",
+      "title": "Modelador de Cachos Mondial Infinity EM-12 55W",
+      "badges": [
+        "Mais Vendido",
+        "2º em Modeladores de Cachos",
+        "4",
+        "9 Estrelas",
+        "+50 Mil Vendidos",
+        "Revestimento Cerâmico",
+        "Aquecimento Rápido",
+        "Até 210°C",
+        "55W de Potência",
+        "Diâmetro 2",
+        "5 cm",
+        "Cachos Definidos",
+        "Resultado Duradouro",
+        "Beleza",
+        "Cuidados com o Cabelo"
+      ],
+      "id_busca": "5J5PKG-Y7TN",
+      "open_url": "https://meli.la/1JxC1mg",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCzTYexFwKUZ04HGyYP8WxwhQYN4CSY4JjkX1UjC590P6jwpo1oCeDvLJgwPgFzoWPxBZwoQLIw6B7nhFfPN1Zr2cf6BI%2Fr72hr0C701E79MeLOnQ%2Bg0hYCApCNGWvl2SUOCJOy1GZAhCzxlXRONQtkvlrP1sxhidwsied3kRZ7DVg%2BkSiUDJouOKqgbUS0xeICwCa2WLaL1OjhbhCO94Vqg6sfJimE9p6VSiA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-Y7TN",
+      "image": "assets/produtos-webp/mondial-modelador-cachos-infinity-em-12-cover-f6eb4376f2.webp",
+      "images": [
+        "assets/produtos-webp/mondial-modelador-cachos-infinity-em-12-images-01-980fdbf9f6.webp",
+        "assets/produtos-webp/mondial-modelador-cachos-infinity-em-12-images-02-c3c4244c2a.webp"
+      ],
+      "price_text": "R$ 62,53",
+      "old_price_text": "R$ 109,90",
+      "discount_text": "43% OFF",
+      "price_checked_at": "24/07/2026",
+      "promo_text": "✨ Crie cachos definidos e duradouros com o Modelador Mondial Infinity EM-12. Possui revestimento cerâmico, 55W de potência, aquecimento rápido, temperatura de até 210°C e diâmetro de 2,5 cm para facilitar o uso no dia a dia.",
+      "buy_cta": "Comprar agora no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 240,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/240",
+      "issue_title": "Modelador de Cachos Mondial Infinity EM-12",
+      "categoria_principal": "Beleza e Cuidado Pessoal",
+      "categorias_secundarias": [
+        "Artefatos para Cabelo",
+        "Modeladores de Cachos",
+        "Cuidados com o Cabelo",
+        "Beleza Feminina"
+      ],
+      "aliases_busca": [
+        "modelador de cachos",
+        "babyliss",
+        "cacheador de cabelo",
+        "modelador Mondial",
+        "Mondial Infinity EM-12",
+        "modelador 25 mm",
+        "modelador cerâmico",
+        "modelador de cabelo"
+      ],
+      "quick_home": true,
+      "quick_home_order": 2,
+      "_source_issue_number": 240,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1JxC1mg",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCzTYexFwKUZ04HGyYP8WxwhQYN4CSY4JjkX1UjC590P6jwpo1oCeDvLJgwPgFzoWPxBZwoQLIw6B7nhFfPN1Zr2cf6BI%2Fr72hr0C701E79MeLOnQ%2Bg0hYCApCNGWvl2SUOCJOy1GZAhCzxlXRONQtkvlrP1sxhidwsied3kRZ7DVg%2BkSiUDJouOKqgbUS0xeICwCa2WLaL1OjhbhCO94Vqg6sfJimE9p6VSiA%3D%3D",
+      "last_checked": "",
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/fff5a1bf-5449-452f-b9fa-17a08862e99c",
+      "images_original": [
+        "https://github.com/user-attachments/assets/7f20d386-b43c-4b2b-8f34-b0575ee9e9ec",
+        "https://github.com/user-attachments/assets/a555f494-f8d3-4c39-8497-f5424f22c15b"
+      ],
+      "webp_optimized_at": "2026-07-24T23:34:55Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-07-24T22:28:32Z",
+    "updated_at": "2026-07-24T23:34:55Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
-    "products_touched": 0,
-    "converted": 0,
+    "products_touched": 1,
+    "converted": 3,
     "already_existed": 0,
     "dry_run": 0,
     "failed": 0,
