@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-25T03:35:33Z",
+  "updated_at": "2026-07-25T08:22:42Z",
   "total_items": 12,
   "summary": {
     "unique_skus": 12,
@@ -16,7 +16,7 @@
   },
   "items": [
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (73x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (74x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (61x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (62x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -190,7 +190,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -206,7 +206,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (9x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -251,7 +251,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (82x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (83x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -280,7 +280,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -296,7 +296,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (23x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -341,7 +341,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (93x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (94x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -370,7 +370,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -386,7 +386,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (11x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (12x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -415,7 +415,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -431,7 +431,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (18x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -459,7 +459,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -475,7 +475,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (63x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (64x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -502,7 +502,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-25T03:29:55Z",
+      "happened_at": "2026-07-25T08:18:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -518,7 +518,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (45x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (46x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
