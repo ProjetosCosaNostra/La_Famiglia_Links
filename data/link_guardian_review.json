@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-26T13:52:15Z",
-  "total_items": 12,
+  "updated_at": "2026-07-26T19:28:40Z",
+  "total_items": 11,
   "summary": {
-    "unique_skus": 12,
+    "unique_skus": 11,
     "by_state": {
-      "review_only_storefront": 12
+      "review_only_storefront": 11
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 12
+      "storefront_social_lists_invalid": 11
     },
     "by_action": {
-      "trocar_link": 12
+      "trocar_link": 11
     },
-    "high_priority": 12
+    "high_priority": 11
   },
   "items": [
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (79x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (80x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (67x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (68x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -190,7 +190,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -206,7 +206,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -251,7 +251,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (88x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (89x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -280,7 +280,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -296,7 +296,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (29x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -341,7 +341,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (99x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (100x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -370,52 +370,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 49,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/49",
-      "issue_title": "[CMS] Produto: 🛠️⚡ Parafusadeira + Furadeira — Kit completo com maleta",
-      "sku": "parafusadeira-furadeira-kit-2-baterias-48v-maleta",
-      "title": "Parafusadeira Furadeira C/ 2 Baterias Maleta Kit Completo Led Eixo Flexível Vários Níveis Torque Simake",
-      "id_busca": "5J5PKG-1WFH",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2MfQ3vr",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2MfQ3vr",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM%2FQ9ftwpQBasjlG0ElBHSHT4Zd1us9V7ttZ9TsyBtnLxA7v1mBZcKk9MkNJzJ%2Fy3fa6kMm2I3ou69LFlL%2BUj0YgzOcYDnpw%2FmZW3IoqAFeIAL4Z5nRXg9skIv3c9TMIRiuoUl7t2sSFd69YDRtAg%2FCtcM6OLbmq%2FAAnppokH206iWMNNQd3l%2FTe8pqkAlL4oA5isUY%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1WFH&tid=a2928bb5-abd4-47fe-bbb2-d7a413674a66",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM%2FQ9ftwpQBasjlG0ElBHSHT4Zd1us9V7ttZ9TsyBtnLxA7v1mBZcKk9MkNJzJ%2Fy3fa6kMm2I3ou69LFlL%2BUj0YgzOcYDnpw%2FmZW3IoqAFeIAL4Z5nRXg9skIv3c9TMIRiuoUl7t2sSFd69YDRtAg%2FCtcM6OLbmq%2FAAnppokH206iWMNNQd3l%2FTe8pqkAlL4oA5isUY%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM%2FQ9ftwpQBasjlG0ElBHSHT4Zd1us9V7ttZ9TsyBtnLxA7v1mBZcKk9MkNJzJ%2Fy3fa6kMm2I3ou69LFlL%2BUj0YgzOcYDnpw%2FmZW3IoqAFeIAL4Z5nRXg9skIv3c9TMIRiuoUl7t2sSFd69YDRtAg%2FCtcM6OLbmq%2FAAnppokH206iWMNNQd3l%2FTe8pqkAlL4oA5isUY%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Ferramentas",
-        "Parafusadeira",
-        "Furadeira",
-        "Kit Completo",
-        "Maleta",
-        "2 Baterias",
-        "LED"
-      ]
-    },
-    {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -431,7 +386,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (17x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (18x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -460,7 +415,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -476,7 +431,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (69x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (70x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -503,7 +458,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-26T13:46:00Z",
+      "happened_at": "2026-07-26T19:22:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -519,7 +474,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (51x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (52x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
