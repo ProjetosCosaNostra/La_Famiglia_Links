@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-27T03:59:16Z",
-  "total_items": 10,
+  "updated_at": "2026-07-27T10:11:17Z",
+  "total_items": 12,
   "summary": {
-    "unique_skus": 10,
+    "unique_skus": 12,
     "by_state": {
-      "review_only_storefront": 10
+      "review_only_storefront": 12
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 10
+      "storefront_social_lists_invalid": 12
     },
     "by_action": {
-      "trocar_link": 10
+      "trocar_link": 12
     },
-    "high_priority": 10
+    "high_priority": 12
   },
   "items": [
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (81x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (82x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,50 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 113,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113",
+      "issue_title": "Gamestick Premium",
+      "sku": "gamestick-premium-2-controles-wireless",
+      "title": "Adaptador Retro Stick M15 Premium 20mil Jogos",
+      "id_busca": "5J5PKG-ATVA",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (79x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2oG4U56",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2oG4U56",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "short_url": "https://meli.la/1DeTTFh",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Tecnologia",
+        "Games",
+        "Retro",
+        "HDMI",
+        "Premium"
+      ]
+    },
+    {
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +163,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (69x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (70x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +192,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +208,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -190,7 +233,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -206,7 +249,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -235,7 +278,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -251,7 +294,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (31x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -280,7 +323,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -296,7 +339,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (101x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (102x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -325,7 +368,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -341,7 +384,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -370,7 +413,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -386,7 +429,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (71x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (72x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -413,7 +456,50 @@
       ]
     },
     {
-      "happened_at": "2026-07-27T03:53:37Z",
+      "happened_at": "2026-07-27T10:04:44Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 174,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/174",
+      "issue_title": "Love Kit Gloss Labial Coração Lápis Volume Rosada",
+      "sku": "love-kit-gloss-labial-coracao-lapis-volume-rosada",
+      "title": "Love Kit Gloss Labial Coração Lápis Volume Rosada",
+      "id_busca": "5J5PKG-3DE3",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (5x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1b5R9Wd",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1b5R9Wd",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOEAoBxJkxxby1P7Z6YnhCCdcubnAoQLWQDxY74Um%2F%2BPWeDFjYsnT5SRikpHb98tUbo9yPiCz6kYrSnL4Hsx8cQY3JMXZKVh5yScU866l0o%2BhyT0uguCtQvaWe4WR0Gt7RmGs1f5IqC1MpCeW1Yfz1PD7LRyUYcvdLNTSuUAZ6uhKvI7O4X%2FNjx1PEgSMS9jxHZLgJE%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-3DE3",
+      "short_url": "https://meli.la/1b5R9Wd",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOEAoBxJkxxby1P7Z6YnhCCdcubnAoQLWQDxY74Um%2F%2BPWeDFjYsnT5SRikpHb98tUbo9yPiCz6kYrSnL4Hsx8cQY3JMXZKVh5yScU866l0o%2BhyT0uguCtQvaWe4WR0Gt7RmGs1f5IqC1MpCeW1Yfz1PD7LRyUYcvdLNTSuUAZ6uhKvI7O4X%2FNjx1PEgSMS9jxHZLgJE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Gloss Labial",
+        "Coração",
+        "Rosada",
+        "Feminino",
+        "Presenteável"
+      ]
+    },
+    {
+      "happened_at": "2026-07-27T10:04:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -429,7 +515,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (53x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (54x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
