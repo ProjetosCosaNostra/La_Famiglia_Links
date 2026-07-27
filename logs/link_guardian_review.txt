@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-07-27T15:00:34Z
-Itens pendentes: 13
-SKUs únicos: 13
-Prioridade alta: 13
+Atualizado em: 2026-07-27T19:50:56Z
+Itens pendentes: 12
+SKUs únicos: 12
+Prioridade alta: 12
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 13
+- review_only_storefront: 12
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 13
+- trocar_link: 12
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 12
-- storefront_social_profile_unconfirmed: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #154
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/154
 SKU: paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores
@@ -36,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (83x /lists, 0x listing)
+Memória operacional: histórico recorrente (84x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Belle Angel, Nude, Paleta de Sombras
 open_url: https://meli.la/1vwXiJg
 checked_url: https://meli.la/1vwXiJg
@@ -44,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMBLi%2FFpqOBtXHWKq%2FQgF74O2pwYUmaMmRhI9dGAH1h6Wvg7gC9SM%2F9SYSSj4sC4MAbNebv97NC1JWq2DO%2FBkSN2LP%2Fe4SlVXADoK261ZkvxPm1taIhoFwZH8URHWKrxHkxPqVotuqlsiIEghSLosgYQmKmFd5qbHYpjKgzG6WUw5Qfi%2FuJPpcjaFNSWGn6WP2AcpKeRzptvaHXhKw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #123
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
 SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
@@ -55,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (23x /lists, 0x listing)
+Memória operacional: histórico recorrente (24x /lists, 0x listing)
 Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
 open_url: https://meli.la/28cnKAr
 checked_url: https://meli.la/28cnKAr
@@ -63,7 +62,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
+Issue: #116
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/116
+SKU: smart-tv-philco-roku-32-premium
+Título: 📺 Smart TV Philco Roku 32” Premium
+ID ML: 5J5PKG-AHDQ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Smart TV, Philco, Roku TV, Dolby Audio, Streaming, 32 Polegadas, TV
+open_url: https://meli.la/19Lo34Y
+checked_url: https://meli.la/19Lo34Y
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHDQ&tid=9ad0d3ed-fbc3-47c1-8b35-05a838b01d66
+
+[ALTA] review_only_storefront
+Quando: 2026-07-27T19:46:13Z
 Issue: #113
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/113
 SKU: gamestick-premium-2-controles-wireless
@@ -74,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (80x /lists, 0x listing)
+Memória operacional: histórico recorrente (81x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, Games, Retro, HDMI, Premium
 open_url: https://meli.la/2oG4U56
 checked_url: https://meli.la/2oG4U56
@@ -82,7 +100,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHqPUIVvYu1qbQdiOwdqHh318GCEIY%2BU07PDZrfRx0%2BJURK3LixSiCcqdCbxqSGJrYOw7J0Cy6xRoSek47oWPQW3jByvIzAbx57licR3dMiLliDKrw6zY1%2FhFImCczKUKCp%2FAhFhirU%2BKzIhYhJ9HjDy9wftYTf%2B419H1KpgbJMwPMlcaASAak0GZYyWBZCLIGxSXQ%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
+Issue: #111
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/111
+SKU: zero-mofo-premium-1l-spray
+Título: 🛡️ Zero Mofo Premium 1L + Spray — Proteção Prolongada para Parede, Teto e Piso
+ID ML: 5J5PKG-GP9L
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, Limpeza, Anti Mofo, Zero Mofo, Banheiro, Parede, Teto, Piso
+open_url: https://meli.la/1h9cbDK
+checked_url: https://meli.la/1h9cbDK
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J7T0&tid=9ef326de-f93f-485e-a3eb-610b5b06d2f2
+
+[ALTA] review_only_storefront
+Quando: 2026-07-27T19:46:13Z
 Issue: #89
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/89
 SKU: conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm
@@ -93,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (71x /lists, 0x listing)
+Memória operacional: histórico recorrente (72x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Panelas, Jogo de Panelas, Antiaderente, Teflon, 10 peças, Casa e Cozinha
 open_url: https://meli.la/2D19CwL
 checked_url: https://meli.la/2D19CwL
@@ -101,7 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-THJM&tid=0dc765c4-4b3d-4e5e-bd8d-a867bf3a66aa
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #2
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/2
 SKU: xiaomi-redmi-buds-6-play
@@ -112,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (23x /lists, 0x listing)
+Memória operacional: histórico recorrente (24x /lists, 0x listing)
 Badges: Achado do Dia, Bluetooth 5.4, TWS, PRETO
 open_url: https://meli.la/1bcZess
 checked_url: https://meli.la/1bcZess
@@ -120,7 +157,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-E681&tid=fda80933-8de9-40b4-bd85-02b942a6e6d8
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #28
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/28
 SKU: sandisk-microsd-128gb-ultra-100mbs
@@ -131,7 +168,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
 Badges: Achados do Dia, SanDisk, MicroSD, MicroSDXC, 128GB, Classe 10, Até 100MB/s, Celular
 open_url: https://meli.la/15F1XpC
 checked_url: https://meli.la/15F1XpC
@@ -139,45 +176,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-KT52&tid=8108bf52-7565-4cb9-9f71-57d57a8d5cb1
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
-Issue: #37
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
-SKU: projetor-smart-hy320-goodvision
-Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
-ID ML: 5J5PKG-D9EV
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (90x /lists, 0x listing)
-Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
-open_url: https://meli.la/1YAEmtS
-checked_url: https://meli.la/1YAEmtS
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
-
-[ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
-Issue: #46
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/46
-SKU: aromatizador-chama-kaizu-lavanda-200ml
-Título: Umidificador Aromatizador Kaizu Chama (Efeito Fogo) 200ml USB — Lavanda
-ID ML: 5J5PKG-0V2K
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (33x /lists, 0x listing)
-Badges: Achados do Dia, Casa, Aromatizador, Umidificador, Difusor, Lavanda, Relaxante, Decoração
-open_url: https://mercadolivre.com/sec/1Qip248
-checked_url: https://mercadolivre.com/sec/1Qip248
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0V2K&tid=fcbea03d-0e7b-4189-bc61-e82ddb867b20
-
-[ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #48
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
 SKU: lixeira-inteligente-sensor-automatica-16l-preta
@@ -188,7 +187,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (103x /lists, 0x listing)
+Memória operacional: histórico recorrente (104x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
 open_url: https://meli.la/2aDZHZR
 checked_url: https://meli.la/2aDZHZR
@@ -196,26 +195,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
-Issue: #68
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/68
-SKU: suporte-notebook-aluminio-dobravel-ajustavel-davely-prateado
-Título: Base Suporte Dobrável para Notebook em Alumínio (Ajustável) – Prateado
-ID ML: 5J5PKG-22S1
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Notebook, Suporte, Alumínio, Dobrável, Ajustável, Portátil, Ventilação
-open_url: https://meli.la/2iV3XdP
-checked_url: https://meli.la/2iV3XdP
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNKaQ5j5npM6n0QYQZeslxG%2Fwajah%2B5PgBi3n5G1y7VYT3JgR2%2BchcwKJyOUbw0CEDcY9PwHo3Dxw50MBf218z7pkbwthPTdtK5xIxMHYRQSkQwKNQQsJbU2r8Ff30wW6u7qONwq4jk5Fymle8m9CWMsYTaqW0thXXKPIw%2B1jLHe1rNAtoDxtsNd4FeneOp%2BqST5CdU%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-22S1&tid=ba0cd592-a44d-4d06-8cae-f319557ebb31
-
-[ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -226,7 +206,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 2x listing)
+Memória operacional: histórico recorrente (22x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
@@ -234,7 +214,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #173
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/173
 SKU: ice-creamy-lip-balm-mari-maria-vanilla-10ml
@@ -245,7 +225,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (73x /lists, 0x listing)
+Memória operacional: histórico recorrente (74x /lists, 0x listing)
 Badges: Achados do Dia, Lip Balm, Vanilla, Mari Maria, Presenteável, Feminino
 open_url: https://meli.la/1tZaBVw
 checked_url: https://meli.la/1tZaBVw
@@ -253,7 +233,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B7HJ
 
 [ALTA] review_only_storefront
-Quando: 2026-07-27T14:54:09Z
+Quando: 2026-07-27T19:46:13Z
 Issue: #182
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/182
 SKU: lip-tint-arovida-morango-misterio-3-2ml
@@ -264,7 +244,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (55x /lists, 0x listing)
+Memória operacional: histórico recorrente (56x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Arovida, Morango Mistério, Lábios e Bochechas, Longa Duração
 open_url: https://meli.la/2LdCtt4
 checked_url: https://meli.la/2LdCtt4
