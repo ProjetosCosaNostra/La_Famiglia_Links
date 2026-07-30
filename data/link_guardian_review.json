@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-07-29T19:40:06Z",
-  "total_items": 12,
+  "updated_at": "2026-07-30T03:20:07Z",
+  "total_items": 14,
   "summary": {
-    "unique_skus": 12,
+    "unique_skus": 14,
     "by_state": {
-      "review_only_storefront": 12
+      "review_only_storefront": 14
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 12
+      "storefront_social_lists_invalid": 14
     },
     "by_action": {
-      "trocar_link": 12
+      "trocar_link": 14
     },
-    "high_priority": 12
+    "high_priority": 14
   },
   "items": [
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (93x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (94x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -75,7 +75,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (33x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (81x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (82x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (27x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (28x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -284,7 +284,52 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 37,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37",
+      "issue_title": "[CMS] Produto: 🎬 Projetor Smart HY320 (Wi-Fi/Android + Bluetooth)",
+      "sku": "projetor-smart-hy320-goodvision",
+      "title": "Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150\" (127/220V)",
+      "id_busca": "5J5PKG-D9EV",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (95x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1YAEmtS",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1YAEmtS",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEMyqagPHbaxVXi0H1NfbiT5mbm6cktgSIo1L9mcHlK1rytuqPIKE02XQN7g7BqE%2B%2Bh1rBLE%2Fuy082UGjr%2BTRkVyBJctOWkPikepOlc%2F4NHoxyv%2FVjulTrPa%2FYjDpeGkF0eZr58zCdzKEaSXW4VF0vt74AyhxpVcDHWSTfJZ%2Bu3jlkArRiz0H1hRm68Pv4m3hthxdQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Projetor",
+        "Cinema em Casa",
+        "Wi-Fi",
+        "Android",
+        "Bluetooth",
+        "Full HD",
+        "HDMI"
+      ]
+    },
+    {
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -300,7 +345,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (112x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (113x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -329,7 +374,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -345,7 +390,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (35x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (36x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -374,7 +419,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -390,7 +435,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (30x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (31x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -419,7 +464,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -435,7 +480,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (27x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (28x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -463,7 +508,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -479,7 +524,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (82x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (83x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -506,7 +551,7 @@
       ]
     },
     {
-      "happened_at": "2026-07-29T19:35:25Z",
+      "happened_at": "2026-07-30T03:14:18Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -522,7 +567,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (64x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (65x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -546,6 +591,51 @@
         "Morango Mistério",
         "Lábios e Bochechas",
         "Longa Duração"
+      ]
+    },
+    {
+      "happened_at": "2026-07-30T03:14:18Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 239,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/239",
+      "issue_title": "O Boticário Floratta My Blue Colônia 75 ml",
+      "sku": "o-boticario-floratta-my-blue-colonia-75ml",
+      "title": "O Boticário Floratta My Blue Colônia 75 ml",
+      "id_busca": "5J5PKG-K3A0",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2rP9eh4",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2rP9eh4",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPTkBG2HHiwp10xqvp%2BqEgB73RLtNxIcv1r4KecEA%2B8N4psdcExshknx9CBjUOavjlYYMO005WRwaUJVPvljl6ItGezSseP15rbwaSLBm%2FOEXoYb60UrgkJ848sCrNg52iUwg2CIPPMTmKRQMBmUf4xfytWj4EhPLKr9eJvjYx0vkX34JSjBTqIKRwHzro6hvwipTQ%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-K3A0",
+      "short_url": "https://meli.la/2rP9eh4",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPTkBG2HHiwp10xqvp%2BqEgB73RLtNxIcv1r4KecEA%2B8N4psdcExshknx9CBjUOavjlYYMO005WRwaUJVPvljl6ItGezSseP15rbwaSLBm%2FOEXoYb60UrgkJ848sCrNg52iUwg2CIPPMTmKRQMBmUf4xfytWj4EhPLKr9eJvjYx0vkX34JSjBTqIKRwHzro6hvwipTQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "O Boticário",
+        "Floratta",
+        "Floratta My Blue",
+        "Perfume Feminino",
+        "Colônia Feminina",
+        "Perfumaria",
+        "Fragrância Floral"
       ]
     }
   ]
