@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
+    "results": [
+      {
+        "source": "https://github.com/user-attachments/assets/3a1d1d94-1c52-4d70-9e14-20b3672a4967",
+        "status": "converted",
+        "output": "assets/produtos-webp/cicaplast-baume-b5-plus-la-roche-posay-40ml-cover-d33e9afcb4.webp",
+        "original_bytes": 113096,
+        "webp_bytes": 66922,
+        "saved_percent": 40.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/1123866f-1d25-4c95-afa4-d6eef5216d19",
+        "status": "converted",
+        "output": "assets/produtos-webp/cicaplast-baume-b5-plus-la-roche-posay-40ml-images-01-1199d0c382.webp",
+        "original_bytes": 152468,
+        "webp_bytes": 88672,
+        "saved_percent": 41.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/40be95d7-0db3-463e-9436-dc291d1f314e",
+        "status": "converted",
+        "output": "assets/produtos-webp/cicaplast-baume-b5-plus-la-roche-posay-40ml-images-02-2a8e1cf74f.webp",
+        "original_bytes": 118928,
+        "webp_bytes": 72732,
+        "saved_percent": 38.8,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      }
+    ]
+  }
+]
