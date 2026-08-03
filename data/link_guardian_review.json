@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-08-03T03:48:50Z",
-  "total_items": 5,
+  "updated_at": "2026-08-03T10:06:50Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 6
     },
-    "high_priority": 5
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-08-03T03:42:55Z",
+      "happened_at": "2026-08-03T10:00:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,52 @@
       ]
     },
     {
-      "happened_at": "2026-08-03T03:42:55Z",
+      "happened_at": "2026-08-03T10:00:56Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 90,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/90",
+      "issue_title": "[CMS] Produto: Micro-ondas Consul 32 Litros Branco (5J5PKG-EJTP)",
+      "sku": "microondas-consul-32-litros-branco-5j5pkg-ejtp",
+      "title": "Micro-ondas Consul — 32 Litros (Branco) | Praticidade no dia a dia",
+      "id_busca": "5J5PKG-EJTP",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2yYsZBx",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2yYsZBx",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BATupuu99QCd%2B5yi%2BQnpiYT4mBKrsYFvh6tDtrKjvTNe5lybruD7aBy4qBa82MsDHOQxPTkj8gNjq6TTd8QAALsi6skNJdZ5ZxemnvmbekQwJuyiFYqZk2PoF39ZryYgkWgRjjc%2BfBcUHgi3zTaRDyfLs64M%2F5MzYNRX4k3zGP8Ip8XfnaNC%2BiJFgz5HXv%2B11FLmLxI%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-EJTP&tid=be38620b-d570-4090-8e3c-ed7b0bfe2ae8",
+      "short_url": "https://meli.la/2yYsZBx",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BATupuu99QCd%2B5yi%2BQnpiYT4mBKrsYFvh6tDtrKjvTNe5lybruD7aBy4qBa82MsDHOQxPTkj8gNjq6TTd8QAALsi6skNJdZ5ZxemnvmbekQwJuyiFYqZk2PoF39ZryYgkWgRjjc%2BfBcUHgi3zTaRDyfLs64M%2F5MzYNRX4k3zGP8Ip8XfnaNC%2BiJFgz5HXv%2B11FLmLxI%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BATupuu99QCd%2B5yi%2BQnpiYT4mBKrsYFvh6tDtrKjvTNe5lybruD7aBy4qBa82MsDHOQxPTkj8gNjq6TTd8QAALsi6skNJdZ5ZxemnvmbekQwJuyiFYqZk2PoF39ZryYgkWgRjjc%2BfBcUHgi3zTaRDyfLs64M%2F5MzYNRX4k3zGP8Ip8XfnaNC%2BiJFgz5HXv%2B11FLmLxI%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Eletrodomésticos",
+        "Micro-ondas",
+        "32 litros",
+        "Consul",
+        "Praticidade",
+        "Dia a dia"
+      ]
+    },
+    {
+      "happened_at": "2026-08-03T10:00:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (39x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (40x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +151,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-03T03:42:55Z",
+      "happened_at": "2026-08-03T10:00:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (49x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (50x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +196,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-03T03:42:55Z",
+      "happened_at": "2026-08-03T10:00:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (45x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (46x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -196,7 +241,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-03T03:42:55Z",
+      "happened_at": "2026-08-03T10:00:56Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -212,7 +257,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
