@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-08-04T14:38:10Z",
-  "total_items": 6,
+  "updated_at": "2026-08-04T19:52:36Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 6,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 6
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 6
+      "storefront_social_lists_invalid": 7
     },
     "by_action": {
-      "trocar_link": 6
+      "trocar_link": 7
     },
-    "high_priority": 6
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-08-04T14:33:38Z",
+      "happened_at": "2026-08-04T19:46:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (35x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (36x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-04T14:33:38Z",
+      "happened_at": "2026-08-04T19:46:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (45x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (46x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +106,52 @@
       ]
     },
     {
-      "happened_at": "2026-08-04T14:33:38Z",
+      "happened_at": "2026-08-04T19:46:44Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 34,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34",
+      "issue_title": "[CMS] Produto: Kit de Soquetes 46 Peças S Siqueira (Catraca 1/4) — 5J5PKG-WXZ9",
+      "sku": "s-siqueira-kit-soquetes-46pcs-1-4-wxz9",
+      "title": "Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta",
+      "id_busca": "5J5PKG-66MX",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (34x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2dvtxCQ",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2dvtxCQ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEDnxTj3g%2Fw%2F1gfvllGxLKiTcKQYcJ3rly9ZKDvQ2%2Fjx9CmcqkV%2B86%2BZzf87Fe6a3v72jOpoQrSJtsd1SES18n4L1ckjRc2ZVicyVZ6nXhw%2F0kz4YHr5UXd6lpHULXibqGsb0h9DkSkXNkPFO%2FqzXEPD%2FX6HMgVJ%2FEQKSyj1Mtz1V8TET%2BzAdX1zeD%2B8SmptuF1rBQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEDnxTj3g%2Fw%2F1gfvllGxLKiTcKQYcJ3rly9ZKDvQ2%2Fjx9CmcqkV%2B86%2BZzf87Fe6a3v72jOpoQrSJtsd1SES18n4L1ckjRc2ZVicyVZ6nXhw%2F0kz4YHr5UXd6lpHULXibqGsb0h9DkSkXNkPFO%2FqzXEPD%2FX6HMgVJ%2FEQKSyj1Mtz1V8TET%2BzAdX1zeD%2B8SmptuF1rBQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEDnxTj3g%2Fw%2F1gfvllGxLKiTcKQYcJ3rly9ZKDvQ2%2Fjx9CmcqkV%2B86%2BZzf87Fe6a3v72jOpoQrSJtsd1SES18n4L1ckjRc2ZVicyVZ6nXhw%2F0kz4YHr5UXd6lpHULXibqGsb0h9DkSkXNkPFO%2FqzXEPD%2FX6HMgVJ%2FEQKSyj1Mtz1V8TET%2BzAdX1zeD%2B8SmptuF1rBQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Ferramentas",
+        "Kit de Soquetes",
+        "Catraca 1/4",
+        "Aço CRV",
+        "Maleta",
+        "Oficina",
+        "Carro"
+      ]
+    },
+    {
+      "happened_at": "2026-08-04T19:46:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (106x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (107x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,52 +196,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-04T14:33:38Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 39,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/39",
-      "issue_title": "[CMS] Produto: 🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya)",
-      "sku": "fechadura-bio-delta-pro-wifi-tuya-preta",
-      "title": "🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya) — Preta",
-      "id_busca": "5J5PKG-0SJ2",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/1uKVY2p",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/1uKVY2p",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0SJ2&tid=0c11df4f-b7f6-4112-90a9-12d6b815a63c",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Segurança",
-        "Casa Inteligente",
-        "Fechadura Digital",
-        "Biométrica",
-        "Wi-Fi",
-        "Tuya",
-        "PRETO"
-      ]
-    },
-    {
-      "happened_at": "2026-08-04T14:33:38Z",
+      "happened_at": "2026-08-04T19:46:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -212,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (55x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (56x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -241,7 +241,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-04T14:33:38Z",
+      "happened_at": "2026-08-04T19:46:44Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -257,7 +257,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (51x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (52x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -283,6 +283,51 @@
         "Microsoft",
         "Gamer",
         "Premium"
+      ]
+    },
+    {
+      "happened_at": "2026-08-04T19:46:44Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 216,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/216",
+      "issue_title": "Fraldas Pampers Recém-Nascido Tamanho RN+ 36 Unidades",
+      "sku": "fraldas-pampers-recem-nascido-rn-36-unidades",
+      "title": "🍼✨ Fraldas Pampers Recém-Nascido Tamanho RN+ 36 Unidades",
+      "id_busca": "5J5PKG-7QXG",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2XKwqS1",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2XKwqS1",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2xV6rPpwwSY3GsnedMqDKE%2BK4gsjmUqVoyy19oNyx8p%2BmEPL4B6%2FvgP32LSUTNgmjAave3LzcCz9Af0BoZgup3Mrs4vFUSQTWA%2BTzQ3UG%2FqbGLY1R6TgJmrTEt%2BL16iLHEe3l0yKOSd5FYuPBnHQLTGJavwJWE%2BW9rdxZCsP4jxkHCu1oDLD1gC%2F6%2BaU0%2F7nRtxiY%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-7QXG",
+      "short_url": "https://meli.la/2XKwqS1",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2xV6rPpwwSY3GsnedMqDKE%2BK4gsjmUqVoyy19oNyx8p%2BmEPL4B6%2FvgP32LSUTNgmjAave3LzcCz9Af0BoZgup3Mrs4vFUSQTWA%2BTzQ3UG%2FqbGLY1R6TgJmrTEt%2BL16iLHEe3l0yKOSd5FYuPBnHQLTGJavwJWE%2BW9rdxZCsP4jxkHCu1oDLD1gC%2F6%2BaU0%2F7nRtxiY%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Pampers",
+        "Premium Care",
+        "Recém-Nascido",
+        "RN+",
+        "36 Fraldas",
+        "Até 6 kg",
+        "Fralda Infantil"
       ]
     }
   ]
