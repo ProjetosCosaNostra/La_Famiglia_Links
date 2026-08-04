@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-04T08:54:12Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-08-04T14:38:10Z
+Itens pendentes: 6
+SKUs únicos: 6
+Prioridade alta: 6
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 6
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 6
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 6
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-04T08:49:47Z
+Quando: 2026-08-04T14:33:38Z
+Issue: #105
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105
+SKU: jogo-panelas-tramontina-inox-fundo-triplo-3-pecas
+Título: Jogo De Panelas Para Fogão De Indução Aço Inox 3 Peças
+ID ML: 5J5PKG-8EBB
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (35x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Tramontina, Jogo de Panelas, Inox, Fundo Triplo, 3 Peças, Utilidades Domésticas
+open_url: https://meli.la/1HHX2Jj
+checked_url: https://meli.la/1HHX2Jj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742
+
+[ALTA] review_only_storefront
+Quando: 2026-08-04T14:33:38Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (44x /lists, 0x listing)
+Memória operacional: histórico recorrente (45x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/1TWHtzA
 checked_url: https://meli.la/1TWHtzA
@@ -43,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-08-04T08:49:47Z
+Quando: 2026-08-04T14:33:38Z
 Issue: #37
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
 SKU: projetor-smart-hy320-goodvision
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (105x /lists, 0x listing)
+Memória operacional: histórico recorrente (106x /lists, 0x listing)
 Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
 open_url: https://meli.la/1YAEmtS
 checked_url: https://meli.la/1YAEmtS
@@ -62,26 +81,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
 
 [ALTA] review_only_storefront
-Quando: 2026-08-04T08:49:47Z
-Issue: #49
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/49
-SKU: parafusadeira-furadeira-kit-2-baterias-48v-maleta
-Título: Parafusadeira Furadeira C/ 2 Baterias Maleta Kit Completo Led Eixo Flexível Vários Níveis Torque Simake
-ID ML: 5J5PKG-1WFH
+Quando: 2026-08-04T14:33:38Z
+Issue: #39
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/39
+SKU: fechadura-bio-delta-pro-wifi-tuya-preta
+Título: 🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya) — Preta
+ID ML: 5J5PKG-0SJ2
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
 Memória operacional: histórico recorrente (5x /lists, 0x listing)
-Badges: Achados do Dia, Ferramentas, Parafusadeira, Furadeira, Kit Completo, Maleta, 2 Baterias, LED
-open_url: https://meli.la/2MfQ3vr
-checked_url: https://meli.la/2MfQ3vr
+Badges: Achados do Dia, Segurança, Casa Inteligente, Fechadura Digital, Biométrica, Wi-Fi, Tuya, PRETO
+open_url: https://mercadolivre.com/sec/1uKVY2p
+checked_url: https://mercadolivre.com/sec/1uKVY2p
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1WFH&tid=a2928bb5-abd4-47fe-bbb2-d7a413674a66
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0SJ2&tid=0c11df4f-b7f6-4112-90a9-12d6b815a63c
 
 [ALTA] review_only_storefront
-Quando: 2026-08-04T08:49:47Z
+Quando: 2026-08-04T14:33:38Z
 Issue: #78
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78
 SKU: purificador-de-ar-silencioso-hepa-h13-luz-ambiente
@@ -92,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (54x /lists, 0x listing)
+Memória operacional: histórico recorrente (55x /lists, 0x listing)
 Badges: Achados do Dia, Purificador de Ar, HEPA H13, Silencioso, Antialérgico, Quarto, Home Office, Poeira
 open_url: https://meli.la/1H2Sp2u
 checked_url: https://meli.la/1H2Sp2u
@@ -100,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U3PG&tid=907d1ad4-1ba7-4be7-b764-20cc77e26d2c
 
 [ALTA] review_only_storefront
-Quando: 2026-08-04T08:49:47Z
+Quando: 2026-08-04T14:33:38Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -111,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (50x /lists, 2x listing)
+Memória operacional: histórico recorrente (51x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP

@@ -1,22 +1,67 @@
 {
-  "updated_at": "2026-08-04T08:54:12Z",
-  "total_items": 5,
+  "updated_at": "2026-08-04T14:38:10Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 6
     },
-    "high_priority": 5
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-08-04T08:49:47Z",
+      "happened_at": "2026-08-04T14:33:38Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 105,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/105",
+      "issue_title": "[CMS] Produto: Jogo de Panelas Tramontina Inox",
+      "sku": "jogo-panelas-tramontina-inox-fundo-triplo-3-pecas",
+      "title": "Jogo De Panelas Para Fogão De Indução Aço Inox 3 Peças",
+      "id_busca": "5J5PKG-8EBB",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (35x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1HHX2Jj",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1HHX2Jj",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-T28N&tid=4343e5e7-511b-4d8d-82c6-4e143f2e9742",
+      "short_url": "https://meli.la/18N3x6V",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI%2FT%2FZd6913Ja6AYQdjGHvoP3O%2F9cwSH92MwfisZ%2BXMc4NJ4IY56RZwbZ5XUnmqBaiIFjoUP3w%2FAxqyiwbcNbMMtbLM54SP%2B2Alf1kKQQfaAaCesljtVFC1F5c%2FtXY2ZMf4fiacHxJeh184sPF%2B6t5PtO4dKOuRBTuf5fArqz0iqLY%2B8a5fqv3Po0vIn5kGoeT2YPe8%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cozinha",
+        "Tramontina",
+        "Jogo de Panelas",
+        "Inox",
+        "Fundo Triplo",
+        "3 Peças",
+        "Utilidades Domésticas"
+      ]
+    },
+    {
+      "happened_at": "2026-08-04T14:33:38Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (44x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (45x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-04T08:49:47Z",
+      "happened_at": "2026-08-04T14:33:38Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (105x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (106x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,16 +151,16 @@
       ]
     },
     {
-      "happened_at": "2026-08-04T08:49:47Z",
+      "happened_at": "2026-08-04T14:33:38Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
-      "issue_number": 49,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/49",
-      "issue_title": "[CMS] Produto: 🛠️⚡ Parafusadeira + Furadeira — Kit completo com maleta",
-      "sku": "parafusadeira-furadeira-kit-2-baterias-48v-maleta",
-      "title": "Parafusadeira Furadeira C/ 2 Baterias Maleta Kit Completo Led Eixo Flexível Vários Níveis Torque Simake",
-      "id_busca": "5J5PKG-1WFH",
+      "issue_number": 39,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/39",
+      "issue_title": "[CMS] Produto: 🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya)",
+      "sku": "fechadura-bio-delta-pro-wifi-tuya-preta",
+      "title": "🔐 Fechadura Digital Biométrica Delta PRO Wi-Fi (Tuya) — Preta",
+      "id_busca": "5J5PKG-0SJ2",
       "status": 200,
       "reason": "storefront_social_lists_invalid",
       "reason_bucket": "storefront_social_lists_invalid",
@@ -128,30 +173,30 @@
       "guardian_last_good_confirmed_at": "",
       "action_suggested": "trocar_link",
       "needs_manual_check": true,
-      "checked_url": "https://meli.la/2MfQ3vr",
+      "checked_url": "https://mercadolivre.com/sec/1uKVY2p",
       "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2MfQ3vr",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM%2FQ9ftwpQBasjlG0ElBHSHT4Zd1us9V7ttZ9TsyBtnLxA7v1mBZcKk9MkNJzJ%2Fy3fa6kMm2I3ou69LFlL%2BUj0YgzOcYDnpw%2FmZW3IoqAFeIAL4Z5nRXg9skIv3c9TMIRiuoUl7t2sSFd69YDRtAg%2FCtcM6OLbmq%2FAAnppokH206iWMNNQd3l%2FTe8pqkAlL4oA5isUY%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1WFH&tid=a2928bb5-abd4-47fe-bbb2-d7a413674a66",
+      "open_url": "https://mercadolivre.com/sec/1uKVY2p",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0SJ2&tid=0c11df4f-b7f6-4112-90a9-12d6b815a63c",
       "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM%2FQ9ftwpQBasjlG0ElBHSHT4Zd1us9V7ttZ9TsyBtnLxA7v1mBZcKk9MkNJzJ%2Fy3fa6kMm2I3ou69LFlL%2BUj0YgzOcYDnpw%2FmZW3IoqAFeIAL4Z5nRXg9skIv3c9TMIRiuoUl7t2sSFd69YDRtAg%2FCtcM6OLbmq%2FAAnppokH206iWMNNQd3l%2FTe8pqkAlL4oA5isUY%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM%2FQ9ftwpQBasjlG0ElBHSHT4Zd1us9V7ttZ9TsyBtnLxA7v1mBZcKk9MkNJzJ%2Fy3fa6kMm2I3ou69LFlL%2BUj0YgzOcYDnpw%2FmZW3IoqAFeIAL4Z5nRXg9skIv3c9TMIRiuoUl7t2sSFd69YDRtAg%2FCtcM6OLbmq%2FAAnppokH206iWMNNQd3l%2FTe8pqkAlL4oA5isUY%3D",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGb5OSEozgflqpZwfr4CgEnGmZ6wiNCYNRVQKP9yp%2FPtNO6ZeS70MP8uwEdBpwHBPq5v3EmWCUFL5K0uoSqlRQjJ3mIRG6NCvjwZ3J3XPYfAVTZtzzzFhtWnCe3p2tV8nJosVRNh26sGt1LP4hEqzQwukTqcZLfKWYhQA3beV0Xuxi%2BnddgdQE6dYRaVg4d6TWia2fw%3D",
       "active": true,
       "featured": false,
       "smart_categories": [],
       "badges": [
         "Achados do Dia",
-        "Ferramentas",
-        "Parafusadeira",
-        "Furadeira",
-        "Kit Completo",
-        "Maleta",
-        "2 Baterias",
-        "LED"
+        "Segurança",
+        "Casa Inteligente",
+        "Fechadura Digital",
+        "Biométrica",
+        "Wi-Fi",
+        "Tuya",
+        "PRETO"
       ]
     },
     {
-      "happened_at": "2026-08-04T08:49:47Z",
+      "happened_at": "2026-08-04T14:33:38Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (54x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (55x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -196,7 +241,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-04T08:49:47Z",
+      "happened_at": "2026-08-04T14:33:38Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -212,7 +257,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (50x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (51x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
