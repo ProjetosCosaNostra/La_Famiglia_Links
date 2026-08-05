@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-05T14:33:14Z
-Itens pendentes: 6
-SKUs únicos: 6
-Prioridade alta: 6
+Atualizado em: 2026-08-05T19:53:06Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 6
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 6
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 6
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-05T14:26:41Z
+Quando: 2026-08-05T19:46:31Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (49x /lists, 0x listing)
+Memória operacional: histórico recorrente (50x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/1TWHtzA
 checked_url: https://meli.la/1TWHtzA
@@ -43,26 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-08-05T14:26:41Z
-Issue: #37
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
-SKU: projetor-smart-hy320-goodvision
-Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
-ID ML: 5J5PKG-D9EV
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (108x /lists, 0x listing)
-Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
-open_url: https://meli.la/1YAEmtS
-checked_url: https://meli.la/1YAEmtS
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
-
-[ALTA] review_only_storefront
-Quando: 2026-08-05T14:26:41Z
+Quando: 2026-08-05T19:46:31Z
 Issue: #78
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78
 SKU: purificador-de-ar-silencioso-hepa-h13-luz-ambiente
@@ -73,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (59x /lists, 0x listing)
+Memória operacional: histórico recorrente (60x /lists, 0x listing)
 Badges: Achados do Dia, Purificador de Ar, HEPA H13, Silencioso, Antialérgico, Quarto, Home Office, Poeira
 open_url: https://meli.la/1H2Sp2u
 checked_url: https://meli.la/1H2Sp2u
@@ -81,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U3PG&tid=907d1ad4-1ba7-4be7-b764-20cc77e26d2c
 
 [ALTA] review_only_storefront
-Quando: 2026-08-05T14:26:41Z
+Quando: 2026-08-05T19:46:31Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -92,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (55x /lists, 2x listing)
+Memória operacional: histórico recorrente (56x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
@@ -100,26 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
 
 [ALTA] review_only_storefront
-Quando: 2026-08-05T14:26:41Z
-Issue: #84
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
-SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
-Título: SSD Kingston NV3 1TB NVMe PCIe 4.0 M.2 2280
-ID ML: 5J5PKG-6G0K
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, Tecnologia, SSD, Kingston, NVMe, PCIe 4.0, 1TB, Armazenamento
-open_url: https://meli.la/1Lxke7G
-checked_url: https://meli.la/1Lxke7G
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHBDu8VELhogJX5CncvYCg9DWolGfl6mDMiMKRhWKrfeSYZ7tU9xjfsOW7pAUGFmVUkV5W%2FjmKsYYscTbpMDGJW2V4R51ozuzJDASxD7U125CiyAENnNKvTq9SQrT73DcfkTuuT1iOb6xo0jRadyS%2FoUpW1WTJT0MdUoUnwnE6MVyre7VCcU4T3Dr4lI4g9BICcAq2M%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-08-05T14:26:41Z
+Quando: 2026-08-05T19:46:31Z
 Issue: #185
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/185
 SKU: sombra-disney-wish-bruna-tavares-silver-5ml
@@ -130,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Tendência, Brilho Intenso, Maquiagem Premium, Disney
 open_url: https://meli.la/274QFze
 checked_url: https://meli.la/274QFze
