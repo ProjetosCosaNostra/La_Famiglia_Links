@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T23:49:57Z",
+  "updated_at": "2026-08-05T23:12:33Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -865,7 +865,6 @@
       "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/137",
       "issue_title": "Gloss Fran Liphoney Mel",
       "quick_home": true,
-      "quick_home_order": 5,
       "_source_issue_number": 137,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1vQje5p",
@@ -7945,7 +7944,6 @@
         "epidrat hyalu 16g"
       ],
       "quick_home": true,
-      "quick_home_order": 5,
       "_source_issue_number": 190,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1kPMdsr",
@@ -10758,7 +10756,7 @@
       "promo_text": "🩵 Cicaplast Baume B5+ La Roche-Posay 40ml: cuidado multirreparador calmante para pele sensibilizada. Ajuda a reparar a barreira da pele, hidratar, acalmar e proteger. Com Tribioma, Panthenol e Madecassoside, possui textura cremosa não oleosa e sem perfume. Pode ser aplicado no rosto, corpo e lábios.",
       "buy_cta": "Comprar com desconto no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -10807,12 +10805,95 @@
         "https://github.com/user-attachments/assets/40be95d7-0db3-463e-9436-dc291d1f314e"
       ],
       "webp_optimized_at": "2026-07-31T23:49:57Z"
+    },
+    {
+      "sku": "fran-maravicherry-mascara-cilios-preto-6g",
+      "title": "Máscara para Cílios Maravicherry FRAN by Franciny Ehlke Preto 6g",
+      "badges": [
+        "Beleza",
+        "Maquiagem",
+        "Olhos",
+        "Máscara de Cílios",
+        "Maravicherry",
+        "FRAN",
+        "Franciny Ehlke",
+        "Máximo Volume",
+        "Alongamento e Curvatura",
+        "Hipoalergênica",
+        "Dermatologicamente Testada",
+        "Oftalmologicamente Testada",
+        "Cruelty Free",
+        "Mais Vendido"
+      ],
+      "id_busca": "5J5PKG-WL6G",
+      "open_url": "https://meli.la/2vZcCPX",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL%2BE1WqKYGG1688LPJVWU23A9CJgY%2FGHrSRLWGCc8I%2Fec7mVjMTvxirZ469oWSDN7hWqopuIZUvs9WOUu5F0WgjQmtUI1w%2Fx9NkM6Jq9bUwHzCfNuCZc%2FbEvqsFCOjl54CE%2BVnoUp3mbAqU%2Fpe2Y7%2FXcJwLhCDB8gMGpYE5ZzC2OV%2Fv06lelW0RvMtxsMQAsm3BSUWujH6gWNaSjn7fk8ikornz5UtjQGgwxHw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-WL6G",
+      "image": "assets/produtos-webp/fran-maravicherry-mascara-cilios-preto-6g-cover-a051ffe025.webp",
+      "images": [
+        "assets/produtos-webp/fran-maravicherry-mascara-cilios-preto-6g-images-01-f5d12fddcd.webp",
+        "assets/produtos-webp/fran-maravicherry-mascara-cilios-preto-6g-images-02-c68605d668.webp"
+      ],
+      "price_text": "R$ 41,82 no Pix",
+      "old_price_text": "R$ 78,90",
+      "discount_text": "46% OFF",
+      "price_checked_at": "05/08/2026",
+      "promo_text": "✨ Máscara para Cílios Maravicherry FRAN by Franciny Ehlke — preto, 6g. Proporciona máximo volume, alongamento e curvatura para realçar e destacar o olhar. Fórmula hipoalergênica, dermatológica e oftalmologicamente testada e livre de crueldade animal.",
+      "buy_cta": "Ver oferta no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 243,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/243",
+      "issue_title": "Máscara Maravicherry FRAN 6g",
+      "categoria_principal": "Beleza",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Olhos",
+        "Cílios e Sobrancelhas",
+        "Máscara para Cílios"
+      ],
+      "aliases_busca": [
+        "máscara de cílios",
+        "máscara para cílios",
+        "rímel",
+        "rímel preto",
+        "mascara preta",
+        "Maravicherry",
+        "Franciny Ehlke",
+        "FRAN",
+        "Fran by Franciny Ehlke",
+        "máscara volumizadora",
+        "cílios volumosos",
+        "alongamento de cílios",
+        "curvatura de cílios"
+      ],
+      "quick_home": true,
+      "quick_home_order": 5,
+      "_source_issue_number": 243,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2vZcCPX",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL%2BE1WqKYGG1688LPJVWU23A9CJgY%2FGHrSRLWGCc8I%2Fec7mVjMTvxirZ469oWSDN7hWqopuIZUvs9WOUu5F0WgjQmtUI1w%2Fx9NkM6Jq9bUwHzCfNuCZc%2FbEvqsFCOjl54CE%2BVnoUp3mbAqU%2Fpe2Y7%2FXcJwLhCDB8gMGpYE5ZzC2OV%2Fv06lelW0RvMtxsMQAsm3BSUWujH6gWNaSjn7fk8ikornz5UtjQGgwxHw%3D%3D",
+      "last_checked": "",
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/27801820-55d3-4773-9751-42a41e450146",
+      "images_original": [
+        "https://github.com/user-attachments/assets/6711bdf2-5dd4-47c5-9b6b-73f95065989e",
+        "https://github.com/user-attachments/assets/bbf36727-661e-4d23-8d23-9e26c69a514b"
+      ],
+      "webp_optimized_at": "2026-08-05T23:12:33Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-07-31T23:49:57Z",
+    "updated_at": "2026-08-05T23:12:33Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
