@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-05T08:53:53Z
-Itens pendentes: 7
-SKUs únicos: 7
-Prioridade alta: 7
+Atualizado em: 2026-08-05T14:33:14Z
+Itens pendentes: 6
+SKUs únicos: 6
+Prioridade alta: 6
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 7
+- review_only_storefront: 6
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 7
+- trocar_link: 6
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 6
-- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-05T08:47:29Z
-Issue: #124
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/124
-SKU: intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto
-Título: Intercomunicador Bluetooth para Capacete V10 com Redução de Ruído USB-C 16H - Preto
-ID ML: 5J5PKG-5111
-Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
-Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
-Badges: Achados do Dia, Intercomunicador, Bluetooth, Capacete, Moto, V10, Sem fio, Redução de ruído
-open_url: https://meli.la/2Lo3w8F
-checked_url: https://meli.la/2Lo3w8F
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOi1SQLiYXmmsFhcAywNdVGCM1uD%2FA12aAYc7ZBUyRn6a5hwGD5RdLxUAY0XSWErjc%2FqO4yn7iznzvBQe3mnwoMdmzXXMA1TfW6Lr0QKAkJJdIc25NMX4tRC3bxy%2FsESsoymOtrcrs9pSMuZPRpLooOQHVhTKN1p6LapC5Vdaa1f0JbDRsPwWZf2laJtVYje%2Brt3pv8%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5111&tid=b5726868-cff7-4ba4-8227-81a298b06fec
-
-[ALTA] review_only_storefront
-Quando: 2026-08-05T08:47:29Z
+Quando: 2026-08-05T14:26:41Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -55,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (48x /lists, 0x listing)
+Memória operacional: histórico recorrente (49x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/1TWHtzA
 checked_url: https://meli.la/1TWHtzA
@@ -63,7 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-08-05T08:47:29Z
+Quando: 2026-08-05T14:26:41Z
+Issue: #37
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/37
+SKU: projetor-smart-hy320-goodvision
+Título: Projetor Smart HY320 Goodvision — Wi-Fi/Android + Bluetooth (Full HD) até 150" (127/220V)
+ID ML: 5J5PKG-D9EV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (108x /lists, 0x listing)
+Badges: Achados do Dia, Projetor, Cinema em Casa, Wi-Fi, Android, Bluetooth, Full HD, HDMI
+open_url: https://meli.la/1YAEmtS
+checked_url: https://meli.la/1YAEmtS
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YD9X&tid=ea65e407-0cce-4e05-a467-a0e967abdb43
+
+[ALTA] review_only_storefront
+Quando: 2026-08-05T14:26:41Z
 Issue: #78
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78
 SKU: purificador-de-ar-silencioso-hepa-h13-luz-ambiente
@@ -74,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (58x /lists, 0x listing)
+Memória operacional: histórico recorrente (59x /lists, 0x listing)
 Badges: Achados do Dia, Purificador de Ar, HEPA H13, Silencioso, Antialérgico, Quarto, Home Office, Poeira
 open_url: https://meli.la/1H2Sp2u
 checked_url: https://meli.la/1H2Sp2u
@@ -82,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U3PG&tid=907d1ad4-1ba7-4be7-b764-20cc77e26d2c
 
 [ALTA] review_only_storefront
-Quando: 2026-08-05T08:47:29Z
+Quando: 2026-08-05T14:26:41Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -93,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (54x /lists, 2x listing)
+Memória operacional: histórico recorrente (55x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
@@ -101,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
 
 [ALTA] review_only_storefront
-Quando: 2026-08-05T08:47:29Z
+Quando: 2026-08-05T14:26:41Z
 Issue: #84
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/84
 SKU: ssd-nvme-m2-1tb-pcie4-2280-6tsl
@@ -112,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
 Badges: Achados do Dia, Tecnologia, SSD, Kingston, NVMe, PCIe 4.0, 1TB, Armazenamento
 open_url: https://meli.la/1Lxke7G
 checked_url: https://meli.la/1Lxke7G
@@ -120,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHBDu8VELhogJX5CncvYCg9DWolGfl6mDMiMKRhWKrfeSYZ7tU9xjfsOW7pAUGFmVUkV5W%2FjmKsYYscTbpMDGJW2V4R51ozuzJDASxD7U125CiyAENnNKvTq9SQrT73DcfkTuuT1iOb6xo0jRadyS%2FoUpW1WTJT0MdUoUnwnE6MVyre7VCcU4T3Dr4lI4g9BICcAq2M%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-08-05T08:47:29Z
+Quando: 2026-08-05T14:26:41Z
 Issue: #185
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/185
 SKU: sombra-disney-wish-bruna-tavares-silver-5ml
@@ -131,28 +130,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Feminino, Tendência, Brilho Intenso, Maquiagem Premium, Disney
 open_url: https://meli.la/274QFze
 checked_url: https://meli.la/274QFze
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-RMH4
-
-[ALTA] review_only_storefront
-Quando: 2026-08-05T08:47:29Z
-Issue: #216
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/216
-SKU: fraldas-pampers-recem-nascido-rn-36-unidades
-Título: 🍼✨ Fraldas Pampers Recém-Nascido Tamanho RN+ 36 Unidades
-ID ML: 5J5PKG-7QXG
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
-Badges: Achados do Dia, Pampers, Premium Care, Recém-Nascido, RN+, 36 Fraldas, Até 6 kg, Fralda Infantil
-open_url: https://meli.la/2XKwqS1
-checked_url: https://meli.la/2XKwqS1
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-7QXG
