@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BlackVault Sentinel v0.4.5 — Download oficial para Windows</title>
+  <meta name="description" content="Baixe o instalador oficial do BlackVault Sentinel v0.4.5 para Windows. Scanner local sob demanda com ClamAV, painel local, inventário de quarentena e validação SHA256." />
+  <meta name="theme-color" content="#070704" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BlackVault Sentinel v0.4.5 — Download oficial" />
+  <meta property="og:description" content="Scanner local sob demanda para Windows com ClamAV, painel local e validação SHA256." />
+  <style>
+    :root {
+      --bg: #050504;
+      --bg-soft: #0b0b08;
+      --panel: rgba(16, 16, 12, 0.92);
+      --panel-2: rgba(11, 11, 8, 0.86);
+      --gold: #d7b058;
+      --gold-2: #f3d58a;
+      --gold-deep: #8e6b1d;
+      --text: #f7f4ea;
+      --muted: #b8b4a7;
+      --ok: #61d58a;
+      --line: rgba(215,176,88,.22);
+      --line-strong: rgba(215,176,88,.48);
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(215,176,88,.17), transparent 34%),
+        radial-gradient(circle at 100% 18%, rgba(142,107,29,.12), transparent 29%),
+        linear-gradient(180deg, #090906 0%, var(--bg) 48%, #020202 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 58px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .brand-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .04em;
+      color: var(--gold-2);
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 22px rgba(215,176,88,.72);
+    }
+
+    .toplink {
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .toplink:hover { border-color: var(--gold); color: var(--gold-2); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(300px, .82fr);
+      gap: 34px;
+      padding: clamp(26px, 5vw, 58px);
+      border: 1px solid var(--line-strong);
+      border-radius: 30px;
+      background:
+        linear-gradient(115deg, rgba(255,255,255,.035), transparent 28%),
+        rgba(9,9,7,.88);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.035);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      right: -130px;
+      top: -170px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(215,176,88,.18), transparent 66%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--gold-2);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    .lead {
+      margin: 22px 0 0;
+      max-width: 760px;
+      color: #d4d0c3;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 24px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #ded9ca;
+      background: rgba(0,0,0,.28);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge .status {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 14px rgba(97,213,138,.65);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line-strong);
+      text-decoration: none;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #151006;
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      box-shadow: 0 16px 42px rgba(215,176,88,.2);
+    }
+    .btn-primary:hover { box-shadow: 0 20px 56px rgba(215,176,88,.3); }
+    .btn-secondary { background: rgba(255,255,255,.025); color: var(--text); }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 340px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(215,176,88,.075), rgba(0,0,0,.18));
+    }
+
+    .shield {
+      width: 120px;
+      height: 140px;
+      margin: 0 auto 24px;
+      filter: drop-shadow(0 22px 34px rgba(0,0,0,.62));
+    }
+
+    .hero-card h2 {
+      margin: 0;
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .version {
+      margin-top: 8px;
+      color: var(--gold-2);
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .verified {
+      margin: 22px 0 0;
+      padding: 14px;
+      border: 1px solid rgba(97,213,138,.27);
+      border-radius: 16px;
+      background: rgba(97,213,138,.055);
+      color: #dff7e8;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      grid-column: span 4;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 14px 44px rgba(0,0,0,.26);
+    }
+
+    .card-wide { grid-column: span 8; }
+    .card-full { grid-column: 1 / -1; }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: var(--gold-2);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      letter-spacing: -.02em;
+    }
+
+    .card p, .card li {
+      color: #c8c3b6;
+      line-height: 1.62;
+    }
+
+    .feature-list, .steps {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      gap: 11px;
+      margin: 12px 0;
+    }
+
+    .check {
+      flex: 0 0 auto;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      border: 1px solid rgba(97,213,138,.35);
+      border-radius: 50%;
+      color: var(--ok);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .steps { counter-reset: step; }
+    .steps li {
+      position: relative;
+      padding-left: 48px;
+      margin: 20px 0;
+    }
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      color: var(--gold-2);
+      background: rgba(215,176,88,.08);
+      font-weight: 900;
+    }
+
+    .hash-box {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 16px;
+      background: #050503;
+    }
+
+    code {
+      display: block;
+      overflow-wrap: anywhere;
+      color: #f1d98d;
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .hash-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .mini-btn {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: var(--text);
+      background: rgba(255,255,255,.035);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 17px 18px;
+      border-left: 3px solid var(--gold);
+      border-radius: 12px;
+      color: #d8d3c5;
+      background: rgba(215,176,88,.065);
+      line-height: 1.58;
+    }
+
+    .table {
+      width: 100%;
+      margin-top: 18px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+    }
+    .table th, .table td {
+      padding: 13px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(215,176,88,.12);
+      font-size: 14px;
+    }
+    .table th { color: var(--gold-2); width: 34%; }
+    .table td { color: #cbc6b9; }
+
+    .footer {
+      margin-top: 22px;
+      padding: 24px 4px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: #8f8b80;
+      font-size: 12px;
+    }
+
+    .footer a { text-decoration: none; color: #cbbf9d; }
+    .footer a:hover { color: var(--gold-2); }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      max-width: min(360px, calc(100vw - 36px));
+      padding: 13px 15px;
+      border: 1px solid var(--line-strong);
+      border-radius: 13px;
+      color: var(--text);
+      background: rgba(13,13,9,.96);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-card { min-height: auto; }
+      .card, .card-wide { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 20px, 1180px); padding-top: 14px; }
+      .topbar { align-items: flex-start; }
+      .hero { padding: 25px 20px; border-radius: 22px; }
+      .hero-card, .card { padding: 20px; border-radius: 19px; }
+      .actions .btn { width: 100%; }
+      .footer { flex-direction: column; }
+      .table th, .table td { display: block; width: 100%; }
+      .table th { padding-bottom: 4px; border-bottom: 0; }
+      .table td { padding-top: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar">
+      <a class="brand-mini" href="./" aria-label="Voltar à Cosa Nostra">
+        <span class="brand-dot" aria-hidden="true"></span>
+        COSA NOSTRA SECURITY
+      </a>
+      <a class="toplink" href="https://github.com/ProjetosCosaNostra/BlackVault_Sentinel_Releases/releases/tag/v0.4.5" target="_blank" rel="noopener noreferrer">Ver Release no GitHub</a>
+    </div>
+
+    <section class="hero" aria-labelledby="titulo-principal">
+      <div>
+        <p class="eyebrow">Proteção local sob demanda para Windows</p>
+        <h1 id="titulo-principal">BlackVault Sentinel</h1>
+        <p class="lead">Scanner local com painel próprio, integração ClamAV, seleção de arquivos e pastas, inventário de quarentena e verificação pública de integridade.</p>
+
+        <div class="badges" aria-label="Status da versão">
+          <span class="badge"><span class="status"></span> Versão 0.4.5 validada</span>
+          <span class="badge">Windows</span>
+          <span class="badge">Download público</span>
+          <span class="badge">SHA256 publicado</span>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/ProjetosCosaNostra/BlackVault_Sentinel_Releases/releases/download/v0.4.5/BlackVault_Sentinel_Setup_v0.4.5.exe">Baixar instalador v0.4.5</a>
+          <a class="btn btn-secondary" href="#verificacao">Verificar integridade</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Identidade e validação do produto">
+        <svg class="shield" viewBox="0 0 120 140" role="img" aria-label="Escudo BlackVault">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#f3d58a"/>
+              <stop offset="0.48" stop-color="#d7b058"/>
+              <stop offset="1" stop-color="#7b5915"/>
+            </linearGradient>
+          </defs>
+          <path d="M60 4 108 23v41c0 34-17 58-48 72C29 122 12 98 12 64V23L60 4Z" fill="url(#g)"/>
+          <path d="M60 18 94 31v31c0 25-11 44-34 57-23-13-34-32-34-57V31L60 18Z" fill="#0b0b08"/>
+          <path d="M60 36 78 43v17c0 14-6 24-18 32-12-8-18-18-18-32V43l18-7Z" fill="url(#g)" opacity=".9"/>
+        </svg>
+        <h2>Instalador oficial</h2>
+        <div class="version">V0.4.5</div>
+        <p class="verified"><strong>Gate técnico concluído:</strong><br>download público, tamanho, SHA256, instalação, desinstalação e preservação de logs e quarentena foram validados.</p>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="Informações do BlackVault Sentinel">
+      <article class="card card-wide">
+        <p class="kicker">Recursos atuais</p>
+        <h2>O que esta versão entrega</h2>
+        <ul class="feature-list">
+          <li><span class="check">✓</span><span>Scanner seguro sob demanda para arquivos e pastas.</span></li>
+          <li><span class="check">✓</span><span>Motor ClamAV integrado ao fluxo local de análise.</span></li>
+          <li><span class="check">✓</span><span>Painel local de observação, varredura e inventário de quarentena.</span></li>
+          <li><span class="check">✓</span><span>Desinstalação controlada com preservação de logs e dados de quarentena.</span></li>
+          <li><span class="check">✓</span><span>Manifesto de build e arquivo SHA256 disponíveis publicamente.</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <p class="kicker">Uso responsável</p>
+        <h2>Escopo atual</h2>
+        <p>O BlackVault Sentinel v0.4.5 trabalha como scanner local sob demanda. A varredura só começa quando o usuário seleciona um alvo e inicia a análise.</p>
+        <div class="notice"><strong>Importante:</strong> esta versão não deve ser apresentada como substituta de uma solução completa de proteção em tempo real.</div>
+      </article>
+
+      <article class="card card-wide">
+        <p class="kicker">Instalação</p>
+        <h2>Comece em poucos passos</h2>
+        <ol class="steps">
+          <li>Baixe <strong>BlackVault_Sentinel_Setup_v0.4.5.exe</strong> pelo botão oficial desta página.</li>
+          <li>Confira o SHA256 do arquivo antes da execução, usando o valor publicado abaixo.</li>
+          <li>Execute o instalador e autorize o Windows quando solicitado.</li>
+          <li>Abra o painel do BlackVault Sentinel e selecione um arquivo ou uma pasta para análise.</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <p class="kicker">Requisitos</p>
+        <h2>Ambiente</h2>
+        <table class="table" aria-label="Requisitos da versão">
+          <tr><th>Sistema</th><td>Windows</td></tr>
+          <tr><th>Arquitetura</th><td>64 bits</td></tr>
+          <tr><th>Versão</th><td>0.4.5</td></tr>
+          <tr><th>Distribuição</th><td>Instalador público</td></tr>
+          <tr><th>Motor</th><td>ClamAV</td></tr>
+        </table>
+      </article>
+
+      <article class="card card-full" id="verificacao">
+        <p class="kicker">Integridade pública</p>
+        <h2>SHA256 oficial do instalador</h2>
+        <p>Compare o hash calculado no seu computador com o valor oficial abaixo. Os dois precisam ser idênticos.</p>
+        <div class="hash-box">
+          <code id="hash">8be7efe0b2c02b0577684836c6e0032c0f79f51ff5813ea6c29b572e3eb8b0db</code>
+          <div class="hash-actions">
+            <button class="mini-btn" type="button" id="copyHash">Copiar SHA256</button>
+            <a class="mini-btn" href="https://github.com/ProjetosCosaNostra/BlackVault_Sentinel_Releases/releases/download/v0.4.5/BlackVault_Sentinel_Setup_v0.4.5.exe.sha256.txt">Baixar arquivo SHA256</a>
+            <a class="mini-btn" href="https://github.com/ProjetosCosaNostra/BlackVault_Sentinel_Releases/releases/download/v0.4.5/BlackVault_Sentinel_Setup_v0.4.5_BUILD_MANIFEST.txt">Baixar manifesto</a>
+          </div>
+        </div>
+        <div class="notice"><strong>Comando PowerShell:</strong><br><code>Get-FileHash .\BlackVault_Sentinel_Setup_v0.4.5.exe -Algorithm SHA256</code></div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 Cosa Nostra Security — BlackVault Sentinel</span>
+      <span><a href="./">Página principal</a> · <a href="https://github.com/ProjetosCosaNostra/BlackVault_Sentinel_Releases" target="_blank" rel="noopener noreferrer">Repositório público de releases</a></span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">SHA256 copiado.</div>
+
+  <script>
+    const copyButton = document.getElementById('copyHash');
+    const hash = document.getElementById('hash').textContent.trim();
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(hash);
+        showToast('SHA256 copiado.');
+      } catch (_) {
+        const area = document.createElement('textarea');
+        area.value = hash;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+        showToast('SHA256 copiado.');
+      }
+    });
+  </script>
+</body>
+</html>
