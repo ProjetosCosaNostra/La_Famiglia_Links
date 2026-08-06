@@ -35,7 +35,7 @@
   <link rel="preload" href="produtos.json" as="fetch" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20260706-produto-dia-mobile-v1" />
+  <link rel="stylesheet" href="style.css?v=20260806-app-links-v1" />
   <script defer src="tracking.js"></script>
   <script defer src="script.js?v=20260706-produto-dia-mobile-v1"></script>
 
@@ -14217,20 +14217,41 @@
         <div>✨ <b>Curadoria completa:</b> a <b>Loja Completa</b> reúne todos os achados selecionados.</div>
       </div>
     </section>
-    <section class="panel" id="sec-links">
-      <div class="panel__head">
+    <section class="panel linksPanel" id="sec-links">
+      <div class="panel__head linksPanel__head">
         <div>
+          <p class="linksPanel__kicker">ECOSSISTEMA COSA NOSTRA</p>
           <h2>Links oficiais</h2>
-          <p>Hub premium (pra bio). A loja está no topo como CTA principal.</p>
+          <p>Aplicativos, loja, canais e projetos oficiais reunidos em uma central mais rápida e elegante.</p>
         </div>
+        <div class="linksPanel__seal" aria-hidden="true">CN</div>
       </div>
 
       <div class="linksGrid">
+        <div class="linkGroupTitle linkGroupTitle--first">
+          <span>Produtos e aplicativos</span>
+          <small>Ferramentas e vitrines oficiais</small>
+        </div>
+
+        <a class="linkCard linkCard--app" href="https://play.google.com/store/apps/details?id=br.com.lafamigliaplayworks.preconoponto" id="linkCardPrecoNoPonto" target="_blank" rel="noopener" aria-label="Baixar Preço no Ponto na Google Play">
+          <div class="linkCard__icon linkCard__icon--app" aria-hidden="true">🧮</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__eyebrow">NOVO · GOOGLE PLAY</div>
+            <div class="linkCard__title">Preço no Ponto</div>
+            <div class="linkCard__sub">Calcule custos, margem de lucro e preço de venda com mais segurança.</div>
+            <div class="linkCard__meta" aria-hidden="true">
+              <span>Android</span>
+              <span>Disponível agora</span>
+            </div>
+          </div>
+          <div class="linkCard__cta">Baixar app <span>›</span></div>
+        </a>
+
         <a class="linkCard linkCard--gold" href="./loja.html" id="linkCardLoja">
           <div class="linkCard__icon">🛒</div>
           <div class="linkCard__txt">
             <div class="linkCard__title">Vitrine / Loja</div>
-            <div class="linkCard__sub">Todos os produtos (clique e compre)</div>
+            <div class="linkCard__sub">Todos os produtos selecionados</div>
           </div>
           <div class="linkCard__go">›</div>
         </a>
@@ -14243,6 +14264,20 @@
           </div>
           <div class="linkCard__go">›</div>
         </a>
+
+        <a class="linkCard" href="https://www.mercadolivre.com.br/social/felipecosanostra" target="_blank" rel="noopener">
+          <div class="linkCard__icon">🛍️</div>
+          <div class="linkCard__txt">
+            <div class="linkCard__title">Mercado Livre</div>
+            <div class="linkCard__sub">Perfil e vitrine oficial</div>
+          </div>
+          <div class="linkCard__go">›</div>
+        </a>
+
+        <div class="linkGroupTitle">
+          <span>Canais e comunidade</span>
+          <small>Conteúdo, novidades e contato diário</small>
+        </div>
 
         <a class="linkCard" href="https://www.instagram.com/cosanostra.blackgold/" target="_blank" rel="noopener">
           <div class="linkCard__icon">📸</div>
@@ -14298,6 +14333,11 @@
           <div class="linkCard__go">›</div>
         </a>
 
+        <div class="linkGroupTitle">
+          <span>Projetos e contato</span>
+          <small>Repositórios, perfil profissional e suporte</small>
+        </div>
+
         <a class="linkCard" href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener">
           <div class="linkCard__icon">💻</div>
           <div class="linkCard__txt">
@@ -14316,16 +14356,7 @@
           <div class="linkCard__go">›</div>
         </a>
 
-        <a class="linkCard" href="https://www.mercadolivre.com.br/social/felipecosanostra" target="_blank" rel="noopener">
-          <div class="linkCard__icon">🛒</div>
-          <div class="linkCard__txt">
-            <div class="linkCard__title">Mercado Livre</div>
-            <div class="linkCard__sub">Perfil / vitrine oficial</div>
-          </div>
-          <div class="linkCard__go">›</div>
-        </a>
-
-        <a class="linkCard" href="mailto:projetoscosanostra@gmail.com">
+        <a class="linkCard linkCard--contact" href="mailto:projetoscosanostra@gmail.com">
           <div class="linkCard__icon">✉️</div>
           <div class="linkCard__txt">
             <div class="linkCard__title">Contato</div>
@@ -14384,6 +14415,17 @@
         bindOpenStore("#btnVerTodosTop", "quick_top_cta");
         bindOpenStore("#btnAbrirLojaCompleta", "quick_tools_cta");
         bindOpenStore("#linkCardLoja", "links_grid_cta");
+
+        var linkCardPrecoNoPonto = document.getElementById("linkCardPrecoNoPonto");
+        if (linkCardPrecoNoPonto) {
+          linkCardPrecoNoPonto.addEventListener("click", function () {
+            window.CNTracking.track("click_app_preco_no_ponto", {
+              page_type: "home",
+              placement: "links_grid_featured_app",
+              destination: "google_play"
+            });
+          });
+        }
 
         var btnCopyLoja = document.getElementById("copyLoja");
         if (btnCopyLoja) {
