@@ -2,28 +2,28 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 14,
-  "updated_at": "2026-08-07T08:31:00Z",
+  "generation": 15,
+  "updated_at": "2026-08-07T08:52:00Z",
   "releases": [
     {
-      "release_id": "blackgold-decision-commerce-core-v2.8.0",
-      "version": "2.8.0",
+      "release_id": "blackgold-campaign-conversion-core-v2.9.0",
+      "version": "2.9.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.8-a-decision-commerce-core.bundle.json",
-      "sha256": "cc3e94196a8e2326b1b9035d18dbffdce03f5ea6d19270192445eaacfdde1387",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.9-a-campaign-conversion-core.bundle.json",
+      "sha256": "66a4058c09f770a699567315a9b6a1fd950eceaf68a115ee60ac5839fe25fa14",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Materializa o núcleo comercial real V2.8: Beauty Index pesquisável, páginas individuais de pesquisa e Comparison Desk persistente em staging."
+      "description": "Materializa 8 landing pages de campanha orientadas por pergunta, registro de campanhas, tracking local e Retailer Gate default-deny com links afiliados liberados somente quando verificados."
     },
     {
-      "release_id": "blackgold-decision-commerce-activation-v2.8.0",
-      "version": "2.8.0",
+      "release_id": "blackgold-campaign-conversion-activation-v2.9.0",
+      "version": "2.9.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.8-b-decision-commerce-activation.bundle.json",
-      "sha256": "e21323cb3b267cdb6b2df0a0b11a7aa1b06cc506675e4689acf05c894c140032",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.9-b-campaign-conversion-activation.bundle.json",
+      "sha256": "204b0488533756eec527b3ea140e57c4b7aced4db44ff8fd51d492f46a71fac2",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Ativa a materialização V2.8 com validação de hashes, HTML, dados, imagens, Truth boundary e links comerciais bloqueados."
+      "description": "Ativa a V2.9 em staging com validação de caminhos, referências locais, IDs, viewport e geração atômica; nenhuma página pública é alterada."
     }
   ],
   "policy": {
