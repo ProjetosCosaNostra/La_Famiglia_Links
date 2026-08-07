@@ -1,0 +1,15 @@
+{
+  "schema": "blackgold.retailer-links/v1",
+  "project": "BlackGold Beauty Finds",
+  "default": "deny",
+  "links": [
+    {"product_id":"bg-us-0001","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."},
+    {"product_id":"bg-us-0002","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."},
+    {"product_id":"bg-us-0003","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."},
+    {"product_id":"bg-us-0004","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."},
+    {"product_id":"bg-us-0005","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."},
+    {"product_id":"bg-us-0006","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."},
+    {"product_id":"bg-us-0007","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."},
+    {"product_id":"bg-us-0008","retailer":"Retailer pending","country":"US","original_url":"","affiliate_url":"","campaign_tracking_template":"","last_verified_at":null,"http_status":null,"final_destination":"","fallback":"products.html","public_state":"locked","reason":"Affiliate program and retailer destination not verified yet."}
+  ]
+}
