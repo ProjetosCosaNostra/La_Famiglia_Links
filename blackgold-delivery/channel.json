@@ -2,18 +2,18 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 16,
-  "updated_at": "2026-08-07T10:13:00Z",
+  "generation": 17,
+  "updated_at": "2026-08-07T10:47:00Z",
   "releases": [
     {
-      "release_id": "blackgold-campaign-operations-v3.0.0",
-      "version": "3.0.0",
+      "release_id": "blackgold-affiliate-activation-workbench-v3.1.0",
+      "version": "3.1.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-campaign-operations-v3.0.0.bundle.json",
-      "sha256": "536510fa6155af9625a2ca88ceab5c6e9996d80d3e7992be20f6765fbb68ff93",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-activation-workbench-v3.1.0.bundle.json",
+      "sha256": "adf90d7e3fcbb94e1357a321736da527d4b8a853c9b96a649e58eb6f4e278f89",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala diretamente no staging um painel operacional real de campanhas com métricas locais, funil por campanha, estado dos varejistas, eventos recentes, exportação e limpeza de telemetria local."
+      "description": "Instala diretamente no staging o Affiliate Activation Workbench com programas oficiais Sephora/Rakuten e Ulta/Impact, leitura do registro atual e validação bloqueante de rotas por produto antes de qualquer ativação comercial."
     }
   ],
   "policy": {
