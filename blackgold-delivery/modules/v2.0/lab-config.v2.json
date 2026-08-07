@@ -1,0 +1,34 @@
+{
+  "schema": "blackgold.experience-lab/v2",
+  "project": "BlackGold Beauty Finds",
+  "version": "2.0.0",
+  "public_site_changes": false,
+  "open_page": false,
+  "candidate_policy": "generate_score_eliminate_preserve_winner_only",
+  "selection": {
+    "minimum_score": 82
+  },
+  "anti_template": {
+    "max_dna_similarity": 0.62
+  },
+  "budgets": {
+    "max_candidate_bytes": 90000
+  },
+  "viewports": {
+    "desktop": {"width": 1600, "height": 1000},
+    "tablet": {"width": 1024, "height": 1366},
+    "mobile": {"width": 390, "height": 844}
+  },
+  "visual_policy": {
+    "headless_capture": "optional_but_preferred",
+    "approved_reference": "use_only_if_present",
+    "never_claim_pixel_comparison_if_not_run": true,
+    "page_opening": "forbidden"
+  },
+  "error_learning": {
+    "memory": ".blackgold/memory/lab-failures.jsonl",
+    "promote_after_distinct_runs": 2,
+    "promoted_rules": ".blackgold/memory/lab-promoted-rules.json"
+  },
+  "winner_output": ".blackgold/staging/experience-v2.0/winner"
+}
