@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 2,
-  "updated_at": "2026-08-07T03:05:00Z",
+  "generation": 3,
+  "updated_at": "2026-08-07T03:18:00Z",
   "releases": [
     {
       "release_id": "blackgold-content-intelligence-v1.5.0",
@@ -24,6 +24,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Mapeia páginas, scripts, dados, ativos e referências; migra o HTML atual para rascunhos estruturados e promove falhas repetidas a regras bloqueantes."
+    },
+    {
+      "release_id": "blackgold-experience-compiler-v1.7.0",
+      "version": "1.7.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-experience-compiler-v1.7.0.bundle.json",
+      "sha256": "254db02c8e4ee9aa854acaec9c1a8082464149bd19e8e63b4c9ef5b1c7787690",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala o sistema visual tipado, contratos de componentes, composição editorial isolada, compilador de contratos e testes sem alterar ou abrir o site público."
     }
   ],
   "policy": {
