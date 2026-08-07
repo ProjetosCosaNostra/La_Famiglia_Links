@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Affiliate Activation Workbench | BlackGold Beauty Finds</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.workbench{max-width:1180px;margin:0 auto;padding:40px 22px 80px}.workbench h1{font-family:Georgia,serif;font-size:clamp(2.2rem,6vw,5rem);font-weight:400;line-height:.98;margin:.2em 0}.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:.75rem}.notice,.panel{border:1px solid rgba(120,91,67,.2);background:rgba(255,255,255,.58);padding:20px;border-radius:18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field{display:grid;gap:7px}.field input,.field select{width:100%;box-sizing:border-box;padding:12px;border:1px solid #ccbfb3;border-radius:10px;background:#fff}.checks{display:grid;gap:8px;margin:14px 0}.status{font-weight:700}.pass{color:#315b46}.block{color:#8a3434}.queue{display:grid;gap:12px}.proposal{padding:14px;border:1px solid rgba(120,91,67,.2);border-radius:14px;background:#fff}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.buttonish{border:1px solid #8c6a4d;background:#fff;padding:10px 14px;border-radius:999px;cursor:pointer}.buttonish.primary{background:#2a221d;color:#fff}.muted{opacity:.72;font-size:.92rem}.program{margin-bottom:12px}.topnav{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="workbench">
+<nav class="topnav"><a href="campaign-dashboard.html">Campaign Operations</a><a href="commerce-audit.html">Commerce Safety Audit</a><a href="methodology.html">Methodology</a></nav>
+<p class="eyebrow">Staging · Commerce controls</p>
+<h1>Affiliate activation, without guessing.</h1>
+<p class="notice">A program can exist without this publisher being accepted, and an accepted account can exist without a verified shopper route. This workbench keeps those states separate. Saving a proposal never unlocks a shopper link.</p>
+<section class="grid" style="margin-top:22px">
+<div class="panel"><h2>Program registry</h2><div id="programs">Loading…</div></div>
+<div class="panel"><h2>Current commerce registry</h2><div id="registryStatus">Loading…</div></div>
+</section>
+<section class="panel" style="margin-top:18px">
+<h2>Build a route proposal</h2>
+<div class="grid">
+<label class="field">Product<select id="product"></select></label>
+<label class="field">Program<select id="program"></select></label>
+<label class="field">Original retailer product URL<input id="originalUrl" type="url" placeholder="https://…"></label>
+<label class="field">Affiliate URL<input id="affiliateUrl" type="url" placeholder="https://…"></label>
+<label class="field">Resolved final destination<input id="finalDestination" type="url" placeholder="https://…"></label>
+<label class="field">Verified at<input id="verifiedAt" type="datetime-local"></label>
+</div>
+<div class="checks">
+<label><input id="exactProduct" type="checkbox"> I verified the final destination is the exact product.</label>
+<label><input id="accountAccepted" type="checkbox"> I confirmed this publisher account is accepted in the selected affiliate program.</label>
+<label><input id="trackingGenerated" type="checkbox"> The affiliate URL came from the approved network/account, not from a guessed tracking format.</label>
+</div>
+<div id="validation" class="notice">Complete the fields to evaluate the route.</div>
+<div class="actions"><button id="validate" class="buttonish">Validate</button><button id="save" class="buttonish primary" disabled>Save proposal</button></div>
+</section>
+<section class="panel" style="margin-top:18px">
+<h2>Proposal queue</h2>
+<p class="muted">Stored locally in this browser. Proposals are candidates only; they do not modify <code>retailer-links.json</code>.</p>
+<div id="queue" class="queue"></div>
+<div class="actions"><button id="export" class="buttonish">Export proposals JSON</button><button id="clear" class="buttonish">Clear queue</button></div>
+</section>
+</main>
+<script src="affiliate-workbench-v4.3.js"></script>
+</body></html>
