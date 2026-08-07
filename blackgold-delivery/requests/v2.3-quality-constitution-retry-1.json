@@ -1,0 +1,9 @@
+{
+  "schema": "blackgold.delivery-request/v1",
+  "project": "BlackGold Beauty Finds",
+  "release": "2.3.0",
+  "retry": 1,
+  "reason": "Builder source separation after YAML embedding failure.",
+  "public_site_changes": false,
+  "open_page": false
+}
