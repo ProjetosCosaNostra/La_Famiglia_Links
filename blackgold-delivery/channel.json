@@ -2,18 +2,18 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 17,
-  "updated_at": "2026-08-07T10:47:00Z",
+  "generation": 18,
+  "updated_at": "2026-08-07T18:50:00Z",
   "releases": [
     {
-      "release_id": "blackgold-affiliate-activation-workbench-v3.1.0",
-      "version": "3.1.0",
+      "release_id": "blackgold-real-product-research-v3.2.0",
+      "version": "3.2.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-activation-workbench-v3.1.0.bundle.json",
-      "sha256": "adf90d7e3fcbb94e1357a321736da527d4b8a853c9b96a649e58eb6f4e278f89",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-real-product-research-v3.2.0.bundle.json",
+      "sha256": "1d864886897cc5c5ccced696188375cb0c43dec1dec63221e3a07fc56c59c347",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala diretamente no staging o Affiliate Activation Workbench com programas oficiais Sephora/Rakuten e Ulta/Impact, leitura do registro atual e validação bloqueante de rotas por produto antes de qualquer ativação comercial."
+      "description": "Substitui o catálogo-demo em staging por oito produtos reais com fonte oficial de varejista verificada em 2026-08-07, mantendo preço dinâmico fora do dataset e todas as rotas afiliadas bloqueadas até verificação separada."
     }
   ],
   "policy": {
