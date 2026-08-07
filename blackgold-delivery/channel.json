@@ -2,18 +2,28 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 22,
-  "updated_at": "2026-08-07T19:43:00Z",
+  "generation": 23,
+  "updated_at": "2026-08-07T19:58:00Z",
   "releases": [
     {
-      "release_id": "blackgold-decision-guide-library-v3.6.1",
-      "version": "3.6.1",
+      "release_id": "blackgold-site-integrity-pages-a-v3.7.0",
+      "version": "3.7.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-decision-guide-library-v3.6.1.bundle.json",
-      "sha256": "0aa0de1c2f1d3dcda94a4fde90568577e7dcc4b7afca1964ad6201360e9981e2",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-site-integrity-pages-a-v3.7.0.bundle.json",
+      "sha256": "ba2c8d70ba051cd6d71a197578002cabd651675906baedc5bc7ac6f5033bfa14",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Transforma Buying Guides em uma biblioteca real e dinâmica com 6 decisões de compra ligadas aos 8 produtos atuais, páginas detalhadas, checklists persistentes, fontes/freshness visíveis e validação automática contra o dataset de produtos."
+      "description": "Substitui Disclosure, Privacy e Terms antigos por páginas coerentes com a pesquisa atual, adiciona estilo legal/editorial compartilhado e mantém a fronteira comercial deny-by-default."
+    },
+    {
+      "release_id": "blackgold-site-integrity-pages-b-v3.7.0",
+      "version": "3.7.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-site-integrity-pages-b-v3.7.0.bundle.json",
+      "sha256": "ab29db0aa066bb2794104f384c1ccef23c2e6d86ddea1607198a5d0f192b0ae4",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Adiciona Corrections, reconstrói Ecosystem e 404 no visual atual, deixando explícito que o endpoint público de correção ainda não está ativo em staging e que projetos externos só entram quando realmente públicos."
     }
   ],
   "policy": {
