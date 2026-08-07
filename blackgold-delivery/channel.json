@@ -2,38 +2,38 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 11,
-  "updated_at": "2026-08-07T07:47:30Z",
+  "generation": 12,
+  "updated_at": "2026-08-07T07:53:30Z",
   "releases": [
     {
-      "release_id": "blackgold-orchestrator-v2.5.0",
-      "version": "2.5.0",
+      "release_id": "blackgold-orchestrator-v2.6.0",
+      "version": "2.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.5-a-orchestrator.bundle.json",
-      "sha256": "c3997fcb6085c9c1c64e4ece0a2c1d1210e17deba7a68d764e839d3720821aa2",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.6-a-orchestrator.bundle.json",
+      "sha256": "bfbb6c555f43d848d532c32534872f8647926f6df7c0573a584422113ef470b3",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Atualiza o Orchestrator com a ação fechada experience.evaluate_readiness, mantendo execução arbitrária, publicação e abertura automática bloqueadas."
+      "description": "Atualiza o Orchestrator com a ação fechada experience.adaptive_remediation e mantém shell, publicação e abertura automática bloqueados."
     },
     {
-      "release_id": "blackgold-evaluation-readiness-v2.5.0",
-      "version": "2.5.0",
+      "release_id": "blackgold-adaptive-remediation-v2.6.0",
+      "version": "2.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.5-b-readiness.bundle.json",
-      "sha256": "7bdde838d06f99a833ff59855e09ff4a3e3b4c4a201f1f33acce169ed3b64d88",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.6-b-adaptive-remediation.bundle.json",
+      "sha256": "282cd13d09aaec73fd7fe71fff675bcf27453e7791d3bcad2ac559d3e9907d13",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala o Evaluation Readiness Gate para validar candidato, Constituição, Truth, links comerciais, responsividade e evidências técnicas antes de qualquer avaliação visual."
+      "description": "Instala a remediação adaptativa: sela candidatos já aprovados pela V2.5 ou corrige apenas defeitos determinísticos e seguros em uma cópia isolada."
     },
     {
-      "release_id": "blackgold-evaluation-readiness-activation-v2.5.0",
-      "version": "2.5.0",
+      "release_id": "blackgold-adaptive-remediation-activation-v2.6.0",
+      "version": "2.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.5-c-activation.bundle.json",
-      "sha256": "9601c7063a0d03cdeb1680474d76703ff3f893426d8a4a3ba11d96bda7f2844d",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.6-c-activation.bundle.json",
+      "sha256": "55da4721fa7d148ef2a70fc197c9edd189aea84dc0c0220b26f82a04556f2eee",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Ativa a avaliação de prontidão V2.5 sem abrir o candidato. Somente um marcador ready_for_visual_evaluation pode ser criado; publicação continua proibida."
+      "description": "Ativa a V2.6 de forma condicional: review seal quando V2.5 já está pronta, ou remediação isolada seguida de pedido de novo readiness check."
     }
   ],
   "policy": {
