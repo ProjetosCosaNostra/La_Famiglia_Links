@@ -2,38 +2,28 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 12,
-  "updated_at": "2026-08-07T07:53:30Z",
+  "generation": 13,
+  "updated_at": "2026-08-07T08:12:00Z",
   "releases": [
     {
-      "release_id": "blackgold-orchestrator-v2.6.0",
-      "version": "2.6.0",
+      "release_id": "blackgold-real-experience-materializer-v2.7.0",
+      "version": "2.7.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.6-a-orchestrator.bundle.json",
-      "sha256": "bfbb6c555f43d848d532c32534872f8647926f6df7c0573a584422113ef470b3",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.7-a-materializer.bundle.json",
+      "sha256": "bcf207c596ebf3809cceebab932049bcfc3215db6e7970e65f0884dec37dabf9",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Atualiza o Orchestrator com a ação fechada experience.adaptive_remediation e mantém shell, publicação e abertura automática bloqueados."
+      "description": "Instala o materializador V2.7 que baixa apenas os seis arquivos estáticos versionados e pinados por SHA-256, copia dados/ativos existentes e monta a experiência real em staging com validação atômica."
     },
     {
-      "release_id": "blackgold-adaptive-remediation-v2.6.0",
-      "version": "2.6.0",
+      "release_id": "blackgold-real-experience-activation-v2.7.0",
+      "version": "2.7.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.6-b-adaptive-remediation.bundle.json",
-      "sha256": "282cd13d09aaec73fd7fe71fff675bcf27453e7791d3bcad2ac559d3e9907d13",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.7-b-activation.bundle.json",
+      "sha256": "c7dc8cdc18205e81312daf422733a6cd54f039e8934f2b4e7606463a8424b6ba",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala a remediação adaptativa: sela candidatos já aprovados pela V2.5 ou corrige apenas defeitos determinísticos e seguros em uma cópia isolada."
-    },
-    {
-      "release_id": "blackgold-adaptive-remediation-activation-v2.6.0",
-      "version": "2.6.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.6-c-activation.bundle.json",
-      "sha256": "55da4721fa7d148ef2a70fc197c9edd189aea84dc0c0220b26f82a04556f2eee",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Ativa a V2.6 de forma condicional: review seal quando V2.5 já está pronta, ou remediação isolada seguida de pedido de novo readiness check."
+      "description": "Ativa a materialização da nova experiência editorial real: homepage, Beauty Index, buying guide, metodologia, CSS responsivo e Decision Concierge, sem alterar o site público."
     }
   ],
   "policy": {
