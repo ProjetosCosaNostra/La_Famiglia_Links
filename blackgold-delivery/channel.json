@@ -2,35 +2,38 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 9,
-  "updated_at": "2026-08-07T07:05:04.753764+00:00",
+  "generation": 10,
+  "updated_at": "2026-08-07T07:16:30Z",
   "releases": [
     {
-      "release_id": "blackgold-orchestrator-v2.3.0",
-      "version": "2.3.0",
+      "release_id": "blackgold-orchestrator-v2.4.0",
+      "version": "2.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.3-a-orchestrator.bundle.json",
-      "sha256": "a21756f7603ee891812abf0af4a872bb27aeeac2c321e38fb7a4ce4ac2b39d55",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.4-a-orchestrator.bundle.json",
+      "sha256": "45b3b93ad393bc3c257d6010858f543bf2585f54dcf9de278fbdec2816b915b6",
       "public_site_changes": false,
-      "open_page_after_install": false
+      "open_page_after_install": false,
+      "description": "Atualiza o Orchestrator com a ação fechada experience.release_candidate, sem shell, publicação ou abertura automática."
     },
     {
-      "release_id": "blackgold-quality-constitution-v2.3.0",
-      "version": "2.3.0",
+      "release_id": "blackgold-release-candidate-factory-v2.4.0",
+      "version": "2.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.3-b-constitution.bundle.json",
-      "sha256": "6a8f8832757d75b5841addfb46c0cd4d6ee78d120e9642905bb8e437043376a3",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.4-b-release-candidate-factory.bundle.json",
+      "sha256": "ab5f06d4d966152f9a8017f460794457a0861c98fd49a22d1a92331d9e0ac9f6",
       "public_site_changes": false,
-      "open_page_after_install": false
+      "open_page_after_install": false,
+      "description": "Instala a Autonomous Release Candidate Factory com Constituição, Truth, integridade, acessibilidade estática, responsividade e bloqueio comercial."
     },
     {
-      "release_id": "blackgold-quality-constitution-activation-v2.3.0",
-      "version": "2.3.0",
+      "release_id": "blackgold-release-candidate-activation-v2.4.0",
+      "version": "2.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.3-c-activation.bundle.json",
-      "sha256": "b1687635286403673a743b8789da9987d9096de4604d107c77e68702c79daaaa",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.4-c-activation.bundle.json",
+      "sha256": "4a1091dc9ae72695e78eef723707d134aca0abc7165a315912639b5bef8bd56f",
       "public_site_changes": false,
-      "open_page_after_install": false
+      "open_page_after_install": false,
+      "description": "Ativa a fabricação do primeiro candidato V2.4; pronto para avaliação humana não significa publicação aprovada."
     }
   ],
   "policy": {
