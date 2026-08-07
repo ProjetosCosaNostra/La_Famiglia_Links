@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 6,
-  "updated_at": "2026-08-07T05:40:00Z",
+  "generation": 7,
+  "updated_at": "2026-08-07T06:35:00Z",
   "releases": [
     {
       "release_id": "blackgold-orchestrator-v2.0.1",
@@ -34,6 +34,36 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Entrega os cinco blueprints, a política do laboratório e ativa a primeira corrida autônoma sem alterar o site público ou abrir o navegador."
+    },
+    {
+      "release_id": "blackgold-orchestrator-v2.1.0",
+      "version": "2.1.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.1-a-orchestrator.bundle.json",
+      "sha256": "75001055a9f1963f0293ee3717f91f984259ab5bdcd94774b1fce3b9f60b2d57",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Adiciona ao Orchestrator a ação segura experience.evolve, mantendo a lista de comandos fechada e sem execução arbitrária."
+    },
+    {
+      "release_id": "blackgold-evolution-engine-v2.1.0",
+      "version": "2.1.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.1-b-evolution.bundle.json",
+      "sha256": "f9466f71255913a738e34cf3d8de8c3440172c94adae55d259a95aebb7dd5d1d",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala o Self-Critique & Evolution Engine: campeã, seis desafiantes, mutações estruturais limitadas, fitness comparável, rejeição de regressões e memória de linhagem."
+    },
+    {
+      "release_id": "blackgold-evolution-activation-v2.1.0",
+      "version": "2.1.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.1-c-activation.bundle.json",
+      "sha256": "a6283d592a55caa91a40d7b277ed44def59292cd0296fad5dde576fd1f9bd4a0",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Ativa a primeira evolução V2.1 somente depois do laboratório V2.0 existir; a campeã só muda se o ganho interno ultrapassar o limiar mínimo configurado."
     }
   ],
   "policy": {
