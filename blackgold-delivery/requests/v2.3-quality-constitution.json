@@ -1,0 +1,8 @@
+{
+  "schema": "blackgold.delivery-request/v1",
+  "project": "BlackGold Beauty Finds",
+  "release": "2.3.0",
+  "purpose": "Build and publish the Quality Constitution through the autonomous delivery builder.",
+  "public_site_changes": false,
+  "open_page": false
+}
