@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 4,
-  "updated_at": "2026-08-07T03:44:00Z",
+  "generation": 5,
+  "updated_at": "2026-08-07T04:27:00Z",
   "releases": [
     {
       "release_id": "blackgold-content-intelligence-v1.5.0",
@@ -74,6 +74,66 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Ativa automaticamente a construção V1.8 em staging, gera documentação e mantém a promoção pública e a abertura visual bloqueadas."
+    },
+    {
+      "release_id": "blackgold-visual-payload-v1.9.0-part1",
+      "version": "1.9.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.9-a-payload-part1.bundle.json",
+      "sha256": "5dda866306cbf051501b9d145ae66a6a7ebb6d6e20754d768837a981243d7a43",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Entrega a parte 1/5 do payload verificado da V1.9, sem alterar o site público ou abrir páginas."
+    },
+    {
+      "release_id": "blackgold-visual-payload-v1.9.0-part2",
+      "version": "1.9.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.9-b-payload-part2.bundle.json",
+      "sha256": "6d0256452fcd5289cf08154609f1213fd95206e9a16a9a5f863c73de54f4d21a",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Entrega a parte 2/5 do payload verificado da V1.9, sem alterar o site público ou abrir páginas."
+    },
+    {
+      "release_id": "blackgold-visual-payload-v1.9.0-part3",
+      "version": "1.9.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.9-c-payload-part3.bundle.json",
+      "sha256": "d91343e0936d3538ea4743fe7724c0702036dda3a22dcd893043e377521c97b9",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Entrega a parte 3/5 do payload verificado da V1.9, sem alterar o site público ou abrir páginas."
+    },
+    {
+      "release_id": "blackgold-visual-payload-v1.9.0-part4",
+      "version": "1.9.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.9-d-payload-part4.bundle.json",
+      "sha256": "fcf2c5135d18bca99b53681d1c6a74d7319f7c47be23ec53d04dbb44e417d4bd",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Entrega a parte 4/5 do payload verificado da V1.9, sem alterar o site público ou abrir páginas."
+    },
+    {
+      "release_id": "blackgold-visual-payload-v1.9.0-part5",
+      "version": "1.9.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.9-e-payload-part5.bundle.json",
+      "sha256": "a79c7c3cec34e42144f6398be0052d5568e26c5d7b2a9c52342e8ba12915d237",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Entrega a parte 5/5 do payload verificado da V1.9, sem alterar o site público ou abrir páginas."
+    },
+    {
+      "release_id": "blackgold-visual-intelligence-v1.9.0",
+      "version": "1.9.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.9-f-activate.bundle.json",
+      "sha256": "b8f74373698e5821e96efd83f81f09b4bfd15ae9378370f41f27decbe663a0d0",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala e ativa o motor de inteligência visual V1.9, com auditoria anti-template, captura headless opcional, quarentena e memória de falhas."
     }
   ],
   "policy": {
