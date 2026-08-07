@@ -2,18 +2,18 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 19,
-  "updated_at": "2026-08-07T19:03:00Z",
+  "generation": 20,
+  "updated_at": "2026-08-07T19:17:00Z",
   "releases": [
     {
-      "release_id": "blackgold-real-campaign-alignment-v3.3.0",
-      "version": "3.3.0",
+      "release_id": "blackgold-source-visible-product-flow-v3.4.0",
+      "version": "3.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-real-campaign-alignment-v3.3.0.bundle.json",
-      "sha256": "2fcc432165ab55e698d0164cd2fd757806262291367d56fb88edb7fff0f5c016",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-source-visible-product-flow-v3.4.0.bundle.json",
+      "sha256": "a5302684810df2061282403e2d1a7dfc04c4b22d6d15e726eaacb55dad515a84",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Alinha as oito landing pages de campanha aos oito produtos reais da pesquisa V3.2, adiciona índice interno de campanhas, fonte e data verificadas, e mantém todas as rotas afiliadas bloqueadas até verificação separada."
+      "description": "Torna fonte, data e freshness visíveis no Beauty Index e nas páginas individuais, adiciona Research Ledger e só oferece saída comercial através do Retailer Gate quando a rota afiliada do produto estiver verificada."
     }
   ],
   "policy": {
