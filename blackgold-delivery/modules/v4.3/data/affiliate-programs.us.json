@@ -1,0 +1,44 @@
+{
+  "schema": "blackgold.affiliate-programs.us/v1",
+  "project": "BlackGold Beauty Finds",
+  "market": "US",
+  "source_checked_at": "2026-08-07",
+  "programs": [
+    {
+      "program_id": "sephora-rakuten-us",
+      "retailer": "Sephora",
+      "network": "Rakuten Advertising",
+      "official_program_url": "https://www.sephora.com/beauty/affiliates",
+      "program_status": "program_verified",
+      "application_status": "unknown",
+      "shopper_link_state": "locked",
+      "known": [
+        "Sephora publishes an affiliate program for publishers.",
+        "Sephora states the affiliate program uses Rakuten Advertising."
+      ],
+      "unknown": [
+        "BlackGold Beauty Finds account acceptance status.",
+        "Approved tracking-link host or deep-link format.",
+        "Commission terms applicable to this account."
+      ]
+    },
+    {
+      "program_id": "ulta-impact-us",
+      "retailer": "Ulta Beauty",
+      "network": "Impact",
+      "official_program_url": "https://www.ulta.com/company/affiliate",
+      "program_status": "program_verified",
+      "application_status": "unknown",
+      "shopper_link_state": "locked",
+      "known": [
+        "Ulta Beauty publishes an Impact Program for bloggers, media and editorial publishers.",
+        "Ulta Beauty states there is no cost to join or apply to its affiliate programs."
+      ],
+      "unknown": [
+        "BlackGold Beauty Finds account acceptance status.",
+        "Approved tracking-link host or deep-link format.",
+        "Commission terms applicable to this account."
+      ]
+    }
+  ]
+}
