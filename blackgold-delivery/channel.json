@@ -2,38 +2,48 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 27,
-  "updated_at": "2026-08-07T22:29:00Z",
+  "generation": 28,
+  "updated_at": "2026-08-07T22:58:00Z",
   "releases": [
     {
-      "release_id": "blackgold-baseline-recovery-core-v4.1.0",
-      "version": "4.1.0",
+      "release_id": "blackgold-release-gate-policy-v4.2.0",
+      "version": "4.2.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-baseline-recovery-core-v4.1.0.bundle.json",
-      "sha256": "e877d5da9e6da2a6b0a73d9d4f335b4ab1406c66e63c7232bf4fd18b885baf13",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-release-gate-policy-v4.2.0.bundle.json",
+      "sha256": "d81425e9d99a684b5a1a8d7206101d4b577c2da63f3f645ad4a78dfe465a4d8b",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala bootstrap de baseline versionado que baixa o engine V4.1 por blobs Git pinados, valida SHA-256 e reconstrói o staging V2.7→V4.0 com backup, default-deny e rollback."
+      "description": "Instala a política V4.2 do Release Candidate Gate: arquivos obrigatórios, noindex de staging, contratos legais, tracking externo bloqueado e política comercial default-deny."
     },
     {
-      "release_id": "blackgold-baseline-orchestrator-v4.1.0",
-      "version": "4.1.0",
+      "release_id": "blackgold-release-gate-engine-v4.2.1",
+      "version": "4.2.1",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-baseline-orchestrator-v4.1.0.bundle.json",
-      "sha256": "bbf7de5a900e65bdedb9bdac73456e73bd59bc4d26e3a84d37adc7a74a4f07b0",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-release-gate-engine-v4.2.1.bundle.json",
+      "sha256": "ebbf6108260ec52f0d51d9395c7d16485ecd22dd3490ff7fea36a0f181cbbde1",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Atualiza o orchestrator com experience.recover_baseline, prioridade segura e tolerância à quarentena de tarefas antigas durante a mesma execução."
+      "description": "Instala bootstrap pequeno que busca o engine completo do Release Gate por Git blob pinado, valida SHA-256 e executa somente depois da integridade confirmada."
     },
     {
-      "release_id": "blackgold-baseline-activation-v4.1.0",
-      "version": "4.1.0",
+      "release_id": "blackgold-release-gate-orchestrator-v4.2.1",
+      "version": "4.2.1",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-baseline-activation-v4.1.0.bundle.json",
-      "sha256": "211d080fb334a7ddc0e997b88cbb4a6d1f483937f356c11fe6937043dd438a1f",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-release-gate-orchestrator-v4.2.1.bundle.json",
+      "sha256": "d724e0cf9efc51c58088c9b055dc5a41c0bdfad43b47a7fbc2e4b01d4325d5ec",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Agenda a recuperação V4.1 com prioridade alta; não publica o site, não abre navegador e não cria rotas comerciais verificadas."
+      "description": "Adiciona experience.audit_release_candidate à allowlist do orchestrator sem habilitar shell ou comandos arbitrários."
+    },
+    {
+      "release_id": "blackgold-release-gate-activation-v4.2.0",
+      "version": "4.2.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-release-gate-activation-v4.2.0.bundle.json",
+      "sha256": "f7450d7c0f9e77d6d82e5414b3c0cb4d1901b0b0f83e21ead5ef69eb6c9300c9",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Agenda o Release Candidate Gate V4.2 para produzir readiness técnico e monetização separados, com relatório local e sem publicar o site."
     }
   ],
   "policy": {
