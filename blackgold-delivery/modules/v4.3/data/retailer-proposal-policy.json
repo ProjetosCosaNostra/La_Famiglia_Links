@@ -1,0 +1,17 @@
+{
+  "schema": "blackgold.retailer-proposal-policy/v4.3",
+  "project": "BlackGold Beauty Finds",
+  "market": "US",
+  "default": "deny",
+  "proposal_max_age_days": 7,
+  "proposal_state": "candidate",
+  "activation_rule": "proposal_import_never_unlocks_shopper_route",
+  "required_confirmations": [
+    "publisher_account_accepted",
+    "network_generated_tracking",
+    "exact_product_destination"
+  ],
+  "candidate_store": ".blackgold/commerce/retailer-link-candidates.json",
+  "live_registry": ".blackgold/staging/experience-v2.9/data/retailer-links.json",
+  "live_registry_write_allowed": false
+}
