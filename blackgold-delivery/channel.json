@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 3,
-  "updated_at": "2026-08-07T03:18:00Z",
+  "generation": 4,
+  "updated_at": "2026-08-07T03:44:00Z",
   "releases": [
     {
       "release_id": "blackgold-content-intelligence-v1.5.0",
@@ -34,6 +34,46 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Instala o sistema visual tipado, contratos de componentes, composição editorial isolada, compilador de contratos e testes sem alterar ou abrir o site público."
+    },
+    {
+      "release_id": "blackgold-orchestrator-v1.8.0",
+      "version": "1.8.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.8a-orchestrator.bundle.json",
+      "sha256": "06f7a3ce342dd2c4ee38eb7dedb1e4d3959d88be8accb0c78985d93e6717cc73",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Atualiza o Orchestrator para executar o comando seguro experience.build, mantendo bloqueadas execuções arbitrárias, publicação e abertura de páginas."
+    },
+    {
+      "release_id": "blackgold-build-pipeline-v1.8.0",
+      "version": "1.8.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.8b-pipeline.bundle.json",
+      "sha256": "f9c04cb07cb088a566acf19f4c1a30c96cb70077a63e55670e92aabc31dde070",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala o pipeline determinístico de construção isolada, validações estáticas, build atômico, manifesto SHA-256 e promoção de falhas repetidas a regras bloqueantes."
+    },
+    {
+      "release_id": "blackgold-experience-templates-v1.8.0",
+      "version": "1.8.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.8c-templates.bundle.json",
+      "sha256": "2ddc0e27cbb1b70b3f8e1b50bb0d5242a8cca6decf1e2771ca1b4bce1def16eb",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala templates próprios de HTML, CSS e JavaScript para a experiência editorial feminina e premium, sem links comerciais ativos e sem reutilizar o site público."
+    },
+    {
+      "release_id": "blackgold-build-activation-v1.8.0",
+      "version": "1.8.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v1.8d-activate.bundle.json",
+      "sha256": "03afb621d7782c9741b9329d129f163a9e6ac9bc6ad2648d1172333151a8e57e",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Ativa automaticamente a construção V1.8 em staging, gera documentação e mantém a promoção pública e a abertura visual bloqueadas."
     }
   ],
   "policy": {
