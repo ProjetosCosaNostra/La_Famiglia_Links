@@ -2,98 +2,48 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 25,
-  "updated_at": "2026-08-07T21:05:00Z",
+  "generation": 26,
+  "updated_at": "2026-08-07T21:32:00Z",
   "releases": [
     {
-      "release_id": "blackgold-runtime-core-v3.9.0",
-      "version": "3.9.0",
+      "release_id": "blackgold-telemetry-core-v4.0.0",
+      "version": "4.0.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-runtime-core-v3.9.0.bundle.json",
-      "sha256": "c91c341000423f744792ee3a774f2ec3248109e1d801595dbb8e93ff7d4b7084",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-telemetry-core-v4.0.0.bundle.json",
+      "sha256": "3f85815ec33392bf73006efda7d52e4a77d3f02d3f1a22cc10cedc594e35abe3",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Substitui o runtime principal por um core pequeno e recuperável, com localStorage seguro, comparação limitada a três produtos, toast acessível e carregamento modular das views."
+      "description": "Instala telemetria local V2 com event_id, session_id, UTM persistente por sessão, contexto de campanha, migração segura de events.v1, deduplicação e limite de 500 eventos sem endpoint externo."
     },
     {
-      "release_id": "blackgold-runtime-views-v3.9.0",
-      "version": "3.9.0",
+      "release_id": "blackgold-funnel-pages-v4.0.0",
+      "version": "4.0.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-runtime-views-v3.9.0.bundle.json",
-      "sha256": "046b3bc2ab51aa72b733f7bb7c2c97141d24099e4376c0849a7866edf609ef40",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-funnel-pages-v4.0.0.bundle.json",
+      "sha256": "632a5fe2b1d38cc70b2280d1a030e178028fef9afece6cb0657d66b8bb9bdef5",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala as views V3.9 do catálogo, produto, comparação e checklist com linguagem de produto real, source date, retailer observed e imagens lazy/async."
+      "description": "Liga Beauty Index, Product Research e Comparison Desk à telemetria V4 e preserva noindex/default-deny do staging."
     },
     {
-      "release_id": "blackgold-runtime-style-v3.9.0",
-      "version": "3.9.0",
+      "release_id": "blackgold-funnel-commerce-v4.0.0",
+      "version": "4.0.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-runtime-style-v3.9.0.bundle.json",
-      "sha256": "7e832aa117028fa530a2aa441f0aa0b997ca09115f5fb10a7c7cb077bc77818e",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-funnel-commerce-v4.0.0.bundle.json",
+      "sha256": "2acf6aac6288ea9e1c4f16ddc559ae235b9b46d3a2d24014d4c90bd5c78a1416",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Adiciona estilos para toast acessível, verificação PASS/BLOCK e Commerce Safety Audit responsivo."
+      "description": "Liga Campaign e Retailer Gate ao mesmo schema de funil e só habilita a CTA de campanha depois que o Retailer Guard V3.9 aprova a rota."
     },
     {
-      "release_id": "blackgold-retailer-guard-core-v3.9.0",
-      "version": "3.9.0",
+      "release_id": "blackgold-funnel-dashboard-v4.0.0",
+      "version": "4.0.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-retailer-guard-core-v3.9.0.bundle.json",
-      "sha256": "c5ee1f9c9edd9f0486885c649cd87858edb3a40e8d1c7c4cc45a562d6ee70766",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-funnel-dashboard-v4.0.0.bundle.json",
+      "sha256": "64728d85fbb91c0fd919db7e776aa05e1ad884f001aa86d845eaebad9dd050d0",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Adiciona Retailer Guard default-deny exigindo produto existente, verified, país, HTTPS, hosts aprovados, HTTP status, destino final e freshness antes de liberar comércio."
-    },
-    {
-      "release_id": "blackgold-retailer-gate-runtime-v3.9.0",
-      "version": "3.9.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-retailer-gate-runtime-v3.9.0.bundle.json",
-      "sha256": "49f0e9fb47d74d27645ee74a261fbec5c8cb07d502deef0afe876d97a7719fc7",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Endurece o Retailer Gate, mantém link sem href enquanto qualquer verificação falhar e registra apenas eventos comerciais permitidos em telemetria local limitada."
-    },
-    {
-      "release_id": "blackgold-retailer-gate-page-v3.9.0",
-      "version": "3.9.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-retailer-gate-page-v3.9.0.bundle.json",
-      "sha256": "04de810d631f596d0d89774b5a499bac3eee0559c1b4b8967652df1c7103e2c2",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Atualiza a página do Retailer Gate para mostrar cada gate PASS/BLOCK e acesso ao audit interno sem abrir qualquer rota não verificada."
-    },
-    {
-      "release_id": "blackgold-retailer-policy-v3.9.0",
-      "version": "3.9.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-retailer-policy-v3.9.0.bundle.json",
-      "sha256": "ea4b669c7fac9f1ccf360feee7a4ed36b95728aaf97eb78097e24111cfc53de6",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Instala política comercial US default-deny com freshness máxima de 14 dias e allowlist inicial de hosts Sephora e Ulta; redirects afiliados exigem aprovação explícita."
-    },
-    {
-      "release_id": "blackgold-commerce-audit-page-v3.9.0",
-      "version": "3.9.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-commerce-audit-page-v3.9.0.bundle.json",
-      "sha256": "913fffbf8f0d72e31d3ab3960796c6a95b1ef980f2aa42ebe67e0095d5b5ac39",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Adiciona Commerce Safety Audit interno, read-only e noindex, para inspecionar readiness comercial por produto sem editar ou liberar rotas."
-    },
-    {
-      "release_id": "blackgold-commerce-audit-runtime-v3.9.0",
-      "version": "3.9.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-commerce-audit-runtime-v3.9.0.bundle.json",
-      "sha256": "a5e5f11865c093df2c175b4a05420ffbe917c674f51b8c331f0986e5e04d0d65",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Liga o audit aos datasets atuais e mostra rotas verificadas, bloqueadas, falhas por gate e policy ativa em tempo de execução."
+      "description": "Atualiza o dashboard staging para exibir Campaign → Research → Compare → Gate → Retailer, atribuição source/medium, sessões, campanhas, export JSON e stream local sem fabricar conversões."
     }
   ],
   "policy": {
