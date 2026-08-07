@@ -1,0 +1,81 @@
+{
+  "schema": "blackgold.lab-blueprints/v2",
+  "project": "BlackGold Beauty Finds",
+  "candidates": [
+    {
+      "id": "maison-editorial",
+      "name": "Maison Editorial",
+      "archetype": "asymmetric maison",
+      "palette": {"paper":"#fffaf5","surface":"#f8eee7","blush":"#efd6cc","gold":"#a76f36","ink":"#2f2621","muted":"#77675d","line":"#dfcfc4"},
+      "structural": {"hero_split":"0.82fr 1.18fr","radius":34,"section_gap":108,"card_mode":"background:linear-gradient(90deg,var(--surface),transparent 72%);"},
+      "sections": [
+        {"kind":"question","label":"DISCOVER","headline":"Begin with the question, not the product grid."},
+        {"kind":"categories","label":"BEAUTY INDEX","headline":"Four categories. Different ways to decide."},
+        {"kind":"editorial","label":"THE EDIT","headline":"Context before conversion."},
+        {"kind":"research","label":"RESEARCH","headline":"A recommendation should show its evidence state."},
+        {"kind":"truth","label":"TRUTH STANDARD","headline":"Trust is part of the interface."}
+      ],
+      "dna": {"section_shapes":["split","rail","editorial","board","ledger"],"grid_modes":["asym","4rail","1.2-.9-.9","1.15-.85"]}
+    },
+    {
+      "id": "gallery-commerce",
+      "name": "Gallery Commerce",
+      "archetype": "gallery commerce",
+      "palette": {"paper":"#fffdf9","surface":"#f6eee8","blush":"#f2dfd6","gold":"#b07a3f","ink":"#30251f","muted":"#7d6a60","line":"#e4d5cb"},
+      "structural": {"hero_split":"1.06fr .94fr","radius":6,"section_gap":92,"card_mode":"border-block:1px solid var(--line);"},
+      "sections": [
+        {"kind":"categories","label":"GALLERY","headline":"Browse by intent without losing editorial context."},
+        {"kind":"question","label":"DECISION BAR","headline":"Choose the decision you are trying to make."},
+        {"kind":"research","label":"PRODUCT INTELLIGENCE","headline":"Known, unknown and limited are separate states."},
+        {"kind":"editorial","label":"EDITORIAL ROOMS","headline":"Research becomes useful when it changes the choice."},
+        {"kind":"truth","label":"DISCLOSURE","headline":"Commercial relationships stay visible."}
+      ],
+      "dna": {"section_shapes":["gallery","decision-bar","intelligence-board","rooms","disclosure"],"grid_modes":["4rail","3button","1.15-.85","1.2-.9-.9"]}
+    },
+    {
+      "id": "beauty-journal",
+      "name": "Beauty Journal",
+      "archetype": "journal chapters",
+      "palette": {"paper":"#fcf8f2","surface":"#fffdf9","blush":"#edddd5","gold":"#98652f","ink":"#352a24","muted":"#796b63","line":"#e0d4cc"},
+      "structural": {"hero_split":"1fr .72fr","radius":0,"section_gap":124,"card_mode":"padding-top:20px;border-top:3px double var(--line);"},
+      "sections": [
+        {"kind":"editorial","label":"ISSUE 01","headline":"Beauty guidance should read like a useful journal, not an ad wall."},
+        {"kind":"question","label":"ASK THE EDIT","headline":"A question opens the right chapter."},
+        {"kind":"truth","label":"EDITORIAL CODE","headline":"What we will not pretend to know."},
+        {"kind":"categories","label":"INDEX","headline":"A compact index for deliberate browsing."},
+        {"kind":"research","label":"RESEARCH NOTES","headline":"The evidence state stays attached to the story."}
+      ],
+      "dna": {"section_shapes":["journal","ask","code","index","notes"],"grid_modes":["1.2-.9-.9","3button","4truth","4rail","1.15-.85"]}
+    },
+    {
+      "id": "concierge-decision",
+      "name": "Concierge Decision",
+      "archetype": "decision concierge",
+      "palette": {"paper":"#fff9f4","surface":"#f4e9e2","blush":"#eccfc6","gold":"#aa7441","ink":"#2d2521","muted":"#75665d","line":"#ddcbc0"},
+      "structural": {"hero_split":".7fr 1.3fr","radius":48,"section_gap":96,"card_mode":"box-shadow:inset 0 0 0 1px var(--line);border-radius:var(--radius);"},
+      "sections": [
+        {"kind":"question","label":"CONCIERGE","headline":"Tell the system what decision you are facing."},
+        {"kind":"research","label":"WHY THIS ROUTE","headline":"Every route should explain why it was selected."},
+        {"kind":"editorial","label":"DECISION NOTES","headline":"Useful context changes what comes next."},
+        {"kind":"categories","label":"EXPLORE ELSEWHERE","headline":"Switch category without losing your question."},
+        {"kind":"truth","label":"BOUNDARIES","headline":"No diagnosis. No fake testing. No hidden limits."}
+      ],
+      "dna": {"section_shapes":["concierge","explanation","decision-notes","persistent-index","boundaries"],"grid_modes":["3button","1.15-.85","1.2-.9-.9","4rail"]}
+    },
+    {
+      "id": "atelier-magazine",
+      "name": "Atelier Magazine",
+      "archetype": "atelier magazine",
+      "palette": {"paper":"#fffaf7","surface":"#f7ece5","blush":"#efd9d0","gold":"#9f6a34","ink":"#312721","muted":"#79685e","line":"#e2d0c6"},
+      "structural": {"hero_split":"1.22fr .78fr","radius":22,"section_gap":116,"card_mode":"background:radial-gradient(circle at 80% 10%,var(--blush),transparent 35%);"},
+      "sections": [
+        {"kind":"truth","label":"COVER STORY","headline":"Luxury without invented authority."},
+        {"kind":"editorial","label":"FEATURE","headline":"A layered editorial system for real beauty decisions."},
+        {"kind":"categories","label":"DEPARTMENTS","headline":"Move through beauty like a magazine, not a marketplace dump."},
+        {"kind":"question","label":"READER DESK","headline":"Ask the question that brought you here."},
+        {"kind":"research","label":"SOURCE DESK","headline":"The research ledger sits behind every future recommendation."}
+      ],
+      "dna": {"section_shapes":["cover","feature","departments","reader-desk","source-desk"],"grid_modes":["4truth","1.2-.9-.9","4rail","3button","1.15-.85"]}
+    }
+  ]
+}
