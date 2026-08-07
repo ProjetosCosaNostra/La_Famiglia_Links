@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-07T00:15:45Z
+Atualizado em: 2026-08-07T07:42:02Z
 Itens pendentes: 7
 SKUs únicos: 7
 Prioridade alta: 7
@@ -24,26 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-07T00:09:22Z
-Issue: #4
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
-SKU: mochila-impermeavel-notebook-15-6
-Título: Mochila Notebook 15 Preta Impermeável Trabalho Faculdade Usb Preto Minimalista
-ID ML: 5J5PKG-LLBX
+Quando: 2026-08-07T07:35:40Z
+Issue: #121
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/121
+SKU: rog-xbox-ally-7-120hz-512gb-branco
+Título: ROG Xbox Ally Console Portátil 7" Touchscreen 120Hz 16GB RAM 512GB SSD Branco
+ID ML: 5J5PKG-ZPYQ
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (15x /lists, 0x listing)
-Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
-open_url: https://meli.la/2b2HyMt
-checked_url: https://meli.la/2b2HyMt
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Achados do Dia, ROG Xbox Ally, Console Portátil, ASUS, Tela 7", 120Hz, 16GB RAM, 512GB SSD
+open_url: https://meli.la/1FmZq7Y
+checked_url: https://meli.la/1FmZq7Y
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZPYQ&tid=7f123e45-e6c8-4988-b1ee-180d65a887c0
 
 [ALTA] review_only_storefront
-Quando: 2026-08-07T00:09:22Z
+Quando: 2026-08-07T07:35:40Z
 SKU: relogio-parede-30cm-prata-branco-lzbq
 Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
 ID ML: 5J5PKG-TL8Q
@@ -52,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 22 (invalido)
-Memória operacional: histórico recorrente (22x /lists, 0x listing)
+Memória operacional: histórico recorrente (23x /lists, 0x listing)
 Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
 open_url: https://meli.la/12UKJSY
 checked_url: https://meli.la/12UKJSY
@@ -60,7 +60,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
 
 [ALTA] review_only_storefront
-Quando: 2026-08-07T00:09:22Z
+Quando: 2026-08-07T07:35:40Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -71,7 +71,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (55x /lists, 0x listing)
+Memória operacional: histórico recorrente (56x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/1TWHtzA
 checked_url: https://meli.la/1TWHtzA
@@ -79,7 +79,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-08-07T00:09:22Z
+Quando: 2026-08-07T07:35:40Z
 Issue: #67
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/67
 SKU: esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas
@@ -90,7 +90,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Achados do Dia, Limpeza, Casa, Banheiro, Cozinha, 9 em 1, 9 peças, Escova Rotatória
 open_url: https://meli.la/2M2eQqV
 checked_url: https://meli.la/2M2eQqV
@@ -98,7 +98,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-W2VM&tid=3b4e0d3f-18b1-4deb-806b-cfa451f1d320
 
 [ALTA] review_only_storefront
-Quando: 2026-08-07T00:09:22Z
+Quando: 2026-08-07T07:35:40Z
 Issue: #78
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78
 SKU: purificador-de-ar-silencioso-hepa-h13-luz-ambiente
@@ -109,7 +109,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (64x /lists, 0x listing)
+Memória operacional: histórico recorrente (65x /lists, 0x listing)
 Badges: Achados do Dia, Purificador de Ar, HEPA H13, Silencioso, Antialérgico, Quarto, Home Office, Poeira
 open_url: https://meli.la/1H2Sp2u
 checked_url: https://meli.la/1H2Sp2u
@@ -117,7 +117,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U3PG&tid=907d1ad4-1ba7-4be7-b764-20cc77e26d2c
 
 [ALTA] review_only_storefront
-Quando: 2026-08-07T00:09:22Z
+Quando: 2026-08-07T07:35:40Z
 Issue: #106
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/106
 SKU: jogo-panelas-ceramica-marmore-10-pecas
@@ -128,7 +128,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Jogo de Panelas, Cerâmica, Mármore, Antiaderente, 10 Peças, Utensílios de Cozinha
 open_url: https://meli.la/1twfxRu
 checked_url: https://meli.la/1twfxRu
@@ -136,7 +136,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-47WR&tid=d4a83032-1d1d-4047-ad9a-b741b0e068ea
 
 [ALTA] review_only_storefront
-Quando: 2026-08-07T00:09:22Z
+Quando: 2026-08-07T07:35:40Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -147,7 +147,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (60x /lists, 2x listing)
+Memória operacional: histórico recorrente (61x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
