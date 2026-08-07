@@ -2,18 +2,18 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 18,
-  "updated_at": "2026-08-07T18:50:00Z",
+  "generation": 19,
+  "updated_at": "2026-08-07T19:03:00Z",
   "releases": [
     {
-      "release_id": "blackgold-real-product-research-v3.2.0",
-      "version": "3.2.0",
+      "release_id": "blackgold-real-campaign-alignment-v3.3.0",
+      "version": "3.3.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-real-product-research-v3.2.0.bundle.json",
-      "sha256": "1d864886897cc5c5ccced696188375cb0c43dec1dec63221e3a07fc56c59c347",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-real-campaign-alignment-v3.3.0.bundle.json",
+      "sha256": "2fcc432165ab55e698d0164cd2fd757806262291367d56fb88edb7fff0f5c016",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Substitui o catálogo-demo em staging por oito produtos reais com fonte oficial de varejista verificada em 2026-08-07, mantendo preço dinâmico fora do dataset e todas as rotas afiliadas bloqueadas até verificação separada."
+      "description": "Alinha as oito landing pages de campanha aos oito produtos reais da pesquisa V3.2, adiciona índice interno de campanhas, fonte e data verificadas, e mantém todas as rotas afiliadas bloqueadas até verificação separada."
     }
   ],
   "policy": {
