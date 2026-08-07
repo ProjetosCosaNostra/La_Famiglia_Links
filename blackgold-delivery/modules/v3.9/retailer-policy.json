@@ -1,0 +1,22 @@
+{
+  "schema": "blackgold.retailer-policy/v1",
+  "project": "BlackGold Beauty Finds",
+  "market": "US",
+  "default": "deny",
+  "max_verification_age_days": 14,
+  "allowed_http_status_min": 200,
+  "allowed_http_status_max": 399,
+  "allowed_retailer_hosts": [
+    "sephora.com",
+    "ulta.com"
+  ],
+  "allowed_affiliate_hosts": [
+    "sephora.com",
+    "ulta.com"
+  ],
+  "notes": [
+    "Affiliate-network redirect hosts are not approved by default.",
+    "A new affiliate host must be explicitly added here before any route using it can unlock.",
+    "Final destination must resolve to an approved retailer host."
+  ]
+}
