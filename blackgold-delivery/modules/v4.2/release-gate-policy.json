@@ -1,0 +1,56 @@
+{
+  "schema": "blackgold.release-gate-policy/v4.2",
+  "project": "BlackGold Beauty Finds",
+  "stage": ".blackgold/staging/experience-v2.9",
+  "required_files": [
+    "index.html",
+    "products.html",
+    "product.html",
+    "compare.html",
+    "guide.html",
+    "guide-detail.html",
+    "methodology.html",
+    "research-ledger.html",
+    "affiliate-disclosure.html",
+    "privacy.html",
+    "terms.html",
+    "corrections.html",
+    "ecosystem.html",
+    "404.html",
+    "retailer-gate.html",
+    "campaign-dashboard.html",
+    "commerce-audit.html",
+    "affiliate-workbench.html",
+    "styles.css",
+    "app.js",
+    "data/products.json",
+    "data/campaigns.json",
+    "data/guides.json",
+    "data/retailer-links.json",
+    "retailer-policy.json"
+  ],
+  "required_legal_terms": {
+    "affiliate-disclosure.html": ["affiliate", "commission"],
+    "privacy.html": ["localStorage", "privacy"],
+    "corrections.html": ["correction", "source"],
+    "terms.html": ["terms"]
+  },
+  "staging_robots": "noindex",
+  "max_verified_route_age_days": 14,
+  "forbidden_tracker_tokens": [
+    "google-analytics.com",
+    "googletagmanager.com",
+    "connect.facebook.net",
+    "facebook.com/tr",
+    "analytics.tiktok.com",
+    "snap.licdn.com"
+  ],
+  "unsupported_claim_patterns": [
+    "\\bwe test(?:ed|ing)?\\b",
+    "\\bexpert[- ]led research\\b",
+    "\\breal results\\b",
+    "\\bfree shipping\\b"
+  ],
+  "external_link_required_rel": ["noopener"],
+  "allow_public_site_changes": false
+}
