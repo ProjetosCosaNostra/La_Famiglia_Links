@@ -2,38 +2,35 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 8,
-  "updated_at": "2026-08-07T06:58:00Z",
+  "generation": 9,
+  "updated_at": "2026-08-07T07:05:04.753764+00:00",
   "releases": [
     {
-      "release_id": "blackgold-orchestrator-v2.2.0",
-      "version": "2.2.0",
+      "release_id": "blackgold-orchestrator-v2.3.0",
+      "version": "2.3.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.2-a-orchestrator.bundle.json",
-      "sha256": "d144d48759bb90ff0cbccf5e9e3fad0d049d297b4f1759adff59e9826f61b430",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.3-a-orchestrator.bundle.json",
+      "sha256": "a21756f7603ee891812abf0af4a872bb27aeeac2c321e38fb7a4ce4ac2b39d55",
       "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Adiciona ao Orchestrator a ação fechada experience.genome, mantendo shell, publicação e execução arbitrária bloqueados."
+      "open_page_after_install": false
     },
     {
-      "release_id": "blackgold-failure-genome-v2.2.0",
-      "version": "2.2.0",
+      "release_id": "blackgold-quality-constitution-v2.3.0",
+      "version": "2.3.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.2-b-failure-genome.bundle.json",
-      "sha256": "3d796521c3f504fcfb09d7e79a704154f8039596933a0813c57fa59966dcbfeb",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.3-b-constitution.bundle.json",
+      "sha256": "6a8f8832757d75b5841addfb46c0cd4d6ee78d120e9642905bb8e437043376a3",
       "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Instala o Failure Genome & Design Memory para transformar decisões visuais ruins recorrentes em penalidades ou bloqueios permanentes."
+      "open_page_after_install": false
     },
     {
-      "release_id": "blackgold-failure-genome-activation-v2.2.0",
-      "version": "2.2.0",
+      "release_id": "blackgold-quality-constitution-activation-v2.3.0",
+      "version": "2.3.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.2-c-activation.bundle.json",
-      "sha256": "84892f534727cf05d9e9545ba138dcc087bf21ab06b31141d1b695e7ea8fac17",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.3-c-activation.bundle.json",
+      "sha256": "b1687635286403673a743b8789da9987d9096de4604d107c77e68702c79daaaa",
       "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Ativa a primeira leitura do genoma de falhas após os relatórios do laboratório, evolução e inteligência visual, sem alterar o site público."
+      "open_page_after_install": false
     }
   ],
   "policy": {
