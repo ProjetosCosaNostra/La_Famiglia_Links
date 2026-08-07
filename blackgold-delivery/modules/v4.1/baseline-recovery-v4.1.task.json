@@ -1,0 +1,1 @@
+{"schema":"blackgold.task/v1","task_id":"baseline-recovery-v4.1","project":"BlackGold Beauty Finds","command":"experience.recover_baseline","priority":5,"timeout_seconds":1800,"safe_mode":true,"public_site_changes":false}
