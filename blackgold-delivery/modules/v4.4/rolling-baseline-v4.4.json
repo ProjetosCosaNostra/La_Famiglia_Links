@@ -1,0 +1,39 @@
+{
+  "schema": "blackgold.rolling-baseline/v4.4",
+  "project": "BlackGold Beauty Finds",
+  "market": "US",
+  "baseline_generation": 29,
+  "target_stage": ".blackgold/staging/experience-v2.9",
+  "created_at": "2026-08-07T23:48:00Z",
+  "policy": {
+    "public_site_changes": false,
+    "open_page_after_install": false,
+    "commercial_default": "deny",
+    "backup_before_recovery": true,
+    "rollback_on_failure": true,
+    "idempotent": true,
+    "verified_routes_recreated": false
+  },
+  "v41_bootstrap": {
+    "target_dir": "tools/blackgold_baseline_v41",
+    "files": [
+      {"name": "baseline-v4.1.json", "blob_sha": "db5a47c291ea526e1aa8de7cae6ad624927436d9", "sha256": "66f82d8c3702cdc18d128b9af96c7d437620f316b85169ea44311dcd9dc2bb93"},
+      {"name": "recover_baseline.py", "blob_sha": "9c1d1bc4c37d6d982d0b05c413cfa7c28b505ebe", "sha256": "fafc7f9ebec1015c23b9a71bbc880667b02c8ad5cb1304a300fa1d0dbc1df193"},
+      {"name": "orchestrator_v41.py", "blob_sha": "44758c16a17dc289d76e5d571756c367b2398bc5", "sha256": "fca098e9e182de1e14294fa48dca415ff91c393599d4246e02a61be31b7bd88e"}
+    ]
+  },
+  "overlays": [
+    {"target": ".blackgold/staging/experience-v2.9/affiliate-workbench.html", "blob_sha": "1b7b38623352bd2e982b3aaecb5c556338025655", "sha256": "4c6bee901ef9c7fbc9482d981c75232d22a764569dc95ca34cf8b9ffcbea980b"},
+    {"target": ".blackgold/staging/experience-v2.9/affiliate-workbench-v4.3.js", "blob_sha": "768755640e67ce65db8dee54680dca348dee25c6", "sha256": "0db1c01252dfef3a7e0dd43f1bcfb1ffd1a770ff7d6c1dafd9b29f3fc051bd75"},
+    {"target": ".blackgold/staging/experience-v2.9/data/affiliate-programs.us.json", "blob_sha": "6f7263d40c5f421426552f11f708636385aa1ac8", "sha256": "cd41caf075d2fa3b0dbfc32e2c144ced42b3eb219f2e6df5218cc8067a1fc1e4"},
+    {"target": ".blackgold/staging/experience-v2.9/data/retailer-proposal-policy.json", "blob_sha": "8c3fc400a9cae75721c743035811cebe7a84ebc9", "sha256": "2b56a6d5ac0940cad2a9fac9a3247a6601a7a073ae11be858576d03b21855344"}
+  ],
+  "required_stage_files": [
+    "index.html", "products.html", "product.html", "compare.html", "guide.html", "guide-detail.html",
+    "methodology.html", "research-ledger.html", "affiliate-disclosure.html", "privacy.html", "terms.html",
+    "corrections.html", "ecosystem.html", "404.html", "retailer-gate.html", "campaign-dashboard.html",
+    "commerce-audit.html", "affiliate-workbench.html", "affiliate-workbench-v4.3.js", "styles.css", "app.js",
+    "data/products.json", "data/campaigns.json", "data/guides.json", "data/retailer-links.json",
+    "data/affiliate-programs.us.json", "data/retailer-proposal-policy.json", "retailer-policy.json"
+  ]
+}
