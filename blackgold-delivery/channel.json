@@ -2,28 +2,18 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 15,
-  "updated_at": "2026-08-07T08:52:00Z",
+  "generation": 16,
+  "updated_at": "2026-08-07T10:13:00Z",
   "releases": [
     {
-      "release_id": "blackgold-campaign-conversion-core-v2.9.0",
-      "version": "2.9.0",
+      "release_id": "blackgold-campaign-operations-v3.0.0",
+      "version": "3.0.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.9-a-campaign-conversion-core.bundle.json",
-      "sha256": "66a4058c09f770a699567315a9b6a1fd950eceaf68a115ee60ac5839fe25fa14",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-campaign-operations-v3.0.0.bundle.json",
+      "sha256": "536510fa6155af9625a2ca88ceab5c6e9996d80d3e7992be20f6765fbb68ff93",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Materializa 8 landing pages de campanha orientadas por pergunta, registro de campanhas, tracking local e Retailer Gate default-deny com links afiliados liberados somente quando verificados."
-    },
-    {
-      "release_id": "blackgold-campaign-conversion-activation-v2.9.0",
-      "version": "2.9.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.9-b-campaign-conversion-activation.bundle.json",
-      "sha256": "204b0488533756eec527b3ea140e57c4b7aced4db44ff8fd51d492f46a71fac2",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Ativa a V2.9 em staging com validação de caminhos, referências locais, IDs, viewport e geração atômica; nenhuma página pública é alterada."
+      "description": "Instala diretamente no staging um painel operacional real de campanhas com métricas locais, funil por campanha, estado dos varejistas, eventos recentes, exportação e limpeza de telemetria local."
     }
   ],
   "policy": {
