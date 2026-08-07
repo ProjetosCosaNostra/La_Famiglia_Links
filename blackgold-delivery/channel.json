@@ -2,18 +2,18 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 21,
-  "updated_at": "2026-08-07T19:29:00Z",
+  "generation": 22,
+  "updated_at": "2026-08-07T19:43:00Z",
   "releases": [
     {
-      "release_id": "blackgold-home-real-edit-v3.5.0",
-      "version": "3.5.0",
+      "release_id": "blackgold-decision-guide-library-v3.6.1",
+      "version": "3.6.1",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-home-real-edit-v3.5.0.bundle.json",
-      "sha256": "a0e3debd70188498bfdd70035f711f22f528602101d865b39992781c0cec7eda",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-decision-guide-library-v3.6.1.bundle.json",
+      "sha256": "0aa0de1c2f1d3dcda94a4fde90568577e7dcc4b7afca1964ad6201360e9981e2",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Substitui a homepage institucional de staging por uma vitrine editorial dinâmica dos produtos reais: Current Edit, decisões de compra, freshness das fontes, Research Pulse e fronteira comercial com Retailer Gate default-deny."
+      "description": "Transforma Buying Guides em uma biblioteca real e dinâmica com 6 decisões de compra ligadas aos 8 produtos atuais, páginas detalhadas, checklists persistentes, fontes/freshness visíveis e validação automática contra o dataset de produtos."
     }
   ],
   "policy": {
