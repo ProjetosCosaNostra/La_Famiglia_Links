@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 1,
-  "updated_at": "2026-08-06T23:53:00-03:00",
+  "generation": 2,
+  "updated_at": "2026-08-07T03:05:00Z",
   "releases": [
     {
       "release_id": "blackgold-content-intelligence-v1.5.0",
@@ -14,6 +14,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Instala a fundação de inteligência de conteúdo, portões de verdade e auditoria automática sem alterar páginas públicas."
+    },
+    {
+      "release_id": "blackgold-construction-graph-v1.6.0",
+      "version": "1.6.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-construction-graph-v1.6.0.bundle.json",
+      "sha256": "981765479727fed68a668ed3c5e36136d5e79cb2cb2f3a10af913294a03133ea",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Mapeia páginas, scripts, dados, ativos e referências; migra o HTML atual para rascunhos estruturados e promove falhas repetidas a regras bloqueantes."
     }
   ],
   "policy": {
