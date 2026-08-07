@@ -2,48 +2,38 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 26,
-  "updated_at": "2026-08-07T21:32:00Z",
+  "generation": 27,
+  "updated_at": "2026-08-07T22:29:00Z",
   "releases": [
     {
-      "release_id": "blackgold-telemetry-core-v4.0.0",
-      "version": "4.0.0",
+      "release_id": "blackgold-baseline-recovery-core-v4.1.0",
+      "version": "4.1.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-telemetry-core-v4.0.0.bundle.json",
-      "sha256": "3f85815ec33392bf73006efda7d52e4a77d3f02d3f1a22cc10cedc594e35abe3",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-baseline-recovery-core-v4.1.0.bundle.json",
+      "sha256": "e877d5da9e6da2a6b0a73d9d4f335b4ab1406c66e63c7232bf4fd18b885baf13",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala telemetria local V2 com event_id, session_id, UTM persistente por sessão, contexto de campanha, migração segura de events.v1, deduplicação e limite de 500 eventos sem endpoint externo."
+      "description": "Instala bootstrap de baseline versionado que baixa o engine V4.1 por blobs Git pinados, valida SHA-256 e reconstrói o staging V2.7→V4.0 com backup, default-deny e rollback."
     },
     {
-      "release_id": "blackgold-funnel-pages-v4.0.0",
-      "version": "4.0.0",
+      "release_id": "blackgold-baseline-orchestrator-v4.1.0",
+      "version": "4.1.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-funnel-pages-v4.0.0.bundle.json",
-      "sha256": "632a5fe2b1d38cc70b2280d1a030e178028fef9afece6cb0657d66b8bb9bdef5",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-baseline-orchestrator-v4.1.0.bundle.json",
+      "sha256": "bbf7de5a900e65bdedb9bdac73456e73bd59bc4d26e3a84d37adc7a74a4f07b0",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Liga Beauty Index, Product Research e Comparison Desk à telemetria V4 e preserva noindex/default-deny do staging."
+      "description": "Atualiza o orchestrator com experience.recover_baseline, prioridade segura e tolerância à quarentena de tarefas antigas durante a mesma execução."
     },
     {
-      "release_id": "blackgold-funnel-commerce-v4.0.0",
-      "version": "4.0.0",
+      "release_id": "blackgold-baseline-activation-v4.1.0",
+      "version": "4.1.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-funnel-commerce-v4.0.0.bundle.json",
-      "sha256": "2acf6aac6288ea9e1c4f16ddc559ae235b9b46d3a2d24014d4c90bd5c78a1416",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-baseline-activation-v4.1.0.bundle.json",
+      "sha256": "211d080fb334a7ddc0e997b88cbb4a6d1f483937f356c11fe6937043dd438a1f",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Liga Campaign e Retailer Gate ao mesmo schema de funil e só habilita a CTA de campanha depois que o Retailer Guard V3.9 aprova a rota."
-    },
-    {
-      "release_id": "blackgold-funnel-dashboard-v4.0.0",
-      "version": "4.0.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-funnel-dashboard-v4.0.0.bundle.json",
-      "sha256": "64728d85fbb91c0fd919db7e776aa05e1ad884f001aa86d845eaebad9dd050d0",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Atualiza o dashboard staging para exibir Campaign → Research → Compare → Gate → Retailer, atribuição source/medium, sessões, campanhas, export JSON e stream local sem fabricar conversões."
+      "description": "Agenda a recuperação V4.1 com prioridade alta; não publica o site, não abre navegador e não cria rotas comerciais verificadas."
     }
   ],
   "policy": {
