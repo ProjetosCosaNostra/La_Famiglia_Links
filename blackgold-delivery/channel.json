@@ -2,18 +2,18 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 20,
-  "updated_at": "2026-08-07T19:17:00Z",
+  "generation": 21,
+  "updated_at": "2026-08-07T19:29:00Z",
   "releases": [
     {
-      "release_id": "blackgold-source-visible-product-flow-v3.4.0",
-      "version": "3.4.0",
+      "release_id": "blackgold-home-real-edit-v3.5.0",
+      "version": "3.5.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-source-visible-product-flow-v3.4.0.bundle.json",
-      "sha256": "a5302684810df2061282403e2d1a7dfc04c4b22d6d15e726eaacb55dad515a84",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-home-real-edit-v3.5.0.bundle.json",
+      "sha256": "a0e3debd70188498bfdd70035f711f22f528602101d865b39992781c0cec7eda",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Torna fonte, data e freshness visíveis no Beauty Index e nas páginas individuais, adiciona Research Ledger e só oferece saída comercial através do Retailer Gate quando a rota afiliada do produto estiver verificada."
+      "description": "Substitui a homepage institucional de staging por uma vitrine editorial dinâmica dos produtos reais: Current Edit, decisões de compra, freshness das fontes, Research Pulse e fronteira comercial com Retailer Gate default-deny."
     }
   ],
   "policy": {
