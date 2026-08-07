@@ -1,0 +1,93 @@
+{
+  "schema": "blackgold.guides/v3.6",
+  "project": "BlackGold Beauty Finds",
+  "market": "US",
+  "language": "en-US",
+  "generated_at": "2026-08-07T19:36:00Z",
+  "guides": [
+    {
+      "id": "guide-moisturizer-fit",
+      "category": "Skincare",
+      "title": "Do you actually need a richer moisturizer?",
+      "dek": "Use texture, routine context and barrier-support ingredients as decision inputs instead of assuming richer always means better.",
+      "product_ids": ["bg-us-0001"],
+      "chapters": [
+        {"title": "Start with the problem, not the ingredient list.", "body": "Dry-feeling skin, seasonal changes and body-care needs can point toward a richer moisturizer, but the same texture may feel excessive in another routine."},
+        {"title": "Check where the product has to fit.", "body": "Face, body, daytime and nighttime use can create different texture and layering needs. The retailer listing confirms the product format, not personal comfort."},
+        {"title": "Treat barrier-support ingredients as context, not proof.", "body": "Ceramides and hyaluronic acid are listed for the current product research, but their presence does not guarantee a specific result for every shopper."},
+        {"title": "Keep personal fit unresolved until use.", "body": "Climate, skin type, sensitivities and the rest of a routine can change whether a richer cream makes sense."}
+      ],
+      "checklist": ["Need for richer texture is clear", "Face/body use case is clear", "Fragrance preference checked", "Routine layering considered", "Source date reviewed", "Personal result not assumed"]
+    },
+    {
+      "id": "guide-bha-before-buying",
+      "category": "Skincare",
+      "title": "What should you check before buying a 2% BHA exfoliant?",
+      "dek": "Concentration is only one part of the decision. Routine tolerance, frequency and the rest of the active stack matter too.",
+      "product_ids": ["bg-us-0002"],
+      "chapters": [
+        {"title": "Confirm what the 2% actually refers to.", "body": "The current product research identifies a 2% BHA exfoliating toner. That makes concentration explicit, but it does not determine individual tolerance."},
+        {"title": "Map the rest of the routine first.", "body": "Other exfoliants, retinoids and sensitizing steps can change how an exfoliant fits. A product page cannot resolve that context for the shopper."},
+        {"title": "Manufacturer directions matter.", "body": "Usage frequency and directions should be checked on the current product information rather than inferred from category norms."},
+        {"title": "Do not convert pore language into a guaranteed result.", "body": "The research can document the product type and labeled concentration without promising a visible outcome."}
+      ],
+      "checklist": ["BHA concentration confirmed", "Other active steps mapped", "Frequency not guessed", "Sensitivity considered", "Source date reviewed", "Outcome claims kept separate"]
+    },
+    {
+      "id": "guide-liquid-blush-finish",
+      "category": "Makeup",
+      "title": "How should you choose a liquid blush finish and shade?",
+      "dek": "Finish and shade context matter more than a universal score when the product is color-dependent.",
+      "product_ids": ["bg-us-0003"],
+      "chapters": [
+        {"title": "Choose finish before chasing a shade name.", "body": "The current research notes radiant and matte options. Finish changes the visual effect and can narrow the decision before color selection."},
+        {"title": "Shade is not a static property on skin.", "body": "Skin tone, undertone, application amount and lighting all change how a blush reads. A retailer swatch cannot guarantee a personal match."},
+        {"title": "Decide how much control you want in application.", "body": "Liquid blush can be applied lightly or built up, so application style is part of the buying context."},
+        {"title": "Separate color preference from wear claims.", "body": "The current research does not claim wear time or shade-match accuracy."}
+      ],
+      "checklist": ["Finish chosen", "Shade family chosen", "Application style considered", "Lighting variability acknowledged", "Source date reviewed", "Wear time not assumed"]
+    },
+    {
+      "id": "guide-lip-gloss-vs-treatment",
+      "category": "Makeup",
+      "title": "Do you want shine now or richer lip care later?",
+      "dek": "Gloss and overnight lip treatment solve different shopping decisions even when both live in the lip category.",
+      "product_ids": ["bg-us-0004", "bg-us-0008"],
+      "chapters": [
+        {"title": "Separate finish from treatment context.", "body": "A high-shine gloss and an overnight lip treatment are not substitutes for the same goal. Start by deciding whether the priority is visible finish or richer overnight care."},
+        {"title": "Treat scent and texture as personal variables.", "body": "Comfort, tackiness, scent and texture are subjective and are not resolved by the current retailer research."},
+        {"title": "Use format to narrow the purchase.", "body": "A daytime gloss, balm-like product and overnight mask fit different moments in a routine."},
+        {"title": "Do not turn category labels into efficacy guarantees.", "body": "The current research documents format and retailer status while leaving personal hydration or wear outcomes unclaimed."}
+      ],
+      "checklist": ["Primary goal is shine or treatment", "Usage time is clear", "Texture preference considered", "Scent preference considered", "Both source dates reviewed", "Hydration/wear outcome not assumed"]
+    },
+    {
+      "id": "guide-frizz-product-or-tool",
+      "category": "Hair Care",
+      "title": "Do you need an anti-frizz product, a styling tool, or both?",
+      "dek": "Separate chemistry, heat styling and technique before spending on a premium styling setup.",
+      "product_ids": ["bg-us-0005", "bg-us-0006"],
+      "chapters": [
+        {"title": "Identify where frizz enters the routine.", "body": "Humidity, drying method, hair texture and technique can all affect frizz. The decision is broader than picking the most expensive option."},
+        {"title": "A treatment spray and a multi-styler solve different parts of the routine.", "body": "The current research includes a blow-dry treatment spray and a premium attachment-based multi-styler. Their roles should not be collapsed into one ranking."},
+        {"title": "Technique is part of performance.", "body": "Tool and styling-product outcomes can change with section size, heat, tension, product amount and user technique."},
+        {"title": "Premium price does not remove fit questions.", "body": "A higher-consideration tool still needs attachment fit, hair-type context and realistic usage frequency before purchase."}
+      ],
+      "checklist": ["Frizz context identified", "Product vs tool role separated", "Technique considered", "Hair type considered", "Source dates reviewed", "Performance not assumed"]
+    },
+    {
+      "id": "guide-fragrance-mist-fit",
+      "category": "Fragrance",
+      "title": "Is a hair-and-body fragrance mist the right format for you?",
+      "dek": "Start with scent family, application style and expectations instead of treating longevity as universal.",
+      "product_ids": ["bg-us-0007"],
+      "chapters": [
+        {"title": "Choose the format before the hype.", "body": "A hair-and-body mist is a different use case from an eau de parfum. Application style and expected intensity should come first."},
+        {"title": "Scent preference is the main variable.", "body": "Warm scent descriptions can guide exploration, but they cannot predict whether a shopper will enjoy the fragrance on skin."},
+        {"title": "Longevity is not a fixed number.", "body": "Environment, skin, application amount and formulation can all affect wear. The current research does not independently test longevity."},
+        {"title": "Sampling can be more informative than rankings.", "body": "When scent is the central variable, personal smelling or sampling can answer questions a static guide cannot."}
+      ],
+      "checklist": ["Format preference clear", "Scent family appealing", "Intensity expectation realistic", "Sampling considered", "Source date reviewed", "Longevity not assumed"]
+    }
+  ]
+}
