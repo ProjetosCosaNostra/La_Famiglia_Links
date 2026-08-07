@@ -2,28 +2,38 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 23,
-  "updated_at": "2026-08-07T19:58:00Z",
+  "generation": 24,
+  "updated_at": "2026-08-07T20:14:00Z",
   "releases": [
     {
-      "release_id": "blackgold-site-integrity-pages-a-v3.7.0",
-      "version": "3.7.0",
+      "release_id": "blackgold-methodology-live-trust-a-v3.8.0",
+      "version": "3.8.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-site-integrity-pages-a-v3.7.0.bundle.json",
-      "sha256": "ba2c8d70ba051cd6d71a197578002cabd651675906baedc5bc7ac6f5033bfa14",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-methodology-live-trust-a-v3.8.0.bundle.json",
+      "sha256": "f32ff38108cd2bfa4fbd36ca623e47bf82997293ff0460ca0a7b59476e71a91c",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Substitui Disclosure, Privacy e Terms antigos por páginas coerentes com a pesquisa atual, adiciona estilo legal/editorial compartilhado e mantém a fronteira comercial deny-by-default."
+      "description": "Substitui a Methodology antiga por uma página atual do sistema de pesquisa, com seis gates, estados de evidência e navegação para Ledger, Disclosure, Corrections e Privacy."
     },
     {
-      "release_id": "blackgold-site-integrity-pages-b-v3.7.0",
-      "version": "3.7.0",
+      "release_id": "blackgold-methodology-live-trust-b-v3.8.0",
+      "version": "3.8.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-site-integrity-pages-b-v3.7.0.bundle.json",
-      "sha256": "ab29db0aa066bb2794104f384c1ccef23c2e6d86ddea1607198a5d0f192b0ae4",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-methodology-live-trust-b-v3.8.0.bundle.json",
+      "sha256": "cbd71d9e9a2f34e76ead1552919acc4d9a6c9c563a62d1e8da52face6a2366c5",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Adiciona Corrections, reconstrói Ecosystem e 404 no visual atual, deixando explícito que o endpoint público de correção ainda não está ativo em staging e que projetos externos só entram quando realmente públicos."
+      "description": "Aplica o sistema visual responsivo da Methodology V3.8 no staging."
+    },
+    {
+      "release_id": "blackgold-methodology-live-trust-c-v3.8.0",
+      "version": "3.8.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-methodology-live-trust-c-v3.8.0.bundle.json",
+      "sha256": "8daab93018b715221b9efbee459a0153bf31b31970d04f1fcb8ce6973d30e24e",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Adiciona painel vivo que lê products, retailer routes, guides e campaigns do próprio staging e mostra contagens/freshness sem números hard-coded."
     }
   ],
   "policy": {
