@@ -2,28 +2,28 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 13,
-  "updated_at": "2026-08-07T08:12:00Z",
+  "generation": 14,
+  "updated_at": "2026-08-07T08:31:00Z",
   "releases": [
     {
-      "release_id": "blackgold-real-experience-materializer-v2.7.0",
-      "version": "2.7.0",
+      "release_id": "blackgold-decision-commerce-core-v2.8.0",
+      "version": "2.8.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.7-a-materializer.bundle.json",
-      "sha256": "bcf207c596ebf3809cceebab932049bcfc3215db6e7970e65f0884dec37dabf9",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.8-a-decision-commerce-core.bundle.json",
+      "sha256": "cc3e94196a8e2326b1b9035d18dbffdce03f5ea6d19270192445eaacfdde1387",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala o materializador V2.7 que baixa apenas os seis arquivos estáticos versionados e pinados por SHA-256, copia dados/ativos existentes e monta a experiência real em staging com validação atômica."
+      "description": "Materializa o núcleo comercial real V2.8: Beauty Index pesquisável, páginas individuais de pesquisa e Comparison Desk persistente em staging."
     },
     {
-      "release_id": "blackgold-real-experience-activation-v2.7.0",
-      "version": "2.7.0",
+      "release_id": "blackgold-decision-commerce-activation-v2.8.0",
+      "version": "2.8.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.7-b-activation.bundle.json",
-      "sha256": "c7dc8cdc18205e81312daf422733a6cd54f039e8934f2b4e7606463a8424b6ba",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-v2.8-b-decision-commerce-activation.bundle.json",
+      "sha256": "e21323cb3b267cdb6b2df0a0b11a7aa1b06cc506675e4689acf05c894c140032",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Ativa a materialização da nova experiência editorial real: homepage, Beauty Index, buying guide, metodologia, CSS responsivo e Decision Concierge, sem alterar o site público."
+      "description": "Ativa a materialização V2.8 com validação de hashes, HTML, dados, imagens, Truth boundary e links comerciais bloqueados."
     }
   ],
   "policy": {
