@@ -2,9 +2,20 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 0,
-  "updated_at": "2026-08-06T23:13:00-03:00",
-  "releases": [],
+  "generation": 1,
+  "updated_at": "2026-08-06T23:53:00-03:00",
+  "releases": [
+    {
+      "release_id": "blackgold-content-intelligence-v1.5.0",
+      "version": "1.5.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-content-intelligence-v1.5.0.bundle.json",
+      "sha256": "5cb656bced8ad4019d91285909c94171894dce29b5cf7022df0c151cc4d03d83",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala a fundação de inteligência de conteúdo, portões de verdade e auditoria automática sem alterar páginas públicas."
+    }
+  ],
   "policy": {
     "default": "deny",
     "public_site_changes": false,
