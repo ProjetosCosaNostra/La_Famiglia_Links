@@ -1,0 +1,187 @@
+name: BlackGold Autonomous Delivery Builder
+
+on:
+  push:
+    branches:
+      - blackgold-autonomous-delivery
+    paths:
+      - 'blackgold-delivery/requests/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout delivery branch
+        uses: actions/checkout@v4
+        with:
+          ref: blackgold-autonomous-delivery
+          fetch-depth: 0
+
+      - name: Build verified delivery
+        shell: python
+        run: |
+          import base64, hashlib, json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          project = "BlackGold Beauty Finds"
+          request_path = Path("blackgold-delivery/requests/v2.3-quality-constitution.json")
+          req = json.loads(request_path.read_text(encoding="utf-8"))
+          if req.get("schema") != "blackgold.delivery-request/v1" or req.get("project") != project:
+              raise SystemExit("invalid delivery request")
+
+          def utc():
+              return datetime.now(timezone.utc).isoformat()
+
+          orchestrator = '''from __future__ import annotations
+import argparse,json,subprocess,sys,shutil
+from pathlib import Path
+P="BlackGold Beauty Finds"
+A={"experience.constitution"}
+def rr(cmd,root,t):
+ p=subprocess.run(cmd,cwd=root,capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=t,check=False)
+ return {"passed":p.returncode==0,"exit_code":p.returncode,"stdout":p.stdout[-20000:],"stderr":p.stderr[-20000:]}
+def main():
+ a=argparse.ArgumentParser();a.add_argument("--root",default=".");a.add_argument("--once",action="store_true");x=a.parse_args();root=Path(x.root).resolve();b=root/".blackgold";q=b/"tasks/pending";ok=b/"tasks/completed";bad=b/"tasks/failed";rec=b/"receipts"
+ for d in(q,ok,bad,rec):d.mkdir(parents=True,exist_ok=True)
+ failures=0
+ for p in sorted(q.glob("*.task.json"),key=lambda z:z.stat().st_mtime):
+  try:t=json.loads(p.read_text(encoding="utf-8-sig"))
+  except Exception:t={}
+  tid=str(t.get("task_id",p.stem));cmd=t.get("command")
+  valid=t.get("schema")=="blackgold.task/v1" and t.get("project")==P and cmd in A and not any(t.get(k) for k in("shell","script","arbitrary_command"))
+  if valid:
+   tool=root/"tools/blackgold_quality_constitution/constitution.py"
+   res=rr([sys.executable,str(tool),"--root",str(root)],root,int(t.get("timeout_seconds",300))) if tool.exists() else {"passed":False,"exit_code":1,"stdout":"","stderr":"constitution tool missing"}
+  else:res={"passed":False,"exit_code":1,"stdout":"","stderr":"task blocked"}
+  (rec/f"{tid}.receipt.json").write_text(json.dumps({"schema":"blackgold.task-receipt/v2","task_id":tid,"command":cmd,**res},ensure_ascii=False,indent=2),encoding="utf-8")
+  dest=(ok if res["passed"] else bad)/p.name
+  if dest.exists():dest.unlink()
+  shutil.move(str(p),str(dest));failures+=0 if res["passed"] else 1
+ return 1 if failures else 0
+if __name__=="__main__":raise SystemExit(main())
+'''
+
+          constitution = '''from __future__ import annotations
+import argparse,json,hashlib
+from pathlib import Path
+from datetime import datetime,timezone
+def now():return datetime.now(timezone.utc).isoformat()
+def rd(p,d=None):
+ try:return json.loads(p.read_text(encoding="utf-8-sig"))
+ except:return d
+def wr(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v,ensure_ascii=False,indent=2),encoding="utf-8")
+def main():
+ a=argparse.ArgumentParser();a.add_argument("--root",required=True);x=a.parse_args();r=Path(x.root).resolve();m=r/".blackgold/memory";rp=r/".blackgold/reports"
+ genome=rd(m/"design-genome-rules.json",{}) or {};lab=rd(rp/"experience-lab-v2-latest.json",{}) or {};evo=rd(rp/"evolution-v2.1-latest.json",{}) or {}
+ inv=[
+ {"id":"truth-visible","rule":"No fabricated testing, urgency, discounts, expert claims or guaranteed results."},
+ {"id":"limitations-visible","rule":"Known limitations and unknowns remain visible where recommendations are made."},
+ {"id":"public-lock","rule":"No autonomous publication to the public site."},
+ {"id":"review-lock","rule":"No page opening during construction; visual review only after a completed stage."},
+ {"id":"light-feminine-premium","rule":"Primary visual direction stays light, feminine and premium; large dark masses cannot dominate the page."},
+ {"id":"anti-template","rule":"Repeated card grids, excessive pills and generic template composition cannot dominate the experience."},
+ {"id":"mobile-parity","rule":"Mobile preserves hierarchy, clarity and conversion intent."},
+ {"id":"decision-first","rule":"Commercial journeys start from shopper intent or question, not a generic product wall."}]
+ for item in genome.get("rules",[]):
+  if item.get("status")=="blocking":inv.append({"id":"genome-"+str(item.get("fingerprint","unknown")),"rule":item.get("message") or item.get("class") or "Repeated design failure"})
+ c={"schema":"blackgold.quality-constitution/v1","project":"BlackGold Beauty Finds","generated_at":now(),"policy":"deny_on_violation","amendment_policy":"explicit_human_approval_required","invariants":inv,"evidence":{"lab_report_present":bool(lab),"evolution_report_present":bool(evo),"genome_rules":len(genome.get("rules",[]))},"public_site_changes":False,"page_opened":False}
+ digest=hashlib.sha256(json.dumps(c,sort_keys=True,ensure_ascii=False).encode()).hexdigest();c["constitution_sha256"]=digest
+ wr(r/"data/governance/quality-constitution.v1.json",c);wr(rp/"quality-constitution-v2.3-latest.json",{"schema":"blackgold.quality-constitution-report/v1","generated_at":now(),"status":"passed","invariants":len(inv),"constitution_sha256":digest,"public_site_changes":False,"page_opened":False})
+ print(json.dumps({"status":"passed","invariants":len(inv),"sha256":digest}));return 0
+if __name__=="__main__":raise SystemExit(main())
+'''
+
+          policy = json.dumps({
+              "schema":"blackgold.quality-constitution-policy/v1",
+              "project":project,
+              "default":"deny",
+              "amendment":"human_approval_only",
+              "constitutional_classes":["truth","limitations","public_lock","review_lock","visual_identity","anti_template","mobile_parity","decision_first","promoted_failure_genome"],
+              "public_site_changes":False,
+              "open_page":False
+          }, ensure_ascii=False, separators=(",",":"))
+
+          task = json.dumps({
+              "schema":"blackgold.task/v1",
+              "task_id":"quality-constitution-v2.3",
+              "project":project,
+              "command":"experience.constitution",
+              "timeout_seconds":240,
+              "safe_mode":True,
+              "public_site_changes":False
+          }, separators=(",",":"))
+
+          def make_bundle(release_id, version, files):
+              entries=[]
+              for target, content in files:
+                  raw=content.encode("utf-8")
+                  entries.append({
+                      "target":target,
+                      "encoding":"base64",
+                      "sha256":hashlib.sha256(raw).hexdigest(),
+                      "content":base64.b64encode(raw).decode("ascii")
+                  })
+              obj={
+                  "schema":"blackgold.remote-bundle/v1",
+                  "project":project,
+                  "release_id":release_id,
+                  "version":version,
+                  "created_at":utc(),
+                  "allowed_phases":["implementation","integration"],
+                  "public_site_changes":False,
+                  "files":entries,
+                  "delete":[]
+              }
+              text=json.dumps(obj,ensure_ascii=False,separators=(",",":"))
+              return text, hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+          release_dir=Path("blackgold-delivery/releases")
+          release_dir.mkdir(parents=True,exist_ok=True)
+          specs=[
+              ("blackgold-v2.3-a-orchestrator.bundle.json","blackgold-orchestrator-v2.3.0",[("tools/blackgold_orchestrator/blackgold_orchestrator.py",orchestrator)]),
+              ("blackgold-v2.3-b-constitution.bundle.json","blackgold-quality-constitution-v2.3.0",[("tools/blackgold_quality_constitution/constitution.py",constitution),("data/governance/quality-constitution-policy.v1.json",policy)]),
+              ("blackgold-v2.3-c-activation.bundle.json","blackgold-quality-constitution-activation-v2.3.0",[(".blackgold/tasks/pending/quality-constitution-v2.3.task.json",task)])
+          ]
+          releases=[]
+          for filename, rid, files in specs:
+              text, sha=make_bundle(rid,"2.3.0",files)
+              (release_dir/filename).write_text(text,encoding="utf-8")
+              releases.append({
+                  "release_id":rid,
+                  "version":"2.3.0",
+                  "kind":"bundle",
+                  "bundle_url":f"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/{filename}",
+                  "sha256":sha,
+                  "public_site_changes":False,
+                  "open_page_after_install":False
+              })
+
+          channel={
+              "schema":"blackgold.remote-channel/v1",
+              "project":project,
+              "branch":"blackgold-autonomous-delivery",
+              "generation":9,
+              "updated_at":utc(),
+              "releases":releases,
+              "policy":{
+                  "default":"deny",
+                  "public_site_changes":False,
+                  "manual_download_required":False,
+                  "manual_file_movement":False,
+                  "open_pages_only_for_final_evaluation":True
+              }
+          }
+          Path("blackgold-delivery/channel.json").write_text(json.dumps(channel,ensure_ascii=False,indent=2),encoding="utf-8")
+
+      - name: Commit verified delivery
+        run: |
+          git config user.name "BlackGold Autonomous Builder"
+          git config user.email "actions@users.noreply.github.com"
+          git add blackgold-delivery/releases/blackgold-v2.3-*.bundle.json blackgold-delivery/channel.json
+          git diff --cached --quiet && exit 0
+          git commit -m "release(blackgold): quality constitution v2.3"
+          git push origin HEAD:blackgold-autonomous-delivery
