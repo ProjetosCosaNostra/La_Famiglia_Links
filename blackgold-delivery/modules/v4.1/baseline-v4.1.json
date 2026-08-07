@@ -1,0 +1,67 @@
+{
+  "schema": "blackgold.baseline-recovery/v4.1",
+  "project": "BlackGold Beauty Finds",
+  "market": "US",
+  "branch": "blackgold-autonomous-delivery",
+  "repo": "ProjetosCosaNostra/La_Famiglia_Links",
+  "target_stage": ".blackgold/staging/experience-v2.9",
+  "created_at": "2026-08-07T22:18:00Z",
+  "policy": {
+    "public_site_changes": false,
+    "open_page_after_install": false,
+    "delete_from_project": false,
+    "commercial_default": "deny",
+    "quarantine_stale_tasks": true,
+    "backup_before_recovery": true,
+    "rollback_on_failure": true
+  },
+  "bootstrap_releases": [
+    {"name": "blackgold-v2.7-a-materializer.bundle.json", "blob_sha": "8584a382b9abf45c1bf28cc8b71621556843e3cb"},
+    {"name": "blackgold-v2.8-a-decision-commerce-core.bundle.json", "blob_sha": "fe0b45c7dc7c68921274ef12ecfbb862b1ea2e01"},
+    {"name": "blackgold-v2.9-a-campaign-conversion-core.bundle.json", "blob_sha": "2390e4ced0727641d213a015535b3b6005f4ae6c"},
+    {"name": "blackgold-decision-guide-library-v3.6.1.bundle.json", "blob_sha": "5d3d484aad253b754a4846416460c586f74e956b"}
+  ],
+  "materializers_before_overlays": [
+    "tools/blackgold_real_experience_v27/materialize.py",
+    "tools/blackgold_real_experience_v28/materialize.py",
+    "tools/blackgold_real_experience_v29/materialize.py"
+  ],
+  "pre_guide_overlays": [
+    {"name": "blackgold-campaign-operations-v3.0.0.bundle.json", "blob_sha": "1a2b87a3aa846901fd9f34cc77cd5d18afaf6cfe"},
+    {"name": "blackgold-affiliate-activation-workbench-v3.1.0.bundle.json", "blob_sha": "4d927cde6d1d559a1b1da262d9239ad20783fe98"},
+    {"name": "blackgold-real-product-research-v3.2.0.bundle.json", "blob_sha": "6b35eec7945da458101bb834591060f941403ef5"},
+    {"name": "blackgold-real-campaign-alignment-v3.3.0.bundle.json", "blob_sha": "e3a5bba1ff86c2d9073bc7816b118b58416c1212"},
+    {"name": "blackgold-source-visible-product-flow-v3.4.0.bundle.json", "blob_sha": "d9334a71d934e61bff2e02d499bcc5bce2cb2fa2"},
+    {"name": "blackgold-home-real-edit-v3.5.0.bundle.json", "blob_sha": "1ea40b3f2832b9d9a4e3e4fa4c1b0ef46ad1a106"}
+  ],
+  "guide_materializer": "tools/blackgold_guide_v36/materialize.py",
+  "post_guide_overlays": [
+    {"name": "blackgold-site-integrity-pages-a-v3.7.0.bundle.json", "blob_sha": "7f646d5b579fbe1df44452a713651e0fbaef247b"},
+    {"name": "blackgold-site-integrity-pages-b-v3.7.0.bundle.json", "blob_sha": "76774ed1498d641ac8ca42989b83ce14ca0c5213"},
+    {"name": "blackgold-methodology-live-trust-a-v3.8.0.bundle.json", "blob_sha": "250d43264c1be3b8a2a75f1fd7683b4ec4a95c57"},
+    {"name": "blackgold-methodology-live-trust-b-v3.8.0.bundle.json", "blob_sha": "f768582279fafbbdc21493ce49d2cea78aaa5fd7"},
+    {"name": "blackgold-methodology-live-trust-c-v3.8.0.bundle.json", "blob_sha": "3a220cac5fe0d7a0c80c906316b0cd05f13368aa"},
+    {"name": "blackgold-runtime-core-v3.9.0.bundle.json", "blob_sha": "102c2f9933b0e3504ac285131b10246ca89283c5"},
+    {"name": "blackgold-runtime-views-v3.9.0.bundle.json", "blob_sha": "dff2c3cbc2b369ebfa21c794a5f6ff9d29840437"},
+    {"name": "blackgold-runtime-style-v3.9.0.bundle.json", "blob_sha": "55dc95e043a526385559b06edaa41eed5b37c4d3"},
+    {"name": "blackgold-retailer-guard-core-v3.9.0.bundle.json", "blob_sha": "9cafbec1c653f51fc106402579ead6e88ba55856"},
+    {"name": "blackgold-retailer-gate-runtime-v3.9.0.bundle.json", "blob_sha": "76425689c151dcadee53f616f2237ad2d5a283c1"},
+    {"name": "blackgold-retailer-gate-page-v3.9.0.bundle.json", "blob_sha": "cd6a54508dc166290c248a8e3560c57c0acfe66b"},
+    {"name": "blackgold-retailer-policy-v3.9.0.bundle.json", "blob_sha": "909ad00dce9deed92a99e9b23e958b23a6dfa207"},
+    {"name": "blackgold-commerce-audit-page-v3.9.0.bundle.json", "blob_sha": "27f729b5480b47bdd763926e49c7bddb7a80afdb"},
+    {"name": "blackgold-commerce-audit-runtime-v3.9.0.bundle.json", "blob_sha": "16bb44fa906f2b384aad89a2c3654144f9d095b6"},
+    {"name": "blackgold-telemetry-core-v4.0.0.bundle.json", "blob_sha": "d7f30fa20733ee834d4a8f897cc3875739bfef8c"},
+    {"name": "blackgold-funnel-pages-v4.0.0.bundle.json", "blob_sha": "7ec07617cc634aaf9564a69546e04daeecaae29c"},
+    {"name": "blackgold-funnel-commerce-v4.0.0.bundle.json", "blob_sha": "aefe6ee4255c854a2dd468a729f43845fc7dbcd5"},
+    {"name": "blackgold-funnel-dashboard-v4.0.0.bundle.json", "blob_sha": "498fec9b9fb2ee9a938f821559b681ccc210c235"}
+  ],
+  "required_stage_files": [
+    "index.html", "styles.css", "app.js", "products.html", "product.html", "compare.html",
+    "guide.html", "guide-detail.html", "methodology.html", "research-ledger.html",
+    "affiliate-disclosure.html", "privacy.html", "terms.html", "corrections.html",
+    "ecosystem.html", "404.html", "retailer-gate.html", "retailer-gate.js",
+    "retailer-guard-v3.9.js", "retailer-policy.json", "campaign-dashboard.html",
+    "affiliate-workbench.html", "commerce-audit.html",
+    "data/products.json", "data/campaigns.json", "data/retailer-links.json", "data/guides.json"
+  ]
+}
