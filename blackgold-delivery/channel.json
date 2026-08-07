@@ -1,0 +1,15 @@
+{
+  "schema": "blackgold.remote-channel/v1",
+  "project": "BlackGold Beauty Finds",
+  "branch": "blackgold-autonomous-delivery",
+  "generation": 0,
+  "updated_at": "2026-08-06T23:13:00-03:00",
+  "releases": [],
+  "policy": {
+    "default": "deny",
+    "public_site_changes": false,
+    "manual_download_required": false,
+    "manual_file_movement": false,
+    "open_pages_only_for_final_evaluation": true
+  }
+}
