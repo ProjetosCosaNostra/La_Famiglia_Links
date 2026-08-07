@@ -2,68 +2,58 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 29,
-  "updated_at": "2026-08-07T23:34:00Z",
+  "generation": 30,
+  "updated_at": "2026-08-07T23:42:00Z",
   "releases": [
     {
-      "release_id": "blackgold-affiliate-workbench-page-v4.3.0",
-      "version": "4.3.0",
+      "release_id": "blackgold-rolling-baseline-manifest-v4.4.0",
+      "version": "4.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-workbench-page-v4.3.0.bundle.json",
-      "sha256": "e6e103d8e4c3b084e57f2beea14519411b1b76d9d358f102a22f0cbdf52a3cb2",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-manifest-v4.4.0.bundle.json",
+      "sha256": "a33bc9535ae2f8e1ed3185e8400894a87176c2d58ae703a0b50a5ffdc5c284cb",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Atualiza o Affiliate Activation Workbench com fila local de propostas, validação de conta/programa/destino e estado candidate sem desbloquear shopper route."
+      "description": "Instala o manifesto rolling baseline V4.4, fixado na geração funcional 29, com bootstrap V4.1 e overlays V4.3 por Git blob + SHA-256."
     },
     {
-      "release_id": "blackgold-affiliate-workbench-runtime-v4.3.0",
-      "version": "4.3.0",
+      "release_id": "blackgold-rolling-baseline-engine-v4.4.0",
+      "version": "4.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-workbench-runtime-v4.3.0.bundle.json",
-      "sha256": "007de83bb607b1fdc08c5c737604bb421cc31ee9a7920a3ab3faacb8eebae7dc",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-engine-v4.4.0.bundle.json",
+      "sha256": "028998d8aa780205c871cedaae0aad49c1751dacf6b64f1eb7e19bb7e5c252a9",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala runtime V4.3 com localStorage seguro, confirmação de conta aprovada, tracking gerado pela rede, destino exato, validade de 7 dias, export JSON e fila candidate."
+      "description": "Instala bootstrap pequeno do rolling baseline; o engine completo só executa após Git blob e SHA-256 conferirem."
     },
     {
-      "release_id": "blackgold-affiliate-program-registry-v4.3.0",
-      "version": "4.3.0",
+      "release_id": "blackgold-rolling-baseline-orchestrator-source-v4.4.0",
+      "version": "4.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-program-registry-v4.3.0.bundle.json",
-      "sha256": "92ce12e0eea361d257d9e7567db6aee9db6077330426e962b525e8777a5f38fa",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-source-v4.4.0.bundle.json",
+      "sha256": "b3855f8bcccbb5e43eb303c315f51588a8a58d6f706ca7f5525d97342b38e7cf",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala registry US separando program_verified de application_status unknown e shopper_link_state locked para Sephora/Rakuten e Ulta/Impact."
+      "description": "Instala cópia de recuperação do orchestrator V4.4 para restaurar a allowlist depois de qualquer reconstrução V4.1."
     },
     {
-      "release_id": "blackgold-affiliate-proposal-policy-v4.3.0",
-      "version": "4.3.0",
+      "release_id": "blackgold-rolling-baseline-orchestrator-v4.4.0",
+      "version": "4.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-proposal-policy-v4.3.0.bundle.json",
-      "sha256": "3eb4844cd88b34ec4b5f776599ab9c08c6982bd200cb0e0d62999d8c8b57f469",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-v4.4.0.bundle.json",
+      "sha256": "ae570f1ae4f370bd685b77444a2c4e131aed88c01aacdaf680dd57c21af503c7",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Adiciona política default-deny: importação de proposta nunca pode alterar o registry live nem desbloquear rota de compra."
+      "description": "Adiciona experience.recover_rolling_baseline à allowlist sem habilitar shell, script arbitrário ou escrita pública."
     },
     {
-      "release_id": "blackgold-affiliate-proposal-importer-v4.3.0",
-      "version": "4.3.0",
+      "release_id": "blackgold-rolling-baseline-activation-v4.4.0",
+      "version": "4.4.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-proposal-importer-v4.3.0.bundle.json",
-      "sha256": "8f970723f3b084593eecf99f274e12e314e378560bf78bf4f538292a5ef2ae31",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-activation-v4.4.0.bundle.json",
+      "sha256": "1e3a40e6ecfa003a30e8a0c80254a6c9c948730103e7d78a447c520f493124c2",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala importador seguro que aceita somente JSON da inbox, valida produto/programa/HTTPS/hosts/freshness e grava apenas candidate store; retailer-links.json permanece intocado."
-    },
-    {
-      "release_id": "blackgold-affiliate-release-gate-policy-v4.3.0",
-      "version": "4.3.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-release-gate-policy-v4.3.0.bundle.json",
-      "sha256": "2f465ed75dfe2ea7e2fca8e83f2e7abb15628c6c7e928529be82a0d626866f0c",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Estende o Release Candidate Gate para exigir workbench runtime, affiliate program registry e proposal policy antes de considerar o staging completo."
+      "description": "Agenda recuperação idempotente: se o staging já estiver atual, só valida; se estiver antigo/incompleto, faz backup, reconstrói, aplica V4.3 e rollback em falha."
     }
   ],
   "policy": {
