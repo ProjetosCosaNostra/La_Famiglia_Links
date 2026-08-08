@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 34,
-  "updated_at": "2026-08-08T20:56:00Z",
+  "generation": 35,
+  "updated_at": "2026-08-08T21:18:00Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -13,7 +13,7 @@
       "sha256": "f147eb30b75e0fbf1113a8aecfc754060b4f9eda4fedf2fd3921d0d6b37f2021",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Bootstrap compacto do baseline da geração 32; busca manifesto, contrato de portabilidade e engine por blobs imutáveis e valida integridade antes da recuperação."
+      "description": "Bootstrap compacto do baseline recuperável da geração 32."
     },
     {
       "release_id": "blackgold-rolling-baseline-orchestrator-v4.7.0",
@@ -23,7 +23,7 @@
       "sha256": "fd1591b416eb8405e6bd89843d677aeff5ac804444904ad5f02c192224c7bb8f",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Mantém a recuperação V4.7 allowlisted e autocurável após reconstrução ou rollback."
+      "description": "Mantém a recuperação V4.7 allowlisted e autocurável."
     },
     {
       "release_id": "blackgold-rolling-baseline-activation-v4.7.0",
@@ -33,7 +33,7 @@
       "sha256": "c8d6499bbc41bcb49d54d71337c40c39cd08015e73269e1b492c5b06d8a13c4f",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Agenda recuperação idempotente da geração 32, com backup, rollback e preservação de estado comercial mutável."
+      "description": "Agenda recuperação idempotente com backup e rollback."
     },
     {
       "release_id": "blackgold-market-adapter-contracts-v4.8.0",
@@ -43,7 +43,7 @@
       "sha256": "f11da5198ab969214ff9d41d97e2e03353e8adf1a7ac952fbe07966b6e6dd7c2",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala schema e perfis de mercado: US ativo e BR template_locked, além do contrato que proíbe copiar aprovações, hashes, tracking, ledgers e rotas verificadas entre mercados."
+      "description": "Perfis US/BR e contrato de portabilidade por mercado."
     },
     {
       "release_id": "blackgold-market-adapter-validator-v4.8.0",
@@ -53,7 +53,37 @@
       "sha256": "d8e2a7db5628e861e7d3515411e913eb582d6a76224637d2ccf73f5164516772",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala o validador read-only do Market Adapter; o template BR permanece não ativável até existir pesquisa e registros próprios do Brasil."
+      "description": "Validador read-only do Market Adapter."
+    },
+    {
+      "release_id": "blackgold-visual-materializer-v5.0.0",
+      "version": "5.0.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-materializer-v5.0.0.bundle.json",
+      "sha256": "75ccf2ca705b60216aead868966ff6f0ca70f26d38cb2f3c99e9b649c2c08c60",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala materializador V5.0 que baixa a candidata visual por Git blobs imutáveis e valida blob SHA + tamanho antes de escrever no staging."
+    },
+    {
+      "release_id": "blackgold-visual-orchestrator-v5.0.0",
+      "version": "5.0.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-orchestrator-v5.0.0.bundle.json",
+      "sha256": "60f574e4f98d10af6dab4855c974440511565c4c00811c7eabb515612dc592e1",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Allowlist estrita da ação experience.materialize_visual_v50."
+    },
+    {
+      "release_id": "blackgold-visual-activation-v5.0.0",
+      "version": "5.0.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-activation-v5.0.0.bundle.json",
+      "sha256": "b770f7cee657d834ddb17a7685504a0c634b92da114965f99d6d34dd887b96ee",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Agenda a materialização da V5.0 no staging sem abrir página e sem alterar o site público."
     }
   ],
   "policy": {
@@ -65,6 +95,7 @@
     "portable_core_contract": "blackgold.portability-contract/v1",
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
-    "infrastructure_foundation_complete": true
+    "infrastructure_foundation_complete": true,
+    "active_visual_candidate": "5.0.0"
   }
 }
