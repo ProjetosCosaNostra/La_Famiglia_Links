@@ -1,0 +1,39 @@
+{
+  "schema": "blackgold.portability-contract/v1",
+  "project": "BlackGold Beauty Finds",
+  "source_market": "US",
+  "created_at": "2026-08-08T20:18:00Z",
+  "purpose": "Define what may be reused by another BlackGold storefront without copying market-specific commercial data.",
+  "reusable_core": [
+    "tools/blackgold_guard",
+    "tools/blackgold_bridge",
+    "tools/blackgold_autonomous_agent",
+    "tools/blackgold_orchestrator",
+    "tools/blackgold_release_gate_v42",
+    "tools/blackgold_baseline_v41",
+    "tools/blackgold_rolling_baseline_v47",
+    ".blackgold/tasks",
+    ".blackgold/receipts",
+    ".blackgold/reports",
+    ".blackgold/state"
+  ],
+  "market_specific_never_clone_blindly": [
+    ".blackgold/staging/experience-v2.9/data/products.json",
+    ".blackgold/staging/experience-v2.9/data/campaigns.json",
+    ".blackgold/staging/experience-v2.9/data/guides.json",
+    ".blackgold/staging/experience-v2.9/data/retailer-links.json",
+    ".blackgold/staging/experience-v2.9/data/affiliate-programs.us.json",
+    ".blackgold/staging/experience-v2.9/retailer-policy.json",
+    ".blackgold/commerce",
+    ".blackgold/inbox"
+  ],
+  "port_rules": [
+    "Create a new project identity and market before activation.",
+    "Start commercial registries default-deny and locked.",
+    "Never copy US affiliate approvals, candidate hashes, tracking links, or activation ledgers into another market.",
+    "Reuse guard, rollback, receipts, release-gate patterns and task allowlisting.",
+    "Rebuild product, retailer, legal and affiliate registries from sources appropriate to the target market.",
+    "No public branch is modified by portability operations."
+  ],
+  "public_site_changes": false
+}
