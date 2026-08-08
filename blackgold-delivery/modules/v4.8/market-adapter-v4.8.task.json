@@ -1,0 +1,10 @@
+{
+  "schema": "blackgold.task/v1",
+  "project": "BlackGold Beauty Finds",
+  "task_id": "market-adapter-audit-v4.8",
+  "command": "experience.audit_market_adapter",
+  "priority": 6,
+  "timeout_seconds": 300,
+  "safe_mode": true,
+  "public_site_changes": false
+}
