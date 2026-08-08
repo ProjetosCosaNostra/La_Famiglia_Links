@@ -1,0 +1,27 @@
+{
+  "schema": "blackgold.market-profile/v1",
+  "project": "BlackGold Beauty Finds",
+  "market": "US",
+  "country": "US",
+  "locale": "en-US",
+  "currency": "USD",
+  "state": "active",
+  "commerce_default": "deny",
+  "public_site_changes": false,
+  "market_data": {
+    "products_registry": ".blackgold/staging/experience-v2.9/data/products.json",
+    "campaigns_registry": ".blackgold/staging/experience-v2.9/data/campaigns.json",
+    "guides_registry": ".blackgold/staging/experience-v2.9/data/guides.json",
+    "retailer_registry": ".blackgold/staging/experience-v2.9/data/retailer-links.json",
+    "affiliate_program_registry": ".blackgold/staging/experience-v2.9/data/affiliate-programs.us.json",
+    "retailer_policy": ".blackgold/staging/experience-v2.9/retailer-policy.json"
+  },
+  "portability": {
+    "source_market": "US",
+    "affiliate_approvals_imported": false,
+    "candidate_hashes_imported": false,
+    "tracking_links_imported": false,
+    "activation_ledgers_imported": false,
+    "requires_market_research_before_activation": false
+  }
+}
