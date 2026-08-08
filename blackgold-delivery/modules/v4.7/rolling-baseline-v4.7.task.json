@@ -1,0 +1,10 @@
+{
+  "schema": "blackgold.task/v1",
+  "project": "BlackGold Beauty Finds",
+  "task_id": "rolling-baseline-v4.7",
+  "command": "experience.recover_rolling_baseline_v47",
+  "priority": 5,
+  "timeout_seconds": 2400,
+  "safe_mode": true,
+  "public_site_changes": false
+}
