@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "blackgold.affiliate-activation-approval/v2",
+  "title": "BlackGold affiliate activation approval v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "project", "market", "approval_id", "proposal_id", "candidate_sha256",
+    "product_id", "program_id", "decision", "approved_at", "explicit_confirmation"
+  ],
+  "properties": {
+    "schema": {"const": "blackgold.affiliate-activation-approval/v2"},
+    "project": {"const": "BlackGold Beauty Finds"},
+    "market": {"const": "US"},
+    "approval_id": {"type": "string", "minLength": 8, "maxLength": 128},
+    "proposal_id": {"type": "string", "minLength": 8, "maxLength": 128},
+    "candidate_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "product_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "program_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "decision": {"const": "approve"},
+    "approved_at": {"type": "string", "minLength": 20},
+    "explicit_confirmation": {"const": true}
+  }
+}
