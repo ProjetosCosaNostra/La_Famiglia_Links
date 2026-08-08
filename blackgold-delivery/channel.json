@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 36,
-  "updated_at": "2026-08-08T21:30:00Z",
+  "generation": 37,
+  "updated_at": "2026-08-08T21:42:00Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -66,24 +66,24 @@
       "description": "Mantém allowlist estrita da ação visual; sem shell ou comando arbitrário."
     },
     {
-      "release_id": "blackgold-visual-polish-materializer-v5.1.0",
-      "version": "5.1.0",
+      "release_id": "blackgold-visual-polish-materializer-v5.2.0",
+      "version": "5.2.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-polish-materializer-v5.1.0.bundle.json",
-      "sha256": "4cdc9823525cdbb5808ddd7080e95ed97fb994544a6ff12aa01643f7d82dd03d",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-polish-materializer-v5.2.0.bundle.json",
+      "sha256": "17bc35e966845e326e0ed1dcee24364cb8fed119317393abe3d3f6fbf0b31f9c",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Reconstrói deterministicamente a base visual V5.0 por blobs imutáveis e aplica a camada V5.1: still-life editorial, retratos de pesquisa explícitos, compare dock, mobile menu e correção dos guide details."
+      "description": "Reconstrói deterministicamente V5.0 + V5.1 + V5.2 por Git blobs fixos, com mobile/navigation polish, source health, estados vazios, guide filters, comparison deck e acessibilidade."
     },
     {
-      "release_id": "blackgold-visual-polish-activation-v5.1.0",
-      "version": "5.1.0",
+      "release_id": "blackgold-visual-polish-activation-v5.2.0",
+      "version": "5.2.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-polish-activation-v5.1.0.bundle.json",
-      "sha256": "727f468b15ac692f9046b93f5e5398faebe12b42d94915ceb0c3d2ea49817c0c",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-polish-activation-v5.2.0.bundle.json",
+      "sha256": "9b1ac81356c235815626651586957194d4860e7e796b1c41fdcdf65d7cfe9582",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Agenda a V5.1 no staging sem abrir página e sem tocar no site público."
+      "description": "Agenda V5.2 no staging sem abrir página e sem tocar no site público."
     }
   ],
   "policy": {
@@ -96,6 +96,6 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.1.0"
+    "active_visual_candidate": "5.2.0"
   }
 }
