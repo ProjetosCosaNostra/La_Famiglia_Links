@@ -8,7 +8,7 @@ ACTIONS = {
     "experience.materialize_campaigns": "tools/blackgold_real_experience_v29/materialize.py",
     "experience.materialize_guides": "tools/blackgold_guide_v36/materialize.py",
     "experience.recover_baseline": "tools/blackgold_baseline_v41/recover_baseline.py",
-    "experience.recover_rolling_baseline": "tools/blackgold_rolling_baseline_v46/recover_rolling_baseline.py",
+    "experience.recover_rolling_baseline": "tools/blackgold_rolling_baseline_v44/recover_rolling_baseline.py",
     "experience.audit_release_candidate": "tools/blackgold_release_gate_v42/release_gate.py",
     "experience.import_affiliate_candidates": "tools/blackgold_affiliate_activation_v46/import_proposals.py",
     "experience.promote_affiliate_candidate": "tools/blackgold_affiliate_activation_v46/promote_candidate.py",
