@@ -1,0 +1,42 @@
+{
+  "schema": "blackgold.market-adapter-contract/v1",
+  "project": "BlackGold Beauty Finds",
+  "version": "4.8.0",
+  "public_site_changes": false,
+  "portable_core": [
+    "guard",
+    "bridge",
+    "autonomous_agent",
+    "orchestrator",
+    "release_gate",
+    "baseline_recovery",
+    "task_allowlist",
+    "receipts",
+    "rollback",
+    "reports",
+    "state"
+  ],
+  "market_adapter_required_fields": [
+    "market",
+    "country",
+    "locale",
+    "currency",
+    "market_data",
+    "commerce_default",
+    "portability"
+  ],
+  "cross_market_forbidden": [
+    "affiliate approvals",
+    "candidate hashes",
+    "affiliate tracking links",
+    "activation ledgers",
+    "verified retailer routes"
+  ],
+  "rules": [
+    "A target market starts commerce default-deny.",
+    "A market template cannot be activated or published.",
+    "Market-specific product, retailer, legal and affiliate registries must be rebuilt for the target market.",
+    "Cross-market commercial artifacts are never portable.",
+    "Public branches are not modified by market-adapter operations."
+  ]
+}
