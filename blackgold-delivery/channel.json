@@ -2,118 +2,38 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 32,
-  "updated_at": "2026-08-08T03:40:00Z",
+  "generation": 33,
+  "updated_at": "2026-08-08T20:34:00Z",
   "releases": [
     {
-      "release_id": "blackgold-rolling-baseline-manifest-v4.4.0",
-      "version": "4.4.0",
+      "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
+      "version": "4.7.1",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-manifest-v4.4.0.bundle.json",
-      "sha256": "a33bc9535ae2f8e1ed3185e8400894a87176c2d58ae703a0b50a5ffdc5c284cb",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-engine-v4.7.1.bundle.json",
+      "sha256": "f147eb30b75e0fbf1113a8aecfc754060b4f9eda4fedf2fd3921d0d6b37f2021",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala o manifesto rolling baseline V4.4, fixado na geração funcional 29, com bootstrap V4.1 e overlays V4.3 por Git blob + SHA-256."
+      "description": "Bootstrap compacto do baseline da geração 32. Busca manifesto V4.7, contrato de portabilidade e engine completo por Git blobs imutáveis, valida SHA-256 e só então executa a recuperação."
     },
     {
-      "release_id": "blackgold-rolling-baseline-engine-v4.4.0",
-      "version": "4.4.0",
+      "release_id": "blackgold-rolling-baseline-orchestrator-v4.7.0",
+      "version": "4.7.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-engine-v4.4.0.bundle.json",
-      "sha256": "028998d8aa780205c871cedaae0aad49c1751dacf6b64f1eb7e19bb7e5c252a9",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-v4.7.0.bundle.json",
+      "sha256": "fd1591b416eb8405e6bd89843d677aeff5ac804444904ad5f02c192224c7bb8f",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala bootstrap pequeno do rolling baseline; o engine completo só executa após Git blob e SHA-256 conferirem."
+      "description": "Instala a allowlist V4.7 e uma cópia autocurável do orchestrator. Após reconstrução ou rollback, a própria ação experience.recover_rolling_baseline_v47 é restaurada."
     },
     {
-      "release_id": "blackgold-rolling-baseline-orchestrator-source-v4.4.0",
-      "version": "4.4.0",
+      "release_id": "blackgold-rolling-baseline-activation-v4.7.0",
+      "version": "4.7.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-source-v4.4.0.bundle.json",
-      "sha256": "b3855f8bcccbb5e43eb303c315f51588a8a58d6f706ca7f5525d97342b38e7cf",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-activation-v4.7.0.bundle.json",
+      "sha256": "c8d6499bbc41bcb49d54d71337c40c39cd08015e73269e1b492c5b06d8a13c4f",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala cópia de recuperação do orchestrator V4.4 para restaurar a allowlist depois de qualquer reconstrução V4.1."
-    },
-    {
-      "release_id": "blackgold-rolling-baseline-orchestrator-v4.4.0",
-      "version": "4.4.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-v4.4.0.bundle.json",
-      "sha256": "ae570f1ae4f370bd685b77444a2c4e131aed88c01aacdaf680dd57c21af503c7",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Adiciona experience.recover_rolling_baseline à allowlist sem habilitar shell, script arbitrário ou escrita pública."
-    },
-    {
-      "release_id": "blackgold-rolling-baseline-activation-v4.4.0",
-      "version": "4.4.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-activation-v4.4.0.bundle.json",
-      "sha256": "1e3a40e6ecfa003a30e8a0c80254a6c9c948730103e7d78a447c520f493124c2",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Agenda recuperação idempotente: se o staging já estiver atual, só valida; se estiver antigo/incompleto, faz backup, reconstrói, aplica V4.3 e rollback em falha."
-    },
-    {
-      "release_id": "blackgold-activation-contracts-v4.6.0",
-      "version": "4.6.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-contracts-v4.6.0.bundle.json",
-      "sha256": "a98d49fa29729584988a1723883237f71feb268344778ab52bd286da81442613",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Instala política V4.6 e aprovação V2 presa ao SHA-256 exato do candidato; instalar não desbloqueia nenhuma rota."
-    },
-    {
-      "release_id": "blackgold-activation-importer-v4.6.0",
-      "version": "4.6.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-importer-v4.6.0.bundle.json",
-      "sha256": "9f7b281886bede12328b30d7ac2ab0ea2deb9af6879c0f879510faff2cb5c033",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Instala importador V4.6 com candidate store V2, hash imutável, importação idempotente e bloqueio de colisão de proposal_id."
-    },
-    {
-      "release_id": "blackgold-activation-promoter-v4.6.0",
-      "version": "4.6.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-promoter-v4.6.0.bundle.json",
-      "sha256": "0817e9979898bbd4e6ca924f2ee7de1c6934c88e21244b35b7c9473f5178a6d9",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Instala promotor hash-bound com aprovação/proposta single-use, proteção contra tampering e replay, network recheck e rollback."
-    },
-    {
-      "release_id": "blackgold-activation-orchestrator-v4.6.0",
-      "version": "4.6.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-orchestrator-v4.6.0.bundle.json",
-      "sha256": "86d7bc4d22c74e969f0dbcf55d8b07c6977dc61ebf8f4fe6784c80a13236eafd",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Atualiza a allowlist para importação e promoção V4.6 e mantém a recuperação apontada ao rolling baseline V4.4 existente."
-    },
-    {
-      "release_id": "blackgold-activation-readiness-v4.6.0",
-      "version": "4.6.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-readiness-v4.6.0.bundle.json",
-      "sha256": "6cdcc80172dd1621d460d504f6e90a174a538b2266f5698466c2c45d6b8111bd",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Atualiza a matriz de readiness para exigir candidato hash-bound e manter programa, conta e shopper route como gates separados."
-    },
-    {
-      "release_id": "blackgold-activation-release-gate-v4.6.0",
-      "version": "4.6.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-release-gate-v4.6.0.bundle.json",
-      "sha256": "ebec870a12a99e401a4764ef97a3cc377a213858a4c42c2c15946031f0b3247c",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Estende o Release Gate com approval V2, candidate store V2, binding SHA-256 e proibição de replay de aprovação/proposta."
+      "description": "Agenda a recuperação idempotente da geração 32. Faz backup e rollback, bloqueia reconstrução automática se já houver rotas comerciais verificadas e preserva estado comercial mutável."
     }
   ],
   "policy": {
@@ -121,6 +41,8 @@
     "public_site_changes": false,
     "manual_download_required": false,
     "manual_file_movement": false,
-    "open_pages_only_for_final_evaluation": true
+    "open_pages_only_for_final_evaluation": true,
+    "portable_core_contract": "blackgold.portability-contract/v1",
+    "market_specific_commerce_must_not_be_cloned": true
   }
 }
