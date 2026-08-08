@@ -1,0 +1,10 @@
+{
+  "schema":"blackgold.task/v1",
+  "project":"BlackGold Beauty Finds",
+  "task_id":"materialize-visual-v5.2",
+  "command":"experience.materialize_visual_v50",
+  "priority":20,
+  "timeout_seconds":900,
+  "safe_mode":true,
+  "public_site_changes":false
+}
