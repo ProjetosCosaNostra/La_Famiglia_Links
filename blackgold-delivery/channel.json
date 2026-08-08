@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 31,
-  "updated_at": "2026-08-07T23:59:00Z",
+  "generation": 32,
+  "updated_at": "2026-08-08T03:40:00Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-manifest-v4.4.0",
@@ -56,54 +56,64 @@
       "description": "Agenda recuperação idempotente: se o staging já estiver atual, só valida; se estiver antigo/incompleto, faz backup, reconstrói, aplica V4.3 e rollback em falha."
     },
     {
-      "release_id": "blackgold-affiliate-activation-contracts-v4.5.0",
-      "version": "4.5.0",
+      "release_id": "blackgold-activation-contracts-v4.6.0",
+      "version": "4.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-activation-contracts-v4.5.0.bundle.json",
-      "sha256": "9648c7c1aea95042e1f8c00c7634e8834f6527dd62c9e524e2738a0244eab5f6",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-contracts-v4.6.0.bundle.json",
+      "sha256": "a98d49fa29729584988a1723883237f71feb268344778ab52bd286da81442613",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala contrato default-deny de ativação afiliada e schema de aprovação explícita; instalar não desbloqueia nenhuma rota."
+      "description": "Instala política V4.6 e aprovação V2 presa ao SHA-256 exato do candidato; instalar não desbloqueia nenhuma rota."
     },
     {
-      "release_id": "blackgold-affiliate-activation-promoter-v4.5.0",
-      "version": "4.5.0",
+      "release_id": "blackgold-activation-importer-v4.6.0",
+      "version": "4.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-activation-promoter-v4.5.0.bundle.json",
-      "sha256": "9e3a3f05e13e41678bb9c0ae123ebe999d27900a5baca06becaa62c5b7d5b401",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-importer-v4.6.0.bundle.json",
+      "sha256": "9f7b281886bede12328b30d7ac2ab0ea2deb9af6879c0f879510faff2cb5c033",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Instala promotor protegido por Git blob: candidato só vira verified após aprovação explícita, conta aprovada, URL fresca, resolução de rede e release gate; rollback em qualquer falha."
+      "description": "Instala importador V4.6 com candidate store V2, hash imutável, importação idempotente e bloqueio de colisão de proposal_id."
     },
     {
-      "release_id": "blackgold-affiliate-activation-orchestrator-v4.5.0",
-      "version": "4.5.0",
+      "release_id": "blackgold-activation-promoter-v4.6.0",
+      "version": "4.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-activation-orchestrator-v4.5.0.bundle.json",
-      "sha256": "69ea300f8cf85105313ebfcc5388d246cba77ac2dbc3697d0d7dfb012bd49e7f",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-promoter-v4.6.0.bundle.json",
+      "sha256": "0817e9979898bbd4e6ca924f2ee7de1c6934c88e21244b35b7c9473f5178a6d9",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Adiciona experience.promote_affiliate_candidate à allowlist do orchestrator sem habilitar shell ou comando arbitrário."
+      "description": "Instala promotor hash-bound com aprovação/proposta single-use, proteção contra tampering e replay, network recheck e rollback."
     },
     {
-      "release_id": "blackgold-affiliate-activation-readiness-v4.5.0",
-      "version": "4.5.0",
+      "release_id": "blackgold-activation-orchestrator-v4.6.0",
+      "version": "4.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-activation-readiness-v4.5.0.bundle.json",
-      "sha256": "a0854566f3dd29cc3e8d74011f58076462a27c68a53ece85e7f0c95e0b9987f1",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-orchestrator-v4.6.0.bundle.json",
+      "sha256": "86d7bc4d22c74e969f0dbcf55d8b07c6977dc61ebf8f4fe6784c80a13236eafd",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Adiciona matriz de readiness por produto: programa, aprovação da conta, shopper route e próximo gate, sem desbloquear comércio."
+      "description": "Atualiza a allowlist para importação e promoção V4.6 e mantém a recuperação apontada ao rolling baseline V4.4 existente."
     },
     {
-      "release_id": "blackgold-affiliate-activation-release-gate-v4.5.0",
-      "version": "4.5.0",
+      "release_id": "blackgold-activation-readiness-v4.6.0",
+      "version": "4.6.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-affiliate-activation-release-gate-v4.5.0.bundle.json",
-      "sha256": "5db59c15d987366c42dc51cee77659f68319b6ddd9363cc32aadeb2d7a64c639",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-readiness-v4.6.0.bundle.json",
+      "sha256": "6cdcc80172dd1621d460d504f6e90a174a538b2266f5698466c2c45d6b8111bd",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Estende o Release Gate para exigir os contratos e a matriz de ativação V4.5 antes de considerar o staging tecnicamente completo."
+      "description": "Atualiza a matriz de readiness para exigir candidato hash-bound e manter programa, conta e shopper route como gates separados."
+    },
+    {
+      "release_id": "blackgold-activation-release-gate-v4.6.0",
+      "version": "4.6.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-release-gate-v4.6.0.bundle.json",
+      "sha256": "ebec870a12a99e401a4764ef97a3cc377a213858a4c42c2c15946031f0b3247c",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Estende o Release Gate com approval V2, candidate store V2, binding SHA-256 e proibição de replay de aprovação/proposta."
     }
   ],
   "policy": {
