@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 35,
-  "updated_at": "2026-08-08T21:18:00Z",
+  "generation": 36,
+  "updated_at": "2026-08-08T21:30:00Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -56,16 +56,6 @@
       "description": "Validador read-only do Market Adapter."
     },
     {
-      "release_id": "blackgold-visual-materializer-v5.0.0",
-      "version": "5.0.0",
-      "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-materializer-v5.0.0.bundle.json",
-      "sha256": "75ccf2ca705b60216aead868966ff6f0ca70f26d38cb2f3c99e9b649c2c08c60",
-      "public_site_changes": false,
-      "open_page_after_install": false,
-      "description": "Instala materializador V5.0 que baixa a candidata visual por Git blobs imutáveis e valida blob SHA + tamanho antes de escrever no staging."
-    },
-    {
       "release_id": "blackgold-visual-orchestrator-v5.0.0",
       "version": "5.0.0",
       "kind": "bundle",
@@ -73,17 +63,27 @@
       "sha256": "60f574e4f98d10af6dab4855c974440511565c4c00811c7eabb515612dc592e1",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Allowlist estrita da ação experience.materialize_visual_v50."
+      "description": "Mantém allowlist estrita da ação visual; sem shell ou comando arbitrário."
     },
     {
-      "release_id": "blackgold-visual-activation-v5.0.0",
-      "version": "5.0.0",
+      "release_id": "blackgold-visual-polish-materializer-v5.1.0",
+      "version": "5.1.0",
       "kind": "bundle",
-      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-activation-v5.0.0.bundle.json",
-      "sha256": "b770f7cee657d834ddb17a7685504a0c634b92da114965f99d6d34dd887b96ee",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-polish-materializer-v5.1.0.bundle.json",
+      "sha256": "4cdc9823525cdbb5808ddd7080e95ed97fb994544a6ff12aa01643f7d82dd03d",
       "public_site_changes": false,
       "open_page_after_install": false,
-      "description": "Agenda a materialização da V5.0 no staging sem abrir página e sem alterar o site público."
+      "description": "Reconstrói deterministicamente a base visual V5.0 por blobs imutáveis e aplica a camada V5.1: still-life editorial, retratos de pesquisa explícitos, compare dock, mobile menu e correção dos guide details."
+    },
+    {
+      "release_id": "blackgold-visual-polish-activation-v5.1.0",
+      "version": "5.1.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-visual-polish-activation-v5.1.0.bundle.json",
+      "sha256": "727f468b15ac692f9046b93f5e5398faebe12b42d94915ceb0c3d2ea49817c0c",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Agenda a V5.1 no staging sem abrir página e sem tocar no site público."
     }
   ],
   "policy": {
@@ -96,6 +96,6 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.0.0"
+    "active_visual_candidate": "5.1.0"
   }
 }
