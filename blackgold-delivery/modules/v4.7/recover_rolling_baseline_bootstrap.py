@@ -2,8 +2,8 @@ from __future__ import annotations
 import argparse,base64,hashlib,json,os,subprocess,sys,urllib.request
 from pathlib import Path
 REPO="ProjetosCosaNostra/La_Famiglia_Links"
-BLOB="f01ef8b90e3bbc00bef6f930a9065a7a525440d8"
-SHA256="cc0d85397ece5be62548820f5b0c5e5f841389f0dc5fbe73b28268e3f26b6b0c"
+BLOB="b8d6d42c787ae59e8557aaa8c12ce5ec9be18d1c"
+SHA256="4872ebc3bb7f19af5750e1c893e165a6040b062ac777964581affe8e7b5389c7"
 def fetch():
  u=f"https://api.github.com/repos/{REPO}/git/blobs/{BLOB}"
  q=urllib.request.Request(u,headers={"User-Agent":"BlackGold-V47-Bootstrap/1","Accept":"application/vnd.github+json"})
