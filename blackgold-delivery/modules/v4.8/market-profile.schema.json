@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "blackgold.market-profile/v1",
+  "title": "BlackGold market profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "project",
+    "market",
+    "country",
+    "locale",
+    "currency",
+    "state",
+    "commerce_default",
+    "public_site_changes",
+    "market_data",
+    "portability"
+  ],
+  "properties": {
+    "schema": {"const": "blackgold.market-profile/v1"},
+    "project": {"type": "string", "minLength": 3},
+    "market": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "locale": {"type": "string", "minLength": 4},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "state": {"enum": ["active", "template_locked"]},
+    "commerce_default": {"const": "deny"},
+    "public_site_changes": {"const": false},
+    "market_data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["products_registry", "campaigns_registry", "guides_registry", "retailer_registry", "affiliate_program_registry", "retailer_policy"],
+      "properties": {
+        "products_registry": {"type": "string", "minLength": 1},
+        "campaigns_registry": {"type": "string", "minLength": 1},
+        "guides_registry": {"type": "string", "minLength": 1},
+        "retailer_registry": {"type": "string", "minLength": 1},
+        "affiliate_program_registry": {"type": "string", "minLength": 1},
+        "retailer_policy": {"type": "string", "minLength": 1}
+      }
+    },
+    "portability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_market", "affiliate_approvals_imported", "candidate_hashes_imported", "tracking_links_imported", "activation_ledgers_imported", "requires_market_research_before_activation"],
+      "properties": {
+        "source_market": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "affiliate_approvals_imported": {"const": false},
+        "candidate_hashes_imported": {"const": false},
+        "tracking_links_imported": {"const": false},
+        "activation_ledgers_imported": {"const": false},
+        "requires_market_research_before_activation": {"type": "boolean"}
+      }
+    }
+  }
+}
