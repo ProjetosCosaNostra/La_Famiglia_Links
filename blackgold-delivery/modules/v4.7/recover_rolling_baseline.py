@@ -37,6 +37,10 @@ def apply_bundle(root,release):
   if p.exists():
    shutil.rmtree(p) if p.is_dir() else p.unlink()
  return installed
+def restore_orchestrator(root,here):
+ src=here/"orchestrator_v47.py"
+ if not src.exists():raise RuntimeError("V4.7 orchestrator source missing")
+ atomic(root/"tools/blackgold_orchestrator/blackgold_orchestrator.py",src.read_bytes())
 def verified_routes(stage):
  p=stage/"data/retailer-links.json"
  if not p.exists():return []
@@ -88,6 +92,7 @@ def main():
   R["v44_recovery"]={"exit_code":p.returncode,"stdout":p.stdout[-8000:],"stderr":p.stderr[-8000:]}
   if p.returncode:raise RuntimeError("V4.4 reconstruction failed")
   for rel in m["overlay_releases"]:R["installed"]+=apply_bundle(root,rel)
+  restore_orchestrator(root,here)
   v=verify(root,m);R["verification"]=v;R["status"]="installed";R["completed_at"]=now()
   atomic(report,json.dumps(R,ensure_ascii=False,indent=2).encode())
   atomic(state,json.dumps({"schema":"blackgold.rolling-baseline-state/v4.7","project":PROJECT,"generation":32,"status":"current","verified_routes":v["verified_routes"],"commercial_default":"deny","installed_at":R["completed_at"]},ensure_ascii=False,indent=2).encode());return 0
@@ -96,6 +101,7 @@ def main():
   try:
    if stage.exists():shutil.rmtree(stage)
    if stage_existed and (backup/"experience-v2.9").exists():shutil.copytree(backup/"experience-v2.9",stage)
+   restore_orchestrator(root,here)
    R["rollback"]="completed"
   except Exception as rb:R["rollback"]="failed";R["rollback_error"]=str(rb)
   atomic(report,json.dumps(R,ensure_ascii=False,indent=2).encode());return 1
