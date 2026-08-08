@@ -1,0 +1,27 @@
+{
+  "schema": "blackgold.market-profile/v1",
+  "project": "BlackGold Beauty Finds BR — TEMPLATE",
+  "market": "BR",
+  "country": "BR",
+  "locale": "pt-BR",
+  "currency": "BRL",
+  "state": "template_locked",
+  "commerce_default": "deny",
+  "public_site_changes": false,
+  "market_data": {
+    "products_registry": "MARKET_RESEARCH_REQUIRED/products.br.json",
+    "campaigns_registry": "MARKET_RESEARCH_REQUIRED/campaigns.br.json",
+    "guides_registry": "MARKET_RESEARCH_REQUIRED/guides.br.json",
+    "retailer_registry": "MARKET_RESEARCH_REQUIRED/retailer-links.br.json",
+    "affiliate_program_registry": "MARKET_RESEARCH_REQUIRED/affiliate-programs.br.json",
+    "retailer_policy": "MARKET_RESEARCH_REQUIRED/retailer-policy.br.json"
+  },
+  "portability": {
+    "source_market": "US",
+    "affiliate_approvals_imported": false,
+    "candidate_hashes_imported": false,
+    "tracking_links_imported": false,
+    "activation_ledgers_imported": false,
+    "requires_market_research_before_activation": true
+  }
+}
