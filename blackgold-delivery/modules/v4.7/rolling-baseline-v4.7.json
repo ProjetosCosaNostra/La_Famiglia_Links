@@ -16,97 +16,28 @@
     "preserve_mutable_commerce_state": true
   },
   "foundation_releases": [
-    {
-      "release_id": "blackgold-rolling-baseline-manifest-v4.4.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-manifest-v4.4.0.bundle.json",
-      "sha256": "a33bc9535ae2f8e1ed3185e8400894a87176c2d58ae703a0b50a5ffdc5c284cb"
-    },
-    {
-      "release_id": "blackgold-rolling-baseline-engine-v4.4.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-engine-v4.4.0.bundle.json",
-      "sha256": "028998d8aa780205c871cedaae0aad49c1751dacf6b64f1eb7e19bb7e5c252a9"
-    },
-    {
-      "release_id": "blackgold-rolling-baseline-orchestrator-source-v4.4.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-source-v4.4.0.bundle.json",
-      "sha256": "b3855f8bcccbb5e43eb303c315f51588a8a58d6f706ca7f5525d97342b38e7cf"
-    },
-    {
-      "release_id": "blackgold-rolling-baseline-orchestrator-v4.4.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-v4.4.0.bundle.json",
-      "sha256": "ae570f1ae4f370bd685b77444a2c4e131aed88c01aacdaf680dd57c21af503c7"
-    }
+    {"release_id":"blackgold-rolling-baseline-manifest-v4.4.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-manifest-v4.4.0.bundle.json","sha256":"a33bc9535ae2f8e1ed3185e8400894a87176c2d58ae703a0b50a5ffdc5c284cb"},
+    {"release_id":"blackgold-rolling-baseline-engine-v4.4.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-engine-v4.4.0.bundle.json","sha256":"028998d8aa780205c871cedaae0aad49c1751dacf6b64f1eb7e19bb7e5c252a9"},
+    {"release_id":"blackgold-rolling-baseline-orchestrator-source-v4.4.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-source-v4.4.0.bundle.json","sha256":"b3855f8bcccbb5e43eb303c315f51588a8a58d6f706ca7f5525d97342b38e7cf"},
+    {"release_id":"blackgold-rolling-baseline-orchestrator-v4.4.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-rolling-baseline-orchestrator-v4.4.0.bundle.json","sha256":"ae570f1ae4f370bd685b77444a2c4e131aed88c01aacdaf680dd57c21af503c7"}
   ],
   "overlay_releases": [
-    {
-      "release_id": "blackgold-activation-contracts-v4.6.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-contracts-v4.6.0.bundle.json",
-      "sha256": "a98d49fa29729584988a1723883237f71feb268344778ab52bd286da81442613"
-    },
-    {
-      "release_id": "blackgold-activation-importer-v4.6.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-importer-v4.6.0.bundle.json",
-      "sha256": "9f7b281886bede12328b30d7ac2ab0ea2deb9af6879c0f879510faff2cb5c033"
-    },
-    {
-      "release_id": "blackgold-activation-promoter-v4.6.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-promoter-v4.6.0.bundle.json",
-      "sha256": "0817e9979898bbd4e6ca924f2ee7de1c6934c88e21244b35b7c9473f5178a6d9"
-    },
-    {
-      "release_id": "blackgold-activation-orchestrator-v4.6.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-orchestrator-v4.6.0.bundle.json",
-      "sha256": "86d7bc4d22c74e969f0dbcf55d8b07c6977dc61ebf8f4fe6784c80a13236eafd"
-    },
-    {
-      "release_id": "blackgold-activation-readiness-v4.6.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-readiness-v4.6.0.bundle.json",
-      "sha256": "6cdcc80172dd1621d460d504f6e90a174a538b2266f5698466c2c45d6b8111bd"
-    },
-    {
-      "release_id": "blackgold-activation-release-gate-v4.6.0",
-      "url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-release-gate-v4.6.0.bundle.json",
-      "sha256": "ebec870a12a99e401a4764ef97a3cc377a213858a4c42c2c15946031f0b3247c"
-    }
+    {"release_id":"blackgold-activation-contracts-v4.6.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-contracts-v4.6.0.bundle.json","sha256":"a98d49fa29729584988a1723883237f71feb268344778ab52bd286da81442613"},
+    {"release_id":"blackgold-activation-importer-v4.6.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-importer-v4.6.0.bundle.json","sha256":"9f7b281886bede12328b30d7ac2ab0ea2deb9af6879c0f879510faff2cb5c033"},
+    {"release_id":"blackgold-activation-promoter-v4.6.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-promoter-v4.6.0.bundle.json","sha256":"0817e9979898bbd4e6ca924f2ee7de1c6934c88e21244b35b7c9473f5178a6d9"},
+    {"release_id":"blackgold-activation-orchestrator-v4.6.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-orchestrator-v4.6.0.bundle.json","sha256":"86d7bc4d22c74e969f0dbcf55d8b07c6977dc61ebf8f4fe6784c80a13236eafd"},
+    {"release_id":"blackgold-activation-readiness-v4.6.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-readiness-v4.6.0.bundle.json","sha256":"6cdcc80172dd1621d460d504f6e90a174a538b2266f5698466c2c45d6b8111bd"},
+    {"release_id":"blackgold-activation-release-gate-v4.6.0","url":"https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-activation-release-gate-v4.6.0.bundle.json","sha256":"ebec870a12a99e401a4764ef97a3cc377a213858a4c42c2c15946031f0b3247c"}
   ],
   "required_stage_files": [
-    "index.html",
-    "products.html",
-    "product.html",
-    "compare.html",
-    "guide.html",
-    "guide-detail.html",
-    "methodology.html",
-    "research-ledger.html",
-    "affiliate-disclosure.html",
-    "privacy.html",
-    "terms.html",
-    "corrections.html",
-    "ecosystem.html",
-    "404.html",
-    "retailer-gate.html",
-    "campaign-dashboard.html",
-    "commerce-audit.html",
-    "affiliate-workbench.html",
-    "affiliate-workbench-v4.3.js",
-    "affiliate-activation-readiness.html",
-    "affiliate-activation-readiness-v4.6.js",
-    "styles.css",
-    "app.js",
-    "data/products.json",
-    "data/campaigns.json",
-    "data/guides.json",
-    "data/retailer-links.json",
-    "data/affiliate-programs.us.json",
-    "data/retailer-proposal-policy.json",
-    "data/affiliate-activation-policy.json",
-    "retailer-policy.json"
+    "index.html","products.html","product.html","compare.html","guide.html","guide-detail.html","methodology.html","research-ledger.html","affiliate-disclosure.html","privacy.html","terms.html","corrections.html","ecosystem.html","404.html","retailer-gate.html","campaign-dashboard.html","commerce-audit.html","affiliate-workbench.html","affiliate-workbench-v4.3.js","affiliate-activation-readiness.html","affiliate-activation-readiness-v4.6.js","styles.css","app.js","data/products.json","data/campaigns.json","data/guides.json","data/retailer-links.json","data/affiliate-programs.us.json","data/retailer-proposal-policy.json","data/affiliate-activation-policy.json","retailer-policy.json"
   ],
   "required_tools": [
     "tools/blackgold_affiliate_activation_v46/import_proposals.py",
     "tools/blackgold_affiliate_activation_v46/promote_candidate.py",
     "tools/blackgold_affiliate_activation_v46/affiliate-activation-approval.schema.json",
     "tools/blackgold_orchestrator/blackgold_orchestrator.py",
-    "tools/blackgold_release_gate_v42/release-gate-policy.json"
+    "tools/blackgold_release_gate_v42/release-gate-policy.json",
+    "tools/blackgold_rolling_baseline_v47/orchestrator_v47.py"
   ]
 }
