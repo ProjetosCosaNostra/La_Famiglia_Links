@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 42,
-  "updated_at": "2026-08-09T02:07:36Z",
+  "generation": 43,
+  "updated_at": "2026-08-09T03:00:18Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -104,6 +104,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Compila campanhas contra a identidade real dos produtos e instala um Evidence Graph deterministico com fontes, guias, campanhas, limitacoes e bloqueios comerciais visiveis e autorreparaveis."
+    },
+    {
+      "release_id": "blackgold-truth-pulse-v5.7.0",
+      "version": "5.7.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-truth-pulse-v5.7.0.bundle.json",
+      "sha256": "b7357f609fdb30f566e97fe69041079d967cd75aea236a292bfa1131fa86a925",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala o Truth Pulse: relogio diario de validade da pesquisa, fila de revisao por impacto e Retailer Gate que falha fechado quando a evidencia expira."
     }
   ],
   "policy": {
@@ -116,7 +126,7 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.6.0",
+    "active_visual_candidate": "5.7.0",
     "trust_pages_unified": true,
     "campaign_experience_unified": true,
     "materialization_truth_gate": true,
@@ -140,6 +150,16 @@
       "image"
     ],
     "deterministic_evidence_graph": true,
-    "typed_research_lineage": true
+    "typed_research_lineage": true,
+    "research_health_contract": "blackgold.research-health/v1",
+    "research_sla_contract": "blackgold.research-sla/v1",
+    "daily_research_health_compilation": true,
+    "research_health_runtime_clock": true,
+    "impact_aware_review_queue": true,
+    "evidence_gated_commerce": true,
+    "retailer_gate_parameter_compatibility": [
+      "product_id/product",
+      "campaign_id/campaign"
+    ]
   }
 }
