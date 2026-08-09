@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 45,
-  "updated_at": "2026-08-09T04:42:53Z",
+  "generation": 46,
+  "updated_at": "2026-08-09T08:20:14Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -134,6 +134,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Compila o Launch Contract Engine com aprovacao vinculada ao snapshot, plano transacional sem executor publico e reparo de cold start fail-closed."
+    },
+    {
+      "release_id": "blackgold-revenue-integrity-kernel-v6.0.0",
+      "version": "6.0.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-revenue-integrity-kernel-v6.0.0.bundle.json",
+      "sha256": "bdbc9a77784e21c4a33cbcbb15b53c4f1acb2f6944bf72034518fdf078cb257d",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala o Revenue Integrity Kernel: perfil US com caminhos reais, programas e rotas vinculados a recibos atuais, dominios verificados, anti-replay e comercio bloqueado por padrao."
     }
   ],
   "policy": {
@@ -146,7 +156,7 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.9.0",
+    "active_visual_candidate": "6.0.0",
     "trust_pages_unified": true,
     "campaign_experience_unified": true,
     "materialization_truth_gate": true,
@@ -191,10 +201,10 @@
     "publication_readiness_gate": true,
     "candidate_robots_policy": "deny_all",
     "candidate_sitemap_uses_nonpublic_origin": true,
-    "launch_contract": "blackgold.launch-contract/v1",
-    "launch_readiness_contract": "blackgold.launch-readiness/v1",
-    "publication_plan_contract": "blackgold.publication-plan/v1",
-    "launch_gate_count": 6,
+    "launch_contract": "blackgold.launch-contract/v2",
+    "launch_readiness_contract": "blackgold.launch-readiness/v2",
+    "publication_plan_contract": "blackgold.publication-plan/v2",
+    "launch_gate_count": 8,
     "snapshot_bound_owner_approval": true,
     "approval_replay_allowed": false,
     "public_write_executor_included": false,
@@ -204,6 +214,20 @@
     "action_specific_timeout_limits": true,
     "blob_sha256_pair_verification": true,
     "fallback_sources_never_override_primary": true,
-    "first_stage_parent_autocreate": true
+    "first_stage_parent_autocreate": true,
+    "revenue_integrity_contract": "blackgold.revenue-integrity/v1",
+    "revenue_evidence_contract": "blackgold.revenue-evidence/v1",
+    "affiliate_program_registry_contract": "blackgold.affiliate-programs/v1",
+    "route_evidence_ledger_contract": "blackgold.route-evidence-ledger/v1",
+    "market_profile_targets_must_exist": true,
+    "typed_verified_flag_is_not_evidence": true,
+    "receipt_claim_hash_required": true,
+    "receipt_freshness_required": true,
+    "program_route_domain_binding": true,
+    "affiliate_url_collision_gate": true,
+    "revenue_input_change_autoheal": true,
+    "candidate_floor_contract": "blackgold.candidate-floor/v1",
+    "candidate_downgrade_blocked": true,
+    "superseded_task_archival": true
   }
 }
