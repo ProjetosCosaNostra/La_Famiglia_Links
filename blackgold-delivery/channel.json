@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 39,
-  "updated_at": "2026-08-08T23:16:00Z",
+  "generation": 40,
+  "updated_at": "2026-08-09T00:34:40Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -74,6 +74,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Reconstrói V5.0+V5.1+V5.2+V5.3 e adiciona Campaign Library + landing pages V5.4 ligadas ao produto atual, source freshness e Retailer Gate deny-by-default."
+    },
+    {
+      "release_id": "blackgold-materialization-truth-gate-v5.4.1",
+      "version": "5.4.1",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-materialization-truth-gate-v5.4.1.bundle.json",
+      "sha256": "e8d295b92b3dfb9d5461f53ccef68ef7257a7bb6866b3b0a7010846cf80e04cc",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Repara a cascata V2.7–V5.4 com cofre offline imutável, materialização transacional, estado verdadeiro e bloqueio de tarefas autônomas falhas."
     }
   ],
   "policy": {
@@ -88,6 +98,12 @@
     "infrastructure_foundation_complete": true,
     "active_visual_candidate": "5.4.0",
     "trust_pages_unified": true,
-    "campaign_experience_unified": true
+    "campaign_experience_unified": true,
+    "materialization_truth_gate": true,
+    "materialization_state_contract": "blackgold.materialization-state/v2",
+    "received_is_not_materialized": true,
+    "self_healing_materialization": true,
+    "offline_materialization_vault": true,
+    "repeated_failure_rule": "MATERIALIZATION_DEPENDENCY_CASCADE"
   }
 }
