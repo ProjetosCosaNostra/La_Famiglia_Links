@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 43,
-  "updated_at": "2026-08-09T03:00:18Z",
+  "generation": 44,
+  "updated_at": "2026-08-09T03:20:17Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -114,6 +114,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Instala o Truth Pulse: relogio diario de validade da pesquisa, fila de revisao por impacto e Retailer Gate que falha fechado quando a evidencia expira."
+    },
+    {
+      "release_id": "blackgold-search-intent-foundry-v5.8.0",
+      "version": "5.8.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-search-intent-foundry-v5.8.0.bundle.json",
+      "sha256": "a5c2629f8d82afe316cd17f94731f3a827d1c0681e63dfe9df6bd2717a858837",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala o Search Intent Foundry: oito paginas estaticas unicas derivadas do Evidence Graph, malha interna verificavel, dados estruturados honestos e publicacao bloqueada ate o Launch Gate."
     }
   ],
   "policy": {
@@ -126,7 +136,7 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.7.0",
+    "active_visual_candidate": "5.8.0",
     "trust_pages_unified": true,
     "campaign_experience_unified": true,
     "materialization_truth_gate": true,
@@ -160,6 +170,16 @@
     "retailer_gate_parameter_compatibility": [
       "product_id/product",
       "campaign_id/campaign"
-    ]
+    ],
+    "search_intent_contract": "blackgold.search-intent-index/v1",
+    "crawl_manifest_contract": "blackgold.crawl-manifest/v1",
+    "static_question_paths": 8,
+    "unique_search_intent_gate": true,
+    "thin_content_gate": true,
+    "claim_context_gate": true,
+    "structured_data_contract": "Article-only",
+    "publication_readiness_gate": true,
+    "candidate_robots_policy": "deny_all",
+    "candidate_sitemap_uses_nonpublic_origin": true
   }
 }
