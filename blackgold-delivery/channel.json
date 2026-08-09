@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 40,
-  "updated_at": "2026-08-09T00:34:40Z",
+  "generation": 41,
+  "updated_at": "2026-08-09T01:32:07Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -84,6 +84,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Repara a cascata V2.7–V5.4 com cofre offline imutável, materialização transacional, estado verdadeiro e bloqueio de tarefas autônomas falhas."
+    },
+    {
+      "release_id": "blackgold-decision-os-v5.5.0",
+      "version": "5.5.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-decision-os-v5.5.0.bundle.json",
+      "sha256": "c92c3bfbc577f77ba9576f5790dac2991a9065c60029933f4a637b9ed51de8a4",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Instala o Beauty Decision OS determinístico: recomendações explicáveis, recibo local, privacidade por padrão e autocura contínua do manifesto materializado."
     }
   ],
   "policy": {
@@ -96,7 +106,7 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.4.0",
+    "active_visual_candidate": "5.5.0",
     "trust_pages_unified": true,
     "campaign_experience_unified": true,
     "materialization_truth_gate": true,
@@ -104,6 +114,13 @@
     "received_is_not_materialized": true,
     "self_healing_materialization": true,
     "offline_materialization_vault": true,
-    "repeated_failure_rule": "MATERIALIZATION_DEPENDENCY_CASCADE"
+    "repeated_failure_rule": "MATERIALIZATION_DEPENDENCY_CASCADE",
+    "decision_os_contract": "blackgold.decision-rules/v5.5",
+    "decision_receipt_contract": "blackgold.decision-receipt/v1",
+    "explainable_decisions": true,
+    "local_only_personalization": true,
+    "continuous_manifest_verification": true,
+    "allowlisted_materialization_autoheal": true,
+    "commercial_default": "deny"
   }
 }
