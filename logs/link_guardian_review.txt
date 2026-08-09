@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-09T02:26:46Z
-Itens pendentes: 9
-SKUs únicos: 9
-Prioridade alta: 9
+Atualizado em: 2026-08-09T07:13:20Z
+Itens pendentes: 7
+SKUs únicos: 7
+Prioridade alta: 7
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 9
+- review_only_storefront: 7
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 9
+- trocar_link: 7
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 9
+- storefront_social_lists_invalid: 7
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
-Issue: #121
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/121
-SKU: rog-xbox-ally-7-120hz-512gb-branco
-Título: ROG Xbox Ally Console Portátil 7" Touchscreen 120Hz 16GB RAM 512GB SSD Branco
-ID ML: 5J5PKG-ZPYQ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (9x /lists, 0x listing)
-Badges: Achados do Dia, ROG Xbox Ally, Console Portátil, ASUS, Tela 7", 120Hz, 16GB RAM, 512GB SSD
-open_url: https://meli.la/1FmZq7Y
-checked_url: https://meli.la/1FmZq7Y
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZPYQ&tid=7f123e45-e6c8-4988-b1ee-180d65a887c0
-
-[ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
+Quando: 2026-08-09T07:07:24Z
 SKU: relogio-parede-30cm-prata-branco-lzbq
 Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
 ID ML: 5J5PKG-TL8Q
@@ -52,7 +33,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 22 (invalido)
-Memória operacional: histórico recorrente (30x /lists, 0x listing)
+Memória operacional: histórico recorrente (31x /lists, 0x listing)
 Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
 open_url: https://meli.la/12UKJSY
 checked_url: https://meli.la/12UKJSY
@@ -60,7 +41,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
 
 [ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
+Quando: 2026-08-09T07:07:24Z
 Issue: #76
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/76
 SKU: luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur
@@ -71,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (63x /lists, 0x listing)
+Memória operacional: histórico recorrente (64x /lists, 0x listing)
 Badges: Achados do Dia, Casa, Luminária, Abajur, LED, Touch, Recarregável USB, Mesa
 open_url: https://meli.la/1TWHtzA
 checked_url: https://meli.la/1TWHtzA
@@ -79,7 +60,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCf4xYxkgGxEG%2FptVFLDMDkjUw%2BW8DXq1z%2BNLHsbJuy2bR%2Fd4HomkqmeKsOPbGfED88hCIO3HUfQo1YGHadkyrddmzYXdlwGBfLuif6EiX0ToKYbJrd2I2eT0W7MaShsNPmV0XHoEuSG9pQIS7z9nxWtLiuTuwLPqaitFgJF1nhPRF%2FpUCc5ae8Tm2MjHOMUVoELKA%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
+Quando: 2026-08-09T07:07:24Z
 Issue: #2
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/2
 SKU: xiaomi-redmi-buds-6-play
@@ -90,7 +71,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (25x /lists, 0x listing)
+Memória operacional: histórico recorrente (26x /lists, 0x listing)
 Badges: Achado do Dia, Bluetooth 5.4, TWS, PRETO
 open_url: https://meli.la/1bcZess
 checked_url: https://meli.la/1bcZess
@@ -98,26 +79,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-E681&tid=fda80933-8de9-40b4-bd85-02b942a6e6d8
 
 [ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
-Issue: #48
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/48
-SKU: lixeira-inteligente-sensor-automatica-16l-preta
-Título: Lixeira Inteligente Automática com Sensor para Cozinha e Banheiro, 16 Litros Preto
-ID ML: 5J5PKG-XALA
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (118x /lists, 0x listing)
-Badges: Achados do Dia, Casa, Cozinha, Banheiro, Lixeira, Lixeira Inteligente, Sensor, Automática
-open_url: https://meli.la/1XKrXKm
-checked_url: https://meli.la/1XKrXKm
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-CCY5&tid=63d36cac-7d61-42bd-85bb-c393d085e79b
-
-[ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
+Quando: 2026-08-09T07:07:24Z
 Issue: #78
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/78
 SKU: purificador-de-ar-silencioso-hepa-h13-luz-ambiente
@@ -128,7 +90,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (72x /lists, 0x listing)
+Memória operacional: histórico recorrente (73x /lists, 0x listing)
 Badges: Achados do Dia, Purificador de Ar, HEPA H13, Silencioso, Antialérgico, Quarto, Home Office, Poeira
 open_url: https://meli.la/1H2Sp2u
 checked_url: https://meli.la/1H2Sp2u
@@ -136,7 +98,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U3PG&tid=907d1ad4-1ba7-4be7-b764-20cc77e26d2c
 
 [ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
+Quando: 2026-08-09T07:07:24Z
 Issue: #106
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/106
 SKU: jogo-panelas-ceramica-marmore-10-pecas
@@ -147,7 +109,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (10x /lists, 0x listing)
+Memória operacional: histórico recorrente (11x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Jogo de Panelas, Cerâmica, Mármore, Antiaderente, 10 Peças, Utensílios de Cozinha
 open_url: https://meli.la/1twfxRu
 checked_url: https://meli.la/1twfxRu
@@ -155,7 +117,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-47WR&tid=d4a83032-1d1d-4047-ad9a-b741b0e068ea
 
 [ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
+Quando: 2026-08-09T07:07:24Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -166,7 +128,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (68x /lists, 2x listing)
+Memória operacional: histórico recorrente (69x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
@@ -174,7 +136,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
 
 [ALTA] review_only_storefront
-Quando: 2026-08-09T02:20:17Z
+Quando: 2026-08-09T07:07:24Z
 Issue: #171
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
 SKU: paleta-sombras-new-york-catharine-hill-10-cores
@@ -185,7 +147,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Memória operacional: histórico recorrente (25x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
 open_url: https://meli.la/1rxYZqK
 checked_url: https://meli.la/1rxYZqK
