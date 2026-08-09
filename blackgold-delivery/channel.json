@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 44,
-  "updated_at": "2026-08-09T03:20:17Z",
+  "generation": 45,
+  "updated_at": "2026-08-09T04:42:53Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -124,6 +124,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Instala o Search Intent Foundry: oito paginas estaticas unicas derivadas do Evidence Graph, malha interna verificavel, dados estruturados honestos e publicacao bloqueada ate o Launch Gate."
+    },
+    {
+      "release_id": "blackgold-launch-contract-engine-v5.9.0",
+      "version": "5.9.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-launch-contract-engine-v5.9.0.bundle.json",
+      "sha256": "0fc956bdfe9cadb77553392b2169d67fbe492ce2ed260a21f41008b250c13cc4",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Compila o Launch Contract Engine com aprovacao vinculada ao snapshot, plano transacional sem executor publico e reparo de cold start fail-closed."
     }
   ],
   "policy": {
@@ -136,7 +146,7 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.8.0",
+    "active_visual_candidate": "5.9.0",
     "trust_pages_unified": true,
     "campaign_experience_unified": true,
     "materialization_truth_gate": true,
@@ -180,6 +190,20 @@
     "structured_data_contract": "Article-only",
     "publication_readiness_gate": true,
     "candidate_robots_policy": "deny_all",
-    "candidate_sitemap_uses_nonpublic_origin": true
+    "candidate_sitemap_uses_nonpublic_origin": true,
+    "launch_contract": "blackgold.launch-contract/v1",
+    "launch_readiness_contract": "blackgold.launch-readiness/v1",
+    "publication_plan_contract": "blackgold.publication-plan/v1",
+    "launch_gate_count": 6,
+    "snapshot_bound_owner_approval": true,
+    "approval_replay_allowed": false,
+    "public_write_executor_included": false,
+    "candidate_noindex_is_activation_action": true,
+    "cold_start_truth_repair": true,
+    "legacy_rolling_baseline_pending_task_retired": true,
+    "action_specific_timeout_limits": true,
+    "blob_sha256_pair_verification": true,
+    "fallback_sources_never_override_primary": true,
+    "first_stage_parent_autocreate": true
   }
 }
