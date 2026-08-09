@@ -2,8 +2,8 @@
   "schema": "blackgold.remote-channel/v1",
   "project": "BlackGold Beauty Finds",
   "branch": "blackgold-autonomous-delivery",
-  "generation": 41,
-  "updated_at": "2026-08-09T01:32:07Z",
+  "generation": 42,
+  "updated_at": "2026-08-09T02:07:36Z",
   "releases": [
     {
       "release_id": "blackgold-rolling-baseline-engine-v4.7.1",
@@ -94,6 +94,16 @@
       "public_site_changes": false,
       "open_page_after_install": false,
       "description": "Instala o Beauty Decision OS determinístico: recomendações explicáveis, recibo local, privacidade por padrão e autocura contínua do manifesto materializado."
+    },
+    {
+      "release_id": "blackgold-research-intelligence-fabric-v5.6.0",
+      "version": "5.6.0",
+      "kind": "bundle",
+      "bundle_url": "https://raw.githubusercontent.com/ProjetosCosaNostra/La_Famiglia_Links/blackgold-autonomous-delivery/blackgold-delivery/releases/blackgold-research-intelligence-fabric-v5.6.0.bundle.json",
+      "sha256": "8d1231795ad7acb607a01d45f69e8fb71f45a7aa937bb199ed8b5c0a98f329a6",
+      "public_site_changes": false,
+      "open_page_after_install": false,
+      "description": "Compila campanhas contra a identidade real dos produtos e instala um Evidence Graph deterministico com fontes, guias, campanhas, limitacoes e bloqueios comerciais visiveis e autorreparaveis."
     }
   ],
   "policy": {
@@ -106,7 +116,7 @@
     "market_adapter_contract": "blackgold.market-adapter-contract/v1",
     "market_specific_commerce_must_not_be_cloned": true,
     "infrastructure_foundation_complete": true,
-    "active_visual_candidate": "5.5.0",
+    "active_visual_candidate": "5.6.0",
     "trust_pages_unified": true,
     "campaign_experience_unified": true,
     "materialization_truth_gate": true,
@@ -121,6 +131,15 @@
     "local_only_personalization": true,
     "continuous_manifest_verification": true,
     "allowlisted_materialization_autoheal": true,
-    "commercial_default": "deny"
+    "commercial_default": "deny",
+    "evidence_graph_contract": "blackgold.evidence-graph/v1",
+    "campaign_identity_authority": "data/products.json",
+    "campaign_identity_fields": [
+      "product_slug",
+      "category",
+      "image"
+    ],
+    "deterministic_evidence_graph": true,
+    "typed_research_lineage": true
   }
 }
