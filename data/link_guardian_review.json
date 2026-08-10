@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-08-09T18:56:40Z",
-  "total_items": 7,
+  "updated_at": "2026-08-10T02:31:23Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 5
     },
-    "high_priority": 7
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-08-09T18:52:14Z",
+      "happened_at": "2026-08-10T02:25:08Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 22,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (33x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (34x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-09T18:52:14Z",
+      "happened_at": "2026-08-10T02:25:08Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (66x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (67x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,95 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-09T18:52:14Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 0,
-      "issue_url": "",
-      "issue_title": "",
-      "sku": "air-fryer-mondial-4l-1500w-afn-40-bft-preto",
-      "title": "Fritadeira sem óleo (Air Fryer) Mondial 4L 1500W — AFN-40-BFT (Preto)",
-      "id_busca": "5J5PKG-NYSK",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 22,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/28iCzpJ",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/28iCzpJ",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAmbF9slm233KxI6PGKOKjl4F%2BXDdghoiz5hYxXvOXivC7a5zEQjoG%2BePQxHlIebSPOeHUFMnf%2BwgHpMjYurR6zu0lYQBGrl9i9Qr4W38CXhVZFfWjEV5dafGv%2BoRfvY5VG8NpVT2TOBZedVnb%2By6fP3mrB3AARj8l%2Bg8QxOVepTMXwBfLWAYJ2L8BiHbEVnCIDz%2Fho%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-NYSK&tid=5c0dfbd5-8b21-40eb-a29f-f13e9c6a89c0",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAmbF9slm233KxI6PGKOKjl4F%2BXDdghoiz5hYxXvOXivC7a5zEQjoG%2BePQxHlIebSPOeHUFMnf%2BwgHpMjYurR6zu0lYQBGrl9i9Qr4W38CXhVZFfWjEV5dafGv%2BoRfvY5VG8NpVT2TOBZedVnb%2By6fP3mrB3AARj8l%2Bg8QxOVepTMXwBfLWAYJ2L8BiHbEVnCIDz%2Fho%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAmbF9slm233KxI6PGKOKjl4F%2BXDdghoiz5hYxXvOXivC7a5zEQjoG%2BePQxHlIebSPOeHUFMnf%2BwgHpMjYurR6zu0lYQBGrl9i9Qr4W38CXhVZFfWjEV5dafGv%2BoRfvY5VG8NpVT2TOBZedVnb%2By6fP3mrB3AARj8l%2Bg8QxOVepTMXwBfLWAYJ2L8BiHbEVnCIDz%2Fho%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Air Fryer",
-        "Mondial",
-        "4L",
-        "1500W",
-        "AFN-40-BFT",
-        "Preto",
-        "Cozinha"
-      ]
-    },
-    {
-      "happened_at": "2026-08-09T18:52:14Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 64,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/64",
-      "issue_title": "Smartwatch Amazfit Bip 6 GPS — Multiesporte, Saúde e Tela AMOLED",
-      "sku": "smartwatch-amazfit-bip-6-gps",
-      "title": "Smartwatch Amazfit Bip 6 — GPS Multiesporte (Android/iPhone)",
-      "id_busca": "5J5PKG-FRNH",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (22x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/16igaoj",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/16igaoj",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHgpBvg4kHyRj5k4Wcrx56DFcI3FddszB2VjQ3pOw9A98C29u7zlZfcZBXw%2BWrDGXthuyIL0ITgWsD5p%2B9RPk4DStaWYDv9PNTL47YpY9Qy92MtMcc%2FI0W%2FQVSMaam%2BCobKqYvApPUMHCCmCVSN8WzurtpaVspg9PEWvus2RljGW0jCokgW0jsqBUT8hFMUoOyc9DSc5hfUf9VvTZAQBsb9SboZ99RvMHGFFWQ%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-FRNH",
-      "short_url": "https://meli.la/16igaoj",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BHgpBvg4kHyRj5k4Wcrx56DFcI3FddszB2VjQ3pOw9A98C29u7zlZfcZBXw%2BWrDGXthuyIL0ITgWsD5p%2B9RPk4DStaWYDv9PNTL47YpY9Qy92MtMcc%2FI0W%2FQVSMaam%2BCobKqYvApPUMHCCmCVSN8WzurtpaVspg9PEWvus2RljGW0jCokgW0jsqBUT8hFMUoOyc9DSc5hfUf9VvTZAQBsb9SboZ99RvMHGFFWQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BPeyMZIsEmPcfQjNYte8CwazHV1a9KC4awtvvKJl%2FAThoovW15UzEQtP0OjRntpzOdWcYJJhoABe4ESclHGsj18y4%2FW3smoFLGrdbPdwz%2BalnNWdXbIs6%2B398ZhNWlqEK%2BUzzOdjD2nTxhlWnONI62F5m2oHXrSROLZECF%2B8xJIgLi68XszATi2bgYDzQKuJDBpqKPI%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Tecnologia",
-        "Premium",
-        "Smartwatch",
-        "GPS",
-        "Fitness"
-      ]
-    },
-    {
-      "happened_at": "2026-08-09T18:52:14Z",
+      "happened_at": "2026-08-10T02:25:08Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (75x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (76x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +151,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-09T18:52:14Z",
+      "happened_at": "2026-08-10T02:25:08Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (14x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -284,7 +196,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-09T18:52:14Z",
+      "happened_at": "2026-08-10T02:25:08Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -300,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (71x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (72x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
