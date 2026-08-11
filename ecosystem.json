@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "registry_id": "cosanostra-blackgold-ecosystem",
+  "updated_at": "2026-08-11T01:51:00-03:00",
+  "default_locale": "en",
+  "supported_locales": ["pt-BR", "en-US", "es-419"],
+  "hub": {
+    "id": "hub-official",
+    "kind": "hub",
+    "labels": {
+      "pt-BR": "Hub oficial / Loja",
+      "en-US": "Official hub / Store",
+      "es-419": "Hub oficial / Tienda"
+    },
+    "url": "https://projetoscosanostra.github.io/La_Famiglia_Links/"
+  },
+  "projects": [
+    {
+      "id": "preco-no-ponto",
+      "kind": "android_app",
+      "status": "ready",
+      "labels": {
+        "pt-BR": "Preço no Ponto",
+        "en-US": "Preço no Ponto",
+        "es-419": "Preço no Ponto"
+      },
+      "descriptions": {
+        "pt-BR": "Calcule custos, margem e preço de venda.",
+        "en-US": "Calculate costs, margin and selling price.",
+        "es-419": "Calcula costos, margen y precio de venta."
+      },
+      "url": "https://play.google.com/store/apps/details?id=br.com.lafamigliaplayworks.preconoponto&pcampaignid=web_share"
+    },
+    {
+      "id": "fitnexus-coach-blackgold",
+      "kind": "saas",
+      "status": "ready",
+      "labels": {
+        "pt-BR": "FitNexus Coach",
+        "en-US": "FitNexus Coach",
+        "es-419": "FitNexus Coach"
+      },
+      "descriptions": {
+        "pt-BR": "Ecossistema fitness para alunos, treinos e evolução.",
+        "en-US": "Fitness ecosystem for clients, training and progress.",
+        "es-419": "Ecosistema fitness para alumnos, entrenamientos y evolución."
+      },
+      "url": "https://projetoscosanostra.github.io/FitNexus_Coach_BlackGold/"
+    }
+  ],
+  "channels": [
+    {
+      "id": "instagram",
+      "kind": "social",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/cosanostra.blackgold/"
+    },
+    {
+      "id": "tiktok",
+      "kind": "social",
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@cosanostra.blackgold"
+    },
+    {
+      "id": "kwai",
+      "kind": "social",
+      "label": "Kwai",
+      "url": "https://kwai-video.com/u/@cosanostra.blackgold/CwdSwBPA"
+    },
+    {
+      "id": "youtube",
+      "kind": "social",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@cosanostra.blackgold"
+    },
+    {
+      "id": "facebook",
+      "kind": "social",
+      "label": "Facebook",
+      "url": "https://www.facebook.com/cosanostra.blackgold/"
+    },
+    {
+      "id": "telegram",
+      "kind": "community",
+      "label": "Telegram",
+      "url": "https://t.me/BlackGoldSociety"
+    },
+    {
+      "id": "github",
+      "kind": "professional",
+      "label": "GitHub",
+      "url": "https://github.com/ProjetosCosaNostra"
+    },
+    {
+      "id": "linkedin",
+      "kind": "professional",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/felipe-projetoscosanostra/"
+    },
+    {
+      "id": "contact",
+      "kind": "contact",
+      "label": "Contato / Contacto / Contact",
+      "url": "mailto:projetoscosanostra@gmail.com"
+    }
+  ]
+}
