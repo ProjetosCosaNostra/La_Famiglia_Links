@@ -1,22 +1,68 @@
 {
-  "updated_at": "2026-08-12T07:48:34Z",
-  "total_items": 1,
+  "updated_at": "2026-08-12T13:33:11Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 1,
+    "unique_skus": 2,
     "by_state": {
-      "review_only_storefront": 1
+      "review_only_storefront": 2
     },
     "by_reason": {
+      "social_profile_needs_review": 1,
       "storefront_social_lists_invalid": 1
     },
     "by_action": {
-      "trocar_link": 1
+      "trocar_link": 2
     },
-    "high_priority": 1
+    "high_priority": 2
   },
   "items": [
     {
-      "happened_at": "2026-08-12T07:43:05Z",
+      "happened_at": "2026-08-12T13:26:45Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 33,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/33",
+      "issue_title": "[CMS] Produto: Cadeira de Escritório Newconcept 351049 (Mesh) — Preta",
+      "sku": "cadeira-escritorio-newconcept-351049-mesh-preta",
+      "title": "Cadeira de Escritório Newconcept 351049 — Mesh, Altura Regulável, Giratória (Preta)",
+      "id_busca": "5J5PKG-LWRG",
+      "status": 200,
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/25NyQiY",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D",
+      "open_url": "https://mercadolivre.com/sec/25NyQiY",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LWRG&tid=10209151-92c7-4031-8ed4-b63cce836489",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Home Office",
+        "Cadeira de Escritório",
+        "Mesh",
+        "Encosto Respirável",
+        "Altura Regulável",
+        "Giratória 360°",
+        "Preto"
+      ]
+    },
+    {
+      "happened_at": "2026-08-12T13:26:45Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +78,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (81x /lists, 2x listing)",
+      "memory_note": "histórico recorrente (82x /lists, 2x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

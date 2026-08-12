@@ -1,21 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-12T07:48:34Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-08-12T13:33:11Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
+- social_profile_needs_review: 1
 - storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
@@ -24,7 +25,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-12T07:43:05Z
+Quando: 2026-08-12T13:26:45Z
+Issue: #33
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/33
+SKU: cadeira-escritorio-newconcept-351049-mesh-preta
+Título: Cadeira de Escritório Newconcept 351049 — Mesh, Altura Regulável, Giratória (Preta)
+ID ML: 5J5PKG-LWRG
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Home Office, Cadeira de Escritório, Mesh, Encosto Respirável, Altura Regulável, Giratória 360°, Preto
+open_url: https://mercadolivre.com/sec/25NyQiY
+checked_url: https://mercadolivre.com/sec/25NyQiY
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LWRG&tid=10209151-92c7-4031-8ed4-b63cce836489
+
+[ALTA] review_only_storefront
+Quando: 2026-08-12T13:26:45Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -35,7 +55,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (81x /lists, 2x listing)
+Memória operacional: histórico recorrente (82x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
