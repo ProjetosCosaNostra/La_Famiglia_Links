@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-12T19:18:56Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-08-13T02:41:36Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-12T19:13:20Z
+Quando: 2026-08-13T02:35:22Z
+Issue: #52
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/52
+SKU: cafeteira-dolce-gusto-genio-s-capsulas-branca
+Título: Cafeteira Dolce Gusto Genio S (Cápsulas) — Branca
+ID ML: 5J5PKG-1KY6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 1x listing)
+Badges: Achados do Dia, Cafeteira, Dolce Gusto, Nescafé, Arno, Café, Cápsulas, Bebidas quentes e frias
+open_url: https://mercadolivre.com/sec/2Nj2xGv
+checked_url: https://mercadolivre.com/sec/2Nj2xGv
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1KY6&tid=eec2d724-6290-43f0-aef9-d263f058bfcd
+
+[ALTA] review_only_storefront
+Quando: 2026-08-13T02:35:22Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (83x /lists, 2x listing)
+Memória operacional: histórico recorrente (84x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
