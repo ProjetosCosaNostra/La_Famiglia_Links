@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-13T02:41:36Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-08-13T08:04:03Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-13T02:35:22Z
-Issue: #52
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/52
-SKU: cafeteira-dolce-gusto-genio-s-capsulas-branca
-Título: Cafeteira Dolce Gusto Genio S (Cápsulas) — Branca
-ID ML: 5J5PKG-1KY6
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 1x listing)
-Badges: Achados do Dia, Cafeteira, Dolce Gusto, Nescafé, Arno, Café, Cápsulas, Bebidas quentes e frias
-open_url: https://mercadolivre.com/sec/2Nj2xGv
-checked_url: https://mercadolivre.com/sec/2Nj2xGv
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1KY6&tid=eec2d724-6290-43f0-aef9-d263f058bfcd
-
-[ALTA] review_only_storefront
-Quando: 2026-08-13T02:35:22Z
+Quando: 2026-08-13T07:45:00Z
 Issue: #117
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
 SKU: microsoft-xbox-series-x-1tb
@@ -54,9 +35,66 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (84x /lists, 2x listing)
+Memória operacional: histórico recorrente (85x /lists, 2x listing)
 Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
 open_url: https://meli.la/1dLH6zP
 checked_url: https://meli.la/1dLH6zP
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
+
+[ALTA] review_only_storefront
+Quando: 2026-08-13T07:45:00Z
+Issue: #241
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/241
+SKU: cerave-gel-limpeza-facial-454g
+Título: CeraVe Gel de Limpeza Facial Pele Normal a Oleosa com Niacinamida 454g
+ID ML: 5J5PKG-URLW
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, CeraVe, Gel de Limpeza Facial, Limpeza Facial, Skincare, Pele Normal a Oleosa, Controle da Oleosidade, 3 Ceramidas Essenciais
+open_url: https://meli.la/1VuvMuX
+checked_url: https://meli.la/1VuvMuX
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-URLW
+
+[ALTA] review_only_storefront
+Quando: 2026-08-13T07:45:00Z
+Issue: #242
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
+SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
+Título: Creme Multirreparador Calmante Cicaplast Baume B5+ La Roche-Posay 40ml
+ID ML: 5J5PKG-KHU6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
+open_url: https://meli.la/1Vemrez
+checked_url: https://meli.la/1Vemrez
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-KHU6
+
+[ALTA] review_only_storefront
+Quando: 2026-08-13T07:45:00Z
+Issue: #243
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/243
+SKU: fran-maravicherry-mascara-cilios-preto-6g
+Título: Máscara para Cílios Maravicherry FRAN by Franciny Ehlke Preto 6g
+ID ML: 5J5PKG-WL6G
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 24 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Beleza, Maquiagem, Olhos, Máscara de Cílios, Maravicherry, FRAN, Franciny Ehlke, Máximo Volume
+open_url: https://meli.la/2vZcCPX
+checked_url: https://meli.la/2vZcCPX
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-WL6G
