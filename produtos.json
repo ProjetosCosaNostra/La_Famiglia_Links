@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05T23:12:33Z",
+  "updated_at": "2026-08-14T00:15:25Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -10189,7 +10189,6 @@
         "limpa hidrata tonifica"
       ],
       "quick_home": true,
-      "quick_home_order": 6,
       "_source_issue_number": 233,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2qvGAQ8",
@@ -10841,7 +10840,7 @@
       "promo_text": "✨ Máscara para Cílios Maravicherry FRAN by Franciny Ehlke — preto, 6g. Proporciona máximo volume, alongamento e curvatura para realçar e destacar o olhar. Fórmula hipoalergênica, dermatológica e oftalmologicamente testada e livre de crueldade animal.",
       "buy_cta": "Ver oferta no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -10888,12 +10887,88 @@
         "https://github.com/user-attachments/assets/bbf36727-661e-4d23-8d23-9e26c69a514b"
       ],
       "webp_optimized_at": "2026-08-05T23:12:33Z"
+    },
+    {
+      "sku": "gloss-labial-cherry-bomb-pam-by-pamella-5g",
+      "title": "Gloss Labial Cherry Bomb Pam By Pamella 5g",
+      "badges": [
+        "Beleza",
+        "Maquiagem",
+        "Lábios",
+        "Brilho Labial",
+        "Cherry Bomb",
+        "Pam By Pamella",
+        "Gloss Hidratante",
+        "Brilho Intenso",
+        "Aroma de Cereja",
+        "Longa Duração",
+        "Vermelho"
+      ],
+      "id_busca": "5J5PKG-B5F1",
+      "open_url": "https://meli.la/2AgwM9t",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfLOhHKOoNd%2FpOHnBZbR9kI6MUPKETpySXrI%2BFvBfQZ6MqDEy%2Bb%2FxGhd1PMf1fo3JZDtpR5BmjHKeIpHf8J1ldgnW0TPv7gLbSgU7OcqO4c6CBYNT%2BUnz29qpJ%2FjZN%2BAxu19yrJxjg%2B8PI1Aei%2BNHg3wNAbyVKZDuIslAy%2F1sFwnF%2B19279J%2Fg0kyq82P8j%2B9%2B1j0iXYZpII%2Bdtlw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-B5F1",
+      "image": "assets/produtos-webp/gloss-labial-cherry-bomb-pam-by-pamella-5g-cover-b091e5f6a3.webp",
+      "images": [
+        "assets/produtos-webp/gloss-labial-cherry-bomb-pam-by-pamella-5g-images-01-7f67624a66.webp",
+        "assets/produtos-webp/gloss-labial-cherry-bomb-pam-by-pamella-5g-images-02-2cad1e04bf.webp"
+      ],
+      "price_text": "R$ 28,79",
+      "old_price_text": "R$ 69,90",
+      "discount_text": "58% OFF no Pix",
+      "price_checked_at": "13/08/2026",
+      "promo_text": "🍒 Cherry Bomb Pam By Pamella 5g — gloss labial com brilho intenso, hidratação e irresistível aroma de cereja. Uma combinação marcante para realçar os lábios com efeito glossy e muito charme.",
+      "buy_cta": "Comprar no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 244,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/244",
+      "issue_title": "Gloss Labial Cherry Bomb Pam By Pamella 5g",
+      "categoria_principal": "Beleza",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Lábios",
+        "Brilho Labial"
+      ],
+      "aliases_busca": [
+        "gloss cherry bomb",
+        "cherry bomb",
+        "pam by pamella",
+        "gloss pam by pamella",
+        "gloss labial cereja",
+        "brilho labial",
+        "gloss vermelho",
+        "gloss hidratante",
+        "maquiagem labial",
+        "lip gloss cherry"
+      ],
+      "quick_home": true,
+      "quick_home_order": 6,
+      "_source_issue_number": 244,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/2AgwM9t",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfLOhHKOoNd%2FpOHnBZbR9kI6MUPKETpySXrI%2BFvBfQZ6MqDEy%2Bb%2FxGhd1PMf1fo3JZDtpR5BmjHKeIpHf8J1ldgnW0TPv7gLbSgU7OcqO4c6CBYNT%2BUnz29qpJ%2FjZN%2BAxu19yrJxjg%2B8PI1Aei%2BNHg3wNAbyVKZDuIslAy%2F1sFwnF%2B19279J%2Fg0kyq82P8j%2B9%2B1j0iXYZpII%2Bdtlw%3D%3D",
+      "last_checked": "",
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/485b98cc-1955-4c0a-bffc-7ffead10401b",
+      "images_original": [
+        "https://github.com/user-attachments/assets/07838f26-1101-494b-b90a-1e2775488c9a",
+        "https://github.com/user-attachments/assets/d3047853-d234-4652-a4fa-70d85fc562a9"
+      ],
+      "webp_optimized_at": "2026-08-14T00:15:25Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-08-05T23:12:33Z",
+    "updated_at": "2026-08-14T00:15:25Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
