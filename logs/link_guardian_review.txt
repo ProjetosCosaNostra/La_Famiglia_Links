@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-13T19:19:57Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-08-14T00:24:56Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
-- social_profile_needs_review: 1
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,57 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-13T19:12:56Z
-Issue: #132
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/132
-SKU: relogio-skmei-1146-masculino-aco-inox-prata-fundo-preto-anadigi
-Título: ⌚👑 Relógio Skmei 1146 — Presença, Estilo e Autoridade no Pulso
-ID ML: 5J5PKG-ZC70
-Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
-Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Badges: Achados do Dia, Relógio Masculino, Skmei 1146, Aço Inox, Ana-Digi, Luz, Alarme, 3ATM
-open_url: https://meli.la/17nEea3
-checked_url: https://meli.la/17nEea3
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLxKR7VlgAZzW%2Ff%2FO1DmhCPlOu1SWAlXcDixSjUlsSj6YXyKj117DNXAVpT2L%2B33RLqtYenJcm77sCihZEwNLIokoEo7tmRMLC%2FBMpziUmeV2EAkjXnE%2Fe3gAUIbVfb%2FXOA4TguiqFzpRYmtw9xptDNAGSVelCAPcgNEeQPejtixwHWf98qUAMe%2Bz17fwjzaMF%2Bjaw%3D%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-ZC70&tid=5f28964d-0dc6-4e5f-8048-ef5c9c2c5628
-
-[ALTA] review_only_storefront
-Quando: 2026-08-13T19:12:56Z
-Issue: #16
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/16
-SKU: wap-robot-w90-3em1-preto
-Título: Robô Aspirador WAP Robot W90 3 em 1 (Varre, Aspira e Passa Pano)
-ID ML: 5J5PKG-TCW4
+Quando: 2026-08-14T00:22:47Z
+Issue: #112
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
+SKU: tradutor-inteligente-premium-online-offline
+Título: Tradutor Portátil Camera 138 Idiomas Instant Online Offline
+ID ML: 5J5PKG-JB8J
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, Casa & Pets, Robô Aspirador, WAP, 3 em 1, Passa pano, Sensores, Oferta
-open_url: https://mercadolivre.com/sec/2J1MBX9
-checked_url: https://mercadolivre.com/sec/2J1MBX9
+Memória operacional: histórico recorrente (50x /lists, 0x listing)
+Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
+open_url: https://meli.la/26KbAhV
+checked_url: https://meli.la/26KbAhV
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-TCW4&tid=1669e005-bc86-4f9f-b89c-2f5234957ed9
-
-[ALTA] review_only_storefront
-Quando: 2026-08-13T19:12:56Z
-Issue: #117
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/117
-SKU: microsoft-xbox-series-x-1tb
-Título: Xbox Series X 1TB Premium
-ID ML: 5J5PKG-VKGY
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (87x /lists, 2x listing)
-Badges: Achados do Dia, Xbox Series X, Console Gamer, 1TB, Alta Performance, Microsoft, Gamer, Premium
-open_url: https://meli.la/1dLH6zP
-checked_url: https://meli.la/1dLH6zP
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VKGY&tid=66e09128-3856-40cf-95bf-405649b5142e
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D
