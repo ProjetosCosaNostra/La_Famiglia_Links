@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "sku": "bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de",
+    "results": [
+      {
+        "source": "https://github.com/user-attachments/assets/6211cbe5-d729-4c2a-99e7-175f46045df7",
+        "status": "converted",
+        "output": "assets/produtos-webp/bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de-cover-0a7eb5a6af.webp",
+        "original_bytes": 112982,
+        "webp_bytes": 62306,
+        "saved_percent": 44.9,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/8f3859ff-b6f2-4223-987b-8bb2bd622638",
+        "status": "converted",
+        "output": "assets/produtos-webp/bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de-images-01-f1c31570b2.webp",
+        "original_bytes": 116210,
+        "webp_bytes": 63184,
+        "saved_percent": 45.6,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      },
+      {
+        "source": "https://github.com/user-attachments/assets/8b5c3399-9aa1-40d7-b91a-b2889b947de9",
+        "status": "converted",
+        "output": "assets/produtos-webp/bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de-images-02-c0aed813a2.webp",
+        "original_bytes": 118416,
+        "webp_bytes": 69746,
+        "saved_percent": 41.1,
+        "size": {
+          "width": 666,
+          "height": 1000
+        }
+      }
+    ]
+  }
+]

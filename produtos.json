@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T22:03:52Z",
+  "updated_at": "2026-08-15T01:02:35Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -9759,7 +9759,6 @@
         "silicone reutilizavel calcanhar"
       ],
       "quick_home": true,
-      "quick_home_order": 7,
       "_source_issue_number": 228,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/291jPnZ",
@@ -10920,7 +10919,7 @@
       "promo_text": "🍒 Cherry Bomb Pam By Pamella 5g — gloss labial com brilho intenso, hidratação e irresistível aroma de cereja. Uma combinação marcante para realçar os lábios com efeito glossy e muito charme.",
       "buy_cta": "Comprar no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -10963,17 +10962,92 @@
         "https://github.com/user-attachments/assets/d3047853-d234-4652-a4fa-70d85fc562a9"
       ],
       "webp_optimized_at": "2026-08-14T00:15:25Z"
+    },
+    {
+      "sku": "bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de",
+      "title": "Bolsa Feminina Pequena Baguete com Corrente Immateriale",
+      "badges": [
+        "Moda Feminina",
+        "Bolsa Feminina",
+        "Bolsa Baguete",
+        "Acessórios Femininos",
+        "Bolsa Pequena",
+        "Bolsa com Corrente",
+        "Bolsa de Ombro",
+        "Elegância",
+        "Sofisticação",
+        "Achados do Dia"
+      ],
+      "id_busca": "5J5PKG-24DE",
+      "open_url": "https://meli.la/339nGYD",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BENtqap0VVYPRHKdrZr3BeGlnZOizHG45bZFKeT8%2FvCUoA3yTadOwp%2BcDczXuqxC%2FXStGQOfSLKUU5lxTvewJKA7kM%2FK68X1CdD9yv%2FCMW4qj1tMuUab%2FlOep0gyQrK8Neitwbtk0yFF2EJAdQqgNWREgRguRsp3%2BlHso%2FqHsfridJ0qwu9DD0wbZC4qWrTm9nDCCA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-24DE",
+      "image": "assets/produtos-webp/bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de-cover-0a7eb5a6af.webp",
+      "images": [
+        "assets/produtos-webp/bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de-images-01-f1c31570b2.webp",
+        "assets/produtos-webp/bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de-images-02-c0aed813a2.webp"
+      ],
+      "price_text": "R$ 35,69",
+      "old_price_text": "R$ 45,79",
+      "discount_text": "22% OFF",
+      "price_checked_at": "14/08/2026",
+      "promo_text": "👜 Bolsa Feminina Baguete Immateriale — compacta, elegante e versátil. Modelo de ombro com alça de 32 cm, acabamento em couro sintético e detalhe de corrente que acrescenta sofisticação ao visual. Perfeita para looks casuais, passeios, festas e ocasiões especiais.",
+      "buy_cta": "Comprar no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 245,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/245",
+      "issue_title": "Bolsa Feminina Pequena Baguete Corrente Immateriale",
+      "categoria_principal": "Moda & Acessórios",
+      "categorias_secundarias": [
+        "Bolsas",
+        "Acessórios Femininos",
+        "Moda Feminina"
+      ],
+      "aliases_busca": [
+        "bolsa feminina",
+        "bolsa baguete",
+        "bolsa pequena feminina",
+        "bolsa com corrente",
+        "bolsa de ombro feminina",
+        "bolsa preta feminina",
+        "bolsa elegante",
+        "bolsa compacta",
+        "bolsa immateriale",
+        "bolsa feminina corrente"
+      ],
+      "quick_home": true,
+      "quick_home_order": 7,
+      "_source_issue_number": 245,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/339nGYD",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BENtqap0VVYPRHKdrZr3BeGlnZOizHG45bZFKeT8%2FvCUoA3yTadOwp%2BcDczXuqxC%2FXStGQOfSLKUU5lxTvewJKA7kM%2FK68X1CdD9yv%2FCMW4qj1tMuUab%2FlOep0gyQrK8Neitwbtk0yFF2EJAdQqgNWREgRguRsp3%2BlHso%2FqHsfridJ0qwu9DD0wbZC4qWrTm9nDCCA%3D%3D",
+      "last_checked": "",
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/6211cbe5-d729-4c2a-99e7-175f46045df7",
+      "images_original": [
+        "https://github.com/user-attachments/assets/8f3859ff-b6f2-4223-987b-8bb2bd622638",
+        "https://github.com/user-attachments/assets/8b5c3399-9aa1-40d7-b91a-b2889b947de9"
+      ],
+      "webp_optimized_at": "2026-08-15T01:02:35Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-08-14T22:03:52Z",
+    "updated_at": "2026-08-15T01:02:35Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
-    "products_touched": 0,
-    "converted": 0,
+    "products_touched": 1,
+    "converted": 3,
     "already_existed": 0,
     "dry_run": 0,
     "failed": 0,
