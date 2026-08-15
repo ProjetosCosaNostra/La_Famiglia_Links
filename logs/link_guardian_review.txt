@@ -1,9 +1,42 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-15T12:58:28Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-08-15T18:45:15Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- social_profile_needs_review: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-08-15T18:39:18Z
+Issue: #115
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/115
+SKU: cabo-hdmi-21-premium-8k-144hz-2m
+Título: 🔌 Cabo HDMI 2.1 Premium — 8K • 144Hz • Ultra HD • 2 Metros
+ID ML: 5J5PKG-L9DK
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Badges: Achados do Dia, Cabo HDMI 2.1, 8K, 144Hz, Ultra HD, 2 Metros, PS5, Xbox
+open_url: https://meli.la/1Xr4zBw
+checked_url: https://meli.la/1Xr4zBw
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-L9DK&tid=0554c1cf-e02f-4d49-808f-bc4269c46e75

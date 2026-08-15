@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-08-15T12:58:28Z",
-  "total_items": 0,
+  "updated_at": "2026-08-15T18:45:15Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "social_profile_needs_review": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-08-15T18:39:18Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 115,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/115",
+      "issue_title": "Cabo HDMI 2.1 Premium 8K 144Hz 2 Metros",
+      "sku": "cabo-hdmi-21-premium-8k-144hz-2m",
+      "title": "🔌 Cabo HDMI 2.1 Premium — 8K • 144Hz • Ultra HD • 2 Metros",
+      "id_busca": "5J5PKG-L9DK",
+      "status": 200,
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
+      "memory_note": "",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1Xr4zBw",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D",
+      "open_url": "https://meli.la/1Xr4zBw",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-L9DK&tid=0554c1cf-e02f-4d49-808f-bc4269c46e75",
+      "short_url": "https://meli.la/1Xr4zBw",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJetcoEb6eh5lqYYeeZahX8%2BpXbI32tG4eE5kKDoO941q0Uw81TYfTMjwnkCqg7ntkriBKKbayBCgGQg69aj3OeeXFjYVdaZRXugyBd1s244cS9BuTPymz%2Fn5vCUtx2wuk8EaVviU6dasMBM5QTj3Bs3nQ7YV1VZ3oMdJurLTOPWQ%2BVqwgNlX1pmMFs1XvbuaT4ljNo%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cabo HDMI 2.1",
+        "8K",
+        "144Hz",
+        "Ultra HD",
+        "2 Metros",
+        "PS5",
+        "Xbox"
+      ]
+    }
+  ]
 }
