@@ -1,64 +1,12 @@
 {
-  "updated_at": "2026-08-16T01:54:42Z",
-  "total_items": 1,
+  "updated_at": "2026-08-16T06:58:49Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 1,
-    "by_state": {
-      "review_only_storefront": 1
-    },
-    "by_reason": {
-      "storefront_social_lists_invalid": 1
-    },
-    "by_action": {
-      "trocar_link": 1
-    },
-    "high_priority": 1
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-08-16T01:50:02Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 63,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/63",
-      "issue_title": "[CMS] Produto: Gimbal DJI Osmo Mobile SE (Estabilizador Celular)",
-      "sku": "gimbal-dji-osmo-mobile-se",
-      "title": "Estabilizador De Imagem Dji Osmo Mobile Se Grey Cor Cinza",
-      "id_busca": "5J5PKG-FWWE",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2yQZbpJ",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2yQZbpJ",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=62c0d095-ed86-4b15-b057-74a48b16c075",
-      "short_url": "https://meli.la/1bsuctK",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLI7Sf7MPzRGyhNRJY8SZKkj51BdXCvedteb54lXEXTryqx0Sn3D%2BLQ2gecPf6%2FPQCQM79MQgTGKEQ9cEf1S0eryYKPF8z3ySuMX3Acw08z3E4x8LNGYHTv424LGV67DxQ%2BVpfyBbrUKiUXhBWS50KQAIYwzOxY5RPu3ylCK52tyA5iP2P4RynLJUrLR03sX7VJJxNE%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Creator",
-        "Gimbal",
-        "Estabilizador",
-        "Filmagem",
-        "Reels",
-        "TikTok",
-        "Vídeo"
-      ]
-    }
-  ]
+  "items": []
 }

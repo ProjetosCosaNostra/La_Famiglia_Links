@@ -1,43 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-16T01:54:42Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-08-16T06:58:49Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 1
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 1
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 1
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-08-16T01:50:02Z
-Issue: #63
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/63
-SKU: gimbal-dji-osmo-mobile-se
-Título: Estabilizador De Imagem Dji Osmo Mobile Se Grey Cor Cinza
-ID ML: 5J5PKG-FWWE
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
-Badges: Achados do Dia, Creator, Gimbal, Estabilizador, Filmagem, Reels, TikTok, Vídeo
-open_url: https://meli.la/2yQZbpJ
-checked_url: https://meli.la/2yQZbpJ
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-C1TY&tid=62c0d095-ed86-4b15-b057-74a48b16c075
+Nenhum item pendente de revisão/manutenção no momento.
