@@ -1,43 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-17T03:18:48Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-08-17T07:21:07Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 1
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 1
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_profile_unconfirmed: 1
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-08-17T01:47:51Z
-Issue: #69
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/69
-SKU: hd-externo-2tb-seagate-expansion-usb-30-portatil-preto
-Título: HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto
-ID ML: 5J5PKG-DVNF
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
-Badges: Achados do Dia, HD Externo, Seagate, 2TB, Armazenamento, Backup, USB 3.0, Portátil
-open_url: https://meli.la/1GyqzF7
-checked_url: https://meli.la/1GyqzF7
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=a66f434b-cc34-4a8d-994a-7ed189438c33
+Nenhum item pendente de revisão/manutenção no momento.

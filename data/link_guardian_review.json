@@ -1,64 +1,12 @@
 {
-  "updated_at": "2026-08-17T03:18:48Z",
-  "total_items": 1,
+  "updated_at": "2026-08-17T07:21:07Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 1,
-    "by_state": {
-      "review_only_storefront": 1
-    },
-    "by_reason": {
-      "storefront_social_profile_unconfirmed": 1
-    },
-    "by_action": {
-      "trocar_link": 1
-    },
-    "high_priority": 1
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-08-17T01:47:51Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 69,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/69",
-      "issue_title": "[CMS] Produto: hd-externo-2tb-seagate-expansion-usb-30-portatil-preto",
-      "sku": "hd-externo-2tb-seagate-expansion-usb-30-portatil-preto",
-      "title": "HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto",
-      "id_busca": "5J5PKG-DVNF",
-      "status": 200,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1GyqzF7",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
-      "open_url": "https://meli.la/1GyqzF7",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=a66f434b-cc34-4a8d-994a-7ed189438c33",
-      "short_url": "https://meli.la/1GyqzF7",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "HD Externo",
-        "Seagate",
-        "2TB",
-        "Armazenamento",
-        "Backup",
-        "USB 3.0",
-        "Portátil"
-      ]
-    }
-  ]
+  "items": []
 }
