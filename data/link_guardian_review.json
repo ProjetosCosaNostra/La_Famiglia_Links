@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-17T13:03:55Z",
+  "updated_at": "2026-08-17T18:56:52Z",
   "total_items": 1,
   "summary": {
     "unique_skus": 1,
@@ -7,7 +7,7 @@
       "review_only_storefront": 1
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 1
+      "social_profile_needs_review": 1
     },
     "by_action": {
       "trocar_link": 1
@@ -16,48 +16,48 @@
   },
   "items": [
     {
-      "happened_at": "2026-08-17T12:57:57Z",
+      "happened_at": "2026-08-17T18:50:08Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
-      "issue_number": 160,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/160",
-      "issue_title": "Refil Creme Acetinado Hidratante Corporal Lily 250g",
-      "sku": "refil-creme-acetinado-hidratante-corporal-lily-250g",
-      "title": "Refil Creme Acetinado Hidratante Corporal Para Pele Lily 250g",
-      "id_busca": "5J5PKG-SJFH",
+      "issue_number": 75,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/75",
+      "issue_title": "[CMS] Produto: suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto",
+      "sku": "suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto",
+      "title": "Suporte Articulado para Monitor (Pistão a Gás) 17”–35” – Ergonômico – Preto",
+      "id_busca": "5J5PKG-YGV9",
       "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
+      "reason": "social_profile_needs_review",
+      "reason_bucket": "storefront_profile_needs_review",
+      "reason_bucket_label": "perfil social com revisão manual",
+      "confidence_score": 60,
+      "confidence_bucket": "revisar_manual",
       "memory_note": "histórico recorrente (1x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
       "action_suggested": "trocar_link",
       "needs_manual_check": true,
-      "checked_url": "https://meli.la/2Cz4YTk",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2Cz4YTk",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
-      "short_url": "https://meli.la/2Cz4YTk",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEH7t8suYf0dZSJb0vZchHtM0AYoSD%2B%2B4NrwJhuMe3s%2FEtG1MZMBiox0wpjNMLpgSbfem%2B0UgEMHroPS7mpzh1ulGWlFhtPIiEqCnhOm%2BW3M3ExiT%2FG1nrrX2O3BtwnHI%2BDCgKym%2F%2FfIk3%2FFPn2XNfRsyIbgOlPjCAMsO9p3UAYlSzjuzwoEJwicfDHaBpIGJvaMen0%3D",
+      "checked_url": "https://meli.la/11CcWqi",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
+      "open_url": "https://meli.la/11CcWqi",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YGV9&tid=90e3e25c-6215-4610-aaa8-6d870610dc0a",
+      "short_url": "https://meli.la/11CcWqi",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
       "active": true,
       "featured": false,
       "smart_categories": [],
       "badges": [
         "Achados do Dia",
-        "Beleza",
-        "Cuidados com a Pele",
-        "Cuidado do Corpo",
-        "Creme Hidratante",
-        "Lily",
-        "O Boticário",
-        "Premium"
+        "Suporte Monitor",
+        "Braço Articulado",
+        "Pistão a Gás",
+        "17-35",
+        "Ergonômico",
+        "Setup",
+        "Home Office"
       ]
     }
   ]
