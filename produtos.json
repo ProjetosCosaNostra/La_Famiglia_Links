@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T01:02:35Z",
+  "updated_at": "2026-08-17T03:09:38Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -8298,7 +8298,6 @@
         "protetor solar para o rosto"
       ],
       "quick_home": true,
-      "quick_home_order": 8,
       "_source_issue_number": 197,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/257Mpir",
@@ -9015,7 +9014,6 @@
         "massageador papada"
       ],
       "quick_home": true,
-      "quick_home_order": 8,
       "_source_issue_number": 208,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/1HYtVJ6",
@@ -10994,7 +10992,7 @@
       "promo_text": "👜 Bolsa Feminina Baguete Immateriale — compacta, elegante e versátil. Modelo de ombro com alça de 32 cm, acabamento em couro sintético e detalhe de corrente que acrescenta sofisticação ao visual. Perfeita para looks casuais, passeios, festas e ocasiões especiais.",
       "buy_cta": "Comprar no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -11037,12 +11035,86 @@
         "https://github.com/user-attachments/assets/8b5c3399-9aa1-40d7-b91a-b2889b947de9"
       ],
       "webp_optimized_at": "2026-08-15T01:02:35Z"
+    },
+    {
+      "sku": "kit-sos-makeup-miamake-3em1-rosa",
+      "title": "Kit SOS Make Up Chaveiro Mia Make 3 em 1",
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Kit 3 em 1",
+        "Chaveiro",
+        "Compacto",
+        "Retoque Rápido",
+        "Bolsa",
+        "Lip Gloss",
+        "Batom"
+      ],
+      "id_busca": "5J5PKG-8DT7",
+      "open_url": "https://meli.la/1GNrAjm",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMpBbALvdV7NJpwN9psbTAa0EfMXJicDvPtM7B0ghP6i7W56%2FrwZ0liI2RdqLbtgR2N6sYBfZ%2Bt8OgYlikYe79V5W8BcsBIXmWVbc%2F5ddr8oafneRi5meYB0nFvBARhDgMQyZWBmoXehnyDLMFp41On91eFLuVWFnHzlwGm%2FoxEbHdLWxISuzK%2F%2B0F5ApQTyeQ%2BP9Q%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-8DT7",
+      "image": "assets/produtos-webp/kit-sos-makeup-miamake-3em1-rosa-cover-982e02650d.webp",
+      "images": [
+        "assets/produtos-webp/kit-sos-makeup-miamake-3em1-rosa-images-01-d84bc5510d.webp",
+        "assets/produtos-webp/kit-sos-makeup-miamake-3em1-rosa-images-02-3a7387e57e.webp"
+      ],
+      "price_text": "R$ 23,90",
+      "old_price_text": "R$ 26,90",
+      "discount_text": "11% OFF",
+      "price_checked_at": "16/08/2026",
+      "promo_text": "💄 Kit SOS Make Up Mia Make 3 em 1 — beleza prática para levar com você. Chaveiro compacto com gel fixador, batom em bala e lip gloss, perfeito para retoques rápidos na bolsa e no dia a dia.",
+      "buy_cta": "Ver oferta no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 246,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/246",
+      "issue_title": "Kit SOS Make Up Chaveiro Mia Make 3 em 1",
+      "categoria_principal": "Beleza",
+      "categorias_secundarias": [
+        "Maquiagem",
+        "Kit de Maquiagem",
+        "Acessórios de Beleza",
+        "Cuidados Pessoais"
+      ],
+      "aliases_busca": [
+        "kit sos make up",
+        "kit sos mia make",
+        "chaveiro maquiagem",
+        "maquiagem chaveiro",
+        "kit maquiagem 3 em 1",
+        "kit maquiagem bolsa",
+        "gloss chaveiro",
+        "mia make sos"
+      ],
+      "quick_home": true,
+      "quick_home_order": 8,
+      "_source_issue_number": 246,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1GNrAjm",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMpBbALvdV7NJpwN9psbTAa0EfMXJicDvPtM7B0ghP6i7W56%2FrwZ0liI2RdqLbtgR2N6sYBfZ%2Bt8OgYlikYe79V5W8BcsBIXmWVbc%2F5ddr8oafneRi5meYB0nFvBARhDgMQyZWBmoXehnyDLMFp41On91eFLuVWFnHzlwGm%2FoxEbHdLWxISuzK%2F%2B0F5ApQTyeQ%2BP9Q%3D%3D",
+      "last_checked": "",
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/278ef2a1-b80f-466c-b8bc-ebfb9e117756",
+      "images_original": [
+        "https://github.com/user-attachments/assets/e1a8c873-b379-4c83-8601-f9675e1f0663",
+        "https://github.com/user-attachments/assets/d3e0cdb7-d373-4d73-bd4a-aed4a0f8d592"
+      ],
+      "webp_optimized_at": "2026-08-17T03:09:38Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-08-15T01:02:35Z",
+    "updated_at": "2026-08-17T03:09:38Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
