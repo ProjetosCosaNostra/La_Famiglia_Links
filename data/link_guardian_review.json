@@ -1,65 +1,20 @@
 {
-  "updated_at": "2026-08-17T01:54:16Z",
-  "total_items": 4,
+  "updated_at": "2026-08-17T03:18:48Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 4,
+    "unique_skus": 1,
     "by_state": {
-      "review_only_storefront": 4
+      "review_only_storefront": 1
     },
     "by_reason": {
-      "storefront_social_profile_unconfirmed": 4
+      "storefront_social_profile_unconfirmed": 1
     },
     "by_action": {
-      "trocar_link": 4
+      "trocar_link": 1
     },
-    "high_priority": 4
+    "high_priority": 1
   },
   "items": [
-    {
-      "happened_at": "2026-08-17T01:47:51Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 73,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/73",
-      "issue_title": "[CMS] Produto: kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook",
-      "sku": "kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook",
-      "title": "Kit Ferramentas 115 Peças (Precisão) – Reparo Eletrônicos, Celular e Notebook",
-      "id_busca": "5J5PKG-4T6B",
-      "status": 200,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1pornJR",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D",
-      "open_url": "https://meli.la/1pornJR",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-4T6B&tid=b298c600-6ce2-497a-85ab-eeace7bfce81",
-      "short_url": "https://meli.la/1pornJR",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Kit Ferramentas",
-        "115 Peças",
-        "Precisão",
-        "Reparo Eletrônicos",
-        "Celular",
-        "Notebook",
-        "Manutenção"
-      ]
-    },
     {
       "happened_at": "2026-08-17T01:47:51Z",
       "state": "review_only_storefront",
@@ -103,90 +58,6 @@
         "Backup",
         "USB 3.0",
         "Portátil"
-      ]
-    },
-    {
-      "happened_at": "2026-08-17T01:47:51Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 67,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/67",
-      "issue_title": "[CMS] Produto: Esfregão Mop 9 em 1 — Escova Elétrica Rotatória (9 peças)",
-      "sku": "esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas",
-      "title": "Esfregão Elétrico Giratório Recarregável 9 Em 1 Limpeza",
-      "id_busca": "5J5PKG-1BJC",
-      "status": 500,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2M2eQqV",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD33HvEUjbpKZ4fjog15Hoj9StCcaQ3TTsibJS8CJd0WlpV%2BP9yZYnld3vNO5jQm71IXAsJrDDjmry5lFFu52fmajhOlqLqn4%2BODwg4LKaeQ1Zd4HefWz%2BVD7mGXOBaljjyNz%2BbWyijBPfGY%2B6FRDI1KpvWtcmpVRqrzTbE8ozA96KPjHqco46e46ix3SPsApKLPQQ%3D%3D",
-      "open_url": "https://meli.la/2M2eQqV",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC8loTZkvq9siKZiocqFlFWrD6hg4TD8DyWMZ%2BB%2BiQ%2FNJnsYlJw0Z6PuBoL2taTO8tntoDZ1aeIDYwkZ7Y0eAgHfIkrnne4gOaIezwBg86G5CbjKG86dnWaKeTgL2%2FPV4efr7Udfcf08fskXYcbBoN5Edxga8TDMXQyiNFUzwLi%2Bn4shPt75KK1%2FawI9S23iRFXdgw%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-W2VM&tid=3b4e0d3f-18b1-4deb-806b-cfa451f1d320",
-      "short_url": "https://meli.la/1WeBSnu",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC8loTZkvq9siKZiocqFlFWrD6hg4TD8DyWMZ%2BB%2BiQ%2FNJnsYlJw0Z6PuBoL2taTO8tntoDZ1aeIDYwkZ7Y0eAgHfIkrnne4gOaIezwBg86G5CbjKG86dnWaKeTgL2%2FPV4efr7Udfcf08fskXYcbBoN5Edxga8TDMXQyiNFUzwLi%2Bn4shPt75KK1%2FawI9S23iRFXdgw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BC8loTZkvq9siKZiocqFlFWrD6hg4TD8DyWMZ%2BB%2BiQ%2FNJnsYlJw0Z6PuBoL2taTO8tntoDZ1aeIDYwkZ7Y0eAgHfIkrnne4gOaIezwBg86G5CbjKG86dnWaKeTgL2%2FPV4efr7Udfcf08fskXYcbBoN5Edxga8TDMXQyiNFUzwLi%2Bn4shPt75KK1%2FawI9S23iRFXdgw%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Limpeza",
-        "Casa",
-        "Banheiro",
-        "Cozinha",
-        "9 em 1",
-        "9 peças",
-        "Escova Rotatória"
-      ]
-    },
-    {
-      "happened_at": "2026-08-17T01:47:51Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 0,
-      "issue_url": "",
-      "issue_title": "",
-      "sku": "cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa",
-      "title": "purificador-electrolux-pe12g-agua-gelada",
-      "id_busca": "5J5PKG-JHSA",
-      "status": 200,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 36,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1CpXH3G",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJo%2FylCRGP1VjLtwDwqcZ1ghrN%2BYdpQOSVlh40WymBxQcKv%2FSAZEjlJd9fej04YiNGNHENQgcoAzHN02cn5w9fpU%2BbnM9U44clEKwrzxm5rIh7jPFUK2Xyu0q0Ub50Ag8GtWbVkC65xvcnjIMX7urSx%2Bgxzeq9qbskJr2z%2FVE6j5YNb%2FapFkRg54YOMPH0zwhT1oKsM%3D",
-      "open_url": "https://meli.la/1CpXH3G",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJo%2FylCRGP1VjLtwDwqcZ1ghrN%2BYdpQOSVlh40WymBxQcKv%2FSAZEjlJd9fej04YiNGNHENQgcoAzHN02cn5w9fpU%2BbnM9U44clEKwrzxm5rIh7jPFUK2Xyu0q0Ub50Ag8GtWbVkC65xvcnjIMX7urSx%2Bgxzeq9qbskJr2z%2FVE6j5YNb%2FapFkRg54YOMPH0zwhT1oKsM%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-JHSA&tid=c891775f-1832-439b-b399-a867db3f98be",
-      "short_url": "https://meli.la/1CpXH3G",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJo%2FylCRGP1VjLtwDwqcZ1ghrN%2BYdpQOSVlh40WymBxQcKv%2FSAZEjlJd9fej04YiNGNHENQgcoAzHN02cn5w9fpU%2BbnM9U44clEKwrzxm5rIh7jPFUK2Xyu0q0Ub50Ag8GtWbVkC65xvcnjIMX7urSx%2Bgxzeq9qbskJr2z%2FVE6j5YNb%2FapFkRg54YOMPH0zwhT1oKsM%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJo%2FylCRGP1VjLtwDwqcZ1ghrN%2BYdpQOSVlh40WymBxQcKv%2FSAZEjlJd9fej04YiNGNHENQgcoAzHN02cn5w9fpU%2BbnM9U44clEKwrzxm5rIh7jPFUK2Xyu0q0Ub50Ag8GtWbVkC65xvcnjIMX7urSx%2Bgxzeq9qbskJr2z%2FVE6j5YNb%2FapFkRg54YOMPH0zwhT1oKsM%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Purificador de Água Gelada",
-        "Fria e Natural Electrolux PE12G — Painel Touch Cinza"
       ]
     }
   ]

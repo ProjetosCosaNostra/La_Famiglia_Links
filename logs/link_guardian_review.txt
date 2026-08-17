@@ -1,47 +1,28 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-17T01:54:16Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-08-17T03:18:48Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_profile_unconfirmed: 4
+- storefront_social_profile_unconfirmed: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
 
 CORRIGIR AGORA
 ----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-08-17T01:47:51Z
-Issue: #73
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/73
-SKU: kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook
-Título: Kit Ferramentas 115 Peças (Precisão) – Reparo Eletrônicos, Celular e Notebook
-ID ML: 5J5PKG-4T6B
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Kit Ferramentas, 115 Peças, Precisão, Reparo Eletrônicos, Celular, Notebook, Manutenção
-open_url: https://meli.la/1pornJR
-checked_url: https://meli.la/1pornJR
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfJoZSOEw7lJUHQT5S%2BE%2Bn%2FcbaI%2FZq4wrccKhU0idwH05BNYjmqURUauxDAF%2FuJgWj%2Bwjg3l2L5P6iY8cB72ppSWxV16RL0R%2B7thWboIcKsfunVKtAgW10AdnSOoIIjzh8l7e0UclCs8OKh%2BKdNIvGM0ThlWunMJPhQDVgXChuimDKc7ZZ7clhiPkjOu1nH8kiWLkA%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-4T6B&tid=b298c600-6ce2-497a-85ab-eeace7bfce81
-
 [ALTA] review_only_storefront
 Quando: 2026-08-17T01:47:51Z
 Issue: #69
@@ -60,39 +41,3 @@ open_url: https://meli.la/1GyqzF7
 checked_url: https://meli.la/1GyqzF7
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BO6z1LRhXdYYdOCJXz2LWcgwYLgQig1BBCledaz7A1TsWF0W%2FJKrIb1StpWfb0ORluo0elbOhJlqwpKHKHxEJdksxOTAsgGyYdliP2OGrfwNJVbVZaqN%2BFmKb4BAn6c8y1oJHyN2wZd2V49724YSLjwFTU36PLlycObvqLg53rpxkz%2FOQHf8%2FDZmhAupjJcJ9mnuyG0%3D
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=a66f434b-cc34-4a8d-994a-7ed189438c33
-
-[ALTA] review_only_storefront
-Quando: 2026-08-17T01:47:51Z
-Issue: #67
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/67
-SKU: esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas
-Título: Esfregão Elétrico Giratório Recarregável 9 Em 1 Limpeza
-ID ML: 5J5PKG-1BJC
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 500
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
-Badges: Achados do Dia, Limpeza, Casa, Banheiro, Cozinha, 9 em 1, 9 peças, Escova Rotatória
-open_url: https://meli.la/2M2eQqV
-checked_url: https://meli.la/2M2eQqV
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD33HvEUjbpKZ4fjog15Hoj9StCcaQ3TTsibJS8CJd0WlpV%2BP9yZYnld3vNO5jQm71IXAsJrDDjmry5lFFu52fmajhOlqLqn4%2BODwg4LKaeQ1Zd4HefWz%2BVD7mGXOBaljjyNz%2BbWyijBPfGY%2B6FRDI1KpvWtcmpVRqrzTbE8ozA96KPjHqco46e46ix3SPsApKLPQQ%3D%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-W2VM&tid=3b4e0d3f-18b1-4deb-806b-cfa451f1d320
-
-[ALTA] review_only_storefront
-Quando: 2026-08-17T01:47:51Z
-SKU: cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa
-Título: purificador-electrolux-pe12g-agua-gelada
-ID ML: 5J5PKG-JHSA
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 36 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Purificador de Água Gelada, Fria e Natural Electrolux PE12G — Painel Touch Cinza
-open_url: https://meli.la/1CpXH3G
-checked_url: https://meli.la/1CpXH3G
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJo%2FylCRGP1VjLtwDwqcZ1ghrN%2BYdpQOSVlh40WymBxQcKv%2FSAZEjlJd9fej04YiNGNHENQgcoAzHN02cn5w9fpU%2BbnM9U44clEKwrzxm5rIh7jPFUK2Xyu0q0Ub50Ag8GtWbVkC65xvcnjIMX7urSx%2Bgxzeq9qbskJr2z%2FVE6j5YNb%2FapFkRg54YOMPH0zwhT1oKsM%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-JHSA&tid=c891775f-1832-439b-b399-a867db3f98be
