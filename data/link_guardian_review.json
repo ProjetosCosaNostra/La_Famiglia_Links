@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-17T18:56:52Z",
+  "updated_at": "2026-08-18T01:47:30Z",
   "total_items": 1,
   "summary": {
     "unique_skus": 1,
@@ -7,7 +7,7 @@
       "review_only_storefront": 1
     },
     "by_reason": {
-      "social_profile_needs_review": 1
+      "storefront_social_lists_invalid": 1
     },
     "by_action": {
       "trocar_link": 1
@@ -16,48 +16,48 @@
   },
   "items": [
     {
-      "happened_at": "2026-08-17T18:50:08Z",
+      "happened_at": "2026-08-18T01:42:45Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
-      "issue_number": 75,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/75",
-      "issue_title": "[CMS] Produto: suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto",
-      "sku": "suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto",
-      "title": "Suporte Articulado para Monitor (Pistão a Gás) 17”–35” – Ergonômico – Preto",
-      "id_busca": "5J5PKG-YGV9",
+      "issue_number": 187,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/187",
+      "issue_title": "L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico",
+      "sku": "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz",
+      "title": "L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico",
+      "id_busca": "5J5PKG-X39L",
       "status": 200,
-      "reason": "social_profile_needs_review",
-      "reason_bucket": "storefront_profile_needs_review",
-      "reason_bucket_label": "perfil social com revisão manual",
-      "confidence_score": 60,
-      "confidence_bucket": "revisar_manual",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
       "action_suggested": "trocar_link",
       "needs_manual_check": true,
-      "checked_url": "https://meli.la/11CcWqi",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
-      "open_url": "https://meli.la/11CcWqi",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YGV9&tid=90e3e25c-6215-4610-aaa8-6d870610dc0a",
-      "short_url": "https://meli.la/11CcWqi",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D",
+      "checked_url": "https://meli.la/1U9BG5d",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1U9BG5d",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBpmXgJ0QckiV6CFdEFHLtovpnF0u2TFqhItKNv908Pq0ZdBFRjFVqIRarIH4QxPfiyb1iWj0F4FIJMCaWnCrbQ11SUyacbcRAS26%2Bkr%2F6xNjn79F%2FkP6E8tD0qjvjIfEktKBcMNFc2RhtmOtyXKWnuEmzOKy%2FJf34l6rhRDPp1oeSG7pNrMohqeNzfO28PE5mJ7nAQ%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-X39L",
+      "short_url": "https://meli.la/1U9BG5d",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBpmXgJ0QckiV6CFdEFHLtovpnF0u2TFqhItKNv908Pq0ZdBFRjFVqIRarIH4QxPfiyb1iWj0F4FIJMCaWnCrbQ11SUyacbcRAS26%2Bkr%2F6xNjn79F%2FkP6E8tD0qjvjIfEktKBcMNFc2RhtmOtyXKWnuEmzOKy%2FJf34l6rhRDPp1oeSG7pNrMohqeNzfO28PE5mJ7nAQ%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "active": true,
       "featured": false,
       "smart_categories": [],
       "badges": [
         "Achados do Dia",
-        "Suporte Monitor",
-        "Braço Articulado",
-        "Pistão a Gás",
-        "17-35",
-        "Ergonômico",
-        "Setup",
-        "Home Office"
+        "Feminino",
+        "Cabelos",
+        "Anti-frizz",
+        "Protetor Térmico",
+        "Leave-in",
+        "Óleo Capilar",
+        "Brilho"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-17T18:56:52Z
+Atualizado em: 2026-08-18T01:47:30Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -16,7 +16,7 @@ RESUMO POR AÇÃO
 
 TOP MOTIVOS
 ----------------------------------------
-- social_profile_needs_review: 1
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,20 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-17T18:50:08Z
-Issue: #75
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/75
-SKU: suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto
-Título: Suporte Articulado para Monitor (Pistão a Gás) 17”–35” – Ergonômico – Preto
-ID ML: 5J5PKG-YGV9
+Quando: 2026-08-18T01:42:45Z
+Issue: #187
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/187
+SKU: loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz
+Título: L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico
+ID ML: 5J5PKG-X39L
 Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Suporte Monitor, Braço Articulado, Pistão a Gás, 17-35, Ergonômico, Setup, Home Office
-open_url: https://meli.la/11CcWqi
-checked_url: https://meli.la/11CcWqi
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BCopQaheilK%2BWl69Bz8fH3pVHM2pdL07%2BzBcOgnZJcqky7LhRTUxfoOHB8zI637%2FsMexIs1xLMNIqbwRlnQfXFvcLp9oFGjNweW%2BzenItYAviIr2ytwFyJSqUCkv3mafsnvtWfMgb9%2Bmv6Udy925USpUGPfOU0McBuRuOdNcD4Y5MYh8nh2tavevNnwouZomeCkos0Y%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YGV9&tid=90e3e25c-6215-4610-aaa8-6d870610dc0a
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Badges: Achados do Dia, Feminino, Cabelos, Anti-frizz, Protetor Térmico, Leave-in, Óleo Capilar, Brilho
+open_url: https://meli.la/1U9BG5d
+checked_url: https://meli.la/1U9BG5d
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-X39L
