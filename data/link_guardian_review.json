@@ -1,64 +1,12 @@
 {
-  "updated_at": "2026-08-18T01:47:30Z",
-  "total_items": 1,
+  "updated_at": "2026-08-18T07:01:43Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 1,
-    "by_state": {
-      "review_only_storefront": 1
-    },
-    "by_reason": {
-      "storefront_social_lists_invalid": 1
-    },
-    "by_action": {
-      "trocar_link": 1
-    },
-    "high_priority": 1
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-08-18T01:42:45Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 187,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/187",
-      "issue_title": "L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico",
-      "sku": "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz",
-      "title": "L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico",
-      "id_busca": "5J5PKG-X39L",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1U9BG5d",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1U9BG5d",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBpmXgJ0QckiV6CFdEFHLtovpnF0u2TFqhItKNv908Pq0ZdBFRjFVqIRarIH4QxPfiyb1iWj0F4FIJMCaWnCrbQ11SUyacbcRAS26%2Bkr%2F6xNjn79F%2FkP6E8tD0qjvjIfEktKBcMNFc2RhtmOtyXKWnuEmzOKy%2FJf34l6rhRDPp1oeSG7pNrMohqeNzfO28PE5mJ7nAQ%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-X39L",
-      "short_url": "https://meli.la/1U9BG5d",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBpmXgJ0QckiV6CFdEFHLtovpnF0u2TFqhItKNv908Pq0ZdBFRjFVqIRarIH4QxPfiyb1iWj0F4FIJMCaWnCrbQ11SUyacbcRAS26%2Bkr%2F6xNjn79F%2FkP6E8tD0qjvjIfEktKBcMNFc2RhtmOtyXKWnuEmzOKy%2FJf34l6rhRDPp1oeSG7pNrMohqeNzfO28PE5mJ7nAQ%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Feminino",
-        "Cabelos",
-        "Anti-frizz",
-        "Protetor Térmico",
-        "Leave-in",
-        "Óleo Capilar",
-        "Brilho"
-      ]
-    }
-  ]
+  "items": []
 }
