@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-18T13:05:40Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-08-18T18:55:11Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-08-18T18:49:19Z
+Issue: #88
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/88
+SKU: revigoran-az-completo-60caps-5j5pkg-xtku
+Título: Revigoran AZ Completo — 60 cápsulas (23 vitaminas & minerais) | 1 por dia
+ID ML: 5J5PKG-XTKU
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Multivitamínico, Vitaminas e Minerais, 60 cápsulas, 1 por dia, Saúde, Bem-estar, Rotina
+open_url: https://meli.la/1C3E2zW
+checked_url: https://meli.la/1C3E2zW
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XTKU&tid=29161b95-a708-4bd8-8d2d-447104ff5739

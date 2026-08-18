@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-08-18T13:05:40Z",
-  "total_items": 0,
+  "updated_at": "2026-08-18T18:55:11Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-08-18T18:49:19Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 88,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/88",
+      "issue_title": "[CMS] Produto: Revigoran AZ Completo 60 cápsulas (5J5PKG-XTKU)",
+      "sku": "revigoran-az-completo-60caps-5j5pkg-xtku",
+      "title": "Revigoran AZ Completo — 60 cápsulas (23 vitaminas & minerais) | 1 por dia",
+      "id_busca": "5J5PKG-XTKU",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1C3E2zW",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1C3E2zW",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFlUaDVP%2BLwVqkDYBawqe5K3f%2FYjZNN8988Mw%2B5O9VUgOYvgaTWJP5VPM2uDp%2F9FcQQI9Utx0ApzjFIylnzua%2BSSuMOMuBJAUTCEDGwwr1YLz8jdsuLwB8NkOps9e7NXnPIiXtbqoLHPfyKTrPKYHy1R0EaHmTkyUPl4bqFhrZ8k5xKRwar3JLzqWd6qRwgLbvfgTrU%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XTKU&tid=29161b95-a708-4bd8-8d2d-447104ff5739",
+      "short_url": "https://meli.la/1C3E2zW",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFlUaDVP%2BLwVqkDYBawqe5K3f%2FYjZNN8988Mw%2B5O9VUgOYvgaTWJP5VPM2uDp%2F9FcQQI9Utx0ApzjFIylnzua%2BSSuMOMuBJAUTCEDGwwr1YLz8jdsuLwB8NkOps9e7NXnPIiXtbqoLHPfyKTrPKYHy1R0EaHmTkyUPl4bqFhrZ8k5xKRwar3JLzqWd6qRwgLbvfgTrU%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFlUaDVP%2BLwVqkDYBawqe5K3f%2FYjZNN8988Mw%2B5O9VUgOYvgaTWJP5VPM2uDp%2F9FcQQI9Utx0ApzjFIylnzua%2BSSuMOMuBJAUTCEDGwwr1YLz8jdsuLwB8NkOps9e7NXnPIiXtbqoLHPfyKTrPKYHy1R0EaHmTkyUPl4bqFhrZ8k5xKRwar3JLzqWd6qRwgLbvfgTrU%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Multivitamínico",
+        "Vitaminas e Minerais",
+        "60 cápsulas",
+        "1 por dia",
+        "Saúde",
+        "Bem-estar",
+        "Rotina"
+      ]
+    }
+  ]
 }
