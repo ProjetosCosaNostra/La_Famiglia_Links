@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-20T01:47:52Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-08-20T07:01:31Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-20T01:43:26Z
+Quando: 2026-08-20T06:57:11Z
 Issue: #123
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
 SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (38x /lists, 0x listing)
+Memória operacional: histórico recorrente (39x /lists, 0x listing)
 Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
 open_url: https://meli.la/2osVSUx
 checked_url: https://meli.la/2osVSUx
@@ -43,7 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
 
 [ALTA] review_only_storefront
-Quando: 2026-08-20T01:43:26Z
+Quando: 2026-08-20T06:57:11Z
+Issue: #87
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/87
+SKU: whey-protein-1kg-chocolate-5j5pkg-68p2
+Título: Whey Protein 1kg (Chocolate) — Alta proteína no pós-treino
+ID ML: 5J5PKG-68P2
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Badges: Achados do Dia, Suplementos, Whey, Chocolate, Alta proteína, Pós-treino, Fitness, Academia
+open_url: https://meli.la/14pqCNv
+checked_url: https://meli.la/14pqCNv
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-68P2&tid=7b1f415b-80d8-48db-879b-00bb48fa898d
+
+[ALTA] review_only_storefront
+Quando: 2026-08-20T06:57:11Z
 Issue: #244
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/244
 SKU: gloss-labial-cherry-bomb-pam-by-pamella-5g
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Beleza, Maquiagem, Lábios, Brilho Labial, Cherry Bomb, Pam By Pamella, Gloss Hidratante, Brilho Intenso
 open_url: https://meli.la/2AgwM9t
 checked_url: https://meli.la/2AgwM9t
