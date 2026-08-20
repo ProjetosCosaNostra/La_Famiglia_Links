@@ -1,12 +1,109 @@
 {
-  "updated_at": "2026-08-19T18:51:38Z",
-  "total_items": 0,
+  "updated_at": "2026-08-20T01:47:52Z",
+  "total_items": 2,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 2,
+    "by_state": {
+      "review_only_storefront": 2
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 2
+    },
+    "by_action": {
+      "trocar_link": 2
+    },
+    "high_priority": 2
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-08-20T01:43:26Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 123,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123",
+      "issue_title": "[CMS] Produto: Smart Box Proeletronic Smartpro 16GB 4K HD Preto",
+      "sku": "smart-box-proeletronic-smartpro-16gb-4k-hd-preto",
+      "title": "Smart Tv Box Android 4k Com Play Store Baixa Aplicativos",
+      "id_busca": "5J5PKG-FS11",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (38x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2osVSUx",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2osVSUx",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL88f9oJPB5pGVzFXYaFrp9B%2FyILUcOcggZLYT6Bu99KRVL4MYAxq%2BMJaLqTBJVlx9TInlGfCkFd5vvuu4UrE%2BYpGFp5aNcyue%2FZ6WTd50p1zCkKtszzgXvTLE%2B36sgqkJDGya57NzJ8eIq13rKo5kZt2qxrxOOatsvHAFdKl59ZIULS4Evh2lqz%2BYkWVVH8NCuDtxg%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93",
+      "short_url": "https://meli.la/28cnKAr",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL88f9oJPB5pGVzFXYaFrp9B%2FyILUcOcggZLYT6Bu99KRVL4MYAxq%2BMJaLqTBJVlx9TInlGfCkFd5vvuu4UrE%2BYpGFp5aNcyue%2FZ6WTd50p1zCkKtszzgXvTLE%2B36sgqkJDGya57NzJ8eIq13rKo5kZt2qxrxOOatsvHAFdKl59ZIULS4Evh2lqz%2BYkWVVH8NCuDtxg%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL88f9oJPB5pGVzFXYaFrp9B%2FyILUcOcggZLYT6Bu99KRVL4MYAxq%2BMJaLqTBJVlx9TInlGfCkFd5vvuu4UrE%2BYpGFp5aNcyue%2FZ6WTd50p1zCkKtszzgXvTLE%2B36sgqkJDGya57NzJ8eIq13rKo5kZt2qxrxOOatsvHAFdKl59ZIULS4Evh2lqz%2BYkWVVH8NCuDtxg%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Smart Box",
+        "Proeletronic",
+        "Smartpro",
+        "16GB",
+        "4K HD",
+        "Streaming",
+        "WiFi"
+      ]
+    },
+    {
+      "happened_at": "2026-08-20T01:43:26Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 244,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/244",
+      "issue_title": "Gloss Labial Cherry Bomb Pam By Pamella 5g",
+      "sku": "gloss-labial-cherry-bomb-pam-by-pamella-5g",
+      "title": "Gloss Labial Cherry Bomb Pam By Pamella 5g",
+      "id_busca": "5J5PKG-B5F1",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2AgwM9t",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2AgwM9t",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfLOhHKOoNd%2FpOHnBZbR9kI6MUPKETpySXrI%2BFvBfQZ6MqDEy%2Bb%2FxGhd1PMf1fo3JZDtpR5BmjHKeIpHf8J1ldgnW0TPv7gLbSgU7OcqO4c6CBYNT%2BUnz29qpJ%2FjZN%2BAxu19yrJxjg%2B8PI1Aei%2BNHg3wNAbyVKZDuIslAy%2F1sFwnF%2B19279J%2Fg0kyq82P8j%2B9%2B1j0iXYZpII%2Bdtlw%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-B5F1",
+      "short_url": "https://meli.la/2AgwM9t",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BGfLOhHKOoNd%2FpOHnBZbR9kI6MUPKETpySXrI%2BFvBfQZ6MqDEy%2Bb%2FxGhd1PMf1fo3JZDtpR5BmjHKeIpHf8J1ldgnW0TPv7gLbSgU7OcqO4c6CBYNT%2BUnz29qpJ%2FjZN%2BAxu19yrJxjg%2B8PI1Aei%2BNHg3wNAbyVKZDuIslAy%2F1sFwnF%2B19279J%2Fg0kyq82P8j%2B9%2B1j0iXYZpII%2Bdtlw%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Beleza",
+        "Maquiagem",
+        "Lábios",
+        "Brilho Labial",
+        "Cherry Bomb",
+        "Pam By Pamella",
+        "Gloss Hidratante",
+        "Brilho Intenso"
+      ]
+    }
+  ]
 }
