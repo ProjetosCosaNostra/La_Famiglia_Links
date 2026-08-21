@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-20T18:57:09Z
+Atualizado em: 2026-08-21T01:55:17Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -16,8 +16,7 @@ RESUMO POR AÇÃO
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
-- social_profile_needs_review: 1
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-20T18:50:57Z
+Quando: 2026-08-21T01:48:51Z
 Issue: #123
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
 SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
@@ -36,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (41x /lists, 0x listing)
+Memória operacional: histórico recorrente (42x /lists, 0x listing)
 Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
 open_url: https://meli.la/2osVSUx
 checked_url: https://meli.la/2osVSUx
@@ -44,26 +43,24 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
 
 [ALTA] review_only_storefront
-Quando: 2026-08-20T18:50:57Z
-Issue: #92
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/92
-SKU: kit-10-panos-copa-felpudos-41x64-estampados
-Título: Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)
-ID ML: 5J5PKG-URBN
+Quando: 2026-08-21T01:48:51Z
+SKU: cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa
+Título: purificador-electrolux-pe12g-agua-gelada
+ID ML: 5J5PKG-JHSA
 Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (1x /lists, 1x listing)
-Badges: Achados do Dia, Cozinha, Pano de Copa, Pano de Prato, Têxteis de Cozinha, Kit 10, Felpudo, Estampados
-open_url: https://meli.la/2tA4Gqh
-checked_url: https://meli.la/2tA4Gqh
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982
+Confiança: 20 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
+Badges: Purificador de Água Gelada, Fria e Natural Electrolux PE12G — Painel Touch Cinza
+open_url: https://meli.la/1CpXH3G
+checked_url: https://meli.la/1CpXH3G
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-JHSA&tid=c891775f-1832-439b-b399-a867db3f98be
 
 [ALTA] review_only_storefront
-Quando: 2026-08-20T18:50:57Z
+Quando: 2026-08-21T01:48:51Z
 Issue: #244
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/244
 SKU: gloss-labial-cherry-bomb-pam-by-pamella-5g
@@ -74,7 +71,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Beleza, Maquiagem, Lábios, Brilho Labial, Cherry Bomb, Pam By Pamella, Gloss Hidratante, Brilho Intenso
 open_url: https://meli.la/2AgwM9t
 checked_url: https://meli.la/2AgwM9t
