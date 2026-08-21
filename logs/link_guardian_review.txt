@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-21T13:07:46Z
-Itens pendentes: 6
-SKUs únicos: 6
-Prioridade alta: 6
+Atualizado em: 2026-08-21T16:27:44Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 6
+- review_only_storefront: 1
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 6
+- trocar_link: 1
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_profile_unconfirmed: 4
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-21T13:02:11Z
+Quando: 2026-08-21T16:25:47Z
 Issue: #123
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
 SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
@@ -36,101 +35,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (44x /lists, 0x listing)
+Memória operacional: histórico recorrente (45x /lists, 0x listing)
 Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
 open_url: https://meli.la/2osVSUx
 checked_url: https://meli.la/2osVSUx
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
-
-[ALTA] review_only_storefront
-Quando: 2026-08-21T13:02:11Z
-Issue: #112
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/112
-SKU: tradutor-inteligente-premium-online-offline
-Título: Máquina Tradutor De Idiomas Online E Offline Portátil Várias
-ID ML: 5J5PKG-1HNY
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 500
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (53x /lists, 0x listing)
-Badges: Achados do Dia, Tecnologia, Premium, Tradutor Inteligente, Tradução, Voz, Texto, Imagem
-open_url: https://meli.la/2n5bF2B
-checked_url: https://meli.la/2n5bF2B
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBOw0rqZDV8eHRUFjjOUfliiOCaE%2F5F0ej2qxEeCd%2BPULu2vmI2bIEdtlHIKh2jSJwpJKuI6Nu46dVl6wvaiTCm%2BswcbgBr%2FLbNx0mhe1%2B6%2BvMMIubb94fuIlRjGkuxlxMfYCEAU8zIJLQn6oI4Jy10L%2FodqDc%2FWT1EhY7DR7fAsK%2Fma32DSYGNGqqynj%2B7fjYYEuA%3D%3D
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKNf8MuHlNeeQAOsm48OE2KK6PgmaDteZ0vr5xhgiZEMVm9IGIuioGCAV9OAqHAYZLLmeez4drlGurDmL0QlvVimWtLOiksYFf0WTi%2F5WZHbL%2Fiyn06wygbYDnLha5v6ISGyMI%2BBgxJHpoI9cFUDUK2%2FiAejZVX7ToL5PT4lvtG07D0FE8R9c5VWjEgiYRe5xA%2BCZFBp9pV7YM2V1A%3D%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-08-21T13:02:11Z
-Issue: #107
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/107
-SKU: cuscuzeira-inox-premium-25l
-Título: Cuscuzeira Nordestina Inox 2,5L Util Bazar Para Fogão A Gás E Indução
-ID ML: 5J5PKG-HRGT
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 500
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Cuscuzeira, Inox, Cuscuz, Panela a Vapor, 2, 5L
-open_url: https://meli.la/1xQ7g6F
-checked_url: https://meli.la/1xQ7g6F
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BET0imunPmWslaKiYmUtNBcyF5J5nANW8EpyBwt2ryyt%2F3rDxiV6S4SCk0art7Uoke%2BbOCpin68vTQ7baUhA%2BaxeAIEqf7E5ex7kqRzuRI%2Fmldwp66npfx0Y4Lm%2BqwJjkTmzoZboVqcuHZtpstUkVgiW9tdzXGZtU2DKW1LwB09PSCFM5WlAs2x0GqIpG%2BXh7tuR1Jg%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=c74a578b-5fb4-4226-b5cb-674903613b47
-
-[ALTA] review_only_storefront
-Quando: 2026-08-21T13:02:11Z
-SKU: relogio-parede-30cm-prata-branco-lzbq
-Título: ⏰ Relógio de Parede 30cm Prata & Branco — Silencioso e Fácil de Ler
-ID ML: 5J5PKG-TL8Q
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 38 (invalido)
-Memória operacional: histórico recorrente (42x /lists, 0x listing)
-Badges: Achados do Dia, CosaNostra, Relógio de Parede, Decoração, Sala, Cozinha, Escritório, Hall
-open_url: https://meli.la/12UKJSY
-checked_url: https://meli.la/12UKJSY
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJnfImpCsay7x%2FUWFJlatAG%2BZBGCqVX2%2BL4rL9bzh2d0h1qPq1gxze71EgLuuZ5l3LwsxZ8SqplysIvCFP03gVWOWCo3SJq%2FbcZo4LZe0LbaT8Rm%2F3wBgU1rzx%2BRlWVPGtmb1ZhDxuQwUJrpw2pdOZXRjj5VbjI%2FH7s8eu%2BZt716CxLZWwLeuyhMJPoC4%2BxgQmR1og%3D%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LZBQ&tid=55fb8b9c-d3f3-4271-99df-bd6428c42338
-
-[ALTA] review_only_storefront
-Quando: 2026-08-21T13:02:11Z
-Issue: #99
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/99
-SKU: kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco
-Título: Kit 2 Spray de Cozinha Epsilon EPS-412 (200ml) – Borrifador Pulverizador para Óleo/Azeite (Preto + Branco)
-ID ML: 5J5PKG-MQL7
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Badges: Achados do Dia, Cozinha, Spray de Óleo, Borrifador, Pulverizador, Azeite, Controle de Porção, 200ml
-open_url: https://meli.la/2gpLrhX
-checked_url: https://meli.la/2gpLrhX
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MQL7&tid=28946b13-8908-4b8a-8f04-b89b8ca29b4e
-
-[ALTA] review_only_storefront
-Quando: 2026-08-21T13:02:11Z
-Issue: #244
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/244
-SKU: gloss-labial-cherry-bomb-pam-by-pamella-5g
-Título: Gloss Labial Cherry Bomb Pam By Pamella 5g
-ID ML: 5J5PKG-B5F1
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
-Badges: Beleza, Maquiagem, Lábios, Brilho Labial, Cherry Bomb, Pam By Pamella, Gloss Hidratante, Brilho Intenso
-open_url: https://meli.la/2AgwM9t
-checked_url: https://meli.la/2AgwM9t
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B5F1
