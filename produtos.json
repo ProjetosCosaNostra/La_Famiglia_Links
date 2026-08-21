@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-17T03:09:38Z",
+  "updated_at": "2026-08-21T16:19:07Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -8355,7 +8355,6 @@
         "perfume delicado feminino"
       ],
       "quick_home": true,
-      "quick_home_order": 9,
       "_source_issue_number": 198,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2SekHEZ",
@@ -9086,7 +9085,6 @@
         "USB"
       ],
       "quick_home": true,
-      "quick_home_order": 9,
       "_source_issue_number": 210,
       "_target_issue_number": 0,
       "short_url": "https://meli.la/2xj3hnt",
@@ -11067,7 +11065,7 @@
       "promo_text": "💄 Kit SOS Make Up Mia Make 3 em 1 — beleza prática para levar com você. Chaveiro compacto com gel fixador, batom em bala e lip gloss, perfeito para retoques rápidos na bolsa e no dia a dia.",
       "buy_cta": "Ver oferta no Mercado Livre",
       "active": true,
-      "featured": true,
+      "featured": false,
       "review_action": "manter",
       "review_status": "ativo",
       "review_reason": "",
@@ -11109,12 +11107,83 @@
         "https://github.com/user-attachments/assets/d3e0cdb7-d373-4d73-bd4a-aed4a0f8d592"
       ],
       "webp_optimized_at": "2026-08-17T03:09:38Z"
+    },
+    {
+      "sku": "arezzo-cinto-fino-fivela-losango-preto",
+      "title": "Cinto Fino Feminino Fivela Losango Arezzo",
+      "badges": [
+        "Moda Feminina",
+        "Acessórios",
+        "Cinto Feminino",
+        "Arezzo",
+        "Fivela Dourada",
+        "Look Elegante",
+        "Cinto Preto",
+        "Ajustável"
+      ],
+      "id_busca": "5J5PKG-53ZB",
+      "open_url": "https://meli.la/1BBjvSQ",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG41qzLs0P4v0t03IT3ZSf%2B9cQRy7AtFQ4ojcA%2Bk293z54u%2FvDiqMvC6GjVVBtwGgxJgJrw3aaH9T6np6a9N8LBKgFd7%2BMmk1vIgbwXPRNOEjn%2BsqRdkTAcCljoYpoSY9gOoTFBkwMHjoKpNQdiujVmLlLQ1FhIq2zCzPpsj1b6DQFkQCmHrjfKB%2FpacLNdHrBUBiA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-53ZB",
+      "image": "assets/produtos-webp/arezzo-cinto-fino-fivela-losango-preto-cover-fdf9669fdb.webp",
+      "images": [
+        "assets/produtos-webp/arezzo-cinto-fino-fivela-losango-preto-images-01-426194badf.webp",
+        "assets/produtos-webp/arezzo-cinto-fino-fivela-losango-preto-images-02-9955a23fc0.webp"
+      ],
+      "price_text": "R$ 182,30",
+      "old_price_text": "R$ 191,90",
+      "discount_text": "5% OFF",
+      "price_checked_at": "21/08/2026",
+      "promo_text": "✨ Cinto fino feminino Arezzo com fivela geométrica dourada e design elegante. Ajustável e versátil, combina com produções casuais ou sofisticadas e valoriza o look com um toque moderno e feminino.",
+      "buy_cta": "Comprar no Mercado Livre",
+      "active": true,
+      "featured": true,
+      "review_action": "manter",
+      "review_status": "ativo",
+      "review_reason": "",
+      "replacement_vendor": "",
+      "relink_open_url": "",
+      "notes": "",
+      "alt_url": "",
+      "issue_number": 247,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/247",
+      "issue_title": "Cinto Fino Feminino Fivela Losango Arezzo",
+      "categoria_principal": "Moda & Acessórios",
+      "categorias_secundarias": [
+        "Acessórios Femininos",
+        "Cintos",
+        "Moda Feminina"
+      ],
+      "aliases_busca": [
+        "cinto feminino",
+        "cinto fino feminino",
+        "cinto arezzo",
+        "cinto preto feminino",
+        "cinto fivela dourada",
+        "cinto fivela losango",
+        "cinto ajustável",
+        "acessório feminino"
+      ],
+      "quick_home": true,
+      "quick_home_order": 9,
+      "_source_issue_number": 247,
+      "_target_issue_number": 0,
+      "short_url": "https://meli.la/1BBjvSQ",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG41qzLs0P4v0t03IT3ZSf%2B9cQRy7AtFQ4ojcA%2Bk293z54u%2FvDiqMvC6GjVVBtwGgxJgJrw3aaH9T6np6a9N8LBKgFd7%2BMmk1vIgbwXPRNOEjn%2BsqRdkTAcCljoYpoSY9gOoTFBkwMHjoKpNQdiujVmLlLQ1FhIq2zCzPpsj1b6DQFkQCmHrjfKB%2FpacLNdHrBUBiA%3D%3D",
+      "last_checked": "",
+      "last_ok": "",
+      "image_original": "https://github.com/user-attachments/assets/74dfdd0c-f46f-4bc6-acee-0ac2e5d95e73",
+      "images_original": [
+        "https://github.com/user-attachments/assets/2d9f9e59-0fd9-4910-bc84-f27a54cf5f4a",
+        "https://github.com/user-attachments/assets/88cc6e53-34fe-41bb-871d-4336fea990de"
+      ],
+      "webp_optimized_at": "2026-08-21T16:19:07Z"
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-08-17T03:09:38Z",
+    "updated_at": "2026-08-21T16:19:07Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
