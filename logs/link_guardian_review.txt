@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-21T16:27:44Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-08-21T18:52:38Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-21T16:25:47Z
+Quando: 2026-08-21T18:48:04Z
 Issue: #123
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
 SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
@@ -35,9 +35,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (45x /lists, 0x listing)
+Memória operacional: histórico recorrente (46x /lists, 0x listing)
 Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
 open_url: https://meli.la/2osVSUx
 checked_url: https://meli.la/2osVSUx
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
+
+[ALTA] review_only_storefront
+Quando: 2026-08-21T18:48:04Z
+Issue: #244
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/244
+SKU: gloss-labial-cherry-bomb-pam-by-pamella-5g
+Título: Gloss Labial Cherry Bomb Pam By Pamella 5g
+ID ML: 5J5PKG-B5F1
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Badges: Beleza, Maquiagem, Lábios, Brilho Labial, Cherry Bomb, Pam By Pamella, Gloss Hidratante, Brilho Intenso
+open_url: https://meli.la/2AgwM9t
+checked_url: https://meli.la/2AgwM9t
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-B5F1
