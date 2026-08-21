@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-21T01:55:17Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-08-21T07:03:14Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-21T01:48:51Z
+Quando: 2026-08-21T06:58:34Z
 Issue: #123
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
 SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (42x /lists, 0x listing)
+Memória operacional: histórico recorrente (43x /lists, 0x listing)
 Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
 open_url: https://meli.la/2osVSUx
 checked_url: https://meli.la/2osVSUx
@@ -43,24 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
 
 [ALTA] review_only_storefront
-Quando: 2026-08-21T01:48:51Z
-SKU: cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa
-Título: purificador-electrolux-pe12g-agua-gelada
-ID ML: 5J5PKG-JHSA
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 20 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Purificador de Água Gelada, Fria e Natural Electrolux PE12G — Painel Touch Cinza
-open_url: https://meli.la/1CpXH3G
-checked_url: https://meli.la/1CpXH3G
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-JHSA&tid=c891775f-1832-439b-b399-a867db3f98be
-
-[ALTA] review_only_storefront
-Quando: 2026-08-21T01:48:51Z
+Quando: 2026-08-21T06:58:34Z
 Issue: #244
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/244
 SKU: gloss-labial-cherry-bomb-pam-by-pamella-5g
@@ -71,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Beleza, Maquiagem, Lábios, Brilho Labial, Cherry Bomb, Pam By Pamella, Gloss Hidratante, Brilho Intenso
 open_url: https://meli.la/2AgwM9t
 checked_url: https://meli.la/2AgwM9t
