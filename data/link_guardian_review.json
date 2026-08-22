@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-08-22T12:57:55Z",
-  "total_items": 0,
+  "updated_at": "2026-08-22T18:44:45Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-08-22T18:40:12Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 210,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210",
+      "issue_title": "Limpador Elétrico de Pincéis de Maquiagem Automático USB",
+      "sku": "limpador-eletrico-pinceis-maquiagem-automatico-usb",
+      "title": "Limpador Elétrico de Pincéis de Maquiagem Automático USB",
+      "id_busca": "5J5PKG-016F",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2xj3hnt",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2xj3hnt",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAzoQqx4TUjaqnNaOoXM6XwyaTX%2FCL0WyLVep60mRtOcRdYhLq%2BmvwoWvyhw5nLQAUklnpeiQ24rtyOCrNKoaJT9Dbj2IUWW%2BU%2FlD%2BqOEE9FWTI4XdP97L9uxuhgIOlT0K1he5KYjNF86n1bW0mcB4Tuz7%2Fdj6LYVCPw8pSH9WebHoJKz5z9KAi2wW5RWK1vyCS4Xje2JTFInGXcWA%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-016F",
+      "short_url": "https://meli.la/2xj3hnt",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAzoQqx4TUjaqnNaOoXM6XwyaTX%2FCL0WyLVep60mRtOcRdYhLq%2BmvwoWvyhw5nLQAUklnpeiQ24rtyOCrNKoaJT9Dbj2IUWW%2BU%2FlD%2BqOEE9FWTI4XdP97L9uxuhgIOlT0K1he5KYjNF86n1bW0mcB4Tuz7%2Fdj6LYVCPw8pSH9WebHoJKz5z9KAi2wW5RWK1vyCS4Xje2JTFInGXcWA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Cuidado Pessoal",
+        "USB",
+        "Automático",
+        "Higiene",
+        "Pincéis"
+      ]
+    }
+  ]
 }
