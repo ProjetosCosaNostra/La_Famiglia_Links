@@ -1,63 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-22T06:58:49Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-08-22T12:57:55Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 2
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 2
-
-TOP MOTIVOS
-----------------------------------------
-- storefront_social_lists_invalid: 1
-- storefront_social_profile_unconfirmed: 1
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-08-22T06:52:33Z
-Issue: #123
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
-SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
-Título: Smart Tv Box Android 4k Com Play Store Baixa Aplicativos
-ID ML: 5J5PKG-FS11
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (48x /lists, 0x listing)
-Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
-open_url: https://meli.la/2osVSUx
-checked_url: https://meli.la/2osVSUx
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
-
-[ALTA] review_only_storefront
-Quando: 2026-08-22T06:52:33Z
-Issue: #30
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/30
-SKU: carregador-veicular-60w-hrebos-2x-usbc-pd
-Título: Carregador Veicular 60W — 2x USB-C PD (30W + 30W)
-ID ML: 5J5PKG-01QQ
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, Carregador Veicular, USB-C PD, 60W, Carga Rápida, 2 Portas, Carro, Uber/99
-open_url: https://mercadolivre.com/sec/2hEwHwh
-checked_url: https://mercadolivre.com/sec/2hEwHwh
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBAv75ziVz8daSHqS%2BjwRBefMTV81m1z9PlP1gZBo9yWfrc9E0Tns5t7pZ6tftKirotFGPfKXYAo9hTJ5A0Bu4RalXu0%2BUjZmdGLk1Te1x4O6p2yxNPZLhrWpteTfOA%2FeXj4GsK85ZgokuTHyG9OjLifFznS7ge9cS1dfRmJJORNG2Nq2Vf%2Fic%2FcypDnOgwnVyMDjdg%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-01QQ&tid=fe7f3d48-d886-45a6-beb4-a72bc96a84ef
+Nenhum item pendente de revisão/manutenção no momento.
