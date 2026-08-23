@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-22T18:44:45Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-08-23T01:57:14Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-22T18:40:12Z
+Quando: 2026-08-23T01:51:48Z
+Issue: #123
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
+SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
+Título: Smart Tv Box Android 4k Com Play Store Baixa Aplicativos
+ID ML: 5J5PKG-FS11
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (49x /lists, 0x listing)
+Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
+open_url: https://meli.la/2osVSUx
+checked_url: https://meli.la/2osVSUx
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
+
+[ALTA] review_only_storefront
+Quando: 2026-08-23T01:51:48Z
 Issue: #210
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210
 SKU: limpador-eletrico-pinceis-maquiagem-automatico-usb
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Cuidado Pessoal, USB, Automático, Higiene, Pincéis
 open_url: https://meli.la/2xj3hnt
 checked_url: https://meli.la/2xj3hnt
