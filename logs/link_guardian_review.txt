@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-25T01:50:47Z
+Atualizado em: 2026-08-25T07:07:13Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-25T01:43:56Z
+Quando: 2026-08-25T06:59:53Z
 Issue: #210
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210
 SKU: limpador-eletrico-pinceis-maquiagem-automatico-usb
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (13x /lists, 0x listing)
+Memória operacional: histórico recorrente (14x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Cuidado Pessoal, USB, Automático, Higiene, Pincéis
 open_url: https://meli.la/2xj3hnt
 checked_url: https://meli.la/2xj3hnt
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-016F
 
 [ALTA] review_only_storefront
-Quando: 2026-08-25T01:43:56Z
+Quando: 2026-08-25T06:59:53Z
 Issue: #235
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
 SKU: suporte-secador-cabelo-escova-multiuso-organizador
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Memória operacional: histórico recorrente (2x /lists, 0x listing)
 Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
 open_url: https://meli.la/17hVhbS
 checked_url: https://meli.la/17hVhbS
