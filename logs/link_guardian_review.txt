@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-25T13:07:42Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-08-25T18:55:13Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-25T13:01:31Z
-Issue: #54
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
-SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
-Título: Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia
-ID ML: 5J5PKG-BJJ0
+Quando: 2026-08-25T18:50:22Z
+Issue: #187
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/187
+SKU: loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz
+Título: L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico
+ID ML: 5J5PKG-X39L
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (52x /lists, 1x listing)
-Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
-open_url: https://mercadolivre.com/sec/29Gq2Ww
-checked_url: https://mercadolivre.com/sec/29Gq2Ww
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Badges: Achados do Dia, Feminino, Cabelos, Anti-frizz, Protetor Térmico, Leave-in, Óleo Capilar, Brilho
+open_url: https://meli.la/1U9BG5d
+checked_url: https://meli.la/1U9BG5d
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-X39L
 
 [ALTA] review_only_storefront
-Quando: 2026-08-25T13:01:31Z
+Quando: 2026-08-25T18:50:22Z
 Issue: #210
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210
 SKU: limpador-eletrico-pinceis-maquiagem-automatico-usb
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (15x /lists, 0x listing)
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Cuidado Pessoal, USB, Automático, Higiene, Pincéis
 open_url: https://meli.la/2xj3hnt
 checked_url: https://meli.la/2xj3hnt
@@ -62,26 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-016F
 
 [ALTA] review_only_storefront
-Quando: 2026-08-25T13:01:31Z
-Issue: #226
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/226
-SKU: escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer
-Título: Escova de Cabelo Desembaraçadora The Wet Detangler Rosa Tangle Teezer
-ID ML: 5J5PKG-Q9B5
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Cabelo, Escova Desembaraçadora, The Wet Detangler, Tangle Teezer, Rosa, Original
-open_url: https://meli.la/1ox9T41
-checked_url: https://meli.la/1ox9T41
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-Q9B5
-
-[ALTA] review_only_storefront
-Quando: 2026-08-25T13:01:31Z
+Quando: 2026-08-25T18:50:22Z
 Issue: #235
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
 SKU: suporte-secador-cabelo-escova-multiuso-organizador
@@ -92,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
 open_url: https://meli.la/17hVhbS
 checked_url: https://meli.la/17hVhbS
