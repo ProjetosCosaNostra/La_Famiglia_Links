@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-28T11:15:06Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-08-28T22:17:39Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 1
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 1
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 1
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,45 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-28T11:10:37Z
+Quando: 2026-08-28T22:11:39Z
+Issue: #128
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/128
+SKU: shampoo-automotivo-v-floc-3l-concentrado
+Título: Shampoo Automotivo V-FLOC 3L Concentrado com pH Neutro
+ID ML: 5J5PKG-VCHY
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Achados do Dia, Shampoo automotivo, V-FLOC, V-FLOC 3L, Vonixx, pH neutro, Lava autos, Lavagem premium
+open_url: https://meli.la/2GkuFys
+checked_url: https://meli.la/2GkuFys
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-VCHY&tid=305975c0-d54f-4d35-b4ea-b1aad6e6cb4d
+
+[ALTA] review_only_storefront
+Quando: 2026-08-28T22:11:39Z
+Issue: #187
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/187
+SKU: loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz
+Título: L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico
+ID ML: 5J5PKG-X39L
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Badges: Achados do Dia, Feminino, Cabelos, Anti-frizz, Protetor Térmico, Leave-in, Óleo Capilar, Brilho
+open_url: https://meli.la/1U9BG5d
+checked_url: https://meli.la/1U9BG5d
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-X39L
+
+[ALTA] review_only_storefront
+Quando: 2026-08-28T22:11:39Z
 Issue: #235
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
 SKU: suporte-secador-cabelo-escova-multiuso-organizador
@@ -35,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (11x /lists, 0x listing)
+Memória operacional: histórico recorrente (12x /lists, 0x listing)
 Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
 open_url: https://meli.la/17hVhbS
 checked_url: https://meli.la/17hVhbS
