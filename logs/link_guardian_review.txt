@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-30T16:40:35Z
+Atualizado em: 2026-08-30T21:00:39Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,26 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-30T16:34:12Z
-Issue: #115
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/115
-SKU: cabo-hdmi-21-premium-8k-144hz-2m
-Título: 🔌 Cabo HDMI 2.1 Premium — 8K • 144Hz • Ultra HD • 2 Metros
-ID ML: 5J5PKG-L9DK
+Quando: 2026-08-30T20:56:08Z
+Issue: #69
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/69
+SKU: hd-externo-2tb-seagate-expansion-usb-30-portatil-preto
+Título: HD Externo 2TB Seagate Expansion Portátil (USB 3.0) – Preto
+ID ML: 5J5PKG-DVNF
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 1x listing)
-Badges: Achados do Dia, Cabo HDMI 2.1, 8K, 144Hz, Ultra HD, 2 Metros, PS5, Xbox
-open_url: https://meli.la/1Xr4zBw
-checked_url: https://meli.la/1Xr4zBw
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Badges: Achados do Dia, HD Externo, Seagate, 2TB, Armazenamento, Backup, USB 3.0, Portátil
+open_url: https://meli.la/1GyqzF7
+checked_url: https://meli.la/1GyqzF7
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-L9DK&tid=0554c1cf-e02f-4d49-808f-bc4269c46e75
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-DVNF&tid=a66f434b-cc34-4a8d-994a-7ed189438c33
 
 [ALTA] review_only_storefront
-Quando: 2026-08-30T16:34:12Z
+Quando: 2026-08-30T20:56:08Z
 Issue: #210
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210
 SKU: limpador-eletrico-pinceis-maquiagem-automatico-usb
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (22x /lists, 0x listing)
+Memória operacional: histórico recorrente (23x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Cuidado Pessoal, USB, Automático, Higiene, Pincéis
 open_url: https://meli.la/2xj3hnt
 checked_url: https://meli.la/2xj3hnt
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-016F
 
 [ALTA] review_only_storefront
-Quando: 2026-08-30T16:34:12Z
+Quando: 2026-08-30T20:56:08Z
 Issue: #235
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
 SKU: suporte-secador-cabelo-escova-multiuso-organizador
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
 Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
 open_url: https://meli.la/17hVhbS
 checked_url: https://meli.la/17hVhbS
