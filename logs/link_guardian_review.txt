@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-08-30T05:17:35Z
+Atualizado em: 2026-08-30T11:52:00Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-08-30T05:10:14Z
+Quando: 2026-08-30T11:46:08Z
 Issue: #235
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
 SKU: suporte-secador-cabelo-escova-multiuso-organizador
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (16x /lists, 0x listing)
+Memória operacional: histórico recorrente (17x /lists, 0x listing)
 Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
 open_url: https://meli.la/17hVhbS
 checked_url: https://meli.la/17hVhbS
