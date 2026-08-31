@@ -1,22 +1,67 @@
 {
-  "updated_at": "2026-08-31T05:24:14Z",
-  "total_items": 2,
+  "updated_at": "2026-08-31T13:35:26Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 2,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 2
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 2
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 2
+      "trocar_link": 3
     },
-    "high_priority": 2
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-08-31T05:17:56Z",
+      "happened_at": "2026-08-31T13:28:53Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 111,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/111",
+      "issue_title": "[CMS] Produto: Zero Mofo Premium 1L + Spray",
+      "sku": "zero-mofo-premium-1l-spray",
+      "title": "Anti Mofo Para Guarda Roupas Piso Parede Multiuso Imperblu Mactra Mofo Antimofo Tira Bolor Rejunte Gesso",
+      "id_busca": "5J5PKG-GPKC",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1kdBsuv",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1kdBsuv",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA0WT7WH7DsXlKhe3%2BDW1uyzhWs1zsoFpchZYGHjvmn3TtWp%2Bwd%2FeqiLpC7IFlDTOR%2B%2FZKGgfMwrwga1Ic2qmxp%2BZehC9bivRgvRiV7gfJbY%2FZDo0hxAoKnIz7NC64%2FCQO79JP4ozgTZlIb0ewlAapzVl%2FAKiDi3HKMSeGP6xFmxPsw3bN97zQTx1Y05gJogNrh5cQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J7T0&tid=9ef326de-f93f-485e-a3eb-610b5b06d2f2",
+      "short_url": "https://meli.la/1qHEv74",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA0WT7WH7DsXlKhe3%2BDW1uyzhWs1zsoFpchZYGHjvmn3TtWp%2Bwd%2FeqiLpC7IFlDTOR%2B%2FZKGgfMwrwga1Ic2qmxp%2BZehC9bivRgvRiV7gfJbY%2FZDo0hxAoKnIz7NC64%2FCQO79JP4ozgTZlIb0ewlAapzVl%2FAKiDi3HKMSeGP6xFmxPsw3bN97zQTx1Y05gJogNrh5cQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BA0WT7WH7DsXlKhe3%2BDW1uyzhWs1zsoFpchZYGHjvmn3TtWp%2Bwd%2FeqiLpC7IFlDTOR%2B%2FZKGgfMwrwga1Ic2qmxp%2BZehC9bivRgvRiV7gfJbY%2FZDo0hxAoKnIz7NC64%2FCQO79JP4ozgTZlIb0ewlAapzVl%2FAKiDi3HKMSeGP6xFmxPsw3bN97zQTx1Y05gJogNrh5cQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Limpeza",
+        "Anti Mofo",
+        "Zero Mofo",
+        "Banheiro",
+        "Parede",
+        "Teto",
+        "Piso"
+      ]
+    },
+    {
+      "happened_at": "2026-08-31T13:28:53Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-08-31T05:17:56Z",
+      "happened_at": "2026-08-31T13:28:53Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
