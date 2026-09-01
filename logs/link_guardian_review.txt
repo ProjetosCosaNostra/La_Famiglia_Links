@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-01T11:38:33Z
+Atualizado em: 2026-09-01T16:35:46Z
 Itens pendentes: 4
 SKUs únicos: 4
 Prioridade alta: 4
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-01T11:32:02Z
-Issue: #111
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/111
-SKU: zero-mofo-premium-1l-spray
-Título: Anti Mofo Para Guarda Roupas Piso Parede Multiuso Imperblu Mactra Mofo Antimofo Tira Bolor Rejunte Gesso
-ID ML: 5J5PKG-GPKC
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (20x /lists, 0x listing)
-Badges: Achados do Dia, Limpeza, Anti Mofo, Zero Mofo, Banheiro, Parede, Teto, Piso
-open_url: https://meli.la/1kdBsuv
-checked_url: https://meli.la/1kdBsuv
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J7T0&tid=9ef326de-f93f-485e-a3eb-610b5b06d2f2
-
-[ALTA] review_only_storefront
-Quando: 2026-09-01T11:32:02Z
+Quando: 2026-09-01T16:29:46Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -54,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (72x /lists, 0x listing)
+Memória operacional: histórico recorrente (73x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -62,7 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-09-01T11:32:02Z
+Quando: 2026-09-01T16:29:46Z
+Issue: #17
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/17
+SKU: jogo-lencol-400-fios-queen-box-4-pecas
+Título: Jogo de Lençol 400 Fios — Queen Box (4 peças)
+ID ML: 5J5PKG-MY6V
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Cama Mesa e Banho, Jogo de Lençol, 400 Fios, Queen, Toque Hotel, Conforto, Casa
+open_url: https://mercadolivre.com/sec/2wZB7u8
+checked_url: https://mercadolivre.com/sec/2wZB7u8
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MY6V&tid=a5b762df-445a-43b1-9114-989a8d9f76ef
+
+[ALTA] review_only_storefront
+Quando: 2026-09-01T16:29:46Z
 Issue: #210
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210
 SKU: limpador-eletrico-pinceis-maquiagem-automatico-usb
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (28x /lists, 0x listing)
+Memória operacional: histórico recorrente (29x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Cuidado Pessoal, USB, Automático, Higiene, Pincéis
 open_url: https://meli.la/2xj3hnt
 checked_url: https://meli.la/2xj3hnt
@@ -81,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-016F
 
 [ALTA] review_only_storefront
-Quando: 2026-09-01T11:32:02Z
+Quando: 2026-09-01T16:29:46Z
 Issue: #235
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
 SKU: suporte-secador-cabelo-escova-multiuso-organizador
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Memória operacional: histórico recorrente (25x /lists, 0x listing)
 Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
 open_url: https://meli.la/17hVhbS
 checked_url: https://meli.la/17hVhbS
