@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-01T16:35:46Z",
-  "total_items": 4,
+  "updated_at": "2026-09-01T21:01:02Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 4,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 4
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 4
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 4
+      "trocar_link": 3
     },
-    "high_priority": 4
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-09-01T16:29:46Z",
+      "happened_at": "2026-09-01T20:56:16Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (73x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (74x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,52 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-01T16:29:46Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 17,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/17",
-      "issue_title": "[CMS] Produto: Jogo de Lençol 400 Fios Queen Box (4 peças)",
-      "sku": "jogo-lencol-400-fios-queen-box-4-pecas",
-      "title": "Jogo de Lençol 400 Fios — Queen Box (4 peças)",
-      "id_busca": "5J5PKG-MY6V",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/2wZB7u8",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/2wZB7u8",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFb3TSBnASCc%2BgvpnZlD1yA2UQfc6H9dzOyQQout%2F%2BFpavO%2FevBXHC%2B6l18D0jMGhL%2BYragvsyfYgegw4ZbKYqwWyUfmUnUoci2t3mWNss3myOSj%2BGbQtCPnYuvf199kBjX%2F6jzNvtBxQ8AYwW98skMkjzbwV2031Ay%2F%2FKfqx%2FGDB7hjhxzUFQIbQBV1tpcK204WKQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MY6V&tid=a5b762df-445a-43b1-9114-989a8d9f76ef",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFb3TSBnASCc%2BgvpnZlD1yA2UQfc6H9dzOyQQout%2F%2BFpavO%2FevBXHC%2B6l18D0jMGhL%2BYragvsyfYgegw4ZbKYqwWyUfmUnUoci2t3mWNss3myOSj%2BGbQtCPnYuvf199kBjX%2F6jzNvtBxQ8AYwW98skMkjzbwV2031Ay%2F%2FKfqx%2FGDB7hjhxzUFQIbQBV1tpcK204WKQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFb3TSBnASCc%2BgvpnZlD1yA2UQfc6H9dzOyQQout%2F%2BFpavO%2FevBXHC%2B6l18D0jMGhL%2BYragvsyfYgegw4ZbKYqwWyUfmUnUoci2t3mWNss3myOSj%2BGbQtCPnYuvf199kBjX%2F6jzNvtBxQ8AYwW98skMkjzbwV2031Ay%2F%2FKfqx%2FGDB7hjhxzUFQIbQBV1tpcK204WKQ%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Cama Mesa e Banho",
-        "Jogo de Lençol",
-        "400 Fios",
-        "Queen",
-        "Toque Hotel",
-        "Conforto",
-        "Casa"
-      ]
-    },
-    {
-      "happened_at": "2026-09-01T16:29:46Z",
+      "happened_at": "2026-09-01T20:56:16Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (29x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +106,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-01T16:29:46Z",
+      "happened_at": "2026-09-01T20:56:16Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
