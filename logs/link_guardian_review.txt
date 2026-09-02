@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-02T16:34:39Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-09-02T21:01:09Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-02T16:27:56Z
+Quando: 2026-09-02T20:55:45Z
+Issue: #126
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/126
+SKU: suporte-magnetico-adesivo-para-moto-6-imas
+Título: Suporte Magnético Adesivo para Moto com 6 Ímãs e Adesivo 3M
+ID ML: 5J5PKG-09X4
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 0x listing)
+Badges: Achados do Dia, Suporte magnético, Suporte para moto, Celular na moto, 6 ímãs, Adesivo 3M, Navegação, Mesa de direção
+open_url: https://meli.la/2vuwLye
+checked_url: https://meli.la/2vuwLye
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-09X4&tid=4ef4ba94-3ac2-4348-adea-411429213228
+
+[ALTA] review_only_storefront
+Quando: 2026-09-02T20:55:45Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -35,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (77x /lists, 0x listing)
+Memória operacional: histórico recorrente (78x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1sLJKwg
 checked_url: https://meli.la/1sLJKwg
@@ -43,7 +62,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-09-02T16:27:56Z
+Quando: 2026-09-02T20:55:45Z
+Issue: #34
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
+SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
+Título: Kit de Soquetes S Siqueira 46 Peças — Catraca 1/4, Aço CRV, Maleta Compacta
+ID ML: 5J5PKG-66MX
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (35x /lists, 1x listing)
+Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
+open_url: https://meli.la/2dvtxCQ
+checked_url: https://meli.la/2dvtxCQ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
+
+[ALTA] review_only_storefront
+Quando: 2026-09-02T20:55:45Z
 Issue: #210
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/210
 SKU: limpador-eletrico-pinceis-maquiagem-automatico-usb
@@ -54,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (33x /lists, 0x listing)
+Memória operacional: histórico recorrente (34x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Cuidado Pessoal, USB, Automático, Higiene, Pincéis
 open_url: https://meli.la/2xj3hnt
 checked_url: https://meli.la/2xj3hnt
@@ -62,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-016F
 
 [ALTA] review_only_storefront
-Quando: 2026-09-02T16:27:56Z
+Quando: 2026-09-02T20:55:45Z
 Issue: #235
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/235
 SKU: suporte-secador-cabelo-escova-multiuso-organizador
@@ -73,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (29x /lists, 0x listing)
+Memória operacional: histórico recorrente (30x /lists, 0x listing)
 Badges: Organização, Banheiro, Beleza, Cuidado Pessoal, Cabelo, Secador, Chapinha, Escova Secadora
 open_url: https://meli.la/17hVhbS
 checked_url: https://meli.la/17hVhbS
