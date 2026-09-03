@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-03T04:14:14Z",
-  "total_items": 4,
+  "updated_at": "2026-09-03T11:09:09Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 4,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 4
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 4
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 4
+      "trocar_link": 5
     },
-    "high_priority": 4
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-09-03T04:08:53Z",
+      "happened_at": "2026-09-03T11:04:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (79x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (80x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,52 @@
       ]
     },
     {
-      "happened_at": "2026-09-03T04:08:53Z",
+      "happened_at": "2026-09-03T11:04:27Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 31,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/31",
+      "issue_title": "[CMS] Produto: Calibrador Digital + Partida Auxiliar (180 PSI)",
+      "sku": "calibrador-digital-partida-aux-180psi-12v",
+      "title": "Calibrador Compressor Pneu Digital + Partida Auxiliar (12V) — até 180 PSI",
+      "id_busca": "5J5PKG-U6DA",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2REbXV7",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2REbXV7",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFMKnM79DAu8DIPvgcmliCLPpbyxMwNVNpAmyHlKDvP87zFefZS4GJEIL0xgzLTQbKKBtTxCwqt7VS3%2F44ktHQWTo6LPap1ooJCPELzW%2Boc%2FeYG1x9SmNVQhlyRILDf3kfa5PFxoiazmZZfqx6S21UdoRZx%2FVWx86gHaG%2FSEw56Jyd6m%2BSvj2Z47fTnf6UW%2FdVXB0gc%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-U6DA&tid=87d72621-8276-452a-ba89-75357415a0b7",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFMKnM79DAu8DIPvgcmliCLPpbyxMwNVNpAmyHlKDvP87zFefZS4GJEIL0xgzLTQbKKBtTxCwqt7VS3%2F44ktHQWTo6LPap1ooJCPELzW%2Boc%2FeYG1x9SmNVQhlyRILDf3kfa5PFxoiazmZZfqx6S21UdoRZx%2FVWx86gHaG%2FSEw56Jyd6m%2BSvj2Z47fTnf6UW%2FdVXB0gc%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFMKnM79DAu8DIPvgcmliCLPpbyxMwNVNpAmyHlKDvP87zFefZS4GJEIL0xgzLTQbKKBtTxCwqt7VS3%2F44ktHQWTo6LPap1ooJCPELzW%2Boc%2FeYG1x9SmNVQhlyRILDf3kfa5PFxoiazmZZfqx6S21UdoRZx%2FVWx86gHaG%2FSEw56Jyd6m%2BSvj2Z47fTnf6UW%2FdVXB0gc%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Carro",
+        "Compressor de Ar",
+        "Calibrador Digital",
+        "Partida Auxiliar",
+        "180 PSI",
+        "12V",
+        "Display Digital"
+      ]
+    },
+    {
+      "happened_at": "2026-09-03T11:04:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +122,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (36x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (37x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +151,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-03T04:08:53Z",
+      "happened_at": "2026-09-03T11:04:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +167,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (35x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (36x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +196,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-03T04:08:53Z",
+      "happened_at": "2026-09-03T11:04:27Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +212,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (31x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (32x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
