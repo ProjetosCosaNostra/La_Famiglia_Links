@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-04T04:22:37Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-09-04T11:11:16Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-09-04T11:05:25Z
+Issue: #241
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/241
+SKU: cerave-gel-limpeza-facial-454g
+Título: Gel de Limpeza Facial Pele Oleosa 3 Ceramidas e Niacinamida CeraVe 454g
+ID ML: 5J5PKG-URLW
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Achados do Dia, CeraVe, Gel de Limpeza Facial, Limpeza Facial, Skincare, Pele Normal a Oleosa, Controle da Oleosidade, 3 Ceramidas Essenciais
+open_url: https://meli.la/1VuvMuX
+checked_url: https://meli.la/1VuvMuX
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-URLW

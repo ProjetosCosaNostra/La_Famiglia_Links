@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-09-04T04:22:37Z",
-  "total_items": 0,
+  "updated_at": "2026-09-04T11:11:16Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-09-04T11:05:25Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 241,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/241",
+      "issue_title": "CeraVe Gel de Limpeza Facial 454g",
+      "sku": "cerave-gel-limpeza-facial-454g",
+      "title": "Gel de Limpeza Facial Pele Oleosa 3 Ceramidas e Niacinamida CeraVe 454g",
+      "id_busca": "5J5PKG-URLW",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1VuvMuX",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1VuvMuX",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKLaY%2FQ4E7RBMnfkw1SKqVWdPhguFJoPhh4RHQhBBrV4r9T%2FgUHszgU5fRBjdFuEv1APbUy5wf5nC15ncB%2BEm6ORcdd%2F1nUyl6C%2B0s%2BBtuQLEoQbaOVeyFWaaWW36RGurD%2BKfqttMBZUcGu%2Fwhkjj1GiJtC%2BACZsR3fxs522qQ2IYR6QUpEOlA%2F4P0pYiaaWFkQAOCE%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-URLW",
+      "short_url": "https://meli.la/1VuvMuX",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BKLaY%2FQ4E7RBMnfkw1SKqVWdPhguFJoPhh4RHQhBBrV4r9T%2FgUHszgU5fRBjdFuEv1APbUy5wf5nC15ncB%2BEm6ORcdd%2F1nUyl6C%2B0s%2BBtuQLEoQbaOVeyFWaaWW36RGurD%2BKfqttMBZUcGu%2Fwhkjj1GiJtC%2BACZsR3fxs522qQ2IYR6QUpEOlA%2F4P0pYiaaWFkQAOCE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "CeraVe",
+        "Gel de Limpeza Facial",
+        "Limpeza Facial",
+        "Skincare",
+        "Pele Normal a Oleosa",
+        "Controle da Oleosidade",
+        "3 Ceramidas Essenciais"
+      ]
+    }
+  ]
 }
