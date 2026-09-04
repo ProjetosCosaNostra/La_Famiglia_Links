@@ -54,7 +54,7 @@ const blocked = /masculino|cueca|bermuda|automotiv|carro|moto|capacete|cachorro|
 const beauty = /beleza|maqui|batom|gloss|perfume|colônia|colonia|cílio|cilio|sobrancelha|pele|facial|skincare|cabelo|capilar|shampoo|condicionador|unha|esmalte|depil|hidrat|sabonete|protetor solar|demaquil|pincel|paleta|sombra|corretivo|rímel|rimel|máscara|mascara|sérum|serum|creme|loção|locao|escova secadora|modelador|babyliss|chapinha|secador|vestido|blusa|saia|calça feminina|bolsa feminina|cinto feminino|sandália feminina|brinco|colar feminino|relógio feminino|óculos feminino|feminino|autocuidado/i;
 const isBeautyFind = product => beauty.test(blob(product)) && !blocked.test(blob(product));
 const image = product => {
-  const value = product?.card_image || product?.image || 'assets/logo-cn-square.png';
+  const value = product?.card_image || 'assets/logo-cn-square.png';
   return value.startsWith('http') ? value : `./${value.replace(/^\.\//,'')}`;
 };
 const description = product => {

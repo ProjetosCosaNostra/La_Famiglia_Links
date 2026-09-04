@@ -1,0 +1,96 @@
+name: Fotos limpas dos produtos
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_items:
+        description: "Quantidade máxima de produtos nesta rodada"
+        required: true
+        default: "25"
+      refresh:
+        description: "Refazer também as fotos que já existem"
+        required: true
+        default: false
+        type: boolean
+  schedule:
+    - cron: "27 3 * * *"
+  push:
+    branches: [gh-pages]
+    paths:
+      - "tools/sync_product_card_images.py"
+      - "tests/test_sync_product_card_images.py"
+      - ".github/workflows/sync-product-card-images.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blackgold-card-images
+  cancel-in-progress: false
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar catálogo canônico
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Instalar dependências de imagem
+        run: pip install -r scripts/requirements-webp.txt
+
+      - name: Testar identificação, variantes e formato
+        run: python -m unittest discover -s tests -p 'test_sync_product_card_images.py' -v
+
+      - name: Localizar, validar e salvar fotos limpas
+        env:
+          MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
+          MAX_ITEMS: ${{ inputs.max_items || '25' }}
+          REFRESH: ${{ inputs.refresh || 'false' }}
+        run: |
+          set -euo pipefail
+          ARGS=(
+            --input produtos.json
+            --out produtos.json
+            --assets-dir assets/produtos-card
+            --report card-images-report.json
+            --max-items "${MAX_ITEMS}"
+          )
+          if [ "${REFRESH}" = "true" ]; then
+            ARGS+=(--refresh)
+          fi
+          python tools/sync_product_card_images.py "${ARGS[@]}"
+
+      - name: Guardar relatório da rodada
+        if: always() && hashFiles('card-images-report.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: card-images-report-${{ github.run_number }}
+          path: card-images-report.json
+          retention-days: 14
+
+      - name: Publicar imagens aprovadas no catálogo
+        run: |
+          set -euo pipefail
+          git add produtos.json
+          if [ -d assets/produtos-card ]; then
+            git add assets/produtos-card
+          fi
+          if git diff --cached --quiet; then
+            echo "Nenhuma foto nova segura nesta rodada."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "catalog: atualizar fotos limpas dos cards"
+          git push origin HEAD:gh-pages

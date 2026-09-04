@@ -11,7 +11,8 @@ body:
         - Esse formulário é para **cadastro / atualização normal**.
         - A **descrição curta** agora é campo importante: ela aparece no modal/detalhes e evita produto sem texto comercial.
         - Em **Badges/Tags/Hashtags**, coloque também os benefícios principais para a busca e para as hashtags automáticas.
-        - **Pra imagem bonita (com QR):** arraste a imagem para dentro do texto do issue (ou cole a URL da imagem).
+        - A foto limpa do card do site novo é buscada e preparada automaticamente.
+        - A arte com QR continua opcional e pode ser usada nas redes sociais sem poluir o card da loja.
         - Ao enviar, a Action atualiza o `produtos.json` sozinha.
 
         ⚠️ **Importante:**
@@ -53,17 +54,17 @@ body:
     id: categoria_principal
     attributes:
       label: "Categoria Principal"
-      description: "Ex: Tecnologia, Cuidado Pessoal, Moda & Acessórios, Casa & Cozinha"
-      placeholder: "Tecnologia"
+      description: "A loja nova é exclusiva de beleza feminina. Ex.: Maquiagem, Skincare, Cabelo, Perfumaria ou Acessórios Femininos."
+      placeholder: "Beleza e Cuidado Pessoal"
     validations:
-      required: false
+      required: true
 
   - type: textarea
     id: categorias_secundarias
     attributes:
       label: "Categorias Secundárias (separe por vírgula)"
-      description: "Ex: Notebook, PC, Armazenamento"
-      placeholder: "Notebook, PC, Armazenamento"
+      description: "Ex.: Maquiagem, Lábios, Gloss ou Skincare, Hidratação, Pele"
+      placeholder: "Maquiagem, Lábios, Gloss"
     validations:
       required: false
 
@@ -113,9 +114,9 @@ body:
   - type: input
     id: image_url
     attributes:
-      label: "Imagem (URL opcional)"
-      description: "Se você não preencher, o sistema pega automaticamente a primeira imagem colada/arrastada no corpo do issue."
-      placeholder: "https://... (opcional)"
+      label: "Arte promocional / redes sociais (URL opcional)"
+      description: "Opcional e separada da foto limpa do card, que o sistema busca sozinho."
+      placeholder: "https://... (opcional; pode ter QR)"
     validations:
       required: false
 
@@ -215,7 +216,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 📎 Upload da imagem bonita (com QR)
+        ## 📎 Arte opcional para redes sociais (com QR)
+        A foto limpa do produto usada no site é automática. Você não precisa
+        recadastrar nem preparar uma segunda imagem para a vitrine.
+
         **Depois de preencher os campos**, você pode arrastar a imagem aqui embaixo no corpo do issue:
         - Arraste e solte (ou cole) a imagem.
         - O GitHub vai gerar um link público.

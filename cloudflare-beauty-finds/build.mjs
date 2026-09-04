@@ -27,8 +27,8 @@ const products = activeProducts
     price: p.price_text || p.preco_atual || p.price_current || p.price || '',
     description: p.descricao_curta || p.short_description || p.description || p.notes || '',
     image: p.image || p.image_original || '',
-    card_image: p.card_image || (Array.isArray(p.images) ? p.images[0] : '') || p.image || p.image_original || '',
-    has_cleaner_image: Boolean(p.card_image || (Array.isArray(p.images) && p.images[0])),
+    card_image: p.card_image || '',
+    has_cleaner_image: Boolean(p.card_image),
     url: p.open_url || p.short_url || p.canonical_url || p.check_url || '#',
     featured: p.featured === true || p.quick_home === true,
     id_busca: p.id_busca || ''
@@ -47,7 +47,7 @@ try {
 }
 
 const localImages = [...new Set(products
-  .flatMap(p => [p.image, p.card_image])
+  .map(p => p.card_image)
   .filter(v => v && !/^https?:\/\//i.test(v)))];
 for (const rel of localImages) {
   const clean = rel.replace(/^\.\//, '');
