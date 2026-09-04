@@ -286,6 +286,46 @@ class MercadoLivreClient:
         return [item for item in results if isinstance(item, dict)] if isinstance(results, list) else []
 
 
+def refresh_meli_access_token(
+    session: requests.Session,
+    client_id: str,
+    client_secret: str,
+    refresh_token: str,
+    timeout: int,
+) -> tuple[str, str]:
+    """Obtém um access token novo sem registrar credenciais ou tokens em logs."""
+    response = session.post(
+        f"{API_BASE}/oauth/token",
+        data={
+            "grant_type": "refresh_token",
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "refresh_token": refresh_token,
+        },
+        headers={"Accept": "application/json", "User-Agent": USER_AGENT},
+        timeout=timeout,
+    )
+    if response.status_code >= 400:
+        raise AuthenticationRequired(f"Não foi possível renovar o acesso do Mercado Livre ({response.status_code}).")
+    try:
+        payload = response.json()
+    except ValueError as exc:
+        raise AuthenticationRequired("O Mercado Livre devolveu uma resposta inválida ao renovar o acesso.") from exc
+    access_token = str(payload.get("access_token") or "").strip()
+    new_refresh_token = str(payload.get("refresh_token") or refresh_token).strip()
+    if not access_token:
+        raise AuthenticationRequired("O Mercado Livre não devolveu um access token na renovação.")
+    return access_token, new_refresh_token
+
+
+def resolve_api_token(args: argparse.Namespace) -> tuple[str, str]:
+    refresh_values = (args.client_id, args.client_secret, args.refresh_token)
+    if all(refresh_values):
+        session = requests.Session()
+        return refresh_meli_access_token(session, *refresh_values, timeout=args.timeout)
+    return args.access_token, ""
+
+
 def picture_url(payload: dict[str, Any]) -> str:
     pictures = payload.get("pictures")
     if isinstance(pictures, list):
@@ -496,7 +536,10 @@ def sync_catalog(args: argparse.Namespace) -> tuple[dict[str, Any], dict[str, An
 
     only_sku = args.only_sku or event_sku(args.event_path)
     chosen = selected_products(products, only_sku, args.include_all_categories)
-    client = MercadoLivreClient(token=args.access_token, timeout=args.timeout)
+    access_token, new_refresh_token = resolve_api_token(args)
+    if new_refresh_token and args.new_refresh_token_file:
+        atomic_write_bytes(Path(args.new_refresh_token_file).resolve(), new_refresh_token.encode("utf-8"))
+    client = MercadoLivreClient(token=access_token, timeout=args.timeout)
     report: dict[str, Any] = {
         "generated_at": utc_now(),
         "only_sku": only_sku,
@@ -507,6 +550,7 @@ def sync_catalog(args: argparse.Namespace) -> tuple[dict[str, Any], dict[str, An
         "unresolved": 0,
         "failed": 0,
         "authentication_required": False,
+        "token_refreshed": bool(new_refresh_token),
         "results": [],
     }
 
@@ -591,6 +635,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--timeout", type=int, default=25)
     parser.add_argument("--delay", type=float, default=0.2)
     parser.add_argument("--access-token", default=os.getenv("MELI_ACCESS_TOKEN", ""))
+    parser.add_argument("--client-id", default=os.getenv("MELI_CLIENT_ID", ""))
+    parser.add_argument("--client-secret", default=os.getenv("MELI_CLIENT_SECRET", ""))
+    parser.add_argument("--refresh-token", default=os.getenv("MELI_REFRESH_TOKEN", ""))
+    parser.add_argument("--new-refresh-token-file", default="")
     parser.add_argument("--refresh", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--include-all-categories", action="store_true")
