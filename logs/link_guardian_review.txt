@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-04T16:18:35Z
+Atualizado em: 2026-09-04T20:46:55Z
 Itens pendentes: 1
 SKUs únicos: 1
 Prioridade alta: 1
@@ -24,20 +24,20 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-04T16:13:58Z
-Issue: #49
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/49
-SKU: parafusadeira-furadeira-kit-2-baterias-48v-maleta
-Título: Parafusadeira Furadeira C/ 2 Baterias Maleta Kit Completo Led Eixo Flexível Vários Níveis Torque Simake
-ID ML: 5J5PKG-1WFH
+Quando: 2026-09-04T20:41:04Z
+Issue: #92
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/92
+SKU: kit-10-panos-copa-felpudos-41x64-estampados
+Título: Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)
+ID ML: 5J5PKG-URBN
 Ação sugerida: trocar_link
 Motivo: social_profile_needs_review
 Bucket do motivo: perfil social com revisão manual
 Status HTTP: 200
 Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
-Badges: Achados do Dia, Ferramentas, Parafusadeira, Furadeira, Kit Completo, Maleta, 2 Baterias, LED
-open_url: https://meli.la/2MfQ3vr
-checked_url: https://meli.la/2MfQ3vr
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM%2FQ9ftwpQBasjlG0ElBHSHT4Zd1us9V7ttZ9TsyBtnLxA7v1mBZcKk9MkNJzJ%2Fy3fa6kMm2I3ou69LFlL%2BUj0YgzOcYDnpw%2FmZW3IoqAFeIAL4Z5nRXg9skIv3c9TMIRiuoUl7t2sSFd69YDRtAg%2FCtcM6OLbmq%2FAAnppokH206iWMNNQd3l%2FTe8pqkAlL4oA5isUY%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-1WFH&tid=a2928bb5-abd4-47fe-bbb2-d7a413674a66
+Memória operacional: histórico recorrente (1x /lists, 1x listing)
+Badges: Achados do Dia, Cozinha, Pano de Copa, Pano de Prato, Têxteis de Cozinha, Kit 10, Felpudo, Estampados
+open_url: https://meli.la/2tA4Gqh
+checked_url: https://meli.la/2tA4Gqh
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982
