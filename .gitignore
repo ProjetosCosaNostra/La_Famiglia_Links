@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+card-images-report.json
+cloudflare-beauty-finds/dist/
+

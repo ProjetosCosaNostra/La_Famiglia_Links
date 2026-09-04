@@ -72,6 +72,29 @@ jobs:
           set -euo pipefail
           python tools/cms_produtos.py
 
+      - name: Buscar foto limpa para o card do site novo
+        continue-on-error: true
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          python tools/sync_product_card_images.py \
+            --input produtos.json \
+            --out produtos.json \
+            --event-path "${GITHUB_EVENT_PATH}" \
+            --max-items 1 \
+            --assets-dir assets/produtos-card \
+            --report card-images-report.json
+
+      - name: Guardar relatório da foto limpa
+        if: always() && hashFiles('card-images-report.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: card-image-cms-${{ github.event.issue.number }}
+          path: card-images-report.json
+          retention-days: 14
+
       - name: Otimizar imagens para WebP antes do commit
         run: |
           set -euo pipefail

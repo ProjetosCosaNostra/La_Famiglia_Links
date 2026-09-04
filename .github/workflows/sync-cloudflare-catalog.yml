@@ -1,0 +1,73 @@
+name: Sincronizar catálogo na branch Cloudflare
+
+on:
+  push:
+    branches: [gh-pages]
+    paths:
+      - "produtos.json"
+      - "ecosystem.json"
+      - "assets/produtos-card/**"
+      - "assets/produtos-webp/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-cloudflare-catalog
+  cancel-in-progress: false
+
+jobs:
+  sync-catalog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar fonte canônica
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Copiar catálogo e imagens para a construção Cloudflare
+        run: |
+          set -euo pipefail
+          git fetch origin blackgold-beauty-cloudflare
+          TARGET_DIR="$(mktemp -d)"
+          git worktree add -B cloudflare-catalog-sync "${TARGET_DIR}" origin/blackgold-beauty-cloudflare
+
+          cp produtos.json "${TARGET_DIR}/produtos.json"
+          cp ecosystem.json "${TARGET_DIR}/ecosystem.json"
+          mkdir -p "${TARGET_DIR}/assets/produtos-card" "${TARGET_DIR}/assets/produtos-webp"
+          if [ -d assets/produtos-card ]; then
+            rsync -a --delete assets/produtos-card/ "${TARGET_DIR}/assets/produtos-card/"
+          fi
+          if [ -d assets/produtos-webp ]; then
+            rsync -a --delete assets/produtos-webp/ "${TARGET_DIR}/assets/produtos-webp/"
+          fi
+
+          cd "${TARGET_DIR}"
+          git add produtos.json ecosystem.json assets/produtos-webp
+          if [ -d assets/produtos-card ]; then
+            git add assets/produtos-card
+          fi
+          if git diff --cached --quiet; then
+            echo "Branch Cloudflare já está sincronizada."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "sync: catálogo e imagens para Cloudflare"
+
+          ATTEMPT=1
+          while [ "${ATTEMPT}" -le 3 ]; do
+            if git push origin HEAD:blackgold-beauty-cloudflare; then
+              exit 0
+            fi
+            git fetch origin blackgold-beauty-cloudflare
+            git rebase origin/blackgold-beauty-cloudflare
+            ATTEMPT=$((ATTEMPT + 1))
+          done
+          echo "Não foi possível sincronizar a branch Cloudflare."
+          exit 1
