@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#05080d" />
+  <title>Cosa Nostra BlackGold — Premium Store V3</title>
+  <meta name="description" content="Prévia da nova experiência premium da Cosa Nostra BlackGold." />
+  <link rel="preload" as="image" href="../assets/premium-store-hero-desktop.webp" />
+  <link rel="stylesheet" href="./store-v3.css" />
+</head>
+<body>
+  <div class="bg-orbit bg-orbit-a"></div>
+  <div class="bg-orbit bg-orbit-b"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Cosa Nostra BlackGold">
+      <img src="../assets/logo-cn-round.png" alt="Cosa Nostra BlackGold" />
+      <span><strong>COSA NOSTRA</strong><small>BLACKGOLD</small></span>
+    </a>
+    <nav>
+      <a href="#selecao" data-i18n="navToday">Seleção do Dia</a>
+      <a href="#vitrine" data-i18n="navStore">Vitrine</a>
+      <a href="#ecossistema" data-i18n="navEco">Ecossistema</a>
+    </nav>
+    <div class="locale" aria-label="Idioma">
+      <button class="active" data-locale="pt-BR">PT</button>
+      <button data-locale="en-US">EN</button>
+      <button data-locale="es-419">ES</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <span class="eyebrow">✦ PREMIUM CURATION</span>
+        <h1><span data-i18n="heroA">Achados com</span> <em data-i18n="heroB">presença de luxo.</em></h1>
+        <p data-i18n="heroText">Uma vitrine BlackGold mais clara, mais rápida e com foco direto no produto — sem perder a identidade que tornou a loja única.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#vitrine" data-i18n="seeProducts">Ver produtos</a>
+          <a class="btn ghost" href="#ecossistema" data-i18n="openEco">Abrir ecossistema</a>
+        </div>
+        <div class="hero-metrics">
+          <div><strong id="productCount">—</strong><span data-i18n="metricProducts">produtos ativos</span></div>
+          <div><strong>PT · EN · ES</strong><span data-i18n="metricGlobal">experiência global</span></div>
+          <div><strong>BlackGold</strong><span data-i18n="metricIdentity">identidade oficial</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-frame">
+          <img src="../assets/premium-store-hero-desktop.webp" alt="Cosa Nostra Premium Store" />
+          <div class="hero-glow"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker">
+      <div>✦ CURADORIA PREMIUM</div><div>◆ OFERTAS SELECIONADAS</div><div>✦ MODA & BELEZA FEMININA</div><div>◆ COMPRA NO MERCADO LIVRE</div>
+    </section>
+
+    <section id="selecao" class="section shell">
+      <div class="section-head">
+        <div><span class="eyebrow" data-i18n="todayEyebrow">SELEÇÃO DO DIA</span><h2 data-i18n="todayTitle">Uma escolha que merece destaque.</h2></div>
+        <span class="status-pill">● LIVE CURATION</span>
+      </div>
+      <div id="featuredProduct" class="feature-card skeleton"></div>
+    </section>
+
+    <section id="vitrine" class="section shell">
+      <div class="section-head store-head">
+        <div><span class="eyebrow" data-i18n="storeEyebrow">VITRINE RÁPIDA</span><h2 data-i18n="storeTitle">Comprar ficou mais simples.</h2></div>
+        <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar produto, categoria ou código" /></label>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+      <div class="center"><button id="showMore" class="btn ghost" data-i18n="showMore">Mostrar mais produtos</button></div>
+    </section>
+
+    <section id="ecossistema" class="section shell ecosystem-wrap">
+      <div class="ecosystem-panel">
+        <div class="eco-hero">
+          <div class="eco-copy">
+            <span class="eyebrow">⬡ BLACKGOLD ECOSYSTEM</span>
+            <h2><span data-i18n="ecoA">Ecossistema</span> <em>BlackGold</em></h2>
+            <p data-i18n="ecoText">Escolha diretamente o projeto, canal, comunidade ou contato desejado. Nenhum redirecionamento automático.</p>
+            <div class="manifest-ok">● <span data-i18n="manifest">Manifesto carregado. Escolha o destino.</span></div>
+          </div>
+          <div class="eco-emblem" aria-hidden="true">
+            <div class="crest-stage">
+              <div class="gold-ring ring-1"></div><div class="gold-ring ring-2"></div><div class="gold-ring ring-3"></div>
+              <img src="../assets/premium-store-hero-desktop.webp" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="eco-group">
+          <h3>◈ <span data-i18n="projectsStore">PROJETOS E LOJA</span></h3>
+          <div id="ecoProjects" class="eco-grid"></div>
+        </div>
+        <div class="eco-group">
+          <h3>● <span data-i18n="networks">REDES E COMUNIDADE</span></h3>
+          <div id="ecoSocial" class="eco-grid"></div>
+        </div>
+        <div class="eco-group">
+          <h3>▣ <span data-i18n="business">EMPRESA E CONTATO</span></h3>
+          <div id="ecoBusiness" class="eco-grid"></div>
+        </div>
+        <footer class="eco-footer">⬡ BlackGold Ecosystem · V3 Preview · Cloudflare-ready</footer>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="productModal" class="modal">
+    <button class="modal-close" aria-label="Fechar">×</button>
+    <div id="modalContent"></div>
+  </dialog>
+
+  <script src="./store-v3.js" defer></script>
+</body>
+</html>
