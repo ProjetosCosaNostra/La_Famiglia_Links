@@ -32,6 +32,12 @@ const products = (Array.isArray(productsRaw) ? productsRaw : productsRaw.product
 
 await fs.writeFile(path.join(out, 'catalog.json'), JSON.stringify({ updated_at: new Date().toISOString(), products }), 'utf8');
 
+try {
+  await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json'));
+} catch {
+  await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8');
+}
+
 const localImages = [...new Set(products.map(p => p.image).filter(v => v && !/^https?:\/\//i.test(v)))];
 for (const rel of localImages) {
   const clean = rel.replace(/^\.\//, '');
