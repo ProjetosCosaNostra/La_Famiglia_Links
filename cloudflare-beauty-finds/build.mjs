@@ -14,8 +14,10 @@ for (const file of ['index.html', 'styles.css', 'app.js', '_headers']) {
 }
 
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
-const products = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || [])
-  .filter(p => p && p.active !== false)
+const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || [])
+  .filter(p => p && p.active !== false);
+
+const products = activeProducts
   .map(p => ({
     sku: p.sku || '',
     title: p.title || 'BlackGold Find',
@@ -25,12 +27,18 @@ const products = (Array.isArray(productsRaw) ? productsRaw : productsRaw.product
     price: p.price_text || p.preco_atual || p.price_current || p.price || '',
     description: p.descricao_curta || p.short_description || p.description || p.notes || '',
     image: p.image || p.image_original || '',
+    card_image: p.card_image || (Array.isArray(p.images) ? p.images[0] : '') || p.image || p.image_original || '',
+    has_cleaner_image: Boolean(p.card_image || (Array.isArray(p.images) && p.images[0])),
     url: p.open_url || p.short_url || p.canonical_url || p.check_url || '#',
     featured: p.featured === true || p.quick_home === true,
     id_busca: p.id_busca || ''
   }));
 
-await fs.writeFile(path.join(out, 'catalog.json'), JSON.stringify({ updated_at: new Date().toISOString(), products }), 'utf8');
+await fs.writeFile(path.join(out, 'catalog.json'), JSON.stringify({
+  updated_at: new Date().toISOString(),
+  total_active: activeProducts.length,
+  products
+}), 'utf8');
 
 try {
   await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json'));
@@ -38,7 +46,9 @@ try {
   await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8');
 }
 
-const localImages = [...new Set(products.map(p => p.image).filter(v => v && !/^https?:\/\//i.test(v)))];
+const localImages = [...new Set(products
+  .flatMap(p => [p.image, p.card_image])
+  .filter(v => v && !/^https?:\/\//i.test(v)))];
 for (const rel of localImages) {
   const clean = rel.replace(/^\.\//, '');
   const src = path.join(root, clean);
@@ -51,10 +61,14 @@ for (const rel of localImages) {
   }
 }
 
-for (const asset of ['logo-cn-round.png', 'logo-cn-square.png', 'premium-store-hero-desktop.webp', 'premium-store-hero-mobile-gold-v2.webp', 'loja-completa-hero-desktopBase.png']) {
+for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   const src = path.join(root, 'assets', asset);
   const dest = path.join(out, 'assets', asset);
   try { await fs.copyFile(src, dest); } catch {}
+}
+
+for (const asset of ['hero-approved.webp', 'ecosystem-approved.webp']) {
+  await fs.copyFile(path.join(here, asset), path.join(out, asset));
 }
 
 console.log(`Cloudflare Pages package ready: ${products.length} active products -> ${out}`);

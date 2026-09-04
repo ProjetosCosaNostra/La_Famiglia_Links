@@ -3,103 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0b0805">
+  <meta name="theme-color" content="#0a0805">
   <meta name="description" content="BlackGold Beauty Finds — curadoria feminina premium em beleza, moda e acessórios.">
   <title>BlackGold Beauty Finds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <svg class="svg-library" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4Zm0 0v10l8 4 8-4V7M12 11v10"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.4 3 14.6 0 18M12 3c-3 3.4-3 14.6 0 18"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="m4 8 4 4 4-7 4 7 4-4-2 10H6L4 8Z"/><path d="M6 21h12"/></symbol>
+    <symbol id="i-nodes" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="m10.5 7-4 8.5M13.5 7l4 8.5M7.5 18h9"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9h-6v-6H9v6H3v-9Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="fill"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M21 8.3a3 3 0 0 0-2.1-2.1C17 5.7 7 5.7 5.1 6.2A3 3 0 0 0 3 8.3a21 21 0 0 0 0 7.4 3 3 0 0 0 2.1 2.1c1.9.5 11.9.5 13.8 0a3 3 0 0 0 2.1-2.1 21 21 0 0 0 0-7.4Z"/><path class="fill" d="m10 9 5 3-5 3V9Z"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="m21 4-3 16-6-5-4 3 1-5 9-7-11 6-4-2 18-6Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-3 17.5c.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.7.1-.7.1-.7 1 0 1.6 1.1 1.6 1.1.9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.7-1.3-2.2-.3-4.6-1.1-4.6-5A3.9 3.9 0 0 1 7 7.5c-.1-.3-.5-1.3.1-2.7 0 0 .9-.3 2.8 1.1a9.6 9.6 0 0 1 5.1 0c2-1.4 2.8-1.1 2.8-1.1.6 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1.1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7 1 .7 2V20c0 .3.2.6.7.5A9 9 0 0 0 12 3Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+  </svg>
+
   <header class="topbar">
     <div class="page navrow">
+      <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Abrir menu" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
       <a class="brand" href="#home" aria-label="BlackGold Beauty Finds">
         <img src="./assets/logo-cn-round.png" alt="">
         <span><b>BLACKGOLD</b><em>Beauty Finds</em></span>
       </a>
-      <nav class="navlinks" aria-label="Navegação">
-        <a class="active" href="#destaque">Destaque</a>
-        <a href="#vitrine">Vitrine</a>
-        <a href="#ecossistema">Ecossistema</a>
+      <nav class="navlinks" id="navLinks" aria-label="Navegação principal">
+        <a class="active" href="#destaque" data-i18n="navFeatured">Destaque</a>
+        <a href="#vitrine" data-i18n="navShowcase">Vitrine</a>
+        <a href="#ecossistema" data-i18n="navEcosystem">Ecossistema</a>
       </nav>
       <div class="navtools">
-        <div class="langs"><button class="active" data-lang="pt">PT</button><button data-lang="en">EN</button><button data-lang="es">ES</button></div>
-        <button class="navicon" aria-label="Buscar" data-scroll="#vitrine">⌕</button>
-        <button class="navicon" aria-label="Vitrine" data-scroll="#vitrine">♧</button>
+        <div class="langs" aria-label="Idioma"><button class="active" data-lang="pt">PT</button><button data-lang="en">EN</button><button data-lang="es">ES</button></div>
+        <button class="icon-button search-trigger" aria-label="Buscar produtos"><svg><use href="#i-search"/></svg></button>
+        <button class="icon-button" aria-label="Abrir vitrine" data-scroll="#vitrine"><svg><use href="#i-bag"/></svg></button>
       </div>
     </div>
   </header>
 
   <main id="home">
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="page hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">BELEZA <i>•</i> MODA <i>•</i> ACESSÓRIOS <i>•</i> ESTILO DE VIDA</div>
-          <h1>Curadoria feminina<br>com presença <em>premium.</em></h1>
-          <p>Moda, beleza e acessórios selecionados em uma experiência mais limpa, elegante e direta.</p>
+          <div class="eyebrow" data-i18n="eyebrow">BELEZA <i>•</i> MODA <i>•</i> ACESSÓRIOS <i>•</i> ESTILO DE VIDA</div>
+          <h1 id="hero-title"><span data-i18n="heroLine1">Curadoria feminina</span><br><span data-i18n="heroLine2">com presença</span> <em>premium.</em></h1>
+          <p data-i18n="heroBody">Moda, beleza e acessórios selecionados em uma experiência mais limpa, elegante e direta.</p>
           <div class="hero-buttons">
-            <a class="btn gold" href="#vitrine">Explorar achados <span>→</span></a>
-            <a class="btn ivory" href="#ecossistema"><span>⌘</span> Abrir ecossistema</a>
+            <a class="btn gold" href="#vitrine"><span data-i18n="explore">Explorar achados</span><svg><use href="#i-arrow"/></svg></a>
+            <a class="btn ivory" href="#ecossistema"><svg><use href="#i-nodes"/></svg><span data-i18n="openEco">Abrir ecossistema</span></a>
           </div>
-          <div class="stats">
-            <div class="stat"><span>◇</span><p><b id="count">193</b><small>produtos ativos</small></p></div>
-            <div class="stat"><span>◎</span><p><b>PT · EN · ES</b><small>em múltiplos idiomas</small></p></div>
-            <div class="stat"><span>♛</span><p><b>BlackGold</b><small>curadoria oficial</small></p></div>
+          <div class="stats" aria-label="Informações da loja">
+            <div class="stat"><svg><use href="#i-box"/></svg><p><b id="count">193</b><small data-i18n="activeProducts">produtos ativos</small></p></div>
+            <div class="stat"><svg><use href="#i-globe"/></svg><p><b>PT · EN · ES</b><small data-i18n="languages">em múltiplos idiomas</small></p></div>
+            <div class="stat"><svg><use href="#i-crown"/></svg><p><b>BlackGold</b><small data-i18n="officialCuratorship">curadoria oficial</small></p></div>
           </div>
         </div>
-        <div class="hero-visual" aria-label="BlackGold Beauty Finds">
-          <div class="hero-light"></div>
-          <div class="hero-model" id="heroModel"></div>
-          <div class="hero-brandboard">
-            <img src="./assets/logo-cn-square.png" alt="">
-            <strong>BLACKGOLD</strong>
-            <em>Beauty Finds</em>
-            <small>BELEZA QUE ACOMPANHA<br>A SUA HISTÓRIA</small>
-          </div>
-          <div class="hero-script">Mais<br>que produtos,<br>é uma escolha<br>de vida.</div>
-          <div class="hero-books"><span>BELEZA</span><span>MODA</span><span>AUTOCUIDADO</span><span>CONFIANÇA</span><span>SEMPRE VOCÊ</span></div>
-        </div>
+        <div class="hero-art" aria-hidden="true"><img src="./hero-approved.webp" alt=""></div>
       </div>
     </section>
 
-    <section id="destaque" class="section light selection">
-      <div class="page">
-        <div class="section-head">
-          <div><h2>Seleção do Dia</h2><p>Achados selecionados para uma rotina mais elegante.</p></div>
-          <a href="#vitrine" class="pill">Ver todos os produtos <span>→</span></a>
+    <div class="catalogue-shell">
+      <section id="destaque" class="section selection" aria-labelledby="selection-title">
+        <div class="page">
+          <div class="section-head">
+            <div><h2 id="selection-title" data-i18n="selection">Seleção do Dia</h2><p data-i18n="selectionBody">Achados selecionados para uma rotina mais elegante.</p></div>
+            <button class="pill search-trigger"><span data-i18n="allProducts">Ver todos os produtos</span><svg><use href="#i-arrow"/></svg></button>
+          </div>
+          <div id="featured" class="featured" aria-live="polite"></div>
+          <div class="carousel-dots" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i></div>
         </div>
-        <div id="featured" class="featured"></div>
-      </div>
-    </section>
+      </section>
 
-    <section id="vitrine" class="section light vitrine">
-      <div class="page">
-        <div class="section-head vitrine-head">
-          <div><h2>Vitrine Premium</h2><p>Mais que produtos, são escolhas que refletem quem você é.</p></div>
-          <div class="filters"><button class="chip active" data-filter="Todos">Todos</button><button class="chip" data-filter="Beleza">Beleza</button><button class="chip" data-filter="Moda">Moda</button><button class="chip" data-filter="Acessórios">Acessórios</button><button class="chip" data-filter="Autocuidado">Autocuidado</button><button class="pill" id="allProducts">Ver toda a vitrine <span>→</span></button></div>
+      <section id="vitrine" class="section vitrine" aria-labelledby="showcase-title">
+        <div class="page">
+          <div class="section-head vitrine-head">
+            <div><h2 id="showcase-title" data-i18n="showcase">Vitrine Premium</h2><p data-i18n="showcaseBody">Mais que produtos, são escolhas que refletem quem você é.</p></div>
+            <div class="filters" aria-label="Filtrar vitrine">
+              <button class="chip active" data-filter="Todos" data-i18n="filterAll">Todos</button>
+              <button class="chip" data-filter="Beleza" data-i18n="filterBeauty">Beleza</button>
+              <button class="chip" data-filter="Moda" data-i18n="filterFashion">Moda</button>
+              <button class="chip" data-filter="Acessórios" data-i18n="filterAccessories">Acessórios</button>
+              <button class="chip" data-filter="Autocuidado" data-i18n="filterSelfCare">Autocuidado</button>
+              <button class="pill search-trigger"><span data-i18n="fullShowcase">Ver toda a vitrine</span><svg><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+          <div id="productRow" class="product-row" aria-live="polite"></div>
         </div>
-        <div id="productRow" class="product-row"></div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section id="ecossistema" class="ecosystem">
+    <section id="ecossistema" class="ecosystem" aria-labelledby="ecosystem-title">
       <div class="page eco-grid">
         <div class="eco-copy">
-          <div class="eco-kicker">⬡ &nbsp; ECOSSISTEMA OFICIAL</div>
-          <h2>Ecossistema <span>BlackGold</span></h2>
-          <p>Acesse nossos projetos, redes e canais oficiais.<br>A Loja é apenas uma das opções, não existe redirecionamento automático.</p>
+          <div class="eco-kicker"><span>◇</span> <span data-i18n="officialEco">ECOSSISTEMA OFICIAL</span></div>
+          <h2 id="ecosystem-title"><span data-i18n="ecosystem">Ecossistema</span> <em>BlackGold</em></h2>
+          <p data-i18n="ecosystemBody">Acesse nossos projetos, redes e canais oficiais.<br>A Loja é apenas uma das opções, não existe redirecionamento automático.</p>
         </div>
-        <div class="eco-mark">
-          <div class="lion left">♞</div>
-          <div class="crest"><img src="./assets/logo-cn-square.png" alt=""></div>
-          <div class="lion right">♞</div>
-          <strong>BLACKGOLD</strong><small>ECOSYSTEM</small><div class="pedestal"></div>
-        </div>
+        <div class="eco-art" aria-hidden="true"><img src="./ecosystem-approved.webp" alt=""></div>
         <div class="eco-links">
-          <a href="/" data-eco="hub"><span>▣</span><p><b>Hub oficial / Loja</b><small>active · store</small></p><i>›</i></a>
-          <a href="#" data-eco="instagram"><span>◎</span><p><b>Instagram</b><small>active · social</small></p><i>›</i></a>
-          <a href="#" data-eco="youtube"><span>▶</span><p><b>YouTube</b><small>active · social</small></p><i>›</i></a>
-          <a href="#" data-eco="telegram"><span>➤</span><p><b>Telegram</b><small>active · community</small></p><i>›</i></a>
-          <a href="#" data-eco="github"><span>◉</span><p><b>GitHub</b><small>active · company</small></p><i>›</i></a>
-          <a href="mailto:projetoscosanostra@gmail.com"><span>✉</span><p><b>Contato</b><small>active · contact</small></p><i>›</i></a>
+          <a href="/" data-eco="hub"><span><svg><use href="#i-home"/></svg></span><p><b data-i18n="hub">Hub oficial / Loja</b><small>active · store</small></p><svg class="chevron"><use href="#i-chevron"/></svg></a>
+          <a href="#" data-eco="instagram"><span><svg><use href="#i-instagram"/></svg></span><p><b>Instagram</b><small>active · social</small></p><svg class="chevron"><use href="#i-chevron"/></svg></a>
+          <a href="#" data-eco="youtube"><span><svg><use href="#i-youtube"/></svg></span><p><b>YouTube</b><small>active · social</small></p><svg class="chevron"><use href="#i-chevron"/></svg></a>
+          <a href="#" data-eco="telegram"><span><svg><use href="#i-telegram"/></svg></span><p><b>Telegram</b><small>active · community</small></p><svg class="chevron"><use href="#i-chevron"/></svg></a>
+          <a href="#" data-eco="github"><span><svg><use href="#i-github"/></svg></span><p><b>GitHub</b><small>active · company</small></p><svg class="chevron"><use href="#i-chevron"/></svg></a>
+          <a href="mailto:projetoscosanostra@gmail.com"><span><svg><use href="#i-mail"/></svg></span><p><b data-i18n="contact">Contato</b><small>active · contact</small></p><svg class="chevron"><use href="#i-chevron"/></svg></a>
         </div>
       </div>
     </section>
@@ -109,12 +126,18 @@
     <div class="page footer-row">
       <a class="brand footer-brand" href="#home"><img src="./assets/logo-cn-round.png" alt=""><span><b>BLACKGOLD</b><em>Beauty Finds</em></span></a>
       <nav><a href="#vitrine">Beleza</a><a href="#vitrine">Moda</a><a href="#vitrine">Acessórios</a><a href="#vitrine">Estilo de Vida</a></nav>
-      <p>Curadoria feminina. Um padrão mais alto.</p>
-      <small>© 2026 BlackGold Beauty Finds<br>Todos os direitos reservados.</small>
+      <p data-i18n="footerLine">Curadoria feminina. Um padrão mais alto.</p>
+      <div class="footer-social"><a href="#" data-eco="instagram" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a><a href="#" data-eco="youtube" aria-label="YouTube"><svg><use href="#i-youtube"/></svg></a><a href="#" data-eco="telegram" aria-label="Telegram"><svg><use href="#i-telegram"/></svg></a><a href="#" data-eco="github" aria-label="GitHub"><svg><use href="#i-github"/></svg></a><a href="mailto:projetoscosanostra@gmail.com" aria-label="E-mail"><svg><use href="#i-mail"/></svg></a></div>
+      <small>© 2026 BlackGold Beauty Finds<br><span data-i18n="rights">Todos os direitos reservados.</span></small>
     </div>
   </footer>
 
-  <dialog id="modal"><button class="close" aria-label="Fechar">×</button><div id="modalBody"></div></dialog>
+  <dialog id="productModal" class="modal"><button class="close" aria-label="Fechar"><svg><use href="#i-close"/></svg></button><div id="modalBody"></div></dialog>
+  <dialog id="catalogModal" class="modal catalog-modal">
+    <button class="close" aria-label="Fechar"><svg><use href="#i-close"/></svg></button>
+    <div class="catalog-modal-head"><small>BLACKGOLD BEAUTY FINDS</small><h2 data-i18n="fullShowcase">Ver toda a vitrine</h2><label><svg><use href="#i-search"/></svg><input id="catalogSearch" type="search" placeholder="Buscar por produto, marca ou categoria" autocomplete="off"></label><p id="catalogResultCount"></p></div>
+    <div id="catalogGrid" class="catalog-grid"></div>
+  </dialog>
   <script src="./app.js" defer></script>
 </body>
 </html>
