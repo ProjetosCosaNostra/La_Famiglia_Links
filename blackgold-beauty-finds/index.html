@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#030913">
+  <meta name="description" content="BlackGold Beauty Finds — curadoria feminina premium do ecossistema BlackGold.">
+  <title>BlackGold Beauty Finds</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#inicio">
+        <img src="../assets/logo-cn-round.png" alt="" class="brand-mark">
+        <span class="brand-copy"><b>BlackGold</b><strong>Beauty Finds</strong></span>
+      </a>
+      <nav class="navlinks">
+        <a href="#destaque">Destaque</a><a href="#vitrine">Vitrine</a><a href="#ecossistema">Ecossistema</a>
+      </nav>
+      <div class="langs"><button class="lang active" data-lang="pt">PT</button><button class="lang" data-lang="en">EN</button><button class="lang" data-lang="es">ES</button></div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="shell hero">
+      <div class="hero-card premium-frame">
+        <div class="hero-copy">
+          <div class="eyebrow">◆ BLACKGOLD BEAUTY FINDS</div>
+          <h1>Curadoria feminina com <span>presença premium.</span></h1>
+          <p>Moda, beleza e acessórios selecionados em uma experiência mais limpa, elegante e direta.</p>
+          <div class="hero-actions"><a class="btn primary" href="#vitrine">Explorar achados</a><a class="btn ghost" href="#ecossistema">Abrir ecossistema</a></div>
+          <div class="hero-stats"><div><b id="productCount">—</b><span>produtos ativos</span></div><div><b>PT · EN · ES</b><span>experiência global</span></div><div><b>BlackGold</b><span>curadoria oficial</span></div></div>
+        </div>
+        <div class="hero-visual">
+          <div class="brand-seal"><img src="../assets/logo-cn-square.png" alt="BlackGold"><span>BLACKGOLD</span><small>BEAUTY FINDS</small></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker"><div class="shell ticker-grid"><span>✦ CURADORIA PREMIUM</span><span>✦ MODA & BELEZA FEMININA</span><span>✦ ACHADOS SELECIONADOS</span><span>✦ MERCADO LIVRE</span></div></div>
+
+    <section id="destaque" class="shell section">
+      <div class="section-head"><div><div class="eyebrow">SELEÇÃO DO DIA</div><h2>Um achado que merece destaque.</h2></div><span class="live-pill">● LIVE CURATION</span></div>
+      <article id="featuredProduct" class="featured premium-frame"><div class="loading">Carregando seleção...</div></article>
+    </section>
+
+    <section id="vitrine" class="shell section">
+      <div class="section-head"><div><div class="eyebrow">VITRINE PREMIUM</div><h2>Encontre seu próximo favorito.</h2></div><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar produto, categoria ou benefício"></label></div>
+      <div id="categoryChips" class="chips"></div>
+      <div id="productGrid" class="product-grid"></div>
+      <div id="emptyState" class="empty" hidden>Nenhum produto encontrado.</div>
+      <div class="grid-actions"><button id="loadMore" class="btn ghost">Carregar mais</button></div>
+    </section>
+
+    <section id="ecossistema" class="shell section ecosystem-section">
+      <div class="ecosystem-card premium-frame">
+        <div class="ecosystem-hero">
+          <div class="ecosystem-copy">
+            <div class="eyebrow">⬡ BLACKGOLD ECOSYSTEM</div>
+            <h2>Ecossistema <span>BlackGold</span></h2>
+            <p>Página interna oficial do ecossistema. Escolha o projeto, canal, comunidade ou contato desejado.</p>
+            <div class="manifest">● Manifesto carregado. Escolha o destino — nenhum redirecionamento é automático.</div>
+          </div>
+          <div class="ecosystem-stage" aria-label="Identidade BlackGold">
+            <div class="crest-window"></div>
+            <div class="stage-title">BLACKGOLD <small>ECOSYSTEM</small></div>
+          </div>
+        </div>
+        <div id="ecosystemGroups" class="ecosystem-groups"></div>
+        <footer class="ecosystem-footer"><span>⬡ BlackGold Ecosystem</span><span>BlackGold Beauty Finds</span><span>v3.0</span></footer>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="productDialog" class="product-dialog"><button class="dialog-close" aria-label="Fechar">×</button><div id="dialogContent"></div></dialog>
+  <footer class="page-footer"><div class="shell"><div><strong>BlackGold Beauty Finds</strong><span>Curadoria feminina premium.</span></div><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+  <script src="./app.js" defer></script>
+</body>
+</html>
