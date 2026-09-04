@@ -10,8 +10,8 @@ permissions:
   actions: write
 
 concurrency:
-  group: cms-produtos
-  cancel-in-progress: true
+  group: blackgold-catalog-pipeline
+  cancel-in-progress: false
 
 jobs:
   run-cms:
@@ -77,6 +77,9 @@ jobs:
         env:
           GITHUB_EVENT_PATH: ${{ github.event_path }}
           MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
+          MELI_CLIENT_ID: ${{ secrets.MELI_CLIENT_ID }}
+          MELI_CLIENT_SECRET: ${{ secrets.MELI_CLIENT_SECRET }}
+          MELI_REFRESH_TOKEN: ${{ secrets.MELI_REFRESH_TOKEN }}
         run: |
           set -euo pipefail
           python tools/sync_product_card_images.py \
@@ -85,7 +88,28 @@ jobs:
             --event-path "${GITHUB_EVENT_PATH}" \
             --max-items 1 \
             --assets-dir assets/produtos-card \
-            --report card-images-report.json
+            --report card-images-report.json \
+            --new-refresh-token-file "${RUNNER_TEMP}/meli-refresh-token.txt"
+
+      - name: Guardar o refresh token renovado com segurança
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.IMAGE_BOT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TOKEN_FILE="${RUNNER_TEMP}/meli-refresh-token.txt"
+          if [ ! -s "${TOKEN_FILE}" ]; then
+            exit 0
+          fi
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::warning::IMAGE_BOT_GITHUB_TOKEN não configurado; o refresh token novo não pôde ser rotacionado."
+            exit 0
+          fi
+          NEW_REFRESH_TOKEN="$(cat "${TOKEN_FILE}")"
+          echo "::add-mask::${NEW_REFRESH_TOKEN}"
+          gh secret set MELI_REFRESH_TOKEN \
+            --repo "${GITHUB_REPOSITORY}" \
+            --body "${NEW_REFRESH_TOKEN}"
 
       - name: Guardar relatório da foto limpa
         if: always() && hashFiles('card-images-report.json') != ''

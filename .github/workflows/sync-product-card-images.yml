@@ -25,7 +25,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: blackgold-card-images
+  group: blackgold-catalog-pipeline
   cancel-in-progress: false
 
 jobs:
@@ -55,6 +55,9 @@ jobs:
       - name: Localizar, validar e salvar fotos limpas
         env:
           MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
+          MELI_CLIENT_ID: ${{ secrets.MELI_CLIENT_ID }}
+          MELI_CLIENT_SECRET: ${{ secrets.MELI_CLIENT_SECRET }}
+          MELI_REFRESH_TOKEN: ${{ secrets.MELI_REFRESH_TOKEN }}
           MAX_ITEMS: ${{ inputs.max_items || '25' }}
           REFRESH: ${{ inputs.refresh || 'false' }}
         run: |
@@ -65,11 +68,32 @@ jobs:
             --assets-dir assets/produtos-card
             --report card-images-report.json
             --max-items "${MAX_ITEMS}"
+            --new-refresh-token-file "${RUNNER_TEMP}/meli-refresh-token.txt"
           )
           if [ "${REFRESH}" = "true" ]; then
             ARGS+=(--refresh)
           fi
           python tools/sync_product_card_images.py "${ARGS[@]}"
+
+      - name: Guardar o refresh token renovado com segurança
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.IMAGE_BOT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TOKEN_FILE="${RUNNER_TEMP}/meli-refresh-token.txt"
+          if [ ! -s "${TOKEN_FILE}" ]; then
+            exit 0
+          fi
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::warning::IMAGE_BOT_GITHUB_TOKEN não configurado; o refresh token novo não pôde ser rotacionado."
+            exit 0
+          fi
+          NEW_REFRESH_TOKEN="$(cat "${TOKEN_FILE}")"
+          echo "::add-mask::${NEW_REFRESH_TOKEN}"
+          gh secret set MELI_REFRESH_TOKEN \
+            --repo "${GITHUB_REPOSITORY}" \
+            --body "${NEW_REFRESH_TOKEN}"
 
       - name: Guardar relatório da rodada
         if: always() && hashFiles('card-images-report.json') != ''

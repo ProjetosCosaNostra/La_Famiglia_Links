@@ -11,6 +11,7 @@ from tools.sync_product_card_images import (
     event_sku,
     identifiers_from_text,
     is_beauty_product,
+    refresh_meli_access_token,
     search_match,
     square_webp,
     title_match_score,
@@ -28,6 +29,19 @@ class FakeClient:
 
     def item(self, item_id: str) -> dict | None:
         return self.details.get(item_id)
+
+
+class FakeResponse:
+    status_code = 200
+
+    def json(self) -> dict:
+        return {"access_token": "access-novo", "refresh_token": "refresh-novo"}
+
+
+class FakeSession:
+    def post(self, url: str, data: dict, headers: dict, timeout: int) -> FakeResponse:
+        self.request = {"url": url, "data": data, "headers": headers, "timeout": timeout}
+        return FakeResponse()
 
 
 class ProductImageSyncTests(unittest.TestCase):
@@ -101,6 +115,13 @@ class ProductImageSyncTests(unittest.TestCase):
         self.assertEqual(original_size, (400, 800))
         self.assertEqual(result.size, (1200, 1200))
         self.assertEqual(result.format, "WEBP")
+
+    def test_refresh_token_is_returned_without_logging_payload(self) -> None:
+        session = FakeSession()
+        access, refresh = refresh_meli_access_token(session, "client", "secret", "refresh-antigo", 20)
+        self.assertEqual(access, "access-novo")
+        self.assertEqual(refresh, "refresh-novo")
+        self.assertEqual(session.request["data"]["grant_type"], "refresh_token")
 
 
 if __name__ == "__main__":

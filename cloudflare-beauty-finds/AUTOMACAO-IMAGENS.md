@@ -23,8 +23,17 @@ O cadastro não é bloqueado se a fonte estiver indisponível. O produto fica se
 ## Fonte e credencial
 
 O robô tenta a API do Mercado Livre sem credencial. Se a API exigir autenticação,
-adicione o secret de repositório `MELI_ACCESS_TOKEN`. Nenhum token é gravado em
-arquivo, log, catálogo ou commit. Não há dependência de serviço pago.
+há dois modos:
+
+- teste imediato: secret `MELI_ACCESS_TOKEN`;
+- operação contínua: secrets `MELI_CLIENT_ID`, `MELI_CLIENT_SECRET`,
+  `MELI_REFRESH_TOKEN` e `IMAGE_BOT_GITHUB_TOKEN`.
+
+No modo contínuo, o acesso é renovado antes de cada rodada e o refresh token novo
+é salvo novamente como secret pelo GitHub CLI. `IMAGE_BOT_GITHUB_TOKEN` deve ser
+um token restrito a este repositório, com permissão apenas para administrar os
+secrets das Actions. Nenhum token é colocado em log, catálogo ou commit. Não há
+dependência de serviço pago.
 
 ## Execução manual segura
 
