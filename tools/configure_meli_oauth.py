@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import getpass
+import hashlib
 import json
 import secrets
 import shutil
@@ -31,6 +32,11 @@ TOKEN_URL = "https://api.mercadolibre.com/oauth/token"
 
 class OAuthSetupError(RuntimeError):
     """Erro seguro e explicável durante a configuração."""
+
+
+def safe_fingerprint(value: str) -> str:
+    """Retorna uma impressão curta para diagnóstico sem revelar o valor."""
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()[:12] if value else "ausente"
 
 
 def build_authorization_url(client_id: str, redirect_uri: str, state: str) -> str:
@@ -54,7 +60,12 @@ def parse_callback_url(callback_url: str, expected_state: str) -> str:
     if error:
         raise OAuthSetupError(f"O Mercado Livre recusou a autorização: {error}.")
     if not secrets.compare_digest(returned_state, expected_state):
-        raise OAuthSetupError("O parâmetro de segurança state não confere. Reinicie a autorização.")
+        raise OAuthSetupError(
+            "O parâmetro de segurança state não confere. "
+            f"Diagnóstico seguro: esperado={safe_fingerprint(expected_state)} "
+            f"recebido={safe_fingerprint(returned_state)} "
+            f"tamanho_esperado={len(expected_state)} tamanho_recebido={len(returned_state)}."
+        )
     if not code:
         raise OAuthSetupError("A URL informada não contém o código de autorização.")
     return code
@@ -147,9 +158,12 @@ def main() -> int:
         if not client_secret:
             raise OAuthSetupError("A chave secreta não foi informada.")
 
-        state = secrets.token_urlsafe(32)
+        # Apenas caracteres hexadecimais: continua criptograficamente forte e evita
+        # qualquer normalização indevida de '-' ou '_' em intermediários OAuth.
+        state = secrets.token_hex(32)
         authorization_url = build_authorization_url(args.client_id, args.redirect_uri, state)
-        print("\nAbrindo a autorização oficial do Mercado Livre...")
+        print(f"\nIdentificador seguro desta tentativa: {safe_fingerprint(state)}")
+        print("Abrindo a autorização oficial do Mercado Livre...")
         if args.no_browser or not webbrowser.open(authorization_url, new=2):
             print(authorization_url)
         print(
