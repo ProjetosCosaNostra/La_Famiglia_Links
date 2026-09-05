@@ -1,0 +1,107 @@
+name: BlackGold — Funcionário digital multicanal
+
+on:
+  schedule:
+    - cron: "15 12 * * *"
+  workflow_dispatch:
+    inputs:
+      live:
+        description: "Publicar de verdade nos canais já aprovados/configurados"
+        required: true
+        default: false
+        type: boolean
+      max_posts:
+        description: "Máximo de produtos por canal nesta execução"
+        required: true
+        default: "1"
+        type: choice
+        options: ["1", "2", "3"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blackgold-multichannel-employee
+  cancel-in-progress: false
+
+jobs:
+  campaign:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout do catálogo canônico
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: catalog
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Checkout do motor BlackGold
+        uses: actions/checkout@v4
+        with:
+          ref: blackgold-beauty-cloudflare
+          path: engine
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ler desempenho real da vitrine
+        continue-on-error: true
+        working-directory: catalog
+        env:
+          CAMPAIGN_STATS_URL: https://blackgold-beauty-finds-br.pages.dev/api/stats
+          CAMPAIGN_STATS_TOKEN: ${{ secrets.STATS_EXPORT_TOKEN }}
+        run: python ../engine/tools/fetch_campaign_stats.py
+
+      - name: Escolher produtos usando aprendizado
+        working-directory: catalog
+        run: python ../engine/tools/blackgold_daily_employee.py --count 3
+
+      - name: Preparar distribuição multicanal sem publicar
+        working-directory: catalog
+        env:
+          SITE_BASE: https://blackgold-beauty-finds-br.pages.dev
+          META_GRAPH_VERSION: v26.0
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ALLOW_TELEGRAM: "false"
+        run: python ../engine/tools/publish_multichannel.py --max-posts "${{ inputs.max_posts || '1' }}"
+
+      - name: Publicar nos canais aprovados
+        if: (github.event_name == 'schedule' && vars.BLACKGOLD_AUTO_PUBLISH == 'true') || (github.event_name == 'workflow_dispatch' && inputs.live == true)
+        working-directory: catalog
+        env:
+          SITE_BASE: https://blackgold-beauty-finds-br.pages.dev
+          META_GRAPH_VERSION: v26.0
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ALLOW_TELEGRAM: "false"
+        run: python ../engine/tools/publish_multichannel.py --max-posts "${{ inputs.max_posts || '1' }}" --live
+
+      - name: Guardar campanha e memória de aprendizado
+        working-directory: catalog
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add data/daily_selection.json data/campaign_learning.json data/campaign_stats.json data/multichannel_publish_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança de campanha para registrar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "campaign: funcionário digital multicanal [skip ci]"
+          git pull --rebase origin gh-pages
+          git push origin HEAD:gh-pages
