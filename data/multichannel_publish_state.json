@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "campaigns": {},
+  "channels": {
+    "facebook": {
+      "configured": false,
+      "policy_status": "ALLOWED",
+      "gate_open": true,
+      "checked_at": "2026-09-05T23:15:00Z"
+    },
+    "instagram": {
+      "configured": false,
+      "policy_status": "ALLOWED",
+      "gate_open": true,
+      "checked_at": "2026-09-05T23:15:00Z"
+    },
+    "telegram": {
+      "configured": true,
+      "policy_status": "REVIEW_REQUIRED",
+      "gate_open": false,
+      "checked_at": "2026-09-05T23:15:00Z"
+    }
+  },
+  "updated_at": "2026-09-05T23:15:00Z"
+}
