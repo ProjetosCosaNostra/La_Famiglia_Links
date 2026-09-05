@@ -10,6 +10,7 @@ on:
       - 'produtos.json'
       - 'data/daily_selection.json'
       - 'ecosystem.json'
+      - '.github/workflows/blackgold-cloudflare-production.yml'
 
 permissions:
   contents: read
@@ -57,30 +58,39 @@ jobs:
           echo "Credenciais Cloudflare ainda nao cadastradas. Nenhum deploy foi tentado."
           exit 0
 
-      - name: Descobrir production branch real do projeto
+      - name: Consultar projeto exato pela API Cloudflare
         if: steps.creds.outputs.ready == 'true'
         id: project
-        working-directory: cloudflare-beauty-finds
         shell: bash
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          npx --yes wrangler@${WRANGLER_VERSION} pages project list --json > /tmp/pages-projects.json
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/pages/projects/${PROJECT_NAME}"
+          http=$(curl -sS -o /tmp/project.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${CF_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            "$api")
+
+          echo "Cloudflare API HTTP: $http"
           node <<'NODE'
           const fs = require('fs');
-          const projects = JSON.parse(fs.readFileSync('/tmp/pages-projects.json','utf8'));
-          const project = projects.find(p => p.name === process.env.PROJECT_NAME);
-          if (!project) {
-            console.error(`Projeto Cloudflare ${process.env.PROJECT_NAME} nao encontrado.`);
+          const body = JSON.parse(fs.readFileSync('/tmp/project.json','utf8'));
+          if (!body.success || !body.result) {
+            const errors = Array.isArray(body.errors) ? body.errors : [];
+            console.error('Cloudflare recusou/nao encontrou o projeto.');
+            for (const e of errors) console.error(`Cloudflare error ${e.code ?? '?'}: ${e.message ?? 'sem mensagem'}`);
             process.exit(2);
           }
-          const branch = project.production_branch;
-          if (!branch) {
-            console.error('Cloudflare nao retornou production_branch para o projeto.');
+          const project = body.result;
+          if (project.name !== process.env.PROJECT_NAME) {
+            console.error(`Projeto retornado inesperado: ${project.name}`);
             process.exit(3);
           }
+          const branch = project.production_branch || 'production';
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `production_branch=${branch}\n`);
+          console.log(`Projeto confirmado: ${project.name}`);
           console.log(`Production branch detectada: ${branch}`);
           NODE
 
