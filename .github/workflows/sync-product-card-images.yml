@@ -75,6 +75,21 @@ jobs:
           fi
           python tools/sync_product_card_images.py "${ARGS[@]}"
 
+      - name: Mostrar diagnóstico seguro da rodada
+        if: always() && hashFiles('card-images-report.json') != ''
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('card-images-report.json').read_text(encoding='utf-8'))
+          keys = ('selected','attempted','updated','skipped_existing','unresolved','failed','authentication_required','token_refreshed')
+          print('Fotos limpas:', ' '.join(f'{key}={report.get(key)}' for key in keys))
+          for row in report.get('results', [])[:10]:
+              safe = {key: row.get(key) for key in ('sku','status','method','score','reason') if row.get(key) not in (None, '')}
+              print(json.dumps(safe, ensure_ascii=False))
+          PY
+
       - name: Guardar o refresh token renovado com segurança
         if: always()
         env:
