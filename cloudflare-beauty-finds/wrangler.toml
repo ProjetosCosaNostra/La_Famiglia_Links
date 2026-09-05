@@ -1,0 +1,12 @@
+# BlackGold Beauty Finds - configuracao oficial Cloudflare Pages
+# Gerada a partir da configuracao real baixada do projeto em 2026-09-05.
+name = "blackgold-beauty-finds-br"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-09-05"
+
+[env.production]
+
+[[env.production.d1_databases]]
+binding = "CAMPAIGN_DB"
+database_name = "blackgold-beauty-campaigns"
+database_id = "0d043095-79fb-44a0-b500-0fde90fcdd7b"
