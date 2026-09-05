@@ -125,17 +125,20 @@ jobs:
       - name: Smoke test de producao
         if: steps.creds.outputs.ready == 'true'
         shell: bash
+        env:
+          STATS_TOKEN: ${{ secrets.STATS_EXPORT_TOKEN }}
         run: |
           set -euo pipefail
 
           store=$(curl -sS -L -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/")
           callback_raw=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/mercadolivre-callback.html")
           callback_final=$(curl -sS -L -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/mercadolivre-callback.html")
-          stats=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/api/stats")
+          stats_public=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/api/stats")
+          stats_auth=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 -H "Authorization: Bearer ${STATS_TOKEN}" "$STORE_URL/api/stats")
           events=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 -X POST -H 'Content-Type: application/json' --data '{}' "$STORE_URL/api/events")
           admin=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 -X POST -H 'Content-Type: application/json' --data '{}' "$STORE_URL/api/admin/products")
 
-          echo "Loja=$store CallbackRaw=$callback_raw CallbackFinal=$callback_final Stats=$stats Events=$events Admin=$admin"
+          echo "Loja=$store CallbackRaw=$callback_raw CallbackFinal=$callback_final StatsPublic=$stats_public StatsAuth=$stats_auth Events=$events Admin=$admin"
 
           {
             echo '## BlackGold Beauty Finds - Producao'
@@ -144,32 +147,26 @@ jobs:
             echo "- Loja: HTTP $store"
             echo "- Callback .html: HTTP $callback_raw"
             echo "- Callback final: HTTP $callback_final"
-            echo "- /api/stats: HTTP $stats"
+            echo "- /api/stats sem token: HTTP $stats_public"
+            echo "- /api/stats autenticado: HTTP $stats_auth"
             echo "- /api/events: HTTP $events"
             echo "- /api/admin/products: HTTP $admin"
           } >> "$GITHUB_STEP_SUMMARY"
 
           [ "$store" = '200' ] || { echo "Loja falhou: HTTP $store"; exit 10; }
           [ "$callback_final" = '200' ] || { echo "Callback falhou: HTTP $callback_final"; exit 11; }
-
-          case "$stats" in
-            401|503) ;;
-            *) echo "Roteamento de /api/stats incorreto: HTTP $stats"; exit 12;;
-          esac
-
-          case "$events" in
-            400|503) ;;
-            *) echo "Roteamento de /api/events incorreto: HTTP $events"; exit 13;;
-          esac
+          [ "$stats_public" = '401' ] || { echo "Protecao publica de /api/stats incorreta: HTTP $stats_public"; exit 12; }
+          [ "$stats_auth" = '200' ] || { echo "Consulta autenticada de /api/stats falhou: HTTP $stats_auth"; exit 13; }
+          [ "$events" = '400' ] || { echo "D1 de /api/events nao respondeu como esperado: HTTP $events"; exit 14; }
 
           case "$admin" in
             401|503) ;;
-            *) echo "Roteamento de /api/admin/products incorreto: HTTP $admin"; exit 14;;
+            *) echo "Roteamento de /api/admin/products incorreto: HTTP $admin"; exit 15;;
           esac
 
-          echo "Pages Functions estao roteadas na producao."
-          if [ "$stats" = '503' ] || [ "$events" = '503' ] || [ "$admin" = '503' ]; then
-            echo "Ainda existem bindings/secrets Cloudflare pendentes, mas o backend ja esta no ambiente correto."
+          echo "Pages Functions, CAMPAIGN_DB e STATS_EXPORT_TOKEN estao operacionais na producao."
+          if [ "$admin" = '503' ]; then
+            echo "Resta configurar o painel administrativo privado."
           else
             echo "Backend basico e protecoes responderam como esperado."
           fi
