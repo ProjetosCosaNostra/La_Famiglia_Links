@@ -51,24 +51,48 @@ def build_authorization_url(client_id: str, redirect_uri: str, state: str) -> st
     return f"{AUTHORIZE_URL}?{query}"
 
 
-def parse_callback_url(callback_url: str, expected_state: str) -> str:
+def canonical_callback_identity(value: str) -> tuple[str, str, str]:
+    """Normaliza apenas a identidade fixa do callback, ignorando query/fragment.
+
+    Cloudflare Pages canonicaliza arquivos ``.html`` para a rota sem extensão.
+    Ambas as formas são tratadas como o mesmo callback oficial.
+    """
+    parsed = urllib.parse.urlparse(value.strip())
+    path = parsed.path.rstrip("/") or "/"
+    if path.endswith(".html"):
+        path = path[:-5]
+    return parsed.scheme.casefold(), parsed.netloc.casefold(), path
+
+
+def parse_callback_url(callback_url: str, expected_state: str, expected_redirect_uri: str) -> tuple[str, bool]:
     parsed = urllib.parse.urlparse(callback_url.strip())
     values = urllib.parse.parse_qs(parsed.query)
     returned_state = (values.get("state") or [""])[0]
     code = (values.get("code") or [""])[0]
     error = (values.get("error") or [""])[0]
+
+    if canonical_callback_identity(callback_url) != canonical_callback_identity(expected_redirect_uri):
+        raise OAuthSetupError("A URL informada não pertence ao callback oficial BlackGold.")
     if error:
         raise OAuthSetupError(f"O Mercado Livre recusou a autorização: {error}.")
-    if not secrets.compare_digest(returned_state, expected_state):
-        raise OAuthSetupError(
-            "O parâmetro de segurança state não confere. "
-            f"Diagnóstico seguro: esperado={safe_fingerprint(expected_state)} "
-            f"recebido={safe_fingerprint(returned_state)} "
-            f"tamanho_esperado={len(expected_state)} tamanho_recebido={len(returned_state)}."
-        )
     if not code:
         raise OAuthSetupError("A URL informada não contém o código de autorização.")
-    return code
+
+    # O Mercado Livre documenta o retorno do state, mas observamos em produção um
+    # fluxo no qual ele devolve apenas o code. Não aceitamos state incorreto. A
+    # ausência é tolerada SOMENTE neste bootstrap local/manual, quando o operador
+    # acabou de iniciar a tentativa e cola uma URL do callback oficial exato.
+    if returned_state:
+        if not secrets.compare_digest(returned_state, expected_state):
+            raise OAuthSetupError(
+                "O parâmetro de segurança state não confere. "
+                f"Diagnóstico seguro: esperado={safe_fingerprint(expected_state)} "
+                f"recebido={safe_fingerprint(returned_state)} "
+                f"tamanho_esperado={len(expected_state)} tamanho_recebido={len(returned_state)}."
+            )
+        return code, False
+
+    return code, True
 
 
 def exchange_code(
@@ -158,8 +182,6 @@ def main() -> int:
         if not client_secret:
             raise OAuthSetupError("A chave secreta não foi informada.")
 
-        # Apenas caracteres hexadecimais: continua criptograficamente forte e evita
-        # qualquer normalização indevida de '-' ou '_' em intermediários OAuth.
         state = secrets.token_hex(32)
         authorization_url = build_authorization_url(args.client_id, args.redirect_uri, state)
         print(f"\nIdentificador seguro desta tentativa: {safe_fingerprint(state)}")
@@ -171,7 +193,13 @@ def main() -> int:
             "Cole essa URL somente aqui no terminal; nunca no chat."
         )
         callback_url = getpass.getpass("URL completa do callback (entrada oculta): ").strip()
-        code = parse_callback_url(callback_url, state)
+        code, state_missing = parse_callback_url(callback_url, state, args.redirect_uri)
+        if state_missing:
+            print(
+                "AVISO: o Mercado Livre não devolveu o parâmetro state. "
+                "Como esta é uma ativação local/manual e a URL foi validada como callback oficial, "
+                "o código será trocado imediatamente sem expor credenciais."
+            )
         tokens = exchange_code(args.client_id, client_secret, args.redirect_uri, code)
 
         values = {
