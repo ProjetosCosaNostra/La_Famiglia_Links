@@ -1,43 +1,9 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-04T20:46:55Z
-Itens pendentes: 1
-SKUs únicos: 1
-Prioridade alta: 1
+Atualizado em: 2026-09-05T04:17:00Z
+Itens pendentes: 0
+SKUs únicos: 0
+Prioridade alta: 0
 
-RESUMO POR ESTADO
-----------------------------------------
-- review_only_storefront: 1
-
-RESUMO POR AÇÃO
-----------------------------------------
-- trocar_link: 1
-
-TOP MOTIVOS
-----------------------------------------
-- social_profile_needs_review: 1
-
-BLOCOS EXECUTIVOS
-----------------------------------------
-
-CORRIGIR AGORA
-----------------------------------------
-[ALTA] review_only_storefront
-Quando: 2026-09-04T20:41:04Z
-Issue: #92
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/92
-SKU: kit-10-panos-copa-felpudos-41x64-estampados
-Título: Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)
-ID ML: 5J5PKG-URBN
-Ação sugerida: trocar_link
-Motivo: social_profile_needs_review
-Bucket do motivo: perfil social com revisão manual
-Status HTTP: 200
-Confiança: 60 (revisar_manual)
-Memória operacional: histórico recorrente (1x /lists, 1x listing)
-Badges: Achados do Dia, Cozinha, Pano de Copa, Pano de Prato, Têxteis de Cozinha, Kit 10, Felpudo, Estampados
-open_url: https://meli.la/2tA4Gqh
-checked_url: https://meli.la/2tA4Gqh
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982
+Nenhum item pendente de revisão/manutenção no momento.

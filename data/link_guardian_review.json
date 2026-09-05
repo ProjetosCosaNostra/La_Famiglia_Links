@@ -1,64 +1,12 @@
 {
-  "updated_at": "2026-09-04T20:46:55Z",
-  "total_items": 1,
+  "updated_at": "2026-09-05T04:17:00Z",
+  "total_items": 0,
   "summary": {
-    "unique_skus": 1,
-    "by_state": {
-      "review_only_storefront": 1
-    },
-    "by_reason": {
-      "social_profile_needs_review": 1
-    },
-    "by_action": {
-      "trocar_link": 1
-    },
-    "high_priority": 1
+    "unique_skus": 0,
+    "by_state": {},
+    "by_reason": {},
+    "by_action": {},
+    "high_priority": 0
   },
-  "items": [
-    {
-      "happened_at": "2026-09-04T20:41:04Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 92,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/92",
-      "issue_title": "[CMS] Produto: Kit 10 Panos de Copa Felpudos 41x64 (Estampados)",
-      "sku": "kit-10-panos-copa-felpudos-41x64-estampados",
-      "title": "Kit 10 Panos de Copa Felpudos 41×64cm (Estampados)",
-      "id_busca": "5J5PKG-URBN",
-      "status": 200,
-      "reason": "social_profile_needs_review",
-      "reason_bucket": "storefront_profile_needs_review",
-      "reason_bucket_label": "perfil social com revisão manual",
-      "confidence_score": 60,
-      "confidence_bucket": "revisar_manual",
-      "memory_note": "histórico recorrente (1x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2tA4Gqh",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D",
-      "open_url": "https://meli.la/2tA4Gqh",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-URBN&tid=9404656b-b5a1-45e3-8a38-785cc2c5a982",
-      "short_url": "https://meli.la/2tA4Gqh",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG2GZfBdjZrapmutgnwsvi4vNBWpfoS9sj72svciwtBwah2kEfRw9h7p9jySpQFAUEWjuezBE5Yp%2FsnBSbBbsoBGaqnk0mpvDBTqOS3rQ0u2%2BB0X%2FH73wj6Pdk%2ByFNKovRu5h7vMz7tl3ww1KqwC8Bp%2BCXi976DEhBtp92exB4%2Bni7ZHikvubw1T0QZvta1Moazdt38%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Cozinha",
-        "Pano de Copa",
-        "Pano de Prato",
-        "Têxteis de Cozinha",
-        "Kit 10",
-        "Felpudo",
-        "Estampados"
-      ]
-    }
-  ]
+  "items": []
 }
