@@ -3,7 +3,10 @@ Set-Location $PSScriptRoot
 
 $ProjectName = "blackgold-beauty-finds-br"
 $StoreUrl = "https://blackgold-beauty-finds-br.pages.dev/"
-$CallbackUrl = "https://blackgold-beauty-finds-br.pages.dev/mercadolivre-callback.html"
+# O Mercado Livre foi configurado com a URL .html. Cloudflare Pages redireciona
+# arquivos HTML para a rota canonica sem extensao (308), preservando a requisicao.
+$CallbackRegisteredUrl = "https://blackgold-beauty-finds-br.pages.dev/mercadolivre-callback.html"
+$CallbackCanonicalUrl = "https://blackgold-beauty-finds-br.pages.dev/mercadolivre-callback"
 $StatsUrl = "https://blackgold-beauty-finds-br.pages.dev/api/stats"
 $Wrangler = "wrangler@4.119.0"
 
@@ -11,25 +14,29 @@ function Step([string]$Text) {
   Write-Host "`n=== $Text ===" -ForegroundColor Cyan
 }
 
-function Get-HttpStatus([string]$Url) {
+function Get-HttpStatusFollow([string]$Url) {
   try {
-    $response = Invoke-WebRequest -Uri $Url -Method Get -MaximumRedirection 5 -UseBasicParsing -TimeoutSec 30
-    return [int]$response.StatusCode
-  }
-  catch {
-    if ($_.Exception.Response -and $_.Exception.Response.StatusCode) {
-      return [int]$_.Exception.Response.StatusCode
-    }
+    $status = (& curl.exe -sS -L -o NUL -w "%{http_code}" --connect-timeout 15 --max-time 45 $Url).Trim()
+    if ($status -match '^\d{3}$') { return [int]$status }
     return 0
   }
+  catch { return 0 }
+}
+
+function Get-HttpStatusRaw([string]$Url) {
+  try {
+    $status = (& curl.exe -sS -o NUL -w "%{http_code}" --connect-timeout 15 --max-time 45 $Url).Trim()
+    if ($status -match '^\d{3}$') { return [int]$status }
+    return 0
+  }
+  catch { return 0 }
 }
 
 Step "1/6 - Validando ferramentas"
-if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
-  throw "Node.js nao foi encontrado no PATH."
-}
-if (-not (Get-Command npx -ErrorAction SilentlyContinue)) {
-  throw "npx nao foi encontrado no PATH."
+foreach ($tool in @('node','npx','curl.exe')) {
+  if (-not (Get-Command $tool -ErrorAction SilentlyContinue)) {
+    throw "$tool nao foi encontrado no PATH."
+  }
 }
 if (-not (Test-Path (Join-Path $PSScriptRoot "functions"))) {
   throw "A pasta functions nao existe. O deploy seria apenas estatico e foi bloqueado por seguranca."
@@ -67,21 +74,28 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Step "5/6 - Verificando a loja e o callback"
-$storeStatus = Get-HttpStatus $StoreUrl
-$callbackStatus = Get-HttpStatus $CallbackUrl
+$storeStatus = Get-HttpStatusFollow $StoreUrl
+$callbackRawStatus = Get-HttpStatusRaw $CallbackRegisteredUrl
+$callbackFinalStatus = Get-HttpStatusFollow $CallbackRegisteredUrl
+$callbackCanonicalStatus = Get-HttpStatusFollow $CallbackCanonicalUrl
 
 if ($storeStatus -ne 200) {
   throw "Deploy enviado, mas a Loja Oficial nao respondeu HTTP 200. Status observado: $storeStatus"
 }
-if ($callbackStatus -ne 200) {
-  throw "Deploy enviado, mas o callback Mercado Livre nao respondeu HTTP 200. Status observado: $callbackStatus"
+if ($callbackFinalStatus -ne 200 -or $callbackCanonicalStatus -ne 200) {
+  throw "Deploy enviado, mas o callback Mercado Livre nao chegou ao conteudo final HTTP 200. Registrada=$callbackRawStatus Final=$callbackFinalStatus Canonica=$callbackCanonicalStatus"
 }
 
 Write-Host "Loja Oficial: HTTP $storeStatus" -ForegroundColor Green
-Write-Host "Callback Mercado Livre: HTTP $callbackStatus" -ForegroundColor Green
+if ($callbackRawStatus -in @(301,302,307,308)) {
+  Write-Host "Callback registrado: HTTP $callbackRawStatus -> redirecionamento canonico esperado do Cloudflare Pages" -ForegroundColor Green
+} else {
+  Write-Host "Callback registrado: HTTP $callbackRawStatus" -ForegroundColor Green
+}
+Write-Host "Callback final/canonico: HTTP $callbackFinalStatus / $callbackCanonicalStatus" -ForegroundColor Green
 
 Step "6/6 - Verificando Pages Functions / backend"
-$statsStatus = Get-HttpStatus $StatsUrl
+$statsStatus = Get-HttpStatusFollow $StatsUrl
 
 switch ($statsStatus) {
   401 {
@@ -104,7 +118,8 @@ switch ($statsStatus) {
 
 Write-Host "`n============================================================" -ForegroundColor DarkYellow
 Write-Host "BLACKGOLD BEAUTY FINDS - IMPLANTACAO WRANGLER CONCLUIDA" -ForegroundColor Green
-Write-Host "Loja:     $StoreUrl"
-Write-Host "Callback: $CallbackUrl"
-Write-Host "Backend:  HTTP $statsStatus em /api/stats"
+Write-Host "Loja:               $StoreUrl"
+Write-Host "Callback registrado: $CallbackRegisteredUrl (HTTP $callbackRawStatus)"
+Write-Host "Callback canonico:   $CallbackCanonicalUrl (HTTP $callbackCanonicalStatus)"
+Write-Host "Backend:             HTTP $statsStatus em /api/stats"
 Write-Host "============================================================" -ForegroundColor DarkYellow
