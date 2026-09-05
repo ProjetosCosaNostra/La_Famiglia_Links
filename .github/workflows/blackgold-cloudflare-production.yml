@@ -1,0 +1,163 @@
+name: BlackGold Beauty Finds - Cloudflare Production
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - blackgold-beauty-cloudflare
+    paths:
+      - 'cloudflare-beauty-finds/**'
+      - 'produtos.json'
+      - 'data/daily_selection.json'
+      - 'ecosystem.json'
+
+permissions:
+  contents: read
+
+env:
+  PROJECT_NAME: blackgold-beauty-finds-br
+  STORE_URL: https://blackgold-beauty-finds-br.pages.dev
+  WRANGLER_VERSION: 4.119.0
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout da branch oficial
+        uses: actions/checkout@v4
+        with:
+          ref: blackgold-beauty-cloudflare
+          fetch-depth: 1
+
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verificar credenciais Cloudflare
+        id: creds
+        shell: bash
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ] || [ -z "$CF_ACCOUNT" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "## BlackGold Cloudflare" >> "$GITHUB_STEP_SUMMARY"
+            echo "A automacao remota esta instalada, mas faltam os secrets CLOUDFLARE_API_TOKEN e/ou CLOUDFLARE_ACCOUNT_ID no GitHub." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Encerrar sem erro quando credenciais ainda nao existem
+        if: steps.creds.outputs.ready != 'true'
+        run: |
+          echo "Credenciais Cloudflare ainda nao cadastradas. Nenhum deploy foi tentado."
+          exit 0
+
+      - name: Descobrir production branch real do projeto
+        if: steps.creds.outputs.ready == 'true'
+        id: project
+        working-directory: cloudflare-beauty-finds
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@${WRANGLER_VERSION} pages project list --json > /tmp/pages-projects.json
+          node <<'NODE'
+          const fs = require('fs');
+          const projects = JSON.parse(fs.readFileSync('/tmp/pages-projects.json','utf8'));
+          const project = projects.find(p => p.name === process.env.PROJECT_NAME);
+          if (!project) {
+            console.error(`Projeto Cloudflare ${process.env.PROJECT_NAME} nao encontrado.`);
+            process.exit(2);
+          }
+          const branch = project.production_branch;
+          if (!branch) {
+            console.error('Cloudflare nao retornou production_branch para o projeto.');
+            process.exit(3);
+          }
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `production_branch=${branch}\n`);
+          console.log(`Production branch detectada: ${branch}`);
+          NODE
+
+      - name: Construir pacote oficial
+        if: steps.creds.outputs.ready == 'true'
+        working-directory: cloudflare-beauty-finds
+        run: |
+          node build.mjs
+          test -f dist/index.html
+          test -d functions
+
+      - name: Publicar no ambiente de PRODUCAO correto
+        if: steps.creds.outputs.ready == 'true'
+        working-directory: cloudflare-beauty-finds
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PRODUCTION_BRANCH: ${{ steps.project.outputs.production_branch }}
+        run: |
+          echo "Publicando explicitamente na production branch: $PRODUCTION_BRANCH"
+          npx --yes wrangler@${WRANGLER_VERSION} pages deploy dist \
+            --project-name="$PROJECT_NAME" \
+            --branch="$PRODUCTION_BRANCH" \
+            --commit-hash="$GITHUB_SHA" \
+            --commit-dirty=true
+
+      - name: Aguardar propagacao curta
+        if: steps.creds.outputs.ready == 'true'
+        run: sleep 8
+
+      - name: Smoke test de producao
+        if: steps.creds.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          store=$(curl -sS -L -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/")
+          callback_raw=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/mercadolivre-callback.html")
+          callback_final=$(curl -sS -L -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/mercadolivre-callback.html")
+          stats=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 "$STORE_URL/api/stats")
+          events=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 -X POST -H 'Content-Type: application/json' --data '{}' "$STORE_URL/api/events")
+          admin=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 45 -X POST -H 'Content-Type: application/json' --data '{}' "$STORE_URL/api/admin/products")
+
+          {
+            echo '## BlackGold Beauty Finds - Producao'
+            echo ''
+            echo "- Production branch Cloudflare: ${{ steps.project.outputs.production_branch }}"
+            echo "- Loja: HTTP $store"
+            echo "- Callback .html: HTTP $callback_raw"
+            echo "- Callback final: HTTP $callback_final"
+            echo "- /api/stats: HTTP $stats"
+            echo "- /api/events: HTTP $events"
+            echo "- /api/admin/products: HTTP $admin"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          [ "$store" = '200' ] || { echo "Loja falhou: HTTP $store"; exit 10; }
+          [ "$callback_final" = '200' ] || { echo "Callback falhou: HTTP $callback_final"; exit 11; }
+
+          case "$stats" in
+            401|503) ;;
+            *) echo "Roteamento de /api/stats incorreto: HTTP $stats"; exit 12;;
+          esac
+
+          case "$events" in
+            400|503) ;;
+            *) echo "Roteamento de /api/events incorreto: HTTP $events"; exit 13;;
+          esac
+
+          case "$admin" in
+            401|503) ;;
+            *) echo "Roteamento de /api/admin/products incorreto: HTTP $admin"; exit 14;;
+          esac
+
+          echo "Pages Functions estao roteadas na producao."
+          if [ "$stats" = '503' ] || [ "$events" = '503' ] || [ "$admin" = '503' ]; then
+            echo "Ainda existem bindings/secrets Cloudflare pendentes, mas o backend ja esta no ambiente correto."
+          else
+            echo "Backend basico e protecoes responderam como esperado."
+          fi
