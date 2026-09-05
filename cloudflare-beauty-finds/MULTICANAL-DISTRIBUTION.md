@@ -6,30 +6,73 @@ Telegram não é mais tratado como canal principal nem como prova de alcance. El
 
 O sistema antigo produziu muito conteúdo, mas sem distribuição suficiente. A nova arquitetura mede desempenho por canal e desloca esforço para onde pessoas reais estão vendo e clicando.
 
+## Regra oficial do Programa de Afiliados Mercado Livre
+
+A distribuição precisa obedecer às superfícies permitidas pelo Programa de Afiliados e Criadores.
+
+### Orgânico permitido como núcleo
+
+- Instagram
+- Facebook
+- X
+- YouTube
+- TikTok
+- Pinterest
+- site/blog próprio declarado
+
+WhatsApp e Telegram não entram como núcleo porque as páginas oficiais do próprio Mercado Livre apresentam orientações diferentes conforme a página/fluxo. Se forem usados, devem ficar restritos a canais públicos e somente depois de confirmação da regra vigente na conta do afiliado.
+
+### Mídia paga permitida para afiliados
+
+Priorizar somente mídia social explicitamente permitida pelo Mercado Livre:
+
+1. Instagram Ads
+2. Facebook Ads
+3. TikTok Ads
+4. Pinterest Ads
+
+### Mídia paga proibida para links de afiliado
+
+Não usar para campanhas de afiliado:
+
+- Google Ads / Search
+- Google Shopping
+- Bing Ads
+- YouTube Ads
+- formatos equivalentes de busca ou shopping
+
+O motor deve bloquear esses destinos mesmo que exista credencial configurada. Essa regra é um gate de compliance, não uma preferência.
+
 ## Canais prioritários
 
-### Descoberta e alcance
+### Descoberta e alcance orgânico
 
 1. Instagram Reels / Feed
 2. Facebook Reels / Feed
 3. TikTok
 4. YouTube Shorts
 5. Pinterest
-6. Google Ads quando houver orçamento explicitamente aprovado
-7. Meta Ads quando houver orçamento explicitamente aprovado
-8. TikTok Ads quando houver orçamento explicitamente aprovado
+6. X quando houver formato adequado
+
+### Tráfego pago social, somente com orçamento aprovado
+
+7. Meta Ads (Instagram/Facebook)
+8. TikTok Ads
+9. Pinterest Ads
 
 ### Retenção / comunidade
 
-9. Telegram
-10. WhatsApp somente para audiência própria e opt-in
-11. E-mail somente para base própria e opt-in
+10. Telegram somente se público e permitido na regra vigente
+11. WhatsApp somente se público/opt-in e permitido na regra vigente
+12. E-mail somente para base própria e opt-in, sem link de afiliado quando a política aplicável não autorizar
 
 Telegram não deve consumir prioridade se não houver audiência ativa.
 
 ## Regra de segurança comercial
 
 O funcionário digital não deve fazer spam em grupos, comentários ou comunidades de terceiros. Ele pode localizar oportunidades, tendências, palavras-chave, criadores, comunidades e superfícies de distribuição, mas publicação em espaço de terceiros depende das regras e permissões daquela comunidade.
+
+Todo conteúdo com produto/link de afiliado deve sinalizar publicidade de forma clara quando exigido pelo programa/plataforma.
 
 ## Link rastreável sem página de triagem
 
@@ -44,7 +87,7 @@ Isso permite comparar, por exemplo:
 - Instagram x TikTok x Pinterest;
 - produto A x produto B;
 - campanha e criativo;
-- orgânico x pago.
+- orgânico x pago social.
 
 ## Aprendizado por canal
 
@@ -62,7 +105,7 @@ O próximo estágio do funcionário digital deve usar esses dados para decidir *
 - cliques rastreados pelo redirect `/go/`;
 - CTR quando houver impressão;
 - vendas/comissão quando a integração Mercado Livre disponibilizar atribuição compatível;
-- custo por clique e custo por aquisição em mídia paga;
+- custo por clique e custo por aquisição em mídia paga social;
 - frequência e repetição por canal.
 
 ## Estratégia de distribuição
@@ -75,9 +118,10 @@ Conectar contas oficiais e publicar automaticamente onde a plataforma oferecer A
 - TikTok: Content Posting API;
 - YouTube: Data API para Shorts/vídeos;
 - Pinterest: API v5 para Pins;
-- Telegram: Bot API como canal secundário.
+- X: integração oficial quando habilitada e economicamente justificável;
+- Telegram: Bot API somente como canal secundário e se permitido.
 
-Cada adaptador deve ter `enabled`, `configured`, `last_success`, `last_error`, `reach`, `clicks` e `score`.
+Cada adaptador deve ter `enabled`, `configured`, `policy_status`, `last_success`, `last_error`, `reach`, `clicks` e `score`.
 
 ### Fase B — Descoberta de audiência
 
@@ -88,20 +132,22 @@ O motor deve produzir um mapa periódico de demanda usando fontes e APIs permiti
 - canais com melhor desempenho histórico;
 - oportunidades sazonais;
 - criativos com melhor CTR;
-- regiões e idiomas com resposta melhor.
+- regiões e idiomas com resposta melhor;
+- comunidades e criadores relevantes para análise, sem spam automático.
 
-A descoberta serve para escolher distribuição; não autoriza spam automático.
+A descoberta serve para escolher distribuição; não autoriza publicação invasiva em espaço de terceiros.
 
-### Fase C — Tráfego pago inteligente
+### Fase C — Tráfego pago social inteligente
 
 Mídia paga só pode gastar após orçamento aprovado. O sistema pode preparar campanhas e recomendar alocação, mas nunca aumentar gasto sozinho acima do teto autorizado.
 
-Ordem recomendada para teste de baixo orçamento:
+Ordem inicial para teste de baixo orçamento:
 
 1. Meta Ads para criativos visuais de beleza;
-2. Google Ads/Search ou Performance Max quando houver intenção de compra mensurável;
-3. TikTok Ads quando os vídeos curtos já demonstrarem CTR/engajamento;
-4. Pinterest Ads para produtos fortemente visuais e intenção de descoberta.
+2. TikTok Ads quando vídeos curtos demonstrarem resposta;
+3. Pinterest Ads para produtos fortemente visuais e intenção de descoberta.
+
+Google Ads/Search/Shopping, Bing Ads e YouTube Ads ficam bloqueados para links de afiliado por política do Mercado Livre.
 
 O orçamento deve migrar para canais com melhor resultado atribuído, não ser dividido igualmente.
 
@@ -114,10 +160,11 @@ Nenhum canal novo deve exigir duplicação manual diária. O cadastro do produto
 3. foto limpa é preparada;
 4. seleção diária escolhe candidatos;
 5. motor multicanal adapta texto/formato por plataforma;
-6. adaptadores publicam nas contas configuradas;
-7. `/go/` atribui clique ao canal;
-8. estatísticas alimentam a próxima decisão;
-9. canal sem audiência ou desempenho perde prioridade automaticamente.
+6. gate de política bloqueia canal/formato proibido;
+7. adaptadores publicam nas contas configuradas;
+8. `/go/` atribui clique ao canal;
+9. estatísticas alimentam a próxima decisão;
+10. canal sem audiência ou desempenho perde prioridade automaticamente.
 
 ## Gates de ativação
 
@@ -128,7 +175,8 @@ Um canal só entra em `AUTO_PUBLISH` depois de:
 - API aprovada/auditada quando a plataforma exigir;
 - publicação de teste aprovada;
 - link rastreável validado;
-- política da plataforma revisada.
+- política da plataforma revisada;
+- política do Programa de Afiliados Mercado Livre marcada como `ALLOWED`.
 
 Antes disso, fica em `PREPARED`, nunca em estado falsamente marcado como ativo.
 
