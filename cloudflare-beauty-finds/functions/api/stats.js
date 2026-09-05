@@ -15,7 +15,7 @@ export async function onRequestGet(context) {
   if (bearer(context.request) !== expected) return response({ ok: false, code: 'unauthorized' }, 401);
 
   try {
-    const query = await db.prepare(
+    const products = await db.prepare(
       `SELECT sku,
               SUM(CASE WHEN event_type = 'impression' THEN 1 ELSE 0 END) AS impressions,
               SUM(CASE WHEN event_type = 'click' THEN 1 ELSE 0 END) AS clicks,
@@ -25,7 +25,38 @@ export async function onRequestGet(context) {
        GROUP BY sku
        ORDER BY clicks DESC, impressions DESC`
     ).all();
-    return response({ generated_at: new Date().toISOString(), window_days: 90, rows: query.results || [] });
+
+    const channels = await db.prepare(
+      `SELECT source,
+              SUM(CASE WHEN event_type = 'impression' THEN 1 ELSE 0 END) AS impressions,
+              SUM(CASE WHEN event_type = 'click' THEN 1 ELSE 0 END) AS clicks,
+              COUNT(DISTINCT sku) AS products,
+              MAX(created_at) AS last_event_at
+       FROM campaign_events
+       WHERE created_at >= datetime('now', '-90 days')
+       GROUP BY source
+       ORDER BY clicks DESC, impressions DESC`
+    ).all();
+
+    const productChannels = await db.prepare(
+      `SELECT sku,
+              source,
+              SUM(CASE WHEN event_type = 'impression' THEN 1 ELSE 0 END) AS impressions,
+              SUM(CASE WHEN event_type = 'click' THEN 1 ELSE 0 END) AS clicks,
+              MAX(created_at) AS last_event_at
+       FROM campaign_events
+       WHERE created_at >= datetime('now', '-90 days')
+       GROUP BY sku, source
+       ORDER BY clicks DESC, impressions DESC`
+    ).all();
+
+    return response({
+      generated_at: new Date().toISOString(),
+      window_days: 90,
+      rows: products.results || [],
+      channels: channels.results || [],
+      product_channels: productChannels.results || []
+    });
   } catch {
     return response({ ok: false, code: 'storage_error' }, 500);
   }
