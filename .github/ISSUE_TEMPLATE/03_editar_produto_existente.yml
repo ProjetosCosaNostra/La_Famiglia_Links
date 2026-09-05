@@ -103,9 +103,45 @@ body:
   - type: input
     id: open_url
     attributes:
-      label: "Novo Link Mercado Livre principal (opcional)"
+      label: "Novo link afiliado 1 — principal (opcional)"
       description: "Se preencher, este vira o link principal do produto."
       placeholder: "https://mercadolivre.com/sec/... ou https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: affiliate_url_2
+    attributes:
+      label: "Novo link afiliado 2 — reserva (opcional)"
+      description: "Outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: affiliate_url_3
+    attributes:
+      label: "Novo link afiliado 3 — reserva (opcional)"
+      description: "Outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: affiliate_url_4
+    attributes:
+      label: "Novo link afiliado 4 — reserva (opcional)"
+      description: "Outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: affiliate_url_5
+    attributes:
+      label: "Novo link afiliado 5 — reserva (opcional)"
+      description: "Outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
     validations:
       required: false
 

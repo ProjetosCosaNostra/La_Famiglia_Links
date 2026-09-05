@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T16:28:50Z",
+  "updated_at": "2026-09-05T08:24:24Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -68,7 +68,22 @@
       "guardian_last_checked_url": "https://meli.la/2Fomd6F",
       "guardian_fail_count": 0,
       "image_original": "https://github.com/user-attachments/assets/191a6aca-103b-410f-a1f6-2635c7ebe2dc",
-      "webp_optimized_at": "2026-06-14T01:52:14Z"
+      "webp_optimized_at": "2026-06-14T01:52:14Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2Fomd6F",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2Fomd6F",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-pinceis-maquiagem-13-pecas-estojo-rose",
@@ -160,7 +175,22 @@
         "https://github.com/user-attachments/assets/e55927f6-87f2-4a26-8133-b8d0dd1c1f7b",
         "https://github.com/user-attachments/assets/47c17031-5dcf-411b-a5ce-ee942cf2b05e",
         "https://github.com/user-attachments/assets/4f3a3cab-bb74-45e5-8477-076520d80046"
-      ]
+      ],
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/22qx74W",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/22qx74W",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "too-faced-lip-injection-extreme-gel-branco-4g-branco",
@@ -229,7 +259,22 @@
       "guardian_last_checked_url": "https://meli.la/2Mcv58i",
       "guardian_fail_count": 0,
       "image_original": "https://github.com/user-attachments/assets/01f00664-6dd9-42d2-853d-30b7ab4dca3b",
-      "webp_optimized_at": "2026-06-14T01:52:16Z"
+      "webp_optimized_at": "2026-06-14T01:52:16Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2Mcv58i",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2Mcv58i",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "refil-creme-acetinado-hidratante-corporal-lily-250g",
@@ -295,7 +340,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/3681c6b2-cb43-4613-bab9-62d0f305fcbe",
-      "webp_optimized_at": "2026-06-14T01:52:16Z"
+      "webp_optimized_at": "2026-06-14T01:52:16Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2Cz4YTk",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2Cz4YTk",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake",
@@ -362,7 +422,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/508264cc-d378-4e23-8a46-f94def9bdcaa",
-      "webp_optimized_at": "2026-06-14T01:52:17Z"
+      "webp_optimized_at": "2026-06-14T01:52:17Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2c5kWEt",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2c5kWEt",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "po-facial-bruna-tavares-bt-skinpowder",
@@ -427,7 +502,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c53da94e-505b-4f6c-b757-643357fb6e94",
-      "webp_optimized_at": "2026-06-14T01:52:17Z"
+      "webp_optimized_at": "2026-06-14T01:52:17Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1nNdbut",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1nNdbut",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto",
@@ -493,7 +583,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/790ab100-6bd8-46fc-a9e9-04dfc8af3429",
-      "webp_optimized_at": "2026-06-14T01:52:17Z"
+      "webp_optimized_at": "2026-06-14T01:52:17Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1BpJYQ8",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1BpJYQ8",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores",
@@ -556,7 +661,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/d41c35db-3460-4790-b008-d67aa993cc52",
-      "webp_optimized_at": "2026-06-14T01:52:18Z"
+      "webp_optimized_at": "2026-06-14T01:52:18Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2VCv36B",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2VCv36B",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy",
@@ -619,7 +739,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/4b5bbd5f-e255-4e49-9eda-e2d66c43ad4b",
-      "webp_optimized_at": "2026-06-14T01:52:18Z"
+      "webp_optimized_at": "2026-06-14T01:52:18Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1XoHJ5m",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1XoHJ5m",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "carregador-sem-fio-stand-inducao-preto",
@@ -673,7 +808,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/b4627e28-35d7-4e6e-90c3-4fba926162b2",
-      "webp_optimized_at": "2026-06-14T01:52:19Z"
+      "webp_optimized_at": "2026-06-14T01:52:19Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2bcvS84",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2bcvS84",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "escova-pet-vapor-3em1-elaf-5j5pkg-atvc",
@@ -728,7 +878,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/f975f377-a3b1-4838-b837-10b0280e9621",
-      "webp_optimized_at": "2026-06-14T01:52:20Z"
+      "webp_optimized_at": "2026-06-14T01:52:20Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/111EY1q",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/111EY1q",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "mochila-impermeavel-notebook-15-6",
@@ -782,7 +947,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/218ac28f-d095-4da1-a278-2460fa0d59bf",
-      "webp_optimized_at": "2026-06-14T01:52:20Z"
+      "webp_optimized_at": "2026-06-14T01:52:20Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2b2HyMt",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2b2HyMt",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-2-acendedores-de-fogao-premium",
@@ -831,7 +1011,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/a8607aa7-fc89-4f0b-b8dd-2bce2ef1f17f",
-      "webp_optimized_at": "2026-06-14T01:52:21Z"
+      "webp_optimized_at": "2026-06-14T01:52:21Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1XNUc7N",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1XNUc7N",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "gloss-fran-liphoney-mel",
@@ -882,7 +1077,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/758c61bb-d326-4012-9b61-5b1707c25a33",
-      "webp_optimized_at": "2026-06-14T01:52:21Z"
+      "webp_optimized_at": "2026-06-14T01:52:21Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1vQje5p",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1vQje5p",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "capacete-asx-city-preto-fosco-viseira",
@@ -930,7 +1140,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/0e01ae5d-4022-444f-9123-f9f045c63f45",
-      "webp_optimized_at": "2026-06-14T01:52:22Z"
+      "webp_optimized_at": "2026-06-14T01:52:22Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2FLJCzq",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2FLJCzq",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "relogio-skmei-1146-masculino-aco-inox-prata-fundo-preto-anadigi",
@@ -981,7 +1206,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/0914bfa3-d45c-4427-9b91-322325b7a1c6",
-      "webp_optimized_at": "2026-06-14T01:52:22Z"
+      "webp_optimized_at": "2026-06-14T01:52:22Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/17nEea3",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/17nEea3",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-6-cuecas-lupo-boxer-box-sem-costura-basic-microfibra",
@@ -1031,7 +1271,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/8e1c77d1-ac5d-43ae-887f-b5f8f2504a91",
-      "webp_optimized_at": "2026-06-14T01:52:23Z"
+      "webp_optimized_at": "2026-06-14T01:52:23Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/18yqur1",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/18yqur1",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "bermuda-tectel-masculino-leve-fresca-bolsos-frontais",
@@ -1082,7 +1337,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/686a2581-c6c9-40bc-a554-aa8569e2a4d1",
-      "webp_optimized_at": "2026-06-14T01:52:23Z"
+      "webp_optimized_at": "2026-06-14T01:52:23Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1YZYzdi",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1YZYzdi",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "shampoo-automotivo-v-floc-3l-concentrado",
@@ -1134,7 +1404,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/5fc03891-fd77-4d36-9325-4960340ad8f5",
-      "webp_optimized_at": "2026-06-14T01:52:24Z"
+      "webp_optimized_at": "2026-06-14T01:52:24Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2GkuFys",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2GkuFys",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "lavadora-jato-portatil-2-baterias-kit-completo",
@@ -1186,7 +1471,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/f529de85-d74e-4985-8817-37c4e3ee3252",
-      "webp_optimized_at": "2026-06-14T01:52:24Z"
+      "webp_optimized_at": "2026-06-14T01:52:24Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1n1MSaD",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1n1MSaD",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "suporte-magnetico-adesivo-para-moto-6-imas",
@@ -1236,7 +1536,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/12fec025-cb34-4e3f-af06-614dcc8b426c",
-      "webp_optimized_at": "2026-06-14T01:52:25Z"
+      "webp_optimized_at": "2026-06-14T01:52:25Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2vuwLye",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2vuwLye",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto",
@@ -1289,7 +1604,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/42b5f79d-4cdb-4a4f-a27d-6a48e9f8a31d",
-      "webp_optimized_at": "2026-06-14T01:52:25Z"
+      "webp_optimized_at": "2026-06-14T01:52:25Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2Lo3w8F",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2Lo3w8F",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "smart-box-proeletronic-smartpro-16gb-4k-hd-preto",
@@ -1341,7 +1671,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/ef09ab7d-2c9e-40c2-98c0-4ade3904d8fc",
-      "webp_optimized_at": "2026-06-14T01:52:25Z"
+      "webp_optimized_at": "2026-06-14T01:52:25Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2osVSUx",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2osVSUx",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "rog-xbox-ally-7-120hz-512gb-branco",
@@ -1392,7 +1737,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/6835f724-d47a-4c49-ab92-765f01d0f678",
-      "webp_optimized_at": "2026-06-14T01:52:26Z"
+      "webp_optimized_at": "2026-06-14T01:52:26Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1FmZq7Y",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1FmZq7Y",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "nintendo-super-mini-premium",
@@ -1438,7 +1798,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/9725e314-a2c2-4986-a9f3-93fca08cf39b",
-      "webp_optimized_at": "2026-06-14T01:52:27Z"
+      "webp_optimized_at": "2026-06-14T01:52:27Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2rm5dGk",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2rm5dGk",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "smart-tv-philco-roku-32-premium",
@@ -1489,7 +1864,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/18d74958-6a02-4f59-b704-576c8a75b416",
-      "webp_optimized_at": "2026-06-14T01:52:28Z"
+      "webp_optimized_at": "2026-06-14T01:52:28Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/19Lo34Y",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/19Lo34Y",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cabo-hdmi-21-premium-8k-144hz-2m",
@@ -1540,7 +1930,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c4cb88ae-f479-407b-ad5c-f62571d822bc",
-      "webp_optimized_at": "2026-06-14T01:52:28Z"
+      "webp_optimized_at": "2026-06-14T01:52:28Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Xr4zBw",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Xr4zBw",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "gamestick-premium-2-controles-wireless",
@@ -1587,7 +1992,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/7e7f890d-b759-4712-8b93-8c8212a934d3",
-      "webp_optimized_at": "2026-06-14T01:52:29Z"
+      "webp_optimized_at": "2026-06-14T01:52:29Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2oG4U56",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2oG4U56",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "tradutor-inteligente-premium-online-offline",
@@ -1636,7 +2056,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/14cbb28d-77d7-47a6-9d51-4813dcc4042b",
-      "webp_optimized_at": "2026-06-14T01:52:29Z"
+      "webp_optimized_at": "2026-06-14T01:52:29Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2n5bF2B",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2n5bF2B",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "zero-mofo-premium-1l-spray",
@@ -1685,7 +2120,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/2fa4b4ff-0a84-4da7-bbe2-f427076d5c21",
-      "webp_optimized_at": "2026-06-14T01:52:30Z"
+      "webp_optimized_at": "2026-06-14T01:52:30Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1kdBsuv",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1kdBsuv",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-utensilios-cozinha-premium-rosa",
@@ -1732,7 +2182,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/61294e67-d1f7-476d-ba25-142f06b2a46f",
-      "webp_optimized_at": "2026-06-14T01:52:30Z"
+      "webp_optimized_at": "2026-06-14T01:52:30Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1C4BofA",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1C4BofA",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cuscuzeira-inox-premium-25l",
@@ -1780,7 +2245,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/b2be3e07-2ece-4157-a057-d78d4a39c588",
-      "webp_optimized_at": "2026-06-14T01:52:31Z"
+      "webp_optimized_at": "2026-06-14T01:52:31Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1xQ7g6F",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1xQ7g6F",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "jogo-panelas-tramontina-inox-fundo-triplo-3-pecas",
@@ -1827,7 +2307,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/231d4942-7e6b-4ae6-9995-84f7a3655e3e",
-      "webp_optimized_at": "2026-06-14T01:52:32Z"
+      "webp_optimized_at": "2026-06-14T01:52:32Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1HHX2Jj",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1HHX2Jj",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "6-descansos-panela-premium",
@@ -1905,7 +2400,22 @@
       "_source_issue_number": 219,
       "_target_issue_number": 103,
       "image_original": "https://github.com/user-attachments/assets/42a2a971-1145-4053-a9cc-2e4b1ac030e1",
-      "webp_optimized_at": "2026-06-14T01:52:32Z"
+      "webp_optimized_at": "2026-06-14T01:52:32Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2CzaiF6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2CzaiF6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "relogio-parede-30cm-prata-branco-lzbq",
@@ -1958,7 +2468,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/daf96ceb-2861-4133-abe1-039e12a05138",
-      "webp_optimized_at": "2026-06-14T01:52:33Z"
+      "webp_optimized_at": "2026-06-14T01:52:33Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/12UKJSY",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/12UKJSY",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "panela-pressao-panelux-45l-aluminio-polido",
@@ -2006,7 +2531,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1d426ea7-b56b-42ec-b3d6-40725c88a0f4",
-      "webp_optimized_at": "2026-06-14T01:52:33Z"
+      "webp_optimized_at": "2026-06-14T01:52:33Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2drogLW",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2drogLW",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-4-formas-gelo-tampa-silicone",
@@ -2083,7 +2623,22 @@
       "_source_issue_number": 214,
       "_target_issue_number": 100,
       "image_original": "https://github.com/user-attachments/assets/f9d04c65-6e7e-40b7-9b83-6ae58df15caa",
-      "webp_optimized_at": "2026-06-14T01:52:34Z"
+      "webp_optimized_at": "2026-06-14T01:52:34Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/19fvuVX",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/19fvuVX",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco",
@@ -2135,7 +2690,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/631a93e9-15a0-4a8a-a708-22da7d92fcc7",
-      "webp_optimized_at": "2026-06-14T01:52:35Z"
+      "webp_optimized_at": "2026-06-14T01:52:35Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2gpLrhX",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2gpLrhX",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "suporte-porta-xicaras-pires-dourado-fosco-catblack",
@@ -2185,7 +2755,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/505859f3-48e0-4ac8-aba2-4d49e229b83e",
-      "webp_optimized_at": "2026-06-14T01:52:35Z"
+      "webp_optimized_at": "2026-06-14T01:52:35Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2vL6Ywk",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2vL6Ywk",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-porta-mantimentos-hermetico-12un-124l",
@@ -2237,7 +2822,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/f9cc437b-1f4e-4bba-b63f-4b766662c844",
-      "webp_optimized_at": "2026-06-14T01:52:36Z"
+      "webp_optimized_at": "2026-06-14T01:52:36Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1LXCKN3",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1LXCKN3",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "jogo-3-peneiras-aco-inox-pmg",
@@ -2283,7 +2883,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/bd7233f7-1a26-4153-85ea-af02cca3ccc4",
-      "webp_optimized_at": "2026-06-14T01:52:36Z"
+      "webp_optimized_at": "2026-06-14T01:52:36Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1uRAJpA",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1uRAJpA",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira",
@@ -2331,7 +2946,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/22bf03dd-9450-402e-b740-2fd3b3361ff0",
-      "webp_optimized_at": "2026-06-14T01:52:37Z"
+      "webp_optimized_at": "2026-06-14T01:52:37Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1RKdpQY",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1RKdpQY",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-2-copos-medidores-500ml",
@@ -2379,7 +3009,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c9e56cb8-7d86-416e-9cca-6cf8a3b823ec",
-      "webp_optimized_at": "2026-06-14T01:52:37Z"
+      "webp_optimized_at": "2026-06-14T01:52:37Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1h2aRhj",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1h2aRhj",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-10-panos-copa-felpudos-41x64-estampados",
@@ -2428,7 +3073,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/6eadfd1d-ab80-4af3-aa1c-0a72c095308b",
-      "webp_optimized_at": "2026-06-14T01:52:38Z"
+      "webp_optimized_at": "2026-06-14T01:52:38Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2tA4Gqh",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2tA4Gqh",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "tampa-protetora-microondas-alca-anti-respingo-5j5pkg-bxxq",
@@ -2476,7 +3136,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/15a7b2c7-d410-4606-9a7e-0bde731dc2a2",
-      "webp_optimized_at": "2026-06-14T01:52:39Z"
+      "webp_optimized_at": "2026-06-14T01:52:39Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2qrQinu",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2qrQinu",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "microondas-consul-32-litros-branco-5j5pkg-ejtp",
@@ -2524,7 +3199,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/96b7ae3c-6e14-4b38-83a0-d19c04a76755",
-      "webp_optimized_at": "2026-06-14T01:52:39Z"
+      "webp_optimized_at": "2026-06-14T01:52:39Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2yYsZBx",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2yYsZBx",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "conjunto-panelas-antiaderente-10-pecas-teflon-5j5pkg-thjm",
@@ -2572,7 +3262,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/19b15a70-0577-4756-b2d8-f7d0a5627207",
-      "webp_optimized_at": "2026-06-14T01:52:40Z"
+      "webp_optimized_at": "2026-06-14T01:52:40Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2ASPku8",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2ASPku8",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "revigoran-az-completo-60caps-5j5pkg-xtku",
@@ -2619,7 +3324,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/0c59b00b-6def-46bb-8331-179df9decdf4",
-      "webp_optimized_at": "2026-06-14T01:52:40Z"
+      "webp_optimized_at": "2026-06-14T01:52:40Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1C3E2zW",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1C3E2zW",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "whey-protein-1kg-chocolate-5j5pkg-68p2",
@@ -2666,7 +3386,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/0ecbbe7a-0e6e-41b8-9287-8273f9b7ae54",
-      "webp_optimized_at": "2026-06-14T01:52:41Z"
+      "webp_optimized_at": "2026-06-14T01:52:41Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/14pqCNv",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/14pqCNv",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cms-produto-interruptor-touch-wi-fi-novadigital-lite-s-2-teclas-preto",
@@ -2706,7 +3441,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/7306ba63-0c8f-463e-ae5c-02858208e552",
-      "webp_optimized_at": "2026-06-14T01:52:42Z"
+      "webp_optimized_at": "2026-06-14T01:52:42Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1o1QGK2",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1o1QGK2",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-mesh-wifi6-2un-wduu",
@@ -2760,7 +3510,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/89299f8c-a564-49bf-a756-0ef2161f6933",
-      "webp_optimized_at": "2026-06-14T01:52:42Z"
+      "webp_optimized_at": "2026-06-14T01:52:42Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2tMMkz2",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2tMMkz2",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "switch-hdmi-2x1-1x2-bidirecional-adem",
@@ -2814,7 +3579,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/00c7250f-fe9d-4ddb-85bd-42c4be49366a",
-      "webp_optimized_at": "2026-06-14T01:52:43Z"
+      "webp_optimized_at": "2026-06-14T01:52:43Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/34goTWr",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/34goTWr",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "lamina-philips-oneblade-qp220-51-2-unidades",
@@ -2862,7 +3642,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/5c4b11f3-e36f-421d-8c1d-a70e72e0a03d",
-      "webp_optimized_at": "2026-06-14T01:52:43Z"
+      "webp_optimized_at": "2026-06-14T01:52:43Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1TMnmQq",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1TMnmQq",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "philips-oneblade-qp1424-10",
@@ -2915,7 +3710,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/fb4ff594-b704-47c5-9177-dba0e8ead5c5",
-      "webp_optimized_at": "2026-06-14T01:52:44Z"
+      "webp_optimized_at": "2026-06-14T01:52:44Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1xUnPGa",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1xUnPGa",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
@@ -2967,7 +3777,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/ab6e98e5-5e63-48c2-bd54-59865d50911f",
-      "webp_optimized_at": "2026-06-14T01:52:45Z"
+      "webp_optimized_at": "2026-06-14T01:52:45Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1ZHKRNy",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1ZHKRNy",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur",
@@ -3020,7 +3845,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/4a33992b-add6-4527-8deb-285fd96ea4b7",
-      "webp_optimized_at": "2026-06-14T01:52:45Z"
+      "webp_optimized_at": "2026-06-14T01:52:45Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1TWHtzA",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1TWHtzA",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "suporte-articulado-monitor-pistao-a-gas-17-35-ergonomia-preto",
@@ -3072,7 +3912,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/b16b7da9-7f85-47f8-818c-fe12c65b222b",
-      "webp_optimized_at": "2026-06-14T01:52:46Z"
+      "webp_optimized_at": "2026-06-14T01:52:46Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/11CcWqi",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/11CcWqi",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto",
@@ -3127,7 +3982,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/52652a2e-19b6-405c-91f5-f7e9ac9a693d",
-      "webp_optimized_at": "2026-06-14T01:52:46Z"
+      "webp_optimized_at": "2026-06-14T01:52:46Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2e9LLGJ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2e9LLGJ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-ferramentas-115-pecas-precisao-reparo-eletronicos-celular-notebook",
@@ -3179,7 +4049,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/6e03b733-fd92-4171-90a8-8ee8ca604ef1",
-      "webp_optimized_at": "2026-06-14T01:52:47Z"
+      "webp_optimized_at": "2026-06-14T01:52:47Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1pornJR",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1pornJR",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "travesseiro-cervical-viscoelastico-ergonomico-conforto-premium",
@@ -3231,7 +4116,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/55acf02b-9357-4811-bf9c-0efdb6ac8d96",
-      "webp_optimized_at": "2026-06-14T01:52:47Z"
+      "webp_optimized_at": "2026-06-14T01:52:47Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Ktp1MN",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Ktp1MN",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "hd-externo-2tb-seagate-expansion-usb-30-portatil-preto",
@@ -3284,7 +4184,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/0ad5c8a6-7de7-4ce7-bdb7-1a6f50e5b56f",
-      "webp_optimized_at": "2026-06-14T01:52:48Z"
+      "webp_optimized_at": "2026-06-14T01:52:48Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1GyqzF7",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1GyqzF7",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "esfregao-mop-9em1-escova-eletrica-rotatoria-9-pecas",
@@ -3336,7 +4251,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1023b13d-3384-4cb5-aad4-4d6d08d2766c",
-      "webp_optimized_at": "2026-06-14T01:52:49Z"
+      "webp_optimized_at": "2026-06-14T01:52:49Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2M2eQqV",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2M2eQqV",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "aspirador-philco-ciclone-pas1600p-1450w-15l-preto-220v-ou-127v",
@@ -3388,7 +4318,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c0e1149f-f8ae-492a-aade-05bf497d5bfc",
-      "webp_optimized_at": "2026-06-14T01:52:49Z"
+      "webp_optimized_at": "2026-06-14T01:52:49Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/25C3pp1",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/25C3pp1",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
@@ -3436,7 +4381,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/3d1d68fa-92c8-4d09-84c7-979eb0c04b50",
-      "webp_optimized_at": "2026-06-14T01:52:50Z"
+      "webp_optimized_at": "2026-06-14T01:52:50Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Vd3P8y",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Vd3P8y",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "gimbal-dji-osmo-mobile-se",
@@ -3484,7 +4444,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1a86acab-ce29-4cfd-9f5b-c5df6b5edadb",
-      "webp_optimized_at": "2026-06-14T01:52:51Z"
+      "webp_optimized_at": "2026-06-14T01:52:51Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2yQZbpJ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2yQZbpJ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "microfone-lapela-boya-by-v10-usb-c",
@@ -3533,7 +4508,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/fa5976c4-3a32-4c5e-9b90-9a571b7e7e5d",
-      "webp_optimized_at": "2026-06-14T01:52:51Z"
+      "webp_optimized_at": "2026-06-14T01:52:51Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Fwa1Z6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Fwa1Z6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa",
@@ -3574,7 +4564,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/9f24e633-5b74-44d4-9181-6f8b49563e07",
-      "webp_optimized_at": "2026-06-14T01:52:52Z"
+      "webp_optimized_at": "2026-06-14T01:52:52Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1CpXH3G",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1CpXH3G",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "xiaomi-redmi-buds-6-play",
@@ -3616,7 +4621,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/e810b782-1948-4bce-8237-ac28d4676ab6",
-      "webp_optimized_at": "2026-06-14T01:52:52Z"
+      "webp_optimized_at": "2026-06-14T01:52:52Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1bcZess",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1bcZess",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "powerbank-20000mah-22w-usbc-preto",
@@ -3670,7 +4690,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/81c59beb-d079-4172-a97e-b18432906e21",
-      "webp_optimized_at": "2026-06-14T01:52:53Z"
+      "webp_optimized_at": "2026-06-14T01:52:53Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2ogKjnX",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2ogKjnX",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "air-fryer-mondial-4l-1500w-afn-40-bft-preto",
@@ -3716,7 +4751,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/4f86f439-1a82-4a0f-bf33-ad1d54f7b65d",
-      "webp_optimized_at": "2026-06-14T01:52:54Z"
+      "webp_optimized_at": "2026-06-14T01:52:54Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/28iCzpJ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/28iCzpJ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "bolsa-tiracolo-antifurto-usb-impermeavel-0nqd",
@@ -3761,7 +4811,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/8c2fc483-dade-438f-8b84-715db12a00c9",
-      "webp_optimized_at": "2026-06-14T01:52:54Z"
+      "webp_optimized_at": "2026-06-14T01:52:54Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1PHGxD8",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1PHGxD8",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "tomada-inteligente-20a-medidor-5j5pkg-fpxm",
@@ -3807,7 +4872,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/e57053a1-c455-442f-9a81-cad84683ca27",
-      "webp_optimized_at": "2026-06-14T01:52:55Z"
+      "webp_optimized_at": "2026-06-14T01:52:55Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1aGeMPL",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1aGeMPL",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "camera-wifi-360-fullhd-tapo",
@@ -3855,7 +4935,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/a72d31a1-23be-4f3b-9dce-949f6340f340",
-      "webp_optimized_at": "2026-06-14T01:52:55Z"
+      "webp_optimized_at": "2026-06-14T01:52:55Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/14j4Duz",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/14j4Duz",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ring-light-rgb-10-tripe-210m",
@@ -3906,7 +5001,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/ff5931ac-f153-4378-9c19-ae6efffbbf56",
-      "webp_optimized_at": "2026-06-14T01:52:56Z"
+      "webp_optimized_at": "2026-06-14T01:52:56Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2BuQ5JD",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2BuQ5JD",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "wap-robot-w90-3em1-preto",
@@ -3952,7 +5062,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/cb6d6be6-4e25-40e8-bd4e-5766461389b7",
-      "webp_optimized_at": "2026-06-14T01:52:56Z"
+      "webp_optimized_at": "2026-06-14T01:52:56Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2J1MBX9",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2J1MBX9",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "jogo-lencol-400-fios-queen-box-4-pecas",
@@ -3998,7 +5123,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1b61db6f-1a82-4954-b912-3bb88b3f0dfd",
-      "webp_optimized_at": "2026-06-14T01:52:57Z"
+      "webp_optimized_at": "2026-06-14T01:52:57Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2wZB7u8",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2wZB7u8",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "carmed-fini-beijos-cor-10g-5j5pkg-er7l",
@@ -4046,7 +5186,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1f81c7d2-8d73-4d5a-b973-543037a9b166",
-      "webp_optimized_at": "2026-06-14T01:52:58Z"
+      "webp_optimized_at": "2026-06-14T01:52:58Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/29UHzhL",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/29UHzhL",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ventilador-mondial-30cm-super-power-60w-vsp-30-w",
@@ -4094,7 +5249,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/0b28a616-9acb-4804-a5d0-ddaa912a0621",
-      "webp_optimized_at": "2026-06-14T01:52:58Z"
+      "webp_optimized_at": "2026-06-14T01:52:58Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1PnEZeq",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1PnEZeq",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "bolsa-termica-lancheira-14l-preta-porta-marmita",
@@ -4144,7 +5314,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/d2c4900c-dffc-4b16-8c62-0f8dd3eb5098",
-      "webp_optimized_at": "2026-06-14T01:52:59Z"
+      "webp_optimized_at": "2026-06-14T01:52:59Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2jqTYSD",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2jqTYSD",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "se-j-existir-usa-amazon-echo-pop-c2h4r9-2",
@@ -4190,7 +5375,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/bd423503-616d-4cc5-97ed-5cb20cd24eae",
-      "webp_optimized_at": "2026-06-14T01:53:00Z"
+      "webp_optimized_at": "2026-06-14T01:53:00Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/19Abme6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/19Abme6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "amazon-fire-tv-stick-4k-wifi6",
@@ -4235,7 +5435,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/7e54184d-78d3-4b9d-bdd1-4a7be18e57b4",
-      "webp_optimized_at": "2026-06-14T01:53:00Z"
+      "webp_optimized_at": "2026-06-14T01:53:00Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1nMqFbz",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1nMqFbz",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "logitech-g203-rgb-lightsync-8000dpi-preto",
@@ -4281,7 +5496,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/929a3ffd-5124-4939-8367-1b649c4fefbf",
-      "webp_optimized_at": "2026-06-14T01:53:01Z"
+      "webp_optimized_at": "2026-06-14T01:53:01Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1EsmDjB",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1EsmDjB",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "hub-usbc-8em1-h71p",
@@ -4331,7 +5561,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/9aeb1b24-ff81-4687-8f08-04e21c792726",
-      "webp_optimized_at": "2026-06-14T01:53:01Z"
+      "webp_optimized_at": "2026-06-14T01:53:01Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/32GXnkH",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/32GXnkH",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "sandisk-microsd-128gb-ultra-100mbs",
@@ -4381,7 +5626,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/8ab7baa1-6ca3-4196-b467-9ece404b68c4",
-      "webp_optimized_at": "2026-06-14T01:53:02Z"
+      "webp_optimized_at": "2026-06-14T01:53:02Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1jSS5kh",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1jSS5kh",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "suporte-celular-carro-360-trava-automatica-5j5pkg-78ff",
@@ -4427,7 +5687,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/5ebb72ce-2c51-458a-a2d5-edbaac83ab1c",
-      "webp_optimized_at": "2026-06-14T01:53:02Z"
+      "webp_optimized_at": "2026-06-14T01:53:02Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2Mu2vro",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2Mu2vro",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "carregador-veicular-60w-hrebos-2x-usbc-pd",
@@ -4473,7 +5748,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1fa89d8b-57d5-4599-9646-e604cdee6335",
-      "webp_optimized_at": "2026-06-14T01:53:03Z"
+      "webp_optimized_at": "2026-06-14T01:53:03Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2hEwHwh",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2hEwHwh",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "calibrador-digital-partida-aux-180psi-12v",
@@ -4520,7 +5810,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/6f07718c-9d58-4a92-a1f2-4dbc8931de26",
-      "webp_optimized_at": "2026-06-14T01:53:04Z"
+      "webp_optimized_at": "2026-06-14T01:53:04Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2REbXV7",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2REbXV7",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "teclado-redragon-kumara-552w2-lunar-white-abnt2-outemu-brown",
@@ -4569,7 +5874,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/946b86a8-79f4-4fa1-9818-10bc523e6c9b",
-      "webp_optimized_at": "2026-06-14T01:53:04Z"
+      "webp_optimized_at": "2026-06-14T01:53:04Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1cJzSff",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1cJzSff",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cadeira-escritorio-newconcept-351049-mesh-preta",
@@ -4619,7 +5939,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/cfb67efb-ee53-4e4f-99f6-ca63b3fbbb47",
-      "webp_optimized_at": "2026-06-14T01:53:05Z"
+      "webp_optimized_at": "2026-06-14T01:53:05Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/25NyQiY",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/25NyQiY",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "s-siqueira-kit-soquetes-46pcs-1-4-wxz9",
@@ -4669,7 +6004,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c2dc92ba-b501-4ca2-970a-9f61760f096e",
-      "webp_optimized_at": "2026-06-14T01:53:05Z"
+      "webp_optimized_at": "2026-06-14T01:53:05Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1ctTmcN",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1ctTmcN",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "lampada-inteligente-ekaza-t609",
@@ -4718,7 +6068,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/66cd36d0-79a8-4802-8d7e-5acd9846728d",
-      "webp_optimized_at": "2026-06-14T01:53:06Z"
+      "webp_optimized_at": "2026-06-14T01:53:06Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Tu6yev",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Tu6yev",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "niimbot-d110-impressora-etiquetas-branca",
@@ -4765,7 +6130,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/204ddd67-7418-46cc-9f99-278be2be599b",
-      "webp_optimized_at": "2026-06-14T01:53:07Z"
+      "webp_optimized_at": "2026-06-14T01:53:07Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1RFSrLo",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1RFSrLo",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "projetor-smart-hy320-goodvision",
@@ -4814,7 +6194,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/518e1b6a-f3ec-46c2-a834-cb2ba965edbe",
-      "webp_optimized_at": "2026-06-14T01:53:07Z"
+      "webp_optimized_at": "2026-06-14T01:53:07Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1YAEmtS",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1YAEmtS",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "aiwa-sp-05-lb-30w-bluetooth-ipx5",
@@ -4861,7 +6256,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1cbb0923-0033-4c0f-818a-93bcc6712b2f",
-      "webp_optimized_at": "2026-06-14T01:53:08Z"
+      "webp_optimized_at": "2026-06-14T01:53:08Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2UGCtA6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2UGCtA6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "fechadura-bio-delta-pro-wifi-tuya-preta",
@@ -4907,7 +6317,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/e91b9b0b-49d4-4553-82f7-5f3a7bc417c9",
-      "webp_optimized_at": "2026-06-14T01:53:09Z"
+      "webp_optimized_at": "2026-06-14T01:53:09Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1uKVY2p",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1uKVY2p",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "maquina-cortar-cabelo-dragao-buda-usb",
@@ -4955,7 +6380,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/cf926025-4736-4f52-a32d-cba165571a37",
-      "webp_optimized_at": "2026-06-14T01:53:09Z"
+      "webp_optimized_at": "2026-06-14T01:53:09Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2zfsMib",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2zfsMib",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "mandolin-13-em-1-fatiador-ralador-julienne",
@@ -5001,7 +6441,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/77e89f1b-80a9-4fe5-89b1-f369a662047b",
-      "webp_optimized_at": "2026-06-14T01:53:10Z"
+      "webp_optimized_at": "2026-06-14T01:53:10Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2TEsCxu",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2TEsCxu",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "dashcam-4k-gps-azdome-m550-64gb",
@@ -5090,7 +6545,22 @@
         "https://github.com/user-attachments/assets/68abc914-af38-4df0-89ae-070e8cc1091c",
         "https://github.com/user-attachments/assets/2bb6fb9b-c2ed-4deb-ae58-10ab9a90d70f",
         "https://github.com/user-attachments/assets/a8e4cf77-a374-438d-92d3-cf26dfc3a0c9"
-      ]
+      ],
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2f8v9BC",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2f8v9BC",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "camera-solar-wifi-ip66-fullhd",
@@ -5139,7 +6609,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/4de42993-c2fc-478b-8b6d-eda574c1306a",
-      "webp_optimized_at": "2026-06-14T01:53:11Z"
+      "webp_optimized_at": "2026-06-14T01:53:11Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2SfcKWe",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2SfcKWe",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "seladora-a-vacuo-portatil-alimentos",
@@ -5187,7 +6672,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/bc5a0279-cee0-419f-a869-124c26bb8717",
-      "webp_optimized_at": "2026-06-14T01:53:12Z"
+      "webp_optimized_at": "2026-06-14T01:53:12Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1h91voZ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1h91voZ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "aromatizador-chama-kaizu-lavanda-200ml",
@@ -5236,7 +6736,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/6c3516a8-414a-443f-82fe-c0d45e2b8d5f",
-      "webp_optimized_at": "2026-06-14T01:53:13Z"
+      "webp_optimized_at": "2026-06-14T01:53:13Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2iqw6BY",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2iqw6BY",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "torneira-gourmet-flexivel-preta",
@@ -5284,7 +6799,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/2c6b854f-1b39-4c86-903e-eb1989abe9ad",
-      "webp_optimized_at": "2026-06-14T01:53:13Z"
+      "webp_optimized_at": "2026-06-14T01:53:13Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2DsuQCz",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2DsuQCz",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "lixeira-inteligente-sensor-automatica-16l-preta",
@@ -5333,7 +6863,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1c1464cb-bb75-4223-8a67-a8289ea7a6c2",
-      "webp_optimized_at": "2026-06-14T01:53:14Z"
+      "webp_optimized_at": "2026-06-14T01:53:14Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1XKrXKm",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1XKrXKm",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "parafusadeira-furadeira-kit-2-baterias-48v-maleta",
@@ -5383,7 +6928,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/b8a1a978-2e2f-4f88-827f-1488523fb556",
-      "webp_optimized_at": "2026-06-14T01:53:15Z"
+      "webp_optimized_at": "2026-06-14T01:53:15Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2MfQ3vr",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2MfQ3vr",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "organizadores-geladeira-kit-6-potes-acrilico-22l",
@@ -5433,7 +6993,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/1410fedd-5366-4eb6-8f2c-db905e46d4ad",
-      "webp_optimized_at": "2026-06-14T01:53:15Z"
+      "webp_optimized_at": "2026-06-14T01:53:15Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2iBLTfN",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2iBLTfN",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "fita-led-5m-smart-wifi-rgb-alexa-google-fonte",
@@ -5480,7 +7055,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/f4e7694e-bfc0-4509-9f28-1a22ecd46e34",
-      "webp_optimized_at": "2026-06-14T01:53:16Z"
+      "webp_optimized_at": "2026-06-14T01:53:16Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2D4sYtP",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2D4sYtP",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cafeteira-dolce-gusto-genio-s-capsulas-branca",
@@ -5534,7 +7124,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/3625502d-f92c-4337-a9d4-73c765801c85",
-      "webp_optimized_at": "2026-06-14T01:53:16Z"
+      "webp_optimized_at": "2026-06-14T01:53:16Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/2Nj2xGv",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/2Nj2xGv",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "panela-pressao-eletrica-6l-electrolux-rita-lobo-pcc20",
@@ -5587,7 +7192,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/70c8c535-d0d6-4c9a-854c-ce4ce9c7fab0",
-      "webp_optimized_at": "2026-06-14T01:53:17Z"
+      "webp_optimized_at": "2026-06-14T01:53:17Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1amQzWM",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1amQzWM",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "desumidificador-antimofo-komeco-kdp-250-bivolt",
@@ -5642,7 +7262,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/052ccccc-a9f0-4738-8d42-ba1039cba8c6",
-      "webp_optimized_at": "2026-06-14T01:53:17Z"
+      "webp_optimized_at": "2026-06-14T01:53:17Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/29Gq2Ww",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/29Gq2Ww",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "maquina-de-gelo-turbo-ice-premium-mondial-mg-12-gi",
@@ -5696,7 +7331,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c8fb2fb7-c1db-49b9-a897-d22b9527feb9",
-      "webp_optimized_at": "2026-06-14T01:53:18Z"
+      "webp_optimized_at": "2026-06-14T01:53:18Z",
+      "affiliate_links": [
+        {
+          "url": "https://mercadolivre.com/sec/1JTgtXs",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://mercadolivre.com/sec/1JTgtXs",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "balanca-inteligente-mi-body-composition-scale-2",
@@ -5743,7 +7393,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/d32505dd-f557-4340-8d57-95fb766ceb2f",
-      "webp_optimized_at": "2026-06-14T01:53:18Z"
+      "webp_optimized_at": "2026-06-14T01:53:18Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2WgFjjo",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2WgFjjo",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "smartwatch-amazfit-bip-6-gps",
@@ -5834,7 +7499,22 @@
         "https://github.com/user-attachments/assets/2207301b-7649-4663-925b-f7d9c38e1727",
         "https://github.com/user-attachments/assets/c2141813-84cb-4422-9ac5-f3ea0ddfba57"
       ],
-      "webp_optimized_at": "2026-06-14T01:53:21Z"
+      "webp_optimized_at": "2026-06-14T01:53:21Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/16igaoj",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/16igaoj",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "suporte-notebook-aluminio-dobravel-ajustavel-davely-prateado",
@@ -5885,7 +7565,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/31909809-8604-47e8-9867-77e0cf9cd983",
-      "webp_optimized_at": "2026-06-14T01:53:22Z"
+      "webp_optimized_at": "2026-06-14T01:53:22Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2iV3XdP",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2iV3XdP",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "smart-tag-localizador-apple-find-my-portatil-discreto-preto",
@@ -5937,7 +7632,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/43e6c2b2-cb32-4270-92b5-267ffd2b81a2",
-      "webp_optimized_at": "2026-06-14T01:53:22Z"
+      "webp_optimized_at": "2026-06-14T01:53:22Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2zXgzRL",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2zXgzRL",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "purificador-de-ar-silencioso-hepa-h13-luz-ambiente",
@@ -5990,7 +7700,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/3c009488-f54e-4657-86dc-5b65091b9f08",
-      "webp_optimized_at": "2026-06-14T01:53:23Z"
+      "webp_optimized_at": "2026-06-14T01:53:23Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1H2Sp2u",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1H2Sp2u",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "fone-bluetooth-53-tws-gancho-k4k6",
@@ -6038,7 +7763,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/da15b7e9-ace6-401f-9d5f-ed662e3fadca",
-      "webp_optimized_at": "2026-06-14T01:53:24Z"
+      "webp_optimized_at": "2026-06-14T01:53:24Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2yjB41k",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2yjB41k",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "afiador-4em1-torvstore-mzub",
@@ -6089,7 +7829,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/6ef8c237-e02f-4b03-abd2-0148d2b6b505",
-      "webp_optimized_at": "2026-06-14T01:53:24Z"
+      "webp_optimized_at": "2026-06-14T01:53:24Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/26NUChD",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/26NUChD",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "porta-papel-toalha-premium-parede",
@@ -6136,7 +7891,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/2d43f9e2-9f08-422a-bf66-73c518e79d4b",
-      "webp_optimized_at": "2026-06-14T01:53:25Z"
+      "webp_optimized_at": "2026-06-14T01:53:25Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2BogqNj",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2BogqNj",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "jogo-panelas-ceramica-marmore-10-pecas",
@@ -6183,7 +7953,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/ac32164f-a314-452f-ae26-feb9e7b74414",
-      "webp_optimized_at": "2026-06-14T01:53:26Z"
+      "webp_optimized_at": "2026-06-14T01:53:26Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1twfxRu",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1twfxRu",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-regulador-gas-premium-125m",
@@ -6231,7 +8016,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c02b8af2-db0c-4127-9263-91b40bbad44f",
-      "webp_optimized_at": "2026-06-14T01:53:26Z"
+      "webp_optimized_at": "2026-06-14T01:53:26Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/14d89GJ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/14d89GJ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ps5-slim-premium-astro-bot-gran-turismo-7",
@@ -6280,7 +8080,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/2638c52a-3d07-4548-99ff-3ddfe62c5ed5",
-      "webp_optimized_at": "2026-06-14T01:53:27Z"
+      "webp_optimized_at": "2026-06-14T01:53:27Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2LTPR6d",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2LTPR6d",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "microsoft-xbox-series-x-1tb",
@@ -6327,7 +8142,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/82acb5c8-a001-41c9-94c0-d73a4f833c2a",
-      "webp_optimized_at": "2026-06-14T01:53:27Z"
+      "webp_optimized_at": "2026-06-14T01:53:27Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1uyL3zF",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1uyL3zF",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "headset-gamer-jbl-quantum-100-preto",
@@ -6375,7 +8205,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/e60d4dfc-bf94-465f-89d2-e88c2f95e989",
-      "webp_optimized_at": "2026-06-14T01:53:28Z"
+      "webp_optimized_at": "2026-06-14T01:53:28Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2KwjYue",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2KwjYue",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "suporte-tv-fixo-universal-10-a-100-preto",
@@ -6426,7 +8271,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/7916e575-b770-4cb3-ab1d-5929663842c4",
-      "webp_optimized_at": "2026-06-14T01:53:29Z"
+      "webp_optimized_at": "2026-06-14T01:53:29Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/23w52K3",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/23w52K3",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "puma-flyer-runner-mesh-bdp",
@@ -6478,7 +8338,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/b3748e19-172b-4645-860a-f7011f17c37c",
-      "webp_optimized_at": "2026-06-14T01:53:29Z"
+      "webp_optimized_at": "2026-06-14T01:53:29Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2cmJ3u1",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2cmJ3u1",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "xiaomi-mi-band-8-active-sport",
@@ -6531,7 +8406,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/47c54555-e437-4e00-b7fe-c55348090e90",
-      "webp_optimized_at": "2026-06-14T01:53:30Z"
+      "webp_optimized_at": "2026-06-14T01:53:30Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2vfkeqn",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2vfkeqn",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ugreen-robot-nexode-gan-65w-lilas",
@@ -6586,7 +8476,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/5cfb706b-6f74-4473-b9e5-25623a41cc85",
-      "webp_optimized_at": "2026-06-14T01:53:30Z"
+      "webp_optimized_at": "2026-06-14T01:53:30Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1uwj7zF",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1uwj7zF",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ssd-nvme-m2-1tb-pcie4-2280-6tsl",
@@ -6651,7 +8556,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/b8e662aa-df95-4c5a-8803-ceb2527be1ce",
-      "webp_optimized_at": "2026-06-14T01:53:31Z"
+      "webp_optimized_at": "2026-06-14T01:53:31Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Lxke7G",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Lxke7G",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "bt-coca-cola-blush-stick-bruna-tavares-intense-cherry",
@@ -6717,7 +8637,22 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/cfbf7e2c-cf90-4b6a-9dff-d861ccbd5dd0",
-      "webp_optimized_at": "2026-06-14T01:53:31Z"
+      "webp_optimized_at": "2026-06-14T01:53:31Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2mkbQ6Q",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2mkbQ6Q",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "organizador-maquiagem-giratorio-360-acrilico-transparente",
@@ -6784,7 +8719,22 @@
       "guardian_last_checked_url": "https://meli.la/1CDrde5",
       "guardian_fail_count": 0,
       "image_original": "https://github.com/user-attachments/assets/ca721563-6a73-4d37-81de-b8dd039886ff",
-      "webp_optimized_at": "2026-06-14T01:53:32Z"
+      "webp_optimized_at": "2026-06-14T01:53:32Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2tLGveg",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2tLGveg",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "paleta-sombras-new-york-catharine-hill-10-cores",
@@ -6840,7 +8790,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/010e3b1f-19eb-40c3-9778-2a7f8b970996",
-      "webp_optimized_at": "2026-06-14T01:53:32Z"
+      "webp_optimized_at": "2026-06-14T01:53:32Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1rxYZqK",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1rxYZqK",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "batom-brilho-labial-moranguinho-10un-cheiro-morango",
@@ -6897,7 +8862,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/0a80e9b4-bb7f-4cff-8c92-a08f67a4ba06",
-      "webp_optimized_at": "2026-06-14T01:53:33Z"
+      "webp_optimized_at": "2026-06-14T01:53:33Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2qnoAiG",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2qnoAiG",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ice-creamy-lip-balm-mari-maria-vanilla-10ml",
@@ -6954,7 +8934,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/a4b8def6-4d36-4089-ade2-4bcbf8431920",
-      "webp_optimized_at": "2026-06-14T01:53:33Z"
+      "webp_optimized_at": "2026-06-14T01:53:33Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1npmMX6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1npmMX6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "love-kit-gloss-labial-coracao-lapis-volume-rosada",
@@ -7012,7 +9007,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/226c7ef1-0df8-403a-9805-e92fe4a0659e",
-      "webp_optimized_at": "2026-06-14T01:53:34Z"
+      "webp_optimized_at": "2026-06-14T01:53:34Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1b5R9Wd",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1b5R9Wd",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "batom-hidratante-sace-lady-a03-terre-rouge",
@@ -7073,7 +9083,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/663e59f3-307a-4adc-9b48-d827048eb8be",
-      "webp_optimized_at": "2026-06-14T01:53:35Z"
+      "webp_optimized_at": "2026-06-14T01:53:35Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1THD2MA",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1THD2MA",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cilios-posticos-sace-lady-autoadesivos-reutilizaveis",
@@ -7131,7 +9156,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/7dc6e1ea-8849-4343-83bf-c80c31591571",
-      "webp_optimized_at": "2026-06-14T01:53:35Z"
+      "webp_optimized_at": "2026-06-14T01:53:35Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1bTnn7V",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1bTnn7V",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "body-splash-kiss-ciclo-200ml",
@@ -7184,7 +9224,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/bbb8ee3a-9ecb-4e9f-9a27-cea612aa2c84",
-      "webp_optimized_at": "2026-06-14T01:53:36Z"
+      "webp_optimized_at": "2026-06-14T01:53:36Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/25vPB9i",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/25vPB9i",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "payot-boca-rosa-meu-volumao-preto-6ml",
@@ -7241,7 +9296,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/ee2c4171-ce24-4926-94a0-2b70f3e7ad26",
-      "webp_optimized_at": "2026-06-14T01:53:36Z"
+      "webp_optimized_at": "2026-06-14T01:53:36Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1dj3ot3",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1dj3ot3",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "nivea-hidratante-labial-morango-shine-4-8g",
@@ -7301,7 +9371,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/62ce109f-f54a-49d6-9803-c12697c1e24b",
-      "webp_optimized_at": "2026-06-14T01:53:37Z"
+      "webp_optimized_at": "2026-06-14T01:53:37Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2DebLCE",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2DebLCE",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "fixador-de-maquiagem-ruby-rose-150ml-hb312",
@@ -7355,7 +9440,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/6b90b8ef-ad80-4f69-a221-a4c8c18693eb",
-      "webp_optimized_at": "2026-06-14T01:53:37Z"
+      "webp_optimized_at": "2026-06-14T01:53:37Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1a6HzXw",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1a6HzXw",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "gloss-labial-beautyloo-sabor-tutti-frutti-38ml",
@@ -7417,7 +9517,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/cf828d3c-224d-483a-983c-c20511a7c125",
-      "webp_optimized_at": "2026-06-14T01:53:38Z"
+      "webp_optimized_at": "2026-06-14T01:53:38Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/31TgX9M",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/31TgX9M",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "lip-tint-arovida-morango-misterio-3-2ml",
@@ -7471,7 +9586,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/16db2395-43e6-444d-947f-147b82178a65",
-      "webp_optimized_at": "2026-06-14T01:53:38Z"
+      "webp_optimized_at": "2026-06-14T01:53:38Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1uRBXRf",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1uRBXRf",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ruby-rose-angle-blender-feels-mood",
@@ -7530,7 +9660,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/d5988ec8-20cf-45c6-b06c-411965468cae",
-      "webp_optimized_at": "2026-06-14T01:53:38Z"
+      "webp_optimized_at": "2026-06-14T01:53:38Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1niLiNZ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1niLiNZ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto",
@@ -7590,7 +9735,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/84b484d5-7767-4b69-941a-0474bc2538a3",
-      "webp_optimized_at": "2026-06-14T01:53:39Z"
+      "webp_optimized_at": "2026-06-14T01:53:39Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2g88US5",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2g88US5",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "sombra-disney-wish-bruna-tavares-silver-5ml",
@@ -7645,7 +9805,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/45b5bc54-829e-427f-bb81-12d98a99ed91",
-      "webp_optimized_at": "2026-06-14T01:53:40Z"
+      "webp_optimized_at": "2026-06-14T01:53:40Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/274QFze",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/274QFze",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-unha-postica-francesinha-pe-nude-quadrada",
@@ -7704,7 +9879,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/fff8eb82-1d17-4234-a97a-a06926344914",
-      "webp_optimized_at": "2026-06-14T01:53:40Z"
+      "webp_optimized_at": "2026-06-14T01:53:40Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1HVaS52",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1HVaS52",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz",
@@ -7769,7 +9959,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/2438675f-71b3-4bb3-b4fd-3fc32b2aac0c",
-      "webp_optimized_at": "2026-06-14T01:53:40Z"
+      "webp_optimized_at": "2026-06-14T01:53:40Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1U9BG5d",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1U9BG5d",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "xapadinha-mascara-disciplinante-450g-lola-from-rio",
@@ -7832,7 +10037,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/9c09bb2a-ed66-49bd-9e6f-2b96daa8e7e2",
-      "webp_optimized_at": "2026-06-14T01:53:41Z"
+      "webp_optimized_at": "2026-06-14T01:53:41Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/26CFRci",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/26CFRci",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "vizzela-bruma-fixadora-de-maquiagem-real-fix-150ml",
@@ -7888,7 +10108,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/7467e036-2d5a-40f5-bbf2-29e0a4182dbc",
-      "webp_optimized_at": "2026-06-14T01:53:42Z"
+      "webp_optimized_at": "2026-06-14T01:53:42Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2RHRCn6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2RHRCn6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "lip-oil-volumizador-labial-epidrat-hyalu-berry-fps30-6ml",
@@ -7952,7 +10187,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/af0e80dd-97dd-493d-925c-89488ff95853",
-      "webp_optimized_at": "2026-06-14T01:53:42Z"
+      "webp_optimized_at": "2026-06-14T01:53:42Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1kPMdsr",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1kPMdsr",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "serum-principia-niacinamida-zinco-pca-30ml",
@@ -8012,7 +10262,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/484a5fed-3f6a-4ef2-bd2d-a1ccc68c52be",
-      "webp_optimized_at": "2026-06-14T01:53:42Z"
+      "webp_optimized_at": "2026-06-14T01:53:42Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2f6UGXq",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2f6UGXq",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "gel-para-sobrancelhas-brow-rise-ruby-rose",
@@ -8067,7 +10332,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/56299e17-e624-4ca8-8cab-c44d0e89ffcd",
-      "webp_optimized_at": "2026-06-14T01:53:43Z"
+      "webp_optimized_at": "2026-06-14T01:53:43Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2cC6jBy",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2cC6jBy",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada",
@@ -8131,7 +10411,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/566de061-b26a-4750-abf5-d69e92072b30",
-      "webp_optimized_at": "2026-06-14T01:53:43Z"
+      "webp_optimized_at": "2026-06-14T01:53:43Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Dj4GN9",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Dj4GN9",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "depilador-eletrico-feminino-4-em-1",
@@ -8186,7 +10481,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/93f92c1c-5933-451d-888a-6c1da89ca1d0",
-      "webp_optimized_at": "2026-06-14T01:53:44Z"
+      "webp_optimized_at": "2026-06-14T01:53:44Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2LK3ZKv",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2LK3ZKv",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "06-presilha-piranha-cabelo-luxo-metal-variadas-dourado",
@@ -8244,7 +10554,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/69e18ff0-dd73-4aba-ac78-d2823978a7f6",
-      "webp_optimized_at": "2026-06-14T01:53:44Z"
+      "webp_optimized_at": "2026-06-14T01:53:44Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1tVJhMA",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1tVJhMA",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "principia-protetor-solar-facial-ps-01-fps-60",
@@ -8306,7 +10631,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/6112e430-edd8-4105-9f00-36ab119dc4bf",
-      "webp_optimized_at": "2026-06-14T01:53:45Z"
+      "webp_optimized_at": "2026-06-14T01:53:45Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/257Mpir",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/257Mpir",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
@@ -8363,7 +10703,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/fddf682f-49de-4709-9f99-e300787efc26",
-      "webp_optimized_at": "2026-06-14T01:53:45Z"
+      "webp_optimized_at": "2026-06-14T01:53:45Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2fUnaWE",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2fUnaWE",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "necessaire-unissex-viagem-organizador-impermeavel-preto",
@@ -8424,7 +10779,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/d5cb62c1-2221-4a6c-bcea-16a4ab921066",
-      "webp_optimized_at": "2026-06-14T01:53:45Z"
+      "webp_optimized_at": "2026-06-14T01:53:45Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2YJcfGN",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2YJcfGN",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo",
@@ -8489,7 +10859,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/b146e13b-d7c4-4301-adcb-bf1a0d35a902",
-      "webp_optimized_at": "2026-06-14T01:53:46Z"
+      "webp_optimized_at": "2026-06-14T01:53:46Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2mbKAww",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2mbKAww",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-cetim-anti-frizz-rosa-6-pecas",
@@ -8556,7 +10941,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/41dffdf7-36e7-430d-84cc-bfbb2e760bd6",
-      "webp_optimized_at": "2026-06-14T01:53:46Z"
+      "webp_optimized_at": "2026-06-14T01:53:46Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2dLDnyx",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2dLDnyx",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "espelho-led-dobravel-maquiagem-rosto-make",
@@ -8617,7 +11017,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/4a023b0d-cc21-4e51-8dba-b3a92eb48f9f",
-      "webp_optimized_at": "2026-06-14T01:53:47Z"
+      "webp_optimized_at": "2026-06-14T01:53:47Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2zDAba1",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2zDAba1",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "porta-joias-3-camadas-couro-preto",
@@ -8690,7 +11105,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/e4943ee2-2610-4d56-8f23-80ee3aa03fde",
-      "webp_optimized_at": "2026-06-14T01:53:47Z"
+      "webp_optimized_at": "2026-06-14T01:53:47Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/18Kx2gM",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/18Kx2gM",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cabine-led-uv-sun-5-48w",
@@ -8759,7 +11189,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/382bbedb-d5f8-45a0-9e16-7f082fbb4e35",
-      "webp_optimized_at": "2026-06-14T01:53:48Z"
+      "webp_optimized_at": "2026-06-14T01:53:48Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2fLn9Fc",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2fLn9Fc",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador",
@@ -8827,7 +11272,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/6007beb5-62e1-4646-87ea-3ddc1ab073c8",
-      "webp_optimized_at": "2026-06-14T01:53:48Z"
+      "webp_optimized_at": "2026-06-14T01:53:48Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1vSQP2e",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1vSQP2e",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "lixadeira-motor-porquinho-nail-drill-dm-202-rosa",
@@ -8868,7 +11328,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/080e6475-bde0-417d-9862-d892f04010de",
-      "webp_optimized_at": "2026-06-14T01:53:49Z"
+      "webp_optimized_at": "2026-06-14T01:53:49Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2mckjxV",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2mckjxV",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-03-faixas-atoalhadas-cabelo-facial",
@@ -8951,7 +11426,22 @@
         "https://github.com/user-attachments/assets/91c7b2c7-7632-4956-8ff0-e4e2a75bdf57",
         "https://github.com/user-attachments/assets/b5ca8cb6-47ce-4898-8b2a-2e5f429f03f1"
       ],
-      "webp_optimized_at": "2026-06-14T01:53:52Z"
+      "webp_optimized_at": "2026-06-14T01:53:52Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/26jy5xN",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/26jy5xN",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "massageador-facial-pescoco-led-lifting",
@@ -9021,7 +11511,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/4374d250-acb4-44cf-bc3a-7151c1f36937",
-      "webp_optimized_at": "2026-06-14T01:53:52Z"
+      "webp_optimized_at": "2026-06-14T01:53:52Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1HYtVJ6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1HYtVJ6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "limpador-eletrico-pinceis-maquiagem-automatico-usb",
@@ -9093,7 +11598,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/fe607f4b-d631-4897-958f-19f22f65766d",
-      "webp_optimized_at": "2026-06-14T01:53:52Z"
+      "webp_optimized_at": "2026-06-14T01:53:52Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1kgjzmj",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1kgjzmj",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "depilador-batom-portatil-facial-branco-rose-gold",
@@ -9165,7 +11685,22 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/efd7589e-b948-46d0-b14a-6e140b5ed2b9",
-      "webp_optimized_at": "2026-06-14T01:53:53Z"
+      "webp_optimized_at": "2026-06-14T01:53:53Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1EjNsoE",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1EjNsoE",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "fraldas-pampers-recem-nascido-rn-36-unidades",
@@ -9235,7 +11770,22 @@
       "promo_text": "Preço conferido no Mercado Livre. Aproveite enquanto estiver disponível.",
       "buy_cta": "🔥 Comprar com desconto no Mercado Livre",
       "image_original": "https://github.com/user-attachments/assets/29872a77-7b5f-4d9d-ad45-b71de74d2e19",
-      "webp_optimized_at": "2026-06-14T01:53:53Z"
+      "webp_optimized_at": "2026-06-14T01:53:53Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2XKwqS1",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2XKwqS1",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "escova-oval-secadora-taiff-easy-lilas-1200w",
@@ -9322,7 +11872,22 @@
         "https://github.com/user-attachments/assets/97455cf7-1d22-468c-90f4-29e51551e3fb",
         "https://github.com/user-attachments/assets/76b1395c-017d-4fa1-8593-4bb86de73216"
       ],
-      "webp_optimized_at": "2026-06-14T01:53:56Z"
+      "webp_optimized_at": "2026-06-14T01:53:56Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1gj7Dvb",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1gj7Dvb",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "depilador-ipl-basike-sensacao-gelo-9-niveis",
@@ -9419,7 +11984,22 @@
         "https://github.com/user-attachments/assets/ab6449ea-4427-4d54-ab33-eee4938de526",
         "https://github.com/user-attachments/assets/59440652-3324-45bf-afa8-89b4cc8def30"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:00Z"
+      "webp_optimized_at": "2026-06-14T01:54:00Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2YKAybJ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2YKAybJ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-5-mini-frascos-porta-perfume-recarregaveis-spray-5ml",
@@ -9513,7 +12093,22 @@
         "https://github.com/user-attachments/assets/dabaa9fa-af68-4302-b3b7-e1d726487f1d",
         "https://github.com/user-attachments/assets/e078f379-675f-4411-b84e-487833f19967"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:03Z"
+      "webp_optimized_at": "2026-06-14T01:54:03Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2r1hGf6",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2r1hGf6",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer",
@@ -9599,7 +12194,22 @@
         "https://github.com/user-attachments/assets/3dbc44fd-7164-48f1-b096-f5fa2cb40bf5",
         "https://github.com/user-attachments/assets/83d0ae34-71d6-4ee0-ba1f-a4e66e6cb1b9"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:06Z"
+      "webp_optimized_at": "2026-06-14T01:54:06Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1ox9T41",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1ox9T41",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "extrator-facial-xn-8030-4-bicos",
@@ -9680,7 +12290,22 @@
         "https://github.com/user-attachments/assets/69804e11-922f-4934-ad6a-b6b2245b3cc9",
         "https://github.com/user-attachments/assets/01d9b828-cf4c-449d-8e3c-6bfb2b7a5a55"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:09Z"
+      "webp_optimized_at": "2026-06-14T01:54:09Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2nC1PpG",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2nC1PpG",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "protetor-de-calcanhar-silicone-doctor-z-gel-reutilizavel-conforto",
@@ -9769,7 +12394,22 @@
         "https://github.com/user-attachments/assets/fb2133e5-ae88-479f-a354-94ce4e28f3b2",
         "https://github.com/user-attachments/assets/9d809dac-f294-40ec-b24a-f1b4a07c53e3"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:11Z"
+      "webp_optimized_at": "2026-06-14T01:54:11Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/291jPnZ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/291jPnZ",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "paleta-mystic-glow-ruby-rose",
@@ -9848,7 +12488,22 @@
         "https://github.com/user-attachments/assets/1ac69599-c90f-4e0f-a10f-5388418a202c",
         "https://github.com/user-attachments/assets/a5b546c7-15ad-4ff4-a200-488828e59196"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:14Z"
+      "webp_optimized_at": "2026-06-14T01:54:14Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2JFYs3x",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2JFYs3x",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval",
@@ -9935,7 +12590,22 @@
         "https://github.com/user-attachments/assets/a7cfb674-8f48-4993-ad0b-1844bd6b03d7",
         "https://github.com/user-attachments/assets/6add0dd7-334c-486f-a3cf-d0fe8d6409cb"
       ],
-      "webp_optimized_at": "2026-06-14T23:52:06Z"
+      "webp_optimized_at": "2026-06-14T23:52:06Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1aCcT6W",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1aCcT6W",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "mascara-para-dormir-gel-termico-rosa-laco",
@@ -10022,7 +12692,22 @@
         "https://github.com/user-attachments/assets/903cce25-3943-4155-b6d4-204f61604b3a",
         "https://github.com/user-attachments/assets/370fb2e9-6f82-40bc-95f1-c86035db78fe"
       ],
-      "webp_optimized_at": "2026-06-24T12:29:58Z"
+      "webp_optimized_at": "2026-06-24T12:29:58Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/21eNben",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/21eNben",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "toalha-demaquilante-reutilizavel-make-off-klass-vough",
@@ -10111,7 +12796,22 @@
         "https://github.com/user-attachments/assets/a5546bb0-eefc-440d-ba0b-fef46cf07858",
         "https://github.com/user-attachments/assets/c895dc23-1aac-41c8-a79f-faf1e603fdca"
       ],
-      "webp_optimized_at": "2026-06-28T13:05:15Z"
+      "webp_optimized_at": "2026-06-28T13:05:15Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1utHx1A",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1utHx1A",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "agua-micelar-garnier-skinactive-tudo-em-1-400ml",
@@ -10197,7 +12897,22 @@
         "https://github.com/user-attachments/assets/8ac06785-8d80-48d6-98ab-78f18260759a",
         "https://github.com/user-attachments/assets/a0d23906-6e98-4423-af71-72cc6d5b192b"
       ],
-      "webp_optimized_at": "2026-06-28T13:05:18Z"
+      "webp_optimized_at": "2026-06-28T13:05:18Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2qvGAQ8",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2qvGAQ8",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "suporte-secador-cabelo-escova-multiuso-organizador",
@@ -10281,7 +12996,22 @@
         "https://github.com/user-attachments/assets/69deec0a-6768-40dd-8734-c8248385ccbe",
         "https://github.com/user-attachments/assets/a4f05724-288b-40d7-864c-eecca104f858"
       ],
-      "webp_optimized_at": "2026-07-06T20:21:38Z"
+      "webp_optimized_at": "2026-07-06T20:21:38Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1pqayt4",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1pqayt4",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "sabonete-facial-garnier-uniform-matte-vitamina-c-120g",
@@ -10371,7 +13101,22 @@
         "https://github.com/user-attachments/assets/359e7550-3527-43e9-81fe-b2c095e66b17",
         "https://github.com/user-attachments/assets/e3c173a8-2b7a-4704-8505-6df002b4cfd2"
       ],
-      "webp_optimized_at": "2026-07-14T22:54:03Z"
+      "webp_optimized_at": "2026-07-14T22:54:03Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1GawSXm",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1GawSXm",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "neutrogena-hydro-boost-water-gel-50g",
@@ -10450,7 +13195,22 @@
         "https://github.com/user-attachments/assets/28c24f68-fecd-41ee-b782-448f9353e539",
         "https://github.com/user-attachments/assets/2d66de1b-8c27-4488-801d-ee00a8e63d33"
       ],
-      "webp_optimized_at": "2026-07-17T17:17:12Z"
+      "webp_optimized_at": "2026-07-17T17:17:12Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/23eDowg",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/23eDowg",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "o-boticario-floratta-my-blue-colonia-75ml",
@@ -10541,7 +13301,22 @@
       "images_original": [
         "https://github.com/user-attachments/assets/4ee20571-c503-4402-b58c-2af4fd9453d7"
       ],
-      "webp_optimized_at": "2026-07-22T18:32:15Z"
+      "webp_optimized_at": "2026-07-22T18:32:15Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1D1EKm5",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1D1EKm5",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "mondial-modelador-cachos-infinity-em-12",
@@ -10620,7 +13395,22 @@
         "https://github.com/user-attachments/assets/7f20d386-b43c-4b2b-8f34-b0575ee9e9ec",
         "https://github.com/user-attachments/assets/a555f494-f8d3-4c39-8497-f5424f22c15b"
       ],
-      "webp_optimized_at": "2026-07-24T23:34:55Z"
+      "webp_optimized_at": "2026-07-24T23:34:55Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1JxC1mg",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1JxC1mg",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cerave-gel-limpeza-facial-454g",
@@ -10712,7 +13502,22 @@
         "https://github.com/user-attachments/assets/75252540-1bf1-467f-a6e1-5dca47b88a7f",
         "https://github.com/user-attachments/assets/ad62446f-1a76-4ebc-bff1-9b71500245d7"
       ],
-      "webp_optimized_at": "2026-07-28T03:14:30Z"
+      "webp_optimized_at": "2026-07-28T03:14:30Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1VuvMuX",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1VuvMuX",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
@@ -10798,7 +13603,22 @@
         "https://github.com/user-attachments/assets/1123866f-1d25-4c95-afa4-d6eef5216d19",
         "https://github.com/user-attachments/assets/40be95d7-0db3-463e-9436-dc291d1f314e"
       ],
-      "webp_optimized_at": "2026-07-31T23:49:57Z"
+      "webp_optimized_at": "2026-07-31T23:49:57Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1Vemrez",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1Vemrez",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "fran-maravicherry-mascara-cilios-preto-6g",
@@ -10881,7 +13701,22 @@
         "https://github.com/user-attachments/assets/6711bdf2-5dd4-47c5-9b6b-73f95065989e",
         "https://github.com/user-attachments/assets/bbf36727-661e-4d23-8d23-9e26c69a514b"
       ],
-      "webp_optimized_at": "2026-08-05T23:12:33Z"
+      "webp_optimized_at": "2026-08-05T23:12:33Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2vZcCPX",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2vZcCPX",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "gloss-labial-cherry-bomb-pam-by-pamella-5g",
@@ -10957,7 +13792,22 @@
         "https://github.com/user-attachments/assets/07838f26-1101-494b-b90a-1e2775488c9a",
         "https://github.com/user-attachments/assets/d3047853-d234-4652-a4fa-70d85fc562a9"
       ],
-      "webp_optimized_at": "2026-08-14T00:15:25Z"
+      "webp_optimized_at": "2026-08-14T00:15:25Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/2AgwM9t",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/2AgwM9t",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de",
@@ -11032,7 +13882,22 @@
         "https://github.com/user-attachments/assets/8f3859ff-b6f2-4223-987b-8bb2bd622638",
         "https://github.com/user-attachments/assets/8b5c3399-9aa1-40d7-b91a-b2889b947de9"
       ],
-      "webp_optimized_at": "2026-08-15T01:02:35Z"
+      "webp_optimized_at": "2026-08-15T01:02:35Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/339nGYD",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/339nGYD",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "kit-sos-makeup-miamake-3em1-rosa",
@@ -11106,7 +13971,22 @@
         "https://github.com/user-attachments/assets/e1a8c873-b379-4c83-8601-f9675e1f0663",
         "https://github.com/user-attachments/assets/d3e0cdb7-d373-4d73-bd4a-aed4a0f8d592"
       ],
-      "webp_optimized_at": "2026-08-17T03:09:38Z"
+      "webp_optimized_at": "2026-08-17T03:09:38Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1GNrAjm",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1GNrAjm",
+      "affiliate_healthy_count": 0
     },
     {
       "sku": "arezzo-cinto-fino-fivela-losango-preto",
@@ -11177,7 +14057,22 @@
         "https://github.com/user-attachments/assets/2d9f9e59-0fd9-4910-bc84-f27a54cf5f4a",
         "https://github.com/user-attachments/assets/88cc6e53-34fe-41bb-871d-4336fea990de"
       ],
-      "webp_optimized_at": "2026-08-21T16:19:07Z"
+      "webp_optimized_at": "2026-08-21T16:19:07Z",
+      "affiliate_links": [
+        {
+          "url": "https://meli.la/1BBjvSQ",
+          "priority": 1,
+          "status": "unknown",
+          "fail_count": 0,
+          "last_checked": "",
+          "last_ok": "",
+          "last_status": 0,
+          "last_final_url": "",
+          "last_reason": ""
+        }
+      ],
+      "active_affiliate_url": "https://meli.la/1BBjvSQ",
+      "affiliate_healthy_count": 0
     }
   ],
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
@@ -11193,5 +14088,6 @@
     "dry_run": 0,
     "failed": 0,
     "note": "Campos originais preservados em *_original."
-  }
+  },
+  "catalog_schema_version": 2
 }

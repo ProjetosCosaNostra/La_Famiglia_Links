@@ -2,16 +2,16 @@
 # ==========================================================
 # Arquivo: tools/link_guardian.py
 # Módulo : Link Guardian — Checa links e mantém vitrine operacional
-# Versão : v9.3 (MODO OBSERVACIONAL — somente detecta e reporta, sem interferir no catálogo)
+# Versão : v10.0 (LINK POOL — monitora ate cinco links e faz failover seguro)
 #
 # Objetivo (prioridade de negócio):
 #   1) NUNCA mais deixar a loja “zerada” por falso-positivo.
 #   2) Evitar desativar produto por bloqueio/anti-bot/ruído.
 #   3) Produto de vitrine precisa apontar para destino real de produto.
 #      /social/, /lists, lista.* e account-verification com go inválido NÃO servem.
-#   4) NÃO alterar open_url/check_url/canonical_url automaticamente.
+#   4) Alterar somente o link ativo quando houver fallback afiliado saudável.
 #   5) Produto do Dia (featured) NUNCA automático.
-#   6) Registrar relatório de manutenção/revisão sem mexer no catálogo:
+#   6) Registrar relatório e saúde individual de cada link no catálogo:
 #      - data/link_guardian_removed.json
 #      - logs/link_guardian_removed.txt
 #
@@ -38,6 +38,11 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 from urllib.parse import parse_qs, unquote, urlparse
+
+try:
+    from tools.affiliate_links import choose_active_affiliate_url, normalize_affiliate_links
+except ModuleNotFoundError:  # execucao direta: python tools/link_guardian.py
+    from affiliate_links import choose_active_affiliate_url, normalize_affiliate_links
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -1052,6 +1057,57 @@ def _check_product_urls(p: Dict[str, Any]) -> CheckResult:
         promoted_url="",
     )
 
+
+def _check_affiliate_pool(p: Dict[str, Any], happened_at: str) -> CheckResult | None:
+    """Valida ate cinco links e troca o principal sem perder o rastreio afiliado."""
+
+    entries = normalize_affiliate_links(p)
+    if not entries:
+        return None
+
+    current = _clean_url(p.get("active_affiliate_url") or p.get("open_url") or "")
+    results_by_url: Dict[str, CheckResult] = {}
+
+    for entry in entries:
+        url = _clean_url(entry.get("url") or "")
+        res = _check_url(url)
+        results_by_url[url] = res
+
+        entry["last_checked"] = happened_at
+        entry["last_status"] = int(res.status or 0)
+        entry["last_final_url"] = _clean_url(res.final_url or "")
+        entry["last_reason"] = str(res.reason or "")
+
+        if res.ok:
+            entry["status"] = "healthy"
+            entry["fail_count"] = 0
+            entry["last_ok"] = happened_at
+        elif res.temporary:
+            entry["status"] = "temporary"
+        else:
+            fails = int(entry.get("fail_count") or 0) + 1
+            entry["fail_count"] = fails
+            entry["status"] = "dead" if (res.hard_dead and fails >= FAIL_THRESHOLD) else "suspect"
+
+        time.sleep(SLEEP_BETWEEN)
+
+    selected = choose_active_affiliate_url(entries, current)
+    if selected and selected != current:
+        p["affiliate_failover_at"] = happened_at
+        p["affiliate_previous_url"] = current
+
+    p["affiliate_links"] = entries
+    p["active_affiliate_url"] = selected
+    p["affiliate_healthy_count"] = sum(1 for entry in entries if entry.get("status") == "healthy")
+    p["affiliate_links_exhausted"] = bool(entries) and all(entry.get("status") == "dead" for entry in entries)
+    if selected:
+        p["open_url"] = selected
+
+    if selected in results_by_url:
+        return results_by_url[selected]
+
+    return next(iter(results_by_url.values()), None)
+
 def _sort_key(p: Dict[str, Any]) -> Tuple[int, int]:
     return (0 if bool(p.get("active")) else 1, 0 if bool(p.get("featured")) else 1)
 
@@ -2021,6 +2077,7 @@ def main() -> int:
     temp_count = 0
     store_invalid_count = 0
     corrupt_skipped = 0
+    catalog_changed = 0
 
     valid_skus: set[str] = set()
     valid_issue_numbers: set[int] = set()
@@ -2052,12 +2109,16 @@ def main() -> int:
         if MAX_CHECK > 0 and checked >= MAX_CHECK:
             break
 
+        product_before = json.dumps(p, ensure_ascii=False, sort_keys=True)
         memory_item = _get_or_create_memory_item(guardian_memory, sku) if sku else {}
-        res = _check_product_urls(p)
+        res = _check_affiliate_pool(p, now) or _check_product_urls(p)
         _apply_guardian_intelligence_fields(p, res)
 
         if sku:
             _record_memory_observation(memory_item, p, res, now)
+
+        if json.dumps(p, ensure_ascii=False, sort_keys=True) != product_before:
+            catalog_changed += 1
 
         checked += 1
 
@@ -2069,7 +2130,6 @@ def main() -> int:
                 print(f"[OK/CLEAR] {sku} -> removido do painel de manutenção ({cleared})")
             else:
                 print(f"[OK] {sku} status={res.status} reason={res.reason} final={_clean_url(res.final_url or '')}")
-            time.sleep(SLEEP_BETWEEN)
             continue
 
         diag_count += 1
@@ -2104,7 +2164,6 @@ def main() -> int:
             f"storefront_invalid={int(bool(res.storefront_invalid))} temp={int(bool(res.temporary))} "
             f"final={_clean_url(res.final_url or '')}"
         )
-        time.sleep(SLEEP_BETWEEN)
 
     if PURGE_REVIEW_ORPHANS:
         purged_review_orphans = _purge_review_items_not_in_catalog(
@@ -2123,13 +2182,17 @@ def main() -> int:
         if purged_memory_orphans:
             print(f"[MEMORY-PURGE] removidos {purged_memory_orphans} SKU(s) órfãos da memória")
 
-    # MODO OBSERVACIONAL:
-    # Não gravar produtos.json. O Guardian só atualiza relatórios auxiliares.
+    # O Guardian agora grava apenas saude/failover dos links. Conteudo comercial,
+    # imagem, featured e estado ativo continuam sob controle do CMS.
+    if catalog_changed:
+        data["updated_at"] = now
+        data["catalog_schema_version"] = 2
+        _write_json(PRODUTOS_JSON, data)
     _save_review_reports(review_history)
     _save_guardian_memory(guardian_memory)
 
     print("========================================")
-    print("Link Guardian finalizado (modo observacional).")
+    print("Link Guardian finalizado (failover afiliado ativo).")
     print(f"Checked: {checked} | Max: {MAX_CHECK}")
     print(f"OK: {ok_count} | DIAG: {diag_count} | TEMP: {temp_count}")
     print(f"STORE_INVALID: {store_invalid_count}")
@@ -2142,7 +2205,7 @@ def main() -> int:
     print(f"Review items cleared: {review_items_cleared}")
     print(f"Review orphans purged: {purged_review_orphans}")
     print(f"Memory orphans purged: {purged_memory_orphans}")
-    print("Produtos.json preservado: 1")
+    print(f"Produtos com saude/failover atualizado: {catalog_changed}")
     print(f"FAIL_THRESHOLD: {FAIL_THRESHOLD} | STOREFRONT_INVALID_THRESHOLD: {STOREFRONT_INVALID_THRESHOLD} | REMOVE_ON_DEAD: {int(REMOVE_ON_DEAD)} | CONSERVATIVE_ON_BLOCK: {int(CONSERVATIVE_ON_BLOCK)}")
     print(f"SOCIAL_INVALID_FOR_STOREFRONT: {int(SOCIAL_INVALID_FOR_STOREFRONT)} | LISTA_INVALID_FOR_STOREFRONT: {int(LISTA_INVALID_FOR_STOREFRONT)} | SOCIAL_COUNTS_AS_OK: {int(SOCIAL_COUNTS_AS_OK)} | STOREFRONT_REVIEW_ONLY: {int(STOREFRONT_REVIEW_ONLY)}")
     print(f"PURGE_REVIEW_ORPHANS: {int(PURGE_REVIEW_ORPHANS)} | PURGE_MEMORY_ORPHANS: {int(PURGE_MEMORY_ORPHANS)}")

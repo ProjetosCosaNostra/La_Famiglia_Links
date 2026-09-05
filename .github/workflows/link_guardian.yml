@@ -109,24 +109,25 @@ jobs:
             logs/link_guardian_removed.txt
             data/link_guardian_memory.json
 
-      - name: Commit & push review files only (if changed)
+      - name: Commit & push da saúde dos links e relatórios
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- data/link_guardian_review.json logs/link_guardian_review.txt data/link_guardian_removed.json logs/link_guardian_removed.txt data/link_guardian_memory.json)" ]; then
-            echo "No review report changes."
+          if [ -z "$(git status --porcelain -- produtos.json data/link_guardian_review.json logs/link_guardian_review.txt data/link_guardian_removed.json logs/link_guardian_removed.txt data/link_guardian_memory.json)" ]; then
+            echo "Nenhuma mudança de saúde ou relatório."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          git add produtos.json
           git add data/link_guardian_review.json
           git add logs/link_guardian_review.txt
           git add data/link_guardian_removed.json
           git add logs/link_guardian_removed.txt
           git add data/link_guardian_memory.json
 
-          git commit -m "chore: Link Guardian update review reports"
+          git commit -m "guardian: atualizar saúde e failover dos links afiliados"
 
           if git push origin gh-pages; then
             echo "Push concluído na primeira tentativa."
@@ -139,17 +140,18 @@ jobs:
 
           python tools/link_guardian.py
 
-          if [ -z "$(git status --porcelain -- data/link_guardian_review.json logs/link_guardian_review.txt data/link_guardian_removed.json logs/link_guardian_removed.txt data/link_guardian_memory.json)" ]; then
+          if [ -z "$(git status --porcelain -- produtos.json data/link_guardian_review.json logs/link_guardian_review.txt data/link_guardian_removed.json logs/link_guardian_removed.txt data/link_guardian_memory.json)" ]; then
             echo "Após sincronizar, não houve mudanças pendentes."
             exit 0
           fi
 
+          git add produtos.json
           git add data/link_guardian_review.json
           git add logs/link_guardian_review.txt
           git add data/link_guardian_removed.json
           git add logs/link_guardian_removed.txt
           git add data/link_guardian_memory.json
 
-          git commit -m "chore: Link Guardian refresh review reports after sync"
+          git commit -m "guardian: recalcular saúde e failover após sincronização"
 
           git push origin gh-pages

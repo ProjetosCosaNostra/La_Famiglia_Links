@@ -15,7 +15,7 @@ A **La Famiglia Links** é o painel central da operação, reunindo:
 
 ## 🔗 Acesse a loja online
 **Loja Oficial:**  
-https://projetoscosanostra.github.io/La_Famiglia_Links/
+https://blackgold-beauty-finds-br.pages.dev/
 
 **Instagram da vitrine:**  
 @cosanostra.blackgold
@@ -50,11 +50,11 @@ https://projetoscosanostra.github.io/La_Famiglia_Links/
 ---
 
 ## 🛍️ Sobre a operação
-Este repositório sustenta a vitrine pública da **Central Premium**, com foco em:
+Este repositório sustenta a vitrine pública **BlackGold Beauty Finds**, com foco em:
 - produtos de apelo visual
 - achados do dia
 - criativos premium
-- operação baseada em catálogo público via GitHub Pages
+- operação automatizada publicada no Cloudflare Pages
 
 A proposta é manter uma loja:
 - bonita
@@ -96,6 +96,10 @@ Projeto visual e operacional criado para unir:
 ---
 
 ## 📌 Observação
+O GitHub Pages anterior é legado e não deve ser usado como endereço público,
+callback OAuth ou destino de campanhas. A operação ativa usa o domínio oficial
+`blackgold-beauty-finds-br.pages.dev` no Cloudflare Pages.
+
 Este repositório faz parte da operação ativa da loja pública.  
 Toda alteração deve priorizar:
 - estabilidade

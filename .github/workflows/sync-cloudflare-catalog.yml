@@ -8,6 +8,7 @@ on:
       - "ecosystem.json"
       - "assets/produtos-card/**"
       - "assets/produtos-webp/**"
+      - "data/daily_selection.json"
   workflow_dispatch:
 
 permissions:
@@ -38,6 +39,10 @@ jobs:
 
           cp produtos.json "${TARGET_DIR}/produtos.json"
           cp ecosystem.json "${TARGET_DIR}/ecosystem.json"
+          mkdir -p "${TARGET_DIR}/data"
+          if [ -f data/daily_selection.json ]; then
+            cp data/daily_selection.json "${TARGET_DIR}/data/daily_selection.json"
+          fi
           mkdir -p "${TARGET_DIR}/assets/produtos-card" "${TARGET_DIR}/assets/produtos-webp"
           if [ -d assets/produtos-card ]; then
             rsync -a --delete assets/produtos-card/ "${TARGET_DIR}/assets/produtos-card/"
@@ -47,7 +52,7 @@ jobs:
           fi
 
           cd "${TARGET_DIR}"
-          git add produtos.json ecosystem.json assets/produtos-webp
+          git add produtos.json ecosystem.json data/daily_selection.json assets/produtos-webp
           if [ -d assets/produtos-card ]; then
             git add assets/produtos-card
           fi

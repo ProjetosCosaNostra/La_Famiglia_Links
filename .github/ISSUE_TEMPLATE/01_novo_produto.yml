@@ -103,13 +103,57 @@ body:
     validations:
       required: false
 
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔗 Links afiliados com proteção automática
+        O primeiro link é o principal. Os outros quatro são reservas do **mesmo produto**.
+        Se o principal deixar de funcionar, o Link Guardian troca automaticamente para o próximo saudável.
+
   - type: input
     id: open_url
     attributes:
-      label: "Link Mercado Livre (/sec/... ou equivalente)"
+      label: "Link afiliado 1 — principal"
+      description: "Cole o link afiliado do produto. Este será usado primeiro."
       placeholder: "https://mercadolivre.com/sec/2T9cpsU"
     validations:
       required: true
+
+  - type: input
+    id: affiliate_url_2
+    attributes:
+      label: "Link afiliado 2 — reserva"
+      description: "Opcional. Use outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: affiliate_url_3
+    attributes:
+      label: "Link afiliado 3 — reserva"
+      description: "Opcional. Use outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: affiliate_url_4
+    attributes:
+      label: "Link afiliado 4 — reserva"
+      description: "Opcional. Use outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
+    validations:
+      required: false
+
+  - type: input
+    id: affiliate_url_5
+    attributes:
+      label: "Link afiliado 5 — reserva"
+      description: "Opcional. Use outro anúncio/vendedor do mesmo produto."
+      placeholder: "https://meli.la/..."
+    validations:
+      required: false
 
   - type: input
     id: image_url

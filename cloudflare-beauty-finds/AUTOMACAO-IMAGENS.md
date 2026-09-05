@@ -35,6 +35,21 @@ um token restrito a este repositório, com permissão apenas para administrar os
 secrets das Actions. Nenhum token é colocado em log, catálogo ou commit. Não há
 dependência de serviço pago.
 
+### Ativação inicial sem expor segredos
+
+O aplicativo oficial da loja usa o Client ID `4586517400616779`. Na raiz do
+repositório, execute uma única vez:
+
+```powershell
+python tools\configure_meli_oauth.py
+```
+
+O assistente solicita a chave secreta em entrada oculta, abre a autorização
+oficial, valida o parâmetro `state`, troca o código temporário por tokens e grava
+`MELI_CLIENT_ID`, `MELI_CLIENT_SECRET`, `MELI_ACCESS_TOKEN` e
+`MELI_REFRESH_TOKEN` diretamente nos GitHub Actions Secrets. Nenhum desses
+valores deve ser colado em chat, issue, commit, documento ou captura de tela.
+
 ## Execução manual segura
 
 ```bash

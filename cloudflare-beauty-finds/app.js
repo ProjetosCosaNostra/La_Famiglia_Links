@@ -1,7 +1,15 @@
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
 
-const state = { rawProducts: [], products: [], filter: 'Todos', lang: 'pt' };
+const state = {
+  rawProducts: [],
+  products: [],
+  filter: 'Todos',
+  lang: 'pt',
+  campaignId: 'organic',
+  dailySkus: [],
+  trackedImpressions: new Set()
+};
 const preferred = [
   'o-boticario-floratta-my-blue-colonia-75ml',
   'bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de',
@@ -66,6 +74,10 @@ const category = product => product?.category || 'BlackGold Find';
 
 function score(product){
   let value = 0;
+  const dailyRank = state.dailySkus.indexOf(product.sku);
+  if(dailyRank >= 0) value += 5000 - dailyRank * 100;
+  if(product.daily_position > 0) value += 4500 - product.daily_position * 100;
+  if(product.daily_score) value += product.daily_score;
   const rank = preferred.indexOf(product.sku);
   if(rank >= 0) value += 1000 - rank * 20;
   if(product.featured) value += 12;
@@ -116,20 +128,49 @@ function bindImageFallbacks(root=document){
   }, { once:true }));
 }
 
-function bindProductButtons(root=document){
-  root.querySelectorAll('[data-sku]').forEach(button => button.addEventListener('click', () => openProduct(button.dataset.sku)));
+function bindProductButtons(root=document, source='storefront'){
+  root.querySelectorAll('[data-sku]').forEach(button => button.addEventListener('click', () => openProduct(button.dataset.sku,source)));
   bindImageFallbacks(root);
+}
+
+const eventId = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+function trackEvent(product,eventType,source){
+  if(!product?.sku) return;
+  fetch('./api/events',{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({
+      event_id:eventId(),
+      event_type:eventType,
+      sku:product.sku,
+      campaign_id:state.campaignId,
+      source
+    }),
+    keepalive:true
+  }).catch(() => {});
+}
+
+function trackImpressions(products){
+  products.forEach(product => {
+    const key = `${state.campaignId}:${product.sku}`;
+    if(state.trackedImpressions.has(key)) return;
+    state.trackedImpressions.add(key);
+    trackEvent(product,'impression','daily-selection');
+  });
 }
 
 function render(){
   const list = ranked(state.products.filter(product => matchesFilter(product,state.filter)));
-  $('#featured').innerHTML = ranked(state.products).slice(0,3).map(featuredCard).join('');
+  const selected = ranked(state.products).slice(0,3);
+  $('#featured').innerHTML = selected.map(featuredCard).join('');
   $('#productRow').innerHTML = list.slice(3,11).map(productCard).join('');
-  bindProductButtons($('#featured'));
-  bindProductButtons($('#productRow'));
+  bindProductButtons($('#featured'),'daily-selection');
+  bindProductButtons($('#productRow'),'showcase');
+  trackImpressions(selected);
 }
 
-function openProduct(sku){
+function openProduct(sku,source='storefront'){
   const product = state.rawProducts.find(item => item.sku === sku);
   if(!product) return;
   const modal = $('#productModal');
@@ -140,6 +181,7 @@ function openProduct(sku){
       <a class="btn gold" href="${esc(product.url || '#')}" target="_blank" rel="noopener noreferrer">${esc(translations[state.lang].buy)} <svg><use href="#i-arrow"/></svg></a>
     </div></div>`;
   bindImageFallbacks($('#modalBody'));
+  $('#modalBody .btn.gold')?.addEventListener('click',() => trackEvent(product,'click',source));
   if($('#catalogModal').open) $('#catalogModal').close();
   modal.showModal();
 }
@@ -149,7 +191,7 @@ function renderCatalog(query=''){
   const list = ranked(state.products).filter(product => !needle || blob(product).includes(needle));
   $('#catalogGrid').innerHTML = list.map(productCard).join('');
   $('#catalogResultCount').textContent = `${list.length} ${translations[state.lang].results}`;
-  bindProductButtons($('#catalogGrid'));
+  bindProductButtons($('#catalogGrid'),'catalog-search');
 }
 
 function openCatalog(){
@@ -218,12 +260,17 @@ function bindInterface(){
 }
 
 async function boot(){
-  const response = await fetch('./catalog.json',{cache:'no-store'});
+  const [response,daily] = await Promise.all([
+    fetch('./catalog.json',{cache:'no-store'}),
+    fetch('./daily-selection.json',{cache:'no-store'}).then(result => result.ok ? result.json() : null).catch(() => null)
+  ]);
   if(!response.ok) throw new Error(`Catalog ${response.status}`);
   const data = await response.json();
+  state.campaignId = daily?.campaign_id || 'organic';
+  state.dailySkus = (daily?.selected || []).sort((a,b) => Number(a.position)-Number(b.position)).map(item => item.sku).filter(Boolean);
   state.rawProducts = data.products || [];
   state.products = state.rawProducts.filter(isBeautyFind);
-  $('#count').textContent = data.total_active || state.rawProducts.length || 193;
+  $('#count').textContent = state.products.length;
   bindInterface();
   applyLanguage('pt');
   await loadEcosystem();

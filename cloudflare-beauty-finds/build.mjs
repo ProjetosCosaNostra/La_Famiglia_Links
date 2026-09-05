@@ -9,13 +9,20 @@ const out = path.join(here, 'dist');
 await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(path.join(out, 'assets'), { recursive: true });
 
-for (const file of ['index.html', 'styles.css', 'app.js', '_headers']) {
+for (const file of ['index.html', 'styles.css', 'app.js', 'admin.html', 'admin.js', 'mercadolivre-callback.html', '_headers']) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || [])
   .filter(p => p && p.active !== false);
+
+let dailySelection = { campaign_id: 'organic', selected: [] };
+try {
+  dailySelection = JSON.parse(await fs.readFile(path.join(root, 'data', 'daily_selection.json'), 'utf8'));
+} catch {}
+const dailyRows = Array.isArray(dailySelection.selected) ? dailySelection.selected : [];
+const dailyBySku = new Map(dailyRows.map(row => [String(row?.sku || ''), row]));
 
 const products = activeProducts
   .map(p => ({
@@ -27,17 +34,27 @@ const products = activeProducts
     price: p.price_text || p.preco_atual || p.price_current || p.price || '',
     description: p.descricao_curta || p.short_description || p.description || p.notes || '',
     image: p.image || p.image_original || '',
-    card_image: p.card_image || '',
-    has_cleaner_image: Boolean(p.card_image),
-    url: p.open_url || p.short_url || p.canonical_url || p.check_url || '#',
+    card_image: p.card_image || (Array.isArray(p.images) ? p.images[0] : '') || p.image || p.image_original || '',
+    has_cleaner_image: Boolean(p.card_image || (Array.isArray(p.images) && p.images[0])),
+    url: p.active_affiliate_url || p.open_url || p.short_url || p.canonical_url || p.check_url || '#',
+    affiliate_link_count: Array.isArray(p.affiliate_links) ? p.affiliate_links.length : (p.open_url ? 1 : 0),
+    affiliate_healthy_count: Number(p.affiliate_healthy_count || 0),
     featured: p.featured === true || p.quick_home === true,
-    id_busca: p.id_busca || ''
+    id_busca: p.id_busca || '',
+    daily_position: Number(dailyBySku.get(String(p.sku || ''))?.position || 0),
+    daily_score: Number(dailyBySku.get(String(p.sku || ''))?.score?.total || 0)
   }));
 
 await fs.writeFile(path.join(out, 'catalog.json'), JSON.stringify({
   updated_at: new Date().toISOString(),
   total_active: activeProducts.length,
   products
+}), 'utf8');
+
+await fs.writeFile(path.join(out, 'daily-selection.json'), JSON.stringify({
+  campaign_id: dailySelection.campaign_id || 'organic',
+  date: dailySelection.date || '',
+  selected: dailyRows.map(row => ({ sku: row.sku || '', position: Number(row.position || 0) }))
 }), 'utf8');
 
 try {

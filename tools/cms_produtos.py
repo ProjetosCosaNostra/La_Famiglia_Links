@@ -15,6 +15,11 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from urllib.parse import quote_plus, urlparse
 
+try:
+    from tools.affiliate_links import apply_affiliate_contract, normalize_affiliate_links
+except ModuleNotFoundError:  # execucao direta: python tools/cms_produtos.py
+    from affiliate_links import apply_affiliate_contract, normalize_affiliate_links
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PRODUTOS_JSON = REPO_ROOT / "produtos.json"
@@ -237,6 +242,18 @@ def _get_section(sections: Dict[str, str], label_regex: str) -> str:
         if rgx.search(title or ""):
             return content or ""
     return ""
+
+
+def _affiliate_link_sections(sections: Dict[str, str]) -> List[str]:
+    """Le os cinco campos afiliados sem confundir imagens ou relink."""
+    patterns = [
+        r"^(?:Novo\s+)?Link\s+afiliado\s+1\b|^(?:Novo\s+)?Link\s+Mercado\s+Livre\s+principal\b|^Link\s+Mercado\s+Livre\b",
+        r"^(?:Novo\s+)?Link\s+afiliado\s+2\b",
+        r"^(?:Novo\s+)?Link\s+afiliado\s+3\b",
+        r"^(?:Novo\s+)?Link\s+afiliado\s+4\b",
+        r"^(?:Novo\s+)?Link\s+afiliado\s+5\b",
+    ]
+    return [_get_section(sections, pattern) for pattern in patterns]
 
 
 def _split_badges_optional(raw: str) -> Optional[List[str]]:
@@ -763,7 +780,14 @@ def _resolve_final_url(u: str, timeout: float = 8.0) -> str:
         return ""
 
 
-def _normalize_ml_links(open_url: str, id_busca: str, preferred_check_url: str = "", preferred_canonical_url: str = "") -> Dict[str, str]:
+def _normalize_ml_links(
+    open_url: str,
+    id_busca: str,
+    preferred_check_url: str = "",
+    preferred_canonical_url: str = "",
+    *,
+    resolve_short: bool = True,
+) -> Dict[str, str]:
     ou = _clean_url(open_url or "")
     ib = _clean_ml_id(id_busca or "")
     preferred_check = _clean_url(preferred_check_url or "")
@@ -786,7 +810,7 @@ def _normalize_ml_links(open_url: str, id_busca: str, preferred_check_url: str =
             "resolved_url": resolved_url,
         }
 
-    if ou and _is_ml_short(ou) and _RESOLVE_SHORT:
+    if ou and _is_ml_short(ou) and _RESOLVE_SHORT and resolve_short:
         final = _resolve_final_url(ou, timeout=_SHORT_TIMEOUT)
         if final and final != ou and _is_ml_url(final):
             resolved_url = final
@@ -960,6 +984,7 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
             id_busca,
             preferred_check_url=check_url_raw,
             preferred_canonical_url=canonical_raw,
+            resolve_short=False,
         )
         open_url = norm.get("open_url") or ""
         check_url = norm.get("check_url") or ""
@@ -1002,6 +1027,7 @@ def _sanitize_existing_products(products: List[Dict[str, Any]]) -> List[Dict[str
         p["relink_open_url"] = _clean_url(str(p.get("relink_open_url") or ""))
         p["notes"] = _clean_optional_text(str(p.get("notes") or ""))
         p["alt_url"] = _clean_url(str(p.get("alt_url") or ""))
+        apply_affiliate_contract(p)
         if "quick_home" in p:
             parsed_quick_home = p.get("quick_home")
             if isinstance(parsed_quick_home, str):
@@ -1170,12 +1196,13 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         _get_section(sections, r"Aliases\s+de\s+Busca|Termos\s+de\s+Busca|Palavras\s+de\s+Busca")
     )
 
-    link_block = _get_section(sections, r"Link\s+Mercado\s+Livre|Link\s+ML|Link\b")
+    affiliate_blocks = _affiliate_link_sections(sections)
+    link_block = affiliate_blocks[0] or _get_section(sections, r"Link\s+Mercado\s+Livre|Link\s+ML|Link\b")
     new_link_block = _get_section(sections, r"Novo\s+Link\s+Mercado\s+Livre|Relink|Novo\s+Link\b")
     check_block = _get_section(sections, r"check_url|Check\s+URL")
     canonical_block = _get_section(sections, r"canonical_url|Canonical\s+URL")
     alt_block = _get_section(sections, r"Link\s+Alternativo|Alt\s+URL|Fallback")
-    img_block = _get_section(sections, r"Imagem\b")
+    img_block = _get_section(sections, r"Imagem\b|Arte\s+promocional|Foto\s+promocional")
     extra_images_block = _get_section(
         sections,
         r"Imagens\s+extras|Imagens\s+do\s+produto|Galeria\s+de\s+imagens|Galeria|Fotos\s+extras",
@@ -1233,6 +1260,18 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     link_ml = _clean_edit_optional_url(
         _first_url(new_link_block) or _first_url(link_block) or _first_url(_first_meaningful_line(link_block))
     ) or ""
+    affiliate_slots: List[str] = []
+    for index, block in enumerate(affiliate_blocks):
+        candidate = _clean_edit_optional_url(
+            _first_url(block) or _first_url(_first_meaningful_line(block))
+        ) or ""
+        if index == 0 and link_ml:
+            candidate = link_ml
+        affiliate_slots.append(candidate)
+    affiliate_urls: List[str] = []
+    for candidate in affiliate_slots:
+        if candidate and candidate.casefold() not in {url.casefold() for url in affiliate_urls}:
+            affiliate_urls.append(candidate)
     check_url_manual = _clean_edit_optional_url(_first_url(check_block) or _first_url(_first_meaningful_line(check_block))) or ""
     canonical_url_manual = _clean_edit_optional_url(
         _first_url(canonical_block) or _first_url(_first_meaningful_line(canonical_block))
@@ -1365,6 +1404,10 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     if link_ml and not _is_ml_url(link_ml):
         raise ValueError("O 'Link Mercado Livre' precisa ser do Mercado Livre (ex.: https://mercadolivre.com/sec/... ou https://meli.la/... ).")
 
+    for position, affiliate_url in enumerate(affiliate_urls, start=1):
+        if not _is_ml_url(affiliate_url):
+            raise ValueError(f"O link afiliado {position} precisa ser do Mercado Livre.")
+
     if check_url_manual and not _is_ml_url(check_url_manual):
         raise ValueError("O 'check_url manual' precisa ser do Mercado Livre.")
     if canonical_url_manual and not _is_ml_url(canonical_url_manual):
@@ -1467,6 +1510,12 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "badges": badges,
         "id_busca": (id_busca or None) if is_edit_mode else id_busca,
         "open_url": open_url,
+        "affiliate_links": (
+            normalize_affiliate_links({}, affiliate_urls, include_legacy=False)
+            if affiliate_urls
+            else None
+        ),
+        "active_affiliate_url": (affiliate_urls[0] if affiliate_urls else None),
         "check_url": check_url,
         "canonical_url": canonical_url,
         "image": image,
@@ -1498,6 +1547,7 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
         "quick_home_order": (int(quick_home_order) if quick_home_order is not None else None),
         "_source_issue_number": source_issue_number,
         "_target_issue_number": int(target_issue_number or 0),
+        "_affiliate_link_slots": affiliate_slots if any(affiliate_slots) else None,
         "_special_set_featured_only": False,
         "_is_edit_mode": is_edit_mode,
     }
@@ -1510,7 +1560,7 @@ def _build_product_from_issue(issue: Dict[str, Any]) -> Dict[str, Any]:
     return product
 
 def _urlish_fields(p: Dict[str, Any]) -> List[str]:
-    return [
+    values = [
         str(p.get("open_url") or ""),
         str(p.get("check_url") or ""),
         str(p.get("canonical_url") or ""),
@@ -1519,6 +1569,9 @@ def _urlish_fields(p: Dict[str, Any]) -> List[str]:
         str(p.get("alt_url") or ""),
         str(p.get("relink_open_url") or ""),
     ]
+    for entry in p.get("affiliate_links") or []:
+        values.append(str(entry.get("url") or "") if isinstance(entry, dict) else str(entry or ""))
+    return values
 
 
 def _find_existing_by_id_or_any_url(products: List[Dict[str, Any]], id_busca: str, incoming_urls: List[str]) -> Optional[int]:
@@ -1555,6 +1608,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     special_set_featured_only = bool(incoming.pop("_special_set_featured_only", False))
     reactivate_featured_target = bool(incoming.pop("_reactivate_featured_target", False))
     is_edit_mode = bool(incoming.pop("_is_edit_mode", False))
+    affiliate_link_slots = incoming.pop("_affiliate_link_slots", None)
     featured_note = _clean_optional_text(str(incoming.pop("featured_note", "") or ""))
 
     if special_set_featured_only:
@@ -1590,23 +1644,25 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         return data
 
     id_busca = _clean_ml_id(str(incoming.get("id_busca") or ""))
-    open_url_in = _clean_url(str(incoming.get("open_url") or ""))
-    preferred_check_url = _clean_url(str(incoming.get("check_url") or ""))
-    preferred_canonical_url = _clean_url(str(incoming.get("canonical_url") or ""))
-    norm = _normalize_ml_links(
-        open_url_in,
-        id_busca,
-        preferred_check_url=preferred_check_url,
-        preferred_canonical_url=preferred_canonical_url,
-    )
+    has_link_update = any(incoming.get(key) is not None for key in ("open_url", "check_url", "canonical_url"))
+    if has_link_update:
+        open_url_in = _clean_url(str(incoming.get("open_url") or ""))
+        preferred_check_url = _clean_url(str(incoming.get("check_url") or ""))
+        preferred_canonical_url = _clean_url(str(incoming.get("canonical_url") or ""))
+        norm = _normalize_ml_links(
+            open_url_in,
+            id_busca,
+            preferred_check_url=preferred_check_url,
+            preferred_canonical_url=preferred_canonical_url,
+        )
 
-    incoming["open_url"] = norm.get("open_url") or open_url_in
-    incoming["check_url"] = norm.get("check_url") or incoming["open_url"]
-    incoming["canonical_url"] = norm.get("canonical_url") or (_ml_search_url(id_busca) if id_busca else "")
-    if norm.get("short_url"):
-        incoming["short_url"] = norm.get("short_url")
-    if norm.get("resolved_url"):
-        incoming["resolved_url"] = norm.get("resolved_url")
+        incoming["open_url"] = norm.get("open_url") or open_url_in
+        incoming["check_url"] = norm.get("check_url") or incoming["open_url"]
+        incoming["canonical_url"] = norm.get("canonical_url") or (_ml_search_url(id_busca) if id_busca else "")
+        if norm.get("short_url"):
+            incoming["short_url"] = norm.get("short_url")
+        if norm.get("resolved_url"):
+            incoming["resolved_url"] = norm.get("resolved_url")
 
     if incoming.get("image"):
         incoming["image"] = _normalize_asset_path(str(incoming.get("image") or ""))
@@ -1638,6 +1694,22 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         existing = products[idx] if isinstance(products[idx], dict) else {}
         products[idx] = existing
 
+    if isinstance(affiliate_link_slots, list) and any(affiliate_link_slots):
+        current_entries = normalize_affiliate_links(existing)
+        merged_urls = [str(entry.get("url") or "") for entry in current_entries[:5]]
+        merged_urls.extend([""] * (5 - len(merged_urls)))
+        for position, value in enumerate(affiliate_link_slots[:5]):
+            candidate = _clean_url(str(value or ""))
+            if candidate:
+                merged_urls[position] = candidate
+        merged_entries = normalize_affiliate_links({}, merged_urls, include_legacy=False)
+        incoming["affiliate_links"] = merged_entries
+        if not existing:
+            incoming["active_affiliate_url"] = merged_entries[0]["url"] if merged_entries else None
+        elif not affiliate_link_slots[0]:
+            incoming["active_affiliate_url"] = None
+            incoming["open_url"] = None
+
     preserve_keys = {"last_checked", "last_ok"}
     for k in preserve_keys:
         if k in existing and (not incoming.get(k)):
@@ -1647,6 +1719,8 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
         "sku",
         "title",
         "open_url",
+        "affiliate_links",
+        "active_affiliate_url",
         "check_url",
         "canonical_url",
         "image",
@@ -1717,6 +1791,7 @@ def _upsert_product(data: Dict[str, Any], incoming: Dict[str, Any]) -> Dict[str,
     existing["issue_number"] = _clean_issue_number(existing.get("issue_number") or incoming.get("issue_number") or incoming.get("_target_issue_number") or incoming.get("_source_issue_number"))
     existing["issue_url"] = _clean_url(str(existing.get("issue_url") or incoming.get("issue_url") or ""))
     existing["issue_title"] = _clean_optional_text(str(existing.get("issue_title") or incoming.get("issue_title") or ""))
+    apply_affiliate_contract(existing)
 
     categoria_principal_existing = _clean_category_name(str(existing.get("categoria_principal") or ""))
     if categoria_principal_existing:

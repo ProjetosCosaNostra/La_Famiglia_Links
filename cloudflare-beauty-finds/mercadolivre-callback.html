@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Autorização Mercado Livre — BlackGold</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#090806;color:#f7efdf;font:16px/1.5 system-ui,sans-serif;padding:22px}.card{width:min(620px,100%);padding:34px;border:1px solid #6e5121;border-radius:20px;background:linear-gradient(145deg,#1b150d,#0d0b08);box-shadow:0 25px 80px #000a;text-align:center}img{width:84px;height:84px;object-fit:contain}h1{font:700 31px Georgia,serif;color:#efc565;margin:12px 0}p{color:#cfc1ab}.code{word-break:break-all;background:#080705;border:1px solid #4d3b20;border-radius:10px;padding:13px;text-align:left;color:#fff}button{border:0;border-radius:10px;padding:12px 18px;background:linear-gradient(#efc866,#9b6918);font-weight:800;color:#211303;cursor:pointer}.error{color:#ffb4a8}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img src="./assets/logo-cn-round.png" alt="BlackGold">
+    <h1 id="title">Recebendo autorização…</h1>
+    <p id="message">Aguarde a confirmação do Mercado Livre.</p>
+    <p id="code" class="code" hidden></p>
+    <button id="copy" type="button" hidden>Copiar código de autorização</button>
+  </main>
+  <script>
+    const params=new URLSearchParams(location.search);const code=params.get('code');const error=params.get('error');
+    const title=document.querySelector('#title'),message=document.querySelector('#message'),box=document.querySelector('#code'),copy=document.querySelector('#copy');
+    if(code){title.textContent='Autorização recebida';message.textContent='O Mercado Livre retornou o código temporário. Não envie este código em mensagens ou capturas públicas.';box.textContent=code;box.hidden=false;copy.hidden=false;copy.addEventListener('click',async()=>{await navigator.clipboard.writeText(code);copy.textContent='Código copiado';});}
+    else{title.textContent='Autorização não concluída';message.textContent=error?'O Mercado Livre recusou ou cancelou a autorização.':'Nenhum código de autorização foi recebido.';message.className='error';}
+  </script>
+</body>
+</html>
