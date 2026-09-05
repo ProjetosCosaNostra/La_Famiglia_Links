@@ -1,9 +1,43 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-05T10:31:45Z
-Itens pendentes: 0
-SKUs únicos: 0
-Prioridade alta: 0
+Atualizado em: 2026-09-05T15:07:58Z
+Itens pendentes: 1
+SKUs únicos: 1
+Prioridade alta: 1
 
-Nenhum item pendente de revisão/manutenção no momento.
+RESUMO POR ESTADO
+----------------------------------------
+- review_only_storefront: 1
+
+RESUMO POR AÇÃO
+----------------------------------------
+- trocar_link: 1
+
+TOP MOTIVOS
+----------------------------------------
+- storefront_social_lists_invalid: 1
+
+BLOCOS EXECUTIVOS
+----------------------------------------
+
+CORRIGIR AGORA
+----------------------------------------
+[ALTA] review_only_storefront
+Quando: 2026-09-05T15:01:49Z
+Issue: #116
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/116
+SKU: smart-tv-philco-roku-32-premium
+Título: 📺 Smart TV Philco Roku 32” Premium
+ID ML: 5J5PKG-AHDQ
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Badges: Achados do Dia, Smart TV, Philco, Roku TV, Dolby Audio, Streaming, 32 Polegadas, TV
+open_url: https://meli.la/19Lo34Y
+checked_url: https://meli.la/19Lo34Y
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHDQ&tid=9ad0d3ed-fbc3-47c1-8b35-05a838b01d66

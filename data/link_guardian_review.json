@@ -1,12 +1,64 @@
 {
-  "updated_at": "2026-09-05T10:31:45Z",
-  "total_items": 0,
+  "updated_at": "2026-09-05T15:07:58Z",
+  "total_items": 1,
   "summary": {
-    "unique_skus": 0,
-    "by_state": {},
-    "by_reason": {},
-    "by_action": {},
-    "high_priority": 0
+    "unique_skus": 1,
+    "by_state": {
+      "review_only_storefront": 1
+    },
+    "by_reason": {
+      "storefront_social_lists_invalid": 1
+    },
+    "by_action": {
+      "trocar_link": 1
+    },
+    "high_priority": 1
   },
-  "items": []
+  "items": [
+    {
+      "happened_at": "2026-09-05T15:01:49Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 116,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/116",
+      "issue_title": "[CMS] Produto: 📺 Smart TV Philco Roku 32” Premium",
+      "sku": "smart-tv-philco-roku-32-premium",
+      "title": "📺 Smart TV Philco Roku 32” Premium",
+      "id_busca": "5J5PKG-AHDQ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/19Lo34Y",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/19Lo34Y",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-AHDQ&tid=9ad0d3ed-fbc3-47c1-8b35-05a838b01d66",
+      "short_url": "https://meli.la/19Lo34Y",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BDp7o1E2ekfKeLYUgR8s13XJCb6wWI0VCtyYSgOB2P17e6oRvcUGramQakAxZkL4bV3QO9QPp708btwuOIZhKOtMu5RCTTh2iW10QC6ML3PEPxsnRam47JBr%2BuRQ%2FhrtwXk%2FpCyPUUlUqGmt%2FfSc61r4D2o%2FDaWtobUjdqf9CGfj%2BtHviMIYEYnUca5MEWn9%2BNGsKBE%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Smart TV",
+        "Philco",
+        "Roku TV",
+        "Dolby Audio",
+        "Streaming",
+        "32 Polegadas",
+        "TV"
+      ]
+    }
+  ]
 }
