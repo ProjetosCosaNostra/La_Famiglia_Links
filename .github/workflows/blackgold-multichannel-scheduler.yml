@@ -59,10 +59,32 @@ jobs:
       - name: Ler desempenho real da vitrine
         continue-on-error: true
         working-directory: catalog
+        shell: bash
         env:
-          CAMPAIGN_STATS_URL: https://blackgold-beauty-finds-br.pages.dev/api/stats
           CAMPAIGN_STATS_TOKEN: ${{ secrets.STATS_EXPORT_TOKEN }}
-        run: python ../engine/tools/fetch_campaign_stats.py
+        run: |
+          set -euo pipefail
+          if [ -z "${CAMPAIGN_STATS_TOKEN:-}" ]; then
+            echo "STATS_EXPORT_TOKEN ainda não configurado."
+            exit 1
+          fi
+          http=$(curl -sS -o data/campaign_stats.json -w '%{http_code}' --max-time 45 \
+            -H "Authorization: Bearer ${CAMPAIGN_STATS_TOKEN}" \
+            -H 'Accept: application/json' \
+            -H 'User-Agent: BlackGoldMultichannel/1.0' \
+            https://blackgold-beauty-finds-br.pages.dev/api/stats)
+          if [ "$http" != "200" ]; then
+            rm -f data/campaign_stats.json
+            echo "Falha ao ler /api/stats: HTTP $http"
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('data/campaign_stats.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          print(f"Stats carregados: produtos={len(data.get('rows', []))} canais={len(data.get('channels', []))} combinações={len(data.get('product_channels', []))}")
+          PY
 
       - name: Escolher produtos usando aprendizado
         working-directory: catalog
