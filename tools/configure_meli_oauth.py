@@ -74,6 +74,27 @@ def clear_clipboard() -> None:
         pass
 
 
+def safe_http_error_detail(exc: urllib.error.HTTPError) -> str:
+    """Extrai somente campos públicos de erro OAuth, nunca tokens ou credenciais."""
+    try:
+        raw = exc.read().decode("utf-8", errors="replace")
+        payload = json.loads(raw)
+    except (UnicodeDecodeError, json.JSONDecodeError, AttributeError):
+        return ""
+    if not isinstance(payload, dict):
+        return ""
+
+    parts: list[str] = []
+    for key in ("error", "error_description", "message", "status"):
+        value = payload.get(key)
+        if value is None or isinstance(value, (dict, list)):
+            continue
+        text = str(value).replace("\r", " ").replace("\n", " ").strip()
+        if text:
+            parts.append(f"{key}={text[:300]}")
+    return "; ".join(parts)
+
+
 def build_authorization_url(client_id: str, redirect_uri: str, state: str) -> str:
     query = urllib.parse.urlencode(
         {
@@ -113,10 +134,6 @@ def parse_callback_url(callback_url: str, expected_state: str, expected_redirect
     if not code:
         raise OAuthSetupError("A URL informada não contém o código de autorização.")
 
-    # O Mercado Livre documenta o retorno do state, mas observamos em produção um
-    # fluxo no qual ele devolve apenas o code. Não aceitamos state incorreto. A
-    # ausência é tolerada SOMENTE neste bootstrap local/manual, quando o operador
-    # acabou de iniciar a tentativa e fornece uma URL do callback oficial exato.
     if returned_state:
         if not secrets.compare_digest(returned_state, expected_state):
             raise OAuthSetupError(
@@ -156,7 +173,9 @@ def exchange_code(
         with urllib.request.urlopen(request, timeout=timeout) as response:
             payload = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
-        raise OAuthSetupError(f"A troca do código falhou no Mercado Livre (HTTP {exc.code}).") from exc
+        detail = safe_http_error_detail(exc)
+        suffix = f": {detail}" if detail else "."
+        raise OAuthSetupError(f"A troca do código falhou no Mercado Livre (HTTP {exc.code}){suffix}") from exc
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
         raise OAuthSetupError("Não foi possível concluir a troca segura do código.") from exc
 
