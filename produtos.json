@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T02:28:04Z",
+  "updated_at": "2026-09-06T02:35:40Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7419,7 +7419,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/6b90b8ef-ad80-4f69-a221-a4c8c18693eb",
-      "webp_optimized_at": "2026-06-14T01:53:37Z"
+      "webp_optimized_at": "2026-06-14T01:53:37Z",
+      "card_image": "assets/produtos-card/fixador-de-maquiagem-ruby-rose-150ml-hb312.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_843130-MLA113853569499_062026-F.jpg",
+      "card_image_item_id": "MLB37934515",
+      "card_image_candidate_title": "Fixador De Maquiagem Spray Ruby Rose 150ml Hb312 Matte Longa Duração Resistente Premium",
+      "card_image_match_score": 0.8572,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:35:21Z"
     },
     {
       "sku": "gloss-labial-beautyloo-sabor-tutti-frutti-38ml",
@@ -7654,7 +7662,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/84b484d5-7767-4b69-941a-0474bc2538a3",
-      "webp_optimized_at": "2026-06-14T01:53:39Z"
+      "webp_optimized_at": "2026-06-14T01:53:39Z",
+      "card_image": "assets/produtos-card/ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_802411-MLA96156928922_102025-F.jpg",
+      "card_image_item_id": "MLB38771863",
+      "card_image_candidate_title": "Caneta Delineadora Gatinho Mood Ruby Rose Preto Matte 2x1",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:35:33Z"
     },
     {
       "sku": "sombra-disney-wish-bruna-tavares-silver-5ml",
@@ -7768,7 +7784,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/fff8eb82-1d17-4234-a97a-a06926344914",
-      "webp_optimized_at": "2026-06-14T01:53:40Z"
+      "webp_optimized_at": "2026-06-14T01:53:40Z",
+      "card_image": "assets/produtos-card/kit-unha-postica-francesinha-pe-nude-quadrada.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_743072-MLA92382115374_092025-F.jpg",
+      "card_image_item_id": "MLB28256126",
+      "card_image_candidate_title": "Kit Unha Postiça Francesinha para o Pé, Cor Nude, Quadrada",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:35:37Z"
     },
     {
       "sku": "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz",
@@ -7833,7 +7857,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/2438675f-71b3-4bb3-b4fd-3fc32b2aac0c",
-      "webp_optimized_at": "2026-06-14T01:53:40Z"
+      "webp_optimized_at": "2026-06-14T01:53:40Z",
+      "card_image": "assets/produtos-card/loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_605503-MLA114497234356_082026-F.jpg",
+      "card_image_item_id": "MLB26080271",
+      "card_image_candidate_title": "L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave In Anti Frizz Protetor Térmico Tratamento Reconstrutor Para Todos Os Tipos De Cabelo",
+      "card_image_match_score": 0.9132,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:35:40Z"
     },
     {
       "sku": "xapadinha-mascara-disciplinante-450g-lola-from-rio",
