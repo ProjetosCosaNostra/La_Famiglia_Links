@@ -48,127 +48,6 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
-      - name: Ativar resolução conservadora por IDs de anúncios embutidos
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-
-          path = Path('tools/sync_product_card_images.py')
-          text = path.read_text(encoding='utf-8')
-
-          if '\ndef item_ids_from_html(' not in text:
-              anchor = '\n\ndef event_sku(path: str) -> str:\n'
-              helper = "\n".join([
-                  '',
-                  '',
-                  'def item_ids_from_html(value: str, limit: int = 24) -> list[str]:',
-                  '    """Extrai IDs de anúncios expostos no HTML público sem confiar neles como match."""',
-                  '    found: list[str] = []',
-                  '    seen: set[str] = set()',
-                  '    patterns = (',
-                  '        r"(?i)[\\\"\']item_id[\\\"\']\\s*:\\s*[\\\"\'](MLB\\d{6,})[\\\"\']",',
-                  '        r"(?i)[\\\"\']itemId[\\\"\']\\s*:\\s*[\\\"\'](MLB\\d{6,})[\\\"\']",',
-                  '        r"(?i)[\\\"\']id[\\\"\']\\s*:\\s*[\\\"\'](MLB\\d{6,})[\\\"\']",',
-                  '        r"(?i)\\bMLB[-_](\\d{6,})\\b",',
-                  '    )',
-                  '    for pattern in patterns:',
-                  '        for match in re.finditer(pattern, value or ""):',
-                  '            raw = match.group(1).upper()',
-                  '            item_id = raw if raw.startswith("MLB") else f"MLB{raw}"',
-                  '            if item_id in seen:',
-                  '                continue',
-                  '            seen.add(item_id)',
-                  '            found.append(item_id)',
-                  '            if len(found) >= limit:',
-                  '                return found',
-                  '    return found',
-              ])
-              if anchor not in text:
-                  raise SystemExit('Âncora de item_ids_from_html não encontrada.')
-              text = text.replace(anchor, helper + anchor, 1)
-
-          old = "\n".join([
-              '        product_ids = catalog_product_ids_from_html(" ".join(texts), limit=limit)',
-              '        candidates: list[dict[str, Any]] = []',
-              '        for product_id in product_ids:',
-              '            try:',
-              '                payload = self.catalog_product(product_id)',
-              '            except AuthenticationRequired as exc:',
-              '                if "(404)" in str(exc):',
-              '                    continue',
-              '                raise',
-              '            if payload and picture_url(payload):',
-              '                candidates.append(payload)',
-              '        self._affiliate_cache[value] = candidates',
-              '        return candidates',
-          ])
-
-          new = "\n".join([
-              '        page_text = " ".join(texts)',
-              '        product_ids = catalog_product_ids_from_html(page_text, limit=limit)',
-              '        item_ids = item_ids_from_html(page_text, limit=min(limit, 24))',
-              '        candidates: list[dict[str, Any]] = []',
-              '        seen_candidate_ids: set[str] = set()',
-              '        for product_id in product_ids:',
-              '            try:',
-              '                payload = self.catalog_product(product_id)',
-              '            except AuthenticationRequired as exc:',
-              '                if "(404)" in str(exc):',
-              '                    continue',
-              '                raise',
-              '            candidate_id = str((payload or {}).get("id") or (payload or {}).get("catalog_product_id") or "").strip()',
-              '            if payload and picture_url(payload) and candidate_id not in seen_candidate_ids:',
-              '                seen_candidate_ids.add(candidate_id)',
-              '                candidates.append(payload)',
-              '        for item_id in item_ids:',
-              '            try:',
-              '                payload = self.item(item_id)',
-              '            except AuthenticationRequired as exc:',
-              '                if "(403)" in str(exc):',
-              '                    continue',
-              '                raise',
-              '            candidate_id = str((payload or {}).get("id") or "").strip()',
-              '            if payload and picture_url(payload) and candidate_id and candidate_id not in seen_candidate_ids:',
-              '                seen_candidate_ids.add(candidate_id)',
-              '                candidates.append(payload)',
-              '        self._affiliate_cache[value] = candidates',
-              '        return candidates',
-          ])
-
-          if old in text:
-              text = text.replace(old, new, 1)
-          elif 'item_ids = item_ids_from_html(page_text' not in text:
-              raise SystemExit('Bloco de candidatos esperado não encontrado.')
-          path.write_text(text, encoding='utf-8')
-
-          tests = Path('tests/test_sync_product_card_images.py')
-          test_text = tests.read_text(encoding='utf-8')
-          if '    item_ids_from_html,\n' not in test_text:
-              needle = '    identifiers_from_text,\n'
-              if needle not in test_text:
-                  raise SystemExit('Import de teste esperado não encontrado.')
-              test_text = test_text.replace(needle, needle + '    item_ids_from_html,\n', 1)
-          if 'def test_extracts_item_ids_from_affiliate_html' not in test_text:
-              anchor = '    def test_match_score_rejects_wrong_variant(self) -> None:\n'
-              test_case = "\n".join([
-                  '    def test_extracts_item_ids_from_affiliate_html(self) -> None:',
-                  '        html = (',
-                  '            \'{"metadata":{"id":"MLB4962795750","product_id":"MLB27767186"}}\'',
-                  '            \'{"metadata":{"id":"MLB4957105984","product_id":"MLB27485619"}}\'',
-                  '        )',
-                  '        self.assertEqual(item_ids_from_html(html), ["MLB4962795750", "MLB4957105984"])',
-                  '',
-                  '',
-              ])
-              if anchor not in test_text:
-                  raise SystemExit('Âncora do novo teste não encontrada.')
-              test_text = test_text.replace(anchor, test_case + anchor, 1)
-          tests.write_text(test_text, encoding='utf-8')
-          print('Resolver por IDs de anúncios preparado com validação conservadora de título/variante.')
-          PY
-
       - name: Instalar dependências de imagem
         run: pip install -r scripts/requirements-webp.txt
 
@@ -263,20 +142,20 @@ jobs:
           path: card-images-report.json
           retention-days: 14
 
-      - name: Publicar resolver e imagens aprovadas no catálogo
+      - name: Publicar imagens aprovadas no catálogo
         run: |
           set -euo pipefail
-          git add produtos.json tools/sync_product_card_images.py tests/test_sync_product_card_images.py
+          git add produtos.json
           if [ -d assets/produtos-card ]; then
             git add assets/produtos-card
           fi
           if git diff --cached --quiet; then
-            echo "Nenhuma foto nova segura nem alteração de resolver nesta rodada."
+            echo "Nenhuma foto nova segura nesta rodada."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "catalog: resolver IDs de anúncios e atualizar fotos limpas"
+          git commit -m "catalog: atualizar fotos limpas dos cards"
 
           ATTEMPT=1
           while [ "${ATTEMPT}" -le 3 ]; do
@@ -287,5 +166,5 @@ jobs:
             fi
             ATTEMPT=$((ATTEMPT + 1))
           done
-          echo "Não foi possível publicar as alterações após 3 tentativas."
+          echo "Não foi possível publicar as fotos após 3 tentativas."
           exit 1
