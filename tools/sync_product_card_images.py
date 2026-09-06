@@ -32,6 +32,10 @@ from PIL import Image, ImageOps
 
 API_BASE = "https://api.mercadolibre.com"
 USER_AGENT = "BlackGoldBeautyImageBot/1.0 (+https://github.com/ProjetosCosaNostra/La_Famiglia_Links)"
+BROWSER_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152 Safari/537.36"
+)
 URL_FIELDS = (
     "open_url",
     "short_url",
@@ -216,6 +220,28 @@ def identifiers_from_text(value: str) -> list[tuple[str, str]]:
     return found
 
 
+def catalog_product_ids_from_html(value: str, limit: int = 60) -> list[str]:
+    """Extrai IDs de catálogo expostos pelo HTML público da vitrine afiliada."""
+    found: list[str] = []
+    seen: set[str] = set()
+    patterns = (
+        r"(?i)[\"']product_id[\"']\s*:\s*[\"'](MLB\d{6,})[\"']",
+        r"(?i)[\"']pid[\"']\s*:\s*[\"']MLBP(\d{6,})[\"']",
+        r"(?i)\\u002Fp\\u002F(MLB\d{6,})",
+    )
+    for pattern in patterns:
+        for match in re.finditer(pattern, value or ""):
+            raw = match.group(1).upper()
+            product_id = raw if raw.startswith("MLB") else f"MLB{raw}"
+            if product_id in seen:
+                continue
+            seen.add(product_id)
+            found.append(product_id)
+            if len(found) >= limit:
+                return found
+    return found
+
+
 def event_sku(path: str) -> str:
     if not path:
         return ""
@@ -240,6 +266,16 @@ class MercadoLivreClient:
         self.session.headers.update({"Accept": "application/json", "User-Agent": USER_AGENT})
         if token:
             self.session.headers["Authorization"] = f"Bearer {token}"
+        self.public_session = requests.Session()
+        self.public_session.headers.update(
+            {
+                "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
+                "Accept-Language": "pt-BR,pt;q=0.9",
+                "User-Agent": BROWSER_USER_AGENT,
+            }
+        )
+        self._catalog_cache: dict[str, dict[str, Any] | None] = {}
+        self._affiliate_cache: dict[str, list[dict[str, Any]]] = {}
 
     def get_json(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any] | None:
         response = self.session.get(f"{API_BASE}{path}", params=params, timeout=self.timeout)
@@ -261,13 +297,7 @@ class MercadoLivreClient:
         if not value.startswith(("http://", "https://")):
             return value
         try:
-            response = self.session.get(
-                value,
-                timeout=self.timeout,
-                allow_redirects=True,
-                stream=True,
-                headers={"Accept": "text/html,application/xhtml+xml,*/*;q=0.8", "User-Agent": USER_AGENT},
-            )
+            response = self.public_session.get(value, timeout=self.timeout, allow_redirects=True, stream=True)
             candidates = [str(item.headers.get("location") or "") for item in response.history]
             candidates.append(str(response.url or ""))
             return " ".join(candidate for candidate in candidates if candidate)
@@ -278,17 +308,53 @@ class MercadoLivreClient:
         return self.get_json(f"/items/{item_id}")
 
     def catalog_product(self, product_id: str) -> dict[str, Any] | None:
-        return self.get_json(f"/products/{product_id}")
+        product_id = str(product_id or "").strip().upper()
+        if not product_id:
+            return None
+        if product_id not in self._catalog_cache:
+            self._catalog_cache[product_id] = self.get_json(f"/products/{product_id}")
+        return self._catalog_cache[product_id]
+
+    def affiliate_catalog_candidates(self, value: str, limit: int = 60) -> list[dict[str, Any]]:
+        """Lê o HTML público do link afiliado e resolve os product_id via API de catálogo."""
+        value = str(value or "").strip()
+        if not value.startswith(("http://", "https://")):
+            return []
+        if value in self._affiliate_cache:
+            return self._affiliate_cache[value]
+
+        try:
+            response = self.public_session.get(value, timeout=self.timeout, allow_redirects=True)
+        except requests.RequestException:
+            self._affiliate_cache[value] = []
+            return []
+        if response.status_code >= 400:
+            self._affiliate_cache[value] = []
+            return []
+
+        texts = [response.text, str(response.url or "")]
+        texts.extend(str(item.headers.get("location") or "") for item in response.history)
+        product_ids = catalog_product_ids_from_html(" ".join(texts), limit=limit)
+        candidates: list[dict[str, Any]] = []
+        for product_id in product_ids:
+            try:
+                payload = self.catalog_product(product_id)
+            except AuthenticationRequired as exc:
+                if "(404)" in str(exc):
+                    continue
+                raise
+            if payload and picture_url(payload):
+                candidates.append(payload)
+        self._affiliate_cache[value] = candidates
+        return candidates
 
     def search(self, title: str, limit: int = 20) -> list[dict[str, Any]]:
         try:
             payload = self.get_json("/sites/MLB/search", {"q": title, "limit": limit}) or {}
         except AuthenticationRequired as exc:
-            # O diagnóstico de 2026-09-05 confirmou que o token e os endpoints
-            # autenticados estão válidos, mas a busca global /sites/MLB/search
-            # retorna 403 para esta aplicação. Isso não deve abortar toda a
-            # sincronização: produtos sem identificador direto ficam unresolved
-            # e os demais continuam sendo processados por item/catalog ID.
+            # O diagnóstico confirmou que token e aplicação estão válidos,
+            # enquanto a busca global /sites/MLB/search retorna 403. Isso não
+            # deve abortar toda a fila; outros resolvers continuam trabalhando.
             if "(403)" in str(exc):
                 return []
             raise
@@ -352,6 +418,10 @@ def picture_url(payload: dict[str, Any]) -> str:
     return ""
 
 
+def candidate_title(payload: dict[str, Any]) -> str:
+    return str(payload.get("title") or payload.get("name") or "").strip()
+
+
 def match_from_item(payload: dict[str, Any], method: str, score: float = 1.0) -> Match | None:
     image_url = picture_url(payload)
     item_id = str(payload.get("id") or payload.get("catalog_product_id") or "").strip()
@@ -359,7 +429,7 @@ def match_from_item(payload: dict[str, Any], method: str, score: float = 1.0) ->
         return None
     return Match(
         item_id=item_id,
-        title=str(payload.get("title") or "").strip(),
+        title=candidate_title(payload),
         image_url=image_url,
         permalink=str(payload.get("permalink") or "").strip(),
         score=score,
@@ -393,7 +463,12 @@ def direct_match(product: dict[str, Any], client: MercadoLivreClient) -> Match |
     for kind, identifier in identifiers:
         payload: dict[str, Any] | None = None
         if kind in {"item", "unknown"}:
-            payload = client.item(identifier)
+            try:
+                payload = client.item(identifier)
+            except AuthenticationRequired as exc:
+                if "(403)" not in str(exc):
+                    raise
+                payload = None
             match = match_from_item(payload or {}, "direct-item") if payload else None
             if match:
                 return match
@@ -405,14 +480,17 @@ def direct_match(product: dict[str, Any], client: MercadoLivreClient) -> Match |
     return None
 
 
-def search_match(product: dict[str, Any], client: MercadoLivreClient, min_score: float) -> Match | None:
-    source_title = str(product.get("title") or "").strip()
-    if not source_title:
-        return None
-
+def _rank_safe_candidates(
+    source_title: str, candidates: Iterable[dict[str, Any]], min_score: float
+) -> tuple[float, dict[str, Any]] | None:
     ranked: list[tuple[float, dict[str, Any]]] = []
-    for candidate in client.search(source_title):
-        title = str(candidate.get("title") or "")
+    seen: set[str] = set()
+    for candidate in candidates:
+        title = candidate_title(candidate)
+        candidate_id = str(candidate.get("id") or candidate.get("catalog_product_id") or "").strip()
+        if not title or not candidate_id or candidate_id in seen:
+            continue
+        seen.add(candidate_id)
         if BLOCKED_RE.search(title) and not BLOCKED_RE.search(source_title):
             continue
         ranked.append((title_match_score(source_title, title), candidate))
@@ -423,15 +501,54 @@ def search_match(product: dict[str, Any], client: MercadoLivreClient, min_score:
     top_score, top = ranked[0]
     if len(ranked) > 1:
         second_score, second = ranked[1]
-        same_title = normalize_text(top.get("title")) == normalize_text(second.get("title"))
+        same_title = normalize_text(candidate_title(top)) == normalize_text(candidate_title(second))
         if top_score < 0.92 and top_score - second_score < 0.04 and not same_title:
             return None
+    return top_score, top
+
+
+def affiliate_page_match(product: dict[str, Any], client: MercadoLivreClient, min_score: float) -> Match | None:
+    """Resolve links afiliados que caem em /social/ usando os product_id embutidos no HTML."""
+    source_title = str(product.get("title") or "").strip()
+    if not source_title:
+        return None
+
+    candidates: list[dict[str, Any]] = []
+    seen_urls: set[str] = set()
+    for field in URL_FIELDS:
+        value = str(product.get(field) or "").strip()
+        if not value or value in seen_urls:
+            continue
+        seen_urls.add(value)
+        if "meli.la" not in value and "/social/" not in value:
+            continue
+        candidates.extend(client.affiliate_catalog_candidates(value))
+        ranked = _rank_safe_candidates(source_title, candidates, min_score)
+        if ranked and ranked[0] >= 0.92:
+            break
+
+    ranked = _rank_safe_candidates(source_title, candidates, min_score)
+    if not ranked:
+        return None
+    top_score, top = ranked
+    return match_from_item(top, "affiliate-page-catalog", top_score)
+
+
+def search_match(product: dict[str, Any], client: MercadoLivreClient, min_score: float) -> Match | None:
+    source_title = str(product.get("title") or "").strip()
+    if not source_title:
+        return None
+
+    ranked = _rank_safe_candidates(source_title, client.search(source_title), min_score)
+    if not ranked:
+        return None
+    top_score, top = ranked
 
     item_id = str(top.get("id") or "").strip()
     if not item_id:
         return None
     detail = client.item(item_id) or top
-    if title_match_score(source_title, str(detail.get("title") or top.get("title") or "")) < min_score:
+    if title_match_score(source_title, candidate_title(detail) or candidate_title(top)) < min_score:
         return None
     return match_from_item(detail, "title-search", top_score)
 
@@ -447,14 +564,18 @@ def resolve_match(product: dict[str, Any], client: MercadoLivreClient, min_score
             score=1.0,
             method="manual-override",
         )
-    return direct_match(product, client) or search_match(product, client, min_score)
+    return (
+        direct_match(product, client)
+        or affiliate_page_match(product, client, min_score)
+        or search_match(product, client, min_score)
+    )
 
 
 def download_image(session: requests.Session, url: str, timeout: int) -> bytes:
     response = session.get(
         url,
         timeout=timeout,
-        headers={"Accept": "image/avif,image/webp,image/*,*/*;q=0.8", "User-Agent": USER_AGENT},
+        headers={"Accept": "image/avif,image/webp,image/*,*/*;q=0.8", "User-Agent": BROWSER_USER_AGENT},
     )
     if response.status_code >= 400:
         raise ApiError(f"A foto do produto respondeu HTTP {response.status_code}.")
@@ -580,7 +701,7 @@ def sync_catalog(args: argparse.Namespace) -> tuple[dict[str, Any], dict[str, An
                 report["results"].append({"sku": sku, "status": "unresolved", "reason": "no-safe-match"})
                 continue
 
-            raw = download_image(client.session, match.image_url, args.timeout)
+            raw = download_image(client.public_session, match.image_url, args.timeout)
             encoded, source_size = square_webp(raw, args.size, args.quality, args.background)
             relative_path = f"{args.assets_dir.rstrip('/')}/{sku}.webp"
             destination = repo_root / relative_path
