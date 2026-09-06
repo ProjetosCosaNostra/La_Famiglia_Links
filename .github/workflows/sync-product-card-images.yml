@@ -60,77 +60,82 @@ jobs:
 
           if '\ndef item_ids_from_html(' not in text:
               anchor = '\n\ndef event_sku(path: str) -> str:\n'
-              helper = '''
-
-          def item_ids_from_html(value: str, limit: int = 24) -> list[str]:
-              """Extrai IDs de anúncios expostos no HTML público sem confiar neles como match."""
-              found: list[str] = []
-              seen: set[str] = set()
-              patterns = (
-                  r"(?i)[\"']item_id[\"']\\s*:\\s*[\"'](MLB\\d{6,})[\"']",
-                  r"(?i)[\"']itemId[\"']\\s*:\\s*[\"'](MLB\\d{6,})[\"']",
-                  r"(?i)[\"']id[\"']\\s*:\\s*[\"'](MLB\\d{6,})[\"']",
-                  r"(?i)\\bMLB[-_](\\d{6,})\\b",
-              )
-              for pattern in patterns:
-                  for match in re.finditer(pattern, value or ""):
-                      raw = match.group(1).upper()
-                      item_id = raw if raw.startswith("MLB") else f"MLB{raw}"
-                      if item_id in seen:
-                          continue
-                      seen.add(item_id)
-                      found.append(item_id)
-                      if len(found) >= limit:
-                          return found
-              return found
-          '''
+              helper = "\n".join([
+                  '',
+                  '',
+                  'def item_ids_from_html(value: str, limit: int = 24) -> list[str]:',
+                  '    """Extrai IDs de anúncios expostos no HTML público sem confiar neles como match."""',
+                  '    found: list[str] = []',
+                  '    seen: set[str] = set()',
+                  '    patterns = (',
+                  '        r"(?i)[\\\"\']item_id[\\\"\']\\s*:\\s*[\\\"\'](MLB\\d{6,})[\\\"\']",',
+                  '        r"(?i)[\\\"\']itemId[\\\"\']\\s*:\\s*[\\\"\'](MLB\\d{6,})[\\\"\']",',
+                  '        r"(?i)[\\\"\']id[\\\"\']\\s*:\\s*[\\\"\'](MLB\\d{6,})[\\\"\']",',
+                  '        r"(?i)\\bMLB[-_](\\d{6,})\\b",',
+                  '    )',
+                  '    for pattern in patterns:',
+                  '        for match in re.finditer(pattern, value or ""):',
+                  '            raw = match.group(1).upper()',
+                  '            item_id = raw if raw.startswith("MLB") else f"MLB{raw}"',
+                  '            if item_id in seen:',
+                  '                continue',
+                  '            seen.add(item_id)',
+                  '            found.append(item_id)',
+                  '            if len(found) >= limit:',
+                  '                return found',
+                  '    return found',
+              ])
               if anchor not in text:
                   raise SystemExit('Âncora de item_ids_from_html não encontrada.')
               text = text.replace(anchor, helper + anchor, 1)
 
-          old = '''        product_ids = catalog_product_ids_from_html(" ".join(texts), limit=limit)
-          candidates: list[dict[str, Any]] = []
-          for product_id in product_ids:
-              try:
-                  payload = self.catalog_product(product_id)
-              except AuthenticationRequired as exc:
-                  if "(404)" in str(exc):
-                      continue
-                  raise
-              if payload and picture_url(payload):
-                  candidates.append(payload)
-          self._affiliate_cache[value] = candidates
-          return candidates'''
+          old = "\n".join([
+              '        product_ids = catalog_product_ids_from_html(" ".join(texts), limit=limit)',
+              '        candidates: list[dict[str, Any]] = []',
+              '        for product_id in product_ids:',
+              '            try:',
+              '                payload = self.catalog_product(product_id)',
+              '            except AuthenticationRequired as exc:',
+              '                if "(404)" in str(exc):',
+              '                    continue',
+              '                raise',
+              '            if payload and picture_url(payload):',
+              '                candidates.append(payload)',
+              '        self._affiliate_cache[value] = candidates',
+              '        return candidates',
+          ])
 
-          new = '''        page_text = " ".join(texts)
-          product_ids = catalog_product_ids_from_html(page_text, limit=limit)
-          item_ids = item_ids_from_html(page_text, limit=min(limit, 24))
-          candidates: list[dict[str, Any]] = []
-          seen_candidate_ids: set[str] = set()
-          for product_id in product_ids:
-              try:
-                  payload = self.catalog_product(product_id)
-              except AuthenticationRequired as exc:
-                  if "(404)" in str(exc):
-                      continue
-                  raise
-              candidate_id = str((payload or {}).get("id") or (payload or {}).get("catalog_product_id") or "").strip()
-              if payload and picture_url(payload) and candidate_id not in seen_candidate_ids:
-                  seen_candidate_ids.add(candidate_id)
-                  candidates.append(payload)
-          for item_id in item_ids:
-              try:
-                  payload = self.item(item_id)
-              except AuthenticationRequired as exc:
-                  if "(403)" in str(exc):
-                      continue
-                  raise
-              candidate_id = str((payload or {}).get("id") or "").strip()
-              if payload and picture_url(payload) and candidate_id and candidate_id not in seen_candidate_ids:
-                  seen_candidate_ids.add(candidate_id)
-                  candidates.append(payload)
-          self._affiliate_cache[value] = candidates
-          return candidates'''
+          new = "\n".join([
+              '        page_text = " ".join(texts)',
+              '        product_ids = catalog_product_ids_from_html(page_text, limit=limit)',
+              '        item_ids = item_ids_from_html(page_text, limit=min(limit, 24))',
+              '        candidates: list[dict[str, Any]] = []',
+              '        seen_candidate_ids: set[str] = set()',
+              '        for product_id in product_ids:',
+              '            try:',
+              '                payload = self.catalog_product(product_id)',
+              '            except AuthenticationRequired as exc:',
+              '                if "(404)" in str(exc):',
+              '                    continue',
+              '                raise',
+              '            candidate_id = str((payload or {}).get("id") or (payload or {}).get("catalog_product_id") or "").strip()',
+              '            if payload and picture_url(payload) and candidate_id not in seen_candidate_ids:',
+              '                seen_candidate_ids.add(candidate_id)',
+              '                candidates.append(payload)',
+              '        for item_id in item_ids:',
+              '            try:',
+              '                payload = self.item(item_id)',
+              '            except AuthenticationRequired as exc:',
+              '                if "(403)" in str(exc):',
+              '                    continue',
+              '                raise',
+              '            candidate_id = str((payload or {}).get("id") or "").strip()',
+              '            if payload and picture_url(payload) and candidate_id and candidate_id not in seen_candidate_ids:',
+              '                seen_candidate_ids.add(candidate_id)',
+              '                candidates.append(payload)',
+              '        self._affiliate_cache[value] = candidates',
+              '        return candidates',
+          ])
 
           if old in text:
               text = text.replace(old, new, 1)
@@ -147,14 +152,16 @@ jobs:
               test_text = test_text.replace(needle, needle + '    item_ids_from_html,\n', 1)
           if 'def test_extracts_item_ids_from_affiliate_html' not in test_text:
               anchor = '    def test_match_score_rejects_wrong_variant(self) -> None:\n'
-              test_case = '''    def test_extracts_item_ids_from_affiliate_html(self) -> None:
-              html = (
-                  '{"metadata":{"id":"MLB4962795750","product_id":"MLB27767186"}}'
-                  '{"metadata":{"id":"MLB4957105984","product_id":"MLB27485619"}}'
-              )
-              self.assertEqual(item_ids_from_html(html), ["MLB4962795750", "MLB4957105984"])
-
-          '''
+              test_case = "\n".join([
+                  '    def test_extracts_item_ids_from_affiliate_html(self) -> None:',
+                  '        html = (',
+                  '            \'{"metadata":{"id":"MLB4962795750","product_id":"MLB27767186"}}\'',
+                  '            \'{"metadata":{"id":"MLB4957105984","product_id":"MLB27485619"}}\'',
+                  '        )',
+                  '        self.assertEqual(item_ids_from_html(html), ["MLB4962795750", "MLB4957105984"])',
+                  '',
+                  '',
+              ])
               if anchor not in test_text:
                   raise SystemExit('Âncora do novo teste não encontrada.')
               test_text = test_text.replace(anchor, test_case + anchor, 1)
