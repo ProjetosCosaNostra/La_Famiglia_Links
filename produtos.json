@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T16:28:50Z",
+  "updated_at": "2026-09-06T02:28:04Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -68,7 +68,15 @@
       "guardian_last_checked_url": "https://meli.la/2Fomd6F",
       "guardian_fail_count": 0,
       "image_original": "https://github.com/user-attachments/assets/191a6aca-103b-410f-a1f6-2635c7ebe2dc",
-      "webp_optimized_at": "2026-06-14T01:52:14Z"
+      "webp_optimized_at": "2026-06-14T01:52:14Z",
+      "card_image": "assets/produtos-card/gloss-labial-fantasyland-disney-100-bruna-tavares.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_664115-MLU72285092837_102023-F.jpg",
+      "card_image_item_id": "MLB27767186",
+      "card_image_candidate_title": "Gloss Labial Fantasyland - Disney 100 Anos - Bruna Tavares",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:26:47Z"
     },
     {
       "sku": "kit-pinceis-maquiagem-13-pecas-estojo-rose",
@@ -556,7 +564,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/d41c35db-3460-4790-b008-d67aa993cc52",
-      "webp_optimized_at": "2026-06-14T01:52:18Z"
+      "webp_optimized_at": "2026-06-14T01:52:18Z",
+      "card_image": "assets/produtos-card/paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_790886-MLA112737667259_062026-F.jpg",
+      "card_image_item_id": "MLB72180954",
+      "card_image_candidate_title": "Paleta De Maquiagem 28 Sombras Nude + Pinceis - Belle Angel Paleta De Sombra",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:27:09Z"
     },
     {
       "sku": "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy",
@@ -2967,7 +2983,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/ab6e98e5-5e63-48c2-bd54-59865d50911f",
-      "webp_optimized_at": "2026-06-14T01:52:45Z"
+      "webp_optimized_at": "2026-06-14T01:52:45Z",
+      "card_image": "assets/produtos-card/escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_804829-MLA114453336411_072026-F.jpg",
+      "card_image_item_id": "MLB24693303",
+      "card_image_candidate_title": "Escova De Dente Elétrica Philips Colgate Sonicpro 10",
+      "card_image_match_score": 0.8121,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:27:17Z"
     },
     {
       "sku": "luminaria-led-touch-brilho-ajustavel-recarregavel-usb-abajur",
@@ -6717,7 +6741,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/cfbf7e2c-cf90-4b6a-9dff-d861ccbd5dd0",
-      "webp_optimized_at": "2026-06-14T01:53:31Z"
+      "webp_optimized_at": "2026-06-14T01:53:31Z",
+      "card_image": "assets/produtos-card/bt-coca-cola-blush-stick-bruna-tavares-intense-cherry.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_780740-MLA102420616495_122025-F.jpg",
+      "card_image_item_id": "MLB63469432",
+      "card_image_candidate_title": "Bt Coca Cola Blush Stick - Bruna Tavares - Multifuncional Intense Cherry",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:27:28Z"
     },
     {
       "sku": "organizador-maquiagem-giratorio-360-acrilico-transparente",
@@ -6784,7 +6816,15 @@
       "guardian_last_checked_url": "https://meli.la/1CDrde5",
       "guardian_fail_count": 0,
       "image_original": "https://github.com/user-attachments/assets/ca721563-6a73-4d37-81de-b8dd039886ff",
-      "webp_optimized_at": "2026-06-14T01:53:32Z"
+      "webp_optimized_at": "2026-06-14T01:53:32Z",
+      "card_image": "assets/produtos-card/organizador-maquiagem-giratorio-360-acrilico-transparente.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_986811-MLA112845656392_072026-F.jpg",
+      "card_image_item_id": "MLB27634376",
+      "card_image_candidate_title": "Vittak Organizador Maquiagem Cosméticos Batom Acrílico Giratório 360º Ajustável",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:27:32Z"
     },
     {
       "sku": "paleta-sombras-new-york-catharine-hill-10-cores",
@@ -6954,7 +6994,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/a4b8def6-4d36-4089-ade2-4bcbf8431920",
-      "webp_optimized_at": "2026-06-14T01:53:33Z"
+      "webp_optimized_at": "2026-06-14T01:53:33Z",
+      "card_image": "assets/produtos-card/ice-creamy-lip-balm-mari-maria-vanilla-10ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_922495-MLA104792720087_012026-F.jpg",
+      "card_image_item_id": "MLB64272460",
+      "card_image_candidate_title": "Lip Balm Ice Creamy Baunilha 10g - Mari Maria Makeup",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:27:43Z"
     },
     {
       "sku": "love-kit-gloss-labial-coracao-lapis-volume-rosada",
@@ -7012,7 +7060,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/226c7ef1-0df8-403a-9805-e92fe4a0659e",
-      "webp_optimized_at": "2026-06-14T01:53:34Z"
+      "webp_optimized_at": "2026-06-14T01:53:34Z",
+      "card_image": "assets/produtos-card/love-kit-gloss-labial-coracao-lapis-volume-rosada.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_901412-MLA101158622983_122025-F.jpg",
+      "card_image_item_id": "MLB63093522",
+      "card_image_candidate_title": "Love Kit Gloss Labial Coração Lápis Volume Rosada Franciny Ehlke",
+      "card_image_match_score": 0.9494,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:27:45Z"
     },
     {
       "sku": "batom-hidratante-sace-lady-a03-terre-rouge",
@@ -7184,7 +7240,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/bbb8ee3a-9ecb-4e9f-9a27-cea612aa2c84",
-      "webp_optimized_at": "2026-06-14T01:53:36Z"
+      "webp_optimized_at": "2026-06-14T01:53:36Z",
+      "card_image": "assets/produtos-card/body-splash-kiss-ciclo-200ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_918519-MLA81939939619_012025-F.jpg",
+      "card_image_item_id": "MLB23226960",
+      "card_image_candidate_title": "Body Splash Kiss Ciclo - 200ml",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:27:56Z"
     },
     {
       "sku": "payot-boca-rosa-meu-volumao-preto-6ml",
