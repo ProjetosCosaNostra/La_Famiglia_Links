@@ -5,12 +5,16 @@ O operador pode usar prompts ocultos tradicionais ou o modo ``--clipboard``.
 Nesse modo, a Chave secreta é lida diretamente da área de transferência e
 apagada em seguida; depois da autorização, o retorno completo do callback também
 é lido do clipboard, evitando problemas de colagem em prompts ocultos do Windows.
+
+O fluxo usa PKCE S256, ``state`` criptograficamente aleatório e solicita por
+padrão ``offline_access read`` para permitir renovação automática do token.
 Os tokens são gravados diretamente nos GitHub Actions Secrets.
 """
 
 from __future__ import annotations
 
 import argparse
+import base64
 import getpass
 import hashlib
 import json
@@ -27,6 +31,7 @@ import webbrowser
 DEFAULT_CLIENT_ID = "4586517400616779"
 DEFAULT_REDIRECT_URI = "https://blackgold-beauty-finds-br.pages.dev/mercadolivre-callback.html"
 DEFAULT_REPOSITORY = "ProjetosCosaNostra/La_Famiglia_Links"
+DEFAULT_SCOPE = "offline_access read"
 AUTHORIZE_URL = "https://auth.mercadolivre.com.br/authorization"
 TOKEN_URL = "https://api.mercadolibre.com/oauth/token"
 
@@ -95,13 +100,30 @@ def safe_http_error_detail(exc: urllib.error.HTTPError) -> str:
     return "; ".join(parts)
 
 
-def build_authorization_url(client_id: str, redirect_uri: str, state: str) -> str:
+def build_pkce_pair() -> tuple[str, str]:
+    """Gera code_verifier RFC 7636 e code_challenge S256."""
+    verifier = secrets.token_urlsafe(64)
+    digest = hashlib.sha256(verifier.encode("ascii")).digest()
+    challenge = base64.urlsafe_b64encode(digest).decode("ascii").rstrip("=")
+    return verifier, challenge
+
+
+def build_authorization_url(
+    client_id: str,
+    redirect_uri: str,
+    state: str,
+    code_challenge: str,
+    scope: str,
+) -> str:
     query = urllib.parse.urlencode(
         {
             "response_type": "code",
             "client_id": client_id,
             "redirect_uri": redirect_uri,
             "state": state,
+            "code_challenge": code_challenge,
+            "code_challenge_method": "S256",
+            "scope": scope,
         }
     )
     return f"{AUTHORIZE_URL}?{query}"
@@ -152,6 +174,7 @@ def exchange_code(
     client_secret: str,
     redirect_uri: str,
     code: str,
+    code_verifier: str,
     timeout: int = 30,
 ) -> dict[str, str]:
     body = urllib.parse.urlencode(
@@ -161,6 +184,7 @@ def exchange_code(
             "client_secret": client_secret,
             "code": code,
             "redirect_uri": redirect_uri,
+            "code_verifier": code_verifier,
         }
     ).encode("utf-8")
     request = urllib.request.Request(
@@ -182,6 +206,12 @@ def exchange_code(
     access_token = str(payload.get("access_token") or "").strip()
     refresh_token = str(payload.get("refresh_token") or "").strip()
     if not access_token or not refresh_token:
+        scope = str(payload.get("scope") or "").strip()
+        if access_token and not refresh_token:
+            raise OAuthSetupError(
+                "O Mercado Livre devolveu access_token, mas não refresh_token. "
+                f"Escopo retornado={scope or 'não informado'}. Confirme offline_access/Refresh Token no DevCenter."
+            )
         raise OAuthSetupError("O Mercado Livre não devolveu access_token e refresh_token completos.")
     return {"access_token": access_token, "refresh_token": refresh_token}
 
@@ -227,6 +257,7 @@ def main() -> int:
     parser.add_argument("--client-id", default=DEFAULT_CLIENT_ID)
     parser.add_argument("--redirect-uri", default=DEFAULT_REDIRECT_URI)
     parser.add_argument("--repository", default=DEFAULT_REPOSITORY)
+    parser.add_argument("--scope", default=DEFAULT_SCOPE)
     parser.add_argument("--no-browser", action="store_true", help="Somente exibe o endereço de autorização.")
     parser.add_argument(
         "--clipboard",
@@ -250,8 +281,17 @@ def main() -> int:
                 raise OAuthSetupError("A chave secreta não foi informada.")
 
         state = secrets.token_hex(32)
-        authorization_url = build_authorization_url(args.client_id, args.redirect_uri, state)
+        code_verifier, code_challenge = build_pkce_pair()
+        authorization_url = build_authorization_url(
+            args.client_id,
+            args.redirect_uri,
+            state,
+            code_challenge,
+            args.scope,
+        )
         print(f"\nIdentificador seguro desta tentativa: {safe_fingerprint(state)}")
+        print("PKCE S256: ativo")
+        print(f"Escopos solicitados: {args.scope}")
         print("Abrindo a autorização oficial do Mercado Livre...")
         if args.no_browser or not webbrowser.open(authorization_url, new=2):
             print(authorization_url)
@@ -259,13 +299,18 @@ def main() -> int:
         if args.clipboard:
             print(
                 "Depois de autorizar, na página BlackGold clique em 'Copiar retorno completo para o terminal'.\n"
-                "Volte ao terminal e pressione Enter. Não é necessário colar nada aqui."
+                "Volte ao terminal. Se preferir, apenas pressione Enter; não é necessário colar nada."
             )
-            input("Pressione Enter somente depois de copiar o retorno completo na página BlackGold: ")
-            callback_url = read_clipboard()
+            typed_callback = input(
+                "Pressione Enter depois de copiar o retorno completo (ou cole a URL aqui): "
+            ).strip()
+            if typed_callback:
+                callback_url = typed_callback
+            else:
+                callback_url = read_clipboard()
             clear_clipboard()
             if not callback_url:
-                raise OAuthSetupError("O clipboard está vazio; copie o retorno completo na página BlackGold e tente novamente.")
+                raise OAuthSetupError("O callback está vazio; copie o retorno completo na página BlackGold e tente novamente.")
         else:
             print(
                 "Depois de autorizar, copie a URL COMPLETA da barra de endereços da página BlackGold.\n"
@@ -280,7 +325,7 @@ def main() -> int:
                 "Como esta é uma ativação local/manual e a URL foi validada como callback oficial, "
                 "o código será trocado imediatamente sem expor credenciais."
             )
-        tokens = exchange_code(args.client_id, client_secret, args.redirect_uri, code)
+        tokens = exchange_code(args.client_id, client_secret, args.redirect_uri, code, code_verifier)
 
         values = {
             "MELI_CLIENT_ID": args.client_id,
@@ -292,6 +337,7 @@ def main() -> int:
             set_github_secret(args.repository, name, value)
 
         print("\nOK: OAuth Mercado Livre configurado nos GitHub Actions Secrets.")
+        print("PKCE S256 validado e refresh token recebido.")
         print("Nenhuma chave ou token foi exibido, salvo em arquivo ou colocado em argumento de processo.")
         return 0
     except OAuthSetupError as exc:
