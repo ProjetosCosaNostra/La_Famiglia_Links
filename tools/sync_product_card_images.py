@@ -242,6 +242,28 @@ def catalog_product_ids_from_html(value: str, limit: int = 60) -> list[str]:
     return found
 
 
+def item_ids_from_html(value: str, limit: int = 24) -> list[str]:
+    """Extrai IDs de anúncios expostos no HTML público sem confiar neles como match."""
+    found: list[str] = []
+    seen: set[str] = set()
+    patterns = (
+        r"(?i)[\"']item_id[\"']\s*:\s*[\"'](MLB\d{6,})[\"']",
+        r"(?i)[\"']itemId[\"']\s*:\s*[\"'](MLB\d{6,})[\"']",
+        r"(?i)[\"']id[\"']\s*:\s*[\"'](MLB\d{6,})[\"']",
+        r"(?i)\bMLB[-_](\d{6,})\b",
+    )
+    for pattern in patterns:
+        for match in re.finditer(pattern, value or ""):
+            raw = match.group(1).upper()
+            item_id = raw if raw.startswith("MLB") else f"MLB{raw}"
+            if item_id in seen:
+                continue
+            seen.add(item_id)
+            found.append(item_id)
+            if len(found) >= limit:
+                return found
+    return found
+
 def event_sku(path: str) -> str:
     if not path:
         return ""
@@ -334,8 +356,11 @@ class MercadoLivreClient:
 
         texts = [response.text, str(response.url or "")]
         texts.extend(str(item.headers.get("location") or "") for item in response.history)
-        product_ids = catalog_product_ids_from_html(" ".join(texts), limit=limit)
+        page_text = " ".join(texts)
+        product_ids = catalog_product_ids_from_html(page_text, limit=limit)
+        item_ids = item_ids_from_html(page_text, limit=min(limit, 24))
         candidates: list[dict[str, Any]] = []
+        seen_candidate_ids: set[str] = set()
         for product_id in product_ids:
             try:
                 payload = self.catalog_product(product_id)
@@ -343,7 +368,20 @@ class MercadoLivreClient:
                 if "(404)" in str(exc):
                     continue
                 raise
-            if payload and picture_url(payload):
+            candidate_id = str((payload or {}).get("id") or (payload or {}).get("catalog_product_id") or "").strip()
+            if payload and picture_url(payload) and candidate_id not in seen_candidate_ids:
+                seen_candidate_ids.add(candidate_id)
+                candidates.append(payload)
+        for item_id in item_ids:
+            try:
+                payload = self.item(item_id)
+            except AuthenticationRequired as exc:
+                if "(403)" in str(exc):
+                    continue
+                raise
+            candidate_id = str((payload or {}).get("id") or "").strip()
+            if payload and picture_url(payload) and candidate_id and candidate_id not in seen_candidate_ids:
+                seen_candidate_ids.add(candidate_id)
                 candidates.append(payload)
         self._affiliate_cache[value] = candidates
         return candidates

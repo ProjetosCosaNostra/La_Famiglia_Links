@@ -12,6 +12,7 @@ from tools.sync_product_card_images import (
     catalog_product_ids_from_html,
     event_sku,
     identifiers_from_text,
+    item_ids_from_html,
     is_beauty_product,
     refresh_meli_access_token,
     search_match,
@@ -71,6 +72,13 @@ class ProductImageSyncTests(unittest.TestCase):
             '{"metadata":{"id":"MLB4957105984","product_id":"MLB27485619"}}'
         )
         self.assertEqual(catalog_product_ids_from_html(html), ["MLB27767186", "MLB27485619"])
+
+    def test_extracts_item_ids_from_affiliate_html(self) -> None:
+        html = (
+            '{"metadata":{"id":"MLB4962795750","product_id":"MLB27767186"}}'
+            '{"metadata":{"id":"MLB4957105984","product_id":"MLB27485619"}}'
+        )
+        self.assertEqual(item_ids_from_html(html), ["MLB4962795750", "MLB4957105984"])
 
     def test_match_score_rejects_wrong_variant(self) -> None:
         source = "Cicaplast Baume B5 Plus La Roche Posay 40ml"
