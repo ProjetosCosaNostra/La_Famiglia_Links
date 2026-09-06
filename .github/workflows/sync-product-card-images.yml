@@ -39,6 +39,7 @@ jobs:
           ref: gh-pages
           fetch-depth: 0
           persist-credentials: true
+          token: ${{ secrets.IMAGE_BOT_GITHUB_TOKEN }}
 
       - name: Preparar Python
         uses: actions/setup-python@v5
@@ -154,4 +155,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "catalog: atualizar fotos limpas dos cards"
-          git push origin HEAD:gh-pages
+
+          ATTEMPT=1
+          while [ "${ATTEMPT}" -le 3 ]; do
+            git fetch origin gh-pages
+            git rebase origin/gh-pages
+            if git push origin HEAD:gh-pages; then
+              exit 0
+            fi
+            ATTEMPT=$((ATTEMPT + 1))
+          done
+          echo "Não foi possível publicar as fotos após 3 tentativas."
+          exit 1
