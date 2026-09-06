@@ -48,6 +48,131 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
+      - name: Ativar buscador oficial de produtos de catálogo
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('tools/sync_product_card_images.py')
+          text = path.read_text(encoding='utf-8')
+
+          if '    def catalog_search(self, title: str, limit: int = 20)' not in text:
+              anchor = '    def search(self, title: str, limit: int = 20) -> list[dict[str, Any]]:\n'
+              method = "\n".join([
+                  '    def catalog_search(self, title: str, limit: int = 20) -> list[dict[str, Any]]:',
+                  '        """Busca produtos de catálogo pelo endpoint oficial /products/search."""',
+                  '        try:',
+                  '            payload = self.get_json(',
+                  '                "/products/search",',
+                  '                {"status": "active", "site_id": "MLB", "q": title, "limit": limit},',
+                  '            ) or {}',
+                  '        except AuthenticationRequired as exc:',
+                  '            if "(403)" in str(exc):',
+                  '                return []',
+                  '            raise',
+                  '        results = payload.get("results")',
+                  '        return [item for item in results if isinstance(item, dict)] if isinstance(results, list) else []',
+                  '',
+              ])
+              if anchor not in text:
+                  raise SystemExit('Âncora de catalog_search não encontrada.')
+              text = text.replace(anchor, method + anchor, 1)
+
+          if '\ndef catalog_search_match(' not in text:
+              anchor = '\n\ndef search_match(product: dict[str, Any], client: MercadoLivreClient, min_score: float) -> Match | None:\n'
+              helper = "\n".join([
+                  '',
+                  '',
+                  'def catalog_search_match(product: dict[str, Any], client: MercadoLivreClient, min_score: float) -> Match | None:',
+                  '    """Busca no catálogo oficial e mantém o mesmo filtro conservador de título/variante."""',
+                  '    source_title = str(product.get("title") or "").strip()',
+                  '    if not source_title:',
+                  '        return None',
+                  '',
+                  '    ranked = _rank_safe_candidates(source_title, client.catalog_search(source_title), min_score)',
+                  '    if not ranked:',
+                  '        return None',
+                  '    top_score, top = ranked',
+                  '    product_id = str(top.get("id") or top.get("catalog_product_id") or "").strip()',
+                  '    if not product_id:',
+                  '        return None',
+                  '    detail = client.catalog_product(product_id) or top',
+                  '    if title_match_score(source_title, candidate_title(detail) or candidate_title(top)) < min_score:',
+                  '        return None',
+                  '    return match_from_item(detail, "catalog-title-search", top_score)',
+              ])
+              if anchor not in text:
+                  raise SystemExit('Âncora de catalog_search_match não encontrada.')
+              text = text.replace(anchor, helper + anchor, 1)
+
+          old = '        or affiliate_page_match(product, client, min_score)\n        or search_match(product, client, min_score)'
+          new = '        or affiliate_page_match(product, client, min_score)\n        or catalog_search_match(product, client, min_score)\n        or search_match(product, client, min_score)'
+          if old in text:
+              text = text.replace(old, new, 1)
+          elif 'or catalog_search_match(product, client, min_score)' not in text:
+              raise SystemExit('Bloco resolve_match esperado não encontrado.')
+          path.write_text(text, encoding='utf-8')
+
+          tests = Path('tests/test_sync_product_card_images.py')
+          test_text = tests.read_text(encoding='utf-8')
+          if '    catalog_search_match,\n' not in test_text:
+              needle = '    catalog_product_ids_from_html,\n'
+              if needle not in test_text:
+                  raise SystemExit('Import de teste esperado não encontrado.')
+              test_text = test_text.replace(needle, needle + '    catalog_search_match,\n', 1)
+
+          if 'class FakeCatalogClient:' not in test_text:
+              anchor = '\n\nclass FakeAffiliateClient:\n'
+              fake = "\n".join([
+                  '',
+                  '',
+                  'class FakeCatalogClient:',
+                  '    def __init__(self, results: list[dict], details: dict[str, dict]) -> None:',
+                  '        self.results = results',
+                  '        self.details = details',
+                  '',
+                  '    def catalog_search(self, title: str, limit: int = 20) -> list[dict]:',
+                  '        del title, limit',
+                  '        return self.results',
+                  '',
+                  '    def catalog_product(self, product_id: str) -> dict | None:',
+                  '        return self.details.get(product_id)',
+              ])
+              if anchor not in test_text:
+                  raise SystemExit('Âncora de FakeCatalogClient não encontrada.')
+              test_text = test_text.replace(anchor, fake + anchor, 1)
+
+          if 'def test_catalog_search_chooses_exact_product' not in test_text:
+              anchor = '    def test_affiliate_page_chooses_exact_catalog_product(self) -> None:\n'
+              case = "\n".join([
+                  '    def test_catalog_search_chooses_exact_product(self) -> None:',
+                  '        source = {"title": "Gloss Fran Liphoney Mel 5ml"}',
+                  '        results = [',
+                  '            {"id": "MLB27770001", "name": "Gloss Fran Liphoney Mel 5 ml"},',
+                  '            {"id": "MLB27770002", "name": "Gloss Fran Liphoney Morango 5 ml"},',
+                  '        ]',
+                  '        details = {',
+                  '            "MLB27770001": {',
+                  '                "id": "MLB27770001",',
+                  '                "name": "Gloss Fran Liphoney Mel 5 ml",',
+                  '                "pictures": [{"secure_url": "https://http2.mlstatic.com/catalog-clean.jpg"}],',
+                  '            }',
+                  '        }',
+                  '        match = catalog_search_match(source, FakeCatalogClient(results, details), 0.78)',
+                  '        self.assertIsNotNone(match)',
+                  '        self.assertEqual(match.item_id, "MLB27770001")',
+                  '',
+                  '',
+              ])
+              if anchor not in test_text:
+                  raise SystemExit('Âncora do teste de catálogo não encontrada.')
+              test_text = test_text.replace(anchor, case + anchor, 1)
+          tests.write_text(test_text, encoding='utf-8')
+          print('Buscador oficial /products/search preparado sem reduzir o limiar de segurança.')
+          PY
+
       - name: Instalar dependências de imagem
         run: pip install -r scripts/requirements-webp.txt
 
@@ -142,20 +267,20 @@ jobs:
           path: card-images-report.json
           retention-days: 14
 
-      - name: Publicar imagens aprovadas no catálogo
+      - name: Publicar buscador e imagens aprovadas no catálogo
         run: |
           set -euo pipefail
-          git add produtos.json
+          git add produtos.json tools/sync_product_card_images.py tests/test_sync_product_card_images.py
           if [ -d assets/produtos-card ]; then
             git add assets/produtos-card
           fi
           if git diff --cached --quiet; then
-            echo "Nenhuma foto nova segura nesta rodada."
+            echo "Nenhuma foto nova segura nem alteração do buscador nesta rodada."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "catalog: atualizar fotos limpas dos cards"
+          git commit -m "catalog: usar buscador oficial e atualizar fotos limpas"
 
           ATTEMPT=1
           while [ "${ATTEMPT}" -le 3 ]; do
@@ -166,5 +291,5 @@ jobs:
             fi
             ATTEMPT=$((ATTEMPT + 1))
           done
-          echo "Não foi possível publicar as fotos após 3 tentativas."
+          echo "Não foi possível publicar as alterações após 3 tentativas."
           exit 1
