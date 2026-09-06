@@ -8,6 +8,8 @@ from pathlib import Path
 from PIL import Image
 
 from tools.sync_product_card_images import (
+    affiliate_page_match,
+    catalog_product_ids_from_html,
     event_sku,
     identifiers_from_text,
     is_beauty_product,
@@ -31,6 +33,15 @@ class FakeClient:
         return self.details.get(item_id)
 
 
+class FakeAffiliateClient:
+    def __init__(self, candidates: list[dict]) -> None:
+        self.candidates = candidates
+
+    def affiliate_catalog_candidates(self, value: str, limit: int = 60) -> list[dict]:
+        del value, limit
+        return self.candidates
+
+
 class FakeResponse:
     status_code = 200
 
@@ -52,6 +63,14 @@ class ProductImageSyncTests(unittest.TestCase):
         )
         self.assertIn(("item", "MLB3670297668"), identifiers_from_text(text))
         self.assertIn(("product", "MLB12345678"), identifiers_from_text(text))
+
+    def test_extracts_catalog_product_ids_from_affiliate_html(self) -> None:
+        html = (
+            '{"metadata":{"id":"MLB4962795750","product_id":"MLB27767186",'
+            '"pid":"MLBP27767186","url":"produto\\u002Fp\\u002FMLB27767186"}}'
+            '{"metadata":{"id":"MLB4957105984","product_id":"MLB27485619"}}'
+        )
+        self.assertEqual(catalog_product_ids_from_html(html), ["MLB27767186", "MLB27485619"])
 
     def test_match_score_rejects_wrong_variant(self) -> None:
         source = "Cicaplast Baume B5 Plus La Roche Posay 40ml"
@@ -98,6 +117,29 @@ class ProductImageSyncTests(unittest.TestCase):
         match = search_match(source, FakeClient(results, details), 0.78)
         self.assertIsNotNone(match)
         self.assertEqual(match.item_id, "MLB100000001")
+
+    def test_affiliate_page_chooses_exact_catalog_product(self) -> None:
+        source = {
+            "title": "Gloss Labial Fantasyland Disney 100 Anos - Bruna Tavares",
+            "open_url": "https://meli.la/2Fomd6F",
+        }
+        candidates = [
+            {
+                "id": "MLB27485619",
+                "name": "Gloss Labial Emotion - Disney 100 Anos - Bruna Tavares edição limitada",
+                "pictures": [{"url": "https://http2.mlstatic.com/emotion.jpg"}],
+            },
+            {
+                "id": "MLB27767186",
+                "name": "Gloss Labial Fantasyland - Disney 100 Anos - Bruna Tavares",
+                "pictures": [{"url": "https://http2.mlstatic.com/fantasyland.jpg"}],
+            },
+        ]
+        match = affiliate_page_match(source, FakeAffiliateClient(candidates), 0.78)
+        self.assertIsNotNone(match)
+        self.assertEqual(match.item_id, "MLB27767186")
+        self.assertEqual(match.method, "affiliate-page-catalog")
+        self.assertGreaterEqual(match.score, 0.92)
 
     def test_event_sku_reads_issue_form(self) -> None:
         payload = '{"issue":{"body":"## SKU (único)\\n\\nmeu-produto-01\\n\\n## Título\\nProduto"}}'
