@@ -55,34 +55,21 @@ jobs:
           fi
           if git diff --cached --quiet; then
             echo "Branch Cloudflare já está sincronizada."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "sync: catálogo e imagens para Cloudflare"
-
-            ATTEMPT=1
-            PUSHED=false
-            while [ "${ATTEMPT}" -le 3 ]; do
-              if git push origin HEAD:blackgold-beauty-cloudflare; then
-                PUSHED=true
-                break
-              fi
-              git fetch origin blackgold-beauty-cloudflare
-              git rebase origin/blackgold-beauty-cloudflare
-              ATTEMPT=$((ATTEMPT + 1))
-            done
-            if [ "${PUSHED}" != "true" ]; then
-              echo "Não foi possível sincronizar a branch Cloudflare."
-              exit 1
-            fi
+            exit 0
           fi
 
-      - name: Disparar produção Cloudflare explicitamente
-        env:
-          GH_TOKEN: ${{ secrets.IMAGE_BOT_GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          gh workflow run blackgold-cloudflare-production.yml \
-            --repo "${GITHUB_REPOSITORY}" \
-            --ref blackgold-beauty-cloudflare
-          echo "Deploy de produção solicitado explicitamente após a sincronização do catálogo."
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "sync: catálogo e imagens para Cloudflare"
+
+          ATTEMPT=1
+          while [ "${ATTEMPT}" -le 3 ]; do
+            if git push origin HEAD:blackgold-beauty-cloudflare; then
+              exit 0
+            fi
+            git fetch origin blackgold-beauty-cloudflare
+            git rebase origin/blackgold-beauty-cloudflare
+            ATTEMPT=$((ATTEMPT + 1))
+          done
+          echo "Não foi possível sincronizar a branch Cloudflare."
+          exit 1
