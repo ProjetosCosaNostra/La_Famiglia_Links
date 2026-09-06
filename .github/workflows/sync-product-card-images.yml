@@ -48,6 +48,31 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
+      - name: Ativar resolver seguro para URLs de lista do Mercado Livre
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('tools/sync_product_card_images.py')
+          text = path.read_text(encoding='utf-8')
+          old = '        if "meli.la" not in value and "/social/" not in value:\n            continue'
+          new = '''        if (
+              "meli.la" not in value
+              and "/social/" not in value
+              and "lista.mercadolivre.com.br/" not in value
+          ):
+              continue'''
+          if old in text:
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+              print('Resolver de URLs de lista ativado.')
+          elif 'and "lista.mercadolivre.com.br/" not in value' in text:
+              print('Resolver de URLs de lista já estava ativo.')
+          else:
+              raise SystemExit('Trecho esperado do resolver não foi encontrado; abortando sem alteração.')
+          PY
+
       - name: Instalar dependências de imagem
         run: pip install -r scripts/requirements-webp.txt
 
@@ -142,20 +167,20 @@ jobs:
           path: card-images-report.json
           retention-days: 14
 
-      - name: Publicar imagens aprovadas no catálogo
+      - name: Publicar resolver e imagens aprovadas no catálogo
         run: |
           set -euo pipefail
-          git add produtos.json
+          git add produtos.json tools/sync_product_card_images.py
           if [ -d assets/produtos-card ]; then
             git add assets/produtos-card
           fi
           if git diff --cached --quiet; then
-            echo "Nenhuma foto nova segura nesta rodada."
+            echo "Nenhuma foto nova segura nem alteração de resolver nesta rodada."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "catalog: atualizar fotos limpas dos cards"
+          git commit -m "catalog: ampliar resolver e atualizar fotos limpas"
 
           ATTEMPT=1
           while [ "${ATTEMPT}" -le 3 ]; do
@@ -166,5 +191,5 @@ jobs:
             fi
             ATTEMPT=$((ATTEMPT + 1))
           done
-          echo "Não foi possível publicar as fotos após 3 tentativas."
+          echo "Não foi possível publicar as alterações após 3 tentativas."
           exit 1
