@@ -10,6 +10,7 @@ from PIL import Image
 from tools.sync_product_card_images import (
     affiliate_page_match,
     catalog_product_ids_from_html,
+    catalog_search_match,
     event_sku,
     identifiers_from_text,
     item_ids_from_html,
@@ -33,6 +34,18 @@ class FakeClient:
     def item(self, item_id: str) -> dict | None:
         return self.details.get(item_id)
 
+
+class FakeCatalogClient:
+    def __init__(self, results: list[dict], details: dict[str, dict]) -> None:
+        self.results = results
+        self.details = details
+
+    def catalog_search(self, title: str, limit: int = 20) -> list[dict]:
+        del title, limit
+        return self.results
+
+    def catalog_product(self, product_id: str) -> dict | None:
+        return self.details.get(product_id)
 
 class FakeAffiliateClient:
     def __init__(self, candidates: list[dict]) -> None:
@@ -125,6 +138,23 @@ class ProductImageSyncTests(unittest.TestCase):
         match = search_match(source, FakeClient(results, details), 0.78)
         self.assertIsNotNone(match)
         self.assertEqual(match.item_id, "MLB100000001")
+
+    def test_catalog_search_chooses_exact_product(self) -> None:
+        source = {"title": "Gloss Fran Liphoney Mel 5ml"}
+        results = [
+            {"id": "MLB27770001", "name": "Gloss Fran Liphoney Mel 5 ml"},
+            {"id": "MLB27770002", "name": "Gloss Fran Liphoney Morango 5 ml"},
+        ]
+        details = {
+            "MLB27770001": {
+                "id": "MLB27770001",
+                "name": "Gloss Fran Liphoney Mel 5 ml",
+                "pictures": [{"secure_url": "https://http2.mlstatic.com/catalog-clean.jpg"}],
+            }
+        }
+        match = catalog_search_match(source, FakeCatalogClient(results, details), 0.78)
+        self.assertIsNotNone(match)
+        self.assertEqual(match.item_id, "MLB27770001")
 
     def test_affiliate_page_chooses_exact_catalog_product(self) -> None:
         source = {

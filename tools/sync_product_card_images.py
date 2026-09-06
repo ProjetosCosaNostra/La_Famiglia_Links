@@ -386,6 +386,19 @@ class MercadoLivreClient:
         self._affiliate_cache[value] = candidates
         return candidates
 
+    def catalog_search(self, title: str, limit: int = 20) -> list[dict[str, Any]]:
+        """Busca produtos de catálogo pelo endpoint oficial /products/search."""
+        try:
+            payload = self.get_json(
+                "/products/search",
+                {"status": "active", "site_id": "MLB", "q": title, "limit": limit},
+            ) or {}
+        except AuthenticationRequired as exc:
+            if "(403)" in str(exc):
+                return []
+            raise
+        results = payload.get("results")
+        return [item for item in results if isinstance(item, dict)] if isinstance(results, list) else []
     def search(self, title: str, limit: int = 20) -> list[dict[str, Any]]:
         try:
             payload = self.get_json("/sites/MLB/search", {"q": title, "limit": limit}) or {}
@@ -576,6 +589,24 @@ def affiliate_page_match(product: dict[str, Any], client: MercadoLivreClient, mi
     return match_from_item(top, "affiliate-page-catalog", top_score)
 
 
+def catalog_search_match(product: dict[str, Any], client: MercadoLivreClient, min_score: float) -> Match | None:
+    """Busca no catálogo oficial e mantém o mesmo filtro conservador de título/variante."""
+    source_title = str(product.get("title") or "").strip()
+    if not source_title:
+        return None
+
+    ranked = _rank_safe_candidates(source_title, client.catalog_search(source_title), min_score)
+    if not ranked:
+        return None
+    top_score, top = ranked
+    product_id = str(top.get("id") or top.get("catalog_product_id") or "").strip()
+    if not product_id:
+        return None
+    detail = client.catalog_product(product_id) or top
+    if title_match_score(source_title, candidate_title(detail) or candidate_title(top)) < min_score:
+        return None
+    return match_from_item(detail, "catalog-title-search", top_score)
+
 def search_match(product: dict[str, Any], client: MercadoLivreClient, min_score: float) -> Match | None:
     source_title = str(product.get("title") or "").strip()
     if not source_title:
@@ -609,6 +640,7 @@ def resolve_match(product: dict[str, Any], client: MercadoLivreClient, min_score
     return (
         direct_match(product, client)
         or affiliate_page_match(product, client, min_score)
+        or catalog_search_match(product, client, min_score)
         or search_match(product, client, min_score)
     )
 
