@@ -281,7 +281,17 @@ class MercadoLivreClient:
         return self.get_json(f"/products/{product_id}")
 
     def search(self, title: str, limit: int = 20) -> list[dict[str, Any]]:
-        payload = self.get_json("/sites/MLB/search", {"q": title, "limit": limit}) or {}
+        try:
+            payload = self.get_json("/sites/MLB/search", {"q": title, "limit": limit}) or {}
+        except AuthenticationRequired as exc:
+            # O diagnóstico de 2026-09-05 confirmou que o token e os endpoints
+            # autenticados estão válidos, mas a busca global /sites/MLB/search
+            # retorna 403 para esta aplicação. Isso não deve abortar toda a
+            # sincronização: produtos sem identificador direto ficam unresolved
+            # e os demais continuam sendo processados por item/catalog ID.
+            if "(403)" in str(exc):
+                return []
+            raise
         results = payload.get("results")
         return [item for item in results if isinstance(item, dict)] if isinstance(results, list) else []
 
