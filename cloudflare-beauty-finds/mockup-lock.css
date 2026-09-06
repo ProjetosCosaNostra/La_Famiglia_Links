@@ -1,0 +1,103 @@
+/*
+ * BLACKGOLD BEAUTY FINDS — MOCKUP APPROVED LOCK
+ * Referência visual imutável: “Mockup aprovado com Mobile”.
+ * Este arquivo é anexado por último no build para impedir regressões de escala/layout.
+ */
+
+@media (min-width: 761px) {
+  .page{max-width:1280px;padding-inline:38px}
+
+  .topbar{height:48px}
+  .navrow{height:48px;gap:20px}
+  .brand img{width:40px;height:40px}
+  .brand b{font-size:20px}
+  .brand em{font-size:14px}
+  .navlinks{gap:38px}
+  .navlinks a{font-size:13px}
+  .langs button{min-width:34px;height:29px;font-size:11px}
+  .icon-button{width:31px;height:31px}
+
+  .hero-grid{height:304px;grid-template-columns:42% 58%}
+  .hero-copy{padding:20px 22px 14px 38px}
+  .eyebrow{margin-bottom:7px;font-size:8px;letter-spacing:.235em}
+  .hero h1{font-size:clamp(42px,3.55vw,54px);line-height:.84}
+  .hero-copy>p{max-width:455px;margin-top:11px;font-size:13px;line-height:1.32}
+  .hero-buttons{margin-top:13px;gap:9px}
+  .btn{min-height:38px;padding-inline:19px;border-radius:9px;font-size:14px}
+  .stats{gap:7px;margin-top:12px}
+  .stat{min-height:45px;gap:7px;padding:6px 8px}
+  .stat>svg{width:18px;height:18px}
+  .stat b{font-size:12px}
+  .stat small{font-size:8px}
+
+  .selection{padding:9px 0 5px}
+  .vitrine{padding:2px 0 9px}
+  .section-head{gap:14px}
+  .section-head h2{gap:11px;font-size:25px}
+  .section-head h2::after{width:148px}
+  .section-head p{margin-top:2px;font-size:10px}
+  .pill{min-height:28px;padding-inline:12px;font-size:10px}
+
+  .featured{gap:8px;margin-top:7px}
+  .featured-card{height:126px;grid-template-columns:44% 56%;border-radius:8px}
+  .featured-img{margin:6px 0 6px 6px;border-radius:6px}
+  .featured-img img{transform:scale(1.10)}
+  .featured-info{padding:9px 10px 8px}
+  .featured-info h3{font-size:12px;line-height:1.06}
+  .featured-info small{margin:2px 0 3px;font-size:8px}
+  .featured-info p{font-size:8.5px;line-height:1.18}
+  .featured-info .price{font-size:12px}
+  .featured-info button{min-height:27px;margin-top:4px;font-size:10px}
+
+  .vitrine-head{align-items:flex-end}
+  .filters{gap:5px}
+  .chip{min-height:23px;padding-inline:9px;font-size:8px}
+  .product-row{gap:6px;margin-top:7px}
+  .product-card{padding:5px 5px 6px;border-radius:7px}
+  .product-media{height:86px;aspect-ratio:auto;border-radius:5px}
+  .product-media img{transform:scale(1.12)}
+  .product-card:hover .product-media img{transform:scale(1.17)}
+  .product-card h3{height:24px;margin-top:4px;font-size:9.5px;line-height:1.15}
+  .product-card .price{font-size:9px}
+
+  .eco-grid{min-height:198px;grid-template-columns:29% 35% 36%;gap:10px}
+  .eco-kicker{font-size:8px}
+  .eco-copy h2{margin:5px 0 4px;font-size:31px}
+  .eco-copy p{max-width:335px;font-size:10px;line-height:1.4}
+  .eco-art{aspect-ratio:2.45/1}
+  .eco-links{gap:6px}
+  .eco-links a{min-height:43px;grid-template-columns:29px 1fr 10px;gap:7px;padding:4px 7px}
+  .eco-links>a>span{width:27px;height:27px}
+  .eco-links>a>span svg{width:14px;height:14px}
+  .eco-links b{font-size:9px}
+  .eco-links small{margin-top:3px;font-size:7px}
+
+  .footer-row{min-height:50px;gap:16px}
+  .footer-brand img{width:31px;height:31px}
+  .footer-brand b{font-size:14px}
+  .footer-brand em{font-size:10px}
+  .footer nav{gap:10px;font-size:8px}
+  .footer p{font-size:10px}
+  .footer small{font-size:6.5px}
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .page{padding-inline:24px}
+  .hero-grid{height:300px;grid-template-columns:43% 57%}
+  .hero-copy{padding-left:24px}
+  .hero h1{font-size:42px}
+  .hero-copy>p{font-size:12px}
+  .featured-info p{display:none}
+  .product-row{grid-template-columns:repeat(8,1fr)}
+  .product-card:nth-child(n+7){display:block}
+  .product-media{height:76px}
+  .eco-grid{grid-template-columns:30% 33% 37%}
+}
+
+/* Mobile preserva a composição do mockup aprovado: menu + hero dividido + cards horizontais + ecossistema 2 colunas. */
+@media (max-width: 760px) {
+  .hero-art img{object-position:31% center}
+  .featured-img img{transform:scale(1.08)}
+  .product-media img{transform:scale(1.10)}
+  .product-card:hover .product-media img{transform:scale(1.10)}
+}
