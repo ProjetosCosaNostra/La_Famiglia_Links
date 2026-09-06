@@ -1,0 +1,70 @@
+name: Diagnostico seguro API Mercado Livre
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testar token e endpoints sem expor credenciais
+        env:
+          MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
+          MELI_APP_ID: ${{ secrets.MELI_CLIENT_ID }}
+        shell: python
+        run: |
+          import json
+          import os
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+
+          token = (os.environ.get("MELI_ACCESS_TOKEN") or "").strip()
+          app_id = (os.environ.get("MELI_APP_ID") or "").strip()
+          if not token or not app_id:
+              raise SystemExit("Secrets MELI_ACCESS_TOKEN/MELI_CLIENT_ID ausentes")
+
+          base = "https://api.mercadolibre.com"
+          headers = {"Authorization": f"Bearer {token}", "Accept": "application/json", "User-Agent": "BlackGoldBeautyDiagnostic/1.0"}
+
+          def call(label, path):
+              req = urllib.request.Request(base + path, headers=headers, method="GET")
+              try:
+                  with urllib.request.urlopen(req, timeout=25) as r:
+                      raw = r.read().decode("utf-8", "replace")
+                      status = r.status
+              except urllib.error.HTTPError as e:
+                  raw = e.read().decode("utf-8", "replace")
+                  status = e.code
+              except Exception as e:
+                  print(f"{label}: transport_error={type(e).__name__}")
+                  return None
+              try:
+                  data = json.loads(raw) if raw else {}
+              except Exception:
+                  data = {}
+              safe = {"http": status}
+              if isinstance(data, dict):
+                  for key in ("error", "message", "status", "code", "active", "site_id", "id"):
+                      val = data.get(key)
+                      if isinstance(val, (str, int, float, bool)):
+                          safe[key] = val
+              print(label + ": " + json.dumps(safe, ensure_ascii=False))
+              return data if 200 <= status < 300 else None
+
+          me = call("users_me", "/users/me")
+          call("application", f"/applications/{urllib.parse.quote(app_id)}")
+          call("marketplace_search", "/sites/MLB/search?q=gloss%20labial&limit=1")
+
+          if isinstance(me, dict) and me.get("id"):
+              user_id = str(me["id"])
+              own = call("seller_items_search", f"/users/{urllib.parse.quote(user_id)}/items/search?limit=1")
+              if isinstance(own, dict):
+                  results = own.get("results")
+                  if isinstance(results, list) and results:
+                      item_id = str(results[0])
+                      if item_id:
+                          call("seller_item_detail", f"/items/{urllib.parse.quote(item_id)}")
