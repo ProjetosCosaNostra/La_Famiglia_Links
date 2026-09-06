@@ -60,25 +60,57 @@
   .product-card h3{height:24px;margin-top:4px;font-size:9.5px;line-height:1.15}
   .product-card .price{font-size:9px}
 
-  .eco-grid{min-height:198px;grid-template-columns:29% 35% 36%;gap:10px}
-  .eco-kicker{font-size:8px}
-  .eco-copy h2{margin:5px 0 4px;font-size:31px}
-  .eco-copy p{max-width:335px;font-size:10px;line-height:1.4}
-  .eco-art{aspect-ratio:2.45/1}
-  .eco-links{gap:6px}
-  .eco-links a{min-height:43px;grid-template-columns:29px 1fr 10px;gap:7px;padding:4px 7px}
-  .eco-links>a>span{width:27px;height:27px}
-  .eco-links>a>span svg{width:14px;height:14px}
-  .eco-links b{font-size:9px}
-  .eco-links small{margin-top:3px;font-size:7px}
+  /* Ecossistema no mesmo espírito do mockup: compacto, integrado e sem “retângulo” no brasão. */
+  .ecosystem{
+    min-height:0;
+    background:
+      radial-gradient(ellipse at 37% 104%,rgba(226,151,30,.34),transparent 38%),
+      radial-gradient(ellipse at 13% 48%,rgba(207,133,18,.14),transparent 30%),
+      linear-gradient(180deg,#171006 0%,#080604 54%,#0b0704 100%);
+  }
+  .ecosystem::before{
+    opacity:.62;
+    background:
+      repeating-conic-gradient(from 213deg at 31% 110%,rgba(235,171,52,.10) 0deg 1.1deg,transparent 1.1deg 7.2deg),
+      radial-gradient(circle at 30% 100%,rgba(236,170,45,.23),transparent 28%),
+      linear-gradient(112deg,transparent 13%,rgba(203,132,22,.07) 48%,transparent 82%);
+  }
+  .eco-grid{min-height:160px;grid-template-columns:30% 36% 34%;gap:6px;padding-block:4px}
+  .eco-copy{position:relative;z-index:3}
+  .eco-kicker{font-size:7.5px;letter-spacing:.18em}
+  .eco-kicker>span:first-child{font-size:13px}
+  .eco-copy h2{margin:4px 0 3px;font-size:29px;line-height:.94;white-space:nowrap}
+  .eco-copy p{max-width:330px;font-size:9px;line-height:1.32}
+  .eco-art{position:relative;z-index:2;height:150px;aspect-ratio:auto;overflow:visible;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 8px 16px rgba(210,138,19,.28))}
+  .eco-art img{width:118%;height:118%;object-fit:contain;mix-blend-mode:screen;transform:translateY(2px);filter:contrast(1.04) saturate(1.05)}
+  .eco-links{position:relative;z-index:4;gap:5px}
+  .eco-links a{min-height:39px;grid-template-columns:26px 1fr 9px;gap:6px;padding:3px 7px;border-radius:7px;background:linear-gradient(180deg,rgba(31,23,14,.86),rgba(10,8,6,.94))}
+  .eco-links>a>span{width:24px;height:24px}
+  .eco-links>a>span svg{width:12px;height:12px}
+  .eco-links b{font-size:8px}
+  .eco-links small{margin-top:2px;font-size:6.5px}
+  .eco-links .chevron{width:9px;height:9px}
 
-  .footer-row{min-height:50px;gap:16px}
-  .footer-brand img{width:31px;height:31px}
-  .footer-brand b{font-size:14px}
-  .footer-brand em{font-size:10px}
-  .footer nav{gap:10px;font-size:8px}
-  .footer p{font-size:10px}
-  .footer small{font-size:6.5px}
+  .footer-row{min-height:42px;gap:13px}
+  .footer-brand img{width:28px;height:28px}
+  .footer-brand b{font-size:13px}
+  .footer-brand em{font-size:9px}
+  .footer nav{gap:9px;font-size:7px}
+  .footer p{font-size:9px}
+  .footer small{font-size:6px}
+}
+
+/* Em telas realmente largas — inclusive quando o navegador está com zoom reduzido —
+   o mockup ocupa quase toda a largura útil. Evita as faixas vazias gigantes das laterais. */
+@media (min-width: 1400px) {
+  .page{max-width:1900px;padding-inline:46px}
+  .hero-copy{padding-left:46px}
+  .hero-grid{grid-template-columns:43% 57%}
+  .hero h1{font-size:56px}
+  .hero-copy>p{max-width:520px;font-size:14px}
+  .featured-card{height:130px}
+  .product-media{height:90px}
+  .eco-grid{grid-template-columns:30% 37% 33%}
 }
 
 @media (min-width: 761px) and (max-width: 1100px) {
@@ -91,7 +123,8 @@
   .product-row{grid-template-columns:repeat(8,1fr)}
   .product-card:nth-child(n+7){display:block}
   .product-media{height:76px}
-  .eco-grid{grid-template-columns:30% 33% 37%}
+  .eco-grid{grid-template-columns:30% 36% 34%}
+  .eco-copy h2{font-size:25px}
 }
 
 /* Mobile preserva a composição do mockup aprovado: menu + hero dividido + cards horizontais + ecossistema 2 colunas. */
@@ -100,4 +133,11 @@
   .featured-img img{transform:scale(1.08)}
   .product-media img{transform:scale(1.10)}
   .product-card:hover .product-media img{transform:scale(1.10)}
+
+  .ecosystem{
+    background:
+      radial-gradient(ellipse at 50% 42%,rgba(226,151,30,.28),transparent 37%),
+      linear-gradient(180deg,#171006 0%,#070503 62%,#0b0704 100%);
+  }
+  .eco-art img{mix-blend-mode:screen;object-fit:contain}
 }
