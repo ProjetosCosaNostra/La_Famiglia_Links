@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T02:41:53Z",
+  "updated_at": "2026-09-06T02:45:19Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7928,7 +7928,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/9c09bb2a-ed66-49bd-9e6f-2b96daa8e7e2",
-      "webp_optimized_at": "2026-06-14T01:53:41Z"
+      "webp_optimized_at": "2026-06-14T01:53:41Z",
+      "card_image": "assets/produtos-card/xapadinha-mascara-disciplinante-450g-lola-from-rio.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_621255-MLA99936655879_112025-F.jpg",
+      "card_image_item_id": "MLB27294277",
+      "card_image_candidate_title": "Máscara Capilar Disciplinante Xapadinha 450g Lola From Rio",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:21Z"
     },
     {
       "sku": "vizzela-bruma-fixadora-de-maquiagem-real-fix-150ml",
@@ -8108,7 +8116,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/484a5fed-3f6a-4ef2-bd2d-a1ccc68c52be",
-      "webp_optimized_at": "2026-06-14T01:53:42Z"
+      "webp_optimized_at": "2026-06-14T01:53:42Z",
+      "card_image": "assets/produtos-card/serum-principia-niacinamida-zinco-pca-30ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_743512-MLA96768387527_102025-F.jpg",
+      "card_image_item_id": "MLB19489040",
+      "card_image_candidate_title": "Principia Sérum 10% Niacinamida + 1% Zinco Pca NC-10 30 mL",
+      "card_image_match_score": 0.8233,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:31Z"
     },
     {
       "sku": "gel-para-sobrancelhas-brow-rise-ruby-rose",
@@ -8163,7 +8179,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/56299e17-e624-4ca8-8cab-c44d0e89ffcd",
-      "webp_optimized_at": "2026-06-14T01:53:43Z"
+      "webp_optimized_at": "2026-06-14T01:53:43Z",
+      "card_image": "assets/produtos-card/gel-para-sobrancelhas-brow-rise-ruby-rose.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_856558-MLA114428018787_072026-F.jpg",
+      "card_image_item_id": "MLB45697044",
+      "card_image_candidate_title": "Gel de Sobrancelhas Ruby Rose Brow Rise Incolor",
+      "card_image_match_score": 0.9202,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:33Z"
     },
     {
       "sku": "bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada",
@@ -8282,7 +8306,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/93f92c1c-5933-451d-888a-6c1da89ca1d0",
-      "webp_optimized_at": "2026-06-14T01:53:44Z"
+      "webp_optimized_at": "2026-06-14T01:53:44Z",
+      "card_image": "assets/produtos-card/depilador-eletrico-feminino-4-em-1.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_824287-MLA107901081417_032026-F.jpg",
+      "card_image_item_id": "MLB66100700",
+      "card_image_candidate_title": "Depilador Elétrico Feminino 4 Em 1 Pelos Íntimos Axila Nariz Branco",
+      "card_image_match_score": 0.8321,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:39Z"
     },
     {
       "sku": "06-presilha-piranha-cabelo-luxo-metal-variadas-dourado",
@@ -8402,7 +8434,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/6112e430-edd8-4105-9f00-36ab119dc4bf",
-      "webp_optimized_at": "2026-06-14T01:53:45Z"
+      "webp_optimized_at": "2026-06-14T01:53:45Z",
+      "card_image": "assets/produtos-card/principia-protetor-solar-facial-ps-01-fps-60.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_941953-MLA115524012043_082026-F.jpg",
+      "card_image_item_id": "MLB36014524",
+      "card_image_candidate_title": "Principia PS-01 Protetor Solar Facial FPS 60 40 ml",
+      "card_image_match_score": 0.9389,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:45Z"
     },
     {
       "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
@@ -8459,7 +8499,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/fddf682f-49de-4709-9f99-e300787efc26",
-      "webp_optimized_at": "2026-06-14T01:53:45Z"
+      "webp_optimized_at": "2026-06-14T01:53:45Z",
+      "card_image": "assets/produtos-card/body-splash-my-sweet-delight-barbours-beauty-200ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_617058-MLA114001388931_072026-F.jpg",
+      "card_image_item_id": "MLB66044835",
+      "card_image_candidate_title": "Body Splash My Sweet Delight - Barbour's Beauty - 200 Ml - Spray",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:49Z"
     },
     {
       "sku": "necessaire-unissex-viagem-organizador-impermeavel-preto",
@@ -8585,7 +8633,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/b146e13b-d7c4-4301-adcb-bf1a0d35a902",
-      "webp_optimized_at": "2026-06-14T01:53:46Z"
+      "webp_optimized_at": "2026-06-14T01:53:46Z",
+      "card_image": "assets/produtos-card/escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_669622-MLA112338357675_052026-F.jpg",
+      "card_image_item_id": "MLB70378226",
+      "card_image_candidate_title": "Escova Massageadora Capilar 4 Em 1 Led Terapêutica Cabelo Pr Preto - Greendles",
+      "card_image_match_score": 0.9263,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:51Z"
     },
     {
       "sku": "kit-cetim-anti-frizz-rosa-6-pecas",
@@ -8713,7 +8769,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/4a023b0d-cc21-4e51-8dba-b3a92eb48f9f",
-      "webp_optimized_at": "2026-06-14T01:53:47Z"
+      "webp_optimized_at": "2026-06-14T01:53:47Z",
+      "card_image": "assets/produtos-card/espelho-led-dobravel-maquiagem-rosto-make.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_886278-MLA79561736642_102024-F.jpg",
+      "card_image_item_id": "MLB35808988",
+      "card_image_candidate_title": "Espelho Led Dobravel De Maquiagem Rosto Make",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:56Z"
     },
     {
       "sku": "porta-joias-3-camadas-couro-preto",
@@ -8786,7 +8850,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/e4943ee2-2610-4d56-8f23-80ee3aa03fde",
-      "webp_optimized_at": "2026-06-14T01:53:47Z"
+      "webp_optimized_at": "2026-06-14T01:53:47Z",
+      "card_image": "assets/produtos-card/porta-joias-3-camadas-couro-preto.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_804596-MLA107646888027_022026-F.jpg",
+      "card_image_item_id": "MLB65974557",
+      "card_image_candidate_title": "Porta Joias 3 Camadas Couro Caixa De Jóias Feminina Cor Preto",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:43:59Z"
     },
     {
       "sku": "cabine-led-uv-sun-5-48w",
@@ -8855,7 +8927,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/382bbedb-d5f8-45a0-9e16-7f082fbb4e35",
-      "webp_optimized_at": "2026-06-14T01:53:48Z"
+      "webp_optimized_at": "2026-06-14T01:53:48Z",
+      "card_image": "assets/produtos-card/cabine-led-uv-sun-5-48w.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_768419-MLA92130178978_092025-F.jpg",
+      "card_image_item_id": "MLB49128342",
+      "card_image_candidate_title": "Cabine Led/uv Sun 5 48w",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:03Z"
     },
     {
       "sku": "coletor-de-po-nail-designer-4500rpm-100w-sugador-aspirador",
@@ -9117,7 +9197,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/4374d250-acb4-44cf-bc3a-7151c1f36937",
-      "webp_optimized_at": "2026-06-14T01:53:52Z"
+      "webp_optimized_at": "2026-06-14T01:53:52Z",
+      "card_image": "assets/produtos-card/massageador-facial-pescoco-led-lifting.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_865155-MLA115454303220_082026-F.jpg",
+      "card_image_item_id": "MLB68671242",
+      "card_image_candidate_title": "Massageador Facial Lifting De Pescoço e Rosto LED Vibração Fototerapia Para Rejuvenescer Firmeza Anti-Rugas Aparelho Redutor de Papada Lift Mascara Led Facial MARCA Newness Digital Lens",
+      "card_image_match_score": 0.7886,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:08Z"
     },
     {
       "sku": "limpador-eletrico-pinceis-maquiagem-automatico-usb",
@@ -9189,7 +9277,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/fe607f4b-d631-4897-958f-19f22f65766d",
-      "webp_optimized_at": "2026-06-14T01:53:52Z"
+      "webp_optimized_at": "2026-06-14T01:53:52Z",
+      "card_image": "assets/produtos-card/limpador-eletrico-pinceis-maquiagem-automatico-usb.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_704155-MLA83607620243_042025-F.jpg",
+      "card_image_item_id": "MLB47783919",
+      "card_image_candidate_title": "Limpador Elétrico Automático De Pincéis De Maquiagem Com Usb",
+      "card_image_match_score": 0.8023,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:13Z"
     },
     {
       "sku": "depilador-batom-portatil-facial-branco-rose-gold",
@@ -9515,7 +9611,15 @@
         "https://github.com/user-attachments/assets/ab6449ea-4427-4d54-ab33-eee4938de526",
         "https://github.com/user-attachments/assets/59440652-3324-45bf-afa8-89b4cc8def30"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:00Z"
+      "webp_optimized_at": "2026-06-14T01:54:00Z",
+      "card_image": "assets/produtos-card/depilador-ipl-basike-sensacao-gelo-9-niveis.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_680245-MLA100075970499_122025-F.jpg",
+      "card_image_item_id": "MLB62593832",
+      "card_image_candidate_title": "Depilador A Laser Luz Pulsada IPL Basike Sensacao Gelo Indolor Depilacao Definitiva 1 Milhao Disparos 9 Niveis Rosto Corpo aparelho depilacao feminino depilação a laser laser depilacao depilacao intim",
+      "card_image_match_score": 0.7845,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:23Z"
     },
     {
       "sku": "kit-5-mini-frascos-porta-perfume-recarregaveis-spray-5ml",
@@ -9695,7 +9799,15 @@
         "https://github.com/user-attachments/assets/3dbc44fd-7164-48f1-b096-f5fa2cb40bf5",
         "https://github.com/user-attachments/assets/83d0ae34-71d6-4ee0-ba1f-a4e66e6cb1b9"
       ],
-      "webp_optimized_at": "2026-06-14T01:54:06Z"
+      "webp_optimized_at": "2026-06-14T01:54:06Z",
+      "card_image": "assets/produtos-card/escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_669184-MLU75808013106_042024-F.jpg",
+      "card_image_item_id": "MLB19974219",
+      "card_image_candidate_title": "Escova De Cabelo Desembaraçadora The Wet Detangler Rosa Tangle Teezer",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:29Z"
     },
     {
       "sku": "extrator-facial-xn-8030-4-bicos",
@@ -10118,7 +10230,15 @@
         "https://github.com/user-attachments/assets/903cce25-3943-4155-b6d4-204f61604b3a",
         "https://github.com/user-attachments/assets/370fb2e9-6f82-40bc-95f1-c86035db78fe"
       ],
-      "webp_optimized_at": "2026-06-24T12:29:58Z"
+      "webp_optimized_at": "2026-06-24T12:29:58Z",
+      "card_image": "assets/produtos-card/mascara-para-dormir-gel-termico-rosa-laco.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_881975-MLA100070306805_122025-F.jpg",
+      "card_image_item_id": "MLB27470234",
+      "card_image_candidate_title": "Máscara Para Dormir Com Gel Térmico Reduz Olheiras Cansaço Cor Rosa Laço",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:38Z"
     },
     {
       "sku": "toalha-demaquilante-reutilizavel-make-off-klass-vough",
@@ -10207,7 +10327,15 @@
         "https://github.com/user-attachments/assets/a5546bb0-eefc-440d-ba0b-fef46cf07858",
         "https://github.com/user-attachments/assets/c895dc23-1aac-41c8-a79f-faf1e603fdca"
       ],
-      "webp_optimized_at": "2026-06-28T13:05:15Z"
+      "webp_optimized_at": "2026-06-28T13:05:15Z",
+      "card_image": "assets/produtos-card/toalha-demaquilante-reutilizavel-make-off-klass-vough.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_781706-MLA112700399587_062026-F.jpg",
+      "card_image_item_id": "MLB19931600",
+      "card_image_candidate_title": "Toalha Demaquilante Removedora Maquiagem Reutilizável Make Off Microfibra Klass Vough",
+      "card_image_match_score": 0.9969,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:42Z"
     },
     {
       "sku": "agua-micelar-garnier-skinactive-tudo-em-1-400ml",
@@ -10637,7 +10765,15 @@
       "images_original": [
         "https://github.com/user-attachments/assets/4ee20571-c503-4402-b58c-2af4fd9453d7"
       ],
-      "webp_optimized_at": "2026-07-22T18:32:15Z"
+      "webp_optimized_at": "2026-07-22T18:32:15Z",
+      "card_image": "assets/produtos-card/o-boticario-floratta-my-blue-colonia-75ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_653254-MLU75210653248_032024-F.jpg",
+      "card_image_item_id": "MLB16048715",
+      "card_image_candidate_title": "Floratta Blue Desodorante Colônia Feminino O Boticário 75ml",
+      "card_image_match_score": 0.8539,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:44:57Z"
     },
     {
       "sku": "mondial-modelador-cachos-infinity-em-12",
@@ -10716,7 +10852,15 @@
         "https://github.com/user-attachments/assets/7f20d386-b43c-4b2b-8f34-b0575ee9e9ec",
         "https://github.com/user-attachments/assets/a555f494-f8d3-4c39-8497-f5424f22c15b"
       ],
-      "webp_optimized_at": "2026-07-24T23:34:55Z"
+      "webp_optimized_at": "2026-07-24T23:34:55Z",
+      "card_image": "assets/produtos-card/mondial-modelador-cachos-infinity-em-12.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_675784-MLU74957358569_032024-F.jpg",
+      "card_image_item_id": "MLB23553778",
+      "card_image_candidate_title": "Modelador de Cachos Infinity Mondial 55W EM-12",
+      "card_image_match_score": 0.953,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:45:01Z"
     },
     {
       "sku": "cerave-gel-limpeza-facial-454g",
@@ -10808,7 +10952,15 @@
         "https://github.com/user-attachments/assets/75252540-1bf1-467f-a6e1-5dca47b88a7f",
         "https://github.com/user-attachments/assets/ad62446f-1a76-4ebc-bff1-9b71500245d7"
       ],
-      "webp_optimized_at": "2026-07-28T03:14:30Z"
+      "webp_optimized_at": "2026-07-28T03:14:30Z",
+      "card_image": "assets/produtos-card/cerave-gel-limpeza-facial-454g.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_960608-MLA114681828514_082026-F.jpg",
+      "card_image_item_id": "MLB26194700",
+      "card_image_candidate_title": "Gel de Limpeza Facial Pele Oleosa 3 Ceramidas e Niacinamida CeraVe 454g",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:45:04Z"
     },
     {
       "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
@@ -10894,7 +11046,15 @@
         "https://github.com/user-attachments/assets/1123866f-1d25-4c95-afa4-d6eef5216d19",
         "https://github.com/user-attachments/assets/40be95d7-0db3-463e-9436-dc291d1f314e"
       ],
-      "webp_optimized_at": "2026-07-31T23:49:57Z"
+      "webp_optimized_at": "2026-07-31T23:49:57Z",
+      "card_image": "assets/produtos-card/cicaplast-baume-b5-plus-la-roche-posay-40ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_975666-MLA117023634181_092026-F.jpg",
+      "card_image_item_id": "MLB24529498",
+      "card_image_candidate_title": "Creme Multirreparador Pele Sensível Cicaplast Baume B5+ La Roche-Posay 40ml",
+      "card_image_match_score": 0.8888,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:45:07Z"
     },
     {
       "sku": "fran-maravicherry-mascara-cilios-preto-6g",
@@ -11202,7 +11362,15 @@
         "https://github.com/user-attachments/assets/e1a8c873-b379-4c83-8601-f9675e1f0663",
         "https://github.com/user-attachments/assets/d3e0cdb7-d373-4d73-bd4a-aed4a0f8d592"
       ],
-      "webp_optimized_at": "2026-08-17T03:09:38Z"
+      "webp_optimized_at": "2026-08-17T03:09:38Z",
+      "card_image": "assets/produtos-card/kit-sos-makeup-miamake-3em1-rosa.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_798869-MLA110015227821_042026-F.jpg",
+      "card_image_item_id": "MLB67583805",
+      "card_image_candidate_title": "Mia Make S.o.s Make Up - Kit Chaveiro Gloss 3 Em 1",
+      "card_image_match_score": 0.8061,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-06T02:45:17Z"
     },
     {
       "sku": "arezzo-cinto-fino-fivela-losango-preto",
@@ -11279,7 +11447,7 @@
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-09-06T02:41:53Z",
+    "updated_at": "2026-09-06T02:35:53Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
