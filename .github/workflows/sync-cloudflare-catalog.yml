@@ -29,6 +29,7 @@ jobs:
           ref: gh-pages
           fetch-depth: 0
           persist-credentials: true
+          token: ${{ secrets.IMAGE_BOT_GITHUB_TOKEN }}
 
       - name: Copiar catálogo e imagens para a construção Cloudflare
         run: |
