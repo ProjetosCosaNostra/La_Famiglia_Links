@@ -1,6 +1,58 @@
 {
-  "campaign_id": "bg-20260905",
-  "date": "2026-09-05",
+  "campaign_id": "bg-20260906",
+  "date": "2026-09-06",
   "algorithm": "blackgold-bandit-v1",
-  "selected": []
+  "selected": [
+    {
+      "position": 1,
+      "sku": "toalha-demaquilante-reutilizavel-make-off-klass-vough",
+      "title": "Toalha Demaquilante Removedora de Maquiagem Reutilizável Make Off Microfibra Klass Vough",
+      "category": "Skincare",
+      "description": "Preço conferido no Mercado Livre. Frete grátis acima de R$ 19. Pode mudar sem aviso.",
+      "price": "R$ 23,14",
+      "image": "assets/produtos-card/toalha-demaquilante-reutilizavel-make-off-klass-vough.webp",
+      "affiliate_url": "https://meli.la/1utHx1A",
+      "score": {
+        "total": 3.596612,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
+    },
+    {
+      "position": 2,
+      "sku": "escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer",
+      "title": "Escova de Cabelo Desembaraçadora The Wet Detangler Rosa Tangle Teezer",
+      "category": "Cabelo",
+      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso.",
+      "price": "R$ 90,87",
+      "image": "assets/produtos-card/escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer.webp",
+      "affiliate_url": "https://meli.la/1ox9T41",
+      "score": {
+        "total": 3.582882,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
+    },
+    {
+      "position": 3,
+      "sku": "depilador-ipl-basike-sensacao-gelo-9-niveis",
+      "title": "Depilador IPL Basike Sensação Gelo — 9 Níveis e 1 Milhão de Disparos",
+      "category": "Beleza",
+      "description": "Preço conferido no Mercado Livre em 17/05/2026. Pode mudar sem aviso.",
+      "price": "R$ 271,70",
+      "image": "assets/produtos-card/depilador-ipl-basike-sensacao-gelo-9-niveis.webp",
+      "affiliate_url": "https://meli.la/2YKAybJ",
+      "score": {
+        "total": 3.54645,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
+    }
+  ]
 }
