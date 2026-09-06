@@ -14,12 +14,13 @@ jobs:
   diagnose:
     runs-on: ubuntu-latest
     steps:
-      - name: Testar resolução do link afiliado sem expor credenciais
+      - name: Distinguir IDs de item e catálogo no link afiliado
         env:
           MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
           MELI_APP_ID: ${{ secrets.MELI_CLIENT_ID }}
         shell: python
         run: |
+          import collections
           import json
           import os
           import re
@@ -36,7 +37,8 @@ jobs:
 
           base = "https://api.mercadolibre.com"
           browser_ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/152 Safari/537.36"
-          auth_headers = {"Authorization": f"Bearer {token}", "Accept": "application/json", "User-Agent": "BlackGoldBeautyDiagnostic/1.2"}
+          auth_headers = {"Authorization": f"Bearer {token}", "Accept": "application/json", "User-Agent": "BlackGoldBeautyDiagnostic/1.3"}
+          anon_headers = {"Accept": "application/json", "User-Agent": browser_ua}
           html_headers = {"Accept": "text/html,application/xhtml+xml,*/*;q=0.8", "User-Agent": browser_ua, "Accept-Language": "pt-BR,pt;q=0.9"}
           target = "Gloss Labial Fantasyland Disney 100 Anos Bruna Tavares"
           stop = {"a","as","com","da","das","de","do","dos","e","em","o","os","para","por","produto","the"}
@@ -65,37 +67,55 @@ jobs:
                       return r.status, r.read().decode("utf-8", "replace"), r.geturl()
               except urllib.error.HTTPError as e:
                   return e.code, e.read().decode("utf-8", "replace"), e.geturl()
+              except Exception:
+                  return 0, "", url
 
           st, raw, final_url = request("https://meli.la/2Fomd6F", html_headers)
           ids = []
           seen = set()
           for found in re.findall(r"(?i)\bMLB[-_]?\d{6,}\b", raw + " " + final_url):
-              item_id = re.sub(r"(?i)^MLB[-_]", "MLB", found).upper()
-              if item_id not in seen:
-                  seen.add(item_id)
-                  ids.append(item_id)
+              canonical = re.sub(r"(?i)^MLB[-_]", "MLB", found).upper()
+              if canonical not in seen:
+                  seen.add(canonical)
+                  ids.append(canonical)
           parsed = urllib.parse.urlparse(final_url)
           print("affiliate_page:", json.dumps({"http":st,"host":parsed.netloc,"path":parsed.path,"candidate_ids":len(ids)}, ensure_ascii=False))
 
+          statuses = collections.Counter()
           ranked = []
-          for item_id in ids[:80]:
-              st_i, raw_i, _ = request(base + "/items/" + urllib.parse.quote(item_id), auth_headers)
-              if st_i != 200:
-                  continue
-              try:
-                  data = json.loads(raw_i)
-              except Exception:
-                  continue
-              title = str(data.get("title") or "")
-              if not title:
-                  continue
-              ranked.append((score(target, title), item_id, title, bool(data.get("pictures"))))
+          for candidate_id in ids[:80]:
+              best = None
+              for kind, path in (("item", "/items/"), ("product", "/products/")):
+                  for mode, headers in (("auth", auth_headers), ("anon", anon_headers)):
+                      st_i, raw_i, _ = request(base + path + urllib.parse.quote(candidate_id), headers)
+                      statuses[f"{kind}_{mode}_{st_i}"] += 1
+                      if st_i != 200:
+                          continue
+                      try:
+                          data = json.loads(raw_i)
+                      except Exception:
+                          continue
+                      title = str(data.get("title") or data.get("name") or "")
+                      if not title:
+                          continue
+                      value = (score(target, title), candidate_id, title, kind, bool(data.get("pictures")))
+                      if best is None or value[0] > best[0]:
+                          best = value
+              if best:
+                  ranked.append(best)
           ranked.sort(reverse=True)
+          print("status_histogram:", json.dumps(dict(sorted(statuses.items())), ensure_ascii=False))
           print("candidate_details_ok:", len(ranked))
-          for sc, item_id, title, has_pictures in ranked[:15]:
-              print(json.dumps({"score":sc,"item_id":item_id,"title":title[:140],"pictures":has_pictures}, ensure_ascii=False))
+          for sc, candidate_id, title, kind, has_pictures in ranked[:15]:
+              print(json.dumps({"score":sc,"id":candidate_id,"kind":kind,"title":title[:140],"pictures":has_pictures}, ensure_ascii=False))
 
-          q = urllib.parse.urlencode({"q": target, "limit": 3})
-          for label, headers in (("search_authenticated", auth_headers), ("search_anonymous", {"Accept":"application/json","User-Agent":browser_ua})):
-              st_s, raw_s, _ = request(base + "/sites/MLB/search?" + q, headers)
-              print(label + ":", json.dumps({"http":st_s,"bytes":len(raw_s.encode('utf-8'))}, ensure_ascii=False))
+          # Mostra apenas contexto textual curto dos primeiros IDs, sem cookies/tokens.
+          for candidate_id in ids[:8]:
+              pos = raw.find(candidate_id)
+              if pos < 0:
+                  hyphen = candidate_id.replace("MLB", "MLB-")
+                  pos = raw.find(hyphen)
+              if pos >= 0:
+                  snippet = re.sub(r"\s+", " ", raw[max(0,pos-180):pos+260])
+                  snippet = snippet.replace("\"", "'")[:440]
+                  print("html_context:", json.dumps({"id":candidate_id,"context":snippet}, ensure_ascii=False))
