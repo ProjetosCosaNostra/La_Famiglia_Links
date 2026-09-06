@@ -8,6 +8,7 @@ on:
       - "ecosystem.json"
       - "assets/produtos-card/**"
       - "assets/produtos-webp/**"
+      - ".github/workflows/sync-cloudflare-catalog.yml"
   workflow_dispatch:
 
 permissions:
