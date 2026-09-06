@@ -11,7 +11,7 @@ await fs.mkdir(path.join(out, 'assets'), { recursive: true });
 
 for (const file of [
   'index.html',
-  'approved-static.css',
+  'blackgold-v2.css',
   'styles.css',
   'app.js',
   'admin.html',
@@ -22,18 +22,19 @@ for (const file of [
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// A HOME VISUAL É FIXA E SEGUE O MOCKUP APROVADO.
-// O catálogo real continua sendo construído e publicado separadamente em catalog.json.
+/*
+  CLEAN REBUILD V2:
+  A home é independente do renderer legado e não carrega produtos.json na UI.
+  approved-home e hero-approved são apenas ativos visuais fixos do contrato aprovado.
+*/
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
+await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
-const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || [])
-  .filter(p => p && p.active !== false);
+const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
 
 let dailySelection = { campaign_id: 'organic', selected: [] };
-try {
-  dailySelection = JSON.parse(await fs.readFile(path.join(root, 'data', 'daily_selection.json'), 'utf8'));
-} catch {}
+try { dailySelection = JSON.parse(await fs.readFile(path.join(root, 'data', 'daily_selection.json'), 'utf8')); } catch {}
 const dailyRows = Array.isArray(dailySelection.selected) ? dailySelection.selected : [];
 const dailyBySku = new Map(dailyRows.map(row => [String(row?.sku || ''), row]));
 
@@ -69,26 +70,8 @@ await fs.writeFile(path.join(out, 'daily-selection.json'), JSON.stringify({
   selected: dailyRows.map(row => ({ sku: row.sku || '', position: Number(row.position || 0) }))
 }), 'utf8');
 
-try {
-  await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json'));
-} catch {
-  await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8');
-}
-
-const localImages = [...new Set(products
-  .map(p => p.card_image)
-  .filter(v => v && !/^https?:\/\//i.test(v)))];
-for (const rel of localImages) {
-  const clean = rel.replace(/^\.\//, '');
-  const src = path.join(root, clean);
-  const dest = path.join(out, clean);
-  try {
-    await fs.mkdir(path.dirname(dest), { recursive: true });
-    await fs.copyFile(src, dest);
-  } catch {
-    // Imagens antigas ausentes não podem bloquear o catálogo real.
-  }
-}
+try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json')); }
+catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
 
 for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   const src = path.join(root, 'assets', asset);
@@ -96,6 +79,4 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   try { await fs.copyFile(src, dest); } catch {}
 }
 
-await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
-
-console.log(`Cloudflare Pages package ready: ${products.length} active products -> ${out}`);
+console.log(`Cloudflare Pages clean-rebuild package ready: ${products.length} active products -> ${out}`);
