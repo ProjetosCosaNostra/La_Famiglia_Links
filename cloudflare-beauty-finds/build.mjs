@@ -13,6 +13,11 @@ for (const file of ['index.html', 'styles.css', 'app.js', 'admin.html', 'admin.j
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
+// O mockup aprovado é o contrato visual. As regras abaixo entram por último no CSS
+// para impedir regressões de escala/proporção sem mexer no backend ou nos dados reais.
+const approvedLock = await fs.readFile(path.join(here, 'mockup-lock.css'), 'utf8');
+await fs.appendFile(path.join(out, 'styles.css'), `\n\n${approvedLock}\n`, 'utf8');
+
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || [])
   .filter(p => p && p.active !== false);
@@ -62,6 +67,18 @@ try {
 } catch {
   await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8');
 }
+
+// O número do mockup representa o catálogo ativo oficial, não apenas o subconjunto
+// que o front classifica para a vitrine visível.
+const appPath = path.join(out, 'app.js');
+let appSource = await fs.readFile(appPath, 'utf8');
+const countOld = "  $('#count').textContent = state.products.length;";
+const countNew = "  $('#count').textContent = Number(data.total_active || state.rawProducts.length || state.products.length);";
+if (!appSource.includes(countOld) && !appSource.includes(countNew)) {
+  throw new Error('Contrato do contador ativo mudou; build bloqueado para evitar regressão visual.');
+}
+appSource = appSource.replace(countOld, countNew);
+await fs.writeFile(appPath, appSource, 'utf8');
 
 const localImages = [...new Set(products
   .map(p => p.card_image)
