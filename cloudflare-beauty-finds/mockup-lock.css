@@ -41,7 +41,6 @@
   .featured{gap:8px;margin-top:7px}
   .featured-card{height:126px;grid-template-columns:44% 56%;border-radius:8px}
   .featured-img{margin:6px 0 6px 6px;border-radius:6px}
-  .featured-img img{transform:scale(1.10)}
   .featured-info{padding:9px 10px 8px}
   .featured-info h3{font-size:12px;line-height:1.06}
   .featured-info small{margin:2px 0 3px;font-size:8px}
@@ -55,12 +54,10 @@
   .product-row{gap:6px;margin-top:7px}
   .product-card{padding:5px 5px 6px;border-radius:7px}
   .product-media{height:86px;aspect-ratio:auto;border-radius:5px}
-  .product-media img{transform:scale(1.12)}
-  .product-card:hover .product-media img{transform:scale(1.17)}
   .product-card h3{height:24px;margin-top:4px;font-size:9.5px;line-height:1.15}
   .product-card .price{font-size:9px}
 
-  /* Ecossistema no mesmo espírito do mockup: compacto, integrado e sem “retângulo” no brasão. */
+  /* Ecossistema no mesmo espírito do mockup: compacto e integrado. */
   .ecosystem{
     min-height:0;
     background:
@@ -81,8 +78,7 @@
   .eco-kicker>span:first-child{font-size:13px}
   .eco-copy h2{margin:4px 0 3px;font-size:29px;line-height:.94;white-space:nowrap}
   .eco-copy p{max-width:330px;font-size:9px;line-height:1.32}
-  .eco-art{position:relative;z-index:2;height:150px;aspect-ratio:auto;overflow:visible;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 8px 16px rgba(210,138,19,.28))}
-  .eco-art img{width:118%;height:118%;object-fit:contain;mix-blend-mode:screen;transform:translateY(2px);filter:contrast(1.04) saturate(1.05)}
+  .eco-art{position:relative;z-index:2;height:150px;aspect-ratio:auto;overflow:hidden;display:flex;align-items:center;justify-content:center;filter:none;background:transparent}
   .eco-links{position:relative;z-index:4;gap:5px}
   .eco-links a{min-height:39px;grid-template-columns:26px 1fr 9px;gap:6px;padding:3px 7px;border-radius:7px;background:linear-gradient(180deg,rgba(31,23,14,.86),rgba(10,8,6,.94))}
   .eco-links>a>span{width:24px;height:24px}
@@ -101,7 +97,7 @@
 }
 
 /* Em telas realmente largas — inclusive quando o navegador está com zoom reduzido —
-   o mockup ocupa quase toda a largura útil. Evita as faixas vazias gigantes das laterais. */
+   o mockup ocupa quase toda a largura útil. */
 @media (min-width: 1400px) {
   .page{max-width:1900px;padding-inline:46px}
   .hero-copy{padding-left:46px}
@@ -127,17 +123,42 @@
   .eco-copy h2{font-size:25px}
 }
 
-/* Mobile preserva a composição do mockup aprovado: menu + hero dividido + cards horizontais + ecossistema 2 colunas. */
+/* Mobile preserva a composição do mockup aprovado. */
 @media (max-width: 760px) {
   .hero-art img{object-position:31% center}
-  .featured-img img{transform:scale(1.08)}
-  .product-media img{transform:scale(1.10)}
-  .product-card:hover .product-media img{transform:scale(1.10)}
-
   .ecosystem{
     background:
       radial-gradient(ellipse at 50% 42%,rgba(226,151,30,.28),transparent 37%),
       linear-gradient(180deg,#171006 0%,#070503 62%,#0b0704 100%);
   }
-  .eco-art img{mix-blend-mode:screen;object-fit:contain}
+  .eco-art{overflow:hidden;filter:none;background:transparent}
+}
+
+/*
+ * ASSETS APROVADOS — REGRA ABSOLUTA
+ * As imagens da home são recortes diretos do mockup aprovado e não podem receber
+ * zoom, crop, blend, saturação ou fallback para os cards dinâmicos do catálogo.
+ */
+.approved-home-card .approved-visual{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+  background:#fffaf2!important;
+}
+.approved-home-card:hover .approved-visual{
+  transform:none!important;
+}
+.eco-art .approved-ecosystem-art{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+  background:transparent!important;
 }
