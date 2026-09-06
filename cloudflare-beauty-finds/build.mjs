@@ -9,8 +9,25 @@ const out = path.join(here, 'dist');
 await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(path.join(out, 'assets'), { recursive: true });
 
-for (const file of ['index.html', 'styles.css', 'app.js', 'admin.html', 'admin.js', 'mercadolivre-callback.html', '_headers']) {
+for (const file of ['index.html', 'styles.css', 'app.js', 'approved-home.js', 'admin.html', 'admin.js', 'mercadolivre-callback.html', '_headers']) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
+}
+
+// A home aprovada usa assets fixos recortados diretamente do mockup aprovado.
+// O catálogo real continua separado e funcional dentro da busca/modal.
+await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
+
+// Carrega o lock visual APÓS o app dinâmico, sem alterar o HTML-fonte usado pelo backend.
+const indexPath = path.join(out, 'index.html');
+let indexSource = await fs.readFile(indexPath, 'utf8');
+const approvedScript = '  <script src="./approved-home.js" defer></script>';
+if (!indexSource.includes(approvedScript)) {
+  const appScript = '  <script src="./app.js" defer></script>';
+  if (!indexSource.includes(appScript)) {
+    throw new Error('Script principal não encontrado; build bloqueado para evitar publicar uma home sem lock aprovado.');
+  }
+  indexSource = indexSource.replace(appScript, `${appScript}\n${approvedScript}`);
+  await fs.writeFile(indexPath, indexSource, 'utf8');
 }
 
 // O mockup aprovado é o contrato visual. As regras abaixo entram por último no CSS
@@ -101,8 +118,8 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   try { await fs.copyFile(src, dest); } catch {}
 }
 
-for (const asset of ['hero-approved.webp', 'ecosystem-approved.webp']) {
-  await fs.copyFile(path.join(here, asset), path.join(out, asset));
-}
+// Hero aprovado permanece a arte original. O ecossistema agora é fornecido por
+// approved-home/ecosystem-approved-exact.webp, recortado da referência aprovada.
+await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 
 console.log(`Cloudflare Pages package ready: ${products.length} active products -> ${out}`);
