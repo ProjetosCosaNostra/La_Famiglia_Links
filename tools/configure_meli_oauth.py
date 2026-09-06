@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Configura o OAuth do Mercado Livre sem expor segredos em chat ou argumentos.
 
-O operador executa este arquivo localmente, cola a chave secreta em um prompt
-oculto e, depois de autorizar o aplicativo no navegador, cola a URL completa do
-callback. O script troca o código temporário por tokens e grava tudo diretamente
-nos GitHub Actions Secrets do repositório BlackGold.
+O operador pode usar prompts ocultos tradicionais ou o modo ``--clipboard``.
+Nesse modo, a Chave secreta é lida diretamente da área de transferência e
+apagada em seguida; depois da autorização, o retorno completo do callback também
+é lido do clipboard, evitando problemas de colagem em prompts ocultos do Windows.
+Os tokens são gravados diretamente nos GitHub Actions Secrets.
 """
 
 from __future__ import annotations
@@ -37,6 +38,40 @@ class OAuthSetupError(RuntimeError):
 def safe_fingerprint(value: str) -> str:
     """Retorna uma impressão curta para diagnóstico sem revelar o valor."""
     return hashlib.sha256(value.encode("utf-8")).hexdigest()[:12] if value else "ausente"
+
+
+def clipboard_shell() -> str:
+    shell = shutil.which("powershell") or shutil.which("pwsh")
+    if not shell:
+        raise OAuthSetupError("PowerShell não foi encontrado para ler a área de transferência.")
+    return shell
+
+
+def read_clipboard() -> str:
+    """Lê o clipboard sem ecoar o conteúdo no terminal."""
+    result = subprocess.run(
+        [clipboard_shell(), "-NoProfile", "-NonInteractive", "-Command", "Get-Clipboard -Raw"],
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise OAuthSetupError("Não foi possível ler a área de transferência do Windows.")
+    return result.stdout.strip()
+
+
+def clear_clipboard() -> None:
+    """Apaga silenciosamente o clipboard depois de consumir material sensível."""
+    try:
+        subprocess.run(
+            [clipboard_shell(), "-NoProfile", "-NonInteractive", "-Command", "Set-Clipboard -Value ''"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+    except OAuthSetupError:
+        pass
 
 
 def build_authorization_url(client_id: str, redirect_uri: str, state: str) -> str:
@@ -81,7 +116,7 @@ def parse_callback_url(callback_url: str, expected_state: str, expected_redirect
     # O Mercado Livre documenta o retorno do state, mas observamos em produção um
     # fluxo no qual ele devolve apenas o code. Não aceitamos state incorreto. A
     # ausência é tolerada SOMENTE neste bootstrap local/manual, quando o operador
-    # acabou de iniciar a tentativa e cola uma URL do callback oficial exato.
+    # acabou de iniciar a tentativa e fornece uma URL do callback oficial exato.
     if returned_state:
         if not secrets.compare_digest(returned_state, expected_state):
             raise OAuthSetupError(
@@ -174,13 +209,26 @@ def main() -> int:
     parser.add_argument("--redirect-uri", default=DEFAULT_REDIRECT_URI)
     parser.add_argument("--repository", default=DEFAULT_REPOSITORY)
     parser.add_argument("--no-browser", action="store_true", help="Somente exibe o endereço de autorização.")
+    parser.add_argument(
+        "--clipboard",
+        action="store_true",
+        help="Lê a Chave secreta e depois o callback diretamente da área de transferência.",
+    )
     args = parser.parse_args()
 
     try:
         require_github_cli(args.repository)
-        client_secret = getpass.getpass("Cole a Chave secreta do Mercado Livre (entrada oculta): ").strip()
-        if not client_secret:
-            raise OAuthSetupError("A chave secreta não foi informada.")
+
+        if args.clipboard:
+            client_secret = read_clipboard()
+            if not client_secret:
+                raise OAuthSetupError("A área de transferência está vazia; copie a Chave secreta do Mercado Livre primeiro.")
+            clear_clipboard()
+            print("Chave secreta lida da área de transferência com segurança e removida do clipboard.")
+        else:
+            client_secret = getpass.getpass("Cole a Chave secreta do Mercado Livre (entrada oculta): ").strip()
+            if not client_secret:
+                raise OAuthSetupError("A chave secreta não foi informada.")
 
         state = secrets.token_hex(32)
         authorization_url = build_authorization_url(args.client_id, args.redirect_uri, state)
@@ -188,11 +236,24 @@ def main() -> int:
         print("Abrindo a autorização oficial do Mercado Livre...")
         if args.no_browser or not webbrowser.open(authorization_url, new=2):
             print(authorization_url)
-        print(
-            "Depois de autorizar, copie a URL COMPLETA da barra de endereços da página BlackGold.\n"
-            "Cole essa URL somente aqui no terminal; nunca no chat."
-        )
-        callback_url = getpass.getpass("URL completa do callback (entrada oculta): ").strip()
+
+        if args.clipboard:
+            print(
+                "Depois de autorizar, na página BlackGold clique em 'Copiar retorno completo para o terminal'.\n"
+                "Volte ao terminal e pressione Enter. Não é necessário colar nada aqui."
+            )
+            input("Pressione Enter somente depois de copiar o retorno completo na página BlackGold: ")
+            callback_url = read_clipboard()
+            clear_clipboard()
+            if not callback_url:
+                raise OAuthSetupError("O clipboard está vazio; copie o retorno completo na página BlackGold e tente novamente.")
+        else:
+            print(
+                "Depois de autorizar, copie a URL COMPLETA da barra de endereços da página BlackGold.\n"
+                "Cole essa URL somente aqui no terminal; nunca no chat."
+            )
+            callback_url = getpass.getpass("URL completa do callback (entrada oculta): ").strip()
+
         code, state_missing = parse_callback_url(callback_url, state, args.redirect_uri)
         if state_missing:
             print(
