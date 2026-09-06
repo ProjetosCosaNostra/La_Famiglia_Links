@@ -52,6 +52,28 @@ jobs:
       - name: Testar identificação, variantes e formato
         run: python -m unittest discover -s tests -p 'test_sync_product_card_images.py' -v
 
+      - name: Validar credenciais e rotação segura antes de consumir refresh token
+        env:
+          MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
+          MELI_CLIENT_ID: ${{ secrets.MELI_CLIENT_ID }}
+          MELI_CLIENT_SECRET: ${{ secrets.MELI_CLIENT_SECRET }}
+          MELI_REFRESH_TOKEN: ${{ secrets.MELI_REFRESH_TOKEN }}
+          IMAGE_BOT_GITHUB_TOKEN: ${{ secrets.IMAGE_BOT_GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          missing=()
+          for name in MELI_ACCESS_TOKEN MELI_CLIENT_ID MELI_CLIENT_SECRET MELI_REFRESH_TOKEN IMAGE_BOT_GITHUB_TOKEN; do
+            if [ -z "${!name:-}" ]; then
+              missing+=("${name}")
+            fi
+          done
+          if [ "${#missing[@]}" -gt 0 ]; then
+            printf '::error::Secrets ausentes: %s. A sincronização foi bloqueada antes de qualquer refresh.\n' "${missing[*]}"
+            exit 1
+          fi
+          echo "Preflight OAuth/rotação: OK"
+
       - name: Localizar, validar e salvar fotos limpas
         env:
           MELI_ACCESS_TOKEN: ${{ secrets.MELI_ACCESS_TOKEN }}
@@ -101,8 +123,8 @@ jobs:
             exit 0
           fi
           if [ -z "${GH_TOKEN:-}" ]; then
-            echo "::warning::IMAGE_BOT_GITHUB_TOKEN não configurado; o refresh token novo não pôde ser rotacionado."
-            exit 0
+            echo "::error::IMAGE_BOT_GITHUB_TOKEN não configurado; rotação segura indisponível."
+            exit 1
           fi
           NEW_REFRESH_TOKEN="$(cat "${TOKEN_FILE}")"
           echo "::add-mask::${NEW_REFRESH_TOKEN}"
