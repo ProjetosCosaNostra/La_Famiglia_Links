@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T02:45:46Z",
+  "updated_at": "2026-09-06T07:53:26Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -370,7 +370,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/508264cc-d378-4e23-8a46-f94def9bdcaa",
-      "webp_optimized_at": "2026-06-14T01:52:17Z"
+      "webp_optimized_at": "2026-06-14T01:52:17Z",
+      "card_image": "assets/produtos-card/iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_663465-MLA81418883080_122024-F.jpg",
+      "card_image_item_id": "MLB45194891",
+      "card_image_candidate_title": "Iluminador Líquido Bt Hello Kitty Bruna Tavares - Cake",
+      "card_image_match_score": 0.9896,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:49:49Z"
     },
     {
       "sku": "po-facial-bruna-tavares-bt-skinpowder",
@@ -435,7 +443,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/c53da94e-505b-4f6c-b757-643357fb6e94",
-      "webp_optimized_at": "2026-06-14T01:52:17Z"
+      "webp_optimized_at": "2026-06-14T01:52:17Z",
+      "card_image": "assets/produtos-card/po-facial-bruna-tavares-bt-skinpowder.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_899952-MLA114291476071_072026-F.jpg",
+      "card_image_item_id": "MLB75219298",
+      "card_image_candidate_title": "Pó Solto Facial Bruna Tavares BT Skinpowder Deep",
+      "card_image_match_score": 0.9424,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:49:57Z"
     },
     {
       "sku": "cola-cherry-lash-one-advance-black-glue-3ml-extensao-cilios-preto",
@@ -635,7 +651,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/4b5bbd5f-e255-4e49-9eda-e2d66c43ad4b",
-      "webp_optimized_at": "2026-06-14T01:52:18Z"
+      "webp_optimized_at": "2026-06-14T01:52:18Z",
+      "card_image": "assets/produtos-card/corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_670316-MLA115923213967_082026-F.jpg",
+      "card_image_item_id": "MLB76734925",
+      "card_image_candidate_title": "Corretivo Líquido Alta Cobertura Ruby Rose Stay Fix - Cores Tom C 02",
+      "card_image_match_score": 0.9628,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:50:09Z"
     },
     {
       "sku": "carregador-sem-fio-stand-inducao-preto",
@@ -898,7 +922,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/758c61bb-d326-4012-9b61-5b1707c25a33",
-      "webp_optimized_at": "2026-06-14T01:52:21Z"
+      "webp_optimized_at": "2026-06-14T01:52:21Z",
+      "card_image": "assets/produtos-card/gloss-fran-liphoney-mel.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_780350-MLA112017084246_062026-F.jpg",
+      "card_image_item_id": "MLB73421078",
+      "card_image_candidate_title": "Gloss Fran By Franciny Ehlke Liphoney Mel",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:50:14Z"
     },
     {
       "sku": "capacete-asx-city-preto-fosco-viseira",
@@ -3460,7 +3492,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/3d1d68fa-92c8-4d09-84c7-979eb0c04b50",
-      "webp_optimized_at": "2026-06-14T01:52:50Z"
+      "webp_optimized_at": "2026-06-14T01:52:50Z",
+      "card_image": "assets/produtos-card/escova-secadora-britania-bec07r-4em1-1300w-rosa.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_936982-MLA111153006436_052026-F.jpg",
+      "card_image_item_id": "MLB70194949",
+      "card_image_candidate_title": "Escova Secadora De Cabelos Britânia Bec07r Soft 4 Em 1 1300w Cor Rosa-claro",
+      "card_image_match_score": 0.8163,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:50:21Z"
     },
     {
       "sku": "gimbal-dji-osmo-mobile-se",
@@ -7129,7 +7169,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/663e59f3-307a-4adc-9b48-d827048eb8be",
-      "webp_optimized_at": "2026-06-14T01:53:35Z"
+      "webp_optimized_at": "2026-06-14T01:53:35Z",
+      "card_image": "assets/produtos-card/batom-hidratante-sace-lady-a03-terre-rouge.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_838336-MLA108322846603_032026-F.jpg",
+      "card_image_item_id": "MLB66340917",
+      "card_image_candidate_title": "Batom Sace Lady Que Muda De Cor, Longa Duração, À Prova D'ág Cor A02",
+      "card_image_match_score": 0.8948,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:50:54Z"
     },
     {
       "sku": "cilios-posticos-sace-lady-autoadesivos-reutilizaveis",
@@ -7365,7 +7413,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/62ce109f-f54a-49d6-9803-c12697c1e24b",
-      "webp_optimized_at": "2026-06-14T01:53:37Z"
+      "webp_optimized_at": "2026-06-14T01:53:37Z",
+      "card_image": "assets/produtos-card/nivea-hidratante-labial-morango-shine-4-8g.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_610654-MLA80666417961_112024-F.jpg",
+      "card_image_item_id": "MLB42576971",
+      "card_image_candidate_title": "Kit 6 Hidratante Nivea Labial Morango Shine 4,8g",
+      "card_image_match_score": 0.9455,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:51:12Z"
     },
     {
       "sku": "fixador-de-maquiagem-ruby-rose-150ml-hb312",
@@ -8251,7 +8307,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/566de061-b26a-4750-abf5-d69e92072b30",
-      "webp_optimized_at": "2026-06-14T01:53:43Z"
+      "webp_optimized_at": "2026-06-14T01:53:43Z",
+      "card_image": "assets/produtos-card/bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_841185-MLA112062675872_062026-F.jpg",
+      "card_image_item_id": "MLB73557530",
+      "card_image_candidate_title": "Bolsa Feminina Grande Mochila Antfurto Impermeável Reforçada Preto Liso",
+      "card_image_match_score": 0.9549,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:51:57Z"
     },
     {
       "sku": "depilador-eletrico-feminino-4-em-1",
@@ -9514,7 +9578,15 @@
         "https://github.com/user-attachments/assets/97455cf7-1d22-468c-90f4-29e51551e3fb",
         "https://github.com/user-attachments/assets/76b1395c-017d-4fa1-8593-4bb86de73216"
       ],
-      "webp_optimized_at": "2026-06-14T01:53:56Z"
+      "webp_optimized_at": "2026-06-14T01:53:56Z",
+      "card_image": "assets/produtos-card/escova-oval-secadora-taiff-easy-lilas-1200w.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_897345-MLA111153248420_052026-F.jpg",
+      "card_image_item_id": "MLB70200550",
+      "card_image_candidate_title": "Escova Oval Secadora Taiff Easy Lilás 1200w",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:52:27Z"
     },
     {
       "sku": "depilador-ipl-basike-sensacao-gelo-9-niveis",
@@ -10421,7 +10493,15 @@
         "https://github.com/user-attachments/assets/8ac06785-8d80-48d6-98ab-78f18260759a",
         "https://github.com/user-attachments/assets/a0d23906-6e98-4423-af71-72cc6d5b192b"
       ],
-      "webp_optimized_at": "2026-06-28T13:05:18Z"
+      "webp_optimized_at": "2026-06-28T13:05:18Z",
+      "card_image": "assets/produtos-card/agua-micelar-garnier-skinactive-tudo-em-1-400ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_813743-MLU71673153962_092023-F.jpg",
+      "card_image_item_id": "MLB24001919",
+      "card_image_candidate_title": "Kit de dupla limpeza água micelar Garnier SkinActive em óleo 400ml e tudo em 1 400ml",
+      "card_image_match_score": 0.8892,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-09-06T07:52:55Z"
     },
     {
       "sku": "suporte-secador-cabelo-escova-multiuso-organizador",
@@ -11447,7 +11527,7 @@
   "guardian_failsafe_triggered_at": "2026-03-21T13:07:39Z",
   "guardian_failsafe_note": "Mass deactivation prevented (active_after=0).",
   "webp_optimization": {
-    "updated_at": "2026-09-06T02:45:46Z",
+    "updated_at": "2026-09-06T02:45:34Z",
     "assets_dir": "assets/produtos-webp",
     "quality": 78,
     "max_size": 1000,
