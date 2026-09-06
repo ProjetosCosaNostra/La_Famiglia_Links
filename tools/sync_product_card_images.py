@@ -520,7 +520,11 @@ def affiliate_page_match(product: dict[str, Any], client: MercadoLivreClient, mi
         if not value or value in seen_urls:
             continue
         seen_urls.add(value)
-        if "meli.la" not in value and "/social/" not in value:
+        if (
+            "meli.la" not in value
+            and "/social/" not in value
+            and "lista.mercadolivre.com.br/" not in value
+        ):
             continue
         candidates.extend(client.affiliate_catalog_candidates(value))
         ranked = _rank_safe_candidates(source_title, candidates, min_score)
