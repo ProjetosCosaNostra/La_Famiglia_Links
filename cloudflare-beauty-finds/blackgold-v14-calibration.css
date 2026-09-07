@@ -1,5 +1,5 @@
 /* =====================================================================
-   BLACKGOLD V16 — CONTRACT CALIBRATION
+   BLACKGOLD V16.1 — CONTRACT CALIBRATION
    Authorities: approved desktop 1448x1086 + approved mobile composition.
    Public catalogue stays neutral until real products are inserted in Admin.
    ===================================================================== */
@@ -61,25 +61,26 @@
   .hero:before{
     inset:0!important;
     height:330px!important;
-    background-position:left 184px top 0!important;
+    background-position:left 207px top 0!important;
     background-size:auto 330px!important;
   }
   .hero:after{
     width:100%!important;height:330px!important;
     background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 45%,rgba(255,250,243,.985) 52%,rgba(255,250,243,.64) 64%,rgba(255,250,243,0) 78%)!important;
   }
-  .hero-copy{width:58%!important;height:100%!important;padding:54px 10px 0!important;overflow:visible!important}
+  .hero-copy{width:58%!important;height:100%!important;padding:62px 10px 0!important;overflow:visible!important}
   .eyebrow{width:195px!important;margin:0 0 10px!important;font-size:7.5px!important;line-height:1.45!important;letter-spacing:.18em!important}
   .hero h1{font-size:31px!important;line-height:.84!important;letter-spacing:-.025em!important}
-  .hero-line-1,.hero-line-2{white-space:normal!important}
+  .hero-line-1{white-space:nowrap!important}
+  .hero-line-2{white-space:normal!important}
   .hero-line-2 em{display:block}
   .hero h1 em{font-size:1em!important}
-  .hero-copy>p{font-size:13px!important;line-height:1.22!important;max-width:196px!important;margin-top:11px!important;color:#43382f!important}
+  .hero-copy>p{font-size:14px!important;line-height:1.28!important;max-width:196px!important;margin-top:11px!important;color:#43382f!important}
   .hero-actions{width:410px!important;margin-top:14px!important;gap:8px!important;display:flex!important;overflow:visible!important}
   .hero-actions .btn{flex:0 0 200px!important;min-width:200px!important;height:45px!important;padding:0 12px!important;border-radius:8px!important;font-size:14px!important;gap:10px!important}
   .hero-actions .btn-light svg{width:18px;height:18px}
 
-  .stats{position:absolute!important;left:0!important;bottom:8px!important;width:410px!important;height:55px!important;margin:0!important;display:grid!important;grid-template-columns:123px 145px 128px!important;gap:7px!important;z-index:7}
+  .stats{position:absolute!important;left:0!important;top:336px!important;bottom:auto!important;width:410px!important;height:55px!important;margin:0!important;display:grid!important;grid-template-columns:123px 145px 128px!important;gap:7px!important;z-index:7}
   .stat{height:55px!important;padding:0 9px!important;gap:8px!important;border-radius:7px!important;background:rgba(255,252,247,.98)!important}
   .stat svg{width:20px!important;height:20px!important}
   .stat strong{font-size:15px!important}
