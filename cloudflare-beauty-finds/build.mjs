@@ -29,28 +29,32 @@ for (const file of publicFiles) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// V10 fidelity layer over the stable V9 markup. Public product slots remain clean
-// placeholders until new products are created in the administration flow.
+// Stable V9 markup + V11 fidelity layer. Public product slots remain neutral
+// placeholders until the new catalogue is inserted through the administration flow.
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
 await fs.cp(path.join(here, 'approved-v5'), path.join(out, 'approved-v5'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 
-// Reuse only assets that already exist in the repository. This avoids resurrecting
-// the broken product-image directory and guarantees a uniform temporary placeholder.
 for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   const src = path.join(root, 'assets', asset);
   const dest = path.join(out, 'assets', asset);
   try { await fs.copyFile(src, dest); } catch {}
 }
 
-// The stable V9 markup referenced generated asset names that are not part of source.
-// Patch only the DIST package to known-good institutional files already versioned.
+// Resolve stale generated references only inside the deploy package and, critically,
+// inject the fidelity stylesheet after V9 so the approved overrides are actually active.
 for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
   const file = path.join(out, page);
   let html = await fs.readFile(file, 'utf8');
   html = html
     .replaceAll('./assets/header-lockup-v9.webp', './approved-v5/header-lockup.webp')
     .replaceAll('./assets/product-placeholder-v9.webp', './assets/logo-cn-square.png');
+
+  if (!html.includes('blackgold-v10-overrides.css')) {
+    const fidelityLink = '<link href="./blackgold-v10-overrides.css?v=20260907-v11" rel="stylesheet"/>';
+    html = html.replace('</head>', `${fidelityLink}</head>`);
+  }
+
   await fs.writeFile(file, html, 'utf8');
 }
 
@@ -95,15 +99,18 @@ for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.htm
   if (!html.includes('blackgold-v9.css') || !html.includes('blackgold-v9.js')) {
     throw new Error(`Stable V9 markup contract missing in ${page}`);
   }
+  if (!html.includes('blackgold-v10-overrides.css?v=20260907-v11')) {
+    throw new Error(`V11 fidelity layer missing in ${page}`);
+  }
   if (html.includes('./assets/header-lockup-v9.webp') || html.includes('./assets/product-placeholder-v9.webp')) {
-    throw new Error(`Unresolved V9 generated asset reference in ${page}`);
+    throw new Error(`Unresolved generated asset reference in ${page}`);
   }
 }
 
 await fs.access(path.join(out, 'approved-v5', 'header-lockup.webp'));
+await fs.access(path.join(out, 'approved-v5', 'eco-art.webp'));
 await fs.access(path.join(out, 'assets', 'logo-cn-square.png'));
 await fs.access(path.join(out, 'hero-approved.webp'));
-await fs.access(path.join(out, 'approved-home', 'ecosystem-approved-exact.webp'));
 await fs.access(path.join(out, 'blackgold-v10-overrides.css'));
 
-console.log(`BlackGold V10 fidelity package ready: ${products.length} legacy products kept backend-only -> ${out}`);
+console.log(`BlackGold V11 fidelity package ready: ${products.length} legacy products kept backend-only -> ${out}`);
