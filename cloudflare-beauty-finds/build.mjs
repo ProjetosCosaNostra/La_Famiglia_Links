@@ -19,6 +19,7 @@ const publicFiles = [
   'blackgold-v10-overrides.css',
   'blackgold-v12-final.css',
   'product-placeholder-v12.svg',
+  'ecosystem-crest-v12.svg',
   'styles.css',
   'app.js',
   'admin.html',
@@ -121,6 +122,7 @@ await fs.access(path.join(out, 'approved-v5', 'header-lockup.webp'));
 await fs.access(path.join(out, 'approved-v5', 'eco-art.webp'));
 await fs.access(path.join(out, 'hero-approved.webp'));
 await fs.access(path.join(out, 'product-placeholder-v12.svg'));
+await fs.access(path.join(out, 'ecosystem-crest-v12.svg'));
 await fs.access(path.join(out, 'blackgold-v10-overrides.css'));
 await fs.access(path.join(out, 'blackgold-v12-final.css'));
 
