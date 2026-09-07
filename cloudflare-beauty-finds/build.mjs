@@ -17,6 +17,8 @@ const publicFiles = [
   'blackgold-v9.css',
   'blackgold-v9.js',
   'blackgold-v10-overrides.css',
+  'blackgold-v12-final.css',
+  'product-placeholder-v12.svg',
   'styles.css',
   'app.js',
   'admin.html',
@@ -29,7 +31,7 @@ for (const file of publicFiles) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// Stable V9 markup + V11 fidelity layer. Public product slots remain neutral
+// Stable V9 markup + V11/V12 fidelity layers. Public product slots remain neutral
 // placeholders until the new catalogue is inserted through the administration flow.
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
 await fs.cp(path.join(here, 'approved-v5'), path.join(out, 'approved-v5'), { recursive: true });
@@ -41,18 +43,21 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   try { await fs.copyFile(src, dest); } catch {}
 }
 
-// Resolve stale generated references only inside the deploy package and, critically,
-// inject the fidelity stylesheet after V9 so the approved overrides are actually active.
+// Resolve stale generated references only inside the deploy package, keep the approved
+// header lockup, and replace every temporary product image with the V12 neutral SVG.
 for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
   const file = path.join(out, page);
   let html = await fs.readFile(file, 'utf8');
   html = html
     .replaceAll('./assets/header-lockup-v9.webp', './approved-v5/header-lockup.webp')
-    .replaceAll('./assets/product-placeholder-v9.webp', './assets/logo-cn-square.png');
+    .replaceAll('./assets/product-placeholder-v9.webp', './product-placeholder-v12.svg')
+    .replaceAll('./assets/logo-cn-square.png', './product-placeholder-v12.svg');
 
   if (!html.includes('blackgold-v10-overrides.css')) {
-    const fidelityLink = '<link href="./blackgold-v10-overrides.css?v=20260907-v11" rel="stylesheet"/>';
-    html = html.replace('</head>', `${fidelityLink}</head>`);
+    html = html.replace('</head>', '<link href="./blackgold-v10-overrides.css?v=20260907-v11" rel="stylesheet"/></head>');
+  }
+  if (!html.includes('blackgold-v12-final.css')) {
+    html = html.replace('</head>', '<link href="./blackgold-v12-final.css?v=20260907-v12" rel="stylesheet"/></head>');
   }
 
   await fs.writeFile(file, html, 'utf8');
@@ -61,6 +66,8 @@ for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.htm
 try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json')); }
 catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
 
+// Legacy catalogue remains backend/admin-only for audit/migration. It is not rendered
+// by the public V12 interface.
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
 let dailySelection = { campaign_id: 'organic', selected: [] };
@@ -102,15 +109,19 @@ for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.htm
   if (!html.includes('blackgold-v10-overrides.css?v=20260907-v11')) {
     throw new Error(`V11 fidelity layer missing in ${page}`);
   }
-  if (html.includes('./assets/header-lockup-v9.webp') || html.includes('./assets/product-placeholder-v9.webp')) {
-    throw new Error(`Unresolved generated asset reference in ${page}`);
+  if (!html.includes('blackgold-v12-final.css?v=20260907-v12')) {
+    throw new Error(`V12 final fidelity layer missing in ${page}`);
+  }
+  if (html.includes('./assets/header-lockup-v9.webp') || html.includes('./assets/product-placeholder-v9.webp') || html.includes('./assets/logo-cn-square.png')) {
+    throw new Error(`Unresolved temporary asset reference in ${page}`);
   }
 }
 
 await fs.access(path.join(out, 'approved-v5', 'header-lockup.webp'));
 await fs.access(path.join(out, 'approved-v5', 'eco-art.webp'));
-await fs.access(path.join(out, 'assets', 'logo-cn-square.png'));
 await fs.access(path.join(out, 'hero-approved.webp'));
+await fs.access(path.join(out, 'product-placeholder-v12.svg'));
 await fs.access(path.join(out, 'blackgold-v10-overrides.css'));
+await fs.access(path.join(out, 'blackgold-v12-final.css'));
 
-console.log(`BlackGold V11 fidelity package ready: ${products.length} legacy products kept backend-only -> ${out}`);
+console.log(`BlackGold V12 final package ready: ${products.length} legacy products kept backend-only -> ${out}`);
