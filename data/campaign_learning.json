@@ -225,17 +225,41 @@
     "agua-micelar-garnier-skinactive-tudo-em-1-400ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-07",
+      "last_score": {
+        "total": 3.554038,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
     },
     "mondial-modelador-cachos-infinity-em-12": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-07",
+      "last_score": {
+        "total": 3.593704,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
     },
     "cerave-gel-limpeza-facial-454g": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-07",
+      "last_score": {
+        "total": 3.588068,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
     },
     "cicaplast-baume-b5-plus-la-roche-posay-40ml": {
       "impressions": 0,
@@ -249,6 +273,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-06T15:30:17Z",
-  "last_campaign_id": "bg-20260906"
+  "updated_at": "2026-09-07T17:45:34Z",
+  "last_campaign_id": "bg-20260907"
 }
