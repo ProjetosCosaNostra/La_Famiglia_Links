@@ -1,19 +1,19 @@
 /* =====================================================================
-   BLACKGOLD V15 — PIXEL CALIBRATION AGAINST APPROVED 1448x1086 CONTRACT
+   BLACKGOLD V15.1 — PIXEL CALIBRATION AGAINST APPROVED 1448x1086 CONTRACT
    Authority: approved desktop + mobile mockups. No legacy product art.
    ===================================================================== */
 
 /* ---------------------------------------------------------------------
-   HERO — keep the approved two-line composition while matching the
-   original headline scale. The line box remains essentially unchanged,
-   so CTAs and stats keep the approved lower rhythm.
+   HERO — the approved desktop headline is visually large but occupies only
+   two compact lines. Preserve that exact rhythm instead of shrinking it.
    --------------------------------------------------------------------- */
-.hero-copy{padding-left:60px}
+.hero-copy{width:548px;padding:34px 0 0 60px}
 .hero h1{
   font-size:63px;
   line-height:.74;
   letter-spacing:-.035em;
 }
+.hero h1 em{font-size:.90em}
 .hero-copy>p{
   font-size:15px;
   line-height:1.34;
@@ -22,7 +22,7 @@
 }
 .hero-actions{margin-top:26px}
 .hero-actions .btn{height:40px}
-.stats{margin-top:18px}
+.stats{margin-top:11px}
 
 /* ---------------------------------------------------------------------
    CATALOGUE — same density/vertical cadence as the approved composition.
@@ -31,31 +31,33 @@
    --------------------------------------------------------------------- */
 .featured{margin-top:9px}
 .fcard{height:162px}
-.showcase{margin-top:28px}
+.showcase-head{margin-top:12px}
 .products{margin-top:8px}
-.pcard{height:141px}
+.pcard{height:147px}
 
-/* Temporary product art: deliberately substantial inside the exact card
-   footprints, instead of looking like tiny broken thumbnails. */
+/* Temporary product art: substantial and uniform inside the exact card
+   footprints, never tiny/broken legacy thumbnails. */
 .fmedia img{transform:scale(1.58);transform-origin:center}
 .pmedia img{transform:scale(1.70);transform-origin:center}
 .collection .cover img{transform:scale(1.38);transform-origin:center}
 .fullcard .media img{transform:scale(1.38);transform-origin:center}
 
 /* ---------------------------------------------------------------------
-   ECOSYSTEM — widen the approved lion/crest component so the pair of lions,
-   BLACKGOLD name and pedestal carry the same visual weight as the contract.
-   Text and destinations remain real HTML above the art.
+   ECOSYSTEM — the lions/crest remain one background artwork while labels
+   and links stay real HTML. Keep the artwork at its sharp native proportion
+   and create the luminous side depth with CSS, not with blurry scaling.
    --------------------------------------------------------------------- */
 .ecosystem{
   background:
-    repeating-conic-gradient(from 198deg at 50% 114%,rgba(236,171,46,.155) 0deg 1deg,transparent 1deg 7deg),
-    radial-gradient(ellipse at 50% 101%,rgba(226,150,24,.58),transparent 42%),
+    radial-gradient(ellipse at -2% 46%,rgba(233,170,55,.18),transparent 26%),
+    radial-gradient(ellipse at 102% 47%,rgba(233,170,55,.17),transparent 25%),
+    repeating-conic-gradient(from 198deg at 50% 114%,rgba(236,171,46,.145) 0deg 1deg,transparent 1deg 7deg),
+    radial-gradient(ellipse at 50% 101%,rgba(226,150,24,.55),transparent 40%),
     linear-gradient(90deg,#090604 0%,#160d04 31%,#0c0703 68%,#050403 100%);
 }
 .ecosystem:before{
-  background-size:455px 172px;
-  filter:saturate(1.16) contrast(1.06) brightness(1.10);
+  background-size:415px 172px;
+  filter:saturate(1.14) contrast(1.05) brightness(1.08);
 }
 .eco-copy{top:17px;left:74px}
 .eco-links{top:10px;right:64px;width:520px}
@@ -68,7 +70,7 @@
 .footer{padding-left:52px;padding-right:52px}
 
 /* ---------------------------------------------------------------------
-   INTERNAL PAGES — shared language, same hero art, same gold/cream system.
+   INTERNAL PAGES — same typography and hero language as the Home.
    --------------------------------------------------------------------- */
 .page-hero h1{font-size:50px;line-height:.90;letter-spacing:-.03em}
 .page-hero p{max-width:470px}
@@ -76,8 +78,7 @@
 @media(max-width:760px){
   .topbar{padding-left:10px;padding-right:10px}
 
-  /* Approved mobile keeps the model on the right; the copy must never sit
-     over the eyes/face. */
+  /* Mobile authority: model stays on the right and never dominates copy. */
   .hero{height:390px}
   .hero:before{
     inset:0;
@@ -90,23 +91,37 @@
   }
   .hero-copy{width:57%;padding:24px 12px 0}
   .hero h1{font-size:26px;line-height:.90;letter-spacing:-.025em}
+  .hero h1 em{font-size:1em}
   .hero-copy>p{font-size:9.8px;line-height:1.34;max-width:182px;margin-top:9px}
   .hero-actions{margin-top:10px;gap:6px}
   .hero-actions .btn{height:34px}
   .stats{margin-top:0}
 
   .fcard{height:138px}
-  .showcase{margin-top:10px}
+  .showcase-head{margin-top:0}
   .pcard{height:130px}
   .fmedia img{transform:scale(1.34)}
   .pmedia img{transform:scale(1.42)}
 
+  /* Approved mobile ecosystem is a compact branded header + destination
+     grid, not a giant desktop crest squeezed into the phone. */
+  .ecosystem{min-height:326px;height:auto;padding:0;background:
+    radial-gradient(ellipse at 50% 0%,rgba(218,148,30,.18),transparent 32%),
+    repeating-conic-gradient(from 198deg at 50% 108%,rgba(233,164,42,.10) 0deg 1deg,transparent 1deg 8deg),
+    linear-gradient(180deg,#0b0704,#050403)}
   .ecosystem:before{
-    background-size:230px auto;
+    background-position:18px 10px;
+    background-size:82px auto;
     filter:saturate(1.12) contrast(1.05) brightness(1.09);
   }
-  .eco-copy{top:auto;left:auto}
-  .eco-links{top:auto;right:auto;width:100%}
+  .ecosystem:after{background:linear-gradient(180deg,rgba(5,3,2,0) 0%,rgba(5,3,2,.08) 28%,rgba(5,3,2,.52) 100%)}
+  .eco-inner{height:auto;min-height:326px;padding:0 12px}
+  .eco-copy{position:relative;left:auto;top:auto;width:auto;height:78px;padding:20px 0 0 96px;text-align:left;margin:0}
+  .eco-kicker,.eco-copy p{display:none}
+  .eco-copy h2{font-size:22px;line-height:1;margin:12px 0 0;white-space:nowrap}
+  .eco-links{position:relative;right:auto;top:auto;width:100%;margin-top:4px;grid-template-columns:1fr 1fr;gap:6px}
+  .eco-link{height:42px}
+
   .footer{padding-left:12px;padding-right:12px}
 
   .page-hero h1{font-size:34px;line-height:.93}
