@@ -12,6 +12,7 @@ await fs.mkdir(path.join(out, 'assets'), { recursive: true });
 for (const file of [
   'index.html',
   'blackgold-v4.css',
+  'blackgold-v4-fidelity.css',
   'styles.css',
   'app.js',
   'admin.html',
@@ -22,13 +23,13 @@ for (const file of [
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// V4 VISUAL: o pacote publicado usa o CSS do contrato V4 com cache-busting próprio.
-// A home continua isolada do renderer legado e do catálogo antigo.
+// V4 visual contract + fidelity layer. A home permanece isolada do renderer legado.
 const publishedIndex = path.join(out, 'index.html');
 let html = await fs.readFile(publishedIndex, 'utf8');
 html = html
   .replace('./blackgold-v2.css', './blackgold-v4.css?v=20260906-v4')
   .replace('./blackgold-v3.css', './blackgold-v4.css?v=20260906-v4')
+  .replace('</head>', '  <link rel="stylesheet" href="./blackgold-v4-fidelity.css?v=20260907-r1">\n</head>')
   .replace('<meta name="theme-color" content="#0b0907">', '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">\n  <meta http-equiv="Pragma" content="no-cache">\n  <meta http-equiv="Expires" content="0">\n  <meta name="theme-color" content="#0b0907">');
 await fs.writeFile(publishedIndex, html, 'utf8');
 
@@ -38,6 +39,7 @@ await fs.writeFile(publishedIndex, html, 'utf8');
   O catálogo real permanece disponível separadamente em catalog.json para backend/admin.
 */
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
+await fs.cp(path.join(here, 'approved-v5'), path.join(out, 'approved-v5'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
@@ -89,4 +91,4 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   try { await fs.copyFile(src, dest); } catch {}
 }
 
-console.log(`Cloudflare Pages V4 package ready: ${products.length} active products -> ${out}`);
+console.log(`Cloudflare Pages V4 fidelity package ready: ${products.length} active products -> ${out}`);
