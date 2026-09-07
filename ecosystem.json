@@ -1,107 +1,54 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "registry_id": "cosanostra-blackgold-ecosystem",
-  "updated_at": "2026-08-11T01:51:00-03:00",
-  "default_locale": "en",
+  "version": "2.1",
+  "updated_at": "2026-09-05T00:00:00-03:00",
+  "default_locale": "en-US",
   "supported_locales": ["pt-BR", "en-US", "es-419"],
+  "owner": "Cosa Nostra BlackGold — Capo Felipe",
+  "contact": "projetoscosanostra@gmail.com",
   "hub": {
     "id": "hub-official",
-    "kind": "hub",
-    "labels": {
-      "pt-BR": "Hub oficial / Loja",
-      "en-US": "Official hub / Store",
-      "es-419": "Hub oficial / Tienda"
-    },
-    "url": "https://projetoscosanostra.github.io/La_Famiglia_Links/"
+    "type": "store",
+    "status": "active",
+    "labels": {"pt-BR":"Loja Oficial BlackGold","en-US":"BlackGold Official Store","es-419":"Tienda Oficial BlackGold"},
+    "descriptions": {"pt-BR":"Curadoria feminina premium.","en-US":"Premium female curation.","es-419":"Curaduría femenina premium."},
+    "canonical_url": "https://blackgold-beauty-finds-br.pages.dev/",
+    "fallback_url": "https://blackgold-beauty-finds-br.pages.dev/",
+    "locales": ["pt-BR","en-US","es-419"],
+    "markets": ["global"],
+    "last_verified_at": "2026-09-05"
   },
   "projects": [
     {
-      "id": "preco-no-ponto",
-      "kind": "android_app",
-      "status": "ready",
-      "labels": {
-        "pt-BR": "Preço no Ponto",
-        "en-US": "Preço no Ponto",
-        "es-419": "Preço no Ponto"
-      },
-      "descriptions": {
-        "pt-BR": "Calcule custos, margem e preço de venda.",
-        "en-US": "Calculate costs, margin and selling price.",
-        "es-419": "Calcula costos, margen y precio de venta."
-      },
-      "url": "https://play.google.com/store/apps/details?id=br.com.lafamigliaplayworks.preconoponto&pcampaignid=web_share"
+      "id":"fitnexus-coach","type":"app","status":"active",
+      "labels":{"pt-BR":"FitNexus Coach","en-US":"FitNexus Coach","es-419":"FitNexus Coach"},
+      "descriptions":{"pt-BR":"Treinos, alunos e evolução fitness.","en-US":"Training, clients and fitness progress.","es-419":"Entrenamientos, alumnos y evolución fitness."},
+      "canonical_url":"https://projetoscosanostra.github.io/FitNexus_Coach_BlackGold/","fallback_url":"https://projetoscosanostra.github.io/FitNexus_Coach_BlackGold/","locales":["pt-BR","en-US","es-419"],"markets":["global"],"last_verified_at":"2026-09-05"
     },
     {
-      "id": "fitnexus-coach-blackgold",
-      "kind": "saas",
-      "status": "ready",
-      "labels": {
-        "pt-BR": "FitNexus Coach",
-        "en-US": "FitNexus Coach",
-        "es-419": "FitNexus Coach"
-      },
-      "descriptions": {
-        "pt-BR": "Ecossistema fitness para alunos, treinos e evolução.",
-        "en-US": "Fitness ecosystem for clients, training and progress.",
-        "es-419": "Ecosistema fitness para alumnos, entrenamientos y evolución."
-      },
-      "url": "https://projetoscosanostra.github.io/FitNexus_Coach_BlackGold/"
+      "id":"appevidex","type":"app","status":"active",
+      "labels":{"pt-BR":"AppEvidex","en-US":"AppEvidex","es-419":"AppEvidex"},
+      "descriptions":{"pt-BR":"Ativo oficial BlackGold.","en-US":"Official BlackGold asset.","es-419":"Activo oficial BlackGold."},
+      "canonical_url":"https://appevidex.pages.dev/","fallback_url":"https://appevidex.pages.dev/","locales":["pt-BR","en-US","es-419"],"markets":["global"],"last_verified_at":"2026-09-05"
+    },
+    {
+      "id":"preco-no-ponto","type":"app","status":"active",
+      "labels":{"pt-BR":"Preço no Ponto — Play Store","en-US":"Preço no Ponto — Play Store","es-419":"Preço no Ponto — Play Store"},
+      "descriptions":{"pt-BR":"App publicado para formação de preço.","en-US":"Published app for pricing calculations.","es-419":"App publicada para cálculo de precios."},
+      "canonical_url":"https://play.google.com/store/apps/details?id=br.com.lafamigliaplayworks.preconoponto&pcampaignid=web_share","fallback_url":"https://play.google.com/store/apps/details?id=br.com.lafamigliaplayworks.preconoponto&pcampaignid=web_share","locales":["pt-BR","en-US","es-419"],"markets":["global"],"last_verified_at":"2026-09-05"
     }
   ],
   "channels": [
-    {
-      "id": "instagram",
-      "kind": "social",
-      "label": "Instagram",
-      "url": "https://www.instagram.com/cosanostra.blackgold/"
-    },
-    {
-      "id": "tiktok",
-      "kind": "social",
-      "label": "TikTok",
-      "url": "https://www.tiktok.com/@cosanostra.blackgold"
-    },
-    {
-      "id": "kwai",
-      "kind": "social",
-      "label": "Kwai",
-      "url": "https://kwai-video.com/u/@cosanostra.blackgold/CwdSwBPA"
-    },
-    {
-      "id": "youtube",
-      "kind": "social",
-      "label": "YouTube",
-      "url": "https://www.youtube.com/@cosanostra.blackgold"
-    },
-    {
-      "id": "facebook",
-      "kind": "social",
-      "label": "Facebook",
-      "url": "https://www.facebook.com/cosanostra.blackgold/"
-    },
-    {
-      "id": "telegram",
-      "kind": "community",
-      "label": "Telegram",
-      "url": "https://t.me/BlackGoldSociety"
-    },
-    {
-      "id": "github",
-      "kind": "professional",
-      "label": "GitHub",
-      "url": "https://github.com/ProjetosCosaNostra"
-    },
-    {
-      "id": "linkedin",
-      "kind": "professional",
-      "label": "LinkedIn",
-      "url": "https://www.linkedin.com/in/felipe-projetoscosanostra/"
-    },
-    {
-      "id": "contact",
-      "kind": "contact",
-      "label": "Contato / Contacto / Contact",
-      "url": "mailto:projetoscosanostra@gmail.com"
-    }
-  ]
+    {"id":"instagram","type":"social","status":"active","label":"Instagram","canonical_url":"https://www.instagram.com/cosanostra.blackgold/","fallback_url":"https://www.instagram.com/cosanostra.blackgold/","last_verified_at":"2026-09-05"},
+    {"id":"tiktok","type":"social","status":"active","label":"TikTok","canonical_url":"https://www.tiktok.com/@cosanostraresolve?_r=1&_t=ZS-99Gu6t5IHQY","fallback_url":"https://www.tiktok.com/@cosanostraresolve","last_verified_at":"2026-09-05"},
+    {"id":"kwai","type":"social","status":"active","label":"Kwai","canonical_url":"https://kwai-video.com/u/@cosanostra.blackgold/CwdSwBPA","fallback_url":"https://kwai-video.com/u/@cosanostra.blackgold/CwdSwBPA","last_verified_at":"2026-09-05"},
+    {"id":"youtube","type":"social","status":"active","label":"YouTube","canonical_url":"https://www.youtube.com/@cosanostra.blackgold","fallback_url":"https://www.youtube.com/@cosanostra.blackgold","last_verified_at":"2026-09-05"},
+    {"id":"facebook","type":"social","status":"active","label":"Facebook","canonical_url":"https://www.facebook.com/cosanostra.blackgold/","fallback_url":"https://www.facebook.com/cosanostra.blackgold/","last_verified_at":"2026-09-05"},
+    {"id":"telegram","type":"community","status":"active","label":"Telegram","canonical_url":"https://t.me/BlackGoldSociety","fallback_url":"https://t.me/BlackGoldSociety","last_verified_at":"2026-09-05"},
+    {"id":"github","type":"company","status":"active","label":"GitHub","canonical_url":"https://github.com/ProjetosCosaNostra","fallback_url":"https://github.com/ProjetosCosaNostra","last_verified_at":"2026-09-05"},
+    {"id":"linkedin","type":"company","status":"active","label":"LinkedIn","canonical_url":"https://www.linkedin.com/in/felipe-projetoscosanostra/","fallback_url":"https://www.linkedin.com/in/felipe-projetoscosanostra/","last_verified_at":"2026-09-05"},
+    {"id":"contact","type":"contact","status":"active","label":"Contato","canonical_url":"mailto:projetoscosanostra@gmail.com","fallback_url":"mailto:projetoscosanostra@gmail.com","last_verified_at":"2026-09-05"}
+  ],
+  "checksum": "blackgold-ecosystem-v2.1-20260905"
 }
