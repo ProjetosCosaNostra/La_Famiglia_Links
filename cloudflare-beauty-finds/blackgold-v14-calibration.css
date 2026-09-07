@@ -1,0 +1,51 @@
+/* =====================================================================
+   BLACKGOLD V14 — PIXEL CALIBRATION AGAINST APPROVED 1448x1086 CONTRACT
+   ===================================================================== */
+
+/* HERO vertical rhythm: copy stays where approved, CTAs/stats move to the exact lower rhythm. */
+.hero-copy>p{margin-top:15px;line-height:1.43}
+.hero-actions{margin-top:22px}
+.stats{margin-top:18px}
+
+/* Catalogue fills the approved 443px band instead of leaving a dead strip above ecosystem. */
+.featured{margin-top:9px}
+.fcard{height:162px}
+.showcase{margin-top:17px}
+.products{margin-top:8px}
+
+/* Temporary product art: intentionally denser, like product photography, while staying uniform. */
+.fmedia img{transform:scale(1.48);transform-origin:center}
+.pmedia img{transform:scale(1.58);transform-origin:center}
+.collection .cover img{transform:scale(1.34);transform-origin:center}
+.fullcard .media img{transform:scale(1.34);transform-origin:center}
+
+/* Approved ecosystem alignment and gold depth. */
+.ecosystem{
+  background:
+    repeating-conic-gradient(from 198deg at 50% 114%,rgba(236,171,46,.145) 0deg 1deg,transparent 1deg 7deg),
+    radial-gradient(ellipse at 50% 101%,rgba(226,150,24,.55),transparent 39%),
+    linear-gradient(90deg,#090604 0%,#160d04 31%,#0c0703 68%,#050403 100%);
+}
+.ecosystem:before{filter:saturate(1.12) contrast(1.05) brightness(1.08)}
+.eco-copy{top:17px}
+.eco-links{top:10px}
+.eco-link{box-shadow:inset 0 0 0 1px rgba(255,207,100,.025),0 5px 14px rgba(0,0,0,.16)}
+
+/* Fine header/footer placement from the approved lockup. */
+.topbar{padding-left:52px;padding-right:52px}
+.footer{padding-left:52px;padding-right:52px}
+
+@media(max-width:760px){
+  .topbar{padding-left:10px;padding-right:10px}
+  .hero-copy>p{margin-top:9px;line-height:1.34}
+  .hero-actions{margin-top:10px}
+  .stats{margin-top:0}
+  .fcard{height:138px}
+  .showcase{margin-top:10px}
+  .fmedia img{transform:scale(1.28)}
+  .pmedia img{transform:scale(1.34)}
+  .ecosystem:before{filter:saturate(1.10) contrast(1.04) brightness(1.08)}
+  .eco-copy{top:auto}
+  .eco-links{top:auto}
+  .footer{padding-left:12px;padding-right:12px}
+}
