@@ -1,4 +1,4 @@
-name: BlackGold Beauty Finds - Visual V11 Preview
+name: BlackGold Beauty Finds - Visual V14 Preview
 
 on:
   workflow_dispatch:
@@ -21,11 +21,11 @@ env:
   WRANGLER_VERSION: 4.129.0
 
 jobs:
-  deploy-preview-v11:
+  deploy-preview-v14:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout V11 staging
+      - name: Checkout V14 staging
         uses: actions/checkout@v4
         with:
           ref: blackgold-contract-v4-staging
@@ -46,22 +46,23 @@ jobs:
           [ -n "$CF_TOKEN" ] || { echo 'CLOUDFLARE_API_TOKEN ausente'; exit 2; }
           [ -n "$CF_ACCOUNT" ] || { echo 'CLOUDFLARE_ACCOUNT_ID ausente'; exit 3; }
 
-      - name: Construir pacote V11
+      - name: Construir pacote V14
         working-directory: cloudflare-beauty-finds
         run: |
           set -euo pipefail
           node build.mjs
-          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css ecosystem.json admin.html; do
+          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css exact-brand-v13.webp exact-ecosystem-center-v13.webp ecosystem.json admin.html; do
             test -f "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
           for page in index.html destaque.html vitrine.html ecossistema.html; do
             grep -q 'blackgold-v9.css' "dist/$page" || { echo "$page sem CSS base"; exit 11; }
-            grep -q 'blackgold-v10-overrides.css?v=20260907-v11' "dist/$page" || { echo "$page sem fidelity V11"; exit 12; }
-            grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 13; }
+            grep -q 'blackgold-v10-overrides.css?v=20260907-v11' "dist/$page" || { echo "$page sem V11"; exit 12; }
+            grep -q 'blackgold-v12-final.css?v=20260907-v12' "dist/$page" || { echo "$page sem V12"; exit 13; }
+            grep -q 'blackgold-v13-exact.css?v=20260907-v13' "dist/$page" || { echo "$page sem V13"; exit 14; }
+            grep -q 'blackgold-v14-calibration.css?v=20260907-v14' "dist/$page" || { echo "$page sem V14"; exit 15; }
+            grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 16; }
           done
-          test -f dist/approved-v5/eco-art.webp || { echo 'eco-art institucional ausente'; exit 14; }
-          test -f dist/approved-v5/header-lockup.webp || { echo 'header lockup ausente'; exit 15; }
-          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(16); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(17); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(18);"
+          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(17); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(18); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(19);"
 
       - name: Publicar somente em PREVIEW
         working-directory: cloudflare-beauty-finds
@@ -76,7 +77,7 @@ jobs:
             --commit-hash="$GITHUB_SHA" \
             --commit-dirty=true
 
-      - name: Validar preview V11
+      - name: Validar preview V14
         shell: bash
         env:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -96,7 +97,7 @@ jobs:
           NODE
           )
           echo "PREVIEW_URL=$PREVIEW_URL" >> "$GITHUB_ENV"
-          echo "Preview V11: $PREVIEW_URL"
+          echo "Preview V14: $PREVIEW_URL"
           for route in / /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
             code=000
             for attempt in 1 2 3 4 5; do
@@ -107,22 +108,21 @@ jobs:
             [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 22; }
           done
           curl -sS -L "$PREVIEW_URL/" > /tmp/home.html
-          grep -q 'blackgold-v9.css' /tmp/home.html || exit 23
-          grep -q 'blackgold-v10-overrides.css?v=20260907-v11' /tmp/home.html || exit 24
-          grep -q 'blackgold-v9.js' /tmp/home.html || exit 25
+          grep -q 'blackgold-v14-calibration.css?v=20260907-v14' /tmp/home.html || exit 23
+          grep -q 'blackgold-v9.js' /tmp/home.html || exit 24
           {
-            echo '## BlackGold Beauty Finds — Preview V11'
+            echo '## BlackGold Beauty Finds — Preview V14'
             echo ''
             echo "- Branch: $PREVIEW_BRANCH"
             echo "- Commit: $GITHUB_SHA"
             echo "- URL: $PREVIEW_URL"
             echo '- Home + Destaque + Vitrine + Ecossistema + Admin: HTTP 200'
-            echo '- Fidelity V11: confirmado no HTML publicado'
+            echo '- V14 calibration: confirmado no HTML publicado'
             echo '- Manifesto V2.1: confirmado'
             echo '- Produção: não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Capturar provas visuais V11
+      - name: Capturar provas visuais V14
         shell: bash
         run: |
           set -euo pipefail
@@ -137,10 +137,10 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1240 --screenshot="$PWD/visual-proof/ecossistema-mobile.png" "$PREVIEW_URL/ecossistema.html"
           for f in visual-proof/*.png; do test -s "$f" || exit 31; done
 
-      - name: Guardar provas visuais V11
+      - name: Guardar provas visuais V14
         uses: actions/upload-artifact@v4
         with:
-          name: blackgold-v11-visual-proof
+          name: blackgold-v14-visual-proof
           path: visual-proof/*.png
           if-no-files-found: error
           retention-days: 7
