@@ -1,0 +1,115 @@
+/* =====================================================================
+   V10 FINAL FIDELITY PASS — approved visual contract 1448x1086 + mobile
+   ===================================================================== */
+.mobile-hamburger{display:none}
+.tools [data-menu]{display:none}
+.admin-lock{display:none!important}
+
+/* Exact institutional art already stored in the project; no legacy product imagery. */
+.hero:before{inset:0 0 0 540px;background:url('./hero-approved.webp') left center/908px 362px no-repeat}
+.page-hero:before{inset:0 0 0 44%;background:url('./hero-approved.webp') left center/908px 362px no-repeat}
+.ecosystem:before{background:url('./approved-home/ecosystem-approved-exact.webp') center center/auto 168px no-repeat}
+
+/* Product placeholders must read as clean temporary content, not giant dark blocks. */
+.fmedia,.pmedia,.collection .cover,.fullcard .media{background:linear-gradient(180deg,#fffaf2,#f8ecdc)}
+.fmedia img,.pmedia img,.collection .cover img,.fullcard .media img{object-fit:contain!important}
+.fmedia img{padding:12px}
+.pmedia img{padding:10px}
+.collection .cover img{padding:26px 34px}
+.fullcard .media img{padding:28px 40px}
+.collection .body,.fullcard .body{position:relative;z-index:2;background:rgba(255,255,255,.96)}
+.collection .cover{height:168px}
+.collection{min-height:330px}
+.collection .body{min-height:162px}
+.fullcard .media{height:178px}
+.fullcard{min-height:300px}
+
+/* Keep the administration entry available without breaking the approved header. */
+.footer nav a[href="./admin.html"]{color:#e2b34f}
+
+/* Internal pages reuse the same split-system instead of a faded full-screen wash. */
+.page-hero{height:282px;background:#fffaf3;position:relative;overflow:hidden}
+.page-hero:before{content:"";position:absolute;right:0;top:0;bottom:0;left:43%;background:url('./hero-approved.webp') left 39% center/auto 282px no-repeat;z-index:1}
+.page-hero:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 39%,rgba(255,250,243,.98) 48%,rgba(255,250,243,.48) 57%,rgba(255,250,243,0) 69%);pointer-events:none}
+.page-hero .inside{position:relative;z-index:3;padding:53px 65px;width:565px}
+.page-hero h1{font-size:48px;line-height:.93}
+.page-hero p{max-width:500px}
+
+/* Premium catalogue rhythm on internal pages. */
+.inner{padding-top:28px}
+.collections{gap:15px;margin-top:18px}
+.collection{box-shadow:0 12px 26px rgba(91,58,18,.055)}
+.collection h3{font-size:22px}
+.collection p{font-size:10.5px}
+.fullgrid{gap:13px;margin-top:18px}
+.fullcard{box-shadow:0 10px 24px rgba(91,58,18,.045)}
+.fullcard h3{font-size:18px}
+
+/* Ecosystem home strip: native-size crest, no stretching or crop. */
+.ecosystem{height:172px;background:repeating-conic-gradient(from 198deg at 50% 112%,rgba(225,155,35,.075) 0deg 1deg,transparent 1deg 7deg),radial-gradient(circle at 50% 94%,rgba(214,139,22,.30),transparent 31%),#070503}
+.ecosystem:after{background:linear-gradient(90deg,rgba(5,3,2,.46) 0%,rgba(5,3,2,.24) 29%,rgba(5,3,2,0) 39%,rgba(5,3,2,0) 61%,rgba(5,3,2,.26) 75%,rgba(5,3,2,.50) 100%)}
+.eco-inner{grid-template-columns:31% 29% 40%;padding:0 63px}
+.eco-copy h2{font-size:31px}
+.eco-links{gap:5px 8px}
+
+@media(max-width:760px){
+  /* Mobile header follows the approved hierarchy: menu | brand | actions. */
+  .topbar{height:62px;grid-template-columns:34px 1fr auto;padding:0 10px;gap:5px}
+  .mobile-hamburger{display:grid!important;grid-column:1;width:30px;height:30px;border:0;background:transparent;color:#f4e9d7;place-items:center;padding:0}
+  .mobile-hamburger svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
+  .brand{grid-column:2;justify-self:start;width:164px;height:52px}
+  .brand img{width:164px;height:52px}
+  .tools{grid-column:3;justify-self:end;gap:2px;position:static}
+  .tools .divider{display:none}
+  .tools .lang{position:absolute;top:67px;z-index:80;width:29px;height:22px;font-size:9px;background:#0a0806}
+  .tools .lang:nth-child(1){right:76px}.tools .lang:nth-child(2){right:43px}.tools .lang:nth-child(3){right:10px}
+  .tools .icon{width:30px;height:30px}
+  .tools [aria-label="Buscar"],.tools [aria-label="Vitrine"]{display:grid}
+  .main-nav{top:62px;padding:12px 14px;gap:26px}
+
+  /* Mobile hero: woman only on the right; no oversized crest. */
+  .hero{height:390px;background:#fffaf3}
+  .hero:before{inset:0;background:url('./hero-approved.webp') left 118px top 0/auto 278px no-repeat;z-index:1}
+  .hero:after{inset:0;width:100%;height:280px;background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 38%,rgba(255,250,243,.96) 46%,rgba(255,250,243,.48) 57%,rgba(255,250,243,0) 70%);z-index:2}
+  .hero-copy{z-index:3;padding:24px 12px 0;width:52%;height:280px}
+  .eyebrow{font-size:6px;letter-spacing:.17em;margin-bottom:8px}
+  .hero h1{font-size:24.5px;line-height:.91;letter-spacing:-.03em}
+  .hero-copy>p{font-size:9.8px;line-height:1.34;margin-top:9px}
+  .hero-actions{gap:6px;margin-top:10px;flex-wrap:nowrap}
+  .btn{height:32px;padding:0 9px;font-size:9.5px;gap:7px}
+  .btn-gold{min-width:112px}.btn-light{min-width:123px}
+  .stats{top:297px;left:12px;width:calc(100vw - 24px);gap:5px}
+  .stat{height:49px;padding:0 6px;gap:5px}
+  .stat strong{font-size:10.5px}.stat small{font-size:5.9px}
+
+  /* Mobile content begins immediately after stats, no dead beige band. */
+  .catalog{padding:12px 12px 16px}
+  .featured{margin-top:7px}
+  .fcard{height:138px;grid-template-columns:47% 53%}
+  .fmedia img{padding:8px}
+  .products{margin-top:7px}
+  .pcard{height:131px}.pmedia{height:87px}.pmedia img{padding:7px}
+
+  /* Compact ecosystem block mirrors the approved mobile composition. */
+  .ecosystem{min-height:344px;height:auto;background:#070503}
+  .ecosystem:before{background:url('./approved-home/ecosystem-approved-exact.webp') center 8px/202px auto no-repeat}
+  .ecosystem:after{background:linear-gradient(180deg,rgba(5,3,2,.02) 0%,rgba(5,3,2,.08) 30%,rgba(5,3,2,.50) 52%,rgba(5,3,2,.78) 100%)}
+  .eco-inner{grid-template-columns:1fr;padding:78px 12px 14px}
+  .eco-copy{text-align:center}
+  .eco-kicker{font-size:6.5px}
+  .eco-copy h2{font-size:25px;margin:5px 0 4px}
+  .eco-copy p{font-size:7.5px;line-height:1.3;max-width:330px}
+  .eco-links{grid-column:1;margin-top:10px;grid-template-columns:1fr 1fr;gap:6px}
+  .eco-link{height:42px}.eco-link b{font-size:7px}.eco-link small{font-size:5.6px}
+
+  /* Internal page mobile hero stays in the same family as the home. */
+  .page-hero{height:320px}
+  .page-hero:before{inset:0;background:url('./hero-approved.webp') left 92px top 0/auto 245px no-repeat}
+  .page-hero:after{background:linear-gradient(180deg,rgba(255,250,243,.10) 0%,rgba(255,250,243,.28) 36%,rgba(255,250,243,.92) 66%,#fffaf3 83%)}
+  .page-hero .inside{padding:188px 16px 18px;width:auto}
+  .page-hero h1{font-size:35px;line-height:.95}
+  .page-hero p{font-size:10.5px;line-height:1.4;max-width:340px}
+  .inner{padding:20px 12px 34px}
+  .collection .cover{height:156px}.collection .cover img{padding:20px 34px}.collection{min-height:295px}.collection .body{min-height:139px}
+  .fullcard .media{height:170px}.fullcard .media img{padding:24px 44px}
+}
