@@ -1,5 +1,5 @@
 /* BLACKGOLD VISUAL CONTRACT — fidelity corrections from the approved 1448×1086 reference.
-   This layer intentionally changes only visual geometry/assets. Backend/catalog remain untouched. */
+   This layer changes only visual geometry/assets. Backend/catalog remain untouched. */
 @media (min-width:761px){
   .topbar{padding-left:3.60vw}
 
@@ -15,14 +15,26 @@
 
   .main-nav{gap:4.05vw;font-size:1.02vw}
 
-  /* Approved artwork begins around x540. The previous 40.05% split began near x577. */
+  /* The approved artwork region starts around x540, but the woman's image begins ~40px later. */
   .hero{grid-template-columns:37.30% 62.70%}
   .hero-copy{padding-right:1.20vw}
   .eyebrow{font-size:.58vw;margin-bottom:.78vw}
-  .hero h1{font-size:4.02vw;line-height:.84;letter-spacing:-.043em}
+  .hero h1{font-size:3.72vw;line-height:.87;letter-spacing:-.041em}
   .hero-copy>p{width:96%;font-size:.98vw;line-height:1.38;margin-top:.82vw}
   .hero-actions{margin-top:1.08vw}
   .stats{margin-top:1.02vw}
+  .hero-art{
+    background:
+      radial-gradient(ellipse at 18% 52%,rgba(220,181,121,.26),transparent 26%),
+      linear-gradient(90deg,#f8ecdc 0%,#f5e4cd 100%);
+  }
+  .hero-art img{
+    width:calc(100% - 2.75vw);
+    height:100%;
+    margin-left:2.75vw;
+    object-fit:cover;
+    object-position:center;
+  }
 
   .featured-copy h3{font-size:.88vw}
   .brand-name{font-size:.58vw}
@@ -32,7 +44,7 @@
   .product-card h3{font-size:.59vw}
   .product-card strong{font-size:.60vw}
 
-  /* Replace the two visibly broken assets with clean crops from the approved reference. */
+  /* Clean exact crops from the approved reference replace visibly corrupted cards. */
   .featured-card:nth-child(2) .featured-media img{
     content:url('./approved-v5/ysl-loulou.webp');
     padding:0;
@@ -44,7 +56,6 @@
     object-fit:cover;
   }
 
-  /* Ecosystem: previous version enlarged a low-resolution crest to 116%, cutting the composition. */
   .ecosystem{
     background:
       radial-gradient(ellipse at 34% 110%,rgba(255,180,42,.56),transparent 26%),
@@ -55,7 +66,14 @@
   .ecosystem:before{opacity:.55}
   .eco-copy{transform:translateY(-13px)}
   .eco-links{transform:translateY(-10px)}
-  .eco-art img{width:100%;height:100%;filter:drop-shadow(0 5px 10px rgba(218,145,20,.22))}
+  .eco-art img{
+    content:url('./approved-v5/eco-art.webp');
+    width:96%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    filter:none;
+  }
   .eco-kicker{font-size:.52vw}
   .eco-copy h2{font-size:2.18vw}
   .eco-copy p{font-size:.66vw}
