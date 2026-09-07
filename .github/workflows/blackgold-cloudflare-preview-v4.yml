@@ -1,4 +1,4 @@
-name: BlackGold Beauty Finds - Visual V6 Preview
+name: BlackGold Beauty Finds - Visual V7 Preview
 
 on:
   workflow_dispatch:
@@ -21,12 +21,12 @@ env:
   WRANGLER_VERSION: 4.129.0
 
 jobs:
-  deploy-preview-v6:
+  deploy-preview-v7:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
-      - name: Checkout V6 staging
+      - name: Checkout V7 staging
         uses: actions/checkout@v4
         with:
           ref: blackgold-contract-v4-staging
@@ -47,25 +47,23 @@ jobs:
           [ -n "$CF_TOKEN" ] || { echo 'CLOUDFLARE_API_TOKEN ausente'; exit 2; }
           [ -n "$CF_ACCOUNT" ] || { echo 'CLOUDFLARE_ACCOUNT_ID ausente'; exit 3; }
 
-      - name: Construir pacote V6
+      - name: Construir pacote V7
         working-directory: cloudflare-beauty-finds
         run: |
           set -euo pipefail
           node build.mjs
-          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v6.css blackgold-v6.js ecosystem.json; do
+          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v7.css blackgold-v7.js ecosystem.json; do
             test -f "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
-          grep -q 'blackgold-v6.css' dist/index.html
-          grep -q 'blackgold-v6.js' dist/index.html
-          for page in destaque.html vitrine.html ecossistema.html; do
-            grep -q 'blackgold-v6.css' "dist/$page" || exit 11
-            grep -q 'blackgold-v6.js' "dist/$page" || exit 12
+          for page in index.html destaque.html vitrine.html ecossistema.html; do
+            grep -q 'blackgold-v7.css' "dist/$page" || { echo "$page sem CSS V7"; exit 11; }
+            grep -q 'blackgold-v7.js' "dist/$page" || { echo "$page sem JS V7"; exit 12; }
+            if grep -Eq 'blackgold-v[23456]\.css|blackgold-v[23456]\.js' "dist/$page"; then
+              echo "ERRO: $page ainda referencia contrato visual legado."
+              exit 13
+            fi
           done
-          if grep -q 'blackgold-v4.css' dist/index.html; then
-            echo 'ERRO: home ainda referencia V4.'
-            exit 13
-          fi
-          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(14); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(15);"
+          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(14); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(15); if(!m.channels?.some(x=>x.id==='tiktok' && String(x.canonical_url).includes('@cosanostraresolve'))) process.exit(16); if(m.hub?.canonical_url!=='https://blackgold-beauty-finds-br.pages.dev/') process.exit(17);"
 
       - name: Publicar somente em PREVIEW
         working-directory: cloudflare-beauty-finds
@@ -80,7 +78,7 @@ jobs:
             --commit-hash="$GITHUB_SHA" \
             --commit-dirty=true
 
-      - name: Validar preview V6
+      - name: Validar preview V7
         shell: bash
         env:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -102,9 +100,9 @@ jobs:
           NODE
           )
           echo "PREVIEW_URL=$PREVIEW_URL" >> "$GITHUB_ENV"
-          echo "Preview V6: $PREVIEW_URL"
+          echo "Preview V7: $PREVIEW_URL"
 
-          for route in / /destaque.html /vitrine.html /ecossistema.html /ecosystem.json; do
+          for route in / /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
             code=000
             for attempt in 1 2 3 4 5; do
               code=$(curl -sS -L -o /tmp/route.out -w '%{http_code}' --max-time 45 "$PREVIEW_URL$route") || true
@@ -114,20 +112,21 @@ jobs:
             [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 22; }
           done
           curl -sS -L "$PREVIEW_URL/" > /tmp/home.html
-          grep -q 'blackgold-v6.css' /tmp/home.html || { echo 'Preview não está servindo V6'; exit 23; }
+          grep -q 'blackgold-v7.css' /tmp/home.html || { echo 'Preview não está servindo V7'; exit 23; }
+          grep -q 'blackgold-v7.js' /tmp/home.html || { echo 'Preview não está servindo JS V7'; exit 24; }
 
           {
-            echo '## BlackGold Beauty Finds — Preview V6'
+            echo '## BlackGold Beauty Finds — Preview V7'
             echo ''
             echo "- Branch: $PREVIEW_BRANCH"
             echo "- Commit: $GITHUB_SHA"
             echo "- URL: $PREVIEW_URL"
-            echo '- Home + Destaque + Vitrine + Ecossistema: HTTP 200'
+            echo '- Home + Destaque + Vitrine + Ecossistema + Admin: HTTP 200'
             echo '- Manifesto V2.1: confirmado'
             echo '- Produção: não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Capturar provas visuais V6
+      - name: Capturar provas visuais V7
         shell: bash
         run: |
           set -euo pipefail
@@ -144,14 +143,18 @@ jobs:
             --screenshot="$PWD/visual-proof/vitrine-desktop.png" "$PREVIEW_URL/vitrine.html"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 \
             --screenshot="$PWD/visual-proof/ecossistema-desktop.png" "$PREVIEW_URL/ecossistema.html"
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1240 \
+            --screenshot="$PWD/visual-proof/ecossistema-mobile.png" "$PREVIEW_URL/ecossistema.html"
           test -s visual-proof/home-desktop-1448x1086.png
           test -s visual-proof/home-mobile-390x1240.png
+          test -s visual-proof/destaque-desktop.png
+          test -s visual-proof/vitrine-desktop.png
           test -s visual-proof/ecossistema-desktop.png
 
-      - name: Guardar provas visuais V6
+      - name: Guardar provas visuais V7
         uses: actions/upload-artifact@v4
         with:
-          name: blackgold-v6-visual-proof
+          name: blackgold-v7-visual-proof
           path: visual-proof/*.png
           if-no-files-found: error
           retention-days: 7
