@@ -11,7 +11,7 @@ await fs.mkdir(path.join(out, 'assets'), { recursive: true });
 
 for (const file of [
   'index.html',
-  'blackgold-v3.css',
+  'blackgold-v4.css',
   'styles.css',
   'app.js',
   'admin.html',
@@ -22,17 +22,18 @@ for (const file of [
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// V3 VISUAL: o arquivo publicado usa um nome de CSS novo para matar qualquer cache da V2.
+// V4 VISUAL: o pacote publicado usa o CSS do contrato V4 com cache-busting próprio.
 // A home continua isolada do renderer legado e do catálogo antigo.
 const publishedIndex = path.join(out, 'index.html');
 let html = await fs.readFile(publishedIndex, 'utf8');
 html = html
-  .replace('./blackgold-v2.css', './blackgold-v3.css?v=20260906-v3')
+  .replace('./blackgold-v2.css', './blackgold-v4.css?v=20260906-v4')
+  .replace('./blackgold-v3.css', './blackgold-v4.css?v=20260906-v4')
   .replace('<meta name="theme-color" content="#0b0907">', '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">\n  <meta http-equiv="Pragma" content="no-cache">\n  <meta http-equiv="Expires" content="0">\n  <meta name="theme-color" content="#0b0907">');
 await fs.writeFile(publishedIndex, html, 'utf8');
 
 /*
-  CLEAN REBUILD V3:
+  CLEAN REBUILD V4:
   A home visual é independente do renderer legado e não carrega produtos.json na UI.
   O catálogo real permanece disponível separadamente em catalog.json para backend/admin.
 */
@@ -88,4 +89,4 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   try { await fs.copyFile(src, dest); } catch {}
 }
 
-console.log(`Cloudflare Pages V3 package ready: ${products.length} active products -> ${out}`);
+console.log(`Cloudflare Pages V4 package ready: ${products.length} active products -> ${out}`);
