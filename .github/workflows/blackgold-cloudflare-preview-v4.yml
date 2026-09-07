@@ -100,6 +100,7 @@ jobs:
           )
 
           echo "Preview detectado: $PREVIEW_URL"
+          echo "PREVIEW_URL=$PREVIEW_URL" >> "$GITHUB_ENV"
           code=000
           for attempt in 1 2 3 4 5; do
             code=$(curl -sS -L -o /tmp/home.html -w '%{http_code}' --max-time 45 "$PREVIEW_URL/") || true
@@ -119,3 +120,25 @@ jobs:
             echo '- CSS V4: confirmado'
             echo '- Produção: não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Capturar provas visuais desktop e mobile
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p visual-proof
+          CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado no runner'; exit 30; }
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
+            --window-size=1440,1080 --screenshot="$PWD/visual-proof/blackgold-v4-desktop-1440x1080.png" "$PREVIEW_URL/"
+          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
+            --window-size=390,2200 --screenshot="$PWD/visual-proof/blackgold-v4-mobile-390x2200.png" "$PREVIEW_URL/"
+          test -s visual-proof/blackgold-v4-desktop-1440x1080.png
+          test -s visual-proof/blackgold-v4-mobile-390x2200.png
+
+      - name: Guardar provas visuais
+        uses: actions/upload-artifact@v4
+        with:
+          name: blackgold-v4-visual-proof
+          path: visual-proof/*.png
+          if-no-files-found: error
+          retention-days: 7
