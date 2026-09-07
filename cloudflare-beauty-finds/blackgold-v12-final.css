@@ -116,7 +116,16 @@
   .eco-links{margin-top:12px;gap:6px;grid-template-columns:1fr 1fr}
   .eco-link{height:42px}
 
-  .page-hero h1{font-size:36px}
-  .page-hero .inside{padding-top:188px}
+  /* Internal pages: art is a top banner; copy sits on its own cream surface below it. */
+  .page-hero{height:360px;background:#fffaf3}
+  .page-hero:before{inset:0;background:url('./hero-approved.webp') center top/auto 190px no-repeat;z-index:1}
+  .page-hero:after{inset:0;z-index:2;background:linear-gradient(180deg,rgba(255,250,243,.04) 0%,rgba(255,250,243,.12) 36%,rgba(255,250,243,.90) 52%,#fffaf3 66%,#fffaf3 100%)}
+  .page-hero .inside{position:relative;z-index:3;padding:202px 16px 18px;width:auto}
+  .page-hero .eyebrow{font-size:6.5px;letter-spacing:.16em;margin-bottom:8px}
+  .page-hero h1{font-size:34px;line-height:.94;max-width:350px}
+  .page-hero p{font-size:10.5px;line-height:1.42;max-width:345px;margin-top:10px}
+  .inner{padding-top:20px}
+  .inner>.title{align-items:flex-start;gap:10px}.inner>.title h2{font-size:25px;line-height:.96}.inner>.title p{font-size:7px;max-width:150px;text-align:right}
+
   .editorial-band{grid-template-columns:1fr;margin-top:20px}.editorial-copy{padding:20px 18px}.editorial-copy h2{font-size:25px}.editorial-points{grid-template-columns:1fr}.editorial-points article{border-left:0;border-top:1px solid rgba(205,147,45,.24);padding:14px 18px}.editorial-points b{font-size:19px}.editorial-points strong{font-size:16px;margin-top:4px}
 }
