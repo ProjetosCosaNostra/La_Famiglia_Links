@@ -1,0 +1,118 @@
+/* =====================================================================
+   BLACKGOLD V12 — FINAL CONTRACT REFINEMENT
+   Reference authority: approved 1448x1086 desktop + approved mobile.
+   This file is intentionally additive and loads after the V11 layer.
+   ===================================================================== */
+
+/* HERO — restore the visual weight and soft luxury depth of the approved art. */
+.hero{
+  background:
+    radial-gradient(circle at 4% 18%,rgba(222,175,91,.13),transparent 12%),
+    radial-gradient(circle at 15% 84%,rgba(226,188,120,.11),transparent 18%),
+    linear-gradient(180deg,#fffaf3,#fff9f0);
+}
+.hero:after{
+  width:604px;
+  background:
+    radial-gradient(ellipse at 5% 38%,rgba(217,173,101,.10),transparent 15%),
+    radial-gradient(ellipse at 21% 78%,rgba(221,184,121,.09),transparent 18%),
+    linear-gradient(90deg,#fffaf3 0%,#fffaf3 82%,rgba(255,250,243,.985) 90%,rgba(255,250,243,0) 100%);
+}
+.hero-copy{width:565px;padding-left:59px}
+.hero h1{font-size:57px;line-height:.90;letter-spacing:-.035em}
+.hero-copy>p{margin-top:14px;max-width:475px}
+.hero-actions{margin-top:17px}
+.stats{margin-top:17px}
+
+/* Neutral premium placeholders: similar light balance to real product photography. */
+.fmedia,.pmedia,.collection .cover,.fullcard .media{
+  background:linear-gradient(180deg,#fffdf8,#f8ead8);
+}
+.fmedia img,.pmedia img,.collection .cover img,.fullcard .media img{
+  width:100%;height:100%;object-fit:contain!important;filter:none!important;
+}
+.fmedia img{padding:3px}
+.pmedia img{padding:2px}
+.collection .cover img{padding:8px}
+.fullcard .media img{padding:8px}
+.fbody h3{font-size:13px}
+.fbody .micro{color:#8a7056}
+
+/* Home catalogue: match the approved spacing rhythm exactly while products are temporary. */
+.catalog{padding-left:65px;padding-right:65px}
+.featured{gap:11px}
+.products{gap:8px}
+.pcard{box-shadow:0 6px 15px rgba(91,58,18,.025)}
+
+/* ECOSYSTEM — the lion crest is part of one continuous dark-gold background. */
+.ecosystem{
+  background:
+    repeating-conic-gradient(from 198deg at 50% 112%,rgba(225,155,35,.10) 0deg 1deg,transparent 1deg 7deg),
+    radial-gradient(ellipse at 50% 100%,rgba(225,151,29,.42),transparent 36%),
+    linear-gradient(90deg,#090604,#120b04 38%,#080503 63%,#050403);
+}
+.ecosystem:before{
+  background:url('./approved-home/ecosystem-approved-exact.webp') center 53%/440px auto no-repeat;
+  filter:saturate(1.08) contrast(1.04) brightness(1.08);
+}
+.ecosystem:after{
+  background:linear-gradient(90deg,rgba(5,3,2,.40) 0%,rgba(5,3,2,.20) 28%,rgba(5,3,2,0) 40%,rgba(5,3,2,0) 61%,rgba(5,3,2,.22) 76%,rgba(5,3,2,.48) 100%);
+}
+.eco-inner{padding-left:73px;padding-right:73px;grid-template-columns:30.5% 29.5% 40%}
+.eco-copy h2{font-size:32px}
+.eco-copy p{max-width:315px}
+.eco-links{gap:5px 9px}
+
+/* Header/footer polish — same line weight and spacing on all public pages. */
+.topbar{border-bottom-color:#8b5b13}
+.footer{border-top-color:#976716}
+.footer nav{gap:16px}
+.footer nav a:hover{color:#e4b443}
+
+/* Internal pages remain proper pages, but use the same hero and surface language. */
+.page-hero{
+  background:
+    radial-gradient(circle at 3% 20%,rgba(222,175,91,.12),transparent 13%),
+    linear-gradient(180deg,#fffaf3,#fff9f0);
+}
+.page-hero:after{
+  background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 39%,rgba(255,250,243,.985) 48%,rgba(255,250,243,.52) 57%,rgba(255,250,243,0) 70%);
+}
+.inner{
+  background:
+    radial-gradient(ellipse at -2% 45%,rgba(239,211,161,.38),transparent 11%),
+    radial-gradient(ellipse at 102% 55%,rgba(239,211,161,.34),transparent 11%),
+    linear-gradient(180deg,#fffdf9,#faf0e3);
+}
+
+@media(max-width:760px){
+  /* Mobile hero: keep text fully readable while preserving the model as the dominant art. */
+  .hero{height:390px}
+  .hero:before{background:url('./hero-approved.webp') left 116px top 0/auto 278px no-repeat}
+  .hero:after{
+    height:280px;width:100%;
+    background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 37%,rgba(255,250,243,.98) 45%,rgba(255,250,243,.56) 57%,rgba(255,250,243,0) 71%);
+  }
+  .hero-copy{width:54%;padding-left:12px}
+  .hero h1{font-size:25px;line-height:.90}
+  .hero-copy>p{max-width:180px}
+
+  /* Product placeholders should feel like temporary product photography, not black tiles. */
+  .fmedia img{padding:2px}
+  .pmedia img{padding:1px}
+
+  /* Clean mobile ecosystem composition: crest, then title/copy, then destination grid. */
+  .ecosystem{min-height:382px;height:auto;padding:0}
+  .ecosystem:before{background:url('./approved-home/ecosystem-approved-exact.webp') center 10px/184px auto no-repeat;filter:saturate(1.08) brightness(1.08)}
+  .ecosystem:after{background:linear-gradient(180deg,rgba(5,3,2,0) 0%,rgba(5,3,2,.05) 25%,rgba(5,3,2,.52) 50%,rgba(5,3,2,.82) 100%)}
+  .eco-inner{padding:104px 12px 16px;grid-template-columns:1fr;align-items:start}
+  .eco-copy{text-align:center;margin:0 auto;max-width:350px}
+  .eco-kicker{display:block;margin-bottom:3px}
+  .eco-copy h2{font-size:24px;line-height:1;margin:4px 0 6px}
+  .eco-copy p{font-size:7.4px;line-height:1.35;margin:0 auto;max-width:330px}
+  .eco-links{margin-top:12px;gap:6px;grid-template-columns:1fr 1fr}
+  .eco-link{height:42px}
+
+  .page-hero h1{font-size:36px}
+  .page-hero .inside{padding-top:188px}
+}
