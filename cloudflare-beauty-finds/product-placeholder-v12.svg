@@ -4,45 +4,72 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#fffdf8"/>
-      <stop offset=".48" stop-color="#fbf2e5"/>
-      <stop offset="1" stop-color="#f2dfc3"/>
+      <stop offset=".46" stop-color="#fbf1e2"/>
+      <stop offset="1" stop-color="#eed8b7"/>
     </linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8e5910"/>
-      <stop offset=".25" stop-color="#e7b54b"/>
-      <stop offset=".52" stop-color="#b47416"/>
-      <stop offset=".78" stop-color="#f0cc75"/>
-      <stop offset="1" stop-color="#8a5308"/>
+      <stop offset="0" stop-color="#7b4705"/>
+      <stop offset=".18" stop-color="#dca842"/>
+      <stop offset=".43" stop-color="#f3d180"/>
+      <stop offset=".63" stop-color="#b97513"/>
+      <stop offset=".84" stop-color="#f0c96d"/>
+      <stop offset="1" stop-color="#754306"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="52%" r="48%">
-      <stop offset="0" stop-color="#d9a33d" stop-opacity=".28"/>
-      <stop offset="1" stop-color="#d9a33d" stop-opacity="0"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#dba33b" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#dba33b" stop-opacity="0"/>
     </radialGradient>
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b"/>
-      <feOffset dy="7" result="o"/>
-      <feColorMatrix in="o" type="matrix" values="0 0 0 0 0.32 0 0 0 0 0.20 0 0 0 0 0.06 0 0 0 .22 0"/>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur"/>
+      <feOffset dy="9" result="off"/>
+      <feColorMatrix in="off" type="matrix" values="0 0 0 0 .25 0 0 0 0 .14 0 0 0 0 .03 0 0 0 .30 0"/>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
+
   <rect width="640" height="420" fill="url(#bg)"/>
-  <circle cx="86" cy="70" r="96" fill="#fff" opacity=".32"/>
-  <circle cx="585" cy="350" r="115" fill="#fff" opacity=".26"/>
-  <ellipse cx="320" cy="235" rx="190" ry="144" fill="url(#glow)"/>
-  <path d="M70 340 C160 300 205 330 277 296 C345 264 408 283 570 328" fill="none" stroke="#c58a2e" stroke-opacity=".18" stroke-width="2"/>
-  <path d="M88 362 C205 326 250 352 337 322 C410 297 487 309 555 337" fill="none" stroke="#c58a2e" stroke-opacity=".12" stroke-width="1.5"/>
+  <circle cx="62" cy="58" r="105" fill="#fff" opacity=".30"/>
+  <circle cx="598" cy="365" r="132" fill="#fff" opacity=".22"/>
+  <ellipse cx="320" cy="224" rx="228" ry="166" fill="url(#glow)"/>
+  <path d="M30 342 C122 298 194 322 258 292 C338 254 416 278 610 332" fill="none" stroke="#b9791c" stroke-opacity=".16" stroke-width="2"/>
+  <path d="M55 372 C170 330 248 354 332 322 C438 282 520 309 592 345" fill="none" stroke="#b9791c" stroke-opacity=".10" stroke-width="1.6"/>
+
   <g filter="url(#shadow)">
-    <ellipse cx="320" cy="315" rx="112" ry="18" fill="#7d4a09" opacity=".16"/>
-    <path d="M240 296h160l-20 28H260z" fill="#fffaf0" stroke="#bd842a" stroke-width="2"/>
-    <path d="M265 270h110l16 28H249z" fill="#fffdf8" stroke="#d3a554" stroke-width="2"/>
-    <circle cx="320" cy="198" r="77" fill="#130e09" stroke="url(#gold)" stroke-width="5"/>
-    <circle cx="320" cy="198" r="65" fill="#0b0806" stroke="#9d6411" stroke-width="1.5"/>
-    <g fill="url(#gold)">
-      <path d="M285 132l12 13 13-24 13 24 16-17 7 30h-68z"/>
-      <circle cx="297" cy="145" r="4"/><circle cx="310" cy="124" r="4"/><circle cx="323" cy="145" r="4"/><circle cx="339" cy="132" r="4"/>
+    <ellipse cx="320" cy="338" rx="135" ry="20" fill="#6d3d05" opacity=".17"/>
+
+    <!-- Laurel branches -->
+    <g fill="none" stroke="url(#gold)" stroke-width="6" stroke-linecap="round">
+      <path d="M205 270 C157 238 145 191 170 148"/>
+      <path d="M435 270 C483 238 495 191 470 148"/>
     </g>
-    <text x="320" y="226" text-anchor="middle" font-family="Georgia,serif" font-size="73" letter-spacing="-7" fill="url(#gold)">CN</text>
+    <g fill="url(#gold)">
+      <ellipse cx="180" cy="242" rx="9" ry="19" transform="rotate(-52 180 242)"/>
+      <ellipse cx="166" cy="216" rx="9" ry="19" transform="rotate(-38 166 216)"/>
+      <ellipse cx="160" cy="188" rx="9" ry="19" transform="rotate(-24 160 188)"/>
+      <ellipse cx="174" cy="164" rx="9" ry="19" transform="rotate(12 174 164)"/>
+      <ellipse cx="460" cy="242" rx="9" ry="19" transform="rotate(52 460 242)"/>
+      <ellipse cx="474" cy="216" rx="9" ry="19" transform="rotate(38 474 216)"/>
+      <ellipse cx="480" cy="188" rx="9" ry="19" transform="rotate(24 480 188)"/>
+      <ellipse cx="466" cy="164" rx="9" ry="19" transform="rotate(-12 466 164)"/>
+    </g>
+
+    <!-- Medallion -->
+    <circle cx="320" cy="214" r="108" fill="#120d08" stroke="url(#gold)" stroke-width="7"/>
+    <circle cx="320" cy="214" r="94" fill="#090705" stroke="#986014" stroke-width="2"/>
+    <circle cx="320" cy="214" r="82" fill="none" stroke="#d9a23f" stroke-opacity=".33" stroke-width="1"/>
+
+    <!-- Crown -->
+    <g fill="url(#gold)">
+      <path d="M268 132l15 18 18-34 19 33 22-28 18 29 17-20 8 35H257z"/>
+      <rect x="266" y="164" width="108" height="10" rx="4"/>
+      <circle cx="283" cy="148" r="5"/><circle cx="301" cy="118" r="5"/><circle cx="320" cy="148" r="5"/><circle cx="342" cy="123" r="5"/><circle cx="361" cy="147" r="5"/>
+    </g>
+
+    <text x="320" y="255" text-anchor="middle" font-family="Georgia,serif" font-size="104" letter-spacing="-10" fill="url(#gold)">CN</text>
+
+    <!-- Pedestal -->
+    <path d="M215 315h210l-24 35H239z" fill="#fff8e9" stroke="#b97b24" stroke-width="3"/>
+    <path d="M245 288h150l20 29H225z" fill="#fffdf7" stroke="#d4a95b" stroke-width="3"/>
+    <path d="M263 279h114" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
   </g>
-  <text x="320" y="363" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" letter-spacing="3" fill="#4b2f0d">BLACKGOLD</text>
-  <text x="320" y="387" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-style="italic" fill="#9a681c">Beauty Finds</text>
 </svg>
