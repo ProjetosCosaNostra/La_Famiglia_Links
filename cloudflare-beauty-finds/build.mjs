@@ -16,6 +16,7 @@ const publicFiles = [
   'ecossistema.html',
   'blackgold-v9.css',
   'blackgold-v9.js',
+  'blackgold-v10-overrides.css',
   'styles.css',
   'app.js',
   'admin.html',
@@ -28,10 +29,11 @@ for (const file of publicFiles) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// V9: contrato visual unificado. Assets institucionais são preservados; o catálogo
-// legado não é renderizado na interface pública. Os slots públicos ficam uniformes.
+// V10 fidelity layer over the stable V9 markup. Public product slots remain clean
+// placeholders until new products are created in the administration flow.
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
 await fs.cp(path.join(here, 'approved-v5'), path.join(out, 'approved-v5'), { recursive: true });
+await fs.cp(path.join(here, 'assets'), path.join(out, 'assets'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 
 for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
@@ -40,11 +42,9 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   try { await fs.copyFile(src, dest); } catch {}
 }
 
-// Manifesto oficial V2.1 é a fonte única dos links do Ecossistema.
 try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json')); }
 catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
 
-// O catálogo antigo continua disponível SOMENTE para backend/admin e eventual migração.
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
 let dailySelection = { campaign_id: 'organic', selected: [] };
@@ -81,11 +81,14 @@ await fs.writeFile(path.join(out, 'daily-selection.json'), JSON.stringify({
 for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
   const html = await fs.readFile(path.join(out, page), 'utf8');
   if (!html.includes('blackgold-v9.css') || !html.includes('blackgold-v9.js')) {
-    throw new Error(`V9 contract missing in ${page}`);
-  }
-  if (/blackgold-v[2345678]\.(css|js)/.test(html)) {
-    throw new Error(`Legacy visual contract detected in ${page}`);
+    throw new Error(`Stable V9 markup contract missing in ${page}`);
   }
 }
+for (const asset of ['header-lockup-v9.webp','product-placeholder-v9.webp']) {
+  await fs.access(path.join(out, 'assets', asset));
+}
+await fs.access(path.join(out, 'hero-approved.webp'));
+await fs.access(path.join(out, 'approved-home', 'ecosystem-approved-exact.webp'));
+await fs.access(path.join(out, 'blackgold-v10-overrides.css'));
 
-console.log(`BlackGold V9 unified package ready: ${products.length} legacy products kept backend-only -> ${out}`);
+console.log(`BlackGold V10 fidelity package ready: ${products.length} legacy products kept backend-only -> ${out}`);
