@@ -14,8 +14,8 @@ const publicFiles = [
   'destaque.html',
   'vitrine.html',
   'ecossistema.html',
-  'blackgold-v7.css',
-  'blackgold-v7.js',
+  'blackgold-v9.css',
+  'blackgold-v9.js',
   'styles.css',
   'app.js',
   'admin.html',
@@ -28,8 +28,8 @@ for (const file of publicFiles) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// V7: uma única identidade visual compartilhada entre Home, Destaque, Vitrine e Ecossistema.
-// Imagens do catálogo antigo continuam fora da interface pública; entram apenas os novos produtos.
+// V9: contrato visual unificado. Assets institucionais são preservados; o catálogo
+// legado não é renderizado na interface pública. Os slots públicos ficam uniformes.
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
 await fs.cp(path.join(here, 'approved-v5'), path.join(out, 'approved-v5'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
@@ -44,7 +44,7 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
 try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json')); }
 catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
 
-// O catálogo legado continua exportado SOMENTE para backend/admin e futuras migrações.
+// O catálogo antigo continua disponível SOMENTE para backend/admin e eventual migração.
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
 let dailySelection = { campaign_id: 'organic', selected: [] };
@@ -80,9 +80,12 @@ await fs.writeFile(path.join(out, 'daily-selection.json'), JSON.stringify({
 
 for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
   const html = await fs.readFile(path.join(out, page), 'utf8');
-  if (!html.includes('blackgold-v7.css') || !html.includes('blackgold-v7.js')) {
-    throw new Error(`V7 contract missing in ${page}`);
+  if (!html.includes('blackgold-v9.css') || !html.includes('blackgold-v9.js')) {
+    throw new Error(`V9 contract missing in ${page}`);
+  }
+  if (/blackgold-v[2345678]\.(css|js)/.test(html)) {
+    throw new Error(`Legacy visual contract detected in ${page}`);
   }
 }
 
-console.log(`BlackGold V7 unified package ready: ${products.length} legacy products kept backend-only -> ${out}`);
+console.log(`BlackGold V9 unified package ready: ${products.length} legacy products kept backend-only -> ${out}`);
