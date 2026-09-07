@@ -1,0 +1,121 @@
+name: BlackGold Beauty Finds - Visual V4 Preview
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - blackgold-contract-v4-staging
+    paths:
+      - 'cloudflare-beauty-finds/**'
+      - 'produtos.json'
+      - 'data/daily_selection.json'
+      - 'ecosystem.json'
+      - '.github/workflows/blackgold-cloudflare-preview-v4.yml'
+
+permissions:
+  contents: read
+
+env:
+  PROJECT_NAME: blackgold-beauty-finds-br
+  PREVIEW_BRANCH: blackgold-contract-v4-staging
+  WRANGLER_VERSION: 4.129.0
+
+jobs:
+  deploy-preview-v4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout V4 staging
+        uses: actions/checkout@v4
+        with:
+          ref: blackgold-contract-v4-staging
+          fetch-depth: 1
+
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Verificar credenciais Cloudflare
+        shell: bash
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          [ -n "$CF_TOKEN" ] || { echo 'CLOUDFLARE_API_TOKEN ausente'; exit 2; }
+          [ -n "$CF_ACCOUNT" ] || { echo 'CLOUDFLARE_ACCOUNT_ID ausente'; exit 3; }
+
+      - name: Construir pacote V4
+        working-directory: cloudflare-beauty-finds
+        run: |
+          set -euo pipefail
+          node build.mjs
+          test -f dist/index.html
+          test -f dist/blackgold-v4.css
+          grep -q 'blackgold-v4.css?v=20260906-v4' dist/index.html
+          if grep -q 'blackgold-v2.css' dist/index.html; then
+            echo 'ERRO: referência V2 ainda presente no pacote.'
+            exit 10
+          fi
+          if grep -q 'blackgold-v3.css' dist/index.html; then
+            echo 'ERRO: referência V3 ainda presente no pacote.'
+            exit 11
+          fi
+
+      - name: Publicar somente em PREVIEW
+        working-directory: cloudflare-beauty-finds
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@${WRANGLER_VERSION} pages deploy dist \
+            --project-name="$PROJECT_NAME" \
+            --branch="$PREVIEW_BRANCH" \
+            --commit-hash="$GITHUB_SHA" \
+            --commit-dirty=true
+
+      - name: Validar preview V4
+        shell: bash
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          sleep 8
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/pages/projects/${PROJECT_NAME}/deployments"
+          curl -sS -H "Authorization: Bearer ${CF_TOKEN}" "$api" > /tmp/deployments.json
+
+          PREVIEW_URL=$(node <<'NODE'
+          const fs = require('fs');
+          const body = JSON.parse(fs.readFileSync('/tmp/deployments.json','utf8'));
+          if (!body.success || !Array.isArray(body.result)) process.exit(20);
+          const branch = process.env.PREVIEW_BRANCH;
+          const hit = body.result.find(d => d?.deployment_trigger?.metadata?.branch === branch);
+          if (!hit?.url) process.exit(21);
+          process.stdout.write(hit.url);
+          NODE
+          )
+
+          echo "Preview detectado: $PREVIEW_URL"
+          code=000
+          for attempt in 1 2 3 4 5; do
+            code=$(curl -sS -L -o /tmp/home.html -w '%{http_code}' --max-time 45 "$PREVIEW_URL/") || true
+            [ "$code" = '200' ] && break
+            sleep 5
+          done
+          [ "$code" = '200' ] || { echo "Preview falhou: HTTP $code"; exit 22; }
+          grep -q 'blackgold-v4.css?v=20260906-v4' /tmp/home.html || { echo 'Preview não está servindo V4'; exit 23; }
+
+          {
+            echo '## BlackGold Beauty Finds — Preview V4'
+            echo ''
+            echo "- Branch: $PREVIEW_BRANCH"
+            echo "- Commit: $GITHUB_SHA"
+            echo "- URL: $PREVIEW_URL"
+            echo "- HTTP: $code"
+            echo '- CSS V4: confirmado'
+            echo '- Produção: não alterada'
+          } >> "$GITHUB_STEP_SUMMARY"
