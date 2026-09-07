@@ -19,6 +19,7 @@ const publicFiles = [
   'blackgold-v10-overrides.css',
   'blackgold-v12-final.css',
   'blackgold-v13-exact.css',
+  'blackgold-v14-calibration.css',
   'product-placeholder-v12.svg',
   'ecosystem-crest-v12.svg',
   'exact-brand-v13.webp',
@@ -48,8 +49,8 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
 }
 
 // Resolve stale generated references only inside the deploy package and inject each
-// fidelity layer after the stable markup. V13 carries the exact approved brand and
-// ecosystem center assets while leaving copy, controls and links as real DOM.
+// fidelity layer after the stable markup. V13 carries exact approved brand/ecosystem
+// assets; V14 calibrates the vertical and card rhythm against the 1448x1086 authority.
 for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
   const file = path.join(out, page);
   let html = await fs.readFile(file, 'utf8');
@@ -67,6 +68,9 @@ for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.htm
   if (!html.includes('blackgold-v13-exact.css')) {
     html = html.replace('</head>', '<link href="./blackgold-v13-exact.css?v=20260907-v13" rel="stylesheet"/></head>');
   }
+  if (!html.includes('blackgold-v14-calibration.css')) {
+    html = html.replace('</head>', '<link href="./blackgold-v14-calibration.css?v=20260907-v14" rel="stylesheet"/></head>');
+  }
 
   await fs.writeFile(file, html, 'utf8');
 }
@@ -75,7 +79,7 @@ try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosy
 catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
 
 // Legacy catalogue remains backend/admin-only for audit/migration. It is not rendered
-// by the public V13 interface.
+// by the public V14 interface.
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
 let dailySelection = { campaign_id: 'organic', selected: [] };
@@ -123,6 +127,9 @@ for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.htm
   if (!html.includes('blackgold-v13-exact.css?v=20260907-v13')) {
     throw new Error(`V13 exact fidelity layer missing in ${page}`);
   }
+  if (!html.includes('blackgold-v14-calibration.css?v=20260907-v14')) {
+    throw new Error(`V14 calibration layer missing in ${page}`);
+  }
   if (html.includes('./assets/header-lockup-v9.webp') || html.includes('./assets/product-placeholder-v9.webp') || html.includes('./assets/logo-cn-square.png')) {
     throw new Error(`Unresolved temporary asset reference in ${page}`);
   }
@@ -136,5 +143,6 @@ await fs.access(path.join(out, 'exact-ecosystem-center-v13.webp'));
 await fs.access(path.join(out, 'blackgold-v10-overrides.css'));
 await fs.access(path.join(out, 'blackgold-v12-final.css'));
 await fs.access(path.join(out, 'blackgold-v13-exact.css'));
+await fs.access(path.join(out, 'blackgold-v14-calibration.css'));
 
-console.log(`BlackGold V13 exact-fidelity package ready: ${products.length} legacy products kept backend-only -> ${out}`);
+console.log(`BlackGold V14 calibrated package ready: ${products.length} legacy products kept backend-only -> ${out}`);
