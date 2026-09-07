@@ -1,11 +1,12 @@
 /* =====================================================================
-   BLACKGOLD V15.1 — PIXEL CALIBRATION AGAINST APPROVED 1448x1086 CONTRACT
+   BLACKGOLD V15.2 — PIXEL CALIBRATION AGAINST APPROVED 1448x1086 CONTRACT
    Authority: approved desktop + mobile mockups. No legacy product art.
    ===================================================================== */
 
 /* ---------------------------------------------------------------------
-   HERO — the approved desktop headline is visually large but occupies only
-   two compact lines. Preserve that exact rhythm instead of shrinking it.
+   HERO — the approved desktop headline is exactly two compact lines.
+   The markup carries explicit line spans so browser wrapping cannot turn
+   "premium." into a third line on desktop.
    --------------------------------------------------------------------- */
 .hero-copy{width:548px;padding:34px 0 0 60px}
 .hero h1{
@@ -13,6 +14,8 @@
   line-height:.74;
   letter-spacing:-.035em;
 }
+.hero-line{display:block}
+.hero-line-1,.hero-line-2{white-space:nowrap}
 .hero h1 em{font-size:.90em}
 .hero-copy>p{
   font-size:15px;
@@ -91,6 +94,8 @@
   }
   .hero-copy{width:57%;padding:24px 12px 0}
   .hero h1{font-size:26px;line-height:.90;letter-spacing:-.025em}
+  .hero-line-1,.hero-line-2{white-space:normal}
+  .hero-line-2 em{display:block}
   .hero h1 em{font-size:1em}
   .hero-copy>p{font-size:9.8px;line-height:1.34;max-width:182px;margin-top:9px}
   .hero-actions{margin-top:10px;gap:6px}
