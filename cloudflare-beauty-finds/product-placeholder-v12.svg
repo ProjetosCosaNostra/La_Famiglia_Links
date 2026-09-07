@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="t d">
+  <title id="t">BlackGold Beauty Finds</title>
+  <desc id="d">Placeholder premium para novos produtos da curadoria BlackGold.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset=".48" stop-color="#fbf2e5"/>
+      <stop offset="1" stop-color="#f2dfc3"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8e5910"/>
+      <stop offset=".25" stop-color="#e7b54b"/>
+      <stop offset=".52" stop-color="#b47416"/>
+      <stop offset=".78" stop-color="#f0cc75"/>
+      <stop offset="1" stop-color="#8a5308"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="52%" r="48%">
+      <stop offset="0" stop-color="#d9a33d" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#d9a33d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b"/>
+      <feOffset dy="7" result="o"/>
+      <feColorMatrix in="o" type="matrix" values="0 0 0 0 0.32 0 0 0 0 0.20 0 0 0 0 0.06 0 0 0 .22 0"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <circle cx="86" cy="70" r="96" fill="#fff" opacity=".32"/>
+  <circle cx="585" cy="350" r="115" fill="#fff" opacity=".26"/>
+  <ellipse cx="320" cy="235" rx="190" ry="144" fill="url(#glow)"/>
+  <path d="M70 340 C160 300 205 330 277 296 C345 264 408 283 570 328" fill="none" stroke="#c58a2e" stroke-opacity=".18" stroke-width="2"/>
+  <path d="M88 362 C205 326 250 352 337 322 C410 297 487 309 555 337" fill="none" stroke="#c58a2e" stroke-opacity=".12" stroke-width="1.5"/>
+  <g filter="url(#shadow)">
+    <ellipse cx="320" cy="315" rx="112" ry="18" fill="#7d4a09" opacity=".16"/>
+    <path d="M240 296h160l-20 28H260z" fill="#fffaf0" stroke="#bd842a" stroke-width="2"/>
+    <path d="M265 270h110l16 28H249z" fill="#fffdf8" stroke="#d3a554" stroke-width="2"/>
+    <circle cx="320" cy="198" r="77" fill="#130e09" stroke="url(#gold)" stroke-width="5"/>
+    <circle cx="320" cy="198" r="65" fill="#0b0806" stroke="#9d6411" stroke-width="1.5"/>
+    <g fill="url(#gold)">
+      <path d="M285 132l12 13 13-24 13 24 16-17 7 30h-68z"/>
+      <circle cx="297" cy="145" r="4"/><circle cx="310" cy="124" r="4"/><circle cx="323" cy="145" r="4"/><circle cx="339" cy="132" r="4"/>
+    </g>
+    <text x="320" y="226" text-anchor="middle" font-family="Georgia,serif" font-size="73" letter-spacing="-7" fill="url(#gold)">CN</text>
+  </g>
+  <text x="320" y="363" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" letter-spacing="3" fill="#4b2f0d">BLACKGOLD</text>
+  <text x="320" y="387" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-style="italic" fill="#9a681c">Beauty Finds</text>
+</svg>
