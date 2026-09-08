@@ -1,5 +1,5 @@
 /* =====================================================================
-   BLACKGOLD V16.3 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
+   BLACKGOLD V16.4 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
    Authority: approved 1448x1086 desktop + approved phone composition.
    Scope: measured corrections only. No redesign. Production untouched.
    ===================================================================== */
@@ -21,7 +21,7 @@
   }
 
   /* ECOSYSTEM — exact 385x172 authority crop measured from the approved
-     desktop mockup. This replaces the reconstructed/vector approximation. */
+     desktop mockup. Keep the central authority pixels unmodified. */
   .ecosystem{
     background:
       radial-gradient(ellipse at -2% 48%,rgba(223,153,35,.18),transparent 27%),
@@ -43,13 +43,19 @@
     filter:none!important;
     opacity:1!important;
     mix-blend-mode:normal!important;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.82) 3%,#000 7%,#000 93%,rgba(0,0,0,.82) 97%,transparent 100%)!important;
-    mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.82) 3%,#000 7%,#000 93%,rgba(0,0,0,.82) 97%,transparent 100%)!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
   }
   .ecosystem:after{
-    background:
-      radial-gradient(ellipse at 44.7% 108%,rgba(255,190,59,.14),transparent 22%),
-      linear-gradient(90deg,rgba(7,4,2,.16) 0%,rgba(7,4,2,.035) 28%,transparent 37%,transparent 61%,rgba(7,4,2,.07) 75%,rgba(7,4,2,.27) 100%)!important;
+    /* Side shading only. The exact authority occupies x=455..840 (31.4%..58%)
+       and must not receive any extra glow or tint. */
+    background:linear-gradient(90deg,
+      rgba(7,4,2,.18) 0%,
+      rgba(7,4,2,.05) 25%,
+      transparent 31%,
+      transparent 60%,
+      rgba(7,4,2,.08) 75%,
+      rgba(7,4,2,.27) 100%)!important;
   }
 }
 
@@ -73,8 +79,8 @@
     filter:none!important;
     opacity:1!important;
     mix-blend-mode:normal!important;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.76) 4%,#000 10%,#000 90%,rgba(0,0,0,.76) 96%,transparent 100%)!important;
-    mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.76) 4%,#000 10%,#000 90%,rgba(0,0,0,.76) 96%,transparent 100%)!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
   }
   .eco-copy{padding-left:150px!important}
 
