@@ -1,5 +1,5 @@
 /* =====================================================================
-   BLACKGOLD V16.6 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
+   BLACKGOLD V16.7 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
    Authority: approved 1448x1086 desktop + approved phone composition.
    Scope: measured corrections only. No redesign. Production untouched.
    ===================================================================== */
@@ -76,38 +76,40 @@
       rgba(7,4,2,.27) 100%)!important;
   }
 
-  /* ECOSYSTEM LEFT COPY — the earlier implementation was visibly undersized.
-     These values come from the 1448px authority: same top anchor, larger title,
-     three-line supporting copy and the native shield kicker. */
+  /* ECOSYSTEM LEFT COPY — V16.6 proved the title scale but exposed a vertical
+     drift and wrap. Move the intact block to the authority anchor, keep the title
+     on one line, and restore the three-line support copy. */
   .eco-copy{
     align-self:start!important;
     padding-top:27px!important;
+    transform:translateY(-23px)!important;
   }
   .eco-kicker{
     display:flex!important;
     align-items:center!important;
-    gap:9px!important;
+    gap:8px!important;
     font-size:9px!important;
     letter-spacing:.18em!important;
     line-height:1!important;
   }
   .kicker-svg{
-    width:22px!important;
-    height:22px!important;
-    flex:0 0 22px!important;
+    width:20px!important;
+    height:20px!important;
+    flex:0 0 20px!important;
     color:#e2b044!important;
-    stroke-width:1.7!important;
+    stroke-width:1.65!important;
     filter:drop-shadow(0 0 4px rgba(226,176,68,.22));
   }
   .eco-copy h2{
-    margin:8px 0 8px!important;
-    font-size:39px!important;
+    margin:8px 0 7px!important;
+    font-size:35px!important;
     line-height:.95!important;
     letter-spacing:-.02em!important;
+    white-space:nowrap!important;
   }
   .eco-copy p{
-    max-width:375px!important;
-    font-size:12.5px!important;
+    max-width:355px!important;
+    font-size:11.5px!important;
     line-height:1.35!important;
   }
 
@@ -187,9 +189,18 @@
   .eco-copy{padding-left:150px!important}
   .eco-svg{width:15px!important;height:15px!important;stroke-width:1.8!important}
 
-  /* Keep the footer repair so the two-line copyright is never clipped. */
+  /* Keep the footer repair so the two-line copyright is never clipped and the
+     new native SVG social icons stay on one horizontal row. */
   .footer{height:80px!important;min-height:80px!important;grid-template-rows:48px 28px!important}
   .footer-brand{height:44px!important}
+  .footer-social{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:8px!important;
+    white-space:nowrap!important;
+  }
+  .footer-social a{display:grid!important;place-items:center!important}
   .footer-svg{width:12px!important;height:12px!important;stroke-width:1.8!important}
   .copyright{font-size:7.5px!important;line-height:1.12!important;padding-top:1px!important}
 }
