@@ -25,6 +25,6 @@ const index = path.join(out, 'index.html');
 let html = await fs.readFile(index, 'utf8');
 html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v19-authority\.css\?v=[^"]+"\/>/g, '');
 html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v19-3-calibration\.css\?v=[^"]+"\/>/g, '');
-html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-6"/></head>');
+html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-7"/></head>');
 await fs.writeFile(index, html, 'utf8');
-console.log(`BlackGold V19.2 authority + V19.6 measured composite calibration ready: ${expectedSize} bytes ${expectedSha256}`);
+console.log(`BlackGold V19.2 authority + V19.7 measured composite calibration ready: ${expectedSize} bytes ${expectedSha256}`);
