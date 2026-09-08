@@ -1,11 +1,31 @@
 /* =====================================================================
-   BLACKGOLD V16.5 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
+   BLACKGOLD V16.6 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
    Authority: approved 1448x1086 desktop + approved phone composition.
    Scope: measured corrections only. No redesign. Production untouched.
    ===================================================================== */
 
+/* Native icon layer used by the approved-style ecosystem/footer chrome. */
+.eco-svg,.footer-svg,.kicker-svg{
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.eco-svg .eco-fill,.footer-svg .eco-fill{fill:currentColor;stroke:none}
+.eco-svg .eco-dot,.footer-svg .eco-dot{fill:currentColor;stroke:none}
+
 @media(min-width:761px){
-  /* HERO — retain the measured correction from the approved comparison. */
+  /* TOPBAR — measured against the approved authority. The brand itself was
+     already exact; only the center/right groups were drifting to the right. */
+  .main-nav{
+    gap:41px!important;
+    transform:translate(-26px,-2px)!important;
+  }
+  .tools{transform:translate(-27px,-2px)!important}
+  .tools>a.icon[aria-label="Vitrine"]{position:relative!important;left:11px!important}
+
+  /* HERO — retain the approved measured composition. */
   .hero:before{
     inset:0 0 0 552px!important;
     background-position:left top!important;
@@ -20,8 +40,8 @@
       linear-gradient(90deg,#fffaf3 0%,#fffaf3 84%,rgba(255,250,243,.99) 89%,rgba(255,250,243,.70) 95%,rgba(255,250,243,0) 100%)!important;
   }
 
-  /* ECOSYSTEM — the center is the exact approved 385x172 authority crop.
-     Only its outer horizontal edge is feathered into the procedural side field. */
+  /* ECOSYSTEM CENTER — exact 385x172 authority crop. Only its outside edge is
+     feathered; the approved pixels inside the footprint are not recolored. */
   .ecosystem{
     background:
       radial-gradient(ellipse at -2% 48%,rgba(223,153,35,.18),transparent 27%),
@@ -47,7 +67,6 @@
     mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.70) 3%,#000 7%,#000 93%,rgba(0,0,0,.70) 97%,transparent 100%)!important;
   }
   .ecosystem:after{
-    /* Do not tint the authority footprint itself. */
     background:linear-gradient(90deg,
       rgba(7,4,2,.18) 0%,
       rgba(7,4,2,.05) 25%,
@@ -56,6 +75,90 @@
       rgba(7,4,2,.08) 75%,
       rgba(7,4,2,.27) 100%)!important;
   }
+
+  /* ECOSYSTEM LEFT COPY — the earlier implementation was visibly undersized.
+     These values come from the 1448px authority: same top anchor, larger title,
+     three-line supporting copy and the native shield kicker. */
+  .eco-copy{
+    align-self:start!important;
+    padding-top:27px!important;
+  }
+  .eco-kicker{
+    display:flex!important;
+    align-items:center!important;
+    gap:9px!important;
+    font-size:9px!important;
+    letter-spacing:.18em!important;
+    line-height:1!important;
+  }
+  .kicker-svg{
+    width:22px!important;
+    height:22px!important;
+    flex:0 0 22px!important;
+    color:#e2b044!important;
+    stroke-width:1.7!important;
+    filter:drop-shadow(0 0 4px rgba(226,176,68,.22));
+  }
+  .eco-copy h2{
+    margin:8px 0 8px!important;
+    font-size:39px!important;
+    line-height:.95!important;
+    letter-spacing:-.02em!important;
+  }
+  .eco-copy p{
+    max-width:375px!important;
+    font-size:12.5px!important;
+    line-height:1.35!important;
+  }
+
+  /* ECOSYSTEM CARDS — match the taller approved cards and replace temporary
+     glyphs with real vector pictograms. */
+  .eco-links{gap:5px 8px!important}
+  .eco-link{
+    height:42px!important;
+    grid-template-columns:34px 1fr 12px!important;
+    gap:8px!important;
+    padding:0 9px!important;
+  }
+  .eco-icon{
+    width:30px!important;
+    height:30px!important;
+    font-size:0!important;
+    color:#f0c459!important;
+    background:radial-gradient(circle at 50% 45%,rgba(226,166,59,.12),rgba(5,4,3,.18) 68%)!important;
+    box-shadow:0 0 10px rgba(216,150,35,.20),inset 0 0 7px rgba(216,150,35,.07)!important;
+  }
+  .eco-svg{
+    width:17px!important;
+    height:17px!important;
+    stroke-width:1.75!important;
+  }
+  .eco-link b{font-size:10px!important;line-height:1!important}
+  .eco-link small{font-size:7px!important;line-height:1.1!important;margin-top:3px!important}
+
+  /* FOOTER — preserve actual destinations while restoring the scale and spacing
+     of the approved storefront footer. */
+  .footer-brand{width:180px!important;height:48px!important}
+  .footer-brand img{width:180px!important;height:48px!important}
+  .footer nav{
+    font-size:8px!important;
+    gap:17px!important;
+    transform:translateX(-34px)!important;
+  }
+  .footer-tagline{
+    font-size:10.5px!important;
+    transform:translateX(135px)!important;
+  }
+  .footer-social{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:11px!important;
+    color:#f5eee3!important;
+  }
+  .footer-social a{display:grid!important;place-items:center!important}
+  .footer-svg{width:14px!important;height:14px!important;stroke-width:1.8!important}
+  .copyright{transform:translateX(-10px)!important;font-size:7.5px!important}
 }
 
 @media(max-width:760px){
@@ -82,9 +185,11 @@
     mask-image:radial-gradient(ellipse 70px 34px at 63px 28px,#000 0 58%,rgba(0,0,0,.94) 70%,rgba(0,0,0,.62) 82%,transparent 100%)!important;
   }
   .eco-copy{padding-left:150px!important}
+  .eco-svg{width:15px!important;height:15px!important;stroke-width:1.8!important}
 
   /* Keep the footer repair so the two-line copyright is never clipped. */
   .footer{height:80px!important;min-height:80px!important;grid-template-rows:48px 28px!important}
   .footer-brand{height:44px!important}
+  .footer-svg{width:12px!important;height:12px!important;stroke-width:1.8!important}
   .copyright{font-size:7.5px!important;line-height:1.12!important;padding-top:1px!important}
 }
