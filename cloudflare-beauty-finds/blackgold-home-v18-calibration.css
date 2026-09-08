@@ -1,6 +1,6 @@
 /* TEMPORARY V18 CALIBRATION — to be folded into blackgold-home-v18.css before approval. */
 @media(min-width:761px){
-  /* Desktop pass V18.3 — measured against the approved 1448x1086 mockup. */
+  /* Desktop pass V18.4 — measured against the approved 1448x1086 mockup. */
   .bg18-hero-art{left:588px!important}
   .bg18-hero-fade{width:642px!important}
   .bg18-hero-copy{width:610px!important;padding-top:34px!important}
@@ -10,17 +10,17 @@
   .bg18-lead{max-width:440px!important;font-size:15px!important;line-height:1.34!important;margin-top:14px!important}
   .bg18-actions{margin-top:18px!important}
 
-  /* Catalogue sits a few pixels too high/short in the previous proof. */
+  /* Featured row remains on the approved baseline; Vitrine was 7px too low and
+     the product cards 5px too tall in V18.3. */
   .bg18-cat{padding-top:14px!important}
   .bg18-featured{margin-top:9px!important}
   .bg18-fcard{height:160px!important}
-  .bg18-vhead{margin-top:17px!important}
-  .bg18-products{margin-top:9px!important}
-  .bg18-pcard{height:150px!important}
-  .bg18-pmedia{height:103px!important}
+  .bg18-vhead{margin-top:10px!important}
+  .bg18-products{margin-top:12px!important}
+  .bg18-pcard{height:145px!important}
+  .bg18-pmedia{height:99px!important}
 
-  /* Exact approved 385x172 ecosystem authority. Preserve its center and only
-     soften the join at the edges; lift luminance to match the approved gold. */
+  /* Exact approved 385x172 ecosystem authority. */
   .bg18-eco:before{
     inset:auto!important;left:455px!important;top:0!important;width:385px!important;height:172px!important;
     background-image:url('./ecosystem-authority-v17.webp')!important;background-position:center!important;background-size:385px 172px!important;background-repeat:no-repeat!important;
@@ -32,20 +32,21 @@
   .bg18-eco-copy{transform:translateY(-15px)!important}
   .bg18-eco-copy h2{font-size:35px!important;line-height:.94!important}
   .bg18-eco-copy p{max-width:350px!important;font-size:10.5px!important}
-  .bg18-eco-links{transform:translate(6px,-14px)!important}
+  .bg18-eco-links{transform:translate(14px,-12px)!important}
 }
 
 @media(max-width:760px){
-  /* Phone pass V18.3 — preserve vertical landmarks; refine only visible drift. */
-  .bg18-brand{left:79px!important;top:1px!important;width:202px!important;height:61px!important}
-  .bg18-brand img{width:202px!important;height:61px!important}
+  /* Phone pass V18.4 — restore the approved three-line title and keep the
+     downstream vertical landmarks fixed. */
+  .bg18-brand{left:81px!important;top:1px!important;width:194px!important;height:60px!important}
+  .bg18-brand img{width:194px!important;height:60px!important}
 
-  .bg18-hero-art{background-position:left 210px top 0!important;background-size:auto 252px!important}
+  .bg18-hero-art{background-position:left 214px top 0!important;background-size:auto 252px!important}
   .bg18-hero-fade{background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 42%,rgba(255,250,243,.99) 49%,rgba(255,250,243,.76) 57%,rgba(255,250,243,.26) 68%,rgba(255,250,243,0) 78%)!important}
   .bg18-hero-copy{width:58%!important;padding-top:61px!important}
-  .bg18-hero h1{font-size:27.5px!important;line-height:.88!important;letter-spacing:-.03em!important}
-  .bg18-lead{font-size:12.8px!important;line-height:1.28!important;margin-top:14px!important;max-width:187px!important}
-  .bg18-actions{margin-top:24px!important}
+  .bg18-hero h1{font-size:26.5px!important;line-height:.89!important;letter-spacing:-.03em!important}
+  .bg18-lead{font-size:12.8px!important;line-height:1.28!important;margin-top:17px!important;max-width:187px!important}
+  .bg18-actions{margin-top:20px!important}
 
   .bg18-fcard:first-child{height:132px!important}
   /* Approved phone begins Vitrine with Batom, Creme, Oculos — not Chanel. */
@@ -53,17 +54,18 @@
   .bg18-pcard:nth-child(2),.bg18-pcard:nth-child(3),.bg18-pcard:nth-child(4){display:flex!important;flex:1 1 0!important;min-width:0!important;height:140px!important}
   .bg18-pmedia{height:94px!important}
 
-  /* Use the approved ecosystem composition itself instead of the tiny legacy
-     eco-art lockup; this is much closer to the phone masthead contract. */
+  /* Crop the approved ecosystem authority to the crest footprint of the phone
+     masthead instead of shrinking the whole desktop lockup. */
   .bg18-eco:before{
+    inset:auto!important;left:20px!important;top:2px!important;width:116px!important;height:54px!important;
     background-image:url('./approved-home/ecosystem-approved-exact.webp')!important;
-    background-position:12px -1px!important;
-    background-size:160px 69px!important;
+    background-position:center top!important;
+    background-size:165px 71px!important;
     background-repeat:no-repeat!important;
     filter:brightness(1.08) saturate(1.05)!important;
-    -webkit-mask-image:radial-gradient(ellipse 88px 48px at 91px 32px,#000 0 58%,rgba(0,0,0,.92) 74%,transparent 100%)!important;
-    mask-image:radial-gradient(ellipse 88px 48px at 91px 32px,#000 0 58%,rgba(0,0,0,.92) 74%,transparent 100%)!important;
+    -webkit-mask-image:radial-gradient(ellipse 62px 34px at 58px 27px,#000 0 60%,rgba(0,0,0,.92) 76%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 62px 34px at 58px 27px,#000 0 60%,rgba(0,0,0,.92) 76%,transparent 100%)!important;
   }
-  .bg18-eicon{width:31px!important;height:31px!important;box-shadow:0 0 10px rgba(218,151,35,.18),inset 0 0 8px rgba(218,151,35,.06)!important}
-  .bg18-eicon svg{width:16px!important;height:16px!important;stroke-width:1.9!important}
+  .bg18-eicon{width:31px!important;height:31px!important;color:#f4c85e!important;background:radial-gradient(circle at 50% 46%,rgba(223,163,48,.18),rgba(6,5,4,.2) 68%)!important;box-shadow:0 0 10px rgba(218,151,35,.18),inset 0 0 8px rgba(218,151,35,.06)!important}
+  .bg18-eicon svg{width:16px!important;height:16px!important;stroke-width:2.1!important}
 }
