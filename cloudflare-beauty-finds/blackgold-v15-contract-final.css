@@ -37,6 +37,7 @@
     background-size:402px 176px!important;
     filter:saturate(1.22) contrast(1.09) brightness(1.13)!important;
     opacity:.99!important;
+    mix-blend-mode:screen!important;
     -webkit-mask-image:radial-gradient(ellipse 55% 96% at 50% 53%,#000 0 64%,rgba(0,0,0,.97) 72%,rgba(0,0,0,.74) 82%,transparent 100%)!important;
     mask-image:radial-gradient(ellipse 55% 96% at 50% 53%,#000 0 64%,rgba(0,0,0,.97) 72%,rgba(0,0,0,.74) 82%,transparent 100%)!important;
   }
@@ -147,14 +148,15 @@
       linear-gradient(180deg,#0b0704,#050403)!important;
   }
   .ecosystem:before{
-    background-position:22px 8px!important;
-    background-size:126px 58px!important;
+    background-position:29px 10px!important;
+    background-size:112px 52px!important;
     filter:saturate(1.18) contrast(1.08) brightness(1.13)!important;
-    -webkit-mask-image:radial-gradient(ellipse 82px 42px at 84px 36px,#000 48%,rgba(0,0,0,.92) 67%,transparent 100%)!important;
-    mask-image:radial-gradient(ellipse 82px 42px at 84px 36px,#000 48%,rgba(0,0,0,.92) 67%,transparent 100%)!important;
+    mix-blend-mode:screen!important;
+    -webkit-mask-image:radial-gradient(ellipse 76px 39px at 84px 36px,#000 48%,rgba(0,0,0,.92) 67%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 76px 39px at 84px 36px,#000 48%,rgba(0,0,0,.92) 67%,transparent 100%)!important;
   }
   .eco-inner{height:238px!important;min-height:238px!important;padding:0 12px!important}
-  .eco-copy{height:70px!important;padding:18px 0 0 150px!important}
+  .eco-copy{height:70px!important;padding:18px 0 0 145px!important}
   .eco-copy h2{font-size:20px!important;margin:11px 0 0!important}
   .eco-links{margin-top:1px!important;gap:5px!important}
   .eco-link{height:45px!important}
