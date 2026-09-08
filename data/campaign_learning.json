@@ -176,7 +176,15 @@
     "escova-oval-secadora-taiff-easy-lilas-1200w": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-08",
+      "last_score": {
+        "total": 3.592138,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
     },
     "depilador-ipl-basike-sensacao-gelo-9-niveis": {
       "impressions": 0,
@@ -207,7 +215,15 @@
     "mascara-para-dormir-gel-termico-rosa-laco": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-08",
+      "last_score": {
+        "total": 3.557017,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
     },
     "toalha-demaquilante-reutilizavel-make-off-klass-vough": {
       "impressions": 0,
@@ -269,10 +285,18 @@
     "kit-sos-makeup-miamake-3em1-rosa": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-08",
+      "last_score": {
+        "total": 3.565958,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-07T17:45:34Z",
-  "last_campaign_id": "bg-20260907"
+  "updated_at": "2026-09-08T16:41:02Z",
+  "last_campaign_id": "bg-20260908"
 }
