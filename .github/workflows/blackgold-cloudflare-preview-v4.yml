@@ -58,7 +58,7 @@ jobs:
         run: |
           set -euo pipefail
           node build.mjs
-          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css exact-brand-v13.webp exact-ecosystem-center-v13.webp ecosystem.json admin.html; do
+          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css exact-brand-v13.webp exact-ecosystem-center-v13.webp ecosystem.json admin.html; do
             test -f "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
           for page in index.html destaque.html vitrine.html ecossistema.html; do
@@ -68,9 +68,10 @@ jobs:
             grep -q 'blackgold-v13-exact.css?v=20260907-v13' "dist/$page" || { echo "$page sem V13"; exit 14; }
             grep -q 'blackgold-v14-calibration.css?v=20260907-v14' "dist/$page" || { echo "$page sem V14"; exit 15; }
             grep -q 'blackgold-v15-contract-final.css?v=20260908-v15' "dist/$page" || { echo "$page sem V15"; exit 16; }
-            grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 17; }
+            grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' "dist/$page" || { echo "$page sem V16"; exit 17; }
+            grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 18; }
           done
-          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(18); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(19); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(20);"
+          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(19); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(20); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(21);"
 
       - name: Publicar somente em PREVIEW
         working-directory: cloudflare-beauty-finds
@@ -79,7 +80,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 21; }
+          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 22; }
           npx --yes wrangler@${WRANGLER_VERSION} pages deploy dist \
             --project-name="$PROJECT_NAME" \
             --branch="$PREVIEW_BRANCH" \
@@ -99,9 +100,9 @@ jobs:
           PREVIEW_URL=$(node <<'NODE'
           const fs = require('fs');
           const body = JSON.parse(fs.readFileSync('/tmp/deployments.json','utf8'));
-          if (!body.success || !Array.isArray(body.result)) process.exit(22);
+          if (!body.success || !Array.isArray(body.result)) process.exit(23);
           const hit = body.result.find(d => d?.deployment_trigger?.metadata?.branch === process.env.PREVIEW_BRANCH);
-          if (!hit?.url) process.exit(23);
+          if (!hit?.url) process.exit(24);
           process.stdout.write(hit.url);
           NODE
           )
@@ -114,19 +115,20 @@ jobs:
               [ "$code" = '200' ] && break
               sleep 4
             done
-            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 24; }
+            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 25; }
           done
           curl -sS -L "$PREVIEW_URL/" > /tmp/home.html
-          grep -q 'blackgold-v14-calibration.css?v=20260907-v14' /tmp/home.html || { echo 'Home publicada sem V14'; exit 25; }
-          grep -q 'blackgold-v15-contract-final.css?v=20260908-v15' /tmp/home.html || { echo 'Home publicada sem V15'; exit 26; }
-          grep -q 'blackgold-v9.js' /tmp/home.html || { echo 'Home publicada sem JS compartilhado'; exit 27; }
+          grep -q 'blackgold-v14-calibration.css?v=20260907-v14' /tmp/home.html || { echo 'Home publicada sem V14'; exit 26; }
+          grep -q 'blackgold-v15-contract-final.css?v=20260908-v15' /tmp/home.html || { echo 'Home publicada sem V15'; exit 27; }
+          grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' /tmp/home.html || { echo 'Home publicada sem V16'; exit 28; }
+          grep -q 'blackgold-v9.js' /tmp/home.html || { echo 'Home publicada sem JS compartilhado'; exit 29; }
           {
             echo '## BlackGold Beauty Finds — Visual Contract Preview'
             echo ''
             echo "- Branch: $PREVIEW_BRANCH"
             echo "- Commit: $GITHUB_SHA"
             echo "- URL: $PREVIEW_URL"
-            echo '- V15: carregado e validado no HTML publicado'
+            echo '- V16: carregado e validado no HTML publicado'
             echo '- Home + Destaque + Vitrine + Ecossistema + Admin: HTTP 200'
             echo '- Manifesto V2.1: confirmado'
             echo '- Produção: congelada e não alterada'
