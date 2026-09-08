@@ -44,6 +44,25 @@ await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), {
 await fs.cp(path.join(here, 'approved-v5'), path.join(out, 'approved-v5'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 
+// V17 ecosystem authority is an exact crop measured from the approved 1448x1086
+// desktop contract. It is stored as UTF-8 base64 in Git and materialized only
+// inside the deploy package so the repository connector never has to write binary.
+const ecosystemAuthorityB64 = (await fs.readFile(
+  path.join(here, 'assets-source', 'ecosystem-authority-v17.webp.b64'),
+  'utf8'
+)).replace(/\s+/g, '');
+const ecosystemAuthority = Buffer.from(ecosystemAuthorityB64, 'base64');
+if (ecosystemAuthority.length !== 10502) {
+  throw new Error(`V17 ecosystem authority size mismatch: ${ecosystemAuthority.length}`);
+}
+if (
+  ecosystemAuthority.subarray(0, 4).toString('ascii') !== 'RIFF' ||
+  ecosystemAuthority.subarray(8, 12).toString('ascii') !== 'WEBP'
+) {
+  throw new Error('V17 ecosystem authority is not a valid WEBP container');
+}
+await fs.writeFile(path.join(out, 'ecosystem-authority-v17.webp'), ecosystemAuthority);
+
 for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
   const src = path.join(root, 'assets', asset);
   const dest = path.join(out, 'assets', asset);
@@ -52,8 +71,8 @@ for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
 
 // Resolve stale generated references only inside the deploy package and inject each
 // fidelity layer after the stable markup. V13 carries exact approved brand/ecosystem
-// assets; V14 calibrates the vertical/card rhythm; V15 converges desktop/mobile
-// geometry; V16 applies measured corrections from the authority/proof comparison.
+// assets; V14 calibrates the vertical/card rhythm; V15 converges desktop/mobile;
+// V16 carries measured geometry while consuming the exact V17 ecosystem authority.
 for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
   const file = path.join(out, page);
   let html = await fs.readFile(file, 'utf8');
@@ -88,7 +107,7 @@ try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosy
 catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
 
 // Legacy catalogue remains backend/admin-only for audit/migration. It is not rendered
-// by the public V16 interface.
+// by the public measured interface.
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
 let dailySelection = { campaign_id: 'organic', selected: [] };
@@ -155,6 +174,7 @@ await fs.access(path.join(out, 'hero-approved.webp'));
 await fs.access(path.join(out, 'product-placeholder-v12.svg'));
 await fs.access(path.join(out, 'exact-brand-v13.webp'));
 await fs.access(path.join(out, 'exact-ecosystem-center-v13.webp'));
+await fs.access(path.join(out, 'ecosystem-authority-v17.webp'));
 await fs.access(path.join(out, 'blackgold-v10-overrides.css'));
 await fs.access(path.join(out, 'blackgold-v12-final.css'));
 await fs.access(path.join(out, 'blackgold-v13-exact.css'));
@@ -162,4 +182,4 @@ await fs.access(path.join(out, 'blackgold-v14-calibration.css'));
 await fs.access(path.join(out, 'blackgold-v15-contract-final.css'));
 await fs.access(path.join(out, 'blackgold-v16-measured-calibration.css'));
 
-console.log(`BlackGold V16 measured package ready: ${products.length} legacy products kept backend-only -> ${out}`);
+console.log(`BlackGold V17 authority package ready: ${products.length} legacy products kept backend-only -> ${out}`);
