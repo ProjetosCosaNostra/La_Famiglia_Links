@@ -14,6 +14,7 @@ const publicFiles = [
   'destaque.html',
   'vitrine.html',
   'ecossistema.html',
+  'blackgold-home-v18.css',
   'blackgold-v9.css',
   'blackgold-v9.js',
   'blackgold-v10-overrides.css',
@@ -38,148 +39,72 @@ for (const file of publicFiles) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// Stable V9 markup + progressive fidelity layers. Product slots stay neutral
-// until new products are inserted through the administration flow.
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
 await fs.cp(path.join(here, 'approved-v5'), path.join(out, 'approved-v5'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 
-// V17 ecosystem authority is an exact crop measured from the approved 1448x1086
-// desktop contract. It is stored as UTF-8 base64 in Git and materialized only
-// inside the deploy package so the repository connector never has to write binary.
+// Keep the V17 ecosystem authority available to the legacy secondary pages.
 const ecosystemAuthorityB64 = (await fs.readFile(
   path.join(here, 'assets-source', 'ecosystem-authority-v17.webp.b64'),
   'utf8'
 )).replace(/\s+/g, '');
 const ecosystemAuthority = Buffer.from(ecosystemAuthorityB64, 'base64');
-if (ecosystemAuthority.length !== 10502) {
-  throw new Error(`V17 ecosystem authority size mismatch: ${ecosystemAuthority.length}`);
-}
-if (
-  ecosystemAuthority.subarray(0, 4).toString('ascii') !== 'RIFF' ||
-  ecosystemAuthority.subarray(8, 12).toString('ascii') !== 'WEBP'
-) {
-  throw new Error('V17 ecosystem authority is not a valid WEBP container');
-}
+if (ecosystemAuthority.length !== 10502) throw new Error(`V17 ecosystem authority size mismatch: ${ecosystemAuthority.length}`);
+if (ecosystemAuthority.subarray(0,4).toString('ascii') !== 'RIFF' || ecosystemAuthority.subarray(8,12).toString('ascii') !== 'WEBP') throw new Error('V17 ecosystem authority is not a valid WEBP container');
 await fs.writeFile(path.join(out, 'ecosystem-authority-v17.webp'), ecosystemAuthority);
 
-for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
-  const src = path.join(root, 'assets', asset);
-  const dest = path.join(out, 'assets', asset);
-  try { await fs.copyFile(src, dest); } catch {}
+for (const asset of ['logo-cn-round.png','logo-cn-square.png']) {
+  try { await fs.copyFile(path.join(root,'assets',asset), path.join(out,'assets',asset)); } catch {}
 }
 
-// Resolve stale generated references only inside the deploy package and inject each
-// fidelity layer after the stable markup. V13 carries exact approved brand/ecosystem
-// assets; V14 calibrates the vertical/card rhythm; V15 converges desktop/mobile;
-// V16 carries measured geometry while consuming the exact V17 ecosystem authority.
-for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
+// IMPORTANT: the Home is a clean V18 rebuild and MUST NOT receive any V9–V16
+// injection. Secondary pages remain on the prior measured stack until their own
+// clean rebuild is authorized.
+for (const page of ['destaque.html','vitrine.html','ecossistema.html']) {
   const file = path.join(out, page);
   let html = await fs.readFile(file, 'utf8');
   html = html
-    .replaceAll('./assets/header-lockup-v9.webp', './approved-v5/header-lockup.webp')
-    .replaceAll('./assets/product-placeholder-v9.webp', './product-placeholder-v12.svg')
-    .replaceAll('./assets/logo-cn-square.png', './product-placeholder-v12.svg');
-
-  if (!html.includes('blackgold-v10-overrides.css')) {
-    html = html.replace('</head>', '<link href="./blackgold-v10-overrides.css?v=20260907-v11" rel="stylesheet"/></head>');
-  }
-  if (!html.includes('blackgold-v12-final.css')) {
-    html = html.replace('</head>', '<link href="./blackgold-v12-final.css?v=20260907-v12" rel="stylesheet"/></head>');
-  }
-  if (!html.includes('blackgold-v13-exact.css')) {
-    html = html.replace('</head>', '<link href="./blackgold-v13-exact.css?v=20260907-v13" rel="stylesheet"/></head>');
-  }
-  if (!html.includes('blackgold-v14-calibration.css')) {
-    html = html.replace('</head>', '<link href="./blackgold-v14-calibration.css?v=20260907-v14" rel="stylesheet"/></head>');
-  }
-  if (!html.includes('blackgold-v15-contract-final.css')) {
-    html = html.replace('</head>', '<link href="./blackgold-v15-contract-final.css?v=20260908-v15" rel="stylesheet"/></head>');
-  }
-  if (!html.includes('blackgold-v16-measured-calibration.css')) {
-    html = html.replace('</head>', '<link href="./blackgold-v16-measured-calibration.css?v=20260908-v16" rel="stylesheet"/></head>');
-  }
-
+    .replaceAll('./assets/header-lockup-v9.webp','./approved-v5/header-lockup.webp')
+    .replaceAll('./assets/product-placeholder-v9.webp','./product-placeholder-v12.svg')
+    .replaceAll('./assets/logo-cn-square.png','./product-placeholder-v12.svg');
+  if (!html.includes('blackgold-v10-overrides.css')) html = html.replace('</head>','<link href="./blackgold-v10-overrides.css?v=20260907-v11" rel="stylesheet"/></head>');
+  if (!html.includes('blackgold-v12-final.css')) html = html.replace('</head>','<link href="./blackgold-v12-final.css?v=20260907-v12" rel="stylesheet"/></head>');
+  if (!html.includes('blackgold-v13-exact.css')) html = html.replace('</head>','<link href="./blackgold-v13-exact.css?v=20260907-v13" rel="stylesheet"/></head>');
+  if (!html.includes('blackgold-v14-calibration.css')) html = html.replace('</head>','<link href="./blackgold-v14-calibration.css?v=20260907-v14" rel="stylesheet"/></head>');
+  if (!html.includes('blackgold-v15-contract-final.css')) html = html.replace('</head>','<link href="./blackgold-v15-contract-final.css?v=20260908-v15" rel="stylesheet"/></head>');
+  if (!html.includes('blackgold-v16-measured-calibration.css')) html = html.replace('</head>','<link href="./blackgold-v16-measured-calibration.css?v=20260908-v16" rel="stylesheet"/></head>');
   await fs.writeFile(file, html, 'utf8');
 }
 
-try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json')); }
-catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
+try { await fs.copyFile(path.join(root,'ecosystem.json'), path.join(out,'ecosystem.json')); }
+catch { await fs.writeFile(path.join(out,'ecosystem.json'), JSON.stringify({}), 'utf8'); }
 
-// Legacy catalogue remains backend/admin-only for audit/migration. It is not rendered
-// by the public measured interface.
-const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
+const productsRaw = JSON.parse(await fs.readFile(path.join(root,'produtos.json'),'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
-let dailySelection = { campaign_id: 'organic', selected: [] };
-try { dailySelection = JSON.parse(await fs.readFile(path.join(root, 'data', 'daily_selection.json'), 'utf8')); } catch {}
+let dailySelection = { campaign_id:'organic', selected:[] };
+try { dailySelection = JSON.parse(await fs.readFile(path.join(root,'data','daily_selection.json'),'utf8')); } catch {}
 const dailyRows = Array.isArray(dailySelection.selected) ? dailySelection.selected : [];
 const dailyBySku = new Map(dailyRows.map(row => [String(row?.sku || ''), row]));
-
 const products = activeProducts.map(p => ({
-  sku: p.sku || '',
-  title: p.title || 'BlackGold Find',
-  category: p.categoria_principal || 'Beleza',
-  secondary: Array.isArray(p.categorias_secundarias) ? p.categorias_secundarias : [],
-  badges: Array.isArray(p.badges) ? p.badges : [],
-  price: p.price_text || p.preco_atual || p.price_current || p.price || '',
-  description: p.descricao_curta || p.short_description || p.description || p.notes || '',
-  image: p.image || p.image_original || '',
-  card_image: p.card_image || (Array.isArray(p.images) ? p.images[0] : '') || p.image || p.image_original || '',
-  url: p.active_affiliate_url || p.open_url || p.short_url || p.canonical_url || p.check_url || '#',
-  featured: p.featured === true || p.quick_home === true,
-  daily_position: Number(dailyBySku.get(String(p.sku || ''))?.position || 0)
+  sku:p.sku||'', title:p.title||'BlackGold Find', category:p.categoria_principal||'Beleza', secondary:Array.isArray(p.categorias_secundarias)?p.categorias_secundarias:[], badges:Array.isArray(p.badges)?p.badges:[], price:p.price_text||p.preco_atual||p.price_current||p.price||'', description:p.descricao_curta||p.short_description||p.description||p.notes||'', image:p.image||p.image_original||'', card_image:p.card_image||(Array.isArray(p.images)?p.images[0]:'')||p.image||p.image_original||'', url:p.active_affiliate_url||p.open_url||p.short_url||p.canonical_url||p.check_url||'#', featured:p.featured===true||p.quick_home===true, daily_position:Number(dailyBySku.get(String(p.sku||''))?.position||0)
 }));
+await fs.writeFile(path.join(out,'catalog.json'), JSON.stringify({updated_at:new Date().toISOString(),total_active:activeProducts.length,products}), 'utf8');
+await fs.writeFile(path.join(out,'daily-selection.json'), JSON.stringify({campaign_id:dailySelection.campaign_id||'organic',date:dailySelection.date||'',selected:dailyRows.map(row=>({sku:row.sku||'',position:Number(row.position||0)}))}), 'utf8');
 
-await fs.writeFile(path.join(out, 'catalog.json'), JSON.stringify({
-  updated_at: new Date().toISOString(),
-  total_active: activeProducts.length,
-  products
-}), 'utf8');
-await fs.writeFile(path.join(out, 'daily-selection.json'), JSON.stringify({
-  campaign_id: dailySelection.campaign_id || 'organic',
-  date: dailySelection.date || '',
-  selected: dailyRows.map(row => ({ sku: row.sku || '', position: Number(row.position || 0) }))
-}), 'utf8');
+// Home contract validation — one stylesheet, no legacy visual stack.
+const home = await fs.readFile(path.join(out,'index.html'),'utf8');
+if (!home.includes('blackgold-home-v18.css?v=20260908-v18')) throw new Error('Home V18 stylesheet missing');
+for (const forbidden of ['blackgold-v9.css','blackgold-v10-overrides.css','blackgold-v12-final.css','blackgold-v13-exact.css','blackgold-v14-calibration.css','blackgold-v15-contract-final.css','blackgold-v16-measured-calibration.css']) {
+  if (home.includes(forbidden)) throw new Error(`Legacy layer leaked into clean Home V18: ${forbidden}`);
+}
+if (!home.includes('approved-home/miss-dior.webp') || !home.includes('approved-home/ecosystem-approved-exact.webp') && !home.includes('bg18-eco')) throw new Error('V18 approved visual stand-ins missing');
 
-for (const page of ['index.html','destaque.html','vitrine.html','ecossistema.html']) {
-  const html = await fs.readFile(path.join(out, page), 'utf8');
-  if (!html.includes('blackgold-v9.css') || !html.includes('blackgold-v9.js')) {
-    throw new Error(`Stable V9 markup contract missing in ${page}`);
-  }
-  if (!html.includes('blackgold-v10-overrides.css?v=20260907-v11')) {
-    throw new Error(`V11 fidelity layer missing in ${page}`);
-  }
-  if (!html.includes('blackgold-v12-final.css?v=20260907-v12')) {
-    throw new Error(`V12 fidelity layer missing in ${page}`);
-  }
-  if (!html.includes('blackgold-v13-exact.css?v=20260907-v13')) {
-    throw new Error(`V13 exact fidelity layer missing in ${page}`);
-  }
-  if (!html.includes('blackgold-v14-calibration.css?v=20260907-v14')) {
-    throw new Error(`V14 calibration layer missing in ${page}`);
-  }
-  if (!html.includes('blackgold-v15-contract-final.css?v=20260908-v15')) {
-    throw new Error(`V15 contract layer missing in ${page}`);
-  }
-  if (!html.includes('blackgold-v16-measured-calibration.css?v=20260908-v16')) {
-    throw new Error(`V16 measured calibration missing in ${page}`);
-  }
-  if (html.includes('./assets/header-lockup-v9.webp') || html.includes('./assets/product-placeholder-v9.webp') || html.includes('./assets/logo-cn-square.png')) {
-    throw new Error(`Unresolved temporary asset reference in ${page}`);
+for (const page of ['destaque.html','vitrine.html','ecossistema.html']) {
+  const html = await fs.readFile(path.join(out,page),'utf8');
+  for (const required of ['blackgold-v9.css','blackgold-v10-overrides.css?v=20260907-v11','blackgold-v12-final.css?v=20260907-v12','blackgold-v13-exact.css?v=20260907-v13','blackgold-v14-calibration.css?v=20260907-v14','blackgold-v15-contract-final.css?v=20260908-v15','blackgold-v16-measured-calibration.css?v=20260908-v16','blackgold-v9.js']) {
+    if (!html.includes(required)) throw new Error(`${page} missing ${required}`);
   }
 }
 
-await fs.access(path.join(out, 'approved-v5', 'header-lockup.webp'));
-await fs.access(path.join(out, 'hero-approved.webp'));
-await fs.access(path.join(out, 'product-placeholder-v12.svg'));
-await fs.access(path.join(out, 'exact-brand-v13.webp'));
-await fs.access(path.join(out, 'exact-ecosystem-center-v13.webp'));
-await fs.access(path.join(out, 'ecosystem-authority-v17.webp'));
-await fs.access(path.join(out, 'blackgold-v10-overrides.css'));
-await fs.access(path.join(out, 'blackgold-v12-final.css'));
-await fs.access(path.join(out, 'blackgold-v13-exact.css'));
-await fs.access(path.join(out, 'blackgold-v14-calibration.css'));
-await fs.access(path.join(out, 'blackgold-v15-contract-final.css'));
-await fs.access(path.join(out, 'blackgold-v16-measured-calibration.css'));
-
-console.log(`BlackGold V17 authority package ready: ${products.length} legacy products kept backend-only -> ${out}`);
+for (const required of ['blackgold-home-v18.css','approved-v5/header-lockup.webp','hero-approved.webp','approved-home/ecosystem-approved-exact.webp','ecosystem-authority-v17.webp']) await fs.access(path.join(out,required));
+console.log(`BlackGold clean Home V18 package ready; ${products.length} legacy products remain backend-only -> ${out}`);
