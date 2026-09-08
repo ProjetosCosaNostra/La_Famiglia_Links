@@ -58,7 +58,7 @@ jobs:
         run: |
           set -euo pipefail
           node build.mjs
-          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css exact-brand-v13.webp exact-ecosystem-center-v13.webp ecosystem.json admin.html; do
+          for f in index.html destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css exact-brand-v13.webp exact-ecosystem-center-v13.webp ecosystem-authority-v17.webp ecosystem.json admin.html; do
             test -f "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
           for page in index.html destaque.html vitrine.html ecossistema.html; do
@@ -71,7 +71,9 @@ jobs:
             grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' "dist/$page" || { echo "$page sem V16"; exit 17; }
             grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 18; }
           done
-          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(19); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(20); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(21);"
+          grep -q 'Hub oficial / Loja' dist/blackgold-v9.js || { echo 'JS sem contrato dos seis destinos da Home'; exit 19; }
+          node -e "const fs=require('fs'); const b=fs.readFileSync('./dist/ecosystem-authority-v17.webp'); if(b.length!==10502||b.subarray(0,4).toString('ascii')!=='RIFF'||b.subarray(8,12).toString('ascii')!=='WEBP') process.exit(20);"
+          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(21); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(22); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(23);"
 
       - name: Publicar somente em PREVIEW
         working-directory: cloudflare-beauty-finds
@@ -80,7 +82,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 22; }
+          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 24; }
           npx --yes wrangler@${WRANGLER_VERSION} pages deploy dist \
             --project-name="$PROJECT_NAME" \
             --branch="$PREVIEW_BRANCH" \
@@ -100,35 +102,41 @@ jobs:
           PREVIEW_URL=$(node <<'NODE'
           const fs = require('fs');
           const body = JSON.parse(fs.readFileSync('/tmp/deployments.json','utf8'));
-          if (!body.success || !Array.isArray(body.result)) process.exit(23);
+          if (!body.success || !Array.isArray(body.result)) process.exit(25);
           const hit = body.result.find(d => d?.deployment_trigger?.metadata?.branch === process.env.PREVIEW_BRANCH);
-          if (!hit?.url) process.exit(24);
+          if (!hit?.url) process.exit(26);
           process.stdout.write(hit.url);
           NODE
           )
           echo "PREVIEW_URL=$PREVIEW_URL" >> "$GITHUB_ENV"
           echo "Preview: $PREVIEW_URL"
-          for route in / /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
+          for route in / /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html /ecosystem-authority-v17.webp /blackgold-v9.js; do
             code=000
             for attempt in 1 2 3 4 5; do
               code=$(curl -sS -L -o /tmp/route.out -w '%{http_code}' --max-time 45 "$PREVIEW_URL$route") || true
               [ "$code" = '200' ] && break
               sleep 4
             done
-            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 25; }
+            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 27; }
           done
           curl -sS -L "$PREVIEW_URL/" > /tmp/home.html
-          grep -q 'blackgold-v14-calibration.css?v=20260907-v14' /tmp/home.html || { echo 'Home publicada sem V14'; exit 26; }
-          grep -q 'blackgold-v15-contract-final.css?v=20260908-v15' /tmp/home.html || { echo 'Home publicada sem V15'; exit 27; }
-          grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' /tmp/home.html || { echo 'Home publicada sem V16'; exit 28; }
-          grep -q 'blackgold-v9.js' /tmp/home.html || { echo 'Home publicada sem JS compartilhado'; exit 29; }
+          grep -q 'blackgold-v14-calibration.css?v=20260907-v14' /tmp/home.html || { echo 'Home publicada sem V14'; exit 28; }
+          grep -q 'blackgold-v15-contract-final.css?v=20260908-v15' /tmp/home.html || { echo 'Home publicada sem V15'; exit 29; }
+          grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' /tmp/home.html || { echo 'Home publicada sem V16'; exit 30; }
+          grep -q 'blackgold-v9.js' /tmp/home.html || { echo 'Home publicada sem JS compartilhado'; exit 31; }
+          curl -sS -L "$PREVIEW_URL/blackgold-v9.js" > /tmp/blackgold-v9.js
+          grep -q 'Hub oficial / Loja' /tmp/blackgold-v9.js || { echo 'Home publicada sem seis destinos aprovados'; exit 32; }
+          curl -sS -L "$PREVIEW_URL/ecosystem-authority-v17.webp" > /tmp/ecosystem-authority-v17.webp
+          node -e "const fs=require('fs'); const b=fs.readFileSync('/tmp/ecosystem-authority-v17.webp'); if(b.length!==10502||b.subarray(0,4).toString('ascii')!=='RIFF'||b.subarray(8,12).toString('ascii')!=='WEBP') process.exit(33);"
           {
             echo '## BlackGold Beauty Finds — Visual Contract Preview'
             echo ''
             echo "- Branch: $PREVIEW_BRANCH"
             echo "- Commit: $GITHUB_SHA"
             echo "- URL: $PREVIEW_URL"
-            echo '- V16: carregado e validado no HTML publicado'
+            echo '- V16.5: carregado e validado no HTML publicado'
+            echo '- Autoridade V17 WEBP: 10.502 bytes, assinatura RIFF/WEBP confirmada'
+            echo '- Home: seis destinos do mockup restaurados com URLs oficiais'
             echo '- Home + Destaque + Vitrine + Ecossistema + Admin: HTTP 200'
             echo '- Manifesto V2.1: confirmado'
             echo '- Produção: congelada e não alterada'
@@ -140,7 +148,7 @@ jobs:
           set -euo pipefail
           mkdir -p visual-proof
           CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
-          [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado'; exit 30; }
+          [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado'; exit 34; }
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/home-desktop-1448x1086.png" "$PREVIEW_URL/"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1240 --screenshot="$PWD/visual-proof/home-mobile-390x1240.png" "$PREVIEW_URL/"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/destaque-desktop.png" "$PREVIEW_URL/destaque.html"
@@ -149,7 +157,7 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1240 --screenshot="$PWD/visual-proof/vitrine-mobile.png" "$PREVIEW_URL/vitrine.html"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/ecossistema-desktop.png" "$PREVIEW_URL/ecossistema.html"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1240 --screenshot="$PWD/visual-proof/ecossistema-mobile.png" "$PREVIEW_URL/ecossistema.html"
-          for f in visual-proof/*.png; do test -s "$f" || exit 31; done
+          for f in visual-proof/*.png; do test -s "$f" || exit 35; done
 
       - name: Guardar provas visuais
         uses: actions/upload-artifact@v4
