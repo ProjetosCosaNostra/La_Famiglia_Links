@@ -1,5 +1,5 @@
 /* =====================================================================
-   BLACKGOLD V17 — CONTRACT CALIBRATION
+   BLACKGOLD V17.1 — CONTRACT CALIBRATION
    Authorities: approved desktop 1448x1086 + approved mobile composition.
    Public catalogue stays neutral until real products are inserted in Admin.
    ===================================================================== */
@@ -12,9 +12,7 @@
     radial-gradient(circle at 31% 98%,rgba(224,180,105,.11),transparent 17%),
     linear-gradient(180deg,#fffaf3,#fff9f0);
 }
-.hero:before{
-  inset:0 0 0 560px;
-}
+.hero:before{inset:0 0 0 560px}
 .hero:after{
   width:615px;
   background:
@@ -49,13 +47,9 @@
     radial-gradient(ellipse at 45% 101%,rgba(226,150,24,.58),transparent 42%),
     linear-gradient(90deg,#090604 0%,#160d04 31%,#0c0703 68%,#050403 100%);
 }
-.ecosystem:before{
-  background-position:43.8% center;
-  background-size:415px 172px;
-  filter:saturate(1.16) contrast(1.07) brightness(1.10);
-}
+.ecosystem:before{background-position:43.8% center;background-size:415px 172px;filter:saturate(1.16) contrast(1.07) brightness(1.10)}
 .eco-copy{top:17px;left:73px}
-.eco-links{top:10px;right:64px;width:520px}
+.eco-links{top:10px;right:56px;width:520px}
 .eco-link{box-shadow:inset 0 0 0 1px rgba(255,207,100,.03),0 5px 14px rgba(0,0,0,.17)}
 
 .topbar{padding-left:45px;padding-right:45px}
@@ -68,8 +62,6 @@
   html,body{background:#fffaf3}
   .site{width:100%;box-shadow:none;overflow:hidden}
 
-  /* Header is positioned explicitly so the approved phone lockup is not
-     squeezed by the desktop grid. */
   .topbar{height:72px!important;padding:0!important;display:block!important;position:relative!important;border-bottom:1px solid #b27615}
   .main-nav{display:none!important}
   .brand{position:absolute!important;left:73px!important;top:7px!important;width:220px!important;height:58px!important;background-size:218px auto!important;transform:none!important}
@@ -82,24 +74,21 @@
   .tools .icon svg{width:21px!important;height:21px!important}
   .admin-lock{display:none!important}
 
-  /* PT / EN / ES form the centered secondary strip used by the approved phone. */
-  .tools .lang{position:absolute!important;top:76px!important;z-index:80!important;width:42px!important;height:25px!important;font-size:10px!important;border-radius:16px!important;padding:0!important}
+  .tools .lang{position:absolute!important;top:76px!important;z-index:80!important;width:42px!important;height:25px!important;font-size:10px!important;border-radius:16px!important;padding:0!important;background:#0c0a08!important;color:#f4ead8!important;border:1px solid #514333!important}
   .tools .lang:nth-of-type(1){left:138px!important}
   .tools .lang:nth-of-type(2){left:190px!important}
   .tools .lang:nth-of-type(3){left:242px!important}
+  .tools .lang.active{background:linear-gradient(180deg,#f8d575,#d59a28)!important;color:#1b1207!important;border-color:#d8a02f!important;box-shadow:0 2px 10px rgba(205,143,28,.36)!important}
 
-  /* 72–480: same mobile hero cadence, but with the woman scaled and shifted
-     to the approved right-hand footprint instead of dominating the copy. */
   .hero{height:408px!important;overflow:hidden!important;border-bottom:1px solid #dfcab0;background:linear-gradient(180deg,#fffaf3,#fff9f0)!important}
   .hero:before{
-    inset:0!important;
-    height:330px!important;
-    background-position:left 226px top 0!important;
-    background-size:auto 304px!important;
+    inset:0!important;height:330px!important;
+    background-position:left 232px top 0!important;
+    background-size:auto 280px!important;
   }
   .hero:after{
     width:100%!important;height:330px!important;
-    background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 47%,rgba(255,250,243,.985) 54%,rgba(255,250,243,.66) 66%,rgba(255,250,243,0) 80%)!important;
+    background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 43%,rgba(255,250,243,.98) 49%,rgba(255,250,243,.52) 58%,rgba(255,250,243,0) 70%)!important;
   }
   .hero-copy{width:58%!important;height:100%!important;padding:61px 10px 0!important;overflow:visible!important}
   .eyebrow{width:195px!important;margin:0 0 10px!important;font-size:7.5px!important;line-height:1.45!important;letter-spacing:.18em!important}
@@ -119,7 +108,6 @@
   .stat strong{font-size:15px!important}
   .stat small{font-size:7px!important;margin-top:3px!important;white-space:nowrap!important}
 
-  /* One featured card + three premium slots, matching approved mobile density. */
   .catalog{height:431px!important;padding:10px 10px 0!important;overflow:hidden!important;background:linear-gradient(180deg,#fffdf9,#fff8ef)!important}
   .section-head,.showcase-head{align-items:flex-end!important;gap:8px!important}
   .title h2{font-size:26px!important;line-height:.95!important}
@@ -145,7 +133,6 @@
   .showcase-head .filters{margin-left:auto!important}
   .filters .chip{display:none!important}
   .showcase-head .pill{transform:translateX(15px)}
-
   .products{display:flex!important;gap:6px!important;margin-top:7px!important;overflow:hidden!important;width:410px!important}
   .products .pcard{display:none!important}
   .products .pcard:nth-child(-n+3){display:flex!important;flex:0 0 121px!important;width:121px!important;height:150px!important;padding:4px!important}
@@ -154,13 +141,16 @@
   .pcard h3{font-size:8px!important;margin-top:4px!important}
   .pcard strong{font-size:11px!important}
 
-  /* Compact ecosystem masthead + 2x3 destination grid. The ornate lion
-     crest is the background identity, while all destination cards stay HTML. */
   .ecosystem{height:264px!important;min-height:264px!important;padding:0!important;border-top:1px solid #9d681c!important;background:
     radial-gradient(ellipse at 50% 0%,rgba(218,148,30,.18),transparent 34%),
     repeating-conic-gradient(from 198deg at 50% 108%,rgba(233,164,42,.10) 0deg 1deg,transparent 1deg 8deg),
     linear-gradient(180deg,#0b0704,#050403)!important}
-  .ecosystem:before{inset:0!important;background-image:url('./exact-ecosystem-center-v13.webp')!important;background-position:12px 9px!important;background-size:118px 54px!important;background-repeat:no-repeat!important;filter:saturate(1.14) contrast(1.06) brightness(1.10)!important}
+  .ecosystem:before{
+    inset:0!important;background-image:url('./exact-ecosystem-center-v13.webp')!important;background-position:12px 9px!important;background-size:118px 54px!important;background-repeat:no-repeat!important;
+    filter:saturate(1.14) contrast(1.06) brightness(1.10)!important;
+    -webkit-mask-image:radial-gradient(ellipse 76px 39px at 69px 35px,#000 48%,rgba(0,0,0,.92) 62%,transparent 100%);
+    mask-image:radial-gradient(ellipse 76px 39px at 69px 35px,#000 48%,rgba(0,0,0,.92) 62%,transparent 100%);
+  }
   .ecosystem:after{background:linear-gradient(180deg,rgba(5,3,2,0) 0%,rgba(5,3,2,.08) 28%,rgba(5,3,2,.48) 100%)!important}
   .eco-inner{height:264px!important;min-height:264px!important;padding:0 12px!important;display:block!important}
   .eco-copy{position:relative!important;left:auto!important;top:auto!important;width:auto!important;height:78px!important;padding:20px 0 0 140px!important;text-align:left!important;margin:0!important}
@@ -172,7 +162,6 @@
   .eco-link b{font-size:9px!important}
   .eco-link small{font-size:6px!important}
 
-  /* Brand + social + copyright, no duplicated desktop navigation. */
   .footer{height:65px!important;min-height:65px!important;padding:0 12px!important;display:grid!important;grid-template-columns:1fr auto!important;grid-template-rows:43px 22px!important;align-items:center!important}
   .footer-brand{grid-column:1!important;grid-row:1!important;width:165px!important;height:40px!important;background-size:160px auto!important}
   .footer-brand img{width:165px!important;height:40px!important}
@@ -180,9 +169,8 @@
   .footer-social{grid-column:2!important;grid-row:1!important;text-align:right!important;font-size:13px!important;white-space:nowrap!important}
   .copyright{grid-column:1 / -1!important;grid-row:2!important;text-align:center!important;font-size:8px!important;line-height:1.15!important;align-self:start!important}
 
-  /* Internal pages inherit the same mobile masthead language. */
   .page-hero{height:326px!important;display:grid!important;grid-template-rows:178px 148px!important;overflow:hidden!important}
-  .page-hero:before{inset:0 0 auto 0!important;height:178px!important;background-position:left 140px top 0!important;background-size:auto 225px!important}
+  .page-hero:before{inset:0 0 auto 0!important;height:178px!important;background-position:left 150px top 0!important;background-size:auto 210px!important}
   .page-hero:after{inset:178px 0 0 0!important;height:148px!important;background:linear-gradient(180deg,rgba(255,250,243,.96),#fffaf3)!important}
   .page-hero .inside{grid-row:2!important;padding:18px 16px 14px!important;width:auto!important;align-self:start!important}
   .page-hero h1{font-size:34px!important;line-height:.93!important}
