@@ -1,6 +1,6 @@
 /* TEMPORARY V18 CALIBRATION — to be folded into blackgold-home-v18.css before approval. */
 @media(min-width:761px){
-  /* Desktop pass V18.10 — measured against the approved 1448x1086 mockup. */
+  /* Desktop pass V18.11 — measured against the approved 1448x1086 mockup. */
   .bg18-hero{background:
     radial-gradient(ellipse at 7% 18%,rgba(214,167,107,.20),transparent 12%),
     radial-gradient(ellipse at 28% 6%,rgba(224,186,132,.15),transparent 15%),
@@ -50,7 +50,7 @@
 }
 
 @media(max-width:760px){
-  /* Phone pass V18.10 — calibrated to the approved 390x1152 authority. */
+  /* Phone pass V18.11 — exact 390px right-edge footprint from approved authority. */
   .bg18-brand{left:81px!important;top:1px!important;width:194px!important;height:60px!important}
   .bg18-brand img{width:194px!important;height:60px!important}
   .bg18-icon svg{width:21px!important;height:21px!important;stroke-width:1.8!important}
@@ -71,7 +71,10 @@
   .bg18-actions .bg18-btn.light{flex:1 1 0!important}
   .bg18-stats{width:calc(100vw - 15px)!important;grid-template-columns:1fr 1.08fr 1.05fr!important}
 
-  .bg18-title h2:after{width:105px!important}
+  .bg18-cat{padding-left:15px!important;padding-right:0!important}
+  .bg18-cat>.bg18-head:first-child .bg18-title h2:after{width:105px!important}
+  .bg18-vhead .bg18-title h2{white-space:nowrap!important}
+  .bg18-vhead .bg18-title h2:after{width:68px!important}
   .bg18-cat .bg18-title p{visibility:hidden!important}
   .bg18-cat>.bg18-head:first-child .bg18-title{height:31px!important;overflow:hidden!important}
   .bg18-cat>.bg18-head:first-child .bg18-pill{font-size:0!important;padding:0 12px!important}
@@ -84,7 +87,7 @@
   .bg18-vhead .bg18-pill{font-size:0!important;padding:0 12px!important}
   .bg18-vhead .bg18-pill:before{content:'Ver toda';font:600 9px/1 var(--serif)}
   .bg18-vhead .bg18-pill span{font-size:10px!important}
-  .bg18-products{margin-top:15px!important}
+  .bg18-products{margin-top:15px!important;padding-right:0!important}
   .bg18-pcard:nth-child(1){display:none!important}
   .bg18-pcard:nth-child(2),.bg18-pcard:nth-child(3),.bg18-pcard:nth-child(4){display:flex!important;flex:1 1 0!important;min-width:0!important;height:140px!important}
   .bg18-pmedia{height:94px!important}
@@ -92,6 +95,7 @@
   .bg18-pcard h3{font-size:9.5px!important;line-height:1.03!important}
   .bg18-pcard strong{font-size:12px!important}
 
+  .bg18-eco-grid{padding-left:18px!important;padding-right:0!important}
   .bg18-eco:before{
     inset:auto!important;left:32px!important;top:3px!important;width:108px!important;height:51px!important;
     background-image:url('./approved-home/ecosystem-approved-exact.webp')!important;
