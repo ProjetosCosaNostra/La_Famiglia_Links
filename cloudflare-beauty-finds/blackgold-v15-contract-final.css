@@ -1,0 +1,163 @@
+/* =====================================================================
+   BLACKGOLD V15 — VISUAL CONTRACT CONVERGENCE
+   Authority: approved desktop + approved responsive mockups.
+   Scope: convergence only. No redesign, no legacy catalogue resurrection.
+   Production branch remains untouched.
+   ===================================================================== */
+
+/* ----------------------------- DESKTOP ------------------------------ */
+@media(min-width:761px){
+  /* Hero: move the approved photo composition slightly right so the model
+     footprint and cream→photo transition match the authority more closely. */
+  .hero:before{
+    inset:0 0 0 578px!important;
+    background-position:left top!important;
+    background-size:908px 362px!important;
+  }
+  .hero:after{
+    width:628px!important;
+    background:
+      radial-gradient(ellipse at 3% 24%,rgba(232,194,128,.18),transparent 15%),
+      radial-gradient(ellipse at 13% 79%,rgba(230,193,130,.14),transparent 19%),
+      linear-gradient(90deg,#fffaf3 0%,#fffaf3 83%,rgba(255,250,243,.99) 89%,rgba(255,250,243,.72) 94%,rgba(255,250,243,0) 100%)!important;
+  }
+
+  /* Ecosystem: remove the visible rectangular crop and rebuild the light
+     integration around the exact approved lion/crest/pedestal component. */
+  .ecosystem{
+    background:
+      radial-gradient(ellipse at -3% 48%,rgba(229,161,39,.25),transparent 27%),
+      radial-gradient(ellipse at 103% 48%,rgba(229,161,39,.22),transparent 27%),
+      repeating-conic-gradient(from 198deg at 43% 116%,rgba(235,170,45,.14) 0deg 1deg,transparent 1deg 7deg),
+      radial-gradient(ellipse at 43% 104%,rgba(229,154,26,.54),transparent 39%),
+      linear-gradient(90deg,#090604 0%,#160d04 30%,#0d0803 68%,#050403 100%)!important;
+  }
+  .ecosystem:before{
+    background-position:42.8% center!important;
+    background-size:402px 176px!important;
+    filter:saturate(1.22) contrast(1.09) brightness(1.13)!important;
+    opacity:.99!important;
+    -webkit-mask-image:radial-gradient(ellipse 55% 96% at 50% 53%,#000 0 64%,rgba(0,0,0,.97) 72%,rgba(0,0,0,.74) 82%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 55% 96% at 50% 53%,#000 0 64%,rgba(0,0,0,.97) 72%,rgba(0,0,0,.74) 82%,transparent 100%)!important;
+  }
+  .ecosystem:after{
+    background:
+      radial-gradient(ellipse at 42.8% 105%,rgba(255,190,59,.28),transparent 23%),
+      linear-gradient(90deg,rgba(7,4,2,.22) 0%,rgba(7,4,2,.05) 27%,rgba(7,4,2,0) 35%,rgba(7,4,2,0) 61%,rgba(7,4,2,.10) 75%,rgba(7,4,2,.31) 100%)!important;
+  }
+}
+
+/* ------------------------------ MOBILE ------------------------------ */
+@media(max-width:760px){
+  /* Header: keep the lockup centered and every control inside 390 px. */
+  .topbar{height:72px!important;padding:0!important;position:relative!important}
+  .brand{
+    left:105px!important;
+    top:6px!important;
+    width:180px!important;
+    height:60px!important;
+    background-size:178px auto!important;
+  }
+  .brand img{width:180px!important;height:60px!important}
+  .tools>.icon:last-child{left:7px!important;top:18px!important;width:34px!important;height:34px!important}
+  .tools>a.icon[aria-label="Buscar"]{left:303px!important;top:18px!important;width:34px!important;height:34px!important}
+  .tools>a.icon[aria-label="Vitrine"]{left:348px!important;top:18px!important;width:34px!important;height:34px!important}
+  .tools .lang{top:76px!important;width:42px!important;height:25px!important}
+  .tools .lang:nth-of-type(1){left:123px!important}
+  .tools .lang:nth-of-type(2){left:174px!important}
+  .tools .lang:nth-of-type(3){left:225px!important}
+
+  /* Hero: reduce model dominance and recover the compact approved rhythm. */
+  .hero{height:345px!important}
+  .hero:before{
+    inset:0!important;
+    height:286px!important;
+    background-position:left 218px top 0!important;
+    background-size:auto 265px!important;
+  }
+  .hero:after{
+    width:100%!important;
+    height:286px!important;
+    background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 42%,rgba(255,250,243,.985) 49%,rgba(255,250,243,.58) 59%,rgba(255,250,243,0) 72%)!important;
+  }
+  .hero-copy{width:57%!important;padding:58px 10px 0!important}
+  .eyebrow{width:200px!important;margin-bottom:8px!important;font-size:7px!important;line-height:1.40!important}
+  .hero h1{font-size:28px!important;line-height:.86!important}
+  .hero-copy>p{font-size:12px!important;line-height:1.28!important;max-width:196px!important;margin-top:9px!important}
+
+  /* No horizontal clipping: both CTAs and all three status cards fit the viewport. */
+  .hero-actions{
+    width:calc(100vw - 20px)!important;
+    margin-top:18px!important;
+    gap:8px!important;
+    display:flex!important;
+  }
+  .hero-actions .btn{
+    flex:1 1 0!important;
+    min-width:0!important;
+    height:41px!important;
+    padding:0 8px!important;
+    font-size:12px!important;
+  }
+  .stats{
+    left:10px!important;
+    top:286px!important;
+    width:calc(100vw - 20px)!important;
+    height:50px!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+  }
+  .stat{height:50px!important;padding:0 7px!important;gap:6px!important}
+  .stat svg{width:18px!important;height:18px!important;flex:0 0 auto!important}
+  .stat strong{font-size:13px!important;white-space:nowrap!important}
+  .stat small{font-size:6.5px!important;white-space:nowrap!important}
+
+  /* Catalogue: keep the same density as the phone authority without a 410 px canvas. */
+  .catalog{height:390px!important;padding:10px 10px 0!important}
+  .title h2{font-size:24px!important}
+  .section-head .pill,.showcase-head .pill{transform:none!important}
+  .section-head .pill{margin-left:auto!important}
+  .featured{margin-top:7px!important;padding-bottom:18px!important}
+  .featured .fcard:first-child{height:132px!important;grid-template-columns:55% 45%!important}
+  .fmedia img{transform:scale(2.12)!important}
+  .fbody strong{font-size:18px!important}
+  .fcta{height:36px!important}
+  .showcase-head{margin-top:2px!important}
+  .products{
+    width:100%!important;
+    gap:6px!important;
+    margin-top:6px!important;
+  }
+  .products .pcard:nth-child(-n+3){
+    flex:1 1 0!important;
+    width:auto!important;
+    min-width:0!important;
+    height:140px!important;
+  }
+  .pmedia{height:94px!important}
+  .pmedia img{transform:scale(2.72)!important}
+
+  /* Ecosystem: preserve the approved compact crest+title masthead and 2x3 links. */
+  .ecosystem{
+    height:238px!important;
+    min-height:238px!important;
+    background:
+      radial-gradient(ellipse at 34% 0%,rgba(230,159,35,.22),transparent 32%),
+      repeating-conic-gradient(from 198deg at 50% 108%,rgba(233,164,42,.11) 0deg 1deg,transparent 1deg 8deg),
+      linear-gradient(180deg,#0b0704,#050403)!important;
+  }
+  .ecosystem:before{
+    background-position:22px 8px!important;
+    background-size:126px 58px!important;
+    filter:saturate(1.18) contrast(1.08) brightness(1.13)!important;
+    -webkit-mask-image:radial-gradient(ellipse 82px 42px at 84px 36px,#000 48%,rgba(0,0,0,.92) 67%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 82px 42px at 84px 36px,#000 48%,rgba(0,0,0,.92) 67%,transparent 100%)!important;
+  }
+  .eco-inner{height:238px!important;min-height:238px!important;padding:0 12px!important}
+  .eco-copy{height:70px!important;padding:18px 0 0 150px!important}
+  .eco-copy h2{font-size:20px!important;margin:11px 0 0!important}
+  .eco-links{margin-top:1px!important;gap:5px!important}
+  .eco-link{height:45px!important}
+
+  .footer{height:68px!important;min-height:68px!important}
+}
