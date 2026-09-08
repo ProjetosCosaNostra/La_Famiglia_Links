@@ -1,16 +1,10 @@
 /* =====================================================================
-   BLACKGOLD V16.10 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
+   BLACKGOLD V16.11 — MEASURED VISUAL CALIBRATION + V17 AUTHORITY
    Authority: approved 1448x1086 desktop + approved phone composition.
    Scope: measured corrections only. No redesign. Production untouched.
    ===================================================================== */
 
-.eco-svg,.footer-svg,.kicker-svg{
-  display:block;
-  fill:none;
-  stroke:currentColor;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
+.eco-svg,.footer-svg,.kicker-svg{display:block;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
 .eco-svg .eco-fill,.footer-svg .eco-fill{fill:currentColor;stroke:none}
 .eco-svg .eco-dot,.footer-svg .eco-dot{fill:currentColor;stroke:none}
 
@@ -19,60 +13,17 @@
   .tools{transform:translate(-27px,-2px)!important}
   .tools>a.icon[aria-label="Vitrine"]{position:relative!important;left:11px!important}
 
-  /* The approved hero photo is the same source; phase/template comparison against
-     the 1448px authority measured the live photo 34px too far left. */
-  .hero:before{
-    inset:0 0 0 586px!important;
-    background-position:left top!important;
-    background-size:908px 362px!important;
-    background-repeat:no-repeat!important;
-  }
-  .hero:after{
-    width:638px!important;
-    background:
-      radial-gradient(ellipse at 4% 23%,rgba(232,194,128,.15),transparent 15%),
-      radial-gradient(ellipse at 14% 79%,rgba(230,193,130,.12),transparent 19%),
-      linear-gradient(90deg,#fffaf3 0%,#fffaf3 84%,rgba(255,250,243,.99) 89%,rgba(255,250,243,.70) 95%,rgba(255,250,243,0) 100%)!important;
-  }
+  .hero:before{inset:0 0 0 586px!important;background-position:left top!important;background-size:908px 362px!important;background-repeat:no-repeat!important}
+  .hero:after{width:638px!important;background:radial-gradient(ellipse at 4% 23%,rgba(232,194,128,.15),transparent 15%),radial-gradient(ellipse at 14% 79%,rgba(230,193,130,.12),transparent 19%),linear-gradient(90deg,#fffaf3 0%,#fffaf3 84%,rgba(255,250,243,.99) 89%,rgba(255,250,243,.70) 95%,rgba(255,250,243,0) 100%)!important}
 
-  .ecosystem{
-    background:
-      radial-gradient(ellipse at -2% 48%,rgba(223,153,35,.18),transparent 27%),
-      radial-gradient(ellipse at 102% 48%,rgba(223,153,35,.16),transparent 27%),
-      repeating-conic-gradient(from 198deg at 44.7% 116%,rgba(235,170,45,.082) 0deg .30deg,transparent .30deg 7.8deg),
-      radial-gradient(ellipse at 44.7% 107%,rgba(228,155,29,.40),transparent 37%),
-      linear-gradient(90deg,#090604 0%,#140c04 31%,#0b0703 69%,#050403 100%)!important;
-  }
-  .ecosystem:before{
-    inset:auto!important;
-    left:455px!important;
-    top:0!important;
-    width:385px!important;
-    height:172px!important;
-    background-image:url('./ecosystem-authority-v17.webp')!important;
-    background-position:center!important;
-    background-size:385px 172px!important;
-    background-repeat:no-repeat!important;
-    filter:none!important;
-    opacity:1!important;
-    mix-blend-mode:normal!important;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.70) 3%,#000 7%,#000 93%,rgba(0,0,0,.70) 97%,transparent 100%)!important;
-    mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.70) 3%,#000 7%,#000 93%,rgba(0,0,0,.70) 97%,transparent 100%)!important;
-  }
-  .ecosystem:after{
-    background:linear-gradient(90deg,rgba(7,4,2,.18) 0%,rgba(7,4,2,.05) 25%,transparent 31%,transparent 60%,rgba(7,4,2,.08) 75%,rgba(7,4,2,.27) 100%)!important;
-  }
+  .ecosystem{background:radial-gradient(ellipse at -2% 48%,rgba(223,153,35,.18),transparent 27%),radial-gradient(ellipse at 102% 48%,rgba(223,153,35,.16),transparent 27%),repeating-conic-gradient(from 198deg at 44.7% 116%,rgba(235,170,45,.082) 0deg .30deg,transparent .30deg 7.8deg),radial-gradient(ellipse at 44.7% 107%,rgba(228,155,29,.40),transparent 37%),linear-gradient(90deg,#090604 0%,#140c04 31%,#0b0703 69%,#050403 100%)!important}
+  .ecosystem:before{inset:auto!important;left:455px!important;top:0!important;width:385px!important;height:172px!important;background-image:url('./ecosystem-authority-v17.webp')!important;background-position:center!important;background-size:385px 172px!important;background-repeat:no-repeat!important;filter:none!important;opacity:1!important;mix-blend-mode:normal!important;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.70) 3%,#000 7%,#000 93%,rgba(0,0,0,.70) 97%,transparent 100%)!important;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.70) 3%,#000 7%,#000 93%,rgba(0,0,0,.70) 97%,transparent 100%)!important}
+  .ecosystem:after{background:linear-gradient(90deg,rgba(7,4,2,.18) 0%,rgba(7,4,2,.05) 25%,transparent 31%,transparent 60%,rgba(7,4,2,.08) 75%,rgba(7,4,2,.27) 100%)!important}
 
   .eco-copy{align-self:start!important;padding-top:27px!important;transform:translateY(-23px)!important}
   .eco-kicker{display:flex!important;align-items:center!important;gap:8px!important;font-size:9px!important;letter-spacing:.18em!important;line-height:1!important}
   .kicker-svg{width:20px!important;height:20px!important;flex:0 0 20px!important;color:#e2b044!important;stroke-width:1.65!important;filter:drop-shadow(0 0 4px rgba(226,176,68,.22))}
-  .eco-copy h2{
-    margin:8px 0 7px!important;
-    font-size:40px!important;
-    line-height:.92!important;
-    letter-spacing:-.025em!important;
-    white-space:nowrap!important;
-  }
+  .eco-copy h2{margin:8px 0 7px!important;font-size:40px!important;line-height:.92!important;letter-spacing:-.025em!important;white-space:nowrap!important}
   .eco-copy p{max-width:380px!important;font-size:12.5px!important;line-height:1.34!important}
 
   .eco-links{gap:5px 8px!important}
@@ -114,11 +65,8 @@
 
   .catalog{height:409px!important;padding:10px 15px 0!important}
   .showcase-head .title{transform:translateY(16px)!important}
-  .showcase-head .title p{
-    white-space:nowrap!important;
-    font-size:7.4px!important;
-    transform:translateY(-6px)!important;
-  }
+  .showcase-head .title p{white-space:nowrap!important;font-size:7.4px!important;transform:translateY(-6px)!important}
+  .products{transform:translateY(10px)!important}
   .products .pcard:nth-child(-n+3){height:148px!important}
   .pmedia{height:100px!important}
 
