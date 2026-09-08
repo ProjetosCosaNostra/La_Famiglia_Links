@@ -1,33 +1,58 @@
 /* TEMPORARY V18 CALIBRATION — to be folded into blackgold-home-v18.css before approval. */
 @media(min-width:761px){
-  .bg18-hero-art{left:565px!important}
-  .bg18-hero-fade{width:620px!important}
-  .bg18-hero-copy{padding-top:34px!important}
-  .bg18-hero h1{font-size:63px!important;line-height:.74!important;letter-spacing:-.035em!important}
+  /* Keep the approved 63px headline scale, but give line 2 its real footprint. */
+  .bg18-hero-art{left:580px!important}
+  .bg18-hero-fade{width:635px!important}
+  .bg18-hero-copy{width:585px!important;padding-top:34px!important}
+  .bg18-hero h1{font-size:63px!important;line-height:.74!important;letter-spacing:-.035em!important;white-space:nowrap!important}
   .bg18-hero h1 em{font-size:.90em!important}
   .bg18-lead{max-width:430px!important;font-size:15px!important;line-height:1.34!important;margin-top:14px!important}
   .bg18-actions{margin-top:18px!important}
+
   .bg18-featured{margin-top:9px!important}
   .bg18-fcard{height:153px!important}
-  .bg18-vhead{margin-top:14px!important}
-  .bg18-products{margin-top:8px!important}
-  .bg18-pcard{height:140px!important}
-  .bg18-pmedia{height:96px!important}
-  .bg18-eco:before{inset:auto!important;left:455px!important;top:0!important;width:385px!important;height:172px!important;background-image:url('./ecosystem-authority-v17.webp')!important;background-position:center!important;background-size:385px 172px!important;background-repeat:no-repeat!important}
+  .bg18-vhead{margin-top:18px!important}
+  .bg18-products{margin-top:9px!important}
+  .bg18-pcard{height:145px!important}
+  .bg18-pmedia{height:99px!important}
+
+  /* V17 is an exact 385x172 crop from the approved mockup. Feather only its
+     lateral edges so it stops reading as a pasted rectangle. */
+  .bg18-eco:before{
+    inset:auto!important;left:455px!important;top:0!important;width:385px!important;height:172px!important;
+    background-image:url('./ecosystem-authority-v17.webp')!important;background-position:center!important;background-size:385px 172px!important;background-repeat:no-repeat!important;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.65) 4%,#000 9%,#000 91%,rgba(0,0,0,.65) 96%,transparent 100%)!important;
+    mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.65) 4%,#000 9%,#000 91%,rgba(0,0,0,.65) 96%,transparent 100%)!important;
+  }
   .bg18-eco-grid{padding-left:73px!important;padding-right:59px!important}
   .bg18-eco-copy{transform:translateY(-15px)!important}
   .bg18-eco-copy h2{font-size:35px!important;line-height:.94!important}
   .bg18-eco-copy p{max-width:350px!important;font-size:10.5px!important}
   .bg18-eco-links{transform:translate(14px,-11px)!important}
 }
+
 @media(max-width:760px){
   .bg18-hero-art{background-position:left 214px top 0!important;background-size:auto 248px!important}
-  .bg18-hero-copy{width:57%!important;padding-top:65px!important}
-  .bg18-hero h1{font-size:25.5px!important;line-height:.90!important;letter-spacing:-.03em!important}
+  .bg18-hero-fade{background:linear-gradient(90deg,#fffaf3 0%,#fffaf3 43%,rgba(255,250,243,.99) 49%,rgba(255,250,243,.73) 57%,rgba(255,250,243,.22) 68%,rgba(255,250,243,0) 77%)!important}
+  .bg18-hero-copy{width:57%!important;padding-top:61px!important}
+  .bg18-hero h1{font-size:26.5px!important;line-height:.89!important;letter-spacing:-.03em!important}
   .bg18-lead{font-size:12.8px!important;line-height:1.28!important;margin-top:10px!important;max-width:185px!important}
-  .bg18-actions{margin-top:14px!important}
+  /* Buttons were ~12px too high versus the approved phone while stats were right. */
+  .bg18-actions{margin-top:26px!important}
+
   .bg18-fcard:first-child{height:132px!important}
-  .bg18-pcard:nth-child(-n+3){height:140px!important}
+  /* Approved phone begins Vitrine with Batom, Creme, Oculos — not Chanel. */
+  .bg18-pcard:nth-child(1){display:none!important}
+  .bg18-pcard:nth-child(2),.bg18-pcard:nth-child(3),.bg18-pcard:nth-child(4){display:flex!important;flex:1 1 0!important;min-width:0!important;height:140px!important}
   .bg18-pmedia{height:94px!important}
-  .bg18-eco:before{background-image:url('./ecosystem-authority-v17.webp')!important;background-position:30px 8px!important;background-size:126px 56px!important;background-repeat:no-repeat!important}
+
+  /* Use the dedicated approved crest artwork in the phone masthead. */
+  .bg18-eco:before{
+    background-image:url('./approved-v5/eco-art.webp')!important;
+    background-position:29px 2px!important;
+    background-size:122px auto!important;
+    background-repeat:no-repeat!important;
+    -webkit-mask-image:radial-gradient(ellipse 72px 42px at 88px 31px,#000 0 60%,rgba(0,0,0,.88) 76%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 72px 42px at 88px 31px,#000 0 60%,rgba(0,0,0,.88) 76%,transparent 100%)!important;
+  }
 }
