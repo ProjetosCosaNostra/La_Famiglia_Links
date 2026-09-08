@@ -1,0 +1,69 @@
+/* BLACKGOLD HOME V19.3 — measured micro-calibration against approved desktop/mobile authorities. */
+@media(min-width:761px){
+  /* Header authority: brand footprint and spacing. */
+  .bg18-brand{width:255px!important;height:49px!important}
+  .bg18-brand img{width:255px!important;height:49px!important}
+
+  /* Desktop hero typography footprint. */
+  .bg18-hero-copy{padding-top:31px!important}
+  .bg18-eyebrow{margin-bottom:12px!important}
+  .bg18-hero h1{font-size:62px!important;line-height:.77!important;letter-spacing:-.031em!important}
+  .bg18-lead{margin-top:13px!important}
+
+  /* Remove the visible crop-frame feel from product authority images. */
+  .bg18-fmedia,.bg18-pmedia{overflow:hidden!important}
+  .bg18-fcard:nth-child(1) .bg18-fmedia img{padding:0!important;transform:scale(1.075)!important}
+  .bg18-fcard:nth-child(2) .bg18-fmedia img{padding:0!important;transform:scale(1.055)!important}
+  .bg18-fcard:nth-child(3) .bg18-fmedia img{padding:0!important;transform:scale(1.07)!important}
+  .bg18-pmedia img{padding:0!important;transform:scale(1.055)!important}
+
+  /* Right link column measured ~24px farther right in the approved desktop. */
+  .bg18-eco-links{transform:translate(16px,-12px)!important}
+
+  /* Footer brand in the authority is materially smaller than V18.12. */
+  .bg18-footer-brand{width:164px!important;height:40px!important}
+  .bg18-footer-brand img{width:164px!important;height:40px!important}
+  .bg18-footer nav{font-size:7px!important;gap:15px!important}
+}
+
+@media(max-width:760px){
+  /* Header controls measured from the 390px authority. */
+  .bg18-brand{left:74px!important;top:0!important;width:205px!important;height:62px!important}
+  .bg18-brand img{width:205px!important;height:62px!important}
+  .bg18-tools .bg18-lang:nth-child(1){left:129px!important}
+  .bg18-tools .bg18-lang:nth-child(2){left:180px!important}
+  .bg18-tools .bg18-lang:nth-child(3){left:231px!important}
+  .bg18-icon.search{left:309px!important}
+  .bg18-icon.bag{left:361px!important}
+
+  /* The approved catalogue ends 2px earlier; ecosystem takes those 2px. */
+  .bg18-cat{height:407px!important}
+  .bg18-eco{height:249px!important;min-height:249px!important}
+  .bg18-eco-grid{height:249px!important}
+
+  /* Featured card authority: image/text split and product footprint. */
+  .bg18-fcard:first-child{grid-template-columns:52% 48%!important}
+  .bg18-fcard:first-child .bg18-fmedia img{padding:7px 8px 5px!important;transform:scale(1.02)!important}
+  .bg18-fcard:first-child .bg18-fbody{padding-left:9px!important}
+
+  /* Mobile vitrine products in the approved phone are larger inside their cards. */
+  .bg18-pcard:nth-child(2) .bg18-pmedia img{padding:0!important;transform:scale(1.27)!important}
+  .bg18-pcard:nth-child(3) .bg18-pmedia img{padding:0!important;transform:scale(1.20)!important}
+  .bg18-pcard:nth-child(4) .bg18-pmedia img{padding:0!important;transform:scale(1.16)!important}
+
+  /* Crest/title footprint measured against approved ecosystem masthead. */
+  .bg18-eco:before{
+    left:20px!important;top:1px!important;width:126px!important;height:62px!important;
+    background-size:188px 81px!important;
+    -webkit-mask-image:radial-gradient(ellipse 70px 39px at 63px 30px,#000 0 62%,rgba(0,0,0,.94) 77%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 70px 39px at 63px 30px,#000 0 62%,rgba(0,0,0,.94) 77%,transparent 100%)!important;
+  }
+  .bg18-eco-copy{padding-left:130px!important}
+  .bg18-eco-copy h2{margin-top:14px!important}
+  .bg18-elink{border-color:rgba(220,157,42,.72)!important}
+
+  /* Footer authority: compact brand and icons shifted left. */
+  .bg18-footer-brand{width:150px!important;height:35px!important}
+  .bg18-footer-brand img{width:150px!important;height:35px!important}
+  .bg18-social{gap:13px!important;transform:translateX(-9px)!important}
+}
