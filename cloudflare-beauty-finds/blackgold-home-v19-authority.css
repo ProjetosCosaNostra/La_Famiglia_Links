@@ -1,9 +1,9 @@
-/* BLACKGOLD HOME V19 — mobile hero authority from approved mockup. */
+/* BLACKGOLD HOME V19.2 — exact mobile hero authority from approved 390px mockup. */
 @media(max-width:760px){
   .bg18-hero-art{
-    background-image:url('./mobile-hero-authority-v19.webp')!important;
-    background-position:left top!important;
-    background-size:100vw auto!important;
+    background-image:url('./mobile-hero-authority-v19-2.webp')!important;
+    background-position:center top!important;
+    background-size:100% auto!important;
     background-repeat:no-repeat!important;
   }
   .bg18-hero-fade{display:none!important}

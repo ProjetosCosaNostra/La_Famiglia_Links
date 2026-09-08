@@ -20,6 +20,7 @@ env:
   PREVIEW_BRANCH: blackgold-contract-v4-staging
   WRANGLER_VERSION: 4.129.0
   HOME_CONTRACT_MARKER: BLACKGOLD HOME V18
+  V192_SHA256: 2fbc7b2e71bbf03a5e518df41613b4a400897a1821907abbc8637c9a3b2837e7
 
 jobs:
   deploy-preview-contract:
@@ -59,22 +60,24 @@ jobs:
         run: |
           set -euo pipefail
           node build.mjs
-          for f in index.html blackgold-home-v18.css blackgold-home-v18-calibration.css destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css ecosystem-authority-v17.webp ecosystem.json admin.html; do
+          for f in index.html blackgold-home-v18.css blackgold-home-v18-calibration.css blackgold-home-v19-authority.css mobile-hero-authority-v19-2.webp destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css ecosystem-authority-v17.webp ecosystem.json admin.html; do
             test -f "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
           grep -q "$HOME_CONTRACT_MARKER" dist/blackgold-home-v18.css || { echo "Home V18 sem marcador"; exit 11; }
           grep -q 'blackgold-home-v18.css?v=20260908-v18' dist/index.html || { echo 'Home sem CSS V18'; exit 12; }
           grep -q 'blackgold-home-v18-calibration.css' dist/index.html || { echo 'Home sem calibração V18'; exit 13; }
+          grep -q 'blackgold-home-v19-authority.css?v=20260908-v19-2' dist/index.html || { echo 'Home sem autoridade V19.2'; exit 14; }
           for forbidden in blackgold-v9.css blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css; do
-            ! grep -q "$forbidden" dist/index.html || { echo "Home V18 contaminada por $forbidden"; exit 14; }
+            ! grep -q "$forbidden" dist/index.html || { echo "Home V18 contaminada por $forbidden"; exit 15; }
           done
           for page in destaque.html vitrine.html ecossistema.html; do
-            grep -q 'blackgold-v9.css' "dist/$page" || { echo "$page sem CSS base"; exit 15; }
-            grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' "dist/$page" || { echo "$page sem V16"; exit 16; }
-            grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 17; }
+            grep -q 'blackgold-v9.css' "dist/$page" || { echo "$page sem CSS base"; exit 16; }
+            grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' "dist/$page" || { echo "$page sem V16"; exit 17; }
+            grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 18; }
           done
-          node -e "const fs=require('fs'); const b=fs.readFileSync('./dist/ecosystem-authority-v17.webp'); if(b.length!==10502||b.subarray(0,4).toString('ascii')!=='RIFF'||b.subarray(8,12).toString('ascii')!=='WEBP') process.exit(18);"
-          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(19); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(20); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(21);"
+          node -e "const fs=require('fs'); const crypto=require('crypto'); const b=fs.readFileSync('./dist/mobile-hero-authority-v19-2.webp'); const h=crypto.createHash('sha256').update(b).digest('hex'); if(b.length!==16540||b.subarray(0,4).toString('ascii')!=='RIFF'||b.subarray(8,12).toString('ascii')!=='WEBP'||h!==process.env.V192_SHA256) { console.error('V19.2 authority invalid',b.length,h); process.exit(19); }"
+          node -e "const fs=require('fs'); const b=fs.readFileSync('./dist/ecosystem-authority-v17.webp'); if(b.length!==10502||b.subarray(0,4).toString('ascii')!=='RIFF'||b.subarray(8,12).toString('ascii')!=='WEBP') process.exit(20);"
+          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(21); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(22); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(23);"
 
       - name: Publicar somente em PREVIEW
         working-directory: cloudflare-beauty-finds
@@ -83,7 +86,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 22; }
+          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 24; }
           npx --yes wrangler@${WRANGLER_VERSION} pages deploy dist \
             --project-name="$PROJECT_NAME" \
             --branch="$PREVIEW_BRANCH" \
@@ -103,42 +106,45 @@ jobs:
           PREVIEW_URL=$(node <<'NODE'
           const fs = require('fs');
           const body = JSON.parse(fs.readFileSync('/tmp/deployments.json','utf8'));
-          if (!body.success || !Array.isArray(body.result)) process.exit(23);
+          if (!body.success || !Array.isArray(body.result)) process.exit(25);
           const hit = body.result.find(d => d?.deployment_trigger?.metadata?.branch === process.env.PREVIEW_BRANCH);
-          if (!hit?.url) process.exit(24);
+          if (!hit?.url) process.exit(26);
           process.stdout.write(hit.url);
           NODE
           )
           echo "PREVIEW_URL=$PREVIEW_URL" >> "$GITHUB_ENV"
           echo "Preview: $PREVIEW_URL"
-          for route in / /blackgold-home-v18.css /blackgold-home-v18-calibration.css /hero-approved.webp /approved-home/ecosystem-approved-exact.webp /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
+          for route in / /blackgold-home-v18.css /blackgold-home-v18-calibration.css /blackgold-home-v19-authority.css /mobile-hero-authority-v19-2.webp /hero-approved.webp /approved-home/ecosystem-approved-exact.webp /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
             code=000
             for attempt in 1 2 3 4 5; do
               code=$(curl -sS -L -o /tmp/route.out -w '%{http_code}' --max-time 45 "$PREVIEW_URL$route") || true
               [ "$code" = '200' ] && break
               sleep 4
             done
-            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 25; }
+            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 27; }
           done
           curl -sS -L "$PREVIEW_URL/" > /tmp/home.html
-          grep -q 'blackgold-home-v18.css?v=20260908-v18' /tmp/home.html || { echo 'Preview Home sem V18'; exit 26; }
-          grep -q 'blackgold-home-v18-calibration.css' /tmp/home.html || { echo 'Preview Home sem calibração V18'; exit 27; }
+          grep -q 'blackgold-home-v18.css?v=20260908-v18' /tmp/home.html || { echo 'Preview Home sem V18'; exit 28; }
+          grep -q 'blackgold-home-v18-calibration.css' /tmp/home.html || { echo 'Preview Home sem calibração V18'; exit 29; }
+          grep -q 'blackgold-home-v19-authority.css?v=20260908-v19-2' /tmp/home.html || { echo 'Preview Home sem autoridade V19.2'; exit 30; }
           for forbidden in blackgold-v9.css blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css; do
-            ! grep -q "$forbidden" /tmp/home.html || { echo "Preview Home contaminada por $forbidden"; exit 28; }
+            ! grep -q "$forbidden" /tmp/home.html || { echo "Preview Home contaminada por $forbidden"; exit 31; }
           done
           curl -sS -L "$PREVIEW_URL/blackgold-home-v18.css" > /tmp/home-v18.css
-          grep -q "$HOME_CONTRACT_MARKER" /tmp/home-v18.css || { echo 'Preview CSS sem marcador V18'; exit 29; }
+          grep -q "$HOME_CONTRACT_MARKER" /tmp/home-v18.css || { echo 'Preview CSS sem marcador V18'; exit 32; }
+          curl -sS -L "$PREVIEW_URL/mobile-hero-authority-v19-2.webp" > /tmp/v192.webp
+          node -e "const fs=require('fs'); const crypto=require('crypto'); const b=fs.readFileSync('/tmp/v192.webp'); const h=crypto.createHash('sha256').update(b).digest('hex'); if(b.length!==16540||h!==process.env.V192_SHA256) process.exit(33);"
           {
-            echo '## BlackGold Beauty Finds — CLEAN HOME V18 Preview'
+            echo '## BlackGold Beauty Finds — HOME V19.2 Preview'
             echo ''
             echo "- Branch: $PREVIEW_BRANCH"
             echo "- Commit: $GITHUB_SHA"
             echo "- URL: $PREVIEW_URL"
             echo '- Desktop authority: 1448×1086'
             echo '- Mobile authority: 390×1152'
-            echo '- Home: reconstruída do zero em stylesheet próprio + calibração medida'
+            echo '- Mobile hero: autoridade V19.2 derivada do mockup aprovado, SHA-256 travado'
             echo '- V9–V16: proibidos na Home'
-            echo '- Produtos exibidos na Home: apenas stand-ins visuais do mockup, sem reconectar catálogo antigo'
+            echo '- Produtos exibidos na Home: autoridade visual do mockup, sem reconectar catálogo antigo'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -148,7 +154,7 @@ jobs:
           set -euo pipefail
           mkdir -p visual-proof
           CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
-          [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado'; exit 30; }
+          [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado'; exit 34; }
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/home-desktop-1448x1086.png" "$PREVIEW_URL/"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1152 --screenshot="$PWD/visual-proof/home-mobile-390x1152.png" "$PREVIEW_URL/"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/destaque-desktop.png" "$PREVIEW_URL/destaque.html"
@@ -157,7 +163,7 @@ jobs:
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1152 --screenshot="$PWD/visual-proof/vitrine-mobile.png" "$PREVIEW_URL/vitrine.html"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/ecossistema-desktop.png" "$PREVIEW_URL/ecossistema.html"
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1152 --screenshot="$PWD/visual-proof/ecossistema-mobile.png" "$PREVIEW_URL/ecossistema.html"
-          for f in visual-proof/*.png; do test -s "$f" || exit 31; done
+          for f in visual-proof/*.png; do test -s "$f" || exit 35; done
 
       - name: Guardar provas visuais
         uses: actions/upload-artifact@v4
