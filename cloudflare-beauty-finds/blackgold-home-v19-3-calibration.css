@@ -1,26 +1,23 @@
-/* BLACKGOLD HOME V19.6 — measured composite calibration against approved desktop/mobile authorities. */
+/* BLACKGOLD HOME V19.7 — measured composite calibration against approved desktop/mobile authorities. */
 @media(min-width:761px){
   .bg18-brand{width:255px!important;height:49px!important}
   .bg18-brand img{width:255px!important;height:49px!important}
 
-  /* Desktop hero V19.6: keep the model alignment that measured better in V19.4,
-     then cross-fade a second copy of the SAME approved hero asset into the
-     showroom alignment that measured better in V19.5. This avoids forcing one
-     global offset onto two visually distinct halves of the authority. */
+  /* Model uses the V19.4 alignment; the showroom is corrected separately.
+     The second copy now fades in only after the handwritten hero phrase, so
+     there is no duplicated/ghosted typography in the photographic layer. */
   .bg18-hero-art{
     left:588px!important;top:0!important;right:0!important;bottom:0!important;
     background:url('./hero-approved.webp') left top/908px 362px no-repeat!important;
   }
   .bg18-hero-art:after{
     content:""!important;display:block!important;position:absolute!important;
-    top:0!important;bottom:0!important;left:212px!important;right:0!important;
-    background:url('./hero-approved.webp') -248px 0/908px 362px no-repeat!important;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 220px,#000 100%)!important;
-    mask-image:linear-gradient(90deg,transparent 0,#000 220px,#000 100%)!important;
+    top:0!important;bottom:0!important;left:382px!important;right:0!important;
+    background:url('./hero-approved.webp') -418px 0/908px 362px no-repeat!important;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 40px,#000 100%)!important;
+    mask-image:linear-gradient(90deg,transparent 0,#000 40px,#000 100%)!important;
     pointer-events:none!important;
   }
-  /* V19.5 moved live copy left and increased measured copy error. Restore the
-     approved 59px anchor while retaining the improved photographic composite. */
   .bg18-hero-copy{width:610px!important;padding:34px 0 0 59px!important}
   .bg18-eyebrow{margin-bottom:14px!important}
   .bg18-hero h1{font-size:64px!important;line-height:.74!important;letter-spacing:-.032em!important}
@@ -50,15 +47,12 @@
   .bg18-eco{height:249px!important;min-height:249px!important}
   .bg18-eco-grid{height:249px!important}
 
-  /* V19.5 enlarged Selection and increased measured error. Restore V19.4. */
+  /* Exact V19.4 Selection settings — V19.5 enlargement was rejected by metric. */
   .bg18-fcard:first-child{grid-template-columns:52% 48%!important}
   .bg18-fcard:first-child .bg18-fmedia img{padding:7px 8px 5px!important;transform:scale(1.02)!important}
   .bg18-fcard:first-child .bg18-fbody{padding-left:9px!important}
-  .bg18-fcard:first-child .bg18-fbody h3{font-size:inherit!important;line-height:inherit!important}
-  .bg18-fcard:first-child .bg18-price{font-size:inherit!important}
 
-  /* Per-card measurements from V19.4→V19.5: lipstick worsened, Lancôme and
-     sunglasses improved. Keep only the two improvements. */
+  /* Per-card measurements: lipstick returned to V19.4; only the two gains remain. */
   .bg18-pcard:nth-child(2) .bg18-pmedia img{padding:3px 5px!important;transform:none!important}
   .bg18-pcard:nth-child(3) .bg18-pmedia img{padding:3px 5px!important;transform:scale(1.05)!important}
   .bg18-pcard:nth-child(4) .bg18-pmedia img{padding:3px 5px!important;transform:scale(.91)!important}
