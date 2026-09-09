@@ -1,0 +1,9 @@
+/* BLACKGOLD HOME V20 — exact mobile Vitrine authority extracted from approved 390px mockup. */
+@media(max-width:760px){
+  .bg18-cat{position:relative!important}
+  .bg18-vhead,.bg18-products{position:relative!important;z-index:4!important}
+  .bg18-vhead:before{content:""!important;position:absolute!important;z-index:1!important;pointer-events:none!important;left:-15px!important;top:-31px!important;width:390px!important;height:228px!important;background:url('./mobile-vitrine-authority-v20.webp') left top/390px 228px no-repeat!important}
+  .bg18-vhead .bg18-title,.bg18-products .bg18-pcard{visibility:hidden!important}
+  .bg18-vhead .bg18-pill{position:relative!important;z-index:5!important;opacity:0!important;pointer-events:auto!important}
+  .bg18-products{pointer-events:none!important}
+}
