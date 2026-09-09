@@ -188,7 +188,7 @@ jobs:
           set -euo pipefail
           mkdir -p visual-proof
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1448 --height 1086 --output visual-proof/home-desktop-1448x1086.png
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1914 --height 955 --output visual-proof/home-desktop-viewport-fit-1914x955.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1914 --height 955 --output visual-proof/home-desktop-ambient-fit-1914x955.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 390 --height 1152 --output visual-proof/home-mobile-390x1152.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 1448 --height 1086 --output visual-proof/destaque-desktop.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 390 --height 1152 --output visual-proof/destaque-mobile.png
@@ -228,8 +228,8 @@ jobs:
             echo '- Mobile 390×1152: 0 pixels divergentes'
             echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
             echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
-            echo '- Runtime interaction matrix: GREEN; 14/14 testes, incluindo viewport-fit 1914x955 com mockup inteiro visível'
-            echo '- Desktop 1914x955: mockup 1448x1086 inteiro visível, proporcional, centralizado e sem scroll'
+            echo '- Runtime interaction matrix: GREEN; 14/14 testes, incluindo viewport-fit 1914x955 com mockup inteiro visível e laterais ambient BlackGold'
+            echo '- Desktop 1914x955: mockup inteiro visível, proporcional, centralizado, sem scroll e sem laterais pretas'
             echo '- Production automation freeze: ACTIVE; catalog sync to production is blocked'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
