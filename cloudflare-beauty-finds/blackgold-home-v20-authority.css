@@ -1,6 +1,7 @@
-/* BLACKGOLD HOME V20.1 — exact mobile Vitrine authority extracted from approved 390px mockup. */
+/* BLACKGOLD HOME V20.2 — exact mobile Vitrine authority aligned to approved 390px mockup. */
 @media(max-width:760px){
-  .bg18-cat{position:relative!important}
+  /* The approved authority starts 19px lower than V20.1, and the catalogue→ecosystem boundary is also +19px. */
+  .bg18-cat{position:relative!important;height:426px!important}
   .bg18-vhead,.bg18-products{position:relative!important;z-index:4!important}
   .bg18-vhead:before{
     content:""!important;
@@ -8,7 +9,7 @@
     z-index:1!important;
     pointer-events:none!important;
     left:-15px!important;
-    top:-31px!important;
+    top:-12px!important;
     width:390px!important;
     height:250px!important;
     background:url('./mobile-vitrine-authority-v20.webp') left top/390px 250px no-repeat!important;
