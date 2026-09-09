@@ -1,0 +1,10 @@
+/* BLACKGOLD HOME V23 — desktop hero asset experiment using the pre-existing 1920x560 shop authority. Mobile stays locked to V20.2. */
+@media(min-width:761px){
+  .bg18-hero{
+    background-image:url('./loja-completa-hero-desktop.webp')!important;
+    background-size:cover!important;
+    background-position:center center!important;
+    background-repeat:no-repeat!important;
+  }
+  .bg18-hero-art,.bg18-hero-fade{display:none!important}
+}
