@@ -7,7 +7,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const out = path.join(here, 'dist');
 
 const authorities = [
-  ['authority-desktop-v24.webp', 1577910, '914f23ffc13fda640026e2a04d01a7dff21452aa3a4d95a2a7c8ca7c74e39a6d'],
+  ['authority-desktop-v24.webp', 1547316, 'c99248081b2b1368e9d807a9d137cdd63a5333926458b15e7eed46380301771c'],
   ['authority-mobile-v24.webp', 426900, '8c817a1bcf7641fddbf1a083ae9c1bf195186e65cf48d5cdb86ed64452de2a26'],
 ];
 for (const [name, size, sha] of authorities) {

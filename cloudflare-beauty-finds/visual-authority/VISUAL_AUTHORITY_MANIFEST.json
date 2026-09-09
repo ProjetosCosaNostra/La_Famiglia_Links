@@ -1,14 +1,14 @@
 {
-  "contract": "BLACKGOLD_HOME_ZERO_PIXEL_V24",
+  "contract": "BLACKGOLD_HOME_ZERO_PIXEL_V25_APPROVED_REFINEMENT",
   "tolerance": 0,
   "desktop": {
-    "official_file": "Mockup aprovado(20260909-102526).png",
+    "official_file": "BLACKGOLD_HOME_DESKTOP_APPROVED_REFINEMENT_20260909.png",
     "width": 1448,
     "height": 1086,
-    "official_png_sha256": "ce1e0cd175a263f9d00a7e08b81f0133768103211873a6c98c9cf3190b1f1f90",
-    "rgb_sha256": "1a1c4976b0217a1fa9820b7f1ac537133444049e38336c1c451d50a0ad6ce49e",
+    "official_png_sha256": "c4ce5e58ffc42fa1acf796b5d059757546a8a5e54d8ba0ebd93f65c1028496be",
+    "rgb_sha256": "f4d4c29db84f583540d2d4a6a6f73b1f2818cca0c90196b0af300f8c913e368d",
     "runtime_authority": "../authority-desktop-v24.webp",
-    "runtime_authority_sha256": "914f23ffc13fda640026e2a04d01a7dff21452aa3a4d95a2a7c8ca7c74e39a6d"
+    "runtime_authority_sha256": "c99248081b2b1368e9d807a9d137cdd63a5333926458b15e7eed46380301771c"
   },
   "mobile": {
     "official_file": "blackgold-authority-mobile-390x1152.png",
