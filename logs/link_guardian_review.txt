@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-09T16:32:40Z
-Itens pendentes: 2
-SKUs únicos: 2
-Prioridade alta: 2
+Atualizado em: 2026-09-09T20:55:50Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 2
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 2
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 2
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-09T16:28:03Z
+Quando: 2026-09-09T20:51:12Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (86x /lists, 0x listing)
+Memória operacional: histórico recorrente (87x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1RKdpQY
 checked_url: https://meli.la/1RKdpQY
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-09-09T16:28:03Z
+Quando: 2026-09-09T20:51:12Z
 Issue: #180
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/180
 SKU: fixador-de-maquiagem-ruby-rose-150ml-hb312
@@ -54,9 +54,28 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Memória operacional: histórico recorrente (4x /lists, 0x listing)
 Badges: Achados do Dia, Ruby Rose, Fixador, Maquiagem, 150ml, Feminino
 open_url: https://meli.la/1a6HzXw
 checked_url: https://meli.la/1a6HzXw
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-9E78
+
+[ALTA] review_only_storefront
+Quando: 2026-09-09T20:51:12Z
+Issue: #215
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
+SKU: depilador-batom-portatil-facial-branco-rose-gold
+Título: 💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial
+ID ML: 5J5PKG-W8RV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
+Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
+open_url: https://meli.la/1EjNsoE
+checked_url: https://meli.la/1EjNsoE
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
