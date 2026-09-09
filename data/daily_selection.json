@@ -1,19 +1,19 @@
 {
-  "campaign_id": "bg-20260908",
-  "date": "2026-09-08",
+  "campaign_id": "bg-20260909",
+  "date": "2026-09-09",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "escova-oval-secadora-taiff-easy-lilas-1200w",
-      "title": "💜 Escova Oval Secadora Taiff Easy Lilás 1200W",
-      "category": "Cabelo",
-      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso.",
-      "price": "R$ 164,00",
-      "image": "assets/produtos-card/escova-oval-secadora-taiff-easy-lilas-1200w.webp",
-      "affiliate_url": "https://meli.la/1gj7Dvb",
+      "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
+      "title": "Creme Multirreparador Calmante Cicaplast Baume B5+ La Roche-Posay 40ml",
+      "category": "Perfumaria",
+      "description": "🩵 Cicaplast Baume B5+ La Roche-Posay 40ml: cuidado multirreparador calmante para pele sensibilizada. Ajuda a reparar a barreira da pele, hidratar, acalmar e proteger. Com Tribioma, Panthenol e Madecassoside, possui textura cremosa não oleosa e sem perfume. Pode ser aplicado no rosto, corpo e lábios.",
+      "price": "R$ 67,71",
+      "image": "assets/produtos-card/cicaplast-baume-b5-plus-la-roche-posay-40ml.webp",
+      "affiliate_url": "https://meli.la/1Vemrez",
       "score": {
-        "total": 3.592138,
+        "total": 3.532518,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 1.0,
@@ -22,36 +22,36 @@
     },
     {
       "position": 2,
-      "sku": "kit-sos-makeup-miamake-3em1-rosa",
-      "title": "Kit SOS Make Up Chaveiro Mia Make 3 em 1",
-      "category": "Maquiagem",
-      "description": "💄 Kit SOS Make Up Mia Make 3 em 1 — beleza prática para levar com você. Chaveiro compacto com gel fixador, batom em bala e lip gloss, perfeito para retoques rápidos na bolsa e no dia a dia.",
-      "price": "R$ 23,90",
-      "image": "assets/produtos-card/kit-sos-makeup-miamake-3em1-rosa.webp",
-      "affiliate_url": "https://meli.la/1GNrAjm",
+      "sku": "fixador-de-maquiagem-ruby-rose-150ml-hb312",
+      "title": "Fixador de Maquiagem Ruby Rose 150ml Hb312",
+      "category": "Skincare",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/fixador-de-maquiagem-ruby-rose-150ml-hb312.webp",
+      "affiliate_url": "https://meli.la/1a6HzXw",
       "score": {
-        "total": 3.565958,
+        "total": 3.35084,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 1.0,
-        "quality": 0.615
+        "quality": 0.375
       }
     },
     {
       "position": 3,
-      "sku": "mascara-para-dormir-gel-termico-rosa-laco",
-      "title": "Máscara Para Dormir Com Gel Térmico Reduz Olheiras Cansaço Cor Rosa Laço",
-      "category": "Beleza",
-      "description": "Preço conferido no Mercado Livre em 19/06/2026. Pode mudar sem aviso.",
-      "price": "R$ 18,79",
-      "image": "assets/produtos-card/mascara-para-dormir-gel-termico-rosa-laco.webp",
-      "affiliate_url": "https://meli.la/21eNben",
+      "sku": "gel-para-sobrancelhas-brow-rise-ruby-rose",
+      "title": "Gel para Sobrancelhas Brow Rise Ruby Rose",
+      "category": "Cabelo",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/gel-para-sobrancelhas-brow-rise-ruby-rose.webp",
+      "affiliate_url": "https://meli.la/2cC6jBy",
       "score": {
-        "total": 3.557017,
+        "total": 3.349382,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 1.0,
-        "quality": 0.615
+        "quality": 0.375
       }
     }
   ]

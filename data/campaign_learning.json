@@ -91,7 +91,15 @@
     "fixador-de-maquiagem-ruby-rose-150ml-hb312": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-09",
+      "last_score": {
+        "total": 3.35084,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto": {
       "impressions": 0,
@@ -121,7 +129,15 @@
     "gel-para-sobrancelhas-brow-rise-ruby-rose": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-09",
+      "last_score": {
+        "total": 3.349382,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada": {
       "impressions": 0,
@@ -280,7 +296,15 @@
     "cicaplast-baume-b5-plus-la-roche-posay-40ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-09",
+      "last_score": {
+        "total": 3.532518,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.615
+      }
     },
     "kit-sos-makeup-miamake-3em1-rosa": {
       "impressions": 0,
@@ -297,6 +321,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-08T16:41:02Z",
-  "last_campaign_id": "bg-20260908"
+  "updated_at": "2026-09-09T16:41:30Z",
+  "last_campaign_id": "bg-20260909"
 }
