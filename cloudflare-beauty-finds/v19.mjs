@@ -30,16 +30,15 @@ const vitrineSha256 = crypto.createHash('sha256').update(vitrineSource).digest('
 if (vitrineSha256 !== vitrineExpectedSha256) throw new Error(`V20.2 Vitrine authority SHA-256 mismatch: ${vitrineSha256}`);
 await fs.writeFile(path.join(out, 'mobile-vitrine-authority-v20.webp'), vitrineSource);
 
-await fs.copyFile(path.join(here, 'blackgold-home-v19-authority.css'), path.join(out, 'blackgold-home-v19-authority.css'));
-await fs.copyFile(path.join(here, 'blackgold-home-v19-3-calibration.css'), path.join(out, 'blackgold-home-v19-3-calibration.css'));
-await fs.copyFile(path.join(here, 'blackgold-home-v20-authority.css'), path.join(out, 'blackgold-home-v20-authority.css'));
+for (const css of ['blackgold-home-v19-authority.css','blackgold-home-v19-3-calibration.css','blackgold-home-v20-authority.css','blackgold-home-v22-desktop-calibration.css']) {
+  await fs.copyFile(path.join(here, css), path.join(out, css));
+}
 
 const index = path.join(out, 'index.html');
 let html = await fs.readFile(index, 'utf8');
-html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v19-authority\.css\?v=[^"]+"\/>/g, '');
-html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v19-3-calibration\.css\?v=[^"]+"\/>/g, '');
-html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v20-authority\.css\?v=[^"]+"\/>/g, '');
-html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v21-authority\.css\?v=[^"]+"\/>/g, '');
-html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-8"/><link rel="stylesheet" href="./blackgold-home-v20-authority.css?v=20260908-v20-2"/></head>');
+for (const css of ['blackgold-home-v19-authority','blackgold-home-v19-3-calibration','blackgold-home-v20-authority','blackgold-home-v21-authority','blackgold-home-v22-desktop-calibration']) {
+  html = html.replace(new RegExp(`<link rel="stylesheet" href="\\./${css}\\.css\\?v=[^"]+"\\/>`, 'g'), '');
+}
+html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-8"/><link rel="stylesheet" href="./blackgold-home-v20-authority.css?v=20260908-v20-2"/><link rel="stylesheet" href="./blackgold-home-v22-desktop-calibration.css?v=20260908-v22"/></head>');
 await fs.writeFile(index, html, 'utf8');
-console.log(`BlackGold V19.2 + V19.8 + V20.2 restored after rejecting V21; hero ${expectedSize}; Vitrine ${vitrineExpectedSize}`);
+console.log(`BlackGold V22 desktop measured calibration + V20.2 mobile baseline ready; hero ${expectedSize}; Vitrine ${vitrineExpectedSize}`);
