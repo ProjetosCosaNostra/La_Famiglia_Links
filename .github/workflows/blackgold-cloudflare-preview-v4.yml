@@ -144,132 +144,18 @@ jobs:
             done
             [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 23; }
           done
-          curl -sS -L "$PREVIEW_URL/" > /tmp/home.html
-          grep -q 'authority-desktop-v26.webp' /tmp/home.html || { echo 'Preview sem desktop V24'; exit 24; }
-          grep -q 'authority-mobile-v24.webp' /tmp/home.html || { echo 'Preview sem mobile V24'; exit 25; }
-          grep -q 'https://blackgold-beauty-finds-br.pages.dev/' /tmp/home.html || { echo 'Preview sem Hub canÃ´nico'; exit 26; }
-          grep -q 'https://www.youtube.com/@cosanostra.blackgold' /tmp/home.html || { echo 'Preview sem YouTube oficial'; exit 27; }
-
-      - name: Iniciar Chrome controlado por DevTools
-        shell: bash
-        run: |
-          set -euo pipefail
-          CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
-          [ -n "$CHROME" ] || { echo 'Chrome/Chromium nÃ£o encontrado'; exit 30; }
-          READY=0
-          for launch in 1 2 3; do
-            echo "CDP launch attempt $launch/3"
-            rm -rf /tmp/blackgold-cdp
-            "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars \
-              --no-first-run --no-default-browser-check --remote-debugging-address=127.0.0.1 \
-              '--remote-allow-origins=*' --remote-debugging-port=9333 \
-              --user-data-dir=/tmp/blackgold-cdp about:blank >"/tmp/blackgold-chrome-${launch}.log" 2>&1 &
-            PID=$!
-            echo "$PID" > /tmp/blackgold-chrome.pid
-            for i in $(seq 1 100); do
-              if curl -fsS http://127.0.0.1:9333/json/version >/dev/null 2>&1; then READY=1; break; fi
-              if ! kill -0 "$PID" 2>/dev/null; then break; fi
-              sleep 0.25
-            done
-            [ "$READY" = '1' ] && break
-            kill "$PID" 2>/dev/null || true
-            sleep 1
-          done
-          if [ "$READY" != '1' ]; then
-            echo 'Chrome CDP falhou apÃ³s 3 tentativas.'
-            cat /tmp/blackgold-chrome-*.log || true
-            exit 31
-          fi
-          echo 'CDP_ENDPOINT=http://127.0.0.1:9333' >> "$GITHUB_ENV"
-      - name: Capturar 9 provas com viewport real
-        working-directory: cloudflare-beauty-finds
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p visual-proof
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1448 --height 1086 --output visual-proof/home-desktop-1448x1086.png
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1914 --height 955 --output visual-proof/home-desktop-section-background-1914x955.png
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 390 --height 1152 --output visual-proof/home-mobile-390x1152.png
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 1448 --height 1086 --output visual-proof/destaque-desktop.png
-          node tools/capture_cdp.mjs --url "$PREVIE_URL/destaque.html" --width 390 --height 1152 --output visual-proof/destaque-mobile.png
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/vitrine.html" --width 1448 --height 1086 --output visual-proof/vitrine-desktop.png
-          node tools/capture_cdp.mjs --url "$PREVIE_URL/vitrine.html" --width 390 --height 1152 --output visual-proof/vitrine-mobile.png
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/ecossistema.html" --width 1448 --height 1086 --output visual-proof/ecossistema-desktop.png
-          node tools/capture_cdp.mjs --url "$PREVIE_URL/ecossistema.html" --width 390 --height 1152 --output visual-proof/ecossistema-mobile.png
-          for f in visual-proof/*.png; do test -s "$f" || exit 32; done
-
-      - name: Matriz de interaÃ§Ã£o runtime V24
-        working-directory: cloudflare-beauty-finds
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -n "$PREVIEW_URL" || { echo 'PREVIEW_URL ausente antes da matriz runtime'; exit 34; }
-          node tools/v24_interaction_matrix.mjs --report visual-proof/runtime-interaction-matrix.json
-          node -e "const r=require('./visual-proof/runtime-interaction-matrix.json'); if(r.summary?.result!=='GREEN'||r.summary?.fail!==0||r.summary?.runtime_errors!==0) process.exit(34); console.log('INTERACTION MATRIX GREEN',r.summary.pass+'/'+r.summary.total);"
-      - name: Gate obrigatÃ³rio ZERO PIXELS
-        working-directory: cloudflare-beauty-finds
-        shell: bash
-        run: |
-          set -euo pipefail
-          python tools/visual_zero_gate.py \
-            --manifest visual-authority/VISUAL_AUTHORITY_MANIFEST.json \
-            --desktop-capture visual-proof/home-desktop-1448x1086.png \
-            --mobile-capture visual-proof/home-mobile-390x1152.png \
-            --report visual-proof/zero-pixel-report.json \
-            --diff-dir visual-proof/diff
-          node -e "const r=require('./visual-proof/zero-pixel-report.json'); if(!r.pass) process.exit(33); const d=r.results.find(x=>x.name==='desktop'); const m=r.results.find(x=>x.name==='mobile'); console.log('ZERO-PIXEL PASS', d.mismatch_pixels, m.mismatch_pixels);"
-          {
-            echo '## BlackGold Beauty Finds â€” V24 ZERO PIXEL'
-            echo ''
-            echo "- Branch: $PREVIEW_BRANCH"
-            echo "- Commit: $GITHUB_SHA"
-            echo "- Preview tÃ©cnico: $PREVIEW_URL"
-            echo '- Desktop 1448Ã—1086: 0 pixels divergentes'
-            echo '- Mobile 390Ã—1152: 0 pixels divergentes'
-            echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
-            echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
-            echo '- Runtime interaction matrix: GREEN; 14/14 testes, incluindo viewport-fit 1914x955 com mockup inteiro visÃ­vel e extensÃ£o coerente dos fundos laterais'
-            echo '- Desktop 1914x955: mockup inteiro visÃ­vel, proporcional e centralizado; laterais usam fundos limpos por seÃ§Ã£o, coerentes com o mockup central, sem blur nem conteÃºdo duplicado'
-            echo '- Production automation freeze: ACTIVE; catalog sync to production is blocked'
-            echo '- ProduÃ§Ã£o: congelada e nÃ£o alterada'
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Gate consolidado da MissÃ£o 1
-        working-directory: cloudflare-beauty-finds
-        shell: bash
-        run: |
-          set -euo pipefail
-          python tools/v24_mission1_gate.py \
-            --zero visual-proof/zero-pixel-report.json \
-            --semantic visual-proof/semantic-hotspot-report.json \
-            --runtime visual-proof/runtime-interaction-matrix.json \
-            --freeze visual-proof/production-freeze-report.json \
-            --output visual-proof/mission1-preapproval-gate.json \
-            --staging-commit "$GITHUB_SHA" \
-            --production-lock "$PRODUCTION_LOCK_SHA"
-          node -e "const r=require('./visual-proof/mission1-preapproval-gate.json'); if(!r.pass||r.production_promotion_allowed!==false||r.production_freeze?.production_sync_enabled!==false||r.status!=='PASS_AWAITING_EXPLICIT_USER_APPROVAL') process.exit(35); console.log(r.status);"
-          {
-            echo ''
-            echo '### Mission 1 consolidated gate'
-            echo '- Technical status: PASS'
-            echo '- Production promotion: BLOCKED'
-            echo '- Explicit user visual approval: REQUIRED'
-          } >> "$GITHUB_STEP_SUMMARY"
-      - name: Guardar provas e relatÃ³rio do gate
-        uses: actions/upload-artifact@v4
-        with:
-          name: blackgold-v24-zero-pixel-proof
-          path: |
-            cloudflare-beauty-finds/visual-proof/*.png
-            cloudflare-beauty-finds/visual-proof/*.json
-            cloudflare-beauty-finds/visual-authority/VISUAL_AUTHORITY_MANIFEST.json
-          if-no-files-found: error
-          retention-days: 14
-
-      - name: Encerrar Chrome de teste
-        if: always()
-        shell: bash
-        run: |
-          if [ -f /tmp/blackgold-chrome.pid ]; then
-            kill "$(cat /tmp/blackgold-chrome.pid)" 2>/dev/null || true
-          fi
+         Ý\›\ÔÈS‰‘U’QU×ÕT“ÈˆˆÝ\ÚÛYKš[ˆÜ™\\H	Ø]]Üš]KY\ÚÝÜ]Œ‹ÙXœ	ÈÝ\ÚÛYKš[ÈXÚÈ	Ô™]šY]ÈÙ[H\ÚÝÜŒ	ÎÈ^]ÈBˆÜ™\\H	Ø]]Üš]K[[Øš[K]ŒÙXœ	ÈÝ\ÚÛYKš[ÈXÚÈ	Ô™]šY]ÈÙ[H[Øš[HŒ	ÎÈ^]NÈBˆÜ™\\H	ÚÎ‹ËØ›XÚÙÛÛX™X]]KYš[™ËXœ‹œYÙ\Ë™]‹ÉÈÝ\ÚÛYKš[ÈXÚÈ	Ô™]šY]ÈÙ[HXˆØ[°íšXÛÉÎÈ^]ŽÈBˆÜ™\\H	ÚÎ‹ËÝÝÝËž[Ý]X™K˜ÛÛKÐÛÜØ[›ÜÝ˜K˜›XÚÙÛÛ	ÈÝ\ÚÛYKš[ÈXÚÈ	Ô™]šY]ÈÙ[H[ÝUX™HÙšXÚX[	ÎÈ^]ÎÈB‚ˆH˜[YNˆ[šXÚX\ˆÚ›ÛYHÛÛ›ÛYÈÜˆ]•ÛÛÂˆÚ[ˆ˜\Úˆ[ŽˆˆÙ]Y][È\Y˜Z[ˆÒ“ÓQOI
+ÛÛ[X[™]ˆÛÛÙÛKXÚ›ÛYHÛÛ[X[™]ˆÚ›ÛZ][HÛÛ[X[™]ˆÚ›ÛZ][KXœ›ÝÜÙ\ŠBˆÈ[ˆ‰Ò“ÓQHˆHÈXÚÈ	ÐÚ›ÛYKÐÚ›ÛZ][H°èÛÈ[˜ÛÛ˜YÉÎÈ^]ÌÈBˆ‘PQOLˆ›Üˆ][˜Ú[ˆHˆÎÈÂˆXÚÈÑ][˜Ú][\	][˜ÚÌÈ‚ˆ›H\™ˆÝ\Ø›XÚÙÛÛXÙˆ‰Ò“ÓQHˆKZXY\ÜÏ[™]ÈK[›Ë\Ø[™›ÞKY\ØX›KYÜHKY\ØX›KY]‹\ÚK]\ØYÙHKZYK\ØÜ›Û˜\œÈˆK[›ËYš\œÝ\[ˆK[›ËYY˜][Xœ›ÝÜÙ\‹XÚXÚÈK\™[[ÝKYXYÙÚ[™ËXY™\ÜÏLLËŒŒŒHˆ	ËK\™[[ÝKX[ÝË[ÜšYÚ[œÏJ‰ÈK\™[[ÝKYXYÙÚ[™Ë\ÜNLÌÌÈˆK]\Ù\‹Y]KY\KÝ\Ø›XÚÙÛÛXÙX›Ý]˜›[šÈˆ‹Ý\Ø›XÚÙÛÛXÚ›ÛYKIÛ][˜ÚK›ÙÈˆ‰ŒH	‚ˆQIBˆXÚÈ‰QˆˆÝ\Ø›XÚÙÛÛXÚ›ÛYKœYˆ›ÜˆH[ˆ	
+Ù\HHL
+NÈÂˆYˆÝ\›YœÔÈ‹ËÌLËŒŒŒNŽLÌÌËÚœÛÛ‹Ý™\œÚ[Ûˆ‹Ù]‹Û[‰ŒNÈ[ˆ‘PQOLNÈœ™XZÎÈšBˆYˆHÚ[L‰Qˆ‹Ù]‹Û[È[ˆœ™XZÎÈšBˆÛY\ŒBˆÛ™BˆÈ‰‘PQHˆH	ÌIÈH	‰ˆœ™XZÂˆÚ[‰Qˆ‹Ù]‹Û[YBˆÛY\BˆÛ™BˆYˆÈ‰‘PQHˆOH	ÌIÈNÈ[‚ˆXÚÈ	ÐÚ›ÛYHÑ˜[ÝH\0ìÜÈÈ[]]˜\Ë‰ÂˆØ]Ý\Ø›XÚÙÛÛXÚ›ÛYKJ‹›ÙÈYBˆ^]ÌBˆšBˆXÚÈ	ÐÑÑS‘ÒS•Z‹ËÌLËŒŒŒNŽLÌÌÉÈˆ‰ÒUP—ÑS•ˆ‚ˆH˜[YNˆØ\\˜\ˆH›Ý˜\ÈÛÛHšY]ÜÜ™X[ˆÛÜšÚ[™ËY\™XÝÜžNˆÛÝY›\™KX™X]]KYš[™ÂˆÚ[ˆ˜\Úˆ[ŽˆˆÙ]Y][È\Y˜Z[ˆZÙ\ˆ\š\ÝX[\›ÛÙ‚ˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QU×ÕT“ÈˆK]ÚYMKZZYÚLˆK[Ý]]š\ÝX[\›ÛÙ‹ÚÛYKY\ÚÝÜLML‹œ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QU×ÕT“ÈˆK]ÚYNLMKZZYÚMMHK[Ý]]š\ÝX[\›ÛÙ‹ÚÛYKY\ÚÝÜ\ÙXÝ[Û‹X˜XÚÙÜ›Ý[™LNLMMMKœ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QU×ÕT“ÈˆK]ÚYÎLKZZYÚLMLˆK[Ý]]š\ÝX[\›ÛÙ‹ÚÛYK[[Øš[KLÎLLML‹œ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QU×ÕT“Ù\Ý\]YKš[ˆK]ÚYMKZZYÚLˆK[Ý]]š\ÝX[\›ÛÙ‹Ù\Ý\]YKY\ÚÝÜœ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QWÕT“Ù\Ý\]YKš[ˆK]ÚYÎLKZZYÚLMLˆK[Ý]]š\ÝX[\›ÛÙ‹Ù\Ý\]YK[[Øš[Kœ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QU×ÕT“Ýš]š[™Kš[ˆK]ÚYMKZZYÚLˆK[Ý]]š\ÝX[\›ÛÙ‹Ýš]š[™KY\ÚÝÜœ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QWÕT“Ýš]š[™Kš[ˆK]ÚYÎLKZZYÚLMLˆK[Ý]]š\ÝX[\›ÛÙ‹Ýš]š[™K[[Øš[Kœ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QU×ÕT“ÙXÛÜÜÚ\Ý[XKš[ˆK]ÚYMKZZYÚLˆK[Ý]]š\ÝX[\›ÛÙ‹ÙXÛÜÜÚ\Ý[XKY\ÚÝÜœ™Âˆ›ÙHÛÛËØØ\\™WØÙ›ZœÈK]\›‰‘U’QWÕT“ÙXÛÜÜÚ\Ý[XKš[ˆK]ÚYÎLKZZYÚLMLˆK[Ý]]š\ÝX[\›ÛÙ‹ÙXÛÜÜÚ\Ý[XK[[Øš[Kœ™Âˆ›Üˆˆ[ˆš\ÝX[\›ÛÙ‹Ê‹œ™ÎÈÈ\Ý\È‰ˆˆ^]ÌŽÈÛ™B‚ˆH˜[YNˆX]š^ˆH[\˜péðèÛÈ[[YHŒˆÛÜšÚ[™ËY\™XÝÜžNˆÛÝY›\™KX™X]]KYš[™ÂˆÚ[ˆ˜\Úˆ[ŽˆˆÙ]Y][È\Y˜Z[ˆ\Ý[ˆ‰‘U’QU×ÕT“ˆÈXÚÈ	Ô‘U’QU×ÕT“]\Ù[H[\ÈHX]š^ˆ[[YIÎÈ^]ÍÈBˆ›ÙHÛÛËÝŒÚ[\˜XÝ[Û—ÛX]š^›ZœÈK\™\Üš\ÝX[\›ÛÙ‹Ü[[YKZ[\˜XÝ[Û‹[X]š^šœÛÛ‚ˆ›ÙHYH˜ÛÛœÝ\™\]Z\™J	Ë‹Ýš\ÝX[\›ÛÙ‹Ü[[YKZ[\˜XÝ[Û‹[X]š^šœÛÛ‰ÊNÈYŠ‹œÝ[[X\žOËœ™\Ý[OOIÑÔ‘QS‰ß‹œÝ[[X\žOË™˜Z[OOL‹œÝ[[X\žOËœ[[YWÙ\œ›ÜœÈOOL
+H›ØÙ\ÜË™^]
+Í
+NÈÛÛœÛÛK›ÙÊ	ÒS•TPÕSÓˆPU’VÔ‘QS‰Ë‹œÝ[[X\žKœ\ÜÊÉËÉÊÜ‹œÝ[[X\žKÝ[
+NÈ‚ˆH˜[YNˆØ]HØœšYØ]0ìÜš[È‘T“ÈVSÂˆÛÜšÚ[™ËY\™XÝÜžNˆÛÝY›\™KX™X]]KYš[™ÂˆÚ[ˆ˜\Úˆ[ŽˆˆÙ]Y][È\Y˜Z[ˆ]ÛˆÛÛËÝš\ÝX[Þ™\›×ÙØ]KœHˆK[X[šY™\Ýš\ÝX[X]]Üš]KÕ’TÕPSÐUUÔ’UWÓPS’Q‘TÕšœÛÛˆˆKY\ÚÝÜXØ\\™Hš\ÝX[\›ÛÙ‹ÚÛYKY\ÚÝÜLML‹œ™ÈˆK[[Øš[KXØ\\™Hš\ÝX[\›ÛÙ‹ÚÛYK[[Øš[KLÎLLML‹œ™ÈˆK\™\Üš\ÝX[\›ÛÙ‹Þ™\›Ë\^[\™\ÜšœÛÛˆˆKYY™‹Y\ˆš\ÝX[\›ÛÙ‹ÙY™‚ˆ›ÙHYH˜ÛÛœÝ\™\]Z\™J	Ë‹Ýš\ÝX[\›ÛÙ‹Þ™\›Ë\^[\™\ÜšœÛÛ‰ÊNÈYŠ\‹œ\ÜÊH›ØÙ\ÜË™^]
+ÌÊNÈÛÛœÝ\‹œ™\Ý[Ë™š[™
+Ož›˜[YOOOIÙ\ÚÝÜ	ÊNÈÛÛœÝO\‹œ™\Ý[Ë™š[™
+Ož›˜[YOOOIÛ[Øš[IÊNÈÛÛœÛÛK›ÙÊ	Ö‘T“ËTVSTÔÉË›Z\ÛX]ÚÜ^[ËK›Z\ÛX]ÚÜ^[ÊNÈ‚ˆÂˆXÚÈ	ÈÈÈ›XÚÑÛÛ™X]]Hš[™È8 %Œ‘T“ÈVS	ÂˆXÚÈ	ÉÂˆXÚÈ‹Hœ˜[˜Úˆ	‘U’QU×Ð”SÒ‚ˆXÚÈ‹HÛÛ[Z]ˆ	ÒUP—ÔÒH‚ˆXÚÈ‹H™]šY]È0êXÛšXÛÎˆ	‘U’QU×ÕT“‚ˆXÚÈ	ËH\ÚÝÜM0åÌLŽˆ^[È]™\™Ù[\ÉÂˆXÚÈ	ËH[Øš[HÎL0åÌLMLŽˆ^[È]™\™Ù[\ÉÂˆXÚÈ	ËH]]ÜšYY\Îˆ\Ú\ÈÙšXÚXZ\ÈH‘Ðˆ˜]˜YÜÈ›ÈX[šY™\ÝÉÂˆXÚÈ	ËHÙ[X[XËÚÝÜÝØ]NˆTÔÎÈÍÝÜÝË›ØÛÈÜˆXÛYÈH[›ÜÈ[Øš[HM	ÂˆXÚÈ	ËH[[YH[\˜XÝ[ÛˆX]š^ˆÔ‘QSŽÈMÌM\Ý\Ë[˜ÛZ[™ÈšY]ÜÜYš]NLMMMHÛÛH[ØÚÝ\[Z\›Èš\ðë]™[H^[œðèÛÈÛÙ\™[HÜÈ[™ÜÈ]\˜Z\ÉÂˆXÚÈ	ËH\ÚÝÜNLMMMNˆ[ØÚÝ\[Z\›Èš\ðë]™[›ÜÜ˜Ú[Û˜[HÙ[˜[^˜YÎÈ]\˜Z\È\Ø[H[™ÜÈ[\ÜÈÜˆÙpéðèÛËÛÙ\™[\ÈÛÛHÈ[ØÚÝ\Ù[˜[Ù[H›\ˆ™[HÛÛpî™È\XØYÉÂˆXÚÈ	ËH›ÙXÝ[Ûˆ]]ÛX][Ûˆœ™Y^™NˆPÕU‘NÈØ][ÙÈÞ[˜ÈÈ›ÙXÝ[Ûˆ\È›ØÚÙY	ÂˆXÚÈ	ËH›ÙpéðèÛÎˆÛÛ™Ù[YHH°èÛÈ[\˜YIÂˆHˆ‰ÒUP—ÔÕTÔÕSSPT–H‚‚ˆH˜[YNˆØ]HÛÛœÛÛYYÈHZ\ÜðèÛÈBˆÛÜšÚ[™ËY\™XÝÜžNˆÛÝY›\™KX™X]]KYš[™ÂˆÚ[ˆ˜\Úˆ[ŽˆˆÙ]Y][È\Y˜Z[ˆ]ÛˆÛÛËÝŒÛZ\ÜÚ[ÛŒWÙØ]KœHˆK^™\›Èš\ÝX[\›ÛÙ‹Þ™\›Ë\^[\™\ÜšœÛÛˆˆK\Ù[X[XÈš\ÝX[\›ÛÙ‹ÜÙ[X[XËZÝÜÝ\™\ÜšœÛÛˆˆK\[[YHš\ÝX[\›ÛÙ‹Ü[[YKZ[\˜XÝ[Û‹[X]š^šœÛÛˆˆKYœ™Y^™Hš\ÝX[\›ÛÙ‹Ü›ÙXÝ[Û‹Yœ™Y^™K\™\ÜšœÛÛˆˆK[Ý]]š\ÝX[\›ÛÙ‹ÛZ\ÜÚ[ÛŒK\™X\›Ý˜[YØ]KšœÛÛˆˆK\ÝYÚ[™ËXÛÛ[Z]‰ÒUP—ÔÒHˆˆK\›ÙXÝ[Û‹[ØÚÈ‰“ÑPÕSÓ—ÓÐÒ×ÔÒH‚ˆ›ÙHYH˜ÛÛœÝ\™\]Z\™J	Ë‹Ýš\ÝX[\›ÛÙ‹ÛZ\ÜÚ[ÛŒK\™X\›Ý˜[YØ]KšœÛÛ‰ÊNÈYŠ\‹œ\Üß‹œ›ÙXÝ[Û—Ü›Û[Ý[Û—Ø[ÝÙYOOY˜[Ù_‹œ›ÙXÝ[Û—Ùœ™Y^™OËœ›ÙXÝ[Û—ÜÞ[˜×Ù[˜X›YOOY˜[Ù_‹œÝ]\ÈOOIÔTÔ×ÐUÐRUS‘×ÑVPÒUÕTÑT—ÐT“ÕS	ÊH›ØÙ\ÜË™^]
+ÍJNÈÛÛœÛÛK›ÙÊ‹œÝ]\ÊNÈ‚ˆÂˆXÚÈ	ÉÂˆXÚÈ	ÈÈÈÈZ\ÜÚ[ÛˆHÛÛœÛÛY]YØ]IÂˆXÚÈ	ËHXÚšXØ[Ý]\ÎˆTÔÉÂˆXÚÈ	ËH›ÙXÝ[Ûˆ›Û[Ý[ÛŽˆ“ÐÒÑQ	ÂˆXÚÈ	ËH^XÚ]\Ù\ˆš\ÝX[\›Ý˜[ˆ‘TURT‘Q	ÂˆHˆ‰ÒUP—ÔÕTÔÕSSPT–H‚ˆH˜[YNˆÝX\™\ˆ›Ý˜\ÈH™[]0ìÜš[ÈÈØ]Bˆ\Ù\ÎˆXÝ[ÛœËÝ\ØYX\Y˜XÝˆÚ]‚ˆ˜[YNˆ›XÚÙÛÛ]Œ^™\›Ë\^[\›ÛÙ‚ˆ]ˆˆÛÝY›\™KX™X]]KYš[™ËÝš\ÝX[\›ÛÙ‹Ê‹œ™ÂˆÛÝY›\™KX™X]]KYš[™ËÝš\ÝX[\›ÛÙ‹Ê‹šœÛÛ‚ˆÛÝY›\™KX™X]]KYš[™ËÝš\ÝX[X]]Üš]KÕ’TÕPSÐUUÔ’UWÓPS’Q‘TÕšœÛÛ‚ˆY‹[›ËYš[\ËY›Ý[™ˆ\œ›Ü‚ˆ™][[Û‹Y^\ÎˆM‚ˆH˜[YNˆ[˜Ù\œ˜\ˆÚ›ÛYHH\ÝBˆYŽˆ[Ø^\Ê
+BˆÚ[ˆ˜\Úˆ[ŽˆˆYˆÈYˆÝ\Ø›XÚÙÛÛXÚ›ÛYKœYNÈ[‚ˆÚ[‰
+Ø]Ý\Ø›XÚÙÛÛXÚ›ÛYKœY
+Hˆ‹Ù]‹Û[YBˆšB
