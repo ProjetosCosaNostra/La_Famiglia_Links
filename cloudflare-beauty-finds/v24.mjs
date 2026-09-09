@@ -9,6 +9,9 @@ const out = path.join(here, 'dist');
 const authorities = [
   ['authority-desktop-v26.webp', 1485670, 'af73fabc1806cf2b213570617c86ece3c977a4db877f99a6af6ed32a506f6d5a'],
   ['authority-mobile-v24.webp', 426900, '8c817a1bcf7641fddbf1a083ae9c1bf195186e65cf48d5cdb86ed64452de2a26'],
+  ['authority-left-edge-v28.webp', 3752, '8071af65d4778621934e4d33406741ec28e00660342d8784dbeeb81324764bf0'],
+  ['authority-right-edge-v28.webp', 4796, '8a29f479aa5e647ed49657e0cbfae5cb1a5ffbc25207eccc4c8a0538fb318088'],
+
 ];
 for (const [name, size, sha] of authorities) {
   const src = path.join(here, name);
@@ -23,7 +26,7 @@ const html = `<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <meta name="theme-color" content="#080604"/>
 <title>BlackGold Beauty Finds</title>
-<style>html,body{margin:0;padding:0;width:100%;min-height:100%;background:#080604;overflow-x:hidden}.bg24{position:relative;width:100%;max-width:none;margin:0}.bg24 picture,.bg24 img{display:block;width:100%;height:auto}@media(min-width:761px){html,body{height:100%;min-height:100%;overflow:hidden}body{position:relative;isolation:isolate}body::before{content:'';position:fixed;inset:-5%;z-index:-2;background:url('./authority-desktop-v26.webp') center center/cover no-repeat;filter:blur(22px) brightness(.58) saturate(1.12);transform:scale(1.05)}body::after{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 10% 28%,rgba(221,176,103,.20),transparent 30%),radial-gradient(circle at 90% 68%,rgba(194,133,45,.17),transparent 32%),linear-gradient(90deg,rgba(8,6,4,.34) 0%,rgba(8,6,4,.10) 18%,rgba(8,6,4,.10) 82%,rgba(8,6,4,.34) 100%)}.bg24{width:min(100vw,calc(100vh * 1448 / 1086));height:min(100vh,calc(100vw * 1086 / 1448));margin:0 auto;box-shadow:0 0 52px rgba(0,0,0,.38)}.bg24 picture,.bg24 img{width:100%;height:100%;object-fit:contain}}.hit{position:absolute;display:block;background:transparent;border:0;outline:0;font-size:0;color:transparent;z-index:2}.hit:focus-visible{outline:3px solid #f1c15a;outline-offset:2px;border-radius:4px}.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}</style>
+<style>html,body{margin:0;padding:0;width:100%;min-height:100%;background:#080604;overflow-x:hidden}.bg24{position:relative;width:100%;max-width:none;margin:0}.bg24 picture,.bg24 img{display:block;width:100%;height:auto}@media(min-width:761px){html,body{height:100%;min-height:100%;overflow:hidden}body{position:relative;isolation:isolate}body::before,body::after{content:'';position:fixed;top:0;bottom:0;z-index:-1;width:max(0px,calc((100vw - min(100vw,calc(100vh * 1448 / 1086)))/2 + 1px));background-size:100% 100%;background-repeat:no-repeat}body::before{left:0;background-image:url('./authority-left-edge-v28.webp');background-position:right center}body::after{right:0;background-image:url('./authority-right-edge-v28.webp');background-position:left center}.bg24{width:min(100vw,calc(100vh * 1448 / 1086));height:min(100vh,calc(100vw * 1086 / 1448));margin:0 auto}.bg24 picture,.bg24 img{width:100%;height:100%;object-fit:contain}}.hit{position:absolute;display:block;background:transparent;border:0;outline:0;font-size:0;color:transparent;z-index:2}.hit:focus-visible{outline:3px solid #f1c15a;outline-offset:2px;border-radius:4px}.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}</style>
 </head><body><main class="bg24" aria-label="BlackGold Beauty Finds">
 <picture aria-hidden="true"><source media="(max-width:760px)" srcset="./authority-mobile-v24.webp"/><img src="./authority-desktop-v26.webp" width="1448" height="1086" alt=""/></picture>
 <section class="sr-only" aria-label="Conteúdo da Home"><h1>Curadoria feminina com presença premium.</h1><p>Moda, beleza e acessórios selecionados em uma experiência mais limpa, elegante e direta.</p><h2>Seleção do Dia</h2><ul><li>Miss Dior Eau de Parfum — R$ 649,90</li><li>Bolsa LouLou Small — R$ 14.890,00</li><li>Sandália Gianvito Rossi — R$ 4.290,00</li></ul><h2>Vitrine Premium</h2><p>Chanel Coco Mademoiselle, Batom Rouge Dior, Creme Facial Lancôme, Óculos Saint Laurent, Relógio Michael Kors, Brinco Swarovski, Scarpin Jimmy Choo e Bolsa Dior Saddle.</p><h2>Ecossistema BlackGold</h2><p>Acesse nossos projetos, redes e canais oficiais.</p></section>
@@ -82,7 +85,7 @@ const fullHtml = html + desktopHits + mobileHits + mobileHits2 + hitCss + `</mai
 await fs.writeFile(path.join(out, 'index.html'), fullHtml, 'utf8');
 
 const built = await fs.readFile(path.join(out, 'index.html'), 'utf8');
-for (const required of ['authority-desktop-v26.webp','authority-mobile-v24.webp','BLACKGOLD Beauty Finds']) {
+for (const required of ['authority-desktop-v26.webp','authority-mobile-v24.webp','authority-left-edge-v28.webp','authority-right-edge-v28.webp','BLACKGOLD Beauty Finds']) {
   if (!built.toLowerCase().includes(required.toLowerCase())) throw new Error(`V24 authority marker missing: ${required}`);
 }
 console.log('BlackGold V24 raster authority materialized; production remains untouched.');

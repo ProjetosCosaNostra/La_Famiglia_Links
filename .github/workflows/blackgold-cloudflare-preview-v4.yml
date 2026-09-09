@@ -89,7 +89,7 @@ jobs:
           node build.mjs
           mkdir -p visual-proof
           python tools/v24_semantic_gate.py --html dist/index.html --report visual-proof/semantic-hotspot-report.json
-          for f in index.html authority-desktop-v26.webp authority-mobile-v24.webp destaque.html vitrine.html ecossistema.html ecosystem.json admin.html; do
+          for f in index.html authority-desktop-v26.webp authority-mobile-v24.webp authority-left-edge-v28.webp authority-right-edge-v28.webp destaque.html vitrine.html ecossistema.html ecosystem.json admin.html; do
             test -s "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
           grep -q 'authority-desktop-v26.webp' dist/index.html || { echo 'Home sem autoridade desktop V24'; exit 11; }
@@ -135,7 +135,7 @@ jobs:
           )
           echo "PREVIEW_URL=$PREVIEW_URL" >> "$GITHUB_ENV"
           echo "Preview técnico: $PREVIEW_URL"
-          for route in / /authority-desktop-v26.webp /authority-mobile-v24.webp /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
+          for route in / /authority-desktop-v26.webp /authority-mobile-v24.webp /authority-left-edge-v28.webp /authority-right-edge-v28.webp /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
             code=000
             for attempt in 1 2 3 4 5; do
               code=$(curl -sS -L -o /tmp/route.out -w '%{http_code}' --max-time 45 "$PREVIEW_URL$route") || true
@@ -188,7 +188,7 @@ jobs:
           set -euo pipefail
           mkdir -p visual-proof
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1448 --height 1086 --output visual-proof/home-desktop-1448x1086.png
-          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1914 --height 955 --output visual-proof/home-desktop-ambient-fit-1914x955.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1914 --height 955 --output visual-proof/home-desktop-edge-extension-1914x955.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 390 --height 1152 --output visual-proof/home-mobile-390x1152.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 1448 --height 1086 --output visual-proof/destaque-desktop.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 390 --height 1152 --output visual-proof/destaque-mobile.png
@@ -228,8 +228,8 @@ jobs:
             echo '- Mobile 390×1152: 0 pixels divergentes'
             echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
             echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
-            echo '- Runtime interaction matrix: GREEN; 14/14 testes, incluindo viewport-fit 1914x955 com mockup inteiro visível e laterais ambient BlackGold'
-            echo '- Desktop 1914x955: mockup inteiro visível, proporcional, centralizado, sem scroll e sem laterais pretas'
+            echo '- Runtime interaction matrix: GREEN; 14/14 testes, incluindo viewport-fit 1914x955 com mockup inteiro visível e extensão coerente dos fundos laterais'
+            echo '- Desktop 1914x955: mockup inteiro visível, proporcional e centralizado; laterais continuam as faixas visuais do próprio mockup sem blur'
             echo '- Production automation freeze: ACTIVE; catalog sync to production is blocked'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
