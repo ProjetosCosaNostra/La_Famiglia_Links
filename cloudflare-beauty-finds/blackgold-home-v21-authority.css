@@ -1,0 +1,15 @@
+/* BLACKGOLD HOME V21 — exact mobile Ecosystem authority from approved 390px mockup. */
+@media(max-width:760px){
+  .bg18-eco{
+    height:249px!important;
+    min-height:249px!important;
+    border-top:0!important;
+    background:url('./mobile-ecosystem-authority-v21.webp') left top/390px 249px no-repeat!important;
+  }
+  .bg18-eco:before,.bg18-eco:after{display:none!important}
+  .bg18-eco-grid{height:249px!important;position:relative!important;z-index:3!important}
+  /* Authority image supplies the exact copy/crest/cards. Keep the real destinations as invisible hit targets. */
+  .bg18-eco-copy{visibility:hidden!important}
+  .bg18-eco-links{position:relative!important;z-index:5!important}
+  .bg18-elink{opacity:0!important;pointer-events:auto!important}
+}

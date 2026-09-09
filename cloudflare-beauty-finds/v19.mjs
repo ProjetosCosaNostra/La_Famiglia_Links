@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const out = path.join(here, 'dist');
 
+// V19.2 mobile hero authority
 const parts = [];
 for (let i = 0; i < 6; i++) {
   const name = `mobile-hero-authority-v19-2.part${String(i).padStart(2,'0')}.b64`;
@@ -21,6 +22,7 @@ const sha256 = crypto.createHash('sha256').update(image).digest('hex');
 if (sha256 !== expectedSha256) throw new Error(`V19.2 mobile hero authority SHA-256 mismatch: ${sha256}`);
 await fs.writeFile(path.join(out, 'mobile-hero-authority-v19-2.webp'), image);
 
+// V20.2 exact mobile Vitrine authority
 const vitrineSource = await fs.readFile(path.join(here, 'mobile-vitrine-authority-v20.webp'));
 const vitrineExpectedSize = 8906;
 const vitrineExpectedSha256 = 'c2acdd9450259221464ae6efb93a6010701197779a44a49688067b2210b7b9b1';
@@ -30,15 +32,25 @@ const vitrineSha256 = crypto.createHash('sha256').update(vitrineSource).digest('
 if (vitrineSha256 !== vitrineExpectedSha256) throw new Error(`V20.2 Vitrine authority SHA-256 mismatch: ${vitrineSha256}`);
 await fs.writeFile(path.join(out, 'mobile-vitrine-authority-v20.webp'), vitrineSource);
 
-await fs.copyFile(path.join(here, 'blackgold-home-v19-authority.css'), path.join(out, 'blackgold-home-v19-authority.css'));
-await fs.copyFile(path.join(here, 'blackgold-home-v19-3-calibration.css'), path.join(out, 'blackgold-home-v19-3-calibration.css'));
-await fs.copyFile(path.join(here, 'blackgold-home-v20-authority.css'), path.join(out, 'blackgold-home-v20-authority.css'));
+// V21 exact mobile Ecosystem authority
+const ecosystemSource = await fs.readFile(path.join(here, 'mobile-ecosystem-authority-v21.webp'));
+const ecosystemExpectedSize = 8166;
+const ecosystemExpectedSha256 = '8ec03c6c9fb5e80c86e7540febfccdb95c1ca9510f0f0539d19a1a93e5d1b447';
+if (ecosystemSource.length !== ecosystemExpectedSize) throw new Error(`V21 Ecosystem authority size mismatch: ${ecosystemSource.length}`);
+if (ecosystemSource.subarray(0,4).toString('ascii') !== 'RIFF' || ecosystemSource.subarray(8,12).toString('ascii') !== 'WEBP') throw new Error('V21 Ecosystem authority is not a valid WEBP container');
+const ecosystemSha256 = crypto.createHash('sha256').update(ecosystemSource).digest('hex');
+if (ecosystemSha256 !== ecosystemExpectedSha256) throw new Error(`V21 Ecosystem authority SHA-256 mismatch: ${ecosystemSha256}`);
+await fs.writeFile(path.join(out, 'mobile-ecosystem-authority-v21.webp'), ecosystemSource);
+
+for (const css of ['blackgold-home-v19-authority.css','blackgold-home-v19-3-calibration.css','blackgold-home-v20-authority.css','blackgold-home-v21-authority.css']) {
+  await fs.copyFile(path.join(here, css), path.join(out, css));
+}
 
 const index = path.join(out, 'index.html');
 let html = await fs.readFile(index, 'utf8');
-html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v19-authority\.css\?v=[^"]+"\/>/g, '');
-html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v19-3-calibration\.css\?v=[^"]+"\/>/g, '');
-html = html.replace(/<link rel="stylesheet" href="\.\/blackgold-home-v20-authority\.css\?v=[^"]+"\/>/g, '');
-html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-8"/><link rel="stylesheet" href="./blackgold-home-v20-authority.css?v=20260908-v20-2"/></head>');
+for (const css of ['blackgold-home-v19-authority','blackgold-home-v19-3-calibration','blackgold-home-v20-authority','blackgold-home-v21-authority']) {
+  html = html.replace(new RegExp(`<link rel="stylesheet" href="\\./${css}\\.css\\?v=[^"]+"\\/>`, 'g'), '');
+}
+html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-8"/><link rel="stylesheet" href="./blackgold-home-v20-authority.css?v=20260908-v20-2"/><link rel="stylesheet" href="./blackgold-home-v21-authority.css?v=20260908-v21"/></head>');
 await fs.writeFile(index, html, 'utf8');
-console.log(`BlackGold V19.2 + V19.8 + V20.2 exact mobile Vitrine aligned; hero ${expectedSize} bytes; Vitrine ${vitrineExpectedSize} bytes`);
+console.log(`BlackGold V19.2 + V19.8 + V20.2 + V21 exact mobile authorities ready; hero ${expectedSize}; Vitrine ${vitrineExpectedSize}; Ecosystem ${ecosystemExpectedSize}`);
