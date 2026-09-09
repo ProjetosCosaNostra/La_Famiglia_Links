@@ -50,6 +50,24 @@ jobs:
           [ "$PROD_SHA" = "$PRODUCTION_LOCK_SHA" ] || { echo "Produção saiu do lock esperado: $PROD_SHA"; exit 3; }
           echo "Produção confirmada e congelada em $PROD_SHA"
 
+      - name: Verificar freeze ativo da automação de catálogo
+        working-directory: cloudflare-beauty-finds
+        shell: bash
+        env:
+          PROD_SYNC_ENABLED: ${{ vars.BLACKGOLD_PRODUCTION_SYNC_ENABLED }}
+        run: |
+          set -euo pipefail
+          mkdir -p visual-proof
+          git fetch origin gh-pages:refs/remotes/origin/gh-pages
+          git show origin/gh-pages:.github/workflows/sync-cloudflare-catalog.yml > /tmp/blackgold-sync-cloudflare-catalog.yml
+          PROD_SHA=$(git ls-remote origin "refs/heads/${PRODUCTION_BRANCH}" | awk '{print $1}')
+          python tools/v24_production_freeze_gate.py \
+            --production-current "$PROD_SHA" \
+            --production-lock "$PRODUCTION_LOCK_SHA" \
+            --sync-enabled "${PROD_SYNC_ENABLED:-}" \
+            --sync-workflow /tmp/blackgold-sync-cloudflare-catalog.yml \
+            --output visual-proof/production-freeze-report.json
+
       - name: Verificar credenciais Cloudflare
         shell: bash
         env:
@@ -210,6 +228,7 @@ jobs:
             echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
             echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
             echo '- Runtime interaction matrix: GREEN; 13/13 testes, 0 erros de runtime'
+            echo '- Production automation freeze: ACTIVE; catalog sync to production is blocked'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -222,10 +241,11 @@ jobs:
             --zero visual-proof/zero-pixel-report.json \
             --semantic visual-proof/semantic-hotspot-report.json \
             --runtime visual-proof/runtime-interaction-matrix.json \
+            --freeze visual-proof/production-freeze-report.json \
             --output visual-proof/mission1-preapproval-gate.json \
             --staging-commit "$GITHUB_SHA" \
             --production-lock "$PRODUCTION_LOCK_SHA"
-          node -e "const r=require('./visual-proof/mission1-preapproval-gate.json'); if(!r.pass||r.production_promotion_allowed!==false||r.status!=='PASS_AWAITING_EXPLICIT_USER_APPROVAL') process.exit(35); console.log(r.status);"
+          node -e "const r=require('./visual-proof/mission1-preapproval-gate.json'); if(!r.pass||r.production_promotion_allowed!==false||r.production_freeze?.production_sync_enabled!==false||r.status!=='PASS_AWAITING_EXPLICIT_USER_APPROVAL') process.exit(35); console.log(r.status);"
           {
             echo ''
             echo '### Mission 1 consolidated gate'
