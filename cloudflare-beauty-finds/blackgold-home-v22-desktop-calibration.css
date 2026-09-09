@@ -1,4 +1,4 @@
-/* BLACKGOLD HOME V22 — measured desktop tonal calibration against approved 1448x1086 authority. Mobile V20.2 remains untouched. */
+/* BLACKGOLD HOME V22.1 — measured desktop tonal calibration against approved 1448x1086 authority. Mobile V20.2 remains untouched. */
 @media(min-width:761px){
   /* The approved hero is warmer and less paper-white on the copy side. */
   .bg18-hero{
@@ -27,18 +27,18 @@
       linear-gradient(180deg,#fbf6ef 0%,#f7eddf 72%,#faf3e9 100%)!important;
   }
 
-  /* The authority keeps the ecosystem center luminous but restrains the left/right rays. */
+  /* V22.1: measured second pass. Darken the rays/edges while retaining the approved gold crest luminosity. */
   .bg18-eco:after{
     background:linear-gradient(90deg,
-      rgba(3,2,1,.55) 0%,
-      rgba(3,2,1,.43) 24%,
-      rgba(3,2,1,.20) 36%,
-      rgba(3,2,1,.08) 47%,
-      rgba(3,2,1,.08) 58%,
-      rgba(3,2,1,.22) 72%,
-      rgba(3,2,1,.43) 100%)!important;
+      rgba(3,2,1,.76) 0%,
+      rgba(3,2,1,.65) 24%,
+      rgba(3,2,1,.32) 36%,
+      rgba(3,2,1,.15) 47%,
+      rgba(3,2,1,.15) 58%,
+      rgba(3,2,1,.31) 72%,
+      rgba(3,2,1,.44) 100%)!important;
   }
 
-  /* Footer in the approved mockup is black-brown, not crushed pure black. */
-  .bg18-footer{background:#120f0c!important}
+  /* Interpolated from the authority: lighter than V20.2, but not the over-light V22 pass. */
+  .bg18-footer{background:#0a0806!important}
 }
