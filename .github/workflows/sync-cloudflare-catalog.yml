@@ -19,7 +19,24 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  freeze-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Produção congelada até aprovação explícita
+        shell: bash
+        env:
+          ENABLED: ${{ vars.BLACKGOLD_PRODUCTION_SYNC_ENABLED }}
+        run: |
+          if [ "${ENABLED:-false}" = "true" ]; then
+            echo "Sincronização da produção foi explicitamente habilitada."
+          else
+            echo "BLACKGOLD_PRODUCTION_FREEZE=ACTIVE"
+            echo "Catálogo pode continuar em gh-pages; branch de produção não será alterada."
+          fi
+
   sync-catalog:
+    needs: freeze-status
+    if: ${{ vars.BLACKGOLD_PRODUCTION_SYNC_ENABLED == 'true' }}
     runs-on: ubuntu-latest
 
     steps:
