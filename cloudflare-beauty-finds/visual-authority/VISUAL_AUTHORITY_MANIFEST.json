@@ -1,0 +1,22 @@
+{
+  "contract": "BLACKGOLD_HOME_ZERO_PIXEL_V24",
+  "tolerance": 0,
+  "desktop": {
+    "official_file": "Mockup aprovado(20260909-102526).png",
+    "width": 1448,
+    "height": 1086,
+    "official_png_sha256": "ce1e0cd175a263f9d00a7e08b81f0133768103211873a6c98c9cf3190b1f1f90",
+    "rgb_sha256": "1a1c4976b0217a1fa9820b7f1ac537133444049e38336c1c451d50a0ad6ce49e",
+    "runtime_authority": "../authority-desktop-v24.webp",
+    "runtime_authority_sha256": "914f23ffc13fda640026e2a04d01a7dff21452aa3a4d95a2a7c8ca7c74e39a6d"
+  },
+  "mobile": {
+    "official_file": "blackgold-authority-mobile-390x1152.png",
+    "width": 390,
+    "height": 1152,
+    "official_png_sha256": "2a37a455c73871f68a6cc3dd02ae04dfccb3ae73cc2f1473d5e1471c1311419e",
+    "rgb_sha256": "97d19b9a9d0ab268c8c82eaf835ffc7cbb942a5ada0d495dfe34856687ba2655",
+    "runtime_authority": "../authority-mobile-v24.webp",
+    "runtime_authority_sha256": "8c817a1bcf7641fddbf1a083ae9c1bf195186e65cf48d5cdb86ed64452de2a26"
+  }
+}

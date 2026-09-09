@@ -1,4 +1,4 @@
-name: BlackGold Beauty Finds - Visual Contract Preview
+name: BlackGold Beauty Finds - V24 Zero Pixel Preview
 
 on:
   workflow_dispatch:
@@ -7,8 +7,6 @@ on:
       - blackgold-contract-v4-staging
     paths:
       - 'cloudflare-beauty-finds/**'
-      - 'produtos.json'
-      - 'data/daily_selection.json'
       - 'ecosystem.json'
       - '.github/workflows/blackgold-cloudflare-preview-v4.yml'
 
@@ -18,32 +16,39 @@ permissions:
 env:
   PROJECT_NAME: blackgold-beauty-finds-br
   PREVIEW_BRANCH: blackgold-contract-v4-staging
+  PRODUCTION_BRANCH: blackgold-beauty-cloudflare
+  PRODUCTION_LOCK_SHA: 048638bf9e1496de55d0aab78aee0aa0c2f24466
   WRANGLER_VERSION: 4.129.0
-  HOME_CONTRACT_MARKER: BLACKGOLD HOME V18
-  V192_SHA256: 2fbc7b2e71bbf03a5e518df41613b4a400897a1821907abbc8637c9a3b2837e7
 
 jobs:
-  deploy-preview-contract:
+  deploy-preview-zero-pixel:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 18
     steps:
       - name: Checkout visual staging
         uses: actions/checkout@v4
         with:
           ref: blackgold-contract-v4-staging
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
       - name: Guardar produção congelada
         shell: bash
         run: |
           set -euo pipefail
-          [ "$GITHUB_REF_NAME" = "$PREVIEW_BRANCH" ] || { echo "Bloqueado: workflow visual só pode rodar em $PREVIEW_BRANCH"; exit 1; }
-          [ "$PREVIEW_BRANCH" != "blackgold-beauty-cloudflare" ] || { echo 'Bloqueado: branch de produção não pode ser usada como preview'; exit 1; }
+          [ "$GITHUB_REF_NAME" = "$PREVIEW_BRANCH" ] || { echo "Bloqueado: workflow só pode rodar em $PREVIEW_BRANCH"; exit 1; }
+          [ "$PREVIEW_BRANCH" != "$PRODUCTION_BRANCH" ] || { echo 'Bloqueado: produção não pode ser usada como preview'; exit 2; }
+          PROD_SHA=$(git ls-remote origin "refs/heads/${PRODUCTION_BRANCH}" | awk '{print $1}')
+          [ "$PROD_SHA" = "$PRODUCTION_LOCK_SHA" ] || { echo "Produção saiu do lock esperado: $PROD_SHA"; exit 3; }
+          echo "Produção confirmada e congelada em $PROD_SHA"
 
       - name: Verificar credenciais Cloudflare
         shell: bash
@@ -52,48 +57,44 @@ jobs:
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          [ -n "$CF_TOKEN" ] || { echo 'CLOUDFLARE_API_TOKEN ausente'; exit 2; }
-          [ -n "$CF_ACCOUNT" ] || { echo 'CLOUDFLARE_ACCOUNT_ID ausente'; exit 3; }
+          [ -n "$CF_TOKEN" ] || { echo 'CLOUDFLARE_API_TOKEN ausente'; exit 4; }
+          [ -n "$CF_ACCOUNT" ] || { echo 'CLOUDFLARE_ACCOUNT_ID ausente'; exit 5; }
 
-      - name: Construir pacote visual
+      - name: Instalar runtime do gate visual
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Construir V24 authority-first
         working-directory: cloudflare-beauty-finds
+        shell: bash
         run: |
           set -euo pipefail
           node build.mjs
-          for f in index.html blackgold-home-v18.css blackgold-home-v18-calibration.css blackgold-home-v19-authority.css mobile-hero-authority-v19-2.webp destaque.html vitrine.html ecossistema.html blackgold-v9.css blackgold-v9.js blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css ecosystem-authority-v17.webp ecosystem.json admin.html; do
-            test -f "dist/$f" || { echo "Falta dist/$f"; exit 10; }
+          for f in index.html authority-desktop-v24.webp authority-mobile-v24.webp destaque.html vitrine.html ecossistema.html ecosystem.json admin.html; do
+            test -s "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
-          grep -q "$HOME_CONTRACT_MARKER" dist/blackgold-home-v18.css || { echo "Home V18 sem marcador"; exit 11; }
-          grep -q 'blackgold-home-v18.css?v=20260908-v18' dist/index.html || { echo 'Home sem CSS V18'; exit 12; }
-          grep -q 'blackgold-home-v18-calibration.css' dist/index.html || { echo 'Home sem calibração V18'; exit 13; }
-          grep -q 'blackgold-home-v19-authority.css?v=20260908-v19-2' dist/index.html || { echo 'Home sem autoridade V19.2'; exit 14; }
-          for forbidden in blackgold-v9.css blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css; do
-            ! grep -q "$forbidden" dist/index.html || { echo "Home V18 contaminada por $forbidden"; exit 15; }
-          done
-          for page in destaque.html vitrine.html ecossistema.html; do
-            grep -q 'blackgold-v9.css' "dist/$page" || { echo "$page sem CSS base"; exit 16; }
-            grep -q 'blackgold-v16-measured-calibration.css?v=20260908-v16' "dist/$page" || { echo "$page sem V16"; exit 17; }
-            grep -q 'blackgold-v9.js' "dist/$page" || { echo "$page sem JS compartilhado"; exit 18; }
-          done
-          node -e "const fs=require('fs'); const crypto=require('crypto'); const b=fs.readFileSync('./dist/mobile-hero-authority-v19-2.webp'); const h=crypto.createHash('sha256').update(b).digest('hex'); if(b.length!==16540||b.subarray(0,4).toString('ascii')!=='RIFF'||b.subarray(8,12).toString('ascii')!=='WEBP'||h!==process.env.V192_SHA256) { console.error('V19.2 authority invalid',b.length,h); process.exit(19); }"
-          node -e "const fs=require('fs'); const b=fs.readFileSync('./dist/ecosystem-authority-v17.webp'); if(b.length!==10502||b.subarray(0,4).toString('ascii')!=='RIFF'||b.subarray(8,12).toString('ascii')!=='WEBP') process.exit(20);"
-          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(21); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(22); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(23);"
+          grep -q 'authority-desktop-v24.webp' dist/index.html || { echo 'Home sem autoridade desktop V24'; exit 11; }
+          grep -q 'authority-mobile-v24.webp' dist/index.html || { echo 'Home sem autoridade mobile V24'; exit 12; }
+          grep -q 'https://blackgold-beauty-finds-br.pages.dev/' dist/index.html || { echo 'Hub/Loja canônico ausente'; exit 13; }
+          grep -q 'https://www.youtube.com/@cosanostra.blackgold' dist/index.html || { echo 'YouTube oficial ausente'; exit 14; }
+          ! grep -q 'projetoscosanostra.github.io/La_Famiglia_Links/' dist/index.html || { echo 'URL legada do Hub reapareceu'; exit 15; }
+          node -e "const m=require('./dist/ecosystem.json'); if(m.version!=='2.1') process.exit(16); if(!m.projects?.some(x=>x.id==='appevidex')) process.exit(17); if(!m.channels?.some(x=>x.id==='tiktok')) process.exit(18);"
 
       - name: Publicar somente em PREVIEW
         working-directory: cloudflare-beauty-finds
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
         run: |
           set -euo pipefail
-          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 24; }
+          [ "$PREVIEW_BRANCH" = "blackgold-contract-v4-staging" ] || { echo 'Preview branch inesperada'; exit 20; }
           npx --yes wrangler@${WRANGLER_VERSION} pages deploy dist \
             --project-name="$PROJECT_NAME" \
             --branch="$PREVIEW_BRANCH" \
             --commit-hash="$GITHUB_SHA" \
             --commit-dirty=true
 
-      - name: Validar preview
+      - name: Resolver e validar preview
         shell: bash
         env:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -106,69 +107,102 @@ jobs:
           PREVIEW_URL=$(node <<'NODE'
           const fs = require('fs');
           const body = JSON.parse(fs.readFileSync('/tmp/deployments.json','utf8'));
-          if (!body.success || !Array.isArray(body.result)) process.exit(25);
+          if (!body.success || !Array.isArray(body.result)) process.exit(21);
           const hit = body.result.find(d => d?.deployment_trigger?.metadata?.branch === process.env.PREVIEW_BRANCH);
-          if (!hit?.url) process.exit(26);
+          if (!hit?.url) process.exit(22);
           process.stdout.write(hit.url);
           NODE
           )
           echo "PREVIEW_URL=$PREVIEW_URL" >> "$GITHUB_ENV"
-          echo "Preview: $PREVIEW_URL"
-          for route in / /blackgold-home-v18.css /blackgold-home-v18-calibration.css /blackgold-home-v19-authority.css /mobile-hero-authority-v19-2.webp /hero-approved.webp /approved-home/ecosystem-approved-exact.webp /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
+          echo "Preview técnico: $PREVIEW_URL"
+          for route in / /authority-desktop-v24.webp /authority-mobile-v24.webp /destaque.html /vitrine.html /ecossistema.html /ecosystem.json /admin.html; do
             code=000
             for attempt in 1 2 3 4 5; do
               code=$(curl -sS -L -o /tmp/route.out -w '%{http_code}' --max-time 45 "$PREVIEW_URL$route") || true
               [ "$code" = '200' ] && break
               sleep 4
             done
-            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 27; }
+            [ "$code" = '200' ] || { echo "$route falhou: HTTP $code"; exit 23; }
           done
           curl -sS -L "$PREVIEW_URL/" > /tmp/home.html
-          grep -q 'blackgold-home-v18.css?v=20260908-v18' /tmp/home.html || { echo 'Preview Home sem V18'; exit 28; }
-          grep -q 'blackgold-home-v18-calibration.css' /tmp/home.html || { echo 'Preview Home sem calibração V18'; exit 29; }
-          grep -q 'blackgold-home-v19-authority.css?v=20260908-v19-2' /tmp/home.html || { echo 'Preview Home sem autoridade V19.2'; exit 30; }
-          for forbidden in blackgold-v9.css blackgold-v10-overrides.css blackgold-v12-final.css blackgold-v13-exact.css blackgold-v14-calibration.css blackgold-v15-contract-final.css blackgold-v16-measured-calibration.css; do
-            ! grep -q "$forbidden" /tmp/home.html || { echo "Preview Home contaminada por $forbidden"; exit 31; }
-          done
-          curl -sS -L "$PREVIEW_URL/blackgold-home-v18.css" > /tmp/home-v18.css
-          grep -q "$HOME_CONTRACT_MARKER" /tmp/home-v18.css || { echo 'Preview CSS sem marcador V18'; exit 32; }
-          curl -sS -L "$PREVIEW_URL/mobile-hero-authority-v19-2.webp" > /tmp/v192.webp
-          node -e "const fs=require('fs'); const crypto=require('crypto'); const b=fs.readFileSync('/tmp/v192.webp'); const h=crypto.createHash('sha256').update(b).digest('hex'); if(b.length!==16540||h!==process.env.V192_SHA256) process.exit(33);"
-          {
-            echo '## BlackGold Beauty Finds — HOME V19.2 Preview'
-            echo ''
-            echo "- Branch: $PREVIEW_BRANCH"
-            echo "- Commit: $GITHUB_SHA"
-            echo "- URL: $PREVIEW_URL"
-            echo '- Desktop authority: 1448×1086'
-            echo '- Mobile authority: 390×1152'
-            echo '- Mobile hero: autoridade V19.2 derivada do mockup aprovado, SHA-256 travado'
-            echo '- V9–V16: proibidos na Home'
-            echo '- Produtos exibidos na Home: autoridade visual do mockup, sem reconectar catálogo antigo'
-            echo '- Produção: congelada e não alterada'
-          } >> "$GITHUB_STEP_SUMMARY"
+          grep -q 'authority-desktop-v24.webp' /tmp/home.html || { echo 'Preview sem desktop V24'; exit 24; }
+          grep -q 'authority-mobile-v24.webp' /tmp/home.html || { echo 'Preview sem mobile V24'; exit 25; }
+          grep -q 'https://blackgold-beauty-finds-br.pages.dev/' /tmp/home.html || { echo 'Preview sem Hub canônico'; exit 26; }
+          grep -q 'https://www.youtube.com/@cosanostra.blackgold' /tmp/home.html || { echo 'Preview sem YouTube oficial'; exit 27; }
 
-      - name: Capturar provas desktop e mobile
+      - name: Iniciar Chrome controlado por DevTools
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado'; exit 30; }
+          rm -rf /tmp/blackgold-cdp
+          "$CHROME" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            '--remote-allow-origins=*' --remote-debugging-port=9333 \
+            --user-data-dir=/tmp/blackgold-cdp about:blank >/tmp/blackgold-chrome.log 2>&1 &
+          echo $! > /tmp/blackgold-chrome.pid
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:9333/json/version >/dev/null 2>&1; then break; fi
+            sleep 0.25
+          done
+          curl -fsS http://127.0.0.1:9333/json/version >/dev/null || { cat /tmp/blackgold-chrome.log; exit 31; }
+          echo 'CDP_ENDPOINT=http://127.0.0.1:9333' >> "$GITHUB_ENV"
+
+      - name: Capturar 8 provas com viewport real
+        working-directory: cloudflare-beauty-finds
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p visual-proof
-          CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
-          [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado'; exit 34; }
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/home-desktop-1448x1086.png" "$PREVIEW_URL/"
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1152 --screenshot="$PWD/visual-proof/home-mobile-390x1152.png" "$PREVIEW_URL/"
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/destaque-desktop.png" "$PREVIEW_URL/destaque.html"
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1152 --screenshot="$PWD/visual-proof/destaque-mobile.png" "$PREVIEW_URL/destaque.html"
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/vitrine-desktop.png" "$PREVIEW_URL/vitrine.html"
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1152 --screenshot="$PWD/visual-proof/vitrine-mobile.png" "$PREVIEW_URL/vitrine.html"
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1448,1086 --screenshot="$PWD/visual-proof/ecossistema-desktop.png" "$PREVIEW_URL/ecossistema.html"
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,1152 --screenshot="$PWD/visual-proof/ecossistema-mobile.png" "$PREVIEW_URL/ecossistema.html"
-          for f in visual-proof/*.png; do test -s "$f" || exit 35; done
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1448 --height 1086 --output visual-proof/home-desktop-1448x1086.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 390 --height 1152 --output visual-proof/home-mobile-390x1152.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 1448 --height 1086 --output visual-proof/destaque-desktop.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 390 --height 1152 --output visual-proof/destaque-mobile.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/vitrine.html" --width 1448 --height 1086 --output visual-proof/vitrine-desktop.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/vitrine.html" --width 390 --height 1152 --output visual-proof/vitrine-mobile.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/ecossistema.html" --width 1448 --height 1086 --output visual-proof/ecossistema-desktop.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/ecossistema.html" --width 390 --height 1152 --output visual-proof/ecossistema-mobile.png
+          for f in visual-proof/*.png; do test -s "$f" || exit 32; done
 
-      - name: Guardar provas visuais
+      - name: Gate obrigatório ZERO PIXELS
+        working-directory: cloudflare-beauty-finds
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/visual_zero_gate.py \
+            --manifest visual-authority/VISUAL_AUTHORITY_MANIFEST.json \
+            --desktop-capture visual-proof/home-desktop-1448x1086.png \
+            --mobile-capture visual-proof/home-mobile-390x1152.png \
+            --report visual-proof/zero-pixel-report.json \
+            --diff-dir visual-proof/diff
+          node -e "const r=require('./visual-proof/zero-pixel-report.json'); if(!r.pass) process.exit(33); const d=r.results.find(x=>x.name==='desktop'); const m=r.results.find(x=>x.name==='mobile'); console.log('ZERO-PIXEL PASS', d.mismatch_pixels, m.mismatch_pixels);"
+          {
+            echo '## BlackGold Beauty Finds — V24 ZERO PIXEL'
+            echo ''
+            echo "- Branch: $PREVIEW_BRANCH"
+            echo "- Commit: $GITHUB_SHA"
+            echo "- Preview técnico: $PREVIEW_URL"
+            echo '- Desktop 1448×1086: 0 pixels divergentes'
+            echo '- Mobile 390×1152: 0 pixels divergentes'
+            echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
+            echo '- Produção: congelada e não alterada'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Guardar provas e relatório do gate
         uses: actions/upload-artifact@v4
         with:
-          name: blackgold-visual-contract-proof
-          path: visual-proof/*.png
+          name: blackgold-v24-zero-pixel-proof
+          path: |
+            cloudflare-beauty-finds/visual-proof/*.png
+            cloudflare-beauty-finds/visual-proof/zero-pixel-report.json
+            cloudflare-beauty-finds/visual-authority/VISUAL_AUTHORITY_MANIFEST.json
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 14
+
+      - name: Encerrar Chrome de teste
+        if: always()
+        shell: bash
+        run: |
+          if [ -f /tmp/blackgold-chrome.pid ]; then
+            kill "$(cat /tmp/blackgold-chrome.pid)" 2>/dev/null || true
+          fi
