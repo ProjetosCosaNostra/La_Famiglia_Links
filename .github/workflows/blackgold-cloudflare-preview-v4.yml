@@ -179,6 +179,13 @@ jobs:
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/ecossistema.html" --width 390 --height 1152 --output visual-proof/ecossistema-mobile.png
           for f in visual-proof/*.png; do test -s "$f" || exit 32; done
 
+      - name: Matriz de interação runtime V24
+        working-directory: cloudflare-beauty-finds
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/v24_interaction_matrix.mjs --url "" --report visual-proof/runtime-interaction-matrix.json
+          node -e "const r=require('./visual-proof/runtime-interaction-matrix.json'); if(r.summary?.result!=='GREEN'||r.summary?.fail!==0||r.summary?.runtime_errors!==0) process.exit(34); console.log('INTERACTION MATRIX GREEN',r.summary.pass+'/'+r.summary.total);"
       - name: Gate obrigatório ZERO PIXELS
         working-directory: cloudflare-beauty-finds
         shell: bash
@@ -201,6 +208,7 @@ jobs:
             echo '- Mobile 390×1152: 0 pixels divergentes'
             echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
             echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
+            echo '- Runtime interaction matrix: GREEN; 11/11 testes, 0 erros de runtime'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
 
