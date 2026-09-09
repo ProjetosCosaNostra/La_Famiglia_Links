@@ -209,10 +209,30 @@ jobs:
             echo '- Mobile 390×1152: 0 pixels divergentes'
             echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
             echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
-            echo '- Runtime interaction matrix: GREEN; 11/11 testes, 0 erros de runtime'
+            echo '- Runtime interaction matrix: GREEN; 13/13 testes, 0 erros de runtime'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Gate consolidado da Missão 1
+        working-directory: cloudflare-beauty-finds
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/v24_mission1_gate.py \
+            --zero visual-proof/zero-pixel-report.json \
+            --semantic visual-proof/semantic-hotspot-report.json \
+            --runtime visual-proof/runtime-interaction-matrix.json \
+            --output visual-proof/mission1-preapproval-gate.json \
+            --staging-commit "$GITHUB_SHA" \
+            --production-lock "$PRODUCTION_LOCK_SHA"
+          node -e "const r=require('./visual-proof/mission1-preapproval-gate.json'); if(!r.pass||r.production_promotion_allowed!==false||r.status!=='PASS_AWAITING_EXPLICIT_USER_APPROVAL') process.exit(35); console.log(r.status);"
+          {
+            echo ''
+            echo '### Mission 1 consolidated gate'
+            echo '- Technical status: PASS'
+            echo '- Production promotion: BLOCKED'
+            echo '- Explicit user visual approval: REQUIRED'
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Guardar provas e relatório do gate
         uses: actions/upload-artifact@v4
         with:
