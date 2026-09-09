@@ -35,7 +35,7 @@ summary=runtime.get('summary',{})
 require(summary.get('result')=='GREEN','runtime interaction matrix is not GREEN')
 require(int(summary.get('fail',-1))==0,'runtime interaction matrix has failed tests')
 require(int(summary.get('runtime_errors',-1))==0,'runtime interaction matrix has runtime errors')
-require(int(summary.get('total',0))>=13,'runtime interaction matrix coverage below 13 tests')
+require(int(summary.get('total',0))>=14,'runtime interaction matrix coverage below 14 tests')
 
 require(freeze.get('pass') is True,'production freeze gate is not PASS')
 require(freeze.get('production_sha_locked') is True,'production SHA is not locked')

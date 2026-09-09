@@ -181,13 +181,14 @@ jobs:
             exit 31
           fi
           echo 'CDP_ENDPOINT=http://127.0.0.1:9333' >> "$GITHUB_ENV"
-      - name: Capturar 8 provas com viewport real
+      - name: Capturar 9 provas com viewport real
         working-directory: cloudflare-beauty-finds
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p visual-proof
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1448 --height 1086 --output visual-proof/home-desktop-1448x1086.png
+          node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 1914 --height 955 --output visual-proof/home-desktop-fullbleed-1914x955.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/" --width 390 --height 1152 --output visual-proof/home-mobile-390x1152.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 1448 --height 1086 --output visual-proof/destaque-desktop.png
           node tools/capture_cdp.mjs --url "$PREVIEW_URL/destaque.html" --width 390 --height 1152 --output visual-proof/destaque-mobile.png
@@ -227,7 +228,8 @@ jobs:
             echo '- Mobile 390×1152: 0 pixels divergentes'
             echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
             echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
-            echo '- Runtime interaction matrix: GREEN; 13/13 testes, 0 erros de runtime'
+            echo '- Runtime interaction matrix: GREEN; 14/14 testes, incluindo full-bleed 1914px sem gutters'
+            echo '- Desktop 1914px: composição ocupa 100% da largura útil, sem barras pretas laterais'
             echo '- Production automation freeze: ACTIVE; catalog sync to production is blocked'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
