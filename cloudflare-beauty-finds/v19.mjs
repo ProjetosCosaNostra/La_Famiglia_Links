@@ -30,13 +30,7 @@ const vitrineSha256 = crypto.createHash('sha256').update(vitrineSource).digest('
 if (vitrineSha256 !== vitrineExpectedSha256) throw new Error(`V20.2 Vitrine authority SHA-256 mismatch: ${vitrineSha256}`);
 await fs.writeFile(path.join(out, 'mobile-vitrine-authority-v20.webp'), vitrineSource);
 
-// V23 test: reuse the repository's existing 1920x560 desktop shop hero asset rather than inventing another image.
-const desktopHeroSource = path.join(here, '..', 'assets', 'loja-completa-hero-desktop.webp');
-const desktopHero = await fs.readFile(desktopHeroSource);
-if (desktopHero.subarray(0,4).toString('ascii') !== 'RIFF' || desktopHero.subarray(8,12).toString('ascii') !== 'WEBP') throw new Error('V23 desktop hero authority is not WEBP');
-await fs.writeFile(path.join(out, 'loja-completa-hero-desktop.webp'), desktopHero);
-
-for (const css of ['blackgold-home-v19-authority.css','blackgold-home-v19-3-calibration.css','blackgold-home-v20-authority.css','blackgold-home-v22-desktop-calibration.css','blackgold-home-v23-desktop-hero.css']) {
+for (const css of ['blackgold-home-v19-authority.css','blackgold-home-v19-3-calibration.css','blackgold-home-v20-authority.css','blackgold-home-v22-desktop-calibration.css']) {
   await fs.copyFile(path.join(here, css), path.join(out, css));
 }
 
@@ -45,6 +39,6 @@ let html = await fs.readFile(index, 'utf8');
 for (const css of ['blackgold-home-v19-authority','blackgold-home-v19-3-calibration','blackgold-home-v20-authority','blackgold-home-v21-authority','blackgold-home-v22-desktop-calibration','blackgold-home-v23-desktop-hero']) {
   html = html.replace(new RegExp(`<link rel="stylesheet" href="\\./${css}\\.css\\?v=[^"]+"\\/>`, 'g'), '');
 }
-html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-8"/><link rel="stylesheet" href="./blackgold-home-v20-authority.css?v=20260908-v20-2"/><link rel="stylesheet" href="./blackgold-home-v22-desktop-calibration.css?v=20260908-v22-1"/><link rel="stylesheet" href="./blackgold-home-v23-desktop-hero.css?v=20260908-v23"/></head>');
+html = html.replace('</head>', '<link rel="stylesheet" href="./blackgold-home-v19-authority.css?v=20260908-v19-2"/><link rel="stylesheet" href="./blackgold-home-v19-3-calibration.css?v=20260908-v19-8"/><link rel="stylesheet" href="./blackgold-home-v20-authority.css?v=20260908-v20-2"/><link rel="stylesheet" href="./blackgold-home-v22-desktop-calibration.css?v=20260908-v22-1"/></head>');
 await fs.writeFile(index, html, 'utf8');
-console.log(`BlackGold V23 desktop hero experiment + V22.1 measured desktop + V20.2 mobile; hero ${expectedSize}; Vitrine ${vitrineExpectedSize}; desktopHero ${desktopHero.length}`);
+console.log(`BlackGold V22.1 measured desktop + V20.2 mobile restored after rejecting legacy V23 hero; hero ${expectedSize}; Vitrine ${vitrineExpectedSize}`);
