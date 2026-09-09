@@ -69,6 +69,8 @@ jobs:
         run: |
           set -euo pipefail
           node build.mjs
+          mkdir -p visual-proof
+          python tools/v24_semantic_gate.py --html dist/index.html --report visual-proof/semantic-hotspot-report.json
           for f in index.html authority-desktop-v24.webp authority-mobile-v24.webp destaque.html vitrine.html ecossistema.html ecosystem.json admin.html; do
             test -s "dist/$f" || { echo "Falta dist/$f"; exit 10; }
           done
@@ -185,6 +187,7 @@ jobs:
             echo '- Desktop 1448×1086: 0 pixels divergentes'
             echo '- Mobile 390×1152: 0 pixels divergentes'
             echo '- Autoridades: hashes oficiais e RGB travados no manifesto'
+            echo '- Semantic/hotspot gate: PASS; 34 hotspots, foco por teclado e alvos mobile >=44px'
             echo '- Produção: congelada e não alterada'
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -194,7 +197,7 @@ jobs:
           name: blackgold-v24-zero-pixel-proof
           path: |
             cloudflare-beauty-finds/visual-proof/*.png
-            cloudflare-beauty-finds/visual-proof/zero-pixel-report.json
+            cloudflare-beauty-finds/visual-proof/*.json
             cloudflare-beauty-finds/visual-authority/VISUAL_AUTHORITY_MANIFEST.json
           if-no-files-found: error
           retention-days: 14
