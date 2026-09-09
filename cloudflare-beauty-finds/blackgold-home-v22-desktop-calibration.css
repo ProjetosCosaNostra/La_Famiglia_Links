@@ -1,13 +1,13 @@
 /* BLACKGOLD HOME V22.1 — measured desktop tonal calibration against approved 1448x1086 authority. Mobile V20.2 remains untouched. */
 @media(min-width:761px){
-  /* The approved hero is warmer and less paper-white on the copy side. */
+  /* The approved hero is warm ivory, with discreet editorial gold atmosphere on the copy side. */
   .bg18-hero{
     background:
       radial-gradient(circle at 2% 62%,rgba(198,150,91,.13),transparent 19%),
       radial-gradient(circle at 36% 86%,rgba(196,151,92,.10),transparent 24%),
       linear-gradient(180deg,#f6ecdf 0%,#f3e6d6 55%,#f7ede1 100%)!important;
   }
-  /* Remove the visible vertical join between cream copy field and photography. */
+  /* Keep the cream-to-photography transition continuous and invisible. */
   .bg18-hero-fade{
     width:675px!important;
     background:linear-gradient(90deg,
@@ -19,7 +19,7 @@
       rgba(246,236,223,0) 100%)!important;
   }
 
-  /* Approved catalogue uses a warmer ivory field than the previous V20.2 baseline. */
+  /* Catalogue field in the authority is ivory/cream, not sterile white. */
   .bg18-cat{
     background:
       radial-gradient(circle at 0% 72%,rgba(203,151,87,.19),transparent 18%),
@@ -27,18 +27,18 @@
       linear-gradient(180deg,#fbf6ef 0%,#f7eddf 72%,#faf3e9 100%)!important;
   }
 
-  /* V22.1: measured second pass. Darken the rays/edges while retaining the approved gold crest luminosity. */
+  /* Preserve the luminous institutional center while preventing over-dark side masking. */
   .bg18-eco:after{
     background:linear-gradient(90deg,
-      rgba(3,2,1,.76) 0%,
-      rgba(3,2,1,.65) 24%,
-      rgba(3,2,1,.32) 36%,
-      rgba(3,2,1,.15) 47%,
-      rgba(3,2,1,.15) 58%,
-      rgba(3,2,1,.31) 72%,
-      rgba(3,2,1,.44) 100%)!important;
+      rgba(3,2,1,.30) 0%,
+      rgba(3,2,1,.18) 24%,
+      rgba(3,2,1,.07) 36%,
+      rgba(3,2,1,.02) 47%,
+      rgba(3,2,1,.02) 58%,
+      rgba(3,2,1,.10) 72%,
+      rgba(3,2,1,.26) 100%)!important;
   }
 
-  /* Interpolated from the authority: lighter than V20.2, but not the over-light V22 pass. */
-  .bg18-footer{background:#0a0806!important}
+  /* Footer in the approved mockup is deep black-brown rather than crushed pure black. */
+  .bg18-footer{background:#120f0c!important}
 }
