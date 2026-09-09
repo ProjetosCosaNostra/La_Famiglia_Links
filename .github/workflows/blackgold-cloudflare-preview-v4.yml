@@ -184,7 +184,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          node tools/v24_interaction_matrix.mjs --url "" --report visual-proof/runtime-interaction-matrix.json
+          test -n "$PREVIEW_URL" || { echo 'PREVIEW_URL ausente antes da matriz runtime'; exit 34; }
+          node tools/v24_interaction_matrix.mjs --report visual-proof/runtime-interaction-matrix.json
           node -e "const r=require('./visual-proof/runtime-interaction-matrix.json'); if(r.summary?.result!=='GREEN'||r.summary?.fail!==0||r.summary?.runtime_errors!==0) process.exit(34); console.log('INTERACTION MATRIX GREEN',r.summary.pass+'/'+r.summary.total);"
       - name: Gate obrigatório ZERO PIXELS
         working-directory: cloudflare-beauty-finds

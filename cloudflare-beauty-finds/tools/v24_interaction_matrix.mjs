@@ -3,10 +3,10 @@ import process from 'node:process';
 
 function argsOf(argv){const o={};for(let i=2;i<argv.length;i+=2){if(!argv[i]?.startsWith('--')) throw new Error('bad args');o[argv[i].slice(2)]=argv[i+1];}return o;}
 const args=argsOf(process.argv);
-const base=args.url;
+const base=args.url||process.env.PREVIEW_URL;
 const report=args.report;
 const endpoint=process.env.CDP_ENDPOINT||'http://127.0.0.1:9333';
-if(!base||!report) throw new Error('Usage: node v24_interaction_matrix.mjs --url <preview> --report <json>');
+if(!base||!report) throw new Error('Usage: PREVIEW_URL=<preview> node v24_interaction_matrix.mjs --report <json> (or pass --url)');
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function waitChrome(){for(let i=0;i<80;i++){try{const r=await fetch(endpoint+'/json/version');if(r.ok)return;}catch{}await sleep(125);}throw new Error('CDP unavailable');}
 await waitChrome();
