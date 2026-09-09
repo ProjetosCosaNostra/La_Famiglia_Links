@@ -138,18 +138,31 @@ jobs:
           set -euo pipefail
           CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
           [ -n "$CHROME" ] || { echo 'Chrome/Chromium não encontrado'; exit 30; }
-          rm -rf /tmp/blackgold-cdp
-          "$CHROME" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
-            '--remote-allow-origins=*' --remote-debugging-port=9333 \
-            --user-data-dir=/tmp/blackgold-cdp about:blank >/tmp/blackgold-chrome.log 2>&1 &
-          echo $! > /tmp/blackgold-chrome.pid
-          for i in $(seq 1 60); do
-            if curl -fsS http://127.0.0.1:9333/json/version >/dev/null 2>&1; then break; fi
-            sleep 0.25
+          READY=0
+          for launch in 1 2 3; do
+            echo "CDP launch attempt $launch/3"
+            rm -rf /tmp/blackgold-cdp
+            "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars \
+              --no-first-run --no-default-browser-check --remote-debugging-address=127.0.0.1 \
+              '--remote-allow-origins=*' --remote-debugging-port=9333 \
+              --user-data-dir=/tmp/blackgold-cdp about:blank >"/tmp/blackgold-chrome-${launch}.log" 2>&1 &
+            PID=$!
+            echo "$PID" > /tmp/blackgold-chrome.pid
+            for i in $(seq 1 100); do
+              if curl -fsS http://127.0.0.1:9333/json/version >/dev/null 2>&1; then READY=1; break; fi
+              if ! kill -0 "$PID" 2>/dev/null; then break; fi
+              sleep 0.25
+            done
+            [ "$READY" = '1' ] && break
+            kill "$PID" 2>/dev/null || true
+            sleep 1
           done
-          curl -fsS http://127.0.0.1:9333/json/version >/dev/null || { cat /tmp/blackgold-chrome.log; exit 31; }
+          if [ "$READY" != '1' ]; then
+            echo 'Chrome CDP falhou após 3 tentativas.'
+            cat /tmp/blackgold-chrome-*.log || true
+            exit 31
+          fi
           echo 'CDP_ENDPOINT=http://127.0.0.1:9333' >> "$GITHUB_ENV"
-
       - name: Capturar 8 provas com viewport real
         working-directory: cloudflare-beauty-finds
         shell: bash
