@@ -9,8 +9,8 @@ const out = path.join(here, 'dist');
 const authorities = [
   ['authority-desktop-v26.webp', 1485670, 'af73fabc1806cf2b213570617c86ece3c977a4db877f99a6af6ed32a506f6d5a'],
   ['authority-mobile-v24.webp', 426900, '8c817a1bcf7641fddbf1a083ae9c1bf195186e65cf48d5cdb86ed64452de2a26'],
-  ['authority-left-edge-v28.webp', 3752, '8071af65d4778621934e4d33406741ec28e00660342d8784dbeeb81324764bf0'],
-  ['authority-right-edge-v28.webp', 4796, '8a29f479aa5e647ed49657e0cbfae5cb1a5ffbc25207eccc4c8a0538fb318088'],
+  ['authority-left-edge-v28.webp', 32242, '627116067cc9dd5fd6e196d694eb1008b78d3fcf3ba9d9f1f6d71b88b03cacec'],
+  ['authority-right-edge-v28.webp', 52614, '70c68d65d4dac0b837d1eb14c2e6a50d8198d57cdd2a58cefc3bfe74d7639696'],
 
 ];
 for (const [name, size, sha] of authorities) {
