@@ -46,7 +46,15 @@
     "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-10",
+      "last_score": {
+        "total": 3.356463,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "escova-secadora-britania-bec07r-4em1-1300w-rosa": {
       "impressions": 0,
@@ -104,7 +112,15 @@
     "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-10",
+      "last_score": {
+        "total": 3.354278,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "kit-unha-postica-francesinha-pe-nude-quadrada": {
       "impressions": 0,
@@ -147,7 +163,15 @@
     "depilador-eletrico-feminino-4-em-1": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-10",
+      "last_score": {
+        "total": 3.357106,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "principia-protetor-solar-facial-ps-01-fps-60": {
       "impressions": 0,
@@ -321,6 +345,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-09T16:41:30Z",
-  "last_campaign_id": "bg-20260909"
+  "updated_at": "2026-09-10T16:27:22Z",
+  "last_campaign_id": "bg-20260910"
 }
