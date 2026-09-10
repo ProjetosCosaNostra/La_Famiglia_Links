@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-10T11:13:28Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-09-10T16:21:40Z
+Itens pendentes: 2
+SKUs únicos: 2
+Prioridade alta: 2
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 2
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 2
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 2
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,45 +24,26 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-10T11:07:01Z
-Issue: #95
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
-SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
-Título: 19 Peças Kit Utensilios Cozinha Tábua Em Silicone Espátula
-ID ML: 5J5PKG-Z1Z8
+Quando: 2026-09-10T16:17:17Z
+Issue: #4
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
+SKU: mochila-impermeavel-notebook-15-6
+Título: Mochila Notebook 15 Preta Impermeável Trabalho Faculdade Usb Preto Minimalista
+ID ML: 5J5PKG-LLBX
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (89x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
-open_url: https://meli.la/1RKdpQY
-checked_url: https://meli.la/1RKdpQY
+Memória operacional: histórico recorrente (16x /lists, 0x listing)
+Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
+open_url: https://meli.la/2b2HyMt
+checked_url: https://meli.la/2b2HyMt
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
+canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-09-10T11:07:01Z
-Issue: #171
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/171
-SKU: paleta-sombras-new-york-catharine-hill-10-cores
-Título: Paleta de Sombras New York Catharine Hill 10 Cores
-ID ML: 5J5PKG-MWEZ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (26x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Paleta de Sombras, Olhos, Catharine Hill, Premium
-open_url: https://meli.la/1rxYZqK
-checked_url: https://meli.la/1rxYZqK
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-XXZH
-
-[ALTA] review_only_storefront
-Quando: 2026-09-10T11:07:01Z
+Quando: 2026-09-10T16:17:17Z
 Issue: #180
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/180
 SKU: fixador-de-maquiagem-ruby-rose-150ml-hb312
@@ -73,28 +54,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (6x /lists, 0x listing)
+Memória operacional: histórico recorrente (7x /lists, 0x listing)
 Badges: Achados do Dia, Ruby Rose, Fixador, Maquiagem, 150ml, Feminino
 open_url: https://meli.la/1a6HzXw
 checked_url: https://meli.la/1a6HzXw
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-9E78
-
-[ALTA] review_only_storefront
-Quando: 2026-09-10T11:07:01Z
-Issue: #215
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
-SKU: depilador-batom-portatil-facial-branco-rose-gold
-Título: 💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial
-ID ML: 5J5PKG-W8RV
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
-Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
-open_url: https://meli.la/1EjNsoE
-checked_url: https://meli.la/1EjNsoE
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
