@@ -1,4 +1,5 @@
-// BlackGold V24 build wrapper: preserve proven build, then materialize literal raster authority.
+// BlackGold build wrapper: preserve proven authority, then apply wide-desktop integrity without changing approved content.
 await import('./build-original.mjs');
 await import('./v19.mjs');
 await import('./v24.mjs');
+await import('./v30.mjs');
