@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node build.mjs"
+    "gate:home": "node tools/home-reset-gate.mjs",
+    "build": "npm run gate:home && node build.mjs"
   }
 }
