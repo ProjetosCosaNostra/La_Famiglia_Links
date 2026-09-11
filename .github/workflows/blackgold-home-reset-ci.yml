@@ -1,0 +1,49 @@
+name: BlackGold Home Reset V1 - Visual Gate
+
+on:
+  push:
+    branches:
+      - blackgold-home-reset-v1
+    paths:
+      - 'cloudflare-beauty-finds/**'
+      - '.github/workflows/blackgold-home-reset-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  home-reset-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout reset branch
+        uses: actions/checkout@v4
+
+      - name: Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Static anti-regression gate and build
+        working-directory: cloudflare-beauty-finds
+        run: npm run build
+
+      - name: Install Playwright Chromium for isolated visual validation
+        working-directory: cloudflare-beauty-finds
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Browser geometry gate
+        working-directory: cloudflare-beauty-finds
+        run: node tools/home-reset-browser-gate.mjs
+
+      - name: Upload candidate screenshots and metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blackgold-home-reset-v1-visual-gate
+          path: cloudflare-beauty-finds/artifacts/home-reset-v1/
+          if-no-files-found: error
+          retention-days: 14
