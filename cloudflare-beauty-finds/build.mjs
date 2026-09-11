@@ -21,6 +21,7 @@ for (const file of publicFiles) {
 }
 
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
+await fs.cp(path.join(here, 'reset-assets'), path.join(out, 'reset-assets'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
 for (const asset of ['logo-cn-round.png','logo-cn-square.png']) {
   await fs.copyFile(path.join(root, 'assets', asset), path.join(out, 'assets', asset));
@@ -51,5 +52,8 @@ if (home.includes('blackgold-v') || home.includes('authority-mobile') || home.in
 const css = await fs.readFile(path.join(out, 'home-reset-v1.css'), 'utf8');
 if (css.includes('!important')) throw new Error('Home reset forbids !important');
 if (/html\s*,\s*body[^{}]*\{[^}]*overflow\s*:\s*hidden/i.test(css)) throw new Error('Desktop document overflow lock is forbidden');
+for (const asset of ['header-lockup.webp','hero-photo.webp','eco-center.webp','ysl-loulou.webp','lancome-creme.webp','swarovski-brinco.webp']) {
+  await fs.access(path.join(out, 'reset-assets', asset));
+}
 
 console.log(`BlackGold Home Reset V1 ready: single CSS, ${products.length} catalogue records preserved backend-only.`);
