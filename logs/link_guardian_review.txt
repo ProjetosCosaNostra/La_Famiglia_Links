@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-11T04:30:28Z
+Atualizado em: 2026-09-11T11:10:13Z
 Itens pendentes: 2
 SKUs únicos: 2
 Prioridade alta: 2
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-11T04:22:48Z
+Quando: 2026-09-11T11:05:40Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (18x /lists, 0x listing)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2b2HyMt
 checked_url: https://meli.la/2b2HyMt
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-09-11T04:22:48Z
+Quando: 2026-09-11T11:05:40Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (90x /lists, 0x listing)
+Memória operacional: histórico recorrente (91x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1RKdpQY
 checked_url: https://meli.la/1RKdpQY
