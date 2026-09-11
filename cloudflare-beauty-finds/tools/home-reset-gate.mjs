@@ -23,8 +23,11 @@ for (const [selector, height] of [['.header',49],['.hero',362],['.catalogue',443
 const canonicalTotal = 49 + 362 + 443 + 172 + 60;
 if (canonicalTotal !== 1086) failures.push(`canonical height math changed: ${canonicalTotal}`);
 
-for (const token of ['Curadoria feminina','Seleção do Dia','Vitrine Premium','Ecossistema','BLACKGOLD','Beauty Finds']) {
+for (const token of ['Curadoria feminina','Seleção do Dia','Vitrine Premium','Ecossistema']) {
   if (!html.includes(token)) failures.push(`required visual token missing: ${token}`);
+}
+for (const asset of ['header-lockup.webp','hero-photo.webp','eco-center.webp','ysl-loulou.webp','lancome-creme.webp','swarovski-brinco.webp']) {
+  if (!html.includes(asset) && !css.includes(asset)) failures.push(`approved reset asset not referenced: ${asset}`);
 }
 
 if (failures.length) {
@@ -32,4 +35,4 @@ if (failures.length) {
   failures.forEach(item => console.error(`- ${item}`));
   process.exit(1);
 }
-console.log(`HOME RESET GATE: PASS | canonical=1448x1086 | single-css=${localCss.length} | important=0`);
+console.log(`HOME RESET GATE: PASS | canonical=1448x1086 | single-css=${localCss.length} | important=0 | approved-assets=6`);
