@@ -135,7 +135,15 @@
     "xapadinha-mascara-disciplinante-450g-lola-from-rio": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-11",
+      "last_score": {
+        "total": 3.334142,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "serum-principia-niacinamida-zinco-pca-30ml": {
       "impressions": 0,
@@ -158,7 +166,15 @@
     "bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-11",
+      "last_score": {
+        "total": 3.338111,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "depilador-eletrico-feminino-4-em-1": {
       "impressions": 0,
@@ -176,7 +192,15 @@
     "principia-protetor-solar-facial-ps-01-fps-60": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-11",
+      "last_score": {
+        "total": 3.356694,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "body-splash-my-sweet-delight-barbours-beauty-200ml": {
       "impressions": 0,
@@ -345,6 +369,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-10T16:27:22Z",
-  "last_campaign_id": "bg-20260910"
+  "updated_at": "2026-09-11T16:31:20Z",
+  "last_campaign_id": "bg-20260911"
 }
