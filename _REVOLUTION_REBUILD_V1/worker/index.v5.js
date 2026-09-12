@@ -3,9 +3,16 @@ const nowIso=()=>new Date().toISOString();
 const json=(data,status=200)=>Response.json(data,{status,headers:{'cache-control':'no-store'}});
 
 async function marketplaceGuardian(env){
+  const run=await env.DB.prepare(`INSERT INTO worker_runs(run_type,status) VALUES('marketplace_guardian','running') RETURNING id`).first();
   const catalog=await verifyCanonicalCatalog(env);
   const listings=await verifyAffiliateListings(env);
-  return {ok:true,catalog,listings};
+  let status='completed';
+  if(catalog.status==='skipped'&&listings.status==='skipped')status='skipped';
+  else if(listings.status==='failed')status='failed';
+  else if(catalog.status==='completed_with_api_errors'||listings.status==='completed_with_failures')status='completed_with_failures';
+  const summary={catalog,listings};
+  await env.DB.prepare(`UPDATE worker_runs SET status=?,summary_json=?,finished_at=? WHERE id=?`).bind(status,JSON.stringify(summary),nowIso(),run?.id).run();
+  return {ok:!['failed'].includes(status),status,...summary};
 }
 
 function scoreRow(row){
