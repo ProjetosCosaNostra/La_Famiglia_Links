@@ -1,0 +1,59 @@
+name: BlackGold Rebuild CI
+
+on:
+  push:
+    branches: [blackgold-revolution-rebuild-v1]
+    paths:
+      - "_REVOLUTION_REBUILD_V1/**"
+      - ".github/workflows/blackgold-rebuild-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blackgold-rebuild-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: _REVOLUTION_REBUILD_V1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check functions/api/admin/products.js
+          node --check 'functions/api/admin/products/[id].js'
+          node --check functions/api/admin/link-identity.js
+          node --check functions/api/admin/reconciliation.js
+          node --check 'functions/go/[sku].js'
+          node --check worker/marketplace_link_guardian.js
+          node --check worker/index.v5.js
+      - name: Contract tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tests/reconciliation_contract.mjs
+          node tests/link_identity_contract.mjs
+          node tests/marketplace_link_guardian_contract.mjs
+          python tests/migration_contract.py
+      - name: Safety invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R "fetch(.*meli\.la" -n worker functions || false
+          grep -q "verified_exact" 'functions/go/[sku].js'
+          grep -q "marketplace_catalog_product_id" 'functions/go/[sku].js'
+          grep -q "PREPARE ONLY\|prepared" worker/index.v5.js
+          echo 'BLACKGOLD_REBUILD_CI=PASS'
