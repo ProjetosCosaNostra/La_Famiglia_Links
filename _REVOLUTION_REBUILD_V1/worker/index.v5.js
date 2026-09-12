@@ -34,9 +34,11 @@ async function dailySelection(env){
     FROM products p JOIN product_links l ON l.product_id=p.id
       AND l.is_active=1 AND l.health_status='verified' AND l.variant_match=1
       AND l.marketplace_identity_status='verified_exact'
+      AND datetime(l.marketplace_last_checked_at)>=datetime('now','-18 hours')
       AND l.marketplace_catalog_product_id=p.marketplace_catalog_product_id
     WHERE p.status='active' AND p.market='BR' AND p.affiliate_ready=1 AND p.image_status='approved'
       AND p.marketplace_identity_status='catalog_verified' AND p.marketplace_catalog_product_id IS NOT NULL
+      AND datetime(p.marketplace_last_checked_at)>=datetime('now','-18 hours')
     GROUP BY p.id HAVING verified_links>0`).all();
   const ranked=(rows.results||[]).map(r=>({...r,score:scoreRow(r)})).sort((a,b)=>b.score-a.score);
   const picked=[],used=new Set();
@@ -45,7 +47,7 @@ async function dailySelection(env){
   for(const [i,r] of picked.entries()){
     const id=`bg-${day.replaceAll('-','')}-site-${i+1}`;
     await env.DB.prepare(`INSERT OR REPLACE INTO campaigns(id,campaign_date,channel,product_id,status,score,decision_json) VALUES(?,?,?,?,?,?,?)`)
-      .bind(id,day,'site_daily',r.id,'prepared',r.score,JSON.stringify({category:r.category,clicks:r.clicks||0,impressions:r.impressions||0,verified_links:r.verified_links,days_since:r.days_since,identity_gate:'catalog_verified+verified_exact'})).run();
+      .bind(id,day,'site_daily',r.id,'prepared',r.score,JSON.stringify({category:r.category,clicks:r.clicks||0,impressions:r.impressions||0,verified_links:r.verified_links,days_since:r.days_since,identity_gate:'fresh_catalog_verified+fresh_verified_exact'})).run();
   }
   const summary={date:day,selected:picked.map(x=>({id:x.id,title:x.title_pt,category:x.category,score:x.score,clicks:x.clicks||0,impressions:x.impressions||0,verified_links:x.verified_links}))};
   await env.DB.prepare(`UPDATE worker_runs SET status='completed',summary_json=?,finished_at=? WHERE id=?`).bind(JSON.stringify(summary),nowIso(),run?.id).run();
