@@ -37,12 +37,14 @@ jobs:
           node --check 'functions/api/admin/products/[id].js'
           node --check functions/api/admin/link-identity.js
           node --check functions/api/admin/reconciliation.js
+          node --check functions/api/selection.js
           node --check 'functions/go/[sku].js'
           node --check worker/marketplace_link_guardian.js
           node --check worker/index.v5.js
           node --check web/assets/admin.v2.js
           node --check tests/product_crud_contract.mjs
           node --check tests/go_v2_contract.mjs
+          node --check tests/selection_identity_contract.mjs
       - name: Contract tests
         shell: bash
         run: |
@@ -52,6 +54,7 @@ jobs:
           node tests/marketplace_link_guardian_contract.mjs
           node tests/product_crud_contract.mjs
           node tests/go_v2_contract.mjs
+          node tests/selection_identity_contract.mjs
           python tests/migration_contract.py
       - name: Safety invariants
         shell: bash
@@ -62,6 +65,7 @@ jobs:
           grep -q "marketplace_catalog_product_id" 'functions/go/[sku].js'
           grep -q "meli.la" 'functions/go/[sku].js'
           grep -q -- "-18 hours" 'functions/go/[sku].js'
+          grep -q -- "-18 hours" functions/api/selection.js
           grep -q -- "-18 hours" worker/index.v5.js
           grep -q "PREPARE ONLY\|prepared" worker/index.v5.js
           grep -q "marketplace_catalog_product_id" web/assets/admin.v2.js
