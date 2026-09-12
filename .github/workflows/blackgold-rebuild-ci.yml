@@ -41,6 +41,7 @@ jobs:
           node --check worker/marketplace_link_guardian.js
           node --check worker/index.v5.js
           node --check tests/product_crud_contract.mjs
+          node --check tests/go_v2_contract.mjs
       - name: Contract tests
         shell: bash
         run: |
@@ -49,6 +50,7 @@ jobs:
           node tests/link_identity_contract.mjs
           node tests/marketplace_link_guardian_contract.mjs
           node tests/product_crud_contract.mjs
+          node tests/go_v2_contract.mjs
           python tests/migration_contract.py
       - name: Safety invariants
         shell: bash
@@ -57,5 +59,6 @@ jobs:
           ! grep -R "fetch(.*meli\.la" -n worker functions || false
           grep -q "verified_exact" 'functions/go/[sku].js'
           grep -q "marketplace_catalog_product_id" 'functions/go/[sku].js'
+          grep -q "meli.la" 'functions/go/[sku].js'
           grep -q "PREPARE ONLY\|prepared" worker/index.v5.js
           echo 'BLACKGOLD_REBUILD_CI=PASS'
