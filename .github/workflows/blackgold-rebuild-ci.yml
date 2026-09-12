@@ -40,6 +40,7 @@ jobs:
           node --check 'functions/go/[sku].js'
           node --check worker/marketplace_link_guardian.js
           node --check worker/index.v5.js
+          node --check tests/product_crud_contract.mjs
       - name: Contract tests
         shell: bash
         run: |
@@ -47,6 +48,7 @@ jobs:
           node tests/reconciliation_contract.mjs
           node tests/link_identity_contract.mjs
           node tests/marketplace_link_guardian_contract.mjs
+          node tests/product_crud_contract.mjs
           python tests/migration_contract.py
       - name: Safety invariants
         shell: bash
