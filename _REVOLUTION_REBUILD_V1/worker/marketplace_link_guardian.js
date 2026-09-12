@@ -37,7 +37,10 @@ export async function verifyCanonicalCatalog(env){
   const results=[];
   for(const p of rows.results||[]){
     const catalogId=cleanMlb(p.marketplace_catalog_product_id);
-    if(!catalogId){results.push({product_id:p.id,status:'blocked',reason:'invalid_catalog_product_id'});continue}
+    if(!catalogId){
+      await env.DB.prepare(`UPDATE products SET marketplace_identity_status='blocked',marketplace_last_checked_at=?,marketplace_last_reason='invalid_catalog_product_id' WHERE id=?`).bind(iso(),p.id).run();
+      results.push({product_id:p.id,status:'blocked',reason:'invalid_catalog_product_id'});continue;
+    }
     try{
       const body=await apiJson(`https://api.mercadolibre.com/products/${encodeURIComponent(catalogId)}`,env.ML_ACCESS_TOKEN);
       const attrs=expectedMatches(p.marketplace_expected_attributes_json,attrMap(body?.attributes||[]));
@@ -90,9 +93,9 @@ export async function verifyAffiliateListings(env){
 
   const results=[];
   for(const l of links){
-    const itemId=cleanMlb(l.marketplace_item_id),entry=byId.get(itemId),body=entry?.body||{};
-    let ok=Number(entry?.status_code||0)===200&&body.status==='active';
-    let reason=!entry? 'item_missing_from_bulk' : Number(entry?.status_code||0)!==200?`item_http_${entry?.status_code||0}`:body.status!=='active'?`item_status_${body.status||'unknown'}`:'ok';
+    const itemId=cleanMlb(l.marketplace_item_id),entry=itemId?byId.get(itemId):null,body=entry?.body||{};
+    let ok=!!itemId&&Number(entry?.status_code||0)===200&&body.status==='active';
+    let reason=!itemId?'invalid_item_id':!entry?'item_missing_from_bulk':Number(entry?.status_code||0)!==200?`item_http_${entry?.status_code||0}`:body.status!=='active'?`item_status_${body.status||'unknown'}`:'ok';
     const variation=l.marketplace_variation_id?(body.variations||[]).find(v=>String(v.id)===String(l.marketplace_variation_id)):null;
     if(ok&&l.marketplace_variation_id&&!variation){ok=false;reason='variation_mismatch'}
     const actualCatalog=cleanMlb(variation?.catalog_product_id||body.catalog_product_id);
