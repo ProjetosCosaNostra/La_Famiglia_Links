@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0907">
+  <title>Painel BlackGold Beauty Finds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/admin.css">
+</head>
+<body>
+<header class="admin-topbar">
+  <a class="admin-brand" href="../"><span class="seal">CN</span><span><b>BLACKGOLD</b><small>Beauty Finds · Admin</small></span></a>
+  <nav>
+    <button data-view="dashboard" class="nav-btn active">Dashboard</button>
+    <button data-view="products" class="nav-btn">Produtos</button>
+    <button data-view="links" class="nav-btn">Links</button>
+    <button data-view="reconciliation" class="nav-btn">Reconciliação</button>
+    <button data-view="campaigns" class="nav-btn">Campanhas</button>
+  </nav>
+  <a class="back-store" href="../">Abrir loja →</a>
+</header>
+<main class="admin-shell">
+  <section id="auth-card" class="auth-card">
+    <span class="eyebrow">ACESSO ADMINISTRATIVO</span>
+    <h1>Painel BlackGold</h1>
+    <p>O token fica somente nesta sessão do navegador e é enviado ao backend em cada operação administrativa.</p>
+    <label>Token administrativo<input id="admin-token" type="password" autocomplete="current-password" placeholder="BG_ADMIN_TOKEN"></label>
+    <button id="connect-admin" class="gold-btn">Entrar no painel</button>
+    <div id="auth-status" class="status-line"></div>
+  </section>
+  <section id="panel" class="panel hidden">
+    <div class="panel-heading"><div><span class="eyebrow">OPERAÇÃO</span><h1 id="view-title">Dashboard</h1></div><button id="new-product" class="gold-btn">+ Novo produto</button></div>
+    <div id="dashboard-view" class="view active-view"></div>
+    <div id="products-view" class="view"></div>
+    <div id="links-view" class="view"></div>
+    <div id="reconciliation-view" class="view"></div>
+    <div id="campaigns-view" class="view"></div>
+  </section>
+</main>
+<div id="modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head"><div><span class="eyebrow">CATÁLOGO</span><h2 id="modal-title">Novo produto</h2></div><button id="close-modal" class="close-btn" aria-label="Fechar">×</button></div>
+    <form id="product-form"></form>
+  </div>
+</div>
+<script type="module" src="../assets/admin.v2.js"></script>
+</body>
+</html>
