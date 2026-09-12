@@ -21,8 +21,10 @@ export async function onRequestGet({request,env,params}){
     WHERE p.id=? AND p.status='active' AND p.market='BR' AND p.affiliate_ready=1
       AND p.marketplace_identity_status='catalog_verified'
       AND p.marketplace_catalog_product_id IS NOT NULL
+      AND datetime(p.marketplace_last_checked_at)>=datetime('now','-18 hours')
       AND l.is_active=1 AND l.health_status IN ('healthy','verified') AND l.variant_match=1
       AND l.marketplace_identity_status='verified_exact'
+      AND datetime(l.marketplace_last_checked_at)>=datetime('now','-18 hours')
       AND l.marketplace_catalog_product_id=p.marketplace_catalog_product_id
     ORDER BY CASE l.health_status WHEN 'verified' THEN 0 ELSE 1 END,l.priority,l.slot LIMIT 1`).bind(productId).first();
 
