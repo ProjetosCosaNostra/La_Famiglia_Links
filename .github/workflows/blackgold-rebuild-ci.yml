@@ -40,6 +40,7 @@ jobs:
           node --check 'functions/go/[sku].js'
           node --check worker/marketplace_link_guardian.js
           node --check worker/index.v5.js
+          node --check web/assets/admin.v2.js
           node --check tests/product_crud_contract.mjs
           node --check tests/go_v2_contract.mjs
       - name: Contract tests
@@ -63,4 +64,8 @@ jobs:
           grep -q -- "-18 hours" 'functions/go/[sku].js'
           grep -q -- "-18 hours" worker/index.v5.js
           grep -q "PREPARE ONLY\|prepared" worker/index.v5.js
+          grep -q "marketplace_catalog_product_id" web/assets/admin.v2.js
+          grep -q "link_item_" web/assets/admin.v2.js
+          grep -q "link_variation_" web/assets/admin.v2.js
+          grep -q "reconciliation" web/admin/index.html
           echo 'BLACKGOLD_REBUILD_CI=PASS'
