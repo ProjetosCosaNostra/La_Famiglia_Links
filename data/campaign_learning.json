@@ -21,7 +21,15 @@
     "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-12",
+      "last_score": {
+        "total": 3.353567,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "po-facial-bruna-tavares-bt-skinpowder": {
       "impressions": 0,
@@ -69,7 +77,15 @@
     "organizador-maquiagem-giratorio-360-acrilico-transparente": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-12",
+      "last_score": {
+        "total": 3.352382,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "ice-creamy-lip-balm-mari-maria-vanilla-10ml": {
       "impressions": 0,
@@ -225,7 +241,15 @@
     "cabine-led-uv-sun-5-48w": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-12",
+      "last_score": {
+        "total": 3.352033,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "massageador-facial-pescoco-led-lifting": {
       "impressions": 0,
@@ -369,6 +393,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-11T16:31:20Z",
-  "last_campaign_id": "bg-20260911"
+  "updated_at": "2026-09-12T15:34:28Z",
+  "last_campaign_id": "bg-20260912"
 }
