@@ -1,5 +1,11 @@
 const clean=v=>String(v||'').replace(/[^a-zA-Z0-9_.:-]/g,'').slice(0,120);
 const json=(data,status)=>Response.json(data,{status,headers:{'cache-control':'no-store'}});
+function allowedOfferUrl(value){
+  try{
+    const u=new URL(String(value||'')),h=u.hostname.toLowerCase();
+    return u.protocol==='https:'&&(h==='meli.la'||h==='mercadolivre.com.br'||h.endsWith('.mercadolivre.com.br'))?u:null;
+  }catch{return null}
+}
 
 export async function onRequestGet({request,env,params}){
   const productId=String(params.sku||'');
@@ -21,8 +27,8 @@ export async function onRequestGet({request,env,params}){
     ORDER BY CASE l.health_status WHEN 'verified' THEN 0 ELSE 1 END,l.priority,l.slot LIMIT 1`).bind(productId).first();
 
   if(!row?.affiliate_url)return json({error:'offer_unavailable'},404);
-  let target;try{target=new URL(row.affiliate_url)}catch{return json({error:'invalid_offer_url'},503)}
-  if(target.protocol!=='https:')return json({error:'invalid_offer_url'},503);
+  const target=allowedOfferUrl(row.affiliate_url);
+  if(!target)return json({error:'invalid_offer_url'},503);
 
   const metadata={placement,link_id:row.link_id,link_slot:row.slot,item_id:row.marketplace_item_id||null,variation_id:row.marketplace_variation_id||null,catalog_product_id:row.marketplace_catalog_product_id||null};
   await env.DB.prepare(`INSERT INTO events(event_type,product_id,channel,campaign_id,active_link_slot,metadata_json) VALUES('outbound_click',?,?,?,?,?)`)
