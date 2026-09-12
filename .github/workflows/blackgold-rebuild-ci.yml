@@ -60,5 +60,7 @@ jobs:
           grep -q "verified_exact" 'functions/go/[sku].js'
           grep -q "marketplace_catalog_product_id" 'functions/go/[sku].js'
           grep -q "meli.la" 'functions/go/[sku].js'
+          grep -q -- "-18 hours" 'functions/go/[sku].js'
+          grep -q -- "-18 hours" worker/index.v5.js
           grep -q "PREPARE ONLY\|prepared" worker/index.v5.js
           echo 'BLACKGOLD_REBUILD_CI=PASS'
