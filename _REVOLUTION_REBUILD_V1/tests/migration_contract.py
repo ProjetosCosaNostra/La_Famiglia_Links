@@ -18,6 +18,14 @@ CREATE TABLE product_links(
  FOREIGN KEY(product_id) REFERENCES products(id)
 );
 CREATE TABLE system_settings(key TEXT PRIMARY KEY,value TEXT NOT NULL,updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE channel_state(
+ channel TEXT PRIMARY KEY,
+ policy_status TEXT NOT NULL DEFAULT 'REVIEW_REQUIRED',
+ configured INTEGER NOT NULL DEFAULT 0,
+ live_enabled INTEGER NOT NULL DEFAULT 0,
+ last_publish_at TEXT,
+ last_error TEXT
+);
 ''')
 for i in range(1,9):
     pid=f'bg-us-{i:04d}'
@@ -26,8 +34,7 @@ for i in range(1,9):
     variant=0 if i==3 else 1
     cur.execute('INSERT INTO product_links(product_id,slot,affiliate_url,health_status,variant_match) VALUES(?,?,?,?,?)',(pid,1,f'https://meli.la/test{i}',health,variant))
 con.commit()
-
-for name in ['012_marketplace_reconciliation.sql','013_seed_marketplace_reconciliation.sql','014_affiliate_link_marketplace_identity.sql','015_normalize_unverified_link_health.sql']:
+for name in ['012_marketplace_reconciliation.sql','013_seed_marketplace_reconciliation.sql','014_affiliate_link_marketplace_identity.sql','015_normalize_unverified_link_health.sql','016_seed_facebook_pinterest_channels.sql']:
     con.executescript((ROOT/'db'/name).read_text(encoding='utf-8'))
 
 assert cur.execute('SELECT COUNT(*) FROM marketplace_reconciliation').fetchone()[0] == 8
@@ -42,4 +49,7 @@ assert cur.execute("SELECT COUNT(*) FROM product_links WHERE marketplace_identit
 assert cur.execute("SELECT COUNT(*) FROM product_links WHERE health_status='healthy'").fetchone()[0] == 0
 assert cur.execute("SELECT COUNT(*) FROM product_links WHERE health_status='unknown' AND variant_match=0").fetchone()[0] == 7
 assert cur.execute("SELECT COUNT(*) FROM product_links WHERE health_status='broken'").fetchone()[0] == 1
+channels=dict(cur.execute("SELECT channel,policy_status FROM channel_state WHERE channel IN ('facebook','pinterest')"))
+assert channels == {'facebook':'REVIEW_REQUIRED','pinterest':'REVIEW_REQUIRED'}, channels
+assert cur.execute("SELECT COUNT(*) FROM channel_state WHERE channel IN ('facebook','pinterest') AND configured=0 AND live_enabled=0").fetchone()[0] == 2
 print('MIGRATION_CONTRACT=PASS')
