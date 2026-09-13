@@ -1,0 +1,12 @@
+name = "blackgold-beauty-rebuild-worker-v1"
+main = "index.v5.js"
+compatibility_date = "2026-09-11"
+workers_dev = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "blackgold-beauty-finds-rebuild-v1"
+database_id = "11381a2d-bfc5-403c-b6d1-a032db1c8c43"
+
+[triggers]
+crons = ["15 */6 * * *", "10 12 * * *"]
