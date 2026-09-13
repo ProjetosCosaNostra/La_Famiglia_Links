@@ -19,7 +19,9 @@ export async function onRequestGet({request,env}){
   });
   const runs=await env.DB.prepare(`SELECT id,run_type,status,summary_json,started_at,finished_at FROM worker_runs ORDER BY id DESC LIMIT 20`).all();
   const links=await env.DB.prepare(`SELECT health_status,COUNT(*) count FROM product_links WHERE is_active=1 GROUP BY health_status`).all();
-  return json({channels:merged,runs:runs.results||[],link_health:links.results||[],worker_configured:!!env.WORKER});
+  let worker_health=null;
+  if(env.WORKER){try{const r=await env.WORKER.fetch(new Request('https://blackgold-worker.internal/health',{headers:{'x-bg-service':'pages-admin-v1'}}));worker_health=await r.json().catch(()=>null)}catch{worker_health={ok:false,error:'worker_health_unavailable'}}}
+  return json({channels:merged,runs:runs.results||[],link_health:links.results||[],worker_configured:!!env.WORKER,worker_health});
 }
 async function callWorker(env,path){
   if(!env.WORKER) return {error:'worker_not_configured',status:503};
