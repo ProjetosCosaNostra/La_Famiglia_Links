@@ -44,7 +44,15 @@
     "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-13",
+      "last_score": {
+        "total": 3.346945,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "gloss-fran-liphoney-mel": {
       "impressions": 0,
@@ -72,7 +80,15 @@
     "bt-coca-cola-blush-stick-bruna-tavares-intense-cherry": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-13",
+      "last_score": {
+        "total": 3.337925,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "organizador-maquiagem-giratorio-360-acrilico-transparente": {
       "impressions": 0,
@@ -105,7 +121,15 @@
     "body-splash-kiss-ciclo-200ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-13",
+      "last_score": {
+        "total": 3.330615,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "nivea-hidratante-labial-morango-shine-4-8g": {
       "impressions": 0,
@@ -393,6 +417,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-12T15:34:28Z",
-  "last_campaign_id": "bg-20260912"
+  "updated_at": "2026-09-13T16:20:59Z",
+  "last_campaign_id": "bg-20260913"
 }
