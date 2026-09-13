@@ -37,6 +37,7 @@ jobs:
           node --check 'functions/api/admin/products/[id].js'
           node --check functions/api/admin/link-identity.js
           node --check functions/api/admin/reconciliation.js
+          node --check functions/api/admin/operations.js
           node --check functions/api/selection.js
           node --check 'functions/go/[sku].js'
           node --check worker/marketplace_link_guardian.js
@@ -45,6 +46,7 @@ jobs:
           node --check tests/product_crud_contract.mjs
           node --check tests/go_v2_contract.mjs
           node --check tests/selection_identity_contract.mjs
+          node --check tests/operations_contract.mjs
       - name: Contract tests
         shell: bash
         run: |
@@ -55,6 +57,7 @@ jobs:
           node tests/product_crud_contract.mjs
           node tests/go_v2_contract.mjs
           node tests/selection_identity_contract.mjs
+          node tests/operations_contract.mjs
           python tests/migration_contract.py
       - name: Safety invariants
         shell: bash
@@ -72,4 +75,7 @@ jobs:
           grep -q "link_item_" web/assets/admin.v2.js
           grep -q "link_variation_" web/assets/admin.v2.js
           grep -q "reconciliation" web/admin/index.html
+          grep -q "facebook" functions/api/admin/operations.js
+          grep -q "pinterest" functions/api/admin/operations.js
+          grep -q "016_seed_facebook_pinterest_channels.sql" tests/migration_contract.py
           echo 'BLACKGOLD_REBUILD_CI=PASS'
