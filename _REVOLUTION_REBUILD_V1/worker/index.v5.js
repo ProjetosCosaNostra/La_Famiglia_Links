@@ -61,7 +61,7 @@ export default{
   },
   async fetch(request,env){
     const url=new URL(request.url);
-    if(url.pathname==='/health')return json({ok:true,worker:'blackgold-rebuild-v5',guardian:'catalog+listing-api',publishing:'prepare_only'});
+    if(url.pathname==='/health')return json({ok:true,worker:'blackgold-rebuild-v5',guardian:'catalog+listing-api',publishing:'prepare_only',ml_access_token_configured:!!env.ML_ACCESS_TOKEN});
     if(request.headers.get('x-bg-service')!=='pages-admin-v1')return json({error:'forbidden'},403);
     if(request.method!=='POST')return json({error:'method_not_allowed'},405);
     if(url.pathname==='/run/link-guardian'||url.pathname==='/run/marketplace-guardian')return json(await marketplaceGuardian(env));
