@@ -250,7 +250,15 @@
     "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-14",
+      "last_score": {
+        "total": 3.357189,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "espelho-led-dobravel-maquiagem-rosto-make": {
       "impressions": 0,
@@ -260,7 +268,15 @@
     "porta-joias-3-camadas-couro-preto": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-14",
+      "last_score": {
+        "total": 3.346641,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "cabine-led-uv-sun-5-48w": {
       "impressions": 0,
@@ -278,7 +294,15 @@
     "massageador-facial-pescoco-led-lifting": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-14",
+      "last_score": {
+        "total": 3.350908,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "limpador-eletrico-pinceis-maquiagem-automatico-usb": {
       "impressions": 0,
@@ -417,6 +441,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-13T16:20:59Z",
-  "last_campaign_id": "bg-20260913"
+  "updated_at": "2026-09-14T18:05:16Z",
+  "last_campaign_id": "bg-20260914"
 }
