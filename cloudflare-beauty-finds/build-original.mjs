@@ -89,10 +89,10 @@ for(const page of ['destaque.html','vitrine.html']){
 
 {
   const html=await fs.readFile(path.join(out,'ecossistema.html'),'utf8');
-  for(const required of ['blackgold-home-v18.css?v=20260908-v18','blackgold-home-v18-calibration.css?v=20260908-v18c','blackgold-ecosystem-v31.css?v=20260914-v31','blackgold-ecosystem-v31.js?v=20260914-v31','ecosystem-crest-v12.svg']) if(!html.includes(required)) throw new Error(`ecossistema.html missing ${required}`);
+  for(const required of ['blackgold-home-v18.css?v=20260908-v18','blackgold-home-v18-calibration.css?v=20260908-v18c','blackgold-ecosystem-v31.css?v=20260914-v31','blackgold-ecosystem-v31.js?v=20260914-v31','exact-ecosystem-center-v13.webp']) if(!html.includes(required)) throw new Error(`ecossistema.html missing ${required}`);
   for(const forbidden of ['blackgold-v9.css','blackgold-v9.js','blackgold-v10-overrides.css','blackgold-v12-final.css','blackgold-v13-exact.css','blackgold-v14-calibration.css','blackgold-v15-contract-final.css','blackgold-v16-measured-calibration.css']) if(html.includes(forbidden)) throw new Error(`Legacy layer leaked into clean Ecossistema V31: ${forbidden}`);
   for(const requiredLink of ['FitNexus_Coach_BlackGold','appevidex.pages.dev','cosanostra.blackgold','BlackGoldSociety','ProjetosCosaNostra','projetoscosanostra@gmail.com']) if(!html.includes(requiredLink)) throw new Error(`Ecossistema V31 official destination missing: ${requiredLink}`);
 }
 
-for(const required of ['blackgold-home-v18.css','blackgold-home-v18-calibration.css','blackgold-ecosystem-v31.css','blackgold-ecosystem-v31.js','approved-v5/header-lockup.webp','hero-approved.webp','approved-home/ecosystem-approved-exact.webp','ecosystem-authority-v17.webp','ecosystem-crest-v12.svg']) await fs.access(path.join(out,required));
+for(const required of ['blackgold-home-v18.css','blackgold-home-v18-calibration.css','blackgold-ecosystem-v31.css','blackgold-ecosystem-v31.js','approved-v5/header-lockup.webp','hero-approved.webp','approved-home/ecosystem-approved-exact.webp','ecosystem-authority-v17.webp','ecosystem-crest-v12.svg','exact-ecosystem-center-v13.webp']) await fs.access(path.join(out,required));
 console.log(`BlackGold clean Home V18 + clean Ecossistema V31 package ready; ${products.length} legacy products remain backend-only -> ${out}`);
