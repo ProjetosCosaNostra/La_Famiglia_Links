@@ -11,7 +11,7 @@ await fs.mkdir(path.join(out, 'assets'), { recursive: true });
 
 const publicFiles = [
   'index.html','destaque.html','vitrine.html','ecossistema.html',
-  'blackgold-home-v18.css','blackgold-home-v18-calibration.css',
+  'blackgold-home-v18.css','blackgold-home-v18-calibration.css','blackgold-ecosystem-v31.css','blackgold-ecosystem-v31.js',
   'blackgold-v9.css','blackgold-v9.js','blackgold-v10-overrides.css','blackgold-v12-final.css','blackgold-v13-exact.css','blackgold-v14-calibration.css','blackgold-v15-contract-final.css','blackgold-v16-measured-calibration.css',
   'product-placeholder-v12.svg','ecosystem-crest-v12.svg','exact-brand-v13.webp','exact-ecosystem-center-v13.webp','styles.css','app.js','admin.html','admin.js','mercadolivre-callback.html','_headers'
 ];
@@ -43,7 +43,8 @@ for (const asset of ['logo-cn-round.png','logo-cn-square.png']) { try { await fs
   await fs.writeFile(file,html,'utf8');
 }
 
-for (const page of ['destaque.html','vitrine.html','ecossistema.html']) {
+// Destaque and Vitrine stay on the proven legacy stack until their dedicated clean rebuilds.
+for (const page of ['destaque.html','vitrine.html']) {
   const file = path.join(out,page);
   let html = await fs.readFile(file,'utf8');
   html = html.replaceAll('./assets/header-lockup-v9.webp','./approved-v5/header-lockup.webp').replaceAll('./assets/product-placeholder-v9.webp','./product-placeholder-v12.svg').replaceAll('./assets/logo-cn-square.png','./product-placeholder-v12.svg');
@@ -53,6 +54,14 @@ for (const page of ['destaque.html','vitrine.html','ecossistema.html']) {
   if (!html.includes('blackgold-v14-calibration.css')) html = html.replace('</head>','<link href="./blackgold-v14-calibration.css?v=20260907-v14" rel="stylesheet"/></head>');
   if (!html.includes('blackgold-v15-contract-final.css')) html = html.replace('</head>','<link href="./blackgold-v15-contract-final.css?v=20260908-v15" rel="stylesheet"/></head>');
   if (!html.includes('blackgold-v16-measured-calibration.css')) html = html.replace('</head>','<link href="./blackgold-v16-measured-calibration.css?v=20260908-v16" rel="stylesheet"/></head>');
+  await fs.writeFile(file,html,'utf8');
+}
+
+// Ecossistema V31 is intentionally isolated: approved Home chrome + one dedicated stylesheet/JS.
+{
+  const file = path.join(out,'ecossistema.html');
+  let html = await fs.readFile(file,'utf8');
+  html = html.replaceAll('./assets/header-lockup-v9.webp','./approved-v5/header-lockup.webp');
   await fs.writeFile(file,html,'utf8');
 }
 
@@ -73,9 +82,17 @@ if(!home.includes('blackgold-home-v18-calibration.css?v=20260908-v18c')) throw n
 for(const forbidden of ['blackgold-v9.css','blackgold-v10-overrides.css','blackgold-v12-final.css','blackgold-v13-exact.css','blackgold-v14-calibration.css','blackgold-v15-contract-final.css','blackgold-v16-measured-calibration.css']) if(home.includes(forbidden)) throw new Error(`Legacy layer leaked into clean Home V18: ${forbidden}`);
 if(!home.includes('approved-home/miss-dior.webp')||!home.includes('bg18-eco')) throw new Error('V18 approved visual stand-ins missing');
 
-for(const page of ['destaque.html','vitrine.html','ecossistema.html']){
+for(const page of ['destaque.html','vitrine.html']){
   const html=await fs.readFile(path.join(out,page),'utf8');
   for(const required of ['blackgold-v9.css','blackgold-v10-overrides.css?v=20260907-v11','blackgold-v12-final.css?v=20260907-v12','blackgold-v13-exact.css?v=20260907-v13','blackgold-v14-calibration.css?v=20260907-v14','blackgold-v15-contract-final.css?v=20260908-v15','blackgold-v16-measured-calibration.css?v=20260908-v16','blackgold-v9.js']) if(!html.includes(required)) throw new Error(`${page} missing ${required}`);
 }
-for(const required of ['blackgold-home-v18.css','blackgold-home-v18-calibration.css','approved-v5/header-lockup.webp','hero-approved.webp','approved-home/ecosystem-approved-exact.webp','ecosystem-authority-v17.webp']) await fs.access(path.join(out,required));
-console.log(`BlackGold clean Home V18 calibrated package ready; ${products.length} legacy products remain backend-only -> ${out}`);
+
+{
+  const html=await fs.readFile(path.join(out,'ecossistema.html'),'utf8');
+  for(const required of ['blackgold-home-v18.css?v=20260908-v18','blackgold-home-v18-calibration.css?v=20260908-v18c','blackgold-ecosystem-v31.css?v=20260914-v31','blackgold-ecosystem-v31.js?v=20260914-v31','ecosystem-crest-v12.svg']) if(!html.includes(required)) throw new Error(`ecossistema.html missing ${required}`);
+  for(const forbidden of ['blackgold-v9.css','blackgold-v9.js','blackgold-v10-overrides.css','blackgold-v12-final.css','blackgold-v13-exact.css','blackgold-v14-calibration.css','blackgold-v15-contract-final.css','blackgold-v16-measured-calibration.css']) if(html.includes(forbidden)) throw new Error(`Legacy layer leaked into clean Ecossistema V31: ${forbidden}`);
+  for(const requiredLink of ['FitNexus_Coach_BlackGold','appevidex.pages.dev','cosanostra.blackgold','BlackGoldSociety','ProjetosCosaNostra','projetoscosanostra@gmail.com']) if(!html.includes(requiredLink)) throw new Error(`Ecossistema V31 official destination missing: ${requiredLink}`);
+}
+
+for(const required of ['blackgold-home-v18.css','blackgold-home-v18-calibration.css','blackgold-ecosystem-v31.css','blackgold-ecosystem-v31.js','approved-v5/header-lockup.webp','hero-approved.webp','approved-home/ecosystem-approved-exact.webp','ecosystem-authority-v17.webp','ecosystem-crest-v12.svg']) await fs.access(path.join(out,required));
+console.log(`BlackGold clean Home V18 + clean Ecossistema V31 package ready; ${products.length} legacy products remain backend-only -> ${out}`);
