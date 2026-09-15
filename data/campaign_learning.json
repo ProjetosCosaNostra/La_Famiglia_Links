@@ -39,7 +39,15 @@
     "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-15",
+      "last_score": {
+        "total": 3.350313,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy": {
       "impressions": 0,
@@ -116,7 +124,15 @@
     "batom-hidratante-sace-lady-a03-terre-rouge": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-15",
+      "last_score": {
+        "total": 3.352602,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "body-splash-kiss-ciclo-200ml": {
       "impressions": 0,
@@ -170,7 +186,15 @@
     "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-15",
+      "last_score": {
+        "total": 3.338589,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "xapadinha-mascara-disciplinante-450g-lola-from-rio": {
       "impressions": 0,
@@ -441,6 +465,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-14T18:05:16Z",
-  "last_campaign_id": "bg-20260914"
+  "updated_at": "2026-09-15T17:02:51Z",
+  "last_campaign_id": "bg-20260915"
 }
