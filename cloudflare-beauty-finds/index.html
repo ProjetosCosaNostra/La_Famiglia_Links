@@ -8,23 +8,31 @@
   <meta http-equiv="Expires" content="0">
   <meta name="theme-color" content="#050403">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="description" content="BlackGold Beauty Finds — experiência premium em construção.">
+  <meta name="description" content="BlackGold Beauty Finds — em construção.">
   <title>BlackGold Beauty Finds — Em construção</title>
   <style>
-    *{box-sizing:border-box}
-    html,body{margin:0;width:100%;height:100%;background:#050403;overflow:hidden}
-    body{min-height:100svh}
-    main{position:fixed;inset:0;display:grid;place-items:center;background:#050403;overflow:hidden}
-    picture{display:block;width:100%;height:100%}
-    img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#050403}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050403}
+    body{font-family:Arial,sans-serif;color:#fff}
+    main{position:fixed;inset:0;background:#050403;overflow:hidden}
+    picture,img{display:block;width:100%;height:100%}
+    img{object-fit:cover;object-position:center center}
+    .veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.10),transparent 54%,rgba(0,0,0,.35))}
+    .status{position:absolute;left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:10px;white-space:nowrap;padding:12px 20px;border:1px solid rgba(232,186,82,.62);border-radius:999px;background:rgba(4,3,2,.78);backdrop-filter:blur(8px);box-shadow:0 12px 40px rgba(0,0,0,.45);font-size:12px;font-weight:700;letter-spacing:.15em;color:#f1cb72;text-transform:uppercase}
+    .status i{width:7px;height:7px;border-radius:50%;background:#e9bd59;box-shadow:0 0 16px #e9bd59}
+    @media(max-width:900px),(orientation:portrait){
+      img{object-position:center top}
+      .status{bottom:max(14px,env(safe-area-inset-bottom));padding:10px 14px;font-size:9px;letter-spacing:.11em;max-width:calc(100vw - 24px)}
+    }
   </style>
 </head>
 <body>
   <main aria-label="BlackGold Beauty Finds — Em construção">
     <picture>
-      <source media="(max-width:900px), (orientation:portrait)" srcset="./under-construction-mobile.webp?v=20260916-final">
-      <img src="./under-construction-desktop.webp?v=20260916-final" alt="BlackGold Beauty Finds — Em construção. Voltamos em breve.">
+      <source media="(max-width:900px), (orientation:portrait)" srcset="./assets/loja-completa-hero-mobile.webp?v=20260916-safe">
+      <img src="./assets/loja-completa-hero-desktop.webp?v=20260916-safe" alt="BlackGold Beauty Finds">
     </picture>
+    <div class="veil"></div>
+    <div class="status"><i></i> Em construção · Voltamos em breve</div>
   </main>
 </body>
 </html>
