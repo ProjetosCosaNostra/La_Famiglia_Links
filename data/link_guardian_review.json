@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-16T04:42:10Z",
-  "total_items": 5,
+  "updated_at": "2026-09-16T11:28:02Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 6
     },
-    "high_priority": 5
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-09-16T04:36:36Z",
+      "happened_at": "2026-09-16T11:21:21Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-16T04:36:36Z",
+      "happened_at": "2026-09-16T11:21:21Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (37x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (38x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +105,52 @@
       ]
     },
     {
-      "happened_at": "2026-09-16T04:36:36Z",
+      "happened_at": "2026-09-16T11:21:21Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 21,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/21",
+      "issue_title": "[CMS] Produto: Bolsa Térmica Lancheira 14L — Preta (Porta Marmita)",
+      "sku": "bolsa-termica-lancheira-14l-preta-porta-marmita",
+      "title": "Bolsa Térmica Lancheira 14L Preta (2 Compartimentos) — Porta Marmita com Alça Transversal",
+      "id_busca": "5J5PKG-B6J6",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2jqTYSD",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2jqTYSD",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3kMg3%2BY4jnqZejiU%2BJ9z%2Fgm7mqjq3kbYqKtp%2BL7eTewNqKeSgl2l2PC1oJrDfCydAgM1rAJMeRJV2ovWPaqCi7fL%2FJ68Hp0ZIzWGc5WtX8%2BqQN%2FbrGJ5xOavXm4j6Ev6bHdBcu5uCcv0CCzJ5%2FdIVh4xUDejNLityqnlEoT7QxRBS79n4j%2BEhanc1txRPrKtxXVwY%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-B6J6&tid=4b648836-e775-4334-bd74-9a84061ff069",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3kMg3%2BY4jnqZejiU%2BJ9z%2Fgm7mqjq3kbYqKtp%2BL7eTewNqKeSgl2l2PC1oJrDfCydAgM1rAJMeRJV2ovWPaqCi7fL%2FJ68Hp0ZIzWGc5WtX8%2BqQN%2FbrGJ5xOavXm4j6Ev6bHdBcu5uCcv0CCzJ5%2FdIVh4xUDejNLityqnlEoT7QxRBS79n4j%2BEhanc1txRPrKtxXVwY%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BG3kMg3%2BY4jnqZejiU%2BJ9z%2Fgm7mqjq3kbYqKtp%2BL7eTewNqKeSgl2l2PC1oJrDfCydAgM1rAJMeRJV2ovWPaqCi7fL%2FJ68Hp0ZIzWGc5WtX8%2BqQN%2FbrGJ5xOavXm4j6Ev6bHdBcu5uCcv0CCzJ5%2FdIVh4xUDejNLityqnlEoT7QxRBS79n4j%2BEhanc1txRPrKtxXVwY%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Bolsa térmica",
+        "Lancheira 14L",
+        "Porta marmita",
+        "Preta",
+        "2 compartimentos",
+        "Alça transversal",
+        "Trabalho"
+      ]
+    },
+    {
+      "happened_at": "2026-09-16T11:21:21Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +166,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (8x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-16T04:36:36Z",
+      "happened_at": "2026-09-16T11:21:21Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (27x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +237,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-16T04:36:36Z",
+      "happened_at": "2026-09-16T11:21:21Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +253,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (120x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (121x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

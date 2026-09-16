@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-16T04:42:10Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-09-16T11:28:02Z
+Itens pendentes: 6
+SKUs únicos: 6
+Prioridade alta: 6
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 6
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 6
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 6
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-16T04:36:36Z
+Quando: 2026-09-16T11:21:21Z
 Issue: #165
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
 SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (4x /lists, 0x listing)
+Memória operacional: histórico recorrente (5x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
 open_url: https://meli.la/22qx74W
 checked_url: https://meli.la/22qx74W
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
 
 [ALTA] review_only_storefront
-Quando: 2026-09-16T04:36:36Z
+Quando: 2026-09-16T11:21:21Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (37x /lists, 0x listing)
+Memória operacional: histórico recorrente (38x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2b2HyMt
 checked_url: https://meli.la/2b2HyMt
@@ -62,7 +62,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-09-16T04:36:36Z
+Quando: 2026-09-16T11:21:21Z
+Issue: #21
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/21
+SKU: bolsa-termica-lancheira-14l-preta-porta-marmita
+Título: Bolsa Térmica Lancheira 14L Preta (2 Compartimentos) — Porta Marmita com Alça Transversal
+ID ML: 5J5PKG-B6J6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (2x /lists, 1x listing)
+Badges: Achados do Dia, Bolsa térmica, Lancheira 14L, Porta marmita, Preta, 2 compartimentos, Alça transversal, Trabalho
+open_url: https://mercadolivre.com/sec/2jqTYSD
+checked_url: https://mercadolivre.com/sec/2jqTYSD
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-B6J6&tid=4b648836-e775-4334-bd74-9a84061ff069
+
+[ALTA] review_only_storefront
+Quando: 2026-09-16T11:21:21Z
 Issue: #23
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
 SKU: amazon-fire-tv-stick-4k-wifi6
@@ -73,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 1x listing)
+Memória operacional: histórico recorrente (8x /lists, 1x listing)
 Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
 open_url: https://mercadolivre.com/sec/1nMqFbz
 checked_url: https://mercadolivre.com/sec/1nMqFbz
@@ -81,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
 
 [ALTA] review_only_storefront
-Quando: 2026-09-16T04:36:36Z
+Quando: 2026-09-16T11:21:21Z
 Issue: #180
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/180
 SKU: fixador-de-maquiagem-ruby-rose-150ml-hb312
@@ -92,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (26x /lists, 0x listing)
+Memória operacional: histórico recorrente (27x /lists, 0x listing)
 Badges: Achados do Dia, Ruby Rose, Fixador, Maquiagem, 150ml, Feminino
 open_url: https://meli.la/1a6HzXw
 checked_url: https://meli.la/1a6HzXw
@@ -100,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-9E78
 
 [ALTA] review_only_storefront
-Quando: 2026-09-16T04:36:36Z
+Quando: 2026-09-16T11:21:21Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -111,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (120x /lists, 0x listing)
+Memória operacional: histórico recorrente (121x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
