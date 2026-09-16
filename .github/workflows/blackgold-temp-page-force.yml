@@ -15,8 +15,8 @@ env:
   PROJECT_NAME: blackgold-beauty-finds-br
   STORE_URL: https://blackgold-beauty-finds-br.pages.dev
   WRANGLER_VERSION: 4.129.0
-  DESKTOP_SHA256: 0c89499d1bedf7c8b5e66b36d44b94a1092f3307ca9dbc32af04ab773a1b24fd
-  MOBILE_SHA256: 213c5444c00ad93c15f5e43a9ed67089ca69419ed8c365e6500a5538a612c094
+  DESKTOP_GIT_SHA: e843cf69b90ffab16eb4bf58298ea82889a0bb97
+  MOBILE_GIT_SHA: cb74afede66c445dd445ae086217cee4c40e9f7b
 
 jobs:
   deploy-and-verify:
@@ -59,15 +59,17 @@ jobs:
           console.log(`Production branch: ${branch}`);
           NODE
 
-      - name: Build temporary page package
+      - name: Build and verify source package
         working-directory: cloudflare-beauty-finds
         run: |
           set -euo pipefail
           node build.mjs
           grep -F 'under-construction-desktop.webp?v=20260916-final' dist/index.html
           grep -F 'under-construction-mobile.webp?v=20260916-final' dist/index.html
-          echo "${DESKTOP_SHA256}  dist/under-construction-desktop.webp" | sha256sum -c -
-          echo "${MOBILE_SHA256}  dist/under-construction-mobile.webp" | sha256sum -c -
+          test "$(git hash-object dist/under-construction-desktop.webp)" = "${DESKTOP_GIT_SHA}"
+          test "$(git hash-object dist/under-construction-mobile.webp)" = "${MOBILE_GIT_SHA}"
+          test "$(stat -c%s dist/under-construction-desktop.webp)" -gt 50000
+          test "$(stat -c%s dist/under-construction-mobile.webp)" -gt 50000
 
       - name: Deploy exact package to production
         working-directory: cloudflare-beauty-finds
@@ -94,6 +96,6 @@ jobs:
           curl -fsSL -H 'Cache-Control: no-cache' "${STORE_URL}/under-construction-mobile.webp?verify=${stamp}" -o /tmp/live-mobile.webp
           grep -F 'under-construction-desktop.webp?v=20260916-final' /tmp/live-index.html
           grep -F 'under-construction-mobile.webp?v=20260916-final' /tmp/live-index.html
-          echo "${DESKTOP_SHA256}  /tmp/live-desktop.webp" | sha256sum -c -
-          echo "${MOBILE_SHA256}  /tmp/live-mobile.webp" | sha256sum -c -
+          test "$(git hash-object /tmp/live-desktop.webp)" = "${DESKTOP_GIT_SHA}"
+          test "$(git hash-object /tmp/live-mobile.webp)" = "${MOBILE_GIT_SHA}"
           echo 'LIVE_PRODUCTION_VERIFIED=YES'
