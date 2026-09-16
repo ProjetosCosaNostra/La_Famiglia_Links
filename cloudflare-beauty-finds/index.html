@@ -3,69 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#070604">
+  <meta name="theme-color" content="#050403">
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="BlackGold Beauty Finds — experiência premium em construção.">
   <title>BlackGold Beauty Finds — Em construção</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--gold:#e0b85f;--gold2:#f1d792;--cream:#fff7e8;--muted:#d8cbb7;--line:rgba(224,184,95,.38)}
     *{box-sizing:border-box}
-    html,body{margin:0;width:100%;min-height:100%;background:#050403}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--cream);overflow:hidden}
-    .page{position:relative;width:100vw;height:100svh;min-height:560px;overflow:hidden;isolation:isolate;background:#050403}
-    .photo{position:absolute;inset:0;background-image:url('./hero-approved.webp');background-size:cover;background-position:center center;transform:scale(1.01);z-index:-4}
-    .shade{position:absolute;inset:0;z-index:-3;background:linear-gradient(90deg,rgba(3,3,3,.96) 0%,rgba(3,3,3,.88) 32%,rgba(3,3,3,.46) 57%,rgba(3,3,3,.14) 78%,rgba(3,3,3,.28) 100%),linear-gradient(0deg,rgba(0,0,0,.34),transparent 48%,rgba(0,0,0,.22))}
-    .glow{position:absolute;left:11%;top:31%;width:34vw;height:34vw;border-radius:50%;background:radial-gradient(circle,rgba(212,165,73,.12),transparent 68%);filter:blur(16px);z-index:-2}
-    header{height:86px;padding:0 clamp(24px,4.6vw,76px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.075);background:linear-gradient(180deg,rgba(0,0,0,.66),rgba(0,0,0,.18));backdrop-filter:blur(3px)}
-    .brand{display:flex;align-items:center;gap:13px}.brand img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 15px rgba(222,178,80,.26))}
-    .brand span{display:flex;flex-direction:column}.brand strong{font:700 15px/1 Inter,sans-serif;letter-spacing:.18em;color:#f4d88f}.brand em{margin-top:6px;font:600 18px/1 'Cormorant Garamond',serif;color:#fff7df}
-    .badge{display:flex;align-items:center;gap:9px;padding:9px 14px;border:1px solid rgba(224,184,95,.34);border-radius:999px;background:rgba(8,7,5,.56);color:#f0ce7a;font-size:10px;font-weight:700;letter-spacing:.17em}.badge i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px rgba(224,184,95,.85)}
-    main{height:calc(100svh - 86px);display:flex;align-items:center;padding:clamp(26px,4vw,64px) clamp(24px,7vw,110px)}
-    .copy{width:min(720px,48vw);margin-top:-1vh}.kicker{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:#d6b76f;font-size:11px;font-weight:700;letter-spacing:.22em}.kicker:before{content:'';width:42px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
-    h1{margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(64px,6.1vw,112px);line-height:.86;font-weight:600;letter-spacing:-.045em;text-shadow:0 3px 28px rgba(0,0,0,.72)}
-    h1 span{display:block;color:var(--gold2);font-style:italic;font-size:.69em;letter-spacing:-.035em;margin-top:.17em}
-    .lead{max-width:590px;margin:26px 0 0;color:#e6dac8;font-size:clamp(15px,1.25vw,19px);line-height:1.7;text-shadow:0 2px 12px rgba(0,0,0,.8)}
-    .rule{width:min(520px,88%);height:1px;margin:28px 0 22px;background:linear-gradient(90deg,var(--gold),rgba(224,184,95,.24),transparent)}
-    .features{display:grid;grid-template-columns:repeat(4,max-content);gap:0;color:#dbc17f}.feature{padding:0 18px;border-right:1px solid rgba(224,184,95,.22);text-align:center}.feature:first-child{padding-left:0}.feature:last-child{border:0}.feature b{display:block;font:600 20px/1 'Cormorant Garamond',serif}.feature small{display:block;margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.12em;color:#bfae91;text-transform:uppercase}
-    .foot{position:absolute;left:clamp(24px,4.6vw,76px);right:clamp(24px,4.6vw,76px);bottom:18px;display:flex;align-items:center;justify-content:space-between;color:#8f8578;font-size:9px;letter-spacing:.12em;text-transform:uppercase}.foot strong{color:#bea367}
-    @media (max-width:900px), (orientation:portrait){
-      body{overflow:hidden}.page{min-height:100svh}.photo{background-position:61% center;transform:scale(1.02)}
-      .shade{background:linear-gradient(180deg,rgba(3,3,3,.82) 0%,rgba(3,3,3,.52) 36%,rgba(3,3,3,.24) 58%,rgba(3,3,3,.70) 100%),linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.10) 72%)}
-      header{height:70px;padding:0 18px}.brand img{width:40px;height:40px}.brand strong{font-size:12px}.brand em{font-size:16px}.badge{padding:8px 10px}.badge span{display:none}
-      main{height:calc(100svh - 70px);align-items:flex-start;padding:9.5svh 20px 90px}.copy{width:100%;max-width:440px;margin:0}.kicker{font-size:9px;letter-spacing:.16em;margin-bottom:12px}.kicker:before{width:28px}
-      h1{font-size:clamp(54px,15.5vw,78px);line-height:.83;max-width:360px}.lead{max-width:330px;margin-top:20px;font-size:14px;line-height:1.55}.rule{margin:20px 0 16px;width:300px;max-width:90%}
-      .features{grid-template-columns:repeat(2,max-content);gap:12px 0;width:max-content;max-width:100%}.feature{padding:0 14px}.feature:nth-child(2){border-right:0}.feature:nth-child(3){padding-left:0}.feature b{font-size:18px}.feature small{font-size:8px}
-      .foot{left:20px;right:20px;bottom:max(14px,env(safe-area-inset-bottom));font-size:8px}.foot .right{display:none}
+    html,body{margin:0;width:100%;height:100%;background:#050403;overflow:hidden}
+    body{min-height:100svh;font-family:Arial,sans-serif}
+    .stage{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden;background:#050403;isolation:isolate}
+    .stage::before{content:"";position:absolute;inset:-34px;z-index:-2;background:url('./under-construction-desktop.webp') center/cover no-repeat;filter:blur(24px) brightness(.42) saturate(1.08);transform:scale(1.08)}
+    .stage::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at center,transparent 42%,rgba(0,0,0,.42) 100%)}
+    picture{display:block;width:100%;height:100%;position:relative;z-index:1}
+    picture img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 16px 42px rgba(0,0,0,.48))}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media (max-width:900px),(orientation:portrait){
+      .stage::before{background-image:url('./under-construction-mobile.webp');filter:blur(22px) brightness(.36) saturate(1.05)}
+      picture img{object-fit:contain;object-position:center}
     }
-    @media (max-width:430px){main{padding-top:8svh}.copy{max-width:330px}h1{font-size:clamp(49px,15vw,66px)}.lead{font-size:13px}.features{transform:scale(.94);transform-origin:left top}}
-    @media (max-height:700px) and (orientation:landscape){header{height:64px}.brand img{width:38px;height:38px}main{height:calc(100svh - 64px);padding-top:20px;padding-bottom:46px}.copy{transform:scale(.88);transform-origin:left center}.foot{bottom:8px}}
+    @media (max-width:420px){.stage::before{inset:-24px}}
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="photo" aria-hidden="true"></div><div class="shade" aria-hidden="true"></div><div class="glow" aria-hidden="true"></div>
-    <header>
-      <div class="brand"><img src="./assets/logo-cn-round.png" alt=""><span><strong>BLACKGOLD</strong><em>Beauty Finds</em></span></div>
-      <div class="badge"><i></i><span>EXPERIÊNCIA EM CONSTRUÇÃO</span></div>
-    </header>
-    <main>
-      <section class="copy">
-        <div class="kicker">BELEZA · MODA · ACESSÓRIOS · ESTILO DE VIDA</div>
-        <h1>Em construção.<span>Voltamos em breve.</span></h1>
-        <p class="lead">Estamos preparando uma experiência BlackGold Beauty Finds mais elegante, responsiva e à altura da identidade premium da marca.</p>
-        <div class="rule"></div>
-        <div class="features">
-          <div class="feature"><b>◇</b><small>Mais beleza</small></div>
-          <div class="feature"><b>♢</b><small>Mais estilo</small></div>
-          <div class="feature"><b>♡</b><small>Inspiração</small></div>
-          <div class="feature"><b>♕</b><small>Sempre você</small></div>
-        </div>
-      </section>
-    </main>
-    <div class="foot"><div><strong>BlackGold Beauty Finds</strong> · CosaNostra BlackGold</div><div class="right">Curadoria feminina · padrão premium</div></div>
-  </div>
+  <main class="stage" aria-label="BlackGold Beauty Finds em construção">
+    <picture>
+      <source media="(max-width:900px), (orientation:portrait)" srcset="./under-construction-mobile.webp">
+      <img src="./under-construction-desktop.webp" alt="BlackGold Beauty Finds — Em construção. Voltamos em breve.">
+    </picture>
+    <h1 class="sr-only">BlackGold Beauty Finds — Em construção</h1>
+    <p class="sr-only">Voltamos em breve. Estamos preparando uma experiência premium para você.</p>
+  </main>
 </body>
 </html>
