@@ -3,6 +3,15 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
+/
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
+/index.html
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
+/hero-approved.webp
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
 /catalog.json
   Cache-Control: public, max-age=300
 
