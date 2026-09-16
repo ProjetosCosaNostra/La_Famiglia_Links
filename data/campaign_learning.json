@@ -34,7 +34,15 @@
     "po-facial-bruna-tavares-bt-skinpowder": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-16",
+      "last_score": {
+        "total": 3.355588,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores": {
       "impressions": 0,
@@ -65,7 +73,15 @@
     "gloss-fran-liphoney-mel": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-16",
+      "last_score": {
+        "total": 3.355764,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel": {
       "impressions": 0,
@@ -269,7 +285,15 @@
     "body-splash-my-sweet-delight-barbours-beauty-200ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-16",
+      "last_score": {
+        "total": 3.357347,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo": {
       "impressions": 0,
@@ -465,6 +489,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-15T17:02:51Z",
-  "last_campaign_id": "bg-20260915"
+  "updated_at": "2026-09-16T17:01:22Z",
+  "last_campaign_id": "bg-20260916"
 }
