@@ -17,7 +17,9 @@ for (const file of [
   'admin.html',
   'admin.js',
   'mercadolivre-callback.html',
-  '_headers'
+  '_headers',
+  'under-construction-desktop.webp',
+  'under-construction-mobile.webp'
 ]) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
