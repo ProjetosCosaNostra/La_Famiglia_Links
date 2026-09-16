@@ -17,15 +17,11 @@ for (const file of [
   'admin.html',
   'admin.js',
   'mercadolivre-callback.html',
-  '_headers',
-  'under-construction-desktop.webp',
-  'under-construction-mobile.webp'
+  '_headers'
 ]) {
   await fs.copyFile(path.join(here, file), path.join(out, file));
 }
 
-// V3 VISUAL: o arquivo publicado usa um nome de CSS novo para matar qualquer cache da V2.
-// A home continua isolada do renderer legado e do catálogo antigo.
 const publishedIndex = path.join(out, 'index.html');
 let html = await fs.readFile(publishedIndex, 'utf8');
 html = html
@@ -33,13 +29,19 @@ html = html
   .replace('<meta name="theme-color" content="#0b0907">', '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">\n  <meta http-equiv="Pragma" content="no-cache">\n  <meta http-equiv="Expires" content="0">\n  <meta name="theme-color" content="#0b0907">');
 await fs.writeFile(publishedIndex, html, 'utf8');
 
-/*
-  CLEAN REBUILD V3:
-  A home visual é independente do renderer legado e não carrega produtos.json na UI.
-  O catálogo real permanece disponível separadamente em catalog.json para backend/admin.
-*/
 await fs.cp(path.join(here, 'approved-home'), path.join(out, 'approved-home'), { recursive: true });
 await fs.copyFile(path.join(here, 'hero-approved.webp'), path.join(out, 'hero-approved.webp'));
+
+for (const asset of [
+  'logo-cn-round.png',
+  'logo-cn-square.png',
+  'loja-completa-hero-desktop.webp',
+  'loja-completa-hero-mobile.webp'
+]) {
+  const src = path.join(root, 'assets', asset);
+  const dest = path.join(out, 'assets', asset);
+  try { await fs.copyFile(src, dest); } catch {}
+}
 
 const productsRaw = JSON.parse(await fs.readFile(path.join(root, 'produtos.json'), 'utf8'));
 const activeProducts = (Array.isArray(productsRaw) ? productsRaw : productsRaw.products || []).filter(p => p && p.active !== false);
@@ -83,11 +85,5 @@ await fs.writeFile(path.join(out, 'daily-selection.json'), JSON.stringify({
 
 try { await fs.copyFile(path.join(root, 'ecosystem.json'), path.join(out, 'ecosystem.json')); }
 catch { await fs.writeFile(path.join(out, 'ecosystem.json'), JSON.stringify({}), 'utf8'); }
-
-for (const asset of ['logo-cn-round.png', 'logo-cn-square.png']) {
-  const src = path.join(root, 'assets', asset);
-  const dest = path.join(out, 'assets', asset);
-  try { await fs.copyFile(src, dest); } catch {}
-}
 
 console.log(`Cloudflare Pages V3 package ready: ${products.length} active products -> ${out}`);
