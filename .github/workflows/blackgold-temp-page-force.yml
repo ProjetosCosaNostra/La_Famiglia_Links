@@ -1,0 +1,99 @@
+name: BlackGold Temporary Page - Force Verify
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - blackgold-beauty-cloudflare
+    paths:
+      - '.github/workflows/blackgold-temp-page-force.yml'
+
+permissions:
+  contents: read
+
+env:
+  PROJECT_NAME: blackgold-beauty-finds-br
+  STORE_URL: https://blackgold-beauty-finds-br.pages.dev
+  WRANGLER_VERSION: 4.129.0
+  DESKTOP_SHA256: 0c89499d1bedf7c8b5e66b36d44b94a1092f3307ca9dbc32af04ab773a1b24fd
+  MOBILE_SHA256: 213c5444c00ad93c15f5e43a9ed67089ca69419ed8c365e6500a5538a612c094
+
+jobs:
+  deploy-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout production source
+        uses: actions/checkout@v4
+        with:
+          ref: blackgold-beauty-cloudflare
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Resolve Cloudflare production branch
+        id: project
+        shell: bash
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          test -n "$CF_TOKEN"
+          test -n "$CF_ACCOUNT"
+          curl -fsS \
+            -H "Authorization: Bearer ${CF_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/pages/projects/${PROJECT_NAME}" \
+            -o /tmp/project.json
+          node <<'NODE'
+          const fs = require('fs');
+          const body = JSON.parse(fs.readFileSync('/tmp/project.json','utf8'));
+          if (!body.success || !body.result) process.exit(2);
+          const branch = body.result.production_branch;
+          if (!branch) process.exit(3);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `production_branch=${branch}\n`);
+          console.log(`Production branch: ${branch}`);
+          NODE
+
+      - name: Build temporary page package
+        working-directory: cloudflare-beauty-finds
+        run: |
+          set -euo pipefail
+          node build.mjs
+          grep -F 'under-construction-desktop.webp?v=20260916-final' dist/index.html
+          grep -F 'under-construction-mobile.webp?v=20260916-final' dist/index.html
+          echo "${DESKTOP_SHA256}  dist/under-construction-desktop.webp" | sha256sum -c -
+          echo "${MOBILE_SHA256}  dist/under-construction-mobile.webp" | sha256sum -c -
+
+      - name: Deploy exact package to production
+        working-directory: cloudflare-beauty-finds
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PRODUCTION_BRANCH: ${{ steps.project.outputs.production_branch }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@${WRANGLER_VERSION} pages deploy dist \
+            --project-name="$PROJECT_NAME" \
+            --branch="$PRODUCTION_BRANCH" \
+            --commit-hash="$GITHUB_SHA" \
+            --commit-dirty=true
+
+      - name: Verify live production bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          sleep 10
+          stamp="${GITHUB_SHA}-$(date +%s)"
+          curl -fsSL -H 'Cache-Control: no-cache' "${STORE_URL}/?verify=${stamp}" -o /tmp/live-index.html
+          curl -fsSL -H 'Cache-Control: no-cache' "${STORE_URL}/under-construction-desktop.webp?verify=${stamp}" -o /tmp/live-desktop.webp
+          curl -fsSL -H 'Cache-Control: no-cache' "${STORE_URL}/under-construction-mobile.webp?verify=${stamp}" -o /tmp/live-mobile.webp
+          grep -F 'under-construction-desktop.webp?v=20260916-final' /tmp/live-index.html
+          grep -F 'under-construction-mobile.webp?v=20260916-final' /tmp/live-index.html
+          echo "${DESKTOP_SHA256}  /tmp/live-desktop.webp" | sha256sum -c -
+          echo "${MOBILE_SHA256}  /tmp/live-mobile.webp" | sha256sum -c -
+          echo 'LIVE_PRODUCTION_VERIFIED=YES'
