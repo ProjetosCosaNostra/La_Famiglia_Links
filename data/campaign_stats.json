@@ -1,1 +1,22 @@
-{"generated_at":"2026-09-16T17:01:22.105Z","window_days":90,"rows":[{"sku":"arezzo-cinto-fino-fivela-losango-preto","impressions":12,"clicks":0,"last_event_at":"2026-09-06 08:41:35"},{"sku":"bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de","impressions":12,"clicks":0,"last_event_at":"2026-09-06 08:41:35"},{"sku":"o-boticario-floratta-my-blue-colonia-75ml","impressions":12,"clicks":0,"last_event_at":"2026-09-06 08:41:35"}],"channels":[{"source":"daily-selection","impressions":36,"clicks":0,"products":3,"last_event_at":"2026-09-06 08:41:35"}],"product_channels":[{"sku":"o-boticario-floratta-my-blue-colonia-75ml","source":"daily-selection","impressions":12,"clicks":0,"last_event_at":"2026-09-06 08:41:35"},{"sku":"bolsa-feminina-baguete-corrente-immateriale-5j5pkg-24de","source":"daily-selection","impressions":12,"clicks":0,"last_event_at":"2026-09-06 08:41:35"},{"sku":"arezzo-cinto-fino-fivela-losango-preto","source":"daily-selection","impressions":12,"clicks":0,"last_event_at":"2026-09-06 08:41:35"}]}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050403">
+<title>BlackGold Beauty Finds — Em construção</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#050403;overflow:hidden}
+body,picture{width:100vw;height:100dvh;display:block}
+img{display:block;width:100vw;height:100dvh;object-fit:cover;object-position:center center}
+@media(max-width:768px){img{width:100vw;height:100dvh;object-fit:cover;object-position:center center}}
+</style>
+</head>
+<body>
+<picture>
+<source media="(max-width: 768px)" srcset="./mobile.png?v=20260916-fullscreen">
+<img src="./desktop.png?v=20260916-fullscreen" alt="BlackGold Beauty Finds — Em construção. Voltamos em breve.">
+</picture>
+</body>
+</html>

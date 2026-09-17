@@ -166,7 +166,15 @@
     "nivea-hidratante-labial-morango-shine-4-8g": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-17",
+      "last_score": {
+        "total": 3.344393,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "fixador-de-maquiagem-ruby-rose-150ml-hb312": {
       "impressions": 0,
@@ -197,7 +205,15 @@
     "kit-unha-postica-francesinha-pe-nude-quadrada": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-17",
+      "last_score": {
+        "total": 3.324756,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz": {
       "impressions": 0,
@@ -355,7 +371,15 @@
     "limpador-eletrico-pinceis-maquiagem-automatico-usb": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-17",
+      "last_score": {
+        "total": 3.331607,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "escova-oval-secadora-taiff-easy-lilas-1200w": {
       "impressions": 0,
@@ -489,6 +513,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-16T17:01:22Z",
-  "last_campaign_id": "bg-20260916"
+  "updated_at": "2026-09-17T17:02:58Z",
+  "last_campaign_id": "bg-20260917"
 }
