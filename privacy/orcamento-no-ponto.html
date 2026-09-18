@@ -6,41 +6,148 @@
 <title>Política de Privacidade — Orçamento no Ponto</title>
 <meta name="description" content="Política de Privacidade do aplicativo Orçamento no Ponto.">
 <style>
-:root{--gold:#f5c451;--text:#f4f4f4;--muted:#b9b9b9;--line:#493817}
+:root{--gold:#f5c451;--text:#f4f4f4;--muted:#b9b9b9;--line:#493817;--panel:rgba(17,19,21,.94)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#050607,#0b0c0d);color:var(--text);font:16px/1.65 Arial,sans-serif}
 main{max-width:900px;margin:auto;padding:48px 20px 72px}.brand{color:var(--gold);font-weight:800;letter-spacing:.06em}
 h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;margin:.3rem 0 1rem}h2{color:var(--gold);font-size:1.25rem;margin-top:2rem}
-.lead{font-size:1.08rem;color:#ddd}.card{background:rgba(17,19,21,.94);border:1px solid var(--line);border-radius:18px;padding:26px;margin-top:24px}
+.lead{font-size:1.08rem;color:#ddd}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;margin-top:24px}
 .note{border-left:4px solid var(--gold);padding-left:16px;color:#ddd}a{color:var(--gold)}footer{margin-top:36px;color:var(--muted);font-size:.9rem}
+.langbar{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.langbar button{border:1px solid var(--line);background:#111315;color:var(--text);padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:700}
+.langbar button.active{background:var(--gold);color:#111;border-color:var(--gold)}[data-lang]{display:none}[data-lang].active{display:block}
+code{color:#ffe29a}
 </style>
 </head>
 <body><main>
 <div class="brand">ORÇAMENTO NO PONTO</div>
+<div class="langbar" aria-label="Language">
+<button type="button" data-target="pt-BR" class="active">Português</button>
+<button type="button" data-target="en">English</button>
+<button type="button" data-target="es">Español</button>
+</div>
+
+<section data-lang="pt-BR" class="active">
 <h1>Política de Privacidade</h1>
-<p class="lead">Esta política explica como o aplicativo trata os dados usados para criar e organizar orçamentos.</p>
+<p class="lead">Esta política explica como o aplicativo trata os dados usados para criar, organizar e compartilhar orçamentos.</p>
 <div class="card">
 <h2>1. Dados armazenados no dispositivo</h2>
 <p>Clientes, catálogo, orçamentos, itens dos orçamentos, dados da empresa e chave PIX são armazenados localmente no dispositivo do usuário.</p>
-<h2>2. Coleta, anúncios e rastreamento</h2>
-<p>A versão atual do aplicativo não exige conta, não inclui anúncios, não utiliza analytics e não utiliza SDKs de rastreamento para enviar os dados operacionais do usuário a servidores próprios.</p>
-<h2>3. PDFs, backups e compartilhamento</h2>
+<h2>2. Conexão com a internet</h2>
+<p>O aplicativo usa conexão com a internet apenas para recursos que dependem dela, incluindo Google Play Billing, abertura de links externos e sincronização do manifesto público do Ecossistema BlackGold.</p>
+<p>A sincronização do Ecossistema baixa uma lista pública de links oficiais por HTTPS e valida sua integridade. Ela não envia clientes, orçamentos, catálogo, dados da empresa ou chave PIX para servidores próprios.</p>
+<h2>3. Compras pela Google Play</h2>
+<p>Quando o usuário consulta, compra ou restaura o PRO vitalício, o aplicativo utiliza o Google Play Billing. O processamento da compra e os dados relacionados à conta/pagamento são tratados pela Google conforme as políticas da Google Play. O Orçamento no Ponto não recebe dados de cartão.</p>
+<h2>4. Coleta, anúncios e rastreamento</h2>
+<p>A versão atual não inclui anúncios e não utiliza analytics ou SDKs próprios de rastreamento para enviar dados operacionais do usuário a servidores próprios.</p>
+<h2>5. PDFs, backups e compartilhamento</h2>
 <p>PDFs e arquivos de backup são criados somente quando o usuário solicita a ação. O usuário escolhe onde salvar ou com qual aplicativo compartilhar esses arquivos.</p>
-<h2>4. PIX</h2>
+<h2>6. PIX</h2>
 <p>A chave PIX e os demais dados de cobrança cadastrados pelo usuário permanecem no dispositivo e podem ser inseridos nos documentos ou QR Codes gerados pelo próprio aplicativo.</p>
-<h2>5. Links e aplicativos externos</h2>
+<h2>7. Links e aplicativos externos</h2>
 <p>O aplicativo pode abrir links do Ecossistema BlackGold, páginas externas, aplicativo de e-mail ou o menu de compartilhamento do Android. A partir desse momento, o tratamento de dados é regido pelas políticas do serviço externo escolhido pelo usuário.</p>
-<h2>6. Segurança</h2>
-<p class="note">Como os dados permanecem localmente, recomendamos manter bloqueio de tela ativo, dispositivo atualizado e backups periódicos dos dados importantes.</p>
+<h2>8. Segurança</h2>
+<p class="note">Como os dados operacionais permanecem localmente, recomendamos manter bloqueio de tela ativo, dispositivo atualizado e backups periódicos dos dados importantes.</p>
 </div>
 <div class="card">
-<h2>7. Exclusão e controle dos dados</h2>
+<h2>9. Exclusão e controle dos dados</h2>
 <p>O usuário pode editar ou excluir registros dentro do aplicativo. A remoção do aplicativo também remove os dados locais associados ao app, salvo o que o próprio usuário tenha exportado para outro local.</p>
-<h2>8. Crianças</h2>
+<h2>10. Crianças</h2>
 <p>O Orçamento no Ponto é uma ferramenta de produtividade voltada a profissionais e negócios e não é direcionado especificamente a crianças.</p>
-<h2>9. Alterações nesta política</h2>
+<h2>11. Alterações nesta política</h2>
 <p>Esta política poderá ser atualizada quando houver mudanças relevantes no aplicativo. A data de atualização será informada nesta página e, quando necessário, no próprio aplicativo.</p>
-<h2>10. Contato</h2>
+<h2>12. Contato</h2>
 <p>Dúvidas sobre privacidade podem ser enviadas para <a href="mailto:projetoscosanostra@gmail.com">projetoscosanostra@gmail.com</a>.</p>
 </div>
 <footer><p>Última atualização: 18 de setembro de 2026.</p><p>Orçamento no Ponto — Ecossistema BlackGold / La Famiglia PlayWorks.</p></footer>
+</section>
+
+<section data-lang="en">
+<h1>Privacy Policy</h1>
+<p class="lead">This policy explains how the app handles data used to create, organize and share quotes.</p>
+<div class="card">
+<h2>1. Data stored on the device</h2>
+<p>Clients, catalog, quotes, quote items, business data and PIX key are stored locally on the user's device.</p>
+<h2>2. Internet connection</h2>
+<p>The app uses an internet connection only for features that require it, including Google Play Billing, external links and synchronization of the public BlackGold Ecosystem manifest.</p>
+<p>The Ecosystem sync downloads a public list of official links over HTTPS and validates its integrity. It does not send clients, quotes, catalog, business data or PIX keys to our own servers.</p>
+<h2>3. Google Play purchases</h2>
+<p>When the user checks, buys or restores lifetime PRO, the app uses Google Play Billing. Purchase processing and account/payment-related data are handled by Google under Google Play policies. Orçamento no Ponto does not receive card details.</p>
+<h2>4. Collection, ads and tracking</h2>
+<p>The current version does not include ads and does not use first-party analytics or tracking SDKs to send the user's operational data to our own servers.</p>
+<h2>5. PDFs, backups and sharing</h2>
+<p>PDFs and backup files are created only when requested by the user. The user chooses where to save them or which app to use for sharing.</p>
+<h2>6. PIX</h2>
+<p>The PIX key and billing details entered by the user remain on the device and may be inserted into documents or QR Codes generated by the app.</p>
+<h2>7. External links and apps</h2>
+<p>The app may open BlackGold Ecosystem links, external pages, an email app or Android's share sheet. From that point, data handling is governed by the policy of the external service selected by the user.</p>
+<h2>8. Security</h2>
+<p class="note">Because operational data remains local, we recommend keeping screen lock enabled, the device updated and important data backed up periodically.</p>
+</div>
+<div class="card">
+<h2>9. Data deletion and control</h2>
+<p>Users can edit or delete records inside the app. Uninstalling the app also removes the app's local data, except for files the user has exported elsewhere.</p>
+<h2>10. Children</h2>
+<p>Orçamento no Ponto is a productivity tool for professionals and businesses and is not specifically directed to children.</p>
+<h2>11. Changes to this policy</h2>
+<p>This policy may be updated when relevant app changes occur. The update date will be shown on this page and, when necessary, in the app.</p>
+<h2>12. Contact</h2>
+<p>Privacy questions can be sent to <a href="mailto:projetoscosanostra@gmail.com">projetoscosanostra@gmail.com</a>.</p>
+</div>
+<footer><p>Last updated: September 18, 2026.</p><p>Orçamento no Ponto — BlackGold Ecosystem / La Famiglia PlayWorks.</p></footer>
+</section>
+
+<section data-lang="es">
+<h1>Política de Privacidad</h1>
+<p class="lead">Esta política explica cómo la aplicación trata los datos usados para crear, organizar y compartir presupuestos.</p>
+<div class="card">
+<h2>1. Datos almacenados en el dispositivo</h2>
+<p>Clientes, catálogo, presupuestos, artículos, datos de la empresa y clave PIX se almacenan localmente en el dispositivo del usuario.</p>
+<h2>2. Conexión a internet</h2>
+<p>La aplicación usa internet solo para funciones que lo requieren, incluido Google Play Billing, enlaces externos y sincronización del manifiesto público del Ecosistema BlackGold.</p>
+<p>La sincronización descarga por HTTPS una lista pública de enlaces oficiales y valida su integridad. No envía clientes, presupuestos, catálogo, datos de la empresa ni claves PIX a servidores propios.</p>
+<h2>3. Compras por Google Play</h2>
+<p>Cuando el usuario consulta, compra o restaura PRO de por vida, la aplicación usa Google Play Billing. El procesamiento de la compra y los datos relacionados con la cuenta/pago son tratados por Google conforme a las políticas de Google Play. Orçamento no Ponto no recibe datos de tarjeta.</p>
+<h2>4. Recopilación, anuncios y seguimiento</h2>
+<p>La versión actual no incluye anuncios y no utiliza analytics propios ni SDKs de seguimiento para enviar datos operativos del usuario a servidores propios.</p>
+<h2>5. PDF, copias de seguridad y uso compartido</h2>
+<p>Los PDF y archivos de copia de seguridad se crean únicamente cuando el usuario solicita la acción. El usuario elige dónde guardarlos o con qué aplicación compartirlos.</p>
+<h2>6. PIX</h2>
+<p>La clave PIX y otros datos de cobro ingresados por el usuario permanecen en el dispositivo y pueden insertarse en documentos o códigos QR generados por la aplicación.</p>
+<h2>7. Enlaces y aplicaciones externas</h2>
+<p>La aplicación puede abrir enlaces del Ecosistema BlackGold, páginas externas, una aplicación de correo o el menú de compartir de Android. Desde ese momento, el tratamiento de datos se rige por la política del servicio externo elegido por el usuario.</p>
+<h2>8. Seguridad</h2>
+<p class="note">Como los datos operativos permanecen localmente, recomendamos mantener activo el bloqueo de pantalla, el dispositivo actualizado y copias de seguridad periódicas.</p>
+</div>
+<div class="card">
+<h2>9. Eliminación y control de datos</h2>
+<p>El usuario puede editar o eliminar registros dentro de la aplicación. Desinstalar la aplicación también elimina los datos locales asociados, salvo los archivos que el usuario haya exportado a otro lugar.</p>
+<h2>10. Niños</h2>
+<p>Orçamento no Ponto es una herramienta de productividad para profesionales y negocios y no está dirigida específicamente a niños.</p>
+<h2>11. Cambios en esta política</h2>
+<p>Esta política puede actualizarse cuando haya cambios relevantes en la aplicación. La fecha de actualización se mostrará en esta página y, cuando sea necesario, en la aplicación.</p>
+<h2>12. Contacto</h2>
+<p>Las consultas sobre privacidad pueden enviarse a <a href="mailto:projetoscosanostra@gmail.com">projetoscosanostra@gmail.com</a>.</p>
+</div>
+<footer><p>Última actualización: 18 de septiembre de 2026.</p><p>Orçamento no Ponto — Ecosistema BlackGold / La Famiglia PlayWorks.</p></footer>
+</section>
+
+<script>
+const buttons=[...document.querySelectorAll('[data-target]')];
+const sections=[...document.querySelectorAll('[data-lang]')];
+function showLang(lang){
+  sections.forEach(s=>s.classList.toggle('active',s.dataset.lang===lang));
+  buttons.forEach(b=>b.classList.toggle('active',b.dataset.target===lang));
+  document.documentElement.lang=lang;
+  try{localStorage.setItem('onp_privacy_lang',lang)}catch(e){}
+}
+buttons.forEach(b=>b.addEventListener('click',()=>showLang(b.dataset.target)));
+let initial='pt-BR';
+try{
+  const saved=localStorage.getItem('onp_privacy_lang');
+  const nav=(navigator.language||'').toLowerCase();
+  if(saved) initial=saved;
+  else if(nav.startsWith('es')) initial='es';
+  else if(nav.startsWith('en')) initial='en';
+}catch(e){}
+showLang(initial);
+</script>
 </main></body></html>
