@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-18T16:23:35Z
-Itens pendentes: 6
-SKUs únicos: 6
-Prioridade alta: 6
+Atualizado em: 2026-09-18T20:53:14Z
+Itens pendentes: 7
+SKUs únicos: 7
+Prioridade alta: 7
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 6
+- review_only_storefront: 7
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 6
+- trocar_link: 7
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 6
+- storefront_social_lists_invalid: 7
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-18T16:17:34Z
+Quando: 2026-09-18T20:48:42Z
 Issue: #165
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
 SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (14x /lists, 0x listing)
+Memória operacional: histórico recorrente (15x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
 open_url: https://meli.la/22qx74W
 checked_url: https://meli.la/22qx74W
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
 
 [ALTA] review_only_storefront
-Quando: 2026-09-18T16:17:34Z
+Quando: 2026-09-18T20:48:42Z
 Issue: #23
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
 SKU: amazon-fire-tv-stick-4k-wifi6
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (17x /lists, 1x listing)
+Memória operacional: histórico recorrente (18x /lists, 1x listing)
 Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
 open_url: https://mercadolivre.com/sec/1nMqFbz
 checked_url: https://mercadolivre.com/sec/1nMqFbz
@@ -62,7 +62,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
 
 [ALTA] review_only_storefront
-Quando: 2026-09-18T16:17:34Z
+Quando: 2026-09-18T20:48:42Z
+Issue: #114
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/114
+SKU: ps5-slim-premium-astro-bot-gran-turismo-7
+Título: 🎮 PS5 Slim Premium — Pacote com Astro Bot e Gran Turismo 7
+ID ML: 5J5PKG-9TK6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
+Badges: Achados do Dia, PS5 Slim, PlayStation 5, Astro Bot, Gran Turismo 7, Console, Gamer, Games
+open_url: https://meli.la/2LTPR6d
+checked_url: https://meli.la/2LTPR6d
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9TK6&tid=d3a7c34e-769e-458c-9c61-58a2b139ba4b
+
+[ALTA] review_only_storefront
+Quando: 2026-09-18T20:48:42Z
 Issue: #180
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/180
 SKU: fixador-de-maquiagem-ruby-rose-150ml-hb312
@@ -73,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (36x /lists, 0x listing)
+Memória operacional: histórico recorrente (37x /lists, 0x listing)
 Badges: Achados do Dia, Ruby Rose, Fixador, Maquiagem, 150ml, Feminino
 open_url: https://meli.la/1a6HzXw
 checked_url: https://meli.la/1a6HzXw
@@ -81,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-9E78
 
 [ALTA] review_only_storefront
-Quando: 2026-09-18T16:17:34Z
+Quando: 2026-09-18T20:48:42Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -92,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (130x /lists, 0x listing)
+Memória operacional: histórico recorrente (131x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
@@ -100,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
 
 [ALTA] review_only_storefront
-Quando: 2026-09-18T16:17:34Z
+Quando: 2026-09-18T20:48:42Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -111,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (21x /lists, 0x listing)
+Memória operacional: histórico recorrente (22x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
@@ -119,7 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
 
 [ALTA] review_only_storefront
-Quando: 2026-09-18T16:17:34Z
+Quando: 2026-09-18T20:48:42Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -130,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (9x /lists, 0x listing)
+Memória operacional: histórico recorrente (10x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
