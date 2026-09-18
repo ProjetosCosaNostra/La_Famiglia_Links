@@ -16,7 +16,15 @@
     "gloss-labial-fantasyland-disney-100-bruna-tavares": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-18",
+      "last_score": {
+        "total": 3.355047,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake": {
       "impressions": 0,
@@ -99,7 +107,15 @@
     "escova-secadora-britania-bec07r-4em1-1300w-rosa": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-18",
+      "last_score": {
+        "total": 3.351332,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "bt-coca-cola-blush-stick-bruna-tavares-intense-cherry": {
       "impressions": 0,
@@ -130,7 +146,15 @@
     "ice-creamy-lip-balm-mari-maria-vanilla-10ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-18",
+      "last_score": {
+        "total": 3.314011,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "love-kit-gloss-labial-coracao-lapis-volume-rosada": {
       "impressions": 0,
@@ -513,6 +537,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-17T17:02:58Z",
-  "last_campaign_id": "bg-20260917"
+  "updated_at": "2026-09-18T16:27:13Z",
+  "last_campaign_id": "bg-20260918"
 }
