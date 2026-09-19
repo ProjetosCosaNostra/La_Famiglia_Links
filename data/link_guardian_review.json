@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-19T10:50:05Z",
-  "total_items": 6,
+  "updated_at": "2026-09-19T15:52:06Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 6,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 6
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 6
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 6
+      "trocar_link": 5
     },
-    "high_priority": 6
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-09-19T10:45:49Z",
+      "happened_at": "2026-09-19T15:47:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (18x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-19T10:45:49Z",
+      "happened_at": "2026-09-19T15:47:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (20x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (21x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-19T10:45:49Z",
+      "happened_at": "2026-09-19T15:47:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (39x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (40x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-19T10:45:49Z",
+      "happened_at": "2026-09-19T15:47:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -163,7 +163,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (133x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (134x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,52 +192,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-19T10:45:49Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 224,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/224",
-      "issue_title": "Depilador IPL Basike Sensação Gelo — 9 Níveis",
-      "sku": "depilador-ipl-basike-sensacao-gelo-9-niveis",
-      "title": "Depilador IPL Basike Sensação Gelo — 9 Níveis e 1 Milhão de Disparos",
-      "id_busca": "5J5PKG-ECCG",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2YKAybJ",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2YKAybJ",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF4gOCSptcr%2BrtM4qm2gU39LmAGHC%2FqhPozeXVJjOqR8WB1YEr3ysTaZ1CzCUaVhKDrw9g1ZyKD5cGpnA2%2BIb2hMBUhD0TYrMpOdQQE3pT3Wx%2F9Pz7tkFjBxWT2cV4%2B1c6fITvdpbS6xylaan7ib%2FoJo4TMs%2FhL2Vr9Drj5YWhT5ZF1asLrYJPUeL9l%2Bv0yb%2F6IeXik%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-ECCG",
-      "short_url": "https://meli.la/2YKAybJ",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BF4gOCSptcr%2BrtM4qm2gU39LmAGHC%2FqhPozeXVJjOqR8WB1YEr3ysTaZ1CzCUaVhKDrw9g1ZyKD5cGpnA2%2BIb2hMBUhD0TYrMpOdQQE3pT3Wx%2F9Pz7tkFjBxWT2cV4%2B1c6fITvdpbS6xylaan7ib%2FoJo4TMs%2FhL2Vr9Drj5YWhT5ZF1asLrYJPUeL9l%2Bv0yb%2F6IeXik%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Depilador IPL",
-        "Basike",
-        "Luz Pulsada",
-        "Sensação Gelo",
-        "9 Níveis",
-        "1 Milhão de Disparos",
-        "Feminino"
-      ]
-    },
-    {
-      "happened_at": "2026-09-19T10:45:49Z",
+      "happened_at": "2026-09-19T15:47:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -253,7 +208,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
