@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-18T20:53:14Z",
-  "total_items": 7,
+  "updated_at": "2026-09-19T04:30:53Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 5
     },
-    "high_priority": 7
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-09-18T20:48:42Z",
+      "happened_at": "2026-09-19T04:24:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (15x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-18T20:48:42Z",
+      "happened_at": "2026-09-19T04:24:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (18x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (19x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,52 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-18T20:48:42Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 114,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/114",
-      "issue_title": "[CMS] Produto: PS5 Slim Premium com Astro Bot e Gran Turismo 7 SKU (único).",
-      "sku": "ps5-slim-premium-astro-bot-gran-turismo-7",
-      "title": "🎮 PS5 Slim Premium — Pacote com Astro Bot e Gran Turismo 7",
-      "id_busca": "5J5PKG-9TK6",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2LTPR6d",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2LTPR6d",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-9TK6&tid=d3a7c34e-769e-458c-9c61-58a2b139ba4b",
-      "short_url": "https://meli.la/2LTPR6d",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLWRCAnZSTy6%2FTkenXSYKQa8YgWCXpvBdjyNlVLAxd8Qf8y6AxPx60mkjOv7%2BqsYs56hV2fSMKC6jGmwfA4QerrDoXalnvV%2BOawoL671QksNN%2BlABfBA3laZXOxKCYDy%2BBaC8aOCF5afyab3pAi%2B%2BPb1aEWCIjzCq%2BOXvKrZV8SDklpOxwsYLSy8HoRU1e4GaTVeFhs%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "PS5 Slim",
-        "PlayStation 5",
-        "Astro Bot",
-        "Gran Turismo 7",
-        "Console",
-        "Gamer",
-        "Games"
-      ]
-    },
-    {
-      "happened_at": "2026-09-18T20:48:42Z",
+      "happened_at": "2026-09-19T04:24:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (37x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (38x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +147,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-18T20:48:42Z",
+      "happened_at": "2026-09-19T04:24:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +163,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (131x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (132x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -237,52 +192,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-18T20:48:42Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 215,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215",
-      "issue_title": "💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial",
-      "sku": "depilador-batom-portatil-facial-branco-rose-gold",
-      "title": "💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial",
-      "id_busca": "5J5PKG-W8RV",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1EjNsoE",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1EjNsoE",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMsNkBf8nwX1bXfBSZ28M1NqX4JZYXvFX6eB8HSRNuSHqOvf2%2Bnn%2FfX4Ee35KBgmhhgOEIqplEPzLoNI65ROITkc6mN%2BwE3HImyWYHM0Q6BlTz9dC9LYzKYbpCA%2Fhmb%2FqfSenXiXs3lNECAr%2B4DladEscxH6nkoAcLhGuSi9HyHLisunl%2FUZK6OLmINw1cXXnz9KWg%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-23E9",
-      "short_url": "https://meli.la/2jRXJqQ",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMsNkBf8nwX1bXfBSZ28M1NqX4JZYXvFX6eB8HSRNuSHqOvf2%2Bnn%2FfX4Ee35KBgmhhgOEIqplEPzLoNI65ROITkc6mN%2BwE3HImyWYHM0Q6BlTz9dC9LYzKYbpCA%2Fhmb%2FqfSenXiXs3lNECAr%2B4DladEscxH6nkoAcLhGuSi9HyHLisunl%2FUZK6OLmINw1cXXnz9KWg%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Depilador Facial",
-        "Aparador Facial",
-        "Depilador Batom",
-        "Beleza Feminina",
-        "Autocuidado",
-        "Cuidados com a Pele",
-        "Buço"
-      ]
-    },
-    {
-      "happened_at": "2026-09-18T20:48:42Z",
+      "happened_at": "2026-09-19T04:24:24Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -298,7 +208,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (10x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (11x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
