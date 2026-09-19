@@ -1,19 +1,19 @@
 {
-  "campaign_id": "bg-20260918",
-  "date": "2026-09-18",
+  "campaign_id": "bg-20260919",
+  "date": "2026-09-19",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
-      "title": "Gloss Labial Fantasyland Disney 100 Anos - Bruna Tavares",
-      "category": "Maquiagem",
+      "sku": "serum-principia-niacinamida-zinco-pca-30ml",
+      "title": "Sérum Principia 10% Niacinamida + 1% Zinco PCA 30ml",
+      "category": "Skincare",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/gloss-labial-fantasyland-disney-100-bruna-tavares.webp",
-      "affiliate_url": "https://meli.la/2Fomd6F",
+      "image": "assets/produtos-card/serum-principia-niacinamida-zinco-pca-30ml.webp",
+      "affiliate_url": "https://meli.la/2f6UGXq",
       "score": {
-        "total": 3.355047,
+        "total": 3.353445,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 1.0,
@@ -22,15 +22,15 @@
     },
     {
       "position": 2,
-      "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
-      "title": "Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)",
-      "category": "Cabelo",
+      "sku": "love-kit-gloss-labial-coracao-lapis-volume-rosada",
+      "title": "Love Kit Gloss Labial Coração Lápis Volume Rosada",
+      "category": "Maquiagem",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/escova-secadora-britania-bec07r-4em1-1300w-rosa.webp",
-      "affiliate_url": "https://meli.la/1Vd3P8y",
+      "image": "assets/produtos-card/love-kit-gloss-labial-coracao-lapis-volume-rosada.webp",
+      "affiliate_url": "https://meli.la/1b5R9Wd",
       "score": {
-        "total": 3.351332,
+        "total": 3.336072,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 1.0,
@@ -39,19 +39,19 @@
     },
     {
       "position": 3,
-      "sku": "ice-creamy-lip-balm-mari-maria-vanilla-10ml",
-      "title": "Lip Balm Ice Creamy Baunilha 10g - Mari Maria Makeup",
-      "category": "Skincare",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/ice-creamy-lip-balm-mari-maria-vanilla-10ml.webp",
-      "affiliate_url": "https://meli.la/1npmMX6",
+      "sku": "depilador-ipl-basike-sensacao-gelo-9-niveis",
+      "title": "Depilador IPL Basike Sensação Gelo — 9 Níveis e 1 Milhão de Disparos",
+      "category": "Beleza",
+      "description": "Preço conferido no Mercado Livre em 17/05/2026. Pode mudar sem aviso.",
+      "price": "R$ 271,70",
+      "image": "assets/produtos-card/depilador-ipl-basike-sensacao-gelo-9-niveis.webp",
+      "affiliate_url": "https://meli.la/2YKAybJ",
       "score": {
-        "total": 3.314011,
+        "total": 3.149388,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
-        "quality": 0.375
+        "freshness": 0.619048,
+        "quality": 0.615
       }
     }
   ]

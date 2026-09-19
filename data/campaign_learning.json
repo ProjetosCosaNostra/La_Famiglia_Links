@@ -159,7 +159,15 @@
     "love-kit-gloss-labial-coracao-lapis-volume-rosada": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-19",
+      "last_score": {
+        "total": 3.336072,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "batom-hidratante-sace-lady-a03-terre-rouge": {
       "impressions": 0,
@@ -268,7 +276,15 @@
     "serum-principia-niacinamida-zinco-pca-30ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 0
+      "selection_count": 1,
+      "last_selected": "2026-09-19",
+      "last_score": {
+        "total": 3.353445,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     },
     "gel-para-sobrancelhas-brow-rise-ruby-rose": {
       "impressions": 0,
@@ -421,13 +437,13 @@
     "depilador-ipl-basike-sensacao-gelo-9-niveis": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-06",
+      "selection_count": 2,
+      "last_selected": "2026-09-19",
       "last_score": {
-        "total": 3.54645,
+        "total": 3.149388,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.619048,
         "quality": 0.615
       }
     },
@@ -537,6 +553,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-18T16:27:13Z",
-  "last_campaign_id": "bg-20260918"
+  "updated_at": "2026-09-19T15:54:53Z",
+  "last_campaign_id": "bg-20260919"
 }
