@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - blackgold-beauty-finds-novo-authority
+      - blackgold-beauty-finds-work-r10-20260920
     paths:
       - "blackgold-beauty-finds-novo/**"
       - ".github/workflows/blackgold-authority-gate.yml"
