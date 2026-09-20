@@ -1,13 +1,16 @@
 {
   "name": "blackgold-beauty-finds-novo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "wrangler pages dev . --port 8768 --persist-to .wrangler/state",
     "db:init": "wrangler d1 migrations apply blackgold-beauty-finds-novo --local",
-    "verify": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./tools/verify.ps1"
+    "verify": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./tools/verify.ps1",
+    "test:backend": "node tools/backend_flow.mjs",
+    "test:admin-ui": "node tools/admin_ui_flow.mjs"
   },
   "devDependencies": {
+    "puppeteer-core": "^24.16.0",
     "wrangler": "^4.38.0"
   }
 }
