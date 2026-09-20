@@ -174,7 +174,7 @@ async function openHistory(productId){
     $("#historyList").innerHTML=d.revisions.map(r=>
       '<div class="history-item">'+
         '<div><b>'+esc(r.snapshot?.title||"Produto")+'</b><br><small>'+esc(r.snapshot?.status||"draft")+" · "+esc(r.reason)+" · "+esc(formatDate(r.createdAt))+'</small></div>'+
-        '<button type="button" data-rollback="'+esc(r.id)+'">Restaurar</button>'+
+        '<button type="button" data-rollback="'+esc(r.id)+'" data-revision-status="'+esc(r.snapshot?.status||"draft")+'">Restaurar</button>'+
       '</div>'
     ).join("");
     $$("[data-rollback]").forEach(b=>b.onclick=()=>rollbackRevision(b.dataset.rollback,b));
