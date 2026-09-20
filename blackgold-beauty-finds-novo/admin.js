@@ -207,6 +207,55 @@ $("#historyClose").onclick=()=>{
   $("#historyModal").setAttribute("aria-hidden","true");
 };
 
+async function openTrash(){
+  $("#trashList").innerHTML="<p>Carregando…</p>";
+  $("#trashModal").classList.add("open");
+  $("#trashModal").setAttribute("aria-hidden","false");
+  try{
+    const d=await api("/api/admin/trash?limit=50");
+    if(!d.items?.length){
+      $("#trashList").innerHTML="<p>A lixeira está vazia.</p>";
+      return;
+    }
+    $("#trashList").innerHTML=d.items.map(item=>
+      '<div class="history-item">'+
+        '<div><b>'+esc(item.title||"Produto")+'</b><br><small>'+
+          esc(item.status||"draft")+" · "+esc(item.category||"sem categoria")+" · "+esc(formatDate(item.deletedAt))+
+          (item.imageArchived?" · imagem arquivada":"")+
+        '</small></div>'+
+        '<button type="button" data-trash-restore="'+esc(item.revisionId)+'">Restaurar</button>'+
+      '</div>'
+    ).join("");
+    $("[data-trash-restore]").forEach(b=>b.onclick=()=>restoreTrashRevision(b.dataset.trashRestore,b));
+  }catch(e){
+    $("#trashList").innerHTML='<p class="status error">'+esc(e.message)+'</p>';
+  }
+}
+
+async function restoreTrashRevision(revisionId,button){
+  if(!confirm("Restaurar este produto excluído?"))return;
+  button.disabled=true;
+  try{
+    const d=await api("/api/admin/revisions",{
+      method:"POST",
+      body:JSON.stringify({revisionId})
+    });
+    await load();
+    await openTrash();
+    if(d.warning)alert(d.warning);
+  }catch(e){
+    alert(e.message);
+  }finally{
+    button.disabled=false;
+  }
+}
+
+$("#trash").onclick=()=>openTrash();
+$("#trashClose").onclick=()=>{
+  $("#trashModal").classList.remove("open");
+  $("#trashModal").setAttribute("aria-hidden","true");
+};
+
 async function cleanupPendingUpload(){
   if(!state.pendingUploadKey)return;
   const key=state.pendingUploadKey;
@@ -258,7 +307,7 @@ async function toggle(id,button){
 }
 
 async function del(id,button){
-  if(!confirm("Excluir este produto? A imagem enviada também será removida quando não estiver em uso."))return;
+  if(!confirm("Excluir este produto e movê-lo para a lixeira recuperável?"))return;
   button.disabled=true;
   try{
     await api("/api/admin/products?id="+encodeURIComponent(id),{method:"DELETE"});
@@ -349,6 +398,11 @@ $("#form").onsubmit=async e=>{
 
 document.addEventListener("keydown",e=>{
   if(e.key!=="Escape")return;
+  if($("#trashModal").classList.contains("open")){
+    $("#trashModal").classList.remove("open");
+    $("#trashModal").setAttribute("aria-hidden","true");
+    return;
+  }
   if($("#historyModal").classList.contains("open")){
     $("#historyModal").classList.remove("open");
     $("#historyModal").setAttribute("aria-hidden","true");
