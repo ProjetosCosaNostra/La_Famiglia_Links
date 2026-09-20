@@ -40,6 +40,68 @@ async function mediaExists(bucket,key){
   return Boolean(await bucket.head(key).catch(()=>null));
 }
 
+function extFromKey(key=""){
+  const m=String(key).match(/\.([a-z0-9]{2,8})$/i);
+  return m?"."+m[1].toLowerCase():"";
+}
+
+async function archiveMediaForRevision(context,row,revisionId){
+  const key=String(row?.image_key||"").trim();
+  if(!key||!revisionId)return "";
+  const object=await context.env.BG_MEDIA.get(key);
+  if(!object)throw new Error("media_archive_source_missing:"+key);
+  const archiveKey="revision-archive/"+row.id+"/"+revisionId+extFromKey(key);
+  const bytes=await object.arrayBuffer();
+  const contentType=object.httpMetadata?.contentType||"application/octet-stream";
+  await context.env.BG_MEDIA.put(archiveKey,bytes,{
+    httpMetadata:{contentType,cacheControl:"private, max-age=0, no-store"},
+    customMetadata:{
+      source:"revision-archive",
+      productId:String(row.id),
+      revisionId:String(revisionId),
+      originalKey:key,
+      archivedAt:new Date().toISOString()
+    }
+  });
+  await context.env.BG_DB.prepare(
+    `INSERT OR REPLACE INTO revision_media_archives
+     (revision_id,product_id,original_key,archive_key,content_type,archived_at,restored_at)
+     VALUES (?,?,?,?,?,datetime('now'),NULL)`
+  ).bind(revisionId,row.id,key,archiveKey,contentType).run();
+  return archiveKey;
+}
+
+async function restoreArchivedMedia(context,revisionId,originalKey){
+  const map=await context.env.BG_DB.prepare(
+    "SELECT * FROM revision_media_archives WHERE revision_id=? AND original_key=?"
+  ).bind(revisionId,originalKey).first();
+  if(!map)return false;
+  const archived=await context.env.BG_MEDIA.get(map.archive_key);
+  if(!archived)return false;
+  const bytes=await archived.arrayBuffer();
+  const contentType=archived.httpMetadata?.contentType||map.content_type||"application/octet-stream";
+  await context.env.BG_MEDIA.put(originalKey,bytes,{
+    httpMetadata:{contentType,cacheControl:"public, max-age=31536000, immutable"},
+    customMetadata:{
+      source:"revision-restore",
+      revisionId:String(revisionId),
+      restoredAt:new Date().toISOString()
+    }
+  });
+  await context.env.BG_DB.prepare(
+    "UPDATE revision_media_archives SET restored_at=datetime('now') WHERE revision_id=?"
+  ).bind(revisionId).run();
+  return true;
+}
+
+async function deleteMediaIfUnused(context,key,exceptId=""){
+  if(!key)return;
+  const row=await context.env.BG_DB.prepare(
+    "SELECT COUNT(*) AS n FROM products WHERE image_key=? AND id<>?"
+  ).bind(key,exceptId).first();
+  if(Number(row?.n||0)===0)await context.env.BG_MEDIA.delete(key).catch(()=>{});
+}
+
 function publishable(row){
   return Boolean(
     row.title &&
@@ -74,6 +136,7 @@ export async function onRequestGet(context){
           status:snapshot.status||"draft",
           featured:Boolean(snapshot.featured),
           order:Number(snapshot.sort_order||0),
+          imageKey:snapshot.image_key||"",
           imagePresent:Boolean(snapshot.image_key||snapshot.image_url)
         }
       };
@@ -107,13 +170,16 @@ export async function onRequestPost(context){
     let imageUrl=snapshot.image_url||"";
     let imageRecovered=true;
     if(imageKey && !(await mediaExists(context.env.BG_MEDIA,imageKey))){
-      imageRecovered=false;
-      if(current?.image_key && await mediaExists(context.env.BG_MEDIA,current.image_key)){
-        imageKey=current.image_key;
-        imageUrl=current.image_url||"";
-      }else{
-        imageKey="";
-        imageUrl=current?.image_url||imageUrl||"";
+      const restoredFromArchive=await restoreArchivedMedia(context,revisionId,imageKey).catch(()=>false);
+      if(!restoredFromArchive){
+        imageRecovered=false;
+        if(current?.image_key && await mediaExists(context.env.BG_MEDIA,current.image_key)){
+          imageKey=current.image_key;
+          imageUrl=current.image_url||"";
+        }else{
+          imageKey="";
+          imageUrl=current?.image_url||imageUrl||"";
+        }
       }
     }
 
@@ -147,25 +213,36 @@ export async function onRequestPost(context){
     if(slugConflict)row.slug=(row.slug+"-restored-"+row.id.slice(0,8)).slice(0,100);
 
     let preRollbackRevisionId="";
-    if(current)preRollbackRevisionId=await saveRevision(context.env.BG_DB,current,"pre_rollback");
+    let archivedCurrentMediaKey="";
+    const previousImageKey=current?.image_key||"";
+    if(current){
+      preRollbackRevisionId=await saveRevision(context.env.BG_DB,current,"pre_rollback");
+      if(previousImageKey && previousImageKey!==row.image_key){
+        archivedCurrentMediaKey=await archiveMediaForRevision(context,current,preRollbackRevisionId);
+      }
+    }
 
+    const nextUpdatedAt=new Date().toISOString();
     if(current){
       await context.env.BG_DB.prepare(
-        `UPDATE products SET slug=?,title=?,brand=?,category=?,description=?,currency=?,price_cents=?,image_key=?,image_url=?,destination_url=?,status=?,featured=?,sort_order=?,published_at=?,updated_at=datetime('now') WHERE id=?`
+        `UPDATE products SET slug=?,title=?,brand=?,category=?,description=?,currency=?,price_cents=?,image_key=?,image_url=?,destination_url=?,status=?,featured=?,sort_order=?,published_at=?,updated_at=? WHERE id=?`
       ).bind(
         row.slug,row.title,row.brand,row.category,row.description,row.currency,row.price_cents,
         row.image_key,row.image_url,row.destination_url,row.status,row.featured,row.sort_order,
-        row.status==="published"?(row.published_at||new Date().toISOString()):null,row.id
+        row.status==="published"?(row.published_at||nextUpdatedAt):null,nextUpdatedAt,row.id
       ).run();
+      if(previousImageKey && previousImageKey!==row.image_key){
+        await deleteMediaIfUnused(context,previousImageKey,row.id);
+      }
     }else{
       await context.env.BG_DB.prepare(
         `INSERT INTO products
         (id,slug,title,brand,category,description,currency,price_cents,image_key,image_url,destination_url,status,featured,sort_order,created_at,updated_at,published_at)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,datetime('now'),?)`
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
       ).bind(
         row.id,row.slug,row.title,row.brand,row.category,row.description,row.currency,row.price_cents,
         row.image_key,row.image_url,row.destination_url,row.status,row.featured,row.sort_order,
-        row.created_at,row.status==="published"?(row.published_at||new Date().toISOString()):null
+        row.created_at,nextUpdatedAt,row.status==="published"?(row.published_at||nextUpdatedAt):null
       ).run();
     }
 
@@ -173,7 +250,8 @@ export async function onRequestPost(context){
       revisionId,
       preRollbackRevisionId:preRollbackRevisionId||null,
       recreated:!current,
-      imageRecovered
+      imageRecovered,
+      archivedCurrentMedia:Boolean(archivedCurrentMediaKey)
     });
 
     const restored=await context.env.BG_DB.prepare("SELECT * FROM products WHERE id=?").bind(row.id).first();
