@@ -188,6 +188,18 @@ try {
   if (media.status !== 404) throw new Error("deleted product media still exists");
   result.mediaCleanup = 404;
 
+  r = await call("/api/admin/audit?limit=100", { headers: auth });
+  if (!r.response.ok || !Array.isArray(r.data.events)) throw new Error("audit receipts unavailable");
+  const auditTypes = new Set(r.data.events.map(e => e.type));
+  for (const required of ["product_created","product_updated","product_deleted"]) {
+    if (!auditTypes.has(required)) throw new Error("missing audit receipt " + required);
+  }
+  result.auditReceipts = ["product_created","product_updated","product_deleted"];
+
+  r = await call("/api/admin/audit?limit=5");
+  if (r.response.status !== 401) throw new Error("audit endpoint must reject anonymous access");
+  result.auditAuthGate = 401;
+
   console.log(JSON.stringify(result, null, 2));
   console.log("BLACKGOLD_BACKEND_INTEGRATION=PASS");
 } catch (error) {
