@@ -17,5 +17,10 @@
   "previewRequiresExactVisualGatePass": true,
   "productionDeployAllowed": false,
   "productionRequiresExplicitHumanApproval": true,
-  "visualTolerancePixels": 0
+  "visualTolerancePixels": 0,
+  "productFootprintGateRequired": true,
+  "productFootprintContract": "BLACKGOLD_APPROVED_PRODUCT_FOOTPRINT_GATE_V1",
+  "previewRequiresProductFootprintGatePass": true,
+  "productRegionPixelDiagnosticIsInformational": true,
+  "productRegionPixelDiagnosticCanApprove": false
 }
