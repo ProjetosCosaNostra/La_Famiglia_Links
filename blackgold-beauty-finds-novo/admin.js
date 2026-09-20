@@ -120,6 +120,40 @@ $("#unlock").onsubmit=e=>{
 
 $("#logout").onclick=()=>lockPanel();
 
+$("#metricsExport").onclick=async()=>{
+  const button=$("#metricsExport");
+  button.disabled=true;
+  const old=button.textContent;
+  button.textContent="Exportando…";
+  try{
+    const r=await fetch("/api/admin/metrics-export",{
+      headers:{authorization:"Bearer "+state.token},
+      cache:"no-store"
+    });
+    if(r.status===401){
+      lockPanel("Sessão inválida. Entre novamente.");
+      throw new Error("Sessão inválida.");
+    }
+    if(!r.ok)throw new Error("Falha ao exportar métricas.");
+    const blob=await r.blob();
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    const disposition=r.headers.get("content-disposition")||"";
+    const match=disposition.match(/filename="([^"]+)"/i);
+    a.href=url;
+    a.download=match?.[1]||"blackgold-click-metrics.csv";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }catch(e){
+    alert(e.message);
+  }finally{
+    button.disabled=false;
+    button.textContent=old;
+  }
+};
+
 function showPreview(url,label=""){
   const box=$("#imagePreview"),img=box.querySelector("img"),span=box.querySelector("span");
   if(!url){
