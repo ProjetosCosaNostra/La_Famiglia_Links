@@ -115,6 +115,33 @@ jobs:
           cat /tmp/bg-wrangler.log
           exit 1
 
+      - name: Create temporary published visual fixture
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+          BLACKGOLD_ADMIN_TOKEN: CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1
+        run: node tools/product_visual_fixture.mjs create
+
+      - name: Capture storefront with real published fixture
+        run: |
+          "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1800 --force-device-scale-factor=1 --window-size=1448,1086 --screenshot=blackgold-beauty-finds-novo/.visual-gate/product-desktop.png http://127.0.0.1:8788/
+          "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1800 --force-device-scale-factor=1 --window-size=310,896 --screenshot=blackgold-beauty-finds-novo/.visual-gate/product-mobile.png http://127.0.0.1:8788/
+
+      - name: Product render may change only approved desktop catalog zones
+        run: |
+          python blackgold-beauty-finds-novo/tools/outside_catalog_gate.py --profile desktop --authority blackgold-beauty-finds-novo/assets/authority-zero-desktop.png --candidate blackgold-beauty-finds-novo/.visual-gate/product-desktop.png --report blackgold-beauty-finds-novo/.visual-gate/product-desktop.json
+
+      - name: Product render may change only approved mobile catalog zones
+        run: |
+          python blackgold-beauty-finds-novo/tools/outside_catalog_gate.py --profile mobile --authority blackgold-beauty-finds-novo/assets/authority-zero-mobile.png --candidate blackgold-beauty-finds-novo/.visual-gate/product-mobile.png --report blackgold-beauty-finds-novo/.visual-gate/product-mobile.json
+
+      - name: Remove temporary published visual fixture
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+          BLACKGOLD_ADMIN_TOKEN: CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1
+        run: node tools/product_visual_fixture.mjs delete
+
       - name: Admin to storefront integration
         working-directory: blackgold-beauty-finds-novo
         env:
