@@ -1,26 +1,35 @@
 {
-  "contract": "BLACKGOLD_VISUAL_NO_SHOW_RULE_V2",
-  "desktopAuthority": "assets/authority-zero-desktop.png",
+  "contract": "BLACKGOLD_VISUAL_NO_SHOW_RULE_V3_APPROVED_AUTHORITIES",
+  "desktopAuthority": "assets/authority-desktop-approved.png",
   "desktopViewport": [
     1448,
     1086
   ],
-  "mobileAuthority": "assets/authority-zero-mobile.png",
+  "mobileAuthority": "assets/authority-mobile-v24.webp",
   "mobileViewport": [
-    310,
-    896
+    390,
+    1152
   ],
   "catalogInitialCount": 0,
   "legacyProductsAllowed": false,
   "demoProductsAllowed": false,
+  "ciFixturesMayPersist": false,
+  "dynamicRegions": [
+    "catalog-count",
+    "selection",
+    "showcase"
+  ],
+  "outsideDynamicRegionTolerancePixels": 0,
   "previewAutoOpenAllowed": false,
-  "previewRequiresExactVisualGatePass": true,
-  "productionDeployAllowed": false,
-  "productionRequiresExplicitHumanApproval": true,
-  "visualTolerancePixels": 0,
-  "productFootprintGateRequired": true,
-  "productFootprintContract": "BLACKGOLD_APPROVED_PRODUCT_FOOTPRINT_GATE_V1",
+  "previewRequiresApprovedShellGatePass": true,
   "previewRequiresProductFootprintGatePass": true,
+  "previewRequiresProductStyleGatePass": true,
+  "previewRequiresProductRegionAcceptancePass": true,
+  "productFootprintContract": "BLACKGOLD_APPROVED_PRODUCT_FOOTPRINT_GATE_V1",
+  "productStyleContract": "BLACKGOLD_APPROVED_PRODUCT_STYLE_GATE_V1",
+  "productRegionAcceptanceContract": "BLACKGOLD_DYNAMIC_PRODUCT_REGION_ACCEPTANCE_V1",
   "productRegionPixelDiagnosticIsInformational": true,
-  "productRegionPixelDiagnosticCanApprove": false
+  "productRegionPixelDiagnosticCanApprove": false,
+  "productionDeployAllowed": false,
+  "productionRequiresExplicitHumanApproval": true
 }
