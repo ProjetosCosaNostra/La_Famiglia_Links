@@ -93,6 +93,50 @@ jobs:
           print("BLACKGOLD_RELEASE_GUARD=PASS")
           PY
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install isolated Cloudflare runtime
+        working-directory: blackgold-beauty-finds-novo
+        run: npm install --no-audit --no-fund
+
+      - name: Initialize local D1 with zero products
+        working-directory: blackgold-beauty-finds-novo
+        run: |
+          printf 'ADMIN_PANEL_TOKEN=%s\n' 'CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1' > .dev.vars
+          npx wrangler d1 migrations apply blackgold-beauty-finds-novo --local
+
+      - name: Start local Pages functions runtime
+        working-directory: blackgold-beauty-finds-novo
+        run: |
+          npx wrangler pages dev . --port 8788 --persist-to .wrangler/state > /tmp/blackgold-wrangler.log 2>&1 &
+          echo $! > /tmp/blackgold-wrangler.pid
+          for i in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8788/api/products > /tmp/blackgold-products.json; then
+              cat /tmp/blackgold-products.json
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/blackgold-wrangler.log
+          exit 1
+
+      - name: Admin to storefront integration gate
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+          BLACKGOLD_ADMIN_TOKEN: CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1
+        run: node tools/backend_flow.mjs
+
+      - name: Confirm catalog returned to zero
+        run: |
+          BODY="$(curl --fail --silent 'http://127.0.0.1:8788/api/products?final=1')"
+          echo "$BODY"
+          echo "$BODY" | grep -q '"total":0'
+          echo "BLACKGOLD_FINAL_CATALOG_ZERO=PASS"
+
       - name: Store gate evidence internally
         if: always()
         uses: actions/upload-artifact@v4
