@@ -107,6 +107,8 @@ try {
     throw new Error("create/publish failed " + JSON.stringify(r.data));
   }
   const id = r.data.product.id;
+  let version = r.data.product.updatedAt;
+  if (!version) throw new Error("create did not return updatedAt");
   result.createPublished = "PASS";
 
   r = await call("/api/products?gate=published");
@@ -135,11 +137,12 @@ try {
   r = await call("/api/admin/products", {
     method: "PATCH",
     headers: { ...auth, "content-type": "application/json" },
-    body: JSON.stringify({ id, title: "BlackGold CI Accidentally Changed" })
+    body: JSON.stringify({ id, expectedUpdatedAt: version, title: "BlackGold CI Accidentally Changed" })
   });
   if (!r.response.ok || r.data.product?.title !== "BlackGold CI Accidentally Changed") {
     throw new Error("revision seed update failed");
   }
+  version = r.data.product.updatedAt;
 
   r = await call("/api/admin/revisions?productId=" + encodeURIComponent(id) + "&limit=10", { headers: auth });
   if (!r.response.ok || !Array.isArray(r.data.revisions) || !r.data.revisions.length) {
@@ -156,6 +159,7 @@ try {
   if (!r.response.ok || r.data.product?.title !== product.title || r.data.product?.status !== "published") {
     throw new Error("product rollback failed " + JSON.stringify(r.data));
   }
+  version = r.data.product.updatedAt;
   result.revisionRollback = "PASS";
 
   r = await call("/api/admin/revisions?productId=" + encodeURIComponent(id));
@@ -171,11 +175,12 @@ try {
   r = await call("/api/admin/products", {
     method: "PATCH",
     headers: { ...auth, "content-type": "application/json" },
-    body: JSON.stringify({ id, imageKey: secondKey })
+    body: JSON.stringify({ id, expectedUpdatedAt: version, imageKey: secondKey })
   });
   if (!r.response.ok || r.data.product?.imageKey !== secondKey) {
     throw new Error("image replacement failed");
   }
+  version = r.data.product.updatedAt;
   const oldAfterReplace = await fetch(base + firstMediaUrl, { cache: "no-store" });
   const newAfterReplace = await fetch(base + secondMediaUrl, { cache: "no-store" });
   if (oldAfterReplace.status !== 404 || newAfterReplace.status !== 200) {
@@ -186,9 +191,10 @@ try {
   r = await call("/api/admin/products", {
     method: "PATCH",
     headers: { ...auth, "content-type": "application/json" },
-    body: JSON.stringify({ id, status: "draft" })
+    body: JSON.stringify({ id, expectedUpdatedAt: version, status: "draft" })
   });
   if (!r.response.ok || r.data.product?.status !== "draft") throw new Error("unpublish failed");
+  version = r.data.product.updatedAt;
 
   r = await call("/api/products?gate=draft");
   if (r.data.total !== 0) throw new Error("draft product leaked to public API");
@@ -197,9 +203,10 @@ try {
   r = await call("/api/admin/products", {
     method: "PATCH",
     headers: { ...auth, "content-type": "application/json" },
-    body: JSON.stringify({ id, status: "published" })
+    body: JSON.stringify({ id, expectedUpdatedAt: version, status: "published" })
   });
   if (!r.response.ok || r.data.product?.status !== "published") throw new Error("republish failed");
+  version = r.data.product.updatedAt;
 
   r = await call("/api/products?gate=republished");
   if (r.data.total !== 1) throw new Error("republished product missing");
