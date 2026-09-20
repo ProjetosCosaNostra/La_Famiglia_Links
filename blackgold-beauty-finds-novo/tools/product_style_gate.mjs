@@ -11,28 +11,28 @@ if(!chrome)throw new Error("Chrome/Edge executable not found");
 
 const expected={
   selection:{
-    borderColor:"rgb(231, 218, 203)",
+    borderColor:"rgb(234, 223, 208)",
     borderRadius:"8px",
-    backgroundAlpha:1,
+    backgroundAlpha:.70,
     padding:"7px",
-    mediaBg:"rgb(251, 243, 232)",
+    mediaBg:"rgb(251, 244, 233)",
     mediaRadius:"7px",
     titleSize:"13px",
-    metaSize:"8px",
-    descSize:"8.5px",
+    metaSize:"9px",
+    descSize:"10px",
     priceSize:"14px",
     detailHeight:28
   },
   showcase:{
     borderColor:"rgb(229, 216, 200)",
     borderRadius:"7px",
-    backgroundAlpha:1,
+    backgroundAlpha:.72,
     padding:"5px",
-    mediaBg:"rgb(251, 243, 232)",
+    mediaBg:"rgb(251, 244, 233)",
     mediaRadius:"5px",
     mediaHeight:96.234375,
-    titleSize:"9px",
-    priceSize:"9px"
+    titleSize:"10px",
+    priceSize:"10px"
   }
 };
 
