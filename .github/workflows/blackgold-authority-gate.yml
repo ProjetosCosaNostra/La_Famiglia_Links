@@ -157,6 +157,13 @@ jobs:
           CHROME_BIN: ${{ steps.chrome.outputs.bin }}
         run: node tools/admin_ui_flow.mjs
 
+      - name: Backup and restore roundtrip
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+          BLACKGOLD_ADMIN_TOKEN: CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1
+        run: node tools/backup_restore_roundtrip.mjs
+
       - name: Final catalog zero
         run: |
           curl --fail --silent 'http://127.0.0.1:8788/api/products?final=1' | grep -q '"total":0'
