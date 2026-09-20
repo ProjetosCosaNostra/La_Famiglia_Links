@@ -115,6 +115,15 @@ jobs:
           cat /tmp/bg-wrangler.log
           exit 1
 
+      - name: Runtime health gate
+        run: |
+          BODY="$(curl --fail --silent http://127.0.0.1:8788/api/health)"
+          echo "$BODY"
+          echo "$BODY" | grep -q '"ok":true'
+          echo "$BODY" | grep -q '"database":true'
+          echo "$BODY" | grep -q '"media":true'
+          echo "BLACKGOLD_RUNTIME_HEALTH=PASS"
+
       - name: Create temporary published visual fixture
         working-directory: blackgold-beauty-finds-novo
         env:
