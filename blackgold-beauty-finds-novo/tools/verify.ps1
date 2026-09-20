@@ -5,16 +5,17 @@ $Root = Split-Path $PSScriptRoot -Parent
 $Reports = Join-Path $Root '.visual-gate'
 New-Item -ItemType Directory -Force -Path $Reports | Out-Null
 
-$ChromeCandidates = @(
-  'C:\Program Files\Google\Chrome\Application\chrome.exe',
-  'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',
-  'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
-  'C:\Program Files\Microsoft\Edge\Application\msedge.exe'
-)
-$Chrome = $ChromeCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
-if (-not $Chrome) { throw 'Chrome/Edge not found.' }
-
 $Python = (Get-Command python -ErrorAction Stop).Source
+$Node = (Get-Command node -ErrorAction Stop).Source
+if (!(Test-Path (Join-Path $Root 'node_modules\puppeteer-core'))) {
+  Push-Location $Root
+  try {
+    & npm.cmd install --no-audit --no-fund | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw 'npm install failed.' }
+  }
+  finally { Pop-Location }
+}
+
 $Port = 8799
 $Server = Start-Process -FilePath $Python -ArgumentList @('-m','http.server',$Port,'--bind','127.0.0.1','--directory',$Root) -WindowStyle Hidden -PassThru
 try {
@@ -28,18 +29,11 @@ try {
   }
   if(-not $Ready){throw 'Static verification server failed to start.'}
 
+  & $Node (Join-Path $PSScriptRoot 'capture_visual.mjs') --base "http://127.0.0.1:$Port/" --out $Reports --prefix candidate
+  if($LASTEXITCODE -ne 0){throw 'Explicit viewport capture failed.'}
+
   $DesktopShot = Join-Path $Reports 'candidate-desktop.png'
   $MobileShot = Join-Path $Reports 'candidate-mobile.png'
-  $DesktopProfile = Join-Path $Reports 'chrome-desktop'
-  $MobileProfile = Join-Path $Reports 'chrome-mobile'
-  Remove-Item $DesktopProfile,$MobileProfile -Recurse -Force -ErrorAction SilentlyContinue
-
-  & $Chrome '--headless=new' '--disable-gpu' '--hide-scrollbars' '--no-first-run' "--user-data-dir=$DesktopProfile" '--window-size=1448,1086' '--force-device-scale-factor=1' "--screenshot=$DesktopShot" "http://127.0.0.1:$Port/" | Out-Null
-  if($LASTEXITCODE -ne 0){throw 'Desktop screenshot capture failed.'}
-
-  & $Chrome '--headless=new' '--disable-gpu' '--hide-scrollbars' '--no-first-run' "--user-data-dir=$MobileProfile" '--window-size=310,896' '--force-device-scale-factor=1' "--screenshot=$MobileShot" "http://127.0.0.1:$Port/" | Out-Null
-  if($LASTEXITCODE -ne 0){throw 'Mobile screenshot capture failed.'}
-
   if (!(Test-Path $DesktopShot) -or !(Test-Path $MobileShot)) { throw 'Screenshot capture failed.' }
 
   & $Python (Join-Path $PSScriptRoot 'visual_gate.py') --authority (Join-Path $Root 'assets\authority-zero-desktop.png') --candidate $DesktopShot --report (Join-Path $Reports 'desktop.json')
@@ -73,6 +67,7 @@ try {
     mobile = 'PASS'
     catalog = 'ZERO'
     canonical = 'PASS'
+    explicitViewportCapture = 'PASS'
     previewAutoOpenAllowed = $false
     humanApproval = $false
     productionDeployAllowed = $false
