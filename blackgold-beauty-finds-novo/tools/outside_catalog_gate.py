@@ -3,8 +3,14 @@ from pathlib import Path
 import argparse,json
 
 PROFILES={
- "desktop":{"size":(1448,1086),"allowed":[(60,460,1388,617),(60,678,1388,828)]},
- "mobile":{"size":(310,896),"allowed":[(8,380,302,480),(8,538,302,645)]},
+ "desktop":{
+   "size":(1448,1086),
+   "allowed":[(108,323,205,382),(60,460,1388,620),(60,676,1388,832)]
+ },
+ "mobile":{
+   "size":(390,1152),
+   "allowed":[(40,366,124,424),(12,488,390,638),(12,702,390,856)]
+ },
 }
 ap=argparse.ArgumentParser()
 ap.add_argument("--profile",choices=PROFILES,required=True)
@@ -14,15 +20,30 @@ ap.add_argument("--report",required=True)
 a=ap.parse_args();p=PROFILES[a.profile]
 x=Image.open(a.authority).convert("RGB");y=Image.open(a.candidate).convert("RGB")
 errors=[]
-if x.size!=p["size"] or y.size!=p["size"]:errors.append(f"size mismatch authority={x.size} candidate={y.size} expected={p['size']}")
+if x.size!=p["size"] or y.size!=p["size"]:
+    errors.append(f"size mismatch authority={x.size} candidate={y.size} expected={p['size']}")
 if errors:
- mismatch=-1;mae=None;bbox=None
+    mismatch=-1;mae=None;bbox=None
 else:
- d=ImageChops.difference(x,y)
- draw=ImageDraw.Draw(d)
- for box in p["allowed"]:draw.rectangle(box,fill=(0,0,0))
- stat=ImageStat.Stat(d);mismatch=sum(1 for px in d.getdata() if px!=(0,0,0));mae=sum(stat.mean)/3/255;bbox=d.getbbox()
-report={"contract":"BLACKGOLD_PRODUCT_CHANGES_ONLY_INSIDE_CATALOG","profile":a.profile,"pass":not errors and mismatch==0,"mismatchPixelsOutsideCatalog":mismatch,"maeOutsideCatalog":mae,"bboxOutsideCatalog":bbox,"allowed":p["allowed"],"errors":errors}
+    d=ImageChops.difference(x,y)
+    draw=ImageDraw.Draw(d)
+    for box in p["allowed"]:
+        draw.rectangle(box,fill=(0,0,0))
+    stat=ImageStat.Stat(d)
+    mismatch=sum(1 for px in d.getdata() if px!=(0,0,0))
+    mae=sum(stat.mean)/3/255
+    bbox=d.getbbox()
+report={
+  "contract":"BLACKGOLD_APPROVED_AUTHORITY_OUTSIDE_DYNAMIC_REGIONS_V2",
+  "profile":a.profile,
+  "pass":not errors and mismatch==0,
+  "mismatchPixelsOutsideDynamicRegions":mismatch,
+  "maeOutsideDynamicRegions":mae,
+  "bboxOutsideDynamicRegions":bbox,
+  "allowedDynamicRegions":p["allowed"],
+  "errors":errors
+}
+Path(a.report).parent.mkdir(parents=True,exist_ok=True)
 Path(a.report).write_text(json.dumps(report,indent=2),encoding="utf-8")
 print(json.dumps(report,indent=2))
 raise SystemExit(0 if report["pass"] else 3)
