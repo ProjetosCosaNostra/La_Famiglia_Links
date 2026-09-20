@@ -61,6 +61,10 @@ jobs:
           print("BLACKGOLD_PINNED_AUTHORITY=PASS")
           PY
 
+      - name: Derive approved product geometry
+        run: |
+          python blackgold-beauty-finds-novo/tools/authority_product_geometry.py             --approved cloudflare-beauty-finds/visual-authority/BLACKGOLD_HOME_DESKTOP_MOCKUP_APPROVED_20260909_140134.png             --zero blackgold-beauty-finds-novo/assets/authority-zero-desktop.png             --report blackgold-beauty-finds-novo/.visual-gate/authority-product-geometry.json
+
       - name: Start static authority server
         run: |
           python -m http.server 8799 --bind 127.0.0.1 --directory blackgold-beauty-finds-novo >/tmp/bg-static.log 2>&1 &
