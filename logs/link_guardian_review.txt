@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-20T16:02:24Z
+Atualizado em: 2026-09-20T20:45:39Z
 Itens pendentes: 7
 SKUs únicos: 7
 Prioridade alta: 7
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-20T15:55:54Z
+Quando: 2026-09-20T20:41:14Z
 Issue: #165
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
 SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (22x /lists, 0x listing)
+Memória operacional: histórico recorrente (23x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
 open_url: https://meli.la/22qx74W
 checked_url: https://meli.la/22qx74W
@@ -43,45 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
 
 [ALTA] review_only_storefront
-Quando: 2026-09-20T15:55:54Z
-Issue: #15
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/15
-SKU: ring-light-rgb-10-tripe-210m
-Título: Ring Light RGB 10” + Tripé 2,10m (Controle no cabo)
-ID ML: 5J5PKG-BHRR
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Ring Light, Iluminação, RGB, Tripé 2, 10m, Vídeos e Fotos, Criadores
-open_url: https://mercadolivre.com/sec/2BuQ5JD
-checked_url: https://mercadolivre.com/sec/2BuQ5JD
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BHRR&tid=0c1478f4-1f3c-414e-bea7-8d7111207955
-
-[ALTA] review_only_storefront
-Quando: 2026-09-20T15:55:54Z
-Issue: #17
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/17
-SKU: jogo-lencol-400-fios-queen-box-4-pecas
-Título: Jogo de Lençol 400 Fios — Queen Box (4 peças)
-ID ML: 5J5PKG-MY6V
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (2x /lists, 0x listing)
-Badges: Achados do Dia, Cama Mesa e Banho, Jogo de Lençol, 400 Fios, Queen, Toque Hotel, Conforto, Casa
-open_url: https://mercadolivre.com/sec/2wZB7u8
-checked_url: https://mercadolivre.com/sec/2wZB7u8
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MY6V&tid=a5b762df-445a-43b1-9114-989a8d9f76ef
-
-[ALTA] review_only_storefront
-Quando: 2026-09-20T15:55:54Z
+Quando: 2026-09-20T20:41:14Z
 Issue: #23
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
 SKU: amazon-fire-tv-stick-4k-wifi6
@@ -92,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (25x /lists, 1x listing)
+Memória operacional: histórico recorrente (26x /lists, 1x listing)
 Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
 open_url: https://mercadolivre.com/sec/1nMqFbz
 checked_url: https://mercadolivre.com/sec/1nMqFbz
@@ -100,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
 
 [ALTA] review_only_storefront
-Quando: 2026-09-20T15:55:54Z
+Quando: 2026-09-20T20:41:14Z
 Issue: #180
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/180
 SKU: fixador-de-maquiagem-ruby-rose-150ml-hb312
@@ -111,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (44x /lists, 0x listing)
+Memória operacional: histórico recorrente (45x /lists, 0x listing)
 Badges: Achados do Dia, Ruby Rose, Fixador, Maquiagem, 150ml, Feminino
 open_url: https://meli.la/1a6HzXw
 checked_url: https://meli.la/1a6HzXw
@@ -119,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-9E78
 
 [ALTA] review_only_storefront
-Quando: 2026-09-20T15:55:54Z
+Quando: 2026-09-20T20:41:14Z
 Issue: #194
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/194
 SKU: bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada
@@ -130,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (138x /lists, 0x listing)
+Memória operacional: histórico recorrente (139x /lists, 0x listing)
 Badges: Achados do Dia, Bolsa Feminina, Mochila Feminina, Antifurto, Impermeável, Preto, Rosé, Trabalho
 open_url: https://meli.la/1Dj4GN9
 checked_url: https://meli.la/1Dj4GN9
@@ -138,7 +100,45 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4RAF
 
 [ALTA] review_only_storefront
-Quando: 2026-09-20T15:55:54Z
+Quando: 2026-09-20T20:41:14Z
+Issue: #200
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/200
+SKU: escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo
+Título: Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo
+ID ML: 5J5PKG-XL1P
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (1x /lists, 1x listing)
+Badges: Achados do Dia, Beleza, Cabelo, Cuidados com o Cabelo, Escova Massageadora, LED Terapêutico, 4 em 1, Couro Cabeludo
+open_url: https://meli.la/2mbKAww
+checked_url: https://meli.la/2mbKAww
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-XL1P
+
+[ALTA] review_only_storefront
+Quando: 2026-09-20T20:41:14Z
+Issue: #215
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
+SKU: depilador-batom-portatil-facial-branco-rose-gold
+Título: 💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial
+ID ML: 5J5PKG-W8RV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (23x /lists, 0x listing)
+Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
+open_url: https://meli.la/1EjNsoE
+checked_url: https://meli.la/1EjNsoE
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
+
+[ALTA] review_only_storefront
+Quando: 2026-09-20T20:41:14Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -149,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Memória operacional: histórico recorrente (18x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
