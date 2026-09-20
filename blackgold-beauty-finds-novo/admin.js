@@ -64,9 +64,9 @@ function render(){
       '</div>'+
     '</div>'
   ).join("");
-  $("[data-edit]").forEach(b=>b.onclick=()=>edit(b.dataset.edit));
-  $("[data-history]").forEach(b=>b.onclick=()=>openHistory(b.dataset.history));
-  $("[data-toggle]").forEach(b=>b.onclick=()=>toggle(b.dataset.toggle,b));
+  $$("[data-edit]").forEach(b=>b.onclick=()=>edit(b.dataset.edit));
+  $$("[data-history]").forEach(b=>b.onclick=()=>openHistory(b.dataset.history));
+  $$("[data-toggle]").forEach(b=>b.onclick=()=>toggle(b.dataset.toggle,b));
   $$("[data-del]").forEach(b=>b.onclick=()=>del(b.dataset.del,b));
 }
 
@@ -177,7 +177,7 @@ async function openHistory(productId){
         '<button type="button" data-rollback="'+esc(r.id)+'">Restaurar</button>'+
       '</div>'
     ).join("");
-    $("[data-rollback]").forEach(b=>b.onclick=()=>rollbackRevision(b.dataset.rollback,b));
+    $$("[data-rollback]").forEach(b=>b.onclick=()=>rollbackRevision(b.dataset.rollback,b));
   }catch(e){
     $("#historyList").innerHTML='<p class="status error">'+esc(e.message)+'</p>';
   }
