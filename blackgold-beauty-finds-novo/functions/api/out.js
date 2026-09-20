@@ -1,5 +1,6 @@
 const clean=(v,max=120)=>String(v??"").trim().slice(0,max);
 const allowedPlacement=new Set(["selection","showcase","catalog","unknown"]);
+const botPattern=/(bot|crawler|spider|slurp|facebookexternalhit|whatsapp|telegrambot|discordbot|preview|headlesschrome|lighthouse)/i;
 
 export async function onRequestGet(context){
   const url=new URL(context.request.url);
@@ -17,15 +18,19 @@ export async function onRequestGet(context){
       return new Response("Not found",{status:404,headers:{"cache-control":"no-store"}});
     }
 
-    await context.env.BG_DB.prepare(
-      "INSERT INTO outbound_clicks (id,product_id,product_title,placement,clicked_at) VALUES (?,?,?,?,?)"
-    ).bind(
-      crypto.randomUUID(),
-      product.id,
-      String(product.title||"").slice(0,160),
-      placement,
-      new Date().toISOString()
-    ).run();
+    const ua=context.request.headers.get("user-agent")||"";
+    const tracked=!botPattern.test(ua);
+    if(tracked){
+      await context.env.BG_DB.prepare(
+        "INSERT INTO outbound_clicks (id,product_id,product_title,placement,clicked_at) VALUES (?,?,?,?,?)"
+      ).bind(
+        crypto.randomUUID(),
+        product.id,
+        String(product.title||"").slice(0,160),
+        placement,
+        new Date().toISOString()
+      ).run();
+    }
 
     return new Response(null,{
       status:302,
@@ -33,7 +38,8 @@ export async function onRequestGet(context){
         "location":product.destination_url,
         "cache-control":"no-store, no-cache, must-revalidate",
         "referrer-policy":"no-referrer",
-        "x-content-type-options":"nosniff"
+        "x-content-type-options":"nosniff",
+        "x-blackgold-click-tracked":tracked?"1":"0"
       }
     });
   }catch(error){
