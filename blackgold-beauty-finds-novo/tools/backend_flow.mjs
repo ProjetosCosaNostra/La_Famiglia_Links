@@ -146,6 +146,20 @@ try {
   }
   result.outboundTracking = { redirect: 302, metrics: "PASS" };
 
+  let exportResponse = await fetch(base + "/api/admin/metrics-export", {
+    headers: auth,
+    cache: "no-store"
+  });
+  const exportBody = await exportResponse.text();
+  if (exportResponse.status !== 200 || !exportBody.includes('"product_id"') || !exportBody.includes(product.title)) {
+    throw new Error("metrics CSV export failed");
+  }
+  result.metricsCsvExport = "PASS";
+
+  exportResponse = await fetch(base + "/api/admin/metrics-export", { cache: "no-store" });
+  if (exportResponse.status !== 401) throw new Error("metrics CSV export must reject anonymous access");
+  result.metricsCsvAuthGate = 401;
+
   r = await call("/api/admin/metrics");
   if (r.response.status !== 401) throw new Error("metrics endpoint must reject anonymous access");
   result.metricsAuthGate = 401;
