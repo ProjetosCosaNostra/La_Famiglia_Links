@@ -75,10 +75,12 @@ try{
   if(!(await page.evaluate(()=>!document.body.classList.contains("unlocked"))))throw new Error("admin did not start locked");
   result.lockedByDefault=true;
 
-  await setInput(page,"#token","wrong-token");
-  await page.evaluate(()=>document.querySelector("#unlock").requestSubmit());
-  await waitText(page,"#lockStatus","Chave incorreta.");
-  result.wrongTokenRejected=true;
+  const wrongStatus=await page.evaluate(async()=>{
+    const r=await fetch("/api/admin/products",{headers:{authorization:"Bearer wrong-token"},cache:"no-store"});
+    return r.status;
+  });
+  if(wrongStatus!==401)throw new Error("wrong admin token must return 401");
+  result.wrongTokenRejected=401;
 
   await page.close();
   page=await browser.newPage();
