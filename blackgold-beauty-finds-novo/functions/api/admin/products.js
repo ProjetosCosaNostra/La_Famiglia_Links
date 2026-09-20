@@ -29,6 +29,15 @@ async function audit(db,eventType,productId,detail={}){
     .bind(crypto.randomUUID(),eventType,productId||null,JSON.stringify(detail)).run();
 }
 
+async function saveRevision(db,row,reason="update"){
+  if(!row?.id)return "";
+  const revisionId=crypto.randomUUID();
+  await db.prepare(
+    "INSERT INTO product_revisions (id,product_id,snapshot_json,reason) VALUES (?,?,?,?)"
+  ).bind(revisionId,row.id,JSON.stringify(row),reason).run();
+  return revisionId;
+}
+
 function parseInput(body={},current={}){
   const hasPrice=Object.prototype.hasOwnProperty.call(body,"price");
   const price=hasPrice
@@ -130,6 +139,7 @@ export async function onRequestPatch(context){
   if(validation)return json({ok:false,code:"publication_gate",message:validation},409);
   const publishedAt=input.status==="published"?(current.published_at||new Date().toISOString()):null;
   try{
+    const revisionId=await saveRevision(context.env.BG_DB,current,"update");
     await context.env.BG_DB.prepare(
       `UPDATE products SET title=?,brand=?,category=?,description=?,currency=?,price_cents=?,image_key=?,image_url=?,destination_url=?,status=?,featured=?,sort_order=?,published_at=?,updated_at=datetime('now') WHERE id=?`
     ).bind(
@@ -141,7 +151,8 @@ export async function onRequestPatch(context){
     if(replacedKey)await deleteMediaIfUnused(context,replacedKey,id);
     await audit(context.env.BG_DB,"product_updated",id,{
       status:input.status,
-      imageReplaced:Boolean(replacedKey)
+      imageReplaced:Boolean(replacedKey),
+      revisionId
     });
     const row=await context.env.BG_DB.prepare("SELECT * FROM products WHERE id=?").bind(id).first();
     return json({ok:true,product:toProduct(row)});
@@ -155,11 +166,12 @@ export async function onRequestDelete(context){
   const id=clean(new URL(context.request.url).searchParams.get("id"),80);
   if(!id)return json({ok:false,code:"id_required"},400);
   try{
-    const row=await context.env.BG_DB.prepare("SELECT image_key FROM products WHERE id=?").bind(id).first();
+    const row=await context.env.BG_DB.prepare("SELECT * FROM products WHERE id=?").bind(id).first();
     if(!row)return json({ok:false,code:"not_found"},404);
+    const revisionId=await saveRevision(context.env.BG_DB,row,"delete");
     await context.env.BG_DB.prepare("DELETE FROM products WHERE id=?").bind(id).run();
     if(row.image_key)await deleteMediaIfUnused(context,row.image_key,id);
-    await audit(context.env.BG_DB,"product_deleted",id,{imageKey:Boolean(row.image_key)});
+    await audit(context.env.BG_DB,"product_deleted",id,{imageKey:Boolean(row.image_key),revisionId});
     return json({ok:true,id});
   }catch(error){
     return json({ok:false,code:"delete_failed",message:String(error?.message||error)},500);
