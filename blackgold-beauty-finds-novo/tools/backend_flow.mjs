@@ -131,6 +131,37 @@ try {
   }
   result.inUseMediaProtected = 409;
 
+  // Edit then rollback through revision history. This protects approved product data from accidental edits.
+  r = await call("/api/admin/products", {
+    method: "PATCH",
+    headers: { ...auth, "content-type": "application/json" },
+    body: JSON.stringify({ id, title: "BlackGold CI Accidentally Changed" })
+  });
+  if (!r.response.ok || r.data.product?.title !== "BlackGold CI Accidentally Changed") {
+    throw new Error("revision seed update failed");
+  }
+
+  r = await call("/api/admin/revisions?productId=" + encodeURIComponent(id) + "&limit=10", { headers: auth });
+  if (!r.response.ok || !Array.isArray(r.data.revisions) || !r.data.revisions.length) {
+    throw new Error("revision history unavailable");
+  }
+  const originalRevision = r.data.revisions.find(x => x.reason === "update" && x.snapshot?.title === product.title);
+  if (!originalRevision) throw new Error("original revision snapshot missing");
+
+  r = await call("/api/admin/revisions", {
+    method: "POST",
+    headers: { ...auth, "content-type": "application/json" },
+    body: JSON.stringify({ revisionId: originalRevision.id })
+  });
+  if (!r.response.ok || r.data.product?.title !== product.title || r.data.product?.status !== "published") {
+    throw new Error("product rollback failed " + JSON.stringify(r.data));
+  }
+  result.revisionRollback = "PASS";
+
+  r = await call("/api/admin/revisions?productId=" + encodeURIComponent(id));
+  if (r.response.status !== 401) throw new Error("revision endpoint must reject anonymous access");
+  result.revisionAuthGate = 401;
+
   // Replace image and prove the old R2 object is cleaned only after successful DB update.
   r = await uploadPng("blackgold-ci-2.png");
   if (r.response.status !== 201) throw new Error("second image upload failed");
