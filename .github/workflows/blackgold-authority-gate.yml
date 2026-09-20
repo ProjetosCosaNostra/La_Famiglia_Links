@@ -234,6 +234,14 @@ jobs:
           BLACKGOLD_ADMIN_TOKEN: CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1
         run: node tools/product_authority_fixture.mjs create
 
+      - name: Capture 390px product-layout candidate
+        run: |
+          "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1800 --force-device-scale-factor=1 --window-size=390,1152 --screenshot=blackgold-beauty-finds-novo/.visual-gate/authority-products-mobile-390.png http://127.0.0.1:8788/
+          python blackgold-beauty-finds-novo/tools/mobile_390_authority_diagnostic.py \
+            --authority cloudflare-beauty-finds/authority-mobile-v24.webp \
+            --candidate blackgold-beauty-finds-novo/.visual-gate/authority-products-mobile-390.png \
+            --report blackgold-beauty-finds-novo/.visual-gate/authority-products-mobile-390-diagnostic.json
+
       - name: Approved product footprint gate
         working-directory: blackgold-beauty-finds-novo
         env:
