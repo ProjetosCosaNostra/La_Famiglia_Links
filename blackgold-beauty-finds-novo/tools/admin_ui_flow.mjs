@@ -52,8 +52,11 @@ async function waitText(page,selector,fragment,timeout=10000){
   );
 }
 async function setInput(page,selector,value){
-  await page.$eval(selector,(el,v)=>{el.value="";el.dispatchEvent(new Event("input",{bubbles:true}));},value);
-  await page.type(selector,String(value));
+  await page.$eval(selector,(el,v)=>{
+    el.value=String(v);
+    el.dispatchEvent(new Event("input",{bubbles:true}));
+    el.dispatchEvent(new Event("change",{bubbles:true}));
+  },value);
 }
 
 await cleanup();
@@ -98,12 +101,12 @@ try{
 
   // Create one draft through the actual admin form.
   await page.click("#new");
-  await page.type('input[name="title"]',"BlackGold Admin UI Test");
-  await page.type('input[name="brand"]',"BlackGold QA");
-  await page.type('input[name="category"]',"Beleza");
-  await page.type('textarea[name="description"]',"Temporary UI regression record.");
-  await page.type('input[name="destinationUrl"]',"https://example.com/blackgold-admin-ui");
-  await page.type('input[name="price"]',"29.90");
+  await setInput(page,'input[name="title"]',"BlackGold Admin UI Test");
+  await setInput(page,'input[name="brand"]',"BlackGold QA");
+  await setInput(page,'input[name="category"]',"Beleza");
+  await setInput(page,'textarea[name="description"]',"Temporary UI regression record.");
+  await setInput(page,'input[name="destinationUrl"]',"https://example.com/blackgold-admin-ui");
+  await setInput(page,'input[name="price"]',"29.90");
   await page.click('input[name="featured"]');
   input=await page.$("#imageFile");
   await input.uploadFile(fixture);
