@@ -13,7 +13,7 @@ const expected={
   selection:{
     borderColor:"rgb(234, 223, 208)",
     borderRadius:"8px",
-    backgroundAlpha:.40,
+    backgroundAlpha:.20,
     padding:"7px",
     mediaBg:"rgb(251, 244, 233)",
     mediaRadius:"7px",
@@ -26,7 +26,7 @@ const expected={
   showcase:{
     borderColor:"rgb(229, 216, 200)",
     borderRadius:"7px",
-    backgroundAlpha:.35,
+    backgroundAlpha:.20,
     padding:"5px",
     mediaBg:"rgb(251, 243, 232)",
     mediaRadius:"5px",
