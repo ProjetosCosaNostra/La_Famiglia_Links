@@ -1,17 +1,21 @@
 {
-  "contract": "BLACKGOLD_VISUAL_NO_SHOW_RULE",
-  "authority": {
-    "desktop": "authority-desktop-v26.webp",
-    "desktopViewport": [1448, 1086],
-    "mobile": "authority-mobile-v24.webp",
-    "mobileViewport": [390, 1152]
-  },
+  "contract": "BLACKGOLD_VISUAL_NO_SHOW_RULE_V2",
+  "desktopAuthority": "assets/authority-zero-desktop.png",
+  "desktopViewport": [
+    1448,
+    1086
+  ],
+  "mobileAuthority": "assets/authority-zero-mobile.png",
+  "mobileViewport": [
+    310,
+    896
+  ],
   "catalogInitialCount": 0,
   "legacyProductsAllowed": false,
   "demoProductsAllowed": false,
   "previewAutoOpenAllowed": false,
-  "previewRequiresVisualGatePass": true,
+  "previewRequiresExactVisualGatePass": true,
   "productionDeployAllowed": false,
   "productionRequiresExplicitHumanApproval": true,
-  "visualToleranceOutsideCatalogRemovalZones": 0
+  "visualTolerancePixels": 0
 }
