@@ -116,6 +116,10 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Production release must remain blocked before human approval
+        working-directory: blackgold-beauty-finds-novo
+        run: node tools/release_preflight.mjs --expect-blocked
+
       - name: Install local Cloudflare runtime
         working-directory: blackgold-beauty-finds-novo
         run: npm install --no-audit --no-fund
