@@ -108,16 +108,17 @@ export async function onRequestPost(context){
   const validation=await validatePublish(context,input);
   if(validation)return json({ok:false,code:"publication_gate",message:validation},409);
   const slug=(slugify(input.title)||"produto")+"-"+id.slice(0,8);
-  const publishedAt=input.status==="published"?new Date().toISOString():null;
+  const now=new Date().toISOString();
+  const publishedAt=input.status==="published"?now:null;
   try{
     await context.env.BG_DB.prepare(
       `INSERT INTO products
        (id,slug,title,brand,category,description,currency,price_cents,image_key,image_url,destination_url,status,featured,sort_order,published_at,updated_at)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,datetime('now'))`
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
     ).bind(
       id,slug,input.title,input.brand,input.category,input.description,input.currency,
       input.price_cents,input.image_key||null,input.image_url||null,input.destination_url,
-      input.status,input.featured,input.sort_order,publishedAt
+      input.status,input.featured,input.sort_order,publishedAt,now
     ).run();
     await audit(context.env.BG_DB,"product_created",id,{status:input.status,imageKey:Boolean(input.image_key)});
     const row=await context.env.BG_DB.prepare("SELECT * FROM products WHERE id=?").bind(id).first();
@@ -134,18 +135,35 @@ export async function onRequestPatch(context){
   if(!id)return json({ok:false,code:"id_required"},400);
   const current=await context.env.BG_DB.prepare("SELECT * FROM products WHERE id=?").bind(id).first();
   if(!current)return json({ok:false,code:"not_found"},404);
+  const expectedUpdatedAt=clean(body.expectedUpdatedAt,100);
+  if(!expectedUpdatedAt){
+    return json({
+      ok:false,
+      code:"expected_updated_at_required",
+      message:"Atualização protegida: recarregue o produto antes de salvar."
+    },428);
+  }
+  if(expectedUpdatedAt!==String(current.updated_at||"")){
+    return json({
+      ok:false,
+      code:"stale_product",
+      message:"Este produto foi alterado em outra sessão. Recarregue antes de salvar.",
+      current:toProduct(current)
+    },409);
+  }
   const input=parseInput(body,current);
   const validation=await validatePublish(context,input);
   if(validation)return json({ok:false,code:"publication_gate",message:validation},409);
-  const publishedAt=input.status==="published"?(current.published_at||new Date().toISOString()):null;
+  const nextUpdatedAt=new Date().toISOString();
+  const publishedAt=input.status==="published"?(current.published_at||nextUpdatedAt):null;
   try{
     const revisionId=await saveRevision(context.env.BG_DB,current,"update");
     await context.env.BG_DB.prepare(
-      `UPDATE products SET title=?,brand=?,category=?,description=?,currency=?,price_cents=?,image_key=?,image_url=?,destination_url=?,status=?,featured=?,sort_order=?,published_at=?,updated_at=datetime('now') WHERE id=?`
+      `UPDATE products SET title=?,brand=?,category=?,description=?,currency=?,price_cents=?,image_key=?,image_url=?,destination_url=?,status=?,featured=?,sort_order=?,published_at=?,updated_at=? WHERE id=?`
     ).bind(
       input.title,input.brand,input.category,input.description,input.currency,input.price_cents,
       input.image_key||null,input.image_url||null,input.destination_url,input.status,input.featured,
-      input.sort_order,publishedAt,id
+      input.sort_order,publishedAt,nextUpdatedAt,id
     ).run();
     const replacedKey=current.image_key&&current.image_key!==input.image_key?current.image_key:"";
     if(replacedKey)await deleteMediaIfUnused(context,replacedKey,id);
