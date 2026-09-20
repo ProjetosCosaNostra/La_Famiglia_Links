@@ -216,7 +216,7 @@ try {
   // Roll back the image replacement and prove the archived first image is restored losslessly.
   r = await call("/api/admin/revisions?productId=" + encodeURIComponent(id) + "&limit=20", { headers: auth });
   if (!r.response.ok) throw new Error("revision list after image replacement failed");
-  const imageRevision = r.data.revisions?.find(x => x.reason === "update" && x.snapshot?.imageKey === firstKey);
+  const imageRevision = r.data.revisions?.find(x => x.reason === "update" && x.snapshot?.imageKey === firstKey && x.snapshot?.imageArchived === true);
   if (!imageRevision) throw new Error("archived image revision missing");
 
   r = await call("/api/admin/revisions", {
