@@ -41,7 +41,9 @@ jobs:
           verify=(r/"tools/verify.ps1").read_text(encoding="utf-8")
           assert "assets\\authority-zero-desktop.png" in verify
           assert "assets\\authority-zero-mobile.png" in verify
-          assert "window-size=310,896" in verify
+          assert "capture_visual.mjs" in verify
+          assert "explicitViewportCapture" in verify
+          assert (r/"tools/capture_visual.mjs").exists()
           print("BLACKGOLD_CANONICAL_SOURCE_LOCK=PASS")
           PY
 
