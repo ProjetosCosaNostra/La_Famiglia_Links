@@ -73,3 +73,31 @@
   .github{left:4.1%;top:90.75%;width:43.5%;height:4.25%}
   .contact{left:52.0%;top:90.75%;width:46.0%;height:4.25%}
 }
+
+
+/* R10 desktop authority calibration: derived from pinned approved mockup, never from candidate screenshots. */
+@media(min-width:761px){
+  .selection-live .product{
+    border-color:#eadfd0;
+    background:rgba(255,255,255,.70);
+  }
+  .selection-live .media{background:#fbf4e9}
+  .selection-live .meta{font-size:9px;line-height:1.05}
+  .selection-live .desc{margin-top:8px;font-size:10px;line-height:1.30}
+  .selection-live .detail{
+    background:linear-gradient(180deg,#b98a47 0%,#7d5222 100%);
+    border-color:#a9742c;
+    font-size:12px;
+  }
+
+  .showcase-live .product{
+    background:rgba(255,255,255,.72);
+  }
+  .showcase-live .media{background:#fbf4e9}
+  .showcase-live .media img{
+    transform:translateY(-24px) scale(.92);
+    transform-origin:center center;
+  }
+  .showcase-live .product h3{font-size:10px}
+  .showcase-live .price{font-size:10px}
+}
