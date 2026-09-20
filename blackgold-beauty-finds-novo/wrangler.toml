@@ -1,0 +1,17 @@
+name = "blackgold-beauty-finds-novo"
+compatibility_date = "2026-09-20"
+pages_build_output_dir = "."
+
+[vars]
+APP_NAME = "BlackGold Beauty Finds"
+
+[[d1_databases]]
+binding = "BG_DB"
+database_name = "blackgold-beauty-finds-novo"
+database_id = "REPLACE_ONLY_AFTER_HUMAN_APPROVAL"
+migrations_dir = "database/migrations"
+
+[[r2_buckets]]
+binding = "BG_MEDIA"
+bucket_name = "blackgold-beauty-finds-novo-media"
+preview_bucket_name = "blackgold-beauty-finds-novo-media-preview"
