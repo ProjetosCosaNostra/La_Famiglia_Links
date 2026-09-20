@@ -27,6 +27,16 @@ async function publicProducts(){
   if(!r.ok)throw new Error("public list "+r.status);
   return r.json();
 }
+async function waitPublic(predicate,timeout=8000){
+  const start=Date.now();
+  let last=null;
+  while(Date.now()-start<timeout){
+    last=await publicProducts();
+    if(predicate(last))return last;
+    await new Promise(r=>setTimeout(r,200));
+  }
+  throw new Error("public state timeout: "+JSON.stringify(last));
+}
 async function cleanup(){
   const data=await adminProducts();
   for(const p of data.products||[]){
@@ -104,15 +114,14 @@ try{
   await waitText(page,"#list","Rascunho".toLowerCase(),1000).catch(()=>{});
   const afterDraft=await adminProducts();
   if(afterDraft.products?.length!==1||afterDraft.products[0].status!=="draft")throw new Error("draft create via UI failed");
-  if((await publicProducts()).total!==0)throw new Error("draft leaked public");
+  await waitPublic(data=>data.total===0);
   result.draftViaUi="PASS";
 
   // Publish through the actual row action.
   await page.click("[data-toggle]");
   await page.waitForFunction(()=>document.querySelector("#list").textContent.includes("published"),{timeout:10000});
-  const pub=await publicProducts();
-  if(pub.total!==1||pub.products[0].title!=="BlackGold Admin UI Test")throw new Error("publish via UI failed");
-  result.publishViaUi="PASS";
+  const pub=await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Test");
+  result.publishViaUi={status:"PASS",total:pub.total};
 
   // Replace image through edit form; old R2 object must be deleted after save.
   await page.click("[data-edit]");
@@ -135,7 +144,7 @@ try{
   page.once("dialog",dialog=>dialog.accept());
   await page.click("[data-del]");
   await page.waitForFunction(()=>document.querySelector("#count").textContent.startsWith("0 "),{timeout:10000});
-  if((await publicProducts()).total!==0)throw new Error("deleted UI product leaked public");
+  await waitPublic(data=>data.total===0);
   const deletedMedia=await fetch(base+"/media/"+encodeURIComponent(secondKey),{cache:"no-store"});
   if(deletedMedia.status!==404)throw new Error("deleted UI product media orphan "+deletedMedia.status);
   result.deleteViaUi={catalog:0,media:404};
