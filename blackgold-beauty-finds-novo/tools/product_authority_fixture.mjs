@@ -10,7 +10,7 @@ const auth={authorization:"Bearer "+token};
 const root=path.resolve("..");
 const assetDir=path.join(root,"cloudflare-beauty-finds","approved-home");
 const stateFile=path.resolve(".visual-gate","authority-fixture.json");
-const PREFIX="__BLACKGOLD_AUTHORITY_FIXTURE__";
+const FIXTURE_URL="https://example.com/authority-fixture";
 
 const FEATURED=[
   {title:"Miss Dior Eau de Parfum",brand:"Dior",description:"Uma fragrância icônica para mulheres que deixam sua marca.",price:"649.90",file:"miss-dior.webp",category:"Beleza",featured:true,order:1},
@@ -40,7 +40,7 @@ async function call(url,opt={}){
 async function cleanup(){
   const d=await call("/api/admin/products");
   for(const p of d.products||[]){
-    if(String(p.brand||"").startsWith(PREFIX)){
+    if(String(p.destinationUrl||"")===FIXTURE_URL){
       await call("/api/admin/products?id="+encodeURIComponent(p.id),{method:"DELETE"});
     }
   }
@@ -62,13 +62,13 @@ if(mode==="create"){
       method:"POST",
       body:JSON.stringify({
         title:item.title,
-        brand:PREFIX+(item.brand?":"+item.brand:""),
+        brand:item.brand||"",
         category:item.category,
         description:item.description,
         currency:"BRL",
         price:item.price,
         imageKey:media.key,
-        destinationUrl:"https://example.com/authority-fixture",
+        destinationUrl:FIXTURE_URL,
         status:"published",
         featured:item.featured,
         order:item.order
