@@ -28,26 +28,35 @@ try{
   }
 
   const selection=[];
-  for(const x of [-16,-12,-8,-4]){
-    for(const y of [-12,-10,-8,-6,-4]){
-      for(const scale of [0.88,0.90,0.92,0.94,0.96]){
-        const id=`sel-x${x}-y${y}-s${String(scale).replace(".","p")}`;
-        await inject(`.selection-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}`);
-        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
-        selection.push({id,x,y,scale});
+  for(const x of [-16,-12,-8]){
+    for(const y of [-20,-16,-12,-8]){
+      for(const scale of [0.94,0.96,0.98]){
+        for(const alpha of [0.40,0.55,0.70]){
+          const id=`sel-x${x}-y${y}-s${String(scale).replace(".","p")}-a${String(alpha).replace(".","p")}`;
+          await inject(`
+            .selection-live .product{background:rgba(255,255,255,${alpha})!important}
+            .selection-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}
+          `);
+          await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
+          selection.push({id,x,y,scale,alpha});
+        }
       }
     }
   }
 
   const showcase=[];
-  for(const x of [-32,-28,-24,-20,-16,-12]){
-    for(const y of [-12,-8,-4,0]){
-      for(const h of [102,108,114]){
-        for(const scale of [0.90,0.95,1.00]){
-          const id=`show-x${x}-y${y}-h${h}-s${String(scale).replace(".","p")}`;
-          await inject(`.showcase-live .media{height:${h}px!important}.showcase-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}`);
+  for(const x of [-24,-20,-16]){
+    for(const y of [-24,-20,-16,-12,-8]){
+      for(const scale of [0.95,1.00,1.05]){
+        for(const alpha of [0.35,0.50,0.65,0.80,1.00]){
+          const id=`show-x${x}-y${y}-s${String(scale).replace(".","p")}-a${String(alpha).replace(".","p")}`;
+          await inject(`
+            .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
+            .showcase-live .media{height:108px!important}
+            .showcase-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}
+          `);
           await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-          showcase.push({id,x,y,h,scale});
+          showcase.push({id,x,y,scale,alpha,h:108});
         }
       }
     }
