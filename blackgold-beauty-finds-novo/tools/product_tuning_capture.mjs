@@ -23,8 +23,8 @@ try{
   }));
 
   const selection=[];
-  for(const y of [0,4,8,12]){
-    for(const scale of [1,1.04,1.08]){
+  for(const y of [-4,0,4,8]){
+    for(const scale of [0.96,1,1.04,1.08]){
       const id=`sel-y${y}-s${String(scale).replace(".","p")}`;
       await page.$eval("#__tune_style",el=>el.remove()).catch(()=>{});
       await page.addStyleTag({content:`
@@ -34,21 +34,21 @@ try{
           .selection-live .media img{transform:translateY(${y}px) scale(${scale})!important;transform-origin:center center!important}
         `);
       });
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:460,width:1328,height:157},captureBeyondViewport:false});
+      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
       selection.push({id,y,scale});
     }
   }
 
   const showcase=[];
-  for(const h of [88,94,100,106]){
-    for(const scale of [1,1.04,1.08]){
+  for(const h of [90,96,102,108]){
+    for(const scale of [0.9,1,1.1,1.2,1.3]){
       const id=`show-h${h}-s${String(scale).replace(".","p")}`;
       await page.$eval("#__tune_style",el=>el.remove()).catch(()=>{});
       await page.evaluate(css=>{const s=document.createElement("style");s.id="__tune_style";s.textContent=css;document.head.appendChild(s)},`
         .showcase-live .media{height:${h}px!important}
         .showcase-live .media img{transform:scale(${scale})!important;transform-origin:center center!important}
       `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:678,width:1328,height:150},captureBeyondViewport:false});
+      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
       showcase.push({id,h,scale});
     }
   }
