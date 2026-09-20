@@ -208,6 +208,13 @@ jobs:
           BLACKGOLD_ADMIN_TOKEN: CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1
         run: node tools/product_authority_fixture.mjs create
 
+      - name: Approved product footprint gate
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+          CHROME_BIN: ${{ steps.chrome.outputs.bin }}
+        run: node tools/product_geometry_gate.mjs
+
       - name: Capture approved product-layout candidate
         run: |
           "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1800 --force-device-scale-factor=1 --window-size=1448,1086 --screenshot=blackgold-beauty-finds-novo/.visual-gate/authority-products-desktop.png http://127.0.0.1:8788/
