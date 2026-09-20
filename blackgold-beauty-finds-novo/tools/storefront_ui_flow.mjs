@@ -137,13 +137,22 @@ try{
   if(filterTitle!=="BlackGold QA Beleza")throw new Error("category filter failed");
   result.categoryFilter="PASS";
 
+  const legalHref=await page.$eval("#affiliateNote a",el=>el.getAttribute("href")||"");
+  if(legalHref!=="./legal.html")throw new Error("affiliate transparency link missing");
+
   await page.evaluate(()=>document.querySelector('[data-lang="en"]').click());
   if((await page.$eval("#catalogTitle",el=>el.textContent))!=="Full showcase")throw new Error("EN catalog language failed");
+  if(!(await page.$eval("#affiliateNote",el=>el.textContent||"")).includes("affiliate links"))throw new Error("EN affiliate disclosure failed");
+
   await page.evaluate(()=>document.querySelector('[data-lang="es"]').click());
   if((await page.$eval("#catalogTitle",el=>el.textContent))!=="Vitrina completa")throw new Error("ES catalog language failed");
+  if(!(await page.$eval("#affiliateNote",el=>el.textContent||"")).includes("enlaces pueden ser de afiliados"))throw new Error("ES affiliate disclosure failed");
+
   await page.evaluate(()=>document.querySelector('[data-lang="pt"]').click());
   if((await page.$eval("#catalogTitle",el=>el.textContent))!=="Vitrine completa")throw new Error("PT catalog language failed");
+  if(!(await page.$eval("#affiliateNote",el=>el.textContent||"")).includes("links podem ser afiliados"))throw new Error("PT affiliate disclosure failed");
   result.catalogLanguages=["pt","en","es"];
+  result.affiliateTransparency="PASS";
 
   const linkInfo=await page.$eval("#catalogGrid .catalog-card",el=>({
     href:el.getAttribute("href")||"",
