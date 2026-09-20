@@ -1,35 +1,76 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
 <title>BlackGold Beauty Finds · Painel</title>
 <style>
 :root{--black:#090705;--gold:#c88b18;--cream:#fffaf2;--line:#dcc5a2;--muted:#796a56;--serif:Georgia,"Times New Roman",serif}
 *{box-sizing:border-box}body{margin:0;background:#eee5d7;color:#1a140f;font:14px/1.4 Inter,"Segoe UI",Arial,sans-serif}
-button,input,textarea,select{font:inherit}.lock{position:fixed;inset:0;z-index:10;background:radial-gradient(circle at 50% 18%,#21170b,#090604 64%);display:grid;place-items:center;padding:20px}
-body.unlocked .lock{display:none}.card{width:min(430px,100%);background:#fffaf3;border:1px solid #a87418;padding:30px;display:grid;gap:14px}.card h1{margin:0;text-align:center;font:500 32px var(--serif)}.card input{padding:11px;border:1px solid #cfb793;border-radius:7px}.gold{border:1px solid #d9a53a;background:linear-gradient(#e4b345,#ad7110);color:#fff;border-radius:8px;padding:11px 16px;font-weight:800}
-.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}aside{background:#0b0906;color:#efe0c4;padding:26px 20px}aside h2{font:500 24px var(--serif);color:#efc665}main{padding:42px clamp(24px,4vw,68px)}header{display:flex;justify-content:space-between;align-items:end;gap:20px}header h1{margin:0;font:500 clamp(34px,3vw,52px) var(--serif)}.empty{margin-top:28px;min-height:320px;border:1px solid var(--line);background:#fffaf3;display:grid;place-items:center;align-content:center;text-align:center}.empty b{font:500 30px var(--serif);color:#a87317}.list{margin-top:20px;display:grid;gap:8px}.row{background:#fffaf3;border:1px solid var(--line);padding:12px;display:flex;justify-content:space-between;gap:14px}.actions{display:flex;gap:6px}.actions button{border:1px solid #cfb793;background:#fff;border-radius:6px;padding:7px 9px}.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;padding:20px}.modal.open{display:grid}.form{width:min(760px,100%);background:#fffaf3;border:1px solid #b58225;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.form label{display:grid;gap:6px}.form input,.form textarea,.form select{padding:9px;border:1px solid #cfb793}.wide{grid-column:1/-1}.form footer{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px}
-@media(max-width:700px){.shell{grid-template-columns:1fr}aside{display:none}main{padding:24px 14px}.form{grid-template-columns:1fr}.wide,.form footer{grid-column:1}}
+button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.55;cursor:wait}
+.lock{position:fixed;inset:0;z-index:20;background:radial-gradient(circle at 50% 18%,#21170b,#090604 64%);display:grid;place-items:center;padding:20px}
+body.unlocked .lock{display:none}.card{width:min(430px,100%);background:#fffaf3;border:1px solid #a87418;padding:30px;display:grid;gap:14px;border-radius:14px;box-shadow:0 30px 100px #0008}.card h1{margin:0;text-align:center;font:500 32px var(--serif)}.card input{padding:11px;border:1px solid #cfb793;border-radius:7px}
+.gold{border:1px solid #d9a53a;background:linear-gradient(#e4b345,#ad7110);color:#fff;border-radius:8px;padding:11px 16px;font-weight:800}
+.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}aside{background:#0b0906;color:#efe0c4;padding:26px 20px}aside h2{font:500 24px var(--serif);color:#efc665}aside button{margin-top:16px;border:1px solid #8a692e;background:#17120c;color:#eed7aa;border-radius:7px;padding:8px 10px}
+main{padding:42px clamp(24px,4vw,68px)}header{display:flex;justify-content:space-between;align-items:end;gap:20px}header h1{margin:0;font:500 clamp(34px,3vw,52px) var(--serif)}
+.summary{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 0}.summary span{border:1px solid var(--line);background:#fffaf3;border-radius:999px;padding:6px 10px;color:#695946}
+.empty{margin-top:28px;min-height:320px;border:1px solid var(--line);background:#fffaf3;display:grid;place-items:center;align-content:center;text-align:center}.empty b{font:500 30px var(--serif);color:#a87317}
+.list{margin-top:20px;display:grid;gap:8px}.row{background:#fffaf3;border:1px solid var(--line);padding:12px;display:flex;justify-content:space-between;align-items:center;gap:14px;border-radius:8px}.row small{color:#786956}.actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{border:1px solid #cfb793;background:#fff;border-radius:6px;padding:7px 9px}
+.modal{position:fixed;inset:0;z-index:15;background:#0009;display:none;place-items:center;padding:20px}.modal.open{display:grid}.form{width:min(760px,100%);max-height:92vh;overflow:auto;background:#fffaf3;border:1px solid #b58225;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-radius:12px}.form h2{grid-column:1/-1;margin:0;font:500 30px var(--serif)}
+.form label{display:grid;gap:6px}.form input,.form textarea,.form select{padding:9px;border:1px solid #cfb793;border-radius:6px;background:#fff}.wide{grid-column:1/-1}.form footer{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px;position:sticky;bottom:-24px;background:#fffaf3;padding:12px 0 0}
+.status{grid-column:1/-1;min-height:20px;color:#8b5b12}.status.error{color:#a11d16}.status.ok{color:#25622f}
+.preview{grid-column:1/-1;display:none;align-items:center;gap:12px;border:1px dashed #d3b98f;padding:10px;border-radius:8px}.preview.show{display:flex}.preview img{width:82px;height:82px;object-fit:contain;background:#f7ecdf;border-radius:6px}.preview span{color:#6e604f}
+@media(max-width:700px){.shell{grid-template-columns:1fr}aside{display:none}main{padding:24px 14px}.form{grid-template-columns:1fr}.wide,.form footer,.form h2,.status,.preview{grid-column:1}}
 </style>
 </head>
 <body>
-<div class="lock"><form id="unlock" class="card"><h1>Acesso privado</h1><p>O catálogo começa vazio.</p><input id="token" type="password" placeholder="Chave administrativa" required><button class="gold">Entrar</button><small id="lockStatus"></small></form></div>
-<div class="shell"><aside><h2>BlackGold<br>Beauty Finds</h2><p>Painel administrativo</p><button id="logout">Bloquear painel</button></aside><main>
-<header><div><small>CATÁLOGO</small><h1>Produtos</h1><p>Somente produtos publicados aparecem na loja.</p></div><button id="new" class="gold">Novo produto</button></header>
-<div id="empty" class="empty"><b>0</b><h2>Nenhum produto cadastrado</h2><p>Cadastre o primeiro item quando a loja estiver visualmente aprovada.</p></div>
-<div id="list" class="list"></div>
-</main></div>
-<div id="modal" class="modal"><form id="form" class="form">
-<input type="hidden" name="id"><input type="hidden" name="imageKey">
-<label>Nome<input name="title" required></label><label>Marca<input name="brand"></label>
-<label>Categoria<input name="category" required></label><label>Moeda<select name="currency"><option>BRL</option><option>USD</option><option>EUR</option></select></label>
-<label>Preço<input name="price" type="number" min="0" step="0.01"></label><label>Ordem<input name="order" type="number" value="0"></label>
-<label class="wide">Descrição<textarea name="description" rows="3"></textarea></label>
-<label class="wide">URL destino<input name="destinationUrl" type="url"></label>
-<label class="wide">Imagem<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp,image/avif"><input name="imageUrl" type="url" placeholder="ou URL da imagem"></label>
-<label>Status<select name="status"><option value="draft">Rascunho</option><option value="published">Publicado</option></select></label>
-<label><input name="featured" type="checkbox"> Seleção do Dia</label>
-<footer><button id="cancel" type="button">Cancelar</button><button class="gold" type="submit">Salvar</button></footer>
-</form></div>
+<div class="lock">
+  <form id="unlock" class="card" autocomplete="off">
+    <h1>Acesso privado</h1>
+    <p>O catálogo começa vazio e só publica produtos válidos.</p>
+    <input id="token" type="password" placeholder="Chave administrativa" autocomplete="current-password" required>
+    <button class="gold" type="submit">Entrar</button>
+    <small id="lockStatus" role="status"></small>
+  </form>
+</div>
+
+<div class="shell">
+  <aside>
+    <h2>BlackGold<br>Beauty Finds</h2>
+    <p>Painel administrativo</p>
+    <button id="logout" type="button">Bloquear painel</button>
+  </aside>
+  <main>
+    <header>
+      <div><small>CATÁLOGO</small><h1>Produtos</h1><p>Somente produtos publicados aparecem na loja.</p></div>
+      <button id="new" class="gold" type="button">Novo produto</button>
+    </header>
+    <div class="summary"><span id="count">0 produtos</span><span id="publishedCount">0 publicados</span><span id="draftCount">0 rascunhos</span></div>
+    <div id="empty" class="empty"><b>0</b><h2>Nenhum produto cadastrado</h2><p>Cadastre o primeiro item quando a loja estiver visualmente aprovada.</p></div>
+    <div id="list" class="list"></div>
+  </main>
+</div>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <form id="form" class="form">
+    <h2 id="formTitle">Novo produto</h2>
+    <input type="hidden" name="id"><input type="hidden" name="imageKey">
+    <label>Nome<input name="title" maxlength="160" required></label>
+    <label>Marca<input name="brand" maxlength="120"></label>
+    <label>Categoria<input name="category" maxlength="120" required></label>
+    <label>Moeda<select name="currency"><option>BRL</option><option>USD</option><option>EUR</option></select></label>
+    <label>Preço<input name="price" type="number" min="0" step="0.01"></label>
+    <label>Ordem<input name="order" type="number" value="0"></label>
+    <label class="wide">Descrição<textarea name="description" rows="3" maxlength="700"></textarea></label>
+    <label class="wide">URL destino HTTPS<input name="destinationUrl" type="url" inputmode="url" placeholder="https://"></label>
+    <label class="wide">Imagem<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp,image/avif"><input name="imageUrl" type="url" inputmode="url" placeholder="ou URL HTTPS da imagem"></label>
+    <div id="imagePreview" class="preview"><img alt=""><span></span></div>
+    <label>Status<select name="status"><option value="draft">Rascunho</option><option value="published">Publicado</option></select></label>
+    <label><input name="featured" type="checkbox"> Seleção do Dia</label>
+    <div id="formStatus" class="status" role="status"></div>
+    <footer><button id="cancel" type="button">Cancelar</button><button id="save" class="gold" type="submit">Salvar</button></footer>
+  </form>
+</div>
 <script src="./admin.js"></script>
 </body></html>
