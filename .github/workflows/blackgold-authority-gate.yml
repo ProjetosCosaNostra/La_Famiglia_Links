@@ -78,6 +78,13 @@ jobs:
           test -n "$BIN"
           echo "bin=$BIN" >> "$GITHUB_OUTPUT"
 
+      - name: Stage pinned authority binaries for internal QA
+        run: |
+          mkdir -p blackgold-beauty-finds-novo/.visual-gate
+          cp cloudflare-beauty-finds/visual-authority/BLACKGOLD_HOME_DESKTOP_MOCKUP_APPROVED_20260909_140134.png blackgold-beauty-finds-novo/.visual-gate/approved-full-desktop.png
+          cp cloudflare-beauty-finds/authority-mobile-v24.webp blackgold-beauty-finds-novo/.visual-gate/authority-mobile-v24.webp
+          cp cloudflare-beauty-finds/mobile-vitrine-authority-v20.webp blackgold-beauty-finds-novo/.visual-gate/mobile-vitrine-authority-v20.webp
+
       - name: Capture legacy approved-product implementation for internal calibration
         run: |
           python -m http.server 8798 --bind 127.0.0.1 --directory . >/tmp/bg-legacy-static.log 2>&1 &
