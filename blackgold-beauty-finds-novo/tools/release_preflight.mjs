@@ -31,6 +31,9 @@ if(!guard)errors.push("preview-guard.json missing.");
 if(guard?.productionDeployAllowed!==true)errors.push("preview-guard blocks production deployment.");
 if(guard?.productionRequiresExplicitHumanApproval!==true)errors.push("human approval contract missing.");
 if(guard?.previewRequiresExactVisualGatePass!==true)errors.push("exact visual gate contract missing.");
+if(guard?.productFootprintGateRequired!==true)errors.push("approved product footprint gate contract missing.");
+if(guard?.previewRequiresProductFootprintGatePass!==true)errors.push("preview is not locked to product footprint validation.");
+if(guard?.productRegionPixelDiagnosticCanApprove!==false)errors.push("pixel diagnostic must never approve release by itself.");
 
 if(!manifest)errors.push("authority manifest missing.");
 if(manifest?.catalogInitialCount!==0)errors.push("catalog must remain zero before release approval.");
