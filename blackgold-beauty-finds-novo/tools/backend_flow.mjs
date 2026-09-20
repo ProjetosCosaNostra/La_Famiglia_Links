@@ -117,6 +117,23 @@ try {
   }
   result.publicPublished = "PASS";
 
+  const trackedClick = await fetch(base + "/api/out?id=" + encodeURIComponent(id) + "&placement=selection", {
+    redirect: "manual",
+    cache: "no-store"
+  });
+  if (trackedClick.status !== 302 || trackedClick.headers.get("location") !== product.destinationUrl) {
+    throw new Error("tracked outbound redirect failed " + trackedClick.status);
+  }
+  r = await call("/api/admin/metrics", { headers: auth });
+  if (!r.response.ok || !r.data.products?.some(x => x.productId === id && x.total >= 1)) {
+    throw new Error("affiliate click metrics missing");
+  }
+  result.outboundTracking = { redirect: 302, metrics: "PASS" };
+
+  r = await call("/api/admin/metrics");
+  if (r.response.status !== 401) throw new Error("metrics endpoint must reject anonymous access");
+  result.metricsAuthGate = 401;
+
   let media = await fetch(base + firstMediaUrl, { cache: "no-store" });
   if (media.status !== 200 || !(media.headers.get("content-type") || "").startsWith("image/")) {
     throw new Error("uploaded media not served");
@@ -246,6 +263,13 @@ try {
   r = await call("/api/products?gate=draft");
   if (r.data.total !== 0) throw new Error("draft product leaked to public API");
   result.draftHidden = "PASS";
+
+  const draftRedirect = await fetch(base + "/api/out?id=" + encodeURIComponent(id) + "&placement=showcase", {
+    redirect: "manual",
+    cache: "no-store"
+  });
+  if (draftRedirect.status !== 404) throw new Error("draft product outbound redirect must be blocked");
+  result.draftOutboundBlocked = 404;
 
   r = await call("/api/admin/products", {
     method: "PATCH",
