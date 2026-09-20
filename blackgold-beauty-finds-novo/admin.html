@@ -13,7 +13,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{
 body.unlocked .lock{display:none}.card{width:min(430px,100%);background:#fffaf3;border:1px solid #a87418;padding:30px;display:grid;gap:14px;border-radius:14px;box-shadow:0 30px 100px #0008}.card h1{margin:0;text-align:center;font:500 32px var(--serif)}.card input{padding:11px;border:1px solid #cfb793;border-radius:7px}
 .gold{border:1px solid #d9a53a;background:linear-gradient(#e4b345,#ad7110);color:#fff;border-radius:8px;padding:11px 16px;font-weight:800}
 .shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}aside{background:#0b0906;color:#efe0c4;padding:26px 20px}aside h2{font:500 24px var(--serif);color:#efc665}aside button{margin-top:16px;border:1px solid #8a692e;background:#17120c;color:#eed7aa;border-radius:7px;padding:8px 10px}
-main{padding:42px clamp(24px,4vw,68px)}header{display:flex;justify-content:space-between;align-items:end;gap:20px}header h1{margin:0;font:500 clamp(34px,3vw,52px) var(--serif)}
+main{padding:42px clamp(24px,4vw,68px)}header{display:flex;justify-content:space-between;align-items:end;gap:20px}header h1{margin:0;font:500 clamp(34px,3vw,52px) var(--serif)}.header-actions{display:flex;gap:9px;align-items:center}.header-actions .secondary{border:1px solid #b89254;background:#fffaf3;color:#4b351c;border-radius:8px;padding:11px 14px;font-weight:700}
 .summary{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 0}.summary span{border:1px solid var(--line);background:#fffaf3;border-radius:999px;padding:6px 10px;color:#695946}
 .empty{margin-top:28px;min-height:320px;border:1px solid var(--line);background:#fffaf3;display:grid;place-items:center;align-content:center;text-align:center}.empty b{font:500 30px var(--serif);color:#a87317}
 .list{margin-top:20px;display:grid;gap:8px}.row{background:#fffaf3;border:1px solid var(--line);padding:12px;display:flex;justify-content:space-between;align-items:center;gap:14px;border-radius:8px}.row small{color:#786956}.actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{border:1px solid #cfb793;background:#fff;border-radius:6px;padding:7px 9px}
@@ -44,7 +44,7 @@ main{padding:42px clamp(24px,4vw,68px)}header{display:flex;justify-content:space
   <main>
     <header>
       <div><small>CATÁLOGO</small><h1>Produtos</h1><p>Somente produtos publicados aparecem na loja.</p></div>
-      <button id="new" class="gold" type="button">Novo produto</button>
+      <div class="header-actions"><button id="trash" class="secondary" type="button">Lixeira</button><button id="new" class="gold" type="button">Novo produto</button></div>
     </header>
     <div class="summary"><span id="count">0 produtos</span><span id="publishedCount">0 publicados</span><span id="draftCount">0 rascunhos</span></div>
     <div id="empty" class="empty"><b>0</b><h2>Nenhum produto cadastrado</h2><p>Cadastre o primeiro item quando a loja estiver visualmente aprovada.</p></div>
@@ -77,6 +77,13 @@ main{padding:42px clamp(24px,4vw,68px)}header{display:flex;justify-content:space
     <header><h2 id="historyTitle">Histórico de versões</h2><button id="historyClose" type="button">Fechar</button></header>
     <p>Restaure uma versão anterior sem apagar o histórico atual.</p>
     <div id="historyList" class="history-list"></div>
+  </section>
+</div>
+<div id="trashModal" class="modal" aria-hidden="true">
+  <section class="history-box" aria-labelledby="trashTitle">
+    <header><h2 id="trashTitle">Lixeira recuperável</h2><button id="trashClose" type="button">Fechar</button></header>
+    <p>Produtos excluídos ficam recuperáveis com seus dados e, quando enviada pelo painel, a imagem arquivada.</p>
+    <div id="trashList" class="history-list"></div>
   </section>
 </div>
 <script src="./admin.js"></script>
