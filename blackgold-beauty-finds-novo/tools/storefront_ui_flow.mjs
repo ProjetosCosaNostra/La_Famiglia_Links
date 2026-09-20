@@ -151,8 +151,17 @@ try{
   });
   await page.click("#catalogGrid .catalog-card");
   const opened=await page.evaluate(()=>window.__blackgoldOpened?.[0]?.[0]||"");
-  if(opened!=="https://example.com/qa-beleza")throw new Error("product destination click failed "+opened);
-  result.destinationClick="PASS";
+  if(!opened.startsWith("/api/out?id=")||!opened.includes("placement=catalog"))throw new Error("tracked product destination click failed "+opened);
+  const trackedUrl=new URL(opened,base);
+  const redirect=await fetch(trackedUrl,{redirect:"manual",cache:"no-store"});
+  if(redirect.status!==302||redirect.headers.get("location")!=="https://example.com/qa-beleza"){
+    throw new Error("tracked affiliate redirect failed "+redirect.status+" "+redirect.headers.get("location"));
+  }
+  const metrics=await call("/api/admin/metrics");
+  if(metrics.summary?.total<1||!metrics.products?.some(x=>x.productId===pub.products[0].id||x.title==="BlackGold QA Beleza")){
+    throw new Error("affiliate click metric not recorded");
+  }
+  result.destinationClick={redirect:302,metric:"PASS"};
 
   await page.$eval("#catalogDialog",d=>d.close());
   await page.setViewport({width:310,height:896,deviceScaleFactor:1,isMobile:true});
