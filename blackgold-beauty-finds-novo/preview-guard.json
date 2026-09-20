@@ -1,0 +1,17 @@
+{
+  "contract": "BLACKGOLD_VISUAL_NO_SHOW_RULE",
+  "authority": {
+    "desktop": "authority-desktop-v26.webp",
+    "desktopViewport": [1448, 1086],
+    "mobile": "authority-mobile-v24.webp",
+    "mobileViewport": [390, 1152]
+  },
+  "catalogInitialCount": 0,
+  "legacyProductsAllowed": false,
+  "demoProductsAllowed": false,
+  "previewAutoOpenAllowed": false,
+  "previewRequiresVisualGatePass": true,
+  "productionDeployAllowed": false,
+  "productionRequiresExplicitHumanApproval": true,
+  "visualToleranceOutsideCatalogRemovalZones": 0
+}
