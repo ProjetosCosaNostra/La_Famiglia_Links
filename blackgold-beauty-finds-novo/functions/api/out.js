@@ -9,18 +9,26 @@ export async function onRequestGet(context){
   const placement=allowedPlacement.has(placementRaw)?placementRaw:"unknown";
   if(!id)return new Response("Not found",{status:404,headers:{"cache-control":"no-store"}});
 
+  let product;
   try{
-    const product=await context.env.BG_DB.prepare(
+    product=await context.env.BG_DB.prepare(
       "SELECT id,title,destination_url,status FROM products WHERE id=?"
     ).bind(id).first();
+  }catch{
+    return new Response("Unavailable",{
+      status:503,
+      headers:{"cache-control":"no-store","x-content-type-options":"nosniff"}
+    });
+  }
 
-    if(!product||product.status!=="published"||!/^https:\/\//i.test(String(product.destination_url||""))){
-      return new Response("Not found",{status:404,headers:{"cache-control":"no-store"}});
-    }
+  if(!product||product.status!=="published"||!/^https:\/\//i.test(String(product.destination_url||""))){
+    return new Response("Not found",{status:404,headers:{"cache-control":"no-store"}});
+  }
 
-    const ua=context.request.headers.get("user-agent")||"";
-    const tracked=!botPattern.test(ua);
-    if(tracked){
+  const ua=context.request.headers.get("user-agent")||"";
+  let tracked=!botPattern.test(ua);
+  if(tracked){
+    try{
       await context.env.BG_DB.prepare(
         "INSERT INTO outbound_clicks (id,product_id,product_title,placement,clicked_at) VALUES (?,?,?,?,?)"
       ).bind(
@@ -30,22 +38,19 @@ export async function onRequestGet(context){
         placement,
         new Date().toISOString()
       ).run();
+    }catch{
+      tracked=false;
     }
-
-    return new Response(null,{
-      status:302,
-      headers:{
-        "location":product.destination_url,
-        "cache-control":"no-store, no-cache, must-revalidate",
-        "referrer-policy":"no-referrer",
-        "x-content-type-options":"nosniff",
-        "x-blackgold-click-tracked":tracked?"1":"0"
-      }
-    });
-  }catch(error){
-    return new Response("Unavailable",{
-      status:503,
-      headers:{"cache-control":"no-store","x-content-type-options":"nosniff"}
-    });
   }
+
+  return new Response(null,{
+    status:302,
+    headers:{
+      "location":product.destination_url,
+      "cache-control":"no-store, no-cache, must-revalidate",
+      "referrer-policy":"no-referrer",
+      "x-content-type-options":"nosniff",
+      "x-blackgold-click-tracked":tracked?"1":"0"
+    }
+  });
 }
