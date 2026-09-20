@@ -51,6 +51,15 @@ jobs:
         run: |
           "${{ steps.chrome.outputs.bin }}"             --headless=new --disable-gpu --no-sandbox --hide-scrollbars             --force-device-scale-factor=1 --window-size=390,1152             --screenshot=blackgold-beauty-finds-novo/.visual-gate/candidate-mobile.png             http://127.0.0.1:8799/
 
+      - name: Wide-screen viewport-fill gate
+        run: |
+          DOM="$("${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=2000 --force-device-scale-factor=1 --window-size=1919,960 --dump-dom http://127.0.0.1:8799/ 2>/tmp/blackgold-wide-chrome.log)"
+          echo "$DOM" | grep -q 'data-render-width="1919"'
+          echo "$DOM" | grep -q 'data-shell-width="1919"'
+          echo "$DOM" | grep -q 'data-viewport-width="1919"'
+          echo "$DOM" | grep -q 'data-horizontal-overflow="false"'
+          echo "BLACKGOLD_WIDE_SCREEN_FILL=PASS"
+
       - name: Zero-tolerance desktop gate
         run: |
           python blackgold-beauty-finds-novo/tools/visual_gate.py             --profile desktop             --authority blackgold-beauty-finds-novo/authority-desktop-v26.webp             --candidate blackgold-beauty-finds-novo/.visual-gate/candidate-desktop.png             --report blackgold-beauty-finds-novo/.visual-gate/desktop.json
