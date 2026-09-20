@@ -112,6 +112,22 @@ jobs:
           print("BLACKGOLD_ZERO_AND_RELEASE_GUARDS=PASS")
           PY
 
+      - name: Search metadata and crawler privacy gate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          r=Path("blackgold-beauty-finds-novo")
+          html=(r/"index.html").read_text(encoding="utf-8")
+          robots=(r/"robots.txt").read_text(encoding="utf-8")
+          assert 'name="description"' in html
+          assert 'property="og:image"' in html
+          assert 'name="twitter:card"' in html
+          assert "Disallow: /admin.html" in robots
+          assert "Disallow: /api/admin/" in robots
+          assert "Disallow: /api/health" in robots
+          print("BLACKGOLD_SEARCH_METADATA_PRIVACY=PASS")
+          PY
+
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
