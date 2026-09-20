@@ -75,13 +75,12 @@ try{
   if(!(await page.evaluate(()=>!document.body.classList.contains("unlocked"))))throw new Error("admin did not start locked");
   result.lockedByDefault=true;
 
-  await page.type("#token","wrong-token");
+  await setInput(page,"#token","wrong-token");
   await page.click("#unlock button[type=submit]");
   await waitText(page,"#lockStatus","Chave incorreta.");
   result.wrongTokenRejected=true;
 
-  await page.$eval("#token",el=>{el.value="";});
-  await page.type("#token",token);
+  await setInput(page,"#token",token);
   await page.click("#unlock button[type=submit]");
   await page.waitForFunction(()=>document.body.classList.contains("unlocked"),{timeout:10000});
   await waitText(page,"#count","0 produtos");
