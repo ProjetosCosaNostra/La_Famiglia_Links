@@ -145,6 +145,33 @@ try{
   await waitPublic(data=>data.total===0);
   result.draftViaUi="PASS";
 
+  // Keep an edit open, mutate the same record from another session, then prove the stale UI save is rejected.
+  await page.click("[data-edit]");
+  await setInput(page,'input[name="title"]',"SHOULD NOT OVERWRITE");
+  const currentDraft=(await adminProducts()).products[0];
+  const externalResponse=await fetch(base+"/api/admin/products",{
+    method:"PATCH",
+    headers:{...auth,"content-type":"application/json"},
+    body:JSON.stringify({
+      id:currentDraft.id,
+      expectedUpdatedAt:currentDraft.updatedAt,
+      brand:"BlackGold External Session"
+    })
+  });
+  const externalData=await externalResponse.json();
+  if(!externalResponse.ok||externalData.product?.brand!=="BlackGold External Session"){
+    throw new Error("external concurrency seed failed "+externalResponse.status+" "+JSON.stringify(externalData));
+  }
+  await page.click("#save");
+  await waitText(page,"#formStatus","alterado em outra sessão",10000);
+  const afterConflict=await adminProducts();
+  if(afterConflict.products[0]?.title!=="BlackGold Admin UI Test"||afterConflict.products[0]?.brand!=="BlackGold External Session"){
+    throw new Error("stale UI save overwrote newer data");
+  }
+  result.staleUiWriteBlocked="PASS";
+  await page.click("#cancel");
+  await page.waitForFunction(()=>!document.querySelector("#modal").classList.contains("open"),{timeout:10000});
+
   // Publish through the actual row action.
   await page.click("[data-toggle]");
   await page.waitForFunction(()=>document.querySelector("#list").textContent.includes("published"),{timeout:10000});
