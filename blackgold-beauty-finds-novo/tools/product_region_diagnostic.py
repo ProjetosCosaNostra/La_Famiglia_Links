@@ -19,9 +19,11 @@ report={
   "authoritySize":authority.size,
   "candidateSize":candidate.size,
   "zones":{},
-  "pass":authority.size==candidate.size==(1448,1086),
+  "sizeValid":authority.size==candidate.size==(1448,1086),
+  "pixelPerfect":False,
+  "diagnosticOnly":True,
 }
-if report["pass"]:
+if report["sizeValid"]:
   for name,box in zones.items():
     x=authority.crop(box)
     y=candidate.crop(box)
@@ -39,6 +41,9 @@ if report["pass"]:
     }
 else:
   report["error"]="size mismatch"
+
+if report["sizeValid"]:
+  report["pixelPerfect"]=all(z.get("mismatchPixels")==0 for z in report["zones"].values())
 
 Path(a.report).parent.mkdir(parents=True,exist_ok=True)
 Path(a.report).write_text(json.dumps(report,indent=2),encoding="utf-8")
