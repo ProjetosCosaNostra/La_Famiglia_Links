@@ -113,6 +113,10 @@ jobs:
           assert g["catalogInitialCount"]==0
           assert g["previewAutoOpenAllowed"] is False
           assert g["productionDeployAllowed"] is False
+          assert g["productFootprintGateRequired"] is True
+          assert g["previewRequiresProductFootprintGatePass"] is True
+          assert g["productRegionPixelDiagnosticCanApprove"] is False
+          assert g["productFootprintContract"]=="BLACKGOLD_APPROVED_PRODUCT_FOOTPRINT_GATE_V1"
           print("BLACKGOLD_ZERO_AND_RELEASE_GUARDS=PASS")
           PY
 
