@@ -23,8 +23,8 @@
 /* V27 authority-first dynamic masking: approved screenshots remain the shell; only catalog/count regions are live. */
 .dynamic-mask{position:absolute;z-index:21;pointer-events:none}
 .count-mask{left:7.65%;top:30.00%;width:6.0%;height:4.65%;background:#fffdf9}
-.selection-mask{left:4.143646%;top:42.54%;width:91.712707%;height:14.18%;background:linear-gradient(180deg,#fffdf9 0%,#fbf3e9 100%)}
-.showcase-mask{left:4.143646%;top:62.43%;width:91.712707%;height:13.81%;background:linear-gradient(180deg,#fffdf9 0%,#faf2e7 100%)}
+.selection-mask{left:4.143646%;top:42.54%;width:91.712707%;height:15.47%;background:linear-gradient(180deg,#fffdf9 0%,#fbf3e9 100%)}
+.showcase-mask{left:4.143646%;top:62.43%;width:91.712707%;height:14.00%;background:linear-gradient(180deg,#fffdf9 0%,#faf2e7 100%)}
 .catalog-count-live{position:absolute;z-index:25;left:8.05%;top:30.27%;width:5.1%;height:3.7%;display:flex;flex-direction:column;justify-content:center;line-height:1;color:#17110d;pointer-events:none}
 .catalog-count-live b{font:700 16px/1 "Cormorant Garamond",Georgia,serif}
 .catalog-count-live small{margin-top:4px;color:#77695d;font:500 8px/1.05 Inter,"Segoe UI",Arial,sans-serif;white-space:nowrap}
@@ -32,7 +32,7 @@
 .selection-live .product,.showcase-live .product{background:#fffdf9}
 
 @media(max-width:760px){
-  .count-mask{left:11.0%;top:31.95%;width:19.8%;height:4.55%;background:#fffdf9;border-radius:0}
+  .count-mask{left:11.0%;top:31.95%;width:19.8%;height:4.95%;background:#fffdf9;border-radius:0}
   .catalog-count-live{left:12.55%;top:32.12%;width:16.5%;height:3.85%}
   .catalog-count-live b{font-size:18px}
   .catalog-count-live small{margin-top:3px;font-size:8px}
@@ -43,7 +43,7 @@
   .selection-live .product{height:100%;display:grid;grid-template-columns:52% 48%;border:1px solid #eadfd0;border-radius:9px;background:#fffdf9;overflow:hidden;padding:0}
   .selection-live .media{margin:7px 0 7px 7px;border-radius:7px;background:#fbf4e9;overflow:hidden}
   .selection-live .media img{width:100%;height:100%;object-fit:contain;transform:none}
-  .selection-live .copy{padding:9px 9px 8px 10px;display:flex;flex-direction:column;min-width:0}
+  .selection-live .copy{padding:9px 0 8px 10px;display:flex;flex-direction:column;min-width:0}
   .selection-live .product h3{margin:0;font:700 14px/1.02 "Cormorant Garamond",Georgia,serif}
   .selection-live .meta{margin-top:2px;color:#6f6256;font-size:9px}
   .selection-live .desc{display:none}
@@ -56,7 +56,7 @@
   .showcase-live .product{flex:0 0 126px;width:126px;height:145px;border:1px solid #e6dacb;border-radius:8px;background:#fffdf9;padding:5px 5px 7px;display:flex;flex-direction:column;text-align:center;overflow:hidden}
   .showcase-live .media{height:80px;flex:0 0 80px;border-radius:6px;background:#fbf4e9;overflow:hidden}
   .showcase-live .media img{width:100%;height:100%;object-fit:contain;transform:none}
-  .showcase-live .product h3{height:24px;margin:5px 0 0;overflow:hidden;white-space:normal;text-overflow:clip;font:700 11px/1.03 "Cormorant Garamond",Georgia,serif}
+  .showcase-live .product h3{height:15px;margin:4px 0 0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:700 10px/1.05 "Cormorant Garamond",Georgia,serif}
   .showcase-live .price{display:block;height:auto;margin-top:auto;font:800 14px/1 "Cormorant Garamond",Georgia,serif}
 
   .all-selection{left:78.46%;top:39.84%;width:21.54%;height:2.75%}
