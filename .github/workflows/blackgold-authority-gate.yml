@@ -25,6 +25,26 @@ jobs:
 
       - run: python -m pip install --disable-pip-version-check pillow
 
+      - name: Canonical source lock
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          r=Path("blackgold-beauty-finds-novo")
+          obsolete=[
+            "authority-desktop-v26.webp",
+            "authority-mobile-v24.webp",
+            "shell.css",
+            "shell.js",
+          ]
+          found=[name for name in obsolete if (r/name).exists()]
+          assert not found, "obsolete visual sources reintroduced: "+", ".join(found)
+          verify=(r/"tools/verify.ps1").read_text(encoding="utf-8")
+          assert "assets\\authority-zero-desktop.png" in verify
+          assert "assets\\authority-zero-mobile.png" in verify
+          assert "window-size=310,896" in verify
+          print("BLACKGOLD_CANONICAL_SOURCE_LOCK=PASS")
+          PY
+
       - name: Verify pinned authority assets
         run: |
           python - <<'PY'
