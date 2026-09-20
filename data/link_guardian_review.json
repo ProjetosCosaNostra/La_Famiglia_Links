@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-20T11:14:52Z",
-  "total_items": 5,
+  "updated_at": "2026-09-20T16:02:24Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 7
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 7
     },
-    "high_priority": 5
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-09-20T11:08:52Z",
+      "happened_at": "2026-09-20T15:55:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,97 @@
       ]
     },
     {
-      "happened_at": "2026-09-20T11:08:52Z",
+      "happened_at": "2026-09-20T15:55:54Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 15,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/15",
+      "issue_title": "[CMS] Produto: Ring Light RGB 10” + Tripé 2,10m (QR)",
+      "sku": "ring-light-rgb-10-tripe-210m",
+      "title": "Ring Light RGB 10” + Tripé 2,10m (Controle no cabo)",
+      "id_busca": "5J5PKG-BHRR",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2BuQ5JD",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2BuQ5JD",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMmf%2BjbJaViMUSZa0i3wJchel0Kbfe9P2cOrzMnEb2Ht2%2FTQPoIcWVXfZ3WzDZtQgQ3x20MxYkQVINVu%2Bkcjq6SrsESfLWXZZcr2%2FmZ9bX8cs6mcErb0zUSONfpt%2B%2BObc0EpZeh07mjPbL%2BkiXrcC57PKbxscBgW3uZ3rM%2Fdt6I9DRFcBtOXcpgaLiHeH8BLbSLoXA%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BHRR&tid=0c1478f4-1f3c-414e-bea7-8d7111207955",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMmf%2BjbJaViMUSZa0i3wJchel0Kbfe9P2cOrzMnEb2Ht2%2FTQPoIcWVXfZ3WzDZtQgQ3x20MxYkQVINVu%2Bkcjq6SrsESfLWXZZcr2%2FmZ9bX8cs6mcErb0zUSONfpt%2B%2BObc0EpZeh07mjPbL%2BkiXrcC57PKbxscBgW3uZ3rM%2Fdt6I9DRFcBtOXcpgaLiHeH8BLbSLoXA%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BMmf%2BjbJaViMUSZa0i3wJchel0Kbfe9P2cOrzMnEb2Ht2%2FTQPoIcWVXfZ3WzDZtQgQ3x20MxYkQVINVu%2Bkcjq6SrsESfLWXZZcr2%2FmZ9bX8cs6mcErb0zUSONfpt%2B%2BObc0EpZeh07mjPbL%2BkiXrcC57PKbxscBgW3uZ3rM%2Fdt6I9DRFcBtOXcpgaLiHeH8BLbSLoXA%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Ring Light",
+        "Iluminação",
+        "RGB",
+        "Tripé 2",
+        "10m",
+        "Vídeos e Fotos",
+        "Criadores"
+      ]
+    },
+    {
+      "happened_at": "2026-09-20T15:55:54Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 17,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/17",
+      "issue_title": "[CMS] Produto: Jogo de Lençol 400 Fios Queen Box (4 peças)",
+      "sku": "jogo-lencol-400-fios-queen-box-4-pecas",
+      "title": "Jogo de Lençol 400 Fios — Queen Box (4 peças)",
+      "id_busca": "5J5PKG-MY6V",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/2wZB7u8",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/2wZB7u8",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFb3TSBnASCc%2BgvpnZlD1yA2UQfc6H9dzOyQQout%2F%2BFpavO%2FevBXHC%2B6l18D0jMGhL%2BYragvsyfYgegw4ZbKYqwWyUfmUnUoci2t3mWNss3myOSj%2BGbQtCPnYuvf199kBjX%2F6jzNvtBxQ8AYwW98skMkjzbwV2031Ay%2F%2FKfqx%2FGDB7hjhxzUFQIbQBV1tpcK204WKQ%3D%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MY6V&tid=a5b762df-445a-43b1-9114-989a8d9f76ef",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFb3TSBnASCc%2BgvpnZlD1yA2UQfc6H9dzOyQQout%2F%2BFpavO%2FevBXHC%2B6l18D0jMGhL%2BYragvsyfYgegw4ZbKYqwWyUfmUnUoci2t3mWNss3myOSj%2BGbQtCPnYuvf199kBjX%2F6jzNvtBxQ8AYwW98skMkjzbwV2031Ay%2F%2FKfqx%2FGDB7hjhxzUFQIbQBV1tpcK204WKQ%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFb3TSBnASCc%2BgvpnZlD1yA2UQfc6H9dzOyQQout%2F%2BFpavO%2FevBXHC%2B6l18D0jMGhL%2BYragvsyfYgegw4ZbKYqwWyUfmUnUoci2t3mWNss3myOSj%2BGbQtCPnYuvf199kBjX%2F6jzNvtBxQ8AYwW98skMkjzbwV2031Ay%2F%2FKfqx%2FGDB7hjhxzUFQIbQBV1tpcK204WKQ%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Cama Mesa e Banho",
+        "Jogo de Lençol",
+        "400 Fios",
+        "Queen",
+        "Toque Hotel",
+        "Conforto",
+        "Casa"
+      ]
+    },
+    {
+      "happened_at": "2026-09-20T15:55:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +166,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-20T11:08:52Z",
+      "happened_at": "2026-09-20T15:55:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (43x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (44x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -147,7 +237,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-20T11:08:52Z",
+      "happened_at": "2026-09-20T15:55:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -163,7 +253,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (137x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (138x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +282,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-20T11:08:52Z",
+      "happened_at": "2026-09-20T15:55:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +298,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (16x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (17x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
