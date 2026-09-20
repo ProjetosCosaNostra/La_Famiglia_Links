@@ -17,39 +17,39 @@ try{
   await page.waitForFunction(()=>document.body.dataset.catalogCount==="11",{timeout:10000});
   await page.evaluate(async()=>{await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r})))}); 
 
-  const original=await page.evaluate(()=>({
-    selection:document.querySelector(".selection-live .media img")?.getAttribute("style")||"",
-    showcase:document.querySelector(".showcase-live .media img")?.getAttribute("style")||""
-  }));
+  async function inject(css){
+    await page.evaluate(cssText=>{
+      document.getElementById("__tune_style")?.remove();
+      const s=document.createElement("style");
+      s.id="__tune_style";
+      s.textContent=cssText;
+      document.head.appendChild(s);
+    },css);
+  }
 
   const selection=[];
-  for(const y of [-4,0,4,8]){
-    for(const scale of [0.96,1,1.04,1.08]){
-      const id=`sel-y${y}-s${String(scale).replace(".","p")}`;
-      await page.$eval("#__tune_style",el=>el.remove()).catch(()=>{});
-      await page.addStyleTag({content:`
-        .selection-live .media img{transform:translateY(${y}px) scale(${scale})!important;transform-origin:center center!important}
-      `,id:"__tune_style"}).catch(async()=>{
-        await page.evaluate(css=>{const s=document.createElement("style");s.id="__tune_style";s.textContent=css;document.head.appendChild(s)},`
-          .selection-live .media img{transform:translateY(${y}px) scale(${scale})!important;transform-origin:center center!important}
-        `);
-      });
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
-      selection.push({id,y,scale});
+  for(const x of [-8,-4,0,4]){
+    for(const y of [-6,-4,-2,0]){
+      for(const scale of [0.94,0.96,0.98]){
+        const id=`sel-x${x}-y${y}-s${String(scale).replace(".","p")}`;
+        await inject(`.selection-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}`);
+        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
+        selection.push({id,x,y,scale});
+      }
     }
   }
 
   const showcase=[];
-  for(const h of [90,96,102,108]){
-    for(const scale of [0.9,1,1.1,1.2,1.3]){
-      const id=`show-h${h}-s${String(scale).replace(".","p")}`;
-      await page.$eval("#__tune_style",el=>el.remove()).catch(()=>{});
-      await page.evaluate(css=>{const s=document.createElement("style");s.id="__tune_style";s.textContent=css;document.head.appendChild(s)},`
-        .showcase-live .media{height:${h}px!important}
-        .showcase-live .media img{transform:scale(${scale})!important;transform-origin:center center!important}
-      `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-      showcase.push({id,h,scale});
+  for(const x of [-16,-12,-8,-4,0]){
+    for(const y of [-4,0,4]){
+      for(const h of [96,102,108]){
+        for(const scale of [0.85,0.9,0.95]){
+          const id=`show-x${x}-y${y}-h${h}-s${String(scale).replace(".","p")}`;
+          await inject(`.showcase-live .media{height:${h}px!important}.showcase-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}`);
+          await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+          showcase.push({id,x,y,h,scale});
+        }
+      }
     }
   }
   await fs.writeFile(path.join(out,"variants.json"),JSON.stringify({selection,showcase},null,2));
