@@ -104,5 +104,17 @@
   const leaked = FORBIDDEN.filter(x => visibleText.includes(x));
   document.documentElement.dataset.guard = leaked.length ? 'BLOCKED' : 'PASS';
 
+  function publishGeometry() {
+    const image = document.querySelector(window.matchMedia('(max-width:760px)').matches ? '.visual-mobile img' : '.visual-desktop img');
+    const shell = document.querySelector('.authority-shell');
+    if (!image || !shell) return;
+    document.documentElement.dataset.renderWidth = String(Math.round(image.getBoundingClientRect().width));
+    document.documentElement.dataset.shellWidth = String(Math.round(shell.getBoundingClientRect().width));
+    document.documentElement.dataset.viewportWidth = String(window.innerWidth);
+    document.documentElement.dataset.horizontalOverflow = String(document.documentElement.scrollWidth > window.innerWidth);
+  }
+  window.addEventListener('resize', publishGeometry);
+  requestAnimationFrame(publishGeometry);
+
   loadPublishedProducts();
 })();
