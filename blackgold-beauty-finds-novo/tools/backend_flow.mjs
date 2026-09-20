@@ -134,6 +134,7 @@ try {
   result.inUseMediaProtected = 409;
 
   // Edit then rollback through revision history. This protects approved product data from accidental edits.
+  const staleVersion = version;
   r = await call("/api/admin/products", {
     method: "PATCH",
     headers: { ...auth, "content-type": "application/json" },
@@ -143,6 +144,30 @@ try {
     throw new Error("revision seed update failed");
   }
   version = r.data.product.updatedAt;
+  if (!version || version === staleVersion) throw new Error("updatedAt did not advance after update");
+
+  r = await call("/api/admin/products", {
+    method: "PATCH",
+    headers: { ...auth, "content-type": "application/json" },
+    body: JSON.stringify({ id, expectedUpdatedAt: staleVersion, brand: "SHOULD NOT APPLY" })
+  });
+  if (r.response.status !== 409 || r.data.code !== "stale_product") {
+    throw new Error("stale write was not blocked " + r.response.status + " " + JSON.stringify(r.data));
+  }
+  if (r.data.current?.title !== "BlackGold CI Accidentally Changed") {
+    throw new Error("stale conflict did not return current state");
+  }
+  result.staleWriteBlocked = 409;
+
+  r = await call("/api/admin/products", {
+    method: "PATCH",
+    headers: { ...auth, "content-type": "application/json" },
+    body: JSON.stringify({ id, title: "Missing precondition" })
+  });
+  if (r.response.status !== 428 || r.data.code !== "expected_updated_at_required") {
+    throw new Error("missing precondition was not blocked");
+  }
+  result.missingPreconditionBlocked = 428;
 
   r = await call("/api/admin/revisions?productId=" + encodeURIComponent(id) + "&limit=10", { headers: auth });
   if (!r.response.ok || !Array.isArray(r.data.revisions) || !r.data.revisions.length) {
