@@ -8,7 +8,7 @@ APP_NAME = "BlackGold Beauty Finds"
 [[d1_databases]]
 binding = "BG_DB"
 database_name = "blackgold-beauty-finds-novo"
-database_id = "REPLACE_ONLY_AFTER_HUMAN_APPROVAL"
+database_id = "11111111-1111-4111-8111-111111111111" # local-only placeholder; replace after explicit human approval
 migrations_dir = "database/migrations"
 
 [[r2_buckets]]
