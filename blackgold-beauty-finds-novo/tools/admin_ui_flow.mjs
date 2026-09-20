@@ -68,7 +68,7 @@ try{
     executablePath:chrome,
     args:["--no-sandbox","--disable-gpu","--hide-scrollbars"]
   });
-  const page=await browser.newPage();
+  let page=await browser.newPage();
   page.on("pageerror",e=>{throw e});
   await page.goto(base+"/admin.html",{waitUntil:"networkidle0",timeout:30000});
 
@@ -76,12 +76,18 @@ try{
   result.lockedByDefault=true;
 
   await setInput(page,"#token","wrong-token");
-  await page.click("#unlock button[type=submit]");
+  await page.evaluate(()=>document.querySelector("#unlock").requestSubmit());
   await waitText(page,"#lockStatus","Chave incorreta.");
   result.wrongTokenRejected=true;
 
+  await page.close();
+  page=await browser.newPage();
+  page.on("pageerror",e=>{throw e});
+  await page.goto(base+"/admin.html?fresh="+Date.now(),{waitUntil:"networkidle0",timeout:30000});
   await setInput(page,"#token",token);
-  await page.click("#unlock button[type=submit]");
+  const typedToken=await page.$eval("#token",el=>el.value);
+  if(typedToken!==token)throw new Error("admin token input mismatch");
+  await page.evaluate(()=>document.querySelector("#unlock").requestSubmit());
   await page.waitForFunction(()=>document.body.classList.contains("unlocked"),{timeout:10000});
   await waitText(page,"#count","0 produtos");
   result.correctTokenUnlocks=true;
