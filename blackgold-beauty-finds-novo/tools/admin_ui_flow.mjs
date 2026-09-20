@@ -237,6 +237,9 @@ try{
   if(restoredMedia.status!==200)throw new Error("trash UI did not restore media "+restoredMedia.status);
   result.trashRestoreViaUi={product:"PASS",media:200};
 
+  await page.click("#trashClose");
+  await page.waitForFunction(()=>!document.querySelector("#trashModal").classList.contains("open"),{timeout:5000});
+
   // Final delete returns the catalog to zero; the trash remains recoverable.
   page.once("dialog",dialog=>dialog.accept());
   await page.click("[data-del]");
