@@ -89,15 +89,4 @@
     border-color:#a9742c;
     font-size:12px;
   }
-
-  .showcase-live .product{
-    background:rgba(255,255,255,.72);
-  }
-  .showcase-live .media{background:#fbf4e9}
-  .showcase-live .media img{
-    transform:translateY(-24px) scale(.92);
-    transform-origin:center center;
-  }
-  .showcase-live .product h3{font-size:10px}
-  .showcase-live .price{font-size:10px}
-}
+ }
