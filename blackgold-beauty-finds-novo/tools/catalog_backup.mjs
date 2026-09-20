@@ -1,5 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import crypto from "node:crypto";
+
+const sha256=bytes=>crypto.createHash("sha256").update(bytes).digest("hex");
+const safeRelative=key=>key.split("/").map(part=>part.replace(/[^a-zA-Z0-9._-]/g,"_")).join("/");
 
 export async function backupCatalog({
   base=process.env.BLACKGOLD_BASE||"http://127.0.0.1:8788",
@@ -15,40 +19,54 @@ export async function backupCatalog({
     return d;
   }
 
-  const products=(await getJson("/api/admin/products")).products||[];
-  const audit=(await getJson("/api/admin/audit?limit=200")).events||[];
+  const dbSnapshot=await getJson("/api/admin/snapshot");
+  if(dbSnapshot.schema!=="blackgold-db-snapshot-v1")throw new Error("unexpected snapshot schema");
 
-  await fs.mkdir(path.join(out,"media"),{recursive:true});
+  const keys=new Set();
+  for(const p of dbSnapshot.data?.products||[])if(p.image_key)keys.add(p.image_key);
+  for(const a of dbSnapshot.data?.archives||[])if(a.archive_key)keys.add(a.archive_key);
+
   const media=[];
-  for(const p of products){
-    if(!p.imageKey)continue;
-    const url=base+"/media/"+encodeURIComponent(p.imageKey);
-    const r=await fetch(url,{cache:"no-store"});
-    if(!r.ok)throw new Error("media backup failed "+p.imageKey+" "+r.status);
+  for(const key of keys){
+    const r=await fetch(base+"/api/admin/disaster-media?key="+encodeURIComponent(key),{
+      headers:auth,
+      cache:"no-store"
+    });
+    if(!r.ok)throw new Error("protected media backup failed "+key+" "+r.status);
     const bytes=Buffer.from(await r.arrayBuffer());
-    const target=path.join(out,"media",p.imageKey);
+    const rel="media/"+safeRelative(key);
+    const target=path.join(out,...rel.split("/"));
+    await fs.mkdir(path.dirname(target),{recursive:true});
     await fs.writeFile(target,bytes);
     media.push({
-      key:p.imageKey,
-      file:"media/"+p.imageKey,
+      key,
+      file:rel,
       bytes:bytes.length,
-      contentType:r.headers.get("content-type")||"application/octet-stream"
+      sha256:sha256(bytes),
+      contentType:(r.headers.get("content-type")||"application/octet-stream").split(";")[0]
     });
   }
 
   const snapshot={
-    schema:"blackgold-beauty-finds-catalog-backup-v1",
+    schema:"blackgold-beauty-finds-disaster-backup-v2",
     createdAt:new Date().toISOString(),
     source:base,
-    productCount:products.length,
-    mediaCount:media.length,
-    products,
-    media,
-    audit
+    counts:{
+      products:Number(dbSnapshot.counts?.products||0),
+      revisions:Number(dbSnapshot.counts?.revisions||0),
+      archives:Number(dbSnapshot.counts?.archives||0),
+      audit:Number(dbSnapshot.counts?.audit||0),
+      media:media.length
+    },
+    dbSnapshot,
+    media
   };
-  await fs.writeFile(path.join(out,"manifest.json"),JSON.stringify(snapshot,null,2),"utf8");
-  console.log(JSON.stringify({ok:true,out,productCount:products.length,mediaCount:media.length},null,2));
-  console.log("BLACKGOLD_CATALOG_BACKUP=PASS");
+  await fs.mkdir(out,{recursive:true});
+  const body=JSON.stringify(snapshot,null,2);
+  await fs.writeFile(path.join(out,"manifest.json"),body,"utf8");
+  await fs.writeFile(path.join(out,"manifest.sha256"),sha256(Buffer.from(body,"utf8"))+"  manifest.json\n","utf8");
+  console.log(JSON.stringify({ok:true,out,counts:snapshot.counts},null,2));
+  console.log("BLACKGOLD_DISASTER_BACKUP_V2=PASS");
   return {out,snapshot};
 }
 
