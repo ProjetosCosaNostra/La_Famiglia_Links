@@ -31,15 +31,15 @@ function expectedDesktop(){
   };
 }
 function expectedMobile(){
-  const showcaseWidth=(294-(294*.012)*2)/3;
-  const gap=294*.012;
   return {
-    selection:{x:8,y:380,width:294,height:100},
-    selectionCards:[{x:8,y:380,width:294,height:100}],
-    showcase:{x:8,y:538,width:294,height:107},
-    showcaseCards:Array.from({length:3},(_,i)=>({
-      x:8+i*(showcaseWidth+gap),y:538,width:showcaseWidth,height:107
-    }))
+    selection:{x:16,y:493,width:374,height:140},
+    selectionCards:[{x:16,y:493,width:374,height:140}],
+    showcase:{x:16,y:706,width:374,height:145},
+    showcaseCards:[
+      {x:16,y:706,width:126,height:145},
+      {x:147,y:706,width:126,height:145},
+      {x:278,y:706,width:126,height:145}
+    ]
   };
 }
 
@@ -48,7 +48,7 @@ const report={contract:"BLACKGOLD_APPROVED_PRODUCT_FOOTPRINT_GATE_V1",toleranceP
 try{
   for(const profile of [
     {name:"desktop",width:1448,height:1086,mobile:false,expected:expectedDesktop()},
-    {name:"mobile",width:310,height:896,mobile:true,expected:expectedMobile()}
+    {name:"mobile",width:390,height:1152,mobile:true,expected:expectedMobile()}
   ]){
     const page=await browser.newPage();
     await page.setViewport({width:profile.width,height:profile.height,deviceScaleFactor:1,isMobile:profile.mobile});
