@@ -17,7 +17,7 @@ async function api(path,opt={}){
   const d=await r.json().catch(()=>({}));
   if(!r.ok){
     if(r.status===401)lockPanel("Sessão inválida. Entre novamente.");
-    throw Object.assign(new Error(d.message||d.code||("HTTP "+r.status)),{status:r.status,code:d.code});
+    throw Object.assign(new Error(d.message||d.code||("HTTP "+r.status)),{status:r.status,code:d.code,data:d});
   }
   return d;
 }
@@ -238,11 +238,20 @@ async function toggle(id,button){
   try{
     await api("/api/admin/products",{
       method:"PATCH",
-      body:JSON.stringify({id,status:product.status==="published"?"draft":"published"})
+      body:JSON.stringify({
+        id,
+        expectedUpdatedAt:product.updatedAt,
+        status:product.status==="published"?"draft":"published"
+      })
     });
     await load();
   }catch(e){
-    alert(e.message);
+    if(e.code==="stale_product"||e.code==="expected_updated_at_required"){
+      await load().catch(()=>{});
+      alert("O produto mudou em outra sessão. A lista foi recarregada; revise antes de tentar novamente.");
+    }else{
+      alert(e.message);
+    }
   }finally{
     button.disabled=false;
   }
@@ -300,6 +309,7 @@ $("#form").onsubmit=async e=>{
   status("Salvando…");
   const payload={
     id:state.editing?.id||undefined,
+    expectedUpdatedAt:state.editing?.updatedAt||undefined,
     title:f.elements.title.value,
     brand:f.elements.brand.value,
     category:f.elements.category.value,
@@ -326,7 +336,12 @@ $("#form").onsubmit=async e=>{
     state.originalImageKey="";
     await load();
   }catch(err){
-    status(err.message,"error");
+    if(err.code==="stale_product"||err.code==="expected_updated_at_required"){
+      await load().catch(()=>{});
+      status("Este produto foi alterado em outra sessão. A lista foi recarregada; feche e reabra a edição antes de salvar.","error");
+    }else{
+      status(err.message,"error");
+    }
   }finally{
     setBusy(false);
   }
