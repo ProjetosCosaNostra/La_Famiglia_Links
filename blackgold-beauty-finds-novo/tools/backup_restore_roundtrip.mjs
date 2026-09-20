@@ -26,8 +26,8 @@ async function clearDb(){
   const empty={
     schema:"blackgold-db-snapshot-v1",
     createdAt:new Date().toISOString(),
-    counts:{products:0,revisions:0,archives:0,audit:0},
-    data:{products:[],revisions:[],archives:[],audit:[]}
+    counts:{products:0,revisions:0,archives:0,audit:0,clicks:0},
+    data:{products:[],revisions:[],archives:[],audit:[],clicks:[]}
   };
   return call("/api/admin/snapshot",{
     method:"POST",
@@ -84,6 +84,11 @@ try{
   const deletedTrash=trashBefore.items?.find(x=>x.productId===deleted.product.id);
   if(!deletedTrash?.imageArchived||!deletedTrash?.archiveKey)throw new Error("deleted product archive missing");
 
+  const tracked=await fetch(base+"/api/out?id="+encodeURIComponent(active.product.id)+"&placement=showcase",{redirect:"manual",cache:"no-store"});
+  if(tracked.status!==302||tracked.headers.get("location")!=="https://example.com/published")throw new Error("tracked outbound click seed failed");
+  const metricsBefore=await call("/api/admin/metrics");
+  if(metricsBefore.summary?.total!==1||metricsBefore.products?.[0]?.productId!==active.product.id)throw new Error("click ledger seed mismatch");
+
   const publicArchiveBefore=await fetch(base+"/media/"+deletedTrash.archiveKey,{cache:"no-store"});
   if(publicArchiveBefore.status!==404)throw new Error("private archive leaked publicly "+publicArchiveBefore.status);
 
@@ -95,7 +100,7 @@ try{
   await backupCatalog({base,token,out});
   const manifest=JSON.parse(await fs.readFile(path.join(out,"manifest.json"),"utf8"));
   if(manifest.schema!=="blackgold-beauty-finds-disaster-backup-v2")throw new Error("backup schema mismatch");
-  if(manifest.counts.products!==2||manifest.counts.archives<1||manifest.counts.revisions<1||manifest.counts.media<2){
+  if(manifest.counts.products!==2||manifest.counts.archives<1||manifest.counts.revisions<1||manifest.counts.media<2||manifest.dbSnapshot.counts?.clicks!==1){
     throw new Error("backup v2 counts mismatch "+JSON.stringify(manifest.counts));
   }
 
@@ -117,7 +122,7 @@ try{
   await restoreCatalog({base,token,dir:out,confirm:"RESTORE",replace:true});
 
   const restored=await call("/api/admin/snapshot");
-  for(const k of ["products","revisions","archives","audit"]){
+  for(const k of ["products","revisions","archives","audit","clicks"]){
     if(Number(restored.counts[k])!==Number(manifest.dbSnapshot.counts[k]))throw new Error("exact restored DB count mismatch "+k);
   }
 
@@ -157,7 +162,8 @@ try{
     media:manifest.counts.media,
     privateArchivePublicStatus:404,
     restoredTrashProduct:"PASS",
-    restoredTrashMedia:200
+    restoredTrashMedia:200,
+    restoredClickLedger:restored.counts.clicks
   },null,2));
   console.log("BLACKGOLD_DISASTER_BACKUP_RESTORE_ROUNDTRIP=PASS");
 }finally{
