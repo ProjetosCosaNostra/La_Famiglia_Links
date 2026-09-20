@@ -2,8 +2,20 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080604"><title>BlackGold Beauty Finds</title><link rel="stylesheet" href="./styles.css"></head>
 <body data-catalog-count="0"><main class="authority" aria-label="BlackGold Beauty Finds">
 <picture class="authority-picture" aria-hidden="true"><source media="(max-width:760px)" srcset="./assets/authority-zero-mobile.png"><img src="./assets/authority-zero-desktop.png" width="1448" height="1086" alt=""></picture>
-<nav aria-label="Navega??o principal"><a class="hit brand" href="/" aria-label="In?cio"></a><a class="hit featured" href="#selection" aria-label="Destaque"></a><a class="hit showcase-nav" href="#showcase" aria-label="Vitrine"></a><a class="hit ecosystem-nav" href="#ecosystem" aria-label="Ecossistema"></a><a class="hit explore" href="#showcase" aria-label="Explorar achados"></a><a class="hit open-eco" href="#ecosystem" aria-label="Abrir ecossistema"></a><button class="hit lang pt" data-lang="pt" aria-label="Portugu?s"></button><button class="hit lang en" data-lang="en" aria-label="English"></button><button class="hit lang es" data-lang="es" aria-label="Espa?ol"></button></nav>
+<nav aria-label="Navegação principal">
+<a class="hit brand" href="/" aria-label="Início"></a><a class="hit featured" href="#selection" aria-label="Destaque"></a><a class="hit showcase-nav" href="#showcase" aria-label="Vitrine"></a><a class="hit ecosystem-nav" href="#ecosystem" aria-label="Ecossistema"></a>
+<a class="hit explore" href="#showcase" aria-label="Explorar achados"></a><a class="hit open-eco" href="#ecosystem" aria-label="Abrir ecossistema"></a>
+<button class="hit lang pt" data-lang="pt" aria-label="Português"></button><button class="hit lang en" data-lang="en" aria-label="English"></button><button class="hit lang es" data-lang="es" aria-label="Español"></button>
+<button class="hit mobile-menu" data-open-catalog aria-label="Menu"></button><button class="hit search-hit" data-open-catalog aria-label="Buscar produtos"></button><button class="hit bag-hit" data-open-catalog aria-label="Abrir vitrine"></button>
+<button class="hit all-selection" data-open-catalog aria-label="Ver todos os produtos"></button><button class="hit all-showcase" data-open-catalog aria-label="Ver toda a vitrine"></button>
+</nav>
 <section id="selection" class="live selection-live" aria-live="polite"></section><section id="showcase" class="live showcase-live" aria-live="polite"></section>
-<section id="ecosystem" class="sr-only"><h1>BlackGold Beauty Finds</h1><p>Curadoria feminina com presen?a premium.</p></section>
+<section id="ecosystem" class="sr-only"><h1>BlackGold Beauty Finds</h1><p>Curadoria feminina com presença premium.</p></section>
 <a class="hit hub" href="https://blackgold-beauty-finds-br.pages.dev/" target="_blank" rel="noopener" aria-label="Hub oficial / Loja"></a><a class="hit instagram" href="https://www.instagram.com/cosanostra.blackgold/" target="_blank" rel="noopener" aria-label="Instagram"></a><a class="hit youtube" href="https://www.youtube.com/@cosanostra.blackgold" target="_blank" rel="noopener" aria-label="YouTube"></a><a class="hit telegram" href="https://t.me/BlackGoldSociety" target="_blank" rel="noopener" aria-label="Telegram"></a><a class="hit github" href="https://github.com/ProjetosCosaNostra" target="_blank" rel="noopener" aria-label="GitHub"></a><a class="hit contact" href="mailto:projetoscosanostra@gmail.com" aria-label="Contato"></a>
-</main><script src="./app.js" defer></script></body></html>
+</main>
+<dialog id="catalogDialog" class="catalog-dialog" aria-labelledby="catalogTitle">
+<form method="dialog" class="catalog-head"><div><small id="catalogKicker">VITRINE BLACKGOLD</small><h2 id="catalogTitle">Vitrine completa</h2></div><button class="catalog-close" aria-label="Fechar">×</button></form>
+<div class="catalog-tools"><input id="catalogSearch" type="search" autocomplete="off" placeholder="Buscar produto, marca ou categoria"><div id="catalogFilters" class="catalog-filters"><button type="button" data-filter="">Todos</button><button type="button" data-filter="Beleza">Beleza</button><button type="button" data-filter="Moda">Moda</button><button type="button" data-filter="Acessórios">Acessórios</button><button type="button" data-filter="Autocuidado">Autocuidado</button></div></div>
+<p id="catalogEmpty" class="catalog-empty">Nenhum produto publicado.</p><div id="catalogGrid" class="catalog-grid"></div>
+</dialog>
+<script src="./app.js" defer></script></body></html>
