@@ -145,14 +145,19 @@ try{
   if((await page.$eval("#catalogTitle",el=>el.textContent))!=="Vitrine completa")throw new Error("PT catalog language failed");
   result.catalogLanguages=["pt","en","es"];
 
-  await page.evaluate(()=>{
-    window.__blackgoldOpened=[];
-    window.open=(...args)=>{window.__blackgoldOpened.push(args);return null};
-  });
-  await page.click("#catalogGrid .catalog-card");
-  const opened=await page.evaluate(()=>window.__blackgoldOpened?.[0]?.[0]||"");
-  if(!opened.startsWith("/api/out?id=")||!opened.includes("placement=catalog"))throw new Error("tracked product destination click failed "+opened);
-  const trackedUrl=new URL(opened,base);
+  const linkInfo=await page.$eval("#catalogGrid .catalog-card",el=>({
+    href:el.getAttribute("href")||"",
+    target:el.getAttribute("target")||"",
+    rel:el.getAttribute("rel")||"",
+    tag:el.tagName
+  }));
+  if(linkInfo.tag!=="A"||linkInfo.target!=="_blank"||!linkInfo.rel.includes("sponsored")||!linkInfo.rel.includes("noopener")){
+    throw new Error("affiliate semantic link contract failed "+JSON.stringify(linkInfo));
+  }
+  if(!linkInfo.href.startsWith("/api/out?id=")||!linkInfo.href.includes("placement=catalog")){
+    throw new Error("tracked product destination href failed "+linkInfo.href);
+  }
+  const trackedUrl=new URL(linkInfo.href,base);
   const redirect=await fetch(trackedUrl,{redirect:"manual",cache:"no-store"});
   if(redirect.status!==302||redirect.headers.get("location")!=="https://example.com/qa-beleza"){
     throw new Error("tracked affiliate redirect failed "+redirect.status+" "+redirect.headers.get("location"));
@@ -161,7 +166,7 @@ try{
   if(metrics.summary?.total<1||!metrics.products?.some(x=>x.productId===pub.products[0].id||x.title==="BlackGold QA Beleza")){
     throw new Error("affiliate click metric not recorded");
   }
-  result.destinationClick={redirect:302,metric:"PASS"};
+  result.destinationClick={redirect:302,metric:"PASS",semanticLink:"PASS"};
 
   await page.$eval("#catalogDialog",d=>d.close());
   await page.setViewport({width:310,height:896,deviceScaleFactor:1,isMobile:true});
