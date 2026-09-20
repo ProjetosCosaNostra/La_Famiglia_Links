@@ -18,27 +18,27 @@ function assertRect(actual,expected,label){
 }
 function expectedDesktop(){
   return {
-    selection:{x:60,y:460,width:1328,height:157},
+    selection:{x:60,y:476,width:1328,height:148},
     selectionCards:[
-      {x:65,y:460,width:432,height:157},
-      {x:508,y:460,width:432,height:157},
-      {x:951,y:460,width:432,height:157}
+      {x:65,y:476,width:432,height:148},
+      {x:508,y:476,width:432,height:148},
+      {x:951,y:476,width:432,height:148}
     ],
-    showcase:{x:60,y:678,width:1328,height:150},
+    showcase:{x:60,y:678,width:1328,height:162},
     showcaseCards:Array.from({length:8},(_,i)=>({
-      x:65+i*165.75,y:678,width:157.75,height:150
+      x:65+i*165.75,y:678,width:157.75,height:162
     }))
   };
 }
 function expectedMobile(){
   return {
-    selection:{x:16,y:493,width:374,height:140},
-    selectionCards:[{x:16,y:493,width:374,height:140}],
-    showcase:{x:16,y:706,width:374,height:145},
+    selection:{x:16,y:491,width:374,height:133},
+    selectionCards:[{x:16,y:491,width:374,height:133}],
+    showcase:{x:16,y:710,width:374,height:152},
     showcaseCards:[
-      {x:16,y:706,width:126,height:145},
-      {x:147,y:706,width:126,height:145},
-      {x:278,y:706,width:126,height:145}
+      {x:16,y:710,width:126,height:152},
+      {x:147,y:710,width:126,height:152},
+      {x:278,y:710,width:126,height:152}
     ]
   };
 }
