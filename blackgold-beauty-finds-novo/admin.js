@@ -58,13 +58,15 @@ function render(){
       '<div><b>'+esc(p.title)+'</b><br><small>'+esc(p.status)+" · "+esc(p.category||"sem categoria")+(p.featured?" · destaque":"")+'</small></div>'+
       '<div class="actions">'+
         '<button type="button" data-edit="'+esc(p.id)+'">Editar</button>'+
+        '<button type="button" data-history="'+esc(p.id)+'">Versões</button>'+
         '<button type="button" data-toggle="'+esc(p.id)+'">'+(p.status==="published"?"Despublicar":"Publicar")+'</button>'+
         '<button type="button" data-del="'+esc(p.id)+'">Excluir</button>'+
       '</div>'+
     '</div>'
   ).join("");
-  $$("[data-edit]").forEach(b=>b.onclick=()=>edit(b.dataset.edit));
-  $$("[data-toggle]").forEach(b=>b.onclick=()=>toggle(b.dataset.toggle,b));
+  $("[data-edit]").forEach(b=>b.onclick=()=>edit(b.dataset.edit));
+  $("[data-history]").forEach(b=>b.onclick=()=>openHistory(b.dataset.history));
+  $("[data-toggle]").forEach(b=>b.onclick=()=>toggle(b.dataset.toggle,b));
   $$("[data-del]").forEach(b=>b.onclick=()=>del(b.dataset.del,b));
 }
 
@@ -150,6 +152,60 @@ function edit(id){
   const product=state.products.find(p=>p.id===id);
   if(product)openForm(product);
 }
+
+function formatDate(value){
+  try{return new Intl.DateTimeFormat("pt-BR",{dateStyle:"short",timeStyle:"short"}).format(new Date(value))}
+  catch{return value||""}
+}
+
+async function openHistory(productId){
+  const product=state.products.find(p=>p.id===productId);
+  if(!product)return;
+  $("#historyTitle").textContent="Versões · "+product.title;
+  $("#historyList").innerHTML="<p>Carregando…</p>";
+  $("#historyModal").classList.add("open");
+  $("#historyModal").setAttribute("aria-hidden","false");
+  try{
+    const d=await api("/api/admin/revisions?productId="+encodeURIComponent(productId)+"&limit=30");
+    if(!d.revisions?.length){
+      $("#historyList").innerHTML="<p>Nenhuma versão anterior registrada.</p>";
+      return;
+    }
+    $("#historyList").innerHTML=d.revisions.map(r=>
+      '<div class="history-item">'+
+        '<div><b>'+esc(r.snapshot?.title||"Produto")+'</b><br><small>'+esc(r.snapshot?.status||"draft")+" · "+esc(r.reason)+" · "+esc(formatDate(r.createdAt))+'</small></div>'+
+        '<button type="button" data-rollback="'+esc(r.id)+'">Restaurar</button>'+
+      '</div>'
+    ).join("");
+    $("[data-rollback]").forEach(b=>b.onclick=()=>rollbackRevision(b.dataset.rollback,b));
+  }catch(e){
+    $("#historyList").innerHTML='<p class="status error">'+esc(e.message)+'</p>';
+  }
+}
+
+async function rollbackRevision(revisionId,button){
+  if(!confirm("Restaurar esta versão anterior? O estado atual ficará salvo no histórico."))return;
+  button.disabled=true;
+  try{
+    const d=await api("/api/admin/revisions",{
+      method:"POST",
+      body:JSON.stringify({revisionId})
+    });
+    await load();
+    $("#historyModal").classList.remove("open");
+    $("#historyModal").setAttribute("aria-hidden","true");
+    if(d.warning)alert(d.warning);
+  }catch(e){
+    alert(e.message);
+  }finally{
+    button.disabled=false;
+  }
+}
+
+$("#historyClose").onclick=()=>{
+  $("#historyModal").classList.remove("open");
+  $("#historyModal").setAttribute("aria-hidden","true");
+};
 
 async function cleanupPendingUpload(){
   if(!state.pendingUploadKey)return;
@@ -277,7 +333,13 @@ $("#form").onsubmit=async e=>{
 };
 
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"&&$("#modal").classList.contains("open")&&!state.busy)closeForm();
+  if(e.key!=="Escape")return;
+  if($("#historyModal").classList.contains("open")){
+    $("#historyModal").classList.remove("open");
+    $("#historyModal").setAttribute("aria-hidden","true");
+    return;
+  }
+  if($("#modal").classList.contains("open")&&!state.busy)closeForm();
 });
 
 window.addEventListener("beforeunload",()=>{
