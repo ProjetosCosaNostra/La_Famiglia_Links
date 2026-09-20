@@ -178,6 +178,19 @@ try{
   const pub=await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Test");
   result.publishViaUi={status:"PASS",total:pub.total};
 
+  const publishedAdmin=(await adminProducts()).products[0];
+  const tracked=await fetch(base+"/api/out?id="+encodeURIComponent(publishedAdmin.id)+"&placement=showcase",{
+    redirect:"manual",
+    cache:"no-store"
+  });
+  if(tracked.status!==302)throw new Error("admin metrics seed click failed "+tracked.status);
+  await page.reload({waitUntil:"networkidle0",timeout:30000});
+  await page.waitForFunction(()=>document.body.classList.contains("unlocked"),{timeout:10000});
+  await waitText(page,"#clicks7d","1 clique",10000);
+  const rowMetric=await page.$eval("[data-row] small",el=>el.textContent||"");
+  if(!rowMetric.includes("1 clique (30d)"))throw new Error("per-product click metric missing in admin UI");
+  result.clickMetricsViaUi="PASS";
+
   // Accidental edit then rollback through the actual admin history UI.
   await page.click("[data-edit]");
   await setInput(page,'input[name="title"]',"BlackGold Admin UI Changed");
