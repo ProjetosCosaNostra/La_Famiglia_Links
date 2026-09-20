@@ -226,6 +226,13 @@ jobs:
           CHROME_BIN: ${{ steps.chrome.outputs.bin }}
         run: node tools/product_geometry_gate.mjs
 
+      - name: Approved dynamic product style gate
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+          CHROME_BIN: ${{ steps.chrome.outputs.bin }}
+        run: node tools/product_style_gate.mjs
+
       - name: Capture approved product-layout candidate
         run: |
           "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1800 --force-device-scale-factor=1 --window-size=1448,1086 --screenshot=blackgold-beauty-finds-novo/.visual-gate/authority-products-desktop.png http://127.0.0.1:8788/
