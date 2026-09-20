@@ -123,7 +123,7 @@ jobs:
       - name: Initialize zero D1
         working-directory: blackgold-beauty-finds-novo
         run: |
-          printf 'ADMIN_PANEL_TOKEN=%s\n' 'CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1' > .dev.vars
+          printf 'ADMIN_PANEL_TOKEN=%s\nALLOW_DESTRUCTIVE_RESTORE=true\n' 'CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1' > .dev.vars
           npx wrangler d1 migrations apply blackgold-beauty-finds-novo --local
 
       - name: Start Pages runtime
