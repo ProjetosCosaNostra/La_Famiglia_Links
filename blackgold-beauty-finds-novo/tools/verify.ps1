@@ -36,11 +36,11 @@ try {
   $MobileShot = Join-Path $Reports 'candidate-mobile.png'
   if (!(Test-Path $DesktopShot) -or !(Test-Path $MobileShot)) { throw 'Screenshot capture failed.' }
 
-  & $Python (Join-Path $PSScriptRoot 'visual_gate.py') --authority (Join-Path $Root 'assets\authority-zero-desktop.png') --candidate $DesktopShot --report (Join-Path $Reports 'desktop.json')
-  if ($LASTEXITCODE -ne 0) { throw 'DESKTOP VISUAL GATE FAILED. Preview forbidden.' }
+  & $Python (Join-Path $PSScriptRoot 'outside_catalog_gate.py') --profile desktop --authority (Join-Path $Root 'assets\authority-desktop-approved.png') --candidate $DesktopShot --report (Join-Path $Reports 'desktop.json')
+  if ($LASTEXITCODE -ne 0) { throw 'DESKTOP APPROVED-SHELL GATE FAILED. Preview forbidden.' }
 
-  & $Python (Join-Path $PSScriptRoot 'visual_gate.py') --authority (Join-Path $Root 'assets\authority-zero-mobile.png') --candidate $MobileShot --report (Join-Path $Reports 'mobile.json')
-  if ($LASTEXITCODE -ne 0) { throw 'MOBILE VISUAL GATE FAILED. Preview forbidden.' }
+  & $Python (Join-Path $PSScriptRoot 'outside_catalog_gate.py') --profile mobile --authority (Join-Path $Root 'assets\authority-mobile-v24.webp') --candidate $MobileShot --report (Join-Path $Reports 'mobile.json')
+  if ($LASTEXITCODE -ne 0) { throw 'MOBILE APPROVED-SHELL GATE FAILED. Preview forbidden.' }
 
   $Index = Get-Content (Join-Path $Root 'index.html') -Raw
   $Js = Get-Content (Join-Path $Root 'app.js') -Raw
@@ -57,14 +57,27 @@ try {
   }
 
   $Manifest = Get-Content (Join-Path $Root 'assets\authority-zero-manifest.json') -Raw | ConvertFrom-Json
+  if($Manifest.contract -ne 'BLACKGOLD_APPROVED_AUTHORITY_DYNAMIC_CATALOG_V3'){throw 'Unexpected authority contract.'}
+  if(($Manifest.desktop.viewport -join 'x') -ne '1448x1086'){throw 'Desktop authority viewport mismatch.'}
+  if(($Manifest.mobile.viewport -join 'x') -ne '390x1152'){throw 'Mobile authority viewport mismatch.'}
+  foreach($Profile in @('desktop','mobile')){
+    $Entry = $Manifest.$Profile
+    $AuthorityPath = Join-Path (Join-Path $Root 'assets') $Entry.approvedFile
+    if(!(Test-Path $AuthorityPath)){throw "Missing approved authority: $AuthorityPath"}
+    $ActualHash = (Get-FileHash -Algorithm SHA256 $AuthorityPath).Hash.ToLowerInvariant()
+    if($ActualHash -ne ([string]$Entry.approvedSha256).ToLowerInvariant()){
+      throw "Approved authority hash mismatch for $Profile."
+    }
+  }
   if($Manifest.catalogInitialCount -ne 0){throw 'Authority manifest must keep catalogInitialCount=0.'}
   if($Manifest.previewAutoOpenAllowed -ne $false){throw 'Authority manifest must keep previewAutoOpenAllowed=false.'}
   if($Manifest.productionDeployAllowed -ne $false){throw 'Authority manifest must keep productionDeployAllowed=false.'}
 
   $Receipt = [ordered]@{
     timestamp = (Get-Date).ToString('o')
-    desktop = 'PASS'
-    mobile = 'PASS'
+    desktopApprovedShell = 'PASS'
+    mobileApprovedShell = 'PASS'
+    authorityHashes = 'PASS'
     catalog = 'ZERO'
     canonical = 'PASS'
     explicitViewportCapture = 'PASS'
