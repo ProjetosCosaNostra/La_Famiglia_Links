@@ -1,0 +1,11 @@
+{
+  "schema": "blackgold-human-release-approval-v1",
+  "humanApproved": false,
+  "approvedCommit": "",
+  "approvedAt": "",
+  "approvedMockups": {
+    "desktopApprovedSha256": "5e3e6cef8f0f5e14bde52b5c9f0be9ae9c1d92fd771f3e424b9cf75fbb59f722",
+    "mobileApprovedSha256": "afb0937f38d2c633cf7ebe40e4a789e8fc8b84bb746e28e0e6b1441779bca2ed"
+  },
+  "notes": "This file is a template only. Production remains blocked until explicit human approval."
+}
