@@ -28,9 +28,9 @@ try{
   }
 
   const selection=[];
-  for(const x of [-8,-4,0,4]){
-    for(const y of [-6,-4,-2,0]){
-      for(const scale of [0.94,0.96,0.98]){
+  for(const x of [-16,-12,-8,-4]){
+    for(const y of [-12,-10,-8,-6,-4]){
+      for(const scale of [0.88,0.90,0.92,0.94,0.96]){
         const id=`sel-x${x}-y${y}-s${String(scale).replace(".","p")}`;
         await inject(`.selection-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}`);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
@@ -40,10 +40,10 @@ try{
   }
 
   const showcase=[];
-  for(const x of [-16,-12,-8,-4,0]){
-    for(const y of [-4,0,4]){
-      for(const h of [96,102,108]){
-        for(const scale of [0.85,0.9,0.95]){
+  for(const x of [-32,-28,-24,-20,-16,-12]){
+    for(const y of [-12,-8,-4,0]){
+      for(const h of [102,108,114]){
+        for(const scale of [0.90,0.95,1.00]){
           const id=`show-x${x}-y${y}-h${h}-s${String(scale).replace(".","p")}`;
           await inject(`.showcase-live .media{height:${h}px!important}.showcase-live .media img{transform:translate(${x}px,${y}px) scale(${scale})!important;transform-origin:center center!important}`);
           await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
