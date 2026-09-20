@@ -102,13 +102,14 @@ try{
   await page.evaluate(()=>document.querySelector("#unlock").requestSubmit());
   const authResponse=await authResponsePromise;
   const authStatus=authResponse.status();
-  await new Promise(r=>setTimeout(r,300));
+  if(authStatus!==200)throw new Error("admin unlock response "+authStatus);
+  await page.waitForFunction(()=>document.body.classList.contains("unlocked"),{timeout:15000});
   const authUi=await page.evaluate(()=>({
     unlocked:document.body.classList.contains("unlocked"),
     lockStatus:document.querySelector("#lockStatus")?.textContent||"",
     count:document.querySelector("#count")?.textContent||""
   }));
-  if(authStatus!==200||!authUi.unlocked){
+  if(!authUi.unlocked){
     throw new Error("admin unlock diagnostic "+JSON.stringify({authStatus,...authUi}));
   }
   await waitText(page,"#count","0 produtos");
