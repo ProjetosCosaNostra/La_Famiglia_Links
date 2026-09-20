@@ -48,7 +48,7 @@ const report={contract:"BLACKGOLD_APPROVED_PRODUCT_STYLE_GATE_V1",profiles:{}};
 try{
   for(const p of [
     {name:"desktop",width:1448,height:1086,mobile:false},
-    {name:"mobile",width:310,height:896,mobile:true}
+    {name:"mobile",width:390,height:1152,mobile:true}
   ]){
     const page=await browser.newPage();
     await page.setViewport({width:p.width,height:p.height,deviceScaleFactor:1,isMobile:p.mobile});
@@ -115,8 +115,8 @@ try{
     }else{
       fail(data.selectionCount===1,"mobile selection count");
       fail(data.showcaseCount===3,"mobile showcase count");
-      fail(data.selection.width>=293&&data.selection.width<=295,"mobile selection width "+data.selection.width);
-      fail(data.showcase.width>90&&data.showcase.width<100,"mobile showcase card width "+data.showcase.width);
+      fail(data.selection.width>=373&&data.selection.width<=375,"mobile selection width "+data.selection.width);
+      fail(data.showcase.width>=125&&data.showcase.width<=127,"mobile showcase card width "+data.showcase.width);
       fail(data.selection.media.objectFit==="contain","mobile selection object-fit");
       fail(data.showcase.media.objectFit==="contain","mobile showcase object-fit");
     }
