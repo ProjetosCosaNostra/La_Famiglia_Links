@@ -132,6 +132,10 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Affiliate redirect fail-open unit gate
+        working-directory: blackgold-beauty-finds-novo
+        run: node tools/out_failopen_unit.mjs
+
       - name: Production release must remain blocked before human approval
         working-directory: blackgold-beauty-finds-novo
         run: node tools/release_preflight.mjs --expect-blocked
