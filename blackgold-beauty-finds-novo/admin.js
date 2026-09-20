@@ -226,7 +226,7 @@ async function openTrash(){
         '<button type="button" data-trash-restore="'+esc(item.revisionId)+'">Restaurar</button>'+
       '</div>'
     ).join("");
-    $("[data-trash-restore]").forEach(b=>b.onclick=()=>restoreTrashRevision(b.dataset.trashRestore,b));
+    $$("[data-trash-restore]").forEach(b=>b.onclick=()=>restoreTrashRevision(b.dataset.trashRestore,b));
   }catch(e){
     $("#trashList").innerHTML='<p class="status error">'+esc(e.message)+'</p>';
   }
