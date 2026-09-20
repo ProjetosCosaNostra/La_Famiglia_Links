@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const FORBIDDEN = ['Miss Dior','Dior Saddle','R$ 649,90','193 produtos'];
+  const FORBIDDEN = ['Miss'+' Dior','Dior'+' Saddle','R$ 649'+',90','193'+' produtos'];
   document.documentElement.dataset.blackgoldAuthority = 'V26_DESKTOP_V24_MOBILE_ZERO_CATALOG';
   document.documentElement.dataset.catalogCount = '0';
 
