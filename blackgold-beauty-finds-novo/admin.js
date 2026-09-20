@@ -3,6 +3,7 @@ const KEY="blackgold-admin-token-v2";
 const state={
   token:sessionStorage.getItem(KEY)||"",
   products:[],
+  metrics:{summary:{d7:0,d30:0,total:0},products:[]},
   editing:null,
   pendingUploadKey:"",
   originalImageKey:"",
@@ -48,22 +49,28 @@ function updateSummary(){
   $("#count").textContent=total+" "+(total===1?"produto":"produtos");
   $("#publishedCount").textContent=published+" "+(published===1?"publicado":"publicados");
   $("#draftCount").textContent=draft+" "+(draft===1?"rascunho":"rascunhos");
+  const d7=Number(state.metrics?.summary?.d7||0);
+  const d30=Number(state.metrics?.summary?.d30||0);
+  $("#clicks7d").textContent=d7+" "+(d7===1?"clique":"cliques")+" · 7d";
+  $("#clicks30d").textContent=d30+" "+(d30===1?"clique":"cliques")+" · 30d";
 }
 
 function render(){
   updateSummary();
   $("#empty").style.display=state.products.length?"none":"grid";
-  $("#list").innerHTML=state.products.map(p=>
-    '<div class="row" data-row="'+esc(p.id)+'">'+
-      '<div><b>'+esc(p.title)+'</b><br><small>'+esc(p.status)+" · "+esc(p.category||"sem categoria")+(p.featured?" · destaque":"")+'</small></div>'+
+  $("#list").innerHTML=state.products.map(p=>{
+    const metric=state.metrics?.products?.find(m=>m.productId===p.id);
+    const clicks30=Number(metric?.d30||0);
+    return '<div class="row" data-row="'+esc(p.id)+'">'+
+      '<div><b>'+esc(p.title)+'</b><br><small>'+esc(p.status)+" · "+esc(p.category||"sem categoria")+(p.featured?" · destaque":"")+" · "+clicks30+" "+(clicks30===1?"clique":"cliques")+" (30d)"+'</small></div>'+
       '<div class="actions">'+
         '<button type="button" data-edit="'+esc(p.id)+'">Editar</button>'+
         '<button type="button" data-history="'+esc(p.id)+'">Versões</button>'+
         '<button type="button" data-toggle="'+esc(p.id)+'">'+(p.status==="published"?"Despublicar":"Publicar")+'</button>'+
         '<button type="button" data-del="'+esc(p.id)+'">Excluir</button>'+
       '</div>'+
-    '</div>'
-  ).join("");
+    '</div>';
+  }).join("");
   $$("[data-edit]").forEach(b=>b.onclick=()=>edit(b.dataset.edit));
   $$("[data-history]").forEach(b=>b.onclick=()=>openHistory(b.dataset.history));
   $$("[data-toggle]").forEach(b=>b.onclick=()=>toggle(b.dataset.toggle,b));
@@ -71,7 +78,12 @@ function render(){
 }
 
 async function load(){
-  state.products=(await api("/api/admin/products")).products||[];
+  const [productsResult,metricsResult]=await Promise.all([
+    api("/api/admin/products"),
+    api("/api/admin/metrics").catch(()=>({summary:{d7:0,d30:0,total:0},products:[]}))
+  ]);
+  state.products=productsResult.products||[];
+  state.metrics=metricsResult||{summary:{d7:0,d30:0,total:0},products:[]};
   render();
 }
 
