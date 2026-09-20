@@ -87,10 +87,30 @@ try{
   await setInput(page,"#token",token);
   const typedToken=await page.$eval("#token",el=>el.value);
   if(typedToken!==token)throw new Error("admin token input mismatch");
+  const directStatus=await page.evaluate(async t=>{
+    const r=await fetch("/api/admin/products",{headers:{authorization:"Bearer "+t},cache:"no-store"});
+    return r.status;
+  },token);
+  if(directStatus!==200)throw new Error("browser direct admin auth failed "+directStatus);
+
+  const authResponsePromise=page.waitForResponse(
+    r=>r.url().includes("/api/admin/products")&&r.request().method()==="GET",
+    {timeout:10000}
+  );
   await page.evaluate(()=>document.querySelector("#unlock").requestSubmit());
-  await page.waitForFunction(()=>document.body.classList.contains("unlocked"),{timeout:10000});
+  const authResponse=await authResponsePromise;
+  const authStatus=authResponse.status();
+  await new Promise(r=>setTimeout(r,300));
+  const authUi=await page.evaluate(()=>({
+    unlocked:document.body.classList.contains("unlocked"),
+    lockStatus:document.querySelector("#lockStatus")?.textContent||"",
+    count:document.querySelector("#count")?.textContent||""
+  }));
+  if(authStatus!==200||!authUi.unlocked){
+    throw new Error("admin unlock diagnostic "+JSON.stringify({authStatus,...authUi}));
+  }
   await waitText(page,"#count","0 produtos");
-  result.correctTokenUnlocks=true;
+  result.correctTokenUnlocks={status:"PASS",authStatus};
 
   // Upload then cancel: no orphan media may remain.
   await page.click("#new");
