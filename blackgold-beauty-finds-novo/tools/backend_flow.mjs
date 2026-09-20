@@ -213,6 +213,28 @@ try {
   }
   result.replaceImageCleanup = { old: 404, current: 200 };
 
+  // Roll back the image replacement and prove the archived first image is restored losslessly.
+  r = await call("/api/admin/revisions?productId=" + encodeURIComponent(id) + "&limit=20", { headers: auth });
+  if (!r.response.ok) throw new Error("revision list after image replacement failed");
+  const imageRevision = r.data.revisions?.find(x => x.reason === "update" && x.snapshot?.imageKey === firstKey);
+  if (!imageRevision) throw new Error("archived image revision missing");
+
+  r = await call("/api/admin/revisions", {
+    method: "POST",
+    headers: { ...auth, "content-type": "application/json" },
+    body: JSON.stringify({ revisionId: imageRevision.id })
+  });
+  if (!r.response.ok || r.data.product?.imageKey !== firstKey) {
+    throw new Error("archived image rollback failed " + JSON.stringify(r.data));
+  }
+  version = r.data.product.updatedAt;
+  const firstAfterRollback = await fetch(base + firstMediaUrl, { cache: "no-store" });
+  const secondAfterRollback = await fetch(base + secondMediaUrl, { cache: "no-store" });
+  if (firstAfterRollback.status !== 200 || secondAfterRollback.status !== 404) {
+    throw new Error("lossless image rollback media state failed " + firstAfterRollback.status + "/" + secondAfterRollback.status);
+  }
+  result.losslessImageRollback = { restored: 200, replacedCurrentArchived: 404 };
+
   r = await call("/api/admin/products", {
     method: "PATCH",
     headers: { ...auth, "content-type": "application/json" },
@@ -243,12 +265,54 @@ try {
   });
   if (!r.response.ok) throw new Error("delete failed");
 
+  r = await call("/api/products?gate=deleted");
+  if (r.data.total !== 0) throw new Error("deleted product leaked public");
+  media = await fetch(base + firstMediaUrl, { cache: "no-store" });
+  if (media.status !== 404) throw new Error("deleted product source media still exists");
+  result.deletedMediaSourceRemoved = 404;
+
+  r = await call("/api/admin/trash?limit=20", { headers: auth });
+  if (!r.response.ok || !Array.isArray(r.data.items)) throw new Error("trash endpoint unavailable");
+  const deletedItem = r.data.items.find(x => x.productId === id);
+  if (!deletedItem || !deletedItem.imageArchived || !deletedItem.imageRecoverable) {
+    throw new Error("deleted product was not recoverably archived " + JSON.stringify(r.data));
+  }
+  result.trashArchive = "PASS";
+
+  r = await call("/api/admin/trash?limit=5");
+  if (r.response.status !== 401) throw new Error("trash endpoint must reject anonymous access");
+  result.trashAuthGate = 401;
+
+  r = await call("/api/admin/revisions", {
+    method: "POST",
+    headers: { ...auth, "content-type": "application/json" },
+    body: JSON.stringify({ revisionId: deletedItem.revisionId })
+  });
+  if (!r.response.ok || r.data.product?.id !== id || r.data.product?.imageKey !== firstKey) {
+    throw new Error("trash restore failed " + JSON.stringify(r.data));
+  }
+  version = r.data.product.updatedAt;
+  media = await fetch(base + firstMediaUrl, { cache: "no-store" });
+  if (media.status !== 200) throw new Error("trash restore did not recover media");
+  r = await call("/api/products?gate=trash-restored");
+  if (r.data.total !== 1 || r.data.products?.[0]?.id !== id) {
+    throw new Error("trash restore did not republish original product");
+  }
+  result.trashRestore = { product: "PASS", media: 200 };
+
+  // Final cleanup leaves the catalog empty while preserving another recoverable trash revision.
+  r = await call("/api/admin/products?id=" + encodeURIComponent(id), {
+    method: "DELETE",
+    headers: auth
+  });
+  if (!r.response.ok) throw new Error("final delete failed");
+
   r = await call("/api/products?gate=final");
   if (r.data.total !== 0) throw new Error("catalog not empty after cleanup");
   result.finalEmpty = true;
 
-  media = await fetch(base + secondMediaUrl, { cache: "no-store" });
-  if (media.status !== 404) throw new Error("deleted product media still exists");
+  media = await fetch(base + firstMediaUrl, { cache: "no-store" });
+  if (media.status !== 404) throw new Error("final deleted product media still exists");
   result.mediaCleanup = 404;
 
   r = await call("/api/admin/audit?limit=100", { headers: auth });
