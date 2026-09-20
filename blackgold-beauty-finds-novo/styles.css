@@ -19,3 +19,54 @@
 .showcase-live .price{margin-top:auto;font-size:9px;font-weight:700}
 }
 @media(max-width:760px){.selection-live{left:2.58%;top:42.41%;width:94.84%;height:11.16%;display:none!important}body.has-products .selection-live{display:grid!important;grid-template-columns:1fr}.selection-live .product:nth-child(n+2){display:none}.showcase-live{left:2.58%;top:60.04%;width:94.84%;height:11.94%;display:none!important}body.has-products .showcase-live{display:grid!important;grid-template-columns:repeat(3,1fr);gap:1.2%}.showcase-live .product:nth-child(n+4){display:none}.selection-live .media{margin:4px 0 4px 4px}.copy{padding:5px 6px}.desc{display:none}.detail{height:20px;margin-top:2px}.showcase-live .product{padding:3px}.showcase-live h3,.showcase-live .price{font-size:7px}.brand{left:14%;top:0;width:56%;height:5.5%}.featured,.showcase-nav,.ecosystem-nav{display:none}.mobile-menu{display:block;left:0;top:0;width:13%;height:5.5%}.search-hit{left:76%;top:0;width:11%;height:5.5%}.bag-hit{left:88%;top:0;width:12%;height:5.5%}.explore{left:2.5%;top:24.8%;width:47%;height:5%}.open-eco{left:50%;top:24.8%;width:47%;height:5%}.pt{left:32%;top:5.5%;width:12%;height:3.2%}.en{left:46%;top:5.5%;width:12%;height:3.2%}.es{left:60%;top:5.5%;width:12%;height:3.2%}.all-selection{left:75%;top:39.1%;width:23%;height:3.4%}.all-showcase{left:75%;top:56.5%;width:23%;height:3.4%}.hub{left:4%;top:76.2%;width:43%;height:4.4%}.instagram{left:52%;top:76.2%;width:43%;height:4.4%}.youtube{left:4%;top:81.1%;width:43%;height:4.4%}.telegram{left:52%;top:81.1%;width:43%;height:4.4%}.github{left:4%;top:86%;width:43%;height:4.4%}.contact{left:52%;top:86%;width:43%;height:4.4%}.catalog-dialog{width:calc(100vw - 14px);max-height:92vh;border-radius:10px}.catalog-head{padding:15px 14px 11px}.catalog-head h2{font-size:26px}.catalog-tools{top:66px;padding:10px 14px}.catalog-grid{padding:12px 14px 18px;grid-template-columns:repeat(2,1fr);gap:8px}.catalog-card img{height:130px}}
+
+/* V27 authority-first dynamic masking: approved screenshots remain the shell; only catalog/count regions are live. */
+.dynamic-mask{position:absolute;z-index:21;pointer-events:none}
+.count-mask{left:7.65%;top:30.00%;width:6.0%;height:4.65%;background:#fffdf9}
+.selection-mask{left:4.143646%;top:42.54%;width:91.712707%;height:14.18%;background:linear-gradient(180deg,#fffdf9 0%,#fbf3e9 100%)}
+.showcase-mask{left:4.143646%;top:62.43%;width:91.712707%;height:13.81%;background:linear-gradient(180deg,#fffdf9 0%,#faf2e7 100%)}
+.catalog-count-live{position:absolute;z-index:25;left:8.05%;top:30.27%;width:5.1%;height:3.7%;display:flex;flex-direction:column;justify-content:center;line-height:1;color:#17110d;pointer-events:none}
+.catalog-count-live b{font:700 16px/1 "Cormorant Garamond",Georgia,serif}
+.catalog-count-live small{margin-top:4px;color:#77695d;font:500 8px/1.05 Inter,"Segoe UI",Arial,sans-serif;white-space:nowrap}
+.selection-live,.showcase-live{z-index:24}
+.selection-live .product,.showcase-live .product{background:#fffdf9}
+
+@media(max-width:760px){
+  .count-mask{left:11.0%;top:31.95%;width:19.8%;height:4.55%;background:#fffdf9;border-radius:0}
+  .catalog-count-live{left:12.55%;top:32.12%;width:16.5%;height:3.85%}
+  .catalog-count-live b{font-size:18px}
+  .catalog-count-live small{margin-top:3px;font-size:8px}
+
+  .selection-mask{left:4.102564%;top:42.795139%;width:95.897436%;height:12.152778%;background:linear-gradient(180deg,#fffdf9 0%,#fbf3e8 100%)}
+  .selection-live{left:4.102564%;top:42.795139%;width:95.897436%;height:12.152778%;display:none!important;overflow:hidden}
+  body.has-products .selection-live{display:grid!important;grid-template-columns:1fr}
+  .selection-live .product{height:100%;display:grid;grid-template-columns:52% 48%;border:1px solid #eadfd0;border-radius:9px;background:#fffdf9;overflow:hidden;padding:0}
+  .selection-live .media{margin:7px 0 7px 7px;border-radius:7px;background:#fbf4e9;overflow:hidden}
+  .selection-live .media img{width:100%;height:100%;object-fit:contain;transform:none}
+  .selection-live .copy{padding:9px 9px 8px 10px;display:flex;flex-direction:column;min-width:0}
+  .selection-live .product h3{margin:0;font:700 14px/1.02 "Cormorant Garamond",Georgia,serif}
+  .selection-live .meta{margin-top:2px;color:#6f6256;font-size:9px}
+  .selection-live .desc{display:none}
+  .selection-live .price{margin-top:auto;font-size:20px;line-height:1;font-weight:800}
+  .selection-live .detail{height:39px;margin-top:8px;border:1px solid #c88d22;border-radius:8px;background:linear-gradient(180deg,#dda939,#a5680a);color:#fffaf1;font:700 15px/1 "Cormorant Garamond",Georgia,serif}
+
+  .showcase-mask{left:4.102564%;top:61.284722%;width:95.897436%;height:12.586806%;background:linear-gradient(180deg,#fffdf9 0%,#fbf3e8 100%)}
+  .showcase-live{left:4.102564%;top:61.284722%;width:95.897436%;height:12.586806%;display:none!important;overflow:hidden}
+  body.has-products .showcase-live{display:flex!important;gap:5px}
+  .showcase-live .product{flex:0 0 126px;width:126px;height:145px;border:1px solid #e6dacb;border-radius:8px;background:#fffdf9;padding:5px 5px 7px;display:flex;flex-direction:column;text-align:center;overflow:hidden}
+  .showcase-live .media{height:80px;flex:0 0 80px;border-radius:6px;background:#fbf4e9;overflow:hidden}
+  .showcase-live .media img{width:100%;height:100%;object-fit:contain;transform:none}
+  .showcase-live .product h3{height:24px;margin:5px 0 0;overflow:hidden;white-space:normal;text-overflow:clip;font:700 11px/1.03 "Cormorant Garamond",Georgia,serif}
+  .showcase-live .price{display:block;height:auto;margin-top:auto;font:800 14px/1 "Cormorant Garamond",Georgia,serif}
+
+  .all-selection{left:78.46%;top:39.84%;width:21.54%;height:2.75%}
+  .all-showcase{left:78.97%;top:58.33%;width:21.03%;height:2.8%}
+  .explore{left:4.10%;top:27.69%;width:49.0%;height:4.2%}
+  .open-eco{left:55.4%;top:27.69%;width:42.8%;height:4.2%}
+  .hub{left:4.1%;top:81.25%;width:43.5%;height:4.25%}
+  .instagram{left:52.0%;top:81.25%;width:46.0%;height:4.25%}
+  .youtube{left:4.1%;top:86.0%;width:43.5%;height:4.25%}
+  .telegram{left:52.0%;top:86.0%;width:46.0%;height:4.25%}
+  .github{left:4.1%;top:90.75%;width:43.5%;height:4.25%}
+  .contact{left:52.0%;top:90.75%;width:46.0%;height:4.25%}
+}
