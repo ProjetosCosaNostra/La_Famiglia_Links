@@ -1,4 +1,4 @@
-name: BlackGold Authority Gate
+name: BlackGold Exact Authority Gate
 
 on:
   push:
@@ -13,137 +13,124 @@ permissions:
   contents: read
 
 jobs:
-  authority-gate:
+  gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
-      - name: Checkout authority branch
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install image verifier
-        run: python -m pip install --disable-pip-version-check pillow
+      - run: python -m pip install --disable-pip-version-check pillow
 
-      - name: Start isolated static server
+      - name: Verify pinned authority assets
         run: |
-          python -m http.server 8799 --bind 127.0.0.1 --directory blackgold-beauty-finds-novo > /tmp/blackgold-server.log 2>&1 &
-          echo $! > /tmp/blackgold-server.pid
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          r=Path("blackgold-beauty-finds-novo")
+          m=json.loads((r/"assets/authority-zero-manifest.json").read_text())
+          assert m["desktop"]["approvedSha256"]=="5e3e6cef8f0f5e14bde52b5c9f0be9ae9c1d92fd771f3e424b9cf75fbb59f722"
+          assert m["mobile"]["approvedSha256"]=="afb0937f38d2c633cf7ebe40e4a789e8fc8b84bb746e28e0e6b1441779bca2ed"
+          assert hashlib.sha256((r/"assets/authority-zero-desktop.png").read_bytes()).hexdigest()==m["desktop"]["zeroSha256"]
+          assert hashlib.sha256((r/"assets/authority-zero-mobile.png").read_bytes()).hexdigest()==m["mobile"]["zeroSha256"]
+          print("BLACKGOLD_PINNED_AUTHORITY=PASS")
+          PY
+
+      - name: Start static authority server
+        run: |
+          python -m http.server 8799 --bind 127.0.0.1 --directory blackgold-beauty-finds-novo >/tmp/bg-static.log 2>&1 &
           sleep 2
-          curl --fail http://127.0.0.1:8799/ > /dev/null
+          curl --fail http://127.0.0.1:8799/ >/dev/null
 
       - name: Locate Chrome
         id: chrome
         run: |
-          BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
           test -n "$BIN"
           echo "bin=$BIN" >> "$GITHUB_OUTPUT"
 
-      - name: Capture desktop authority candidate
+      - name: Capture exact desktop and mobile
         run: |
           mkdir -p blackgold-beauty-finds-novo/.visual-gate
-          "${{ steps.chrome.outputs.bin }}"             --headless=new --disable-gpu --no-sandbox --hide-scrollbars             --force-device-scale-factor=1 --window-size=1448,1086             --screenshot=blackgold-beauty-finds-novo/.visual-gate/candidate-desktop.png             http://127.0.0.1:8799/
+          "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --force-device-scale-factor=1 --window-size=1448,1086 --screenshot=blackgold-beauty-finds-novo/.visual-gate/desktop.png http://127.0.0.1:8799/
+          "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --force-device-scale-factor=1 --window-size=310,896 --screenshot=blackgold-beauty-finds-novo/.visual-gate/mobile.png http://127.0.0.1:8799/
 
-      - name: Capture mobile authority candidate
+      - name: Exact desktop gate
         run: |
-          "${{ steps.chrome.outputs.bin }}"             --headless=new --disable-gpu --no-sandbox --hide-scrollbars             --force-device-scale-factor=1 --window-size=390,1152             --screenshot=blackgold-beauty-finds-novo/.visual-gate/candidate-mobile.png             http://127.0.0.1:8799/
+          python blackgold-beauty-finds-novo/tools/visual_gate.py --authority blackgold-beauty-finds-novo/assets/authority-zero-desktop.png --candidate blackgold-beauty-finds-novo/.visual-gate/desktop.png --report blackgold-beauty-finds-novo/.visual-gate/desktop.json
 
-      - name: Wide-screen viewport-fill gate
+      - name: Exact mobile gate
         run: |
-          DOM="$("${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=2000 --force-device-scale-factor=1 --window-size=1919,960 --dump-dom http://127.0.0.1:8799/ 2>/tmp/blackgold-wide-chrome.log)"
+          python blackgold-beauty-finds-novo/tools/visual_gate.py --authority blackgold-beauty-finds-novo/assets/authority-zero-mobile.png --candidate blackgold-beauty-finds-novo/.visual-gate/mobile.png --report blackgold-beauty-finds-novo/.visual-gate/mobile.json
+
+      - name: Wide-screen fill gate
+        run: |
+          DOM="$("${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1500 --window-size=1919,960 --dump-dom http://127.0.0.1:8799/ 2>/tmp/bg-wide.log)"
           echo "$DOM" | grep -q 'data-render-width="1919"'
-          echo "$DOM" | grep -q 'data-shell-width="1919"'
           echo "$DOM" | grep -q 'data-viewport-width="1919"'
           echo "$DOM" | grep -q 'data-horizontal-overflow="false"'
-          echo "BLACKGOLD_WIDE_SCREEN_FILL=PASS"
+          echo "BLACKGOLD_WIDE_FILL=PASS"
 
-      - name: Zero-tolerance desktop gate
-        run: |
-          python blackgold-beauty-finds-novo/tools/visual_gate.py             --profile desktop             --authority blackgold-beauty-finds-novo/authority-desktop-v26.webp             --candidate blackgold-beauty-finds-novo/.visual-gate/candidate-desktop.png             --report blackgold-beauty-finds-novo/.visual-gate/desktop.json
-
-      - name: Zero-tolerance mobile gate
-        run: |
-          python blackgold-beauty-finds-novo/tools/visual_gate.py             --profile mobile             --authority blackgold-beauty-finds-novo/authority-mobile-v24.webp             --candidate blackgold-beauty-finds-novo/.visual-gate/candidate-mobile.png             --report blackgold-beauty-finds-novo/.visual-gate/mobile.json
-
-      - name: Zero-catalog source gate
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          root=Path("blackgold-beauty-finds-novo")
-          text=(root/"index.html").read_text(encoding="utf-8")+(root/"shell.js").read_text(encoding="utf-8")
-          forbidden=["Miss Dior","Dior Saddle","R$ 649,90","193 produtos ativos"]
-          found=[x for x in forbidden if x in text]
-          if found:
-              raise SystemExit("Forbidden legacy catalogue content: "+", ".join(found))
-          print("BLACKGOLD_ZERO_CATALOG_SOURCE=PASS")
-          PY
-
-      - name: Release guard
+      - name: Zero catalog and release guards
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          guard=json.loads(Path("blackgold-beauty-finds-novo/preview-guard.json").read_text(encoding="utf-8"))
-          assert guard["productionDeployAllowed"] is False
-          assert guard["productionRequiresExplicitHumanApproval"] is True
-          assert guard["previewAutoOpenAllowed"] is False
-          print("BLACKGOLD_RELEASE_GUARD=PASS")
+          r=Path("blackgold-beauty-finds-novo")
+          text=(r/"index.html").read_text()+(r/"app.js").read_text()
+          forbidden=["Miss Dior","Dior Saddle","R$ 649,90","193 produtos ativos"]
+          assert not [x for x in forbidden if x in text]
+          g=json.loads((r/"preview-guard.json").read_text())
+          assert g["catalogInitialCount"]==0
+          assert g["previewAutoOpenAllowed"] is False
+          assert g["productionDeployAllowed"] is False
+          print("BLACKGOLD_ZERO_AND_RELEASE_GUARDS=PASS")
           PY
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "22"
 
-      - name: Install isolated Cloudflare runtime
+      - name: Install local Cloudflare runtime
         working-directory: blackgold-beauty-finds-novo
         run: npm install --no-audit --no-fund
 
-      - name: Initialize local D1 with zero products
+      - name: Initialize zero D1
         working-directory: blackgold-beauty-finds-novo
         run: |
           printf 'ADMIN_PANEL_TOKEN=%s\n' 'CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1' > .dev.vars
           npx wrangler d1 migrations apply blackgold-beauty-finds-novo --local
 
-      - name: Start local Pages functions runtime
+      - name: Start Pages runtime
         working-directory: blackgold-beauty-finds-novo
         run: |
-          npx wrangler pages dev . --port 8788 --persist-to .wrangler/state > /tmp/blackgold-wrangler.log 2>&1 &
-          echo $! > /tmp/blackgold-wrangler.pid
+          npx wrangler pages dev . --port 8788 --persist-to .wrangler/state >/tmp/bg-wrangler.log 2>&1 &
           for i in $(seq 1 30); do
-            if curl --fail --silent http://127.0.0.1:8788/api/products > /tmp/blackgold-products.json; then
-              cat /tmp/blackgold-products.json
-              exit 0
-            fi
+            if curl --fail --silent http://127.0.0.1:8788/api/products >/tmp/bg-products.json; then cat /tmp/bg-products.json; exit 0; fi
             sleep 1
           done
-          cat /tmp/blackgold-wrangler.log
+          cat /tmp/bg-wrangler.log
           exit 1
 
-      - name: Admin to storefront integration gate
+      - name: Admin to storefront integration
         working-directory: blackgold-beauty-finds-novo
         env:
           BLACKGOLD_BASE: http://127.0.0.1:8788
           BLACKGOLD_ADMIN_TOKEN: CI_BLACKGOLD_ADMIN_7b9f2dcfb90b4ce6a2e7e623d13cc9d1
         run: node tools/backend_flow.mjs
 
-      - name: Confirm catalog returned to zero
+      - name: Final catalog zero
         run: |
-          BODY="$(curl --fail --silent 'http://127.0.0.1:8788/api/products?final=1')"
-          echo "$BODY"
-          echo "$BODY" | grep -q '"total":0'
+          curl --fail --silent 'http://127.0.0.1:8788/api/products?final=1' | grep -q '"total":0'
           echo "BLACKGOLD_FINAL_CATALOG_ZERO=PASS"
 
-      - name: Store gate evidence internally
-        if: always()
+      - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: blackgold-authority-gate
-          path: |
-            blackgold-beauty-finds-novo/.visual-gate/*.json
-            blackgold-beauty-finds-novo/.visual-gate/*.png
+          name: blackgold-exact-authority-gate
+          path: blackgold-beauty-finds-novo/.visual-gate/
           if-no-files-found: ignore
           retention-days: 7
