@@ -30,7 +30,7 @@ const browser=await puppeteer.launch({
   args:["--no-sandbox","--disable-gpu","--hide-scrollbars"]
 });
 try{
-  for(const [name,width,height] of [["desktop",1448,1086],["mobile",310,896]]){
+  for(const [name,width,height] of [["desktop",1448,1086],["mobile",390,1152]]){
     const page=await browser.newPage();
     await page.setViewport({width,height,deviceScaleFactor:1,isMobile:name==="mobile"});
     await page.goto(base,{waitUntil:"networkidle0",timeout:30000});
