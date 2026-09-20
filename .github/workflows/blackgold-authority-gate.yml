@@ -78,6 +78,13 @@ jobs:
           test -n "$BIN"
           echo "bin=$BIN" >> "$GITHUB_OUTPUT"
 
+      - name: Capture legacy approved-product implementation for internal calibration
+        run: |
+          python -m http.server 8798 --bind 127.0.0.1 --directory . >/tmp/bg-legacy-static.log 2>&1 &
+          sleep 2
+          "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1800 --force-device-scale-factor=1 --window-size=1448,1086 --screenshot=blackgold-beauty-finds-novo/.visual-gate/legacy-approved-products.png http://127.0.0.1:8798/cloudflare-beauty-finds/
+          python blackgold-beauty-finds-novo/tools/product_region_diagnostic.py             --authority cloudflare-beauty-finds/visual-authority/BLACKGOLD_HOME_DESKTOP_MOCKUP_APPROVED_20260909_140134.png             --candidate blackgold-beauty-finds-novo/.visual-gate/legacy-approved-products.png             --report blackgold-beauty-finds-novo/.visual-gate/legacy-product-region-diagnostic.json
+
       - name: Capture exact desktop and mobile
         run: |
           mkdir -p blackgold-beauty-finds-novo/.visual-gate
