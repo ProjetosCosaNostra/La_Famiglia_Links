@@ -211,14 +211,39 @@ try{
   if(oldMedia.status!==404||newMedia.status!==200)throw new Error("image replacement cleanup failed "+oldMedia.status+"/"+newMedia.status);
   result.replaceImageCleanup={old:404,current:200};
 
-  // Delete from UI; confirm dialog, row, public record and media must all disappear.
+  // Delete from UI, then recover the product from the admin trash with its archived image.
   page.once("dialog",dialog=>dialog.accept());
   await page.click("[data-del]");
   await page.waitForFunction(()=>document.querySelector("#count").textContent.startsWith("0 "),{timeout:10000});
   await waitPublic(data=>data.total===0);
-  const deletedMedia=await fetch(base+"/media/"+encodeURIComponent(secondKey),{cache:"no-store"});
+  let deletedMedia=await fetch(base+"/media/"+encodeURIComponent(secondKey),{cache:"no-store"});
   if(deletedMedia.status!==404)throw new Error("deleted UI product media orphan "+deletedMedia.status);
   result.deleteViaUi={catalog:0,media:404};
+
+  await page.click("#trash");
+  await page.waitForFunction(
+    ()=>document.querySelector("#trashModal")?.classList.contains("open")&&document.querySelector("[data-trash-restore]"),
+    {timeout:10000}
+  );
+  const trashText=await page.$eval("#trashList",el=>el.textContent||"");
+  if(!trashText.includes("BlackGold Admin UI Test")||!trashText.includes("imagem arquivada")){
+    throw new Error("recoverable trash entry missing "+trashText);
+  }
+  page.once("dialog",dialog=>dialog.accept());
+  await page.click("[data-trash-restore]");
+  await page.waitForFunction(()=>document.querySelector("#count").textContent.startsWith("1 "),{timeout:10000});
+  await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Test");
+  const restoredMedia=await fetch(base+"/media/"+encodeURIComponent(secondKey),{cache:"no-store"});
+  if(restoredMedia.status!==200)throw new Error("trash UI did not restore media "+restoredMedia.status);
+  result.trashRestoreViaUi={product:"PASS",media:200};
+
+  // Final delete returns the catalog to zero; the trash remains recoverable.
+  page.once("dialog",dialog=>dialog.accept());
+  await page.click("[data-del]");
+  await page.waitForFunction(()=>document.querySelector("#count").textContent.startsWith("0 "),{timeout:10000});
+  await waitPublic(data=>data.total===0);
+  deletedMedia=await fetch(base+"/media/"+encodeURIComponent(secondKey),{cache:"no-store"});
+  if(deletedMedia.status!==404)throw new Error("final deleted UI product media still exists "+deletedMedia.status);
 
   await page.goto(base+"/",{waitUntil:"networkidle0",timeout:30000});
   const finalCount=await page.evaluate(()=>document.body.dataset.catalogCount);
