@@ -126,6 +126,22 @@ try{
   const pub=await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Test");
   result.publishViaUi={status:"PASS",total:pub.total};
 
+  // Accidental edit then rollback through the actual admin history UI.
+  await page.click("[data-edit]");
+  await setInput(page,'input[name="title"]',"BlackGold Admin UI Changed");
+  await page.click("#save");
+  await page.waitForFunction(()=>document.querySelector("#list").textContent.includes("BlackGold Admin UI Changed"),{timeout:10000});
+  await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Changed");
+
+  await page.click("[data-history]");
+  await page.waitForSelector("[data-rollback]",{timeout:10000});
+  page.once("dialog",dialog=>dialog.accept());
+  await page.click("[data-rollback]");
+  await page.waitForFunction(()=>!document.querySelector("#historyModal").classList.contains("open"),{timeout:10000});
+  await page.waitForFunction(()=>document.querySelector("#list").textContent.includes("BlackGold Admin UI Test"),{timeout:10000});
+  await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Test");
+  result.rollbackViaUi="PASS";
+
   // Replace image through edit form; old R2 object must be deleted after save.
   await page.click("[data-edit]");
   input=await page.$("#imageFile");
