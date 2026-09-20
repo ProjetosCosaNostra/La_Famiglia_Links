@@ -115,7 +115,7 @@ try{
     width:window.innerWidth,
     renderWidth:Number(document.documentElement.dataset.renderWidth||0)
   }));
-  if(shell.selection!==1||shell.showcase!==2||shell.overflow||shell.renderWidth!==1448){
+  if(shell.selection!==1||shell.showcase!==1||shell.overflow||shell.renderWidth!==1448){
     throw new Error("desktop shell/product render mismatch "+JSON.stringify(shell));
   }
   result.desktopRender=shell;
