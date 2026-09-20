@@ -26,13 +26,13 @@ const expected={
   showcase:{
     borderColor:"rgb(229, 216, 200)",
     borderRadius:"7px",
-    backgroundAlpha:.72,
+    backgroundAlpha:1,
     padding:"5px",
-    mediaBg:"rgb(251, 244, 233)",
+    mediaBg:"rgb(251, 243, 232)",
     mediaRadius:"5px",
     mediaHeight:96.234375,
-    titleSize:"10px",
-    priceSize:"10px"
+    titleSize:"9px",
+    priceSize:"9px"
   }
 };
 
