@@ -119,7 +119,12 @@ export async function onRequestGet(context){
   if(!productId)return json({ok:false,code:"product_id_required"},400);
   try{
     const result=await context.env.BG_DB.prepare(
-      "SELECT id,product_id,snapshot_json,reason,created_at FROM product_revisions WHERE product_id=? ORDER BY created_at DESC LIMIT ?"
+      `SELECT pr.id,pr.product_id,pr.snapshot_json,pr.reason,pr.created_at,rma.archive_key
+       FROM product_revisions pr
+       LEFT JOIN revision_media_archives rma ON rma.revision_id=pr.id
+       WHERE pr.product_id=?
+       ORDER BY pr.created_at DESC
+       LIMIT ?`
     ).bind(productId,limit).all();
     const revisions=(result.results||[]).map(row=>{
       let snapshot={};
@@ -137,6 +142,7 @@ export async function onRequestGet(context){
           featured:Boolean(snapshot.featured),
           order:Number(snapshot.sort_order||0),
           imageKey:snapshot.image_key||"",
+          imageArchived:Boolean(row.archive_key),
           imagePresent:Boolean(snapshot.image_key||snapshot.image_url)
         }
       };
