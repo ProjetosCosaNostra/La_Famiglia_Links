@@ -1,0 +1,13 @@
+{
+  "name": "blackgold-beauty-finds-novo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev . --port 8768 --persist-to .wrangler/state",
+    "db:init": "wrangler d1 migrations apply blackgold-beauty-finds-novo --local",
+    "verify": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./tools/verify.ps1"
+  },
+  "devDependencies": {
+    "wrangler": "^4.38.0"
+  }
+}

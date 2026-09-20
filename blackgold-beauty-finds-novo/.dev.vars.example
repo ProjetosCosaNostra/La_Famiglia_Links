@@ -1,0 +1,2 @@
+# Copy to .dev.vars locally. Never commit the real token.
+ADMIN_PANEL_TOKEN=REPLACE_WITH_RANDOM_64_HEX_LOCAL_TOKEN
