@@ -117,11 +117,27 @@ try {
   }
   result.publicPublished = "PASS";
 
+  r = await call("/api/admin/metrics", { headers: auth });
+  const metricBeforeBot = Number(r.data.summary?.total||0);
+  const botClick = await fetch(base + "/api/out?id=" + encodeURIComponent(id) + "&placement=showcase", {
+    redirect: "manual",
+    cache: "no-store",
+    headers: { "user-agent": "Googlebot/2.1" }
+  });
+  if (botClick.status !== 302 || botClick.headers.get("x-blackgold-click-tracked") !== "0") {
+    throw new Error("crawler click filtering failed");
+  }
+  r = await call("/api/admin/metrics", { headers: auth });
+  if (Number(r.data.summary?.total||0) !== metricBeforeBot) {
+    throw new Error("crawler traffic polluted click metrics");
+  }
+  result.botClickExcluded = "PASS";
+
   const trackedClick = await fetch(base + "/api/out?id=" + encodeURIComponent(id) + "&placement=selection", {
     redirect: "manual",
     cache: "no-store"
   });
-  if (trackedClick.status !== 302 || trackedClick.headers.get("location") !== product.destinationUrl) {
+  if (trackedClick.status !== 302 || trackedClick.headers.get("location") !== product.destinationUrl || trackedClick.headers.get("x-blackgold-click-tracked") !== "1") {
     throw new Error("tracked outbound redirect failed " + trackedClick.status);
   }
   r = await call("/api/admin/metrics", { headers: auth });
