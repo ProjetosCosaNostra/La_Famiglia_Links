@@ -28,10 +28,10 @@ try{
   }
 
   const selection=[];
-  for(const x of [-16,-12,-8]){
-    for(const y of [-20,-16,-12,-8]){
+  for(const x of [-20,-18,-16,-14,-12]){
+    for(const y of [-18,-16,-14]){
       for(const scale of [0.94,0.96,0.98]){
-        for(const alpha of [0.40,0.55,0.70]){
+        for(const alpha of [0.20,0.30,0.40]){
           const id=`sel-x${x}-y${y}-s${String(scale).replace(".","p")}-a${String(alpha).replace(".","p")}`;
           await inject(`
             .selection-live .product{background:rgba(255,255,255,${alpha})!important}
@@ -45,10 +45,10 @@ try{
   }
 
   const showcase=[];
-  for(const x of [-24,-20,-16]){
-    for(const y of [-24,-20,-16,-12,-8]){
-      for(const scale of [0.95,1.00,1.05]){
-        for(const alpha of [0.35,0.50,0.65,0.80,1.00]){
+  for(const x of [-24,-22,-20,-18,-16]){
+    for(const y of [-22,-20,-18]){
+      for(const scale of [1.00,1.05,1.10]){
+        for(const alpha of [0.20,0.275,0.35,0.425]){
           const id=`show-x${x}-y${y}-s${String(scale).replace(".","p")}-a${String(alpha).replace(".","p")}`;
           await inject(`
             .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
