@@ -1,13 +1,11 @@
-# BLACKGOLD BEAUTY FINDS — AUTHORITY LOCK
+# BLACKGOLD BEAUTY FINDS — VISUAL AUTHORITY LOCK V2
 
-- Branch: blackgold-beauty-finds-novo-authority
-- Production deployment: FORBIDDEN until explicit human approval.
-- Desktop authority: authority-desktop-v26.webp, derived from approved 1448x1086 authority.
-- Mobile authority: authority-mobile-v24.webp, derived from approved 390x1152 authority.
-- Legacy products: FORBIDDEN.
-- Demo products/placeholders: FORBIDDEN.
-- Public catalogue begins with 0 products.
-- The storefront may only reveal product UI after a real product is created and published through the admin panel.
-- Do not shrink desktop to fit viewport height. The failed preview did this and created large side margins.
-- Do not expose any preview to the user until objective visual comparison passes.
-- No merge to gh-pages or production branch without explicit user approval.
+- Public catalog starts with 0 products.
+- No demo product, price, count, or placeholder may be invented.
+- Desktop authority is derived only from the approved PC.png mockup.
+- Mobile authority is derived only from the approved mobile 2.png mockup.
+- Product-only regions stay empty until real products are published from Admin.
+- Exact zero-catalog visual gate tolerance is 0 pixels.
+- Preview must never auto-open.
+- Production deployment stays blocked until explicit human approval.
+- Desktop must fill the viewport width; never shrink-to-height or appear as a small centered page.
