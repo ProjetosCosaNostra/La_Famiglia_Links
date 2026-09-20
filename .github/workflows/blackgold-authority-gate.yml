@@ -233,6 +233,18 @@ jobs:
           CHROME_BIN: ${{ steps.chrome.outputs.bin }}
         run: node tools/product_style_gate.mjs
 
+      - name: Internal product visual parameter tuning
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+          CHROME_BIN: ${{ steps.chrome.outputs.bin }}
+        run: |
+          node tools/product_tuning_capture.mjs
+          python tools/product_tuning_eval.py \
+            --authority ../cloudflare-beauty-finds/visual-authority/BLACKGOLD_HOME_DESKTOP_MOCKUP_APPROVED_20260909_140134.png \
+            --dir .visual-gate/tuning \
+            --report .visual-gate/product-tuning.json
+
       - name: Capture approved product-layout candidate
         run: |
           "${{ steps.chrome.outputs.bin }}" --headless=new --disable-gpu --no-sandbox --hide-scrollbars --virtual-time-budget=1800 --force-device-scale-factor=1 --window-size=1448,1086 --screenshot=blackgold-beauty-finds-novo/.visual-gate/authority-products-desktop.png http://127.0.0.1:8788/
