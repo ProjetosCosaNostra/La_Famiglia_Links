@@ -38,6 +38,40 @@ async function saveRevision(db,row,reason="update"){
   return revisionId;
 }
 
+function extFromKey(key=""){
+  const m=String(key).match(/\.([a-z0-9]{2,8})$/i);
+  return m?"."+m[1].toLowerCase():"";
+}
+
+async function archiveMediaForRevision(context,row,revisionId){
+  const key=String(row?.image_key||"").trim();
+  if(!key||!revisionId)return "";
+  const object=await context.env.BG_MEDIA.get(key);
+  if(!object)throw new Error("media_archive_source_missing:"+key);
+  const archiveKey="revision-archive/"+row.id+"/"+revisionId+extFromKey(key);
+  const bytes=await object.arrayBuffer();
+  const contentType=object.httpMetadata?.contentType||"application/octet-stream";
+  await context.env.BG_MEDIA.put(archiveKey,bytes,{
+    httpMetadata:{
+      contentType,
+      cacheControl:"private, max-age=0, no-store"
+    },
+    customMetadata:{
+      source:"revision-archive",
+      productId:String(row.id),
+      revisionId:String(revisionId),
+      originalKey:key,
+      archivedAt:new Date().toISOString()
+    }
+  });
+  await context.env.BG_DB.prepare(
+    `INSERT OR REPLACE INTO revision_media_archives
+     (revision_id,product_id,original_key,archive_key,content_type,archived_at,restored_at)
+     VALUES (?,?,?,?,?,datetime('now'),NULL)`
+  ).bind(revisionId,row.id,key,archiveKey,contentType).run();
+  return archiveKey;
+}
+
 function parseInput(body={},current={}){
   const hasPrice=Object.prototype.hasOwnProperty.call(body,"price");
   const price=hasPrice
@@ -158,6 +192,9 @@ export async function onRequestPatch(context){
   const publishedAt=input.status==="published"?(current.published_at||nextUpdatedAt):null;
   try{
     const revisionId=await saveRevision(context.env.BG_DB,current,"update");
+    const replacedKey=current.image_key&&current.image_key!==input.image_key?current.image_key:"";
+    let archivedMediaKey="";
+    if(replacedKey)archivedMediaKey=await archiveMediaForRevision(context,current,revisionId);
     await context.env.BG_DB.prepare(
       `UPDATE products SET title=?,brand=?,category=?,description=?,currency=?,price_cents=?,image_key=?,image_url=?,destination_url=?,status=?,featured=?,sort_order=?,published_at=?,updated_at=? WHERE id=?`
     ).bind(
@@ -165,11 +202,11 @@ export async function onRequestPatch(context){
       input.image_key||null,input.image_url||null,input.destination_url,input.status,input.featured,
       input.sort_order,publishedAt,nextUpdatedAt,id
     ).run();
-    const replacedKey=current.image_key&&current.image_key!==input.image_key?current.image_key:"";
     if(replacedKey)await deleteMediaIfUnused(context,replacedKey,id);
     await audit(context.env.BG_DB,"product_updated",id,{
       status:input.status,
       imageReplaced:Boolean(replacedKey),
+      archivedMedia:Boolean(archivedMediaKey),
       revisionId
     });
     const row=await context.env.BG_DB.prepare("SELECT * FROM products WHERE id=?").bind(id).first();
@@ -187,9 +224,15 @@ export async function onRequestDelete(context){
     const row=await context.env.BG_DB.prepare("SELECT * FROM products WHERE id=?").bind(id).first();
     if(!row)return json({ok:false,code:"not_found"},404);
     const revisionId=await saveRevision(context.env.BG_DB,row,"delete");
+    let archivedMediaKey="";
+    if(row.image_key)archivedMediaKey=await archiveMediaForRevision(context,row,revisionId);
     await context.env.BG_DB.prepare("DELETE FROM products WHERE id=?").bind(id).run();
     if(row.image_key)await deleteMediaIfUnused(context,row.image_key,id);
-    await audit(context.env.BG_DB,"product_deleted",id,{imageKey:Boolean(row.image_key),revisionId});
+    await audit(context.env.BG_DB,"product_deleted",id,{
+      imageKey:Boolean(row.image_key),
+      archivedMedia:Boolean(archivedMediaKey),
+      revisionId
+    });
     return json({ok:true,id});
   }catch(error){
     return json({ok:false,code:"delete_failed",message:String(error?.message||error)},500);
