@@ -1,0 +1,81 @@
+:root{--authority-w:1448;--authority-h:1086;--black:#080604;--cream:#fffaf2;--cream2:#fbf1e5;--gold:#c58b19}
+*{box-sizing:border-box}
+html,body{margin:0;min-width:320px;min-height:100%;background:var(--black);overflow-x:hidden}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif}
+.authority-shell{position:relative;width:100vw;min-height:100vh;background:var(--black);overflow:hidden}
+.visual{position:relative;width:100vw;line-height:0}
+.visual img{display:block;width:100%;height:auto}
+.visual-mobile{display:none}
+.hit{position:absolute;z-index:30;display:block;background:transparent;border:0;outline:0}
+.hit:focus-visible{outline:3px solid #efbf50;outline-offset:2px;border-radius:6px}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+/* Mandatory zero-catalog masks. They hide ONLY legacy product content embedded in the approved raster authority. */
+.zero-mask{position:absolute;z-index:20;pointer-events:none}
+.zero-counter{
+  left:4.15vw;top:calc(100vw * 326 / 1448);width:9.75vw;height:calc(100vw * 53 / 1448);
+  border:1px solid #eadbc7;border-radius:calc(100vw * 8 / 1448);
+  background:rgba(255,253,249,.985);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#2a2118;line-height:1
+}
+.zero-counter strong{font:700 clamp(10px,1.05vw,15px) Georgia,serif}
+.zero-counter small{margin-top:.25vw;color:#756b61;font-size:clamp(6px,.56vw,8px)}
+.zero-selection{
+  left:4.05vw;right:4.05vw;top:calc(100vw * 462 / 1448);height:calc(100vw * 155 / 1448);
+  background:linear-gradient(180deg,rgba(255,253,249,.998),rgba(249,239,227,.998));
+  border-radius:calc(100vw * 7 / 1448)
+}
+.zero-showcase{
+  left:4.05vw;right:4.05vw;top:calc(100vw * 677 / 1448);height:calc(100vw * 151 / 1448);
+  background:linear-gradient(180deg,rgba(252,244,234,.998),rgba(247,236,223,.998));
+  border-radius:calc(100vw * 7 / 1448)
+}
+
+/* Approved-authority hit targets. No visible UI is redrawn here. */
+.brand{left:3.5%;top:0;width:18%;height:4.6%}
+.featured{left:37%;top:0;width:6%;height:4.6%}
+.showcase{left:44%;top:0;width:5%;height:4.6%}
+.ecosystem-nav{left:50.5%;top:0;width:8%;height:4.6%}
+.explore{left:4.1%;top:24.7%;width:14.2%;height:4%}
+.open-ecosystem{left:18.8%;top:24.7%;width:13%;height:4%}
+.hub{left:58.5%;top:78%;width:16.6%;height:4.2%}
+.instagram{left:75.6%;top:78%;width:17%;height:4.2%}
+.youtube{left:58.5%;top:82.5%;width:16.6%;height:4.2%}
+.telegram{left:75.6%;top:82.5%;width:17%;height:4.2%}
+.github{left:58.5%;top:87%;width:16.6%;height:4.2%}
+.contact{left:75.6%;top:87%;width:17%;height:4.2%}
+
+/* Critical change vs failed preview: desktop authority fills viewport width; it is never shrunk to fit viewport height. */
+@media(min-width:761px){
+  .authority-shell{width:100vw}
+  .visual-desktop{display:block;width:100vw}
+  .visual-desktop img{width:100vw;height:auto;max-width:none}
+  .authority-shell{min-height:max(100vh,calc(100vw * 1086 / 1448))}
+}
+@media(max-width:760px){
+  .visual-desktop{display:none}
+  .visual-mobile{display:block;width:100vw}
+  .visual-mobile img{width:100vw;height:auto;max-width:none}
+  .authority-shell{min-height:max(100vh,calc(100vw * 1152 / 390))}
+  .zero-counter{
+    left:2.8vw;top:calc(100vw * 377 / 390);width:28.8vw;height:calc(100vw * 51 / 390);
+    border-radius:7px
+  }
+  .zero-counter strong{font-size:10px}.zero-counter small{font-size:6px;margin-top:2px}
+  .zero-selection{
+    left:2.6vw;right:2.6vw;top:calc(100vw * 489 / 390);height:calc(100vw * 130 / 390);border-radius:7px
+  }
+  .zero-showcase{
+    left:2.6vw;right:2.6vw;top:calc(100vw * 691 / 390);height:calc(100vw * 139 / 390);border-radius:7px
+  }
+  .brand{left:19%;top:0;width:56%;height:4.4%}
+  .featured,.showcase,.ecosystem-nav{display:none}
+  .explore{left:4%;top:28%;width:50%;height:4.2%}
+  .open-ecosystem{left:56%;top:28%;width:44%;height:4.2%}
+  .hub{left:5%;top:81.8%;width:48%;height:4.3%}
+  .instagram{left:56%;top:81.8%;width:44%;height:4.3%}
+  .youtube{left:5%;top:86.6%;width:48%;height:4.3%}
+  .telegram{left:56%;top:86.6%;width:44%;height:4.3%}
+  .github{left:5%;top:91.4%;width:48%;height:4.3%}
+  .contact{left:56%;top:91.4%;width:44%;height:4.3%}
+}
