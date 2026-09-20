@@ -1,4 +1,4 @@
-name: BlackGold Exact Authority Gate
+﻿name: BlackGold Exact Authority Gate
 
 on:
   push:
@@ -188,6 +188,14 @@ jobs:
           CHROME_BIN: ${{ steps.chrome.outputs.bin }}
         run: node tools/admin_ui_flow.mjs
 
+      - name: Storefront browser workflow
+        working-directory: blackgold-beauty-finds-novo
+        env:
+          BLACKGOLD_BASE: http://127.0.0.1:8788
+        run: |
+          export BLACKGOLD_ADMIN_TOKEN="$(sed -n 's/^ADMIN_PANEL_TOKEN=//p' .dev.vars)"
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
+          node tools/storefront_ui_flow.mjs
       - name: Backup and restore roundtrip
         working-directory: blackgold-beauty-finds-novo
         env:
@@ -207,3 +215,4 @@ jobs:
           path: blackgold-beauty-finds-novo/.visual-gate/
           if-no-files-found: ignore
           retention-days: 7
+
