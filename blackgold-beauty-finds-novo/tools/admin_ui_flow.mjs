@@ -159,9 +159,9 @@ try{
   await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Changed");
 
   await page.click("[data-history]");
-  await page.waitForSelector("[data-rollback]",{timeout:10000});
+  await page.waitForSelector('[data-rollback][data-revision-status="published"]',{timeout:10000});
   page.once("dialog",dialog=>dialog.accept());
-  await page.click("[data-rollback]");
+  await page.click('[data-rollback][data-revision-status="published"]');
   await page.waitForFunction(()=>!document.querySelector("#historyModal").classList.contains("open"),{timeout:10000});
   await page.waitForFunction(()=>document.querySelector("#list").textContent.includes("BlackGold Admin UI Test"),{timeout:10000});
   await waitPublic(data=>data.total===1&&data.products?.[0]?.title==="BlackGold Admin UI Test");
