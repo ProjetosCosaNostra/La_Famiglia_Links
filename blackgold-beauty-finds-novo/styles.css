@@ -3,10 +3,10 @@
 @media(min-width:761px){
 .selection-live{left:4.143646%;top:43.830571%;width:91.712707%;height:14.456722%;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;padding:0 5px}
 .showcase-live{left:4.143646%;top:64.272560%;width:91.712707%;height:13.259669%;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;padding:0 5px}
-.selection-live .product{border:1px solid #e7dacb;border-radius:8px;background:rgba(255,255,255,.80);display:grid;grid-template-columns:50% 50%;overflow:hidden;padding:7px}
+.selection-live .product{border:1px solid #e7dacb;border-radius:8px;background:rgba(255,255,255,.80);display:grid;grid-template-columns:47% 53%;overflow:hidden;padding:7px}
 .selection-live .media{margin:0;border-radius:7px;overflow:hidden;background:#fbf3e8;display:grid;place-items:center}
 .selection-live .media img{width:100%;height:100%;object-fit:contain;transform:translateY(-4px) scale(.96);transform-origin:center center}
-.selection-live .copy{padding:5px 6px 4px 12px;display:flex;flex-direction:column;min-width:0}
+.selection-live .copy{padding:5px 6px 4px 10px;display:flex;flex-direction:column;min-width:0}
 .selection-live .product h3{margin:0;font:700 13px/1.05 "Cormorant Garamond",Georgia,serif}
 .selection-live .meta{margin-top:2px;color:#7a6f65;font-size:8px}
 .selection-live .desc{margin:6px 0 0;color:#695e55;font-size:8.5px;line-height:1.27}
