@@ -54,6 +54,26 @@ jobs:
           print("BLACKGOLD_CANONICAL_SOURCE_LOCK=PASS")
           PY
 
+      - name: Admin auth single-source gate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root=Path("blackgold-beauty-finds-novo")
+          helper=root/"functions/_lib/admin-auth.js"
+          text=helper.read_text(encoding="utf-8")
+          assert "export function authorized" in text
+          assert "export function adminSecretReady" in text
+          files=sorted((root/"functions/api/admin").glob("*.js"))
+          assert files
+          for p in files:
+              c=p.read_text(encoding="utf-8")
+              assert 'from "../../_lib/admin-auth.js"' in c, f"shared admin auth missing: {p}"
+              assert "function authorized(context)" not in c, f"duplicate admin auth reintroduced: {p}"
+          health=(root/"functions/api/health.js").read_text(encoding="utf-8")
+          assert 'from "../_lib/admin-auth.js"' in health
+          print("BLACKGOLD_ADMIN_AUTH_SINGLE_SOURCE=PASS")
+          PY
+
       - name: Verify pinned authority assets
         run: |
           python - <<'PY'
