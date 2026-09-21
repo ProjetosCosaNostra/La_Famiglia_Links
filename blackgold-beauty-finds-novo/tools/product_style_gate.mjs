@@ -133,8 +133,8 @@ try{
       const sparse=data.showcaseImages.filter(x=>x.sparseMedium);
       fail(sparse.length===1,"showcase sparse-medium profile count "+sparse.length);
       fail(sparse[0].ratio>=1.60&&sparse[0].ratio<1.70,"showcase sparse-medium ratio "+sparse[0].ratio);
-      fail(near(sparse[0].transform.a,1.15,.005)&&near(sparse[0].transform.d,1.15,.005),"showcase sparse-medium scale "+JSON.stringify(sparse[0].transform));
-      fail(near(sparse[0].transform.x,-20,.05)&&near(sparse[0].transform.y,-20,.05),"showcase sparse-medium framing "+JSON.stringify(sparse[0].transform));
+      fail(near(sparse[0].transform.a,1.10,.005)&&near(sparse[0].transform.d,1.10,.005),"showcase sparse-medium scale "+JSON.stringify(sparse[0].transform));
+      fail(near(sparse[0].transform.x,-20,.05)&&near(sparse[0].transform.y,-18,.05),"showcase sparse-medium framing "+JSON.stringify(sparse[0].transform));
       const sparseCompact=data.showcaseImages.filter(x=>x.sparseCompact);
       fail(sparseCompact.length===1,"showcase sparse-compact profile count "+sparseCompact.length);
       fail(sparseCompact[0].ratio>0&&sparseCompact[0].ratio<1.50,"showcase sparse-compact ratio "+sparseCompact[0].ratio);
