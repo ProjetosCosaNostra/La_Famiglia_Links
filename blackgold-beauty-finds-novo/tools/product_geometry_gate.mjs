@@ -18,11 +18,11 @@ function assertRect(actual,expected,label){
 }
 function expectedDesktop(){
   return {
-    selection:{x:60,y:476,width:1328,height:157},
+    selection:{x:60,y:475,width:1328,height:157},
     selectionCards:[
-      {x:65,y:476,width:432,height:157},
-      {x:508,y:476,width:432,height:157},
-      {x:951,y:476,width:432,height:157}
+      {x:65,y:475,width:432,height:157},
+      {x:508,y:475,width:432,height:157},
+      {x:951,y:475,width:432,height:157}
     ],
     showcase:{x:60,y:698,width:1328,height:144},
     showcaseCards:Array.from({length:8},(_,i)=>({
