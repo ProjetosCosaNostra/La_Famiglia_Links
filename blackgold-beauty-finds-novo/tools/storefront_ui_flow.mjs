@@ -168,14 +168,17 @@ try{
   }
   const trackedUrl=new URL(linkInfo.href,base);
   const redirect=await fetch(trackedUrl,{redirect:"manual",cache:"no-store"});
-  if(redirect.status!==302||redirect.headers.get("location")!=="https://example.com/qa-beleza"){
+  if(redirect.status!==302||redirect.headers.get("location")!=="https://example.com/qa-beleza"||redirect.headers.get("x-blackgold-click-tracking")!=="queued"){
     throw new Error("tracked affiliate redirect failed "+redirect.status+" "+redirect.headers.get("location"));
   }
-  const metrics=await call("/api/admin/metrics");
-  if(metrics.summary?.total<1||!metrics.products?.some(x=>x.productId===pub.products[0].id||x.title==="BlackGold QA Beleza")){
-    throw new Error("affiliate click metric not recorded");
+  let metricRecorded=false;
+  for(let attempt=0;attempt<40&&!metricRecorded;attempt++){
+    const metrics=await call("/api/admin/metrics");
+    metricRecorded=Boolean(metrics.summary?.total>=1&&metrics.products?.some(x=>x.productId===pub.products[0].id||x.title==="BlackGold QA Beleza"));
+    if(!metricRecorded)await new Promise(resolve=>setTimeout(resolve,25));
   }
-  result.destinationClick={redirect:302,metric:"PASS",semanticLink:"PASS"};
+  if(!metricRecorded)throw new Error("affiliate click metric not recorded after async queue");
+  result.destinationClick={redirect:302,tracking:"queued",metric:"PASS",semanticLink:"PASS"};
 
   await page.$eval("#catalogDialog",d=>d.close());
   await page.setViewport({width:310,height:896,deviceScaleFactor:1,isMobile:true});

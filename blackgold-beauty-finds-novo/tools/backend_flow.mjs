@@ -136,7 +136,7 @@ try {
     cache: "no-store",
     headers: { "user-agent": "Googlebot/2.1" }
   });
-  if (botClick.status !== 302 || botClick.headers.get("x-blackgold-click-tracked") !== "0") {
+  if (botClick.status !== 302 || botClick.headers.get("x-blackgold-click-tracking") !== "skipped") {
     throw new Error("crawler click filtering failed");
   }
   r = await call("/api/admin/metrics", { headers: auth });
@@ -149,14 +149,17 @@ try {
     redirect: "manual",
     cache: "no-store"
   });
-  if (trackedClick.status !== 302 || trackedClick.headers.get("location") !== product.destinationUrl || trackedClick.headers.get("x-blackgold-click-tracked") !== "1") {
+  if (trackedClick.status !== 302 || trackedClick.headers.get("location") !== product.destinationUrl || trackedClick.headers.get("x-blackgold-click-tracking") !== "queued") {
     throw new Error("tracked outbound redirect failed " + trackedClick.status);
   }
-  r = await call("/api/admin/metrics", { headers: auth });
-  if (!r.response.ok || !r.data.products?.some(x => x.productId === id && x.total >= 1)) {
-    throw new Error("affiliate click metrics missing");
+  let metricRecorded=false;
+  for(let attempt=0;attempt<40&&!metricRecorded;attempt++){
+    r = await call("/api/admin/metrics", { headers: auth });
+    metricRecorded=Boolean(r.response.ok && r.data.products?.some(x => x.productId === id && x.total >= 1));
+    if(!metricRecorded)await new Promise(resolve=>setTimeout(resolve,25));
   }
-  result.outboundTracking = { redirect: 302, metrics: "PASS" };
+  if(!metricRecorded)throw new Error("affiliate click metrics missing after async queue");
+  result.outboundTracking = { redirect: 302, tracking: "queued", metrics: "PASS" };
 
   let exportResponse = await fetch(base + "/api/admin/metrics-export", {
     headers: auth,

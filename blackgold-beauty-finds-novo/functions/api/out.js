@@ -2,6 +2,23 @@ const clean=(v,max=120)=>String(v??"").trim().slice(0,max);
 const allowedPlacement=new Set(["selection","showcase","catalog","unknown"]);
 const botPattern=/(bot|crawler|spider|slurp|facebookexternalhit|whatsapp|telegrambot|discordbot|preview|headlesschrome|lighthouse)/i;
 
+async function recordClick(context,product,placement){
+  try{
+    await context.env.BG_DB.prepare(
+      "INSERT INTO outbound_clicks (id,product_id,product_title,placement,clicked_at) VALUES (?,?,?,?,?)"
+    ).bind(
+      crypto.randomUUID(),
+      product.id,
+      String(product.title||"").slice(0,160),
+      placement,
+      new Date().toISOString()
+    ).run();
+    return true;
+  }catch{
+    return false;
+  }
+}
+
 export async function onRequestGet(context){
   const url=new URL(context.request.url);
   const id=clean(url.searchParams.get("id"),80);
@@ -26,20 +43,16 @@ export async function onRequestGet(context){
   }
 
   const ua=context.request.headers.get("user-agent")||"";
-  let tracked=!botPattern.test(ua);
-  if(tracked){
-    try{
-      await context.env.BG_DB.prepare(
-        "INSERT INTO outbound_clicks (id,product_id,product_title,placement,clicked_at) VALUES (?,?,?,?,?)"
-      ).bind(
-        crypto.randomUUID(),
-        product.id,
-        String(product.title||"").slice(0,160),
-        placement,
-        new Date().toISOString()
-      ).run();
-    }catch{
-      tracked=false;
+  const shouldTrack=!botPattern.test(ua);
+  let tracking="skipped";
+
+  if(shouldTrack){
+    const task=recordClick(context,product,placement);
+    if(typeof context.waitUntil==="function"){
+      context.waitUntil(task);
+      tracking="queued";
+    }else{
+      tracking=(await task)?"complete":"failed";
     }
   }
 
@@ -50,7 +63,7 @@ export async function onRequestGet(context){
       "cache-control":"no-store, no-cache, must-revalidate",
       "referrer-policy":"no-referrer",
       "x-content-type-options":"nosniff",
-      "x-blackgold-click-tracked":tracked?"1":"0"
+      "x-blackgold-click-tracking":tracking
     }
   });
 }
