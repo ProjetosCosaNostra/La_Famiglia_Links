@@ -1,3 +1,5 @@
+import {adminSecretReady} from "../_lib/admin-auth.js";
+
 const json=(payload,status=200)=>new Response(JSON.stringify(payload),{
   status,
   headers:{
@@ -18,8 +20,7 @@ export async function onRequestGet(context){
     await context.env.BG_MEDIA.list({limit:1});
     checks.media=true;
   }catch{}
-  const adminToken=String(context.env.ADMIN_PANEL_TOKEN||"").trim();
-  checks.adminSecret=adminToken.length>=32;
+  checks.adminSecret=adminSecretReady(context.env);
   const ok=checks.database&&checks.media&&checks.adminSecret;
   return json({
     ok,

@@ -1,14 +1,10 @@
+import {authorized} from "../../_lib/admin-auth.js";
+
 const json=(payload,status=200)=>new Response(JSON.stringify(payload),{
   status,
   headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}
 });
 const clean=(v,max=500)=>String(v??"").trim().slice(0,max);
-
-function authorized(context){
-  const expected=String(context.env.ADMIN_PANEL_TOKEN||"").trim();
-  const supplied=(context.request.headers.get("authorization")||"").replace(/^Bearer\s+/i,"").trim();
-  return Boolean(expected&&supplied&&expected===supplied);
-}
 
 const toProduct=row=>({
   id:row.id,slug:row.slug,title:row.title,brand:row.brand||"",category:row.category||"",

@@ -1,13 +1,9 @@
+import {authorized} from "../../_lib/admin-auth.js";
+
 const json=(payload,status=200)=>new Response(JSON.stringify(payload),{
   status,
   headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}
 });
-
-function authorized(context){
-  const expected=String(context.env.ADMIN_PANEL_TOKEN||"").trim();
-  const supplied=(context.request.headers.get("authorization")||"").replace(/^Bearer\s+/i,"").trim();
-  return Boolean(expected&&supplied&&expected===supplied);
-}
 
 const TABLES={
   products:["id","slug","title","brand","category","description","currency","price_cents","image_key","image_url","destination_url","status","featured","sort_order","created_at","updated_at","published_at"],

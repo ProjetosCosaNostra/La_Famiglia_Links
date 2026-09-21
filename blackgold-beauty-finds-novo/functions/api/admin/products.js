@@ -1,3 +1,5 @@
+import {authorized} from "../../_lib/admin-auth.js";
+
 const json=(payload,status=200)=>new Response(JSON.stringify(payload),{
   status,
   headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}
@@ -6,12 +8,6 @@ const clean=(v,max=700)=>String(v??"").trim().slice(0,max);
 const EDITORIAL_DESCRIPTION_MIN=80;
 const slugify=v=>clean(v,160).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90);
 const httpsUrl=v=>/^https:\/\//i.test(String(v||"").trim());
-
-function authorized(context){
-  const expected=clean(context.env.ADMIN_PANEL_TOKEN,300);
-  const supplied=(context.request.headers.get("authorization")||"").replace(/^Bearer\s+/i,"").trim();
-  return Boolean(expected&&supplied&&expected===supplied);
-}
 
 const toProduct=row=>({
   id:row.id,slug:row.slug,title:row.title,brand:row.brand||"",category:row.category||"",
