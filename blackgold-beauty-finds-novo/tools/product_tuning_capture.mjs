@@ -38,21 +38,16 @@ try{
   await page.screenshot({path:path.join(out,"sel-current.png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
   selection.push({id:"sel-current",kind:"baseline"});
 
-  for(const scale of [1.15,1.2,1.25,1.3]){
-    for(const dy of [-10,-15,-20,-25]){
-      const id="show-fg-s"+String(scale).replace(".","p")+"-y"+String(dy).replace("-","m");
-      const css=
-        ".showcase-live .product{height:146px!important;background:rgba(255,255,255,.2)!important}"+
-        ".showcase-live .media{height:98px!important;flex:0 0 98px!important;background:#f8eee2!important}"+
-        ".showcase-live .media img{transform:translateY("+dy+"px) scale("+scale+")!important;transform-origin:center center!important}";
-      await snap(id,{kind:"foreground",cardH:146,alpha:0.2,mediaH:98,scale,dy,mediaBg:"#f8eee2"},css);
-    }
+  for(const dx of [-16,-12,-8,-4,0,4]){
+    const id="show-x"+String(dx).replace("-","m");
+    const css=".showcase-live .media img{transform:translateX("+dx+"px) translateY(-15px) scale(1.15)!important;transform-origin:center center!important}";
+    await snap(id,{kind:"horizontal",dx,scale:1.15,dy:-15},css);
   }
 
   await page.evaluate(()=>document.getElementById("__tune_style")?.remove());
   await fs.writeFile(path.join(out,"variants.json"),JSON.stringify({selection,showcase},null,2));
   console.log(JSON.stringify({selection:selection.length,showcase:showcase.length},null,2));
-  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V8=PASS");
+  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V9=PASS");
 }finally{
   await browser.close();
 }
