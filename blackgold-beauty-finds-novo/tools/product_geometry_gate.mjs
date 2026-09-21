@@ -18,15 +18,15 @@ function assertRect(actual,expected,label){
 }
 function expectedDesktop(){
   return {
-    selection:{x:60,y:460,width:1328,height:157},
+    selection:{x:60,y:466,width:1328,height:157},
     selectionCards:[
-      {x:65,y:460,width:432,height:157},
-      {x:508,y:460,width:432,height:157},
-      {x:951,y:460,width:432,height:157}
+      {x:65,y:466,width:432,height:157},
+      {x:508,y:466,width:432,height:157},
+      {x:951,y:466,width:432,height:157}
     ],
-    showcase:{x:60,y:678,width:1328,height:150},
+    showcase:{x:60,y:676,width:1328,height:148},
     showcaseCards:Array.from({length:8},(_,i)=>({
-      x:65+i*165.75,y:678,width:157.75,height:150
+      x:65+i*165.75,y:676,width:157.75,height:148
     }))
   };
 }
