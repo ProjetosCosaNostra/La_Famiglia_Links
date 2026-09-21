@@ -71,7 +71,7 @@ try{
         };
       };
       const sel=selections[0];
-      const showcaseImages=showcases.map(el=>one(el,".media img")).filter(Boolean).map(img=>{const s=style(img);const m=new DOMMatrix(s.transform==="none"?"matrix(1,0,0,1,0,0)":s.transform);return{extraWide:img.classList.contains("fit-extra-wide"),upperWide:img.classList.contains("fit-upper-wide"),midNarrow:img.classList.contains("fit-mid-narrow"),sparseMedium:img.classList.contains("fit-sparse-medium"),sparseCompact:img.classList.contains("fit-sparse-compact"),compactWide:img.classList.contains("fit-compact-wide"),naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,ratio:img.naturalHeight?img.naturalWidth/img.naturalHeight:0,transform:{a:m.a,d:m.d,x:m.e,y:m.f}}});
+      const showcaseImages=showcases.map(el=>one(el,".media img")).filter(Boolean).map(img=>{const s=style(img);const m=new DOMMatrix(s.transform==="none"?"matrix(1,0,0,1,0,0)":s.transform);return{extraWide:img.classList.contains("fit-extra-wide"),upperWide:img.classList.contains("fit-upper-wide"),midNarrow:img.classList.contains("fit-mid-narrow"),sparseMedium:img.classList.contains("fit-sparse-medium"),sparseCompact:img.classList.contains("fit-sparse-compact"),denseCompact:img.classList.contains("fit-dense-compact"),compactWide:img.classList.contains("fit-compact-wide"),naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,ratio:img.naturalHeight?img.naturalWidth/img.naturalHeight:0,transform:{a:m.a,d:m.d,x:m.e,y:m.f}}});
       return{
         selectionCount:selections.length,
         showcaseCount:showcases.length,
@@ -140,12 +140,16 @@ try{
       fail(sparseCompact[0].ratio>0&&sparseCompact[0].ratio<1.50,"showcase sparse-compact ratio "+sparseCompact[0].ratio);
       fail(near(sparseCompact[0].transform.a,1,.005)&&near(sparseCompact[0].transform.d,1,.005),"showcase sparse-compact scale "+JSON.stringify(sparseCompact[0].transform));
       fail(near(sparseCompact[0].transform.x,-45,.05)&&near(sparseCompact[0].transform.y,-25,.05),"showcase sparse-compact framing "+JSON.stringify(sparseCompact[0].transform));
-      const compact=data.showcaseImages.filter(x=>x.compactWide&&!x.sparseCompact);
-      fail(compact.length===1,"showcase base compact-wide profile count "+compact.length);
-      fail(compact[0].ratio>0&&compact[0].ratio<1.50,"showcase base compact-wide ratio "+compact[0].ratio);
-      fail(near(compact[0].transform.a,.95,.005)&&near(compact[0].transform.d,.95,.005),"showcase base compact-wide scale "+JSON.stringify(compact[0].transform));
-      fail(near(compact[0].transform.x,-20,.05)&&near(compact[0].transform.y,0,.05),"showcase base compact-wide framing "+JSON.stringify(compact[0].transform));
-      const normal=data.showcaseImages.find(x=>!x.extraWide&&!x.upperWide&&!x.midNarrow&&!x.sparseMedium&&!x.sparseCompact&&!x.compactWide);
+      const denseCompact=data.showcaseImages.filter(x=>x.denseCompact);
+      fail(denseCompact.length===1,"showcase dense-compact profile count "+denseCompact.length);
+      fail(denseCompact[0].ratio>0&&denseCompact[0].ratio<1.50,"showcase dense-compact ratio "+denseCompact[0].ratio);
+      fail(near(denseCompact[0].transform.a,1.05,.005)&&near(denseCompact[0].transform.d,1.05,.005),"showcase dense-compact scale "+JSON.stringify(denseCompact[0].transform));
+      fail(near(denseCompact[0].transform.x,-10,.05)&&near(denseCompact[0].transform.y,-20,.05),"showcase dense-compact framing "+JSON.stringify(denseCompact[0].transform));
+      const compactAll=data.showcaseImages.filter(x=>x.compactWide);
+      fail(compactAll.length===2,"showcase compact-wide total count "+compactAll.length);
+      const compactBase=compactAll.filter(x=>!x.sparseCompact&&!x.denseCompact);
+      fail(compactBase.length===0,"showcase unexpected base compact-wide count "+compactBase.length);
+      const normal=data.showcaseImages.find(x=>!x.extraWide&&!x.upperWide&&!x.midNarrow&&!x.sparseMedium&&!x.sparseCompact&&!x.denseCompact&&!x.compactWide);
       fail(!!normal,"showcase normal profile missing");
       fail(near(normal.transform.x,-20,.05)&&near(normal.transform.y,-20,.05),"showcase normal framing "+JSON.stringify(normal.transform));
     }else{
