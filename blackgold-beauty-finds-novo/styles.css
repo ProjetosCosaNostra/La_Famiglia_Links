@@ -79,7 +79,7 @@
 @media(min-width:761px){
   .selection-live .product{
     border-color:#eadfd0;
-    background:rgba(255,255,255,.20);
+    background:rgba(255,255,255,.10);
   }
   .selection-live .media{background:#fbf4e9}
   .selection-live .meta{font-size:9px;line-height:1.05}
