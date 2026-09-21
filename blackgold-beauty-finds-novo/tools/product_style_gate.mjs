@@ -26,11 +26,12 @@ const expected={
   showcase:{
     borderColor:"rgb(229, 216, 200)",
     borderRadius:"7px",
-    backgroundAlpha:1,
+    backgroundAlpha:.2,
     padding:"5px",
-    mediaBg:"rgb(251, 243, 232)",
+    cardHeight:146,
+    mediaBg:"rgb(248, 238, 226)",
     mediaRadius:"5px",
-    mediaHeight:96.234375,
+    mediaHeight:98,
     titleSize:"9px",
     priceSize:"9px"
   }
@@ -113,6 +114,7 @@ try{
       fail(b.borderRadius===expected.showcase.borderRadius,"showcase radius "+b.borderRadius);
       fail(near(alphaOf(b.background),expected.showcase.backgroundAlpha,.02),"showcase background alpha "+b.background);
       fail(b.padding===expected.showcase.padding,"showcase padding "+b.padding);
+      fail(near(b.height,expected.showcase.cardHeight,.35),"showcase card height "+b.height);
       fail(b.media.background===expected.showcase.mediaBg,"showcase media background "+b.media.background);
       fail(b.media.borderRadius===expected.showcase.mediaRadius,"showcase media radius "+b.media.borderRadius);
       fail(near(b.media.height,expected.showcase.mediaHeight,.35),"showcase media height "+b.media.height);
