@@ -12,8 +12,8 @@ root=Path(a.dir)
 variants=json.loads((root/"variants.json").read_text(encoding="utf-8"))
 authority=Image.open(a.authority).convert("RGB")
 zones={
-  "selection":(60,460,1388,617),
-  "showcase":(60,678,1388,828)
+  "selection":(60,476,1388,633),
+  "showcase":(60,698,1388,842)
 }
 def mae(x,y):
   d=ImageChops.difference(x,y)

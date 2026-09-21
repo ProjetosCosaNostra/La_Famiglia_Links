@@ -30,37 +30,37 @@ try{
   }
 
   const selection=[];
-  for(const imgX of [-18,-16,-14,-12,-10]){
-    for(const scale of [.90,.92,.94,.96,.98]){
-      for(const alpha of [.05,.10,.15]){
-        const top=466,imgY=-2;
-        const id=`sel-x${imgX}-s${String(scale).replace(".","_")}-a${String(alpha).replace(".","_")}`;
+  for(const top of [474,475,476,477,478]){
+    for(const imgY of [-16,-14,-12]){
+      for(const alpha of [.10,.20,.30]){
+        const id=`sel-top${top}-iy${imgY}-a${String(alpha).replace(".","_")}`;
         await inject(`
           .selection-live{top:${pct(top)}!important;height:${pct(157)}!important}
           .selection-live .product{background:rgba(255,255,255,${alpha})!important}
           .selection-live .media{background:#fbf4e9!important}
-          .selection-live .media img{transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;transform-origin:center center!important}
+          .selection-live .media img{transform:translate(-14px,${imgY}px) scale(.94)!important;transform-origin:center center!important}
         `);
-        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:460,width:1328,height:157},captureBeyondViewport:false});
-        selection.push({id,top,height:157,imgX,imgY,scale,alpha});
+        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
+        selection.push({id,top,height:157,imgX:-14,imgY,scale:.94,alpha});
       }
     }
   }
 
   const showcase=[];
-  for(const imgX of [-24,-22,-20,-18,-16]){
-    for(const scale of [1.00,1.025,1.05,1.075,1.10]){
-      for(const alpha of [.10,.20,.30]){
-        const top=680,height=148,imgY=-4;
-        const id=`show-x${imgX}-s${String(scale).replace(".","_")}-a${String(alpha).replace(".","_")}`;
-        await inject(`
-          .showcase-live{top:${pct(top)}!important;height:${pct(height)}!important}
-          .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
-          .showcase-live .media{height:108px!important;background:#fbf3e8!important}
-          .showcase-live .media img{transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;transform-origin:center center!important}
-        `);
-        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:678,width:1328,height:150},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha});
+  for(const top of [696,697,698,699,700]){
+    for(const height of [142,144,146]){
+      for(const imgY of [-22,-20,-18]){
+        for(const alpha of [.10,.20,.30]){
+          const id=`show-top${top}-h${height}-iy${imgY}-a${String(alpha).replace(".","_")}`;
+          await inject(`
+            .showcase-live{top:${pct(top)}!important;height:${pct(height)}!important}
+            .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
+            .showcase-live .media{height:96.234375px!important;background:#fbf3e8!important}
+            .showcase-live .media img{transform:translate(-20px,${imgY}px) scale(1.05)!important;transform-origin:center center!important}
+          `);
+          await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+          showcase.push({id,top,height,imgX:-20,imgY,scale:1.05,alpha});
+        }
       }
     }
   }

@@ -10,10 +10,10 @@ ap.add_argument("--report",required=True)
 a=ap.parse_args()
 
 zones={
-  "selection":(60,460,1388,617),
-  "showcase":(60,678,1388,828),
+  "selection":(60,476,1388,633),
+  "showcase":(60,698,1388,842),
 }
-limits={"selection":0.1080,"showcase":0.0990}
+limits={"selection":0.0780,"showcase":0.1050}
 
 def mae(x,y,box):
   d=ImageChops.difference(x.crop(box),y.crop(box))

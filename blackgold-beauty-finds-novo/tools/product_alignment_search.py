@@ -10,8 +10,8 @@ ap.add_argument("--radius",type=int,default=12)
 a=ap.parse_args()
 
 zones={
-  "selection":(60,460,1388,617),
-  "showcase":(60,678,1388,828),
+  "selection":(60,476,1388,633),
+  "showcase":(60,698,1388,842),
 }
 auth=Image.open(a.authority).convert("RGB")
 cand=Image.open(a.candidate).convert("RGB")
