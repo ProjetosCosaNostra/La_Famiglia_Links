@@ -175,9 +175,12 @@ jobs:
           assert 'name="description"' in html
           assert 'property="og:image"' in html
           assert 'name="twitter:card"' in html
+          assert 'fetchpriority="high"' in html
           assert "Disallow: /admin.html" in robots
           assert "Disallow: /api/admin/" in robots
           assert "Disallow: /api/health" in robots
+          assert "\\n" not in robots and "\\r" not in robots
+          assert "Sitemap: https://blackgold-beauty-finds-novo.pages.dev/sitemap.xml" in robots
           print("BLACKGOLD_SEARCH_METADATA_PRIVACY=PASS")
           PY
 

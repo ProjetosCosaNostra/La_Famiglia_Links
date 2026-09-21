@@ -21,6 +21,8 @@ const manifest=await readJson("assets/authority-zero-manifest.json");
 const approval=await readJson("release-approval.json");
 const wrangler=await readText("wrangler.toml");
 const deployScript=await readText("tools/deploy-production.ps1");
+const robots=await readText("robots.txt");
+const indexHtml=await readText("index.html");
 
 let head="";
 try{
@@ -69,9 +71,22 @@ if(!wrangler){
   defects.push("wrangler.toml missing.");
 }else{
   if(wrangler.includes("\\n")||wrangler.includes("\\r"))defects.push("wrangler.toml contains escaped newline characters instead of real line breaks.");
-  if(!/PUBLIC_BASE_URL\s*=\s*"https:\/\/[^"]+"/.test(wrangler))defects.push("PUBLIC_BASE_URL HTTPS production origin is missing.");
+  const baseMatch=wrangler.match(/PUBLIC_BASE_URL\s*=\s*"([^"]+)"/);
+  if(!baseMatch||!/^https:\/\//.test(baseMatch[1]))defects.push("PUBLIC_BASE_URL HTTPS production origin is missing.");
   if(/11111111-1111-4111-8111-111111111111/.test(wrangler))blockers.push("D1 production database id is still a placeholder.");
   if(/local-only placeholder/i.test(wrangler))blockers.push("wrangler.toml is still marked local-only.");
+  if(baseMatch){
+    const expectedSitemap=baseMatch[1].replace(/\/$/,"")+"/sitemap.xml";
+    if(!robots.includes("Sitemap: "+expectedSitemap))defects.push("robots.txt sitemap origin does not match PUBLIC_BASE_URL.");
+  }
+}
+if(!robots){
+  defects.push("robots.txt missing.");
+}else if(robots.includes("\\n")||robots.includes("\\r")){
+  defects.push("robots.txt contains escaped newline characters instead of real line breaks.");
+}
+if(!/class="authority-picture"[\s\S]*fetchpriority="high"/.test(indexHtml)){
+  defects.push("approved authority/LCP image is not fetchpriority=high.");
 }
 
 if(!deployScript){

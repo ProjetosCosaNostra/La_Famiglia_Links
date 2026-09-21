@@ -4,4 +4,4 @@ Disallow: /admin.html
 Disallow: /admin.js
 Disallow: /api/admin/
 Disallow: /api/health
-\nSitemap: https://blackgold-beauty-finds-novo.pages.dev/sitemap.xml\n
+Sitemap: https://blackgold-beauty-finds-novo.pages.dev/sitemap.xml
