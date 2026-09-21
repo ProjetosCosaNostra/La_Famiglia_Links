@@ -254,6 +254,7 @@ jobs:
           echo "$BODY" | grep -q '"ok":true'
           echo "$BODY" | grep -q '"database":true'
           echo "$BODY" | grep -q '"media":true'
+          echo "$BODY" | grep -q '"adminSecret":true'
           echo "BLACKGOLD_RUNTIME_HEALTH=PASS"
 
       - name: Create temporary published visual fixture

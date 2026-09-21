@@ -9,7 +9,7 @@ const json=(payload,status=200)=>new Response(JSON.stringify(payload),{
 
 export async function onRequestGet(context){
   const started=Date.now();
-  const checks={database:false,media:false};
+  const checks={database:false,media:false,adminSecret:false};
   try{
     const db=await context.env.BG_DB.prepare("SELECT COUNT(*) AS n FROM products").first();
     checks.database=Number.isFinite(Number(db?.n));
@@ -18,7 +18,9 @@ export async function onRequestGet(context){
     await context.env.BG_MEDIA.list({limit:1});
     checks.media=true;
   }catch{}
-  const ok=checks.database&&checks.media;
+  const adminToken=String(context.env.ADMIN_PANEL_TOKEN||"").trim();
+  checks.adminSecret=adminToken.length>=32;
+  const ok=checks.database&&checks.media&&checks.adminSecret;
   return json({
     ok,
     service:"BlackGold Beauty Finds",
