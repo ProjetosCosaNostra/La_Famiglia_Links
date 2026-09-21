@@ -125,25 +125,20 @@ try{
   }
 
   const showcase=[];
-  for(const titleWeight of [500,600,700]){
-    for(const titleSpacing of [0,.15,.30,.45]){
-      for(const priceWeight of [700,800]){
-        for(const priceSpacing of [0,.15,.30,.45]){
-          const top=698,height=144,alpha=.20;
-          const id=`show-type-tw${titleWeight}-tls${String(titleSpacing).replace(".","_")}-pw${priceWeight}-pls${String(priceSpacing).replace(".","_")}`;
-          await inject(`
-            .showcase-live .product h3{
-              font-weight:${titleWeight}!important;
-              letter-spacing:${titleSpacing}px!important;
-            }
-            .showcase-live .price{
-              font-weight:${priceWeight}!important;
-              letter-spacing:${priceSpacing}px!important;
-            }
-          `);
-          await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-          showcase.push({id,top,height,titleWeight,titleSpacing,priceWeight,priceSpacing,alpha,profile:"showcase-typography"});
-        }
+  for(const priceSize of [10,10.5,11]){
+    for(const priceSpacing of [0,.25,.50,.75,1]){
+      for(const priceY of [-2,-1,0]){
+        const top=698,height=144,alpha=.20;
+        const id=`show-price-ps${String(priceSize).replace(".","_")}-ls${String(priceSpacing).replace(".","_")}-y${String(priceY).replace("-","m")}`;
+        await inject(`
+          .showcase-live .price{
+            font-size:${priceSize}px!important;
+            letter-spacing:${priceSpacing}px!important;
+            transform:translateY(${priceY}px)!important;
+          }
+        `);
+        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+        showcase.push({id,top,height,priceSize,priceSpacing,priceY,alpha,profile:"showcase-price"});
       }
     }
   }
