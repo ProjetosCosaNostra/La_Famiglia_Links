@@ -79,6 +79,25 @@ jobs:
           print("BLACKGOLD_PINNED_AUTHORITY_V3=PASS")
           PY
 
+      - name: Critical asset weight budget
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          assets=Path("blackgold-beauty-finds-novo/assets")
+          desktop=assets/"authority-desktop-approved.png"
+          mobile=assets/"authority-mobile-v24.webp"
+          assert desktop.exists() and mobile.exists()
+          d=desktop.stat().st_size
+          m=mobile.stat().st_size
+          files=[p for p in assets.iterdir() if p.is_file()]
+          largest=max((p.stat().st_size,p.name) for p in files)
+          assert d<=2_100_000, f"desktop authority asset budget exceeded: {d} bytes"
+          assert m<=450_000, f"mobile authority asset budget exceeded: {m} bytes"
+          assert largest[0]<=2_100_000, f"oversized asset introduced: {largest[1]} = {largest[0]} bytes"
+          print({"desktop":d,"mobile":m,"largest":largest})
+          print("BLACKGOLD_CRITICAL_ASSET_BUDGET=PASS")
+          PY
+
       - name: Derive approved product geometry
         run: |
           python blackgold-beauty-finds-novo/tools/authority_product_geometry.py             --approved cloudflare-beauty-finds/visual-authority/BLACKGOLD_HOME_DESKTOP_MOCKUP_APPROVED_20260909_140134.png             --zero blackgold-beauty-finds-novo/assets/authority-zero-desktop.png             --report blackgold-beauty-finds-novo/.visual-gate/authority-product-geometry.json
