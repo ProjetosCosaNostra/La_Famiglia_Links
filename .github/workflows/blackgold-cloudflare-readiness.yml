@@ -53,13 +53,7 @@ jobs:
           NODE
 
           if [ -z "${CF_TOKEN:-}" ] || [ -z "${CF_ACCOUNT:-}" ]; then
-            node <<'NODE'
-            const fs=require('fs');
-            const p=JSON.parse(fs.readFileSync(".readiness/base.json","utf8"));
-            p.credentials=false;
-            p.blockers=["GitHub secrets CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are unavailable."];
-            fs.writeFileSync(".readiness/cloudflare-readiness.json",JSON.stringify(p,null,2));
-            NODE
+            node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync(".readiness/base.json","utf8"));p.credentials=false;p.blockers=["GitHub secrets CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are unavailable."];fs.writeFileSync(".readiness/cloudflare-readiness.json",JSON.stringify(p,null,2));'
             echo "credentials=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
