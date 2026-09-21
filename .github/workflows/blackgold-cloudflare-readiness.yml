@@ -17,7 +17,9 @@ concurrency:
 
 env:
   PROJECT_NAME: blackgold-beauty-finds-novo
+  LEGACY_PROJECT_NAME: blackgold-beauty-finds-br
   D1_NAME: blackgold-beauty-finds-novo
+  LEGACY_D1_NAME: blackgold-beauty-campaigns
   R2_BUCKET: blackgold-beauty-finds-novo-media
   R2_PREVIEW_BUCKET: blackgold-beauty-finds-novo-media-preview
 
@@ -64,18 +66,21 @@ jobs:
           auth=(-H "Authorization: Bearer ${CF_TOKEN}" -H "Content-Type: application/json")
 
           pages_http=$(curl -sS -o .readiness/pages.json -w '%{http_code}' "${auth[@]}" "${api}/pages/projects/${PROJECT_NAME}" || true)
-          d1_http=$(curl -sS -o .readiness/d1.json -w '%{http_code}' "${auth[@]}" "${api}/d1/database?name=${D1_NAME}&per_page=100" || true)
+          legacy_pages_http=$(curl -sS -o .readiness/pages-legacy.json -w '%{http_code}' "${auth[@]}" "${api}/pages/projects/${LEGACY_PROJECT_NAME}" || true)
+          d1_http=$(curl -sS -o .readiness/d1.json -w '%{http_code}' "${auth[@]}" "${api}/d1/database?per_page=100" || true)
           r2_http=$(curl -sS -o .readiness/r2.json -w '%{http_code}' "${auth[@]}" "${api}/r2/buckets?per_page=100" || true)
 
-          PAGES_HTTP="$pages_http" D1_HTTP="$d1_http" R2_HTTP="$r2_http" node <<'NODE'
+          PAGES_HTTP="$pages_http" LEGACY_PAGES_HTTP="$legacy_pages_http" D1_HTTP="$d1_http" R2_HTTP="$r2_http" node <<'NODE'
           const fs=require('fs');
           const p=JSON.parse(fs.readFileSync(".readiness/base.json","utf8"));
           p.credentials=true;
           const read=(file)=>{try{return JSON.parse(fs.readFileSync(file,"utf8"))}catch{return null}};
           const pages=read(".readiness/pages.json");
+          const legacyPages=read(".readiness/pages-legacy.json");
           const d1=read(".readiness/d1.json");
           const r2=read(".readiness/r2.json");
           const ph=Number(process.env.PAGES_HTTP||0);
+          const lph=Number(process.env.LEGACY_PAGES_HTTP||0);
           const dh=Number(process.env.D1_HTTP||0);
           const rh=Number(process.env.R2_HTTP||0);
 
@@ -83,13 +88,28 @@ jobs:
           p.pages.status=ph===200&&pages?.success?"ok":(ph===404?"missing":"unavailable_or_forbidden");
           p.pages.exists=Boolean(ph===200&&pages?.success&&pages?.result?.name===process.env.PROJECT_NAME);
           p.pages.productionBranch=pages?.result?.production_branch||null;
+          p.legacyPages={
+            http:lph,
+            status:lph===200&&legacyPages?.success?"ok":(lph===404?"missing":"unavailable_or_forbidden"),
+            exists:Boolean(lph===200&&legacyPages?.success&&legacyPages?.result?.name===process.env.LEGACY_PROJECT_NAME),
+            name:legacyPages?.result?.name||null,
+            productionBranch:legacyPages?.result?.production_branch||null,
+            subdomain:legacyPages?.result?.subdomain||null,
+            domains:Array.isArray(legacyPages?.result?.domains)?legacyPages.result.domains:[]
+          };
 
           const d1rows=Array.isArray(d1?.result)?d1.result:[];
           const db=d1rows.find(x=>x?.name===process.env.D1_NAME)||null;
+          const legacyDb=d1rows.find(x=>x?.name===process.env.LEGACY_D1_NAME)||null;
           p.d1.http=dh;
           p.d1.status=dh===200&&d1?.success?"ok":"unavailable_or_forbidden";
           p.d1.exists=Boolean(db);
           p.d1.databaseId=db?.uuid||null;
+          p.d1.legacy={
+            exists:Boolean(legacyDb),
+            name:legacyDb?.name||null,
+            databaseId:legacyDb?.uuid||null
+          };
 
           const buckets=Array.isArray(r2?.result?.buckets)?r2.result.buckets:[];
           p.r2.http=rh;
@@ -100,6 +120,8 @@ jobs:
           p.blockers=[];
           if(!p.pages.exists)p.blockers.push("Pages project blackgold-beauty-finds-novo is not confirmed.");
           if(!p.d1.exists)p.blockers.push("D1 database blackgold-beauty-finds-novo is not confirmed.");
+          if(p.legacyPages?.exists)p.notes=(p.notes||[]).concat(["Legacy Pages project blackgold-beauty-finds-br exists and may be a safer replacement target after explicit approval."]);
+          if(p.d1?.legacy?.exists)p.notes=(p.notes||[]).concat(["Legacy D1 blackgold-beauty-campaigns exists but must not be reused for the new product/admin schema."]);
           if(!p.r2.productionExists)p.blockers.push("R2 bucket blackgold-beauty-finds-novo-media is not confirmed.");
           if(!p.r2.previewExists)p.blockers.push("R2 preview bucket blackgold-beauty-finds-novo-media-preview is not confirmed.");
           if(p.pages.status==="unavailable_or_forbidden"||p.d1.status==="unavailable_or_forbidden"||p.r2.status==="unavailable_or_forbidden"){
