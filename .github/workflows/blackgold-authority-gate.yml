@@ -219,6 +219,13 @@ jobs:
         working-directory: blackgold-beauty-finds-novo
         run: node tools/release_preflight.mjs --expect-blocked
 
+      - name: Production deploy script syntax gate
+        shell: pwsh
+        run: |
+          $raw=Get-Content -LiteralPath "blackgold-beauty-finds-novo/tools/deploy-production.ps1" -Raw
+          [scriptblock]::Create($raw) | Out-Null
+          Write-Host "BLACKGOLD_DEPLOY_POWERSHELL_SYNTAX=PASS"
+
       - name: Install local Cloudflare runtime
         working-directory: blackgold-beauty-finds-novo
         run: npm install --no-audit --no-fund
