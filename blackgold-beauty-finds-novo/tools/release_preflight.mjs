@@ -19,6 +19,7 @@ const guard=await readJson("preview-guard.json");
 const manifest=await readJson("assets/authority-zero-manifest.json");
 const approval=await readJson("release-approval.json");
 const wrangler=await readText("wrangler.toml");
+const deployScript=await readText("tools/deploy-production.ps1");
 
 let head="";
 try{
@@ -54,6 +55,14 @@ if(
 
 if(/11111111-1111-4111-8111-111111111111/.test(wrangler))errors.push("D1 production database id is still a placeholder.");
 if(/local-only placeholder/i.test(wrangler))errors.push("wrangler.toml is still marked local-only.");
+
+if(!/\[switch\]\$Execute/.test(deployScript))errors.push("production deploy script lacks explicit -Execute gate.");
+if(!/release_preflight\.mjs/.test(deployScript))errors.push("production deploy script does not run release preflight.");
+if(!/catalog_backup\.mjs/.test(deployScript))errors.push("production deploy script lacks mandatory pre-deploy backup.");
+if(!/wrangler pages deploy/.test(deployScript))errors.push("production deploy script has no real Cloudflare Pages deploy command.");
+if(!/--commit-hash/.test(deployScript))errors.push("production deploy is not pinned to the approved commit.");
+if(!/BLACKGOLD_PRODUCTION_DEPLOY_RECEIPT_V1/.test(deployScript))errors.push("production deploy receipt contract missing.");
+if(/DEPLOY INTENTIONALLY STOPPED/i.test(deployScript))errors.push("obsolete unconditional production stop remains.");
 
 const result={
   ok:errors.length===0,
