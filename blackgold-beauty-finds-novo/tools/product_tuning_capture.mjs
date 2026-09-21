@@ -78,6 +78,12 @@ try{
     return rows;
   });
   console.log(JSON.stringify({contract:"BLACKGOLD_SHOWCASE_IMAGE_PROFILES_V1",images:imageProfiles},null,2));
+  await page.evaluate(()=>{
+    for(const img of document.querySelectorAll(".showcase-live .media img")){
+      const ratio=img.naturalHeight?img.naturalWidth/img.naturalHeight:0;
+      img.classList.toggle("bg-extra-wide",ratio>=1.75);
+    }
+  });
 
   const selection=[];
   for(const top of [474,475,476]){
@@ -97,21 +103,19 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-20,-10,0]){
-    for(const imgY of [-20,-10,0]){
-      for(const scale of [.85,.95,1.05]){
-        for(const alpha of [.10,.20]){
-          const top=698,height=144;
-          const id=`show-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}-a${String(alpha).replace(".","_")}`;
-          await inject(`
-            .showcase-live{top:${pct(top)}!important;height:${pct(height)}!important}
-            .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
-            .showcase-live .media{height:96.234375px!important;background:#fbf3e8!important}
-            .showcase-live .media img{transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;transform-origin:center center!important}
-          `);
-          await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-          showcase.push({id,top,height,imgX,imgY,scale,alpha});
-        }
+  for(const imgX of [-20,-10,0,10]){
+    for(const imgY of [-20,-10,0,10]){
+      for(const scale of [.75,.85,.95,1.05]){
+        const top=698,height=144,alpha=.20;
+        const id=`show-wide-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        await inject(`
+          .showcase-live .media img.bg-extra-wide{
+            transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
+            transform-origin:center center!important;
+          }
+        `);
+        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-only"});
       }
     }
   }
