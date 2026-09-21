@@ -29,6 +29,56 @@ try{
     },css);
   }
 
+
+  const imageProfiles=await page.evaluate(()=>{
+    const rows=[];
+    for(const img of document.querySelectorAll(".showcase-live .media img")){
+      const product=img.closest(".product");
+      const title=product?.querySelector("h3")?.textContent?.trim()||"";
+      const nw=img.naturalWidth||0, nh=img.naturalHeight||0;
+      let contentBox=null, coverage=null, cornerRGB=null;
+      try{
+        if(nw&&nh){
+          const cv=document.createElement("canvas");
+          cv.width=nw; cv.height=nh;
+          const ctx=cv.getContext("2d",{willReadFrequently:true});
+          ctx.drawImage(img,0,0);
+          const d=ctx.getImageData(0,0,nw,nh).data;
+          const points=[[0,0],[nw-1,0],[0,nh-1],[nw-1,nh-1]];
+          const bg=points.map(([x,y])=>{
+            const i=(y*nw+x)*4; return [d[i],d[i+1],d[i+2]];
+          }).reduce((a,v)=>a.map((x,j)=>x+v[j]),[0,0,0]).map(x=>x/4);
+          let minX=nw,minY=nh,maxX=-1,maxY=-1,count=0;
+          for(let y=0;y<nh;y++){
+            for(let x=0;x<nw;x++){
+              const i=(y*nw+x)*4;
+              const dr=d[i]-bg[0], dg=d[i+1]-bg[1], db=d[i+2]-bg[2];
+              const dist=Math.sqrt(dr*dr+dg*dg+db*db);
+              if(d[i+3]>20 && dist>42){
+                count++;
+                if(x<minX)minX=x;if(x>maxX)maxX=x;
+                if(y<minY)minY=y;if(y>maxY)maxY=y;
+              }
+            }
+          }
+          cornerRGB=bg.map(x=>Math.round(x));
+          if(maxX>=minX&&maxY>=minY){
+            contentBox={x:minX,y:minY,width:maxX-minX+1,height:maxY-minY+1,
+              widthRatio:(maxX-minX+1)/nw,heightRatio:(maxY-minY+1)/nh};
+            coverage=count/(nw*nh);
+          }
+        }
+      }catch(e){
+        contentBox={error:String(e)};
+      }
+      rows.push({title,naturalWidth:nw,naturalHeight:nh,aspect:nh?nw/nh:null,
+        rendered:{width:img.getBoundingClientRect().width,height:img.getBoundingClientRect().height},
+        cornerRGB,contentBox,coverage});
+    }
+    return rows;
+  });
+  console.log(JSON.stringify({contract:"BLACKGOLD_SHOWCASE_IMAGE_PROFILES_V1",images:imageProfiles},null,2));
+
   const selection=[];
   for(const top of [474,475,476]){
     for(const imgY of [-16,-14,-12]){
