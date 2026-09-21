@@ -36,11 +36,11 @@ try {
   $MobileShot = Join-Path $Reports 'candidate-mobile.png'
   if (!(Test-Path $DesktopShot) -or !(Test-Path $MobileShot)) { throw 'Screenshot capture failed.' }
 
-  & $Python (Join-Path $PSScriptRoot 'visual_gate.py') --authority (Join-Path $Root 'assets\authority-zero-desktop.png') --candidate $DesktopShot --report (Join-Path $Reports 'desktop.json')
-  if ($LASTEXITCODE -ne 0) { throw 'DESKTOP VISUAL GATE FAILED. Preview forbidden.' }
+  & $Python (Join-Path $PSScriptRoot 'outside_catalog_gate.py') --profile desktop --authority (Join-Path $Root 'assets\authority-desktop-approved.png') --candidate $DesktopShot --report (Join-Path $Reports 'desktop.json')
+  if ($LASTEXITCODE -ne 0) { throw 'DESKTOP APPROVED-SHELL GATE FAILED. Preview forbidden.' }
 
-  & $Python (Join-Path $PSScriptRoot 'visual_gate.py') --authority (Join-Path $Root 'assets\authority-zero-mobile.png') --candidate $MobileShot --report (Join-Path $Reports 'mobile.json')
-  if ($LASTEXITCODE -ne 0) { throw 'MOBILE VISUAL GATE FAILED. Preview forbidden.' }
+  & $Python (Join-Path $PSScriptRoot 'outside_catalog_gate.py') --profile mobile --authority (Join-Path $Root 'assets\authority-mobile-v24.webp') --candidate $MobileShot --report (Join-Path $Reports 'mobile.json')
+  if ($LASTEXITCODE -ne 0) { throw 'MOBILE APPROVED-SHELL GATE FAILED. Preview forbidden.' }
 
   $Index = Get-Content (Join-Path $Root 'index.html') -Raw
   $Js = Get-Content (Join-Path $Root 'app.js') -Raw
@@ -57,6 +57,22 @@ try {
   }
 
   $Manifest = Get-Content (Join-Path $Root 'assets\authority-zero-manifest.json') -Raw | ConvertFrom-Json
+  if($Manifest.contract -ne 'BLACKGOLD_APPROVED_AUTHORITY_DYNAMIC_CATALOG_V3'){throw 'Authority manifest contract drift.'}
+  if($Manifest.toleranceOutsideDynamicRegionsPixels -ne 0){throw 'Outside dynamic-region tolerance must remain zero.'}
+  if($Manifest.desktop.approvedFile -ne 'authority-desktop-approved.png'){throw 'Desktop approved authority drift.'}
+  if($Manifest.mobile.approvedFile -ne 'authority-mobile-v24.webp'){throw 'Mobile approved authority drift.'}
+  if($Manifest.desktop.viewport[0] -ne 1448 -or $Manifest.desktop.viewport[1] -ne 1086){throw 'Desktop authority viewport drift.'}
+  if($Manifest.mobile.viewport[0] -ne 390 -or $Manifest.mobile.viewport[1] -ne 1152){throw 'Mobile authority viewport drift.'}
+
+  $DesktopAuthority = Join-Path $Root 'assets\authority-desktop-approved.png'
+  $MobileAuthority = Join-Path $Root 'assets\authority-mobile-v24.webp'
+  $DesktopHash = (Get-FileHash -Algorithm SHA256 $DesktopAuthority).Hash.ToLowerInvariant()
+  $MobileHash = (Get-FileHash -Algorithm SHA256 $MobileAuthority).Hash.ToLowerInvariant()
+  if($DesktopHash -ne '5e3e6cef8f0f5e14bde52b5c9f0be9ae9c1d92fd771f3e424b9cf75fbb59f722'){throw 'Desktop approved authority hash mismatch.'}
+  if($MobileHash -ne '8c817a1bcf7641fddbf1a083ae9c1bf195186e65cf48d5cdb86ed64452de2a26'){throw 'Mobile approved authority hash mismatch.'}
+  if($DesktopHash -ne $Manifest.desktop.approvedSha256){throw 'Desktop manifest hash mismatch.'}
+  if($MobileHash -ne $Manifest.mobile.approvedSha256){throw 'Mobile manifest hash mismatch.'}
+
   if($Manifest.catalogInitialCount -ne 0){throw 'Authority manifest must keep catalogInitialCount=0.'}
   if($Manifest.previewAutoOpenAllowed -ne $false){throw 'Authority manifest must keep previewAutoOpenAllowed=false.'}
   if($Manifest.productionDeployAllowed -ne $false){throw 'Authority manifest must keep productionDeployAllowed=false.'}
