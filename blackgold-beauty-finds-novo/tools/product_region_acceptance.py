@@ -13,7 +13,7 @@ zones={
   "selection":(60,476,1388,633),
   "showcase":(60,698,1388,842),
 }
-limits={"selection":0.0750,"showcase":0.0815}
+limits={"selection":0.0750,"showcase":0.0811}
 
 def mae(x,y,box):
   d=ImageChops.difference(x.crop(box),y.crop(box))
