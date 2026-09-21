@@ -32,6 +32,8 @@ const expected={
     mediaBg:"rgb(248, 238, 226)",
     mediaRadius:"5px",
     mediaHeight:98,
+    imageScale:1.15,
+    imageTranslateY:-15,
     titleSize:"9px",
     priceSize:"9px"
   }
@@ -67,7 +69,10 @@ try{
           padding:s.padding,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,
           gridTemplateColumns:s.gridTemplateColumns,
           copyPaddingLeft:copy?style(copy).paddingLeft:"",
-          media:media?{background:style(media).backgroundColor,borderRadius:style(media).borderRadius,width:media.getBoundingClientRect().width,height:media.getBoundingClientRect().height,objectFit:media.querySelector("img")?style(media.querySelector("img")).objectFit:""}:null,
+          media:media?(()=>{
+            const img=media.querySelector("img"),is=img?style(img):null;
+            return{background:style(media).backgroundColor,borderRadius:style(media).borderRadius,width:media.getBoundingClientRect().width,height:media.getBoundingClientRect().height,objectFit:is?is.objectFit:"",transform:is?is.transform:"none"};
+          })():null,
           title:title?{fontSize:style(title).fontSize,fontFamily:style(title).fontFamily}:null,
           price:price?{fontSize:style(price).fontSize}:null
         };
@@ -119,6 +124,10 @@ try{
       fail(b.media.borderRadius===expected.showcase.mediaRadius,"showcase media radius "+b.media.borderRadius);
       fail(near(b.media.height,expected.showcase.mediaHeight,.35),"showcase media height "+b.media.height);
       fail(b.media.objectFit==="contain","showcase object-fit");
+      const tm=String(b.media.transform).match(/matrix\(([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+)\)/);
+      fail(!!tm,"showcase image transform "+b.media.transform);
+      fail(near(Number(tm[1]),expected.showcase.imageScale,.01)&&near(Number(tm[4]),expected.showcase.imageScale,.01),"showcase image scale "+b.media.transform);
+      fail(near(Number(tm[6]),expected.showcase.imageTranslateY,.25),"showcase image translateY "+b.media.transform);
       fail(b.title.fontSize===expected.showcase.titleSize,"showcase title size "+b.title.fontSize);
       fail(b.price.fontSize===expected.showcase.priceSize,"showcase price size "+b.price.fontSize);
     }else{
