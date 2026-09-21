@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PROJECT_NAME: blackgold-beauty-finds-novo
+  PROJECT_NAME: blackgold-beauty-finds-br
   LEGACY_PROJECT_NAME: blackgold-beauty-finds-br
   D1_NAME: blackgold-beauty-finds-novo
   LEGACY_D1_NAME: blackgold-beauty-campaigns
@@ -118,9 +118,9 @@ jobs:
           p.r2.previewExists=buckets.some(x=>x?.name===process.env.R2_PREVIEW_BUCKET);
 
           p.blockers=[];
-          if(!p.pages.exists)p.blockers.push("Pages project blackgold-beauty-finds-novo is not confirmed.");
+          if(!p.pages.exists)p.blockers.push("Pages target blackgold-beauty-finds-br is not confirmed.");
           if(!p.d1.exists)p.blockers.push("D1 database blackgold-beauty-finds-novo is not confirmed.");
-          if(p.legacyPages?.exists)p.notes=(p.notes||[]).concat(["Legacy Pages project blackgold-beauty-finds-br exists and may be a safer replacement target after explicit approval."]);
+          if(p.pages?.exists)p.notes=(p.notes||[]).concat(["Target Pages project blackgold-beauty-finds-br exists and is the prepared replacement target."]);
           if(p.d1?.legacy?.exists)p.notes=(p.notes||[]).concat(["Legacy D1 blackgold-beauty-campaigns exists but must not be reused for the new product/admin schema."]);
           if(!p.r2.productionExists)p.blockers.push("R2 bucket blackgold-beauty-finds-novo-media is not confirmed.");
           if(!p.r2.previewExists)p.blockers.push("R2 preview bucket blackgold-beauty-finds-novo-media-preview is not confirmed.");
