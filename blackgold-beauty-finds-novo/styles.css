@@ -92,4 +92,4 @@
  }
 
 /* R10 showcase authority transparency */
-@media(min-width:761px){.showcase-live .product{background:rgba(255,255,255,.20)}}
+@media(min-width:761px){.showcase-live .product{background:rgba(255,255,255,.10)}}
