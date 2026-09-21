@@ -78,6 +78,17 @@ try{
     return rows;
   });
   console.log(JSON.stringify({contract:"BLACKGOLD_SHOWCASE_IMAGE_PROFILES_V1",images:imageProfiles},null,2));
+  await page.evaluate((profiles)=>{
+    const imgs=[...document.querySelectorAll(".showcase-live .media img")];
+    imgs.forEach((img,i)=>{
+      const p=profiles[i]||{};
+      const ratio=Number(p.aspect)||0;
+      const coverage=Number(p.coverage);
+      const widthRatio=Number(p.contentBox?.widthRatio)||0;
+      const sparseMedium=ratio>=1.60&&ratio<1.70&&Number.isFinite(coverage)&&coverage>=.20&&coverage<=.31&&widthRatio>=.93;
+      img.classList.toggle("bg-sparse-medium",sparseMedium);
+    });
+  },imageProfiles);
   await page.evaluate(()=>{
     for(const img of document.querySelectorAll(".showcase-live .media img")){
       const ratio=img.naturalHeight?img.naturalWidth/img.naturalHeight:0;
@@ -110,17 +121,17 @@ try{
   const showcase=[];
   for(const imgX of [-30,-20,-10,0,10]){
     for(const imgY of [-30,-20,-10,0,10,20]){
-      for(const scale of [.85,.95,1.05,1.15]){
+      for(const scale of [.75,.85,.95,1.05,1.15,1.25]){
         const top=698,height=144,alpha=.20;
-        const id=`show-medium-wide-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-sparse-medium-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .media img.bg-medium-wide{
+          .showcase-live .media img.bg-sparse-medium{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
             transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"medium-wide-only"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-medium-only"});
       }
     }
   }
