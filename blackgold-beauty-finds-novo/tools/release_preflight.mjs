@@ -76,8 +76,11 @@ if(!wrangler){
   if(/11111111-1111-4111-8111-111111111111/.test(wrangler))blockers.push("D1 production database id is still a placeholder.");
   if(/local-only placeholder/i.test(wrangler))blockers.push("wrangler.toml is still marked local-only.");
   if(baseMatch){
-    const expectedSitemap=baseMatch[1].replace(/\/$/,"")+"/sitemap.xml";
+    const expectedRoot=baseMatch[1].replace(/\/$/,"")+"/";
+    const expectedSitemap=expectedRoot+"sitemap.xml";
     if(!robots.includes("Sitemap: "+expectedSitemap))defects.push("robots.txt sitemap origin does not match PUBLIC_BASE_URL.");
+    if(!indexHtml.includes('<link rel="canonical" href="'+expectedRoot+'">'))defects.push("home canonical does not match PUBLIC_BASE_URL.");
+    if(!indexHtml.includes('<meta property="og:url" content="'+expectedRoot+'">'))defects.push("home og:url does not match PUBLIC_BASE_URL.");
   }
 }
 if(!robots){

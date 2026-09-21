@@ -3,6 +3,7 @@ const json=(payload,status=200)=>new Response(JSON.stringify(payload),{
   headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}
 });
 const clean=(v,max=700)=>String(v??"").trim().slice(0,max);
+const EDITORIAL_DESCRIPTION_MIN=80;
 const slugify=v=>clean(v,160).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90);
 const httpsUrl=v=>/^https:\/\//i.test(String(v||"").trim());
 
@@ -104,6 +105,7 @@ async function validatePublish(context,p){
   if(p.status!=="published")return "";
   if(!p.title)return "Nome do produto é obrigatório.";
   if(!p.category)return "Categoria é obrigatória.";
+  if(String(p.description||"").trim().length<EDITORIAL_DESCRIPTION_MIN)return "Descrição editorial BlackGold precisa ter pelo menos "+EDITORIAL_DESCRIPTION_MIN+" caracteres para publicar.";
   if(!httpsUrl(p.destination_url))return "URL de destino HTTPS é obrigatória para publicar.";
   if(p.image_key){
     const object=await context.env.BG_MEDIA.head(p.image_key).catch(()=>null);

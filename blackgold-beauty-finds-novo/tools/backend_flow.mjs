@@ -58,6 +58,7 @@ try {
     body: JSON.stringify({
       title: "Invalid missing image",
       category: "Beleza",
+      description: "Descrição editorial temporária suficientemente longa para que este teste alcance especificamente a validação da imagem ausente.",
       destinationUrl: "https://example.com/invalid",
       status: "published",
       imageKey: "product-00000000-0000-4000-8000-000000000000.png"
@@ -76,6 +77,24 @@ try {
   const firstMediaUrl = r.data.url;
   result.upload = "PASS";
 
+  // Published affiliate pages must include meaningful editorial copy.
+  r = await call("/api/admin/products", {
+    method: "POST",
+    headers: { ...auth, "content-type": "application/json" },
+    body: JSON.stringify({
+      title: "Invalid short editorial description",
+      category: "Beleza",
+      description: "Texto curto demais.",
+      destinationUrl: "https://example.com/short-editorial",
+      status: "published",
+      imageKey: firstKey
+    })
+  });
+  if (r.response.status !== 409 || r.data.code !== "publication_gate" || !String(r.data.message||"").includes("80")) {
+    throw new Error("editorial description publication guard failed " + r.response.status + " " + JSON.stringify(r.data));
+  }
+  result.shortEditorialDescriptionBlocked = 409;
+
   // Publication must require HTTPS destination.
   r = await call("/api/admin/products", {
     method: "POST",
@@ -83,6 +102,7 @@ try {
     body: JSON.stringify({
       title: "Invalid destination",
       category: "Beleza",
+      description: "Descrição editorial temporária suficientemente longa para isolar e validar exclusivamente a proteção contra destinos sem HTTPS.",
       destinationUrl: "http://example.com/not-secure",
       status: "published",
       imageKey: firstKey
@@ -97,7 +117,7 @@ try {
     title: "BlackGold CI Temporary Product",
     brand: "BlackGold QA",
     category: "Beleza",
-    description: "Temporary integration-test record. Must be deleted before test exit.",
+    description: "Curadoria editorial temporária do teste de integração, criada para validar publicação, indexação e recuperação sem reutilizar texto de comerciante.",
     currency: "BRL",
     price: "19.90",
     imageKey: firstKey,
