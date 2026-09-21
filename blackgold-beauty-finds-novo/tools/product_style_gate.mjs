@@ -60,10 +60,12 @@ try{
       const selections=[...document.querySelectorAll("#selection .product")].filter(el=>style(el).display!=="none");
       const showcases=[...document.querySelectorAll("#showcase .product")].filter(el=>style(el).display!=="none");
       const pack=el=>{
-        const s=style(el),media=one(el,".media"),title=one(el,"h3"),price=one(el,".price");
+        const s=style(el),media=one(el,".media"),title=one(el,"h3"),price=one(el,".price"),copy=one(el,".copy");
         return{
           display:s.display,borderColor:s.borderColor,borderRadius:s.borderRadius,background:s.backgroundColor,
           padding:s.padding,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,
+          gridTemplateColumns:s.gridTemplateColumns,
+          copyPaddingLeft:copy?style(copy).paddingLeft:"",
           media:media?{background:style(media).backgroundColor,borderRadius:style(media).borderRadius,width:media.getBoundingClientRect().width,height:media.getBoundingClientRect().height,objectFit:media.querySelector("img")?style(media.querySelector("img")).objectFit:""}:null,
           title:title?{fontSize:style(title).fontSize,fontFamily:style(title).fontFamily}:null,
           price:price?{fontSize:style(price).fontSize}:null
@@ -92,6 +94,11 @@ try{
       fail(a.borderRadius===expected.selection.borderRadius,"selection radius "+a.borderRadius);
       fail(near(alphaOf(a.background),expected.selection.backgroundAlpha,.02),"selection background alpha "+a.background);
       fail(a.padding===expected.selection.padding,"selection padding "+a.padding);
+      const selectionTracks=String(a.gridTemplateColumns).split(/\s+/).map(v=>Number.parseFloat(v)).filter(Number.isFinite);
+      fail(selectionTracks.length===2,"selection grid tracks "+a.gridTemplateColumns);
+      const selectionMediaRatio=selectionTracks[0]/(selectionTracks[0]+selectionTracks[1]);
+      fail(near(selectionMediaRatio,.47,.005),"selection media ratio "+selectionMediaRatio);
+      fail(a.copyPaddingLeft==="20px","selection copy padding-left "+a.copyPaddingLeft);
       fail(a.media.background===expected.selection.mediaBg,"selection media background "+a.media.background);
       fail(a.media.borderRadius===expected.selection.mediaRadius,"selection media radius "+a.media.borderRadius);
       fail(a.media.objectFit==="contain","selection object-fit");
