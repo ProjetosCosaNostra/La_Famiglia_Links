@@ -28,22 +28,8 @@ try{
   }
 
   const selection=[];
-  // Stage A: retain the already-proven image transform search.
-  for(const y of [-4,0,4,8]){
-    for(const scale of [0.96,1,1.04,1.08]){
-      const id=`sel-img-y${y}-s${String(scale).replace(".","p")}`;
-      await applyStyle(`
-        .selection-live .media img{transform:translateY(${y}px) scale(${scale})!important;transform-origin:center center!important}
-      `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
-      selection.push({id,kind:"image",y,scale});
-    }
-  }
-
-  // Stage B: measure the media/copy split and copy inset against the approved cards.
-  // Current implementation is 50/50 with 12px copy inset; variants are diagnostic only.
-  for(const mediaPct of [47,48,49,50]){
-    for(const copyLeft of [8,10,12]){
+  for(const mediaPct of [44,45,46,47,48]){
+    for(const copyLeft of [8,10,12,16,20]){
       const id=`sel-layout-m${mediaPct}-p${copyLeft}`;
       await applyStyle(`
         .selection-live .product{grid-template-columns:${mediaPct}% ${100-mediaPct}%!important}
@@ -54,37 +40,102 @@ try{
     }
   }
 
-  const showcase=[];
-  // Stage A: preserve the existing flexible-media search.
-  for(const h of [90,96,102,108]){
-    for(const scale of [0.9,1,1.1,1.2,1.3]){
-      const id=`show-flex-h${h}-s${String(scale).replace(".","p")}`;
-      await applyStyle(`
-        .showcase-live .media{height:${h}px!important}
-        .showcase-live .media img{transform:scale(${scale})!important;transform-origin:center center!important}
-      `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-      showcase.push({id,kind:"flex",h,scale});
+  const selectionPresets=[
+    {
+      id:"sel-historical-v18-12",
+      css:`
+        .selection-live .product{grid-template-columns:48% 52%!important}
+        .selection-live .copy{padding:5px 7px 4px 20px!important}
+        .selection-live .product h3{font-size:14px!important;line-height:1.04!important}
+        .selection-live .meta{font-size:9px!important}
+        .selection-live .desc{font-size:10.5px!important;line-height:1.28!important;margin-top:6px!important;max-width:180px!important}
+        .selection-live .media img{transform:none!important;padding:0!important}
+        .selection-live .product:nth-child(1) .media img{padding:4px 7px!important}
+        .selection-live .product:nth-child(2) .media img{padding:8px 10px!important}
+        .selection-live .product:nth-child(3) .media img{padding:7px 10px!important}
+      `
+    },
+    {
+      id:"sel-historical-type-current-media",
+      css:`
+        .selection-live .product{grid-template-columns:48% 52%!important}
+        .selection-live .copy{padding:5px 7px 4px 20px!important}
+        .selection-live .product h3{font-size:14px!important;line-height:1.04!important}
+        .selection-live .meta{font-size:9px!important}
+        .selection-live .desc{font-size:10.5px!important;line-height:1.28!important;margin-top:6px!important;max-width:180px!important}
+      `
+    },
+    {
+      id:"sel-current-layout-historical-type",
+      css:`
+        .selection-live .product{grid-template-columns:47% 53%!important}
+        .selection-live .copy{padding:5px 7px 4px 10px!important}
+        .selection-live .product h3{font-size:14px!important;line-height:1.04!important}
+        .selection-live .meta{font-size:9px!important}
+        .selection-live .desc{font-size:10.5px!important;line-height:1.28!important;margin-top:6px!important;max-width:180px!important}
+      `
     }
+  ];
+  for(const v of selectionPresets){
+    await applyStyle(v.css);
+    await page.screenshot({path:path.join(out,v.id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
+    selection.push({id:v.id,kind:"preset"});
   }
 
-  // Stage B: test fixed media footprints. This avoids flex shrink hiding the true approved height.
-  for(const h of [90,94,98,102]){
-    for(const scale of [0.9,0.95,1,1.05]){
+  const showcase=[];
+  for(const h of [94,96,98,100]){
+    for(const scale of [0.88,0.9,0.92,0.95,1]){
       const id=`show-fixed-h${h}-s${String(scale).replace(".","p")}`;
       await applyStyle(`
         .showcase-live .media{height:${h}px!important;flex:0 0 ${h}px!important}
-        .showcase-live .media img{transform:scale(${scale})!important;transform-origin:center center!important}
+        .showcase-live .media img{padding:0!important;transform:scale(${scale})!important;transform-origin:center center!important}
       `);
       await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
       showcase.push({id,kind:"fixed",h,scale});
     }
   }
 
+  const showcasePresets=[
+    {
+      id:"show-historical-v18-12",
+      css:`
+        .showcase-live .product{height:145px!important}
+        .showcase-live .media{height:96px!important;flex:0 0 96px!important}
+        .showcase-live .media img{padding:3px 5px!important;transform:none!important}
+      `
+    },
+    {
+      id:"show-historical-v19-8",
+      css:`
+        .showcase-live .product{height:145px!important}
+        .showcase-live .media{height:96px!important;flex:0 0 96px!important}
+        .showcase-live .media img{padding:3px 5px!important;transform:none!important}
+        .showcase-live .product:nth-child(1) .media img,
+        .showcase-live .product:nth-child(3) .media img,
+        .showcase-live .product:nth-child(8) .media img{padding:0!important;transform:scale(1.055)!important}
+      `
+    },
+    {
+      id:"show-historical-media-only",
+      css:`
+        .showcase-live .media{height:96px!important;flex:0 0 96px!important}
+        .showcase-live .media img{padding:3px 5px!important;transform:none!important}
+        .showcase-live .product:nth-child(1) .media img,
+        .showcase-live .product:nth-child(3) .media img,
+        .showcase-live .product:nth-child(8) .media img{padding:0!important;transform:scale(1.055)!important}
+      `
+    }
+  ];
+  for(const v of showcasePresets){
+    await applyStyle(v.css);
+    await page.screenshot({path:path.join(out,v.id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+    showcase.push({id:v.id,kind:"preset"});
+  }
+
   await page.evaluate(()=>document.getElementById("__tune_style")?.remove());
   await fs.writeFile(path.join(out,"variants.json"),JSON.stringify({selection,showcase},null,2));
   console.log(JSON.stringify({selection:selection.length,showcase:showcase.length},null,2));
-  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V2=PASS");
+  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V3=PASS");
 }finally{
   await browser.close();
 }
