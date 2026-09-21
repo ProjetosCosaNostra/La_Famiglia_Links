@@ -15,7 +15,7 @@ try{
   await page.setViewport({width:1448,height:1086,deviceScaleFactor:1});
   await page.goto(base+"/?tuning="+Date.now(),{waitUntil:"networkidle0",timeout:30000});
   await page.waitForFunction(()=>document.body.dataset.catalogCount==="11",{timeout:10000});
-  await page.evaluate(async()=>{await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r})))}); 
+  await page.evaluate(async()=>{const imgs=[...document.querySelectorAll(".authority-picture img,.selection-live img,.showcase-live img")].filter(img=>{const r=img.getBoundingClientRect(),s=getComputedStyle(img);return s.display!=="none"&&r.width>0&&r.height>0});await Promise.all(imgs.map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r})))}); 
 
   async function applyStyle(css){
     await page.evaluate(cssText=>{
