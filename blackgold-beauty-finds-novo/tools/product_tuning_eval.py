@@ -1,4 +1,4 @@
-from PIL import Image,ImageChops,ImageStat
+from PIL import Image,ImageChops,ImageStat,ImageOps
 from pathlib import Path
 import argparse,json
 
@@ -19,14 +19,58 @@ def mae(x,y):
   d=ImageChops.difference(x,y)
   return sum(ImageStat.Stat(d).mean)/3/255
 
-report={"contract":"BLACKGOLD_PRODUCT_PARAMETER_TUNING_V1"}
+def white_count(mask):
+  return mask.histogram()[255]
+
+def extra_wide_silhouette(target,candidate):
+  box=(999,0,1156,100)
+  t=ImageOps.grayscale(target.crop(box)).point(lambda p:255 if p<165 else 0)
+  c=ImageOps.grayscale(candidate.crop(box)).point(lambda p:255 if p<165 else 0)
+  inter=ImageChops.multiply(t,c)
+  union=ImageChops.lighter(t,c)
+  ti,ci=white_count(t),white_count(c)
+  ii,ui=white_count(inter),white_count(union)
+  iou=ii/ui if ui else 0.0
+  tb=t.getbbox() or (0,0,0,0)
+  cb=c.getbbox() or (0,0,0,0)
+  bbox_error=sum(abs(x-y) for x,y in zip(tb,cb))
+  area_ratio=(ci/ti) if ti else 0.0
+  score=iou-(bbox_error/600.0)-(abs(area_ratio-1.0)*0.12)
+  return {
+    "silhouetteIou":iou,
+    "silhouetteScore":score,
+    "silhouetteBboxError":bbox_error,
+    "silhouetteAreaRatio":area_ratio,
+    "silhouetteTargetBbox":tb,
+    "silhouetteCandidateBbox":cb
+  }
+
+report={"contract":"BLACKGOLD_PRODUCT_PARAMETER_TUNING_V2"}
 for kind in ["selection","showcase"]:
   target=authority.crop(zones[kind])
   rows=[]
   for v in variants[kind]:
     im=Image.open(root/(v["id"]+".png")).convert("RGB")
-    rows.append({**v,"mae":mae(target,im)})
-  rows.sort(key=lambda x:x["mae"])
-  report[kind]={"best":rows[0],"top5":rows[:5],"all":rows}
+    row={**v,"mae":mae(target,im)}
+    if kind=="showcase" and str(v.get("profile","")).startswith("extra-wide"):
+      row.update(extra_wide_silhouette(target,im))
+    rows.append(row)
+  rows_mae=sorted(rows,key=lambda x:x["mae"])
+  silhouette=[r for r in rows if "silhouetteScore" in r]
+  rows_visual=sorted(silhouette,key=lambda x:x["silhouetteScore"],reverse=True) if silhouette else rows_mae
+  report[kind]={
+    "best":rows_visual[0],
+    "top5":rows_visual[:5],
+    "bestMae":rows_mae[0],
+    "top5Mae":rows_mae[:5],
+    "ranking":"silhouette" if silhouette else "mae",
+    "all":rows
+  }
 Path(a.report).write_text(json.dumps(report,indent=2),encoding="utf-8")
-print(json.dumps({"contract":report["contract"],"selection":report["selection"]["top5"],"showcase":report["showcase"]["top5"]},indent=2))
+print(json.dumps({
+  "contract":report["contract"],
+  "selection":report["selection"]["top5"],
+  "showcase":report["showcase"]["top5"],
+  "showcaseBestMae":report["showcase"]["bestMae"],
+  "showcaseRanking":report["showcase"]["ranking"]
+},indent=2))
