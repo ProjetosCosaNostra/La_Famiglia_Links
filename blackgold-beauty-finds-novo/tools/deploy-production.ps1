@@ -16,6 +16,11 @@ try {
   $head=(git rev-parse HEAD).Trim()
   if(-not $head){throw 'Git HEAD unavailable.'}
 
+  $adminTokenNormalized=$AdminToken.Trim()
+  if($adminTokenNormalized.Length -lt 32 -or $adminTokenNormalized.Length -gt 512){
+    throw 'AdminToken must contain between 32 and 512 non-whitespace characters.'
+  }
+
   $wranglerPath=Join-Path $Root 'wrangler.toml'
   $wranglerRaw=Get-Content -LiteralPath $wranglerPath -Raw
   $baseMatch=[regex]::Match($wranglerRaw,'(?m)^\s*PUBLIC_BASE_URL\s*=\s*"([^"]+)"\s*$')
@@ -32,7 +37,7 @@ try {
   New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
 
   $env:BLACKGOLD_BASE=$configuredBase
-  $env:BLACKGOLD_ADMIN_TOKEN=$AdminToken
+  $env:BLACKGOLD_ADMIN_TOKEN=$adminTokenNormalized
   $env:BLACKGOLD_BACKUP_DIR=Join-Path $backupRoot ("predeploy-"+$stamp)
 
   node .\tools\catalog_backup.mjs

@@ -101,6 +101,7 @@ if(!deployScript){
   if(!/wrangler pages deploy/.test(deployScript))defects.push("production deploy script has no real Cloudflare Pages deploy command.");
   if(!/--commit-hash/.test(deployScript))defects.push("production deploy is not pinned to the approved commit.");
   if(!/BLACKGOLD_PRODUCTION_DEPLOY_RECEIPT_V1/.test(deployScript))defects.push("production deploy receipt contract missing.");
+  if(!/AdminToken must contain between 32 and 512/.test(deployScript))defects.push("production deploy does not reject weak admin tokens before backup/deploy.");
   if(!/PUBLIC_BASE_URL/.test(deployScript)||!/BaseUrl does not match PUBLIC_BASE_URL/.test(deployScript))defects.push("production deploy does not enforce configured canonical origin.");
   if(/DEPLOY INTENTIONALLY STOPPED/i.test(deployScript))defects.push("obsolete unconditional production stop remains.");
 }
