@@ -30,35 +30,37 @@ try{
   }
 
   const selection=[];
-  for(const top of [458,460,462,464,466]){
-    for(const imgY of [-2,0,2,4]){
-      const id=`sel-top${top}-iy${imgY}`;
-      await inject(`
-        .selection-live{top:${pct(top)}!important;height:${pct(157)}!important}
-        .selection-live .product{background:rgba(255,255,255,.10)!important}
-        .selection-live .media{background:#fbf4e9!important}
-        .selection-live .media img{transform:translate(-14px,${imgY}px) scale(.94)!important;transform-origin:center center!important}
-      `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:460,width:1328,height:157},captureBeyondViewport:false});
-      selection.push({id,top,height:157,imgX:-14,imgY,scale:.94,alpha:.10});
+  for(const imgX of [-18,-16,-14,-12,-10]){
+    for(const scale of [.90,.92,.94,.96,.98]){
+      for(const alpha of [.05,.10,.15]){
+        const top=466,imgY=-2;
+        const id=`sel-x${imgX}-s${String(scale).replace(".","_")}-a${String(alpha).replace(".","_")}`;
+        await inject(`
+          .selection-live{top:${pct(top)}!important;height:${pct(157)}!important}
+          .selection-live .product{background:rgba(255,255,255,${alpha})!important}
+          .selection-live .media{background:#fbf4e9!important}
+          .selection-live .media img{transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;transform-origin:center center!important}
+        `);
+        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:460,width:1328,height:157},captureBeyondViewport:false});
+        selection.push({id,top,height:157,imgX,imgY,scale,alpha});
+      }
     }
   }
 
   const showcase=[];
-  for(const top of [674,676,678,680,682]){
-    for(const height of [148,150,152]){
-      const preserveY=-20+(698-top);
-      for(const delta of [-2,0,2]){
-        const imgY=preserveY+delta;
-        const id=`show-top${top}-h${height}-iy${imgY}`;
+  for(const imgX of [-24,-22,-20,-18,-16]){
+    for(const scale of [1.00,1.025,1.05,1.075,1.10]){
+      for(const alpha of [.10,.20,.30]){
+        const top=680,height=148,imgY=-4;
+        const id=`show-x${imgX}-s${String(scale).replace(".","_")}-a${String(alpha).replace(".","_")}`;
         await inject(`
           .showcase-live{top:${pct(top)}!important;height:${pct(height)}!important}
-          .showcase-live .product{background:rgba(255,255,255,.20)!important}
+          .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
           .showcase-live .media{height:108px!important;background:#fbf3e8!important}
-          .showcase-live .media img{transform:translate(-20px,${imgY}px) scale(1.05)!important;transform-origin:center center!important}
+          .showcase-live .media img{transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;transform-origin:center center!important}
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:678,width:1328,height:150},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX:-20,imgY,scale:1.05,alpha:.20});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha});
       }
     }
   }
