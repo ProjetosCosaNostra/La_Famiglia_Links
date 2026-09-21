@@ -82,7 +82,8 @@ try{
     for(const img of document.querySelectorAll(".showcase-live .media img")){
       const ratio=img.naturalHeight?img.naturalWidth/img.naturalHeight:0;
       img.classList.toggle("bg-extra-wide",ratio>=1.75);
-      img.classList.toggle("bg-medium-wide",ratio>=1.60&&ratio<1.70);\n      img.classList.toggle("bg-compact-wide",ratio>0&&ratio<1.50);
+      img.classList.toggle("bg-medium-wide",ratio>=1.60&&ratio<1.70);
+      img.classList.toggle("bg-compact-wide",ratio>0&&ratio<1.50);
     }
   });
 
