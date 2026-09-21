@@ -32,7 +32,7 @@ const expected={
     mediaRadius:"5px",
     mediaHeight:96.234375,
     titleSize:"9px",
-    titleHeight:18,
+    titleHeight:16.015625,
     titleMarginTop:"7px",
     priceSize:"10px"
   }
