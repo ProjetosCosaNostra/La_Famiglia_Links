@@ -1,10 +1,10 @@
-name = "blackgold-beauty-finds-novo"
+name = "blackgold-beauty-finds-br"
 compatibility_date = "2026-09-20"
 pages_build_output_dir = "."
 
 [vars]
 APP_NAME = "BlackGold Beauty Finds"
-PUBLIC_BASE_URL = "https://blackgold-beauty-finds-novo.pages.dev"
+PUBLIC_BASE_URL = "https://blackgold-beauty-finds-br.pages.dev"
 
 [[d1_databases]]
 binding = "BG_DB"
