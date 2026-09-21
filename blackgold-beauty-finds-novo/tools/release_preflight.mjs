@@ -4,7 +4,8 @@ import {execFileSync} from "node:child_process";
 
 const root=path.resolve(new URL("..",import.meta.url).pathname.replace(/^\/(?:[A-Za-z]:)/,m=>m.slice(1)));
 const expectBlocked=process.argv.includes("--expect-blocked");
-const errors=[];
+const blockers=[];
+const defects=[];
 
 async function readJson(file){
   try{return JSON.parse(await fs.readFile(path.join(root,file),"utf8"))}
@@ -25,56 +26,82 @@ let head="";
 try{
   head=execFileSync("git",["rev-parse","HEAD"],{cwd:root,encoding:"utf8"}).trim();
 }catch{
-  errors.push("Git HEAD unavailable.");
+  defects.push("Git HEAD unavailable.");
 }
 
-if(!guard)errors.push("preview-guard.json missing.");
-if(guard?.productionDeployAllowed!==true)errors.push("preview-guard blocks production deployment.");
-if(guard?.productionRequiresExplicitHumanApproval!==true)errors.push("human approval contract missing.");
-if(guard?.previewRequiresApprovedShellGatePass!==true)errors.push("approved shell gate contract missing.");
-if(guard?.outsideDynamicRegionTolerancePixels!==0)errors.push("outside-dynamic-region tolerance must remain zero.");
-if(guard?.previewRequiresProductFootprintGatePass!==true)errors.push("preview is not locked to product footprint validation.");
-if(guard?.previewRequiresProductStyleGatePass!==true)errors.push("preview is not locked to product style validation.");
-if(guard?.previewRequiresProductRegionAcceptancePass!==true)errors.push("preview is not locked to product-region acceptance.");
-if(guard?.productRegionPixelDiagnosticCanApprove!==false)errors.push("pixel diagnostic must never approve release by itself.");
-
-if(!manifest)errors.push("authority manifest missing.");
-if(manifest?.catalogInitialCount!==0)errors.push("catalog must remain zero before release approval.");
-if(manifest?.previewAutoOpenAllowed!==false)errors.push("preview auto-open must remain disabled before approval.");
-
-if(!approval)errors.push("release-approval.json missing.");
-if(approval?.humanApproved!==true)errors.push("explicit human approval missing.");
-if(!approval?.approvedCommit||approval.approvedCommit!==head)errors.push("approval is not pinned to current commit.");
-if(!approval?.approvedAt)errors.push("approval timestamp missing.");
-if(
-  approval?.approvedMockups?.desktopApprovedSha256!==manifest?.desktop?.approvedSha256 ||
-  approval?.approvedMockups?.mobileApprovedSha256!==manifest?.mobile?.approvedSha256
-){
-  errors.push("approval mockup hashes do not match the pinned authorities.");
+if(!guard){
+  defects.push("preview-guard.json missing.");
+}else{
+  if(guard.productionDeployAllowed!==true)blockers.push("preview-guard blocks production deployment.");
+  if(guard.productionRequiresExplicitHumanApproval!==true)defects.push("human approval contract missing.");
+  if(guard.previewRequiresApprovedShellGatePass!==true)defects.push("approved shell gate contract missing.");
+  if(guard.outsideDynamicRegionTolerancePixels!==0)defects.push("outside-dynamic-region tolerance must remain zero.");
+  if(guard.previewRequiresProductFootprintGatePass!==true)defects.push("preview is not locked to product footprint validation.");
+  if(guard.previewRequiresProductStyleGatePass!==true)defects.push("preview is not locked to product style validation.");
+  if(guard.previewRequiresProductRegionAcceptancePass!==true)defects.push("preview is not locked to product-region acceptance.");
+  if(guard.productRegionPixelDiagnosticCanApprove!==false)defects.push("pixel diagnostic must never approve release by itself.");
 }
 
-if(/11111111-1111-4111-8111-111111111111/.test(wrangler))errors.push("D1 production database id is still a placeholder.");
-if(/local-only placeholder/i.test(wrangler))errors.push("wrangler.toml is still marked local-only.");
+if(!manifest){
+  defects.push("authority manifest missing.");
+}else{
+  if(manifest.catalogInitialCount!==0)defects.push("catalog must remain zero before release approval.");
+  if(manifest.previewAutoOpenAllowed!==false)defects.push("preview auto-open must remain disabled before approval.");
+}
 
-if(!/\[switch\]\$Execute/.test(deployScript))errors.push("production deploy script lacks explicit -Execute gate.");
-if(!/release_preflight\.mjs/.test(deployScript))errors.push("production deploy script does not run release preflight.");
-if(!/catalog_backup\.mjs/.test(deployScript))errors.push("production deploy script lacks mandatory pre-deploy backup.");
-if(!/wrangler pages deploy/.test(deployScript))errors.push("production deploy script has no real Cloudflare Pages deploy command.");
-if(!/--commit-hash/.test(deployScript))errors.push("production deploy is not pinned to the approved commit.");
-if(!/BLACKGOLD_PRODUCTION_DEPLOY_RECEIPT_V1/.test(deployScript))errors.push("production deploy receipt contract missing.");
-if(/DEPLOY INTENTIONALLY STOPPED/i.test(deployScript))errors.push("obsolete unconditional production stop remains.");
+if(!approval){
+  blockers.push("release-approval.json missing.");
+}else{
+  if(approval.humanApproved!==true)blockers.push("explicit human approval missing.");
+  if(!approval.approvedCommit||approval.approvedCommit!==head)blockers.push("approval is not pinned to current commit.");
+  if(!approval.approvedAt)blockers.push("approval timestamp missing.");
+  if(
+    manifest&&(
+      approval?.approvedMockups?.desktopApprovedSha256!==manifest?.desktop?.approvedSha256 ||
+      approval?.approvedMockups?.mobileApprovedSha256!==manifest?.mobile?.approvedSha256
+    )
+  ){
+    blockers.push("approval mockup hashes do not match the pinned authorities.");
+  }
+}
+
+if(!wrangler){
+  defects.push("wrangler.toml missing.");
+}else{
+  if(wrangler.includes("\\n")||wrangler.includes("\\r"))defects.push("wrangler.toml contains escaped newline characters instead of real line breaks.");
+  if(!/PUBLIC_BASE_URL\s*=\s*"https:\/\/[^"]+"/.test(wrangler))defects.push("PUBLIC_BASE_URL HTTPS production origin is missing.");
+  if(/11111111-1111-4111-8111-111111111111/.test(wrangler))blockers.push("D1 production database id is still a placeholder.");
+  if(/local-only placeholder/i.test(wrangler))blockers.push("wrangler.toml is still marked local-only.");
+}
+
+if(!deployScript){
+  defects.push("production deploy script missing.");
+}else{
+  if(!/\[switch\]\$Execute/.test(deployScript))defects.push("production deploy script lacks explicit -Execute gate.");
+  if(!/release_preflight\.mjs/.test(deployScript))defects.push("production deploy script does not run release preflight.");
+  if(!/catalog_backup\.mjs/.test(deployScript))defects.push("production deploy script lacks mandatory pre-deploy backup.");
+  if(!/wrangler pages deploy/.test(deployScript))defects.push("production deploy script has no real Cloudflare Pages deploy command.");
+  if(!/--commit-hash/.test(deployScript))defects.push("production deploy is not pinned to the approved commit.");
+  if(!/BLACKGOLD_PRODUCTION_DEPLOY_RECEIPT_V1/.test(deployScript))defects.push("production deploy receipt contract missing.");
+  if(/DEPLOY INTENTIONALLY STOPPED/i.test(deployScript))defects.push("obsolete unconditional production stop remains.");
+}
 
 const result={
-  ok:errors.length===0,
+  ok:blockers.length===0&&defects.length===0,
   mode:expectBlocked?"expect-blocked":"release",
   head,
-  errors
+  blockers,
+  defects
 };
 
 console.log(JSON.stringify(result,null,2));
 
 if(expectBlocked){
-  if(errors.length===0){
+  if(defects.length){
+    console.error("BLACKGOLD_RELEASE_GATE=STRUCTURAL_DEFECT");
+    process.exit(4);
+  }
+  if(blockers.length===0){
     console.error("BLACKGOLD_RELEASE_GATE_EXPECTED_BLOCK_BUT_PASSED");
     process.exit(3);
   }
@@ -82,7 +109,7 @@ if(expectBlocked){
   process.exit(0);
 }
 
-if(errors.length){
+if(defects.length||blockers.length){
   console.error("BLACKGOLD_RELEASE_GATE=BLOCKED");
   process.exit(2);
 }
