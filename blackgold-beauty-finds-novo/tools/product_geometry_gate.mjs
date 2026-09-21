@@ -54,7 +54,7 @@ try{
     await page.setViewport({width:profile.width,height:profile.height,deviceScaleFactor:1,isMobile:profile.mobile});
     await page.goto(base+"/?footprint="+Date.now(),{waitUntil:"networkidle0",timeout:30000});
     await page.waitForFunction(()=>document.body.dataset.catalogCount==="11",{timeout:10000});
-    await page.evaluate(async()=>{await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.addEventListener("load",r,{once:true});img.addEventListener("error",r,{once:true})})))});
+    await page.evaluate(async()=>{const imgs=[...document.querySelectorAll(".authority-picture img,.selection-live img,.showcase-live img")].filter(img=>{const r=img.getBoundingClientRect(),s=getComputedStyle(img);return s.display!=="none"&&r.width>0&&r.height>0});await Promise.all(imgs.map(img=>img.complete?Promise.resolve():new Promise(r=>{img.addEventListener("load",r,{once:true});img.addEventListener("error",r,{once:true})})))});
     const actual=await page.evaluate(()=>{
       const rect=el=>{const r=el.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height}};
       const visible=el=>getComputedStyle(el).display!=="none"&&el.getBoundingClientRect().width>0&&el.getBoundingClientRect().height>0;
