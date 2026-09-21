@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-21T04:46:49Z",
-  "total_items": 7,
+  "updated_at": "2026-09-21T12:43:48Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 5
     },
-    "high_priority": 7
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-09-21T04:41:11Z",
+      "happened_at": "2026-09-21T12:38:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (24x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,52 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T04:41:11Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 95,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95",
-      "issue_title": "[CMS] Produto: 🍳🖤 Jogo de Utensílios 19 Peças Ponte Lar — Silicone + Cabos de Madeira",
-      "sku": "ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira",
-      "title": "19 Peças Kit Utensilios Cozinha Tábua Em Silicone Espátula",
-      "id_busca": "5J5PKG-Z1Z8",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (94x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1RKdpQY",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/1RKdpQY",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c",
-      "short_url": "https://meli.la/1sLJKwg",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIroZQgWS49z%2BR1qi0Row5%2FkQuGPtoyYA2816CbqSShMC5C1oW2woZ9Ei9yD38g4b0WEaF%2BJV6g05f9Vxn0NEZxvIqo5yg0nOEo2WiHbHr%2Fyy%2FLs3VJKoSsPMdZAtMFAz4bkHylBULPibN%2F%2B8B0TJ%2BQ3oidQQJOXFzd9cO5%2FHE7tReHeoOZ6Q6gQrrNW2goSR1kC7vA%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Cozinha",
-        "Utensílios",
-        "Silicone",
-        "Cabos de Madeira",
-        "Preto",
-        "Organizador",
-        "Design Premium"
-      ]
-    },
-    {
-      "happened_at": "2026-09-21T04:41:11Z",
+      "happened_at": "2026-09-21T12:38:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (27x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (28x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T04:41:11Z",
+      "happened_at": "2026-09-21T12:38:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (46x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (47x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +147,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T04:41:11Z",
+      "happened_at": "2026-09-21T12:38:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +163,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (140x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (141x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -237,52 +192,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T04:41:11Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 200,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/200",
-      "issue_title": "Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo",
-      "sku": "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo",
-      "title": "Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo",
-      "id_busca": "5J5PKG-XL1P",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (2x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2mbKAww",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2mbKAww",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNEifO1Ey%2FWU3v49IoJl2J%2FULKMoQYjHHSqlgcGb7lfJat8M5wTaAe%2B%2F49Ld6u37ATAsl0tq4EZd5idbdnX1oXqEpOOlOm3nm3cyScwGy%2FOjfhL5uXYszYGMnGxUSYiw6o3t2WL3lFn9J3uXQFHZ2Z8S7LhpFnhb%2BrSPpJ91oHk8fYu3kxOInmwX%2FTo2oiPbF66Beu0o%2FReCorTN4A%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XL1P",
-      "short_url": "https://meli.la/2mbKAww",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNEifO1Ey%2FWU3v49IoJl2J%2FULKMoQYjHHSqlgcGb7lfJat8M5wTaAe%2B%2F49Ld6u37ATAsl0tq4EZd5idbdnX1oXqEpOOlOm3nm3cyScwGy%2FOjfhL5uXYszYGMnGxUSYiw6o3t2WL3lFn9J3uXQFHZ2Z8S7LhpFnhb%2BrSPpJ91oHk8fYu3kxOInmwX%2FTo2oiPbF66Beu0o%2FReCorTN4A%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Beleza",
-        "Cabelo",
-        "Cuidados com o Cabelo",
-        "Escova Massageadora",
-        "LED Terapêutico",
-        "4 em 1",
-        "Couro Cabeludo"
-      ]
-    },
-    {
-      "happened_at": "2026-09-21T04:41:11Z",
+      "happened_at": "2026-09-21T12:38:09Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -298,7 +208,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
