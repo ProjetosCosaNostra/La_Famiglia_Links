@@ -103,9 +103,9 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-20,-10,0,10]){
-    for(const imgY of [-20,-10,0,10]){
-      for(const scale of [.75,.85,.95,1.05]){
+  for(const imgX of [-30,-25,-20,-15,-10]){
+    for(const imgY of [-5,0,5]){
+      for(const scale of [1.05,1.10,1.15,1.20,1.25,1.30]){
         const top=698,height=144,alpha=.20;
         const id=`show-wide-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
