@@ -26,7 +26,7 @@ const expected={
   showcase:{
     borderColor:"rgb(229, 216, 200)",
     borderRadius:"7px",
-    backgroundAlpha:.20,
+    backgroundAlpha:.10,
     padding:"5px",
     mediaBg:"rgb(251, 243, 232)",
     mediaRadius:"5px",
