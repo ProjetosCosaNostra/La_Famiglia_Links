@@ -24,9 +24,9 @@ function expectedDesktop(){
       {x:508,y:466,width:432,height:157},
       {x:951,y:466,width:432,height:157}
     ],
-    showcase:{x:60,y:676,width:1328,height:148},
+    showcase:{x:60,y:680,width:1328,height:148},
     showcaseCards:Array.from({length:8},(_,i)=>({
-      x:65+i*165.75,y:676,width:157.75,height:148
+      x:65+i*165.75,y:680,width:157.75,height:148
     }))
   };
 }
