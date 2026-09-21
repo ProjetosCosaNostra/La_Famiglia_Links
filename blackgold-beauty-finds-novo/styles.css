@@ -13,7 +13,7 @@
 .selection-live .price{margin-top:auto;font-size:14px;font-weight:700}
 .selection-live .detail{height:28px;margin-top:5px;border:1px solid #c7871d;border-radius:6px;background:linear-gradient(180deg,#dea83a,#a46609);color:#fff8eb;display:grid;place-items:center;font:700 10px/1 "Cormorant Garamond",Georgia,serif;text-decoration:none}
 .showcase-live .product{height:100%;border:1px solid #e5d8c8;border-radius:7px;background:rgba(255,255,255,.82);padding:5px;text-align:center;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-.showcase-live .media{height:108px;border-radius:5px;background:#fbf3e8;overflow:hidden;display:grid;place-items:center}
+.showcase-live .media{height:112px;border-radius:5px;background:#fbf3e8;overflow:hidden;display:grid;place-items:center}
 .showcase-live .media img{width:100%;height:100%;object-fit:contain;transform:translate(-20px,-20px) scale(1.05);transform-origin:center center}
 .showcase-live .media img.fit-extra-wide{transform:translate(-38px,-19px) scale(1.34)}
 .showcase-live .media img.fit-upper-wide{transform:translate(-30px,-10px) scale(.85)}
