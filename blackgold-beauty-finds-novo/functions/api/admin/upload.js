@@ -17,6 +17,29 @@ const allowed=new Map([
 ]);
 
 const safeKey=key=>/^product-[0-9a-f-]+\.(jpg|png|webp|avif)$/i.test(String(key||""));
+const ascii=(bytes,start,length)=>String.fromCharCode(...bytes.slice(start,start+length));
+function validImageSignature(type,bytes){
+  if(type==="image/jpeg"){
+    return bytes.length>=3&&bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
+  }
+  if(type==="image/png"){
+    const sig=[0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a];
+    return bytes.length>=8&&sig.every((v,i)=>bytes[i]===v);
+  }
+  if(type==="image/webp"){
+    return bytes.length>=12&&ascii(bytes,0,4)==="RIFF"&&ascii(bytes,8,4)==="WEBP";
+  }
+  if(type==="image/avif"){
+    if(bytes.length<12||ascii(bytes,4,4)!=="ftyp")return false;
+    const limit=Math.min(bytes.length,64);
+    for(let i=8;i+3<limit;i+=4){
+      const brand=ascii(bytes,i,4);
+      if(brand==="avif"||brand==="avis")return true;
+    }
+    return false;
+  }
+  return false;
+}
 
 export async function onRequestPost(context){
   if(!authorized(context))return json({ok:false,code:"unauthorized"},401);
@@ -29,9 +52,14 @@ export async function onRequestPost(context){
   if(file.size<=0)return json({ok:false,code:"empty_file",message:"A imagem está vazia."},400);
   if(file.size>8*1024*1024)return json({ok:false,code:"file_too_large",message:"Imagem acima de 8 MB."},413);
 
+  const bytes=await file.arrayBuffer();
+  if(!validImageSignature(file.type,new Uint8Array(bytes.slice(0,64)))){
+    return json({ok:false,code:"invalid_signature",message:"O conteúdo do arquivo não corresponde ao formato de imagem informado."},415);
+  }
+
   const key="product-"+crypto.randomUUID()+"."+ext;
   try{
-    await context.env.BG_MEDIA.put(key,await file.arrayBuffer(),{
+    await context.env.BG_MEDIA.put(key,bytes,{
       httpMetadata:{
         contentType:file.type,
         cacheControl:"public, max-age=31536000, immutable"

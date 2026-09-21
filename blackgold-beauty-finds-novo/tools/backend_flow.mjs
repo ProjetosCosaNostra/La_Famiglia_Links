@@ -69,6 +69,14 @@ try {
   }
   result.missingImageBlocked = 409;
 
+  const spoofedForm = new FormData();
+  spoofedForm.append("file", new Blob([Buffer.from("not-a-real-png")], { type: "image/png" }), "spoofed.png");
+  r = await call("/api/admin/upload", { method: "POST", headers: auth, body: spoofedForm });
+  if (r.response.status !== 415 || r.data.code !== "invalid_signature") {
+    throw new Error("spoofed image signature was not rejected " + r.response.status + " " + JSON.stringify(r.data));
+  }
+  result.spoofedImageBlocked = 415;
+
   r = await uploadPng("blackgold-ci-1.png");
   if (r.response.status !== 201 || !r.data.key || !r.data.url) {
     throw new Error("image upload failed " + JSON.stringify(r.data));
