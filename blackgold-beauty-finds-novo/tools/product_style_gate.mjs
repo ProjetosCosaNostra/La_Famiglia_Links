@@ -13,7 +13,7 @@ const expected={
   selection:{
     borderColor:"rgb(234, 223, 208)",
     borderRadius:"8px",
-    backgroundAlpha:.20,
+    backgroundAlpha:.10,
     padding:"7px",
     mediaBg:"rgb(251, 244, 233)",
     mediaRadius:"7px",
