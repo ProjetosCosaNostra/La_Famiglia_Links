@@ -59,19 +59,19 @@ await clearDb();
 try{
   const activeMedia=await upload("backup-active.png");
   const active=await call("/api/admin/products",{method:"POST",body:JSON.stringify({
-    title:"Backup Published",brand:"BlackGold QA",category:"Beleza",description:"roundtrip active",
+    title:"Backup Published",brand:"BlackGold QA",category:"Beleza",description:"Curadoria editorial temporária do produto publicado usada para provar backup, restauração e integridade de conteúdo durante o roundtrip.",
     currency:"BRL",price:"49.90",imageKey:activeMedia.key,destinationUrl:"https://example.com/published",
     status:"published",featured:true,order:1
   })});
   await call("/api/admin/products",{method:"POST",body:JSON.stringify({
-    title:"Backup Draft",brand:"BlackGold QA",category:"Moda",description:"draft roundtrip",
+    title:"Backup Draft",brand:"BlackGold QA",category:"Moda",description:"Rascunho editorial temporário utilizado pelo teste de backup e restauração; pode permanecer incompleto porque ainda não foi publicado.",
     currency:"USD",price:"12.50",imageUrl:"https://example.com/image.png",destinationUrl:"",
     status:"draft",featured:false,order:2
   })});
 
   const deletedMedia=await upload("backup-deleted.png");
   const deleted=await call("/api/admin/products",{method:"POST",body:JSON.stringify({
-    title:"Backup Deleted",brand:"BlackGold QA",category:"Skincare",description:"trash roundtrip",
+    title:"Backup Deleted",brand:"BlackGold QA",category:"Skincare",description:"Curadoria editorial temporária do item usado para validar exclusão recuperável, lixeira e restauração integral do catálogo BlackGold.",
     currency:"BRL",price:"27.00",imageKey:deletedMedia.key,destinationUrl:"https://example.com/deleted",
     status:"published",featured:false,order:3
   })});

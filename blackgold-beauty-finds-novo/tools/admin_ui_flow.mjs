@@ -132,7 +132,7 @@ try{
   await setInput(page,'input[name="title"]',"BlackGold Admin UI Test");
   await setInput(page,'input[name="brand"]',"BlackGold QA");
   await setInput(page,'input[name="category"]',"Beleza");
-  await setInput(page,'textarea[name="description"]',"Temporary UI regression record.");
+  await setInput(page,'textarea[name="description"]',"Curadoria editorial temporária do teste de interface administrativa, com contexto próprio suficiente para validar o gate de publicação.");
   await setInput(page,'input[name="destinationUrl"]',"https://example.com/blackgold-admin-ui");
   await setInput(page,'input[name="price"]',"29.90");
   await page.click('input[name="featured"]');

@@ -49,7 +49,7 @@ async function createProduct({title,category,featured,order,url}){
       title,
       brand:"BlackGold QA",
       category,
-      description:"Temporary storefront browser regression record.",
+      description:"Curadoria editorial temporária do teste de vitrine, criada para validar navegação, busca e links afiliados sem conteúdo copiado de comerciante.",
       currency:"BRL",
       price:"39.90",
       imageKey:media.key,

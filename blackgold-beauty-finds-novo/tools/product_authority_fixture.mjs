@@ -13,9 +13,9 @@ const stateFile=path.resolve(".visual-gate","authority-fixture.json");
 const FIXTURE_URL="https://example.com/authority-fixture";
 
 const FEATURED=[
-  {title:"Miss Dior Eau de Parfum",brand:"Dior",description:"Uma fragrância icônica para mulheres que deixam sua marca.",price:"649.90",file:"miss-dior.webp",category:"Beleza",featured:true,order:1},
-  {title:"Bolsa LouLou Small",brand:"Saint Laurent",description:"Elegância atemporal em cada detalhe.",price:"14890.00",file:"ysl-loulou.webp",category:"Acessórios",featured:true,order:2},
-  {title:"Sandália Gianvito Rossi",brand:"Gianvito Rossi",description:"Sofisticação que eleva qualquer look.",price:"4290.00",file:"gianvito-rossi.webp",category:"Moda",featured:true,order:3}
+  {title:"Miss Dior Eau de Parfum",brand:"Dior",description:"Curadoria editorial BlackGold de teste para Miss Dior, destacando presença floral elegante e perfil sofisticado para ocasiões especiais.",price:"649.90",file:"miss-dior.webp",category:"Beleza",featured:true,order:1},
+  {title:"Bolsa LouLou Small",brand:"Saint Laurent",description:"Curadoria editorial BlackGold de teste para a LouLou Small, com foco no desenho estruturado, acabamento marcante e proposta sofisticada.",price:"14890.00",file:"ysl-loulou.webp",category:"Acessórios",featured:true,order:2},
+  {title:"Sandália Gianvito Rossi",brand:"Gianvito Rossi",description:"Curadoria editorial BlackGold de teste para a sandália Gianvito Rossi, escolhida pela silhueta elegante e proposta refinada para looks especiais.",price:"4290.00",file:"gianvito-rossi.webp",category:"Moda",featured:true,order:3}
 ];
 const SHOWCASE=[
   {title:"Chanel Coco Mademoiselle",price:"589.90",file:"chanel-coco.webp",category:"Beleza",order:4},
@@ -26,7 +26,7 @@ const SHOWCASE=[
   {title:"Brinco Swarovski",price:"1290.00",file:"swarovski-brinco.webp",category:"Acessórios",order:9},
   {title:"Scarpin Jimmy Choo",price:"4990.00",file:"jimmy-choo-scarpin.webp",category:"Moda",order:10},
   {title:"Bolsa Dior Saddle",price:"17890.00",file:"dior-saddle.webp",category:"Acessórios",order:11}
-].map(x=>({...x,brand:"",description:"",featured:false}));
+].map(x=>({...x,brand:"",description:"Curadoria editorial BlackGold de teste para "+x.title+", usada para validar o catálogo visual com texto próprio e contexto adicional sem copiar descrição de comerciante.",featured:false}));
 
 async function call(url,opt={}){
   const headers=new Headers(opt.headers||{});

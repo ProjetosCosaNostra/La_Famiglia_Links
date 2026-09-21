@@ -13,7 +13,7 @@ if(mode==="create"){
   const form=new FormData();form.append("file",new Blob([png],{type:"image/png"}),"fixture.png");
   const media=await call("/api/admin/upload",{method:"POST",headers:auth,body:form});
   const product=await call("/api/admin/products",{method:"POST",headers:{...auth,"content-type":"application/json"},body:JSON.stringify({
-    title:"__BLACKGOLD_VISUAL_FIXTURE__",brand:"BlackGold QA",category:"Beleza",description:"Visual regression fixture",
+    title:"__BLACKGOLD_VISUAL_FIXTURE__",brand:"BlackGold QA",category:"Beleza",description:"Curadoria editorial temporária usada apenas pelo teste de regressão visual para validar o produto publicado sem depender de conteúdo externo.",
     currency:"BRL",price:"19.90",imageKey:media.key,destinationUrl:"https://example.com/fixture",status:"published",featured:true,order:1
   })});
   await fs.mkdir(new URL("../.visual-gate/",import.meta.url),{recursive:true});
