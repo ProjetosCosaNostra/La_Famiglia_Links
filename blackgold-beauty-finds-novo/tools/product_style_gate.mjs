@@ -54,6 +54,7 @@ try{
     await page.setViewport({width:p.width,height:p.height,deviceScaleFactor:1,isMobile:p.mobile});
     await page.goto(base+"/?style-gate="+Date.now(),{waitUntil:"networkidle0",timeout:30000});
     await page.waitForFunction(()=>document.body.dataset.catalogCount==="11",{timeout:10000});
+    await page.waitForFunction(()=>[...document.querySelectorAll("#showcase .media img")].every(img=>img.complete&&img.naturalWidth>0),{timeout:10000});
     const data=await page.evaluate(()=>{
       const style=el=>getComputedStyle(el);
       const one=(root,selector)=>root.querySelector(selector);
@@ -70,6 +71,7 @@ try{
         };
       };
       const sel=selections[0];
+      const showcaseImages=showcases.map(el=>one(el,".media img")).filter(Boolean).map(img=>{const s=style(img);const m=new DOMMatrix(s.transform==="none"?"matrix(1,0,0,1,0,0)":s.transform);return{extraWide:img.classList.contains("fit-extra-wide"),naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,ratio:img.naturalHeight?img.naturalWidth/img.naturalHeight:0,transform:{a:m.a,d:m.d,x:m.e,y:m.f}}});
       return{
         selectionCount:selections.length,
         showcaseCount:showcases.length,
@@ -80,6 +82,7 @@ try{
           detail:one(sel,".detail")?{height:one(sel,".detail").getBoundingClientRect().height}:null
         }:null,
         showcase:showcases[0]?pack(showcases[0]):null,
+        showcaseImages,
         overflow:document.documentElement.scrollWidth>window.innerWidth
       };
     });
@@ -112,6 +115,14 @@ try{
       fail(b.media.objectFit==="contain","showcase object-fit");
       fail(b.title.fontSize===expected.showcase.titleSize,"showcase title size "+b.title.fontSize);
       fail(b.price.fontSize===expected.showcase.priceSize,"showcase price size "+b.price.fontSize);
+      const wide=data.showcaseImages.filter(x=>x.extraWide);
+      fail(wide.length===1,"showcase extra-wide profile count "+wide.length);
+      fail(wide[0].ratio>=1.75,"showcase extra-wide ratio "+wide[0].ratio);
+      fail(near(wide[0].transform.a,1.05,.005)&&near(wide[0].transform.d,1.05,.005),"showcase extra-wide scale "+JSON.stringify(wide[0].transform));
+      fail(near(wide[0].transform.x,-20,.05)&&near(wide[0].transform.y,0,.05),"showcase extra-wide framing "+JSON.stringify(wide[0].transform));
+      const normal=data.showcaseImages.find(x=>!x.extraWide);
+      fail(!!normal,"showcase normal profile missing");
+      fail(near(normal.transform.x,-20,.05)&&near(normal.transform.y,-20,.05),"showcase normal framing "+JSON.stringify(normal.transform));
     }else{
       fail(data.selectionCount===1,"mobile selection count");
       fail(data.showcaseCount===3,"mobile showcase count");
