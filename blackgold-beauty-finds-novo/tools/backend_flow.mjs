@@ -35,6 +35,14 @@ const result = {};
 try {
   await cleanup();
 
+  const rootResponse = await fetch(base + "/", { cache: "no-store" });
+  const csp = rootResponse.headers.get("content-security-policy") || "";
+  if (!rootResponse.ok) throw new Error("root document unavailable " + rootResponse.status);
+  if (!csp.includes("https://fonts.googleapis.com") || !csp.includes("https://fonts.gstatic.com")) {
+    throw new Error("production CSP would block approved web fonts: " + csp);
+  }
+  result.productionFontCsp = "PASS";
+
   let r = await call("/api/products?gate=start");
   if (!r.response.ok || r.data.total !== 0) throw new Error("public catalog must start empty");
   result.startEmpty = true;
@@ -115,7 +123,11 @@ try {
   if (r.data.total !== 1 || r.data.products?.[0]?.title !== product.title) {
     throw new Error("published record not visible on public API");
   }
+  if (Object.prototype.hasOwnProperty.call(r.data.products?.[0] || {}, "destinationUrl")) {
+    throw new Error("public catalog must not expose direct affiliate destinationUrl");
+  }
   result.publicPublished = "PASS";
+  result.publicDestinationHidden = "PASS";
 
   r = await call("/api/admin/metrics", { headers: auth });
   const metricBeforeBot = Number(r.data.summary?.total||0);
