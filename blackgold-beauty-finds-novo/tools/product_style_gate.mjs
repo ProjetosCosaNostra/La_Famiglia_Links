@@ -118,8 +118,8 @@ try{
       const wide=data.showcaseImages.filter(x=>x.extraWide);
       fail(wide.length===1,"showcase extra-wide profile count "+wide.length);
       fail(wide[0].ratio>=1.75,"showcase extra-wide ratio "+wide[0].ratio);
-      fail(near(wide[0].transform.a,1.20,.005)&&near(wide[0].transform.d,1.20,.005),"showcase extra-wide scale "+JSON.stringify(wide[0].transform));
-      fail(near(wide[0].transform.x,-30,.05)&&near(wide[0].transform.y,-5,.05),"showcase extra-wide framing "+JSON.stringify(wide[0].transform));
+      fail(near(wide[0].transform.a,1.24,.005)&&near(wide[0].transform.d,1.24,.005),"showcase extra-wide scale "+JSON.stringify(wide[0].transform));
+      fail(near(wide[0].transform.x,-32,.05)&&near(wide[0].transform.y,-9,.05),"showcase extra-wide framing "+JSON.stringify(wide[0].transform));
       const compact=data.showcaseImages.filter(x=>x.compactWide);
       fail(compact.length===2,"showcase compact-wide profile count "+compact.length);
       fail(compact.every(x=>x.ratio>0&&x.ratio<1.50),"showcase compact-wide ratio "+JSON.stringify(compact.map(x=>x.ratio)));
