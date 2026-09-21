@@ -10,8 +10,8 @@ ap.add_argument("--report",required=True)
 a=ap.parse_args()
 
 zones={
-  "selection":(60,476,1388,633),
-  "showcase":(60,698,1388,842),
+  "selection":(60,460,1388,617),
+  "showcase":(60,678,1388,828),
 }
 limits={"selection":0.1300,"showcase":0.1360}
 

@@ -34,7 +34,7 @@ try{
           .selection-live .media img{transform:translateY(${y}px) scale(${scale})!important;transform-origin:center center!important}
         `);
       });
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
+      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:460,width:1328,height:157},captureBeyondViewport:false});
       selection.push({id,y,scale});
     }
   }
@@ -48,7 +48,7 @@ try{
         .showcase-live .media{height:${h}px!important}
         .showcase-live .media img{transform:scale(${scale})!important;transform-origin:center center!important}
       `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:678,width:1328,height:150},captureBeyondViewport:false});
       showcase.push({id,h,scale});
     }
   }
