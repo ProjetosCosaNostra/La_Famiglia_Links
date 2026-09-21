@@ -115,6 +115,8 @@ try {
     throw new Error("create/publish failed " + JSON.stringify(r.data));
   }
   const id = r.data.product.id;
+  const slug = r.data.product.slug;
+  if (!slug) throw new Error("published product slug missing");
   let version = r.data.product.updatedAt;
   if (!version) throw new Error("create did not return updatedAt");
   result.createPublished = "PASS";
@@ -128,6 +130,25 @@ try {
   }
   result.publicPublished = "PASS";
   result.publicDestinationHidden = "PASS";
+
+  let detailResponse = await fetch(base + "/achado/" + encodeURIComponent(slug), { cache: "no-store" });
+  let detailHtml = await detailResponse.text();
+  if (detailResponse.status !== 200 || !detailHtml.includes(product.title) || !detailHtml.includes('application/ld+json') || !detailHtml.includes('placement=detail') || !detailHtml.includes('"@type":"Product"')) {
+    throw new Error("indexable product detail page failed");
+  }
+  result.productDetailSeo = "PASS";
+
+  let sitemapResponse = await fetch(base + "/sitemap.xml?gate=published", { cache: "no-store" });
+  let sitemapText = await sitemapResponse.text();
+  if (sitemapResponse.status !== 200 || !String(sitemapResponse.headers.get("content-type")||"").includes("application/xml") || !sitemapText.includes("/achado/" + slug)) {
+    throw new Error("published product missing from sitemap");
+  }
+  const robotsResponse = await fetch(base + "/robots.txt?gate=published", { cache: "no-store" });
+  const robotsText = await robotsResponse.text();
+  if (!robotsResponse.ok || !robotsText.includes("Sitemap: https://blackgold-beauty-finds-novo.pages.dev/sitemap.xml")) {
+    throw new Error("robots sitemap declaration missing");
+  }
+  result.dynamicSitemap = "PASS";
 
   r = await call("/api/admin/metrics", { headers: auth });
   const metricBeforeBot = Number(r.data.summary?.total||0);
@@ -307,6 +328,11 @@ try {
 
   r = await call("/api/products?gate=draft");
   if (r.data.total !== 0) throw new Error("draft product leaked to public API");
+  detailResponse = await fetch(base + "/achado/" + encodeURIComponent(slug), { cache: "no-store" });
+  if (detailResponse.status !== 404) throw new Error("draft product detail page must be hidden");
+  sitemapResponse = await fetch(base + "/sitemap.xml?gate=draft", { cache: "no-store" });
+  sitemapText = await sitemapResponse.text();
+  if (sitemapText.includes("/achado/" + slug)) throw new Error("draft product leaked into sitemap");
   result.draftHidden = "PASS";
 
   const draftRedirect = await fetch(base + "/api/out?id=" + encodeURIComponent(id) + "&placement=showcase", {
@@ -326,6 +352,8 @@ try {
 
   r = await call("/api/products?gate=republished");
   if (r.data.total !== 1) throw new Error("republished product missing");
+  detailResponse = await fetch(base + "/achado/" + encodeURIComponent(slug), { cache: "no-store" });
+  if (detailResponse.status !== 200) throw new Error("republished product detail page missing");
   result.republish = "PASS";
 
   r = await call("/api/admin/products?id=" + encodeURIComponent(id), {

@@ -3,7 +3,7 @@ compatibility_date = "2026-09-20"
 pages_build_output_dir = "."
 
 [vars]
-APP_NAME = "BlackGold Beauty Finds"
+APP_NAME = "BlackGold Beauty Finds"\nPUBLIC_BASE_URL = "https://blackgold-beauty-finds-novo.pages.dev"
 
 [[d1_databases]]
 binding = "BG_DB"

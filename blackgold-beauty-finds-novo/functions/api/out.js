@@ -1,5 +1,5 @@
 const clean=(v,max=120)=>String(v??"").trim().slice(0,max);
-const allowedPlacement=new Set(["selection","showcase","catalog","unknown"]);
+const allowedPlacement=new Set(["selection","showcase","catalog","detail","unknown"]);
 const botPattern=/(bot|crawler|spider|slurp|facebookexternalhit|whatsapp|telegrambot|discordbot|preview|headlesschrome|lighthouse)/i;
 
 async function recordClick(context,product,placement){
