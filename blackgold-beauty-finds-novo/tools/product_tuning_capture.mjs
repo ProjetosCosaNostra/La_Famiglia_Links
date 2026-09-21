@@ -125,20 +125,19 @@ try{
   }
 
   const showcase=[];
-  for(const priceSize of [10,10.5,11]){
-    for(const priceSpacing of [0,.25,.50,.75,1]){
-      for(const priceY of [-2,-1,0]){
+  for(const imgX of [-24,-22,-20,-18,-16]){
+    for(const imgY of [-22,-20,-18,-16,-14]){
+      for(const scale of [.95,1.00,1.05,1.075,1.10]){
         const top=698,height=144,alpha=.20;
-        const id=`show-price-ps${String(priceSize).replace(".","_")}-ls${String(priceSpacing).replace(".","_")}-y${String(priceY).replace("-","m")}`;
+        const id=`show-sparse-medium-lower-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .price{
-            font-size:${priceSize}px!important;
-            letter-spacing:${priceSpacing}px!important;
-            transform:translateY(${priceY}px)!important;
+          .showcase-live .media img.bg-sparse-medium{
+            transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
+            transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,priceSize,priceSpacing,priceY,alpha,profile:"showcase-price"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-medium-lower"});
       }
     }
   }
