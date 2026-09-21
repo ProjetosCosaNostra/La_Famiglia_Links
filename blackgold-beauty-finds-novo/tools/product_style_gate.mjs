@@ -32,8 +32,16 @@ const expected={
     mediaBg:"rgb(248, 238, 226)",
     mediaRadius:"5px",
     mediaHeight:98,
-    imageScale:1.15,
-    imageTranslateY:-15,
+    imageTransforms:[
+      {scale:1.05,x:-6,y:-21},
+      {scale:1.05,x:-6,y:-9},
+      {scale:1.15,x:0,y:-15},
+      {scale:1.05,x:-6,y:-21},
+      {scale:1.05,x:-6,y:-9},
+      {scale:1.05,x:-6,y:-15},
+      {scale:1.15,x:0,y:-15},
+      {scale:1.15,x:0,y:-15}
+    ],
     titleSize:"9px",
     priceSize:"9px"
   }
@@ -88,6 +96,7 @@ try{
           detail:one(sel,".detail")?{height:one(sel,".detail").getBoundingClientRect().height}:null
         }:null,
         showcase:showcases[0]?pack(showcases[0]):null,
+        showcaseAll:showcases.map(pack),
         overflow:document.documentElement.scrollWidth>window.innerWidth
       };
     });
@@ -124,10 +133,15 @@ try{
       fail(b.media.borderRadius===expected.showcase.mediaRadius,"showcase media radius "+b.media.borderRadius);
       fail(near(b.media.height,expected.showcase.mediaHeight,.35),"showcase media height "+b.media.height);
       fail(b.media.objectFit==="contain","showcase object-fit");
-      const tm=String(b.media.transform).match(/matrix\(([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+)\)/);
-      fail(!!tm,"showcase image transform "+b.media.transform);
-      fail(near(Number(tm[1]),expected.showcase.imageScale,.01)&&near(Number(tm[4]),expected.showcase.imageScale,.01),"showcase image scale "+b.media.transform);
-      fail(near(Number(tm[6]),expected.showcase.imageTranslateY,.25),"showcase image translateY "+b.media.transform);
+      fail(data.showcaseAll.length===8,"desktop showcase transform count "+data.showcaseAll.length);
+      data.showcaseAll.forEach((card,i)=>{
+        const want=expected.showcase.imageTransforms[i];
+        const tm=String(card.media.transform).match(/matrix\(([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+),\s*([-0-9.e]+)\)/);
+        fail(!!tm,"showcase image transform card "+(i+1)+" "+card.media.transform);
+        fail(near(Number(tm[1]),want.scale,.01)&&near(Number(tm[4]),want.scale,.01),"showcase image scale card "+(i+1)+" "+card.media.transform);
+        fail(near(Number(tm[5]),want.x,.25),"showcase image translateX card "+(i+1)+" "+card.media.transform);
+        fail(near(Number(tm[6]),want.y,.25),"showcase image translateY card "+(i+1)+" "+card.media.transform);
+      });
       fail(b.title.fontSize===expected.showcase.titleSize,"showcase title size "+b.title.fontSize);
       fail(b.price.fontSize===expected.showcase.priceSize,"showcase price size "+b.price.fontSize);
     }else{
