@@ -216,7 +216,8 @@ jobs:
           html=(r/"index.html").read_text(encoding="utf-8")
           robots=(r/"robots.txt").read_text(encoding="utf-8")
           assert 'name="description"' in html
-          assert 'property="og:image"' in html
+          assert 'property="og:image" content="https://blackgold-beauty-finds-br.pages.dev/assets/authority-desktop-approved.png"' in html
+          assert 'name="twitter:image" content="https://blackgold-beauty-finds-br.pages.dev/assets/authority-desktop-approved.png"' in html
           assert 'name="twitter:card"' in html
           assert 'fetchpriority="high"' in html
           assert "Disallow: /admin.html" in robots
