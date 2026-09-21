@@ -156,7 +156,14 @@ try {
   if (detailResponse.status !== 200 || !detailHtml.includes(product.title) || !detailHtml.includes('application/ld+json') || !detailHtml.includes('placement=detail') || !detailHtml.includes('"@type":"Product"')) {
     throw new Error("indexable product detail page failed");
   }
+  const detailNonce=(detailHtml.match(/<script nonce="([a-f0-9]+)" type="application\/ld\+json">/)||[])[1]||"";
+  const detailCsp=detailResponse.headers.get("content-security-policy")||"";
+  const detailPermissions=detailResponse.headers.get("permissions-policy")||"";
+  if (!detailNonce || !detailCsp.includes("script-src 'nonce-"+detailNonce+"'") || !detailCsp.includes("frame-ancestors 'none'") || detailResponse.headers.get("x-frame-options")!=="DENY" || !detailPermissions.includes("camera=()") || !detailPermissions.includes("payment=()")) {
+    throw new Error("dynamic product security headers failed "+JSON.stringify({detailNonce,detailCsp,detailPermissions}));
+  }
   result.productDetailSeo = "PASS";
+  result.productDetailSecurity = "PASS";
 
   let sitemapResponse = await fetch(base + "/sitemap.xml?gate=published", { cache: "no-store" });
   let sitemapText = await sitemapResponse.text();
@@ -350,6 +357,7 @@ try {
   if (r.data.total !== 0) throw new Error("draft product leaked to public API");
   detailResponse = await fetch(base + "/achado/" + encodeURIComponent(slug), { cache: "no-store" });
   if (detailResponse.status !== 404) throw new Error("draft product detail page must be hidden");
+  if (!String(detailResponse.headers.get("x-robots-tag")||"").includes("noindex")) throw new Error("hidden product 404 must be noindex");
   sitemapResponse = await fetch(base + "/sitemap.xml?gate=draft", { cache: "no-store" });
   sitemapText = await sitemapResponse.text();
   if (sitemapText.includes("/achado/" + slug)) throw new Error("draft product leaked into sitemap");

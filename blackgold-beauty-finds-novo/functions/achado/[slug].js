@@ -1,11 +1,36 @@
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const jsonLd=v=>JSON.stringify(v).replace(/</g,"\\u003c");
 const baseOf=context=>String(context.env.PUBLIC_BASE_URL||new URL(context.request.url).origin).replace(/\/$/,"");
+const permissionsPolicy="camera=(), microphone=(), geolocation=(), payment=()";
+const cspFor=nonce=>[
+  "default-src 'none'",
+  "base-uri 'none'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "form-action 'none'",
+  "style-src 'unsafe-inline'",
+  "img-src 'self' https: data:",
+  "font-src 'self'",
+  "connect-src 'none'",
+  nonce?"script-src 'nonce-"+nonce+"'":"script-src 'none'"
+].join("; ");
+const htmlSecurityHeaders=nonce=>({
+  "x-content-type-options":"nosniff",
+  "x-frame-options":"DENY",
+  "referrer-policy":"strict-origin-when-cross-origin",
+  "permissions-policy":permissionsPolicy,
+  "content-security-policy":cspFor(nonce)
+});
 
 function notFound(){
   return new Response("<!doctype html><meta charset=utf-8><meta name=robots content=noindex><title>Achado não encontrado</title><h1>Achado não encontrado</h1>",{
     status:404,
-    headers:{"content-type":"text/html; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}
+    headers:{
+      "content-type":"text/html; charset=utf-8",
+      "cache-control":"no-store",
+      "x-robots-tag":"noindex, nofollow, noarchive",
+      ...htmlSecurityHeaders("")
+    }
   });
 }
 
@@ -20,7 +45,11 @@ export async function onRequestGet(context){
        FROM products WHERE slug=? AND status='published' LIMIT 1`
     ).bind(slug).first();
   }catch{
-    return new Response("Unavailable",{status:503,headers:{"cache-control":"no-store"}});
+    return new Response("Unavailable",{status:503,headers:{
+      "cache-control":"no-store",
+      "x-robots-tag":"noindex, nofollow, noarchive",
+      "x-content-type-options":"nosniff"
+    }});
   }
   if(!row)return notFound();
 
@@ -43,8 +72,9 @@ export async function onRequestGet(context){
     ...(row.category?{category:String(row.category)}:{}),
     ...(price!=null?{offers:{"@type":"Offer",url:outbound,price,priceCurrency:currency}}:{})
   };
+  const nonce=crypto.randomUUID().replaceAll("-","");
   const structured=price!=null
-    ?`<script type="application/ld+json">${jsonLd(product)}</script>`
+    ?`<script nonce="${nonce}" type="application/ld+json">${jsonLd(product)}</script>`
     :"";
   const priceText=price==null?"":new Intl.NumberFormat("pt-BR",{style:"currency",currency}).format(price);
   const updated=String(row.updated_at||"");
@@ -100,8 +130,7 @@ ${updated?`<small class="updated">Atualizado em ${esc(updated.slice(0,10))}</sma
     headers:{
       "content-type":"text/html; charset=utf-8",
       "cache-control":"public, max-age=0, s-maxage=300, stale-while-revalidate=600",
-      "x-content-type-options":"nosniff",
-      "referrer-policy":"strict-origin-when-cross-origin"
+      ...htmlSecurityHeaders(nonce)
     }
   });
 }
