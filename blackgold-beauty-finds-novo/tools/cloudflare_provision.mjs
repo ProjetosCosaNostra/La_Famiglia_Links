@@ -50,23 +50,36 @@ async function cf(method,url,body){
 
 const pages=await cf("GET",api+"/pages/projects/"+encodeURIComponent(project));
 receipt.resources.pages={status:pages.status,exists:Boolean(pages.ok&&pages.data?.success&&pages.data?.result?.name===project)};
-if(!receipt.resources.pages.exists)await fail("Target Pages project "+project+" is not available.",5);
+if(!receipt.resources.pages.exists){
+  if(planOnly)receipt.blockers.push("Target Pages project "+project+" is not available.");
+  else await fail("Target Pages project "+project+" is not available.",5);
+}
 
 const d1List=await cf("GET",api+"/d1/database?per_page=100");
-if(!d1List.ok||!d1List.data?.success)await fail("D1 list failed. Token requires D1 Read; execute also requires D1 Write.",6);
-let db=(Array.isArray(d1List.data.result)?d1List.data.result:[]).find(x=>x?.name===d1Name)||null;
-receipt.resources.d1={status:d1List.status,exists:Boolean(db),databaseId:db?.uuid||null};
+let db=null;
+if(!d1List.ok||!d1List.data?.success){
+  receipt.resources.d1={status:d1List.status,exists:null,databaseId:null};
+  if(planOnly)receipt.blockers.push("D1 list failed. Token requires D1 Read; execute also requires D1 Write.");
+  else await fail("D1 list failed. Token requires D1 Read; execute also requires D1 Write.",6);
+}else{
+  db=(Array.isArray(d1List.data.result)?d1List.data.result:[]).find(x=>x?.name===d1Name)||null;
+  receipt.resources.d1={status:d1List.status,exists:Boolean(db),databaseId:db?.uuid||null};
+}
 
 const r2List=await cf("GET",api+"/r2/buckets?per_page=100");
+let existingBuckets=[];
 if(!r2List.ok||!r2List.data?.success){
-  await fail("R2 list failed. Token requires Workers R2 Storage Read; execute requires Workers R2 Storage Write.",7);
+  receipt.resources.r2=r2Names.map(name=>({name,exists:null,status:r2List.status}));
+  if(planOnly)receipt.blockers.push("R2 list failed. Token requires Workers R2 Storage Read; execute requires Workers R2 Storage Write.");
+  else await fail("R2 list failed. Token requires Workers R2 Storage Read; execute requires Workers R2 Storage Write.",7);
+}else{
+  existingBuckets=Array.isArray(r2List.data?.result?.buckets)?r2List.data.result.buckets:[];
+  receipt.resources.r2=r2Names.map(name=>({name,exists:existingBuckets.some(x=>x?.name===name),status:r2List.status}));
 }
-const existingBuckets=Array.isArray(r2List.data?.result?.buckets)?r2List.data.result.buckets:[];
-receipt.resources.r2=r2Names.map(name=>({name,exists:existingBuckets.some(x=>x?.name===name)}));
 
 if(planOnly){
-  if(!db)receipt.blockers.push("D1 database will need creation.");
-  for(const b of receipt.resources.r2)if(!b.exists)receipt.blockers.push("R2 bucket will need creation: "+b.name);
+  if(receipt.resources.d1?.exists===false)receipt.blockers.push("D1 database will need creation.");
+  for(const b of receipt.resources.r2)if(b.exists===false)receipt.blockers.push("R2 bucket will need creation: "+b.name);
   await writeReceipt();
   console.log(JSON.stringify(receipt,null,2));
   console.log("BLACKGOLD_CLOUDFLARE_PROVISION=PLAN_ONLY");
