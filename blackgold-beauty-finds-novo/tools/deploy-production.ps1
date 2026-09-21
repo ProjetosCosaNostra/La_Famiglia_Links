@@ -32,6 +32,10 @@ try {
     throw ("BaseUrl does not match PUBLIC_BASE_URL. Requested: "+$requestedBase+" Configured: "+$configuredBase)
   }
 
+  node .\tools\build-production.mjs
+  if($LASTEXITCODE -ne 0){throw 'Production bundle build failed.'}
+  if(-not (Test-Path -LiteralPath (Join-Path $Root 'dist\index.html'))){throw 'Production bundle is missing dist/index.html.'}
+
   $stamp=Get-Date -Format 'yyyyMMdd-HHmmss'
   $backupRoot=Join-Path $Root 'backups'
   New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
@@ -49,7 +53,7 @@ try {
     return
   }
 
-  & npx wrangler pages deploy . --project-name $ProjectName --branch $ProductionBranch --commit-hash $head --commit-message ("BlackGold approved production "+$head)
+  & npx wrangler pages deploy dist --project-name $ProjectName --branch $ProductionBranch --commit-hash $head --commit-message ("BlackGold approved production "+$head)
   if($LASTEXITCODE -ne 0){throw 'Cloudflare Pages production deployment failed.'}
 
   $health=$null
@@ -82,6 +86,7 @@ try {
     productionCsp='PASS'
     catalogTotal=[int]$catalog.total
     predeployBackup=$env:BLACKGOLD_BACKUP_DIR
+    productionBundle=(Join-Path $Root '.release\production-bundle.json')
   }
   $receiptPath=Join-Path $backupRoot ("deploy-receipt-"+$stamp+".json")
   $receipt | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $receiptPath -Encoding UTF8
