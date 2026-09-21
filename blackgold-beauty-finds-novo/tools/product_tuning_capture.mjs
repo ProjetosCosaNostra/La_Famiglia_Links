@@ -38,27 +38,23 @@ try{
   await page.screenshot({path:path.join(out,"sel-current.png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
   selection.push({id:"sel-current",kind:"baseline"});
 
-  const baseCss=
-    ".showcase-live .product{height:146px!important}"+
-    ".showcase-live .media{height:100px!important;flex:0 0 100px!important}"+
-    ".showcase-live .media img{transform:scale(.9)!important;transform-origin:center center!important}";
-  await snap("show-best-v5",{kind:"baseline-v5",cardH:146,mediaH:100,scale:0.9},baseCss);
-
-  for(const alpha of [0.3,0.45,0.55,0.65,0.75,0.82,0.9,1]){
-    for(const mediaBg of ["#fbf3e8","#f9efe4","#f8eee2","#f6eadc"]){
-      const id="show-tone-a"+String(alpha).replace(".","p")+"-m"+mediaBg.slice(1);
-      const css=
-        ".showcase-live .product{height:146px!important;background:rgba(255,255,255,"+alpha+")!important}"+
-        ".showcase-live .media{height:100px!important;flex:0 0 100px!important;background:"+mediaBg+"!important}"+
-        ".showcase-live .media img{transform:scale(.9)!important;transform-origin:center center!important}";
-      await snap(id,{kind:"tone",cardH:146,mediaH:100,scale:0.9,alpha,mediaBg},css);
+  for(const alpha of [0.2,0.25,0.3,0.35,0.4]){
+    for(const mediaH of [98,100,102]){
+      for(const scale of [0.85,0.9,0.95,1]){
+        const id="show-a"+String(alpha).replace(".","p")+"-h"+mediaH+"-s"+String(scale).replace(".","p");
+        const css=
+          ".showcase-live .product{height:146px!important;background:rgba(255,255,255,"+alpha+")!important}"+
+          ".showcase-live .media{height:"+mediaH+"px!important;flex:0 0 "+mediaH+"px!important;background:#f8eee2!important}"+
+          ".showcase-live .media img{transform:scale("+scale+")!important;transform-origin:center center!important}";
+        await snap(id,{kind:"fine",cardH:146,alpha,mediaH,scale,mediaBg:"#f8eee2"},css);
+      }
     }
   }
 
   await page.evaluate(()=>document.getElementById("__tune_style")?.remove());
   await fs.writeFile(path.join(out,"variants.json"),JSON.stringify({selection,showcase},null,2));
   console.log(JSON.stringify({selection:selection.length,showcase:showcase.length},null,2));
-  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V6=PASS");
+  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V7=PASS");
 }finally{
   await browser.close();
 }
