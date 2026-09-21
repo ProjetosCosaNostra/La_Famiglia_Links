@@ -223,7 +223,7 @@ jobs:
           assert "Disallow: /api/admin/" in robots
           assert "Disallow: /api/health" in robots
           assert "\\n" not in robots and "\\r" not in robots
-          assert "Sitemap: https://blackgold-beauty-finds-novo.pages.dev/sitemap.xml" in robots
+          assert "Sitemap: https://blackgold-beauty-finds-br.pages.dev/sitemap.xml" in robots
           print("BLACKGOLD_SEARCH_METADATA_PRIVACY=PASS")
           PY
 
