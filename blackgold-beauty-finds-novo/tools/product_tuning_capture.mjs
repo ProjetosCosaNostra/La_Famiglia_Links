@@ -125,21 +125,16 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-40,-39,-38,-37,-36]){
-    for(const imgY of [-21,-20,-19,-18,-17]){
-      for(const scale of [1.32,1.33,1.34,1.35,1.36]){
-        const top=698,height=144,alpha=.20;
-        const id=`show-extra-micro-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
-        await inject(`
-          .showcase-live .media img.bg-extra-wide{
-            transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
-            transform-origin:center center!important;
-          }
-        `);
-        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-micro"});
+  for(const mediaHeight of [96,100,104,108,112,116,120]){
+    const top=698,height=144,alpha=.20;
+    const id=`show-media-h${mediaHeight}`;
+    await inject(`
+      .showcase-live .media{
+        height:${mediaHeight}px!important;
       }
-    }
+    `);
+    await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+    showcase.push({id,top,height,mediaHeight,alpha,profile:"showcase-media-height"});
   }
 
   await fs.writeFile(path.join(out,"variants.json"),JSON.stringify({selection,showcase},null,2));
