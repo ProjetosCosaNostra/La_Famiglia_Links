@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-21T12:43:48Z",
-  "total_items": 5,
+  "updated_at": "2026-09-21T22:06:34Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 6
     },
-    "high_priority": 5
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-09-21T12:38:09Z",
+      "happened_at": "2026-09-21T21:55:04Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (25x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (26x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T12:38:09Z",
+      "happened_at": "2026-09-21T21:55:04Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (28x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (29x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T12:38:09Z",
+      "happened_at": "2026-09-21T21:55:04Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (47x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (48x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T12:38:09Z",
+      "happened_at": "2026-09-21T21:55:04Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -163,7 +163,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (141x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (142x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +192,52 @@
       ]
     },
     {
-      "happened_at": "2026-09-21T12:38:09Z",
+      "happened_at": "2026-09-21T21:55:04Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 200,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/200",
+      "issue_title": "Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo",
+      "sku": "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo",
+      "title": "Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo",
+      "id_busca": "5J5PKG-XL1P",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (3x /lists, 1x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2mbKAww",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2mbKAww",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNEifO1Ey%2FWU3v49IoJl2J%2FULKMoQYjHHSqlgcGb7lfJat8M5wTaAe%2B%2F49Ld6u37ATAsl0tq4EZd5idbdnX1oXqEpOOlOm3nm3cyScwGy%2FOjfhL5uXYszYGMnGxUSYiw6o3t2WL3lFn9J3uXQFHZ2Z8S7LhpFnhb%2BrSPpJ91oHk8fYu3kxOInmwX%2FTo2oiPbF66Beu0o%2FReCorTN4A%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XL1P",
+      "short_url": "https://meli.la/2mbKAww",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNEifO1Ey%2FWU3v49IoJl2J%2FULKMoQYjHHSqlgcGb7lfJat8M5wTaAe%2B%2F49Ld6u37ATAsl0tq4EZd5idbdnX1oXqEpOOlOm3nm3cyScwGy%2FOjfhL5uXYszYGMnGxUSYiw6o3t2WL3lFn9J3uXQFHZ2Z8S7LhpFnhb%2BrSPpJ91oHk8fYu3kxOInmwX%2FTo2oiPbF66Beu0o%2FReCorTN4A%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Cabelo",
+        "Cuidados com o Cabelo",
+        "Escova Massageadora",
+        "LED Terapêutico",
+        "4 em 1",
+        "Couro Cabeludo"
+      ]
+    },
+    {
+      "happened_at": "2026-09-21T21:55:04Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +253,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
