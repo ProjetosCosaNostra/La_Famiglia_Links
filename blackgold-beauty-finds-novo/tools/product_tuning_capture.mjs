@@ -17,44 +17,74 @@ try{
   await page.waitForFunction(()=>document.body.dataset.catalogCount==="11",{timeout:10000});
   await page.evaluate(async()=>{await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r})))}); 
 
-  const original=await page.evaluate(()=>({
-    selection:document.querySelector(".selection-live .media img")?.getAttribute("style")||"",
-    showcase:document.querySelector(".showcase-live .media img")?.getAttribute("style")||""
-  }));
+  async function applyStyle(css){
+    await page.evaluate(cssText=>{
+      document.getElementById("__tune_style")?.remove();
+      const s=document.createElement("style");
+      s.id="__tune_style";
+      s.textContent=cssText;
+      document.head.appendChild(s);
+    },css);
+  }
 
   const selection=[];
+  // Stage A: retain the already-proven image transform search.
   for(const y of [-4,0,4,8]){
     for(const scale of [0.96,1,1.04,1.08]){
-      const id=`sel-y${y}-s${String(scale).replace(".","p")}`;
-      await page.$eval("#__tune_style",el=>el.remove()).catch(()=>{});
-      await page.addStyleTag({content:`
+      const id=`sel-img-y${y}-s${String(scale).replace(".","p")}`;
+      await applyStyle(`
         .selection-live .media img{transform:translateY(${y}px) scale(${scale})!important;transform-origin:center center!important}
-      `,id:"__tune_style"}).catch(async()=>{
-        await page.evaluate(css=>{const s=document.createElement("style");s.id="__tune_style";s.textContent=css;document.head.appendChild(s)},`
-          .selection-live .media img{transform:translateY(${y}px) scale(${scale})!important;transform-origin:center center!important}
-        `);
-      });
+      `);
       await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
-      selection.push({id,y,scale});
+      selection.push({id,kind:"image",y,scale});
+    }
+  }
+
+  // Stage B: measure the media/copy split and copy inset against the approved cards.
+  // Current implementation is 50/50 with 12px copy inset; variants are diagnostic only.
+  for(const mediaPct of [47,48,49,50]){
+    for(const copyLeft of [8,10,12]){
+      const id=`sel-layout-m${mediaPct}-p${copyLeft}`;
+      await applyStyle(`
+        .selection-live .product{grid-template-columns:${mediaPct}% ${100-mediaPct}%!important}
+        .selection-live .copy{padding-left:${copyLeft}px!important}
+      `);
+      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
+      selection.push({id,kind:"layout",mediaPct,copyLeft});
     }
   }
 
   const showcase=[];
+  // Stage A: preserve the existing flexible-media search.
   for(const h of [90,96,102,108]){
     for(const scale of [0.9,1,1.1,1.2,1.3]){
-      const id=`show-h${h}-s${String(scale).replace(".","p")}`;
-      await page.$eval("#__tune_style",el=>el.remove()).catch(()=>{});
-      await page.evaluate(css=>{const s=document.createElement("style");s.id="__tune_style";s.textContent=css;document.head.appendChild(s)},`
+      const id=`show-flex-h${h}-s${String(scale).replace(".","p")}`;
+      await applyStyle(`
         .showcase-live .media{height:${h}px!important}
         .showcase-live .media img{transform:scale(${scale})!important;transform-origin:center center!important}
       `);
       await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-      showcase.push({id,h,scale});
+      showcase.push({id,kind:"flex",h,scale});
     }
   }
+
+  // Stage B: test fixed media footprints. This avoids flex shrink hiding the true approved height.
+  for(const h of [90,94,98,102]){
+    for(const scale of [0.9,0.95,1,1.05]){
+      const id=`show-fixed-h${h}-s${String(scale).replace(".","p")}`;
+      await applyStyle(`
+        .showcase-live .media{height:${h}px!important;flex:0 0 ${h}px!important}
+        .showcase-live .media img{transform:scale(${scale})!important;transform-origin:center center!important}
+      `);
+      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+      showcase.push({id,kind:"fixed",h,scale});
+    }
+  }
+
+  await page.evaluate(()=>document.getElementById("__tune_style")?.remove());
   await fs.writeFile(path.join(out,"variants.json"),JSON.stringify({selection,showcase},null,2));
   console.log(JSON.stringify({selection:selection.length,showcase:showcase.length},null,2));
-  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE=PASS");
+  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V2=PASS");
 }finally{
   await browser.close();
 }
