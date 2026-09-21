@@ -21,6 +21,7 @@ const manifest=await readJson("assets/authority-zero-manifest.json");
 const approval=await readJson("release-approval.json");
 const wrangler=await readText("wrangler.toml");
 const deployScript=await readText("tools/deploy-production.ps1");
+const buildScript=await readText("tools/build-production.mjs");
 const robots=await readText("robots.txt");
 const indexHtml=await readText("index.html");
 
@@ -73,6 +74,7 @@ if(!wrangler){
   if(wrangler.includes("\\n")||wrangler.includes("\\r"))defects.push("wrangler.toml contains escaped newline characters instead of real line breaks.");
   const baseMatch=wrangler.match(/PUBLIC_BASE_URL\s*=\s*"([^"]+)"/);
   if(!baseMatch||!/^https:\/\//.test(baseMatch[1]))defects.push("PUBLIC_BASE_URL HTTPS production origin is missing.");
+  if(!/pages_build_output_dir\s*=\s*"\.\/dist"/.test(wrangler))defects.push("Pages production output must remain ./dist.");
   if(/11111111-1111-4111-8111-111111111111/.test(wrangler))blockers.push("D1 production database id is still a placeholder.");
   if(/local-only placeholder/i.test(wrangler))blockers.push("wrangler.toml is still marked local-only.");
   if(baseMatch){
@@ -92,13 +94,22 @@ if(!/class="authority-picture"[\s\S]*fetchpriority="high"/.test(indexHtml)){
   defects.push("approved authority/LCP image is not fetchpriority=high.");
 }
 
+if(!buildScript){
+  defects.push("production bundle builder missing.");
+}else{
+  for(const marker of ["preview-guard.json","release-approval","wrangler.toml","authority-zero","tools\\/","database\\/","functions\\/"]){
+    if(!buildScript.includes(marker))defects.push("production bundle builder is missing isolation rule: "+marker);
+  }
+}
+
 if(!deployScript){
   defects.push("production deploy script missing.");
 }else{
   if(!/\[switch\]\$Execute/.test(deployScript))defects.push("production deploy script lacks explicit -Execute gate.");
   if(!/release_preflight\.mjs/.test(deployScript))defects.push("production deploy script does not run release preflight.");
   if(!/catalog_backup\.mjs/.test(deployScript))defects.push("production deploy script lacks mandatory pre-deploy backup.");
-  if(!/wrangler pages deploy/.test(deployScript))defects.push("production deploy script has no real Cloudflare Pages deploy command.");
+  if(!/build-production\.mjs/.test(deployScript))defects.push("production deploy does not build isolated static bundle.");
+  if(!/wrangler pages deploy dist/.test(deployScript))defects.push("production deploy must publish dist instead of repository root.");
   if(!/--commit-hash/.test(deployScript))defects.push("production deploy is not pinned to the approved commit.");
   if(!/BLACKGOLD_PRODUCTION_DEPLOY_RECEIPT_V1/.test(deployScript))defects.push("production deploy receipt contract missing.");
   if(!/AdminToken must contain between 32 and 512/.test(deployScript))defects.push("production deploy does not reject weak admin tokens before backup/deploy.");
