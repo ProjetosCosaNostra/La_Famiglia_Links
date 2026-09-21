@@ -84,6 +84,7 @@ try{
       img.classList.toggle("bg-extra-wide",ratio>=1.75);
       img.classList.toggle("bg-medium-wide",ratio>=1.60&&ratio<1.70);
       img.classList.toggle("bg-twin-wide",ratio>=1.65&&ratio<1.66);
+      img.classList.toggle("bg-mid-narrow",ratio>=1.50&&ratio<1.60);
       img.classList.toggle("bg-compact-wide",ratio>0&&ratio<1.50);
     }
   });
@@ -106,19 +107,19 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-42,-40,-38,-36,-34]){
-    for(const imgY of [-21,-19,-17,-15,-13]){
-      for(const scale of [1.30,1.32,1.34,1.36,1.38]){
+  for(const imgX of [-30,-20,-10,0,10]){
+    for(const imgY of [-30,-20,-10,0,10,20]){
+      for(const scale of [.85,.95,1.05,1.15]){
         const top=698,height=144,alpha=.20;
-        const id=`show-extra-refined-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-mid-narrow-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .media img.bg-extra-wide{
+          .showcase-live .media img.bg-mid-narrow{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
             transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-deeper"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"mid-narrow-only"});
       }
     }
   }
