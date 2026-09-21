@@ -123,7 +123,7 @@ try{
   await page.evaluate(()=>document.querySelector(".all-showcase").click());
   await page.waitForFunction(()=>document.querySelector("#catalogDialog")?.open===true,{timeout:5000});
   if((await page.$eval("#catalogGrid",el=>el.children.length))!==2)throw new Error("catalog dialog must list both products");
-  const catalogImageLoading=await page.$eval("#catalogGrid .catalog-card img",imgs=>imgs.map(img=>({loading:img.loading,decoding:img.decoding})));
+  const catalogImageLoading=await page.evaluate(()=>[...document.querySelectorAll("#catalogGrid .catalog-card img")].map(img=>({loading:img.loading,decoding:img.decoding})));
   if(!catalogImageLoading.length||catalogImageLoading.some(x=>x.loading!=="lazy"||x.decoding!=="async")){
     throw new Error("catalog images must be lazy/async "+JSON.stringify(catalogImageLoading));
   }
