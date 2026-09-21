@@ -14,7 +14,8 @@
     "test:storefront": "node tools/storefront_ui_flow.mjs",
     "release:check": "node tools/release_preflight.mjs",
     "release:expect-blocked": "node tools/release_preflight.mjs --expect-blocked",
-    "deploy:production": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./tools/deploy-production.ps1"
+    "deploy:production": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./tools/deploy-production.ps1",
+    "build:production": "node tools/build-production.mjs"
   },
   "devDependencies": {
     "puppeteer-core": "^24.16.0",
