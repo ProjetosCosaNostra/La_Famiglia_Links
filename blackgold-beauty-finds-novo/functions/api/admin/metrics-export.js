@@ -1,8 +1,4 @@
-function authorized(context){
-  const expected=String(context.env.ADMIN_PANEL_TOKEN||"").trim();
-  const supplied=(context.request.headers.get("authorization")||"").replace(/^Bearer\s+/i,"").trim();
-  return Boolean(expected&&supplied&&expected===supplied);
-}
+import {authorized} from "../../_lib/admin-auth.js";
 
 const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
 

@@ -1,12 +1,9 @@
+import {authorized} from "../../_lib/admin-auth.js";
+
 const json=(payload,status=200)=>new Response(JSON.stringify(payload),{
   status,
   headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}
 });
-function authorized(context){
-  const expected=String(context.env.ADMIN_PANEL_TOKEN||"").trim();
-  const supplied=(context.request.headers.get("authorization")||"").replace(/^Bearer\s+/i,"").trim();
-  return Boolean(expected&&supplied&&expected===supplied);
-}
 export async function onRequestGet(context){
   if(!authorized(context))return json({ok:false,code:"unauthorized"},401);
   try{
