@@ -30,7 +30,7 @@ const expected={
     padding:"5px",
     mediaBg:"rgb(251, 243, 232)",
     mediaRadius:"5px",
-    mediaHeight:100.328125,
+    mediaHeight:98.96875,
     titleSize:"9px",
     priceSize:"9px"
   }
