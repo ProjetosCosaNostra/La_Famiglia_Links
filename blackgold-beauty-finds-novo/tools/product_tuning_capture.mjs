@@ -86,7 +86,9 @@ try{
       const coverage=Number(p.coverage);
       const widthRatio=Number(p.contentBox?.widthRatio)||0;
       const sparseMedium=ratio>=1.60&&ratio<1.70&&Number.isFinite(coverage)&&coverage>=.20&&coverage<=.31&&widthRatio>=.93;
+      const sparseCompact=ratio>0&&ratio<1.50&&Number.isFinite(coverage)&&coverage>=.18&&coverage<=.30&&widthRatio>=.75&&widthRatio<=.95;
       img.classList.toggle("bg-sparse-medium",sparseMedium);
+      img.classList.toggle("bg-sparse-compact",sparseCompact);
     });
   },imageProfiles);
   await page.evaluate(()=>{
@@ -119,19 +121,19 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-30,-20,-10,0,10]){
-    for(const imgY of [-30,-20,-10,0,10,20]){
-      for(const scale of [.75,.85,.95,1.05,1.15,1.25]){
+  for(const imgX of [-30,-25,-20,-15,-10]){
+    for(const imgY of [-10,0,10,20]){
+      for(const scale of [.75,.85,.95,1.05,1.15]){
         const top=698,height=144,alpha=.20;
-        const id=`show-sparse-medium-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-sparse-compact-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .media img.bg-sparse-medium{
+          .showcase-live .media img.bg-sparse-compact{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
             transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-medium-only"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-compact-only"});
       }
     }
   }
