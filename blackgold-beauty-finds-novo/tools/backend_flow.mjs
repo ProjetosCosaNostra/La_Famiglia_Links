@@ -180,7 +180,7 @@ try {
   }
   const robotsResponse = await fetch(base + "/robots.txt?gate=published", { cache: "no-store" });
   const robotsText = await robotsResponse.text();
-  if (!robotsResponse.ok || !robotsText.includes("Sitemap: https://blackgold-beauty-finds-novo.pages.dev/sitemap.xml")) {
+  if (!robotsResponse.ok || !robotsText.includes("Sitemap: https://blackgold-beauty-finds-br.pages.dev/sitemap.xml")) {
     throw new Error("robots sitemap declaration missing");
   }
   result.dynamicSitemap = "PASS";
