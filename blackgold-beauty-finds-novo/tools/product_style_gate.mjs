@@ -34,6 +34,8 @@ const expected={
     titleSize:"9px",
     titleHeight:16.015625,
     titleMarginTop:"7px",
+    titleWeight:"500",
+    titleLetterSpacing:"0.3px",
     priceSize:"10px"
   }
 };
@@ -68,7 +70,7 @@ try{
           display:s.display,borderColor:s.borderColor,borderRadius:s.borderRadius,background:s.backgroundColor,
           padding:s.padding,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,
           media:media?{background:style(media).backgroundColor,borderRadius:style(media).borderRadius,width:media.getBoundingClientRect().width,height:media.getBoundingClientRect().height,objectFit:media.querySelector("img")?style(media.querySelector("img")).objectFit:""}:null,
-          title:title?{fontSize:style(title).fontSize,fontFamily:style(title).fontFamily,height:title.getBoundingClientRect().height,marginTop:style(title).marginTop}:null,
+          title:title?{fontSize:style(title).fontSize,fontFamily:style(title).fontFamily,fontWeight:style(title).fontWeight,letterSpacing:style(title).letterSpacing,height:title.getBoundingClientRect().height,marginTop:style(title).marginTop}:null,
           price:price?{fontSize:style(price).fontSize}:null
         };
       };
@@ -118,6 +120,8 @@ try{
       fail(b.title.fontSize===expected.showcase.titleSize,"showcase title size "+b.title.fontSize);
       fail(near(b.title.height,expected.showcase.titleHeight,.35),"showcase title height "+b.title.height);
       fail(b.title.marginTop===expected.showcase.titleMarginTop,"showcase title margin "+b.title.marginTop);
+      fail(b.title.fontWeight===expected.showcase.titleWeight,"showcase title weight "+b.title.fontWeight);
+      fail(b.title.letterSpacing===expected.showcase.titleLetterSpacing,"showcase title letter spacing "+b.title.letterSpacing);
       fail(b.price.fontSize===expected.showcase.priceSize,"showcase price size "+b.price.fontSize);
       const wide=data.showcaseImages.filter(x=>x.extraWide);
       fail(wide.length===1,"showcase extra-wide profile count "+wide.length);
