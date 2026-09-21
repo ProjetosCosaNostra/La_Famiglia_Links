@@ -28,114 +28,60 @@ try{
   }
 
   const selection=[];
-  for(const mediaPct of [44,45,46,47,48]){
-    for(const copyLeft of [8,10,12,16,20]){
-      const id=`sel-layout-m${mediaPct}-p${copyLeft}`;
-      await applyStyle(`
-        .selection-live .product{grid-template-columns:${mediaPct}% ${100-mediaPct}%!important}
-        .selection-live .copy{padding-left:${copyLeft}px!important}
-      `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
-      selection.push({id,kind:"layout",mediaPct,copyLeft});
-    }
-  }
-
-  const selectionPresets=[
-    {
-      id:"sel-historical-v18-12",
-      css:`
-        .selection-live .product{grid-template-columns:48% 52%!important}
-        .selection-live .copy{padding:5px 7px 4px 20px!important}
-        .selection-live .product h3{font-size:14px!important;line-height:1.04!important}
-        .selection-live .meta{font-size:9px!important}
-        .selection-live .desc{font-size:10.5px!important;line-height:1.28!important;margin-top:6px!important;max-width:180px!important}
-        .selection-live .media img{transform:none!important;padding:0!important}
-        .selection-live .product:nth-child(1) .media img{padding:4px 7px!important}
-        .selection-live .product:nth-child(2) .media img{padding:8px 10px!important}
-        .selection-live .product:nth-child(3) .media img{padding:7px 10px!important}
-      `
-    },
-    {
-      id:"sel-historical-type-current-media",
-      css:`
-        .selection-live .product{grid-template-columns:48% 52%!important}
-        .selection-live .copy{padding:5px 7px 4px 20px!important}
-        .selection-live .product h3{font-size:14px!important;line-height:1.04!important}
-        .selection-live .meta{font-size:9px!important}
-        .selection-live .desc{font-size:10.5px!important;line-height:1.28!important;margin-top:6px!important;max-width:180px!important}
-      `
-    },
-    {
-      id:"sel-current-layout-historical-type",
-      css:`
-        .selection-live .product{grid-template-columns:47% 53%!important}
-        .selection-live .copy{padding:5px 7px 4px 10px!important}
-        .selection-live .product h3{font-size:14px!important;line-height:1.04!important}
-        .selection-live .meta{font-size:9px!important}
-        .selection-live .desc{font-size:10.5px!important;line-height:1.28!important;margin-top:6px!important;max-width:180px!important}
-      `
-    }
-  ];
-  for(const v of selectionPresets){
-    await applyStyle(v.css);
-    await page.screenshot({path:path.join(out,v.id+".png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
-    selection.push({id:v.id,kind:"preset"});
-  }
+  await applyStyle("");
+  await page.screenshot({path:path.join(out,"sel-current.png"),clip:{x:60,y:476,width:1328,height:157},captureBeyondViewport:false});
+  selection.push({id:"sel-current",kind:"baseline"});
 
   const showcase=[];
-  for(const h of [94,96,98,100]){
-    for(const scale of [0.88,0.9,0.92,0.95,1]){
-      const id=`show-fixed-h${h}-s${String(scale).replace(".","p")}`;
-      await applyStyle(`
-        .showcase-live .media{height:${h}px!important;flex:0 0 ${h}px!important}
-        .showcase-live .media img{padding:0!important;transform:scale(${scale})!important;transform-origin:center center!important}
+  async function snap(id,meta,css){
+    await applyStyle(css);
+    await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:678,width:1328,height:150},captureBeyondViewport:false});
+    showcase.push({id,...meta});
+  }
+
+  await snap("show-baseline",{kind:"baseline"},"");
+
+  // Geometry search against the full approved Vitrine product region (y=678..827).
+  for(const top of [678,682,686,690,694,698]){
+    for(const cardH of [138,142,144,146]){
+      const id=`show-geo-t${top}-h${cardH}`;
+      await snap(id,{kind:"geometry",top,cardH},`
+        .showcase-live{top:${top}px!important;height:150px!important}
+        .showcase-live .product{height:${cardH}px!important;align-self:start!important}
       `);
-      await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-      showcase.push({id,kind:"fixed",h,scale});
     }
   }
 
-  const showcasePresets=[
-    {
-      id:"show-historical-v18-12",
-      css:`
-        .showcase-live .product{height:145px!important}
-        .showcase-live .media{height:96px!important;flex:0 0 96px!important}
-        .showcase-live .media img{padding:3px 5px!important;transform:none!important}
-      `
-    },
-    {
-      id:"show-historical-v19-8",
-      css:`
-        .showcase-live .product{height:145px!important}
-        .showcase-live .media{height:96px!important;flex:0 0 96px!important}
-        .showcase-live .media img{padding:3px 5px!important;transform:none!important}
-        .showcase-live .product:nth-child(1) .media img,
-        .showcase-live .product:nth-child(3) .media img,
-        .showcase-live .product:nth-child(8) .media img{padding:0!important;transform:scale(1.055)!important}
-      `
-    },
-    {
-      id:"show-historical-media-only",
-      css:`
-        .showcase-live .media{height:96px!important;flex:0 0 96px!important}
-        .showcase-live .media img{padding:3px 5px!important;transform:none!important}
-        .showcase-live .product:nth-child(1) .media img,
-        .showcase-live .product:nth-child(3) .media img,
-        .showcase-live .product:nth-child(8) .media img{padding:0!important;transform:scale(1.055)!important}
-      `
+  // Tonal search. The approved mockup is warmer/darker than the current opaque #fffdf9 override.
+  for(const alpha of [0.55,0.65,0.75,0.82,0.9]){
+    for(const mediaBg of ["#fbf3e8","#f8eee2","#f7ecdf"]){
+      const tag=mediaBg.slice(1);
+      const id=`show-tone-a${String(alpha).replace(".","p")}-m${tag}`;
+      await snap(id,{kind:"tone",top:678,cardH:138,alpha,mediaBg},`
+        .showcase-live{top:678px!important;height:150px!important}
+        .showcase-live .product{height:138px!important;align-self:start!important;background:rgba(255,255,255,${alpha})!important}
+        .showcase-live .media{background:${mediaBg}!important}
+      `);
     }
-  ];
-  for(const v of showcasePresets){
-    await applyStyle(v.css);
-    await page.screenshot({path:path.join(out,v.id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-    showcase.push({id:v.id,kind:"preset"});
+  }
+
+  // Combined geometry + original historical translucent card treatment.
+  for(const top of [678,682,686]){
+    for(const cardH of [138,142]){
+      const id=`show-historic-t${top}-h${cardH}`;
+      await snap(id,{kind:"historic",top,cardH,alpha:0.82,mediaBg:"#fbf3e8"},`
+        .showcase-live{top:${top}px!important;height:150px!important}
+        .showcase-live .product{height:${cardH}px!important;align-self:start!important;background:rgba(255,255,255,.82)!important}
+        .showcase-live .media{background:#fbf3e8!important}
+        .showcase-live .media img{transform:scale(.9)!important}
+      `);
+    }
   }
 
   await page.evaluate(()=>document.getElementById("__tune_style")?.remove());
   await fs.writeFile(path.join(out,"variants.json"),JSON.stringify({selection,showcase},null,2));
   console.log(JSON.stringify({selection:selection.length,showcase:showcase.length},null,2));
-  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V3=PASS");
+  console.log("BLACKGOLD_PRODUCT_TUNING_CAPTURE_V4=PASS");
 }finally{
   await browser.close();
 }

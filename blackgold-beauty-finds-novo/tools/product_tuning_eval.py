@@ -13,13 +13,13 @@ variants=json.loads((root/"variants.json").read_text(encoding="utf-8"))
 authority=Image.open(a.authority).convert("RGB")
 zones={
   "selection":(60,476,1388,633),
-  "showcase":(60,698,1388,842)
+  "showcase":(60,678,1388,828)
 }
 def mae(x,y):
   d=ImageChops.difference(x,y)
   return sum(ImageStat.Stat(d).mean)/3/255
 
-report={"contract":"BLACKGOLD_PRODUCT_PARAMETER_TUNING_V1"}
+report={"contract":"BLACKGOLD_PRODUCT_PARAMETER_TUNING_V4","zones":zones}
 for kind in ["selection","showcase"]:
   target=authority.crop(zones[kind])
   rows=[]
@@ -27,6 +27,6 @@ for kind in ["selection","showcase"]:
     im=Image.open(root/(v["id"]+".png")).convert("RGB")
     rows.append({**v,"mae":mae(target,im)})
   rows.sort(key=lambda x:x["mae"])
-  report[kind]={"best":rows[0],"top5":rows[:5],"all":rows}
+  report[kind]={"best":rows[0],"top10":rows[:10],"all":rows}
 Path(a.report).write_text(json.dumps(report,indent=2),encoding="utf-8")
-print(json.dumps({"contract":report["contract"],"selection":report["selection"]["top5"],"showcase":report["showcase"]["top5"]},indent=2))
+print(json.dumps({"contract":report["contract"],"selection":report["selection"]["top10"],"showcase":report["showcase"]["top10"]},indent=2))
