@@ -432,13 +432,13 @@
     "escova-oval-secadora-taiff-easy-lilas-1200w": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-08",
+      "selection_count": 2,
+      "last_selected": "2026-09-21",
       "last_score": {
-        "total": 3.592138,
+        "total": 3.14832,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.619048,
         "quality": 0.615
       }
     },
@@ -471,26 +471,26 @@
     "mascara-para-dormir-gel-termico-rosa-laco": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-08",
+      "selection_count": 2,
+      "last_selected": "2026-09-21",
       "last_score": {
-        "total": 3.557017,
+        "total": 3.156078,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.619048,
         "quality": 0.615
       }
     },
     "toalha-demaquilante-reutilizavel-make-off-klass-vough": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-06",
+      "selection_count": 2,
+      "last_selected": "2026-09-21",
       "last_score": {
-        "total": 3.596612,
+        "total": 3.226011,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.714286,
         "quality": 0.615
       }
     },
@@ -561,6 +561,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-20T16:10:49Z",
-  "last_campaign_id": "bg-20260920"
+  "updated_at": "2026-09-21T18:13:11Z",
+  "last_campaign_id": "bg-20260921"
 }
