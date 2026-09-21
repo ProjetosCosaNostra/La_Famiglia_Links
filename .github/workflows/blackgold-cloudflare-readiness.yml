@@ -1,0 +1,137 @@
+name: BlackGold Beauty Finds - Cloudflare Readiness
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - blackgold-beauty-finds-novo-authority
+    paths:
+      - '.github/workflows/blackgold-cloudflare-readiness.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blackgold-cloudflare-readiness
+  cancel-in-progress: true
+
+env:
+  PROJECT_NAME: blackgold-beauty-finds-novo
+  D1_NAME: blackgold-beauty-finds-novo
+  R2_BUCKET: blackgold-beauty-finds-novo-media
+  R2_PREVIEW_BUCKET: blackgold-beauty-finds-novo-media-preview
+
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inspect Cloudflare readiness without writes
+        id: probe
+        shell: bash
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -u
+          mkdir -p .readiness
+
+          node <<'NODE'
+          const fs=require('fs');
+          const out={
+            contract:"BLACKGOLD_CLOUDFLARE_READINESS_V1",
+            checkedAt:new Date().toISOString(),
+            credentials:false,
+            pages:{status:"not_checked",exists:false},
+            d1:{status:"not_checked",exists:false,databaseId:null},
+            r2:{status:"not_checked",productionExists:false,previewExists:false},
+            writeActionsPerformed:false
+          };
+          fs.writeFileSync(".readiness/base.json",JSON.stringify(out,null,2));
+          NODE
+
+          if [ -z "${CF_TOKEN:-}" ] || [ -z "${CF_ACCOUNT:-}" ]; then
+            node <<'NODE'
+            const fs=require('fs');
+            const p=JSON.parse(fs.readFileSync(".readiness/base.json","utf8"));
+            p.credentials=false;
+            p.blockers=["GitHub secrets CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are unavailable."];
+            fs.writeFileSync(".readiness/cloudflare-readiness.json",JSON.stringify(p,null,2));
+            NODE
+            echo "credentials=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "credentials=true" >> "$GITHUB_OUTPUT"
+
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}"
+          auth=(-H "Authorization: Bearer ${CF_TOKEN}" -H "Content-Type: application/json")
+
+          pages_http=$(curl -sS -o .readiness/pages.json -w '%{http_code}' "${auth[@]}" "${api}/pages/projects/${PROJECT_NAME}" || true)
+          d1_http=$(curl -sS -o .readiness/d1.json -w '%{http_code}' "${auth[@]}" "${api}/d1/database?name=${D1_NAME}&per_page=100" || true)
+          r2_http=$(curl -sS -o .readiness/r2.json -w '%{http_code}' "${auth[@]}" "${api}/r2/buckets?per_page=100" || true)
+
+          PAGES_HTTP="$pages_http" D1_HTTP="$d1_http" R2_HTTP="$r2_http" node <<'NODE'
+          const fs=require('fs');
+          const p=JSON.parse(fs.readFileSync(".readiness/base.json","utf8"));
+          p.credentials=true;
+          const read=(file)=>{try{return JSON.parse(fs.readFileSync(file,"utf8"))}catch{return null}};
+          const pages=read(".readiness/pages.json");
+          const d1=read(".readiness/d1.json");
+          const r2=read(".readiness/r2.json");
+          const ph=Number(process.env.PAGES_HTTP||0);
+          const dh=Number(process.env.D1_HTTP||0);
+          const rh=Number(process.env.R2_HTTP||0);
+
+          p.pages.http=ph;
+          p.pages.status=ph===200&&pages?.success?"ok":(ph===404?"missing":"unavailable_or_forbidden");
+          p.pages.exists=Boolean(ph===200&&pages?.success&&pages?.result?.name===process.env.PROJECT_NAME);
+          p.pages.productionBranch=pages?.result?.production_branch||null;
+
+          const d1rows=Array.isArray(d1?.result)?d1.result:[];
+          const db=d1rows.find(x=>x?.name===process.env.D1_NAME)||null;
+          p.d1.http=dh;
+          p.d1.status=dh===200&&d1?.success?"ok":"unavailable_or_forbidden";
+          p.d1.exists=Boolean(db);
+          p.d1.databaseId=db?.uuid||null;
+
+          const buckets=Array.isArray(r2?.result?.buckets)?r2.result.buckets:[];
+          p.r2.http=rh;
+          p.r2.status=rh===200&&r2?.success?"ok":"unavailable_or_forbidden";
+          p.r2.productionExists=buckets.some(x=>x?.name===process.env.R2_BUCKET);
+          p.r2.previewExists=buckets.some(x=>x?.name===process.env.R2_PREVIEW_BUCKET);
+
+          p.blockers=[];
+          if(!p.pages.exists)p.blockers.push("Pages project blackgold-beauty-finds-novo is not confirmed.");
+          if(!p.d1.exists)p.blockers.push("D1 database blackgold-beauty-finds-novo is not confirmed.");
+          if(!p.r2.productionExists)p.blockers.push("R2 bucket blackgold-beauty-finds-novo-media is not confirmed.");
+          if(!p.r2.previewExists)p.blockers.push("R2 preview bucket blackgold-beauty-finds-novo-media-preview is not confirmed.");
+          if(p.pages.status==="unavailable_or_forbidden"||p.d1.status==="unavailable_or_forbidden"||p.r2.status==="unavailable_or_forbidden"){
+            p.blockers.push("Cloudflare API token may be missing read permissions for one or more required resources.");
+          }
+          fs.writeFileSync(".readiness/cloudflare-readiness.json",JSON.stringify(p,null,2));
+          NODE
+
+      - name: Publish readiness summary
+        if: always()
+        shell: bash
+        run: |
+          cat .readiness/cloudflare-readiness.json
+          {
+            echo "## BlackGold Beauty Finds - Cloudflare Readiness"
+            echo
+            cat .readiness/cloudflare-readiness.json
+            echo
+            echo "Probe is read-only. No Cloudflare resources were created, modified, or deployed."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload readiness receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blackgold-cloudflare-readiness
+          path: .readiness/cloudflare-readiness.json
+          if-no-files-found: error
+          retention-days: 14
