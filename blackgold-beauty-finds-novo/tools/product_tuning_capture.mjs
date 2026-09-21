@@ -87,8 +87,10 @@ try{
       const widthRatio=Number(p.contentBox?.widthRatio)||0;
       const sparseMedium=ratio>=1.60&&ratio<1.70&&Number.isFinite(coverage)&&coverage>=.20&&coverage<=.31&&widthRatio>=.93;
       const sparseCompact=ratio>0&&ratio<1.50&&Number.isFinite(coverage)&&coverage>=.18&&coverage<=.30&&widthRatio>=.75&&widthRatio<=.95;
+      const denseMedium=ratio>=1.60&&ratio<1.70&&Number.isFinite(coverage)&&coverage>=.31&&coverage<=.45&&widthRatio>=.75&&widthRatio<=.90;
       img.classList.toggle("bg-sparse-medium",sparseMedium);
       img.classList.toggle("bg-sparse-compact",sparseCompact);
+      img.classList.toggle("bg-dense-medium",denseMedium);
     });
   },imageProfiles);
   await page.evaluate(()=>{
@@ -121,19 +123,19 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-33,-30,-27,-24,-21]){
-    for(const imgY of [-15,-12,-10,-8,-5]){
-      for(const scale of [1.38,1.42,1.45,1.48,1.52]){
+  for(const imgX of [-30,-20,-10,0,10]){
+    for(const imgY of [-30,-20,-10,0,10]){
+      for(const scale of [.65,.75,.85,.95,1.05]){
         const top=698,height=144,alpha=.20;
-        const id=`show-extra-fullshoe-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-dense-medium-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .media img.bg-extra-wide{
+          .showcase-live .media img.bg-dense-medium{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
             transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-fullshoe"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"dense-medium-only"});
       }
     }
   }
