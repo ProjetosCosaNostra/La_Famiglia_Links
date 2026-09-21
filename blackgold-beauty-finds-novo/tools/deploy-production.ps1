@@ -2,7 +2,7 @@ param(
   [Parameter(Mandatory=$true)][ValidatePattern('^https://')][string]$BaseUrl,
   [Parameter(Mandatory=$true)][string]$AdminToken,
   [Parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][string]$ProductionBranch,
-  [string]$ProjectName='blackgold-beauty-finds-novo',
+  [string]$ProjectName='blackgold-beauty-finds-br',
   [switch]$Execute
 )
 
