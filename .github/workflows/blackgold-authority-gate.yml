@@ -39,8 +39,11 @@ jobs:
           found=[name for name in obsolete if (r/name).exists()]
           assert not found, "obsolete visual sources reintroduced: "+", ".join(found)
           verify=(r/"tools/verify.ps1").read_text(encoding="utf-8")
-          assert "assets\\authority-zero-desktop.png" in verify
-          assert "assets\\authority-zero-mobile.png" in verify
+          assert "assets\\authority-desktop-approved.png" in verify
+          assert "assets\\authority-mobile-v24.webp" in verify
+          assert "outside_catalog_gate.py" in verify
+          assert "assets\\authority-zero-desktop.png" not in verify
+          assert "assets\\authority-zero-mobile.png" not in verify
           assert "capture_visual.mjs" in verify
           assert "explicitViewportCapture" in verify
           assert (r/"tools/capture_visual.mjs").exists()
@@ -54,11 +57,22 @@ jobs:
           import hashlib,json
           r=Path("blackgold-beauty-finds-novo")
           m=json.loads((r/"assets/authority-zero-manifest.json").read_text())
+          assert m["contract"]=="BLACKGOLD_APPROVED_AUTHORITY_DYNAMIC_CATALOG_V3"
+          assert m["toleranceOutsideDynamicRegionsPixels"]==0
+          assert m["desktop"]["viewport"]==[1448,1086]
+          assert m["mobile"]["viewport"]==[390,1152]
+          assert m["desktop"]["approvedFile"]=="authority-desktop-approved.png"
+          assert m["mobile"]["approvedFile"]=="authority-mobile-v24.webp"
           assert m["desktop"]["approvedSha256"]=="5e3e6cef8f0f5e14bde52b5c9f0be9ae9c1d92fd771f3e424b9cf75fbb59f722"
-          assert m["mobile"]["approvedSha256"]=="afb0937f38d2c633cf7ebe40e4a789e8fc8b84bb746e28e0e6b1441779bca2ed"
-          assert hashlib.sha256((r/"assets/authority-zero-desktop.png").read_bytes()).hexdigest()==m["desktop"]["zeroSha256"]
-          assert hashlib.sha256((r/"assets/authority-zero-mobile.png").read_bytes()).hexdigest()==m["mobile"]["zeroSha256"]
-          print("BLACKGOLD_PINNED_AUTHORITY=PASS")
+          assert m["mobile"]["approvedSha256"]=="8c817a1bcf7641fddbf1a083ae9c1bf195186e65cf48d5cdb86ed64452de2a26"
+          from PIL import Image
+          for side in ("desktop","mobile"):
+              p=r/"assets"/m[side]["approvedFile"]
+              assert p.exists(), f"{side} approved authority missing: {p}"
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==m[side]["approvedSha256"], f"{side} approved authority hash mismatch"
+              with Image.open(p) as im:
+                  assert list(im.size)==m[side]["viewport"], f"{side} approved authority dimension mismatch"
+          print("BLACKGOLD_PINNED_AUTHORITY_V3=PASS")
           PY
 
       - name: Derive approved product geometry
