@@ -125,19 +125,25 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-22,-21,-20,-19,-18]){
-    for(const imgY of [-20,-19,-18,-17,-16]){
-      for(const scale of [1.06,1.07,1.08,1.09,1.10,1.11,1.12]){
-        const top=698,height=144,alpha=.20;
-        const id=`show-sparse-medium-fine-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
-        await inject(`
-          .showcase-live .media img.bg-sparse-medium{
-            transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
-            transform-origin:center center!important;
-          }
-        `);
-        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-medium-micro"});
+  for(const titleMargin of [5,6,7]){
+    for(const titleHeight of [14,16,18]){
+      for(const titleSize of [9,10]){
+        for(const priceSize of [10,11,12]){
+          const top=698,height=144,alpha=.20;
+          const id=`show-footer-m${titleMargin}-h${titleHeight}-ts${titleSize}-ps${priceSize}`;
+          await inject(`
+            .showcase-live .product h3{
+              height:${titleHeight}px!important;
+              margin:${titleMargin}px 0 0!important;
+              font-size:${titleSize}px!important;
+            }
+            .showcase-live .price{
+              font-size:${priceSize}px!important;
+            }
+          `);
+          await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+          showcase.push({id,top,height,titleMargin,titleHeight,titleSize,priceSize,alpha,profile:"showcase-footer"});
+        }
       }
     }
   }
