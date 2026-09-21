@@ -30,7 +30,7 @@ try{
   }
 
   const selection=[];
-  for(const top of [474,475,476,477,478]){
+  for(const top of [474,475,476]){
     for(const imgY of [-16,-14,-12]){
       for(const alpha of [.10,.20,.30]){
         const id=`sel-top${top}-iy${imgY}-a${String(alpha).replace(".","_")}`;
@@ -47,20 +47,19 @@ try{
   }
 
   const showcase=[];
-  for(const top of [696,697,698,699,700]){
-    for(const height of [142,144,146]){
-      for(const imgY of [-22,-20,-18]){
-        for(const alpha of [.10,.20,.30]){
-          const id=`show-top${top}-h${height}-iy${imgY}-a${String(alpha).replace(".","_")}`;
-          await inject(`
-            .showcase-live{top:${pct(top)}!important;height:${pct(height)}!important}
-            .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
-            .showcase-live .media{height:96.234375px!important;background:#fbf3e8!important}
-            .showcase-live .media img{transform:translate(-20px,${imgY}px) scale(1.05)!important;transform-origin:center center!important}
-          `);
-          await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-          showcase.push({id,top,height,imgX:-20,imgY,scale:1.05,alpha});
-        }
+  for(const imgX of [-24,-22,-20,-18,-16]){
+    for(const imgY of [-24,-22,-20,-18,-16]){
+      for(const alpha of [.10,.20,.30]){
+        const top=698,height=144,scale=1.05;
+        const id=`show-x${imgX}-iy${imgY}-a${String(alpha).replace(".","_")}`;
+        await inject(`
+          .showcase-live{top:${pct(top)}!important;height:${pct(height)}!important}
+          .showcase-live .product{background:rgba(255,255,255,${alpha})!important}
+          .showcase-live .media{height:96.234375px!important;background:#fbf3e8!important}
+          .showcase-live .media img{transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;transform-origin:center center!important}
+        `);
+        await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha});
       }
     }
   }
