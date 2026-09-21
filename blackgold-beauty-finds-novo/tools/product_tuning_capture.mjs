@@ -121,19 +121,19 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-50,-45,-40,-35,-30]){
-    for(const imgY of [-25,-20,-15,-10,-5]){
-      for(const scale of [.85,.90,.95,1.00,1.05]){
+  for(const imgX of [-33,-30,-27,-24,-21]){
+    for(const imgY of [-15,-12,-10,-8,-5]){
+      for(const scale of [1.38,1.42,1.45,1.48,1.52]){
         const top=698,height=144,alpha=.20;
-        const id=`show-sparse-compact-silhouette-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-extra-fullshoe-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .media img.bg-sparse-compact{
+          .showcase-live .media img.bg-extra-wide{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
             transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-compact-silhouette"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-fullshoe"});
       }
     }
   }
