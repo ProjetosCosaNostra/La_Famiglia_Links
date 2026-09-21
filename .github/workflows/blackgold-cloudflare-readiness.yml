@@ -7,6 +7,8 @@ on:
       - blackgold-beauty-finds-novo-authority
     paths:
       - '.github/workflows/blackgold-cloudflare-readiness.yml'
+      - '.github/workflows/blackgold-cloudflare-provision.yml'
+      - 'blackgold-beauty-finds-novo/tools/cloudflare_provision.mjs'
 
 permissions:
   contents: read
@@ -130,6 +132,34 @@ jobs:
           fs.writeFileSync(".readiness/cloudflare-readiness.json",JSON.stringify(p,null,2));
           NODE
 
+      - name: Audit provision workflow safety
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path(".github/workflows/blackgold-cloudflare-provision.yml")
+          text=p.read_text(encoding="utf-8")
+          assert "workflow_dispatch:" in text
+          assert "\n  push:" not in text
+          assert "PROVISION_BLACKGOLD_BEAUTY_INFRA" in text
+          assert "pages deploy" not in text.lower()
+          assert "contents: write" in text
+          print("BLACKGOLD_PROVISION_WORKFLOW_SAFETY=PASS")
+          PY
+
+      - name: Execute provisioner in plan-only mode
+        working-directory: blackgold-beauty-finds-novo
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          node tools/cloudflare_provision.mjs --plan
+          test -s .provision/cloudflare-provision.json
+          grep -q '"mode": "plan"' .provision/cloudflare-provision.json
+          grep -q '"writesAttempted": false' .provision/cloudflare-provision.json
+          echo "BLACKGOLD_PROVISION_PLAN=PASS"
+
       - name: Publish readiness summary
         if: always()
         shell: bash
@@ -148,6 +178,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: blackgold-cloudflare-readiness
-          path: .readiness/cloudflare-readiness.json
+          path: |
+            .readiness/cloudflare-readiness.json
+            blackgold-beauty-finds-novo/.provision/cloudflare-provision.json
           if-no-files-found: error
           retention-days: 14
