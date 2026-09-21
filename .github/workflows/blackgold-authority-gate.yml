@@ -232,6 +232,21 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Build isolated production bundle
+        working-directory: blackgold-beauty-finds-novo
+        run: |
+          node tools/build-production.mjs
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('.release/production-bundle.json','utf8'));
+          if(r.contract!=='BLACKGOLD_PRODUCTION_BUNDLE_V1'||r.forbiddenInternalFilesPresent!==false||r.fileCount!==10)process.exit(1);
+          const paths=new Set(r.files.map(x=>x.path));
+          for(const bad of ['wrangler.toml','preview-guard.json','release-approval.template.json','package.json']){
+            if(paths.has(bad))process.exit(2);
+          }
+          console.log('BLACKGOLD_PRODUCTION_BUNDLE_CI=PASS',r.fileCount,r.totalBytes);
+          NODE
+
       - name: Affiliate redirect fail-open unit gate
         working-directory: blackgold-beauty-finds-novo
         run: node tools/out_failopen_unit.mjs
@@ -260,7 +275,7 @@ jobs:
       - name: Start Pages runtime
         working-directory: blackgold-beauty-finds-novo
         run: |
-          npx wrangler pages dev . --port 8788 --persist-to .wrangler/state >/tmp/bg-wrangler.log 2>&1 &
+          npx wrangler pages dev dist --port 8788 --persist-to .wrangler/state >/tmp/bg-wrangler.log 2>&1 &
           for i in $(seq 1 30); do
             if curl --fail --silent http://127.0.0.1:8788/api/products >/tmp/bg-products.json; then cat /tmp/bg-products.json; exit 0; fi
             sleep 1
@@ -429,7 +444,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: blackgold-exact-authority-gate
-          path: blackgold-beauty-finds-novo/.visual-gate/
+          path: |
+            blackgold-beauty-finds-novo/.visual-gate/
+            blackgold-beauty-finds-novo/.release/production-bundle.json
           if-no-files-found: ignore
           retention-days: 7
           include-hidden-files: true
