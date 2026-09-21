@@ -106,19 +106,19 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-20,-10,0,10,20]){
-    for(const imgY of [-20,-10,0,10,20]){
-      for(const scale of [.85,.95,1.00,1.05]){
+  for(const imgX of [-34,-32,-30,-28,-26]){
+    for(const imgY of [-9,-7,-5,-3,-1]){
+      for(const scale of [1.16,1.18,1.20,1.22,1.24]){
         const top=698,height=144,alpha=.20;
-        const id=`show-twin-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-extra-refined-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .media img.bg-twin-wide{
+          .showcase-live .media img.bg-extra-wide{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
             transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"twin-wide-only"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-refined"});
       }
     }
   }
