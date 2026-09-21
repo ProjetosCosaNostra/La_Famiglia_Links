@@ -106,9 +106,9 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-34,-32,-30,-28,-26]){
-    for(const imgY of [-9,-7,-5,-3,-1]){
-      for(const scale of [1.16,1.18,1.20,1.22,1.24]){
+  for(const imgX of [-36,-34,-32,-30,-28]){
+    for(const imgY of [-15,-13,-11,-9,-7]){
+      for(const scale of [1.22,1.24,1.26,1.28,1.30]){
         const top=698,height=144,alpha=.20;
         const id=`show-extra-refined-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
@@ -118,7 +118,7 @@ try{
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-refined"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"extra-wide-extended"});
       }
     }
   }
