@@ -71,7 +71,7 @@ try{
         };
       };
       const sel=selections[0];
-      const showcaseImages=showcases.map(el=>one(el,".media img")).filter(Boolean).map(img=>{const s=style(img);const m=new DOMMatrix(s.transform==="none"?"matrix(1,0,0,1,0,0)":s.transform);return{extraWide:img.classList.contains("fit-extra-wide"),upperWide:img.classList.contains("fit-upper-wide"),midNarrow:img.classList.contains("fit-mid-narrow"),sparseMedium:img.classList.contains("fit-sparse-medium"),compactWide:img.classList.contains("fit-compact-wide"),naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,ratio:img.naturalHeight?img.naturalWidth/img.naturalHeight:0,transform:{a:m.a,d:m.d,x:m.e,y:m.f}}});
+      const showcaseImages=showcases.map(el=>one(el,".media img")).filter(Boolean).map(img=>{const s=style(img);const m=new DOMMatrix(s.transform==="none"?"matrix(1,0,0,1,0,0)":s.transform);return{extraWide:img.classList.contains("fit-extra-wide"),upperWide:img.classList.contains("fit-upper-wide"),midNarrow:img.classList.contains("fit-mid-narrow"),sparseMedium:img.classList.contains("fit-sparse-medium"),sparseCompact:img.classList.contains("fit-sparse-compact"),compactWide:img.classList.contains("fit-compact-wide"),naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,ratio:img.naturalHeight?img.naturalWidth/img.naturalHeight:0,transform:{a:m.a,d:m.d,x:m.e,y:m.f}}});
       return{
         selectionCount:selections.length,
         showcaseCount:showcases.length,
@@ -135,12 +135,17 @@ try{
       fail(sparse[0].ratio>=1.60&&sparse[0].ratio<1.70,"showcase sparse-medium ratio "+sparse[0].ratio);
       fail(near(sparse[0].transform.a,1.15,.005)&&near(sparse[0].transform.d,1.15,.005),"showcase sparse-medium scale "+JSON.stringify(sparse[0].transform));
       fail(near(sparse[0].transform.x,-20,.05)&&near(sparse[0].transform.y,-20,.05),"showcase sparse-medium framing "+JSON.stringify(sparse[0].transform));
-      const compact=data.showcaseImages.filter(x=>x.compactWide);
-      fail(compact.length===2,"showcase compact-wide profile count "+compact.length);
-      fail(compact.every(x=>x.ratio>0&&x.ratio<1.50),"showcase compact-wide ratio "+JSON.stringify(compact.map(x=>x.ratio)));
-      fail(compact.every(x=>near(x.transform.a,.95,.005)&&near(x.transform.d,.95,.005)),"showcase compact-wide scale "+JSON.stringify(compact.map(x=>x.transform)));
-      fail(compact.every(x=>near(x.transform.x,-20,.05)&&near(x.transform.y,0,.05)),"showcase compact-wide framing "+JSON.stringify(compact.map(x=>x.transform)));
-      const normal=data.showcaseImages.find(x=>!x.extraWide&&!x.upperWide&&!x.midNarrow&&!x.sparseMedium&&!x.compactWide);
+      const sparseCompact=data.showcaseImages.filter(x=>x.sparseCompact);
+      fail(sparseCompact.length===1,"showcase sparse-compact profile count "+sparseCompact.length);
+      fail(sparseCompact[0].ratio>0&&sparseCompact[0].ratio<1.50,"showcase sparse-compact ratio "+sparseCompact[0].ratio);
+      fail(near(sparseCompact[0].transform.a,1,.005)&&near(sparseCompact[0].transform.d,1,.005),"showcase sparse-compact scale "+JSON.stringify(sparseCompact[0].transform));
+      fail(near(sparseCompact[0].transform.x,-45,.05)&&near(sparseCompact[0].transform.y,-25,.05),"showcase sparse-compact framing "+JSON.stringify(sparseCompact[0].transform));
+      const compact=data.showcaseImages.filter(x=>x.compactWide&&!x.sparseCompact);
+      fail(compact.length===1,"showcase base compact-wide profile count "+compact.length);
+      fail(compact[0].ratio>0&&compact[0].ratio<1.50,"showcase base compact-wide ratio "+compact[0].ratio);
+      fail(near(compact[0].transform.a,.95,.005)&&near(compact[0].transform.d,.95,.005),"showcase base compact-wide scale "+JSON.stringify(compact[0].transform));
+      fail(near(compact[0].transform.x,-20,.05)&&near(compact[0].transform.y,0,.05),"showcase base compact-wide framing "+JSON.stringify(compact[0].transform));
+      const normal=data.showcaseImages.find(x=>!x.extraWide&&!x.upperWide&&!x.midNarrow&&!x.sparseMedium&&!x.sparseCompact&&!x.compactWide);
       fail(!!normal,"showcase normal profile missing");
       fail(near(normal.transform.x,-20,.05)&&near(normal.transform.y,-20,.05),"showcase normal framing "+JSON.stringify(normal.transform));
     }else{
