@@ -121,11 +121,11 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-30,-25,-20,-15,-10]){
-    for(const imgY of [-10,0,10,20]){
-      for(const scale of [.75,.85,.95,1.05,1.15]){
+  for(const imgX of [-45,-40,-35,-30,-25]){
+    for(const imgY of [-25,-20,-15,-10,-5]){
+      for(const scale of [.50,.60,.70,.80,.90]){
         const top=698,height=144,alpha=.20;
-        const id=`show-sparse-compact-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-sparse-compact-refined-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
           .showcase-live .media img.bg-sparse-compact{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
@@ -133,7 +133,7 @@ try{
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-compact-only"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-compact-refined"});
       }
     }
   }
