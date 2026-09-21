@@ -125,24 +125,24 @@ try{
   }
 
   const showcase=[];
-  for(const titleMargin of [5,6,7]){
-    for(const titleHeight of [14,16,18]){
-      for(const titleSize of [9,10]){
-        for(const priceSize of [10,11,12]){
+  for(const titleWeight of [500,600,700]){
+    for(const titleSpacing of [0,.15,.30,.45]){
+      for(const priceWeight of [700,800]){
+        for(const priceSpacing of [0,.15,.30,.45]){
           const top=698,height=144,alpha=.20;
-          const id=`show-footer-m${titleMargin}-h${titleHeight}-ts${titleSize}-ps${priceSize}`;
+          const id=`show-type-tw${titleWeight}-tls${String(titleSpacing).replace(".","_")}-pw${priceWeight}-pls${String(priceSpacing).replace(".","_")}`;
           await inject(`
             .showcase-live .product h3{
-              height:${titleHeight}px!important;
-              margin:${titleMargin}px 0 0!important;
-              font-size:${titleSize}px!important;
+              font-weight:${titleWeight}!important;
+              letter-spacing:${titleSpacing}px!important;
             }
             .showcase-live .price{
-              font-size:${priceSize}px!important;
+              font-weight:${priceWeight}!important;
+              letter-spacing:${priceSpacing}px!important;
             }
           `);
           await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-          showcase.push({id,top,height,titleMargin,titleHeight,titleSize,priceSize,alpha,profile:"showcase-footer"});
+          showcase.push({id,top,height,titleWeight,titleSpacing,priceWeight,priceSpacing,alpha,profile:"showcase-typography"});
         }
       }
     }
