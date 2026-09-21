@@ -125,19 +125,19 @@ try{
   }
 
   const showcase=[];
-  for(const imgX of [-30,-20,-10,0,10]){
-    for(const imgY of [-20,-10,0,10,20]){
-      for(const scale of [.95,1.05,1.15,1.25,1.35]){
+  for(const imgX of [-24,-22,-20,-18,-16]){
+    for(const imgY of [-24,-22,-20,-18,-16]){
+      for(const scale of [1.10,1.125,1.15,1.175,1.20]){
         const top=698,height=144,alpha=.20;
-        const id=`show-dense-compact-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
+        const id=`show-sparse-medium-fine-x${imgX}-iy${imgY}-s${String(scale).replace(".","_")}`;
         await inject(`
-          .showcase-live .media img.bg-dense-compact{
+          .showcase-live .media img.bg-sparse-medium{
             transform:translate(${imgX}px,${imgY}px) scale(${scale})!important;
             transform-origin:center center!important;
           }
         `);
         await page.screenshot({path:path.join(out,id+".png"),clip:{x:60,y:698,width:1328,height:144},captureBeyondViewport:false});
-        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"dense-compact-only"});
+        showcase.push({id,top,height,imgX,imgY,scale,alpha,profile:"sparse-medium-fine"});
       }
     }
   }
