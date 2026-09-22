@@ -497,26 +497,26 @@
     "agua-micelar-garnier-skinactive-tudo-em-1-400ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-07",
+      "selection_count": 2,
+      "last_selected": "2026-09-22",
       "last_score": {
-        "total": 3.554038,
+        "total": 3.193952,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.714286,
         "quality": 0.615
       }
     },
     "mondial-modelador-cachos-infinity-em-12": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-07",
+      "selection_count": 2,
+      "last_selected": "2026-09-22",
       "last_score": {
-        "total": 3.593704,
+        "total": 3.222939,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.714286,
         "quality": 0.615
       }
     },
@@ -549,18 +549,18 @@
     "kit-sos-makeup-miamake-3em1-rosa": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-08",
+      "selection_count": 2,
+      "last_selected": "2026-09-22",
       "last_score": {
-        "total": 3.565958,
+        "total": 3.160097,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.615
       }
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-21T18:13:11Z",
-  "last_campaign_id": "bg-20260921"
+  "updated_at": "2026-09-22T16:59:43Z",
+  "last_campaign_id": "bg-20260922"
 }
