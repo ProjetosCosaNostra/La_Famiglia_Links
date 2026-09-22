@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22T04:43:51Z",
+  "updated_at": "2026-09-22T11:34:44Z",
   "total_items": 6,
   "summary": {
     "unique_skus": 6,
@@ -16,7 +16,7 @@
   },
   "items": [
     {
-      "happened_at": "2026-09-22T04:37:29Z",
+      "happened_at": "2026-09-22T11:24:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (27x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (28x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-22T04:37:29Z",
+      "happened_at": "2026-09-22T11:24:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (30x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (31x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-22T04:37:29Z",
+      "happened_at": "2026-09-22T11:24:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +120,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (49x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (50x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-22T04:37:29Z",
+      "happened_at": "2026-09-22T11:24:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -163,7 +163,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (143x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (144x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -192,7 +192,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-22T04:37:29Z",
+      "happened_at": "2026-09-22T11:24:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -208,7 +208,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -237,7 +237,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-22T04:37:29Z",
+      "happened_at": "2026-09-22T11:24:30Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -253,7 +253,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (23x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
