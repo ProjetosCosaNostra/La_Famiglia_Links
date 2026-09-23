@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-23T17:02:09Z
+Atualizado em: 2026-09-23T21:44:05Z
 Itens pendentes: 3
 SKUs únicos: 3
 Prioridade alta: 3
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-23T16:43:53Z
+Quando: 2026-09-23T21:24:48Z
 Issue: #23
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
 SKU: amazon-fire-tv-stick-4k-wifi6
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (36x /lists, 1x listing)
+Memória operacional: histórico recorrente (37x /lists, 1x listing)
 Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
 open_url: https://mercadolivre.com/sec/1nMqFbz
 checked_url: https://mercadolivre.com/sec/1nMqFbz
@@ -43,26 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
 
 [ALTA] review_only_storefront
-Quando: 2026-09-23T16:43:53Z
-Issue: #187
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/187
-SKU: loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz
-Título: L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico
-ID ML: 5J5PKG-X39L
+Quando: 2026-09-23T21:24:48Z
+Issue: #215
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
+SKU: depilador-batom-portatil-facial-branco-rose-gold
+Título: 💄 Beleza Sempre à Mão — Depilador Batom Portátil Facial
+ID ML: 5J5PKG-W8RV
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 0x listing)
-Badges: Achados do Dia, Feminino, Cabelos, Anti-frizz, Protetor Térmico, Leave-in, Óleo Capilar, Brilho
-open_url: https://meli.la/1U9BG5d
-checked_url: https://meli.la/1U9BG5d
+Memória operacional: histórico recorrente (26x /lists, 0x listing)
+Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
+open_url: https://meli.la/1EjNsoE
+checked_url: https://meli.la/1EjNsoE
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-X39L
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
 
 [ALTA] review_only_storefront
-Quando: 2026-09-23T16:43:53Z
+Quando: 2026-09-23T21:24:48Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (28x /lists, 0x listing)
+Memória operacional: histórico recorrente (29x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
