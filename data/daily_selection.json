@@ -1,57 +1,57 @@
 {
-  "campaign_id": "bg-20260922",
-  "date": "2026-09-22",
+  "campaign_id": "bg-20260923",
+  "date": "2026-09-23",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "mondial-modelador-cachos-infinity-em-12",
-      "title": "Modelador de Cachos Mondial Infinity EM-12 55W",
-      "category": "Cabelo",
-      "description": "✨ Crie cachos definidos e duradouros com o Modelador Mondial Infinity EM-12. Possui revestimento cerâmico, 55W de potência, aquecimento rápido, temperatura de até 210°C e diâmetro de 2,5 cm para facilitar o uso no dia a dia.",
-      "price": "R$ 62,53",
-      "image": "assets/produtos-card/mondial-modelador-cachos-infinity-em-12.webp",
-      "affiliate_url": "https://meli.la/1JxC1mg",
+      "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
+      "title": "Creme Multirreparador Calmante Cicaplast Baume B5+ La Roche-Posay 40ml",
+      "category": "Perfumaria",
+      "description": "🩵 Cicaplast Baume B5+ La Roche-Posay 40ml: cuidado multirreparador calmante para pele sensibilizada. Ajuda a reparar a barreira da pele, hidratar, acalmar e proteger. Com Tribioma, Panthenol e Madecassoside, possui textura cremosa não oleosa e sem perfume. Pode ser aplicado no rosto, corpo e lábios.",
+      "price": "R$ 67,71",
+      "image": "assets/produtos-card/cicaplast-baume-b5-plus-la-roche-posay-40ml.webp",
+      "affiliate_url": "https://meli.la/1Vemrez",
       "score": {
-        "total": 3.222939,
+        "total": 3.195238,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.714286,
+        "freshness": 0.666667,
         "quality": 0.615
       }
     },
     {
       "position": 2,
-      "sku": "agua-micelar-garnier-skinactive-tudo-em-1-400ml",
-      "title": "Água Micelar Garnier SkinActive Tudo em 1 400ml",
-      "category": "Skincare",
-      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso. Aproveite enquanto a oferta estiver disponível.",
-      "price": "R$ 43,59",
-      "image": "assets/produtos-card/agua-micelar-garnier-skinactive-tudo-em-1-400ml.webp",
-      "affiliate_url": "https://meli.la/2qvGAQ8",
+      "sku": "gel-para-sobrancelhas-brow-rise-ruby-rose",
+      "title": "Gel para Sobrancelhas Brow Rise Ruby Rose",
+      "category": "Cabelo",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/gel-para-sobrancelhas-brow-rise-ruby-rose.webp",
+      "affiliate_url": "https://meli.la/2cC6jBy",
       "score": {
-        "total": 3.193952,
+        "total": 2.96359,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.714286,
-        "quality": 0.615
+        "freshness": 0.666667,
+        "quality": 0.375
       }
     },
     {
       "position": 3,
-      "sku": "kit-sos-makeup-miamake-3em1-rosa",
-      "title": "Kit SOS Make Up Chaveiro Mia Make 3 em 1",
-      "category": "Maquiagem",
-      "description": "💄 Kit SOS Make Up Mia Make 3 em 1 — beleza prática para levar com você. Chaveiro compacto com gel fixador, batom em bala e lip gloss, perfeito para retoques rápidos na bolsa e no dia a dia.",
-      "price": "R$ 23,90",
-      "image": "assets/produtos-card/kit-sos-makeup-miamake-3em1-rosa.webp",
-      "affiliate_url": "https://meli.la/1GNrAjm",
+      "sku": "fixador-de-maquiagem-ruby-rose-150ml-hb312",
+      "title": "Fixador de Maquiagem Ruby Rose 150ml Hb312",
+      "category": "Skincare",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/fixador-de-maquiagem-ruby-rose-150ml-hb312.webp",
+      "affiliate_url": "https://meli.la/1a6HzXw",
       "score": {
-        "total": 3.160097,
+        "total": 2.956086,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.666667,
-        "quality": 0.615
+        "quality": 0.375
       }
     }
   ]

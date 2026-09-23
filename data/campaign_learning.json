@@ -211,13 +211,13 @@
     "fixador-de-maquiagem-ruby-rose-150ml-hb312": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-09",
+      "selection_count": 2,
+      "last_selected": "2026-09-23",
       "last_score": {
-        "total": 3.35084,
+        "total": 2.956086,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -289,13 +289,13 @@
     "gel-para-sobrancelhas-brow-rise-ruby-rose": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-09",
+      "selection_count": 2,
+      "last_selected": "2026-09-23",
       "last_score": {
-        "total": 3.349382,
+        "total": 2.96359,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -536,13 +536,13 @@
     "cicaplast-baume-b5-plus-la-roche-posay-40ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-09",
+      "selection_count": 2,
+      "last_selected": "2026-09-23",
       "last_score": {
-        "total": 3.532518,
+        "total": 3.195238,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.615
       }
     },
@@ -561,6 +561,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-22T16:59:43Z",
-  "last_campaign_id": "bg-20260922"
+  "updated_at": "2026-09-23T17:05:41Z",
+  "last_campaign_id": "bg-20260923"
 }
