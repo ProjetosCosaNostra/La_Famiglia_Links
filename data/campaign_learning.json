@@ -94,13 +94,13 @@
     "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-10",
+      "selection_count": 2,
+      "last_selected": "2026-09-24",
       "last_score": {
-        "total": 3.356463,
+        "total": 2.938953,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -224,13 +224,13 @@
     "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-10",
+      "selection_count": 2,
+      "last_selected": "2026-09-24",
       "last_score": {
-        "total": 3.354278,
+        "total": 2.952447,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -302,13 +302,13 @@
     "bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-11",
+      "selection_count": 2,
+      "last_selected": "2026-09-24",
       "last_score": {
-        "total": 3.338111,
+        "total": 2.916338,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.619048,
         "quality": 0.375
       }
     },
@@ -561,6 +561,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-23T17:05:41Z",
-  "last_campaign_id": "bg-20260923"
+  "updated_at": "2026-09-24T17:14:36Z",
+  "last_campaign_id": "bg-20260924"
 }

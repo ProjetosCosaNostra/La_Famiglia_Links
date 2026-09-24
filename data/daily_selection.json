@@ -1,36 +1,36 @@
 {
-  "campaign_id": "bg-20260923",
-  "date": "2026-09-23",
+  "campaign_id": "bg-20260924",
+  "date": "2026-09-24",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
-      "title": "Creme Multirreparador Calmante Cicaplast Baume B5+ La Roche-Posay 40ml",
-      "category": "Perfumaria",
-      "description": "🩵 Cicaplast Baume B5+ La Roche-Posay 40ml: cuidado multirreparador calmante para pele sensibilizada. Ajuda a reparar a barreira da pele, hidratar, acalmar e proteger. Com Tribioma, Panthenol e Madecassoside, possui textura cremosa não oleosa e sem perfume. Pode ser aplicado no rosto, corpo e lábios.",
-      "price": "R$ 67,71",
-      "image": "assets/produtos-card/cicaplast-baume-b5-plus-la-roche-posay-40ml.webp",
-      "affiliate_url": "https://meli.la/1Vemrez",
+      "sku": "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto",
+      "title": "Caneta Delineadora Gatinho Mood Ruby Rose Preto Matte 2x1",
+      "category": "Maquiagem",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto.webp",
+      "affiliate_url": "https://meli.la/2g88US5",
       "score": {
-        "total": 3.195238,
+        "total": 2.952447,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.666667,
-        "quality": 0.615
+        "quality": 0.375
       }
     },
     {
       "position": 2,
-      "sku": "gel-para-sobrancelhas-brow-rise-ruby-rose",
-      "title": "Gel para Sobrancelhas Brow Rise Ruby Rose",
+      "sku": "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
+      "title": "Escova de Dente Elétrica Sônica Philips Colgate SonicPro 10 – Recarregável",
       "category": "Cabelo",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/gel-para-sobrancelhas-brow-rise-ruby-rose.webp",
-      "affiliate_url": "https://meli.la/2cC6jBy",
+      "image": "assets/produtos-card/escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel.webp",
+      "affiliate_url": "https://meli.la/1ZHKRNy",
       "score": {
-        "total": 2.96359,
+        "total": 2.938953,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.666667,
@@ -39,18 +39,18 @@
     },
     {
       "position": 3,
-      "sku": "fixador-de-maquiagem-ruby-rose-150ml-hb312",
-      "title": "Fixador de Maquiagem Ruby Rose 150ml Hb312",
-      "category": "Skincare",
+      "sku": "bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada",
+      "title": "Bolsa Feminina Grande Mochila Antfurto Impermeável Reforçada",
+      "category": "Beleza",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/fixador-de-maquiagem-ruby-rose-150ml-hb312.webp",
-      "affiliate_url": "https://meli.la/1a6HzXw",
+      "image": "assets/produtos-card/bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada.webp",
+      "affiliate_url": "https://meli.la/1Dj4GN9",
       "score": {
-        "total": 2.956086,
+        "total": 2.916338,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.619048,
         "quality": 0.375
       }
     }
