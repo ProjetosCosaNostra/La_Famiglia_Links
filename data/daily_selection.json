@@ -1,36 +1,36 @@
 {
-  "campaign_id": "bg-20260924",
-  "date": "2026-09-24",
+  "campaign_id": "bg-20260925",
+  "date": "2026-09-25",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto",
-      "title": "Caneta Delineadora Gatinho Mood Ruby Rose Preto Matte 2x1",
-      "category": "Maquiagem",
+      "sku": "depilador-eletrico-feminino-4-em-1",
+      "title": "Depilador Elétrico Feminino 4 em 1",
+      "category": "Beleza",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto.webp",
-      "affiliate_url": "https://meli.la/2g88US5",
+      "image": "assets/produtos-card/depilador-eletrico-feminino-4-em-1.webp",
+      "affiliate_url": "https://meli.la/2LK3ZKv",
       "score": {
-        "total": 2.952447,
+        "total": 2.973982,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     },
     {
       "position": 2,
-      "sku": "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel",
-      "title": "Escova de Dente Elétrica Sônica Philips Colgate SonicPro 10 – Recarregável",
-      "category": "Cabelo",
+      "sku": "principia-protetor-solar-facial-ps-01-fps-60",
+      "title": "Principia Protetor Solar Facial PS-01 FPS 60",
+      "category": "Skincare",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel.webp",
-      "affiliate_url": "https://meli.la/1ZHKRNy",
+      "image": "assets/produtos-card/principia-protetor-solar-facial-ps-01-fps-60.webp",
+      "affiliate_url": "https://meli.la/257Mpir",
       "score": {
-        "total": 2.938953,
+        "total": 2.95522,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.666667,
@@ -39,18 +39,18 @@
     },
     {
       "position": 3,
-      "sku": "bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada",
-      "title": "Bolsa Feminina Grande Mochila Antfurto Impermeável Reforçada",
-      "category": "Beleza",
+      "sku": "xapadinha-mascara-disciplinante-450g-lola-from-rio",
+      "title": "Máscara Capilar Disciplinante Xapadinha 450g Lola From Rio",
+      "category": "Cabelo",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/bolsa-feminina-grande-mochila-antifurto-impermeavel-reforcada.webp",
-      "affiliate_url": "https://meli.la/1Dj4GN9",
+      "image": "assets/produtos-card/xapadinha-mascara-disciplinante-450g-lola-from-rio.webp",
+      "affiliate_url": "https://meli.la/26CFRci",
       "score": {
-        "total": 2.916338,
+        "total": 2.940818,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.619048,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     }

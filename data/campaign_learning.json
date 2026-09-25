@@ -263,13 +263,13 @@
     "xapadinha-mascara-disciplinante-450g-lola-from-rio": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-11",
+      "selection_count": 2,
+      "last_selected": "2026-09-25",
       "last_score": {
-        "total": 3.334142,
+        "total": 2.940818,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -315,26 +315,26 @@
     "depilador-eletrico-feminino-4-em-1": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-10",
+      "selection_count": 2,
+      "last_selected": "2026-09-25",
       "last_score": {
-        "total": 3.357106,
+        "total": 2.973982,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     },
     "principia-protetor-solar-facial-ps-01-fps-60": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-11",
+      "selection_count": 2,
+      "last_selected": "2026-09-25",
       "last_score": {
-        "total": 3.356694,
+        "total": 2.95522,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -561,6 +561,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-24T17:14:36Z",
-  "last_campaign_id": "bg-20260924"
+  "updated_at": "2026-09-25T17:15:17Z",
+  "last_campaign_id": "bg-20260925"
 }
