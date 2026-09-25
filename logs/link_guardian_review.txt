@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-25T04:55:46Z
-Itens pendentes: 3
-SKUs únicos: 3
-Prioridade alta: 3
+Atualizado em: 2026-09-25T11:46:48Z
+Itens pendentes: 4
+SKUs únicos: 4
+Prioridade alta: 4
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 3
+- review_only_storefront: 4
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 3
+- trocar_link: 4
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 3
+- storefront_social_lists_invalid: 4
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-25T04:42:07Z
+Quando: 2026-09-25T11:40:26Z
 Issue: #23
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
 SKU: amazon-fire-tv-stick-4k-wifi6
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (42x /lists, 1x listing)
+Memória operacional: histórico recorrente (43x /lists, 1x listing)
 Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
 open_url: https://mercadolivre.com/sec/1nMqFbz
 checked_url: https://mercadolivre.com/sec/1nMqFbz
@@ -43,7 +43,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
 
 [ALTA] review_only_storefront
-Quando: 2026-09-25T04:42:07Z
+Quando: 2026-09-25T11:40:26Z
+Issue: #64
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/64
+SKU: smartwatch-amazfit-bip-6-gps
+Título: Smartwatch Amazfit Bip 6 — GPS Multiesporte (Android/iPhone)
+ID ML: 5J5PKG-FRNH
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (23x /lists, 1x listing)
+Badges: Achados do Dia, Tecnologia, Premium, Smartwatch, GPS, Fitness
+open_url: https://meli.la/16igaoj
+checked_url: https://meli.la/16igaoj
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://lista.mercadolivre.com.br/5J5PKG-FRNH
+
+[ALTA] review_only_storefront
+Quando: 2026-09-25T11:40:26Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -54,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (31x /lists, 0x listing)
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
@@ -62,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
 
 [ALTA] review_only_storefront
-Quando: 2026-09-25T04:42:07Z
+Quando: 2026-09-25T11:40:26Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -73,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (34x /lists, 0x listing)
+Memória operacional: histórico recorrente (35x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
