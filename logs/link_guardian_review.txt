@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-26T16:21:25Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-09-26T21:04:59Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,24 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-26T16:15:43Z
-Issue: #165
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
-SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
-Título: Kit de Pincéis de Maquiagem 13 Peças com Estojo Rosé
-ID ML: 5J5PKG-CU2P
+Quando: 2026-09-26T20:59:25Z
+SKU: cms-produto-purificador-electrolux-pe12g-gua-gelada-fria-natural-5j5pkg-jhsa
+Título: purificador-electrolux-pe12g-agua-gelada
+ID ML: 5J5PKG-JHSA
 Ação sugerida: trocar_link
 Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (37x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
-open_url: https://meli.la/22qx74W
-checked_url: https://meli.la/22qx74W
+Confiança: 20 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Purificador de Água Gelada, Fria e Natural Electrolux PE12G — Painel Touch Cinza
+open_url: https://meli.la/1CpXH3G
+checked_url: https://meli.la/1CpXH3G
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-JHSA&tid=c891775f-1832-439b-b399-a867db3f98be
 
 [ALTA] review_only_storefront
-Quando: 2026-09-26T16:15:43Z
+Quando: 2026-09-26T20:59:25Z
 Issue: #23
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
 SKU: amazon-fire-tv-stick-4k-wifi6
@@ -54,7 +52,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (48x /lists, 1x listing)
+Memória operacional: histórico recorrente (49x /lists, 1x listing)
 Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
 open_url: https://mercadolivre.com/sec/1nMqFbz
 checked_url: https://mercadolivre.com/sec/1nMqFbz
@@ -62,7 +60,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
 
 [ALTA] review_only_storefront
-Quando: 2026-09-26T16:15:43Z
+Quando: 2026-09-26T20:59:25Z
+Issue: #120
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/120
+SKU: headset-gamer-jbl-quantum-100-preto
+Título: Headset Gamer JBL Quantum 100 com Microfone - Preto
+ID ML: 5J5PKG-YRGV
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (8x /lists, 1x listing)
+Badges: Achados do Dia, Headset Gamer, JBL, Quantum 100, Com fio, Microfone, Preto, Gamer
+open_url: https://meli.la/2KwjYue
+checked_url: https://meli.la/2KwjYue
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YRGV&tid=01086582-ae9c-45c2-a163-eb7921854dcb
+
+[ALTA] review_only_storefront
+Quando: 2026-09-26T20:59:25Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -73,7 +90,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (37x /lists, 0x listing)
+Memória operacional: histórico recorrente (38x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
@@ -81,7 +98,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
 
 [ALTA] review_only_storefront
-Quando: 2026-09-26T16:15:43Z
+Quando: 2026-09-26T20:59:25Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -92,7 +109,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (40x /lists, 0x listing)
+Memória operacional: histórico recorrente (41x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
