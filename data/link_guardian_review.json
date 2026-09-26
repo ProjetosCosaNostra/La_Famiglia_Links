@@ -1,66 +1,22 @@
 {
-  "updated_at": "2026-09-25T21:31:21Z",
-  "total_items": 5,
+  "updated_at": "2026-09-26T04:50:14Z",
+  "total_items": 3,
   "summary": {
-    "unique_skus": 5,
+    "unique_skus": 3,
     "by_state": {
-      "review_only_storefront": 5
+      "review_only_storefront": 3
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 5
+      "storefront_social_lists_invalid": 3
     },
     "by_action": {
-      "trocar_link": 5
+      "trocar_link": 3
     },
-    "high_priority": 5
+    "high_priority": 3
   },
   "items": [
     {
-      "happened_at": "2026-09-25T21:26:54Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 165,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165",
-      "issue_title": "Kit de Pincéis de Maquiagem 13 Peças com Estojo Rosé",
-      "sku": "kit-pinceis-maquiagem-13-pecas-estojo-rose",
-      "title": "Kit de Pincéis de Maquiagem 13 Peças com Estojo Rosé",
-      "id_busca": "5J5PKG-CU2P",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (35x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/22qx74W",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/22qx74W",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-CU2P",
-      "short_url": "https://meli.la/22qx74W",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Beleza",
-        "Maquiagem",
-        "Feminino",
-        "Premium",
-        "Mais Vendido",
-        "Baratinho"
-      ]
-    },
-    {
-      "happened_at": "2026-09-25T21:26:54Z",
+      "happened_at": "2026-09-26T04:44:39Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (45x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (46x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -104,52 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-25T21:26:54Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 54,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54",
-      "issue_title": "[CMS] Produto: Desumidificador Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia",
-      "sku": "desumidificador-antimofo-komeco-kdp-250-bivolt",
-      "title": "Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia",
-      "id_busca": "5J5PKG-BJJ0",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (54x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://mercadolivre.com/sec/29Gq2Ww",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://mercadolivre.com/sec/29Gq2Ww",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFhp7aZSzrogZnZzUJsl6uIcofKCxdgSQ%2F%2FZMEqq%2FeFrm737KlKHxzjJuCjgsEOrA5LppAP4TOKOuk2eFyysKU4jwibBzORZoN3HJSIziR1E7r49oOeJ7YdTNFT0MqoG44%2F2fsNnc%2BJwI0FruX7Z%2B%2FDcM9Nurk31VC%2FPQZl1QHks2DnJH1OTLdXSzsZzGrzRr3zevCY%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8",
-      "short_url": "",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFhp7aZSzrogZnZzUJsl6uIcofKCxdgSQ%2F%2FZMEqq%2FeFrm737KlKHxzjJuCjgsEOrA5LppAP4TOKOuk2eFyysKU4jwibBzORZoN3HJSIziR1E7r49oOeJ7YdTNFT0MqoG44%2F2fsNnc%2BJwI0FruX7Z%2B%2FDcM9Nurk31VC%2FPQZl1QHks2DnJH1OTLdXSzsZzGrzRr3zevCY%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFhp7aZSzrogZnZzUJsl6uIcofKCxdgSQ%2F%2FZMEqq%2FeFrm737KlKHxzjJuCjgsEOrA5LppAP4TOKOuk2eFyysKU4jwibBzORZoN3HJSIziR1E7r49oOeJ7YdTNFT0MqoG44%2F2fsNnc%2BJwI0FruX7Z%2B%2FDcM9Nurk31VC%2FPQZl1QHks2DnJH1OTLdXSzsZzGrzRr3zevCY%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Desumidificador",
-        "Antimofo",
-        "Komeco",
-        "KDP 250",
-        "Bivolt",
-        "Casa",
-        "Quarto"
-      ]
-    },
-    {
-      "happened_at": "2026-09-25T21:26:54Z",
+      "happened_at": "2026-09-26T04:44:39Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (34x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (35x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-09-25T21:26:54Z",
+      "happened_at": "2026-09-26T04:44:39Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (37x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (38x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

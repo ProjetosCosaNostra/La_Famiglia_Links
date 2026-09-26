@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-09-25T21:31:21Z
-Itens pendentes: 5
-SKUs únicos: 5
-Prioridade alta: 5
+Atualizado em: 2026-09-26T04:50:14Z
+Itens pendentes: 3
+SKUs únicos: 3
+Prioridade alta: 3
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 5
+- review_only_storefront: 3
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 5
+- trocar_link: 3
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 5
+- storefront_social_lists_invalid: 3
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,26 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-09-25T21:26:54Z
-Issue: #165
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
-SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
-Título: Kit de Pincéis de Maquiagem 13 Peças com Estojo Rosé
-ID ML: 5J5PKG-CU2P
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (35x /lists, 0x listing)
-Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
-open_url: https://meli.la/22qx74W
-checked_url: https://meli.la/22qx74W
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
-
-[ALTA] review_only_storefront
-Quando: 2026-09-25T21:26:54Z
+Quando: 2026-09-26T04:44:39Z
 Issue: #23
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/23
 SKU: amazon-fire-tv-stick-4k-wifi6
@@ -54,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (45x /lists, 1x listing)
+Memória operacional: histórico recorrente (46x /lists, 1x listing)
 Badges: Achados do Dia, Streaming, 4K, Alexa, Wi-Fi 6, Smart TV, Preto
 open_url: https://mercadolivre.com/sec/1nMqFbz
 checked_url: https://mercadolivre.com/sec/1nMqFbz
@@ -62,26 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-J4Z5&tid=4e0ef834-377c-4095-a2c3-afd160fbff71
 
 [ALTA] review_only_storefront
-Quando: 2026-09-25T21:26:54Z
-Issue: #54
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
-SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
-Título: Desumidificador de Ar Antimofo Komeco KDP 250 (Bivolt) — 250ml/dia
-ID ML: 5J5PKG-BJJ0
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (54x /lists, 1x listing)
-Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
-open_url: https://mercadolivre.com/sec/29Gq2Ww
-checked_url: https://mercadolivre.com/sec/29Gq2Ww
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
-
-[ALTA] review_only_storefront
-Quando: 2026-09-25T21:26:54Z
+Quando: 2026-09-26T04:44:39Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -92,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (34x /lists, 0x listing)
+Memória operacional: histórico recorrente (35x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
@@ -100,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
 
 [ALTA] review_only_storefront
-Quando: 2026-09-25T21:26:54Z
+Quando: 2026-09-26T04:44:39Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -111,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (37x /lists, 0x listing)
+Memória operacional: histórico recorrente (38x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
