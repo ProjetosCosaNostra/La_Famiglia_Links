@@ -29,13 +29,13 @@
     "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-12",
+      "selection_count": 2,
+      "last_selected": "2026-09-26",
       "last_score": {
-        "total": 3.353567,
+        "total": 2.935196,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -133,13 +133,13 @@
     "organizador-maquiagem-giratorio-360-acrilico-transparente": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-12",
+      "selection_count": 2,
+      "last_selected": "2026-09-26",
       "last_score": {
-        "total": 3.352382,
+        "total": 2.947099,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -393,13 +393,13 @@
     "cabine-led-uv-sun-5-48w": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-12",
+      "selection_count": 2,
+      "last_selected": "2026-09-26",
       "last_score": {
-        "total": 3.352033,
+        "total": 2.964727,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -561,6 +561,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-25T17:15:17Z",
-  "last_campaign_id": "bg-20260925"
+  "updated_at": "2026-09-26T16:26:37Z",
+  "last_campaign_id": "bg-20260926"
 }
