@@ -68,13 +68,13 @@
     "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-13",
+      "selection_count": 2,
+      "last_selected": "2026-09-27",
       "last_score": {
-        "total": 3.346945,
+        "total": 2.937452,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -120,13 +120,13 @@
     "bt-coca-cola-blush-stick-bruna-tavares-intense-cherry": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-13",
+      "selection_count": 2,
+      "last_selected": "2026-09-27",
       "last_score": {
-        "total": 3.337925,
+        "total": 2.958393,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -185,13 +185,13 @@
     "body-splash-kiss-ciclo-200ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-13",
+      "selection_count": 2,
+      "last_selected": "2026-09-27",
       "last_score": {
-        "total": 3.330615,
+        "total": 2.905616,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -561,6 +561,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-26T16:26:37Z",
-  "last_campaign_id": "bg-20260926"
+  "updated_at": "2026-09-27T17:00:19Z",
+  "last_campaign_id": "bg-20260927"
 }
