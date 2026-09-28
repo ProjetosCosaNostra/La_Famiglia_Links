@@ -354,13 +354,13 @@
     "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-14",
+      "selection_count": 2,
+      "last_selected": "2026-09-28",
       "last_score": {
-        "total": 3.357189,
+        "total": 2.956939,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -380,13 +380,13 @@
     "porta-joias-3-camadas-couro-preto": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-14",
+      "selection_count": 2,
+      "last_selected": "2026-09-28",
       "last_score": {
-        "total": 3.346641,
+        "total": 2.926348,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -406,13 +406,13 @@
     "massageador-facial-pescoco-led-lifting": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-14",
+      "selection_count": 2,
+      "last_selected": "2026-09-28",
       "last_score": {
-        "total": 3.350908,
+        "total": 2.941774,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -561,6 +561,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-27T17:00:19Z",
-  "last_campaign_id": "bg-20260927"
+  "updated_at": "2026-09-28T19:42:03Z",
+  "last_campaign_id": "bg-20260928"
 }
