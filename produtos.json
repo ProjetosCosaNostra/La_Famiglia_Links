@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T07:53:40Z",
+  "updated_at": "2026-09-29T10:02:50Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -8436,7 +8436,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/69e18ff0-dd73-4aba-ac78-d2823978a7f6",
-      "webp_optimized_at": "2026-06-14T01:53:44Z"
+      "webp_optimized_at": "2026-06-14T01:53:44Z",
+      "card_image": "assets/produtos-card/06-presilha-piranha-cabelo-luxo-metal-variadas-dourado.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_761561-CBT101403008813_122025-F.jpg",
+      "card_image_item_id": "MLB2052119059",
+      "card_image_candidate_title": "06 Presilha Piranha Prendedor De Cabelo Luxo Metal Variadas",
+      "card_image_match_score": 1.0,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-09-29T10:01:04Z"
     },
     {
       "sku": "principia-protetor-solar-facial-ps-01-fps-60",
