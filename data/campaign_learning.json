@@ -172,13 +172,13 @@
     "batom-hidratante-sace-lady-a03-terre-rouge": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-15",
+      "selection_count": 2,
+      "last_selected": "2026-09-29",
       "last_score": {
-        "total": 3.352602,
+        "total": 2.931747,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
@@ -445,13 +445,13 @@
     "depilador-ipl-basike-sensacao-gelo-9-niveis": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-19",
+      "selection_count": 3,
+      "last_selected": "2026-09-29",
       "last_score": {
-        "total": 3.149388,
+        "total": 2.941789,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.619048,
+        "freshness": 0.47619,
         "quality": 0.615
       }
     },
@@ -558,9 +558,22 @@
         "freshness": 0.666667,
         "quality": 0.615
       }
+    },
+    "06-presilha-piranha-cabelo-luxo-metal-variadas-dourado": {
+      "impressions": 0,
+      "clicks": 0,
+      "selection_count": 1,
+      "last_selected": "2026-09-29",
+      "last_score": {
+        "total": 3.297855,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 1.0,
+        "quality": 0.375
+      }
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-28T19:42:03Z",
-  "last_campaign_id": "bg-20260928"
+  "updated_at": "2026-09-29T18:06:29Z",
+  "last_campaign_id": "bg-20260929"
 }
