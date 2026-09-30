@@ -42,26 +42,26 @@
     "po-facial-bruna-tavares-bt-skinpowder": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-16",
+      "selection_count": 2,
+      "last_selected": "2026-09-30",
       "last_score": {
-        "total": 3.355588,
+        "total": 2.969192,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.666667,
         "quality": 0.375
       }
     },
     "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-15",
+      "selection_count": 2,
+      "last_selected": "2026-09-30",
       "last_score": {
-        "total": 3.350313,
+        "total": 2.9948,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     },
@@ -250,13 +250,13 @@
     "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-15",
+      "selection_count": 2,
+      "last_selected": "2026-09-30",
       "last_score": {
-        "total": 3.338589,
+        "total": 2.978736,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     },
@@ -574,6 +574,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-09-29T18:06:29Z",
-  "last_campaign_id": "bg-20260929"
+  "updated_at": "2026-09-30T18:00:56Z",
+  "last_campaign_id": "bg-20260930"
 }
