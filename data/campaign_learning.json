@@ -341,13 +341,13 @@
     "body-splash-my-sweet-delight-barbours-beauty-200ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-16",
+      "selection_count": 2,
+      "last_selected": "2026-10-02",
       "last_score": {
-        "total": 3.357347,
+        "total": 3.078136,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
@@ -432,13 +432,13 @@
     "escova-oval-secadora-taiff-easy-lilas-1200w": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-21",
+      "selection_count": 3,
+      "last_selected": "2026-10-02",
       "last_score": {
-        "total": 3.14832,
+        "total": 3.033941,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.619048,
+        "freshness": 0.52381,
         "quality": 0.615
       }
     },
@@ -471,13 +471,13 @@
     "mascara-para-dormir-gel-termico-rosa-laco": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-21",
+      "selection_count": 3,
+      "last_selected": "2026-10-02",
       "last_score": {
-        "total": 3.156078,
+        "total": 3.04224,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.619048,
+        "freshness": 0.52381,
         "quality": 0.615
       }
     },
@@ -574,6 +574,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-01T18:26:40Z",
-  "last_campaign_id": "bg-20261001"
+  "updated_at": "2026-10-02T17:53:39Z",
+  "last_campaign_id": "bg-20261002"
 }
