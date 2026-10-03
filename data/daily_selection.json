@@ -1,57 +1,57 @@
 {
-  "campaign_id": "bg-20261002",
-  "date": "2026-10-02",
+  "campaign_id": "bg-20261003",
+  "date": "2026-10-03",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "body-splash-my-sweet-delight-barbours-beauty-200ml",
-      "title": "Body Splash My Sweet Delight - Barbour's Beauty - 200 Ml - Spray",
-      "category": "Perfumaria",
+      "sku": "payot-boca-rosa-meu-volumao-preto-6ml",
+      "title": "👁️✨ Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml 💙🖤",
+      "category": "Maquiagem",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/body-splash-my-sweet-delight-barbours-beauty-200ml.webp",
-      "affiliate_url": "https://meli.la/2fUnaWE",
+      "image": "assets/produtos-card/payot-boca-rosa-meu-volumao-preto-6ml.webp",
+      "affiliate_url": "https://meli.la/1dj3ot3",
       "score": {
-        "total": 3.078136,
+        "total": 3.349152,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.761905,
+        "freshness": 1.0,
         "quality": 0.375
       }
     },
     {
       "position": 2,
-      "sku": "mascara-para-dormir-gel-termico-rosa-laco",
-      "title": "Máscara Para Dormir Com Gel Térmico Reduz Olheiras Cansaço Cor Rosa Laço",
-      "category": "Beleza",
-      "description": "Preço conferido no Mercado Livre em 19/06/2026. Pode mudar sem aviso.",
-      "price": "R$ 18,79",
-      "image": "assets/produtos-card/mascara-para-dormir-gel-termico-rosa-laco.webp",
-      "affiliate_url": "https://meli.la/21eNben",
+      "sku": "toalha-demaquilante-reutilizavel-make-off-klass-vough",
+      "title": "Toalha Demaquilante Removedora de Maquiagem Reutilizável Make Off Microfibra Klass Vough",
+      "category": "Skincare",
+      "description": "Preço conferido no Mercado Livre. Frete grátis acima de R$ 19. Pode mudar sem aviso.",
+      "price": "R$ 23,14",
+      "image": "assets/produtos-card/toalha-demaquilante-reutilizavel-make-off-klass-vough.webp",
+      "affiliate_url": "https://meli.la/1utHx1A",
       "score": {
-        "total": 3.04224,
+        "total": 3.049672,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.52381,
+        "freshness": 0.571429,
         "quality": 0.615
       }
     },
     {
       "position": 3,
-      "sku": "escova-oval-secadora-taiff-easy-lilas-1200w",
-      "title": "💜 Escova Oval Secadora Taiff Easy Lilás 1200W",
-      "category": "Cabelo",
-      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso.",
-      "price": "R$ 164,00",
-      "image": "assets/produtos-card/escova-oval-secadora-taiff-easy-lilas-1200w.webp",
-      "affiliate_url": "https://meli.la/1gj7Dvb",
+      "sku": "kit-unha-postica-francesinha-pe-nude-quadrada",
+      "title": "Kit Unha Postiça Francesinha para o Pé Cor Nude Quadrada",
+      "category": "Unhas",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/kit-unha-postica-francesinha-pe-nude-quadrada.webp",
+      "affiliate_url": "https://meli.la/1HVaS52",
       "score": {
-        "total": 3.033941,
+        "total": 3.026522,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.52381,
-        "quality": 0.615
+        "freshness": 0.761905,
+        "quality": 0.375
       }
     }
   ]
