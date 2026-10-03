@@ -1,22 +1,23 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-10-03T16:12:35Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-10-03T21:02:26Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 4
+- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +25,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-10-03T16:07:26Z
+Quando: 2026-10-03T20:57:58Z
 Issue: #165
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
 SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
@@ -35,7 +36,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (51x /lists, 0x listing)
+Memória operacional: histórico recorrente (52x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
 open_url: https://meli.la/22qx74W
 checked_url: https://meli.la/22qx74W
@@ -43,7 +44,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
 
 [ALTA] review_only_storefront
-Quando: 2026-10-03T16:07:26Z
+Quando: 2026-10-03T20:57:58Z
+Issue: #27
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/27
+SKU: hub-usbc-8em1-h71p
+Título: Adaptador Hub Usb-c 8 Em 1 Rj45 Usb 3.0 Sd/tf Slot Several Hdmi Cinza 8 Portas
+ID ML: 5J5PKG-7F5V
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Memória operacional: histórico recorrente (32x /lists, 0x listing)
+Badges: Achados do Dia, Hub USB-C, 8 em 1, HDMI 4K, RJ45 Ethernet, USB 3.0, SD/TF, Adaptador
+open_url: https://meli.la/32GXnkH
+checked_url: https://meli.la/32GXnkH
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNXIjxP%2BxtR2tfFbBGshdCeEjy7rRMQnwLi9GRC%2B15FM5c%2F8uXfUzjpw%2B1pnk%2BpPDX%2B1%2FF5Am0aL2IAqJ99bZFmJe7eT8TkATGFgTHalbngCDIja3ASzGpECh7S8VYPGjjeiSSJNqkxYHNc1RF2KeIzBymqczAWdT7BLHdK2l595kpqQaBnUG%2B%2BJFM5hCFgspcALzeMAGMLB3KB6Cw%3D%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-H71P&tid=42f8b39d-42a8-497a-8f21-a8ad42b73b22
+
+[ALTA] review_only_storefront
+Quando: 2026-10-03T20:57:58Z
 Issue: #54
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
 SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
@@ -54,7 +74,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (58x /lists, 1x listing)
+Memória operacional: histórico recorrente (59x /lists, 1x listing)
 Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
 open_url: https://mercadolivre.com/sec/29Gq2Ww
 checked_url: https://mercadolivre.com/sec/29Gq2Ww
@@ -62,7 +82,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
 
 [ALTA] review_only_storefront
-Quando: 2026-10-03T16:07:26Z
+Quando: 2026-10-03T20:57:58Z
 Issue: #120
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/120
 SKU: headset-gamer-jbl-quantum-100-preto
@@ -73,7 +93,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (30x /lists, 1x listing)
+Memória operacional: histórico recorrente (31x /lists, 1x listing)
 Badges: Achados do Dia, Headset Gamer, JBL, Quantum 100, Com fio, Microfone, Preto, Gamer
 open_url: https://meli.la/2KwjYue
 checked_url: https://meli.la/2KwjYue
@@ -81,7 +101,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YRGV&tid=01086582-ae9c-45c2-a163-eb7921854dcb
 
 [ALTA] review_only_storefront
-Quando: 2026-10-03T16:07:26Z
+Quando: 2026-10-03T20:57:58Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -92,7 +112,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (63x /lists, 0x listing)
+Memória operacional: histórico recorrente (64x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
