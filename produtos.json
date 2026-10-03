@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T10:03:09Z",
+  "updated_at": "2026-10-03T09:20:38Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -7353,7 +7353,15 @@
       "last_checked": "",
       "last_ok": "",
       "image_original": "https://github.com/user-attachments/assets/ee2c4171-ce24-4926-94a0-2b70f3e7ad26",
-      "webp_optimized_at": "2026-06-14T01:53:36Z"
+      "webp_optimized_at": "2026-06-14T01:53:36Z",
+      "card_image": "assets/produtos-card/payot-boca-rosa-meu-volumao-preto-6ml.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_926692-MLA96191610865_102025-F.jpg",
+      "card_image_item_id": "MLB61091722",
+      "card_image_candidate_title": "Máscara para Cílios Preto Payot Meu Volumão Boca Rosa Beauty Volume 6ml",
+      "card_image_match_score": 0.8111,
+      "card_image_match_method": "catalog-title-search",
+      "card_image_synced_at": "2026-10-03T09:18:13Z"
     },
     {
       "sku": "nivea-hidratante-labial-morango-shine-4-8g",
