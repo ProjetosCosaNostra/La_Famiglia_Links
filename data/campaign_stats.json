@@ -1,22 +1,111 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050403">
-<title>BlackGold Beauty Finds — Em construção</title>
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#050403;overflow:hidden}
-body,picture{width:100vw;height:100dvh;display:block}
-img{display:block;width:100vw;height:100dvh;object-fit:cover;object-position:center center}
-@media(max-width:768px){img{width:100vw;height:100dvh;object-fit:cover;object-position:center center}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#080808">
+  <title>BlackGold Beauty Finds â€” Current</title>
+  <link rel="stylesheet" href="./src/home-current/site.css">
+  <script type="module" src="./src/home-current/app.js"></script>
 </head>
 <body>
-<picture>
-<source media="(max-width: 768px)" srcset="./mobile.png?v=20260916-fullscreen">
-<img src="./desktop.png?v=20260916-fullscreen" alt="BlackGold Beauty Finds — Em construção. Voltamos em breve.">
-</picture>
+  <main class="visual-lock" id="inicio">
+    <picture class="reference-art" aria-hidden="true">
+      <source media="(max-width:900px)" srcset="./assets/approved-current/header-hero-mobile.png">
+      <img src="./assets/approved-current/header-hero-pc.png" alt="" draggable="false">
+    </picture>
+
+    <nav class="desktop-actions" aria-label="NavegaÃ§Ã£o principal">
+      <button class="hotspot desktop-beleza" type="button" data-category="Beleza" aria-label="Beleza"></button>
+      <button class="hotspot desktop-moda" type="button" data-category="Moda" aria-label="Moda"></button>
+      <button class="hotspot desktop-autocuidado" type="button" data-category="Autocuidado" aria-label="Autocuidado"></button>
+      <button class="hotspot desktop-livros" type="button" data-category="Livros" aria-label="Livros"></button>
+      <button class="hotspot desktop-vitaminas" type="button" data-category="Vitaminas" aria-label="Vitaminas"></button>
+      <button class="hotspot desktop-casa" type="button" data-category="Casa & Rituais" aria-label="Casa e Rituais"></button>
+      <button class="hotspot desktop-search" type="button" data-search aria-label="Buscar"></button>
+      <button class="hotspot desktop-ecosystem" type="button" data-ecosystem aria-label="Ecossistema BlackGold"></button>
+      <button class="hotspot desktop-cta" type="button" data-novidades aria-label="Explorar novidades"></button>
+    </nav>
+
+    <nav class="mobile-actions" aria-label="AÃ§Ãµes mobile">
+      <button class="hotspot mobile-menu" type="button" data-menu aria-label="Abrir menu"></button>
+      <button class="hotspot mobile-search" type="button" data-search aria-label="Buscar"></button>
+      <button class="hotspot mobile-ecosystem" type="button" data-ecosystem aria-label="Ecossistema BlackGold"></button>
+      <button class="hotspot mobile-cta" type="button" data-novidades aria-label="Explorar novidades"></button>
+    </nav>
+  </main>
+
+  <section class="slot2-lock" aria-label="ConteÃºdo em destaque">
+    <picture class="slot2-art" aria-hidden="true">
+      <source media="(max-width:900px)" srcset="./assets/approved-current/slot2-mobile.png">
+      <img src="./assets/approved-current/slot2-desktop.png" alt="" draggable="false">
+    </picture>
+
+    <div class="slot2-desktop-actions" aria-label="Novidades da semana">
+      <button class="hotspot slot2-pc-all" type="button" data-novidades aria-label="Ver todas as novidades"></button>
+      <button class="hotspot slot2-pc-1" type="button" data-category="Beleza" aria-label="LanÃ§amentos de beleza"></button>
+      <button class="hotspot slot2-pc-2" type="button" data-category="Moda" aria-label="Destaques de moda"></button>
+      <button class="hotspot slot2-pc-3" type="button" data-category="Autocuidado" aria-label="Rituais de autocuidado"></button>
+      <button class="hotspot slot2-pc-4" type="button" data-category="Livros" aria-label="Livros inspiradores"></button>
+    </div>
+
+    <div class="slot2-mobile-actions" aria-label="Compre por universo">
+      <button class="hotspot slot2-mob-all" type="button" data-menu aria-label="Ver todos os universos"></button>
+      <button class="hotspot slot2-mob-1" type="button" data-category="Beleza" aria-label="Beleza"></button>
+      <button class="hotspot slot2-mob-2" type="button" data-category="Moda" aria-label="Moda"></button>
+      <button class="hotspot slot2-mob-3" type="button" data-category="Autocuidado" aria-label="Autocuidado"></button>
+      <button class="hotspot slot2-mob-4" type="button" data-category="Livros" aria-label="Livros"></button>
+    </div>
+  </section>
+
+  <section class="slot3-lock" aria-label="Segunda faixa responsiva">
+    <picture class="slot3-art" aria-hidden="true">
+      <source media="(max-width:900px)" srcset="./assets/approved-current/slot3-mobile.png">
+      <img src="./assets/approved-current/slot3-desktop.png" alt="" draggable="false">
+    </picture>
+
+    <div class="slot3-desktop-actions" aria-label="Compre por universo">
+      <button class="hotspot slot3-pc-1" type="button" data-category="Beleza" aria-label="Beleza"></button>
+      <button class="hotspot slot3-pc-2" type="button" data-category="Moda" aria-label="Moda"></button>
+      <button class="hotspot slot3-pc-3" type="button" data-category="Autocuidado" aria-label="Autocuidado"></button>
+      <button class="hotspot slot3-pc-4" type="button" data-category="Livros" aria-label="Livros"></button>
+      <button class="hotspot slot3-pc-5" type="button" data-category="Vitaminas" aria-label="Vitaminas"></button>
+      <button class="hotspot slot3-pc-6" type="button" data-category="Casa & Rituais" aria-label="Casa e Rituais"></button>
+    </div>
+
+    <div class="slot3-mobile-actions" aria-label="Novidades da semana">
+      <button class="hotspot slot3-mob-all" type="button" data-novidades aria-label="Ver todas as novidades"></button>
+      <button class="hotspot slot3-mob-1" type="button" data-novidades aria-label="LancÃ´me La Vie Est Belle"></button>
+      <button class="hotspot slot3-mob-2" type="button" data-novidades aria-label="Dior Addict Lip Glow"></button>
+    </div>
+  </section>
+  <section class="slot4-lock" aria-label="Editorial">
+    <picture class="slot4-art" aria-hidden="true">
+      <source media="(max-width:900px)" srcset="./assets/approved-current/slot4-mobile.png">
+      <img src="./assets/approved-current/slot4-desktop.png" alt="" draggable="false">
+    </picture>
+
+    <div class="slot4-desktop-actions" aria-label="SeleÃ§Ãµes da editora">
+      <button class="hotspot slot4-pc-1" type="button" data-editorial="rituais" aria-label="Rituais de beleza para dias mais equilibrados"></button>
+      <button class="hotspot slot4-pc-2" type="button" data-editorial="cantinho" aria-label="Como criar um cantinho de autocuidado em casa"></button>
+      <button class="hotspot slot4-pc-3" type="button" data-editorial="livros" aria-label="Livros que toda mulher deveria ler uma vez na vida"></button>
+    </div>
+
+    <div class="slot4-mobile-actions" aria-label="Editorial principal">
+      <button class="hotspot slot4-mob-1" type="button" data-editorial="rituais" aria-label="Ler Rituais de beleza para dias mais equilibrados"></button>
+    </div>
+  </section>
+  <section class="slot5-lock" aria-label="Fechamento visual da home">
+    <picture class="slot5-art" aria-hidden="true">
+      <source media="(max-width:900px)" srcset="./assets/approved-current/slot5-mobile.png">
+      <img src="./assets/approved-current/slot5-desktop.png" alt="" draggable="false">
+    </picture>
+  </section>
+  <dialog id="menu-dialog"><form method="dialog" class="dialog-card"><button class="dialog-close" value="cancel" aria-label="Fechar">Ã—</button><h2>Universos</h2><nav><button value="cancel">Beleza</button><button value="cancel">Moda</button><button value="cancel">Autocuidado</button><button value="cancel">Livros</button><button value="cancel">Vitaminas</button><button value="cancel">Casa &amp; Rituais</button></nav></form></dialog>
+  <dialog id="search-dialog"><form method="dialog" class="dialog-card"><button class="dialog-close" value="cancel" aria-label="Fechar">Ã—</button><h2>Buscar</h2><input type="search" placeholder="O que vocÃª procura?" autocomplete="off"><p>O catÃ¡logo comercial novo ainda nÃ£o possui ofertas aprovadas nesta etapa.</p></form></dialog>
+  <dialog id="ecosystem-dialog"><form method="dialog" class="dialog-card"><button class="dialog-close" value="cancel" aria-label="Fechar">Ã—</button><h2>Ecossistema BlackGold</h2><p>Os links oficiais serÃ£o ligados somente depois da revalidaÃ§Ã£o prevista no projeto.</p></form></dialog>
+  <dialog id="novidades-dialog"><form method="dialog" class="dialog-card"><button class="dialog-close" value="cancel" aria-label="Fechar">Ã—</button><h2>Novidades</h2><p>O catÃ¡logo comeÃ§a vazio e receberÃ¡ somente produtos novos aprovados.</p></form></dialog>
+  <dialog id="category-dialog"><form method="dialog" class="dialog-card"><button class="dialog-close" value="cancel" aria-label="Fechar">Ã—</button><h2 id="category-title">Universo</h2><p>Esta categoria receberÃ¡ somente produtos novos e ofertas verificadas.</p></form></dialog>
 </body>
 </html>

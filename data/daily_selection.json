@@ -1,57 +1,57 @@
 {
-  "campaign_id": "bg-20261003",
-  "date": "2026-10-03",
+  "campaign_id": "bg-20261004",
+  "date": "2026-10-04",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "payot-boca-rosa-meu-volumao-preto-6ml",
-      "title": "👁️✨ Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml 💙🖤",
+      "sku": "limpador-eletrico-pinceis-maquiagem-automatico-usb",
+      "title": "Higienizador Limpador De Pincéis De Maquiagem Elétrico Usb",
       "category": "Maquiagem",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/payot-boca-rosa-meu-volumao-preto-6ml.webp",
-      "affiliate_url": "https://meli.la/1dj3ot3",
+      "image": "assets/produtos-card/limpador-eletrico-pinceis-maquiagem-automatico-usb.webp",
+      "affiliate_url": "https://meli.la/1kgjzmj",
       "score": {
-        "total": 3.349152,
+        "total": 3.095818,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.809524,
         "quality": 0.375
       }
     },
     {
       "position": 2,
-      "sku": "toalha-demaquilante-reutilizavel-make-off-klass-vough",
-      "title": "Toalha Demaquilante Removedora de Maquiagem Reutilizável Make Off Microfibra Klass Vough",
+      "sku": "ice-creamy-lip-balm-mari-maria-vanilla-10ml",
+      "title": "Lip Balm Ice Creamy Baunilha 10g - Mari Maria Makeup",
       "category": "Skincare",
-      "description": "Preço conferido no Mercado Livre. Frete grátis acima de R$ 19. Pode mudar sem aviso.",
-      "price": "R$ 23,14",
-      "image": "assets/produtos-card/toalha-demaquilante-reutilizavel-make-off-klass-vough.webp",
-      "affiliate_url": "https://meli.la/1utHx1A",
-      "score": {
-        "total": 3.049672,
-        "posterior_ctr": 0.05,
-        "exploration": 2.697253,
-        "freshness": 0.571429,
-        "quality": 0.615
-      }
-    },
-    {
-      "position": 3,
-      "sku": "kit-unha-postica-francesinha-pe-nude-quadrada",
-      "title": "Kit Unha Postiça Francesinha para o Pé Cor Nude Quadrada",
-      "category": "Unhas",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/kit-unha-postica-francesinha-pe-nude-quadrada.webp",
-      "affiliate_url": "https://meli.la/1HVaS52",
+      "image": "assets/produtos-card/ice-creamy-lip-balm-mari-maria-vanilla-10ml.webp",
+      "affiliate_url": "https://meli.la/1npmMX6",
       "score": {
-        "total": 3.026522,
+        "total": 3.079296,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.761905,
         "quality": 0.375
+      }
+    },
+    {
+      "position": 3,
+      "sku": "mondial-modelador-cachos-infinity-em-12",
+      "title": "Modelador de Cachos Mondial Infinity EM-12 55W",
+      "category": "Cabelo",
+      "description": "✨ Crie cachos definidos e duradouros com o Modelador Mondial Infinity EM-12. Possui revestimento cerâmico, 55W de potência, aquecimento rápido, temperatura de até 210°C e diâmetro de 2,5 cm para facilitar o uso no dia a dia.",
+      "price": "R$ 62,53",
+      "image": "assets/produtos-card/mondial-modelador-cachos-infinity-em-12.webp",
+      "affiliate_url": "https://meli.la/1JxC1mg",
+      "score": {
+        "total": 3.030894,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 0.571429,
+        "quality": 0.615
       }
     }
   ]

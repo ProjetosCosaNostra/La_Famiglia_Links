@@ -146,13 +146,13 @@
     "ice-creamy-lip-balm-mari-maria-vanilla-10ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-18",
+      "selection_count": 2,
+      "last_selected": "2026-10-04",
       "last_score": {
-        "total": 3.314011,
+        "total": 3.079296,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
@@ -419,13 +419,13 @@
     "limpador-eletrico-pinceis-maquiagem-automatico-usb": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-17",
+      "selection_count": 2,
+      "last_selected": "2026-10-04",
       "last_score": {
-        "total": 3.331607,
+        "total": 3.095818,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.809524,
         "quality": 0.375
       }
     },
@@ -510,13 +510,13 @@
     "mondial-modelador-cachos-infinity-em-12": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-22",
+      "selection_count": 3,
+      "last_selected": "2026-10-04",
       "last_score": {
-        "total": 3.222939,
+        "total": 3.030894,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.714286,
+        "freshness": 0.571429,
         "quality": 0.615
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-03T16:20:24Z",
-  "last_campaign_id": "bg-20261003"
+  "updated_at": "2026-10-04T16:52:08Z",
+  "last_campaign_id": "bg-20261004"
 }
