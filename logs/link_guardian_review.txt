@@ -1,22 +1,23 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-10-05T05:26:26Z
-Itens pendentes: 4
-SKUs únicos: 4
-Prioridade alta: 4
+Atualizado em: 2026-10-05T14:31:20Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 4
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 4
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 4
+- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +25,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-10-05T05:22:04Z
+Quando: 2026-10-05T14:23:21Z
 Issue: #165
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165
 SKU: kit-pinceis-maquiagem-13-pecas-estojo-rose
@@ -35,7 +36,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (56x /lists, 0x listing)
+Memória operacional: histórico recorrente (57x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Maquiagem, Feminino, Premium, Mais Vendido, Baratinho
 open_url: https://meli.la/22qx74W
 checked_url: https://meli.la/22qx74W
@@ -43,7 +44,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-CU2P
 
 [ALTA] review_only_storefront
-Quando: 2026-10-05T05:22:04Z
+Quando: 2026-10-05T14:23:21Z
+Issue: #107
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/107
+SKU: cuscuzeira-inox-premium-25l
+Título: Cuscuzeira Nordestina Inox 2,5L Util Bazar Para Fogão A Gás E Indução
+ID ML: 5J5PKG-HRGT
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Memória operacional: histórico recorrente (19x /lists, 0x listing)
+Badges: Achados do Dia, Cozinha, Cuscuzeira, Inox, Cuscuz, Panela a Vapor, 2, 5L
+open_url: https://meli.la/1xQ7g6F
+checked_url: https://meli.la/1xQ7g6F
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BET0imunPmWslaKiYmUtNBcyF5J5nANW8EpyBwt2ryyt%2F3rDxiV6S4SCk0art7Uoke%2BbOCpin68vTQ7baUhA%2BaxeAIEqf7E5ex7kqRzuRI%2Fmldwp66npfx0Y4Lm%2BqwJjkTmzoZboVqcuHZtpstUkVgiW9tdzXGZtU2DKW1LwB09PSCFM5WlAs2x0GqIpG%2BXh7tuR1Jg%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-PMWY&tid=c74a578b-5fb4-4226-b5cb-674903613b47
+
+[ALTA] review_only_storefront
+Quando: 2026-10-05T14:23:21Z
 Issue: #54
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
 SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
@@ -54,7 +74,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (63x /lists, 1x listing)
+Memória operacional: histórico recorrente (64x /lists, 1x listing)
 Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
 open_url: https://mercadolivre.com/sec/29Gq2Ww
 checked_url: https://mercadolivre.com/sec/29Gq2Ww
@@ -62,7 +82,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
 
 [ALTA] review_only_storefront
-Quando: 2026-10-05T05:22:04Z
+Quando: 2026-10-05T14:23:21Z
 Issue: #120
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/120
 SKU: headset-gamer-jbl-quantum-100-preto
@@ -73,7 +93,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (35x /lists, 1x listing)
+Memória operacional: histórico recorrente (36x /lists, 1x listing)
 Badges: Achados do Dia, Headset Gamer, JBL, Quantum 100, Com fio, Microfone, Preto, Gamer
 open_url: https://meli.la/2KwjYue
 checked_url: https://meli.la/2KwjYue
@@ -81,7 +101,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-YRGV&tid=01086582-ae9c-45c2-a163-eb7921854dcb
 
 [ALTA] review_only_storefront
-Quando: 2026-10-05T05:22:04Z
+Quando: 2026-10-05T14:23:21Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -92,7 +112,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (68x /lists, 0x listing)
+Memória operacional: histórico recorrente (69x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
