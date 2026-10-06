@@ -1,56 +1,56 @@
 {
-  "campaign_id": "bg-20261004",
-  "date": "2026-10-04",
+  "campaign_id": "bg-20261006",
+  "date": "2026-10-06",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "limpador-eletrico-pinceis-maquiagem-automatico-usb",
-      "title": "Higienizador Limpador De Pincéis De Maquiagem Elétrico Usb",
-      "category": "Maquiagem",
+      "sku": "nivea-hidratante-labial-morango-shine-4-8g",
+      "title": "Hidratante Labial Morango Shine 4,8g Nivea",
+      "category": "Skincare",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/limpador-eletrico-pinceis-maquiagem-automatico-usb.webp",
-      "affiliate_url": "https://meli.la/1kgjzmj",
+      "image": "assets/produtos-card/nivea-hidratante-labial-morango-shine-4-8g.webp",
+      "affiliate_url": "https://meli.la/2DebLCE",
       "score": {
-        "total": 3.095818,
+        "total": 3.197457,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.809524,
+        "freshness": 0.904762,
         "quality": 0.375
       }
     },
     {
       "position": 2,
-      "sku": "ice-creamy-lip-balm-mari-maria-vanilla-10ml",
-      "title": "Lip Balm Ice Creamy Baunilha 10g - Mari Maria Makeup",
-      "category": "Skincare",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/ice-creamy-lip-balm-mari-maria-vanilla-10ml.webp",
-      "affiliate_url": "https://meli.la/1npmMX6",
+      "sku": "kit-sos-makeup-miamake-3em1-rosa",
+      "title": "Kit SOS Make Up Chaveiro Mia Make 3 em 1",
+      "category": "Maquiagem",
+      "description": "💄 Kit SOS Make Up Mia Make 3 em 1 — beleza prática para levar com você. Chaveiro compacto com gel fixador, batom em bala e lip gloss, perfeito para retoques rápidos na bolsa e no dia a dia.",
+      "price": "R$ 23,90",
+      "image": "assets/produtos-card/kit-sos-makeup-miamake-3em1-rosa.webp",
+      "affiliate_url": "https://meli.la/1GNrAjm",
       "score": {
-        "total": 3.079296,
+        "total": 3.134349,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.761905,
-        "quality": 0.375
+        "freshness": 0.666667,
+        "quality": 0.615
       }
     },
     {
       "position": 3,
-      "sku": "mondial-modelador-cachos-infinity-em-12",
-      "title": "Modelador de Cachos Mondial Infinity EM-12 55W",
-      "category": "Cabelo",
-      "description": "✨ Crie cachos definidos e duradouros com o Modelador Mondial Infinity EM-12. Possui revestimento cerâmico, 55W de potência, aquecimento rápido, temperatura de até 210°C e diâmetro de 2,5 cm para facilitar o uso no dia a dia.",
-      "price": "R$ 62,53",
-      "image": "assets/produtos-card/mondial-modelador-cachos-infinity-em-12.webp",
-      "affiliate_url": "https://meli.la/1JxC1mg",
+      "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
+      "title": "Creme Multirreparador Calmante Cicaplast Baume B5+ La Roche-Posay 40ml",
+      "category": "Perfumaria",
+      "description": "🩵 Cicaplast Baume B5+ La Roche-Posay 40ml: cuidado multirreparador calmante para pele sensibilizada. Ajuda a reparar a barreira da pele, hidratar, acalmar e proteger. Com Tribioma, Panthenol e Madecassoside, possui textura cremosa não oleosa e sem perfume. Pode ser aplicado no rosto, corpo e lábios.",
+      "price": "R$ 67,71",
+      "image": "assets/produtos-card/cicaplast-baume-b5-plus-la-roche-posay-40ml.webp",
+      "affiliate_url": "https://meli.la/1Vemrez",
       "score": {
-        "total": 3.030894,
+        "total": 3.134195,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.571429,
+        "freshness": 0.619048,
         "quality": 0.615
       }
     }
