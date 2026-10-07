@@ -1,19 +1,36 @@
 {
-  "campaign_id": "bg-20261006",
-  "date": "2026-10-06",
+  "campaign_id": "bg-20261007",
+  "date": "2026-10-07",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "nivea-hidratante-labial-morango-shine-4-8g",
-      "title": "Hidratante Labial Morango Shine 4,8g Nivea",
+      "sku": "agua-micelar-garnier-skinactive-tudo-em-1-400ml",
+      "title": "Água Micelar Garnier SkinActive Tudo em 1 400ml",
       "category": "Skincare",
+      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso. Aproveite enquanto a oferta estiver disponível.",
+      "price": "R$ 43,59",
+      "image": "assets/produtos-card/agua-micelar-garnier-skinactive-tudo-em-1-400ml.webp",
+      "affiliate_url": "https://meli.la/2qvGAQ8",
+      "score": {
+        "total": 3.238005,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 0.714286,
+        "quality": 0.615
+      }
+    },
+    {
+      "position": 2,
+      "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
+      "title": "Gloss Labial Fantasyland Disney 100 Anos - Bruna Tavares",
+      "category": "Maquiagem",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/nivea-hidratante-labial-morango-shine-4-8g.webp",
-      "affiliate_url": "https://meli.la/2DebLCE",
+      "image": "assets/produtos-card/gloss-labial-fantasyland-disney-100-bruna-tavares.webp",
+      "affiliate_url": "https://meli.la/2Fomd6F",
       "score": {
-        "total": 3.197457,
+        "total": 3.209743,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.904762,
@@ -21,37 +38,20 @@
       }
     },
     {
-      "position": 2,
-      "sku": "kit-sos-makeup-miamake-3em1-rosa",
-      "title": "Kit SOS Make Up Chaveiro Mia Make 3 em 1",
-      "category": "Maquiagem",
-      "description": "💄 Kit SOS Make Up Mia Make 3 em 1 — beleza prática para levar com você. Chaveiro compacto com gel fixador, batom em bala e lip gloss, perfeito para retoques rápidos na bolsa e no dia a dia.",
-      "price": "R$ 23,90",
-      "image": "assets/produtos-card/kit-sos-makeup-miamake-3em1-rosa.webp",
-      "affiliate_url": "https://meli.la/1GNrAjm",
-      "score": {
-        "total": 3.134349,
-        "posterior_ctr": 0.05,
-        "exploration": 2.697253,
-        "freshness": 0.666667,
-        "quality": 0.615
-      }
-    },
-    {
       "position": 3,
-      "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
-      "title": "Creme Multirreparador Calmante Cicaplast Baume B5+ La Roche-Posay 40ml",
-      "category": "Perfumaria",
-      "description": "🩵 Cicaplast Baume B5+ La Roche-Posay 40ml: cuidado multirreparador calmante para pele sensibilizada. Ajuda a reparar a barreira da pele, hidratar, acalmar e proteger. Com Tribioma, Panthenol e Madecassoside, possui textura cremosa não oleosa e sem perfume. Pode ser aplicado no rosto, corpo e lábios.",
-      "price": "R$ 67,71",
-      "image": "assets/produtos-card/cicaplast-baume-b5-plus-la-roche-posay-40ml.webp",
-      "affiliate_url": "https://meli.la/1Vemrez",
+      "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
+      "title": "Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)",
+      "category": "Cabelo",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/escova-secadora-britania-bec07r-4em1-1300w-rosa.webp",
+      "affiliate_url": "https://meli.la/1Vd3P8y",
       "score": {
-        "total": 3.134195,
+        "total": 3.185041,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.619048,
-        "quality": 0.615
+        "freshness": 0.904762,
+        "quality": 0.375
       }
     }
   ]

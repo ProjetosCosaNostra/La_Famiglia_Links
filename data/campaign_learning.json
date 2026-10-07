@@ -16,13 +16,13 @@
     "gloss-labial-fantasyland-disney-100-bruna-tavares": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-18",
+      "selection_count": 2,
+      "last_selected": "2026-10-07",
       "last_score": {
-        "total": 3.355047,
+        "total": 3.209743,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.904762,
         "quality": 0.375
       }
     },
@@ -107,13 +107,13 @@
     "escova-secadora-britania-bec07r-4em1-1300w-rosa": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-18",
+      "selection_count": 2,
+      "last_selected": "2026-10-07",
       "last_score": {
-        "total": 3.351332,
+        "total": 3.185041,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.904762,
         "quality": 0.375
       }
     },
@@ -497,10 +497,10 @@
     "agua-micelar-garnier-skinactive-tudo-em-1-400ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-22",
+      "selection_count": 3,
+      "last_selected": "2026-10-07",
       "last_score": {
-        "total": 3.193952,
+        "total": 3.238005,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.714286,
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-06T18:24:57Z",
-  "last_campaign_id": "bg-20261006"
+  "updated_at": "2026-10-07T18:57:57Z",
+  "last_campaign_id": "bg-20261007"
 }
