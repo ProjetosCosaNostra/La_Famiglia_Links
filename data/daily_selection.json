@@ -1,36 +1,19 @@
 {
-  "campaign_id": "bg-20261007",
-  "date": "2026-10-07",
+  "campaign_id": "bg-20261008",
+  "date": "2026-10-08",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "agua-micelar-garnier-skinactive-tudo-em-1-400ml",
-      "title": "Água Micelar Garnier SkinActive Tudo em 1 400ml",
-      "category": "Skincare",
-      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso. Aproveite enquanto a oferta estiver disponível.",
-      "price": "R$ 43,59",
-      "image": "assets/produtos-card/agua-micelar-garnier-skinactive-tudo-em-1-400ml.webp",
-      "affiliate_url": "https://meli.la/2qvGAQ8",
-      "score": {
-        "total": 3.238005,
-        "posterior_ctr": 0.05,
-        "exploration": 2.697253,
-        "freshness": 0.714286,
-        "quality": 0.615
-      }
-    },
-    {
-      "position": 2,
-      "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
-      "title": "Gloss Labial Fantasyland Disney 100 Anos - Bruna Tavares",
+      "sku": "love-kit-gloss-labial-coracao-lapis-volume-rosada",
+      "title": "Love Kit Gloss Labial Coração Lápis Volume Rosada",
       "category": "Maquiagem",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/gloss-labial-fantasyland-disney-100-bruna-tavares.webp",
-      "affiliate_url": "https://meli.la/2Fomd6F",
+      "image": "assets/produtos-card/love-kit-gloss-labial-coracao-lapis-volume-rosada.webp",
+      "affiliate_url": "https://meli.la/1b5R9Wd",
       "score": {
-        "total": 3.209743,
+        "total": 3.214119,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.904762,
@@ -38,19 +21,36 @@
       }
     },
     {
+      "position": 2,
+      "sku": "espelho-led-dobravel-maquiagem-rosto-make",
+      "title": "Espelho LED Dobrável de Maquiagem Rosto Make",
+      "category": "Skincare",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/espelho-led-dobravel-maquiagem-rosto-make.webp",
+      "affiliate_url": "https://meli.la/2zDAba1",
+      "score": {
+        "total": 3.177204,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 0.857143,
+        "quality": 0.375
+      }
+    },
+    {
       "position": 3,
-      "sku": "escova-secadora-britania-bec07r-4em1-1300w-rosa",
-      "title": "Escova Secadora de Cabelos Britânia BEC07R Soft 4 em 1 1300W — Cabo Giratório (Rosa)",
+      "sku": "gel-para-sobrancelhas-brow-rise-ruby-rose",
+      "title": "Gel para Sobrancelhas Brow Rise Ruby Rose",
       "category": "Cabelo",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/escova-secadora-britania-bec07r-4em1-1300w-rosa.webp",
-      "affiliate_url": "https://meli.la/1Vd3P8y",
+      "image": "assets/produtos-card/gel-para-sobrancelhas-brow-rise-ruby-rose.webp",
+      "affiliate_url": "https://meli.la/2cC6jBy",
       "score": {
-        "total": 3.185041,
+        "total": 2.951141,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.904762,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     }
