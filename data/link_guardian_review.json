@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-08T13:22:26Z",
-  "total_items": 8,
+  "updated_at": "2026-10-08T23:20:38Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 8,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 8
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 8
+      "storefront_social_lists_invalid": 7
     },
     "by_action": {
-      "trocar_link": 8
+      "trocar_link": 7
     },
-    "high_priority": 8
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-10-08T13:16:35Z",
+      "happened_at": "2026-10-08T23:14:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (65x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (66x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,51 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-08T13:16:35Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 118,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118",
-      "issue_title": "[CMS] Produto: 🎮🕹️ Nintendo Super Mini Premium",
-      "sku": "nintendo-super-mini-premium",
-      "title": "Super Nintendo Classic Mini 256gb Standard Kt",
-      "id_busca": "5J5PKG-Y8U2",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (28x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2rm5dGk",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2rm5dGk",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD6kOEP9tWDUZXG1QkYEYTabQCbfAHhXTeNZwnhN%2Fvlk6idGERnKWpeULgFJCe6bfETalvlkmJekFBVhBz%2BUfxwA%2Fl2WX4oDP3IxC0COXuo9Ahi2UjjwC5E8q9lZBpgvzTtZDA%2BBNVeHgn0tGgixmL5lBVALZeVs8ILinHnQgxwVgimj4E4QByz4uyjzowrH1%2BZz4kaAQ9LRc6sQLQ%3D%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1",
-      "short_url": "https://meli.la/15ypbuc",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD6kOEP9tWDUZXG1QkYEYTabQCbfAHhXTeNZwnhN%2Fvlk6idGERnKWpeULgFJCe6bfETalvlkmJekFBVhBz%2BUfxwA%2Fl2WX4oDP3IxC0COXuo9Ahi2UjjwC5E8q9lZBpgvzTtZDA%2BBNVeHgn0tGgixmL5lBVALZeVs8ILinHnQgxwVgimj4E4QByz4uyjzowrH1%2BZz4kaAQ9LRc6sQLQ%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BD6kOEP9tWDUZXG1QkYEYTabQCbfAHhXTeNZwnhN%2Fvlk6idGERnKWpeULgFJCe6bfETalvlkmJekFBVhBz%2BUfxwA%2Fl2WX4oDP3IxC0COXuo9Ahi2UjjwC5E8q9lZBpgvzTtZDA%2BBNVeHgn0tGgixmL5lBVALZeVs8ILinHnQgxwVgimj4E4QByz4uyjzowrH1%2BZz4kaAQ9LRc6sQLQ%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Retrô",
-        "2 Controles",
-        "Nostalgia Gamer",
-        "Console Retrô",
-        "Nintendo",
-        "Mini Console"
-      ]
-    },
-    {
-      "happened_at": "2026-10-08T13:16:35Z",
+      "happened_at": "2026-10-08T23:14:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -120,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (7x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (8x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-08T13:16:35Z",
+      "happened_at": "2026-10-08T23:14:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (49x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (50x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +150,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-08T13:16:35Z",
+      "happened_at": "2026-10-08T23:14:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +166,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (69x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (70x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +195,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-08T13:16:35Z",
+      "happened_at": "2026-10-08T23:14:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +211,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (44x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (45x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -284,7 +240,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-08T13:16:35Z",
+      "happened_at": "2026-10-08T23:14:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -300,7 +256,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (63x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (64x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -329,7 +285,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-08T13:16:35Z",
+      "happened_at": "2026-10-08T23:14:31Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -345,7 +301,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (77x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (78x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
