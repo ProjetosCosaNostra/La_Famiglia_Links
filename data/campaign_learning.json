@@ -94,13 +94,13 @@
     "escova-eletrica-sonica-philips-colgate-sonicpro-10-recarregavel": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-24",
+      "selection_count": 3,
+      "last_selected": "2026-10-09",
       "last_score": {
-        "total": 2.938953,
+        "total": 2.986104,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     },
@@ -224,13 +224,13 @@
     "ruby-rose-caneta-delineadora-gatinho-2em1-mood-preto": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-24",
+      "selection_count": 3,
+      "last_selected": "2026-10-09",
       "last_score": {
-        "total": 2.952447,
+        "total": 2.9666,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     },
@@ -276,13 +276,13 @@
     "serum-principia-niacinamida-zinco-pca-30ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-19",
+      "selection_count": 2,
+      "last_selected": "2026-10-09",
       "last_score": {
-        "total": 3.353445,
+        "total": 3.256643,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.952381,
         "quality": 0.375
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-08T18:52:32Z",
-  "last_campaign_id": "bg-20261008"
+  "updated_at": "2026-10-09T18:23:02Z",
+  "last_campaign_id": "bg-20261009"
 }
