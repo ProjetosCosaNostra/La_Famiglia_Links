@@ -8,6 +8,8 @@
   <title>BlackGold Beauty Finds â€” Current</title>
   <link rel="stylesheet" href="./src/home-current/site.css">
   <script type="module" src="./src/home-current/app.js"></script>
+  <link rel="stylesheet" href="./stage40/product-detail.css">
+  <script type="module" src="./stage40/product-detail.js"></script>
 </head>
 <body>
   <main class="visual-lock" id="inicio">
