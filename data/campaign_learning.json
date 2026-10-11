@@ -29,13 +29,13 @@
     "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-26",
+      "selection_count": 3,
+      "last_selected": "2026-10-11",
       "last_score": {
-        "total": 2.935196,
+        "total": 3.009935,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.714286,
         "quality": 0.375
       }
     },
@@ -315,26 +315,26 @@
     "depilador-eletrico-feminino-4-em-1": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-25",
+      "selection_count": 3,
+      "last_selected": "2026-10-11",
       "last_score": {
-        "total": 2.973982,
+        "total": 3.081469,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.714286,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
     "principia-protetor-solar-facial-ps-01-fps-60": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-25",
+      "selection_count": 3,
+      "last_selected": "2026-10-11",
       "last_score": {
-        "total": 2.95522,
+        "total": 3.011134,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-10T17:21:45Z",
-  "last_campaign_id": "bg-20261010"
+  "updated_at": "2026-10-11T17:42:03Z",
+  "last_campaign_id": "bg-20261011"
 }
