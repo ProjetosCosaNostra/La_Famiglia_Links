@@ -133,13 +133,13 @@
     "organizador-maquiagem-giratorio-360-acrilico-transparente": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-26",
+      "selection_count": 3,
+      "last_selected": "2026-10-12",
       "last_score": {
-        "total": 2.947099,
+        "total": 3.028467,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
@@ -393,13 +393,13 @@
     "cabine-led-uv-sun-5-48w": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-26",
+      "selection_count": 3,
+      "last_selected": "2026-10-12",
       "last_score": {
-        "total": 2.964727,
+        "total": 3.052212,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
@@ -445,13 +445,13 @@
     "depilador-ipl-basike-sensacao-gelo-9-niveis": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 3,
-      "last_selected": "2026-09-29",
+      "selection_count": 4,
+      "last_selected": "2026-10-12",
       "last_score": {
-        "total": 2.941789,
+        "total": 3.118266,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.47619,
+        "freshness": 0.619048,
         "quality": 0.615
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-11T17:42:03Z",
-  "last_campaign_id": "bg-20261011"
+  "updated_at": "2026-10-12T21:17:30Z",
+  "last_campaign_id": "bg-20261012"
 }

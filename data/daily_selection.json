@@ -1,36 +1,36 @@
 {
-  "campaign_id": "bg-20261011",
-  "date": "2026-10-11",
+  "campaign_id": "bg-20261012",
+  "date": "2026-10-12",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "depilador-eletrico-feminino-4-em-1",
-      "title": "Depilador Elétrico Feminino 4 em 1",
+      "sku": "depilador-ipl-basike-sensacao-gelo-9-niveis",
+      "title": "Depilador IPL Basike Sensação Gelo — 9 Níveis e 1 Milhão de Disparos",
       "category": "Beleza",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/depilador-eletrico-feminino-4-em-1.webp",
-      "affiliate_url": "https://meli.la/2LK3ZKv",
+      "description": "Preço conferido no Mercado Livre em 17/05/2026. Pode mudar sem aviso.",
+      "price": "R$ 271,70",
+      "image": "assets/produtos-card/depilador-ipl-basike-sensacao-gelo-9-niveis.webp",
+      "affiliate_url": "https://meli.la/2YKAybJ",
       "score": {
-        "total": 3.081469,
+        "total": 3.118266,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.761905,
-        "quality": 0.375
+        "freshness": 0.619048,
+        "quality": 0.615
       }
     },
     {
       "position": 2,
-      "sku": "principia-protetor-solar-facial-ps-01-fps-60",
-      "title": "Principia Protetor Solar Facial PS-01 FPS 60",
-      "category": "Skincare",
+      "sku": "cabine-led-uv-sun-5-48w",
+      "title": "Cabine Led/uv Sun 5 48w",
+      "category": "Cabelo",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/principia-protetor-solar-facial-ps-01-fps-60.webp",
-      "affiliate_url": "https://meli.la/257Mpir",
+      "image": "assets/produtos-card/cabine-led-uv-sun-5-48w.webp",
+      "affiliate_url": "https://meli.la/2fLn9Fc",
       "score": {
-        "total": 3.011134,
+        "total": 3.052212,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.761905,
@@ -39,18 +39,18 @@
     },
     {
       "position": 3,
-      "sku": "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake",
-      "title": "Iluminador Líquido Hello Kitty BT Bruna Tavares - Cake",
-      "category": "Maquiagem",
+      "sku": "organizador-maquiagem-giratorio-360-acrilico-transparente",
+      "title": "Vittak Organizador Maquiagem Cosméticos Batom Acrílico Giratório 360º Ajustável",
+      "category": "Perfumaria",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake.webp",
-      "affiliate_url": "https://meli.la/2c5kWEt",
+      "image": "assets/produtos-card/organizador-maquiagem-giratorio-360-acrilico-transparente.webp",
+      "affiliate_url": "https://meli.la/2tLGveg",
       "score": {
-        "total": 3.009935,
+        "total": 3.028467,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.714286,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     }
