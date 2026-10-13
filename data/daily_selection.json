@@ -1,57 +1,57 @@
 {
-  "campaign_id": "bg-20261012",
-  "date": "2026-10-12",
+  "campaign_id": "bg-20261013",
+  "date": "2026-10-13",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "depilador-ipl-basike-sensacao-gelo-9-niveis",
-      "title": "Depilador IPL Basike Sensação Gelo — 9 Níveis e 1 Milhão de Disparos",
-      "category": "Beleza",
-      "description": "Preço conferido no Mercado Livre em 17/05/2026. Pode mudar sem aviso.",
-      "price": "R$ 271,70",
-      "image": "assets/produtos-card/depilador-ipl-basike-sensacao-gelo-9-niveis.webp",
-      "affiliate_url": "https://meli.la/2YKAybJ",
+      "sku": "bt-coca-cola-blush-stick-bruna-tavares-intense-cherry",
+      "title": "BT Coca-Cola Blush Stick - Bruna Tavares - Multifuncional Intense Cherry",
+      "category": "Maquiagem",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/bt-coca-cola-blush-stick-bruna-tavares-intense-cherry.webp",
+      "affiliate_url": "https://meli.la/2mkbQ6Q",
       "score": {
-        "total": 3.118266,
+        "total": 3.076528,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.619048,
-        "quality": 0.615
+        "freshness": 0.761905,
+        "quality": 0.375
       }
     },
     {
       "position": 2,
-      "sku": "cabine-led-uv-sun-5-48w",
-      "title": "Cabine Led/uv Sun 5 48w",
+      "sku": "escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer",
+      "title": "Escova de Cabelo Desembaraçadora The Wet Detangler Rosa Tangle Teezer",
       "category": "Cabelo",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/cabine-led-uv-sun-5-48w.webp",
-      "affiliate_url": "https://meli.la/2fLn9Fc",
+      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso.",
+      "price": "R$ 90,87",
+      "image": "assets/produtos-card/escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer.webp",
+      "affiliate_url": "https://meli.la/1ox9T41",
       "score": {
-        "total": 3.052212,
+        "total": 3.063134,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.761905,
-        "quality": 0.375
+        "freshness": 0.571429,
+        "quality": 0.615
       }
     },
     {
       "position": 3,
-      "sku": "organizador-maquiagem-giratorio-360-acrilico-transparente",
-      "title": "Vittak Organizador Maquiagem Cosméticos Batom Acrílico Giratório 360º Ajustável",
+      "sku": "cerave-gel-limpeza-facial-454g",
+      "title": "Gel de Limpeza Facial Pele Oleosa 3 Ceramidas e Niacinamida CeraVe 454g",
       "category": "Perfumaria",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/organizador-maquiagem-giratorio-360-acrilico-transparente.webp",
-      "affiliate_url": "https://meli.la/2tLGveg",
+      "description": "🧴 CeraVe Gel de Limpeza Facial 454g para pele normal a oleosa. Limpa e remove o excesso de oleosidade e maquiagem sem alterar a barreira protetora da pele. Fórmula com 3 ceramidas essenciais, niacinamida e ácido hialurônico, sem perfume e ideal para uso diário.",
+      "price": "R$ 82,99",
+      "image": "assets/produtos-card/cerave-gel-limpeza-facial-454g.webp",
+      "affiliate_url": "https://meli.la/1VuvMuX",
       "score": {
-        "total": 3.028467,
+        "total": 3.04898,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.761905,
-        "quality": 0.375
+        "freshness": 0.571429,
+        "quality": 0.615
       }
     }
   ]

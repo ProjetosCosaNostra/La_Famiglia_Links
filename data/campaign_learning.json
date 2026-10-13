@@ -120,13 +120,13 @@
     "bt-coca-cola-blush-stick-bruna-tavares-intense-cherry": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-27",
+      "selection_count": 3,
+      "last_selected": "2026-10-13",
       "last_score": {
-        "total": 2.958393,
+        "total": 3.076528,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
@@ -458,13 +458,13 @@
     "escova-cabelo-desembaracadora-the-wet-detangler-rosa-tangle-teezer": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 3,
-      "last_selected": "2026-10-01",
+      "selection_count": 4,
+      "last_selected": "2026-10-13",
       "last_score": {
-        "total": 3.021911,
+        "total": 3.063134,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.52381,
+        "freshness": 0.571429,
         "quality": 0.615
       }
     },
@@ -523,13 +523,13 @@
     "cerave-gel-limpeza-facial-454g": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 3,
-      "last_selected": "2026-10-01",
+      "selection_count": 4,
+      "last_selected": "2026-10-13",
       "last_score": {
-        "total": 3.017562,
+        "total": 3.04898,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.52381,
+        "freshness": 0.571429,
         "quality": 0.615
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-12T21:17:30Z",
-  "last_campaign_id": "bg-20261012"
+  "updated_at": "2026-10-13T19:19:18Z",
+  "last_campaign_id": "bg-20261013"
 }
