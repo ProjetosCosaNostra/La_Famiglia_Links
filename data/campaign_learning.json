@@ -68,13 +68,13 @@
     "corretivo-liquido-alta-cobertura-ruby-rose-stay-fix-cores-zrxy": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-27",
+      "selection_count": 3,
+      "last_selected": "2026-10-14",
       "last_score": {
-        "total": 2.937452,
+        "total": 3.108232,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.809524,
         "quality": 0.375
       }
     },
@@ -185,13 +185,13 @@
     "body-splash-kiss-ciclo-200ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-27",
+      "selection_count": 3,
+      "last_selected": "2026-10-14",
       "last_score": {
-        "total": 2.905616,
+        "total": 3.100663,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.809524,
         "quality": 0.375
       }
     },
@@ -471,13 +471,13 @@
     "mascara-para-dormir-gel-termico-rosa-laco": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 3,
-      "last_selected": "2026-10-02",
+      "selection_count": 4,
+      "last_selected": "2026-10-14",
       "last_score": {
-        "total": 3.04224,
+        "total": 3.051365,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.52381,
+        "freshness": 0.571429,
         "quality": 0.615
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-13T19:19:18Z",
-  "last_campaign_id": "bg-20261013"
+  "updated_at": "2026-10-14T17:14:56Z",
+  "last_campaign_id": "bg-20261014"
 }
