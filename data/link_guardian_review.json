@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-15T21:20:09Z",
-  "total_items": 7,
+  "updated_at": "2026-10-16T04:22:18Z",
+  "total_items": 8,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 8,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 8
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 8
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 8
     },
-    "high_priority": 7
+    "high_priority": 8
   },
   "items": [
     {
-      "happened_at": "2026-10-15T21:14:26Z",
+      "happened_at": "2026-10-16T04:17:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (88x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (89x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-15T21:14:26Z",
+      "happened_at": "2026-10-16T04:17:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (59x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (60x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-15T21:14:26Z",
+      "happened_at": "2026-10-16T04:17:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (47x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (48x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-15T21:14:26Z",
+      "happened_at": "2026-10-16T04:17:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (103x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (104x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-15T21:14:26Z",
+      "happened_at": "2026-10-16T04:17:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (30x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (31x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-15T21:14:26Z",
+      "happened_at": "2026-10-16T04:17:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (92x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (93x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -284,7 +284,52 @@
       ]
     },
     {
-      "happened_at": "2026-10-15T21:14:26Z",
+      "happened_at": "2026-10-16T04:17:14Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 186,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/186",
+      "issue_title": "Kit Unha Postiça Francesinha para o Pé Cor Nude Quadrada",
+      "sku": "kit-unha-postica-francesinha-pe-nude-quadrada",
+      "title": "Kit Unha Postiça Francesinha para o Pé Cor Nude Quadrada",
+      "id_busca": "5J5PKG-42HZ",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/1HVaS52",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/1HVaS52",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJAQzb1TOsUl79uAY0nu2fyEIIiuOWIH9Ppij8Bf88nGHWsSQSNBPMuSj1UWYVEDwyqqiKC8%2Bj7vuKGED4xFt2I4IdYHV4CopLW1hL2HzVFGR7OPrFx96ic0PvnJ%2Fz8hCw%2B7gA4nSBDSK7k6VUbXOqcYW6XuOrtUYV2fsv%2FmCU5vQnTndvNHGFPCQJ%2Bz6RYiuKRhim4%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-42HZ",
+      "short_url": "https://meli.la/1HVaS52",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BJAQzb1TOsUl79uAY0nu2fyEIIiuOWIH9Ppij8Bf88nGHWsSQSNBPMuSj1UWYVEDwyqqiKC8%2Bj7vuKGED4xFt2I4IdYHV4CopLW1hL2HzVFGR7OPrFx96ic0PvnJ%2Fz8hCw%2B7gA4nSBDSK7k6VUbXOqcYW6XuOrtUYV2fsv%2FmCU5vQnTndvNHGFPCQJ%2Bz6RYiuKRhim4%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Feminino",
+        "Francesinha",
+        "Nude",
+        "Beleza",
+        "Pés Bonitos",
+        "Autocuidado",
+        "Visual Elegante"
+      ]
+    },
+    {
+      "happened_at": "2026-10-16T04:17:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -300,7 +345,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (86x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (87x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
