@@ -1131,6 +1131,35 @@
         }
       },
       "created_at": "2026-10-15T17:04:37Z"
+    },
+    "bg-20261016": {
+      "channels": {
+        "facebook": {
+          "published_skus": [],
+          "remote_ids": [],
+          "configured": false,
+          "policy_status": "ALLOWED",
+          "updated_at": "2026-10-16T16:42:26Z",
+          "status": "PREPARED_NOT_CONFIGURED"
+        },
+        "instagram": {
+          "published_skus": [],
+          "remote_ids": [],
+          "configured": false,
+          "policy_status": "ALLOWED",
+          "updated_at": "2026-10-16T16:42:26Z",
+          "status": "PREPARED_NOT_CONFIGURED"
+        },
+        "telegram": {
+          "published_skus": [],
+          "remote_ids": [],
+          "configured": true,
+          "policy_status": "REVIEW_REQUIRED",
+          "updated_at": "2026-10-16T16:42:26Z",
+          "status": "BLOCKED_BY_POLICY_GATE"
+        }
+      },
+      "created_at": "2026-10-16T16:42:26Z"
     }
   },
   "channels": {
@@ -1138,21 +1167,21 @@
       "configured": false,
       "policy_status": "ALLOWED",
       "gate_open": true,
-      "checked_at": "2026-10-15T17:04:37Z"
+      "checked_at": "2026-10-16T16:42:26Z"
     },
     "instagram": {
       "configured": false,
       "policy_status": "ALLOWED",
       "gate_open": true,
-      "checked_at": "2026-10-15T17:04:37Z"
+      "checked_at": "2026-10-16T16:42:26Z"
     },
     "telegram": {
       "configured": true,
       "policy_status": "REVIEW_REQUIRED",
       "gate_open": false,
-      "checked_at": "2026-10-15T17:04:37Z"
+      "checked_at": "2026-10-16T16:42:26Z"
     }
   },
-  "updated_at": "2026-10-15T17:04:37Z",
-  "last_campaign_id": "bg-20261015"
+  "updated_at": "2026-10-16T16:42:26Z",
+  "last_campaign_id": "bg-20261016"
 }

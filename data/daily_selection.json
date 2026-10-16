@@ -1,19 +1,36 @@
 {
-  "campaign_id": "bg-20261015",
-  "date": "2026-10-15",
+  "campaign_id": "bg-20261016",
+  "date": "2026-10-16",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "escova-oval-secadora-taiff-easy-lilas-1200w",
-      "title": "💜 Escova Oval Secadora Taiff Easy Lilás 1200W",
+      "sku": "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo",
+      "title": "Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo",
       "category": "Cabelo",
-      "description": "Preço conferido no Mercado Livre. Pode mudar sem aviso.",
-      "price": "R$ 164,00",
-      "image": "assets/produtos-card/escova-oval-secadora-taiff-easy-lilas-1200w.webp",
-      "affiliate_url": "https://meli.la/1gj7Dvb",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo.webp",
+      "affiliate_url": "https://meli.la/2mbKAww",
       "score": {
-        "total": 3.158232,
+        "total": 3.134907,
+        "posterior_ctr": 0.05,
+        "exploration": 2.697253,
+        "freshness": 0.857143,
+        "quality": 0.375
+      }
+    },
+    {
+      "position": 2,
+      "sku": "toalha-demaquilante-reutilizavel-make-off-klass-vough",
+      "title": "Toalha Demaquilante Removedora de Maquiagem Reutilizável Make Off Microfibra Klass Vough",
+      "category": "Skincare",
+      "description": "Preço conferido no Mercado Livre. Frete grátis acima de R$ 19. Pode mudar sem aviso.",
+      "price": "R$ 23,14",
+      "image": "assets/produtos-card/toalha-demaquilante-reutilizavel-make-off-klass-vough.webp",
+      "affiliate_url": "https://meli.la/1utHx1A",
+      "score": {
+        "total": 3.11444,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.619048,
@@ -21,36 +38,19 @@
       }
     },
     {
-      "position": 2,
-      "sku": "massageador-facial-pescoco-led-lifting",
-      "title": "Massageador Facial e Pescoço LED Anti-Rugas Lifting Lift",
-      "category": "Skincare",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/massageador-facial-pescoco-led-lifting.webp",
-      "affiliate_url": "https://meli.la/1HYtVJ6",
-      "score": {
-        "total": 3.109576,
-        "posterior_ctr": 0.05,
-        "exploration": 2.697253,
-        "freshness": 0.809524,
-        "quality": 0.375
-      }
-    },
-    {
       "position": 3,
-      "sku": "porta-joias-3-camadas-couro-preto",
-      "title": "Porta Joias 3 Camadas Couro Caixa de Joias Feminina Cor Preto",
-      "category": "Beleza",
+      "sku": "paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores",
+      "title": "Paleta De Maquiagem 28 Sombras Nude + Pinceis - Belle Angel Paleta De Sombra",
+      "category": "Maquiagem",
       "description": "Achado selecionado pela curadoria BlackGold.",
       "price": "",
-      "image": "assets/produtos-card/porta-joias-3-camadas-couro-preto.webp",
-      "affiliate_url": "https://meli.la/18Kx2gM",
+      "image": "assets/produtos-card/paleta-maquiagem-belle-angel-28-sombras-nude-pinceis-sombra-28-cores.webp",
+      "affiliate_url": "https://meli.la/2VCv36B",
       "score": {
-        "total": 3.082749,
+        "total": 3.080539,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.809524,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     }
