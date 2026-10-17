@@ -81,13 +81,13 @@
     "gloss-fran-liphoney-mel": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-10-01",
+      "selection_count": 3,
+      "last_selected": "2026-10-17",
       "last_score": {
-        "total": 2.989229,
+        "total": 3.034949,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.714286,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     },
@@ -172,13 +172,13 @@
     "batom-hidratante-sace-lady-a03-terre-rouge": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-29",
+      "selection_count": 3,
+      "last_selected": "2026-10-17",
       "last_score": {
-        "total": 2.931747,
+        "total": 3.140337,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.857143,
         "quality": 0.375
       }
     },
@@ -562,13 +562,13 @@
     "06-presilha-piranha-cabelo-luxo-metal-variadas-dourado": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-09-29",
+      "selection_count": 2,
+      "last_selected": "2026-10-17",
       "last_score": {
-        "total": 3.297855,
+        "total": 3.140565,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.857143,
         "quality": 0.375
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-16T16:42:26Z",
-  "last_campaign_id": "bg-20261016"
+  "updated_at": "2026-10-17T15:38:47Z",
+  "last_campaign_id": "bg-20261017"
 }
