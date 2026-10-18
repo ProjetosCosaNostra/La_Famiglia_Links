@@ -42,13 +42,13 @@
     "po-facial-bruna-tavares-bt-skinpowder": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-30",
+      "selection_count": 3,
+      "last_selected": "2026-10-18",
       "last_score": {
-        "total": 2.969192,
+        "total": 3.152045,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.857143,
         "quality": 0.375
       }
     },
@@ -250,13 +250,13 @@
     "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 2,
-      "last_selected": "2026-09-30",
+      "selection_count": 3,
+      "last_selected": "2026-10-18",
       "last_score": {
-        "total": 2.978736,
+        "total": 3.188371,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.714286,
+        "freshness": 0.857143,
         "quality": 0.375
       }
     },
@@ -549,13 +549,13 @@
     "kit-sos-makeup-miamake-3em1-rosa": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 3,
-      "last_selected": "2026-10-06",
+      "selection_count": 4,
+      "last_selected": "2026-10-18",
       "last_score": {
-        "total": 3.134349,
+        "total": 3.098717,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.666667,
+        "freshness": 0.571429,
         "quality": 0.615
       }
     },
@@ -587,6 +587,6 @@
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-17T15:38:47Z",
-  "last_campaign_id": "bg-20261017"
+  "updated_at": "2026-10-18T15:54:19Z",
+  "last_campaign_id": "bg-20261018"
 }
