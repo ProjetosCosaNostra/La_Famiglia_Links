@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-10-18T04:23:57Z
-Itens pendentes: 7
-SKUs únicos: 7
-Prioridade alta: 7
+Atualizado em: 2026-10-18T10:55:54Z
+Itens pendentes: 5
+SKUs únicos: 5
+Prioridade alta: 5
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 7
+- review_only_storefront: 5
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 7
+- trocar_link: 5
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 6
-- storefront_social_profile_unconfirmed: 1
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-10-18T04:15:34Z
+Quando: 2026-10-18T10:51:32Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -36,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (68x /lists, 0x listing)
+Memória operacional: histórico recorrente (69x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2b2HyMt
 checked_url: https://meli.la/2b2HyMt
@@ -44,26 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-10-18T04:15:34Z
-Issue: #124
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/124
-SKU: intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto
-Título: Intercomunicador Bluetooth para Capacete V10 com Redução de Ruído USB-C 16H - Preto
-ID ML: 5J5PKG-5111
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (8x /lists, 1x listing)
-Badges: Achados do Dia, Intercomunicador, Bluetooth, Capacete, Moto, V10, Sem fio, Redução de ruído
-open_url: https://meli.la/2Lo3w8F
-checked_url: https://meli.la/2Lo3w8F
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5111&tid=b5726868-cff7-4ba4-8227-81a298b06fec
-
-[ALTA] review_only_storefront
-Quando: 2026-10-18T04:15:34Z
+Quando: 2026-10-18T10:51:32Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -74,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (56x /lists, 0x listing)
+Memória operacional: histórico recorrente (57x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/2rm5dGk
 checked_url: https://meli.la/2rm5dGk
@@ -82,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-10-18T04:15:34Z
+Quando: 2026-10-18T10:51:32Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -93,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (112x /lists, 0x listing)
+Memória operacional: histórico recorrente (113x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1RKdpQY
 checked_url: https://meli.la/1RKdpQY
@@ -101,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-10-18T04:15:34Z
+Quando: 2026-10-18T10:51:32Z
 Issue: #54
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/54
 SKU: desumidificador-antimofo-komeco-kdp-250-bivolt
@@ -112,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (101x /lists, 1x listing)
+Memória operacional: histórico recorrente (102x /lists, 1x listing)
 Badges: Achados do Dia, Desumidificador, Antimofo, Komeco, KDP 250, Bivolt, Casa, Quarto
 open_url: https://mercadolivre.com/sec/29Gq2Ww
 checked_url: https://mercadolivre.com/sec/29Gq2Ww
@@ -120,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BJJ0&tid=22407af7-77d0-405b-8cf8-5ffe5d05b7a8
 
 [ALTA] review_only_storefront
-Quando: 2026-10-18T04:15:34Z
+Quando: 2026-10-18T10:51:32Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -131,28 +111,9 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (95x /lists, 0x listing)
+Memória operacional: histórico recorrente (96x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
 final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
-
-[ALTA] review_only_storefront
-Quando: 2026-10-18T04:15:34Z
-Issue: #243
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/243
-SKU: fran-maravicherry-mascara-cilios-preto-6g
-Título: Máscara para Cílios Maravicherry FRAN by Franciny Ehlke Preto 6g
-ID ML: 5J5PKG-WL6G
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Beleza, Maquiagem, Olhos, Máscara de Cílios, Maravicherry, FRAN, Franciny Ehlke, Máximo Volume
-open_url: https://meli.la/2vZcCPX
-checked_url: https://meli.la/2vZcCPX
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL%2BE1WqKYGG1688LPJVWU23A9CJgY%2FGHrSRLWGCc8I%2Fec7mVjMTvxirZ469oWSDN7hWqopuIZUvs9WOUu5F0WgjQmtUI1w%2Fx9NkM6Jq9bUwHzCfNuCZc%2FbEvqsFCOjl54CE%2BVnoUp3mbAqU%2Fpe2Y7%2FXcJwLhCDB8gMGpYE5ZzC2OV%2Fv06lelW0RvMtxsMQAsm3BSUWujH6gWNaSjn7fk8ikornz5UtjQGgwxHw%3D%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-WL6G

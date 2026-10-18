@@ -1,23 +1,22 @@
 {
-  "updated_at": "2026-10-18T04:23:57Z",
-  "total_items": 7,
+  "updated_at": "2026-10-18T10:55:54Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 6,
-      "storefront_social_profile_unconfirmed": 1
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 5
     },
-    "high_priority": 7
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-10-18T04:15:34Z",
+      "happened_at": "2026-10-18T10:51:32Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -33,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (68x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (69x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -62,52 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-18T04:15:34Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 124,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/124",
-      "issue_title": "[CMS] Produto: Intercomunicador Bluetooth para Capacete V10 USB-C 16H Preto",
-      "sku": "intercomunicador-bluetooth-capacete-v10-usb-c-16h-preto",
-      "title": "Intercomunicador Bluetooth para Capacete V10 com Redução de Ruído USB-C 16H - Preto",
-      "id_busca": "5J5PKG-5111",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (8x /lists, 1x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2Lo3w8F",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2Lo3w8F",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOi1SQLiYXmmsFhcAywNdVGCM1uD%2FA12aAYc7ZBUyRn6a5hwGD5RdLxUAY0XSWErjc%2FqO4yn7iznzvBQe3mnwoMdmzXXMA1TfW6Lr0QKAkJJdIc25NMX4tRC3bxy%2FsESsoymOtrcrs9pSMuZPRpLooOQHVhTKN1p6LapC5Vdaa1f0JbDRsPwWZf2laJtVYje%2Brt3pv8%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5111&tid=b5726868-cff7-4ba4-8227-81a298b06fec",
-      "short_url": "https://meli.la/2Lo3w8F",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOi1SQLiYXmmsFhcAywNdVGCM1uD%2FA12aAYc7ZBUyRn6a5hwGD5RdLxUAY0XSWErjc%2FqO4yn7iznzvBQe3mnwoMdmzXXMA1TfW6Lr0QKAkJJdIc25NMX4tRC3bxy%2FsESsoymOtrcrs9pSMuZPRpLooOQHVhTKN1p6LapC5Vdaa1f0JbDRsPwWZf2laJtVYje%2Brt3pv8%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOi1SQLiYXmmsFhcAywNdVGCM1uD%2FA12aAYc7ZBUyRn6a5hwGD5RdLxUAY0XSWErjc%2FqO4yn7iznzvBQe3mnwoMdmzXXMA1TfW6Lr0QKAkJJdIc25NMX4tRC3bxy%2FsESsoymOtrcrs9pSMuZPRpLooOQHVhTKN1p6LapC5Vdaa1f0JbDRsPwWZf2laJtVYje%2Brt3pv8%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Intercomunicador",
-        "Bluetooth",
-        "Capacete",
-        "Moto",
-        "V10",
-        "Sem fio",
-        "Redução de ruído"
-      ]
-    },
-    {
-      "happened_at": "2026-10-18T04:15:34Z",
+      "happened_at": "2026-10-18T10:51:32Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -123,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (56x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (57x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -151,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-18T04:15:34Z",
+      "happened_at": "2026-10-18T10:51:32Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -167,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (112x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (113x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -196,7 +150,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-18T04:15:34Z",
+      "happened_at": "2026-10-18T10:51:32Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -212,7 +166,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (101x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (102x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -241,7 +195,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-18T04:15:34Z",
+      "happened_at": "2026-10-18T10:51:32Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -257,7 +211,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (95x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (96x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -283,51 +237,6 @@
         "Autocuidado",
         "Cuidados com a Pele",
         "Buço"
-      ]
-    },
-    {
-      "happened_at": "2026-10-18T04:15:34Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 243,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/243",
-      "issue_title": "Máscara Maravicherry FRAN 6g",
-      "sku": "fran-maravicherry-mascara-cilios-preto-6g",
-      "title": "Máscara para Cílios Maravicherry FRAN by Franciny Ehlke Preto 6g",
-      "id_busca": "5J5PKG-WL6G",
-      "status": 200,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2vZcCPX",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL%2BE1WqKYGG1688LPJVWU23A9CJgY%2FGHrSRLWGCc8I%2Fec7mVjMTvxirZ469oWSDN7hWqopuIZUvs9WOUu5F0WgjQmtUI1w%2Fx9NkM6Jq9bUwHzCfNuCZc%2FbEvqsFCOjl54CE%2BVnoUp3mbAqU%2Fpe2Y7%2FXcJwLhCDB8gMGpYE5ZzC2OV%2Fv06lelW0RvMtxsMQAsm3BSUWujH6gWNaSjn7fk8ikornz5UtjQGgwxHw%3D%3D",
-      "open_url": "https://meli.la/2vZcCPX",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL%2BE1WqKYGG1688LPJVWU23A9CJgY%2FGHrSRLWGCc8I%2Fec7mVjMTvxirZ469oWSDN7hWqopuIZUvs9WOUu5F0WgjQmtUI1w%2Fx9NkM6Jq9bUwHzCfNuCZc%2FbEvqsFCOjl54CE%2BVnoUp3mbAqU%2Fpe2Y7%2FXcJwLhCDB8gMGpYE5ZzC2OV%2Fv06lelW0RvMtxsMQAsm3BSUWujH6gWNaSjn7fk8ikornz5UtjQGgwxHw%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-WL6G",
-      "short_url": "https://meli.la/2vZcCPX",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL%2BE1WqKYGG1688LPJVWU23A9CJgY%2FGHrSRLWGCc8I%2Fec7mVjMTvxirZ469oWSDN7hWqopuIZUvs9WOUu5F0WgjQmtUI1w%2Fx9NkM6Jq9bUwHzCfNuCZc%2FbEvqsFCOjl54CE%2BVnoUp3mbAqU%2Fpe2Y7%2FXcJwLhCDB8gMGpYE5ZzC2OV%2Fv06lelW0RvMtxsMQAsm3BSUWujH6gWNaSjn7fk8ikornz5UtjQGgwxHw%3D%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BL%2BE1WqKYGG1688LPJVWU23A9CJgY%2FGHrSRLWGCc8I%2Fec7mVjMTvxirZ469oWSDN7hWqopuIZUvs9WOUu5F0WgjQmtUI1w%2Fx9NkM6Jq9bUwHzCfNuCZc%2FbEvqsFCOjl54CE%2BVnoUp3mbAqU%2Fpe2Y7%2FXcJwLhCDB8gMGpYE5ZzC2OV%2Fv06lelW0RvMtxsMQAsm3BSUWujH6gWNaSjn7fk8ikornz5UtjQGgwxHw%3D%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Beleza",
-        "Maquiagem",
-        "Olhos",
-        "Máscara de Cílios",
-        "Maravicherry",
-        "FRAN",
-        "Franciny Ehlke",
-        "Máximo Volume"
       ]
     }
   ]
