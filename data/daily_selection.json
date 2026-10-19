@@ -1,57 +1,57 @@
 {
-  "campaign_id": "bg-20261018",
-  "date": "2026-10-18",
+  "campaign_id": "bg-20261019",
+  "date": "2026-10-19",
   "algorithm": "blackgold-bandit-v1",
   "selected": [
     {
       "position": 1,
-      "sku": "loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz",
-      "title": "L'Oréal Paris Elseve Óleo Extraordinário 100ml - Leave-in Anti-Frizz e Protetor Térmico",
+      "sku": "mondial-modelador-cachos-infinity-em-12",
+      "title": "Modelador de Cachos Mondial Infinity EM-12 55W",
       "category": "Cabelo",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/loreal-paris-elseve-oleo-extraordinario-100ml-leave-in-antifrizz.webp",
-      "affiliate_url": "https://meli.la/1U9BG5d",
+      "description": "✨ Crie cachos definidos e duradouros com o Modelador Mondial Infinity EM-12. Possui revestimento cerâmico, 55W de potência, aquecimento rápido, temperatura de até 210°C e diâmetro de 2,5 cm para facilitar o uso no dia a dia.",
+      "price": "R$ 62,53",
+      "image": "assets/produtos-card/mondial-modelador-cachos-infinity-em-12.webp",
+      "affiliate_url": "https://meli.la/1JxC1mg",
       "score": {
-        "total": 3.188371,
+        "total": 3.236534,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.857143,
-        "quality": 0.375
+        "freshness": 0.714286,
+        "quality": 0.615
       }
     },
     {
       "position": 2,
-      "sku": "po-facial-bruna-tavares-bt-skinpowder",
-      "title": "Pó Facial Bruna Tavares BT Skinpowder",
-      "category": "Skincare",
-      "description": "Achado selecionado pela curadoria BlackGold.",
-      "price": "",
-      "image": "assets/produtos-card/po-facial-bruna-tavares-bt-skinpowder.webp",
-      "affiliate_url": "https://meli.la/1nNdbut",
+      "sku": "cicaplast-baume-b5-plus-la-roche-posay-40ml",
+      "title": "Creme Multirreparador Calmante Cicaplast Baume B5+ La Roche-Posay 40ml",
+      "category": "Perfumaria",
+      "description": "🩵 Cicaplast Baume B5+ La Roche-Posay 40ml: cuidado multirreparador calmante para pele sensibilizada. Ajuda a reparar a barreira da pele, hidratar, acalmar e proteger. Com Tribioma, Panthenol e Madecassoside, possui textura cremosa não oleosa e sem perfume. Pode ser aplicado no rosto, corpo e lábios.",
+      "price": "R$ 67,71",
+      "image": "assets/produtos-card/cicaplast-baume-b5-plus-la-roche-posay-40ml.webp",
+      "affiliate_url": "https://meli.la/1Vemrez",
       "score": {
-        "total": 3.152045,
+        "total": 3.126279,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.857143,
-        "quality": 0.375
+        "freshness": 0.619048,
+        "quality": 0.615
       }
     },
     {
       "position": 3,
-      "sku": "kit-sos-makeup-miamake-3em1-rosa",
-      "title": "Kit SOS Make Up Chaveiro Mia Make 3 em 1",
+      "sku": "payot-boca-rosa-meu-volumao-preto-6ml",
+      "title": "👁️✨ Máscara de Cílios Payot Boca Rosa #MeuVolumão Preto 6ml 💙🖤",
       "category": "Maquiagem",
-      "description": "💄 Kit SOS Make Up Mia Make 3 em 1 — beleza prática para levar com você. Chaveiro compacto com gel fixador, batom em bala e lip gloss, perfeito para retoques rápidos na bolsa e no dia a dia.",
-      "price": "R$ 23,90",
-      "image": "assets/produtos-card/kit-sos-makeup-miamake-3em1-rosa.webp",
-      "affiliate_url": "https://meli.la/1GNrAjm",
+      "description": "Achado selecionado pela curadoria BlackGold.",
+      "price": "",
+      "image": "assets/produtos-card/payot-boca-rosa-meu-volumao-preto-6ml.webp",
+      "affiliate_url": "https://meli.la/1dj3ot3",
       "score": {
-        "total": 3.098717,
+        "total": 3.083679,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.571429,
-        "quality": 0.615
+        "freshness": 0.761905,
+        "quality": 0.375
       }
     }
   ]

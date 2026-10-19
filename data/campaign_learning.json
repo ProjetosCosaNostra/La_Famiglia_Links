@@ -510,13 +510,13 @@
     "mondial-modelador-cachos-infinity-em-12": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 3,
-      "last_selected": "2026-10-04",
+      "selection_count": 4,
+      "last_selected": "2026-10-19",
       "last_score": {
-        "total": 3.030894,
+        "total": 3.236534,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 0.571429,
+        "freshness": 0.714286,
         "quality": 0.615
       }
     },
@@ -536,10 +536,10 @@
     "cicaplast-baume-b5-plus-la-roche-posay-40ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 3,
-      "last_selected": "2026-10-06",
+      "selection_count": 4,
+      "last_selected": "2026-10-19",
       "last_score": {
-        "total": 3.134195,
+        "total": 3.126279,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
         "freshness": 0.619048,
@@ -575,18 +575,18 @@
     "payot-boca-rosa-meu-volumao-preto-6ml": {
       "impressions": 0,
       "clicks": 0,
-      "selection_count": 1,
-      "last_selected": "2026-10-03",
+      "selection_count": 2,
+      "last_selected": "2026-10-19",
       "last_score": {
-        "total": 3.349152,
+        "total": 3.083679,
         "posterior_ctr": 0.05,
         "exploration": 2.697253,
-        "freshness": 1.0,
+        "freshness": 0.761905,
         "quality": 0.375
       }
     }
   },
   "algorithm": "blackgold-bandit-v1",
-  "updated_at": "2026-10-18T15:54:19Z",
-  "last_campaign_id": "bg-20261018"
+  "updated_at": "2026-10-19T18:44:08Z",
+  "last_campaign_id": "bg-20261019"
 }
