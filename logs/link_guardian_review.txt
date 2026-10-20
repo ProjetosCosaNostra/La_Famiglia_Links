@@ -1,7 +1,7 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-10-20T11:29:00Z
+Atualizado em: 2026-10-20T16:53:07Z
 Itens pendentes: 5
 SKUs únicos: 5
 Prioridade alta: 5
@@ -16,8 +16,7 @@ RESUMO POR AÇÃO
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 4
-- storefront_social_profile_unconfirmed: 1
+- storefront_social_lists_invalid: 5
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-10-20T11:22:21Z
+Quando: 2026-10-20T16:47:00Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -36,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (76x /lists, 0x listing)
+Memória operacional: histórico recorrente (77x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2b2HyMt
 checked_url: https://meli.la/2b2HyMt
@@ -44,26 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-10-20T11:22:21Z
-Issue: #125
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/125
-SKU: capacete-asx-city-preto-fosco-viseira
-Título: Capacete ASX City Preto Fosco com Viseira
-ID ML: 5J5PKG-M6Q2
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 500
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (45x /lists, 0x listing)
-Badges: Achados do Dia, Moto, Capacete, ASX, Preto Fosco, Viseira, Segurança
-open_url: https://meli.la/2FLJCzq
-checked_url: https://meli.la/2FLJCzq
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIKEY5PmV3m2TMTxAfyXZ9vXTkkPJ6x7QaLI%2BtwpWHzwB5ch4r1kQeQ5FLH5l8zuRi3QK7V0OQ8tjU%2FWOdETc7FegLvc2L3GnTft%2FZkEhYlCTiYRbRMVUFEJgkCu1dFJEpYg6hTSUE499%2BOTJLdrHyHfe1bKZ0wBiO4L0y1v7dHVHr4GbaiCGp1YbNgo2wi%2BykSrZ7VVM7yhEiuMQQhqRYOwZ0nFHgTmeSGDpw%3D%3D
-canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BBaCQLx%2Fr5Cz2kQzFW3cQhmbWzfI1TewD21HYNw2tPOMJgKZGjx8x7%2BHtiFBzVBOTCNkxA8oy5pfhkAn4si%2Ba7ELgwFYXK47zQ0nT8m9A54NoVuS63ZgXEXudoOVuVpMVsFm%2FXJ5BIULgSLz%2BxemGLvQ704Gby2pz2LA0V4%2F%2BMLp1f0NRs%2FwpJpO4JiPC8e%2F6sMUKxo%3D
-
-[ALTA] review_only_storefront
-Quando: 2026-10-20T11:22:21Z
+Quando: 2026-10-20T16:47:00Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -74,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (64x /lists, 0x listing)
+Memória operacional: histórico recorrente (65x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/2rm5dGk
 checked_url: https://meli.la/2rm5dGk
@@ -82,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-10-20T11:22:21Z
+Quando: 2026-10-20T16:47:00Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -93,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (120x /lists, 0x listing)
+Memória operacional: histórico recorrente (121x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1RKdpQY
 checked_url: https://meli.la/1RKdpQY
@@ -101,7 +81,26 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-10-20T11:22:21Z
+Quando: 2026-10-20T16:47:00Z
+Issue: #34
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
+SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
+Título: Kit Jogo Soquetes 1/4 Pol 46 Peças Com Catraca Cromo Vanádio
+ID ML: 5J5PKG-Z03S
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (39x /lists, 1x listing)
+Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
+open_url: https://meli.la/1ctTmcN
+checked_url: https://meli.la/1ctTmcN
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
+
+[ALTA] review_only_storefront
+Quando: 2026-10-20T16:47:00Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -112,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (103x /lists, 0x listing)
+Memória operacional: histórico recorrente (104x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
