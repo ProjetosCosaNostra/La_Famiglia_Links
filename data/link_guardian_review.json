@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-19T22:21:51Z",
-  "total_items": 4,
+  "updated_at": "2026-10-20T04:41:12Z",
+  "total_items": 5,
   "summary": {
-    "unique_skus": 4,
+    "unique_skus": 5,
     "by_state": {
-      "review_only_storefront": 4
+      "review_only_storefront": 5
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 4
+      "storefront_social_lists_invalid": 5
     },
     "by_action": {
-      "trocar_link": 4
+      "trocar_link": 5
     },
-    "high_priority": 4
+    "high_priority": 5
   },
   "items": [
     {
-      "happened_at": "2026-10-19T22:15:20Z",
+      "happened_at": "2026-10-20T04:34:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (74x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (75x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-19T22:15:20Z",
+      "happened_at": "2026-10-20T04:34:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (62x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (63x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-19T22:15:20Z",
+      "happened_at": "2026-10-20T04:34:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (118x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (119x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -150,7 +150,52 @@
       ]
     },
     {
-      "happened_at": "2026-10-19T22:15:20Z",
+      "happened_at": "2026-10-20T04:34:54Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 68,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/68",
+      "issue_title": "[CMS] Produto: suporte-notebook-aluminio-dobrável-ajustável-davely-prateado",
+      "sku": "suporte-notebook-aluminio-dobravel-ajustavel-davely-prateado",
+      "title": "Base Suporte Dobrável para Notebook em Alumínio (Ajustável) – Prateado",
+      "id_busca": "5J5PKG-22S1",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (2x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/2iV3XdP",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/2iV3XdP",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNKaQ5j5npM6n0QYQZeslxG%2Fwajah%2B5PgBi3n5G1y7VYT3JgR2%2BchcwKJyOUbw0CEDcY9PwHo3Dxw50MBf218z7pkbwthPTdtK5xIxMHYRQSkQwKNQQsJbU2r8Ff30wW6u7qONwq4jk5Fymle8m9CWMsYTaqW0thXXKPIw%2B1jLHe1rNAtoDxtsNd4FeneOp%2BqST5CdU%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-22S1&tid=ba0cd592-a44d-4d06-8cae-f319557ebb31",
+      "short_url": "https://meli.la/2iV3XdP",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNKaQ5j5npM6n0QYQZeslxG%2Fwajah%2B5PgBi3n5G1y7VYT3JgR2%2BchcwKJyOUbw0CEDcY9PwHo3Dxw50MBf218z7pkbwthPTdtK5xIxMHYRQSkQwKNQQsJbU2r8Ff30wW6u7qONwq4jk5Fymle8m9CWMsYTaqW0thXXKPIw%2B1jLHe1rNAtoDxtsNd4FeneOp%2BqST5CdU%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNKaQ5j5npM6n0QYQZeslxG%2Fwajah%2B5PgBi3n5G1y7VYT3JgR2%2BchcwKJyOUbw0CEDcY9PwHo3Dxw50MBf218z7pkbwthPTdtK5xIxMHYRQSkQwKNQQsJbU2r8Ff30wW6u7qONwq4jk5Fymle8m9CWMsYTaqW0thXXKPIw%2B1jLHe1rNAtoDxtsNd4FeneOp%2BqST5CdU%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Notebook",
+        "Suporte",
+        "Alumínio",
+        "Dobrável",
+        "Ajustável",
+        "Portátil",
+        "Ventilação"
+      ]
+    },
+    {
+      "happened_at": "2026-10-20T04:34:54Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -166,7 +211,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (101x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (102x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
