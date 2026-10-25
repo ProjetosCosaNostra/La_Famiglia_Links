@@ -1,23 +1,22 @@
 {
-  "updated_at": "2026-10-25T16:12:55Z",
-  "total_items": 8,
+  "updated_at": "2026-10-25T20:48:10Z",
+  "total_items": 7,
   "summary": {
-    "unique_skus": 8,
+    "unique_skus": 7,
     "by_state": {
-      "review_only_storefront": 8
+      "review_only_storefront": 7
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7,
-      "storefront_social_profile_unconfirmed": 1
+      "storefront_social_lists_invalid": 7
     },
     "by_action": {
-      "trocar_link": 8
+      "trocar_link": 7
     },
-    "high_priority": 8
+    "high_priority": 7
   },
   "items": [
     {
-      "happened_at": "2026-10-25T15:58:35Z",
+      "happened_at": "2026-10-25T20:42:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -33,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (97x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (98x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -62,7 +61,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-25T15:58:35Z",
+      "happened_at": "2026-10-25T20:42:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -78,7 +77,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (12x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (13x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -106,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-25T15:58:35Z",
+      "happened_at": "2026-10-25T20:42:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -122,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (85x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (86x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -150,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-25T15:58:35Z",
+      "happened_at": "2026-10-25T20:42:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -166,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (141x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (142x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -195,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-25T15:58:35Z",
+      "happened_at": "2026-10-25T20:42:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -211,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (59x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (60x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -240,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-25T15:58:35Z",
+      "happened_at": "2026-10-25T20:42:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -256,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (124x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (125x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -285,52 +284,7 @@
       ]
     },
     {
-      "happened_at": "2026-10-25T15:58:35Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 237,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/237",
-      "issue_title": "Sabonete Facial Garnier SkinActive Uniform & Matte Vitamina C 120g",
-      "sku": "sabonete-facial-garnier-uniform-matte-vitamina-c-120g",
-      "title": "Sabonete Facial Garnier SkinActive Uniform & Matte Vitamina C 120g",
-      "id_busca": "5J5PKG-4BHR",
-      "status": 200,
-      "reason": "storefront_social_profile_unconfirmed",
-      "reason_bucket": "storefront_profile_unconfirmed",
-      "reason_bucket_label": "perfil social sem confirmação",
-      "confidence_score": 39,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (1x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/1GawSXm",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOtdpe0iX3Lm%2FDi4rYq1sCIVNwzicvf5ebyGEb0%2BDK%2FkAd%2FlbKmIiyOWGROX2qhaPH9pTWBhv57JSPvYBgfFIWwDAgZFo8ygDrM0r09WQbvK8K8ZSsCLxAbRN5%2FPNrCP1SrQ0xrxEzr4sM21XPZyriXnyE8vOAOSzR0hHVnE3qjl9Ey3kryDH1rq9JDL152Cyx%2Fbikg%3D",
-      "open_url": "https://meli.la/1GawSXm",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOtdpe0iX3Lm%2FDi4rYq1sCIVNwzicvf5ebyGEb0%2BDK%2FkAd%2FlbKmIiyOWGROX2qhaPH9pTWBhv57JSPvYBgfFIWwDAgZFo8ygDrM0r09WQbvK8K8ZSsCLxAbRN5%2FPNrCP1SrQ0xrxEzr4sM21XPZyriXnyE8vOAOSzR0hHVnE3qjl9Ey3kryDH1rq9JDL152Cyx%2Fbikg%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-4BHR",
-      "short_url": "https://meli.la/1GawSXm",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOtdpe0iX3Lm%2FDi4rYq1sCIVNwzicvf5ebyGEb0%2BDK%2FkAd%2FlbKmIiyOWGROX2qhaPH9pTWBhv57JSPvYBgfFIWwDAgZFo8ygDrM0r09WQbvK8K8ZSsCLxAbRN5%2FPNrCP1SrQ0xrxEzr4sM21XPZyriXnyE8vOAOSzR0hHVnE3qjl9Ey3kryDH1rq9JDL152Cyx%2Fbikg%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOtdpe0iX3Lm%2FDi4rYq1sCIVNwzicvf5ebyGEb0%2BDK%2FkAd%2FlbKmIiyOWGROX2qhaPH9pTWBhv57JSPvYBgfFIWwDAgZFo8ygDrM0r09WQbvK8K8ZSsCLxAbRN5%2FPNrCP1SrQ0xrxEzr4sM21XPZyriXnyE8vOAOSzR0hHVnE3qjl9Ey3kryDH1rq9JDL152Cyx%2Fbikg%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Garnier",
-        "SkinActive",
-        "Uniform & Matte",
-        "Vitamina C",
-        "Limpeza Facial",
-        "Efeito Matte",
-        "Antioleosidade"
-      ]
-    },
-    {
-      "happened_at": "2026-10-25T15:58:35Z",
+      "happened_at": "2026-10-25T20:42:43Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -346,7 +300,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (99x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (100x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",

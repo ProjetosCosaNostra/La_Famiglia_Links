@@ -1,23 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-10-25T16:12:55Z
-Itens pendentes: 8
-SKUs únicos: 8
-Prioridade alta: 8
+Atualizado em: 2026-10-25T20:48:10Z
+Itens pendentes: 7
+SKUs únicos: 7
+Prioridade alta: 7
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 8
+- review_only_storefront: 7
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 8
+- trocar_link: 7
 
 TOP MOTIVOS
 ----------------------------------------
 - storefront_social_lists_invalid: 7
-- storefront_social_profile_unconfirmed: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -25,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
+Quando: 2026-10-25T20:42:43Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -36,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (97x /lists, 0x listing)
+Memória operacional: histórico recorrente (98x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2b2HyMt
 checked_url: https://meli.la/2b2HyMt
@@ -44,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
+Quando: 2026-10-25T20:42:43Z
 Issue: #109
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109
 SKU: kit-2-acendedores-de-fogao-premium
@@ -55,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (12x /lists, 0x listing)
+Memória operacional: histórico recorrente (13x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Fogão, Acendedor de Fogão, Kit 2 Peças, Utilidades Domésticas, Casa
 open_url: https://meli.la/1XNUc7N
 checked_url: https://meli.la/1XNUc7N
@@ -63,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
+Quando: 2026-10-25T20:42:43Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -74,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (85x /lists, 0x listing)
+Memória operacional: histórico recorrente (86x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/2rm5dGk
 checked_url: https://meli.la/2rm5dGk
@@ -82,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
+Quando: 2026-10-25T20:42:43Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -93,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (141x /lists, 0x listing)
+Memória operacional: histórico recorrente (142x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1RKdpQY
 checked_url: https://meli.la/1RKdpQY
@@ -101,7 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
+Quando: 2026-10-25T20:42:43Z
 Issue: #34
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
 SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
@@ -112,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (59x /lists, 1x listing)
+Memória operacional: histórico recorrente (60x /lists, 1x listing)
 Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
 open_url: https://meli.la/1ctTmcN
 checked_url: https://meli.la/1ctTmcN
@@ -120,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
 
 [ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
+Quando: 2026-10-25T20:42:43Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -131,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (124x /lists, 0x listing)
+Memória operacional: histórico recorrente (125x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
@@ -139,26 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
 
 [ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
-Issue: #237
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/237
-SKU: sabonete-facial-garnier-uniform-matte-vitamina-c-120g
-Título: Sabonete Facial Garnier SkinActive Uniform & Matte Vitamina C 120g
-ID ML: 5J5PKG-4BHR
-Ação sugerida: trocar_link
-Motivo: storefront_social_profile_unconfirmed
-Bucket do motivo: perfil social sem confirmação
-Status HTTP: 200
-Confiança: 39 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Garnier, SkinActive, Uniform & Matte, Vitamina C, Limpeza Facial, Efeito Matte, Antioleosidade
-open_url: https://meli.la/1GawSXm
-checked_url: https://meli.la/1GawSXm
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BOtdpe0iX3Lm%2FDi4rYq1sCIVNwzicvf5ebyGEb0%2BDK%2FkAd%2FlbKmIiyOWGROX2qhaPH9pTWBhv57JSPvYBgfFIWwDAgZFo8ygDrM0r09WQbvK8K8ZSsCLxAbRN5%2FPNrCP1SrQ0xrxEzr4sM21XPZyriXnyE8vOAOSzR0hHVnE3qjl9Ey3kryDH1rq9JDL152Cyx%2Fbikg%3D
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-4BHR
-
-[ALTA] review_only_storefront
-Quando: 2026-10-25T15:58:35Z
+Quando: 2026-10-25T20:42:43Z
 Issue: #242
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/242
 SKU: cicaplast-baume-b5-plus-la-roche-posay-40ml
@@ -169,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (99x /lists, 0x listing)
+Memória operacional: histórico recorrente (100x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Cuidado com a Pele, La Roche-Posay, Cicaplast, Baume B5+, Creme Multirreparador, Pele Sensibilizada
 open_url: https://meli.la/1Vemrez
 checked_url: https://meli.la/1Vemrez
