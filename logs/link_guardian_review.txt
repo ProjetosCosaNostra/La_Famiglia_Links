@@ -1,22 +1,23 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-10-27T04:52:55Z
-Itens pendentes: 7
-SKUs únicos: 7
-Prioridade alta: 7
+Atualizado em: 2026-10-27T12:03:34Z
+Itens pendentes: 9
+SKUs únicos: 9
+Prioridade alta: 9
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 7
+- review_only_storefront: 9
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 7
+- trocar_link: 9
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 7
+- storefront_social_lists_invalid: 8
+- social_profile_needs_review: 1
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +25,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-10-27T04:47:29Z
+Quando: 2026-10-27T11:58:59Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -35,7 +36,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (102x /lists, 0x listing)
+Memória operacional: histórico recorrente (103x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2b2HyMt
 checked_url: https://meli.la/2b2HyMt
@@ -43,7 +44,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-10-27T04:47:29Z
+Quando: 2026-10-27T11:58:59Z
 Issue: #109
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109
 SKU: kit-2-acendedores-de-fogao-premium
@@ -54,7 +55,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (17x /lists, 0x listing)
+Memória operacional: histórico recorrente (18x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Fogão, Acendedor de Fogão, Kit 2 Peças, Utilidades Domésticas, Casa
 open_url: https://meli.la/1XNUc7N
 checked_url: https://meli.la/1XNUc7N
@@ -62,7 +63,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-10-27T04:47:29Z
+Quando: 2026-10-27T11:58:59Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -73,7 +74,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (90x /lists, 0x listing)
+Memória operacional: histórico recorrente (91x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/2rm5dGk
 checked_url: https://meli.la/2rm5dGk
@@ -81,7 +82,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-10-27T04:47:29Z
+Quando: 2026-10-27T11:58:59Z
 Issue: #95
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/95
 SKU: ponte-lar-utensilios-19-pecas-silicone-preto-cabos-madeira
@@ -92,7 +93,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (146x /lists, 0x listing)
+Memória operacional: histórico recorrente (147x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Utensílios, Silicone, Cabos de Madeira, Preto, Organizador, Design Premium
 open_url: https://meli.la/1RKdpQY
 checked_url: https://meli.la/1RKdpQY
@@ -100,7 +101,45 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-89J4&tid=f4108058-d85b-4c0e-ba21-8d33fd4b2e2c
 
 [ALTA] review_only_storefront
-Quando: 2026-10-27T04:47:29Z
+Quando: 2026-10-27T11:58:59Z
+Issue: #74
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/74
+SKU: dps-iclamp-energia-5-tomadas-protecao-contra-surtos-preto
+Título: DPS iClamper Energia (5 Tomadas) – Proteção Contra Surtos – Preto
+ID ML: 5J5PKG-0QEF
+Ação sugerida: trocar_link
+Motivo: social_profile_needs_review
+Bucket do motivo: perfil social com revisão manual
+Status HTTP: 200
+Confiança: 60 (revisar_manual)
+Memória operacional: histórico recorrente (3x /lists, 0x listing)
+Badges: Achados do Dia, DPS, iClamper, Filtro de Linha, Proteção Contra Surtos, Anti Raio, Energia, 5 Tomadas
+open_url: https://meli.la/2e9LLGJ
+checked_url: https://meli.la/2e9LLGJ
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BIhnF531J89JsMssKSyDgaZTnNTkHo3expQGcWAqhUqG%2FXxpr1Z8dvWMv68gnCYcmAip5nVuYsg6xZFcQj6RYZ71%2FxoFgqUBLD%2B%2BviovhMxzmgIdaRN05Yz0b5TY8O3R8ECdFA82TCBLCS5SpCvTA1NrVd2lk8plm2InfWE8TUK4HB%2FXufPdVWipW7DDFt5mB5h9FN4%3D
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-0QEF&tid=6d448ff8-ffe3-4779-afa6-b8bac597046a
+
+[ALTA] review_only_storefront
+Quando: 2026-10-27T11:58:59Z
+Issue: #21
+Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/21
+SKU: bolsa-termica-lancheira-14l-preta-porta-marmita
+Título: Bolsa Térmica Lancheira 14L Preta (2 Compartimentos) — Porta Marmita com Alça Transversal
+ID ML: 5J5PKG-B6J6
+Ação sugerida: trocar_link
+Motivo: storefront_social_lists_invalid
+Bucket do motivo: storefront social /lists inválido
+Status HTTP: 200
+Confiança: 23 (invalido)
+Memória operacional: histórico recorrente (3x /lists, 1x listing)
+Badges: Achados do Dia, Bolsa térmica, Lancheira 14L, Porta marmita, Preta, 2 compartimentos, Alça transversal, Trabalho
+open_url: https://mercadolivre.com/sec/2jqTYSD
+checked_url: https://mercadolivre.com/sec/2jqTYSD
+final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
+canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-B6J6&tid=4b648836-e775-4334-bd74-9a84061ff069
+
+[ALTA] review_only_storefront
+Quando: 2026-10-27T11:58:59Z
 Issue: #34
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
 SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
@@ -111,7 +150,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (64x /lists, 1x listing)
+Memória operacional: histórico recorrente (65x /lists, 1x listing)
 Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
 open_url: https://meli.la/1ctTmcN
 checked_url: https://meli.la/1ctTmcN
@@ -119,7 +158,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
 
 [ALTA] review_only_storefront
-Quando: 2026-10-27T04:47:29Z
+Quando: 2026-10-27T11:58:59Z
 Issue: #51
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/51
 SKU: fita-led-5m-smart-wifi-rgb-alexa-google-fonte
@@ -130,7 +169,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (68x /lists, 0x listing)
+Memória operacional: histórico recorrente (69x /lists, 0x listing)
 Badges: Achados do Dia, Fita LED, RGB, Wi-Fi, Alexa, Google, Smart Home, 5m
 open_url: https://meli.la/2D4sYtP
 checked_url: https://meli.la/2D4sYtP
@@ -138,7 +177,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-F3MC&tid=9088aa15-bac3-40a0-bc24-e9760fc726eb
 
 [ALTA] review_only_storefront
-Quando: 2026-10-27T04:47:29Z
+Quando: 2026-10-27T11:58:59Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -149,7 +188,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (129x /lists, 0x listing)
+Memória operacional: histórico recorrente (130x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
