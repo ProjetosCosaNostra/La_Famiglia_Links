@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T09:20:52Z",
+  "updated_at": "2026-10-30T10:17:27Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -303,7 +303,15 @@
       "guardian_confidence_bucket": "forte_evidencia",
       "guardian_reason_bucket": "storefront_profile_confirmed",
       "image_original": "https://github.com/user-attachments/assets/3681c6b2-cb43-4613-bab9-62d0f305fcbe",
-      "webp_optimized_at": "2026-06-14T01:52:16Z"
+      "webp_optimized_at": "2026-06-14T01:52:16Z",
+      "card_image": "assets/produtos-card/refil-creme-acetinado-hidratante-corporal-lily-250g.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_711229-MLA115410595346_082026-F.jpg",
+      "card_image_item_id": "MLB22582196",
+      "card_image_candidate_title": "O Boticário Refil Creme Acetinado Hidratante Desodorante Corporal Lily 250g",
+      "card_image_match_score": 0.8401,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-10-30T10:14:18Z"
     },
     {
       "sku": "iluminador-liquido-hello-kitty-bt-bruna-tavares-brilhante-cake",
