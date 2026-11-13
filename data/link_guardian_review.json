@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-12T23:32:59Z",
-  "total_items": 7,
+  "updated_at": "2026-11-13T06:26:28Z",
+  "total_items": 6,
   "summary": {
-    "unique_skus": 7,
+    "unique_skus": 6,
     "by_state": {
-      "review_only_storefront": 7
+      "review_only_storefront": 6
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 7
+      "storefront_social_lists_invalid": 6
     },
     "by_action": {
-      "trocar_link": 7
+      "trocar_link": 6
     },
-    "high_priority": 7
+    "high_priority": 6
   },
   "items": [
     {
-      "happened_at": "2026-11-12T23:27:50Z",
+      "happened_at": "2026-11-13T06:21:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (63x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (64x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-12T23:27:50Z",
+      "happened_at": "2026-11-13T06:21:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (70x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (71x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-12T23:27:50Z",
+      "happened_at": "2026-11-13T06:21:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (136x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (137x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,52 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-12T23:27:50Z",
-      "state": "review_only_storefront",
-      "state_label": "review_only_storefront",
-      "priority": "alta",
-      "issue_number": 99,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/99",
-      "issue_title": "🫒✨ [CMS] Produto: Kit 2 Spray de Cozinha Epsilon EPS-412 (200ml) – Preto + Branco",
-      "sku": "kit-2-spray-cozinha-epsilon-eps-412-200ml-preto-branco",
-      "title": "Kit 2 Spray de Cozinha Epsilon EPS-412 (200ml) – Borrifador Pulverizador para Óleo/Azeite (Preto + Branco)",
-      "id_busca": "5J5PKG-MQL7",
-      "status": 200,
-      "reason": "storefront_social_lists_invalid",
-      "reason_bucket": "storefront_social_lists_invalid",
-      "reason_bucket_label": "storefront social /lists inválido",
-      "confidence_score": 23,
-      "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (37x /lists, 0x listing)",
-      "guardian_last_good_open_url": "",
-      "guardian_last_good_check_url": "",
-      "guardian_last_good_confirmed_at": "",
-      "action_suggested": "trocar_link",
-      "needs_manual_check": true,
-      "checked_url": "https://meli.la/2gpLrhX",
-      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2gpLrhX",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D",
-      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-MQL7&tid=28946b13-8908-4b8a-8f04-b89b8ca29b4e",
-      "short_url": "https://meli.la/2gpLrhX",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D",
-      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BAN%2FN039Bf9naCL%2BFNMtXEMoDXwpVSanadrDeRoQ9uqb4fUm0p1WGwWZLxUjaWwFbcP5oX5ARXf6w7z0C21s87yxvj5W1Rkms1vjCyxeQrPqsHCYCN6gZz%2Fxk48OVoBt1dghYPh6ms6lwQLzT2OOo0LUWFL0UU4I4DE684%2BhMSa2%2BgiHde9YKFTY4q6%2BtdyOsGB0q2c%3D",
-      "active": true,
-      "featured": false,
-      "smart_categories": [],
-      "badges": [
-        "Achados do Dia",
-        "Cozinha",
-        "Spray de Óleo",
-        "Borrifador",
-        "Pulverizador",
-        "Azeite",
-        "Controle de Porção",
-        "200ml"
-      ]
-    },
-    {
-      "happened_at": "2026-11-12T23:27:50Z",
+      "happened_at": "2026-11-13T06:21:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (110x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (111x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-12T23:27:50Z",
+      "happened_at": "2026-11-13T06:21:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (37x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (38x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -284,7 +239,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-12T23:27:50Z",
+      "happened_at": "2026-11-13T06:21:40Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -300,7 +255,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (175x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (176x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
