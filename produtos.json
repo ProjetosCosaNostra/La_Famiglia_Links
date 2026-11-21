@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:17:43Z",
+  "updated_at": "2026-11-21T11:29:46Z",
   "products": [
     {
       "sku": "gloss-labial-fantasyland-disney-100-bruna-tavares",
@@ -10239,7 +10239,15 @@
         "https://github.com/user-attachments/assets/a7cfb674-8f48-4993-ad0b-1844bd6b03d7",
         "https://github.com/user-attachments/assets/6add0dd7-334c-486f-a3cf-d0fe8d6409cb"
       ],
-      "webp_optimized_at": "2026-06-14T23:52:06Z"
+      "webp_optimized_at": "2026-06-14T23:52:06Z",
+      "card_image": "assets/produtos-card/rolo-facial-gelo-silicone-cuidado-facial-massageador-rosto-azul-oval.webp",
+      "card_image_source": "mercadolivre",
+      "card_image_source_url": "https://http2.mlstatic.com/D_NQ_NP_731268-MLA111868126392_062026-F.jpg",
+      "card_image_item_id": "MLB72986536",
+      "card_image_candidate_title": "Rolo Massageador Facial Com Gelo Silicone P/ Rosto Calmante",
+      "card_image_match_score": 0.8022,
+      "card_image_match_method": "affiliate-page-catalog",
+      "card_image_synced_at": "2026-11-21T11:28:50Z"
     },
     {
       "sku": "mascara-para-dormir-gel-termico-rosa-laco",
