@@ -1,22 +1,66 @@
 {
-  "updated_at": "2026-11-23T07:21:30Z",
-  "total_items": 10,
+  "updated_at": "2026-11-23T23:49:44Z",
+  "total_items": 11,
   "summary": {
-    "unique_skus": 10,
+    "unique_skus": 11,
     "by_state": {
-      "review_only_storefront": 10
+      "review_only_storefront": 11
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 10
+      "storefront_social_lists_invalid": 11
     },
     "by_action": {
-      "trocar_link": 10
+      "trocar_link": 11
     },
-    "high_priority": 10
+    "high_priority": 11
   },
   "items": [
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 165,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/165",
+      "issue_title": "Kit de Pincéis de Maquiagem 13 Peças com Estojo Rosé",
+      "sku": "kit-pinceis-maquiagem-13-pecas-estojo-rose",
+      "title": "Kit de Pincéis de Maquiagem 13 Peças com Estojo Rosé",
+      "id_busca": "5J5PKG-CU2P",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (96x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://meli.la/22qx74W",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://meli.la/22qx74W",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-CU2P",
+      "short_url": "https://meli.la/22qx74W",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BFAnaSTgavOZkFpm1TgyQ60N5fjhWs%2BjAA9cu0edhfkJGB8Axt3Q0XJaAP1ljBf9ytlvPhDVzdM%2FjUhNdC8%2B5Q6p4S%2BLxIGjiKiWtux9HPdc5fjCMqytGT5l3zoUghE%2BoMUOJRq6QcKr934cIu5ZDAEq0ctcQuY0YgwX7SCWk4iwJ%2BaBo8eFKMZnqbTXJI%2BlbfL1PSCQPepEfKEDig%3D%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Beleza",
+        "Maquiagem",
+        "Feminino",
+        "Premium",
+        "Mais Vendido",
+        "Baratinho"
+      ]
+    },
+    {
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (160x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (161x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -61,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -77,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (85x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (86x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (91x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (92x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -150,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -166,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (158x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (159x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +238,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +254,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (56x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (57x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -239,7 +283,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -255,7 +299,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (132x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (133x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -284,7 +328,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -300,7 +344,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (99x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (100x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -329,35 +373,35 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
-      "issue_number": 200,
-      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/200",
-      "issue_title": "Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo",
-      "sku": "escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo",
-      "title": "Escova Massageadora Capilar 4 em 1 LED Terapêutica Cabelo",
-      "id_busca": "5J5PKG-XL1P",
+      "issue_number": 190,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/190",
+      "issue_title": "Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml",
+      "sku": "lip-oil-volumizador-labial-epidrat-hyalu-berry-fps30-6ml",
+      "title": "Lip Oil Volumizador Labial Epidrat Hyalu Berry FPS 30 6ml",
+      "id_busca": "5J5PKG-94MJ",
       "status": 200,
       "reason": "storefront_social_lists_invalid",
       "reason_bucket": "storefront_social_lists_invalid",
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (54x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
       "action_suggested": "trocar_link",
       "needs_manual_check": true,
-      "checked_url": "https://meli.la/2mbKAww",
+      "checked_url": "https://meli.la/1kPMdsr",
       "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
-      "open_url": "https://meli.la/2mbKAww",
-      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNEifO1Ey%2FWU3v49IoJl2J%2FULKMoQYjHHSqlgcGb7lfJat8M5wTaAe%2B%2F49Ld6u37ATAsl0tq4EZd5idbdnX1oXqEpOOlOm3nm3cyScwGy%2FOjfhL5uXYszYGMnGxUSYiw6o3t2WL3lFn9J3uXQFHZ2Z8S7LhpFnhb%2BrSPpJ91oHk8fYu3kxOInmwX%2FTo2oiPbF66Beu0o%2FReCorTN4A%3D%3D",
-      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-XL1P",
-      "short_url": "https://meli.la/2mbKAww",
-      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BNEifO1Ey%2FWU3v49IoJl2J%2FULKMoQYjHHSqlgcGb7lfJat8M5wTaAe%2B%2F49Ld6u37ATAsl0tq4EZd5idbdnX1oXqEpOOlOm3nm3cyScwGy%2FOjfhL5uXYszYGMnGxUSYiw6o3t2WL3lFn9J3uXQFHZ2Z8S7LhpFnhb%2BrSPpJ91oHk8fYu3kxOInmwX%2FTo2oiPbF66Beu0o%2FReCorTN4A%3D%3D",
+      "open_url": "https://meli.la/1kPMdsr",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
+      "canonical_url": "https://lista.mercadolivre.com.br/5J5PKG-94MJ",
+      "short_url": "https://meli.la/1kPMdsr",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BLuTdzt5zs3P3ttXWDE9hTlyjIFZENTuRlAq5RsRFlIJrvbhSq0JbZN8pAsasaeN%2B3%2FztVVlHoB6U2EcrLkYBB2isjxjiz8RGGemxJyehoDWCRgbY9HZ1Kql%2BqlLJDUA0n%2F2lv7clhz6%2FGhNeZZ9cgRe2wlauThnQ5EAL7ChVgkvIJ%2BrtTY3bN4XBd6Smu9mvyqsDrM%3D",
       "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
       "active": true,
       "featured": false,
@@ -365,16 +409,16 @@
       "badges": [
         "Achados do Dia",
         "Beleza",
-        "Cabelo",
-        "Cuidados com o Cabelo",
-        "Escova Massageadora",
-        "LED Terapêutico",
-        "4 em 1",
-        "Couro Cabeludo"
+        "Lip Oil",
+        "Epidrat Hyalu",
+        "Berry",
+        "FPS 30",
+        "Hidratante Labial",
+        "Volume Natural"
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -390,7 +434,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (197x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (198x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -419,7 +463,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-23T07:17:21Z",
+      "happened_at": "2026-11-23T23:45:14Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -435,7 +479,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (19x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (20x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
