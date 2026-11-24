@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-24T09:45:49Z",
-  "total_items": 11,
+  "updated_at": "2026-11-24T22:23:12Z",
+  "total_items": 12,
   "summary": {
-    "unique_skus": 11,
+    "unique_skus": 12,
     "by_state": {
-      "review_only_storefront": 11
+      "review_only_storefront": 12
     },
     "by_reason": {
-      "storefront_social_lists_invalid": 11
+      "storefront_social_lists_invalid": 12
     },
     "by_action": {
-      "trocar_link": 11
+      "trocar_link": 12
     },
-    "high_priority": 11
+    "high_priority": 12
   },
   "items": [
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -32,7 +32,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (97x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (98x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -76,7 +76,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (162x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (163x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -121,7 +121,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (87x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (88x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -165,7 +165,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (93x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (94x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -210,7 +210,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (160x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (161x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -238,7 +238,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -254,7 +254,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (58x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (59x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -283,7 +283,52 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
+      "state": "review_only_storefront",
+      "state_label": "review_only_storefront",
+      "priority": "alta",
+      "issue_number": 33,
+      "issue_url": "https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/33",
+      "issue_title": "[CMS] Produto: Cadeira de Escritório Newconcept 351049 (Mesh) — Preta",
+      "sku": "cadeira-escritorio-newconcept-351049-mesh-preta",
+      "title": "Cadeira de Escritório Newconcept 351049 — Mesh, Altura Regulável, Giratória (Preta)",
+      "id_busca": "5J5PKG-LWRG",
+      "status": 200,
+      "reason": "storefront_social_lists_invalid",
+      "reason_bucket": "storefront_social_lists_invalid",
+      "reason_bucket_label": "storefront social /lists inválido",
+      "confidence_score": 23,
+      "confidence_bucket": "invalido",
+      "memory_note": "histórico recorrente (3x /lists, 0x listing)",
+      "guardian_last_good_open_url": "",
+      "guardian_last_good_check_url": "",
+      "guardian_last_good_confirmed_at": "",
+      "action_suggested": "trocar_link",
+      "needs_manual_check": true,
+      "checked_url": "https://mercadolivre.com/sec/25NyQiY",
+      "final_url": "https://www.mercadolivre.com.br/social/felipecosanostra/lists",
+      "open_url": "https://mercadolivre.com/sec/25NyQiY",
+      "check_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D",
+      "canonical_url": "https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LWRG&tid=10209151-92c7-4031-8ed4-b63cce836489",
+      "short_url": "",
+      "resolved_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D",
+      "guardian_last_final_url": "https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BEObcaRS5EYlhXpLPgBnssfV7scn6C3UqvT6otQLndiYVJ7opDNY5CAki8uRF7xYdA%2BmFjQfRF4DVa2UuzmzpSREfU1VEmo92%2BiqouZrL92BWvKwUa%2BbPFMZ%2FiN8iOYVBJEbwkYdhcryoqJ91JSuj8EhlPEa51BztzKNN73OgC4p4tTBrUe7dZfDrrblFSPEL8viezE%3D",
+      "active": true,
+      "featured": false,
+      "smart_categories": [],
+      "badges": [
+        "Achados do Dia",
+        "Home Office",
+        "Cadeira de Escritório",
+        "Mesh",
+        "Encosto Respirável",
+        "Altura Regulável",
+        "Giratória 360°",
+        "Preto"
+      ]
+    },
+    {
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -299,7 +344,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (134x /lists, 1x listing)",
+      "memory_note": "histórico recorrente (135x /lists, 1x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -328,7 +373,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -344,7 +389,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (101x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (102x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -373,7 +418,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -389,7 +434,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (4x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (5x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -418,7 +463,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -434,7 +479,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (199x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (200x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
@@ -463,7 +508,7 @@
       ]
     },
     {
-      "happened_at": "2026-11-24T09:39:57Z",
+      "happened_at": "2026-11-24T22:16:46Z",
       "state": "review_only_storefront",
       "state_label": "review_only_storefront",
       "priority": "alta",
@@ -479,7 +524,7 @@
       "reason_bucket_label": "storefront social /lists inválido",
       "confidence_score": 23,
       "confidence_bucket": "invalido",
-      "memory_note": "histórico recorrente (21x /lists, 0x listing)",
+      "memory_note": "histórico recorrente (22x /lists, 0x listing)",
       "guardian_last_good_open_url": "",
       "guardian_last_good_check_url": "",
       "guardian_last_good_confirmed_at": "",
