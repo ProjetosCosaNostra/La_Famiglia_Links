@@ -1,22 +1,22 @@
 ========================================
 LINK GUARDIAN — PAINEL DE REVISÃO EXECUTIVO
 ========================================
-Atualizado em: 2026-11-25T21:37:13Z
-Itens pendentes: 13
-SKUs únicos: 13
-Prioridade alta: 13
+Atualizado em: 2026-11-26T08:04:22Z
+Itens pendentes: 11
+SKUs únicos: 11
+Prioridade alta: 11
 
 RESUMO POR ESTADO
 ----------------------------------------
-- review_only_storefront: 13
+- review_only_storefront: 11
 
 RESUMO POR AÇÃO
 ----------------------------------------
-- trocar_link: 13
+- trocar_link: 11
 
 TOP MOTIVOS
 ----------------------------------------
-- storefront_social_lists_invalid: 13
+- storefront_social_lists_invalid: 11
 
 BLOCOS EXECUTIVOS
 ----------------------------------------
@@ -24,7 +24,7 @@ BLOCOS EXECUTIVOS
 CORRIGIR AGORA
 ----------------------------------------
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #4
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/4
 SKU: mochila-impermeavel-notebook-15-6
@@ -35,7 +35,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (165x /lists, 0x listing)
+Memória operacional: histórico recorrente (166x /lists, 0x listing)
 Badges: Achados do Dia, Mochila, Notebook, Executiva, Viagem, Romantic Crown, USB, Impermeável
 open_url: https://meli.la/2b2HyMt
 checked_url: https://meli.la/2b2HyMt
@@ -43,7 +43,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BI5jhOVjjteaywTMUmSy7jO2aw02%2FOSyuyTkgWg2%2BgrzwLPCvc3pHQCdbHMTlrM69gn8CcLo6t3Bgt8ybWfAsftZpemIK08srMJZnbTELOBmCRelQpTvzof7%2BULEoX7SEicFPfrkDfsaE11IuNyoPOL6RJooq10H3aOD2Y%2FwVwWp2a7gzywqq%2B%2Fvjjba6F1akHl%2F5w%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #109
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/109
 SKU: kit-2-acendedores-de-fogao-premium
@@ -54,7 +54,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (90x /lists, 0x listing)
+Memória operacional: histórico recorrente (91x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Fogão, Acendedor de Fogão, Kit 2 Peças, Utilidades Domésticas, Casa
 open_url: https://meli.la/1XNUc7N
 checked_url: https://meli.la/1XNUc7N
@@ -62,7 +62,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/social/felipecosanostra?matt_word=fr20250124223606&matt_tool=30833118&forceInApp=true&ref=BM37%2F8Hw32de7bWg9vJmlSP7A%2B0Uerjj8CN1u1guREle%2BQP1ZcQts75Kg2YxKno6REwy5LgXPxezfjZnm3QB6GZSQBCL%2Fw83rqZvUoksrgBsnJExllRKbRxV51RNJpnO8Glhw7Y27o%2BoT%2B18M2zmWnpG5yWn0IbYs0Y53PJL7kmCoZyiuNCWr%2B%2F7hTfmFayk%2BQLu%2FToAGTl1wyzXgw%3D%3D
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #123
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/123
 SKU: smart-box-proeletronic-smartpro-16gb-4k-hd-preto
@@ -73,7 +73,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (96x /lists, 0x listing)
+Memória operacional: histórico recorrente (97x /lists, 0x listing)
 Badges: Achados do Dia, Smart Box, Proeletronic, Smartpro, 16GB, 4K HD, Streaming, WiFi
 open_url: https://meli.la/2osVSUx
 checked_url: https://meli.la/2osVSUx
@@ -81,7 +81,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-XJE6&tid=718a07b2-43d1-4846-810d-350c2d98fe93
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #118
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/118
 SKU: nintendo-super-mini-premium
@@ -92,7 +92,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (163x /lists, 0x listing)
+Memória operacional: histórico recorrente (164x /lists, 0x listing)
 Badges: Achados do Dia, Retrô, 2 Controles, Nostalgia Gamer, Console Retrô, Nintendo, Mini Console
 open_url: https://meli.la/2rm5dGk
 checked_url: https://meli.la/2rm5dGk
@@ -100,26 +100,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-N3EA&tid=8f94189a-9c68-44e5-b729-f60ac41c5cd1
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
-Issue: #91
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/91
-SKU: tampa-protetora-microondas-alca-anti-respingo-5j5pkg-bxxq
-Título: Tampa Protetora para Micro-ondas com Alça | Aquece uniforme e evita sujeira
-ID ML: 5J5PKG-BXXQ
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (1x /lists, 0x listing)
-Badges: Achados do Dia, Cozinha, Utensílios, Micro-ondas, Anti-respingo, Tampa protetora, Praticidade, Dia a dia
-open_url: https://meli.la/2qrQinu
-checked_url: https://meli.la/2qrQinu
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-BXXQ&tid=2e3fc5dd-1df9-4b6f-9436-fca05ea36e88
-
-[ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #33
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/33
 SKU: cadeira-escritorio-newconcept-351049-mesh-preta
@@ -130,7 +111,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (5x /lists, 0x listing)
+Memória operacional: histórico recorrente (6x /lists, 0x listing)
 Badges: Achados do Dia, Home Office, Cadeira de Escritório, Mesh, Encosto Respirável, Altura Regulável, Giratória 360°, Preto
 open_url: https://mercadolivre.com/sec/25NyQiY
 checked_url: https://mercadolivre.com/sec/25NyQiY
@@ -138,7 +119,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-LWRG&tid=10209151-92c7-4031-8ed4-b63cce836489
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #34
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/34
 SKU: s-siqueira-kit-soquetes-46pcs-1-4-wxz9
@@ -149,7 +130,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (137x /lists, 1x listing)
+Memória operacional: histórico recorrente (138x /lists, 1x listing)
 Badges: Achados do Dia, Ferramentas, Kit de Soquetes, Catraca 1/4, Aço CRV, Maleta, Oficina, Carro
 open_url: https://meli.la/1ctTmcN
 checked_url: https://meli.la/1ctTmcN
@@ -157,7 +138,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-WXZ9&tid=d363aca7-d9e4-4d65-b74e-1054a7c14a8e
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #45
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/45
 SKU: seladora-a-vacuo-portatil-alimentos
@@ -168,7 +149,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (35x /lists, 0x listing)
+Memória operacional: histórico recorrente (36x /lists, 0x listing)
 Badges: Achados do Dia, Cozinha, Organização, Seladora a Vácuo, Alimentos, Freezer, Conservação, Prático
 open_url: https://mercadolivre.com/sec/1h91voZ
 checked_url: https://mercadolivre.com/sec/1h91voZ
@@ -176,7 +157,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://www.mercadolivre.com.br/gz/account-verification?go=https%3A%2F%2Flista.mercadolivre.com.br%2F5J5PKG-5FBE&tid=7e1e874d-2a0a-4c99-9b2e-ee9dea0fc631
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #190
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/190
 SKU: lip-oil-volumizador-labial-epidrat-hyalu-berry-fps30-6ml
@@ -187,7 +168,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (7x /lists, 0x listing)
+Memória operacional: histórico recorrente (8x /lists, 0x listing)
 Badges: Achados do Dia, Beleza, Lip Oil, Epidrat Hyalu, Berry, FPS 30, Hidratante Labial, Volume Natural
 open_url: https://meli.la/1kPMdsr
 checked_url: https://meli.la/1kPMdsr
@@ -195,7 +176,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-94MJ
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #200
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/200
 SKU: escova-massageadora-capilar-4-em-1-led-terapeutica-cabelo
@@ -206,7 +187,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (55x /lists, 1x listing)
+Memória operacional: histórico recorrente (56x /lists, 1x listing)
 Badges: Achados do Dia, Beleza, Cabelo, Cuidados com o Cabelo, Escova Massageadora, LED Terapêutico, 4 em 1, Couro Cabeludo
 open_url: https://meli.la/2mbKAww
 checked_url: https://meli.la/2mbKAww
@@ -214,7 +195,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-XL1P
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #215
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/215
 SKU: depilador-batom-portatil-facial-branco-rose-gold
@@ -225,7 +206,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (202x /lists, 0x listing)
+Memória operacional: histórico recorrente (203x /lists, 0x listing)
 Badges: Achados do Dia, Depilador Facial, Aparador Facial, Depilador Batom, Beleza Feminina, Autocuidado, Cuidados com a Pele, Buço
 open_url: https://meli.la/1EjNsoE
 checked_url: https://meli.la/1EjNsoE
@@ -233,26 +214,7 @@ final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
 canonical_url: https://lista.mercadolivre.com.br/5J5PKG-23E9
 
 [ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
-Issue: #225
-Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/225
-SKU: kit-5-mini-frascos-porta-perfume-recarregaveis-spray-5ml
-Título: Kit com 5 Mini Frascos Porta Perfume Recarregáveis Spray 5ml
-ID ML: 5J5PKG-RPA7
-Ação sugerida: trocar_link
-Motivo: storefront_social_lists_invalid
-Bucket do motivo: storefront social /lists inválido
-Status HTTP: 200
-Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (19x /lists, 1x listing)
-Badges: Achados do Dia, Beleza, Perfume, Porta Perfume, Recarregável, Kit 5 Unidades, 5ml, Portátil
-open_url: https://meli.la/2r1hGf6
-checked_url: https://meli.la/2r1hGf6
-final_url: https://www.mercadolivre.com.br/social/felipecosanostra/lists
-canonical_url: https://lista.mercadolivre.com.br/5J5PKG-RPA7
-
-[ALTA] review_only_storefront
-Quando: 2026-11-25T21:33:16Z
+Quando: 2026-11-26T07:59:16Z
 Issue: #239
 Issue URL: https://github.com/ProjetosCosaNostra/La_Famiglia_Links/issues/239
 SKU: o-boticario-floratta-my-blue-colonia-75ml
@@ -263,7 +225,7 @@ Motivo: storefront_social_lists_invalid
 Bucket do motivo: storefront social /lists inválido
 Status HTTP: 200
 Confiança: 23 (invalido)
-Memória operacional: histórico recorrente (24x /lists, 0x listing)
+Memória operacional: histórico recorrente (25x /lists, 0x listing)
 Badges: Achados do Dia, O Boticário, Floratta, Floratta My Blue, Perfume Feminino, Colônia Feminina, Perfumaria, Fragrância Floral
 open_url: https://meli.la/1D1EKm5
 checked_url: https://meli.la/1D1EKm5
